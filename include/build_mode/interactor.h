@@ -55,6 +55,8 @@ struct InteractorInfo {
 // Layout matches original binary exactly
 class Interactor {
 public:
+    Interactor();
+
     u32 m_playerId;       // 0x00
     ESimsCam* m_camera;   // 0x04
     EVec3 m_pos;          // 0x08 (x=0x08, y=0x0C, z=0x10)
@@ -97,6 +99,11 @@ public:
 
     void NotifyClient(ClientNotificationState state, CallbackData& data, InteractorParams& params);
     void OnCommandPressed(InteractorInputManager::InteractorCommand cmd, float value);
+    void OnCommandReleased(InteractorInputManager::InteractorCommand cmd);
+    void OnCommandUpdate(InteractorInputManager::InteractorCommand cmd, float value);
+    void ResetInputState();
+    f32 GetSelectionRadius();
+    int Moved();
     void AddIdleTime(float dt);
     void ResetIdleTime();
     void UpdateOverlapIntersection(OverlapData* data);
@@ -229,6 +236,8 @@ public:
 // ObjectManipulator (from objectmanipulator.obj)
 class ObjectManipulator : public Interactor {
 public:
+    ObjectManipulator();
+    ~ObjectManipulator();
     // +0x60 (96): func table ptr
     // +0x64 (100): PlacementObject start
     // +0xA8 (168): m_isCursorModelEnabled
@@ -237,6 +246,8 @@ public:
     void OnDestroy();
     void OnStop();
     void OnCommandPressed_OM(InteractorInputManager::InteractorCommand cmd, float value);
+    void OnCommandUpdate(InteractorInputManager::InteractorCommand cmd, float value);
+    void OnCommandReleased(InteractorInputManager::InteractorCommand cmd);
     void PreDraw(InteractorVisualizer& vis);
     void Draw(InteractorVisualizer& vis);
     void SetUIDebugName(cXObject* obj);
@@ -248,7 +259,15 @@ public:
 // GrabManipulator (from objectmanipulator.obj)
 class GrabManipulator : public ObjectManipulator {
 public:
+    GrabManipulator();
     void OnCreate();
+    void OnCommandPressed(InteractorInputManager::InteractorCommand cmd, float value);
+    void TryGrabbingWorldObject();
+    void TryGrabbingWorldObjectFromId(short objectId);
+    void DropCurrentObject();
+    void DestroyObjectInHand();
+    void CancelCurrentGrab();
+    void CancelSession();
 };
 
 // PlaceManipulator (from objectmanipulator.obj)
@@ -256,6 +275,8 @@ class PlaceManipulator : public ObjectManipulator {
 public:
     void OnCreate();
     void OnStart(Interactor::InteractorParams* params);
+    void OnCommandPressed(InteractorInputManager::InteractorCommand cmd, float value);
+    void CancelSession();
 };
 
 // PlacementObject (from objectmanipulator.obj)
@@ -276,8 +297,19 @@ public:
     u32 m_field_28;     // 0x28
 
     PlacementObject();
+    ~PlacementObject();
     int CanObjectBeDestroyed();
     void ResetDirection();
+    void Initialize();
+    void Destroy();
+    void Drop();
+    void Pickup();
+    void Reset();
+    void SetDirection(int dir);
+    void SetShaderToValidState(bool valid);
+    int IsLegalToPlaceAtLocation(void* tile, void* data);
+    void InitializeGridObject(void* gridObj);
+    void DestroyGridObject(void*& gridObj);
 };
 
 } // namespace InteractorModule

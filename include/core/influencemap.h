@@ -8,7 +8,9 @@ class cXObject;
 class cXPerson;
 class ReconBuffer;
 class ITreeTableEntry;
-struct FTileRect;
+struct FTileRect {
+    int x1, y1, x2, y2;
+};
 struct EVec3;
 
 // ============================================================================

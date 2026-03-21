@@ -16,6 +16,15 @@ public:
     // +0xC4 (196): m_flags (bit field)
     // +0xD8 (216): m_fenceShaderRef pointer
 
+    struct CallbackData {
+        CallbackData();
+        u32 field[4];
+    };
+
+    WallManipulator();
+
+    void OnCreate();
+    void OnStop();
     void OnDestroy();
     void CancelSession();
     void AdjustCursorPosition();
@@ -36,6 +45,17 @@ public:
     EVec3* GetAnchorDrawPos();
     f32 GetWallHeight();
     f32 GetAffectedWallHeight();
+
+    // Medium functions
+    void PreviewNRooms();
+    void ClearWallFadeOffList();
+    void HandleSwapRequest();
+    void HandleExitRequest();
+    void UpdateStickState();
+    void SendBuildItemCountChangeEvent(int delta);
+    void OnCommandPressed(InteractorInputManager::InteractorCommand cmd, float value);
+    void OnCommandReleased(InteractorInputManager::InteractorCommand cmd);
+    void OnCommandUpdate(InteractorInputManager::InteractorCommand cmd, float value);
 };
 
 // WallPainter (from wallpainter.obj)

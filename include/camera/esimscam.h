@@ -31,7 +31,8 @@ enum CameraMotionType {
 };
 
 enum CameraAnimationMode {};
-struct CameraNoiseSetting;
+// CameraNoiseSetting is passed by value as an int
+typedef int CameraNoiseSetting;
 
 // SimsCameraParameters - camera tuning parameters
 // Layout confirmed from disassembly offset patterns
@@ -78,6 +79,7 @@ struct CameraMotionSystem {
     void MoveCamera(float dt);
     void SnapCamera();
     void RubberBandMove(float dt);
+    void SetRig(EVec3& eye, EVec3& target, EVec3& up);
 };
 
 // CameraParameters - holds target/eye + zoom/rotAng/tilt (24 bytes)
@@ -98,6 +100,9 @@ struct NewControlParms {
 // NO vtable at offset 0. Vtable is at offset 0x56C.
 // Uses struct (no virtual) so compiler doesn't insert vtable pointer.
 struct ESimsCam {
+    ESimsCam();
+    ~ESimsCam();
+
     SimsCameraParameters* m_pParams;        // 0x000
     int m_playerId;                         // 0x004
     int m_bMoved;                           // 0x008
@@ -182,14 +187,45 @@ struct ESimsCam {
     unsigned int GetControllerFilterId() const;
     int ClearControllerFilterId();
 
+    void* operator new(unsigned int size);
     void operator delete(void* ptr);
+
+    // Medium functions
+    enum CameraMode {};
+    float GetCurZoomRatio();
+    float GetFov();
+    void ForceFullScreenViewport();
+    void Reset();
+    void SetState(Panelstateman::Panelstate state);
+    void SetMode(CameraMode mode);
+    void ApplyPan(float delta);
+    void ApplyZoom(float delta);
+    bool IsInDeadZone(EVec3& pos) const;
+    void GetPos(EVec3& eye, EVec3& target, EVec3& up);
+    void ForceTarget(EVec3& target);
+    int PointOutsideScreenRect(EVec3& pos, float left, float top, float right, float bottom);
+    float CalcPitch(EVec3& dir);
+    float CalcZAxisTheta(EVec3& dir);
+    EVec3 GetCursorPos();
+    void GetObjectPosition(EVec3* outPos, cXObject* obj);
+    void GetObjectOrientation(EVec3* outDir, cXObject* obj);
+    void DrawDebug(ERC* rc);
+    int CursorNotActive();
+    void SetActiveNoiseSetting(CameraNoiseSetting setting);
+    void ReadControllerZoom();
+    void ReadControllerRotation();
 
     static int m_modeDef;
     static NewControlParms s_newControlParms;
 };
 
+struct CameraBloomDataElement;
+
 // CameraDirector
 struct CameraDirector {
+    CameraDirector();
+    ~CameraDirector();
+
     u8 pad000[0x160];
     u32 m_state;                            // 0x160
     u8 pad164[0x04];
@@ -208,6 +244,24 @@ struct CameraDirector {
     void SetHoldState(float holdTime);
     void ForceDisableHud(bool disable);
     bool IsForceDisableHud();
+
+    // Medium functions
+    void Reset();
+    void InitCurrentCamera();
+    void EnableControls();
+    void DisableControls();
+    void AttachDummy(void* dummy, void* mat);
+    void InterpToCancelCamera(float time, int type, bool flag);
+    void SetFOV(float fov);
+    void CheckCancelled();
+    void StartAnim(void* animRef, bool loop, bool flag);
+    void UpdateAnimNoteTrack();
+    void ProcessPropertyEventTags();
+    void BloomInterp();
+    void BlurInterp();
+    void ProcessAnimEvents(void* animRef, int startFrame, int endFrame);
+    void AnimEventHandler(void* animRef, void* note, int type);
+    void BeginCameraBloomInterp(void* bloomData);
 };
 
 // CameraManager

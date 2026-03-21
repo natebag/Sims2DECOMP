@@ -123,6 +123,7 @@ public:
     Bookmark();
     Bookmark(unsigned short treeId, short countdown, Node* node, unsigned short adIndex);
     void Clear();
+    void ResetCountdown();
     short GetNumBranches() const;
     bool IsPlatinum() const;
     bool IsFear() const;
@@ -131,6 +132,10 @@ public:
     bool IsInStoryTree() const;
     const u8* GetAdData() const;
     u32 GetOverlayShader(Neighbor* neighbor) const;
+    bool IsDuplicateNode(Bookmark& other) const;
+    bool IsDuplicateEvent(Bookmark& other) const;
+    bool GetType() const;
+    Node* GetNextBookmarkAlongBranch(short branchIndex);
 };
 
 // ============================================================================

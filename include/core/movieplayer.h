@@ -22,6 +22,8 @@ class MoviePlayerEndgameMovieState {
 public:
     MoviePlayerEndgameMovieState(int movieId);
 
+    void Update(float dt);
+    void GotoGame();
     void Draw(ERC* rc);
     void Shutdown(void);
     void SetFlowStateCurrent(void);

@@ -16,6 +16,10 @@ public:
     };
 
     CLoadingScreen(eLoadingScreenMode mode);
+    ~CLoadingScreen();
+
+    void InitAsync();
+    void Update(float dt);
 
     // Custom allocator - uses MainHeap + EAHeap::MallocAligned
     void* operator new(unsigned int size);
