@@ -4,12 +4,14 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 
 ## Status
 
-**Early development** — Project infrastructure and toolchain setup.
+**Milestone 1: FOUNDATION** — Toolchain, build system, and symbol analysis complete. Boot sequence decomp next.
 
 | Metric | Value |
 |--------|-------|
-| Functions matched | 0 / 39,169 |
+| Functions matched | 0 / 18,547 |
 | Progress | 0.00% |
+| Symbols identified | 23,068 |
+| Toolchain | Ready |
 
 ## What is this?
 
@@ -24,10 +26,11 @@ This project aims to produce C++ source code that compiles to a byte-identical c
 
 EA's build team left extensive debug artifacts on the retail disc:
 
-- Full ELF binary with debug symbols
-- Symbol maps with 39,169 named functions and variables
+- Full ELF binary with debug symbols (`u2_ngc_release_dvd.elf`)
+- Symbol maps with 23,068 named symbols (18,547 functions)
 - Original build logs
-- C header files
+- C header files with version info
+- Build version: `F.09.12.0` (Final/Gold Master, September 12, 2005)
 
 This gives us every function name, class name, and variable name — dramatically reducing the reverse engineering effort compared to a typical decomp.
 
@@ -36,43 +39,65 @@ This gives us every function name, class name, and variable name — dramaticall
 ### Prerequisites
 
 - [devkitPro](https://devkitpro.org/) with devkitPPC
-- [decomp-toolkit](https://github.com/encounter/decomp-toolkit)
+- [decomp-toolkit](https://github.com/encounter/decomp-toolkit) (`dtk`)
 - [Python 3.10+](https://www.python.org/)
+- [Ghidra](https://ghidra-sre.org/) (for reverse engineering)
 - A legally obtained copy of The Sims 2 (GameCube)
 
 ### Setup
 
 ```bash
 # Clone the repo
-git clone <repo-url>
-cd "Sims 2"
+git clone https://github.com/natebag/Sims2DECOMP.git
+cd Sims2DECOMP
 
-# Parse the symbol map (requires your extracted disc in extracted/)
-python tools/map_parser.py extracted/files/u2_ngc_release.map -o tools/symbols.json --stats
+# Extract your disc into extracted/ (main.dol, ELF, maps, etc.)
+# extracted/sys/main.dol
+# extracted/files/u2_ngc_release_dvd.elf
+# extracted/files/u2_ngc_release_dvd.map
 
-# Build (once source is available)
-# TBD — build system setup in progress
+# Generate dtk symbol files from the SN Systems map
+python tools/sn_map_to_dtk.py extracted/files/u2_ngc_release_dvd.map config --stats
+
+# Build (compiles all decompiled source)
+make
+
+# Check matching against original DOL
+make diff
 ```
+
+### Compiler Note
+
+The original game was compiled with **SN Systems ProDG** for GameCube — a proprietary compiler, not CodeWarrior (Metrowerks). We use devkitPPC (GCC) which generates different code for some constructs. Achieving byte-matching for all functions may require hand-written assembly for certain patterns.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to decompile a function and submit a PR.
-
 ### Quick Start
-1. Pick an unmatched function from the progress tracker
-2. Analyze it in Ghidra or [decomp.me](https://decomp.me)
-3. Write matching C++
-4. Verify with `dtk elf diff`
-5. Submit a PR
+1. Pick an unmatched function from `docs/tracking/progress.md`
+2. Find it in the map file (`extracted/files/u2_ngc_release_dvd.map`)
+3. Analyze in Ghidra or [decomp.me](https://decomp.me)
+4. Write matching C++ or assembly
+5. Verify with `make diff`
+6. Submit a PR
+
+### Tools
+
+| Tool | Purpose |
+|------|---------|
+| `tools/sn_map_to_dtk.py` | Convert SN Systems map to dtk format |
+| `tools/map_parser.py` | Parse map files into JSON |
+| `tools/check_func.py` | Compile and compare individual functions |
+| `tools/launch-workers.ps1` | Launch parallel Claude Code agents in worktrees |
 
 ## Project Structure
 
 ```
-src/          — Decompiled C++ source code
+src/          — Decompiled C++ and assembly source code
 include/      — Shared headers
 libs/         — External library stubs (APT, DolphinSDK, SN runtime)
-tools/        — Python scripts (map parser, progress tracker)
-docs/         — Documentation and specs
+config/       — decomp-toolkit config, symbols, splits
+tools/        — Python scripts and build utilities
+docs/         — Documentation, specs, and progress tracking
 extracted/    — Raw disc extraction (not in repo)
 build/        — Build output (not in repo)
 ```
