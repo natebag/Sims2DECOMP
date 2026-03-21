@@ -371,10 +371,10 @@ void MUStateMachine::Reset() {
     s_muStateData.m_field40 = 0;
     // Init string buffers
     static const char emptyStr[] = "";
-    s_muStateData.m_field10 = (void*)EAString_Init((char*)&s_muStateData.m_field10, emptyStr);
-    s_muStateData.m_field14 = (void*)EAString_Init((char*)&s_muStateData.m_field14, emptyStr);
-    s_muStateData.m_field18 = (void*)EAString_Init((char*)&s_muStateData.m_field18, emptyStr);
-    s_muStateData.m_field1C = (void*)EAString_Init((char*)&s_muStateData.m_field1C, emptyStr);
+    EAString_Init((char*)&s_muStateData.m_field10, emptyStr);
+    EAString_Init((char*)&s_muStateData.m_field14, emptyStr);
+    EAString_Init((char*)&s_muStateData.m_field18, emptyStr);
+    EAString_Init((char*)&s_muStateData.m_field1C, emptyStr);
     // Set update rate
     MUStateMachine_SetUpdateRate(this, 0.0f, 0);
     // Clear global flag

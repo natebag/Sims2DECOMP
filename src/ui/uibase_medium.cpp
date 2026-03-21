@@ -28,15 +28,14 @@ static const char s_uiFlowGotoFmt[] = "state";  // 0x803e248c - flow goto var na
 
 // 0x80177b44 | 96 bytes
 // Pushes button filter for all 48 players
-char* UIObjectBase::pushAptButtonFilterALL(int player, char* name) {
+void UIObjectBase::pushAptButtonFilterALL(int player, char* name) {
     char* filterName = GetAptButtonFilterName(player);
     if (filterName == 0) {
-        return 0;
+        return;
     }
-    for (int i = 1; i <= 48; i++) {
+    for (unsigned int i = 1; i <= 48; i++) {
         pushAptButtonFilterImpl(this, i, filterName);
     }
-    return filterName;
 }
 
 // 0x80177ba4 | 140 bytes

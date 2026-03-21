@@ -17,7 +17,7 @@ extern "C" {
     void DialogPane_Shutdown(void* pane);
     void operator_delete(void* ptr);
     void SmallBlockAllocator_Free(void* ptr);
-    void ERShader_Release(void* shader);
+    void ERShader_Release_v(void* shader);
     void Vector_Clear(void* vec, int mode);
 }
 
@@ -341,7 +341,7 @@ void WrapperPaneBase_dtor(void* self, int flags) {
 // 0x800877c4 | 84 bytes
 void IconItem_dtor(void* self, int flags) {
     void* shader = *(void**)((u8*)self + 0x30);
-    if (shader) ERShader_Release(shader);
+    if (shader) ERShader_Release_v(shader);
     // Call TextBaseItem dtor
     if (flags & 1) operator_delete(self);
 }

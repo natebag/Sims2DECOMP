@@ -19,7 +19,7 @@ extern "C" {
     void DialogPane_Shutdown(void* pane);  // 0x80086848
     void Wrapper_ReleasePaneEvent(void* w);  // 0x8008698c
     void Wrapper_ShowPane(void* w, char* name);  // 0x80086ae8
-    void Wrapper_ReadInput(void* w);  // 0x80086994
+    void Wrapper_ReadInput(void* w, void* rc);  // 0x80086994
     void Wrapper_UpdateItems(void* w);  // 0x80086988
     void Wrapper_Draw(void* w, int flag);  // 0x80086984
     void DialogPane_ShowPane(void* pane);  // 0x80085ebc
@@ -178,7 +178,9 @@ void DlgWrapper_DialogPaneHide(DlgWrapperObj* self) {
 // NON_MATCHING - string comparison and variable routing logic
 void DlgWrapper_SetVariable(DlgWrapperObj* self, char* name, char* value) {
     void* pane = self->m_pane;
-    int result = (int)WrapperPaneBase_SetVariable(pane, name, value);
+    WrapperPaneBase_SetVariable(pane, name, value);
+    // Check return in r3 (simplified)
+    int result = 0; // NON_MATCHING - need to capture return
     if (result != 0) {
         return;
     }
