@@ -3,14 +3,33 @@
 
 #include "types.h"
 
+// RCMode enum
+enum RCMode {
+    RCMODE_DEFAULT = 0,
+    RCMODE_NORMAL = 1,
+    RCMODE_FLUSH = 2,
+    RCMODE_IMMEDIATE = 3
+};
+
 // Forward declarations
 class EDLEntry;
 class EGEVert;
 class EGEParticleListInfo;
+class EGEPackedParticle;
+class EGELineStreak;
 class EMat4;
 class EDL;
+class ETexture;
+class ERenderSurface;
+class EShader;
+class EMovie;
+struct EViewport;
+struct ELights;
+struct EMaterial;
+struct EVec2 { float x, y; };
 struct EVec4 { float x, y, z, w; };
 struct EVec3_ref { float x, y, z; };
+template<typename T> struct TRect { T left, top, right, bottom; };
 
 // ERC - render context
 class ERC {
@@ -75,6 +94,70 @@ public:
     void EndCommand();
 
     ERC();
+    ~ERC();
+
+    // Medium functions - Init/lifecycle
+    void Init(RCMode mode);
+    void BeginCommand(int cmdType, int param);
+    void Send();
+    EDLEntry* NewEntry(int slots);
+    void Terminate();
+    void ShrinkSmallDisplayList();
+
+    // Medium functions - Primitives
+    void TriStrip(EGEVert* verts, int count);
+    void LineList(EGEVert* verts, int count);
+    void LineStrip(EGEVert* verts, int count);
+    void SpriteList(EGEVert* verts, int count);
+    void ParticleList(int count, EGEPackedParticle* particles);
+    void LineStreakList(int count, EVec4& a, EVec4& b, EGELineStreak* streaks);
+    void ParticleListRot(int count, EGEPackedParticle* particles);
+    void AddDisplayListReference(EDL* dl);
+    void DisplayList(EDL* dl);
+
+    // Medium functions - State
+    void Viewport(EViewport* vp);
+    void ClipRect(TRect<float>& rect);
+    void Scissor(TRect<float>* rect);
+    void ModelMatrixList(EMat4* mats, int count);
+    void ModelMatrixIndex(int index, int slot);
+    void ModelMatrices(EMat4* mats, int count);
+    void ViewMatrix(EMat4* mat, int mode, float param);
+    void ProjectionMatrix(EMat4* mat);
+    void WindowMatrix(EMat4* mat);
+    void Texture(ETexture* tex, int slot);
+    void EnableGeometryModes(unsigned int modes);
+    void DisableGeometryModes(unsigned int modes);
+    void SetGeometryModes(unsigned int modes);
+    void EnableRasterModes(unsigned int modes, int pass);
+    void DisableRasterModes(unsigned int modes, int pass);
+    void SetRasterModes(unsigned int modes, int pass);
+    void SaveState();
+    void RestoreState();
+    void Lights(ELights* lights);
+    void Material(EMaterial* mat);
+    void SetMipMap(float mipLevel, int mode);
+    void Callback(void (*fn)(unsigned int, unsigned short, unsigned char), unsigned int a, unsigned short b, unsigned char c);
+    void RectList(int count, float* data, EVec4& color, float depth);
+    void RectListRot(int count, float* data, EVec4& color, float depth);
+    void DirectRect(EVec2& pos, EVec2& size, EVec4& color, float depth);
+    void EnvironmentMap(bool enable, bool flag2, int param);
+    void RecalcMatrices(int a, int b);
+    void Debug(unsigned int a, unsigned int b);
+    void GeometrySetup();
+    void ZTest(bool enable, int compareFunc, int refValue, int pass);
+    void AlphaTest(bool enable, int mode, float threshold, int pass);
+    void Stencil(int a, int b, int c);
+    void SetBlendMode(int src, int dst, int op, int logic, float alpha, int pass);
+    void SetCombineMode(int stage, int mode);
+    void RenderSurface(ERenderSurface* surface, int param);
+    void SaveImageData(ERenderSurface* surface);
+    void Vertex(int a, int b, float* verts, float* texCoords, unsigned char* colors, signed char* normals, unsigned char* flags);
+    void TriIndexed(int count, unsigned char* indices);
+    void Noop();
+    void MovieFrame(EMovie* movie);
+    void SetAlpha(float alpha);
+    void* AllocAndCopy(void* data, int size);
 };
 
 // External functions called by ERC

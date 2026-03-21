@@ -76,6 +76,18 @@ public:
     void AddGeometryModes(unsigned int modes);
 
     EShader();
+    ~EShader();
+
+    // Medium functions (65-256 bytes)
+    static void* Create(EShaderDef& def);
+    void* Clone();
+    void RemoveFromUpdateList();
+    static void UpdateAll(float dt);
+    void ChangeMaterial(EMaterial& mat);
+    void* GetTexture(int slot) const;
+    bool UsesMipMapping();
+    void Validate();
+    bool IsAlphaShader() const;
 };
 
 // EShader allocation pool

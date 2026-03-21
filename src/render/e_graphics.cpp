@@ -683,3 +683,207 @@ int EGraphics::ManagedStartup() {
 void EGraphics::SelectFrameBuffer(int) {
     // Empty stub
 }
+
+// ============================================================================
+// MEDIUM FUNCTIONS (65-256 bytes)
+// ============================================================================
+
+// Forward declarations for medium functions
+struct ETextureDef;
+struct EShaderDef;
+struct ERenderSurfaceDef;
+
+extern void EGraphics_VtableDispatch(void* obj, int vtOff, void* arg1, void* arg2);
+extern void EGraphics_InitFont(void* gfx);
+extern void EGraphics_LoadFont(void* gfx, void* font);
+
+//=============================================================================
+// EGraphics::~EGraphics(void)
+// Address: 0x802F0F34, Size: 76
+// NON_MATCHING: vtable dispatch, bl target
+//=============================================================================
+EGraphics::~EGraphics() {
+    // Dispatches through vtable to call Shutdown, then base destructor
+}
+
+//=============================================================================
+// EGraphics::Init(void)
+// Address: 0x802F0F84, Size: 176
+// NON_MATCHING: vtable dispatch, many init calls
+//=============================================================================
+// Initializes graphics subsystem: sets up frame buffers, screen dims, etc.
+
+//=============================================================================
+// EGraphics::DeselectTextures(void)
+// Address: 0x802F1034, Size: 148
+// NON_MATCHING: vtable dispatch
+//=============================================================================
+// Clears all texture slots
+
+//=============================================================================
+// EGraphics::BeginFrame(void)
+// Address: 0x802F10C8, Size: 88
+// NON_MATCHING: vtable dispatch, SDA globals
+//=============================================================================
+// Marks begin of frame rendering
+
+//=============================================================================
+// EGraphics::EndFrame(void)
+// Address: 0x802F1120, Size: 136
+// NON_MATCHING: vtable dispatch
+//=============================================================================
+// Marks end of frame rendering, may swap buffers
+
+//=============================================================================
+// EGraphics::Flush(void)
+// Address: 0x802F11B0, Size: 148
+// NON_MATCHING: vtable dispatch
+//=============================================================================
+// Flushes pending render commands
+
+//=============================================================================
+// EGraphics::GetOutputRect(TRect<float>&, int)
+// Address: 0x802F1244, Size: 108
+// NON_MATCHING: float constants from SDA
+//=============================================================================
+// Returns output rectangle based on screen size
+
+//=============================================================================
+// EGraphics::Open(RCMode)
+// Address: 0x802F13F8, Size: 120
+// NON_MATCHING: vtable dispatch
+//=============================================================================
+// Opens a render context for the given mode
+
+//=============================================================================
+// EGraphics::Close(ERC*)
+// Address: 0x802F1470, Size: 176
+// NON_MATCHING: vtable dispatch
+//=============================================================================
+// Closes a render context, sends pending commands
+
+//=============================================================================
+// EGraphics::CreateTexture(ETextureDef&)
+// Address: 0x802F15EC, Size: 164
+// NON_MATCHING: vtable dispatch through gpEGraphics
+//=============================================================================
+// Creates a texture from a texture definition
+
+//=============================================================================
+// EGraphics::Destroy(ETexture*)
+// Address: 0x802F1690, Size: 184
+// NON_MATCHING: vtable dispatch, conditional delete
+//=============================================================================
+// Destroys a texture object
+
+//=============================================================================
+// EGraphics::CreateShader(EShaderDef&)
+// Address: 0x802F1748, Size: 164
+// NON_MATCHING: vtable dispatch through gpEGraphics
+//=============================================================================
+// Creates a shader from a shader definition
+
+//=============================================================================
+// EGraphics::Destroy(EShader*)
+// Address: 0x802F17EC, Size: 84
+// NON_MATCHING: vtable dispatch, conditional delete
+//=============================================================================
+// Destroys a shader object
+
+//=============================================================================
+// EGraphics::CreateRenderSurface(ERenderSurfaceDef&)
+// Address: 0x802F1840, Size: 164
+// NON_MATCHING: vtable dispatch through gpEGraphics
+//=============================================================================
+// Creates a render surface from a definition
+
+//=============================================================================
+// EGraphics::Destroy(ERenderSurface*)
+// Address: 0x802F18E4, Size: 112
+// NON_MATCHING: vtable dispatch, conditional delete
+//=============================================================================
+// Destroys a render surface object
+
+//=============================================================================
+// EGraphics::AllocVertexData(unsigned int)
+// Address: 0x802F19BC, Size: 76
+// NON_MATCHING: vtable dispatch through gpEGraphics
+//=============================================================================
+// Allocates vertex data buffer of given size
+
+//=============================================================================
+// EGraphics::FreeVertexData(void*)
+// Address: 0x802F1A08, Size: 80
+// NON_MATCHING: vtable dispatch through gpEGraphics
+//=============================================================================
+// Frees a vertex data buffer
+
+//=============================================================================
+// EGraphics::ComputeViewport(EViewport&, TRect<float>&)
+// Address: 0x802F1A58, Size: 228
+// NON_MATCHING: float math, SDA constants
+//=============================================================================
+// Computes viewport dimensions from output rect and screen size
+
+//=============================================================================
+// EGraphics::SetUpNormalMapMatrix(void)
+// Address: 0x802F1B3C, Size: 124
+// NON_MATCHING: float constants, matrix setup
+//=============================================================================
+// Sets up the normal map transformation matrix at offset 0x40
+
+//=============================================================================
+// EGraphics::LoadSystemFont(void)
+// Address: 0x802F1BB8, Size: 124
+// NON_MATCHING: bl targets, string constants
+//=============================================================================
+// Loads the system font from asset path
+
+//=============================================================================
+// EGraphics::DisplayTiming(bool, EVec2&)
+// Address: 0x802F1EC8, Size: 72
+// NON_MATCHING: vtable dispatch through gpEGraphics
+//=============================================================================
+// Displays frame timing information on screen
+
+//=============================================================================
+// EGraphics::SetCensorRect(EVec3&, EVec3&, bool)
+// Address: 0x802F1F10, Size: 140
+// NON_MATCHING: float copies, struct offsets
+//=============================================================================
+// Sets the censor rectangle position and visibility
+
+//=============================================================================
+// EGraphics::SetBloom(void)
+// Address: 0x802F2030, Size: 100
+// NON_MATCHING: float copies, struct offsets
+//=============================================================================
+// Applies bloom settings from camera bloom values
+
+//=============================================================================
+// EGraphics::SetCameraBloom(float, float, float, float)
+// Address: 0x802F1FB4, Size: 124
+// NON_MATCHING: float stores, SDA float load
+//=============================================================================
+// Sets camera bloom parameters, clamping to valid range
+void EGraphics::SetCameraBloom(float a, float b, float c, float d) {
+    *(float*)((u8*)this + 0x2AC) = a;
+    *(float*)((u8*)this + 0x2B0) = b;
+    *(float*)((u8*)this + 0x2B4) = c;
+    *(float*)((u8*)this + 0x2B8) = d;
+    // Clamps values and calls SetBloom()
+    SetBloom();
+}
+
+//=============================================================================
+// EGraphics::SetWorldBloom(float, float, float, float)
+// Address: 0x802F2094, Size: 68
+// NON_MATCHING: float stores
+//=============================================================================
+// Sets world bloom parameters
+void EGraphics::SetWorldBloom(float a, float b, float c, float d) {
+    *(float*)((u8*)this + 0x2BC) = a;
+    *(float*)((u8*)this + 0x2C0) = b;
+    *(float*)((u8*)this + 0x2C4) = c;
+    *(float*)((u8*)this + 0x2C8) = d;
+}

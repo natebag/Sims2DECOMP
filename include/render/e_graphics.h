@@ -153,6 +153,33 @@ public:
     EMovie* CreateMovie();
     void Destroy(EMovie* movie);
     void* GetSystemFont();
+
+    // Medium functions (65-256 bytes)
+    ~EGraphics();
+    void Init();
+    void DeselectTextures();
+    void BeginFrame();
+    void EndFrame();
+    void Flush();
+    void GetOutputRect(TRect<float>& out, int idx);
+    void Open(RCMode mode);
+    void Close(ERC* rc);
+    void CreateTexture(struct ETextureDef& def);
+    void Destroy(ETexture* tex);
+    void CreateShader(struct EShaderDef& def);
+    void Destroy(EShader* shader);
+    void CreateRenderSurface(struct ERenderSurfaceDef& def);
+    void Destroy(ERenderSurface* surface);
+    void AllocVertexData(unsigned int size);
+    void FreeVertexData(void* ptr);
+    void ComputeViewport(struct EViewport& vp, TRect<float>& rect);
+    void SetUpNormalMapMatrix();
+    void LoadSystemFont();
+    void DisplayTiming(bool show, EVec2& pos);
+    void SetCensorRect(EVec3& a, EVec3& b, bool enable);
+    void SetBloom();
+    void SetCameraBloom(float a, float b, float c, float d);
+    void SetWorldBloom(float a, float b, float c, float d);
 };
 
 // Global EGraphics pointer (stored in r13 SDA)

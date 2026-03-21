@@ -592,3 +592,201 @@ public:
     // NON_MATCHING - virtual dispatch through mutex vtable
     void ReleaseCopyMutex();
 };
+
+// ============================================================================
+// MEDIUM FUNCTIONS (65-256 bytes) - ENgcRenderer
+// ============================================================================
+
+// Forward declarations
+extern void GXSetScissor(u32 left, u32 top, u32 width, u32 height);
+extern void GXSetViewport(float left, float top, float width, float height, float nearZ, float farZ);
+extern void GXSetProjection(void* mtx, int type);
+extern void GXLoadPosMtxImm(void* mtx, int id);
+extern void GXLoadNrmMtxImm(void* mtx, int id);
+extern void GXSetCurrentMtx(int id);
+extern void GXSetChanMatColor(int chan, void* color);
+extern void GXSetChanAmbColor(int chan, void* color);
+extern void GXSetNumChans(int num);
+extern void GXSetNumTexGens(int num);
+extern void GXSetNumTevStages(int num);
+extern void GXSetZMode(u8 enable, u8 func, u8 updateEnable);
+extern void GXSetAlphaCompare(u8 comp0, u8 ref0, u8 op, u8 comp1, u8 ref1);
+extern void GXBeginDisplayList(void* dl, u32 size);
+extern u32 GXEndDisplayList();
+extern void GXCallDisplayList(void* dl, u32 size);
+extern void GXSetTevOrder(int stage, int texcoord, int texmap, int color);
+extern void ENgcRenderer_ProcessMaterial(void* rend, void* mat);
+extern void ENgcRenderer_SetupViewport(void* rend, void* vp);
+extern void ENgcRenderer_SetupProjection(void* rend, void* mtx, int mode);
+extern void ENgcRenderer_SetupWindowMatrix(void* rend, void* mtx);
+extern void ENgcRenderer_UpdateDirtyState(void* rend);
+
+//=============================================================================
+// ENgcRenderer::SetClearColor(EVec3&, bool)
+// Address: 0x8033CA48, Size: 80
+// NON_MATCHING: float-to-int conversion, GX call
+//=============================================================================
+// Sets the clear color for framebuffer clears
+
+//=============================================================================
+// ENgcRenderer::CycleToNextFrameBuffer(void)
+// Address: 0x8033CAB8, Size: 100
+// NON_MATCHING: framebuffer swap logic
+//=============================================================================
+// Cycles to the next external framebuffer for double/triple buffering
+
+//=============================================================================
+// ENgcRenderer::BeginFrame(ENgcRendCommand*)
+// Address: 0x8033E8E8, Size: 100
+// NON_MATCHING: command dispatch
+//=============================================================================
+// Begins a new frame: sets up framebuffer, clears if needed
+
+//=============================================================================
+// ENgcRenderer::DisplayList(ENgcRendCommand*)
+// Address: 0x8033E94C, Size: 96
+// NON_MATCHING: command dispatch, DL execution
+//=============================================================================
+// Executes a display list from a render command
+
+//=============================================================================
+// ENgcRenderer::Swap(ENgcRendCommand*)
+// Address: 0x8033EC3C, Size: 124
+// NON_MATCHING: VSync/swap logic, GX calls
+//=============================================================================
+// Performs framebuffer swap, handles VSync timing
+
+//=============================================================================
+// ENgcRenderer::Execute(EDLEntry*)
+// Address: 0x80341E28, Size: 192
+// NON_MATCHING: function table dispatch
+//=============================================================================
+// Main command dispatch: reads command type from entry,
+// looks up handler in function table, dispatches
+
+//=============================================================================
+// ENgcRenderer::PushAndClearViewport(void)
+// Address: 0x8033ECD8, Size: 240
+// NON_MATCHING: GX calls, float math
+//=============================================================================
+// Pushes current viewport state and sets a full-screen viewport
+
+//=============================================================================
+// ENgcRenderer::QuadList(EDLEntry*)
+// Address: 0x803457B0, Size: 88
+// NON_MATCHING: vertex processing
+//=============================================================================
+// Processes a quad list from the display list entry
+
+//=============================================================================
+// ENgcRenderer::Viewport(EDLEntry*)
+// Address: 0x80343DDC, Size: 160
+// NON_MATCHING: GX viewport setup
+//=============================================================================
+// Sets the hardware viewport from a display list entry
+
+//=============================================================================
+// ENgcRenderer::ViewMatrix(EDLEntry*)
+// Address: 0x8034420C, Size: 204
+// NON_MATCHING: matrix load, GX calls
+//=============================================================================
+// Loads the view matrix into GX hardware
+
+//=============================================================================
+// ENgcRenderer::ProjectionMatrix(EDLEntry*)
+// Address: 0x803442D8, Size: 196
+// NON_MATCHING: matrix load, GX calls
+//=============================================================================
+// Loads the projection matrix into GX hardware
+
+//=============================================================================
+// ENgcRenderer::WindowMatrix(EDLEntry*)
+// Address: 0x8034439C, Size: 160
+// NON_MATCHING: matrix load
+//=============================================================================
+// Sets the window matrix from a display list entry
+
+//=============================================================================
+// ENgcRenderer::EnableGeometryModes(EDLEntry*)
+// Address: 0x80344598, Size: 88
+// NON_MATCHING: render state cache access
+//=============================================================================
+// ORs geometry mode flags into the render state cache
+
+//=============================================================================
+// ENgcRenderer::DisableGeometryModes(EDLEntry*)
+// Address: 0x803445F0, Size: 88
+// NON_MATCHING: render state cache access
+//=============================================================================
+// ANDs out geometry mode flags from the render state cache
+
+//=============================================================================
+// ENgcRenderer::SetGeometryModes(EDLEntry*)
+// Address: 0x80344648, Size: 80
+// NON_MATCHING: render state cache access
+//=============================================================================
+// Sets geometry mode flags directly in the render state cache
+
+//=============================================================================
+// ENgcRenderer::ModelMatrixIndices(EDLEntry*)
+// Address: 0x803441C0, Size: 76
+// NON_MATCHING: matrix index setup
+//=============================================================================
+// Sets model matrix indices from display list entry data
+
+//=============================================================================
+// ENgcRenderer::Material(EDLEntry*)
+// Address: 0x80345120, Size: 132
+// NON_MATCHING: material setup, GX calls
+//=============================================================================
+// Applies material settings from a display list entry
+
+//=============================================================================
+// ENgcRenderer::TriStripPacked(EDLEntry*)
+// Address: 0x80342878, Size: 88
+// NON_MATCHING: vertex processing
+//=============================================================================
+// Processes a packed triangle strip from the display list entry
+
+//=============================================================================
+// ENgcRenderer::ZTest(EDLEntry*)
+// Address: 0x80345220, Size: 100
+// NON_MATCHING: GX Z-test setup
+//=============================================================================
+// Configures Z-test from display list entry:
+// Reads enable, compare func, and ref from entry bytes
+
+//=============================================================================
+// ENgcRenderer::AlphaTest(EDLEntry*)
+// Address: 0x80345284, Size: 144
+// NON_MATCHING: GX alpha test setup
+//=============================================================================
+// Configures alpha test from display list entry
+
+//=============================================================================
+// ENgcRenderer::ScrambleRect(EDLEntry*)
+// Address: 0x80348DDC, Size: 80
+// NON_MATCHING: GX texture operations
+//=============================================================================
+// Scrambles a screen rectangle (used for effects)
+
+//=============================================================================
+// ENgcRenderer::ModelMatrices(EMat4*, int)
+// Address: 0x8034405C, Size: 80
+// NON_MATCHING: matrix upload loop
+//=============================================================================
+// Uploads model matrices to GX hardware
+
+//=============================================================================
+// ENgcRenderer::GetCurrentRenderMode(void)
+// Address: 0x80349F6C, Size: 104
+// NON_MATCHING: render mode struct access
+//=============================================================================
+// Returns the current render mode (progressive/interlaced, etc.)
+
+//=============================================================================
+// ENgcRenderer::ParticleListBegin(unsigned int, unsigned int)
+// Address: 0x80349FDC, Size: 80
+// NON_MATCHING: GX setup calls
+//=============================================================================
+// Begins particle list rendering setup

@@ -310,6 +310,114 @@ static void __sinit_e_shader_cpp() {
 //=============================================================================
 // Note: destructor handled by __destroy_global_chain
 
+// ============================================================================
+// MEDIUM FUNCTIONS (65-256 bytes) - e_shader.obj
+// ============================================================================
+
+extern void* EShader_CreateFromDef(void* shaderDef);
+extern void EShader_UpdateListRemove(void* shader);
+extern void EShader_UpdateListAdd(void* shader);
+
+//=============================================================================
+// EShader::~EShader(void)
+// Address: 0x802F9D68, Size: 96
+// NON_MATCHING: vtable address, bl targets
+//=============================================================================
+EShader::~EShader() {
+    // Sets vtable, removes from update list, calls operator delete
+    // vtable = shader vtable address
+    RemoveFromUpdateList();
+}
+
+//=============================================================================
+// EShader::Create(EShaderDef&)
+// Address: 0x802F9DC8, Size: 68
+// NON_MATCHING: vtable dispatch through gpEGraphics
+//=============================================================================
+// Creates a new EShader from a definition
+
+//=============================================================================
+// EShader::Clone(void)
+// Address: 0x802F9E0C, Size: 124
+// NON_MATCHING: bl targets, memory copy
+//=============================================================================
+// Clones this shader: allocates new shader, copies data
+
+//=============================================================================
+// EShader::RemoveFromUpdateList(void)
+// Address: 0x802F9FA8, Size: 220
+// NON_MATCHING: linked list traversal, SDA globals
+//=============================================================================
+// Removes this shader from the global shader update linked list
+
+//=============================================================================
+// EShader::UpdateAll(float)
+// Address: 0x802FA084, Size: 172
+// NON_MATCHING: linked list iteration, SDA globals
+//=============================================================================
+// Static: iterates the global shader update list and calls Update on each
+
+//=============================================================================
+// EShader::ChangeMaterial(EMaterial&)
+// Address: 0x802FA390, Size: 168
+// NON_MATCHING: memory copy, struct offsets
+//=============================================================================
+// Copies material data from the given material into this shader's embedded material
+
+//=============================================================================
+// EShader::GetTexture(int) const
+// Address: 0x802FA474, Size: 80
+// NON_MATCHING: conditional override texture
+//=============================================================================
+// Returns texture at given slot, with optional override support
+void* EShader::GetTexture(int slot) const {
+    u32 flags = *(u32*)((u8*)this + 0x04);
+    if (flags & 0x02000000) {
+        // Use override texture index
+        u8 overrideIdx = *(u8*)((u8*)this + 0xEC);
+        return *(void**)((u8*)this + 0x64 + overrideIdx * 64);
+    }
+    return *(void**)((u8*)this + 0x64 + slot * 64);
+}
+
+//=============================================================================
+// EShader::UsesMipMapping(void)
+// Address: 0x802FA4C4, Size: 180
+// NON_MATCHING: linked list iteration
+//=============================================================================
+// Checks if any texture in this shader uses mip mapping
+
+//=============================================================================
+// EShader::Validate(void)
+// Address: 0x802FA578, Size: 208
+// NON_MATCHING: vtable dispatch, validation checks
+//=============================================================================
+// Validates shader state, checks textures and material setup
+
+//=============================================================================
+// __static_initialization_and_destruction_0 (e_shader.obj)
+// Address: 0x802FA9E8, Size: 100
+// NON_MATCHING: SDA pattern, bl targets
+//=============================================================================
+// Global ctor for EShader statics
+
+//=============================================================================
+// EShader::IsAlphaShader(void) const
+// Address: 0x802FAB7C, Size: 68
+// NON_MATCHING: flag checks
+//=============================================================================
+bool EShader::IsAlphaShader() const {
+    u32 flags = *(u32*)((u8*)this + 0x04);
+    // Check blend mode flags
+    if (flags & 0x00800000) {
+        return true;
+    }
+    if (flags & 0x00400000) {
+        return true;
+    }
+    return false;
+}
+
 
 // ============================================================================
 // e_window.obj functions
@@ -453,6 +561,109 @@ struct EWindowTransform {
 // NON_MATCHING: bl target
 //=============================================================================
 
+// ============================================================================
+// MEDIUM FUNCTIONS (65-256 bytes) - e_window.obj
+// ============================================================================
+
+// Forward declarations for window medium functions
+extern void EWindow_VtableSet(void* window, void* vtable);
+extern void EWindow_SetClipInternal(void* window);
+extern void EWindow_UpdateTransform(void* window);
+extern void ERC_SetViewport(void* rc, void* viewport);
+extern void ERC_SetScissor(void* rc, void* rect);
+
+//=============================================================================
+// EWindow::EWindow(void)
+// Address: 0x802FFB98, Size: 232
+// NON_MATCHING: vtable address, bl targets, float constants
+//=============================================================================
+// Constructor: initializes transform matrices, clip rect, and coordinate systems
+// Sets vtable at offset 0x70, initializes all transform fields to identity
+
+//=============================================================================
+// EWindow::~EWindow(void)
+// Address: 0x802FFC80, Size: 112
+// NON_MATCHING: vtable address, bl targets
+//=============================================================================
+// Destructor: sets vtable, conditionally deletes
+
+//=============================================================================
+// EWindow::SetRenderSurface(ERenderSurface*, int)
+// Address: 0x802FFCF0, Size: 168
+// NON_MATCHING: vtable dispatch, struct offsets
+//=============================================================================
+// Associates a render surface with this window
+
+//=============================================================================
+// EWindow::ScaleOutputRectForScreenshot(TRect<float>*)
+// Address: 0x802FFF10, Size: 132
+// NON_MATCHING: float math, SDA globals
+//=============================================================================
+// Scales the output rect for screenshot capture
+
+//=============================================================================
+// EWindow::SetOutputCoordinates(TRect<float>&)
+// Address: 0x80300710, Size: 200
+// NON_MATCHING: float math, vtable dispatch
+//=============================================================================
+// Sets the output coordinate space from a rectangle
+
+//=============================================================================
+// EWindow::ScaleScissorRectForScreenshot(TRect<float>*, TRect<float>*)
+// Address: 0x802FFF94, Size: 172
+// NON_MATCHING: float math, SDA globals
+//=============================================================================
+// Scales scissor rect for screenshot capture
+
+//=============================================================================
+// EWindow::CalcClipInv(void)
+// Address: 0x803005AC, Size: 84
+// NON_MATCHING: float reciprocal
+//=============================================================================
+// Calculates inverse clip values for coordinate transforms
+
+//=============================================================================
+// EWindow::SetClip(TRect<float>&)
+// Address: 0x80300600, Size: 72
+// NON_MATCHING: float copies
+//=============================================================================
+// Sets the clip rectangle from the given rect
+
+//=============================================================================
+// EWindow::SetInputCoordinates(TRect<float>&)
+// Address: 0x80300648, Size: 200
+// NON_MATCHING: float math, vtable dispatch
+//=============================================================================
+// Sets input coordinate space from a rectangle
+
+//=============================================================================
+// __static_initialization_and_destruction_0 (e_window.obj)
+// Address: 0x803007D8, Size: 84
+// NON_MATCHING: SDA pattern
+//=============================================================================
+// Global ctor/dtor pair
+
+//=============================================================================
+// EWindow::SetRect(TRect<float>&)
+// Address: 0x803008DC, Size: 72
+// NON_MATCHING: float copies, bl targets
+//=============================================================================
+// Sets window rect, calls SetInputCoordinates and SetOutputCoordinates
+
+//=============================================================================
+// EWindow::ClipTest(float, float)
+// Address: 0x80300A3C, Size: 72
+// NON_MATCHING: float comparisons
+//=============================================================================
+// Tests if a point (x,y) is within the clip rectangle
+
+//=============================================================================
+// EWindow::ClipTest(TRect<float>&)
+// Address: 0x80300A84, Size: 100
+// NON_MATCHING: float comparisons
+//=============================================================================
+// Tests if a rectangle overlaps the clip rectangle
+
 
 // ============================================================================
 // background.obj functions
@@ -493,6 +704,112 @@ struct EWindowTransform {
 // Checks thread at this+0x08
 // NON_MATCHING: bl target
 //=============================================================================
+
+// ============================================================================
+// MEDIUM FUNCTIONS (65-256 bytes) - background.obj
+// ============================================================================
+
+// Forward declarations
+extern void Background_BaseInit(void* bg);
+extern void EThread_Init(void* thread);
+extern void EThread_Start(void* thread, int priority, u32 flags, int unused1);
+extern void EThread_Resume(void* thread);
+extern void EThread_Destroy(void* thread, int mode);
+extern void EMsgQueue_Init(void* queue);
+extern void EMsgQueue_Destroy(void* queue);
+extern void EMsgQueue_Push(void* queue, void* msg, int flag);
+extern int EMsgQueue_Pop(void* queue, void* msg, int flag);
+extern void* EMsgQueue_PopBlocking(void* queue, void* msg, int flag);
+extern void ESemaphore_Init(void* sem);
+extern void ESemaphore_Destroy(void* sem);
+extern void ESemaphore_Wait(void* sem, int timeout);
+extern void ESemaphore_Post(void* sem);
+extern void* operator_new(u32 size);
+extern void operator_delete(void* ptr);
+
+//=============================================================================
+// BackgroundImpl::BackgroundImpl(void)
+// Address: 0x802E1C44, Size: 108
+// NON_MATCHING: vtable addresses, bl targets
+//=============================================================================
+// Constructor: initializes base Background, EThread at +0x08,
+// message queue at +0x34C, semaphore at +0x368,
+// sets m_initialized (0x348) = 0
+// Stores static instance pointer in r13 SDA
+
+//=============================================================================
+// BackgroundImpl::~BackgroundImpl(void)
+// Address: 0x802E1CB0, Size: 116
+// NON_MATCHING: vtable addresses, bl targets
+//=============================================================================
+// Destructor: destroys semaphore at +0x368, queue at +0x34C,
+// thread at +0x08, then calls base ~Background destructor
+
+//=============================================================================
+// BackgroundImpl::Shutdown(void)
+// Address: 0x802E1D24, Size: 116
+// NON_MATCHING: vtable dispatch, bl targets
+//=============================================================================
+// Shuts down the background thread system:
+// Dispatches through vtable to stop thread, destroys queue and semaphore
+
+//=============================================================================
+// BackgroundImpl::TerminateThread(void)
+// Address: 0x802E1D98, Size: 76
+// NON_MATCHING: bl targets, message struct layout
+//=============================================================================
+// Allocates a message (type=2), sends it to kill the thread
+
+//=============================================================================
+// BackgroundImpl::Init(void)
+// Address: 0x802E1DE4, Size: 108
+// NON_MATCHING: bl targets, thread priority constants
+//=============================================================================
+// Initializes the background thread: starts thread with priority 25,
+// stack size 0x8000, sets m_initialized = 1
+
+//=============================================================================
+// BackgroundImpl::ExecuteRoutine(void (*)(void))
+// Address: 0x802E1E54, Size: 84
+// NON_MATCHING: bl targets, message struct layout
+//=============================================================================
+// Allocates a message (type=3), stores function pointer, sends it
+
+//=============================================================================
+// BackgroundImpl::ExecuteArgRoutine(void (*)(void*), void*)
+// Address: 0x802E1EA8, Size: 88
+// NON_MATCHING: bl targets, message struct layout
+//=============================================================================
+// Allocates a message (type=4), stores function pointer and argument, sends it
+
+//=============================================================================
+// BackgroundImpl::Flush(void)
+// Address: 0x802E1F28, Size: 172
+// NON_MATCHING: bl targets, semaphore/queue operations
+//=============================================================================
+// Flushes the message queue:
+// Checks if calling from background thread (via vtable dispatch)
+// If not on background thread: creates semaphore, sends flush message,
+// waits on semaphore, then destroys it
+
+//=============================================================================
+// BackgroundImpl::Main(void)
+// Address: 0x802E1FD4, Size: 220
+// NON_MATCHING: bl targets, message dispatch switch
+//=============================================================================
+// Main loop of the background thread:
+// Pops messages from queue, dispatches based on type:
+//   type 1: signal semaphore and continue
+//   type 2: free message, exit thread
+//   type 3: call function pointer, free message
+//   type 4: call function pointer with arg, free message
+
+//=============================================================================
+// __static_initialization_and_destruction_0 (background.obj)
+// Address: 0x802E20B0, Size: 84
+// NON_MATCHING: SDA pattern, bl targets
+//=============================================================================
+// Global ctor: creates BackgroundImpl or destroys it based on flag
 
 
 // ============================================================================
