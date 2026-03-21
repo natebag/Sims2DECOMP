@@ -1,33 +1,27 @@
-# Sims 2 GC Decomp — Parallel Worker Launcher
-# Creates git worktrees and launches Claude Code agents in parallel,
-# each with full project context and a specific task assignment.
+# Sims 2 GC Decomp - Parallel Worker Launcher
+# Creates git worktrees and launches Claude Code agents in parallel.
 #
 # Usage: .\tools\launch-workers.ps1
-#        .\tools\launch-workers.ps1 -Workers 2    (limit to N workers)
-#        .\tools\launch-workers.ps1 -Cleanup       (remove all worktrees)
+#        .\tools\launch-workers.ps1 -Workers 2
+#        .\tools\launch-workers.ps1 -Cleanup
 
 param(
-    [int]$Workers = 0,       # 0 = launch all defined tasks
+    [int]$Workers = 0,
     [switch]$Cleanup,
     [switch]$DryRun
 )
 
-$RepoRoot = (git -C $PSScriptRoot\.. rev-parse --show-toplevel 2>$null) -replace '/', '\'
-if (-not $RepoRoot) {
-    Write-Error "Not in a git repository"
-    exit 1
-}
-
-$WorktreeBase = "$RepoRoot\.worktrees"
+$RepoRoot = Split-Path $PSScriptRoot -Parent
+$WorktreeBase = Join-Path $RepoRoot ".worktrees"
 $MainBranch = "main"
 
 # ============================================================================
-# PROJECT CONTEXT — shared across all workers
+# PROJECT CONTEXT - shared across all workers
 # ============================================================================
-$ProjectContext = @"
+$ProjectContext = @'
 You are working on the Sims 2 GameCube matching decompilation project.
 
-## Current State (Milestone 1: FOUNDATION — IN PROGRESS)
+## Current State (Milestone 1: FOUNDATION - IN PROGRESS)
 - devkitPPC (GCC 15.2.0) is at F:\coding\Decompiles\Tools\devkitPro\devkitPPC
 - decomp-toolkit (dtk 1.8.3) is at F:\coding\Decompiles\Tools\dtk-windows-x86_64.exe
 - Ghidra 12.0.4 is at F:\coding\Decompiles\Tools\ghidra_12.0.4_PUBLIC
@@ -47,34 +41,29 @@ You are working on the Sims 2 GameCube matching decompilation project.
 - Read CLAUDE.md for full project conventions
 - Use EXACT symbol names from the map file
 - Every decompiled function must byte-match the original DOL
-- SN Systems compiled — GCC may not produce identical output for all functions
+- SN Systems compiled - GCC may not produce identical output for all functions
 - Document your work as you go
 
 ## Working In a Worktree
 - You are in an isolated git worktree branch
 - Make commits to your branch as you complete work
-- The main session will merge your branch when you're done
-- Go full speed — you have full permissions
-"@
+- The main session will merge your branch when you are done
+- Go full speed - you have full permissions
+'@
 
 # ============================================================================
-# TASK DEFINITIONS — each worker gets one
+# TASK: Boot Decomp
 # ============================================================================
-$Tasks = @(
-    @{
-        Name   = "boot-decomp"
-        Branch = "worker/boot-decomp"
-        Prompt = @"
-$ProjectContext
+$PromptBoot = $ProjectContext + @'
 
 ## YOUR TASK: Decompile the Boot Sequence
 
-You are decompiling the GameCube boot sequence. These are small assembly/C functions in .init section.
+You are decompiling the GameCube boot sequence. These are small assembly/C functions in the .init section.
 
 ### Functions to decompile (in order):
-1. __start (0x80003100, SN Systems crt0) — sets up stack, r2, r13, calls init functions
-2. __init_hardware (0x80003468, size 0x24) — hardware init from DolphinSDK
-3. __flush_cache (0x8000348C, size 0x34) — cache flush from DolphinSDK
+1. __start (0x80003100, SN Systems crt0) - sets up stack, r2, r13, calls init functions
+2. __init_hardware (0x80003468, size 0x24) - hardware init from DolphinSDK
+3. __flush_cache (0x8000348C, size 0x34) - cache flush from DolphinSDK
 4. __init_vm and __premain are at 0x80003464 (size 0, likely labels/aliases)
 
 ### How to work:
@@ -85,22 +74,21 @@ You are decompiling the GameCube boot sequence. These are small assembly/C funct
 4. Compare disassembly of your .o against the original
 5. Document the boot flow in docs/systems/boot-sequence.md
 
-Write assembly (.s files), not C — these are handwritten startup routines.
+Write assembly (.s files), not C - these are handwritten startup routines.
 Commit your work when each function matches.
-"@
-    },
-    @{
-        Name   = "linker-and-diff"
-        Branch = "worker/linker-and-diff"
-        Prompt = @"
-$ProjectContext
+'@
+
+# ============================================================================
+# TASK: Linker and Diff
+# ============================================================================
+$PromptLinker = $ProjectContext + @'
 
 ## YOUR TASK: Create Linker Script and Verify Matching Pipeline
 
 Set up the end-to-end pipeline: compile -> link -> DOL -> diff against original.
 
 ### Steps:
-1. Create config/ldscript.lcf — a PowerPC linker script that places sections at the correct addresses:
+1. Create config/ldscript.lcf - a PowerPC linker script that places sections at the correct addresses:
    - .init at 0x80003100
    - .text at 0x800034C0
    - .ctors at 0x803CA900
@@ -120,28 +108,27 @@ Set up the end-to-end pipeline: compile -> link -> DOL -> diff against original.
 
 3. Test dtk dol diff:
    - Link your stub into an ELF
-   - Run: F:\coding\Decompiles\Tools\dtk-windows-x86_64.exe dol diff config/sims2_gc.yml <your_elf>
+   - Run: F:\coding\Decompiles\Tools\dtk-windows-x86_64.exe dol diff config/sims2_gc.yml your_elf
    - Verify dtk can compare functions
 
-4. Update the Makefile to use the linker script and add a 'diff' target that works
+4. Update the Makefile to use the linker script and add a working diff target
 
 5. Document the build process in docs/systems/build-system.md
 
 Commit your work as you complete each step.
-"@
-    },
-    @{
-        Name   = "ghidra-symbols"
-        Branch = "worker/ghidra-symbols"
-        Prompt = @"
-$ProjectContext
+'@
+
+# ============================================================================
+# TASK: Ghidra Symbols
+# ============================================================================
+$PromptGhidra = $ProjectContext + @'
 
 ## YOUR TASK: Write Ghidra Symbol Import Script
 
 Create a Ghidra script that imports all 23,068 symbols from the DVD map file into a Ghidra project.
 
 ### Steps:
-1. Write tools/symbol_importer.py — a Ghidra Python script (Jython) that:
+1. Write tools/symbol_importer.py - a Ghidra Python script (Jython) that:
    - Parses extracted/files/u2_ngc_release_dvd.map (SN Systems format)
    - For each symbol: creates a function or label at the correct address
    - Sets the symbol name to the demangled name from the map
@@ -163,35 +150,44 @@ Create a Ghidra script that imports all 23,068 symbols from the DVD map file int
    - Run the script via Script Manager
    - What to expect (takes a few minutes for 23K symbols)
 
-4. Also write tools/ghidra_structs.py — a starter script that defines key structs:
+4. Also write tools/ghidra_structs.py - a starter script that defines key structs:
    - Basic struct templates for ESim, ESimsApp, cXObject (just name + size placeholder)
    - These can be refined later as we decompile
 
 Commit your work when the import script is complete and documented.
-"@
-    }
+'@
+
+# ============================================================================
+# TASK LIST
+# ============================================================================
+$Tasks = @(
+    @{ Name = "boot-decomp";    Branch = "worker/boot-decomp";    Prompt = $PromptBoot },
+    @{ Name = "linker-and-diff"; Branch = "worker/linker-and-diff"; Prompt = $PromptLinker },
+    @{ Name = "ghidra-symbols"; Branch = "worker/ghidra-symbols"; Prompt = $PromptGhidra }
 )
 
 # ============================================================================
 # CLEANUP MODE
 # ============================================================================
 if ($Cleanup) {
-    Write-Host "`n=== Cleaning up worktrees ===" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "=== Cleaning up worktrees ===" -ForegroundColor Yellow
     $existing = git -C $RepoRoot worktree list --porcelain 2>$null |
-        Select-String "^worktree " | ForEach-Object { $_ -replace "^worktree ", "" }
+        Select-String "^worktree " | ForEach-Object { ($_ -replace "^worktree ", "").ToString().Trim() }
 
     foreach ($wt in $existing) {
-        if ($wt -like "*\.worktrees\*") {
+        if ($wt -like "*worktrees*") {
             $branch = git -C $wt branch --show-current 2>$null
             Write-Host "  Removing worktree: $wt (branch: $branch)" -ForegroundColor Cyan
             git -C $RepoRoot worktree remove --force $wt 2>$null
             if ($branch -and $branch -ne $MainBranch) {
-                Write-Host "  Branch $branch preserved — merge manually with: git merge $branch" -ForegroundColor DarkGray
+                Write-Host "  Branch $branch preserved - merge manually with: git merge $branch" -ForegroundColor DarkGray
             }
         }
     }
     if (Test-Path $WorktreeBase) { Remove-Item -Recurse -Force $WorktreeBase 2>$null }
-    Write-Host "Done.`n" -ForegroundColor Green
+    Write-Host "Done." -ForegroundColor Green
+    Write-Host ""
     exit 0
 }
 
@@ -200,20 +196,23 @@ if ($Cleanup) {
 # ============================================================================
 $tasksToLaunch = if ($Workers -gt 0) { $Tasks | Select-Object -First $Workers } else { $Tasks }
 
-Write-Host "`n============================================================" -ForegroundColor Cyan
-Write-Host "  Sims 2 GC Decomp — Launching $($tasksToLaunch.Count) parallel workers" -ForegroundColor Cyan
-Write-Host "============================================================`n" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "============================================================" -ForegroundColor Cyan
+Write-Host "  Sims 2 GC Decomp - Launching $($tasksToLaunch.Count) parallel workers" -ForegroundColor Cyan
+Write-Host "============================================================" -ForegroundColor Cyan
+Write-Host ""
 
-# Create worktree base dir
-if (-not (Test-Path $WorktreeBase)) { New-Item -ItemType Directory -Path $WorktreeBase -Force | Out-Null }
+if (-not (Test-Path $WorktreeBase)) {
+    New-Item -ItemType Directory -Path $WorktreeBase -Force | Out-Null
+}
 
 foreach ($task in $tasksToLaunch) {
-    $worktreePath = "$WorktreeBase\$($task.Name)"
+    $worktreePath = Join-Path $WorktreeBase $task.Name
     $branch = $task.Branch
 
     Write-Host "[$($task.Name)] Creating worktree..." -ForegroundColor Yellow
 
-    # Create branch if it doesn't exist
+    # Create branch if it does not exist
     $branchExists = git -C $RepoRoot branch --list $branch 2>$null
     if (-not $branchExists) {
         git -C $RepoRoot branch $branch $MainBranch 2>$null
@@ -234,24 +233,28 @@ foreach ($task in $tasksToLaunch) {
 
     Write-Host "[$($task.Name)] Worktree at $worktreePath" -ForegroundColor Green
 
-    # Write the prompt to a temp file (avoids quoting hell)
-    $promptFile = "$worktreePath\.claude-worker-prompt.txt"
+    # Write the prompt to a file in the worktree
+    $promptFile = Join-Path $worktreePath ".claude-worker-prompt.txt"
     $task.Prompt | Out-File -FilePath $promptFile -Encoding utf8
 
-    # Build the claude command
-    $claudeCmd = "cd `"$worktreePath`"; Write-Host '=== Worker: $($task.Name) ===' -ForegroundColor Cyan; claude --dangerously-skip-permissions -p (Get-Content `"$promptFile`" -Raw)"
-
     if ($DryRun) {
-        Write-Host "[$($task.Name)] DRY RUN — would launch:" -ForegroundColor DarkGray
-        Write-Host "  $claudeCmd`n" -ForegroundColor DarkGray
+        Write-Host "[$($task.Name)] DRY RUN - would launch claude in $worktreePath" -ForegroundColor DarkGray
+        Write-Host ""
     } else {
         Write-Host "[$($task.Name)] Launching Claude Code agent..." -ForegroundColor Green
-        Start-Process powershell -ArgumentList "-NoExit", "-Command", $claudeCmd
-        Start-Sleep -Milliseconds 1000  # Stagger launches slightly
+
+        # Launch a new PowerShell window that reads the prompt and runs claude
+        $escapedPath = $worktreePath -replace "'", "''"
+        $escapedPrompt = $promptFile -replace "'", "''"
+        $cmd = "Set-Location '$escapedPath'; Write-Host '=== Worker: $($task.Name) ===' -ForegroundColor Cyan; `$p = Get-Content '$escapedPrompt' -Raw; claude --dangerously-skip-permissions -p `$p"
+
+        Start-Process powershell -ArgumentList "-NoExit", "-Command", $cmd
+        Start-Sleep -Milliseconds 1500
     }
 }
 
-Write-Host "`n============================================================" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host "  All workers launched!" -ForegroundColor Green
 Write-Host "  Each is running in its own PowerShell window." -ForegroundColor DarkGray
 Write-Host "" -ForegroundColor DarkGray
@@ -259,4 +262,5 @@ Write-Host "  To check status:  git worktree list" -ForegroundColor DarkGray
 Write-Host "  To see branches:  git branch" -ForegroundColor DarkGray
 Write-Host "  To merge work:    git merge worker/boot-decomp" -ForegroundColor DarkGray
 Write-Host "  To cleanup:       .\tools\launch-workers.ps1 -Cleanup" -ForegroundColor DarkGray
-Write-Host "============================================================`n" -ForegroundColor Cyan
+Write-Host "============================================================" -ForegroundColor Cyan
+Write-Host ""
