@@ -53,7 +53,7 @@ CFLAGS := $(ARCH_FLAGS) $(OPT_FLAGS) \
 	-fno-builtin \
 	-Wall -Wno-unused
 
-ASFLAGS := $(ARCH_FLAGS)
+ASFLAGS := -mgekko -mregnames
 
 # Include paths
 INCLUDES := -Iinclude -Isrc -Ilibs/dolphinsdk -Ilibs/sn_runtime -Ilibs/apt
