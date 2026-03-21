@@ -32,6 +32,8 @@ public:
     float GetScaleY();
     float GetScaleZ();
 
+    EMat4& operator=(EMat4& other);
+
     void ExtractAxisRotation(EVec3& axis) const;
     void Print() const;
 };
