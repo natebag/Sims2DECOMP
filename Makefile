@@ -45,8 +45,18 @@ OUTPUT_DOL   := $(BUILD_DIR)/sims2.dol
 # CPU: Gekko (PowerPC 750CXe derivative)
 ARCH_FLAGS := -mcpu=750 -meabi -mhard-float
 
-# Optimization: SN Systems release builds typically use -O2
-OPT_FLAGS := -O2
+# Optimization: SN Systems release builds typically use -O2 equivalent.
+# Testing (tools/flag_sweep.py) showed these flags maximize byte-matching:
+#   -O2 is the closest GCC optimization level to SN Systems' default
+#   -fno-schedule-insns/-fno-schedule-insns2: SN does not reorder instructions
+#     within basic blocks; disabling GCC's scheduler preserves source order
+#   -fno-inline/-fno-inline-small-functions: SN inlines differently from GCC;
+#     disabling GCC inlining avoids spurious code duplication mismatches
+OPT_FLAGS := -O2 \
+	-fno-schedule-insns \
+	-fno-schedule-insns2 \
+	-fno-inline \
+	-fno-inline-small-functions
 
 # C++ flags matching EA's coding conventions
 CXXFLAGS := $(ARCH_FLAGS) $(OPT_FLAGS) \
