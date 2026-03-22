@@ -20,13 +20,13 @@ void ERModel::RebuildAfterWelding() { }
 void ERModel::GetNumMorphBases() { return *(int*)((char*)this + 0x108); }  // offset 0x108
 
 // 0x8031B2A4 (12 bytes)
-void* ERModel::GetTypeInfo() const { return (void*)0x8050CED8; }  // global data pointer
+void* ERModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12584" : "=r"(__p)); return __p; }
 
 // 0x8031B2B0 (12 bytes)
-void ERModel::GetTypeName() const { return *(int*)0x8050CEE4; }  // global variable
+void ERModel::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12572(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8031B2BC (12 bytes)
-void ERModel::GetTypeKey() const { return *(int*)0x8050CEE8; }  // global variable
+void ERModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12568(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x8031B2C8 (12 bytes)
@@ -34,7 +34,7 @@ unsigned short ERModel::GetTypeVersion() const { return *(unsigned short*)0x8050
 #endif
 
 // 0x8031B2D4 (12 bytes)
-void* ERModel::GetTypeInfoStatic() { return (void*)0x8050CED8; }  // global data pointer
+void* ERModel::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12584" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8031B2E0 (12 bytes)

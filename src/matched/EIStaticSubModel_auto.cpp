@@ -11,13 +11,13 @@ void EIStaticSubModel::ModifyColor(unsigned int val) { *(int*)((char*)this + 0x9
 int EIStaticSubModel::GetModifiableColor() { return *(int*)((char*)this + 0x94); }  // offset 0x94
 
 // 0x8022F7D8 (12 bytes)
-const ETypeInfo* EIStaticSubModel::GetTypeInfo() const { return (void*)0x8050CCC0; }  // global data pointer
+const ETypeInfo* EIStaticSubModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13120" : "=r"(__p)); return __p; }
 
 // 0x8022F7E4 (12 bytes)
-const char* EIStaticSubModel::GetTypeName() const { return *(int*)0x8050CCCC; }  // global variable
+const char* EIStaticSubModel::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13108(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x8022F7F0 (12 bytes)
-u32 EIStaticSubModel::GetTypeKey() const { return *(int*)0x8050CCD0; }  // global variable
+u32 EIStaticSubModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13104(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8022F7FC (12 bytes)
 unsigned short EIStaticSubModel::GetTypeVersion() const { return *(unsigned short*)0x8050CCD4; }  // global variable
@@ -35,4 +35,3 @@ void* EIStaticSubModel::operator new(unsigned int, void *) { return (void*)0; } 
 // 0x8022F910 (8 bytes)
 EBoundSphere* EIStaticSubModel::GetBoundSphere() { return (char*)this + 0x80; }  // offset 0x80
 #endif
-

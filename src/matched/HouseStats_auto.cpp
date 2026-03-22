@@ -21,4 +21,3 @@ int HouseStats::GetLotSize() { return *(int*)((char*)this + 0x14); }  // offset 
 
 // 0x800BC97C (8 bytes)
 int HouseStats::GetObjectCount() { return *(int*)((char*)this + 0x24); }  // offset 0x24
-

@@ -68,4 +68,3 @@ void cSimulatorImpl::SetProbe(SimLoopProbe * val) { *(int*)((char*)this + 0x94) 
 
 // 0x80141BA0 (8 bytes)
 SimLoopProbe* cSimulatorImpl::GetPassiveInfluenceSystem() { return *(int*)((char*)this + 0x174); }  // offset 0x174
-

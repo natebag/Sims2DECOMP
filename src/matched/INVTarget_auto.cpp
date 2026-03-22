@@ -33,4 +33,3 @@ void INVTarget::GetOnMsgInvShpIsTabEnabled(char *) { }
 
 // 0x80203D68 (8 bytes)
 int INVTarget::GetSelectedShoppingCategoryListIdx() { return *(unsigned char*)((char*)this + 0x3250); }  // offset 0x3250
-

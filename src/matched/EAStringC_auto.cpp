@@ -25,4 +25,3 @@ void EAStringC::Insert(int, char *) { return 0; }
 // 0x802BCE40 (8 bytes)
 void EAStringC::Insert(int, char) { return 0; }
 #endif
-

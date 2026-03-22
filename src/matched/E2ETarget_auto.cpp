@@ -6,4 +6,3 @@
 
 // 0x801E7088 (8 bytes)
 int E2ETarget::GetTopLevelState() { return *(int*)((char*)this + 0xD8); }  // offset 0xD8
-

@@ -5,7 +5,7 @@
 // 4 functions, 32 bytes
 
 // 0x802AD0D4 (8 bytes)
-AptValue* AptString::sMethod_lastIndexOf(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
+AptValue* AptString::sMethod_lastIndexOf(AptValue *, int){ int __sda; __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
 #if 0
 
 // 0x802AECFC (8 bytes)

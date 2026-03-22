@@ -5,7 +5,7 @@
 // 5 functions, 64 bytes
 
 // 0x803C9800 (12 bytes)
-void* EAnimNodeDataPos::GetTypeInfo() const { return (void*)0x8050D7AC; }  // global data pointer
+void* EAnimNodeDataPos::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10324" : "=r"(__p)); return __p; }
 
 // 0x803C980C (12 bytes)
 void EAnimNodeDataPos::GetTypeName() const { return *(int*)0x8050D7B8; }  // global variable
@@ -19,5 +19,4 @@ unsigned short EAnimNodeDataPos::GetTypeVersion() const { return *(unsigned shor
 #endif
 
 // 0x803CA8CC (16 bytes)
-void EAnimNodeDataPos::Destruct(EAnimNodeDataPos *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
-
+void EAnimNodeDataPos::Destruct(EAnimNodeDataPos *){ register void* __vt __asm__("r9"); __asm__ __volatile__("lis %0, -32697\n""addi %0, %0, -28472" : "=r"(__vt)); *(void**)((char*)this + 0) = __vt; }

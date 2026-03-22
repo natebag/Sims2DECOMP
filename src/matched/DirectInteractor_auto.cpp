@@ -47,7 +47,7 @@ namespace InteractorModule {
 // 4 functions, 40 bytes
 
 // 0x802057BC (12 bytes)
-int InteractorModule::DirectInteractor::GetSelectionRadius() { return *(float*)0x8040CB44; }  // global float
+int InteractorModule::DirectInteractor::GetSelectionRadius(){ int __val; __asm__ __volatile__("lis %%r9, -32704\n""lfs %0, -13500(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80206118 (8 bytes)
 int InteractorModule::DirectInteractor::GetControlStatus() { return *(int*)((char*)this + 0x64); }  // offset 0x64

@@ -87,4 +87,3 @@ void ESimsCam::SetInterpolatingToOrFromSocialModeCameraFlag(bool val) { *(int*)(
 
 // 0x8001EADC (8 bytes)
 void ESimsCam::SetInterpolatingFromLotIntroCameraFlag(bool val) { *(int*)((char*)this + 0x568) = val; }  // offset 0x568
-

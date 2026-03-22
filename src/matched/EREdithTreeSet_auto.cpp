@@ -5,13 +5,13 @@
 // 7 functions, 80 bytes
 
 // 0x8030FBA0 (12 bytes)
-void* EREdithTreeSet::GetTypeInfo() const { return (void*)0x8050CE60; }  // global data pointer
+void* EREdithTreeSet::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12704" : "=r"(__p)); return __p; }
 
 // 0x8030FBAC (12 bytes)
-void EREdithTreeSet::GetTypeName() const { return *(int*)0x8050CE6C; }  // global variable
+void EREdithTreeSet::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12692(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8030FBB8 (12 bytes)
-void EREdithTreeSet::GetTypeKey() const { return *(int*)0x8050CE70; }  // global variable
+void EREdithTreeSet::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12688(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x8030FBC4 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short EREdithTreeSet::GetTypeVersion() const { return *(unsigned short*
 #endif
 
 // 0x8030FBD0 (12 bytes)
-void* EREdithTreeSet::GetTypeInfoStatic() { return (void*)0x8050CE60; }  // global data pointer
+void* EREdithTreeSet::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12704" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8030FBDC (12 bytes)

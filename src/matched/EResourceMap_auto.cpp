@@ -30,4 +30,3 @@ void EResourceMap::GetMaxLoaded() { return *(int*)((char*)this + 0xC); }  // off
 
 // 0x80327EC4 (8 bytes)
 void EResourceMap::GetMaxUsed() { return *(int*)((char*)this + 0x10); }  // offset 0x10
-

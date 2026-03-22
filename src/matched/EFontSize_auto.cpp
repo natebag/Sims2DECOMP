@@ -5,16 +5,16 @@
 // 6 functions, 72 bytes
 
 // 0x803649D4 (12 bytes)
-const ETypeInfo* EFontSize::GetTypeInfo() const { return (void*)0x8050D70C; }  // global data pointer
+const ETypeInfo* EFontSize::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10484" : "=r"(__p)); return __p; }
 
 // 0x803649E0 (12 bytes)
-const char* EFontSize::GetTypeName() const { return *(int*)0x8050D718; }  // global variable
+const char* EFontSize::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10472(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x803649EC (12 bytes)
-u32 EFontSize::GetTypeKey() const { return *(int*)0x8050D71C; }  // global variable
+u32 EFontSize::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10468(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x803649F8 (12 bytes)
-unsigned short EFontSize::GetTypeVersion() const { return *(unsigned short*)0x8050D720; }  // global variable
+unsigned short EFontSize::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10464(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80364A04 (12 bytes)
 const ETypeInfo* EFontSize::GetTypeInfoStatic() { return (void*)0x8050D70C; }  // global data pointer

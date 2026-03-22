@@ -39,4 +39,3 @@ void EEngine::SignalShutdown() { }
 
 // 0x802E38E8 (8 bytes)
 int EEngine::ManagedStartup() { return 1; }
-

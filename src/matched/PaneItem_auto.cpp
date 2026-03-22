@@ -38,4 +38,3 @@ void PaneItem::Startup() { }
 
 // 0x803A0974 (4 bytes)
 void PaneItem::Draw(ERC *, float) { }
-

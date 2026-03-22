@@ -9,4 +9,3 @@ void ReconBuffer::EnableCompression() { register int __r0 __asm__("r0") = 1; __a
 
 // 0x801332C4 (12 bytes)
 void ReconBuffer::PadBits() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x28) = __r0; }
-

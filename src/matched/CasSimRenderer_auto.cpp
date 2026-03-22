@@ -17,4 +17,3 @@ void CasSimRenderer::SetSimRotation(float val) { *(float*)((char*)this + 0x20C) 
 // 0x8016FB6C (8 bytes)
 SimModel* CasSimRenderer::GetSimModel() { return (char*)this + 0x8; }  // offset 0x8
 #endif
-

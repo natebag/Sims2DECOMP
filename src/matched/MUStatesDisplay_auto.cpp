@@ -9,4 +9,3 @@ void MUStatesDisplay::Startup() { }
 
 // 0x80094270 (12 bytes)
 MUWrapper* MUStatesDisplay::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
-

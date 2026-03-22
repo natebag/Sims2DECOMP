@@ -10,13 +10,13 @@ void* EIFloor::operator new(unsigned int, void *) { return (void*)0; }  // mr r3
 #endif
 
 // 0x800483F8 (12 bytes)
-void* EIFloor::GetTypeInfo() const { return (void*)0x8050B778; }  // global data pointer
+void* EIFloor::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18568" : "=r"(__p)); return __p; }
 
 // 0x80048404 (12 bytes)
-void EIFloor::GetTypeName() const { return *(int*)0x8050B784; }  // global variable
+void EIFloor::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18556(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80048410 (12 bytes)
-void EIFloor::GetTypeKey() const { return *(int*)0x8050B788; }  // global variable
+void EIFloor::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18552(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x8004841C (12 bytes)
@@ -24,7 +24,7 @@ unsigned short EIFloor::GetTypeVersion() const { return *(unsigned short*)0x8050
 #endif
 
 // 0x80048428 (12 bytes)
-void* EIFloor::GetTypeInfoStatic() { return (void*)0x8050B778; }  // global data pointer
+void* EIFloor::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18568" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80048434 (12 bytes)

@@ -5,7 +5,7 @@
 // 8 functions, 76 bytes
 
 // 0x803C1420 (12 bytes)
-void* EStorable::GetTypeInfo() const { return (void*)0x8050CBF8; }  // global data pointer
+void* EStorable::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13320" : "=r"(__p)); return __p; }
 
 // 0x803C142C (12 bytes)
 void EStorable::GetTypeName() const { return *(int*)0x8050CC04; }  // global variable
@@ -30,5 +30,5 @@ void EStorable::Write(EStream &) { }
 void EStorable::Load(EFile &) { }
 
 // 0x803C247C (16 bytes)
-void EStorable::Construct(EStorable *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
+void EStorable::Construct(EStorable *){ register void* __vt __asm__("r9"); __asm__ __volatile__("lis %0, -32697\n""addi %0, %0, -28472" : "=r"(__vt)); *(void**)((char*)this + 0) = __vt; }
 

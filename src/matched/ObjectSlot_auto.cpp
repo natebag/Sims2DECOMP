@@ -9,4 +9,3 @@ int ObjectSlot::GetHeight() { return *(int*)((char*)this + 0x8); }  // offset 0x
 
 // 0x80145348 (12 bytes)
 bool ObjectSlot::IsFreePos() { return (*(int*)((char*)this + 0x10) >> 1) & 1; }  // bit 1
-

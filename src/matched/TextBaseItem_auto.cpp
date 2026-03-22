@@ -83,4 +83,3 @@ float TextBaseItem::GetFontSize() const { return *(float*)((char*)this + 0x54); 
 // 0x800873A4 (8 bytes)
 ItemStyle TextBaseItem::GetStyle() const { return *(int*)((char*)this + 0x6C); }  // offset 0x6C
 #endif
-

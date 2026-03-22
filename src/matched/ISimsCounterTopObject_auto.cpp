@@ -5,16 +5,16 @@
 // 6 functions, 72 bytes
 
 // 0x80054280 (12 bytes)
-const ETypeInfo* ISimsCounterTopObject::GetTypeInfo() const { return (void*)0x8050B840; }  // global data pointer
+const ETypeInfo* ISimsCounterTopObject::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18368" : "=r"(__p)); return __p; }
 
 // 0x8005428C (12 bytes)
-const char* ISimsCounterTopObject::GetTypeName() const { return *(int*)0x8050B84C; }  // global variable
+const char* ISimsCounterTopObject::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18356(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x80054298 (12 bytes)
-u32 ISimsCounterTopObject::GetTypeKey() const { return *(int*)0x8050B850; }  // global variable
+u32 ISimsCounterTopObject::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18352(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x800542A4 (12 bytes)
-unsigned short ISimsCounterTopObject::GetTypeVersion() const { return *(unsigned short*)0x8050B854; }  // global variable
+unsigned short ISimsCounterTopObject::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18348(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x800542B0 (12 bytes)
 const ETypeInfo* ISimsCounterTopObject::GetTypeInfoStatic() { return (void*)0x8050B840; }  // global data pointer

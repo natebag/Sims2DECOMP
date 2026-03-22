@@ -5,5 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x802B5124 (8 bytes)
-AptValue* AptValueFactory::CreateUndefined() { return 0; }  // lwz r3,-22936(r13)
+AptValue* AptValueFactory::CreateUndefined(){ int __sda; __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
 

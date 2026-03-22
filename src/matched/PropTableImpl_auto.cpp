@@ -9,4 +9,3 @@ short PropTableImpl::GetID() { return *(short*)((char*)(*(void**)((char*)this + 
 
 // 0x801329AC (8 bytes)
 char* PropTableImpl::GetEntryName(int) { return 0; }
-

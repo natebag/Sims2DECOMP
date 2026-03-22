@@ -6,4 +6,3 @@
 
 // 0x8003545C (4 bytes)
 void ESimScratchPadMan::EmptyHeap() { }
-

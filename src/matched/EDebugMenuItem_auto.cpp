@@ -19,4 +19,3 @@ void EDebugMenuItem::ButtonPress(EDebugMenuButton) { }
 // 0x803C417C (4 bytes)
 void EDebugMenuItem::ButtonPress(EDebugMenuButton, float) { }
 #endif
-

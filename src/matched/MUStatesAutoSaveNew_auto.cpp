@@ -6,4 +6,3 @@
 
 // 0x80093F18 (12 bytes)
 MUWrapper* MUStatesAutoSaveNew::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
-

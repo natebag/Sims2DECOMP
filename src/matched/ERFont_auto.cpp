@@ -5,13 +5,13 @@
 // 10 functions, 104 bytes
 
 // 0x80317848 (12 bytes)
-void* ERFont::GetTypeInfo() const { return (void*)0x8050CEB0; }  // global data pointer
+void* ERFont::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12624" : "=r"(__p)); return __p; }
 
 // 0x80317854 (12 bytes)
-void ERFont::GetTypeName() const { return *(int*)0x8050CEBC; }  // global variable
+void ERFont::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12612(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80317860 (12 bytes)
-void ERFont::GetTypeKey() const { return *(int*)0x8050CEC0; }  // global variable
+void ERFont::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12608(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x8031786C (12 bytes)
@@ -41,4 +41,3 @@ void ERFont::GetAspect() { return *(float*)((char*)this + 0x50); }  // offset 0x
 // 0x80317A40 (8 bytes)
 void* ERFont::GetColor() { return (char*)this + 0x58; }  // offset 0x58
 #endif
-

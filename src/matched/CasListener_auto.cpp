@@ -30,4 +30,3 @@ void CasListener::HandleEventMorphSim(CasEventMorphSimS2C &) { }
 
 // 0x80161BC8 (4 bytes)
 void CasListener::HandleEventResetSimDraw(CasEventResetSimDraw &) { }
-

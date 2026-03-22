@@ -9,4 +9,3 @@ void RelMatrixImpl::Init() { return 1; }
 
 // 0x801354C0 (20 bytes)
 void RelMatrixImpl::CountKeys() { return ((char*)(*(void**)((char*)this + 0x8)) - (char*)(*(void**)((char*)this + 0x4))) / 4; }  // count = (end-start)/4
-

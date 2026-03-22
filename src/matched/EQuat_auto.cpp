@@ -6,4 +6,3 @@
 
 // 0x802CCB00 (4 bytes)
 void EQuat::Print() { }
-

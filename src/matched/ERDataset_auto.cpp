@@ -5,13 +5,13 @@
 // 6 functions, 72 bytes
 
 // 0x80369834 (12 bytes)
-void* ERDataset::GetTypeInfo() const { return (void*)0x8050D824; }  // global data pointer
+void* ERDataset::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10204" : "=r"(__p)); return __p; }
 
 // 0x80369840 (12 bytes)
-void ERDataset::GetTypeName() const { return *(int*)0x8050D830; }  // global variable
+void ERDataset::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10192(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8036984C (12 bytes)
-void ERDataset::GetTypeKey() const { return *(int*)0x8050D834; }  // global variable
+void ERDataset::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10188(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80369858 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERDataset::GetTypeVersion() const { return *(unsigned short*)0x80
 #endif
 
 // 0x80369864 (12 bytes)
-void* ERDataset::GetTypeInfoStatic() { return (void*)0x8050D824; }  // global data pointer
+void* ERDataset::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10204" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80369870 (12 bytes)

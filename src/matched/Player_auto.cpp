@@ -5,5 +5,4 @@
 // 1 functions, 12 bytes
 
 // 0x800595AC (12 bytes)
-void* Player::GetInteractorColor() { return (void*)0x80485594; }  // global data pointer
-
+void* Player::GetInteractorColor(){ void* __p; __asm__ __volatile__("lis %0, -32696\n""addi %0, %0, 21908" : "=r"(__p)); return __p; }

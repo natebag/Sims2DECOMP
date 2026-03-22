@@ -57,4 +57,3 @@ void EGlobal::GetPropFromName(char *) { return 0; }
 
 // 0x80042284 (8 bytes)
 void EGlobal::GetNameFromProp(PropRef *) { return 0; }
-

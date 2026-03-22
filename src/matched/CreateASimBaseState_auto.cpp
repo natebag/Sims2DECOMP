@@ -6,4 +6,3 @@
 
 // 0x800898C0 (4 bytes)
 void CreateASimBaseState::Draw(ERC *) { }
-

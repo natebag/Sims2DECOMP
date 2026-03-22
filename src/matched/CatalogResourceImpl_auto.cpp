@@ -12,4 +12,3 @@ StringHandle CatalogResourceImpl::GetDescription() { /* lwz+mr+stw */ }
 
 // 0x800B1D84 (16 bytes)
 StringHandle CatalogResourceImpl::GetShortName() { /* lwz+mr+stw */ }
-

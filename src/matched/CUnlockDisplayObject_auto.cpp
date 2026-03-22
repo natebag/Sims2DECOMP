@@ -36,4 +36,3 @@ bool CUnlockDisplayObject::HasDrawn() { return *(int*)((char*)this + 0x7C); }  /
 
 // 0x80079C68 (8 bytes)
 int CUnlockDisplayObject::GetType() { return *(int*)((char*)this + 0x4); }  // offset 0x4
-

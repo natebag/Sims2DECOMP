@@ -177,4 +177,3 @@ int cXPersonImpl::IsFirstPlayerInSocialMode() { return *(int*)((char*)this + 0x5
 
 // 0x8012CA54 (8 bytes)
 int cXPersonImpl::IsWaitingForSocialMode() { return *(int*)((char*)this + 0x54C); }  // offset 0x54C
-

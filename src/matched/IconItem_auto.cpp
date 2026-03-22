@@ -18,4 +18,3 @@ void IconItem::SetShader(ERShader * val) { *(int*)((char*)this + 0x30) = val; } 
 
 // 0x800878BC (8 bytes)
 ERShader* IconItem::GetShader() { return *(int*)((char*)this + 0x30); }  // offset 0x30
-

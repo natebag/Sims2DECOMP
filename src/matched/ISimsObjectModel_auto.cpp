@@ -11,16 +11,16 @@ void ISimsObjectModel::SetPosStatic(EVec3 &, float) { }
 void ISimsObjectModel::SetOutOfWorld() { }
 
 // 0x80053CE0 (12 bytes)
-const ETypeInfo* ISimsObjectModel::GetTypeInfo() const { return (void*)0x8050B7C8; }  // global data pointer
+const ETypeInfo* ISimsObjectModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18488" : "=r"(__p)); return __p; }
 
 // 0x80053CEC (12 bytes)
-const char* ISimsObjectModel::GetTypeName() const { return *(int*)0x8050B7D4; }  // global variable
+const char* ISimsObjectModel::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18476(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x80053CF8 (12 bytes)
-u32 ISimsObjectModel::GetTypeKey() const { return *(int*)0x8050B7D8; }  // global variable
+u32 ISimsObjectModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18472(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80053D04 (12 bytes)
-unsigned short ISimsObjectModel::GetTypeVersion() const { return *(unsigned short*)0x8050B7DC; }  // global variable
+unsigned short ISimsObjectModel::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18468(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80053D10 (12 bytes)
 const ETypeInfo* ISimsObjectModel::GetTypeInfoStatic() { return (void*)0x8050B7C8; }  // global data pointer
@@ -55,4 +55,3 @@ void* ISimsObjectModel::GetILight() { return *(int*)((char*)this + 0x460); }  //
 
 // 0x80053E74 (12 bytes)
 bool ISimsObjectModel::ShouldKillAllAnimTracks(unsigned int val) { return val != 0; }  // subfic+adde bool cast
-

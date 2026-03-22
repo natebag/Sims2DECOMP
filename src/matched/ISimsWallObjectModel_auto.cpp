@@ -8,16 +8,16 @@
 void ISimsWallObjectModel::CreateShadow() { }
 
 // 0x80053F58 (12 bytes)
-const ETypeInfo* ISimsWallObjectModel::GetTypeInfo() const { return (void*)0x8050B7F0; }  // global data pointer
+const ETypeInfo* ISimsWallObjectModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18448" : "=r"(__p)); return __p; }
 
 // 0x80053F64 (12 bytes)
-const char* ISimsWallObjectModel::GetTypeName() const { return *(int*)0x8050B7FC; }  // global variable
+const char* ISimsWallObjectModel::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18436(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x80053F70 (12 bytes)
-u32 ISimsWallObjectModel::GetTypeKey() const { return *(int*)0x8050B800; }  // global variable
+u32 ISimsWallObjectModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18432(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80053F7C (12 bytes)
-unsigned short ISimsWallObjectModel::GetTypeVersion() const { return *(unsigned short*)0x8050B804; }  // global variable
+unsigned short ISimsWallObjectModel::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18428(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80053F88 (12 bytes)
 const ETypeInfo* ISimsWallObjectModel::GetTypeInfoStatic() { return (void*)0x8050B7F0; }  // global data pointer

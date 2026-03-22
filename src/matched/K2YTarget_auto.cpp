@@ -5,11 +5,11 @@
 // 3 functions, 32 bytes
 
 // 0x801E7098 (8 bytes)
-int K2YTarget::GetMode() { return 0; }  // lwz r3,-30256(r13)
+int K2YTarget::GetMode(){ int __sda; __asm__ __volatile__("lwz %0, -30256(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x801E70A0 (12 bytes)
-short unsigned int* K2YTarget::GetSavedFirstName() { return (void*)0x8050C0E4; }  // global data pointer
+short unsigned int* K2YTarget::GetSavedFirstName(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -16156" : "=r"(__p)); return __p; }
 
 // 0x801E70AC (12 bytes)
-short unsigned int* K2YTarget::GetSavedLastName() { return (void*)0x8050C124; }  // global data pointer
+short unsigned int* K2YTarget::GetSavedLastName(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -16092" : "=r"(__p)); return __p; }
 

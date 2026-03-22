@@ -5,13 +5,13 @@
 // 19 functions, 168 bytes
 
 // 0x80228008 (12 bytes)
-const ETypeInfo* EILight::GetTypeInfo() const { return (void*)0x8050CB80; }  // global data pointer
+const ETypeInfo* EILight::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13440" : "=r"(__p)); return __p; }
 
 // 0x80228014 (12 bytes)
-const char* EILight::GetTypeName() const { return *(int*)0x8050CB8C; }  // global variable
+const char* EILight::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13428(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x80228020 (12 bytes)
-u32 EILight::GetTypeKey() const { return *(int*)0x8050CB90; }  // global variable
+u32 EILight::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13424(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8022802C (12 bytes)
 unsigned short EILight::GetTypeVersion() const { return *(unsigned short*)0x8050CB94; }  // global variable
@@ -62,4 +62,3 @@ void EILight::SetHaveLightsChanged(bool) { }  // stw r3,-28500(r13)
 
 // 0x802281BC (8 bytes)
 int EILight::HaveLightsChanged() { return 0; }  // lwz r3,-28500(r13)
-

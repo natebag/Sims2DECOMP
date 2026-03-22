@@ -36,4 +36,3 @@ void ENgcRenderer::GetFrameEffectsScratchMemory() { return *(int*)((char*)this +
 
 // 0x8034A778 (4 bytes)
 void ENgcRenderer::NoOp(EDLEntry *) { }
-

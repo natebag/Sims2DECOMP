@@ -5,5 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x802D09D4 (8 bytes)
-int EAHeap::GetCurrentCheckPoint() { return 0; }  // lwz r3,-26860(r13)
+int EAHeap::GetCurrentCheckPoint(){ int __sda; __asm__ __volatile__("lwz %0, -26860(%%r13)" : "=r"(__sda)); return __sda; }
 

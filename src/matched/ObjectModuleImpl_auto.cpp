@@ -26,10 +26,10 @@ void ObjectModuleImpl::PersonalityAccessed(cXPerson *, int, bool) { }
 void ObjectModuleImpl::RelationshipAccessed(cXObject *, cXObject *, int, bool) { }
 
 // 0x800F9928 (8 bytes)
-ObjectFolder* ObjectModuleImpl::GetFolder() { return 0; }  // lwz r3,-21508(r13)
+ObjectFolder* ObjectModuleImpl::GetFolder(){ int __sda; __asm__ __volatile__("lwz %0, -21508(%%r13)" : "=r"(__sda)); return (ObjectFolder*)__sda; }
 
 // 0x800F9980 (8 bytes)
-cXObject* ObjectModuleImpl::GetSim() { return 0; }  // lwz r3,-21496(r13)
+cXObject* ObjectModuleImpl::GetSim(){ int __sda; __asm__ __volatile__("lwz %0, -21496(%%r13)" : "=r"(__sda)); return (cXObject*)__sda; }
 
 // 0x800F99A8 (20 bytes)
 int ObjectModuleImpl::GetNumPeople() { return ((char*)(*(void**)((char*)this + 0x205C)) - (char*)(*(void**)((char*)this + 0x2058))) / 4; }  // count = (end-start)/4
@@ -44,4 +44,3 @@ int ObjectModuleImpl::GetNumPortals() { return ((char*)(*(void**)((char*)this + 
 // 0x800F99E0 (16 bytes)
 cXObject* ObjectModuleImpl::GetGlobalRoutingSlot(int index) { return (char*)(*(void**)((char*)this + 0x2078)) + index * 60; }  // struct array, stride=60
 #endif
-

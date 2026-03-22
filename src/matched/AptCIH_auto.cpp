@@ -19,10 +19,10 @@ unsigned short AptCIH::getZombieCount() { return *(unsigned short*)((char*)this 
 #endif
 
 // 0x80293B08 (8 bytes)
-void* AptCIH::getSpriteInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getSpriteInst() const{ return *(int*)((char*)this + 0x4C); }
 
 // 0x80293B10 (8 bytes)
-void* AptCIH::getSpriteInstBase() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getSpriteInstBase() const{ return *(int*)((char*)this + 0x4C); }
 
 // 0x80293B18 (8 bytes)
 void* AptCIH::getTextInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C

@@ -8,16 +8,16 @@
 void AptXmlNode::PreDestroy() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x24) = __r0; }
 
 // 0x802BB338 (8 bytes)
-AptValue* AptXmlNode::sMethod_appendChild(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
+AptValue* AptXmlNode::sMethod_appendChild(AptValue *, int){ int __sda; __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
 
 // 0x802BB340 (8 bytes)
-AptValue* AptXmlNode::sMethod_cloneNode(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
+AptValue* AptXmlNode::sMethod_cloneNode(AptValue *, int){ int __sda; __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
 
 // 0x802BB4D4 (8 bytes)
-AptValue* AptXmlNode::sMethod_insertBefore(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
+AptValue* AptXmlNode::sMethod_insertBefore(AptValue *, int){ int __sda; __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
 
 // 0x802BB4DC (8 bytes)
-AptValue* AptXmlNode::sMethod_removeNode(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
+AptValue* AptXmlNode::sMethod_removeNode(AptValue *, int){ int __sda; __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
 
 // 0x802BB694 (8 bytes)
 void* AptXmlNode::operator new [](unsigned int) { return (void*)0; }

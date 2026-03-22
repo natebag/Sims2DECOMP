@@ -72,4 +72,3 @@ int FamilyImpl::GetStatValue(int) const { return 0; }
 
 // 0x800B6CA0 (8 bytes)
 int FamilyImpl::GetStatRef(int, short **) { return 0; }
-

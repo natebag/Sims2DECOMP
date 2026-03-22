@@ -5,16 +5,16 @@
 // 6 functions, 72 bytes
 
 // 0x80054414 (12 bytes)
-const ETypeInfo* IShrubObject::GetTypeInfo() const { return (void*)0x8050B868; }  // global data pointer
+const ETypeInfo* IShrubObject::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18328" : "=r"(__p)); return __p; }
 
 // 0x80054420 (12 bytes)
-const char* IShrubObject::GetTypeName() const { return *(int*)0x8050B874; }  // global variable
+const char* IShrubObject::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18316(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x8005442C (12 bytes)
-u32 IShrubObject::GetTypeKey() const { return *(int*)0x8050B878; }  // global variable
+u32 IShrubObject::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18312(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80054438 (12 bytes)
-unsigned short IShrubObject::GetTypeVersion() const { return *(unsigned short*)0x8050B87C; }  // global variable
+unsigned short IShrubObject::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18308(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80054444 (12 bytes)
 const ETypeInfo* IShrubObject::GetTypeInfoStatic() { return (void*)0x8050B868; }  // global data pointer

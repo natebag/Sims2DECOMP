@@ -20,4 +20,3 @@ void IFFSlotDescList::SetStringSetID(int) { }
 
 // 0x801452B8 (8 bytes)
 int IFFSlotDescList::GetDataSourceType() const { return 2; }
-

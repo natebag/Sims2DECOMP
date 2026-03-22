@@ -41,4 +41,3 @@ void TreeTableAdQuickData::SetRange(int) { }
 
 // 0x8015E5DC (8 bytes)
 TreeTableAd* TreeTableAdQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
-

@@ -46,10 +46,10 @@ namespace InteractorModule {
 // 3 functions, 24 bytes
 
 // 0x8020B690 (8 bytes)
-int InteractorModule::InteractorManager::GetInputManager() { return 0; }  // lwz r3,-28512(r13)
+int InteractorModule::InteractorManager::GetInputManager(){ int __sda; __asm__ __volatile__("lwz %0, -28512(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x8020B698 (8 bytes)
-int InteractorModule::InteractorManager::GetVisualizer() { return 0; }  // lwz r3,-28508(r13)
+int InteractorModule::InteractorManager::GetVisualizer(){ int __sda; __asm__ __volatile__("lwz %0, -28508(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x8020B6A0 (8 bytes)
 int InteractorModule::InteractorManager::IsInitialized() { return *(int*)((char*)this + 0x0); }  // offset 0x0

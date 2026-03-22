@@ -9,4 +9,3 @@ void EStream::GetFile() { return 0; }
 
 // 0x802D283C (8 bytes)
 void EStream::IsStreamingStructure() { return *(int*)((char*)this + 0x0); }  // offset 0x0
-

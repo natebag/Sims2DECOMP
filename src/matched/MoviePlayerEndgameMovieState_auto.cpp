@@ -6,4 +6,3 @@
 
 // 0x800587E8 (4 bytes)
 void MoviePlayerEndgameMovieState::Draw(ERC *) { }
-

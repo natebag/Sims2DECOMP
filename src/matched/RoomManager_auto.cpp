@@ -8,5 +8,5 @@
 void RoomManager::InitLights() { }
 
 // 0x8013884C (8 bytes)
-RoomManager* RoomManager::GetRoomManager() { return 0; }  // lwz r3,-31676(r13)
+RoomManager* RoomManager::GetRoomManager(){ int __sda; __asm__ __volatile__("lwz %0, -31676(%%r13)" : "=r"(__sda)); return (RoomManager*)__sda; }
 

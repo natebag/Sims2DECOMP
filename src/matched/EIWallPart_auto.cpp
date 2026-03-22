@@ -5,13 +5,13 @@
 // 9 functions, 92 bytes
 
 // 0x80030560 (12 bytes)
-void* EIWallPart::GetTypeInfo() const { return (void*)0x8050B3B0; }  // global data pointer
+void* EIWallPart::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19536" : "=r"(__p)); return __p; }
 
 // 0x8003056C (12 bytes)
-void EIWallPart::GetTypeName() const { return *(int*)0x8050B3BC; }  // global variable
+void EIWallPart::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19524(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80030578 (12 bytes)
-void EIWallPart::GetTypeKey() const { return *(int*)0x8050B3C0; }  // global variable
+void EIWallPart::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19520(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80030584 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short EIWallPart::GetTypeVersion() const { return *(unsigned short*)0x8
 #endif
 
 // 0x80030590 (12 bytes)
-void* EIWallPart::GetTypeInfoStatic() { return (void*)0x8050B3B0; }  // global data pointer
+void* EIWallPart::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19536" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8003059C (12 bytes)

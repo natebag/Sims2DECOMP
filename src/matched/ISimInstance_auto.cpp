@@ -47,13 +47,13 @@ void ISimInstance::GetXOb() { return *(int*)((char*)this + 0x328); }  // offset 
 void* ISimInstance::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 
 // 0x800568AC (12 bytes)
-void* ISimInstance::GetTypeInfo() const { return (void*)0x8050B450; }  // global data pointer
+void* ISimInstance::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19376" : "=r"(__p)); return __p; }
 
 // 0x800568B8 (12 bytes)
-void ISimInstance::GetTypeName() const { return *(int*)0x8050B45C; }  // global variable
+void ISimInstance::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19364(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x800568C4 (12 bytes)
-void ISimInstance::GetTypeKey() const { return *(int*)0x8050B460; }  // global variable
+void ISimInstance::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19360(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x800568D0 (12 bytes)
@@ -88,4 +88,3 @@ void ISimInstance::GetFlags() { return *(int*)((char*)this + 0x32C); }  // offse
 
 // 0x80056A30 (8 bytes)
 void ISimInstance::GetAnimController() { return (char*)this + 0x334; }  // offset 0x334
-

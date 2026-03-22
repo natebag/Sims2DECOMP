@@ -9,4 +9,3 @@ void MUStatesLoadConfig::Reset() { register int __r0 __asm__("r0") = 0; __asm__ 
 
 // 0x800941F8 (12 bytes)
 MUWrapper* MUStatesLoadConfig::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
-

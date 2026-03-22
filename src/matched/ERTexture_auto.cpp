@@ -5,13 +5,13 @@
 // 7 functions, 80 bytes
 
 // 0x803212A8 (12 bytes)
-void* ERTexture::GetTypeInfo() const { return (void*)0x8050CF28; }  // global data pointer
+void* ERTexture::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12504" : "=r"(__p)); return __p; }
 
 // 0x803212B4 (12 bytes)
-void ERTexture::GetTypeName() const { return *(int*)0x8050CF34; }  // global variable
+void ERTexture::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12492(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x803212C0 (12 bytes)
-void ERTexture::GetTypeKey() const { return *(int*)0x8050CF38; }  // global variable
+void ERTexture::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12488(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x803212CC (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERTexture::GetTypeVersion() const { return *(unsigned short*)0x80
 #endif
 
 // 0x803212D8 (12 bytes)
-void* ERTexture::GetTypeInfoStatic() { return (void*)0x8050CF28; }  // global data pointer
+void* ERTexture::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12504" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x803212E4 (12 bytes)

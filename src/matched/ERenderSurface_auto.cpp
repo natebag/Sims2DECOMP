@@ -15,4 +15,3 @@ void ERenderSurface::SetFlags(unsigned int val) { *(int*)((char*)this + 0x8) = v
 
 // 0x80364F5C (8 bytes)
 void ERenderSurface::GetFlags() { return *(int*)((char*)this + 0x8); }  // offset 0x8
-

@@ -268,41 +268,32 @@ def find_matching_functions(dol_data, verbose=False):
             compiled_by_size[len(fbytes)].append((name, fbytes))
 
         used = set()
-        func_index = 0
 
+        # Two-pass matching:
+        # Pass 1: Find exact byte matches (highest confidence)
+        for addr, size in annotations:
+            orig_bytes = get_dol_bytes(dol_data, addr, size)
+            if orig_bytes is None:
+                continue
+            if size in compiled_by_size:
+                for cname, cbytes in compiled_by_size[size]:
+                    if cname not in used and cbytes == orig_bytes:
+                        used.add(cname)
+                        matches[addr] = cbytes
+                        break
+
+        # Pass 2: Count all annotations
         for addr, size in annotations:
             total += 1
             orig_bytes = get_dol_bytes(dol_data, addr, size)
             if orig_bytes is None:
                 skipped += 1
-                func_index += 1
                 continue
 
-            # Find matching compiled function by size first
-            our_bytes = None
-            our_name = "?"
-            if size in compiled_by_size:
-                for cname, cbytes in compiled_by_size[size]:
-                    if cname not in used:
-                        our_bytes = cbytes
-                        our_name = cname
-                        used.add(cname)
-                        break
-
-            if our_bytes is None and func_index < len(compiled_funcs):
-                cname, cbytes = compiled_funcs[func_index]
-                if cname not in used:
-                    our_bytes = cbytes
-                    our_name = cname
-                    used.add(cname)
-
-            func_index += 1
-
-            if our_bytes and our_bytes == orig_bytes:
+            if addr in matches:
                 byte_match += 1
-                matches[addr] = our_bytes
                 if verbose:
-                    print(f"  MATCH  0x{addr:08X} ({size:4d}B) {our_name}")
+                    print(f"  MATCH  0x{addr:08X} ({size:4d}B)")
             else:
                 mismatch += 1
 

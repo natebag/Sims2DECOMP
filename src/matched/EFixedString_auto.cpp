@@ -6,4 +6,3 @@
 
 // 0x802C862C (4 bytes)
 void EFixedString::ReleaseBuffer() { }
-

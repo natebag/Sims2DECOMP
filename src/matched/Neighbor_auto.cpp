@@ -15,4 +15,3 @@ int Neighbor::GetGUID() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800C9A94 (8 bytes)
 void Neighbor::SetGUID(int val) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
-

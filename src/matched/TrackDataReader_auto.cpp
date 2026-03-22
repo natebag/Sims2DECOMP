@@ -19,4 +19,3 @@ void TrackDataReader::operator--() { *(int*)((char*)this + 0x4) += -1; }  // ref
 
 // 0x8011645C (4 bytes)
 void TrackDataReader::Trace() const { }
-

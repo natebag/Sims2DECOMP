@@ -5,16 +5,16 @@
 // 7 functions, 80 bytes
 
 // 0x80226F1C (12 bytes)
-const ETypeInfo* EIAmbLight::GetTypeInfo() const { return (void*)0x8050CB58; }  // global data pointer
+const ETypeInfo* EIAmbLight::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13480" : "=r"(__p)); return __p; }
 
 // 0x80226F28 (12 bytes)
-const char* EIAmbLight::GetTypeName() const { return *(int*)0x8050CB64; }  // global variable
+const char* EIAmbLight::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13468(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x80226F34 (12 bytes)
-u32 EIAmbLight::GetTypeKey() const { return *(int*)0x8050CB68; }  // global variable
+u32 EIAmbLight::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13464(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80226F40 (12 bytes)
-unsigned short EIAmbLight::GetTypeVersion() const { return *(unsigned short*)0x8050CB6C; }  // global variable
+unsigned short EIAmbLight::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13460(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80226F4C (12 bytes)
 const ETypeInfo* EIAmbLight::GetTypeInfoStatic() { return (void*)0x8050CB58; }  // global data pointer

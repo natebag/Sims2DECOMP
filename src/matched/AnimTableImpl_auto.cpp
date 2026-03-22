@@ -11,4 +11,3 @@ short AnimTableImpl::GetID() { return *(short*)((char*)(*(void**)((char*)this + 
 
 // 0x800AAC2C (8 bytes)
 void AnimTableImpl::GetEntryName(int) { return 0; }
-

@@ -5,19 +5,19 @@
 // 13 functions, 120 bytes
 
 // 0x800D95EC (8 bytes)
-int cXObject::GetPersonWidth() { return 0; }  // lwz r3,-31916(r13)
+int cXObject::GetPersonWidth(){ int __sda; __asm__ __volatile__("lwz %0, -31916(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800D95F4 (8 bytes)
-bool cXObject::GetFreeWill() { return 0; }  // lwz r3,-31912(r13)
+bool cXObject::GetFreeWill(){ int __sda; __asm__ __volatile__("lwz %0, -31912(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800D95FC (8 bytes)
-bool cXObject::GetAutoCenter() { return 0; }  // lwz r3,-31904(r13)
+bool cXObject::GetAutoCenter(){ int __sda; __asm__ __volatile__("lwz %0, -31904(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800D9604 (8 bytes)
 void cXObject::SetAutoCenter(bool) { }  // stw r3,-31904(r13)
 
 // 0x800D960C (8 bytes)
-bool cXObject::GetAutoReset() { return 0; }  // lwz r3,-31900(r13)
+bool cXObject::GetAutoReset(){ int __sda; __asm__ __volatile__("lwz %0, -31900(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800D9614 (8 bytes)
 void cXObject::SetAutoReset(bool) { }  // stw r3,-31900(r13)

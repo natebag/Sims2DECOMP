@@ -5,7 +5,7 @@
 // 8 functions, 64 bytes
 
 // 0x801C59E0 (8 bytes)
-MMUTarget* MMUTarget::GetSingleton() { return 0; }  // lwz r3,-30180(r13)
+MMUTarget* MMUTarget::GetSingleton(){ int __sda; __asm__ __volatile__("lwz %0, -30180(%%r13)" : "=r"(__sda)); return (MMUTarget*)__sda; }
 
 // 0x801C59E8 (12 bytes)
 void MMUTarget::OnCreditsClose() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xFC) = __r0; }

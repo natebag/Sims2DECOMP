@@ -12,4 +12,3 @@ void* AptAnimationPoolData::GetActionPool() { return *(int*)((char*)this + 0x98)
 
 // 0x8029E1F0 (8 bytes)
 int AptAnimationPoolData::validateBIL() { return 1; }
-

@@ -5,13 +5,13 @@
 // 12 functions, 120 bytes
 
 // 0x80369F30 (12 bytes)
-void* ERSoundEvent::GetTypeInfo() const { return (void*)0x8050D84C; }  // global data pointer
+void* ERSoundEvent::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10164" : "=r"(__p)); return __p; }
 
 // 0x80369F3C (12 bytes)
-void ERSoundEvent::GetTypeName() const { return *(int*)0x8050D858; }  // global variable
+void ERSoundEvent::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10152(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80369F48 (12 bytes)
-void ERSoundEvent::GetTypeKey() const { return *(int*)0x8050D85C; }  // global variable
+void ERSoundEvent::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10148(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80369F54 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERSoundEvent::GetTypeVersion() const { return *(unsigned short*)0
 #endif
 
 // 0x80369F60 (12 bytes)
-void* ERSoundEvent::GetTypeInfoStatic() { return (void*)0x8050D84C; }  // global data pointer
+void* ERSoundEvent::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10164" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80369F6C (12 bytes)

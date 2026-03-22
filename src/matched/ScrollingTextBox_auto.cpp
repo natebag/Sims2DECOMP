@@ -20,4 +20,3 @@ void ScrollingTextBox::SetSubOffset(EVec2 &) { }
 
 // 0x8006CBDC (12 bytes)
 void ScrollingTextBox::SetSubOffset(float f1, float f2) { *(float*)((char*)this + 0x38) = f2; *(float*)((char*)this + 0x34) = f1; }
-

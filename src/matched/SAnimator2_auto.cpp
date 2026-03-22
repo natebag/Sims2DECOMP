@@ -128,4 +128,3 @@ int SAnimator2::GetLastCostume() { return *(int*)((char*)this + 0x130); }  // of
 
 // 0x80069228 (8 bytes)
 void SAnimator2::SetLastCostume(int val) { *(int*)((char*)this + 0x130) = val; }  // offset 0x130
-

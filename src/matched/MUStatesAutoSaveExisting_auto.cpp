@@ -9,4 +9,3 @@ void MUStatesAutoSaveExisting::Reset() { /* SDA @ r13-24656 = 0 */; *(int*)((cha
 
 // 0x80094018 (12 bytes)
 MUWrapper* MUStatesAutoSaveExisting::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
-

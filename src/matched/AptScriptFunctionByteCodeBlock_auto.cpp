@@ -21,4 +21,3 @@ void AptScriptFunctionByteCodeBlock::SetArgument(AptValue *, int) { }
 
 // 0x802B91BC (8 bytes)
 AptCIH* AptScriptFunctionByteCodeBlock::Duplicate(AptCIH *) { return 0; }
-

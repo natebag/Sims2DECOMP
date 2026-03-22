@@ -21,4 +21,3 @@ void E3DWindow::GetNormalizedProjection() const { return (char*)this + 0x1E0; } 
 
 // 0x802E76A4 (4 bytes)
 void E3DWindow::Cast3DWindow() { }
-

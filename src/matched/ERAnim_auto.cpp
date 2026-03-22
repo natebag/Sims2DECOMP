@@ -5,13 +5,13 @@
 // 7 functions, 80 bytes
 
 // 0x8036808C (12 bytes)
-void* ERAnim::GetTypeInfo() const { return (void*)0x8050D784; }  // global data pointer
+void* ERAnim::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10364" : "=r"(__p)); return __p; }
 
 // 0x80368098 (12 bytes)
-void ERAnim::GetTypeName() const { return *(int*)0x8050D790; }  // global variable
+void ERAnim::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10352(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x803680A4 (12 bytes)
-void ERAnim::GetTypeKey() const { return *(int*)0x8050D794; }  // global variable
+void ERAnim::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10348(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x803680B0 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERAnim::GetTypeVersion() const { return *(unsigned short*)0x8050D
 #endif
 
 // 0x803680BC (12 bytes)
-void* ERAnim::GetTypeInfoStatic() { return (void*)0x8050D784; }  // global data pointer
+void* ERAnim::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10364" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x803680C8 (12 bytes)

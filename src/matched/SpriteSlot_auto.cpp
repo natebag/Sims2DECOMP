@@ -66,4 +66,3 @@ float SpriteSlot::GetSizeMultiplierY() const { return *(float*)((char*)this + 0x
 
 // 0x80145484 (8 bytes)
 float SpriteSlot::GetAlpha() const { return *(float*)((char*)this + 0x58); }  // offset 0x58
-

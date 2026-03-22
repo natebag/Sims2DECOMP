@@ -24,4 +24,3 @@ void ENgcTextureBase::SetSwizzleFlag() { *(unsigned int*)((char*)this + 0x8) |= 
 
 // 0x80350618 (4 bytes)
 void ENgcTextureBase::UnswizzleImage(unsigned char *, int, int, unsigned char *) { }
-

@@ -20,4 +20,3 @@ FlashPiMenu::FlashPiMenu() { *(void**)((char*)this + 0xC) = (void*)0x8046B680; }
 
 // 0x8003AFCC (8 bytes)
 void FlashPiMenu::GetPlayerId() { return *(unsigned char*)((char*)this + 0xB); }  // offset 0xB
-

@@ -5,13 +5,13 @@
 // 11 functions, 116 bytes
 
 // 0x8036AC30 (12 bytes)
-void* REffectsEmitter::GetTypeInfo() const { return (void*)0x8050D89C; }  // global data pointer
+void* REffectsEmitter::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10084" : "=r"(__p)); return __p; }
 
 // 0x8036AC3C (12 bytes)
-void REffectsEmitter::GetTypeName() const { return *(int*)0x8050D8A8; }  // global variable
+void REffectsEmitter::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10072(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8036AC48 (12 bytes)
-void REffectsEmitter::GetTypeKey() const { return *(int*)0x8050D8AC; }  // global variable
+void REffectsEmitter::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10068(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x8036AC54 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short REffectsEmitter::GetTypeVersion() const { return *(unsigned short
 #endif
 
 // 0x8036AC60 (12 bytes)
-void* REffectsEmitter::GetTypeInfoStatic() { return (void*)0x8050D89C; }  // global data pointer
+void* REffectsEmitter::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10084" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8036AC6C (12 bytes)

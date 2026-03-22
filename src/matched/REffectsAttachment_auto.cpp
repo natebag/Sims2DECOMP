@@ -5,13 +5,13 @@
 // 6 functions, 72 bytes
 
 // 0x80322AB8 (12 bytes)
-void* REffectsAttachment::GetTypeInfo() const { return (void*)0x8050CF50; }  // global data pointer
+void* REffectsAttachment::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12464" : "=r"(__p)); return __p; }
 
 // 0x80322AC4 (12 bytes)
-void REffectsAttachment::GetTypeName() const { return *(int*)0x8050CF5C; }  // global variable
+void REffectsAttachment::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12452(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80322AD0 (12 bytes)
-void REffectsAttachment::GetTypeKey() const { return *(int*)0x8050CF60; }  // global variable
+void REffectsAttachment::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12448(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80322ADC (12 bytes)
@@ -19,7 +19,7 @@ unsigned short REffectsAttachment::GetTypeVersion() const { return *(unsigned sh
 #endif
 
 // 0x80322AE8 (12 bytes)
-void* REffectsAttachment::GetTypeInfoStatic() { return (void*)0x8050CF50; }  // global data pointer
+void* REffectsAttachment::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12464" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80322AF4 (12 bytes)

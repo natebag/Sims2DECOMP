@@ -65,5 +65,5 @@ int TreeTableQuickData::RemoveEntry(ITreeTableEntry *) { return 0; }
 void TreeTableQuickData::SetPrefixCheckTreeID(short) { }
 
 // 0x8015E9A0 (8 bytes)
-TreeTable* TreeTableQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
+TreeTable* TreeTableQuickData::GetImplementation() const{ return *(int*)((char*)this + 0x4); }
 

@@ -5,16 +5,16 @@
 // 7 functions, 88 bytes
 
 // 0x802C5CE4 (16 bytes)
-void EBoundTreeNode::Destruct(EBoundTreeNode *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
+void EBoundTreeNode::Destruct(EBoundTreeNode *){ register void* __vt __asm__("r9"); __asm__ __volatile__("lis %0, -32697\n""addi %0, %0, -28472" : "=r"(__vt)); *(void**)((char*)this + 0) = __vt; }
 
 // 0x802C5D34 (12 bytes)
-void* EBoundTreeNode::GetTypeInfo() const { return (void*)0x8050CD10; }  // global data pointer
+void* EBoundTreeNode::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13040" : "=r"(__p)); return __p; }
 
 // 0x802C5D40 (12 bytes)
-void EBoundTreeNode::GetTypeName() const { return *(int*)0x8050CD1C; }  // global variable
+void EBoundTreeNode::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13028(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x802C5D4C (12 bytes)
-void EBoundTreeNode::GetTypeKey() const { return *(int*)0x8050CD20; }  // global variable
+void EBoundTreeNode::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13024(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x802C5D58 (12 bytes)
@@ -22,7 +22,7 @@ unsigned short EBoundTreeNode::GetTypeVersion() const { return *(unsigned short*
 #endif
 
 // 0x802C5D64 (12 bytes)
-void* EBoundTreeNode::GetTypeInfoStatic() { return (void*)0x8050CD10; }  // global data pointer
+void* EBoundTreeNode::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13040" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x802C5D70 (12 bytes)

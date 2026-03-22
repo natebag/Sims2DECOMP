@@ -9,4 +9,3 @@ void MUStatesTransitionSaveExistingGame::Reset() { register int __r0 __asm__("r0
 
 // 0x80094180 (12 bytes)
 MUWrapper* MUStatesTransitionSaveExistingGame::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
-

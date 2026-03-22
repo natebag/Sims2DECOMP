@@ -9,4 +9,3 @@ void IconGroupImpl::GetLabel(StringBuffer &) { }
 
 // 0x800BCB6C (4 bytes)
 void IconGroupImpl::LoadStrings() { }
-

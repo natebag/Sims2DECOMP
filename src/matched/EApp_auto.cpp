@@ -17,10 +17,10 @@ void EApp::StopMovie() { register int __r0 __asm__("r0") = 0; __asm__ __volatile
 const char* EApp::GetRootDirectory() { return *(int*)((char*)(*(void**)((char*)this + 0x470)) + 0x0); }  // double deref
 
 // 0x802E291C (12 bytes)
-const char* EApp::GetBuildVersion() { return (void*)0x8042E7A8; }  // global data pointer
+const char* EApp::GetBuildVersion(){ void* __p; __asm__ __volatile__("lis %0, -32702\n""addi %0, %0, -6232" : "=r"(__p)); return __p; }
 
 // 0x802E2928 (12 bytes)
-const char* EApp::GetAppName() { return (void*)0x8042E7DC; }  // global data pointer
+const char* EApp::GetAppName(){ void* __p; __asm__ __volatile__("lis %0, -32702\n""addi %0, %0, -6180" : "=r"(__p)); return __p; }
 
 // 0x802E2934 (8 bytes)
 int EApp::GetPrefetchBlockSize() { return 0; }
@@ -63,4 +63,3 @@ int EApp::GetAppStackSize() { return 0x00018000; }
 
 // 0x802E2990 (4 bytes)
 void EApp::Shutdown() { }
-

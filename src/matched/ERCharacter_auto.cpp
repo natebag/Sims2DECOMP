@@ -8,13 +8,13 @@
 void ERCharacter::PrintNodes() { }
 
 // 0x80368C44 (12 bytes)
-void* ERCharacter::GetTypeInfo() const { return (void*)0x8050D7FC; }  // global data pointer
+void* ERCharacter::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10244" : "=r"(__p)); return __p; }
 
 // 0x80368C50 (12 bytes)
-void ERCharacter::GetTypeName() const { return *(int*)0x8050D808; }  // global variable
+void ERCharacter::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10232(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80368C5C (12 bytes)
-void ERCharacter::GetTypeKey() const { return *(int*)0x8050D80C; }  // global variable
+void ERCharacter::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10228(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80368C68 (12 bytes)
@@ -22,7 +22,7 @@ unsigned short ERCharacter::GetTypeVersion() const { return *(unsigned short*)0x
 #endif
 
 // 0x80368C74 (12 bytes)
-void* ERCharacter::GetTypeInfoStatic() { return (void*)0x8050D7FC; }  // global data pointer
+void* ERCharacter::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10244" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80368C80 (12 bytes)

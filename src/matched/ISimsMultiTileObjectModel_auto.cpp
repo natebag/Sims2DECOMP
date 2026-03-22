@@ -5,16 +5,16 @@
 // 6 functions, 72 bytes
 
 // 0x800540EC (12 bytes)
-const ETypeInfo* ISimsMultiTileObjectModel::GetTypeInfo() const { return (void*)0x8050B818; }  // global data pointer
+const ETypeInfo* ISimsMultiTileObjectModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18408" : "=r"(__p)); return __p; }
 
 // 0x800540F8 (12 bytes)
-const char* ISimsMultiTileObjectModel::GetTypeName() const { return *(int*)0x8050B824; }  // global variable
+const char* ISimsMultiTileObjectModel::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18396(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x80054104 (12 bytes)
-u32 ISimsMultiTileObjectModel::GetTypeKey() const { return *(int*)0x8050B828; }  // global variable
+u32 ISimsMultiTileObjectModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18392(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80054110 (12 bytes)
-unsigned short ISimsMultiTileObjectModel::GetTypeVersion() const { return *(unsigned short*)0x8050B82C; }  // global variable
+unsigned short ISimsMultiTileObjectModel::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18388(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8005411C (12 bytes)
 const ETypeInfo* ISimsMultiTileObjectModel::GetTypeInfoStatic() { return (void*)0x8050B818; }  // global data pointer

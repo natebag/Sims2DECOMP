@@ -5,13 +5,13 @@
 // 8 functions, 88 bytes
 
 // 0x80368550 (12 bytes)
-void* ERBinary::GetTypeInfo() const { return (void*)0x8050D7D4; }  // global data pointer
+void* ERBinary::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10284" : "=r"(__p)); return __p; }
 
 // 0x8036855C (12 bytes)
-void ERBinary::GetTypeName() const { return *(int*)0x8050D7E0; }  // global variable
+void ERBinary::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10272(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80368568 (12 bytes)
-void ERBinary::GetTypeKey() const { return *(int*)0x8050D7E4; }  // global variable
+void ERBinary::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10268(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80368574 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERBinary::GetTypeVersion() const { return *(unsigned short*)0x805
 #endif
 
 // 0x80368580 (12 bytes)
-void* ERBinary::GetTypeInfoStatic() { return (void*)0x8050D7D4; }  // global data pointer
+void* ERBinary::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10284" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8036858C (12 bytes)

@@ -12,4 +12,3 @@ void MUStatesSaveExistingGame::Draw(ERC *) { }
 
 // 0x80094090 (12 bytes)
 MUWrapper* MUStatesSaveExistingGame::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
-

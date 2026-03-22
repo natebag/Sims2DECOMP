@@ -15,4 +15,3 @@ void* AptScriptFunction2::GetByteCodeBase() { return (char*)(*(void**)((char*)th
 
 // 0x802B8F3C (12 bytes)
 int AptScriptFunction2::GetByteCodeSize() { return *(int*)((char*)(*(void**)((char*)this + 0x34)) + 0x10); }  // double deref
-

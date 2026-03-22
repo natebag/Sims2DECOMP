@@ -9,4 +9,3 @@ void EMemoryReadStream::GetPos() const { return *(int*)((char*)this + 0x20); }  
 
 // 0x802E0EBC (8 bytes)
 void EMemoryReadStream::Write(void *, int) { return 0; }
-

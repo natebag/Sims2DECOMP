@@ -6,4 +6,3 @@
 
 // 0x80163D48 (4 bytes)
 void CasNpcEditor::MakeDataset(UserDataSaveLoad) { }
-

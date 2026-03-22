@@ -12,4 +12,3 @@ void ArcCopier::ResumeCopy() { }
 
 // 0x8032171C (8 bytes)
 void ArcCopier::IsTerminatingCopy() {  }  // lwz r3,-26640(r13)
-

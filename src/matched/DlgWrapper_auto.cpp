@@ -54,4 +54,3 @@ void DlgWrapper::IsAptDrawable() { return *(int*)((char*)this + 0xB4); }  // off
 
 // 0x8007F074 (16 bytes)
 void DlgWrapper::SetPlayer(int val) { int old = *(int*)((char*)this + 0xCC); *(int*)((char*)this + 0xCC) = val; return old; }  // swap setter
-

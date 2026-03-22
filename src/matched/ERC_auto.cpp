@@ -65,4 +65,3 @@ void* ERC::AllocVertexData(unsigned int) { return 0; }
 
 // 0x802F9B14 (12 bytes)
 void ERC::SetCopyDataCallback(void (*p4)(void *, void *), void * p5) { *(int*)((char*)this + 0x58) = p5; *(int*)((char*)this + 0x54) = p4; }
-

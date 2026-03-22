@@ -9,4 +9,3 @@ void TheSimsMemCardCheckState::Shutdown() { }
 
 // 0x800970EC (4 bytes)
 void TheSimsMemCardCheckState::Update(float) { }
-

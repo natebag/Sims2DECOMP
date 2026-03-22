@@ -66,4 +66,3 @@ void TreeSim::SetBreakOnCallTreeStringFailure(bool) { }  // stw r3,-31632(r13)
 
 // 0x8014928C (8 bytes)
 void TreeSim::IsExecutingInMainSim() { return 0; }  // lwz r3,-31656(r13)
-

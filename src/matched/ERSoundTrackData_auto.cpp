@@ -5,13 +5,13 @@
 // 8 functions, 108 bytes
 
 // 0x8036A608 (12 bytes)
-void* ERSoundTrackData::GetTypeInfo() const { return (void*)0x8050D874; }  // global data pointer
+void* ERSoundTrackData::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10124" : "=r"(__p)); return __p; }
 
 // 0x8036A614 (12 bytes)
-void ERSoundTrackData::GetTypeName() const { return *(int*)0x8050D880; }  // global variable
+void ERSoundTrackData::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10112(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8036A620 (12 bytes)
-void ERSoundTrackData::GetTypeKey() const { return *(int*)0x8050D884; }  // global variable
+void ERSoundTrackData::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10108(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x8036A62C (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERSoundTrackData::GetTypeVersion() const { return *(unsigned shor
 #endif
 
 // 0x8036A638 (12 bytes)
-void* ERSoundTrackData::GetTypeInfoStatic() { return (void*)0x8050D874; }  // global data pointer
+void* ERSoundTrackData::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10124" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8036A644 (12 bytes)

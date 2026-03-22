@@ -14,13 +14,13 @@ void REffectsSequencer::AddRefSubResources() { }
 void REffectsSequencer::TryIncrementSubResources() { return 1; }
 
 // 0x8036B160 (12 bytes)
-void* REffectsSequencer::GetTypeInfo() const { return (void*)0x8050D8C4; }  // global data pointer
+void* REffectsSequencer::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10044" : "=r"(__p)); return __p; }
 
 // 0x8036B16C (12 bytes)
-void REffectsSequencer::GetTypeName() const { return *(int*)0x8050D8D0; }  // global variable
+void REffectsSequencer::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10032(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8036B178 (12 bytes)
-void REffectsSequencer::GetTypeKey() const { return *(int*)0x8050D8D4; }  // global variable
+void REffectsSequencer::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10028(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x8036B184 (12 bytes)
@@ -28,7 +28,7 @@ unsigned short REffectsSequencer::GetTypeVersion() const { return *(unsigned sho
 #endif
 
 // 0x8036B190 (12 bytes)
-void* REffectsSequencer::GetTypeInfoStatic() { return (void*)0x8050D8C4; }  // global data pointer
+void* REffectsSequencer::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10044" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8036B19C (12 bytes)

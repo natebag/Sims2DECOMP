@@ -73,4 +73,3 @@ TextBaseItem* WrapperPaneBase::GetAlt1Button() { return *(int*)((char*)this + 0x
 
 // 0x80088B64 (8 bytes)
 void* WrapperPaneBase::GetItemList() { return (char*)this + 0x8; }  // offset 0x8
-

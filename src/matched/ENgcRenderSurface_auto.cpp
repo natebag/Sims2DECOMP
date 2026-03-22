@@ -9,4 +9,3 @@ void ENgcRenderSurface::GetTexture() { return *(int*)((char*)this + 0x28); }  //
 
 // 0x8034C70C (12 bytes)
 void ENgcRenderSurface::Select() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x24) = __r0; }
-

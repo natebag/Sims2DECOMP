@@ -5,13 +5,13 @@
 // 22 functions, 188 bytes
 
 // 0x80312198 (12 bytes)
-void* EResource::GetTypeInfo() const { return (void*)0x8050CD38; }  // global data pointer
+void* EResource::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13000" : "=r"(__p)); return __p; }
 
 // 0x803121A4 (12 bytes)
-void EResource::GetTypeName() const { return *(int*)0x8050CD44; }  // global variable
+void EResource::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12988(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x803121B0 (12 bytes)
-void EResource::GetTypeKey() const { return *(int*)0x8050CD48; }  // global variable
+void EResource::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12984(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x803121BC (12 bytes)
@@ -19,7 +19,7 @@ unsigned short EResource::GetTypeVersion() const { return *(unsigned short*)0x80
 #endif
 
 // 0x803121C8 (12 bytes)
-void* EResource::GetTypeInfoStatic() { return (void*)0x8050CD38; }  // global data pointer
+void* EResource::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13000" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x803121D4 (12 bytes)
@@ -77,4 +77,3 @@ void EResource::TryIncrementSubResources() { return 1; }
 
 // 0x80312350 (4 bytes)
 void EResource::DetachClone() { }
-

@@ -12,4 +12,3 @@ void MUStatesLoadHouse::Draw(ERC *) { }
 
 // 0x80093EA0 (12 bytes)
 MUWrapper* MUStatesLoadHouse::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
-

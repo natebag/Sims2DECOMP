@@ -5,13 +5,13 @@
 // 13 functions, 160 bytes
 
 // 0x80320534 (12 bytes)
-void* ERShader::GetTypeInfo() const { return (void*)0x8050CF00; }  // global data pointer
+void* ERShader::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12544" : "=r"(__p)); return __p; }
 
 // 0x80320540 (12 bytes)
-void ERShader::GetTypeName() const { return *(int*)0x8050CF0C; }  // global variable
+void ERShader::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12532(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8032054C (12 bytes)
-void ERShader::GetTypeKey() const { return *(int*)0x8050CF10; }  // global variable
+void ERShader::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12528(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80320558 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERShader::GetTypeVersion() const { return *(unsigned short*)0x805
 #endif
 
 // 0x80320564 (12 bytes)
-void* ERShader::GetTypeInfoStatic() { return (void*)0x8050CF00; }  // global data pointer
+void* ERShader::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12544" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80320570 (12 bytes)

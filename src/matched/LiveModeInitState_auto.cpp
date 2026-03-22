@@ -9,4 +9,3 @@ void LiveModeInitState::Shutdown() { }
 
 // 0x8008C9BC (4 bytes)
 void LiveModeInitState::Draw(ERC *) { }
-

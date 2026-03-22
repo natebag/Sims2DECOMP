@@ -12,4 +12,3 @@ void TheSimsEnterMainMenuState::Draw(ERC *) { }
 
 // 0x800985FC (4 bytes)
 void TheSimsEnterMainMenuState::DrawTopmost(ERC *) { }
-

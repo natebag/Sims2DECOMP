@@ -5,13 +5,13 @@
 // 8 functions, 88 bytes
 
 // 0x8036C1E8 (12 bytes)
-void* RParticle::GetTypeInfo() const { return (void*)0x8050D8EC; }  // global data pointer
+void* RParticle::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10004" : "=r"(__p)); return __p; }
 
 // 0x8036C1F4 (12 bytes)
-void RParticle::GetTypeName() const { return *(int*)0x8050D8F8; }  // global variable
+void RParticle::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -9992(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8036C200 (12 bytes)
-void RParticle::GetTypeKey() const { return *(int*)0x8050D8FC; }  // global variable
+void RParticle::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -9988(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x8036C20C (12 bytes)
@@ -19,7 +19,7 @@ unsigned short RParticle::GetTypeVersion() const { return *(unsigned short*)0x80
 #endif
 
 // 0x8036C218 (12 bytes)
-void* RParticle::GetTypeInfoStatic() { return (void*)0x8050D8EC; }  // global data pointer
+void* RParticle::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10004" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8036C224 (12 bytes)

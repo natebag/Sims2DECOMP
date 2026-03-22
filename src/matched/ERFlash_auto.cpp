@@ -5,13 +5,13 @@
 // 7 functions, 80 bytes
 
 // 0x80313D1C (12 bytes)
-void* ERFlash::GetTypeInfo() const { return (void*)0x8050CE88; }  // global data pointer
+void* ERFlash::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12664" : "=r"(__p)); return __p; }
 
 // 0x80313D28 (12 bytes)
-void ERFlash::GetTypeName() const { return *(int*)0x8050CE94; }  // global variable
+void ERFlash::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12652(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80313D34 (12 bytes)
-void ERFlash::GetTypeKey() const { return *(int*)0x8050CE98; }  // global variable
+void ERFlash::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12648(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80313D40 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERFlash::GetTypeVersion() const { return *(unsigned short*)0x8050
 #endif
 
 // 0x80313D4C (12 bytes)
-void* ERFlash::GetTypeInfoStatic() { return (void*)0x8050CE88; }  // global data pointer
+void* ERFlash::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12664" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80313D58 (12 bytes)

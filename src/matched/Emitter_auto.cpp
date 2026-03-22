@@ -12,4 +12,3 @@ void Emitter::SetScale(float val) { *(float*)((char*)(*(void**)((char*)this + 0x
 
 // 0x802389D4 (8 bytes)
 int Emitter::VisibilityTest(E3DWindow &) { return false; }
-

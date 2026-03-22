@@ -5,13 +5,13 @@
 // 8 functions, 88 bytes
 
 // 0x80227418 (12 bytes)
-const ETypeInfo* EIDirLight::GetTypeInfo() const { return (void*)0x8050CBA8; }  // global data pointer
+const ETypeInfo* EIDirLight::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13400" : "=r"(__p)); return __p; }
 
 // 0x80227424 (12 bytes)
-const char* EIDirLight::GetTypeName() const { return *(int*)0x8050CBB4; }  // global variable
+const char* EIDirLight::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13388(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x80227430 (12 bytes)
-u32 EIDirLight::GetTypeKey() const { return *(int*)0x8050CBB8; }  // global variable
+u32 EIDirLight::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13384(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8022743C (12 bytes)
 unsigned short EIDirLight::GetTypeVersion() const { return *(unsigned short*)0x8050CBBC; }  // global variable
@@ -29,4 +29,3 @@ int EIDirLight::GetLightType() { return 2; }
 // 0x802274FC (8 bytes)
 EVec3* EIDirLight::GetDir() const { return (char*)this + 0xAC; }  // offset 0xAC
 #endif
-

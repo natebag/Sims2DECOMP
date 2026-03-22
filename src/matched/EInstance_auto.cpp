@@ -8,16 +8,16 @@
 void EInstance::SetContext(int) { }  // stw r3,-28496(r13)
 
 // 0x80229224 (8 bytes)
-int EInstance::GetContext() { return 0; }  // lwz r3,-28496(r13)
+int EInstance::GetContext(){ int __sda; __asm__ __volatile__("lwz %0, -28496(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x802293A0 (12 bytes)
-const ETypeInfo* EInstance::GetTypeInfo() const { return (void*)0x8050B7A0; }  // global data pointer
+const ETypeInfo* EInstance::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18528" : "=r"(__p)); return __p; }
 
 // 0x802293AC (12 bytes)
-const char* EInstance::GetTypeName() const { return *(int*)0x8050B7AC; }  // global variable
+const char* EInstance::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18516(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x802293B8 (12 bytes)
-u32 EInstance::GetTypeKey() const { return *(int*)0x8050B7B0; }  // global variable
+u32 EInstance::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18512(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x802293C4 (12 bytes)
 unsigned short EInstance::GetTypeVersion() const { return *(unsigned short*)0x8050B7B4; }  // global variable
@@ -163,4 +163,3 @@ int EInstance::IsWall() { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x80229740 (4 bytes)
 void EInstance::RealizeShaderTuning() { }
-

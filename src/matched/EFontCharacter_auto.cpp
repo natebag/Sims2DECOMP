@@ -5,22 +5,22 @@
 // 8 functions, 104 bytes
 
 // 0x803646B8 (16 bytes)
-void EFontCharacter::Construct(EFontCharacter *) { *(void**)((char*)this + 0x0) = (void*)0x8047D9E8; }  // vtable/global ptr init
+void EFontCharacter::Construct(EFontCharacter *){ register void* __vt __asm__("r9"); __asm__ __volatile__("lis %0, -32697\n""addi %0, %0, -9752" : "=r"(__vt)); *(void**)((char*)this + 0) = __vt; }
 
 // 0x803646C8 (16 bytes)
-void EFontCharacter::Destruct(EFontCharacter *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
+void EFontCharacter::Destruct(EFontCharacter *){ register void* __vt __asm__("r9"); __asm__ __volatile__("lis %0, -32697\n""addi %0, %0, -28472" : "=r"(__vt)); *(void**)((char*)this + 0) = __vt; }
 
 // 0x80364718 (12 bytes)
-const ETypeInfo* EFontCharacter::GetTypeInfo() const { return (void*)0x8050D6BC; }  // global data pointer
+const ETypeInfo* EFontCharacter::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10564" : "=r"(__p)); return __p; }
 
 // 0x80364724 (12 bytes)
-const char* EFontCharacter::GetTypeName() const { return *(int*)0x8050D6C8; }  // global variable
+const char* EFontCharacter::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10552(%%r9)" : "=r"(__val)); return (const char*)__val; }
 
 // 0x80364730 (12 bytes)
-u32 EFontCharacter::GetTypeKey() const { return *(int*)0x8050D6CC; }  // global variable
+u32 EFontCharacter::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10548(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8036473C (12 bytes)
-unsigned short EFontCharacter::GetTypeVersion() const { return *(unsigned short*)0x8050D6D0; }  // global variable
+unsigned short EFontCharacter::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10544(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80364748 (12 bytes)
 const ETypeInfo* EFontCharacter::GetTypeInfoStatic() { return (void*)0x8050D6BC; }  // global data pointer

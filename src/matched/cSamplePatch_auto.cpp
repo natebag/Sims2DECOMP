@@ -6,4 +6,3 @@
 
 // 0x80118F0C (8 bytes)
 void cSamplePatch::SetLooped(int val) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
-

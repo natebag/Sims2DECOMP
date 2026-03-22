@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x801E70B8 (12 bytes)
-const char* PAZTarget::GetTLA() const { return (void*)0x803F3F54; }  // global data pointer
+const char* PAZTarget::GetTLA() const{ void* __p; __asm__ __volatile__("lis %0, -32705\n""addi %0, %0, 16212" : "=r"(__p)); return __p; }
 

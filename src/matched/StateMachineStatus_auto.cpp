@@ -6,4 +6,3 @@
 
 // 0x80096504 (16 bytes)
 void StateMachineStatus::AddToSecondsInCurState(float val) { *(float*)((char*)this + 0x14) += val; }
-

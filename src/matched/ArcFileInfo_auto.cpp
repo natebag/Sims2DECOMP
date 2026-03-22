@@ -12,4 +12,3 @@ void ArcFileInfo::GetSourceLen() { return *(int*)((char*)this + 0x8); }  // offs
 
 // 0x80321DB4 (8 bytes)
 void ArcFileInfo::GetCopiedSize() { return *(int*)((char*)this + 0xC); }  // offset 0xC
-

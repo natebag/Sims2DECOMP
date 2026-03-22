@@ -15,4 +15,3 @@ void TreeTableAdScratch::SetMin(int val) { *(short*)((char*)this + 0x6) = val; }
 
 // 0x80149B48 (8 bytes)
 void TreeTableAdScratch::SetRange(int val) { *(short*)((char*)this + 0x8) = val; }  // offset 0x8
-

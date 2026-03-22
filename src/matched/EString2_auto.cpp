@@ -10,7 +10,7 @@ void EString2::SetToNull() { *(int*)((char*)this + 0x0) = (int)(r13 + -26852); }
 #endif
 
 // 0x802D4198 (16 bytes)
-void EString2::SetToError() { *(void**)((char*)this + 0x0) = (void*)0x8044ED54; }  // vtable/global ptr init
+void EString2::SetToError(){ register void* __vt __asm__("r9"); __asm__ __volatile__("lis %0, -32700\n""addi %0, %0, -4780" : "=r"(__vt)); *(void**)((char*)this + 0) = __vt; }
 #if 0
 
 // 0x803C2F10 (8 bytes)

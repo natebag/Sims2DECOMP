@@ -5,13 +5,13 @@
 // 6 functions, 72 bytes
 
 // 0x80367224 (12 bytes)
-void* ERAmbientScore::GetTypeInfo() const { return (void*)0x8050D75C; }  // global data pointer
+void* ERAmbientScore::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10404" : "=r"(__p)); return __p; }
 
 // 0x80367230 (12 bytes)
-void ERAmbientScore::GetTypeName() const { return *(int*)0x8050D768; }  // global variable
+void ERAmbientScore::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10392(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8036723C (12 bytes)
-void ERAmbientScore::GetTypeKey() const { return *(int*)0x8050D76C; }  // global variable
+void ERAmbientScore::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10388(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80367248 (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERAmbientScore::GetTypeVersion() const { return *(unsigned short*
 #endif
 
 // 0x80367254 (12 bytes)
-void* ERAmbientScore::GetTypeInfoStatic() { return (void*)0x8050D75C; }  // global data pointer
+void* ERAmbientScore::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10404" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80367260 (12 bytes)

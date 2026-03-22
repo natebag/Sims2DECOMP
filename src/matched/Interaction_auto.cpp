@@ -20,7 +20,7 @@ void Interaction::SetIconObject(cXObject * val) { *(int*)((char*)this + 0x10) = 
 int Interaction::GetTextColor() const { /* bitfield extract from offset 0x3C */ return 0; }
 
 // 0x800C1D44 (8 bytes)
-int Interaction::GetType() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+int Interaction::GetType(){ return *(int*)((char*)this + 0x4); }
 
 // 0x800C1D4C (8 bytes)
 float Interaction::GetAttenuation() const { return *(float*)((char*)this + 0x30); }  // offset 0x30
@@ -98,4 +98,3 @@ void Interaction::SetFlags(int val) { *(int*)((char*)this + 0x3C) = val; }  // o
 
 // 0x800C2000 (8 bytes)
 int Interaction::SetShader(EActionIcon *) const { return 0; }
-

@@ -62,4 +62,3 @@ void ENgcMemoryCard::SetupSaveTypes(EMC_SaveType, unsigned int) { }
 
 // 0x80334894 (4 bytes)
 void ENgcMemoryCard::SetGameCode(char *) { }
-

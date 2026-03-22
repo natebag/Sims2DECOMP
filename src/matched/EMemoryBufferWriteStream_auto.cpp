@@ -11,4 +11,3 @@ void EMemoryBufferWriteStream::GetPos() const { return *(int*)((char*)this + 0x2
 // 0x802E0EF0 (8 bytes)
 int EMemoryBufferWriteStream::Read(void *, int) { return 0; }
 #endif
-

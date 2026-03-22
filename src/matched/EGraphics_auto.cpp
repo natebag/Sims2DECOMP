@@ -65,10 +65,10 @@ void EGraphics::NeedFlushToDestroy(EShader *) { return 1; }
 #endif
 
 // 0x802F2204 (12 bytes)
-float EGraphics::GetFarZVal() { return *(float*)0x8042F094; }  // global float
+float EGraphics::GetFarZVal(){ int __val; __asm__ __volatile__("lis %%r9, -32702\n""lfs %0, -3948(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x802F2210 (12 bytes)
-float EGraphics::GetNearZVal() { return *(float*)0x8042F098; }  // global float
+float EGraphics::GetNearZVal(){ int __val; __asm__ __volatile__("lis %%r9, -32702\n""lfs %0, -3944(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x802F221C (8 bytes)
 u32 EGraphics::GetCoordinateSystem() { return *(int*)((char*)this + 0x98); }  // offset 0x98
@@ -100,10 +100,10 @@ void EGraphics::SetScreenXOffset(int val) { *(int*)((char*)this + 0x20) = val; }
 void EGraphics::SetScreenYOffset(int val) { *(int*)((char*)this + 0x24) = val; }  // offset 0x24
 
 // 0x802F22E8 (8 bytes)
-int EGraphics::GetScreenXOffset() { return *(int*)((char*)this + 0x20); }  // offset 0x20
+int EGraphics::GetScreenXOffset(){ return *(int*)((char*)this + 0x20); }
 
 // 0x802F22F0 (8 bytes)
-int EGraphics::GetScreenYOffset() { return *(int*)((char*)this + 0x24); }  // offset 0x24
+int EGraphics::GetScreenYOffset(){ return *(int*)((char*)this + 0x24); }
 
 // 0x802F22F8 (8 bytes)
 int EGraphics::GetMaxTextureXSize() { return 1024; }
@@ -144,7 +144,7 @@ int EGraphics::IsFirstPassRenderOnly() { return *(int*)((char*)this + 0x31C); } 
 void EGraphics::SetEnableFrameEffects(bool val) { *(int*)((char*)this + 0x320) = val; }  // offset 0x320
 
 // 0x802F2350 (8 bytes)
-int EGraphics::IsEnableFrameEffects() { return *(int*)((char*)this + 0x320); }  // offset 0x320
+int EGraphics::IsEnableFrameEffects(){ return *(int*)((char*)this + 0x320); }
 
 // 0x802F2358 (8 bytes)
 int EGraphics::IsInsideBeginEnd() { return *(int*)((char*)this + 0x4); }  // offset 0x4
@@ -154,4 +154,3 @@ int EGraphics::ManagedStartup() { return 1; }
 
 // 0x802F2368 (4 bytes)
 void EGraphics::SelectFrameBuffer(int) { }
-

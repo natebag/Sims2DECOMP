@@ -12,4 +12,3 @@ void MUStatesLoadGame::Draw(ERC *) { }
 
 // 0x80093E28 (12 bytes)
 MUWrapper* MUStatesLoadGame::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
-

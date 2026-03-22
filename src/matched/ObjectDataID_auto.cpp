@@ -12,4 +12,3 @@ void ObjectDataID::SetNamespaceID(unsigned int val) { *(int*)((char*)this + 0x0)
 
 // 0x8015BBF0 (8 bytes)
 void ObjectDataID::SetResourceID(unsigned short val) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
-

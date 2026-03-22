@@ -39,4 +39,3 @@ int EController::IsStable() { return (*(int*)((char*)this + 0x4) >> 1) & 1; }  /
 
 // 0x80305D58 (16 bytes)
 int EController::AreAxesSwapped(int index) { return ((int*)((char*)this + 0x18C))[index]; }  // array[index], elem_size=4
-

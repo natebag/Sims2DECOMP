@@ -9,4 +9,3 @@ void AptScriptFunctionBase::PreDestroy() { }
 
 // 0x802B8420 (16 bytes)
 AptValue* AptScriptFunctionBase::GetRegisterValue(int) { /* lwz+slwi+lwzx indexed */ return 0; }
-

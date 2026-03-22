@@ -8,13 +8,13 @@
 void ESim::DoLightingCalculation() { }
 
 // 0x800350F0 (12 bytes)
-void* ESim::GetTypeInfo() const { return (void*)0x8050B428; }  // global data pointer
+void* ESim::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19416" : "=r"(__p)); return __p; }
 
 // 0x800350FC (12 bytes)
-void ESim::GetTypeName() const { return *(int*)0x8050B434; }  // global variable
+void ESim::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19404(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x80035108 (12 bytes)
-void ESim::GetTypeKey() const { return *(int*)0x8050B438; }  // global variable
+void ESim::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19400(%%r9)" : "=r"(__val)); return __val; }
 #if 0
 
 // 0x80035114 (12 bytes)
@@ -22,7 +22,7 @@ unsigned short ESim::GetTypeVersion() const { return *(unsigned short*)0x8050B43
 #endif
 
 // 0x80035120 (12 bytes)
-void* ESim::GetTypeInfoStatic() { return (void*)0x8050B428; }  // global data pointer
+void* ESim::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19416" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x8003512C (12 bytes)

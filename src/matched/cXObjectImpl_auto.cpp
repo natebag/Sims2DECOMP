@@ -11,7 +11,7 @@ void cXObjectImpl::PreSave() { }
 int cXObjectImpl::GetHilite() { return *(int*)((char*)this + 0x84) & 0x1F; }
 
 // 0x800DE780 (8 bytes)
-int cXObjectImpl::GetSpriteSlot() { return *(int*)((char*)this + 0xB0); }  // offset 0xB0
+int cXObjectImpl::GetSpriteSlot(){ return *(int*)((char*)this + 0xB0); }
 
 // 0x800DF224 (4 bytes)
 void cXObjectImpl::ForceLocation() { }
@@ -23,7 +23,7 @@ unsigned int cXObjectImpl::ReconType() { return 0x584F424A; }
 bool cXObjectImpl::IsBeingDraggedAround() { return false; }
 
 // 0x800E2AC4 (8 bytes)
-int cXObjectImpl::GetLevel() const { return *(int*)((char*)this + 0x80); }  // offset 0x80
+int cXObjectImpl::GetLevel() const{ return *(int*)((char*)this + 0x80); }
 
 // 0x800E2ACC (8 bytes)
 void cXObjectImpl::SetLevel(int val) { *(int*)((char*)this + 0x80) = val; }  // offset 0x80
@@ -41,25 +41,25 @@ int cXObjectImpl::GetNumAttr() { return *(int*)((char*)this + 0xC); }  // offset
 cXObjectImpl* cXObjectImpl::CastToObjectImpl() { }
 
 // 0x800EAB38 (8 bytes)
-s8 cXObjectImpl::GetSyncObject() { return *(int*)((char*)this + 0xDC); }  // offset 0xDC
+s8 cXObjectImpl::GetSyncObject(){ return *(int*)((char*)this + 0xDC); }
 
 // 0x800EAB40 (12 bytes)
 void cXObjectImpl::ClearSyncObject() { *(int*)((char*)this + 0xDC) = 0; }
 
 // 0x800EAB4C (8 bytes)
-bool cXObjectImpl::WaitingForSync() { return *(int*)((char*)this + 0xE4); }  // offset 0xE4
+bool cXObjectImpl::WaitingForSync(){ return *(int*)((char*)this + 0xE4); }
 
 // 0x800EABC4 (8 bytes)
-bool cXObjectImpl::GetFreeWill() { return 0; }  // lwz r3,-31912(r13)
+bool cXObjectImpl::GetFreeWill(){ int __sda; __asm__ __volatile__("lwz %0, -31912(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800EABCC (8 bytes)
-bool cXObjectImpl::GetAutoCenter() { return 0; }  // lwz r3,-31904(r13)
+bool cXObjectImpl::GetAutoCenter(){ int __sda; __asm__ __volatile__("lwz %0, -31904(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800EABD4 (8 bytes)
 void cXObjectImpl::SetAutoCenter(bool) { }  // stw r3,-31904(r13)
 
 // 0x800EABDC (8 bytes)
-bool cXObjectImpl::GetAutoReset() { return 0; }  // lwz r3,-31900(r13)
+bool cXObjectImpl::GetAutoReset(){ int __sda; __asm__ __volatile__("lwz %0, -31900(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800EABE4 (8 bytes)
 void cXObjectImpl::SetAutoReset(bool) { }  // stw r3,-31900(r13)
@@ -154,4 +154,3 @@ void cXObjectImpl::TryFindTreeNew(StackElem *, FindTreeNewParam *) { /* r3=0, r4
 
 // 0x8010D5AC (4 bytes)
 void cXObjectImpl::Backtrace() { }
-

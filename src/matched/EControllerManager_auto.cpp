@@ -15,4 +15,3 @@ void EControllerManager::GetControllerCount() { return 4; }
 
 // 0x80324534 (12 bytes)
 void EControllerManager::IndexToBit(int index) { return 1u << index; }  // index to bitmask
-

@@ -115,4 +115,3 @@ unsigned int NghResFile::GetCurrentHouse() const { return (char*)(*(void**)((cha
 
 // 0x800D93CC (8 bytes)
 int NghResFile::GetSourceType() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
-

@@ -65,7 +65,7 @@ void InteractorModule::SocialModeInteractor::OnCommandReleased(InteractorModule:
 void InteractorModule::SocialModeInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
 
 // 0x8021F474 (12 bytes)
-int InteractorModule::SocialModeInteractor::GetSelectionRadius() { return *(float*)0x8040DF60; }  // global float
+int InteractorModule::SocialModeInteractor::GetSelectionRadius(){ int __val; __asm__ __volatile__("lis %%r9, -32704\n""lfs %0, -8352(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8021F57C (12 bytes)
 void InteractorModule::SocialModeInteractor::ResetChosenAction() { *(short*)((char*)this + 0x60) = -1; }
