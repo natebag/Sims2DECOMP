@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERTQuantize
@@ -10,3 +11,4 @@ int ERTQuantize::GetPaletteSize() { return *(int*)((char*)this + 0x10A8); }  // 
 // 0x802CF964 (8 bytes)
 int ERTQuantize::GetFullPaletteSize() { return *(int*)((char*)this + 0x1098); }  // offset 0x1098
 
+#endif

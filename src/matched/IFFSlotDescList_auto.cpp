@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IFFSlotDescList
@@ -19,3 +20,4 @@ void IFFSlotDescList::SetStringSetID(int) { }
 // 0x801452B8 (8 bytes)
 bool IFFSlotDescList::GetDataSourceType() const { return 2; }
 
+#endif

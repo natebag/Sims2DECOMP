@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcAudio
@@ -34,3 +35,4 @@ void ENgcAudio::AddEvent(EA_EVENT, EMsgQueue &, unsigned int) { }
 // 0x8032CC24 (4 bytes)
 void ENgcAudio::RemoveEvent(EA_EVENT, EMsgQueue &, unsigned int) { }
 
+#endif

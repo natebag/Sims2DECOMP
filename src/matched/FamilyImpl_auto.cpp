@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FamilyImpl
@@ -41,7 +42,7 @@ int FamilyImpl::GetHouseValue() { return *(int*)((char*)this + 0x18); }  // offs
 void FamilyImpl::SetHouseValue(int) { *(int*)((char*)this + 0x18) = val; }  // offset 0x18
 
 // 0x800B6B70 (16 bytes)
-void FamilyImpl::SetFriendCount(int) { *(int*)((char*)this + 0x1C) = param4; *(int*)((char*)this + 0x20) = 0; }
+void FamilyImpl::SetFriendCount(int) { *(int*)((char*)this + 0x1C) = p4; *(int*)((char*)this + 0x20) = 0; }
 
 // 0x800B6BA0 (12 bytes)
 bool FamilyImpl::GetHasPhone() { return *(int*)((char*)this + 0x34) & 1; }  // low bit
@@ -73,3 +74,4 @@ int FamilyImpl::GetStatValue(int) const { return 0; }
 // 0x800B6CA0 (8 bytes)
 int FamilyImpl::GetStatRef(int, short **) { return 0; }
 
+#endif

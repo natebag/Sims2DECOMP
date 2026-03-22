@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SimpleReconObject<CasCostumes>
@@ -7,3 +8,4 @@
 // 0x803B05FC (8 bytes)
 int SimpleReconObject<CasCostumes>::GetType() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
+#endif

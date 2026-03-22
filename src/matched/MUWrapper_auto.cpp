@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MUWrapper
@@ -5,13 +6,13 @@
 // 6 functions, 84 bytes
 
 // 0x80082500 (20 bytes)
-void MUWrapper::SetDisplayOkType(MUStateMachine::eMUDisplayOk) { *(int*)((char*)this + 0xB4) = param4; *(int*)((char*)this + 0xBC) = 0; *(int*)((char*)this + 0xB8) = 0; }
+void MUWrapper::SetDisplayOkType(MUStateMachine::eMUDisplayOk) { *(int*)((char*)this + 0xB4) = p4; *(int*)((char*)this + 0xBC) = 0; *(int*)((char*)this + 0xB8) = 0; }
 
 // 0x80082514 (20 bytes)
-void MUWrapper::SetQueryType(MUStateMachine::eMUQuery) { *(int*)((char*)this + 0xB8) = param4; *(int*)((char*)this + 0xBC) = 0; *(int*)((char*)this + 0xB4) = 0; }
+void MUWrapper::SetQueryType(MUStateMachine::eMUQuery) { *(int*)((char*)this + 0xB8) = p4; *(int*)((char*)this + 0xBC) = 0; *(int*)((char*)this + 0xB4) = 0; }
 
 // 0x80082528 (20 bytes)
-void MUWrapper::SetInfoType(MUStateMachine::eMUInfo) { *(int*)((char*)this + 0xBC) = param4; *(int*)((char*)this + 0xB8) = 0; *(int*)((char*)this + 0xB4) = 0; }
+void MUWrapper::SetInfoType(MUStateMachine::eMUInfo) { *(int*)((char*)this + 0xBC) = p4; *(int*)((char*)this + 0xB8) = 0; *(int*)((char*)this + 0xB4) = 0; }
 
 // 0x80083954 (8 bytes)
 void MUWrapper::SetScreenConfiguration(MUWrapper::eMUScreenConfiguration) { *(int*)((char*)this + 0xAC) = val; }  // offset 0xAC
@@ -22,3 +23,4 @@ void MUWrapper::SetBackgroundDrawEnable(bool) { *(int*)((char*)this + 0xC8) = va
 // 0x80083964 (8 bytes)
 int MUWrapper::GetFont() { return *(int*)((char*)this + 0xA4); }  // offset 0xA4
 
+#endif

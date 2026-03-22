@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResource
@@ -70,3 +71,4 @@ int EResource::TryIncrementSubResources() { return 1; }
 // 0x80312350 (4 bytes)
 void EResource::DetachClone() { }
 
+#endif

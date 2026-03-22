@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for K2YTarget
@@ -13,3 +14,4 @@ void* K2YTarget::GetSavedFirstName() { return (void*)0x8050C0E4; }  // global da
 // 0x801E70AC (12 bytes)
 void* K2YTarget::GetSavedLastName() { return (void*)0x8050C124; }  // global data pointer
 
+#endif

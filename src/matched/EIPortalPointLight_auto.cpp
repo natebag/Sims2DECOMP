@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIPortalPointLight
@@ -34,3 +35,4 @@ bool EIPortalPointLight::IsPointLight() { return true; }
 // 0x8022B10C (8 bytes)
 int EIPortalPointLight::GetRoomId() { return *(int*)((char*)this + 0xC0); }  // offset 0xC0
 
+#endif

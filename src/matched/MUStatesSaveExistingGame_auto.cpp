@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MUStatesSaveExistingGame
@@ -13,3 +14,4 @@ void MUStatesSaveExistingGame::Draw(ERC *) { }
 // 0x80094090 (12 bytes)
 int MUStatesSaveExistingGame::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
 
+#endif

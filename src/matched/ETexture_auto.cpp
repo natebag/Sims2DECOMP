@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ETexture
@@ -64,3 +65,4 @@ void ETexture::ClearSwizzleFlag() { /* modify bitfield [25:23] at offset 0x8 */ 
 // 0x80365198 (16 bytes)
 void ETexture::SetSwizzleFlag() { *(unsigned int*)((char*)this + 0x8) |= 0x80; }  // set flags
 
+#endif

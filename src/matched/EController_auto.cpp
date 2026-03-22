@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EController
@@ -40,3 +41,4 @@ bool EController::IsStable() { return (*(int*)((char*)this + 0x4) >> 1) & 1; }  
 // 0x80305D58 (16 bytes)
 int EController::AreAxesSwapped(int) { return ((int*)((char*)this + 0x18C))[index]; }  // array[index], elem_size=4
 
+#endif

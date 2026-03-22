@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for StackElem
@@ -13,3 +14,4 @@ int StackElem::GetIgnoreDataBreakPoint() const { return *(int*)((char*)this + 0x
 // 0x801491B4 (8 bytes)
 void StackElem::SetIgnoreDataBreakPoint(bool) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
 
+#endif

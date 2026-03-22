@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MorphUtilities
@@ -7,3 +8,4 @@
 // 0x80057C18 (8 bytes)
 void MorphUtilities::MorphUtilities(EIStaticModel **) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
+#endif

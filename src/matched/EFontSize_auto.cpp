@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFontSize
@@ -22,3 +23,4 @@ void* EFontSize::GetTypeInfoStatic() { return (void*)0x8050D70C; }  // global da
 // 0x80364A10 (12 bytes)
 unsigned short EFontSize::GetReadVersion() { return *(unsigned short*)0x8050D722; }  // global variable
 
+#endif

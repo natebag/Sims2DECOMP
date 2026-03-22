@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ReconObject
@@ -10,3 +11,4 @@ void ReconObject::DoStream(ReconBuffer *, int) { }
 // 0x8013476C (12 bytes)
 unsigned int ReconObject::GetType() { return 0x52636F6E; }
 
+#endif

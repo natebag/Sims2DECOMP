@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeSimImpl
@@ -34,3 +35,4 @@ void TreeSimImpl::AsTreeSim() { }
 // 0x801492C0 (4 bytes)
 void TreeSimImpl::AsTreeSim() const { }
 
+#endif

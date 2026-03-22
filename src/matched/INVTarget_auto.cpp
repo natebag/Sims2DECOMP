@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for INVTarget
@@ -34,3 +35,4 @@ void INVTarget::GetOnMsgInvShpIsTabEnabled(char *) { }
 // 0x80203D68 (8 bytes)
 bool INVTarget::GetSelectedShoppingCategoryListIdx() { return *(unsigned char*)((char*)this + 0x3250); }  // offset 0x3250
 
+#endif

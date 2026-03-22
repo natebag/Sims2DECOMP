@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EGameState
@@ -16,3 +17,4 @@ void EGameState::PauseAllSounds() { }
 // 0x80089E2C (4 bytes)
 void EGameState::ResumeAllSounds() { }
 
+#endif

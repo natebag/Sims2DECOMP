@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcTextureC8_32
@@ -13,3 +14,4 @@ int ENgcTextureC8_32::GetTEXCount() { return 2; }
 // 0x80351460 (8 bytes)
 int ENgcTextureC8_32::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 
+#endif

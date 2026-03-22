@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcMemoryCard
@@ -55,3 +56,4 @@ void ENgcMemoryCard::SetupSaveTypes(EMC_SaveType, unsigned int) { }
 // 0x80334894 (4 bytes)
 void ENgcMemoryCard::SetGameCode(char *) { }
 
+#endif

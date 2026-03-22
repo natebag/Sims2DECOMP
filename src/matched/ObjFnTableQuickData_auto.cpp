@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjFnTableQuickData
@@ -31,3 +32,4 @@ int ObjFnTableQuickData::LoadFromIndex(unsigned int, int) { return 0; }
 // 0x80110338 (8 bytes)
 bool ObjFnTableQuickData::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
+#endif

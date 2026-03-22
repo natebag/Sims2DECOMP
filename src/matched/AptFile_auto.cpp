@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptFile
@@ -7,3 +8,4 @@
 // 0x802A17F0 (8 bytes)
 int AptFile::GetMainCharacter() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
+#endif

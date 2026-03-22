@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptValueFactory
@@ -7,3 +8,4 @@
 // 0x802B5124 (8 bytes)
 int AptValueFactory::CreateUndefined() { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
 
+#endif

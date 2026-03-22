@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for HUDTarget
@@ -25,3 +26,4 @@ bool HUDTarget::HUDHideComplete() const { return *(unsigned char*)((char*)this +
 // 0x80189AC8 (8 bytes)
 unsigned char HUDTarget::GetHudTransitionTarget() { return *(unsigned char*)((char*)this + 0x100); }  // offset 0x100
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptString
@@ -16,3 +17,4 @@ void AptString::SetNext(AptString *) { *(int*)((char*)this + 0x10) = val; }  // 
 // 0x802AED0C (8 bytes)
 int AptString::GetNext() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
+#endif

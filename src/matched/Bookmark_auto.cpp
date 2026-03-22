@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Bookmark
@@ -16,3 +17,4 @@ void* WantFear::Bookmark::GetAdData() const { return (char*)(*(void**)((char*)th
 // 0x8014B440 (12 bytes)
 unsigned int WantFear::Bookmark::GetOverlayShader(Neighbor *) const { return 0x9F93FF74; }
 
+#endif

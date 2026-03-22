@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for REffectsSequencer
@@ -31,3 +32,4 @@ void* REffectsSequencer::GetTypeInfoStatic() { return (void*)0x8050D8C4; }  // g
 // 0x8036B19C (12 bytes)
 unsigned short REffectsSequencer::GetReadVersion() { return *(unsigned short*)0x8050D8DA; }  // global variable
 
+#endif

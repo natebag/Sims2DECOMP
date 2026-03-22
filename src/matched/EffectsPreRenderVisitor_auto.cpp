@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EffectsPreRenderVisitor
@@ -13,3 +14,4 @@ void EffectsPreRenderVisitor::Visit(Effects::Effect &) { return 1; }
 // 0x8003E190 (8 bytes)
 void EffectsPreRenderVisitor::Visit(Effects::EffectsSequencer &) { return 1; }
 
+#endif

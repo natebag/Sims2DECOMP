@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EApp
@@ -64,3 +65,4 @@ unsigned int EApp::GetAppStackSize() { return 0x00018000; }
 // 0x802E2990 (4 bytes)
 void EApp::Shutdown() { }
 
+#endif

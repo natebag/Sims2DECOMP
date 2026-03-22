@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for InteractorManager
@@ -13,3 +14,4 @@ int InteractorModule::InteractorManager::GetVisualizer() { return /* SDA global 
 // 0x8020B6A0 (8 bytes)
 int InteractorModule::InteractorManager::IsInitialized() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
+#endif

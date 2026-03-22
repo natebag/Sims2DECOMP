@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Slot
@@ -13,3 +14,4 @@ void Slot::Slot(SlotDescriptor *) { *(void**)((char*)this + 0x0) = (void*)0x8046
 // 0x80142990 (4 bytes)
 void Slot::WriteSlot(SlotDescriptor *) { }
 
+#endif

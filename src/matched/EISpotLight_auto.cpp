@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EISpotLight
@@ -22,3 +23,4 @@ void* EISpotLight::GetTypeInfoStatic() { return (void*)0x8050CC98; }  // global 
 // 0x8022B854 (12 bytes)
 unsigned short EISpotLight::GetReadVersion() { return *(unsigned short*)0x8050CCAE; }  // global variable
 
+#endif

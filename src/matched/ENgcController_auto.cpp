@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcController
@@ -7,3 +8,4 @@
 // 0x803C711C (8 bytes)
 bool ENgcController::HasVibration() const { return true; }
 
+#endif

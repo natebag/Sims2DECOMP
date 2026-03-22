@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataFactoryQuickData<StringSet>
@@ -7,3 +8,4 @@
 // 0x803AECE0 (8 bytes)
 void ObjectDataFactoryQuickData<StringSet>::GetDataSourceType() const { return 1; }
 
+#endif

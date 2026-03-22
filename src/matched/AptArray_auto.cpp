@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptArray
@@ -13,3 +14,4 @@ int AptArray::GetAt(int) const { return ((int*)(*(void**)((char*)this + 0x24)))[
 // 0x80287EF0 (4 bytes)
 void AptArray::ConvertAptValue(AptValue *) { }
 
+#endif

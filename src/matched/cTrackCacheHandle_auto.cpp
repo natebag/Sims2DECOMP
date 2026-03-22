@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cTrackCacheHandle
@@ -7,3 +8,4 @@
 // 0x80119468 (8 bytes)
 void cTrackCacheHandle::cTrackCacheHandle(ERSoundEvent *) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
+#endif

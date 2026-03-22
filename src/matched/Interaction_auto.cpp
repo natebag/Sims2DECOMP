@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Interaction
@@ -97,3 +98,4 @@ void Interaction::SetFlags(int) { *(int*)((char*)this + 0x3C) = val; }  // offse
 // 0x800C2000 (8 bytes)
 void Interaction::SetShader(EActionIcon *) const { return 0; }
 
+#endif

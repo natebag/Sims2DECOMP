@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for DialogPaneBase
@@ -28,3 +29,4 @@ float DialogPaneBase::GetBodyDisplayPadSizeX() { return *(float*)((char*)(*(void
 // 0x80089074 (12 bytes)
 float DialogPaneBase::GetBodyDisplayPadSizeY() { return *(float*)((char*)(*(void**)((char*)this + 0x64)) + 0x38); }  // double deref float
 
+#endif

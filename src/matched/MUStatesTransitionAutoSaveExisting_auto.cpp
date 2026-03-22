@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MUStatesTransitionAutoSaveExisting
@@ -10,3 +11,4 @@ void MUStatesTransitionAutoSaveExisting::Reset() { /* SDA @ r13-24656 = 0 */; *(
 // 0x80094108 (12 bytes)
 int MUStatesTransitionAutoSaveExisting::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
 
+#endif

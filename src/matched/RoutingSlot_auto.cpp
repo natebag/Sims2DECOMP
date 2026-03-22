@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for RoutingSlot
@@ -20,7 +21,7 @@ void RoutingSlot::FaceTowardsObject() { *(int*)((char*)this + 0x34) = -2; }
 void RoutingSlot::FaceAwayFromObject() { *(int*)((char*)this + 0x34) = -1; }
 
 // 0x80142BC8 (16 bytes)
-void RoutingSlot::SetDistances(int, int, int) { *(int*)((char*)this + 0x2C) = param6; *(int*)((char*)this + 0x24) = param4; *(int*)((char*)this + 0x28) = param5; }
+void RoutingSlot::SetDistances(int, int, int) { *(int*)((char*)this + 0x2C) = param6; *(int*)((char*)this + 0x24) = p4; *(int*)((char*)this + 0x28) = p5; }
 
 // 0x80142C30 (16 bytes)
 void RoutingSlot::SetMultiplier(RoutingSlot::VerticalPosition, int) { ((int*)((char*)this + 0x10))[index] = val; }  // array[index] store, elem_size=4
@@ -79,3 +80,4 @@ float RoutingSlot::GetYOffset() const { return *(float*)((char*)this + 0x8); }  
 // 0x801456D8 (8 bytes)
 float RoutingSlot::GetAltOffset() const { return *(float*)((char*)this + 0xC); }  // offset 0xC
 
+#endif

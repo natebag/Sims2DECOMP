@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for NeighborhoodImpl
@@ -43,3 +44,4 @@ void NeighborhoodImpl::GetImpl() { }
 // 0x800D1950 (8 bytes)
 void NeighborhoodImpl::SetHouseNum(int) { *(int*)((char*)this + 0x70) = val; }  // offset 0x70
 
+#endif

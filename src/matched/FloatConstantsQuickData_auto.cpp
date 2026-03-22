@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FloatConstantsQuickData
@@ -25,3 +26,4 @@ void FloatConstantsQuickData::SetResourceName(StringBuffer &) { return 0; }
 // 0x800B7204 (8 bytes)
 bool FloatConstantsQuickData::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
+#endif

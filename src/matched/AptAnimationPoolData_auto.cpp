@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptAnimationPoolData
@@ -19,3 +20,4 @@ int AptAnimationPoolData::GetActionPool() { return *(int*)((char*)this + 0x98); 
 // 0x802A9880 (8 bytes)
 int AptAnimationPoolData::GetActionPool() { return *(int*)((char*)this + 0x98); }  // offset 0x98
 
+#endif

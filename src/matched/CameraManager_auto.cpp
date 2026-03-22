@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CameraManager
@@ -19,3 +20,4 @@ void CameraManager::SetCamera(int, ESimsCam *) { /* indexed array store, shift=2
 // 0x8001ECA0 (12 bytes)
 int CameraManager::GetCamera(int) { /* indexed array load, elem_size=4 */ return 0; }
 
+#endif

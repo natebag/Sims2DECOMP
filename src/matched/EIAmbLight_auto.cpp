@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIAmbLight
@@ -25,3 +26,4 @@ unsigned short EIAmbLight::GetReadVersion() { return *(unsigned short*)0x8050CB6
 // 0x80226FD8 (8 bytes)
 int EIAmbLight::GetLightType() { return 1; }
 
+#endif

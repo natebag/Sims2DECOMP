@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIObjectMan
@@ -7,3 +8,4 @@
 // 0x800550B0 (16 bytes)
 bool EIObjectMan::IsEmpty() { return *(int*)((char*)this + 0x4) != 0; }
 
+#endif

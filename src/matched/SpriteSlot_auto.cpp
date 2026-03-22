@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SpriteSlot
@@ -67,3 +68,4 @@ float SpriteSlot::GetSizeMultiplierY() const { return *(float*)((char*)this + 0x
 // 0x80145484 (8 bytes)
 float SpriteSlot::GetAlpha() const { return *(float*)((char*)this + 0x58); }  // offset 0x58
 
+#endif

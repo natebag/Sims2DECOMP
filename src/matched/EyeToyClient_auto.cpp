@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EyeToyClient
@@ -34,3 +35,4 @@ int EyeToyClient::GetTargetSlotCount() { return 5; }
 // 0x80038F40 (8 bytes)
 int EyeToyClient::GetSessionTexture() { return /* SDA global @ r13-32536 */; }  // lwz r3,-32536(r13)
 
+#endif

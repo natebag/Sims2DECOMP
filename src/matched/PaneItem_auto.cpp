@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PaneItem
@@ -37,3 +38,4 @@ void PaneItem::Startup() { }
 // 0x803A0974 (4 bytes)
 void PaneItem::Draw(ERC *, float) { }
 
+#endif

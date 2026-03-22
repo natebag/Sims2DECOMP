@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Debug
@@ -7,3 +8,4 @@
 // 0x80039510 (4 bytes)
 void EyeToyClient::Debug::WriteTGAToHost(short *, int, int) { }
 
+#endif

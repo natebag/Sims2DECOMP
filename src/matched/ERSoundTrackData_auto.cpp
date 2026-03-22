@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERSoundTrackData
@@ -28,3 +29,4 @@ void* ERSoundTrackData::GetInstruction(unsigned int) { return (char*)(*(void**)(
 // 0x8036A6D4 (20 bytes)
 int ERSoundTrackData::GetProgramSize() { return ((char*)(*(void**)((char*)this + 0x18)) - (char*)(*(void**)((char*)this + 0x14))) / 4; }  // count = (end-start)/4
 
+#endif

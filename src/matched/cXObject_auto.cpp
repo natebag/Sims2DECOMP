@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXObject
@@ -43,3 +44,4 @@ void cXObject::setMTObjectImpl(cXMTObjectImpl *) { *(int*)((char*)(*(void**)((ch
 // 0x800EA9B0 (12 bytes)
 void cXObject::setPortalImpl(cXPortalImpl *) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0xC) = val; }  // double deref setter
 
+#endif

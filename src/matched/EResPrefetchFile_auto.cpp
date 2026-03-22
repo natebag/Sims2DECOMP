@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResPrefetchFile
@@ -25,3 +26,4 @@ int EResPrefetchFile::Tell() const { return *(int*)((char*)this + 0x40); }  // o
 // 0x80313338 (8 bytes)
 int EResPrefetchFile::GetResMan() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
 
+#endif

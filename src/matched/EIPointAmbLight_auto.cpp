@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIPointAmbLight
@@ -22,3 +23,4 @@ void* EIPointAmbLight::GetTypeInfoStatic() { return (void*)0x8050CC20; }  // glo
 // 0x80229C80 (12 bytes)
 unsigned short EIPointAmbLight::GetReadVersion() { return *(unsigned short*)0x8050CC36; }  // global variable
 
+#endif

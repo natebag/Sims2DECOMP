@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIGameInstance
@@ -22,3 +23,4 @@ void* EIGameInstance::GetTypeInfoStatic() { return (void*)0x8050CBD0; }  // glob
 // 0x80227838 (12 bytes)
 unsigned short EIGameInstance::GetReadVersion() { return *(unsigned short*)0x8050CBE6; }  // global variable
 
+#endif

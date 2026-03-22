@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PiecewiseFn
@@ -7,3 +8,4 @@
 // 0x8012CC48 (12 bytes)
 void PiecewiseFn::Reset() { *(int*)((char*)this + 0x8) = 0; }
 
+#endif

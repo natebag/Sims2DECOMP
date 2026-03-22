@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIWallPart
@@ -31,3 +32,4 @@ void EIWallPart::SetForceFadeOff(bool) { *(int*)((char*)this + 0x3B0) = val; }  
 // 0x8003065C (4 bytes)
 void EIWallPart::RealizeShaderTuning() { }
 
+#endif

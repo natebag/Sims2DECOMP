@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ECharacterManager
@@ -7,3 +8,4 @@
 // 0x8032333C (8 bytes)
 bool ECharacterManager::CanCache(EResource *) { return true; }
 
+#endif

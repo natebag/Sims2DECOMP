@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataFactoryQuickData<ITreeTable>
@@ -7,3 +8,4 @@
 // 0x803AEC98 (8 bytes)
 int ObjectDataFactoryQuickData<ITreeTable>::GetDataSourceType() const { return 1; }
 
+#endif

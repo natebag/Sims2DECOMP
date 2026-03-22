@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Language
@@ -10,3 +11,4 @@ bool Language::IsSingleExit(BehaviorNode *) { return false; }
 // 0x803A2B98 (8 bytes)
 int Language::GetSwizzler() { return 0; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EHouse
@@ -10,3 +11,4 @@ void EHouse::TriggerLightningEffect() { }
 // 0x8002539C (16 bytes)
 int EHouse::GetRoomAmbLight(int) { return ((int*)(*(void**)((char*)this + 0x28)))[index]; }  // ptr->array[index], elem_size=4
 
+#endif

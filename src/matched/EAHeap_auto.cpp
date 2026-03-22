@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAHeap
@@ -7,3 +8,4 @@
 // 0x802D09D4 (8 bytes)
 int EAHeap::GetCurrentCheckPoint() { return /* SDA global @ r13-26860 */; }  // lwz r3,-26860(r13)
 
+#endif

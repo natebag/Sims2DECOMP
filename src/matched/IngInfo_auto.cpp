@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IngInfo
@@ -10,3 +11,4 @@ void INGTarget::IngInfo::IngInfo() { *(int*)((char*)this + 0x4) = 0; *(int*)((ch
 // 0x801B9448 (16 bytes)
 void INGTarget::IngInfo::erase() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFontCharacter
@@ -28,3 +29,4 @@ void* EFontCharacter::GetTypeInfoStatic() { return (void*)0x8050D6BC; }  // glob
 // 0x80364754 (12 bytes)
 unsigned short EFontCharacter::GetReadVersion() { return *(unsigned short*)0x8050D6D2; }  // global variable
 
+#endif

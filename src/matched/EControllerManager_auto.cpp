@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EControllerManager
@@ -16,3 +17,4 @@ int EControllerManager::GetControllerCount() { return 4; }
 // 0x80324534 (12 bytes)
 unsigned int EControllerManager::IndexToBit(int) { return 1u << index; }  // index to bitmask
 
+#endif

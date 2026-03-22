@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for GameTime
@@ -10,3 +11,4 @@ int GameTime::CountDaysInMonth(int, int) { return 30; }
 // 0x80147090 (8 bytes)
 int GameTime::CountDaysInYear(int) { return 360; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFontPage
@@ -25,3 +26,4 @@ void* EFontPage::GetTypeInfoStatic() { return (void*)0x8050D6E4; }  // global da
 // 0x803648A8 (12 bytes)
 unsigned short EFontPage::GetReadVersion() { return *(unsigned short*)0x8050D6FA; }  // global variable
 
+#endif

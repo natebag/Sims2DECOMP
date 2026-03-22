@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectFolderImpl
@@ -31,3 +32,4 @@ void* ObjectFolderImpl::GetBehaviorFinder() { return (char*)this + 0x4; }  // of
 // 0x800F29F0 (8 bytes)
 int ObjectFolderImpl::GetObjectsDatabase() { return *(int*)((char*)this + 0x690); }  // offset 0x690
 
+#endif

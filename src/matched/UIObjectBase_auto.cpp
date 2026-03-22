@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for UIObjectBase
@@ -19,3 +20,4 @@ void UIObjectBase::Update() { }
 // 0x803A06B0 (4 bytes)
 void UIObjectBase::Draw(ERC *) { }
 
+#endif

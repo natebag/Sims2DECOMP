@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFolder
@@ -5,5 +6,6 @@
 // 1 functions, 12 bytes
 
 // 0x803C4180 (12 bytes)
-void EFolder::SetData(void *) { *(int*)((char*)this + 0x0) = param4; *(int*)((char*)this + 0x4) = param4; }
+void EFolder::SetData(void *) { *(int*)((char*)this + 0x0) = p4; *(int*)((char*)this + 0x4) = p4; }
 
+#endif

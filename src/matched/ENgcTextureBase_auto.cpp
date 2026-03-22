@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcTextureBase
@@ -25,3 +26,4 @@ void ENgcTextureBase::SetSwizzleFlag() { *(unsigned int*)((char*)this + 0x8) |= 
 // 0x80350618 (4 bytes)
 void ENgcTextureBase::UnswizzleImage(unsigned char *, int, int, unsigned char *) { }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PlacementSpec
@@ -7,3 +8,4 @@
 // 0x800DCDF4 (12 bytes)
 void PlacementSpec::PlacementSpec(bool) { *(int*)((char*)this + 0x0) = 0; }
 
+#endif

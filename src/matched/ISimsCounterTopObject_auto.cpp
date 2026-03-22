@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimsCounterTopObject
@@ -22,3 +23,4 @@ void* ISimsCounterTopObject::GetTypeInfoStatic() { return (void*)0x8050B840; }  
 // 0x800542BC (12 bytes)
 unsigned short ISimsCounterTopObject::GetReadVersion() { return *(unsigned short*)0x8050B856; }  // global variable
 
+#endif

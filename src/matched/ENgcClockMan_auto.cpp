@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcClockMan
@@ -13,3 +14,4 @@ void ENgcClockMan::Init() { }
 // 0x8032DA38 (4 bytes)
 void ENgcClockMan::Update() { }
 
+#endif

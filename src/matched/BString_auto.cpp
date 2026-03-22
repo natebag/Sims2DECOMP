@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for BString
@@ -22,3 +23,4 @@ int BString::length() const { return *(int*)((char*)(*(void**)((char*)this + 0x0
 // 0x8009FF58 (12 bytes)
 int BString::reserve() const { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x8); }  // double deref
 
+#endif

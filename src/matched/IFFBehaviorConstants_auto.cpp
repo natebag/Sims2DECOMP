@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IFFBehaviorConstants
@@ -10,3 +11,4 @@ void IFFBehaviorConstants::AddRef() { *(int*)((char*)this + 0x60) += 1; }  // re
 // 0x8015A8A8 (8 bytes)
 int IFFBehaviorConstants::GetDataSourceType() const { return 2; }
 
+#endif

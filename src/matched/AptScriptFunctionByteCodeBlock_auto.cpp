@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptScriptFunctionByteCodeBlock
@@ -22,3 +23,4 @@ void AptScriptFunctionByteCodeBlock::SetArgument(AptValue *, int) { }
 // 0x802B91BC (8 bytes)
 int AptScriptFunctionByteCodeBlock::Duplicate(AptCIH *) { return 0; }
 
+#endif

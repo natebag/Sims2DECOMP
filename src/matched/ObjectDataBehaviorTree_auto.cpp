@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataBehaviorTree
@@ -31,3 +32,4 @@ void ObjectDataBehaviorTree::SetTreeVersion(unsigned char) { *(int*)((char*)(*(v
 // 0x8015AC50 (8 bytes)
 void ObjectDataBehaviorTree::SetResID(short) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
 
+#endif

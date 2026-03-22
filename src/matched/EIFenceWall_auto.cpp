@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIFenceWall
@@ -28,3 +29,4 @@ int EIFenceWall::operator new(unsigned int, void *) { return first; }  // mr r3,
 // 0x80030898 (8 bytes)
 bool EIFenceWall::IsOpaque() { return false; }
 
+#endif

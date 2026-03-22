@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SimpleReconObject<OptionsRecon>
@@ -7,3 +8,4 @@
 // 0x803A051C (8 bytes)
 int SimpleReconObject<OptionsRecon>::GetType() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
+#endif

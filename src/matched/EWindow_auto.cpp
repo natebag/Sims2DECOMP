@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EWindow
@@ -22,3 +23,4 @@ void EWindow::OutputCoordinatesChanged() { }
 // 0x80300B04 (8 bytes)
 int EWindow::Cast3DWindow() { return 0; }
 
+#endif

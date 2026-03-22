@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for DlgWrapper
@@ -55,3 +56,4 @@ int DlgWrapper::IsAptDrawable() { return *(int*)((char*)this + 0xB4); }  // offs
 // 0x8007F074 (16 bytes)
 int DlgWrapper::SetPlayer(int) { int old = *(int*)((char*)this + 0xCC); *(int*)((char*)this + 0xCC) = val; return old; }  // swap setter
 
+#endif

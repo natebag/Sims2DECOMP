@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickResFile
@@ -88,3 +89,4 @@ void QuickResFile::Remove(Memory::HandleNode *) { }
 // 0x80132C5C (4 bytes)
 void QuickResFile::SetInfo(Memory::HandleNode *, short, StringBuffer &, char) { }
 
+#endif

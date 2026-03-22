@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERTexture
@@ -25,3 +26,4 @@ unsigned short ERTexture::GetReadVersion() { return *(unsigned short*)0x8050CF3E
 // 0x80321394 (8 bytes)
 int ERTexture::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 
+#endif

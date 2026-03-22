@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EMat4
@@ -7,3 +8,4 @@
 // 0x802CA640 (4 bytes)
 void EMat4::Print() const { }
 
+#endif

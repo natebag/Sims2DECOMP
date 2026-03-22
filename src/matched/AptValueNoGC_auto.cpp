@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptValueNoGC
@@ -40,3 +41,4 @@ bool AptValueNoGC::IsGarbageCollected() const { return false; }
 // 0x802BBE48 (4 bytes)
 void AptValueNoGC::RegisterReferences() const { }
 
+#endif

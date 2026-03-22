@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERBinary
@@ -28,3 +29,4 @@ int ERBinary::GetData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 // 0x80368614 (8 bytes)
 int ERBinary::GetDataSize() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
+#endif

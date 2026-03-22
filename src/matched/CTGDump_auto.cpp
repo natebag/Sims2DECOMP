@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CTGDump
@@ -13,3 +14,4 @@ void CTGDump::Shutdown() { }
 // 0x800A5188 (4 bytes)
 void CTGDump::operator<<(char *) { }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SAnimator2
@@ -121,3 +122,4 @@ int SAnimator2::GetLastCostume() { return *(int*)((char*)this + 0x130); }  // of
 // 0x80069228 (8 bytes)
 void SAnimator2::SetLastCostume(int) { *(int*)((char*)this + 0x130) = val; }  // offset 0x130
 
+#endif

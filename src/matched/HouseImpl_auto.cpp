@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for HouseImpl
@@ -16,3 +17,4 @@ int HouseImpl::GetFurnishingsScoreCurve() { return *(int*)((char*)this + 0x20); 
 // 0x800BC99C (12 bytes)
 void HouseImpl::SetFamilyToNull() { *(int*)((char*)this + 0x14) = 0; }
 
+#endif

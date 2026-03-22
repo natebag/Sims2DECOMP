@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PDATarget
@@ -13,3 +14,4 @@ int PDATarget::GetINVTarget(int) const { return ((int*)((char*)this + 0x134))[in
 // 0x8020376C (16 bytes)
 int PDATarget::GetPdaMode(int) { return ((int*)((char*)this + 0x14C))[index]; }  // array[index], elem_size=4
 
+#endif

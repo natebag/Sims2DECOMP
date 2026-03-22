@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for INGTarget
@@ -16,3 +17,4 @@ bool INGTarget::is_group_meal() const { return *(int*)((char*)this + 0x8C) == 2;
 // 0x801BC998 (16 bytes)
 int INGTarget::RCPOnCancel() { *(int*)((char*)this + 0x458) = 2; return 1; }
 
+#endif

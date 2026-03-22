@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickDataBehaviorConstants
@@ -19,3 +20,4 @@ int QuickDataBehaviorConstants::GetDataSourceType() const { return 1; }
 // 0x8015A800 (8 bytes)
 bool QuickDataBehaviorConstants::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
+#endif

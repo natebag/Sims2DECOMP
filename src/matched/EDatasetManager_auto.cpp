@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EDatasetManager
@@ -22,3 +23,4 @@ int EDatasetManager::GetLoadingEnabled() { return /* SDA global @ r13-26632 */; 
 // 0x8032494C (8 bytes)
 void EDatasetManager::CanCache(EResource *) { return 1; }
 
+#endif

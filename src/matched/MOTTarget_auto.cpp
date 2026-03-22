@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MOTTarget
@@ -22,3 +23,4 @@ void MOTTarget::SelectedPersonChanged(cXPerson *) { *(int*)((char*)this + 0x168)
 // 0x801CC2AC (8 bytes)
 void MOTTarget::SetTextButtonPressed(bool) { *(int*)((char*)this + 0x94) = val; }  // offset 0x94
 
+#endif

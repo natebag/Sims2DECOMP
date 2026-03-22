@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIStaticModel
@@ -43,3 +44,4 @@ void* EIStaticModel::GetDrawMatrix() { return (char*)this + 0x80; }  // offset 0
 // 0x8022E28C (8 bytes)
 void* EIStaticModel::GetOrient() const { return (char*)this + 0xC0; }  // offset 0xC0
 
+#endif

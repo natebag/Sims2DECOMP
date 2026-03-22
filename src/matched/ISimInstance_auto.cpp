@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimInstance
@@ -85,3 +86,4 @@ int ISimInstance::GetFlags() { return *(int*)((char*)this + 0x32C); }  // offset
 // 0x80056A30 (8 bytes)
 void* ISimInstance::GetAnimController() { return (char*)this + 0x334; }  // offset 0x334
 
+#endif

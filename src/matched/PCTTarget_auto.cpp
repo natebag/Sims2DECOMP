@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PCTTarget
@@ -25,3 +26,4 @@ void PCTTarget::ZeroInputCallback() { *(int*)((char*)this + 0xF0) = 0; }
 // 0x801D875C (12 bytes)
 void PCTTarget::DialogClosedCallback() { *(int*)((char*)this + 0xF0) = 0; }
 
+#endif

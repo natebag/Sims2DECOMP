@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for LoadingScreenStateMachine
@@ -31,3 +32,4 @@ bool LoadingScreenStateMachine::IsFadedOut() { /* SDA double deref bit 3 */ retu
 // 0x80090FD4 (12 bytes)
 void LoadingScreenStateMachine::LoadFinished() { *(int*)((char*)this + 0xA4) = 1; }
 
+#endif

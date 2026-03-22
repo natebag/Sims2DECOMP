@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cFixedWorldImpl
@@ -25,3 +26,4 @@ int cFixedWorldImpl::GetInfluenceMap() { return *(int*)((char*)this + 0x3C); }  
 // 0x80152364 (8 bytes)
 int cFixedWorldImpl::GetPassiveInfluenceMap() { return *(int*)((char*)this + 0x40); }  // offset 0x40
 
+#endif

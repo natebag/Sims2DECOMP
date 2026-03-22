@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EDL
@@ -10,3 +11,4 @@ int EDL::GetStart() { return *(int*)((char*)this + 0x48); }  // offset 0x48
 // 0x80363408 (8 bytes)
 int EDL::GetVertCount() { return *(int*)((char*)this + 0x54); }  // offset 0x54
 
+#endif

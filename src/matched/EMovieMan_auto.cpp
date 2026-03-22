@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EMovieMan
@@ -7,3 +8,4 @@
 // 0x8032520C (8 bytes)
 void EMovieMan::SetMovieId(unsigned int) { *(int*)((char*)this + 0xD20) = val; }  // offset 0xD20
 
+#endif

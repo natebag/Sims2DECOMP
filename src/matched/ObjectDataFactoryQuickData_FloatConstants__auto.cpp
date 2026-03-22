@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataFactoryQuickData<FloatConstants>
@@ -7,3 +8,4 @@
 // 0x803AECC8 (8 bytes)
 int ObjectDataFactoryQuickData<FloatConstants>::GetDataSourceType() const { return 1; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FreeResourceManager
@@ -7,3 +8,4 @@
 // 0x803293F0 (8 bytes)
 int FreeResourceManager::GetUnreferencedResourceCount() { return *(int*)((char*)this + 0xCA0); }  // offset 0xCA0
 
+#endif

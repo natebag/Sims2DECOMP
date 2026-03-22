@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataBehaviorConstants
@@ -19,3 +20,4 @@ void ObjectDataBehaviorConstants::SetResourceName(StringBuffer &) { return 0; }
 // 0x8015A6F4 (16 bytes)
 short ObjectDataBehaviorConstants::GetValue(int) const { /* indexed signed short load via ptr at 20(r3) */ return 0; }
 
+#endif

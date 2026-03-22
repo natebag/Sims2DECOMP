@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for XObjLang
@@ -28,3 +29,4 @@ int XObjLang::GetMaxConstants() { return 128; }
 // 0x80152824 (8 bytes)
 int XObjLang::GetSelector() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FastParticleEmitter
@@ -19,3 +20,4 @@ float Effects::FastParticleEmitter::GetAlphaScale() { return *(float*)((char*)th
 // 0x8035665C (8 bytes)
 void Effects::FastParticleEmitter::SetAlphaScale(float) { *(float*)((char*)this + 0x14C) = val; }  // offset 0x14C
 
+#endif

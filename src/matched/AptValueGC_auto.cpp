@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptValueGC
@@ -55,3 +56,4 @@ bool AptValueGC::IsGarbageCollected() const { return true; }
 // 0x802C4F7C (8 bytes)
 bool AptValueGC::IsGarbageCollected() const { return true; }
 
+#endif

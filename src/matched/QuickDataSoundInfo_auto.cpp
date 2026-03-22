@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickDataSoundInfo
@@ -19,3 +20,4 @@ int QuickDataSoundInfo::GetDataSourceType() const { return 1; }
 // 0x8014594C (8 bytes)
 bool QuickDataSoundInfo::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
+#endif

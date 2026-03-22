@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EDebugMenuItem
@@ -16,3 +17,4 @@ void EDebugMenuItem::ButtonPress(EDebugMenuButton) { }
 // 0x803C417C (4 bytes)
 void EDebugMenuItem::ButtonPress(EDebugMenuButton, float) { }
 
+#endif

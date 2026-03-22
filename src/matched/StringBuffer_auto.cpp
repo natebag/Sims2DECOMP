@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for StringBuffer
@@ -16,3 +17,4 @@ int StringBuffer::c_str() const { return *(int*)((char*)this + 0x0); }  // offse
 // 0x800A6720 (8 bytes)
 int StringBuffer::buffer() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
+#endif

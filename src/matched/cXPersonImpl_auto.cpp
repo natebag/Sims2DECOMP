@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXPersonImpl
@@ -166,3 +167,4 @@ int cXPersonImpl::IsFirstPlayerInSocialMode() { return *(int*)((char*)this + 0x5
 // 0x8012CA54 (8 bytes)
 int cXPersonImpl::IsWaitingForSocialMode() { return *(int*)((char*)this + 0x54C); }  // offset 0x54C
 
+#endif

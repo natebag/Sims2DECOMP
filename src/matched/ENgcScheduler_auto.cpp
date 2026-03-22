@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcScheduler
@@ -16,3 +17,4 @@ int ENgcScheduler::GetLastRetraceCount() { return 1; }
 // 0x8034DBA8 (4 bytes)
 void ENgcScheduler::RendFrameComplete(ESchedCommand *) { }
 
+#endif

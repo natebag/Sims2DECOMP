@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MUStateMachine
@@ -19,3 +20,4 @@ int MUStateMachine::GetHouseNumber() { return /* SDA global @ r13-21360 */; }  /
 // 0x80093BD4 (8 bytes)
 int MUStateMachine::GetMUWrapper() { return *(int*)((char*)this + 0x98); }  // offset 0x98
 
+#endif

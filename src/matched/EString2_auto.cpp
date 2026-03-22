@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EString2
@@ -13,3 +14,4 @@ void EString2::SetToError() { *(void**)((char*)this + 0x0) = (void*)0x8044ED54; 
 // 0x803C2F10 (8 bytes)
 int EString2::operator unsigned wchar_t *() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
+#endif

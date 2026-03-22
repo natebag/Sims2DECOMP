@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERC
@@ -5,7 +6,7 @@
 // 20 functions, 108 bytes
 
 // 0x802F682C (16 bytes)
-void ERC::Connect(EDLEntry *, EDLEntry *) { *(int*)((char*)this + 0x4) = param4; *(char*)((char*)this + 0x0) = 7; }
+void ERC::Connect(EDLEntry *, EDLEntry *) { *(int*)((char*)this + 0x4) = p4; *(char*)((char*)this + 0x0) = 7; }
 
 // 0x802F6BE0 (4 bytes)
 void ERC::TriFan(EGEVert *, int) { }
@@ -62,5 +63,6 @@ void ERC::LightsRadiosity(EVec3 &, EVec3 &, float) { }
 int ERC::AllocVertexData(unsigned int) { return 0; }
 
 // 0x802F9B14 (12 bytes)
-void ERC::SetCopyDataCallback(void (*)(void *, void *), void *) { *(int*)((char*)this + 0x58) = param5; *(int*)((char*)this + 0x54) = param4; }
+void ERC::SetCopyDataCallback(void (*)(void *, void *), void *) { *(int*)((char*)this + 0x58) = p5; *(int*)((char*)this + 0x54) = p4; }
 
+#endif

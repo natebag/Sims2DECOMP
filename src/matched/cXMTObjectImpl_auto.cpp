@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXMTObjectImpl
@@ -10,3 +11,4 @@ unsigned int cXMTObjectImpl::ReconType() { return 0x584D544F; }
 // 0x800C7D5C (4 bytes)
 void cXMTObjectImpl::GetMTObjectImplementation() { }
 
+#endif

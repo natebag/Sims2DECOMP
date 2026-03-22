@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for InfluenceMap
@@ -7,3 +8,4 @@
 // 0x800492E0 (8 bytes)
 bool InfluenceMap::ValidateMissing(cXObject *) { return true; }
 
+#endif

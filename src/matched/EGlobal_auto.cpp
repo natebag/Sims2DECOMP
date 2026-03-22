@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EGlobal
@@ -52,3 +53,4 @@ int EGlobal::GetPropFromName(char *) { return 0; }
 // 0x80042284 (8 bytes)
 int EGlobal::GetNameFromProp(PropRef *) { return 0; }
 
+#endif

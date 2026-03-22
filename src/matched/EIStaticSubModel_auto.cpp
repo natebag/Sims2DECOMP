@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIStaticSubModel
@@ -34,3 +35,4 @@ int EIStaticSubModel::operator new(unsigned int, void *) { return first; }  // m
 // 0x8022F910 (8 bytes)
 void* EIStaticSubModel::GetBoundSphere() { return (char*)this + 0x80; }  // offset 0x80
 
+#endif

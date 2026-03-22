@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PassiveInfluencePerson
@@ -13,3 +14,4 @@ int PassiveInfluencePerson::GetType() { return 0; }
 // 0x803A8B58 (8 bytes)
 void* PassiveInfluencePerson::GetTileVector() { return (char*)this + 0x8; }  // offset 0x8
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAudio
@@ -7,3 +8,4 @@
 // 0x8032CB70 (20 bytes)
 void EAudio::EAudio() { *(void**)((char*)this + 0x0) = (void*)0x8047C120; }  // vtable init
 
+#endif

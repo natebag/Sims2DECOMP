@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cGZMusic
@@ -34,3 +35,4 @@ void cGZMusic::SetFrequency(int) { return 1; }
 // 0x800BB194 (8 bytes)
 void cGZMusic::SetPosition(unsigned int) { return 1; }
 
+#endif

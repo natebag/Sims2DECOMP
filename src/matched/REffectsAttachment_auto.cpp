@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for REffectsAttachment
@@ -22,3 +23,4 @@ void* REffectsAttachment::GetTypeInfoStatic() { return (void*)0x8050CF50; }  // 
 // 0x80322AF4 (12 bytes)
 unsigned short REffectsAttachment::GetReadVersion() { return *(unsigned short*)0x8050CF66; }  // global variable
 
+#endif

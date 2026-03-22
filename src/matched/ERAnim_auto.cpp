@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERAnim
@@ -25,3 +26,4 @@ unsigned short ERAnim::GetReadVersion() { return *(unsigned short*)0x8050D79A; }
 // 0x80368178 (8 bytes)
 int ERAnim::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 
+#endif

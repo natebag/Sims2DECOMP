@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickDataSlotDescList
@@ -31,3 +32,4 @@ bool QuickDataSlotDescList::GetDataSourceType() const { return true; }
 // 0x80145180 (8 bytes)
 bool QuickDataSlotDescList::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
+#endif

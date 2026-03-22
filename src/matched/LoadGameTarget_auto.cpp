@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for LoadGameTarget
@@ -19,3 +20,4 @@ void LoadGameTarget::ImportSaveComplete(NghResFile::SectionID, NghResFile::SaveR
 // 0x8018CCE8 (12 bytes)
 int LoadGameTarget::GetPlayerNum() { return *(int*)((char*)(*(void**)((char*)this + 0x118)) + 0x190); }  // double deref
 
+#endif

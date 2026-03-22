@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for UIHDTV
@@ -25,3 +26,4 @@ int UIHDTV::GetNewWidth(int) { return first; }  // mr r3,r4
 // 0x8017BF24 (8 bytes)
 int UIHDTV::GetNewHeight(int) { return first; }  // mr r3,r4
 
+#endif

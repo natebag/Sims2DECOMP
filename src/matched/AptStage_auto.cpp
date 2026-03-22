@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptStage
@@ -10,3 +11,4 @@ int AptStage::sMethod_addListener(AptValue *, int) { return /* SDA global @ r13-
 // 0x802A8654 (8 bytes)
 int AptStage::sMethod_removeListener(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
 
+#endif

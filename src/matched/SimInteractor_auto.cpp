@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SimInteractor
@@ -13,3 +14,4 @@ void InteractorModule::SimInteractor::SetupCutToSim() { *(int*)((char*)this + 0x
 // 0x8021F0B8 (16 bytes)
 void* InteractorModule::SimInteractor::GetFadeSquare(int) { return (char*)this + index * 28 + 0x64; }  // struct array, stride=28
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERFlash
@@ -25,3 +26,4 @@ unsigned short ERFlash::GetReadVersion() { return *(unsigned short*)0x8050CE9E; 
 // 0x80313E08 (8 bytes)
 int ERFlash::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 
+#endif

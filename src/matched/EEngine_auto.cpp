@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EEngine
@@ -40,3 +41,4 @@ void EEngine::SignalShutdown() { }
 // 0x802E38E8 (8 bytes)
 int EEngine::ManagedStartup() { return 1; }
 
+#endif

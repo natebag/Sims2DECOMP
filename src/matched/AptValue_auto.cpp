@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptValue
@@ -136,3 +137,4 @@ void AptValue::c_loadvars() const { }
 // 0x802B4974 (4 bytes)
 void AptValue::c_stage() const { }
 
+#endif

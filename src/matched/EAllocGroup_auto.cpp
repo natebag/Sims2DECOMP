@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAllocGroup
@@ -10,3 +11,4 @@ void EAllocGroup::SetAllocHeap(EAHeap *) { *(int*)((char*)this + 0xC) = val; }  
 // 0x80359F34 (4 bytes)
 void EAllocGroup::Validate() { }
 
+#endif

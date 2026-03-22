@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TArray<EString2, TArrayDefaultAllocator>
@@ -7,3 +8,4 @@
 // 0x803C2BC8 (20 bytes)
 void TArray<EString2, TArrayDefaultAllocator>::Init() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; *(int*)((char*)this + 0x8) = 0; }
 
+#endif

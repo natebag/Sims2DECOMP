@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cGZSndSys
@@ -16,3 +17,4 @@ void cGZSndSys::preloadMusic() { }
 // 0x800B9FB4 (4 bytes)
 void cGZSndSys::unloadMusic() { }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataFactoryIFF<FloatConstants>
@@ -10,3 +11,4 @@ int ObjectDataFactoryIFF<FloatConstants>::operator()() const { return 0; }
 // 0x803AECC0 (8 bytes)
 int ObjectDataFactoryIFF<FloatConstants>::GetDataSourceType() const { return 2; }
 
+#endif

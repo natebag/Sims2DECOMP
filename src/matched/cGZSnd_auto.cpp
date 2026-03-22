@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cGZSnd
@@ -31,3 +32,4 @@ void cGZSnd::SetFrequency(int) { return 1; }
 // 0x800BA8EC (8 bytes)
 void cGZSnd::SetPosition(unsigned int) { return 1; }
 
+#endif

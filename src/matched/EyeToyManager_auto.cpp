@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EyeToyManager
@@ -25,3 +26,4 @@ void EyeToyManager::NormalizeTexture(EyeToyManager::NormalizationParams *) { }
 // 0x80328F58 (4 bytes)
 void EyeToyManager::CleanUpBufferBetaHack() { }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WAFTarget
@@ -19,3 +20,4 @@ void WAFTarget::OnGlowEffectComplete() { *(int*)((char*)this + 0x270) = 0; }
 // 0x801E4F24 (8 bytes)
 void WAFTarget::SetTextButtonPressed(bool) { *(int*)((char*)this + 0x9C) = val; }  // offset 0x9C
 
+#endif

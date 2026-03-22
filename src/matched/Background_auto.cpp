@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Background
@@ -7,3 +8,4 @@
 // 0x802E1BFC (20 bytes)
 void Background::Background() { *(void**)((char*)this + 0x0) = (void*)0x8047A5D0; }  // vtable init
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptActionInterpreter
@@ -43,3 +44,4 @@ void AptActionInterpreter::_FunctionAptActionBitURShift(AptActionInterpreter *, 
 // 0x8027DAD4 (4 bytes)
 void AptActionInterpreter::_FunctionAptActionWaitForFrame(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
 
+#endif

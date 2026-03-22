@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ELiveMode
@@ -37,3 +38,4 @@ int ELiveMode::IsInitialized() { return *(int*)((char*)this + 0x30); }  // offse
 // 0x800900A0 (8 bytes)
 void ELiveMode::SetDontDraw(bool) { *(int*)((char*)this + 0x34) = val; }  // offset 0x34
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cHitControlGroup
@@ -5,5 +6,6 @@
 // 1 functions, 20 bytes
 
 // 0x801167B4 (20 bytes)
-void cHitControlGroup::cHitControlGroup(int) { *(int*)((char*)this + 0x0) = param4; *(int*)((char*)this + 0x4) = 1024; }
+void cHitControlGroup::cHitControlGroup(int) { *(int*)((char*)this + 0x0) = p4; *(int*)((char*)this + 0x4) = 1024; }
 
+#endif

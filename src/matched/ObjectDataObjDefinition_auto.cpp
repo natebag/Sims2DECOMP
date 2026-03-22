@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataObjDefinition
@@ -34,3 +35,4 @@ int ObjectDataObjDefinition::GetData() { return *(int*)((char*)this + 0x1C); }  
 // 0x8015CA3C (8 bytes)
 int ObjectDataObjDefinition::GetData() const { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
 
+#endif

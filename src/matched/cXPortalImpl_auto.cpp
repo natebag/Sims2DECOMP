@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXPortalImpl
@@ -10,3 +11,4 @@ unsigned int cXPortalImpl::ReconType() { return 0x444F4F52; }
 // 0x8013280C (4 bytes)
 void cXPortalImpl::GetPortalImplementation() { }
 
+#endif

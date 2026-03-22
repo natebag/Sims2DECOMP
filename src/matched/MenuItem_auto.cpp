@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MenuItem
@@ -16,3 +17,4 @@ int ActionMenu::MenuItem::GetNextConst() const { return *(int*)((char*)this + 0x
 // 0x80183258 (8 bytes)
 int ActionMenu::MenuItem::GetSubMenu() { return *(int*)((char*)this + 0x5C); }  // offset 0x5C
 
+#endif

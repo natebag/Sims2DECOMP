@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeTableEntryQuickData
@@ -145,3 +146,4 @@ void TreeTableEntryQuickData::SetActivationExtents(unsigned char, unsigned char,
 // 0x8015E8A4 (8 bytes)
 int TreeTableEntryQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
+#endif

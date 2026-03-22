@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CDirtyXmlNode
@@ -34,3 +35,4 @@ void CDirtyXmlNode::removeNode() { }
 // 0x8023AC3C (8 bytes)
 int CDirtyXmlNode::toString() { return 0; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for DirectInteractor
@@ -16,3 +17,4 @@ void InteractorModule::DirectInteractor::ExitDirectControl() { *(int*)((char*)th
 // 0x8020612C (8 bytes)
 int InteractorModule::DirectInteractor::IsAutonomous() { return *(int*)((char*)this + 0x80); }  // offset 0x80
 
+#endif

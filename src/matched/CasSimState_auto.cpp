@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasSimState
@@ -10,3 +11,4 @@ void* CasSimState::GetSimDescription() { return (char*)this + 0x8; }  // offset 
 // 0x8017529C (8 bytes)
 void* CasSimState::GetStoredSimDescription() { return (char*)this + 0x12C; }  // offset 0x12C
 
+#endif

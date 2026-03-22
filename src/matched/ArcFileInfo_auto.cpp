@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ArcFileInfo
@@ -13,3 +14,4 @@ int ArcFileInfo::GetSourceLen() { return *(int*)((char*)this + 0x8); }  // offse
 // 0x80321DB4 (8 bytes)
 int ArcFileInfo::GetCopiedSize() { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectManipulator
@@ -19,3 +20,4 @@ int InteractorModule::ObjectManipulator::GetIsCursorModelEnabled() const { retur
 // 0x8021A8D0 (8 bytes)
 void* InteractorModule::ObjectManipulator::GetPlacementObject() { return (char*)this + 0x64; }  // offset 0x64
 
+#endif

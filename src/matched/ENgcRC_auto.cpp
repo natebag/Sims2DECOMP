@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcRC
@@ -22,3 +23,4 @@ void ENgcRC::Debug(unsigned int, unsigned int) { }
 // 0x8033B3B0 (4 bytes)
 void ENgcRC::ParticleListInfo(EGEParticleListInfo *) { }
 
+#endif

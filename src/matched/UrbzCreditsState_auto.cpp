@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for UrbzCreditsState
@@ -7,3 +8,4 @@
 // 0x80098D2C (4 bytes)
 void UrbzCreditsState::Reset() { }
 
+#endif

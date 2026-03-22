@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TTabScratchEntry
@@ -118,3 +119,4 @@ void TTabScratchEntry::GetActivationExtents(unsigned char &, unsigned char &, un
 // 0x80149F4C (4 bytes)
 void TTabScratchEntry::SetActivationExtents(unsigned char, unsigned char, unsigned char, unsigned char) { }
 
+#endif

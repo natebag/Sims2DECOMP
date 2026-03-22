@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERDataset
@@ -22,3 +23,4 @@ void* ERDataset::GetTypeInfoStatic() { return (void*)0x8050D824; }  // global da
 // 0x80369870 (12 bytes)
 unsigned short ERDataset::GetReadVersion() { return *(unsigned short*)0x8050D83A; }  // global variable
 
+#endif

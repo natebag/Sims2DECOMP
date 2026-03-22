@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ACTTarget
@@ -19,3 +20,4 @@ bool ACTTarget::IsActionQueueAvailable(int) const { return true; }
 // 0x801A2C30 (4 bytes)
 void ACTTarget::DebugListValidation() { }
 
+#endif

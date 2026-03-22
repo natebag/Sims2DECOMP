@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERoomWall
@@ -10,3 +11,4 @@ int ERoomWall::IsWallsOpaque(int) { return ((int*)((char*)this + 0x2C))[index]; 
 // 0x80030954 (16 bytes)
 float ERoomWall::GetShortDistToCam(int) { return ((float*)((char*)this + 0x34))[index]; }  // float array[index]
 
+#endif

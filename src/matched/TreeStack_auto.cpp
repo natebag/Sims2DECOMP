@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeStack
@@ -13,3 +14,4 @@ void TreeStack::Reset() { *(int*)((char*)this + 0xC) = *(int*)((char*)this + 0x8
 // 0x80149104 (20 bytes)
 int TreeStack::GetStackSize() { return ((char*)(*(void**)((char*)this + 0xC)) - (char*)(*(void**)((char*)this + 0x8))) / 4; }  // count = (end-start)/4
 
+#endif

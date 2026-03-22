@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EREdithTreeSet
@@ -25,3 +26,4 @@ unsigned short EREdithTreeSet::GetReadVersion() { return *(unsigned short*)0x805
 // 0x8030FC5C (8 bytes)
 int EREdithTreeSet::GetNumTrees() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
+#endif

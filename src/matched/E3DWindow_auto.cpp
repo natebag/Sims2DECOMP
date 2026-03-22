@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for E3DWindow
@@ -22,3 +23,4 @@ void* E3DWindow::GetNormalizedProjection() const { return (char*)this + 0x1E0; }
 // 0x802E76A4 (4 bytes)
 void E3DWindow::Cast3DWindow() { }
 
+#endif

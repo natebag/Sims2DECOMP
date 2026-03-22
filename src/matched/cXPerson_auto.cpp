@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXPerson
@@ -10,3 +11,4 @@ void cXPerson::setPersonImpl(cXPersonImpl *) { /* double deref + store: 0(r3)->0
 // 0x8012C694 (4 bytes)
 void cXPerson::CastToPerson() { }
 
+#endif

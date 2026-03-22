@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectModuleImpl
@@ -43,3 +44,4 @@ int ObjectModuleImpl::GetNumPortals() { return ((char*)(*(void**)((char*)this + 
 // 0x800F99E0 (16 bytes)
 void* ObjectModuleImpl::GetGlobalRoutingSlot(int) { return (char*)(*(void**)((char*)this + 0x2078)) + index * 60; }  // struct array, stride=60
 
+#endif

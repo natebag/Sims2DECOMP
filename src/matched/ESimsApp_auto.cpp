@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESimsApp
@@ -20,7 +21,7 @@ int ESimsApp::GetDefaultLanguage() { return 0; }
 void ESimsApp::SetGameState(OVERALL_GAME_STATE) { *(int*)((char*)this + 0x468) = val; }  // offset 0x468
 
 // 0x80005D2C (20 bytes)
-void ESimsApp::TakeBigScreenshot(int, int) { *(int*)((char*)this + 0x4A4) = param5; *(int*)((char*)this + 0x49C) = 1; *(int*)((char*)this + 0x4A0) = param4; }
+void ESimsApp::TakeBigScreenshot(int, int) { *(int*)((char*)this + 0x4A4) = p5; *(int*)((char*)this + 0x49C) = 1; *(int*)((char*)this + 0x4A0) = p4; }
 
 // 0x80006380 (12 bytes)
 void* ESimsApp::GetAppName() { return (void*)0x803DAF88; }  // global data pointer
@@ -31,3 +32,4 @@ int ESimsApp::GetEventTableSize() { return 0; }
 // 0x80006394 (12 bytes)
 void* ESimsApp::GetNghName() { return (void*)0x8050B1D0; }  // global data pointer
 
+#endif

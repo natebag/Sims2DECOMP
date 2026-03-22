@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERSoundEvent
@@ -40,3 +41,4 @@ void ERSoundEvent::SetVolume(int) { *(short*)((char*)this + 0x18) = val; }  // o
 // 0x8036A070 (8 bytes)
 void ERSoundEvent::SetProb(int) { *(char*)((char*)this + 0x1A) = val; }  // offset 0x1A
 
+#endif

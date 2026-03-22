@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EYETarget
@@ -7,3 +8,4 @@
 // 0x8020377C (8 bytes)
 void EYETarget::SetState(EYETarget::eState) { *(int*)((char*)this + 0xAC) = val; }  // offset 0xAC
 
+#endif

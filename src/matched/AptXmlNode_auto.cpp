@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptXmlNode
@@ -25,3 +26,4 @@ int AptXmlNode::operator new [](unsigned int) { return 0; }
 // 0x802BB69C (4 bytes)
 void AptXmlNode::operator delete [](void *) { }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasSimRenderer
@@ -16,3 +17,4 @@ void CasSimRenderer::SetSimRotation(float) { *(float*)((char*)this + 0x20C) = va
 // 0x8016FB6C (8 bytes)
 void* CasSimRenderer::GetSimModel() { return (char*)this + 0x8; }  // offset 0x8
 
+#endif

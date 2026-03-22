@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EGraphics
@@ -139,3 +140,4 @@ int EGraphics::ManagedStartup() { return 1; }
 // 0x802F2368 (4 bytes)
 void EGraphics::SelectFrameBuffer(int) { }
 
+#endif

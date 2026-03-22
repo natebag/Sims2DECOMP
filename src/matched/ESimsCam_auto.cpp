@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESimsCam
@@ -76,3 +77,4 @@ void ESimsCam::SetInterpolatingToOrFromSocialModeCameraFlag(bool) { *(int*)((cha
 // 0x8001EADC (8 bytes)
 void ESimsCam::SetInterpolatingFromLotIntroCameraFlag(bool) { *(int*)((char*)this + 0x568) = val; }  // offset 0x568
 
+#endif

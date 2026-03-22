@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERLevel
@@ -76,3 +77,4 @@ int ERLevel::GetNumVisibleInstances() { return *(int*)((char*)this + 0x2E2CC); }
 // 0x80238388 (12 bytes)
 void ERLevel::SetDrawWallShadowsFunc(void (*)(TNodeList<EInstance *> &, EVec3 &, ELevelDrawData &)) { *(int*)((char*)this + 0x2E2D8) = val; }  // large offset setter
 
+#endif

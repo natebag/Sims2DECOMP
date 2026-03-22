@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for BitMatrix64
@@ -10,3 +11,4 @@ void* BitMatrix64::operator[](int) { return (char*)this + index * 8; }  // array
 // 0x8009BC20 (12 bytes)
 void* BitMatrix64::operator[](int) const { return (char*)this + index * 8; }  // array element addr, elem_size=8
 
+#endif

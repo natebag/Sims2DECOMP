@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptCharacterInst
@@ -13,3 +14,4 @@ void AptCharacterInst::PreDestroy() { }
 // 0x802C4C64 (4 bytes)
 void AptCharacterInst::PreDestroy() { }
 
+#endif

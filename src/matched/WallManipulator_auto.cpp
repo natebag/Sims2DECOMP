@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WallManipulator
@@ -31,3 +32,4 @@ void* InteractorModule::WallManipulator::GetAnchorDrawPos() { return (char*)this
 // 0x80224040 (8 bytes)
 float InteractorModule::WallManipulator::GetWallHeight() { return /* SDA global float @ r13-21100 */; }
 
+#endif

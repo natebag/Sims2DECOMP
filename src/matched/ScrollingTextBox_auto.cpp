@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ScrollingTextBox
@@ -19,3 +20,4 @@ void ScrollingTextBox::SetSubOffset(EVec2 &) { /* copy two fields: 4(r4)->56(r3)
 // 0x8006CBDC (12 bytes)
 void ScrollingTextBox::SetSubOffset(float, float) { *(float*)((char*)this + 0x38) = f2; *(float*)((char*)this + 0x34) = f1; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Interactor
@@ -49,3 +50,4 @@ void InteractorModule::Interactor::SetDrawState(int) { *(int*)((char*)this + 0x4
 // 0x802095DC (8 bytes)
 int InteractorModule::Interactor::GetDrawState() { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SKLTarget
@@ -16,3 +17,4 @@ int SKLTarget::IsSkillsActive() { return *(int*)((char*)this + 0x88); }  // offs
 // 0x801E19C4 (8 bytes)
 void SKLTarget::SetTextButtonPressed(bool) { *(int*)((char*)this + 0x9C) = val; }  // offset 0x9C
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SlotLoader
@@ -10,3 +11,4 @@ int SlotLoader::Save(short, vector<ObjectSlot, allocator<ObjectSlot> > *, vector
 // 0x801445CC (4 bytes)
 void SlotLoader::GetSlotName(Slot *, BString &, int) { }
 
+#endif

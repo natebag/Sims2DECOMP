@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResPrefetch
@@ -5,5 +6,6 @@
 // 1 functions, 20 bytes
 
 // 0x803125C0 (20 bytes)
-void EResPrefetch::AcquireBuffer(void *, unsigned int) { *(int*)((char*)this + 0x408) = param4; *(int*)((char*)this + 0x404) = 0; *(int*)((char*)this + 0x40C) = param4; }
+void EResPrefetch::AcquireBuffer(void *, unsigned int) { *(int*)((char*)this + 0x408) = p4; *(int*)((char*)this + 0x404) = 0; *(int*)((char*)this + 0x40C) = p4; }
 
+#endif

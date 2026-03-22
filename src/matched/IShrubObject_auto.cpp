@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IShrubObject
@@ -22,3 +23,4 @@ void* IShrubObject::GetTypeInfoStatic() { return (void*)0x8050B868; }  // global
 // 0x80054450 (12 bytes)
 unsigned short IShrubObject::GetReadVersion() { return *(unsigned short*)0x8050B87E; }  // global variable
 
+#endif

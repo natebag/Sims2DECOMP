@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasClothingUnlocks
@@ -10,3 +11,4 @@ bool CasClothingUnlocks::CheckBodyIndex(unsigned int) const { return val <= 39; 
 // 0x8015F068 (16 bytes)
 bool CasClothingUnlocks::CheckTextureIndex(unsigned int) const { return val <= 29; }  // range check
 
+#endif

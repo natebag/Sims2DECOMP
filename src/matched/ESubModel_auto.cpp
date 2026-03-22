@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESubModel
@@ -7,3 +8,4 @@
 // 0x802FAE20 (8 bytes)
 int ESubModel::GetCompositeShaderFlags() { return 0; }
 
+#endif

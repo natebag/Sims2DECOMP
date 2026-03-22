@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Behavior
@@ -28,3 +29,4 @@ int Behavior::GetLanguage() { return *(int*)((char*)this + 0x8); }  // offset 0x
 // 0x800AD1A4 (16 bytes)
 void Behavior::SetDefaultParam(BehaviorNodeParam *) { *(int*)((char*)this + 0x4) = -1; *(int*)((char*)this + 0x0) = -1; }
 
+#endif

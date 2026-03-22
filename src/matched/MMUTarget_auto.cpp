@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MMUTarget
@@ -28,3 +29,4 @@ int MMUTarget::GetCurrentMainScreenChoice() const { return *(int*)((char*)this +
 // 0x801E7080 (8 bytes)
 int MMUTarget::GetCurrentGameplayChoice() const { return *(int*)((char*)this + 0xB8); }  // offset 0xB8
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ActionQueueHUD
@@ -5,5 +6,6 @@
 // 1 functions, 16 bytes
 
 // 0x801847B4 (16 bytes)
-void ActionQueueHUD::Start(HUDTarget *) { *(int*)((char*)this + 0x0) = param4; *(char*)((char*)this + 0x318) = 1; }
+void ActionQueueHUD::Start(HUDTarget *) { *(int*)((char*)this + 0x0) = p4; *(char*)((char*)this + 0x318) = 1; }
 
+#endif

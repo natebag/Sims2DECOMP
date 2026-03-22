@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Intersection
@@ -7,3 +8,4 @@
 // 0x8039DB10 (16 bytes)
 void Intersection::Reset() { *(float*)((char*)this + 0x10) = *(float*)0x803D03BC; }  // init float from global
 
+#endif

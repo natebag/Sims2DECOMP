@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FloorPainter
@@ -37,3 +38,4 @@ int InteractorModule::FloorPainter::IsInPlaceMode() { return *(int*)((char*)this
 // 0x802091AC (16 bytes)
 bool InteractorModule::FloorPainter::IsInRemoveMode() { return *(int*)((char*)this + 0xA4) != 0; }
 
+#endif

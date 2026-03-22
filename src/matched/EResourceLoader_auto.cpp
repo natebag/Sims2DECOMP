@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResourceLoader
@@ -7,3 +8,4 @@
 // 0x8030FC90 (20 bytes)
 void EResourceLoader::EResourceLoader() { *(void**)((char*)this + 0x0) = (void*)0x8047B118; }  // vtable init
 
+#endif

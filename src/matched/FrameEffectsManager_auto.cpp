@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FrameEffectsManager
@@ -13,3 +14,4 @@ int FrameEffectsManager::BloomObject() { return *(int*)((char*)this + 0x4); }  /
 // 0x80357978 (8 bytes)
 int FrameEffectsManager::DepthOfFieldObject() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
+#endif

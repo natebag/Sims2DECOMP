@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFileSystem
@@ -34,3 +35,4 @@ bool EFileSystem::HDDIsUnformatted() { return false; }
 // 0x802C7118 (8 bytes)
 int EFileSystem::GetDefaultType() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
+#endif

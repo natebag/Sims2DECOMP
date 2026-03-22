@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataFactoryIFF<ITreeTable>
@@ -10,3 +11,4 @@ int ObjectDataFactoryIFF<ITreeTable>::operator()() const { return 0; }
 // 0x803AEC90 (8 bytes)
 int ObjectDataFactoryIFF<ITreeTable>::GetDataSourceType() const { return 2; }
 
+#endif

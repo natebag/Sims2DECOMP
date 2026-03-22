@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasScene
@@ -22,3 +23,4 @@ int CasScene::GetRoomFromCameraAngle(unsigned int) const { return 0; }
 // 0x801672C8 (8 bytes)
 int CasScene::GetAmbientScoreName() const { return /* SDA global @ r13-31572 */; }  // lwz r3,-31572(r13)
 
+#endif

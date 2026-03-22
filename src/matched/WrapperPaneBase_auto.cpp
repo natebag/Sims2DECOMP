@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WrapperPaneBase
@@ -70,3 +71,4 @@ int WrapperPaneBase::GetAlt1Button() { return *(int*)((char*)this + 0x48); }  //
 // 0x80088B64 (8 bytes)
 void* WrapperPaneBase::GetItemList() { return (char*)this + 0x8; }  // offset 0x8
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeTableQuickData
@@ -67,3 +68,4 @@ void TreeTableQuickData::SetPrefixCheckTreeID(short) { }
 // 0x8015E9A0 (8 bytes)
 int TreeTableQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
+#endif

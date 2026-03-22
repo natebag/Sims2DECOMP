@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EString
@@ -10,3 +11,4 @@ void EString::SetToNull() { *(int*)((char*)this + 0x0) = (int)(r13 + -26856); } 
 // 0x803B0A6C (8 bytes)
 int EString::operator char *() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
+#endif

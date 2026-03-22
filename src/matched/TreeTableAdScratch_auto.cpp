@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeTableAdScratch
@@ -16,3 +17,4 @@ void TreeTableAdScratch::SetMin(int) { *(short*)((char*)this + 0x6) = val; }  //
 // 0x80149B48 (8 bytes)
 void TreeTableAdScratch::SetRange(int) { *(short*)((char*)this + 0x8) = val; }  // offset 0x8
 
+#endif

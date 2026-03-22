@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERModel
@@ -91,3 +92,4 @@ int ERModel::GetNumLightPos() { return *(int*)((char*)this + 0x140); }  // offse
 // 0x8031B494 (8 bytes)
 void* ERModel::GetLightPos() { return (char*)this + 0x144; }  // offset 0x144
 
+#endif

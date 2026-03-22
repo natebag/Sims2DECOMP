@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for _global
@@ -263,7 +264,7 @@ void OSNotifyLink() { }
 void OSNotifyUnlink() { }
 
 // 0x8024FE60 (12 bytes)
-void OSSetStringTable() { *(int*)0x800030D0 = param3; }  // global store
+void OSSetStringTable() { *(int*)0x800030D0 = p3; }  // global store
 
 // 0x8025092C (12 bytes)
 int OSGetPhysicalMemSize() { return *(int*)0x80000028; }  // global variable
@@ -359,7 +360,7 @@ int AICheckInit() { return /* SDA global @ r13-23120 */; }  // lwz r3,-23120(r13
 int AIGetStreamSampleCount() { return *(int*)((char*)0xCC006C00 + 0x8); }  // global struct field
 
 // 0x80267008 (12 bytes)
-void AISetStreamTrigger() { *(int*)0xCC006C0C = param3; }  // global store
+void AISetStreamTrigger() { *(int*)0xCC006C0C = p3; }  // global store
 
 // 0x80267014 (16 bytes)
 int AIGetStreamTrigger() { return *(int*)((char*)0xCC006C00 + 0xC); }  // global struct field
@@ -422,7 +423,7 @@ int _AptValidate() { return 1; }
 void AptSetMousePosition(int, int) { }
 
 // 0x8026B76C (16 bytes)
-void AptDebugEnableSavedInputs(int) { /* SDA @ r13-27608 = param3 */; /* SDA @ r13-23012 = 0 */; }
+void AptDebugEnableSavedInputs(int) { /* SDA @ r13-27608 = p3 */; /* SDA @ r13-23012 = 0 */; }
 
 // 0x8026B79C (8 bytes)
 void AptDebugEnableInputGremlins(int) { /* SDA global @ r13-22984 = param */ }  // stw r3,-22984(r13)
@@ -683,7 +684,7 @@ unsigned short CARDGetVendorID() { return /* SDA global @ r13-25336 */; }
 void CARDSrand() { /* SDA global @ r13-25328 = param */ }  // stw r3,-25328(r13)
 
 // 0x80388790 (12 bytes)
-void GXInitFifoLimits() { *(int*)((char*)this + 0xC) = param4; *(int*)((char*)this + 0x10) = param5; }
+void GXInitFifoLimits() { *(int*)((char*)this + 0xC) = p4; *(int*)((char*)this + 0x10) = p5; }
 
 // 0x80388D64 (8 bytes)
 int GXGetFifoBase() { return *(int*)((char*)this + 0x0); }  // offset 0x0
@@ -847,3 +848,4 @@ unsigned char VMBASEIsPageLocked() { /* indexed byte load via ptr at -21528(r13)
 // 0x8039B228 (8 bytes)
 void __VMBASESetSwapPageCallback() { /* SDA global @ r13-21524 = param */ }  // stw r3,-21524(r13)
 
+#endif

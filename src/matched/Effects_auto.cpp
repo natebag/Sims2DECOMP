@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Effects
@@ -13,3 +14,4 @@ void Effects::GetFaceCameraRotation(ERC *, EMat4 &, EVec4 &, bool) { }
 // 0x80352A10 (4 bytes)
 void Effects::InitEffectsMath() { }
 
+#endif

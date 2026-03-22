@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAnimNodeDataPos
@@ -19,3 +20,4 @@ unsigned short EAnimNodeDataPos::GetTypeVersion() const { return *(unsigned shor
 // 0x803CA8CC (16 bytes)
 void EAnimNodeDataPos::Destruct(EAnimNodeDataPos *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
 
+#endif

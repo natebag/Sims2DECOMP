@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESim
@@ -41,7 +42,7 @@ int ESim::GetSimHead() { return *(int*)((char*)this + 0x628); }  // offset 0x628
 int ESim::GetSimModel() { return *(int*)((char*)this + 0x63C); }  // offset 0x63C
 
 // 0x80035340 (12 bytes)
-void ESim::SetVanityDraw(bool, unsigned int) { *(int*)((char*)this + 0x3D4) = param5; *(int*)((char*)this + 0x3DC) = param4; }
+void ESim::SetVanityDraw(bool, unsigned int) { *(int*)((char*)this + 0x3D4) = p5; *(int*)((char*)this + 0x3DC) = p4; }
 
 // 0x8003534C (16 bytes)
 int ESim::UseVanityDraw(unsigned int *) { /* store 980(r3)->0(r4), return 988(r3) */ return 0; }
@@ -58,3 +59,4 @@ int ESim::GetIsModelLoaded() { return *(int*)((char*)this + 0x638); }  // offset
 // 0x80035374 (8 bytes)
 int ESim::GetIsChangingOutfit() { return *(int*)((char*)this + 0x3D8); }  // offset 0x3D8
 
+#endif

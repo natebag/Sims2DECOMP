@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIFloor
@@ -31,3 +32,4 @@ void EIFloor::Update() { }
 // 0x80048510 (8 bytes)
 unsigned short EIFloor::GetNumRoomID() { return *(unsigned short*)((char*)this + 0x82); }  // offset 0x82
 
+#endif

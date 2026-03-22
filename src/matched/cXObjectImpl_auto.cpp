@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXObjectImpl
@@ -145,3 +146,4 @@ int cXObjectImpl::TryFindTreeNew(StackElem *, FindTreeNewParam *) { /* r3=0, r4=
 // 0x8010D5AC (4 bytes)
 void cXObjectImpl::Backtrace() { }
 
+#endif

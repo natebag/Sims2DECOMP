@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CUnlockDisplay
@@ -25,3 +26,4 @@ void CUnlockDisplay::UnHide() { *(int*)((char*)this + 0x458) = 0; }
 // 0x80078FFC (8 bytes)
 int CUnlockDisplay::DonePreloadObject() { return *(int*)((char*)this + 0x450); }  // offset 0x450
 
+#endif

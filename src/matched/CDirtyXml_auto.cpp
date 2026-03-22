@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CDirtyXml
@@ -49,3 +50,4 @@ void CDirtyXml::sendAndLoad(char *, IAptXml *) { }
 // 0x8023B058 (8 bytes)
 int CDirtyXml::status() { return 1; }
 
+#endif

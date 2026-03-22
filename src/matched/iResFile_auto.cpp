@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for iResFile
@@ -19,3 +20,4 @@ int iResFile::GetResFileData() const { return *(int*)((char*)this + 0x8); }  // 
 // 0x801358C0 (8 bytes)
 void iResFile::SetResFileData(ResFile *) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 
+#endif

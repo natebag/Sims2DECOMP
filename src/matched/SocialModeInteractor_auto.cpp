@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SocialModeInteractor
@@ -28,3 +29,4 @@ int InteractorModule::SocialModeInteractor::GetTimout() { return *(int*)((char*)
 // 0x8021F590 (8 bytes)
 void InteractorModule::SocialModeInteractor::SetTimout(int) { *(int*)((char*)this + 0x6C) = val; }  // offset 0x6C
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AnimTableImpl
@@ -10,3 +11,4 @@ short AnimTableImpl::GetID() { return *(short*)((char*)(*(void**)((char*)this + 
 // 0x800AAC2C (8 bytes)
 int AnimTableImpl::GetEntryName(int) { return 0; }
 
+#endif

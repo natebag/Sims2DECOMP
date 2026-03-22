@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasScenePersonal
@@ -10,3 +11,4 @@ int CasScenePersonal::GetSceneName() const { return /* SDA global @ r13-31548 */
 // 0x8017592C (8 bytes)
 int CasScenePersonal::GetRoomFromCameraAngle(unsigned int) const { return 0; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EffectsManager
@@ -10,3 +11,4 @@ void Effects::EffectsManager::Shutdown() { return 1; }
 // 0x80352710 (8 bytes)
 int Effects::EffectsManager::CreateEffect(REffectsSequencer &, Effects::Effect::ClientParams *) { return 0; }
 
+#endif

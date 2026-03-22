@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Globs
@@ -7,3 +8,4 @@
 // 0x800B81BC (12 bytes)
 void Globs::Globs() { /* save this to SDA global @ r13-32060 */ }
 
+#endif

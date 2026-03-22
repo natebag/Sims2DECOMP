@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for NghResFile
@@ -94,3 +95,4 @@ void* NghResFile::GetCurrentHouse() const { return (char*)(*(void**)((char*)this
 // 0x800D93CC (8 bytes)
 int NghResFile::GetSourceType() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
+#endif

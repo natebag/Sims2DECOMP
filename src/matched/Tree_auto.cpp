@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Tree
@@ -7,3 +8,4 @@
 // 0x803A5210 (16 bytes)
 void* WantFear::Tree::GetNodeById(short) const { return (char*)(*(void**)((char*)this + 0x28)) + index * 32; }  // deref ptr, array stride=32
 
+#endif

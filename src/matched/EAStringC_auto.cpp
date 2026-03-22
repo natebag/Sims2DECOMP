@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAStringC
@@ -22,3 +23,4 @@ int EAStringC::Insert(int, char *) { return 0; }
 // 0x802BCE40 (8 bytes)
 int EAStringC::Insert(int, char) { return 0; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcTextureC8
@@ -7,3 +8,4 @@
 // 0x80350DB4 (8 bytes)
 int ENgcTextureC8::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 
+#endif

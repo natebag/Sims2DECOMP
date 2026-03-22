@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataFactoryIFF<StringSet>
@@ -10,3 +11,4 @@ void ObjectDataFactoryIFF<StringSet>::operator()() const { return 0; }
 // 0x803AECD8 (8 bytes)
 void ObjectDataFactoryIFF<StringSet>::GetDataSourceType() const { return 2; }
 
+#endif

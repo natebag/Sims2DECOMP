@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EVec4
@@ -7,3 +8,4 @@
 // 0x80361F34 (4 bytes)
 void EVec4::Print() { }
 
+#endif

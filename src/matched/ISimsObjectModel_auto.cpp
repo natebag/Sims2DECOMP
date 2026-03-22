@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimsObjectModel
@@ -52,3 +53,4 @@ int ISimsObjectModel::GetILight() { return *(int*)((char*)this + 0x460); }  // o
 // 0x80053E74 (12 bytes)
 bool ISimsObjectModel::ShouldKillAllAnimTracks(unsigned int) { return val != 0; }  // subfic+adde bool cast
 
+#endif

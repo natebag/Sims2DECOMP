@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasSceneDefault
@@ -7,3 +8,4 @@
 // 0x801755A4 (8 bytes)
 int CasSceneDefault::GetSceneName() const { return /* SDA global @ r13-31556 */; }  // lwz r3,-31556(r13)
 
+#endif

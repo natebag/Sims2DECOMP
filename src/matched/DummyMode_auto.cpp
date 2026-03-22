@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for DummyMode
@@ -16,3 +17,4 @@ void DummyMode::Update() { }
 // 0x800998C4 (4 bytes)
 void DummyMode::Draw(ERC *) { }
 
+#endif

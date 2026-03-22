@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for InventoryItems
@@ -7,3 +8,4 @@
 // 0x8004AA5C (8 bytes)
 int BBI::InventoryItems::GetContainerSize() const { return 36; }
 
+#endif

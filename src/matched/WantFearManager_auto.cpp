@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WantFearManager
@@ -13,3 +14,4 @@ void* WantFearManager::GetEventByIndex(int) const { return (char*)(*(void**)((ch
 // 0x8014BFBC (16 bytes)
 int WantFearManager::GetTreeByIndex(int) const { return ((int*)(*(void**)((char*)this + 0xC)))[index]; }  // ptr->array[index], elem_size=4
 
+#endif

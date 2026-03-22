@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for REffectsEmitter
@@ -37,3 +38,4 @@ int REffectsEmitter::Refreshed() { return *(int*)((char*)this + 0x20); }  // off
 // 0x8036AD98 (12 bytes)
 void REffectsEmitter::RefreshClear() { *(int*)((char*)this + 0x20) = 0; }
 
+#endif

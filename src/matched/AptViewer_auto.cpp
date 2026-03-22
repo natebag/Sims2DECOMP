@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptViewer
@@ -19,3 +20,4 @@ int AptViewer::AllowControllerReading(bool) { int old = *(int*)((char*)this + 0x
 // 0x80011E58 (8 bytes)
 int AptViewer::IsReadControllerActive() { return *(int*)((char*)this + 0x3A4); }  // offset 0x3A4
 
+#endif

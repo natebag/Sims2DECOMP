@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CTGFileImpl
@@ -19,3 +20,4 @@ int CTGFileImpl::Flush() { return 0; }
 // 0x8007CFCC (8 bytes)
 int CTGFileImpl::FlushCache() { return 1; }
 
+#endif

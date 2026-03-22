@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EMemoryCard
@@ -34,3 +35,4 @@ bool EMemoryCard::IsPolledCardAvailable(unsigned int) { return true; }
 // 0x803C76E0 (8 bytes)
 bool EMemoryCard::IsWrongDevice(unsigned int) { return false; }
 
+#endif

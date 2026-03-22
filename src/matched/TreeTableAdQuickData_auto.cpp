@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeTableAdQuickData
@@ -34,3 +35,4 @@ void TreeTableAdQuickData::SetRange(int) { }
 // 0x8015E5DC (8 bytes)
 int TreeTableAdQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
+#endif

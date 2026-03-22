@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SimImageMaker
@@ -11,5 +12,6 @@ void SimImageMaker::SetGender(bool) { *(int*)((char*)this + 0x88) = val; }  // o
 void SimImageMaker::SetSkinShader(EShader *) { *(int*)((char*)this + 0x8C) = val; }  // offset 0x8C
 
 // 0x8006ECAC (16 bytes)
-void SimImageMaker::OverrideImageSize(unsigned int, unsigned int, unsigned int) { *(int*)((char*)this + 0x8) = param6; *(int*)((char*)this + 0x0) = param4; *(int*)((char*)this + 0x4) = param5; }
+void SimImageMaker::OverrideImageSize(unsigned int, unsigned int, unsigned int) { *(int*)((char*)this + 0x8) = param6; *(int*)((char*)this + 0x0) = p4; *(int*)((char*)this + 0x4) = p5; }
 
+#endif

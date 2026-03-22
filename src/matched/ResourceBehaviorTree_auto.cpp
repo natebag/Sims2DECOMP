@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ResourceBehaviorTree
@@ -13,3 +14,4 @@ void ResourceBehaviorTree::AddRef() { *(int*)((char*)this + 0x64) += 1; }  // re
 // 0x8015B99C (8 bytes)
 int ResourceBehaviorTree::GetDataSourceType() const { return 8; }
 
+#endif

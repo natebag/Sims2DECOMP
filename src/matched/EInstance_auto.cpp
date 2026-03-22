@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EInstance
@@ -74,7 +75,7 @@ void EInstance::SetPortalType(EPortalType) { *(int*)((char*)this + 0x14) = val; 
 int EInstance::GetPortalType() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x802295D4 (12 bytes)
-void EInstance::RegisterOtherSideFn(unsigned int, void (*)(unsigned int, bool, short &, short &)) { *(int*)((char*)this + 0x20) = param5; *(int*)((char*)this + 0x24) = param4; }
+void EInstance::RegisterOtherSideFn(unsigned int, void (*)(unsigned int, bool, short &, short &)) { *(int*)((char*)this + 0x20) = p5; *(int*)((char*)this + 0x24) = p4; }
 
 // 0x802295E0 (8 bytes)
 int EInstance::GetThisSideData() { return *(int*)((char*)this + 0x28); }  // offset 0x28
@@ -89,10 +90,10 @@ int EInstance::GetOtherSideData() { return *(int*)((char*)this + 0x24); }  // of
 int EInstance::GetOtherSideFn() { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x80229600 (12 bytes)
-void EInstance::RegisterThisSideFn(unsigned int, void (*)(unsigned int, bool, short &, short &)) { *(int*)((char*)this + 0x1C) = param5; *(int*)((char*)this + 0x28) = param4; }
+void EInstance::RegisterThisSideFn(unsigned int, void (*)(unsigned int, bool, short &, short &)) { *(int*)((char*)this + 0x1C) = p5; *(int*)((char*)this + 0x28) = p4; }
 
 // 0x8022960C (12 bytes)
-void EInstance::RegisterHiddenFn(unsigned int, bool (*)(unsigned int)) { *(int*)((char*)this + 0x30) = param5; *(int*)((char*)this + 0x2C) = param4; }
+void EInstance::RegisterHiddenFn(unsigned int, bool (*)(unsigned int)) { *(int*)((char*)this + 0x30) = p5; *(int*)((char*)this + 0x2C) = p4; }
 
 // 0x80229654 (8 bytes)
 void EInstance::SetShadowInterpolated(bool) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
@@ -148,3 +149,4 @@ int EInstance::IsWall() { return *(int*)((char*)this + 0x10); }  // offset 0x10
 // 0x80229740 (4 bytes)
 void EInstance::RealizeShaderTuning() { }
 
+#endif

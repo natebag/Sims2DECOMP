@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Wrapper
@@ -22,3 +23,4 @@ void Wrapper::WrapperUpdate() { }
 // 0x80086AE8 (4 bytes)
 void Wrapper::WrapperCallFunction(char *) { }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcMovie
@@ -10,3 +11,4 @@ void ENgcMovie::Reset() { }
 // 0x80336388 (12 bytes)
 unsigned char ENgcMovie::PlayerGetState() { return *(unsigned char*)0x804D39E4; }  // global byte
 
+#endif

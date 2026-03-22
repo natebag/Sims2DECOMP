@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERAmbientScore
@@ -22,3 +23,4 @@ void* ERAmbientScore::GetTypeInfoStatic() { return (void*)0x8050D75C; }  // glob
 // 0x80367260 (12 bytes)
 unsigned short ERAmbientScore::GetReadVersion() { return *(unsigned short*)0x8050D772; }  // global variable
 
+#endif

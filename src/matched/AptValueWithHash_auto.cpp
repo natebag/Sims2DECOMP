@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptValueWithHash
@@ -10,3 +11,4 @@ void* AptValueWithHash::GetNativeHashVirtual() { return (char*)this + 0xC; }  //
 // 0x802B4178 (8 bytes)
 bool AptValueWithHash::ContainsNativeHashVirtual() const { return true; }
 
+#endif

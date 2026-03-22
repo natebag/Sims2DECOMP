@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EStorable
@@ -28,3 +29,4 @@ void EStorable::Load(EFile &) { }
 // 0x803C247C (16 bytes)
 void EStorable::Construct(EStorable *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
 
+#endif

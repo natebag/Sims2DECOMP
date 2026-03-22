@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EMirrorPortal
@@ -10,3 +11,4 @@ void EMirrorPortal::SetNumCorners(int) { *(int*)((char*)this + 0x38) = val; }  /
 // 0x802F2550 (8 bytes)
 void EMirrorPortal::SetFieldOfView(float) { *(float*)((char*)this + 0x0) = val; }  // offset 0x0
 
+#endif

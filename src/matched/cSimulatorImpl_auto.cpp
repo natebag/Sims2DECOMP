@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cSimulatorImpl
@@ -61,3 +62,4 @@ void cSimulatorImpl::SetProbe(SimLoopProbe *) { *(int*)((char*)this + 0x94) = va
 // 0x80141BA0 (8 bytes)
 int cSimulatorImpl::GetPassiveInfluenceSystem() { return *(int*)((char*)this + 0x174); }  // offset 0x174
 
+#endif

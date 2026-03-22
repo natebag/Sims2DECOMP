@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PropTableImpl
@@ -10,3 +11,4 @@ short PropTableImpl::GetID() { return *(short*)((char*)(*(void**)((char*)this + 
 // 0x801329AC (8 bytes)
 int PropTableImpl::GetEntryName(int) { return 0; }
 
+#endif

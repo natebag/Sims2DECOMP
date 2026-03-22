@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERFont
@@ -34,3 +35,4 @@ float ERFont::GetAspect() { return *(float*)((char*)this + 0x50); }  // offset 0
 // 0x80317A40 (8 bytes)
 void* ERFont::GetColor() { return (char*)this + 0x58; }  // offset 0x58
 
+#endif

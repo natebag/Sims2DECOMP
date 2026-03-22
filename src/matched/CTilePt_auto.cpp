@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CTilePt
@@ -20,10 +21,10 @@ signed char CTilePt::SetX(int) { *(char*)((char*)this + 0x0) = val; return (sign
 signed char CTilePt::SetY(int) { *(char*)((char*)this + 0x1) = val; return (signed char)val; }
 
 // 0x800B4D1C (12 bytes)
-void CTilePt::Set(int, int) { *(char*)((char*)this + 0x1) = param5; *(char*)((char*)this + 0x0) = param4; }
+void CTilePt::Set(int, int) { *(char*)((char*)this + 0x1) = p5; *(char*)((char*)this + 0x0) = p4; }
 
 // 0x800B4D28 (16 bytes)
-void CTilePt::Set(int, int, int) { *(char*)((char*)this + 0x2) = param6; *(char*)((char*)this + 0x0) = param4; *(char*)((char*)this + 0x1) = param5; }
+void CTilePt::Set(int, int, int) { *(char*)((char*)this + 0x2) = param6; *(char*)((char*)this + 0x0) = p4; *(char*)((char*)this + 0x1) = p5; }
 
 // 0x800B4DDC (12 bytes)
 signed char CTilePt::GetLevel() const { return *(signed char*)((char*)this + 0x2); }  // signed byte
@@ -34,3 +35,4 @@ void CTilePt::SetLevel(int) { *(char*)((char*)this + 0x2) = val; }  // offset 0x
 // 0x800B4DF0 (12 bytes)
 void CTilePt::SetLevel(CTilePt &) { /* copy byte: 2(r4) -> 2(r3) */ }
 
+#endif

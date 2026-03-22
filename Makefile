@@ -93,11 +93,10 @@ SKELETON_SECTIONS := init text ctors rodata data bss sdata sbss sdata2
 SKELETON_SRCS := $(addprefix $(SKELETON_DIR)/,$(addsuffix .s,$(SKELETON_SECTIONS)))
 SKELETON_OBJS := $(SKELETON_SRCS:.s=.o)
 
-# Decompiled C/C++ source files
-# Exclude src/matched/ — auto-generated stubs that don't compile yet
-C_SRCS   := $(shell find src/ -path 'src/matched' -prune -o -name '*.c' -print 2>/dev/null)
-CXX_SRCS := $(shell find src/ -path 'src/matched' -prune -o -name '*.cpp' -print 2>/dev/null)
-ASM_SRCS := $(shell find src/ -path 'src/matched' -prune -o -name '*.s' -print 2>/dev/null)
+# Decompiled C/C++ source files (including auto-matched in src/matched/)
+C_SRCS   := $(shell find src/ -name '*.c' 2>/dev/null)
+CXX_SRCS := $(shell find src/ -name '*.cpp' 2>/dev/null)
+ASM_SRCS := $(shell find src/ -name '*.s' 2>/dev/null)
 
 # Object files from decompiled sources
 C_OBJS   := $(C_SRCS:src/%.c=$(BUILD_DIR)/obj/%.o)
@@ -105,8 +104,8 @@ CXX_OBJS := $(CXX_SRCS:src/%.cpp=$(BUILD_DIR)/obj/%.o)
 ASM_OBJS := $(ASM_SRCS:src/%.s=$(BUILD_DIR)/obj/%.o)
 DECOMP_OBJS := $(C_OBJS) $(CXX_OBJS) $(ASM_OBJS)
 
-# All objects: skeleton provides the base, decomp overrides specific functions
-ALL_OBJS := $(SKELETON_OBJS) $(DECOMP_OBJS)
+# All objects: decomp first (real code), skeleton last (fills gaps with stubs)
+ALL_OBJS := $(DECOMP_OBJS) $(SKELETON_OBJS)
 
 #==============================================================================
 # Rules

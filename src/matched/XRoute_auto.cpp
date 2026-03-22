@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for XRoute
@@ -19,3 +20,4 @@ void* XRoute::GetRoutingSlot() { return (char*)this + 0x10; }  // offset 0x10
 // 0x801534C8 (4 bytes)
 void XRoute::DoStream(ReconBuffer *, int) { }
 
+#endif

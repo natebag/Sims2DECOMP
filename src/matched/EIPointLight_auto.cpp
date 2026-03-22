@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIPointLight
@@ -31,3 +32,4 @@ float EIPointLight::GetFalloffEnd() { return *(float*)((char*)this + 0xC8); }  /
 // 0x8022A64C (8 bytes)
 int EIPointLight::GetRoomId() { return *(int*)((char*)this + 0xC0); }  // offset 0xC0
 
+#endif

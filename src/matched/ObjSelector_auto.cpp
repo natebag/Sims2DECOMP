@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjSelector
@@ -22,3 +23,4 @@ short ObjSelector::GetShadowBrightness() { return *(short*)((char*)(*(void**)((c
 // 0x803A5208 (8 bytes)
 int ObjSelector::GetSimDescription() const { return *(int*)((char*)this + 0x8C); }  // offset 0x8C
 
+#endif

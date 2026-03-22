@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for InteractorVisualizer
@@ -19,3 +20,4 @@ void InteractorModule::InteractorVisualizer::DestroyResources(InteractorModule::
 // 0x802172F8 (4 bytes)
 void InteractorModule::InteractorVisualizer::Draw(InteractorModule::SocialModeInteractor &) { }
 
+#endif

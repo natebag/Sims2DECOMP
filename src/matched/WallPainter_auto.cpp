@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WallPainter
@@ -37,3 +38,4 @@ float InteractorModule::WallPainter::GetPaperToolHeight() { return /* SDA global
 // 0x80226A18 (8 bytes)
 float InteractorModule::WallPainter::GetWallHeight() { return /* SDA global float @ r13-21080 */; }
 
+#endif

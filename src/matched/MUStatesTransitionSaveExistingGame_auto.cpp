@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MUStatesTransitionSaveExistingGame
@@ -10,3 +11,4 @@ void MUStatesTransitionSaveExistingGame::Reset() { *(int*)((char*)this + 0x1C) =
 // 0x80094180 (12 bytes)
 int MUStatesTransitionSaveExistingGame::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
 
+#endif

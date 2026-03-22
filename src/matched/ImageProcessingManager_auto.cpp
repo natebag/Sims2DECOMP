@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ImageProcessingManager
@@ -10,3 +11,4 @@ int ImageProcessingManager::LinkTexture(unsigned int, unsigned int) { return /* 
 // 0x8032A298 (4 bytes)
 void ImageProcessingManager::DummyFree(void *) { }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResourceMap
@@ -31,3 +32,4 @@ int EResourceMap::GetMaxLoaded() { return *(int*)((char*)this + 0xC); }  // offs
 // 0x80327EC4 (8 bytes)
 int EResourceMap::GetMaxUsed() { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcEngine
@@ -10,3 +11,4 @@ void ENgcEngine::InitializeProfiler() { }
 // 0x8032E884 (8 bytes)
 int ENgcEngine::IsResetting() { return /* SDA global @ r13-26472 */; }  // lwz r3,-26472(r13)
 
+#endif

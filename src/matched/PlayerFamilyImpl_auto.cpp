@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PlayerFamilyImpl
@@ -22,3 +23,4 @@ void PlayerFamilyImpl::SetTotalAspirationScore(int) { *(int*)((char*)this + 0xD6
 // 0x8012D1D4 (12 bytes)
 void PlayerFamilyImpl::ConvertToRegularFamilyOnWrite() { *(int*)((char*)this + 0xD64) = 1; }
 
+#endif

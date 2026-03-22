@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AmbientScorePlayer
@@ -25,3 +26,4 @@ int AmbientScorePlayer::GetNumPlaying() { return *(int*)((char*)this + 0x10); } 
 // 0x800A8B34 (8 bytes)
 void* AmbientScorePlayer::GetListenerInfos() { return (char*)this + 0x20; }  // offset 0x20
 
+#endif

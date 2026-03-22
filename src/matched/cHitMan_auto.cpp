@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cHitMan
@@ -13,3 +14,4 @@ int cHitMan::StartCallbackTimer() { return 0; }
 // 0x80116DF4 (8 bytes)
 int cHitMan::StopCallbackTimer() { return 0; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EDummyFile
@@ -28,3 +29,4 @@ int EDummyFile::GetSystemHandle() const { return 0; }
 // 0x800226C0 (4 bytes)
 void EDummyFile::Destroy() { }
 
+#endif

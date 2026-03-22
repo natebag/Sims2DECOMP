@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EThread
@@ -31,3 +32,4 @@ int EThread::GetStackUsage() { return 0; }
 // 0x802E1800 (4 bytes)
 void EThread::PrintAllThreads() { }
 
+#endif

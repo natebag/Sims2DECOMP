@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENDummy
@@ -16,3 +17,4 @@ int ENDummy::GetID() { return *(int*)((char*)this + 0x40); }  // offset 0x40
 // 0x802CC4BC (8 bytes)
 int ENDummy::GetKeys() { return *(int*)((char*)this + 0x44); }  // offset 0x44
 
+#endif

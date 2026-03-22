@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EILight
@@ -61,3 +62,4 @@ void EILight::SetHaveLightsChanged(bool) { /* SDA global @ r13-28500 = param */ 
 // 0x802281BC (8 bytes)
 int EILight::HaveLightsChanged() { return /* SDA global @ r13-28500 */; }  // lwz r3,-28500(r13)
 
+#endif

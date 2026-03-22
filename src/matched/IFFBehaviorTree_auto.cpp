@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IFFBehaviorTree
@@ -10,3 +11,4 @@ void IFFBehaviorTree::AddRef() { *(int*)((char*)this + 0x60) += 1; }  // refcoun
 // 0x8015B9A4 (8 bytes)
 int IFFBehaviorTree::GetDataSourceType() const { return 2; }
 
+#endif

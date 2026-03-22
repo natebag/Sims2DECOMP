@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MUStatesSlotSelectSaveNoSkip
@@ -7,3 +8,4 @@
 // 0x80093DB0 (12 bytes)
 int MUStatesSlotSelectSaveNoSkip::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
 
+#endif

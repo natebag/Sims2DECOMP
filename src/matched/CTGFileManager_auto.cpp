@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CTGFileManager
@@ -25,3 +26,4 @@ int CTGFileManager::MoveFile(char *, char *) { return 1; }
 // 0x8007D4DC (8 bytes)
 int CTGFileManager::CopyFile(char *, char *) { return 1; }
 
+#endif

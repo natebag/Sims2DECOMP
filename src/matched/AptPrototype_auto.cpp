@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptPrototype
@@ -7,3 +8,4 @@
 // 0x802B6218 (8 bytes)
 int AptPrototype::GetSuperConstructor() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
+#endif

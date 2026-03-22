@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFenceWall
@@ -10,3 +11,4 @@ bool EFenceWall::IsWallsOpaque(int) { return false; }
 // 0x8039E4B8 (16 bytes)
 int EFenceWall::CalWallsOpaque(int) { return ((int*)((char*)this + 0x2C))[index]; }  // array[index], elem_size=4
 
+#endif

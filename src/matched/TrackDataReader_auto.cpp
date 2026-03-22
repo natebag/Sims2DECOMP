@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TrackDataReader
@@ -8,7 +9,7 @@
 void TrackDataReader::TrackDataReader() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
 
 // 0x8011633C (20 bytes)
-void TrackDataReader::operator=(ERSoundTrackData *) { *(int*)((char*)this + 0x0) = param4; *(int*)((char*)this + 0x4) = 0; }
+void TrackDataReader::operator=(ERSoundTrackData *) { *(int*)((char*)this + 0x0) = p4; *(int*)((char*)this + 0x4) = 0; }
 
 // 0x80116350 (20 bytes)
 void TrackDataReader::operator--() { *(int*)((char*)this + 0x4) += -1; }  // refcount increment
@@ -16,3 +17,4 @@ void TrackDataReader::operator--() { *(int*)((char*)this + 0x4) += -1; }  // ref
 // 0x8011645C (4 bytes)
 void TrackDataReader::Trace() const { }
 
+#endif

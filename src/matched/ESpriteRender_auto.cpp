@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESpriteRender
@@ -19,3 +20,4 @@ void ESpriteRender::Mark() { *(int*)((char*)this + 0x0) = 1; }
 // 0x80036E94 (12 bytes)
 void ESpriteRender::MarkAsNew() { *(int*)((char*)this + 0x4) = 1; }
 
+#endif

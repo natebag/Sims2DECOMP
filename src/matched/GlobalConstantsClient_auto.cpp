@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for GlobalConstantsClient
@@ -7,3 +8,4 @@
 // 0x800EC07C (8 bytes)
 int GlobalConstantsClient::GetFileID() { return /* SDA global @ r13-31848 */; }  // lwz r3,-31848(r13)
 
+#endif

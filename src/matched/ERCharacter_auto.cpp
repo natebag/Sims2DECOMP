@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERCharacter
@@ -31,3 +32,4 @@ int ERCharacter::operator new(unsigned int, void *) { return first; }  // mr r3,
 // 0x80368D64 (16 bytes)
 void* ERCharacter::GetNode(int) { return (char*)(*(void**)((char*)this + 0x14)) + index * 184; }  // struct array, stride=184
 
+#endif

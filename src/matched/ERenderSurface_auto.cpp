@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERenderSurface
@@ -16,3 +17,4 @@ void ERenderSurface::SetFlags(unsigned int) { *(int*)((char*)this + 0x8) = val; 
 // 0x80364F5C (8 bytes)
 int ERenderSurface::GetFlags() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
+#endif

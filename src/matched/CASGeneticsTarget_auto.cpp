@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CASGeneticsTarget
@@ -10,3 +11,4 @@ int CASGeneticsTarget::GetCasGenetics() { return *(int*)((char*)this + 0x94); } 
 // 0x801A08E8 (12 bytes)
 bool CASGeneticsTarget::GetWarnOnGenerate() { return (*(int*)((char*)this + 0x300) >> 5) & 1; }  // bit 5
 
+#endif

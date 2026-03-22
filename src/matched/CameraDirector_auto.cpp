@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CameraDirector
@@ -10,3 +11,4 @@ void CameraDirector::SetHoldState(float) { *(float*)((char*)this + 0x168) = fval
 // 0x8001CAF8 (8 bytes)
 int CameraDirector::GetFrameEffectsManager() { return *(int*)((char*)this + 0x2D0); }  // offset 0x2D0
 
+#endif

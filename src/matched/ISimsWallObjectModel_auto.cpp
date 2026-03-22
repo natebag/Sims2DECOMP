@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimsWallObjectModel
@@ -25,3 +26,4 @@ void* ISimsWallObjectModel::GetTypeInfoStatic() { return (void*)0x8050B7F0; }  /
 // 0x80053F94 (12 bytes)
 unsigned short ISimsWallObjectModel::GetReadVersion() { return *(unsigned short*)0x8050B806; }  // global variable
 
+#endif

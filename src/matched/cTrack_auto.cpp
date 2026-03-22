@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cTrack
@@ -28,3 +29,4 @@ int cTrack::InstanceId() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 // 0x80119DC8 (8 bytes)
 int cTrack::IsPlaying() { return *(int*)((char*)this + 0x34); }  // offset 0x34
 
+#endif

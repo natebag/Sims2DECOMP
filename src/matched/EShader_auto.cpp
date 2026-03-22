@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EShader
@@ -52,3 +53,4 @@ void EShader::RemoveGeometryModes(unsigned int) { }
 // 0x802FABF4 (4 bytes)
 void EShader::AddGeometryModes(unsigned int) { }
 
+#endif

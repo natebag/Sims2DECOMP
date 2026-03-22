@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CASTarget
@@ -31,3 +32,4 @@ int CASTarget::GetGeneticsTarget() { return *(int*)((char*)this + 0x1370); }  //
 // 0x801A08B0 (8 bytes)
 int CASTarget::GetNPCEditor() { return *(int*)((char*)this + 0x1354); }  // offset 0x1354
 
+#endif

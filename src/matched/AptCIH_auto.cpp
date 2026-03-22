@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptCIH
@@ -49,3 +50,4 @@ bool AptCIH::IsInCtor() const { return (*(int*)((char*)this + 0x5C) >> 10) & 1; 
 // 0x80293FA8 (16 bytes)
 void AptCIH::SetInCtor(unsigned int) { /* set bitfield [21:21] at offset 0x5C */ }
 
+#endif

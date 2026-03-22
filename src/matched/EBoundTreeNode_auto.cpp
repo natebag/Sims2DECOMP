@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EBoundTreeNode
@@ -25,3 +26,4 @@ void* EBoundTreeNode::GetTypeInfoStatic() { return (void*)0x8050CD10; }  // glob
 // 0x802C5D70 (12 bytes)
 unsigned short EBoundTreeNode::GetReadVersion() { return *(unsigned short*)0x8050CD26; }  // global variable
 
+#endif

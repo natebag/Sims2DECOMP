@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IconItem
@@ -19,3 +20,4 @@ void IconItem::SetShader(ERShader *) { *(int*)((char*)this + 0x30) = val; }  // 
 // 0x800878BC (8 bytes)
 int IconItem::GetShader() { return *(int*)((char*)this + 0x30); }  // offset 0x30
 
+#endif

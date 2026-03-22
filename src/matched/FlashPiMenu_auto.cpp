@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FlashPiMenu
@@ -19,3 +20,4 @@ void FlashPiMenu::FlashPiMenu() { *(void**)((char*)this + 0xC) = (void*)0x8046B6
 // 0x8003AFCC (8 bytes)
 unsigned char FlashPiMenu::GetPlayerId() { return *(unsigned char*)((char*)this + 0xB); }  // offset 0xB
 
+#endif

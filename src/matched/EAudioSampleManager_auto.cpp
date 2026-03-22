@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAudioSampleManager
@@ -7,3 +8,4 @@
 // 0x8032D98C (8 bytes)
 bool EAudioSampleManager::CanCache(EResource *) { return true; }
 
+#endif

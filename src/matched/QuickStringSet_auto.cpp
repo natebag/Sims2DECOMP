@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickStringSet
@@ -64,3 +65,4 @@ void QuickStringSet::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return 0; }
 // 0x800A7D44 (20 bytes)
 void QuickStringSet::AddRef() { *(int*)((char*)this + 0x10) += 1; }  // refcount increment
 
+#endif

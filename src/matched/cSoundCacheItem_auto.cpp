@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cSoundCacheItem
@@ -7,3 +8,4 @@
 // 0x800B8CB8 (8 bytes)
 void cSoundCacheItem::cSoundCacheItem(unsigned int) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
+#endif

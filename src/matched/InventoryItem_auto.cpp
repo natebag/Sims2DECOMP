@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for InventoryItem
@@ -19,3 +20,4 @@ signed char BBI::InventoryItem::GetItemCount() const { return *(signed char*)((c
 // 0x8004A2D8 (8 bytes)
 unsigned char BBI::InventoryItem::GetItemColorIndex() const { return *(unsigned char*)((char*)this + 0x2); }  // offset 0x2
 
+#endif

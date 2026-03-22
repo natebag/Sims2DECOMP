@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeSim
@@ -67,3 +68,4 @@ void TreeSim::SetBreakOnCallTreeStringFailure(bool) { /* SDA global @ r13-31632 
 // 0x8014928C (8 bytes)
 int TreeSim::IsExecutingInMainSim() { return /* SDA global @ r13-31656 */; }  // lwz r3,-31656(r13)
 
+#endif

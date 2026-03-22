@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AwarenessManager
@@ -28,3 +29,4 @@ void AwarenessManager::SetPauseMultiplier(float) { *(float*)((char*)this + 0x30)
 // 0x80014280 (8 bytes)
 int AwarenessManager::GetStateFlags() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
+#endif

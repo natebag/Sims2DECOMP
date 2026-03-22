@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimsMultiTileObjectModel
@@ -22,3 +23,4 @@ void* ISimsMultiTileObjectModel::GetTypeInfoStatic() { return (void*)0x8050B818;
 // 0x80054128 (12 bytes)
 unsigned short ISimsMultiTileObjectModel::GetReadVersion() { return *(unsigned short*)0x8050B82E; }  // global variable
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for StateMachine
@@ -5,7 +6,7 @@
 // 18 functions, 176 bytes
 
 // 0x80095DFC (16 bytes)
-void StateMachine::ReturnFromState(int) { *(int*)((char*)this + 0x8C) = param4; *(int*)((char*)this + 0x88) = 1; }
+void StateMachine::ReturnFromState(int) { *(int*)((char*)this + 0x8C) = p4; *(int*)((char*)this + 0x88) = 1; }
 
 // 0x80095E28 (12 bytes)
 int StateMachine::GetCurStateStage() const { return *(int*)((char*)(*(void**)((char*)this + 0x3C)) + 0xC); }  // double deref
@@ -58,3 +59,4 @@ int StateMachine::IsEnabled() { return *(int*)((char*)this + 0x94); }  // offset
 // 0x80096B88 (8 bytes)
 int StateMachine::IsPausedUpdate() { return *(int*)((char*)this + 0x24); }  // offset 0x24
 
+#endif

@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Emitter
@@ -13,3 +14,4 @@ void Emitter::SetScale(float) { *(float*)((char*)(*(void**)((char*)this + 0x7C))
 // 0x802389D4 (8 bytes)
 bool Emitter::VisibilityTest(E3DWindow &) { return false; }
 
+#endif

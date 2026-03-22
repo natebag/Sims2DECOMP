@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Allocator::GeneralAllocator
@@ -5,16 +6,16 @@
 // 10 functions, 96 bytes
 
 // 0x802D8F78 (12 bytes)
-void EA::Allocator::GeneralAllocator::SetMallocFailureFunction(bool (*)(EA::Allocator::GeneralAllocator *, unsigned int, unsigned int, void *), void *) { *(int*)((char*)this + 0x4C8) = param5; *(int*)((char*)this + 0x4C4) = param4; }
+void EA::Allocator::GeneralAllocator::SetMallocFailureFunction(bool (*)(EA::Allocator::GeneralAllocator *, unsigned int, unsigned int, void *), void *) { *(int*)((char*)this + 0x4C8) = p5; *(int*)((char*)this + 0x4C4) = p4; }
 
 // 0x802D8F84 (12 bytes)
-void EA::Allocator::GeneralAllocator::SetHookFuncton(void (*)(EA::Allocator::GeneralAllocator::HookInfo *, void *), void *) { *(int*)((char*)this + 0x4C0) = param5; *(int*)((char*)this + 0x4BC) = param4; }
+void EA::Allocator::GeneralAllocator::SetHookFuncton(void (*)(EA::Allocator::GeneralAllocator::HookInfo *, void *), void *) { *(int*)((char*)this + 0x4C0) = p5; *(int*)((char*)this + 0x4BC) = p4; }
 
 // 0x802D8F90 (12 bytes)
-void EA::Allocator::GeneralAllocator::SetTraceFunction(void (*)(char *, void *), void *) { *(int*)((char*)this + 0x4DC) = param5; *(int*)((char*)this + 0x4D8) = param4; }
+void EA::Allocator::GeneralAllocator::SetTraceFunction(void (*)(char *, void *), void *) { *(int*)((char*)this + 0x4DC) = p5; *(int*)((char*)this + 0x4D8) = p4; }
 
 // 0x802D8F9C (12 bytes)
-void EA::Allocator::GeneralAllocator::SetTraceFieldDelimiters(unsigned char, unsigned char) { *(char*)((char*)this + 0x485) = param5; *(char*)((char*)this + 0x484) = param4; }
+void EA::Allocator::GeneralAllocator::SetTraceFieldDelimiters(unsigned char, unsigned char) { *(char*)((char*)this + 0x485) = p5; *(char*)((char*)this + 0x484) = p4; }
 
 // 0x802D8FA8 (8 bytes)
 int EA::Allocator::GeneralAllocator::GetPageSize() { return 4096; }
@@ -26,7 +27,7 @@ void EA::Allocator::GeneralAllocator::AdjustHighFence() { }
 int EA::Allocator::GeneralAllocator::ChunkMatchesLowHigh(int, EA::Allocator::GeneralAllocator::Chunk *, unsigned int) const { return 1; }
 
 // 0x802DA53C (12 bytes)
-void EA::Allocator::GeneralAllocator::SetAssertionFailureFunction(void (*)(char *, void *), void *) { *(int*)((char*)this + 0x4D4) = param5; *(int*)((char*)this + 0x4D0) = param4; }
+void EA::Allocator::GeneralAllocator::SetAssertionFailureFunction(void (*)(char *, void *), void *) { *(int*)((char*)this + 0x4D4) = p5; *(int*)((char*)this + 0x4D0) = p4; }
 
 // 0x802DA584 (4 bytes)
 void EA::Allocator::GeneralAllocator::TraceFunctionDefault(char *, void *) { }
@@ -34,3 +35,4 @@ void EA::Allocator::GeneralAllocator::TraceFunctionDefault(char *, void *) { }
 // 0x802DC554 (12 bytes)
 unsigned int EA::Allocator::GeneralAllocator::GetBlockSize(void *) const { return *(unsigned int*)((char*)this + 0xFFFC) & 0xFFFFFFF8; }
 
+#endif

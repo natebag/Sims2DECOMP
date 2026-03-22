@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for RParticle
@@ -28,3 +29,4 @@ int RParticle::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 // 0x8036C308 (8 bytes)
 int RParticle::GetData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
+#endif

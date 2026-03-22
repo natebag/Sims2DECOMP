@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFile
@@ -46,3 +47,4 @@ void EFile::SetAccess(EFile::AccessMode) { *(int*)((char*)this + 0xC) = val; }  
 // 0x802C695C (8 bytes)
 void EFile::SetMode(EFile::IOMode) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 
+#endif

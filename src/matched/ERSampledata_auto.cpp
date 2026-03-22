@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERSampledata
@@ -13,3 +14,4 @@ int ERSampledata::GetSampleHeader() const { return *(int*)((char*)this + 0x14); 
 // 0x8033832C (8 bytes)
 int ERSampledata::GetSampleHeader2() const { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
+#endif

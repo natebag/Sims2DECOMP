@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIDirLight
@@ -28,3 +29,4 @@ int EIDirLight::GetLightType() { return 2; }
 // 0x802274FC (8 bytes)
 void* EIDirLight::GetDir() const { return (char*)this + 0xAC; }  // offset 0xAC
 
+#endif

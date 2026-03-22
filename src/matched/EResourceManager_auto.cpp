@@ -1,3 +1,4 @@
+#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResourceManager
@@ -22,3 +23,4 @@ int EResourceManager::IsInitialized() { return *(int*)((char*)this + 0x48); }  /
 // 0x80327ED4 (8 bytes)
 bool EResourceManager::CanCache() { return false; }
 
+#endif
