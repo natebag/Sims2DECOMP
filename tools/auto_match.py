@@ -898,7 +898,7 @@ def main():
 
         files_written = 0
         for cls, funcs_in_class in sorted(by_class.items()):
-            filename = cls.replace("::", "_") + "_auto.cpp"
+            filename = cls.replace("::", "_").replace("<", "_").replace(">", "_").replace("*", "ptr").replace(" ", "_").replace(",", "_") + "_auto.cpp"
             filepath = out_dir / filename
 
             with open(filepath, "w") as f:
