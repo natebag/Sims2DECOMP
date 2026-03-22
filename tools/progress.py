@@ -104,8 +104,10 @@ def main():
         system_stats[system]['total_bytes'] += func['size']
 
         # Check if function name appears in decompiled source
-        func_short = name.split('(')[0].split('::')[-1] if name else ''
-        if func_short in decompiled:
+        # Try full qualified name (before params), then short name (last :: segment)
+        func_qual = name.split('(')[0].strip() if name else ''
+        func_short = func_qual.split('::')[-1] if func_qual else ''
+        if func_qual in decompiled or func_short in decompiled:
             matched_funcs += 1
             matched_bytes += func['size']
             system_stats[system]['matched'] += 1
