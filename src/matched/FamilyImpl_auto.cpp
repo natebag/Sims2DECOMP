@@ -41,7 +41,7 @@ int FamilyImpl::GetHouseValue() { return *(int*)((char*)this + 0x18); }  // offs
 void FamilyImpl::SetHouseValue(int val) { *(int*)((char*)this + 0x18) = val; }  // offset 0x18
 
 // 0x800B6B70 (16 bytes)
-void FamilyImpl::SetFriendCount(int p4) { *(int*)((char*)this + 0x1C) = p4; *(int*)((char*)this + 0x20) = 0; }
+void FamilyImpl::SetFriendCount(int p4) { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x1C) = p4; *(int*)((char*)this + 0x20) = __r0; }
 
 // 0x800B6BA0 (12 bytes)
 bool FamilyImpl::GetHasPhone() { return *(int*)((char*)this + 0x34) & 1; }  // low bit

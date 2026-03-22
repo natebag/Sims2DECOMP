@@ -20,7 +20,7 @@ void ESimsApp::GetDefaultLanguage() { return 0; }
 void ESimsApp::SetGameState(OVERALL_GAME_STATE val) { *(int*)((char*)this + 0x468) = val; }  // offset 0x468
 
 // 0x80005D2C (20 bytes)
-void ESimsApp::TakeBigScreenshot(int p4, int p5) { *(int*)((char*)this + 0x4A4) = p5; *(int*)((char*)this + 0x49C) = 1; *(int*)((char*)this + 0x4A0) = p4; }
+void ESimsApp::TakeBigScreenshot(int p4, int p5) { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x4A4) = p5; *(int*)((char*)this + 0x49C) = __r0; *(int*)((char*)this + 0x4A0) = p4; }
 
 // 0x80006380 (12 bytes)
 void ESimsApp::GetAppName() { return (void*)0x803DAF88; }  // global data pointer

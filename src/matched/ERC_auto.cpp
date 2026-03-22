@@ -5,7 +5,7 @@
 // 20 functions, 108 bytes
 
 // 0x802F682C (16 bytes)
-void ERC::Connect(EDLEntry * p4,  EDLEntry *) { *(int*)((char*)this + 0x4) = p4; *(char*)((char*)this + 0x0) = 7; }
+void ERC::Connect(EDLEntry * p4,  EDLEntry *) { register int __r0 __asm__("r0") = 7; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x4) = p4; *(char*)((char*)this + 0x0) = __r0; }
 
 // 0x802F6BE0 (4 bytes)
 void ERC::TriFan(EGEVert *, int) { }

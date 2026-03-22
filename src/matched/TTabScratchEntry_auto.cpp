@@ -104,7 +104,7 @@ void TTabScratchEntry::SetAttenuation(ITreeTableEntry::Attenuation val) { *(int*
 float TTabScratchEntry::GetCustomAttenuationValue() const { return *(float*)((char*)this + 0x10C); }  // offset 0x10C
 
 // 0x80149EB0 (16 bytes)
-void TTabScratchEntry::SetCustomAttenuation(float fval) { *(float*)((char*)this + 0x10C) = fval; *(int*)((char*)this + 0x108) = 0; }
+void TTabScratchEntry::SetCustomAttenuation(float fval) { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(float*)((char*)this + 0x10C) = fval; *(int*)((char*)this + 0x108) = __r0; }
 
 // 0x80149EC8 (8 bytes)
 void TTabScratchEntry::SetAutonomyThreshold(short val) { *(short*)((char*)this + 0x114) = val; }  // offset 0x114

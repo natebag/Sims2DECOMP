@@ -5,7 +5,7 @@
 // 18 functions, 176 bytes
 
 // 0x80095DFC (16 bytes)
-void StateMachine::ReturnFromState(int p4) { *(int*)((char*)this + 0x8C) = p4; *(int*)((char*)this + 0x88) = 1; }
+void StateMachine::ReturnFromState(int p4) { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x8C) = p4; *(int*)((char*)this + 0x88) = __r0; }
 
 // 0x80095E28 (12 bytes)
 int StateMachine::GetCurStateStage() const { return *(int*)((char*)(*(void**)((char*)this + 0x3C)) + 0xC); }  // double deref

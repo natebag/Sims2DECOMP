@@ -5,5 +5,5 @@
 // 1 functions, 20 bytes
 
 // 0x803125C0 (20 bytes)
-void EResPrefetch::AcquireBuffer(void * p4,  unsigned int) { *(int*)((char*)this + 0x408) = p4; *(int*)((char*)this + 0x404) = 0; *(int*)((char*)this + 0x40C) = p4; }
+void EResPrefetch::AcquireBuffer(void * p4,  unsigned int) { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x408) = p4; *(int*)((char*)this + 0x404) = __r0; *(int*)((char*)this + 0x40C) = p4; }
 
