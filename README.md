@@ -8,8 +8,8 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 
 | Metric | Value |
 |--------|-------|
-| Functions decompiled | ~7,453 / 18,547 |
-| Progress | **40.2%** |
+| Functions decompiled | ~8,356 / 18,547 |
+| Progress | **45.1%** |
 | Symbols identified | 23,068 |
 | Struct layouts recovered | 50+ classes |
 | Source files | 100+ .cpp / .s |
