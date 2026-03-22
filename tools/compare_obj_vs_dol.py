@@ -129,15 +129,25 @@ def main():
                     continue
 
                 # Find matching compiled function by size
+                # Prefer exact byte match, then first unused same-size
                 our_bytes = None
                 our_name = "?"
                 if size in compiled_by_size:
+                    # First pass: look for exact byte match
                     for cname, cbytes in compiled_by_size[size]:
-                        if cname not in used_compiled:
+                        if cname not in used_compiled and cbytes == orig_bytes:
                             our_bytes = cbytes
                             our_name = cname
                             used_compiled.add(cname)
                             break
+                    # Second pass: first unused same-size
+                    if our_bytes is None:
+                        for cname, cbytes in compiled_by_size[size]:
+                            if cname not in used_compiled:
+                                our_bytes = cbytes
+                                our_name = cname
+                                used_compiled.add(cname)
+                                break
 
                 if our_bytes is None:
                     # Try finding by order in the .o

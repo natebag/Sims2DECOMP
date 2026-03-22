@@ -25,5 +25,5 @@ void PCTTarget::buy_fail_dialog_selection_callback(int) { register int __r0 __as
 void PCTTarget::ZeroInputCallback() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xF0) = __r0; }
 
 // 0x801D875C (12 bytes)
-void PCTTarget::DialogClosedCallback() { *(int*)((char*)this + 0xF0) = 0; }
+void PCTTarget::DialogClosedCallback() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xF0) = __r0; }
 

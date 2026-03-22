@@ -5,5 +5,5 @@
 // 1 functions, 16 bytes
 
 // 0x801847B4 (16 bytes)
-void ActionQueueHUD::Start(HUDTarget * p4) { *(int*)((char*)this + 0x0) = p4; *(char*)((char*)this + 0x318) = 1; }
+void ActionQueueHUD::Start(HUDTarget * p4) { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x0) = (int)p4; *(char*)((char*)this + 0x318) = __r0; }
 
