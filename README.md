@@ -4,14 +4,32 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 
 ## Status
 
-**Milestone 1: FOUNDATION** — Toolchain, build system, and symbol analysis complete. Boot sequence decomp next.
+**Milestone 2: CORE SYSTEMS** — Active decompilation in progress across all major systems.
 
 | Metric | Value |
 |--------|-------|
-| Functions matched | 0 / 18,547 |
-| Progress | 0.00% |
+| Functions decompiled | ~7,453 / 18,547 |
+| Progress | **40.2%** |
 | Symbols identified | 23,068 |
-| Toolchain | Ready |
+| Struct layouts recovered | 50+ classes |
+| Source files | 100+ .cpp / .s |
+| Toolchain | devkitPPC + decomp-toolkit |
+
+### Systems Covered
+
+| System | Status | Key Classes |
+|--------|--------|-------------|
+| Boot / SDK Runtime | Done | __start, libgcc, libm, libc |
+| DolphinSDK (OS/HW) | 912 functions | OS, DVD, GX, VI, PAD, AI, EXI, MTX |
+| EA Base Engine | In progress | EString, EVec3, EAHeap, FastAllocPool, EHashTable |
+| Sim AI | In progress | Person, Neighbor, Family, Behavior, Interaction |
+| Objects | In progress | cXObject, IObject, Slots, ObjDefinition |
+| UI / APT Engine | In progress | Wrapper, AptValue, AptCharacter, AptAction |
+| Rendering | In progress | ERC, EShader, EGraphics, ENgcRenderer, Lighting |
+| Camera | In progress | ESimsCam, CameraDirector, CameraMotion |
+| Build Mode | In progress | Interactor, WallManipulator, FloorPainter |
+| Audio / Save | In progress | AmbientScore, GameSound, SimsMemCardWrap |
+| State Machine | In progress | StateMachine, GameState, TheSims, LiveMode |
 
 ## What is this?
 
