@@ -80,7 +80,10 @@ CFLAGS   += $(INCLUDES) $(DEFINES)
 LDSCRIPT := config/ldscript.lcf
 
 LDFLAGS := -T $(LDSCRIPT) \
-	-nostdlib
+	-nostdlib \
+	--allow-multiple-definition \
+	--no-check-sections \
+	--noinhibit-exec
 
 #==============================================================================
 # Sources
@@ -91,9 +94,10 @@ SKELETON_SRCS := $(addprefix $(SKELETON_DIR)/,$(addsuffix .s,$(SKELETON_SECTIONS
 SKELETON_OBJS := $(SKELETON_SRCS:.s=.o)
 
 # Decompiled C/C++ source files
-C_SRCS   := $(shell find src/ -name '*.c' 2>/dev/null)
-CXX_SRCS := $(shell find src/ -name '*.cpp' 2>/dev/null)
-ASM_SRCS := $(shell find src/ -name '*.s' 2>/dev/null)
+# Exclude src/matched/ — auto-generated stubs that don't compile yet
+C_SRCS   := $(shell find src/ -path 'src/matched' -prune -o -name '*.c' -print 2>/dev/null)
+CXX_SRCS := $(shell find src/ -path 'src/matched' -prune -o -name '*.cpp' -print 2>/dev/null)
+ASM_SRCS := $(shell find src/ -path 'src/matched' -prune -o -name '*.s' -print 2>/dev/null)
 
 # Object files from decompiled sources
 C_OBJS   := $(C_SRCS:src/%.c=$(BUILD_DIR)/obj/%.o)

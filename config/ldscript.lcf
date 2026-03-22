@@ -121,4 +121,7 @@ SECTIONS
         *(.note)
         *(.note.*)
     }
+
+    /* Symbol aliases: bridge GCC Itanium mangling to SN Systems mangling */
+    INCLUDE config/symbol_aliases.ld
 }
