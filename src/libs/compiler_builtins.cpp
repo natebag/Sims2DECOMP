@@ -1,6 +1,6 @@
 // compiler_builtins.cpp - Compiler built-in functions
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 21 functions
+// Auto-generated stub implementations - 12 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -53,51 +53,6 @@ class CasSimDescriptionS2C;
 struct AptValue;
 struct AptObject;
 struct CBFunctorBase;
-
-// __cvt_fp2unsigned
-// Address: 0x803BE2E8, Size: 0
-void __cvt_fp2unsigned() {
-}
-
-// __shr2u
-// Address: 0x803BE330, Size: 0
-void __shr2u() {
-}
-
-// __div2i
-// Address: 0x803BE334, Size: 0
-void __div2i() {
-}
-
-// __shl2i
-// Address: 0x803BE338, Size: 0
-void __shl2i() {
-}
-
-// __mod2i
-// Address: 0x803BE33C, Size: 0
-void __mod2i() {
-}
-
-// __shr2i
-// Address: 0x803BE340, Size: 0
-void __shr2i() {
-}
-
-// __div2u
-// Address: 0x803BE344, Size: 0
-void __div2u() {
-}
-
-// __mod2u
-// Address: 0x803BE348, Size: 0
-void __mod2u() {
-}
-
-// __va_arg
-// Address: 0x803BE34C, Size: 0
-void __va_arg() {
-}
 
 // __ashldi3
 // Address: 0x803C7A28, Size: 64

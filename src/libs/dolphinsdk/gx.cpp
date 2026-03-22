@@ -1,6 +1,6 @@
 // gx.cpp - GX graphics library
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 236 functions
+// Auto-generated stub implementations - 281 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -1232,4 +1232,229 @@ void GXReadXfRasMetric() {
 // GXReadClksPerVtx
 // Address: 0x8056CD38, Size: 64
 void GXReadClksPerVtx() {
+}
+
+// GXDefaultVATList
+// Address: 0x806E3540, Size: 208
+void GXDefaultVATList() {
+}
+
+// GXDefaultProjData
+// Address: 0x806E3610, Size: 28
+void GXDefaultProjData() {
+}
+
+// GXTexRegionAddrTable
+// Address: 0x806E362C, Size: 192
+void GXTexRegionAddrTable() {
+}
+
+// GXResetFuncInfo
+// Address: 0x806E36EC, Size: 16
+void GXResetFuncInfo() {
+}
+
+// GXNtsc240Ds
+// Address: 0x806E39D0, Size: 60
+void GXNtsc240Ds() {
+}
+
+// GXNtsc240DsAa
+// Address: 0x806E3A0C, Size: 60
+void GXNtsc240DsAa() {
+}
+
+// GXNtsc240Int
+// Address: 0x806E3A48, Size: 60
+void GXNtsc240Int() {
+}
+
+// GXNtsc240IntAa
+// Address: 0x806E3A84, Size: 60
+void GXNtsc240IntAa() {
+}
+
+// GXNtsc480IntDf
+// Address: 0x806E3AC0, Size: 60
+void GXNtsc480IntDf() {
+}
+
+// GXNtsc480Int
+// Address: 0x806E3AFC, Size: 60
+void GXNtsc480Int() {
+}
+
+// GXNtsc480IntAa
+// Address: 0x806E3B38, Size: 60
+void GXNtsc480IntAa() {
+}
+
+// GXNtsc480Prog
+// Address: 0x806E3B74, Size: 60
+void GXNtsc480Prog() {
+}
+
+// GXNtsc480ProgSoft
+// Address: 0x806E3BB0, Size: 60
+void GXNtsc480ProgSoft() {
+}
+
+// GXNtsc480ProgAa
+// Address: 0x806E3BEC, Size: 60
+void GXNtsc480ProgAa() {
+}
+
+// GXMpal240Ds
+// Address: 0x806E3C28, Size: 60
+void GXMpal240Ds() {
+}
+
+// GXMpal240DsAa
+// Address: 0x806E3C64, Size: 60
+void GXMpal240DsAa() {
+}
+
+// GXMpal240Int
+// Address: 0x806E3CA0, Size: 60
+void GXMpal240Int() {
+}
+
+// GXMpal240IntAa
+// Address: 0x806E3CDC, Size: 60
+void GXMpal240IntAa() {
+}
+
+// GXMpal480IntDf
+// Address: 0x806E3D18, Size: 60
+void GXMpal480IntDf() {
+}
+
+// GXMpal480Int
+// Address: 0x806E3D54, Size: 60
+void GXMpal480Int() {
+}
+
+// GXMpal480IntAa
+// Address: 0x806E3D90, Size: 60
+void GXMpal480IntAa() {
+}
+
+// GXPal264Ds
+// Address: 0x806E3DCC, Size: 60
+void GXPal264Ds() {
+}
+
+// GXPal264DsAa
+// Address: 0x806E3E08, Size: 60
+void GXPal264DsAa() {
+}
+
+// GXPal264Int
+// Address: 0x806E3E44, Size: 60
+void GXPal264Int() {
+}
+
+// GXPal264IntAa
+// Address: 0x806E3E80, Size: 60
+void GXPal264IntAa() {
+}
+
+// GXPal528IntDf
+// Address: 0x806E3EBC, Size: 60
+void GXPal528IntDf() {
+}
+
+// GXPal528Int
+// Address: 0x806E3EF8, Size: 60
+void GXPal528Int() {
+}
+
+// GXPal524IntAa
+// Address: 0x806E3F34, Size: 60
+void GXPal524IntAa() {
+}
+
+// GXEurgb60Hz240Ds
+// Address: 0x806E3F70, Size: 60
+void GXEurgb60Hz240Ds() {
+}
+
+// GXEurgb60Hz240DsAa
+// Address: 0x806E3FAC, Size: 60
+void GXEurgb60Hz240DsAa() {
+}
+
+// GXEurgb60Hz240Int
+// Address: 0x806E3FE8, Size: 60
+void GXEurgb60Hz240Int() {
+}
+
+// GXEurgb60Hz240IntAa
+// Address: 0x806E4024, Size: 60
+void GXEurgb60Hz240IntAa() {
+}
+
+// GXEurgb60Hz480IntDf
+// Address: 0x806E4060, Size: 60
+void GXEurgb60Hz480IntDf() {
+}
+
+// GXEurgb60Hz480Int
+// Address: 0x806E409C, Size: 60
+void GXEurgb60Hz480Int() {
+}
+
+// GXEurgb60Hz480IntAa
+// Address: 0x806E40D8, Size: 60
+void GXEurgb60Hz480IntAa() {
+}
+
+// GXRmHW
+// Address: 0x806E4114, Size: 60
+void GXRmHW() {
+}
+
+// GXTexMode0Ids
+// Address: 0x8078F688, Size: 8
+void GXTexMode0Ids() {
+}
+
+// GXTexMode1Ids
+// Address: 0x8078F690, Size: 8
+void GXTexMode1Ids() {
+}
+
+// GXTexImage0Ids
+// Address: 0x8078F698, Size: 8
+void GXTexImage0Ids() {
+}
+
+// GXTexImage1Ids
+// Address: 0x8078F6A0, Size: 8
+void GXTexImage1Ids() {
+}
+
+// GXTexImage2Ids
+// Address: 0x8078F6A8, Size: 8
+void GXTexImage2Ids() {
+}
+
+// GXTexImage3Ids
+// Address: 0x8078F6B0, Size: 8
+void GXTexImage3Ids() {
+}
+
+// GXTexTlutIds
+// Address: 0x8078F6B8, Size: 8
+void GXTexTlutIds() {
+}
+
+// GX2HWFiltConv
+// Address: 0x8078F6C0, Size: 6
+void GX2HWFiltConv() {
+}
+
+// GXOverflowSuspendInProgress
+// Address: 0x807904F0, Size: 4
+void GXOverflowSuspendInProgress() {
 }

@@ -1,6 +1,6 @@
 // global_profiling.cpp - Profiling functions
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 1 functions
+// Auto-generated stub implementations - 2 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -57,4 +57,9 @@ struct CBFunctorBase;
 // ProfileHook(void)
 // Address: 0x800065D0, Size: 16
 void ProfileHook() {
+}
+
+// profile
+// Address: 0x80717E90, Size: 48
+void profile() {
 }

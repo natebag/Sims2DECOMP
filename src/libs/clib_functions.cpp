@@ -109,6 +109,11 @@ void isdigit() {
 void fprintf() {
 }
 
+// abort
+// Address: 0x803C1208, Size: 24
+void abort() {
+}
+
 // atexit
 // Address: 0x803C1220, Size: 152
 void atexit() {
@@ -132,6 +137,11 @@ void srand() {
 // rand
 // Address: 0x803C1CD0, Size: 36
 void rand() {
+}
+
+// calloc
+// Address: 0x803C1DA8, Size: 60
+void calloc() {
 }
 
 // memcmp
@@ -187,16 +197,6 @@ void fopen() {
 // fseek
 // Address: 0x803C6F50, Size: 996
 void fseek() {
-}
-
-// abort
-// Address: 0x803D47E4, Size: 32
-void abort() {
-}
-
-// calloc
-// Address: 0x80469044, Size: 84
-void calloc() {
 }
 
 // tolower

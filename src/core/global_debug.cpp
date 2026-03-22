@@ -56,22 +56,22 @@ struct CBFunctorBase;
 
 // debugPrintStub(char *,...)
 // Address: 0x8000A51C, Size: 76
-void debugPrintStub(char * p0, ... p1) {
+void debugPrintStub() {
 }
 
 // debugSetScreenGrabPending(char *)
 // Address: 0x8000A568, Size: 4
-void debugSetScreenGrabPending(char * p0) {
+void debugSetScreenGrabPending() {
 }
 
 // debugAddSavedInput(AptSavedInputRecord *, int)
 // Address: 0x8000A56C, Size: 4
-void debugAddSavedInput(AptSavedInputRecord * p0, int p1) {
+void debugAddSavedInput() {
 }
 
 // Debug_DrawTextBox(ERC *, EVec2 &, EVec2 &, int)
 // Address: 0x8000CC10, Size: 644
-void Debug_DrawTextBox(ERC * p0, EVec2 & p1, EVec2 & p2, int p3) {
+void Debug_DrawTextBox() {
 }
 
 // DebugHeap(void)

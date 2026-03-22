@@ -56,7 +56,7 @@ struct CBFunctorBase;
 
 // ParticleManDelRefCB(void *)
 // Address: 0x8050403C, Size: 48
-void ParticleManDelRefCB(void * p0) {
+void ParticleManDelRefCB() {
 }
 
 // AudioFrameCallback(void)
@@ -66,27 +66,27 @@ void AudioFrameCallback() {
 
 // readStream(EFile *, unsigned int, unsigned int)
 // Address: 0x80505A6C, Size: 152
-void readStream(EFile * p0, unsigned int p1, unsigned int p2) {
+void readStream() {
 }
 
 // VMLogStats(unsigned long, unsigned long, unsigned long, unsigned long, int)
 // Address: 0x80506FDC, Size: 68
-void VMLogStats(unsigned long p0, unsigned long p1, unsigned long p2, unsigned long p3, int p4) {
+void VMLogStats() {
 }
 
 // ForceReadCallback(long, DVDFileInfo *)
 // Address: 0x80507020, Size: 12
-void ForceReadCallback(long p0, DVDFileInfo * p1) {
+void ForceReadCallback() {
 }
 
 // EventPostRetraceCallback(unsigned long)
 // Address: 0x80508228, Size: 4
-void EventPostRetraceCallback(unsigned long p0) {
+void EventPostRetraceCallback() {
 }
 
 // EventPreRetraceCallback(unsigned long)
 // Address: 0x8050822C, Size: 4
-void EventPreRetraceCallback(unsigned long p0) {
+void EventPreRetraceCallback() {
 }
 
 // ResetCallback(void)
@@ -106,17 +106,17 @@ void DvdCheck() {
 
 // EventAlarmHandler(OSAlarm *, OSContext *)
 // Address: 0x8050868C, Size: 112
-void EventAlarmHandler(OSAlarm * p0, OSContext * p1) {
+void EventAlarmHandler() {
 }
 
 // EventIdleThread(void *)
 // Address: 0x805086FC, Size: 28
-void EventIdleThread(void * p0) {
+void EventIdleThread() {
 }
 
 // EventThread(void *)
 // Address: 0x80508718, Size: 184
-void EventThread(void * p0) {
+void EventThread() {
 }
 
 // XOSFontStartup(void)
@@ -131,7 +131,7 @@ void XOSFontShutdown() {
 
 // XOSFontSetXFB(void *, int, int)
 // Address: 0x805088DC, Size: 16
-void XOSFontSetXFB(void * p0, int p1, int p2) {
+void XOSFontSetXFB() {
 }
 
 // XOSFontClearScreen(void)
@@ -141,42 +141,42 @@ void XOSFontClearScreen() {
 
 // XOSFontDrawChar(unsigned int *, int, int)
 // Address: 0x80508928, Size: 204
-void XOSFontDrawChar(unsigned int * p0, int p1, int p2) {
+void XOSFontDrawChar() {
 }
 
-// XOSFontGetWordSize(unsigned short *, int &, int &)
-// Address: 0x80508AAC, Size: 340
-void XOSFontGetWordSize(unsigned short * p0, int & p1, int & p2) {
+// XOSFontGetWordSize(char *, int &, int &)
+// Address: 0x805089F4, Size: 184
+void XOSFontGetWordSize() {
 }
 
 // XOSFontDrawString(int, int, unsigned short *)
 // Address: 0x80508C00, Size: 484
-void XOSFontDrawString(int p0, int p1, unsigned short * p2) {
+void XOSFontDrawString() {
 }
 
 // LoadTexPalette(TEXPalette **, char *)
 // Address: 0x8050EB18, Size: 144
-void LoadTexPalette(TEXPalette ** p0, char * p1) {
+void LoadTexPalette() {
 }
 
 // UnpackTexPalette(TEXPalette *)
 // Address: 0x8050EBA8, Size: 296
-void UnpackTexPalette(TEXPalette * p0) {
+void UnpackTexPalette() {
 }
 
 // TexGet(TEXPalette *, unsigned int)
 // Address: 0x8050ECD0, Size: 16
-void TexGet(TEXPalette * p0, unsigned int p1) {
+void TexGet() {
 }
 
 // THPGXYuv2RgbSetup(_GXRenderModeObj *)
 // Address: 0x80510544, Size: 4
-void THPGXYuv2RgbSetup(_GXRenderModeObj * p0) {
+void THPGXYuv2RgbSetup() {
 }
 
 // THPGXYuv2RgbDraw(unsigned char *, unsigned char *, unsigned char *, short, short, short, short, short, short)
 // Address: 0x80510548, Size: 476
-void THPGXYuv2RgbDraw(unsigned char * p0, unsigned char * p1, unsigned char * p2, short p3, short p4, short p5, short p6, short p7, short p8) {
+void THPGXYuv2RgbDraw() {
 }
 
 // InitAllMessageQueue(void)
@@ -191,12 +191,12 @@ void WaitUntilPrepare() {
 
 // PrepareReady(bool)
 // Address: 0x80510820, Size: 48
-void PrepareReady(bool p0) {
+void PrepareReady() {
 }
 
 // PlayControl(unsigned long)
 // Address: 0x80510850, Size: 588
-void PlayControl(unsigned long p0) {
+void PlayControl() {
 }
 
 // ProperTimingForStart(void)
@@ -211,7 +211,7 @@ void ProperTimingForGettingNextFrame() {
 
 // PushUsedTextureSet(void *)
 // Address: 0x80510C20, Size: 48
-void PushUsedTextureSet(void * p0) {
+void PushUsedTextureSet() {
 }
 
 // PopUsedTextureSet(void)
@@ -226,12 +226,12 @@ void THPAudioMixCallback() {
 
 // MixAudio(short *, short *, unsigned int)
 // Address: 0x80510E2C, Size: 972
-void MixAudio(short * p0, short * p1, unsigned int p2) {
+void MixAudio() {
 }
 
 // THPPlayerSetVolume(int, int)
 // Address: 0x805111F8, Size: 300
-void THPPlayerSetVolume(int p0, int p1) {
+void THPPlayerSetVolume() {
 }
 
 // THPPlayerGetVolume(void)
@@ -241,7 +241,7 @@ void THPPlayerGetVolume() {
 
 // CreateReadThread(long)
 // Address: 0x8051135C, Size: 172
-void CreateReadThread(long p0) {
+void CreateReadThread() {
 }
 
 // ReadThreadStart(void)
@@ -256,7 +256,7 @@ void ReadThreadCancel() {
 
 // Reader(void *)
 // Address: 0x80511478, Size: 224
-void Reader(void * p0) {
+void Reader() {
 }
 
 // PopReadedBuffer(void)
@@ -266,7 +266,7 @@ void PopReadedBuffer() {
 
 // PushReadedBuffer(void *)
 // Address: 0x8051158C, Size: 48
-void PushReadedBuffer(void * p0) {
+void PushReadedBuffer() {
 }
 
 // PopFreeReadBuffer(void)
@@ -276,7 +276,7 @@ void PopFreeReadBuffer() {
 
 // PushFreeReadBuffer(void *)
 // Address: 0x805115F0, Size: 48
-void PushFreeReadBuffer(void * p0) {
+void PushFreeReadBuffer() {
 }
 
 // PopReadedBuffer2(void)
@@ -286,12 +286,12 @@ void PopReadedBuffer2() {
 
 // PushReadedBuffer2(void *)
 // Address: 0x80511654, Size: 48
-void PushReadedBuffer2(void * p0) {
+void PushReadedBuffer2() {
 }
 
 // CreateAudioDecodeThread(long, unsigned char *)
 // Address: 0x80511684, Size: 180
-void CreateAudioDecodeThread(long p0, unsigned char * p1) {
+void CreateAudioDecodeThread() {
 }
 
 // AudioDecodeThreadStart(void)
@@ -306,17 +306,17 @@ void AudioDecodeThreadCancel() {
 
 // AudioDecoder(void *)
 // Address: 0x805117A8, Size: 40
-void AudioDecoder(void * p0) {
+void AudioDecoder() {
 }
 
 // AudioDecoderForOnMemory(void *)
 // Address: 0x805117D0, Size: 164
-void AudioDecoderForOnMemory(void * p0) {
+void AudioDecoderForOnMemory() {
 }
 
 // AudioDecode(THPReadBuffer *)
 // Address: 0x80511874, Size: 192
-void AudioDecode(THPReadBuffer * p0) {
+void AudioDecode() {
 }
 
 // PopFreeAudioBuffer(void)
@@ -326,22 +326,22 @@ void PopFreeAudioBuffer() {
 
 // PushFreeAudioBuffer(void *)
 // Address: 0x80511968, Size: 48
-void PushFreeAudioBuffer(void * p0) {
+void PushFreeAudioBuffer() {
 }
 
 // PopDecodedAudioBuffer(int)
 // Address: 0x80511998, Size: 64
-void PopDecodedAudioBuffer(int p0) {
+void PopDecodedAudioBuffer() {
 }
 
 // PushDecodedAudioBuffer(void *)
 // Address: 0x805119D8, Size: 48
-void PushDecodedAudioBuffer(void * p0) {
+void PushDecodedAudioBuffer() {
 }
 
 // CreateVideoDecodeThread(long, unsigned char *)
 // Address: 0x80511A08, Size: 184
-void CreateVideoDecodeThread(long p0, unsigned char * p1) {
+void CreateVideoDecodeThread() {
 }
 
 // VideoDecodeThreadStart(void)
@@ -356,17 +356,17 @@ void VideoDecodeThreadCancel() {
 
 // VideoDecoder(void *)
 // Address: 0x80511B30, Size: 228
-void VideoDecoder(void * p0) {
+void VideoDecoder() {
 }
 
 // VideoDecoderForOnMemory(void *)
 // Address: 0x80511C14, Size: 348
-void VideoDecoderForOnMemory(void * p0) {
+void VideoDecoderForOnMemory() {
 }
 
 // VideoDecode(THPReadBuffer *)
 // Address: 0x80511D70, Size: 296
-void VideoDecode(THPReadBuffer * p0) {
+void VideoDecode() {
 }
 
 // PopFreeTextureSet(void)
@@ -376,42 +376,42 @@ void PopFreeTextureSet() {
 
 // PushFreeTextureSet(void *)
 // Address: 0x80511ECC, Size: 48
-void PushFreeTextureSet(void * p0) {
+void PushFreeTextureSet() {
 }
 
 // PopDecodedTextureSet(int)
 // Address: 0x80511EFC, Size: 64
-void PopDecodedTextureSet(int p0) {
+void PopDecodedTextureSet() {
 }
 
 // PushDecodedTextureSet(void *)
 // Address: 0x80511F3C, Size: 48
-void PushDecodedTextureSet(void * p0) {
+void PushDecodedTextureSet() {
 }
 
 // ClampGenericStick(signed char *, signed char *, float, float, int, int)
 // Address: 0x8051201C, Size: 316
-void ClampGenericStick(signed char * p0, signed char * p1, float p2, float p3, int p4, int p5) {
+void ClampGenericStick() {
 }
 
 // ClampGenericTrigger(unsigned char *, unsigned char, unsigned char)
 // Address: 0x80512158, Size: 52
-void ClampGenericTrigger(unsigned char * p0, unsigned char p1, unsigned char p2) {
+void ClampGenericTrigger() {
 }
 
 // VerifyCallback(GXWarningLevel, unsigned long, char *)
 // Address: 0x80516FC0, Size: 92
-void VerifyCallback(GXWarningLevel p0, unsigned long p1, char * p2) {
+void VerifyCallback() {
 }
 
 // PSMTXMultVecWithScaleAndAdd(float (*)[3], Vec *, float, Vec *)
 // Address: 0x80523420, Size: 116
-void PSMTXMultVecWithScaleAndAdd(float (*)[3] p0, Vec * p1, float p2, Vec * p3) {
+void PSMTXMultVecWithScaleAndAdd() {
 }
 
 // GetDB(unsigned char)
 // Address: 0x80527744, Size: 152
-void GetDB(unsigned char p0) {
+void GetDB() {
 }
 
 // GetVoiceHandle(void)
@@ -431,62 +431,62 @@ void disable_IRQ() {
 
 // ax_drop_voice_callback(void *)
 // Address: 0x805278C8, Size: 100
-void ax_drop_voice_callback(void * p0) {
+void ax_drop_voice_callback() {
 }
 
 // get_free(Stream *&)
 // Address: 0x805289E8, Size: 280
-void get_free(Stream *& p0) {
+void get_free() {
 }
 
 // init_stream(Stream *, NGCStreamInfo *, unsigned char, unsigned char)
 // Address: 0x80528B00, Size: 208
-void init_stream(Stream * p0, NGCStreamInfo * p1, unsigned char p2, unsigned char p3) {
+void init_stream() {
 }
 
 // dvd_callback(long, DVDFileInfo *)
 // Address: 0x80528C58, Size: 484
-void dvd_callback(long p0, DVDFileInfo * p1) {
+void dvd_callback() {
 }
 
 // activate_stream(Stream *)
 // Address: 0x80528ED4, Size: 588
-void activate_stream(Stream * p0) {
+void activate_stream() {
 }
 
 // stream_data(Stream *)
 // Address: 0x80529120, Size: 368
-void stream_data(Stream * p0) {
+void stream_data() {
 }
 
 // shutdown_stream(Stream *)
 // Address: 0x80529290, Size: 136
-void shutdown_stream(Stream * p0) {
+void shutdown_stream() {
 }
 
 // stream_update_handler(void *, unsigned int, void *, unsigned int, unsigned int)
 // Address: 0x80529318, Size: 108
-void stream_update_handler(void * p0, unsigned int p1, void * p2, unsigned int p3, unsigned int p4) {
+void stream_update_handler() {
 }
 
 // get_private_index(unsigned int)
 // Address: 0x80529384, Size: 64
-void get_private_index(unsigned int p0) {
+void get_private_index() {
 }
 
 // stream_free(Stream *)
 // Address: 0x805293C4, Size: 108
-void stream_free(Stream * p0) {
+void stream_free() {
 }
 
 // arq_callback(unsigned int)
 // Address: 0x80529494, Size: 320
-void arq_callback(unsigned int p0) {
+void arq_callback() {
 }
 
 // HostIOEnumCallback(long)
 // Address: 0x8052BFA8, Size: 12
-void HostIOEnumCallback(long p0) {
+void HostIOEnumCallback() {
 }
 
 // HostIOCallback(void)
@@ -496,37 +496,37 @@ void HostIOCallback() {
 
 // CopyoutEFB(unsigned char *, unsigned int, unsigned int)
 // Address: 0x8052BFC0, Size: 156
-void CopyoutEFB(unsigned char * p0, unsigned int p1, unsigned int p2) {
+void CopyoutEFB() {
 }
 
 // CopyoutPortionEFB(unsigned char *, unsigned int, unsigned int, unsigned int)
 // Address: 0x8052C05C, Size: 268
-void CopyoutPortionEFB(unsigned char * p0, unsigned int p1, unsigned int p2, unsigned int p3) {
+void CopyoutPortionEFB() {
 }
 
 // TakeScreenshotEFB(void *(*)(unsigned int))
 // Address: 0x8052C168, Size: 112
-void TakeScreenshotEFB(void *(*)(unsigned int) p0) {
+void TakeScreenshotEFB() {
 }
 
 // TakeScreenshotXFB(void *, void *(*)(unsigned int))
 // Address: 0x8052C1D8, Size: 128
-void TakeScreenshotXFB(void * p0, void *(*)(unsigned int) p1) {
+void TakeScreenshotXFB() {
 }
 
 // WriteScreenshotPortionEFBtoUSB(unsigned int, void *(*)(unsigned int))
 // Address: 0x8052C258, Size: 168
-void WriteScreenshotPortionEFBtoUSB(unsigned int p0, void *(*)(unsigned int) p1) {
+void WriteScreenshotPortionEFBtoUSB() {
 }
 
 // GrabChunk(unsigned int, void *, void *(*)(unsigned int), void (*)(void *))
 // Address: 0x8052C300, Size: 496
-void GrabChunk(unsigned int p0, void * p1, void *(*)(unsigned int) p2, void (*)(void *) p3) {
+void GrabChunk() {
 }
 
 // CheckMail(void *, void *(*)(unsigned int), void (*)(void *))
 // Address: 0x8052C4F0, Size: 332
-void CheckMail(void * p0, void *(*)(unsigned int) p1, void (*)(void *) p2) {
+void CheckMail() {
 }
 
 // ConnectToUSB(void)
@@ -576,7 +576,7 @@ void XFONTShadowRow() {
 
 // XFONTputString(short *, short *, char *, unsigned int *)
 // Address: 0x8052C954, Size: 356
-void XFONTputString(short * p0, short * p1, char * p2, unsigned int * p3) {
+void XFONTputString() {
 }
 
 // LinkFix(void)
@@ -661,102 +661,102 @@ void PoolDestroy() {
 
 // BIG_getm(void *, int)
 // Address: 0x80541330, Size: 144
-void BIG_getm(void * p0, int p1) {
+void BIG_getm() {
 }
 
 // BIG_stricmp(char *, char *)
 // Address: 0x805413C0, Size: 156
-void BIG_stricmp(char * p0, char * p1) {
+void BIG_stricmp() {
 }
 
 // BIG_typeofheader(void *)
 // Address: 0x8054145C, Size: 132
-void BIG_typeofheader(void * p0) {
+void BIG_typeofheader() {
 }
 
 // BIG_sizeofheader(void *)
 // Address: 0x805414E0, Size: 140
-void BIG_sizeofheader(void * p0) {
+void BIG_sizeofheader() {
 }
 
 // BIG_debuginfo(void *, int *, unsigned int *)
 // Address: 0x8054156C, Size: 256
-void BIG_debuginfo(void * p0, int * p1, unsigned int * p2) {
+void BIG_debuginfo() {
 }
 
 // BIG_version(void *)
 // Address: 0x8054166C, Size: 52
-void BIG_version(void * p0) {
+void BIG_version() {
 }
 
 // BIG_locateentryz(void *, char *, int *, int *, int *)
 // Address: 0x805416A0, Size: 1220
-void BIG_locateentryz(void * p0, char * p1, int * p2, int * p3, int * p4) {
+void BIG_locateentryz() {
 }
 
 // BIG_locateentry(void *, char *, int *, int *, int *)
 // Address: 0x80541B64, Size: 32
-void BIG_locateentry(void * p0, char * p1, int * p2, int * p3, int * p4) {
+void BIG_locateentry() {
 }
 
 // BIG_locateoffset(void *, char *)
 // Address: 0x80541B84, Size: 64
-void BIG_locateoffset(void * p0, char * p1) {
+void BIG_locateoffset() {
 }
 
 // BIG_locateoffsetz(void *, char *)
 // Address: 0x80541BC4, Size: 64
-void BIG_locateoffsetz(void * p0, char * p1) {
+void BIG_locateoffsetz() {
 }
 
 // BIG_pointer(void *, int)
 // Address: 0x80541C04, Size: 84
-void BIG_pointer(void * p0, int p1) {
+void BIG_pointer() {
 }
 
 // BIG_pointerz(void *, int)
 // Address: 0x80541C58, Size: 84
-void BIG_pointerz(void * p0, int p1) {
+void BIG_pointerz() {
 }
 
 // BIG_locate(void *, char *)
 // Address: 0x80541CAC, Size: 64
-void BIG_locate(void * p0, char * p1) {
+void BIG_locate() {
 }
 
 // BIG_locatez(void *, char *)
 // Address: 0x80541CEC, Size: 64
-void BIG_locatez(void * p0, char * p1) {
+void BIG_locatez() {
 }
 
 // BIG_locatesize(void *, char *, int *)
 // Address: 0x80541D2C, Size: 84
-void BIG_locatesize(void * p0, char * p1, int * p2) {
+void BIG_locatesize() {
 }
 
 // BIG_locatemany(void *, char *, void **)
 // Address: 0x80541D80, Size: 144
-void BIG_locatemany(void * p0, char * p1, void ** p2) {
+void BIG_locatemany() {
 }
 
 // BIG_count(void *)
 // Address: 0x80541E10, Size: 136
-void BIG_count(void * p0) {
+void BIG_count() {
 }
 
 // AramRequestCallback(unsigned long)
 // Address: 0x80542554, Size: 12
-void AramRequestCallback(unsigned long p0) {
+void AramRequestCallback() {
 }
 
 // AsyncAramRequestCallback(unsigned long)
 // Address: 0x80542658, Size: 156
-void AsyncAramRequestCallback(unsigned long p0) {
+void AsyncAramRequestCallback() {
 }
 
 // AramRequestCallback2(unsigned long)
 // Address: 0x80542788, Size: 12
-void AramRequestCallback2(unsigned long p0) {
+void AramRequestCallback2() {
 }
 
 // write
@@ -1804,6 +1804,11 @@ void Retry() {
 void UnlockedCallback() {
 }
 
+// WriteCallback
+// Address: 0x8055A7AC, Size: 212
+void WriteCallback() {
+}
+
 // EraseCallback
 // Address: 0x8055A880, Size: 200
 void EraseCallback() {
@@ -1852,11 +1857,6 @@ void CreateCallbackFat() {
 // ReadCallback
 // Address: 0x8055DE48, Size: 304
 void ReadCallback() {
-}
-
-// WriteCallback
-// Address: 0x8055E190, Size: 368
-void WriteCallback() {
 }
 
 // DeleteCallback

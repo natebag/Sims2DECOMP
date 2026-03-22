@@ -56,10 +56,10 @@ struct CBFunctorBase;
 
 // SimsAptMalloc(unsigned int)
 // Address: 0x80009D78, Size: 228
-void SimsAptMalloc(unsigned int p0) {
+void SimsAptMalloc() {
 }
 
 // SimsAptFree(void *)
 // Address: 0x80009E5C, Size: 160
-void SimsAptFree(void * p0) {
+void SimsAptFree() {
 }

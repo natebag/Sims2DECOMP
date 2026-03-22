@@ -60,7 +60,7 @@ void __tcf_1() {
 }
 
 // __tcf_2
-// Address: 0x80467A0C, Size: 44
+// Address: 0x801BF1EC, Size: 40
 void __tcf_2() {
 }
 

@@ -1,6 +1,6 @@
 // lib_misc.cpp - Miscellaneous library functions
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 399 functions
+// Auto-generated stub implementations - 377 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -67,111 +67,6 @@ void GetBuidVersionLine() {
 // GetSandboxLine(void)
 // Address: 0x803BB4AC, Size: 72
 void GetSandboxLine() {
-}
-
-// cmdThreadList
-// Address: 0x803BBDA0, Size: 0
-void cmdThreadList() {
-}
-
-// tunerprotocol
-// Address: 0x803BBF14, Size: 0
-void tunerprotocol() {
-}
-
-// checkexternal
-// Address: 0x803BCC1C, Size: 0
-void checkexternal() {
-}
-
-// ISIentry
-// Address: 0x803BCDF0, Size: 0
-void ISIentry() {
-}
-
-// DSIentry
-// Address: 0x803BCE08, Size: 0
-void DSIentry() {
-}
-
-// cmdFS_ACK
-// Address: 0x803BD684, Size: 0
-void cmdFS_ACK() {
-}
-
-// FS_Continue
-// Address: 0x803BD6A4, Size: 0
-void FS_Continue() {
-}
-
-// cmdFS_STOP
-// Address: 0x803BD6D8, Size: 0
-void cmdFS_STOP() {
-}
-
-// cmdFS_HostDisconnect
-// Address: 0x803BD6EC, Size: 0
-void cmdFS_HostDisconnect() {
-}
-
-// PCinit
-// Address: 0x803BD860, Size: 0
-void PCinit() {
-}
-
-// PCcreat
-// Address: 0x803BD868, Size: 0
-void PCcreat() {
-}
-
-// PCopen
-// Address: 0x803BD870, Size: 0
-void PCopen() {
-}
-
-// PCclose
-// Address: 0x803BD878, Size: 0
-void PCclose() {
-}
-
-// PCread
-// Address: 0x803BD880, Size: 0
-void PCread() {
-}
-
-// PCwrite
-// Address: 0x803BD888, Size: 0
-void PCwrite() {
-}
-
-// PClseek
-// Address: 0x803BD890, Size: 0
-void PClseek() {
-}
-
-// PCsync
-// Address: 0x803BD898, Size: 0
-void PCsync() {
-}
-
-// PCreadAsync
-// Address: 0x803BD8A0, Size: 0
-void PCreadAsync() {
-}
-
-// PCwriteAsync
-// Address: 0x803BD8A8, Size: 0
-void PCwriteAsync() {
-}
-
-// PCreadAsync2
-// Address: 0x803BD8B0, Size: 0
-void PCreadAsync2() {
-}
-
-// PCwriteAsync2
-// Address: 0x803BD8B8, Size: 0
-void PCwriteAsync2() {
 }
 
 // PCwriteAsyncInit
@@ -267,11 +162,6 @@ void CheckSeekOffset() {
 // DSIExcHandler
 // Address: 0x803BEE3C, Size: 180
 void DSIExcHandler() {
-}
-
-// NotDvdDsi
-// Address: 0x803BEE9C, Size: 0
-void NotDvdDsi() {
 }
 
 // DSIHandler
@@ -687,6 +577,11 @@ void DecrementerExceptionCallback() {
 // DecrementerExceptionHandler
 // Address: 0x803CB088, Size: 80
 void DecrementerExceptionHandler() {
+}
+
+// OnReset
+// Address: 0x803CB190, Size: 160
+void OnReset() {
 }
 
 // DCFlashInvalidate
@@ -1129,6 +1024,11 @@ void GetDates() {
 void SetExiInterruptMask() {
 }
 
+// CompleteTransfer
+// Address: 0x803D4F60, Size: 340
+void CompleteTransfer() {
+}
+
 // TCIntrruptHandler
 // Address: 0x803D6194, Size: 536
 void TCIntrruptHandler() {
@@ -1162,11 +1062,6 @@ void QueueLength() {
 // WriteUARTN
 // Address: 0x803D73B4, Size: 512
 void WriteUARTN() {
-}
-
-// CompleteTransfer
-// Address: 0x803D762C, Size: 764
-void CompleteTransfer() {
 }
 
 // AlarmHandler
@@ -1784,11 +1679,6 @@ void ClampU8() {
 void SPEC2_MakeStatus() {
 }
 
-// OnReset
-// Address: 0x803E566C, Size: 188
-void OnReset() {
-}
-
 // SamplingHandler
 // Address: 0x803E5734, Size: 96
 void SamplingHandler() {
@@ -2046,5 +1936,5 @@ void CleanAllNativeFunctions() {
 
 // GlobalNotificationFunction(AptSharedPtr<AptFile>)
 // Address: 0x8041FBE8, Size: 1752
-void GlobalNotificationFunction(AptSharedPtr<AptFile> p0) {
+void GlobalNotificationFunction() {
 }

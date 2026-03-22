@@ -61,17 +61,17 @@ void GetGameFontID() {
 
 // command(char *, char *)
 // Address: 0x80009EFC, Size: 4
-void command(char * p0, char * p1) {
+void command() {
 }
 
 // setExternVariable(char *, char *)
 // Address: 0x80009F00, Size: 528
-void setExternVariable(char * p0, char * p1) {
+void setExternVariable() {
 }
 
 // loadVariables(char *)
 // Address: 0x8000A110, Size: 40
-void loadVariables(char * p0) {
+void loadVariables() {
 }
 
 // loadVariablesNULL(void)
@@ -81,27 +81,27 @@ void loadVariablesNULL() {
 
 // sendVariables(char *, char *, char *, char *, int)
 // Address: 0x8000A160, Size: 4
-void sendVariables(char * p0, char * p1, char * p2, char * p3, int p4) {
+void sendVariables() {
 }
 
 // pointHitTest(float, float, void *)
 // Address: 0x8000A164, Size: 8
-void pointHitTest(float p0, float p1, void * p2) {
+void pointHitTest() {
 }
 
 // getRealTimeClock(AptSysClock *, bool)
 // Address: 0x8000A16C, Size: 4
-void getRealTimeClock(AptSysClock * p0, bool p1) {
+void getRealTimeClock() {
 }
 
 // getBytesTotal(char *, AptGetBytesEnum)
 // Address: 0x8000A170, Size: 8
-void getBytesTotal(char * p0, AptGetBytesEnum p1) {
+void getBytesTotal() {
 }
 
 // getBytesLoaded(char *, AptGetBytesEnum)
 // Address: 0x8000A178, Size: 8
-void getBytesLoaded(char * p0, AptGetBytesEnum p1) {
+void getBytesLoaded() {
 }
 
 // getStageWidth(void)
@@ -116,122 +116,122 @@ void getStageHeight() {
 
 // getExternVariable(char *)
 // Address: 0x8000A198, Size: 900
-void getExternVariable(char * p0) {
+void getExternVariable() {
 }
 
 // loadTexture(void *, int)
 // Address: 0x8000A7E4, Size: 1092
-void loadTexture(void * p0, int p1) {
+void loadTexture() {
 }
 
 // freeTexture(void *)
 // Address: 0x8000AC28, Size: 184
-void freeTexture(void * p0) {
+void freeTexture() {
 }
 
 // bindTexture(void *, int, void *)
 // Address: 0x8000ACE0, Size: 484
-void bindTexture(void * p0, int p1, void * p2) {
+void bindTexture() {
 }
 
 // setColourTransform(AptCXForm *)
 // Address: 0x8000AEC4, Size: 88
-void setColourTransform(AptCXForm * p0) {
+void setColourTransform() {
 }
 
 // setVertexMatrix(AptMatrix *)
 // Address: 0x8000AF44, Size: 60
-void setVertexMatrix(AptMatrix * p0) {
+void setVertexMatrix() {
 }
 
 // loadSound(void *, int, char *)
 // Address: 0x8000AF80, Size: 100
-void loadSound(void * p0, int p1, char * p2) {
+void loadSound() {
 }
 
 // startSoundStream(void *, int)
 // Address: 0x8000AFE4, Size: 96
-void startSoundStream(void * p0, int p1) {
+void startSoundStream() {
 }
 
 // startSound(void *, char *)
 // Address: 0x8000B044, Size: 96
-void startSound(void * p0, char * p1) {
+void startSound() {
 }
 
 // freeSound(void *)
 // Address: 0x8000B0A4, Size: 168
-void freeSound(void * p0) {
+void freeSound() {
 }
 
 // setBackgroundColour(unsigned int)
 // Address: 0x8000B14C, Size: 4
-void setBackgroundColour(unsigned int p0) {
+void setBackgroundColour() {
 }
 
 // myassert(char *, char *, unsigned int)
 // Address: 0x8000B150, Size: 100
-void myassert(char * p0, char * p1, unsigned int p2) {
+void myassert() {
 }
 
 // loadRenderingUnit(void *, int)
 // Address: 0x8000B1B4, Size: 136
-void loadRenderingUnit(void * p0, int p1) {
+void loadRenderingUnit() {
 }
 
 // freeRenderingUnit(void *)
 // Address: 0x8000B23C, Size: 96
-void freeRenderingUnit(void * p0) {
+void freeRenderingUnit() {
 }
 
 // drawRenderingUnit(void *, AptMaskRenderOperation)
 // Address: 0x8000B29C, Size: 224
-void drawRenderingUnit(void * p0, AptMaskRenderOperation p1) {
+void drawRenderingUnit() {
 }
 
 // customControlRender(char *, char *, void *, char *)
 // Address: 0x8000B37C, Size: 4952
-void customControlRender(char * p0, char * p1, void * p2, char * p3) {
+void customControlRender() {
 }
 
 // allocateString(AptAllocateStringParameters *)
 // Address: 0x8000C6D4, Size: 1340
-void allocateString(AptAllocateStringParameters * p0) {
+void allocateString() {
 }
 
 // drawStringEor(void *, AptMaskRenderOperation)
 // Address: 0x8000CE94, Size: 2580
-void drawStringEor(void * p0, AptMaskRenderOperation p1) {
+void drawStringEor() {
 }
 
 // deallocateString(void *, unsigned int)
 // Address: 0x8000D8A8, Size: 152
-void deallocateString(void * p0, unsigned int p1) {
+void deallocateString() {
 }
 
 // hardwareInit(float, float)
 // Address: 0x8000D978, Size: 4
-void hardwareInit(float p0, float p1) {
+void hardwareInit() {
 }
 
 // LoadThreadProc(void *)
 // Address: 0x8000D97C, Size: 692
-void LoadThreadProc(void * p0) {
+void LoadThreadProc() {
 }
 
 // GetScaledVertexColor(unsigned int *, unsigned int)
 // Address: 0x8000E544, Size: 656
-void GetScaledVertexColor(unsigned int * p0, unsigned int p1) {
+void GetScaledVertexColor() {
 }
 
 // UCS2ToUTF8(unsigned wchar_t *, int, char *)
 // Address: 0x8000F514, Size: 188
-void UCS2ToUTF8(unsigned wchar_t * p0, int p1, char * p2) {
+void UCS2ToUTF8() {
 }
 
 // UTF8ToUCS2(char *, int, unsigned wchar_t *)
 // Address: 0x8000F5D0, Size: 448
-void UTF8ToUCS2(char * p0, int p1, unsigned wchar_t * p2) {
+void UTF8ToUCS2() {
 }
 
 // GetPixelXSize(void)
@@ -261,7 +261,7 @@ void StartItAll() {
 
 // DummyPrintf(char *,...)
 // Address: 0x800190BC, Size: 76
-void DummyPrintf(char * p0, ... p1) {
+void DummyPrintf() {
 }
 
 // BGCall_LoadDefaultNeighborhood(void)
@@ -301,7 +301,7 @@ void BGExec_CASTargetInit() {
 
 // BGCall_CASTargetInit(bool)
 // Address: 0x8001E6E4, Size: 152
-void BGCall_CASTargetInit(bool p0) {
+void BGCall_CASTargetInit() {
 }
 
 // BGCall_ReloadObjectQuickdata(void)

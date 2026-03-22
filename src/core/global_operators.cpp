@@ -1,6 +1,6 @@
 // global_operators.cpp - Global operator overloads
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 8 functions
+// Auto-generated stub implementations - 6 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -54,28 +54,32 @@ struct AptValue;
 struct AptObject;
 struct CBFunctorBase;
 
-// operator==(char, BString &)
-// Address: 0x8011C0CC, Size: 60
-void operator==(char p0, BString & p1) {
+// operator==(BString &, BString &)
+// Address: 0x8011C064, Size: 48
+void operator==(void) {
 }
 
-// Additional instantiation: operator!=(char, BString &)
-// Address: 0x8011C1A4, Size: 68
+// operator!=(char *, BString &)
+// Address: 0x8011C164, Size: 64
+void operator!=(void) {
+}
 
-// Additional instantiation: operator<(char, BString &)
-// Address: 0x8011C2C0, Size: 68
-
-// Additional instantiation: operator>(char *, BString &)
+// operator>(char *, BString &)
 // Address: 0x8011C358, Size: 44
+void operator>(void) {
+}
 
-// Additional instantiation: operator>=(char *, BString &)
+// operator>=(char *, BString &)
 // Address: 0x8011C408, Size: 36
+void operator>=(void) {
+}
 
-// Additional instantiation: operator<=(char *, BString &)
-// Address: 0x8011C498, Size: 48
+// operator+(BString &, BString &)
+// Address: 0x8011F9B0, Size: 244
+void operator+(void) {
+}
 
-// Additional instantiation: operator+(BString2 &, BString2 &)
-// Address: 0x801242BC, Size: 292
-
-// Additional instantiation: operator*(EVec4 &, EMat4 &)
-// Address: 0x804606F4, Size: 168
+// operator*(int, CTilePt &)
+// Address: 0x8013C93C, Size: 84
+void operator*(void) {
+}

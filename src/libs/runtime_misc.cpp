@@ -1,6 +1,6 @@
 // runtime_misc.cpp - Miscellaneous runtime functions
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 394 functions
+// Auto-generated stub implementations - 545 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -124,29 +124,9 @@ void __OSFPRInit() {
 void __OSDBIntegrator() {
 }
 
-// __OSDBINTSTART
-// Address: 0x803CA578, Size: 0
-void __OSDBINTSTART() {
-}
-
 // __OSDBJump
 // Address: 0x803CA59C, Size: 4
 void __OSDBJump() {
-}
-
-// __OSDBINTEND
-// Address: 0x803CA59C, Size: 0
-void __OSDBINTEND() {
-}
-
-// __OSDBJUMPSTART
-// Address: 0x803CA59C, Size: 0
-void __OSDBJUMPSTART() {
-}
-
-// __OSDBJUMPEND
-// Address: 0x803CA5A0, Size: 0
-void __OSDBJUMPEND() {
 }
 
 // __OSSetExceptionHandler
@@ -157,26 +137,6 @@ void __OSSetExceptionHandler() {
 // __OSGetExceptionHandler
 // Address: 0x803CA5BC, Size: 20
 void __OSGetExceptionHandler() {
-}
-
-// __OSEVStart
-// Address: 0x803CA5D0, Size: 0
-void __OSEVStart() {
-}
-
-// __DBVECTOR
-// Address: 0x803CA628, Size: 0
-void __DBVECTOR() {
-}
-
-// __OSEVSetNumber
-// Address: 0x803CA638, Size: 0
-void __OSEVSetNumber() {
-}
-
-// __OSEVEnd
-// Address: 0x803CA668, Size: 0
-void __OSEVEnd() {
 }
 
 // __OSPSInit
@@ -247,16 +207,6 @@ void __OSBootDolSimple() {
 // __OSBootDol
 // Address: 0x803CDC48, Size: 412
 void __OSBootDol() {
-}
-
-// __RAS_OSDisableInterrupts_begin
-// Address: 0x803CE020, Size: 0
-void __RAS_OSDisableInterrupts_begin() {
-}
-
-// __RAS_OSDisableInterrupts_end
-// Address: 0x803CE02C, Size: 0
-void __RAS_OSDisableInterrupts_end() {
 }
 
 // __OSSetInterruptHandler
@@ -397,16 +347,6 @@ void __OSGetBootMode() {
 // __OSSetBootMode
 // Address: 0x803D1894, Size: 164
 void __OSSetBootMode() {
-}
-
-// __OSSystemCallVectorStart
-// Address: 0x803D1CA4, Size: 0
-void __OSSystemCallVectorStart() {
-}
-
-// __OSSystemCallVectorEnd
-// Address: 0x803D1CC0, Size: 0
-void __OSSystemCallVectorEnd() {
 }
 
 // __OSInitSystemCall
@@ -1934,16 +1874,6 @@ void __VMBASESetupVMRegisters() {
 void __VMBASESetupSDR1() {
 }
 
-// __VMBASESetupVMRegisters_SetSDR1
-// Address: 0x80576410, Size: 0
-void __VMBASESetupVMRegisters_SetSDR1() {
-}
-
-// __VMBASESetupVMRegisters_End
-// Address: 0x80576438, Size: 0
-void __VMBASESetupVMRegisters_End() {
-}
-
 // __VMBASESetupExceptionHandlers
 // Address: 0x80576440, Size: 380
 void __VMBASESetupExceptionHandlers() {
@@ -1952,16 +1882,6 @@ void __VMBASESetupExceptionHandlers() {
 // __VMBASEDSIExceptionHandler
 // Address: 0x805765BC, Size: 244
 void __VMBASEDSIExceptionHandler() {
-}
-
-// __VMBASEDSIExceptionHandler_SetOriginalInstruction
-// Address: 0x805766A8, Size: 0
-void __VMBASEDSIExceptionHandler_SetOriginalInstruction() {
-}
-
-// __VMBASEDSIExceptionHandler_SetBranchBack
-// Address: 0x805766AC, Size: 0
-void __VMBASEDSIExceptionHandler_SetBranchBack() {
 }
 
 // __VMBASEDSIServiceExceptionPrep
@@ -1977,16 +1897,6 @@ void __VMBASEDSIServiceException() {
 // __VMBASEISIExceptionHandler
 // Address: 0x80576764, Size: 244
 void __VMBASEISIExceptionHandler() {
-}
-
-// __VMBASEISIExceptionHandler_SetOriginalInstruction
-// Address: 0x80576850, Size: 0
-void __VMBASEISIExceptionHandler_SetOriginalInstruction() {
-}
-
-// __VMBASEISIExceptionHandler_SetBranchBack
-// Address: 0x80576854, Size: 0
-void __VMBASEISIExceptionHandler_SetBranchBack() {
 }
 
 // __VMBASEISIServiceExceptionPrep
@@ -2009,17 +1919,862 @@ void __VMBASERestoreExceptionHandlers() {
 void __VMBASERestoreVMRegisters() {
 }
 
-// __bss_end
-// Address: 0x8078CF80, Size: 0
-void __bss_end() {
+// __THPJpegNaturalOrder
+// Address: 0x806A5848, Size: 80
+void __THPJpegNaturalOrder() {
 }
 
-// __ArenaLo
-// Address: 0x807A18A0, Size: 0
-void __ArenaLo() {
+// __THPAANScaleFactor
+// Address: 0x806A5898, Size: 64
+void __THPAANScaleFactor() {
 }
 
-// __ArenaHi
-// Address: 0x81780000, Size: 0
-void __ArenaHi() {
+// __OSExceptionLocations
+// Address: 0x806C3494, Size: 60
+void __OSExceptionLocations() {
+}
+
+// __AXSrcCycles
+// Address: 0x806DEA68, Size: 20
+void __AXSrcCycles() {
+}
+
+// __AXMainMixCycles
+// Address: 0x806DEA7C, Size: 64
+void __AXMainMixCycles() {
+}
+
+// __AXAuxMixCycles
+// Address: 0x806DEABC, Size: 128
+void __AXAuxMixCycles() {
+}
+
+// __AXCompressorTable
+// Address: 0x806DEB40, Size: 6720
+void __AXCompressorTable() {
+}
+
+// __MIXVolumeTable
+// Address: 0x806E2480, Size: 1930
+void __MIXVolumeTable() {
+}
+
+// __MIXPanTable
+// Address: 0x806E2C0C, Size: 512
+void __MIXPanTable() {
+}
+
+// __MIX_DPL2_front
+// Address: 0x806E2E0C, Size: 256
+void __MIX_DPL2_front() {
+}
+
+// __MIX_DPL2_rear
+// Address: 0x806E2F0C, Size: 256
+void __MIX_DPL2_rear() {
+}
+
+// __MIXAIVolumeTable
+// Address: 0x806E300C, Size: 50
+void __MIXAIVolumeTable() {
+}
+
+// __HIODigest1
+// Address: 0x806E3448, Size: 71
+void __HIODigest1() {
+}
+
+// __HIODigest2
+// Address: 0x806E3490, Size: 34
+void __HIODigest2() {
+}
+
+// __sprintfbuff
+// Address: 0x806FF460, Size: 32
+void __sprintfbuff() {
+}
+
+// __floatstrbuff
+// Address: 0x806FF480, Size: 64
+void __floatstrbuff() {
+}
+
+// __OSRebootParams
+// Address: 0x80715D70, Size: 28
+void __OSRebootParams() {
+}
+
+// __OSErrorTable
+// Address: 0x80715D90, Size: 68
+void __OSErrorTable() {
+}
+
+// __AXStackHead
+// Address: 0x8076DFA0, Size: 128
+void __AXStackHead() {
+}
+
+// __AXStackTail
+// Address: 0x8076E020, Size: 128
+void __AXStackTail() {
+}
+
+// __AXBufferAuxA
+// Address: 0x8076E0A0, Size: 5760
+void __AXBufferAuxA() {
+}
+
+// __AXBufferAuxB
+// Address: 0x8076F720, Size: 5760
+void __AXBufferAuxB() {
+}
+
+// __AXCommandList
+// Address: 0x80770DA0, Size: 1536
+void __AXCommandList() {
+}
+
+// __AXOutBuffer
+// Address: 0x807713A0, Size: 1920
+void __AXOutBuffer() {
+}
+
+// __AXOutSBuffer
+// Address: 0x80771B20, Size: 640
+void __AXOutSBuffer() {
+}
+
+// __AXDramImage
+// Address: 0x80771DA0, Size: 16384
+void __AXDramImage() {
+}
+
+// __AXDSPTask
+// Address: 0x80775DA0, Size: 80
+void __AXDSPTask() {
+}
+
+// __AXLocalProfile
+// Address: 0x80775DF0, Size: 56
+void __AXLocalProfile() {
+}
+
+// __AXStudio
+// Address: 0x80775E40, Size: 54
+void __AXStudio() {
+}
+
+// __AXPB
+// Address: 0x80775E80, Size: 15616
+void __AXPB() {
+}
+
+// __AXITD
+// Address: 0x80779B80, Size: 4096
+void __AXITD() {
+}
+
+// __AXUpdates
+// Address: 0x8077AB80, Size: 16384
+void __AXUpdates() {
+}
+
+// __AXVPB
+// Address: 0x8077EB80, Size: 35584
+void __AXVPB() {
+}
+
+// __MIXChannel
+// Address: 0x80787680, Size: 6144
+void __MIXChannel() {
+}
+
+// __CARDBlock
+// Address: 0x80788E80, Size: 544
+void __CARDBlock() {
+}
+
+// __CARDDiskNone
+// Address: 0x807890A0, Size: 32
+void __CARDDiskNone() {
+}
+
+// __savedGXdata
+// Address: 0x80789714, Size: 1456
+void __savedGXdata() {
+}
+
+// __THPIDCTWorkspace
+// Address: 0x80789CE0, Size: 256
+void __THPIDCTWorkspace() {
+}
+
+// __THPLCWork512
+// Address: 0x80789DE0, Size: 12
+void __THPLCWork512() {
+}
+
+// __THPLCWork640
+// Address: 0x80789DEC, Size: 12
+void __THPLCWork640() {
+}
+
+// __THPMCUBuffer
+// Address: 0x80789DF8, Size: 24
+void __THPMCUBuffer() {
+}
+
+// __mb_cur_max
+// Address: 0x8078E988, Size: 4
+void __mb_cur_max() {
+}
+
+// __OSVersion
+// Address: 0x8078E9A8, Size: 4
+void __OSVersion() {
+}
+
+// __OSArenaLo
+// Address: 0x8078E9B8, Size: 4
+void __OSArenaLo() {
+}
+
+// __OSFpscrEnableBits
+// Address: 0x8078E9C0, Size: 4
+void __OSFpscrEnableBits() {
+}
+
+// __EXIVersion
+// Address: 0x8078E9D8, Size: 4
+void __EXIVersion() {
+}
+
+// __SIVersion
+// Address: 0x8078EA10, Size: 4
+void __SIVersion() {
+}
+
+// __DVDVersion
+// Address: 0x8078EA38, Size: 4
+void __DVDVersion() {
+}
+
+// __VIVersion
+// Address: 0x8078EAB0, Size: 4
+void __VIVersion() {
+}
+
+// __PADVersion
+// Address: 0x8078EAC0, Size: 4
+void __PADVersion() {
+}
+
+// __AIVersion
+// Address: 0x8078EAE0, Size: 4
+void __AIVersion() {
+}
+
+// __ARVersion
+// Address: 0x8078F620, Size: 4
+void __ARVersion() {
+}
+
+// __ARQVersion
+// Address: 0x8078F628, Size: 4
+void __ARQVersion() {
+}
+
+// __AXVersion
+// Address: 0x8078F630, Size: 4
+void __AXVersion() {
+}
+
+// __DSPVersion
+// Address: 0x8078F640, Size: 4
+void __DSPVersion() {
+}
+
+// __CARDVersion
+// Address: 0x8078F648, Size: 4
+void __CARDVersion() {
+}
+
+// __CARDFreq
+// Address: 0x8078F64C, Size: 4
+void __CARDFreq() {
+}
+
+// __CARDVendorID
+// Address: 0x8078F650, Size: 2
+void __CARDVendorID() {
+}
+
+// __CARDPermMask
+// Address: 0x8078F652, Size: 1
+void __CARDPermMask() {
+}
+
+// __HIOVersion
+// Address: 0x8078F660, Size: 4
+void __HIOVersion() {
+}
+
+// __GXVersion
+// Address: 0x8078F670, Size: 4
+void __GXVersion() {
+}
+
+// __THPVersion
+// Address: 0x8078F6E0, Size: 4
+void __THPVersion() {
+}
+
+// __OSIsGcam
+// Address: 0x8078FD44, Size: 4
+void __OSIsGcam() {
+}
+
+// __OSInIPL
+// Address: 0x8078FD60, Size: 4
+void __OSInIPL() {
+}
+
+// __OSStartTime
+// Address: 0x8078FD68, Size: 8
+void __OSStartTime() {
+}
+
+// __OSArenaHi
+// Address: 0x8078FD78, Size: 4
+void __OSArenaHi() {
+}
+
+// __OSLastInterruptSrr0
+// Address: 0x8078FD8C, Size: 4
+void __OSLastInterruptSrr0() {
+}
+
+// __OSLastInterrupt
+// Address: 0x8078FD90, Size: 2
+void __OSLastInterrupt() {
+}
+
+// __OSLastInterruptTime
+// Address: 0x8078FD98, Size: 8
+void __OSLastInterruptTime() {
+}
+
+// __PADFixBits
+// Address: 0x8078FE08, Size: 4
+void __PADFixBits() {
+}
+
+// __DBInterface
+// Address: 0x8078FE18, Size: 4
+void __DBInterface() {
+}
+
+// __DVDLongFileNameFlag
+// Address: 0x8078FE34, Size: 4
+void __DVDLongFileNameFlag() {
+}
+
+// __DVDThreadQueue
+// Address: 0x8078FE38, Size: 8
+void __DVDThreadQueue() {
+}
+
+// __PADSpec
+// Address: 0x8078FF94, Size: 4
+void __PADSpec() {
+}
+
+// __AIS_Callback
+// Address: 0x8078FF98, Size: 4
+void __AIS_Callback() {
+}
+
+// __AID_Callback
+// Address: 0x8078FF9C, Size: 4
+void __AID_Callback() {
+}
+
+// __CallbackStack
+// Address: 0x8078FFA0, Size: 4
+void __CallbackStack() {
+}
+
+// __OldStack
+// Address: 0x8078FFA4, Size: 4
+void __OldStack() {
+}
+
+// __AID_Active
+// Address: 0x8078FFAC, Size: 4
+void __AID_Active() {
+}
+
+// __ai_src_time_end
+// Address: 0x8078FFD8, Size: 8
+void __ai_src_time_end() {
+}
+
+// __AR_Callback
+// Address: 0x80790338, Size: 4
+void __AR_Callback() {
+}
+
+// __AR_Size
+// Address: 0x8079033C, Size: 4
+void __AR_Size() {
+}
+
+// __AR_InternalSize
+// Address: 0x80790340, Size: 4
+void __AR_InternalSize() {
+}
+
+// __AR_ExpansionSize
+// Address: 0x80790344, Size: 4
+void __AR_ExpansionSize() {
+}
+
+// __AR_StackPointer
+// Address: 0x80790348, Size: 4
+void __AR_StackPointer() {
+}
+
+// __AR_FreeBlocks
+// Address: 0x8079034C, Size: 4
+void __AR_FreeBlocks() {
+}
+
+// __AR_BlockLength
+// Address: 0x80790350, Size: 4
+void __AR_BlockLength() {
+}
+
+// __ARQRequestQueueHi
+// Address: 0x80790358, Size: 4
+void __ARQRequestQueueHi() {
+}
+
+// __ARQRequestTailHi
+// Address: 0x8079035C, Size: 4
+void __ARQRequestTailHi() {
+}
+
+// __ARQRequestQueueLo
+// Address: 0x80790360, Size: 4
+void __ARQRequestQueueLo() {
+}
+
+// __ARQRequestTailLo
+// Address: 0x80790364, Size: 4
+void __ARQRequestTailLo() {
+}
+
+// __ARQRequestQueueTemp
+// Address: 0x80790368, Size: 4
+void __ARQRequestQueueTemp() {
+}
+
+// __ARQRequestTailTemp
+// Address: 0x8079036C, Size: 4
+void __ARQRequestTailTemp() {
+}
+
+// __ARQRequestPendingHi
+// Address: 0x80790370, Size: 4
+void __ARQRequestPendingHi() {
+}
+
+// __ARQRequestPendingLo
+// Address: 0x80790374, Size: 4
+void __ARQRequestPendingLo() {
+}
+
+// __ARQCallbackHi
+// Address: 0x80790378, Size: 4
+void __ARQCallbackHi() {
+}
+
+// __ARQCallbackLo
+// Address: 0x8079037C, Size: 4
+void __ARQCallbackLo() {
+}
+
+// __ARQChunkSize
+// Address: 0x80790380, Size: 4
+void __ARQChunkSize() {
+}
+
+// __AXCallbackStack
+// Address: 0x80790388, Size: 4
+void __AXCallbackStack() {
+}
+
+// __AXCallbackAuxA
+// Address: 0x80790390, Size: 4
+void __AXCallbackAuxA() {
+}
+
+// __AXCallbackAuxB
+// Address: 0x80790394, Size: 4
+void __AXCallbackAuxB() {
+}
+
+// __AXContextAuxA
+// Address: 0x80790398, Size: 4
+void __AXContextAuxA() {
+}
+
+// __AXContextAuxB
+// Address: 0x8079039C, Size: 4
+void __AXContextAuxB() {
+}
+
+// __AXAuxADspWrite
+// Address: 0x807903A0, Size: 4
+void __AXAuxADspWrite() {
+}
+
+// __AXAuxADspRead
+// Address: 0x807903A4, Size: 4
+void __AXAuxADspRead() {
+}
+
+// __AXAuxBDspWrite
+// Address: 0x807903A8, Size: 4
+void __AXAuxBDspWrite() {
+}
+
+// __AXAuxBDspRead
+// Address: 0x807903AC, Size: 4
+void __AXAuxBDspRead() {
+}
+
+// __AXAuxDspWritePosition
+// Address: 0x807903B0, Size: 4
+void __AXAuxDspWritePosition() {
+}
+
+// __AXAuxDspReadPosition
+// Address: 0x807903B4, Size: 4
+void __AXAuxDspReadPosition() {
+}
+
+// __AXAuxDspWritePositionDpl2
+// Address: 0x807903B8, Size: 4
+void __AXAuxDspWritePositionDpl2() {
+}
+
+// __AXAuxDspReadPositionDpl2
+// Address: 0x807903BC, Size: 4
+void __AXAuxDspReadPositionDpl2() {
+}
+
+// __AXAuxCpuReadWritePosition
+// Address: 0x807903C0, Size: 4
+void __AXAuxCpuReadWritePosition() {
+}
+
+// __AXCommandListPosition
+// Address: 0x807903C8, Size: 4
+void __AXCommandListPosition() {
+}
+
+// __AXClWrite
+// Address: 0x807903CC, Size: 4
+void __AXClWrite() {
+}
+
+// __AXCommandListCycles
+// Address: 0x807903D0, Size: 4
+void __AXCommandListCycles() {
+}
+
+// __AXCompressor
+// Address: 0x807903D4, Size: 4
+void __AXCompressor() {
+}
+
+// __AXClMode
+// Address: 0x807903D8, Size: 4
+void __AXClMode() {
+}
+
+// __AXOutFrame
+// Address: 0x807903E0, Size: 4
+void __AXOutFrame() {
+}
+
+// __AXAiDmaFrame
+// Address: 0x807903E4, Size: 4
+void __AXAiDmaFrame() {
+}
+
+// __AXOutDspReady
+// Address: 0x807903E8, Size: 4
+void __AXOutDspReady() {
+}
+
+// __AXOsTime
+// Address: 0x807903F0, Size: 8
+void __AXOsTime() {
+}
+
+// __AXUserFrameCallback
+// Address: 0x807903F8, Size: 4
+void __AXUserFrameCallback() {
+}
+
+// __AXDSPInitFlag
+// Address: 0x807903FC, Size: 4
+void __AXDSPInitFlag() {
+}
+
+// __AXDSPDoneFlag
+// Address: 0x80790400, Size: 4
+void __AXDSPDoneFlag() {
+}
+
+// __AXDebugSteppingMode
+// Address: 0x80790404, Size: 4
+void __AXDebugSteppingMode() {
+}
+
+// __AXOutThreadQueue
+// Address: 0x80790408, Size: 8
+void __AXOutThreadQueue() {
+}
+
+// __AXOutputBufferMode
+// Address: 0x80790410, Size: 4
+void __AXOutputBufferMode() {
+}
+
+// __AXSpbAL
+// Address: 0x80790418, Size: 4
+void __AXSpbAL() {
+}
+
+// __AXSpbAR
+// Address: 0x8079041C, Size: 4
+void __AXSpbAR() {
+}
+
+// __AXSpbAS
+// Address: 0x80790420, Size: 4
+void __AXSpbAS() {
+}
+
+// __AXSpbAAL
+// Address: 0x80790424, Size: 4
+void __AXSpbAAL() {
+}
+
+// __AXSpbAAR
+// Address: 0x80790428, Size: 4
+void __AXSpbAAR() {
+}
+
+// __AXSpbAAS
+// Address: 0x8079042C, Size: 4
+void __AXSpbAAS() {
+}
+
+// __AXSpbABL
+// Address: 0x80790430, Size: 4
+void __AXSpbABL() {
+}
+
+// __AXSpbABR
+// Address: 0x80790434, Size: 4
+void __AXSpbABR() {
+}
+
+// __AXSpbABS
+// Address: 0x80790438, Size: 4
+void __AXSpbABS() {
+}
+
+// __AXMaxDspCycles
+// Address: 0x80790440, Size: 4
+void __AXMaxDspCycles() {
+}
+
+// __AXRecDspCycles
+// Address: 0x80790444, Size: 4
+void __AXRecDspCycles() {
+}
+
+// __AXNumVoices
+// Address: 0x80790448, Size: 4
+void __AXNumVoices() {
+}
+
+// __AXProfile
+// Address: 0x80790450, Size: 4
+void __AXProfile() {
+}
+
+// __AXMaxProfiles
+// Address: 0x80790454, Size: 4
+void __AXMaxProfiles() {
+}
+
+// __AXCurrentProfile
+// Address: 0x80790458, Size: 4
+void __AXCurrentProfile() {
+}
+
+// __AXProfileInitialized
+// Address: 0x8079045C, Size: 4
+void __AXProfileInitialized() {
+}
+
+// __MIXDvdStreamAttenCurrent
+// Address: 0x80790460, Size: 4
+void __MIXDvdStreamAttenCurrent() {
+}
+
+// __MIXDvdStreamAttenUser
+// Address: 0x80790464, Size: 4
+void __MIXDvdStreamAttenUser() {
+}
+
+// __MIXSoundMode
+// Address: 0x80790468, Size: 4
+void __MIXSoundMode() {
+}
+
+// __DSP_rude_task_pending
+// Address: 0x80790484, Size: 4
+void __DSP_rude_task_pending() {
+}
+
+// __DSP_rude_task
+// Address: 0x80790488, Size: 4
+void __DSP_rude_task() {
+}
+
+// __DSP_tmp_task
+// Address: 0x8079048C, Size: 4
+void __DSP_tmp_task() {
+}
+
+// __DSP_last_task
+// Address: 0x80790490, Size: 4
+void __DSP_last_task() {
+}
+
+// __DSP_first_task
+// Address: 0x80790494, Size: 4
+void __DSP_first_task() {
+}
+
+// __DSP_curr_task
+// Address: 0x80790498, Size: 4
+void __DSP_curr_task() {
+}
+
+// __CARDEncode
+// Address: 0x807904A0, Size: 2
+void __CARDEncode() {
+}
+
+// __CARDFastMode
+// Address: 0x807904A2, Size: 2
+void __CARDFastMode() {
+}
+
+// __piReg
+// Address: 0x807904B8, Size: 4
+void __piReg() {
+}
+
+// __cpReg
+// Address: 0x807904BC, Size: 4
+void __cpReg() {
+}
+
+// __peReg
+// Address: 0x807904C0, Size: 4
+void __peReg() {
+}
+
+// __memReg
+// Address: 0x807904C4, Size: 4
+void __memReg() {
+}
+
+// __GXCurrentThread
+// Address: 0x807904E8, Size: 4
+void __GXCurrentThread() {
+}
+
+// __GXOverflowCount
+// Address: 0x807904F8, Size: 4
+void __GXOverflowCount() {
+}
+
+// __GXCurrentBP
+// Address: 0x807904FC, Size: 4
+void __GXCurrentBP() {
+}
+
+// __THPHuffmanBits
+// Address: 0x80790604, Size: 4
+void __THPHuffmanBits() {
+}
+
+// __THPHuffmanSizeTab
+// Address: 0x80790608, Size: 4
+void __THPHuffmanSizeTab() {
+}
+
+// __THPHuffmanCodeTab
+// Address: 0x8079060C, Size: 4
+void __THPHuffmanCodeTab() {
+}
+
+// __THPOldGQR5
+// Address: 0x80790664, Size: 4
+void __THPOldGQR5() {
+}
+
+// __THPOldGQR6
+// Address: 0x80790668, Size: 4
+void __THPOldGQR6() {
+}
+
+// __THPWorkArea
+// Address: 0x8079066C, Size: 4
+void __THPWorkArea() {
+}
+
+// __THPInfo
+// Address: 0x80790670, Size: 4
+void __THPInfo() {
+}
+
+// __THPInitFlag
+// Address: 0x80790674, Size: 4
+void __THPInitFlag() {
+}
+
+// __GDCurrentDL
+// Address: 0x80790678, Size: 4
+void __GDCurrentDL() {
+}
+
+// __clz_tab
+// Address: 0x80790E38, Size: 256
+void __clz_tab() {
+}
+
+// __GXData
+// Address: 0x807916C0, Size: 4
+void __GXData() {
 }

@@ -1,6 +1,6 @@
 // global_game_data.cpp - Game data functions
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 34 functions
+// Auto-generated stub implementations - 23 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -61,7 +61,12 @@ void GetMotiveConstantsClient() {
 
 // ObjectsAtTile(FTilePt &, int)
 // Address: 0x80159098, Size: 112
-void ObjectsAtTile(FTilePt & p0, int p1) {
+void ObjectsAtTile() {
+}
+
+// AddPersDataPair(vector<PersDataPair, allocator<PersDataPair> > &, PersDataPair &)
+// Address: 0x8015C4FC, Size: 432
+void AddPersDataPair() {
 }
 
 // GetNeighborhoodConstantsClient(void)
@@ -69,88 +74,49 @@ void ObjectsAtTile(FTilePt & p0, int p1) {
 void GetNeighborhoodConstantsClient() {
 }
 
-// FamilyImpl ** __unguarded_partition<FamilyImpl **, FamilyImpl *, bool (*)(Family *&, Family *&)>(FamilyImpl **, FamilyImpl **, FamilyImpl *, bool (*)(Family *&, Family *&))
-// Address: 0x8016940C, Size: 164
-FamilyImpl ** __unguarded_partition<FamilyImpl **, FamilyImpl *, bool(* p0) {
-    return 0;
-}
-
-// Additional instantiation: void __introsort_loop<FamilyImpl **, FamilyImpl *, int, bool (*)(Family *&, Family *&)>(FamilyImpl **, FamilyImpl **, FamilyImpl * *, int, bool (*)(Family *&, Family *&))
-// Address: 0x801694B0, Size: 340
-
-// Additional instantiation: void __unguarded_linear_insert<FamilyImpl **, FamilyImpl *, bool (*)(Family *&, Family *&)>(FamilyImpl **, FamilyImpl *, bool (*)(Family *&, Family *&))
-// Address: 0x80169604, Size: 100
-
-// Additional instantiation: void __unguarded_insertion_sort_aux<FamilyImpl **, FamilyImpl *, bool (*)(Family *&, Family *&)>(FamilyImpl **, FamilyImpl **, FamilyImpl * *, bool (*)(Family *&, Family *&))
-// Address: 0x80169710, Size: 84
-
-// Additional instantiation: int * __unguarded_partition<int *, int, bool (*)(int &, int &)>(int *, int *, int, bool (*)(int &, int &))
-// Address: 0x80169C94, Size: 160
-
-// Additional instantiation: void __introsort_loop<int *, int, int, bool (*)(int &, int &)>(int *, int *, int *, int, bool (*)(int &, int &))
-// Address: 0x80169D34, Size: 340
-
-// Additional instantiation: void __unguarded_linear_insert<int *, int, bool (*)(int &, int &)>(int *, int, bool (*)(int &, int &))
-// Address: 0x80169E88, Size: 108
-
-// Additional instantiation: void __unguarded_insertion_sort_aux<int *, int, bool (*)(int &, int &)>(int *, int *, int *, bool (*)(int &, int &))
-// Address: 0x80169FA0, Size: 84
-
 // SetSupportFlag(int, int, int, bool)
 // Address: 0x8017AF3C, Size: 196
-void SetSupportFlag(int p0, int p1, int p2, bool p3) {
+void SetSupportFlag() {
 }
 
 // ApproxSqrt(float)
 // Address: 0x8017CFF0, Size: 80
-void ApproxSqrt(float p0) {
+void ApproxSqrt() {
 }
 
 // StringToHash(char *)
 // Address: 0x8018C410, Size: 312
-void StringToHash(char * p0) {
+void StringToHash() {
 }
 
 // ConvertToBackslash(StringBuffer &)
 // Address: 0x8018C5B0, Size: 108
-void ConvertToBackslash(StringBuffer & p0) {
+void ConvertToBackslash() {
 }
 
 // IsPlayableCharacter(int, int &)
 // Address: 0x8019031C, Size: 404
-void IsPlayableCharacter(int p0, int & p1) {
+void IsPlayableCharacter() {
 }
-
-// Additional instantiation: ObjSelector ** __unguarded_partition<ObjSelector **, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, ObjSelector **, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *))
-// Address: 0x8019480C, Size: 156
-
-// Additional instantiation: void __introsort_loop<ObjSelector **, ObjSelector *, int, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, ObjSelector **, ObjSelector * *, int, bool (*)(ObjSelector *, ObjSelector *))
-// Address: 0x801948A8, Size: 344
-
-// Additional instantiation: void __unguarded_linear_insert<ObjSelector **, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *))
-// Address: 0x80194A00, Size: 96
-
-// Additional instantiation: void __unguarded_insertion_sort_aux<ObjSelector **, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, ObjSelector **, ObjSelector * *, bool (*)(ObjSelector *, ObjSelector *))
-// Address: 0x80194B04, Size: 84
 
 // TryFindSafeLocForSim(cXObject *, FTilePt &, int, cXObject *, int)
 // Address: 0x801A440C, Size: 1108
-void TryFindSafeLocForSim(cXObject * p0, FTilePt & p1, int p2, cXObject * p3, int p4) {
+void TryFindSafeLocForSim() {
 }
 
 // MakeMoneyString(StringBuffer2 &, int)
 // Address: 0x801A7070, Size: 100
-void MakeMoneyString(StringBuffer2 & p0, int p1) {
+void MakeMoneyString() {
 }
 
 // ParseOneString(BString2 &, BString2 &, int, int *, int *, int *)
 // Address: 0x801A70D4, Size: 472
-void ParseOneString(BString2 & p0, BString2 & p1, int p2, int * p3, int * p4, int * p5) {
+void ParseOneString() {
 }
 
 // StartFireAtObjectLoc(cXObject *, ObjSelector *)
 // Address: 0x801AA29C, Size: 620
-void StartFireAtObjectLoc(cXObject * p0, ObjSelector * p1) {
+void StartFireAtObjectLoc() {
 }
 
 // PresetHouseGameStatus(void)
@@ -160,45 +126,45 @@ void PresetHouseGameStatus() {
 
 // fround(float)
 // Address: 0x801B6F4C, Size: 76
-void fround(float p0) {
+void fround() {
 }
 
 // GetJobHUDControlName(short)
 // Address: 0x801BB750, Size: 3136
-void GetJobHUDControlName(short p0) {
+void GetJobHUDControlName() {
 }
 
 // GetNpcShaderId(int, bool)
 // Address: 0x801BF330, Size: 96
-void GetNpcShaderId(int p0, bool p1) {
+void GetNpcShaderId() {
 }
 
 // SetReconDumpFile(char *)
 // Address: 0x801F0534, Size: 96
-void SetReconDumpFile(char * p0) {
+void SetReconDumpFile() {
 }
 
 // IsScoredStyle(WallStyle)
 // Address: 0x801F6D9C, Size: 136
-void IsScoredStyle(WallStyle p0) {
+void IsScoredStyle() {
 }
 
 // GetLightRoomID(unsigned short)
 // Address: 0x801F7BF4, Size: 96
-void GetLightRoomID(unsigned short p0) {
+void GetLightRoomID() {
 }
 
 // FindIntersectingRect(IRect *, vector<PenaltyRect, allocator<PenaltyRect> > *)
 // Address: 0x801F8E18, Size: 136
-void FindIntersectingRect(IRect * p0, vector<PenaltyRect, allocator<PenaltyRect> > * p1) {
+void FindIntersectingRect() {
 }
 
 // IsRectInside(IRect *, IRect *)
 // Address: 0x801FA548, Size: 92
-void IsRectInside(IRect * p0, IRect * p1) {
+void IsRectInside() {
 }
 
 // TryCatExtension(StackString<260> &, SeqResFile::OpenSpec *)
 // Address: 0x801FECEC, Size: 312
-void TryCatExtension(StackString<260> & p0, SeqResFile::OpenSpec * p1) {
+void TryCatExtension() {
 }

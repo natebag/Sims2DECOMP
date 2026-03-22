@@ -1,6 +1,6 @@
 // global_boot.cpp - Boot and initialization
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 9 functions
+// Auto-generated stub implementations - 10 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -54,21 +54,6 @@ struct AptValue;
 struct AptObject;
 struct CBFunctorBase;
 
-// __start
-// Address: 0x80003100, Size: 0
-void __start() {
-}
-
-// __init_vm
-// Address: 0x80003464, Size: 0
-void __init_vm() {
-}
-
-// __premain
-// Address: 0x80003464, Size: 0
-void __premain() {
-}
-
 // __init_hardware
 // Address: 0x80003468, Size: 36
 void __init_hardware() {
@@ -80,7 +65,7 @@ void __flush_cache() {
 }
 
 // __init_user
-// Address: 0x803D471C, Size: 32
+// Address: 0x803BE2E4, Size: 4
 void __init_user() {
 }
 
@@ -94,7 +79,27 @@ void __init_cpp() {
 void __THPRestartDefinition() {
 }
 
-// __bss_start
-// Address: 0x806E4720, Size: 0
-void __bss_start() {
+// __AI_init_flag
+// Address: 0x8078FFA8, Size: 4
+void __AI_init_flag() {
+}
+
+// __ai_src_time_start
+// Address: 0x8078FFE0, Size: 8
+void __ai_src_time_start() {
+}
+
+// __AR_init_flag
+// Address: 0x80790354, Size: 4
+void __AR_init_flag() {
+}
+
+// __ARQ_init_flag
+// Address: 0x80790384, Size: 4
+void __ARQ_init_flag() {
+}
+
+// __DSP_init_flag
+// Address: 0x80790470, Size: 4
+void __DSP_init_flag() {
 }

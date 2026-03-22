@@ -1,6 +1,6 @@
 // dvd.cpp - DVD file system
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 78 functions
+// Auto-generated stub implementations - 79 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -442,4 +442,9 @@ void DVDLowClearCallback() {
 // DVDLowGetCoverStatus
 // Address: 0x803E0824, Size: 148
 void DVDLowGetCoverStatus() {
+}
+
+// DVDInitialized
+// Address: 0x8078FE8C, Size: 4
+void DVDInitialized() {
 }

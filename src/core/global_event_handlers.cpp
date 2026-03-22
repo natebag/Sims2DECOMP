@@ -56,15 +56,15 @@ struct CBFunctorBase;
 
 // HandleBloomEvent(EAnimNote &, FrameEffectsManager *)
 // Address: 0x80003AF4, Size: 1032
-void HandleBloomEvent(EAnimNote & p0, FrameEffectsManager * p1) {
+void HandleBloomEvent() {
 }
 
 // HandleMotionBlurEvent(EAnimNote &, FrameEffectsManager *)
 // Address: 0x80003EFC, Size: 764
-void HandleMotionBlurEvent(EAnimNote & p0, FrameEffectsManager * p1) {
+void HandleMotionBlurEvent() {
 }
 
 // HandleDepthOfFieldEvent(EAnimNote &, FrameEffectsManager *)
 // Address: 0x800041F8, Size: 856
-void HandleDepthOfFieldEvent(EAnimNote & p0, FrameEffectsManager * p1) {
+void HandleDepthOfFieldEvent() {
 }

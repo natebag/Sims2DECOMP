@@ -1,6 +1,6 @@
 // dsp.cpp - DSP audio processor
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 15 functions
+// Auto-generated stub implementations - 16 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -127,4 +127,9 @@ void DSPCancelTask() {
 // DSPAssertTask
 // Address: 0x80558194, Size: 200
 void DSPAssertTask() {
+}
+
+// DSPInitCode
+// Address: 0x806C3760, Size: 128
+void DSPInitCode() {
 }

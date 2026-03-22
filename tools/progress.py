@@ -82,8 +82,29 @@ def count_decompiled_functions(src_dir: Path) -> set:
         r'^([\w<>,*& ]+\s+[\w_]+<[^()]*>)\s*\(',
         re.MULTILINE)
 
+    # Pattern 7: General class operators — e.g. "void EMat4::operator=("
+    # or "bool EString::operator==(" — captures "ClassName::operator<symbol>"
+    # Must start at beginning of line with optional return type
+    pat_class_op_general = re.compile(
+        r'^(?:[\w*& ]+\s+)?(\w[\w:]*::operator\s*[^\s(]+)\s*\(',
+        re.MULTILINE)
+
+    # Pattern 8: Free operators — e.g. "void operator>>(EStream &, ..."
+    # Requires a return type prefix to avoid matching random code lines
+    pat_free_op_general = re.compile(
+        r'^[\w*& ]+\s+(operator[<>=!+\-*/^&|~\[\]]+)\s*\(',
+        re.MULTILINE)
+
+    # Pattern 9: Free template functions with nested parens in template args
+    # e.g. "void sort<unsigned int *, bool (*)(unsigned int &, ...)>(..."
+    # Requires the line to start with a return type keyword, allows pointer/ref chars between
+    pat_free_template_nested = re.compile(
+        r'^(?:void|int|unsigned|bool|float|double|char|short|long|signed)[\w *&]*\s+'
+        r'([\w_]+<[^>]*(?:\([^)]*\))?[^>]*>)\s*\(',
+        re.MULTILINE)
+
     for cpp_file in src_dir.rglob('*.cpp'):
-        with open(cpp_file, 'r', encoding='utf-8', errors='replace') as f:
+        with open(str(cpp_file), 'r', encoding='utf-8', errors='replace') as f:
             content = f.read()
             decompiled.update(pat_simple.findall(content))
             decompiled.update(pat_template.findall(content))
@@ -91,6 +112,20 @@ def count_decompiled_functions(src_dir: Path) -> set:
             decompiled.update(pat_free_op.findall(content))
             decompiled.update(pat_class_op.findall(content))
             decompiled.update(pat_free_template.findall(content))
+            decompiled.update(pat_class_op_general.findall(content))
+            decompiled.update(pat_free_op_general.findall(content))
+            decompiled.update(pat_free_template_nested.findall(content))
+
+    # Post-process: extract base function names from template captures.
+    # E.g. "sort<unsigned int *, bool (*)()>" -> also add "sort".
+    # This ensures template instantiations match their truncated symbol keys.
+    base_names = set()
+    pat_base = re.compile(r'^(\w+)<')
+    for ident in decompiled:
+        m = pat_base.match(ident)
+        if m:
+            base_names.add(m.group(1))
+    decompiled.update(base_names)
 
     return decompiled
 
@@ -141,7 +176,21 @@ def main():
         # Try full qualified name (before params), then short name (last :: segment)
         func_qual = name.split('(')[0].strip() if name else ''
         func_short = func_qual.split('::')[-1] if func_qual else ''
-        if func_qual in decompiled or func_short in decompiled:
+
+        # For template functions with function pointers in template args,
+        # name.split('(') truncates at the first '(' inside the template args.
+        # Also extract the base function name (before '<') as a fallback.
+        func_base = ''
+        if func_qual:
+            import re as _re
+            base_match = _re.search(r'(\w+)\s*<', func_qual)
+            if base_match:
+                func_base = base_match.group(1)
+            elif _re.match(r'^[A-Za-z_]\w*$', func_short):
+                func_base = func_short
+
+        if func_qual in decompiled or func_short in decompiled or \
+           (func_base and func_base in decompiled):
             matched_funcs += 1
             matched_bytes += func['size']
             system_stats[system]['matched'] += 1

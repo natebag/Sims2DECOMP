@@ -1,6 +1,6 @@
 // exception_handling.cpp - C++ exception handling
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 8 functions
+// Auto-generated stub implementations - 9 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -92,4 +92,9 @@ void __sjpopnthrow() {
 // __eh_rtime_match
 // Address: 0x803C989C, Size: 100
 void __eh_rtime_match() {
+}
+
+// __terminate_func
+// Address: 0x806C3368, Size: 4
+void __terminate_func() {
 }

@@ -1,6 +1,6 @@
 // global_render.cpp - Global rendering functions
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 6 functions
+// Auto-generated stub implementations - 8 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -56,30 +56,40 @@ struct CBFunctorBase;
 
 // DrawGame(ERC *)
 // Address: 0x80006E2C, Size: 260
-void DrawGame(ERC * p0) {
+void DrawGame() {
 }
 
 // DrawLineSolid(AptAuxUnit *, AptMaskRenderOperation)
 // Address: 0x8000E7D4, Size: 964
-void DrawLineSolid(AptAuxUnit * p0, AptMaskRenderOperation p1) {
+void DrawLineSolid() {
 }
 
 // DrawTriSolid(AptAuxUnit *, AptMaskRenderOperation)
 // Address: 0x8000EB98, Size: 848
-void DrawTriSolid(AptAuxUnit * p0, AptMaskRenderOperation p1) {
+void DrawTriSolid() {
 }
 
 // DrawTriTiledClipped(AptAuxUnit *, AptMaskRenderOperation)
 // Address: 0x8000EEE8, Size: 788
-void DrawTriTiledClipped(AptAuxUnit * p0, AptMaskRenderOperation p1) {
+void DrawTriTiledClipped() {
 }
 
 // DrawSubModelShader(ERC *, ESubModelShader *)
 // Address: 0x8004A940, Size: 168
-void DrawSubModelShader(ERC * p0, ESubModelShader * p1) {
+void DrawSubModelShader() {
 }
 
 // DrawNoCtrlMessage(ERC *, unsigned wchar_t *)
 // Address: 0x80062158, Size: 1488
-void DrawNoCtrlMessage(ERC * p0, unsigned wchar_t * p1) {
+void DrawNoCtrlMessage() {
+}
+
+// DrawDoneCB
+// Address: 0x80790504, Size: 4
+void DrawDoneCB() {
+}
+
+// DrawDone
+// Address: 0x80790508, Size: 1
+void DrawDone() {
 }

@@ -1,6 +1,6 @@
 // exi.cpp - EXI expansion interface
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 31 functions
+// Auto-generated stub implementations - 32 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -207,4 +207,9 @@ void EXI2_Reserve() {
 // EXI2_Unreserve
 // Address: 0x803E635C, Size: 4
 void EXI2_Unreserve() {
+}
+
+// EXIInputFlag
+// Address: 0x8078FFFC, Size: 1
+void EXIInputFlag() {
 }

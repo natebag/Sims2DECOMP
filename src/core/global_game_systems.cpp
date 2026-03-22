@@ -1,6 +1,6 @@
 // global_game_systems.cpp - Game system functions
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 67 functions
+// Auto-generated stub implementations - 64 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -56,43 +56,28 @@ struct CBFunctorBase;
 
 // isResInList(vector<unsigned int, allocator<unsigned int> > &, unsigned int)
 // Address: 0x80034068, Size: 84
-void isResInList(vector<unsigned int, allocator<unsigned int> > & p0, unsigned int p1) {
+void isResInList() {
 }
 
 // collectResInfoForSel(ObjSelector *, vector<unsigned int, allocator<unsigned int> > &)
 // Address: 0x800340BC, Size: 708
-void collectResInfoForSel(ObjSelector * p0, vector<unsigned int, allocator<unsigned int> > & p1) {
+void collectResInfoForSel() {
 }
 
 // collectResInfoForMultSel(ObjSelector *, vector<unsigned int, allocator<unsigned int> > &, vector<ObjSelector *, allocator<ObjSelector *> > *)
 // Address: 0x80034380, Size: 848
-void collectResInfoForMultSel(ObjSelector * p0, vector<unsigned int, allocator<unsigned int> > & p1, vector<ObjSelector *, allocator<ObjSelector *> > * p2) {
+void collectResInfoForMultSel() {
 }
 
 // addRefList(vector<unsigned int, allocator<unsigned int> > &, unsigned int *)
 // Address: 0x80034748, Size: 164
-void addRefList(vector<unsigned int, allocator<unsigned int> > & p0, unsigned int * p1) {
+void addRefList() {
 }
 
 // delRefList(vector<unsigned int, allocator<unsigned int> > &)
 // Address: 0x800347EC, Size: 108
-void delRefList(vector<unsigned int, allocator<unsigned int> > & p0) {
+void delRefList() {
 }
-
-// unsigned int * __unguarded_partition<unsigned int *, unsigned int, bool (*)(unsigned int &, unsigned int &)>(unsigned int *, unsigned int *, unsigned int, bool (*)(unsigned int &, unsigned int &))
-// Address: 0x80036AA0, Size: 160
-unsigned int * __unguarded_partition<unsigned int *, unsigned int, bool(* p0) {
-    return 0;
-}
-
-// Additional instantiation: void __introsort_loop<unsigned int *, unsigned int, int, bool (*)(unsigned int &, unsigned int &)>(unsigned int *, unsigned int *, unsigned int *, int, bool (*)(unsigned int &, unsigned int &))
-// Address: 0x80036B40, Size: 340
-
-// Additional instantiation: void __unguarded_linear_insert<unsigned int *, unsigned int, bool (*)(unsigned int &, unsigned int &)>(unsigned int *, unsigned int, bool (*)(unsigned int &, unsigned int &))
-// Address: 0x80036C94, Size: 108
-
-// Additional instantiation: void __unguarded_insertion_sort_aux<unsigned int *, unsigned int, bool (*)(unsigned int &, unsigned int &)>(unsigned int *, unsigned int *, unsigned int *, bool (*)(unsigned int &, unsigned int &))
-// Address: 0x80036DAC, Size: 84
 
 // SetupInterestFade(void)
 // Address: 0x80037DC0, Size: 1964
@@ -101,92 +86,92 @@ void SetupInterestFade() {
 
 // GetIndex(int, NewLevelLightingLevel *)
 // Address: 0x800389BC, Size: 148
-void GetIndex(int p0, NewLevelLightingLevel * p1) {
+void GetIndex() {
 }
 
 // TimeIsInRange(int, int, int)
 // Address: 0x80038B6C, Size: 76
-void TimeIsInRange(int p0, int p1, int p2) {
+void TimeIsInRange() {
 }
 
 // LightLocation(unsigned int, bool, short &, short &)
 // Address: 0x80039500, Size: 104
-void LightLocation(unsigned int p0, bool p1, short & p2, short & p3) {
+void LightLocation() {
 }
 
 // HasWallsNotFences(TileWalls &)
 // Address: 0x8003CD68, Size: 164
-void HasWallsNotFences(TileWalls & p0) {
+void HasWallsNotFences() {
 }
 
 // SplitWallBottomRight(TileWalls &, CTilePt &)
 // Address: 0x8003EB54, Size: 148
-void SplitWallBottomRight(TileWalls & p0, CTilePt & p1) {
+void SplitWallBottomRight() {
 }
 
 // SplitWallTopLeft(TileWalls &, CTilePt &)
 // Address: 0x8003EBE8, Size: 148
-void SplitWallTopLeft(TileWalls & p0, CTilePt & p1) {
+void SplitWallTopLeft() {
 }
 
 // SplitWallBottomLeft(TileWalls &, CTilePt &)
 // Address: 0x8003EC7C, Size: 148
-void SplitWallBottomLeft(TileWalls & p0, CTilePt & p1) {
+void SplitWallBottomLeft() {
 }
 
 // SplitWallTopRight(TileWalls &, CTilePt &)
 // Address: 0x8003ED10, Size: 148
-void SplitWallTopRight(TileWalls & p0, CTilePt & p1) {
+void SplitWallTopRight() {
 }
 
 // SplitWallHorizDiag(TileWalls &, CTilePt &)
 // Address: 0x8003EDA4, Size: 444
-void SplitWallHorizDiag(TileWalls & p0, CTilePt & p1) {
+void SplitWallHorizDiag() {
 }
 
 // SplitWallVertDiag(TileWalls &, CTilePt &)
 // Address: 0x8003EF60, Size: 436
-void SplitWallVertDiag(TileWalls & p0, CTilePt & p1) {
+void SplitWallVertDiag() {
 }
 
 // WallLocation(unsigned int, bool, short &, short &)
 // Address: 0x8003FB74, Size: 104
-void WallLocation(unsigned int p0, bool p1, short & p2, short & p3) {
+void WallLocation() {
 }
 
 // LightVertex(EVec4 &, EVec4 &, float, unsigned int *, ELights &, EMat4 *)
 // Address: 0x80040C38, Size: 1208
-void LightVertex(EVec4 & p0, EVec4 & p1, float p2, unsigned int * p3, ELights & p4, EMat4 * p5) {
+void LightVertex() {
 }
 
 // Light(bool, float, unsigned int *, ESMSStrip *, ELights &, EMat4 *)
 // Address: 0x800410F0, Size: 620
-void Light(bool p0, float p1, unsigned int * p2, ESMSStrip * p3, ELights & p4, EMat4 * p5) {
+void Light() {
 }
 
 // SetAllUpOrDownForList(bool, TNodeList<ERoomWall *> &)
 // Address: 0x800468C0, Size: 164
-void SetAllUpOrDownForList(bool p0, TNodeList<ERoomWall *> & p1) {
+void SetAllUpOrDownForList() {
 }
 
 // RemapWallId(TileWallsSegment)
 // Address: 0x800563CC, Size: 152
-void RemapWallId(TileWallsSegment p0) {
+void RemapWallId() {
 }
 
 // RemapWallpaperId(unsigned int)
 // Address: 0x80056464, Size: 164
-void RemapWallpaperId(unsigned int p0) {
+void RemapWallpaperId() {
 }
 
 // RemapFloorId(unsigned int)
 // Address: 0x80056508, Size: 164
-void RemapFloorId(unsigned int p0) {
+void RemapFloorId() {
 }
 
 // RemapWallShadowId(unsigned int)
 // Address: 0x800565AC, Size: 164
-void RemapWallShadowId(unsigned int p0) {
+void RemapWallShadowId() {
 }
 
 // InitZodiac(void)
@@ -196,107 +181,112 @@ void InitZodiac() {
 
 // ComputeZodiacSignAux(float *)
 // Address: 0x8005CBB0, Size: 372
-void ComputeZodiacSignAux(float * p0) {
+void ComputeZodiacSignAux() {
 }
 
 // ComputeZodiacSign(short *)
 // Address: 0x8005CD24, Size: 132
-void ComputeZodiacSign(short * p0) {
+void ComputeZodiacSign() {
 }
 
 // ComputeZodiacSignFromSimDesc(signed char *)
 // Address: 0x8005CDA8, Size: 244
-void ComputeZodiacSignFromSimDesc(signed char * p0) {
+void ComputeZodiacSignFromSimDesc() {
 }
 
 // SetZodiacSign(short *, short)
 // Address: 0x8005D058, Size: 260
-void SetZodiacSign(short * p0, short p1) {
+void SetZodiacSign() {
 }
 
 // GetZodiacName(short)
 // Address: 0x8005D250, Size: 192
-void GetZodiacName(short p0) {
+void GetZodiacName() {
 }
 
 // GetSignFromName(unsigned wchar_t *)
 // Address: 0x8005D310, Size: 120
-void GetSignFromName(unsigned wchar_t * p0) {
+void GetSignFromName() {
 }
 
 // GetCompatibleSigns(short)
 // Address: 0x8005D388, Size: 36
-void GetCompatibleSigns(short p0) {
+void GetCompatibleSigns() {
 }
 
 // GetIncompatibleSigns(short)
 // Address: 0x8005D3AC, Size: 36
-void GetIncompatibleSigns(short p0) {
+void GetIncompatibleSigns() {
 }
 
 // StripFormatting(BString2 &)
 // Address: 0x8005D938, Size: 124
-void StripFormatting(BString2 & p0) {
+void StripFormatting() {
 }
 
 // ColorStringForFlash(BString2 &, Interaction::tColor)
 // Address: 0x8005D9B4, Size: 540
-void ColorStringForFlash(BString2 & p0, Interaction::tColor p1) {
+void ColorStringForFlash() {
 }
 
 // ColorIsHigherPriority(Interaction::tColor, Interaction::tColor)
 // Address: 0x8005DBD0, Size: 72
-void ColorIsHigherPriority(Interaction::tColor p0, Interaction::tColor p1) {
+void ColorIsHigherPriority() {
 }
 
 // GetObjectMenuName(cXObject *)
 // Address: 0x8005E8D8, Size: 200
-void GetObjectMenuName(cXObject * p0) {
+void GetObjectMenuName() {
 }
 
 // GetShaderForObject(cXObject *, ERShader **)
 // Address: 0x8005E9A0, Size: 528
-void GetShaderForObject(cXObject * p0, ERShader ** p1) {
+void GetShaderForObject() {
 }
 
 // OrientObjectInstance(cXObject *)
 // Address: 0x8006ADAC, Size: 188
-void OrientObjectInstance(cXObject * p0) {
+void OrientObjectInstance() {
+}
+
+// GetObjectInstance(cXObject *)
+// Address: 0x8006AE68, Size: 72
+void GetObjectInstance() {
 }
 
 // GetResData(cXObject *)
 // Address: 0x8006AEB0, Size: 228
-void GetResData(cXObject * p0) {
+void GetResData() {
 }
 
-// CollectInteractionsForObject(cXObject *, InteractionList &, cXPerson *, int)
-// Address: 0x8006B174, Size: 920
-void CollectInteractionsForObject(cXObject * p0, InteractionList & p1, cXPerson * p2, int p3) {
+// CollectInteractionsForObject(cXObject *, InteractionList &, int, int)
+// Address: 0x8006B130, Size: 68
+void CollectInteractionsForObject() {
 }
 
 // GetFireCodeValue(bool)
 // Address: 0x8006BF30, Size: 116
-void GetFireCodeValue(bool p0) {
+void GetFireCodeValue() {
 }
 
 // GetSimFunds(unsigned int)
 // Address: 0x8006BFA4, Size: 88
-void GetSimFunds(unsigned int p0) {
+void GetSimFunds() {
 }
 
 // SetSimFunds(unsigned int, int)
 // Address: 0x8006BFFC, Size: 92
-void SetSimFunds(unsigned int p0, int p1) {
+void SetSimFunds() {
 }
 
 // SetUIStatusTextV(char *, __va_list_tag *)
 // Address: 0x8006C058, Size: 80
-void SetUIStatusTextV(char * p0, __va_list_tag * p1) {
+void SetUIStatusTextV() {
 }
 
 // SetUIStatusText(char *,...)
 // Address: 0x8006C0A8, Size: 172
-void SetUIStatusText(char * p0, ... p1) {
+void SetUIStatusText() {
 }
 
 // GetUIStatusText(void)
@@ -306,80 +296,80 @@ void GetUIStatusText() {
 
 // GuidIsOk(int)
 // Address: 0x8006DAD8, Size: 360
-void GuidIsOk(int p0) {
+void GuidIsOk() {
 }
 
 // DeleteSelectorOnEvict(int)
 // Address: 0x8006DC40, Size: 152
-void DeleteSelectorOnEvict(int p0) {
+void DeleteSelectorOnEvict() {
 }
 
 // AddFamilyToPool(int, int)
 // Address: 0x8006DCD8, Size: 280
-void AddFamilyToPool(int p0, int p1) {
+void AddFamilyToPool() {
 }
 
 // ConvertRoomSideToWallSide(Room::Sides)
 // Address: 0x800735F4, Size: 84
-void ConvertRoomSideToWallSide(Room::Sides p0) {
+void ConvertRoomSideToWallSide() {
 }
 
 // BuildVertexSpans(TNodeList<EFloorStripInfo> &, EFloorVertexSpan *)
 // Address: 0x80073648, Size: 628
-void BuildVertexSpans(TNodeList<EFloorStripInfo> & p0, EFloorVertexSpan * p1) {
+void BuildVertexSpans() {
 }
 
 // EvaluateFloorLights(ELightGrid &, int, EVec3 &, EVec3 &)
 // Address: 0x800741D8, Size: 384
-void EvaluateFloorLights(ELightGrid & p0, int p1, EVec3 & p2, EVec3 & p3) {
+void EvaluateFloorLights() {
 }
 
 // EvaluateFloorColors(EShader *, EVec3 &, EVec3 &, EVec3 &, EVec3 &)
 // Address: 0x80074358, Size: 172
-void EvaluateFloorColors(EShader * p0, EVec3 & p1, EVec3 & p2, EVec3 & p3, EVec3 & p4) {
+void EvaluateFloorColors() {
 }
 
 // EvaluateLightAtVertices(int, ELightGrid &, ELightGrid::LightData *, EFloorVertexSpan *, int, EVec3 *)
 // Address: 0x80074404, Size: 676
-void EvaluateLightAtVertices(int p0, ELightGrid & p1, ELightGrid::LightData * p2, EFloorVertexSpan * p3, int p4, EVec3 * p5) {
+void EvaluateLightAtVertices() {
 }
 
 // FloorRoom(unsigned int, bool, short &, short &)
 // Address: 0x80076148, Size: 104
-void FloorRoom(unsigned int p0, bool p1, short & p2, short & p3) {
+void FloorRoom() {
 }
 
 // SolveQuadratic(float, float, float, float *)
 // Address: 0x80079D28, Size: 228
-void SolveQuadratic(float p0, float p1, float p2, float * p3) {
+void SolveQuadratic() {
 }
 
 // GetCircleCircleIX(EVec2 &, float, EVec2 &, EVec2 &, float, EVec2 &, Intersection &)
 // Address: 0x80079E0C, Size: 656
-void GetCircleCircleIX(EVec2 & p0, float p1, EVec2 & p2, EVec2 & p3, float p4, EVec2 & p5, Intersection & p6) {
+void GetCircleCircleIX() {
 }
 
 // GetCircleSegmentIX(EVec2 &, float, EVec2 &, EVec2 &, EVec2 &, Intersection &, bool)
 // Address: 0x8007A09C, Size: 856
-void GetCircleSegmentIX(EVec2 & p0, float p1, EVec2 & p2, EVec2 & p3, EVec2 & p4, Intersection & p5, bool p6) {
+void GetCircleSegmentIX() {
 }
 
 // GetCircleSegmentClosedIX(EVec2 &, float, EVec2 &, EVec2 &, EVec2 &, Intersection &, bool)
 // Address: 0x8007A434, Size: 376
-void GetCircleSegmentClosedIX(EVec2 & p0, float p1, EVec2 & p2, EVec2 & p3, EVec2 & p4, Intersection & p5, bool p6) {
+void GetCircleSegmentClosedIX() {
 }
 
 // GetCircleRectangleIX(EVec2 &, float, EVec2 &, EVec2 &, EVec2 &, Intersection &)
 // Address: 0x8007A5AC, Size: 1196
-void GetCircleRectangleIX(EVec2 & p0, float p1, EVec2 & p2, EVec2 & p3, EVec2 & p4, Intersection & p5) {
+void GetCircleRectangleIX() {
 }
 
 // get_ingredient_type_array(FoodResult *, short *)
 // Address: 0x8007C45C, Size: 124
-void get_ingredient_type_array(FoodResult * p0, short * p1) {
+void get_ingredient_type_array() {
 }
 
 // make_ingredient_type_array(short, short, short, short, short *)
 // Address: 0x8007C4D8, Size: 172
-void make_ingredient_type_array(short p0, short p1, short p2, short p3, short * p4) {
+void make_ingredient_type_array() {
 }

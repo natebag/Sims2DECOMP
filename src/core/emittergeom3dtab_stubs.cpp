@@ -1,0 +1,9 @@
+// emittergeom3dtab_stubs.cpp - Stub implementations for Emittergeom3Dtab
+// Auto-generated from symbols.json - 1 functions
+// These are stub implementations to register progress.
+// Each function needs proper decompilation to match the original binary.
+
+#include "types.h"
+
+// 0x803AED08 | 224 bytes
+void EmitterGeom3dTab::Create(char *, float *, pemitterinfo *) { }

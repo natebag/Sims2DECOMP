@@ -1,6 +1,6 @@
 // os.cpp - OS system library
 // Part of the Sims 2 GC decompilation
-// Auto-generated stub implementations - 143 functions
+// Auto-generated stub implementations - 144 functions
 //
 // These are stub implementations to be replaced with matching decompilations.
 // Each function needs to be decompiled to match the original binary.
@@ -767,4 +767,9 @@ void OSUTF32toSJIS() {
 // OSSJIStoUTF32
 // Address: 0x8054BB80, Size: 52
 void OSSJIStoUTF32() {
+}
+
+// OSExceptionTable
+// Address: 0x8078FD5C, Size: 4
+void OSExceptionTable() {
 }
