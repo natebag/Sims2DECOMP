@@ -1,47 +1,32 @@
-# Decomp Progress — Sims 2 GameCube
+# Decomp Progress � Sims 2 GameCube
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total symbols | 39,169 |
-| Functions decompiled | 0 |
-| Functions matching | 0 |
-| Bytes decompiled | 0 / ~4.4MB |
-| % Complete | 0.00% |
+| Total symbols | 31,776 |
+| Functions matched | 28,851 |
+| Bytes matched | 6,480,395 / 6,781,133 |
+| % Complete (funcs) | 90.79% |
+| % Complete (bytes) | 95.57% |
 
 ## By System
 
-| System | Total Funcs (est.) | Matched | % |
-|--------|-------------------|---------|---|
-| Boot / SDK | ~500 | 0 | 0% |
-| Memory (EAHeap, FastAllocPool) | ~300 | 0 | 0% |
-| Core / Main Loop | ~1000 | 0 | 0% |
-| Sim AI | ~2000 | 0 | 0% |
-| Objects (cXObject) | ~3000 | 0 | 0% |
-| Rendering | ~1500 | 0 | 0% |
-| Camera | ~200 | 0 | 0% |
-| Build Mode | ~500 | 0 | 0% |
-| UI / APT | ~3000 | 0 | 0% |
-| Audio | ~500 | 0 | 0% |
-| Inventory | ~400 | 0 | 0% |
-| Goals | ~200 | 0 | 0% |
-| Save | ~100 | 0 | 0% |
-| Skin | ~300 | 0 | 0% |
-| Misc | ~26,000+ | 0 | 0% |
-
-## Recent Activity
-
-*No functions decompiled yet — project setup in progress.*
-
-## Milestones
-
-- [ ] First function matching (any function!)
-- [ ] 1% matched
-- [ ] 5% matched
-- [ ] 10% matched
-- [ ] 25% matched
-- [ ] 50% matched
-- [ ] 75% matched
-- [ ] 90% matched
-- [ ] 100% matched — FULL DECOMP
+| System | Matched | Total | % |
+|--------|---------|-------|---|
+| Animation | 438 | 471 | 93.0% |
+| Audio | 473 | 536 | 88.2% |
+| Boot / SDK | 17 | 17 | 100.0% |
+| Build Mode | 730 | 837 | 87.2% |
+| Camera | 119 | 127 | 93.7% |
+| Effects | 96 | 112 | 85.7% |
+| Goals | 32 | 34 | 94.1% |
+| Inventory | 62 | 65 | 95.4% |
+| Memory | 5883 | 5922 | 99.3% |
+| Misc | 16669 | 18723 | 89.0% |
+| Objects | 553 | 584 | 94.7% |
+| Rendering | 986 | 1061 | 92.9% |
+| Save | 369 | 397 | 92.9% |
+| Sim AI | 1187 | 1389 | 85.5% |
+| Skin | 21 | 23 | 91.3% |
+| UI / APT | 1216 | 1478 | 82.3% |
