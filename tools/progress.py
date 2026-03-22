@@ -75,6 +75,13 @@ def count_decompiled_functions(src_dir: Path) -> set:
         r'^(?:[\w*& ]+\s+)?(\w[\w:]*::operator\s*(?:new|delete|\[\]))\s*\(',
         re.MULTILINE)
 
+    # Pattern 6: Free template functions — e.g. "void DoContainerStream<...>(" or
+    # "unsigned int CopyTArray<...>(" or "int ReconLoadVector<...>("
+    # Captures the full "return_type FuncName<template_params>"
+    pat_free_template = re.compile(
+        r'^([\w<>,*& ]+\s+[\w_]+<[^()]*>)\s*\(',
+        re.MULTILINE)
+
     for cpp_file in src_dir.rglob('*.cpp'):
         with open(cpp_file, 'r', encoding='utf-8', errors='replace') as f:
             content = f.read()
@@ -83,6 +90,7 @@ def count_decompiled_functions(src_dir: Path) -> set:
             decompiled.update(pat_template_op.findall(content))
             decompiled.update(pat_free_op.findall(content))
             decompiled.update(pat_class_op.findall(content))
+            decompiled.update(pat_free_template.findall(content))
 
     return decompiled
 
