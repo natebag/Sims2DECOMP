@@ -122,7 +122,7 @@ ALL_OBJS := $(DECOMP_OBJS) $(SKELETON_OBJS)
 #==============================================================================
 # Rules
 #==============================================================================
-.PHONY: all clean diff test skeleton info
+.PHONY: all clean diff test skeleton info inject progress
 
 all: $(OUTPUT_ELF)
 
@@ -196,6 +196,17 @@ test:
 # Disassemble a single object file (usage: make disasm FILE=build/obj/foo.o)
 disasm:
 	@$(OBJDUMP) -d -M gekko $(FILE)
+
+#--- Injection (byte-matched functions into skeleton) ---
+
+# Compile matched sources, inject verified bytes into skeleton, link skeleton-only ELF
+inject: $(DECOMP_OBJS)
+	@echo "  INJECT  Injecting byte-matched functions into skeleton..."
+	@$(PYTHON) tools/inject_matches.py
+
+# Show match progress (compare .o files against DOL)
+progress:
+	@$(PYTHON) tools/compare_obj_vs_dol.py
 
 #--- Cleanup ---
 
