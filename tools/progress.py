@@ -45,18 +45,44 @@ def classify_symbol(name: str) -> str:
 
 def count_decompiled_functions(src_dir: Path) -> set:
     """Scan source files for decompiled function names."""
+    import re
     decompiled = set()
     if not src_dir.exists():
         return decompiled
 
+    # Pattern 1: Simple functions — e.g. "void ESim::Init(" or "int main("
+    pat_simple = re.compile(r'^[A-Za-z_][\w:*&<> ]+\s+(\w[\w:]+)\s*\(', re.MULTILINE)
+
+    # Pattern 2: Template class methods — e.g. "void TArray<int, Alloc>::Init("
+    # Captures the full qualified name including template params
+    pat_template = re.compile(
+        r'^(?:[\w*& ]+\s+)?([A-Za-z_~][\w]*(?:<[^()]*>)?(?:::~?[\w]+)+)\s*\(',
+        re.MULTILINE)
+
+    # Pattern 3: Template class operators — e.g. "void TArray<int, Alloc>::operator=("
+    pat_template_op = re.compile(
+        r'^(?:[\w*& ]+\s+)?([A-Za-z_][\w]*<[^()]*>::operator[^\s(]+)\s*\(',
+        re.MULTILINE)
+
+    # Pattern 4: Free template operators — e.g. "EStream & operator<<<int, Alloc>("
+    pat_free_op = re.compile(
+        r'^([\w*&<>, ]+\s+operator[<>=!]+<[^()]*>)\s*\(',
+        re.MULTILINE)
+
+    # Pattern 5: Class-scoped operator new/delete/[] — e.g. "void* SAnimator2::operator new("
+    # Captures "SAnimator2::operator new" or "EdithVariableSet::operator[]"
+    pat_class_op = re.compile(
+        r'^(?:[\w*& ]+\s+)?(\w[\w:]*::operator\s*(?:new|delete|\[\]))\s*\(',
+        re.MULTILINE)
+
     for cpp_file in src_dir.rglob('*.cpp'):
         with open(cpp_file, 'r', encoding='utf-8', errors='replace') as f:
             content = f.read()
-            # Simple heuristic: look for function definitions
-            # This is a rough count — refine as project matures
-            import re
-            funcs = re.findall(r'^[A-Za-z_][\w:*&<> ]+\s+(\w[\w:]+)\s*\(', content, re.MULTILINE)
-            decompiled.update(funcs)
+            decompiled.update(pat_simple.findall(content))
+            decompiled.update(pat_template.findall(content))
+            decompiled.update(pat_template_op.findall(content))
+            decompiled.update(pat_free_op.findall(content))
+            decompiled.update(pat_class_op.findall(content))
 
     return decompiled
 
