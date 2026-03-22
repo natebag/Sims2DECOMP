@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFontPage
@@ -9,21 +8,20 @@
 void EFontPage::Destruct(EFontPage *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
 
 // 0x8036486C (12 bytes)
-void* EFontPage::GetTypeInfo() const { return (void*)0x8050D6E4; }  // global data pointer
+const ETypeInfo* EFontPage::GetTypeInfo() const { return (void*)0x8050D6E4; }  // global data pointer
 
 // 0x80364878 (12 bytes)
-int EFontPage::GetTypeName() const { return *(int*)0x8050D6F0; }  // global variable
+const char* EFontPage::GetTypeName() const { return *(int*)0x8050D6F0; }  // global variable
 
 // 0x80364884 (12 bytes)
-int EFontPage::GetTypeKey() const { return *(int*)0x8050D6F4; }  // global variable
+u32 EFontPage::GetTypeKey() const { return *(int*)0x8050D6F4; }  // global variable
 
 // 0x80364890 (12 bytes)
 unsigned short EFontPage::GetTypeVersion() const { return *(unsigned short*)0x8050D6F8; }  // global variable
 
 // 0x8036489C (12 bytes)
-void* EFontPage::GetTypeInfoStatic() { return (void*)0x8050D6E4; }  // global data pointer
+const ETypeInfo* EFontPage::GetTypeInfoStatic() { return (void*)0x8050D6E4; }  // global data pointer
 
 // 0x803648A8 (12 bytes)
 unsigned short EFontPage::GetReadVersion() { return *(unsigned short*)0x8050D6FA; }  // global variable
 
-#endif

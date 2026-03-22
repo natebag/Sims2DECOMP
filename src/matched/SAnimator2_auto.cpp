@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SAnimator2
@@ -18,7 +17,7 @@ void SAnimator2::SnapToGrid() { *(int*)((char*)this + 0x24) = 1; }
 void SAnimator2::SetAnimDisplacements(float, float, float) { }
 
 // 0x8005EDB4 (8 bytes)
-bool SAnimator2::IsInterruptable() { return true; }
+int SAnimator2::IsInterruptable() { return true; }
 
 // 0x8005F4E0 (4 bytes)
 void SAnimator2::ResetCensorship() { }
@@ -30,31 +29,33 @@ void SAnimator2::SetPixelated(int) { }
 int SAnimator2::StartParticleEffectFromEdithPrimitive(unsigned int, unsigned int) { return 0; }
 
 // 0x800676E4 (8 bytes)
-void SAnimator2::removeCostume() { return 1; }
+int SAnimator2::removeCostume() { return 1; }
 
 // 0x8006867C (4 bytes)
 void SAnimator2::AlignCensorToCamera(EVec3 &, EVec3 &, E3DWindow *) { }
 
 // 0x800689F4 (8 bytes)
-void SAnimator2::SetIdleInitialized(bool) { *(int*)((char*)this + 0x120) = val; }  // offset 0x120
+void SAnimator2::SetIdleInitialized(bool val) { *(int*)((char*)this + 0x120) = val; }  // offset 0x120
 
 // 0x80068A40 (8 bytes)
-int SAnimator2::GetAwareOfObject() { return *(int*)((char*)this + 0x63C); }  // offset 0x63C
+cXObject* SAnimator2::GetAwareOfObject() { return *(int*)((char*)this + 0x63C); }  // offset 0x63C
 
 // 0x800690C0 (8 bytes)
 float SAnimator2::GetRealDir() { return *(float*)((char*)this + 0x30); }  // offset 0x30
+#if 0
 
 // 0x800690C8 (8 bytes)
-void* SAnimator2::GetPos() { return (char*)this + 0x1C; }  // offset 0x1C
+EVec3* SAnimator2::GetPos() { return (char*)this + 0x1C; }  // offset 0x1C
+#endif
 
 // 0x800690D0 (8 bytes)
 float SAnimator2::GetTimeMultiplier() { return *(float*)((char*)this + 0xFC); }  // offset 0xFC
 
 // 0x800690D8 (8 bytes)
-int SAnimator2::GetPerson() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+cXPerson* SAnimator2::GetPerson() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x800690E0 (8 bytes)
-int SAnimator2::GetSim() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+ESim* SAnimator2::GetSim() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800690E8 (8 bytes)
 int SAnimator2::GetAnimState() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
@@ -63,43 +64,49 @@ int SAnimator2::GetAnimState() { return *(int*)((char*)this + 0x2C); }  // offse
 int SAnimator2::GetFollowMode() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x800690F8 (12 bytes)
-signed char SAnimator2::GetPortalMode() { return *(signed char*)((char*)this + 0x5F8); }  // signed byte
+int SAnimator2::GetPortalMode() { return *(signed char*)((char*)this + 0x5F8); }  // signed byte
+#if 0
 
 // 0x80069104 (8 bytes)
-void SAnimator2::SetDesiredAnimState(SAnimator2::eAnimState) { *(int*)((char*)this + 0xB0) = val; }  // offset 0xB0
+void SAnimator2::SetDesiredAnimState(SAnimator2::eAnimState val) { *(int*)((char*)this + 0xB0) = val; }  // offset 0xB0
+#endif
 
 // 0x8006910C (8 bytes)
-void SAnimator2::SetCameraZoomRatio(float) { *(float*)((char*)this + 0xB8) = val; }  // offset 0xB8
+void SAnimator2::SetCameraZoomRatio(float val) { *(float*)((char*)this + 0xB8) = val; }  // offset 0xB8
+#if 0
 
 // 0x8006915C (8 bytes)
-void* SAnimator2::GetHeadOrient() { return (char*)this + 0x180; }  // offset 0x180
+EHeadOrient* SAnimator2::GetHeadOrient() { return (char*)this + 0x180; }  // offset 0x180
+#endif
 
 // 0x80069164 (8 bytes)
-int SAnimator2::GetNormalSimDescription() const { return *(int*)((char*)this + 0x604); }  // offset 0x604
+CasSimDescriptionS2C* SAnimator2::GetNormalSimDescription() const { return *(int*)((char*)this + 0x604); }  // offset 0x604
 
 // 0x8006916C (8 bytes)
-void SAnimator2::SetNormalSimDescription(CasSimDescriptionS2C *) { *(int*)((char*)this + 0x604) = val; }  // offset 0x604
+void SAnimator2::SetNormalSimDescription(CasSimDescriptionS2C * val) { *(int*)((char*)this + 0x604) = val; }  // offset 0x604
 
 // 0x8006918C (8 bytes)
 float SAnimator2::GetPauseMultiplier() { return *(float*)((char*)this + 0x104); }  // offset 0x104
+#if 0
 
 // 0x80069194 (16 bytes)
-void SAnimator2::SetBoneIndex(int, int) { ((int*)((char*)this + 0x60C))[index] = val; }  // array[index] store, elem_size=4
+void SAnimator2::SetBoneIndex(int val,  int) { ((int*)((char*)this + 0x60C))[index] = val; }  // array[index] store, elem_size=4
+#endif
 
 // 0x800691A4 (8 bytes)
-void SAnimator2::SetRightHandBoneIndex(int) { *(int*)((char*)this + 0x60C) = val; }  // offset 0x60C
+void SAnimator2::SetRightHandBoneIndex(int val) { *(int*)((char*)this + 0x60C) = val; }  // offset 0x60C
 
 // 0x800691AC (8 bytes)
-void SAnimator2::SetHeadBoneIndex(int) { *(int*)((char*)this + 0x610) = val; }  // offset 0x610
+void SAnimator2::SetHeadBoneIndex(int val) { *(int*)((char*)this + 0x610) = val; }  // offset 0x610
 
 // 0x800691B4 (8 bytes)
-void SAnimator2::SetPelvisBoneIndex(int) { *(int*)((char*)this + 0x614) = val; }  // offset 0x614
+void SAnimator2::SetPelvisBoneIndex(int val) { *(int*)((char*)this + 0x614) = val; }  // offset 0x614
 
 // 0x800691BC (8 bytes)
-void SAnimator2::SetTorsoBoneIndex(int) { *(int*)((char*)this + 0x618) = val; }  // offset 0x618
+void SAnimator2::SetTorsoBoneIndex(int val) { *(int*)((char*)this + 0x618) = val; }  // offset 0x618
 
 // 0x800691C4 (16 bytes)
-int SAnimator2::GetBoneIndex(int) { return ((int*)((char*)this + 0x60C))[index]; }  // array[index], elem_size=4
+int SAnimator2::GetBoneIndex(int index) { return ((int*)((char*)this + 0x60C))[index]; }  // array[index], elem_size=4
 
 // 0x800691D4 (8 bytes)
 int SAnimator2::GetRightHandBoneIndex() { return *(int*)((char*)this + 0x60C); }  // offset 0x60C
@@ -120,6 +127,5 @@ bool SAnimator2::IsRouting() { return *(int*)((char*)this + 0x10) == 1; }  // co
 int SAnimator2::GetLastCostume() { return *(int*)((char*)this + 0x130); }  // offset 0x130
 
 // 0x80069228 (8 bytes)
-void SAnimator2::SetLastCostume(int) { *(int*)((char*)this + 0x130) = val; }  // offset 0x130
+void SAnimator2::SetLastCostume(int val) { *(int*)((char*)this + 0x130) = val; }  // offset 0x130
 
-#endif

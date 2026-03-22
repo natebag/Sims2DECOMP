@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for BitArray64
@@ -6,9 +5,8 @@
 // 2 functions, 40 bytes
 
 // 0x8009B714 (20 bytes)
-void BitArray64::BitArray64() { *(int*)((char*)this + 0x0) = 0; *(int*)((char*)this + 0x4) = 0; }
+BitArray64::BitArray64() { *(int*)((char*)this + 0x0) = 0; *(int*)((char*)this + 0x4) = 0; }
 
 // 0x8009B798 (20 bytes)
 void BitArray64::Clear() { *(int*)((char*)this + 0x0) = 0; *(int*)((char*)this + 0x4) = 0; }
 
-#endif

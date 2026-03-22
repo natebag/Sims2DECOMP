@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimsWallObjectModel
@@ -9,21 +8,20 @@
 void ISimsWallObjectModel::CreateShadow() { }
 
 // 0x80053F58 (12 bytes)
-void* ISimsWallObjectModel::GetTypeInfo() const { return (void*)0x8050B7F0; }  // global data pointer
+const ETypeInfo* ISimsWallObjectModel::GetTypeInfo() const { return (void*)0x8050B7F0; }  // global data pointer
 
 // 0x80053F64 (12 bytes)
-int ISimsWallObjectModel::GetTypeName() const { return *(int*)0x8050B7FC; }  // global variable
+const char* ISimsWallObjectModel::GetTypeName() const { return *(int*)0x8050B7FC; }  // global variable
 
 // 0x80053F70 (12 bytes)
-int ISimsWallObjectModel::GetTypeKey() const { return *(int*)0x8050B800; }  // global variable
+u32 ISimsWallObjectModel::GetTypeKey() const { return *(int*)0x8050B800; }  // global variable
 
 // 0x80053F7C (12 bytes)
 unsigned short ISimsWallObjectModel::GetTypeVersion() const { return *(unsigned short*)0x8050B804; }  // global variable
 
 // 0x80053F88 (12 bytes)
-void* ISimsWallObjectModel::GetTypeInfoStatic() { return (void*)0x8050B7F0; }  // global data pointer
+const ETypeInfo* ISimsWallObjectModel::GetTypeInfoStatic() { return (void*)0x8050B7F0; }  // global data pointer
 
 // 0x80053F94 (12 bytes)
 unsigned short ISimsWallObjectModel::GetReadVersion() { return *(unsigned short*)0x8050B806; }  // global variable
 
-#endif

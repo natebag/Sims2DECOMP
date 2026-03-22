@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for DialogPaneBase
@@ -6,22 +5,26 @@
 // 8 functions, 88 bytes
 
 // 0x80088D20 (8 bytes)
-int DialogPaneBase::GetTitleTextItem() { return *(int*)((char*)this + 0x60); }  // offset 0x60
+TextBaseItem* DialogPaneBase::GetTitleTextItem() { return *(int*)((char*)this + 0x60); }  // offset 0x60
 
 // 0x80088D28 (8 bytes)
-int DialogPaneBase::GetBodyTextItem() { return *(int*)((char*)this + 0x64); }  // offset 0x64
+TextBaseItem* DialogPaneBase::GetBodyTextItem() { return *(int*)((char*)this + 0x64); }  // offset 0x64
+#if 0
 
 // 0x80089000 (12 bytes)
-void* DialogPaneBase::GetBodyDisplaySize() { return (char*)(*(void**)((char*)this + 0x64)) + 0x2C; }  // deref + offset
+EVec2* DialogPaneBase::GetBodyDisplaySize() { return (char*)(*(void**)((char*)this + 0x64)) + 0x2C; }  // deref + offset
+#endif
 
 // 0x8008900C (12 bytes)
 float DialogPaneBase::GetBodyDisplaySizeX() { return *(float*)((char*)(*(void**)((char*)this + 0x64)) + 0x2C); }  // double deref float
 
 // 0x80089018 (12 bytes)
 float DialogPaneBase::GetBodyDisplaySizeY() { return *(float*)((char*)(*(void**)((char*)this + 0x64)) + 0x30); }  // double deref float
+#if 0
 
 // 0x8008905C (12 bytes)
-void* DialogPaneBase::GetBodyDisplayPadSize() { return (char*)(*(void**)((char*)this + 0x64)) + 0x34; }  // deref + offset
+EVec2* DialogPaneBase::GetBodyDisplayPadSize() { return (char*)(*(void**)((char*)this + 0x64)) + 0x34; }  // deref + offset
+#endif
 
 // 0x80089068 (12 bytes)
 float DialogPaneBase::GetBodyDisplayPadSizeX() { return *(float*)((char*)(*(void**)((char*)this + 0x64)) + 0x34); }  // double deref float
@@ -29,4 +32,3 @@ float DialogPaneBase::GetBodyDisplayPadSizeX() { return *(float*)((char*)(*(void
 // 0x80089074 (12 bytes)
 float DialogPaneBase::GetBodyDisplayPadSizeY() { return *(float*)((char*)(*(void**)((char*)this + 0x64)) + 0x38); }  // double deref float
 
-#endif

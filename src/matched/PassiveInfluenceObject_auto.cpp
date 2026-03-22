@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PassiveInfluenceObject
@@ -6,12 +5,13 @@
 // 3 functions, 24 bytes
 
 // 0x803A8CB0 (8 bytes)
-int PassiveInfluenceObject::GetObject() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+cXObject* PassiveInfluenceObject::GetObject() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x803A8CB8 (8 bytes)
 int PassiveInfluenceObject::GetType() { return 1; }
+#if 0
 
 // 0x803A8CC0 (8 bytes)
-void* PassiveInfluenceObject::GetTileVector() { return (char*)this + 0x8; }  // offset 0x8
-
+EVec3* PassiveInfluenceObject::GetTileVector() { return (char*)this + 0x8; }  // offset 0x8
 #endif
+

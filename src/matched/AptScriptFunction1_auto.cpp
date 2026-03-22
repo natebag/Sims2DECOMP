@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptScriptFunction1
@@ -6,7 +5,7 @@
 // 4 functions, 48 bytes
 
 // 0x802B8CD4 (12 bytes)
-int AptScriptFunction1::GetName() const { return *(int*)((char*)(*(void**)((char*)this + 0x34)) + 0x0); }  // double deref
+const char* AptScriptFunction1::GetName() const { return *(int*)((char*)(*(void**)((char*)this + 0x34)) + 0x0); }  // double deref
 
 // 0x802B8CE0 (12 bytes)
 int AptScriptFunction1::GetNumArguments() { return *(int*)((char*)(*(void**)((char*)this + 0x34)) + 0x4); }  // double deref
@@ -17,4 +16,3 @@ void* AptScriptFunction1::GetByteCodeBase() { return (char*)(*(void**)((char*)th
 // 0x802B8CF8 (12 bytes)
 int AptScriptFunction1::GetByteCodeSize() { return *(int*)((char*)(*(void**)((char*)this + 0x34)) + 0xC); }  // double deref
 
-#endif

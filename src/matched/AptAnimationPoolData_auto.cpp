@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptAnimationPoolData
@@ -6,18 +5,11 @@
 // 5 functions, 40 bytes
 
 // 0x802847A4 (8 bytes)
-void AptAnimationPoolData::setInputMask(AptCIH *) { *(int*)((char*)this + 0x94) = val; }  // offset 0x94
+void AptAnimationPoolData::setInputMask(AptCIH * val) { *(int*)((char*)this + 0x94) = val; }  // offset 0x94
 
 // 0x80293950 (8 bytes)
-int AptAnimationPoolData::GetActionPool() { return *(int*)((char*)this + 0x98); }  // offset 0x98
+void* AptAnimationPoolData::GetActionPool() { return *(int*)((char*)this + 0x98); }  // offset 0x98
 
 // 0x8029E1F0 (8 bytes)
 int AptAnimationPoolData::validateBIL() { return 1; }
 
-// 0x8029E268 (8 bytes)
-int AptAnimationPoolData::GetActionPool() { return *(int*)((char*)this + 0x98); }  // offset 0x98
-
-// 0x802A9880 (8 bytes)
-int AptAnimationPoolData::GetActionPool() { return *(int*)((char*)this + 0x98); }  // offset 0x98
-
-#endif

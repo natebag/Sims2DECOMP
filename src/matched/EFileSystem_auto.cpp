@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFileSystem
@@ -9,30 +8,29 @@
 void EFileSystem::InitHDDFileSystem() { return 1; }
 
 // 0x802C70B4 (8 bytes)
-bool EFileSystem::InitHDD(bool, char *) { return false; }
+void EFileSystem::InitHDD(bool, char *) { return false; }
 
 // 0x802C70BC (20 bytes)
-bool EFileSystem::HDDInitialized() { return *(int*)((char*)this + 0x18) == 11; }  // compare with constant
+void EFileSystem::HDDInitialized() { return *(int*)((char*)this + 0x18) == 11; }  // compare with constant
 
 // 0x802C70D0 (8 bytes)
-int EFileSystem::HDDStatus() { return *(int*)((char*)this + 0x18); }  // offset 0x18
+void EFileSystem::HDDStatus() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x802C70D8 (20 bytes)
-bool EFileSystem::HDDTmpInitialized() { return *(int*)((char*)this + 0x1C) == 11; }  // compare with constant
+void EFileSystem::HDDTmpInitialized() { return *(int*)((char*)this + 0x1C) == 11; }  // compare with constant
 
 // 0x802C70EC (8 bytes)
-int EFileSystem::HDDTmpStatus() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+void EFileSystem::HDDTmpStatus() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
 
 // 0x802C70F4 (20 bytes)
-bool EFileSystem::HDDSaveInitialized() { return *(int*)((char*)this + 0x20) == 11; }  // compare with constant
+void EFileSystem::HDDSaveInitialized() { return *(int*)((char*)this + 0x20) == 11; }  // compare with constant
 
 // 0x802C7108 (8 bytes)
-int EFileSystem::HDDSaveStatus() { return *(int*)((char*)this + 0x20); }  // offset 0x20
+void EFileSystem::HDDSaveStatus() { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x802C7110 (8 bytes)
-bool EFileSystem::HDDIsUnformatted() { return false; }
+void EFileSystem::HDDIsUnformatted() { return false; }
 
 // 0x802C7118 (8 bytes)
-int EFileSystem::GetDefaultType() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
+void EFileSystem::GetDefaultType() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
-#endif

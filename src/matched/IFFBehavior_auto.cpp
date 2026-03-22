@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IFFBehavior
@@ -6,6 +5,5 @@
 // 1 functions, 20 bytes
 
 // 0x800AD020 (20 bytes)
-void IFFBehavior::AddRef() { *(int*)((char*)this + 0x10) += 1; }  // refcount increment
+int IFFBehavior::AddRef() { *(int*)((char*)this + 0x10) += 1; }  // refcount increment
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptString
@@ -6,15 +5,16 @@
 // 4 functions, 32 bytes
 
 // 0x802AD0D4 (8 bytes)
-int AptString::sMethod_lastIndexOf(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
+AptValue* AptString::sMethod_lastIndexOf(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
+#if 0
 
 // 0x802AECFC (8 bytes)
-void* AptString::GetInternalString() { return (char*)this + 0xC; }  // offset 0xC
+EAStringC* AptString::GetInternalString() { return (char*)this + 0xC; }  // offset 0xC
+#endif
 
 // 0x802AED04 (8 bytes)
-void AptString::SetNext(AptString *) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
+void AptString::SetNext(AptString * val) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
 
 // 0x802AED0C (8 bytes)
-int AptString::GetNext() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
+AptString* AptString::GetNext() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
-#endif

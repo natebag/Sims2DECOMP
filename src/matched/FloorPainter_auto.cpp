@@ -37,5 +37,4 @@ int InteractorModule::FloorPainter::IsInPlaceMode() { return *(int*)((char*)this
 
 // 0x802091AC (16 bytes)
 bool InteractorModule::FloorPainter::IsInRemoveMode() { return *(int*)((char*)this + 0xA4) != 0; }
-
 #endif

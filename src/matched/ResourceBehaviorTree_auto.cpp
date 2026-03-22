@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ResourceBehaviorTree
@@ -9,9 +8,8 @@
 int ResourceBehaviorTree::SaveDataByID(ObjectDataID &) { return 0; }
 
 // 0x8015B268 (20 bytes)
-void ResourceBehaviorTree::AddRef() { *(int*)((char*)this + 0x64) += 1; }  // refcount increment
+int ResourceBehaviorTree::AddRef() { *(int*)((char*)this + 0x64) += 1; }  // refcount increment
 
 // 0x8015B99C (8 bytes)
 int ResourceBehaviorTree::GetDataSourceType() const { return 8; }
 
-#endif

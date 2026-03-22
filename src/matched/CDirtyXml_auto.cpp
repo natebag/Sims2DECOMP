@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CDirtyXml
@@ -6,48 +5,53 @@
 // 15 functions, 96 bytes
 
 // 0x8023AF78 (8 bytes)
-int CDirtyXml::contentType() { return 0; }
+void CDirtyXml::contentType() { return 0; }
 
 // 0x8023AF80 (4 bytes)
 void CDirtyXml::setContentType(char *) { }
 
 // 0x8023AF84 (8 bytes)
-int CDirtyXml::createElement(char *) { return 0; }
+void CDirtyXml::createElement(char *) { return 0; }
 
 // 0x8023AF8C (8 bytes)
-int CDirtyXml::createTextNode(char *) { return 0; }
+void CDirtyXml::createTextNode(char *) { return 0; }
 
 // 0x8023AF94 (8 bytes)
-int CDirtyXml::docTypeDecl() { return 0; }
+void CDirtyXml::docTypeDecl() { return 0; }
 
 // 0x8023AF9C (4 bytes)
 void CDirtyXml::setDocTypeDecl(char *) { }
+#if 0
 
 // 0x8023AFA0 (8 bytes)
 int CDirtyXml::getBytesTotal() { return 0; }
+#endif
+#if 0
 
 // 0x8023AFA8 (8 bytes)
 int CDirtyXml::getBytesLoaded() { return 0; }
+#endif
 
 // 0x8023AFB0 (4 bytes)
 void CDirtyXml::setIgnoreWhite(int) { }
 
 // 0x8023AFB4 (8 bytes)
-bool CDirtyXml::isIgnoreWhite() { return true; }
+void CDirtyXml::isIgnoreWhite() { return true; }
 
 // 0x8023AFBC (4 bytes)
 void CDirtyXml::load(char *) { }
 
 // 0x8023AFC0 (8 bytes)
-bool CDirtyXml::isLoaded() { return true; }
+void CDirtyXml::isLoaded() { return true; }
 
 // 0x8023B050 (4 bytes)
 void CDirtyXml::send(char *) { }
 
 // 0x8023B054 (4 bytes)
 void CDirtyXml::sendAndLoad(char *, IAptXml *) { }
+#if 0
 
 // 0x8023B058 (8 bytes)
 int CDirtyXml::status() { return 1; }
-
 #endif
+

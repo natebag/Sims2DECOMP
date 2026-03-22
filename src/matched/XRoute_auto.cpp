@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for XRoute
@@ -7,17 +6,20 @@
 
 // 0x80152F74 (20 bytes)
 int XRoute::CountGoals() { return ((char*)(*(void**)((char*)this + 0x4)) - (char*)(*(void**)((char*)this + 0x0))) / 16; }  // count = (end-start)/16
+#if 0
 
 // 0x80152F88 (16 bytes)
-void* XRoute::GetNthGoal(int) { return (char*)(*(void**)((char*)this + 0x0)) + index * 16; }  // deref ptr, array stride=16
+RouteGoal* XRoute::GetNthGoal(int index) { return (char*)(*(void**)((char*)this + 0x0)) + index * 16; }  // deref ptr, array stride=16
+#endif
 
 // 0x80152FE8 (8 bytes)
-void XRoute::SetCurrentGoal(int) { *(int*)((char*)this + 0x54) = val; }  // offset 0x54
+void XRoute::SetCurrentGoal(int val) { *(int*)((char*)this + 0x54) = val; }  // offset 0x54
+#if 0
 
 // 0x8015303C (8 bytes)
-void* XRoute::GetRoutingSlot() { return (char*)this + 0x10; }  // offset 0x10
+RoutingSlot* XRoute::GetRoutingSlot() { return (char*)this + 0x10; }  // offset 0x10
+#endif
 
 // 0x801534C8 (4 bytes)
 void XRoute::DoStream(ReconBuffer *, int) { }
 
-#endif

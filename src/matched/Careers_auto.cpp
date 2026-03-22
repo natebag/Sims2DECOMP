@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Careers
@@ -6,6 +5,5 @@
 // 1 functions, 20 bytes
 
 // 0x800B1B54 (20 bytes)
-void Careers::Careers() { *(void**)((char*)this + 0x0) = (void*)0x8046E9C0; }  // vtable init
+Careers::Careers() { *(void**)((char*)this + 0x0) = (void*)0x8046E9C0; }  // vtable init
 
-#endif

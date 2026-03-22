@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EShaderManager
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80328314 (8 bytes)
-bool EShaderManager::CanCache(EResource *) { return true; }
+void EShaderManager::CanCache(EResource *) {  }
 
-#endif

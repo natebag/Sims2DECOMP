@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIPointAmbLight
@@ -6,21 +5,20 @@
 // 6 functions, 72 bytes
 
 // 0x80229C44 (12 bytes)
-void* EIPointAmbLight::GetTypeInfo() const { return (void*)0x8050CC20; }  // global data pointer
+const ETypeInfo* EIPointAmbLight::GetTypeInfo() const { return (void*)0x8050CC20; }  // global data pointer
 
 // 0x80229C50 (12 bytes)
-int EIPointAmbLight::GetTypeName() const { return *(int*)0x8050CC2C; }  // global variable
+const char* EIPointAmbLight::GetTypeName() const { return *(int*)0x8050CC2C; }  // global variable
 
 // 0x80229C5C (12 bytes)
-int EIPointAmbLight::GetTypeKey() const { return *(int*)0x8050CC30; }  // global variable
+u32 EIPointAmbLight::GetTypeKey() const { return *(int*)0x8050CC30; }  // global variable
 
 // 0x80229C68 (12 bytes)
 unsigned short EIPointAmbLight::GetTypeVersion() const { return *(unsigned short*)0x8050CC34; }  // global variable
 
 // 0x80229C74 (12 bytes)
-void* EIPointAmbLight::GetTypeInfoStatic() { return (void*)0x8050CC20; }  // global data pointer
+const ETypeInfo* EIPointAmbLight::GetTypeInfoStatic() { return (void*)0x8050CC20; }  // global data pointer
 
 // 0x80229C80 (12 bytes)
 unsigned short EIPointAmbLight::GetReadVersion() { return *(unsigned short*)0x8050CC36; }  // global variable
 
-#endif

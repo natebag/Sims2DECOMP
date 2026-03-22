@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeStack
@@ -6,12 +5,13 @@
 // 3 functions, 48 bytes
 
 // 0x80148D28 (16 bytes)
-int TreeStack::GetMemReserved() { /* subtract fields: 4(r3) - 0(r3) */ return 0; }
+void TreeStack::GetMemReserved() { /* subtract fields: 4(r3) - 0(r3) */ return 0; }
+#if 0
 
 // 0x801490C4 (12 bytes)
 void TreeStack::Reset() { *(int*)((char*)this + 0xC) = *(int*)((char*)this + 0x8); }
+#endif
 
 // 0x80149104 (20 bytes)
-int TreeStack::GetStackSize() { return ((char*)(*(void**)((char*)this + 0xC)) - (char*)(*(void**)((char*)this + 0x8))) / 4; }  // count = (end-start)/4
+void TreeStack::GetStackSize() { return ((char*)(*(void**)((char*)this + 0xC)) - (char*)(*(void**)((char*)this + 0x8))) / 4; }  // count = (end-start)/4
 
-#endif

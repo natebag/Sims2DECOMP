@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cTrack
@@ -9,24 +8,23 @@
 int cTrack::StartPos() { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x30); }  // double deref
 
 // 0x80118E28 (12 bytes)
-unsigned char cTrack::GetMinRange() { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x0)) + 0x1F); }  // double deref byte
+int cTrack::GetMinRange() { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x0)) + 0x1F); }  // double deref byte
 
 // 0x80118E34 (12 bytes)
-unsigned char cTrack::GetMaxRange() { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x0)) + 0x20); }  // double deref byte
+int cTrack::GetMaxRange() { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x0)) + 0x20); }  // double deref byte
 
 // 0x80118E40 (12 bytes)
-unsigned char cTrack::GetControlGroup() { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x0)) + 0x17); }  // double deref byte
+int cTrack::GetControlGroup() { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x0)) + 0x17); }  // double deref byte
 
 // 0x80118E4C (12 bytes)
-unsigned char cTrack::GetArgsType() { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x0)) + 0x15); }  // double deref byte
+int cTrack::GetArgsType() { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x0)) + 0x15); }  // double deref byte
 
 // 0x80119DB4 (12 bytes)
-int cTrack::SetInstanceId(int) { *(int*)((char*)this + 0x4) = val; return 1; }
+void cTrack::SetInstanceId(int val) { *(int*)((char*)this + 0x4) = val; return 1; }
 
 // 0x80119DC0 (8 bytes)
 int cTrack::InstanceId() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x80119DC8 (8 bytes)
-int cTrack::IsPlaying() { return *(int*)((char*)this + 0x34); }  // offset 0x34
+bool cTrack::IsPlaying() { return *(int*)((char*)this + 0x34); }  // offset 0x34
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for StateMachineStatus
@@ -6,6 +5,5 @@
 // 1 functions, 16 bytes
 
 // 0x80096504 (16 bytes)
-void StateMachineStatus::AddToSecondsInCurState(float) { *(float*)((char*)this + 0x14) += val; }
+void StateMachineStatus::AddToSecondsInCurState(float val) { *(float*)((char*)this + 0x14) += val; }
 
-#endif

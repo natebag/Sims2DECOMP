@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickDataSoundInfo
@@ -9,15 +8,14 @@
 void QuickDataSoundInfo::AddRef() { *(int*)((char*)this + 0x58) += 1; }  // refcount increment
 
 // 0x80145934 (8 bytes)
-int QuickDataSoundInfo::LoadFromIndex(unsigned int, int) { return 0; }
+void QuickDataSoundInfo::LoadFromIndex(unsigned int, int) {  }
 
 // 0x8014593C (8 bytes)
-int QuickDataSoundInfo::SaveDataByID(ObjectDataID &) { return 0; }
+void QuickDataSoundInfo::SaveDataByID(ObjectDataID &) {  }
 
 // 0x80145944 (8 bytes)
-int QuickDataSoundInfo::GetDataSourceType() const { return 1; }
+void QuickDataSoundInfo::GetDataSourceType() const {  }
 
 // 0x8014594C (8 bytes)
-bool QuickDataSoundInfo::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
+void QuickDataSoundInfo::LoadOnlyNameAndIDFromIndex(unsigned int, int) {  }
 
-#endif

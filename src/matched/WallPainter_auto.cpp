@@ -37,5 +37,4 @@ float InteractorModule::WallPainter::GetPaperToolHeight() { return /* SDA global
 
 // 0x80226A18 (8 bytes)
 float InteractorModule::WallPainter::GetWallHeight() { return /* SDA global float @ r13-21080 */; }
-
 #endif

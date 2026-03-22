@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EControllerManager
@@ -9,12 +8,11 @@
 void EControllerManager::Shutdown() { }
 
 // 0x803235E0 (16 bytes)
-int EControllerManager::GetPlayerMapped(unsigned int) { return ((int*)((char*)this + 0x10))[index]; }  // array[index], elem_size=4
+void EControllerManager::GetPlayerMapped(unsigned int index) { return ((int*)((char*)this + 0x10))[index]; }  // array[index], elem_size=4
 
 // 0x80323AF0 (8 bytes)
-int EControllerManager::GetControllerCount() { return 4; }
+void EControllerManager::GetControllerCount() { return 4; }
 
 // 0x80324534 (12 bytes)
-unsigned int EControllerManager::IndexToBit(int) { return 1u << index; }  // index to bitmask
+void EControllerManager::IndexToBit(int index) { return 1u << index; }  // index to bitmask
 
-#endif

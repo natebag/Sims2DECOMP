@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERShader
@@ -9,39 +8,44 @@
 void* ERShader::GetTypeInfo() const { return (void*)0x8050CF00; }  // global data pointer
 
 // 0x80320540 (12 bytes)
-int ERShader::GetTypeName() const { return *(int*)0x8050CF0C; }  // global variable
+void ERShader::GetTypeName() const { return *(int*)0x8050CF0C; }  // global variable
 
 // 0x8032054C (12 bytes)
-int ERShader::GetTypeKey() const { return *(int*)0x8050CF10; }  // global variable
+void ERShader::GetTypeKey() const { return *(int*)0x8050CF10; }  // global variable
+#if 0
 
 // 0x80320558 (12 bytes)
 unsigned short ERShader::GetTypeVersion() const { return *(unsigned short*)0x8050CF14; }  // global variable
+#endif
 
 // 0x80320564 (12 bytes)
 void* ERShader::GetTypeInfoStatic() { return (void*)0x8050CF00; }  // global data pointer
+#if 0
 
 // 0x80320570 (12 bytes)
 unsigned short ERShader::GetReadVersion() { return *(unsigned short*)0x8050CF16; }  // global variable
+#endif
+#if 0
 
 // 0x80320620 (8 bytes)
-int ERShader::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* ERShader::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x80320750 (12 bytes)
-bool ERShader::IsDayNightShader() { return (*(int*)((char*)this + 0x58) >> 5) & 1; }  // bit 5
+void ERShader::IsDayNightShader() { return (*(int*)((char*)this + 0x58) >> 5) & 1; }  // bit 5
 
 // 0x8032075C (16 bytes)
-int ERShader::GetRTextureForRenderPass(int) { return ((int*)((char*)this + 0x20))[index]; }  // array[index], elem_size=4
+void ERShader::GetRTextureForRenderPass(int index) { return ((int*)((char*)this + 0x20))[index]; }  // array[index], elem_size=4
 
 // 0x803207A8 (20 bytes)
-bool ERShader::SupportsMultiShaderStates() { return *(int*)((char*)this + 0x3C) == 2; }  // compare with constant
+void ERShader::SupportsMultiShaderStates() { return *(int*)((char*)this + 0x3C) == 2; }  // compare with constant
 
 // 0x8032084C (8 bytes)
-unsigned char ERShader::GetCurrentGraphicsState() { return *(unsigned char*)((char*)this + 0x50); }  // offset 0x50
+void ERShader::GetCurrentGraphicsState() { return *(unsigned char*)((char*)this + 0x50); }  // offset 0x50
 
 // 0x80320854 (12 bytes)
-bool ERShader::IsStateChangePending() { return (*(int*)((char*)this + 0x58) >> 2) & 1; }  // bit 2
+void ERShader::IsStateChangePending() { return (*(int*)((char*)this + 0x58) >> 2) & 1; }  // bit 2
 
 // 0x80320860 (12 bytes)
-bool ERShader::IsMultiShader() const { return (*(int*)((char*)this + 0x58) >> 1) & 1; }  // bit 1
+void ERShader::IsMultiShader() const { return (*(int*)((char*)this + 0x58) >> 1) & 1; }  // bit 1
 
-#endif

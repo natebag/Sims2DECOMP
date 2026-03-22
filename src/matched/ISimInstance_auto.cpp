@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimInstance
@@ -36,54 +35,57 @@ void ISimInstance::SetCarryOrient() { }
 void ISimInstance::StartBurp(int) { }
 
 // 0x80056344 (8 bytes)
-bool ISimInstance::GetShadow() { return false; }
+void ISimInstance::GetShadow() { return false; }
 
 // 0x8005634C (8 bytes)
-void ISimInstance::SetXOb(cXObject *) { *(int*)((char*)this + 0x328) = val; }  // offset 0x328
+void ISimInstance::SetXOb(cXObject * val) { *(int*)((char*)this + 0x328) = val; }  // offset 0x328
 
 // 0x80056354 (8 bytes)
-int ISimInstance::GetXOb() { return *(int*)((char*)this + 0x328); }  // offset 0x328
+void ISimInstance::GetXOb() { return *(int*)((char*)this + 0x328); }  // offset 0x328
 
 // 0x800567F8 (8 bytes)
-int ISimInstance::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* ISimInstance::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 
 // 0x800568AC (12 bytes)
 void* ISimInstance::GetTypeInfo() const { return (void*)0x8050B450; }  // global data pointer
 
 // 0x800568B8 (12 bytes)
-int ISimInstance::GetTypeName() const { return *(int*)0x8050B45C; }  // global variable
+void ISimInstance::GetTypeName() const { return *(int*)0x8050B45C; }  // global variable
 
 // 0x800568C4 (12 bytes)
-int ISimInstance::GetTypeKey() const { return *(int*)0x8050B460; }  // global variable
+void ISimInstance::GetTypeKey() const { return *(int*)0x8050B460; }  // global variable
+#if 0
 
 // 0x800568D0 (12 bytes)
 unsigned short ISimInstance::GetTypeVersion() const { return *(unsigned short*)0x8050B464; }  // global variable
+#endif
 
 // 0x800568DC (12 bytes)
 void* ISimInstance::GetTypeInfoStatic() { return (void*)0x8050B450; }  // global data pointer
+#if 0
 
 // 0x800568E8 (12 bytes)
 unsigned short ISimInstance::GetReadVersion() { return *(unsigned short*)0x8050B466; }  // global variable
+#endif
 
 // 0x800569F0 (4 bytes)
 void ISimInstance::CleanupStuff(ERLevel *) { }
 
 // 0x800569F4 (8 bytes)
-void ISimInstance::SetCursFlags(unsigned int) { *(int*)((char*)this + 0x32C) = val; }  // offset 0x32C
+void ISimInstance::SetCursFlags(unsigned int val) { *(int*)((char*)this + 0x32C) = val; }  // offset 0x32C
 
 // 0x800569FC (8 bytes)
-int ISimInstance::GetCursFlags() { return *(int*)((char*)this + 0x32C); }  // offset 0x32C
+void ISimInstance::GetCursFlags() { return *(int*)((char*)this + 0x32C); }  // offset 0x32C
 
 // 0x80056A04 (4 bytes)
 void ISimInstance::GetSimInstance() { }
 
 // 0x80056A08 (8 bytes)
-bool ISimInstance::IsMultiTilePart() { return false; }
+void ISimInstance::IsMultiTilePart() { return false; }
 
 // 0x80056A10 (8 bytes)
-int ISimInstance::GetFlags() { return *(int*)((char*)this + 0x32C); }  // offset 0x32C
+void ISimInstance::GetFlags() { return *(int*)((char*)this + 0x32C); }  // offset 0x32C
 
 // 0x80056A30 (8 bytes)
-void* ISimInstance::GetAnimController() { return (char*)this + 0x334; }  // offset 0x334
+void ISimInstance::GetAnimController() { return (char*)this + 0x334; }  // offset 0x334
 
-#endif

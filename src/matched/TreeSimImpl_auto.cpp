@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeSimImpl
@@ -6,33 +5,34 @@
 // 10 functions, 92 bytes
 
 // 0x80147434 (8 bytes)
-void TreeSimImpl::SetError(short) { *(short*)((char*)this + 0x34) = val; }  // offset 0x34
+void TreeSimImpl::SetError(short val) { *(short*)((char*)this + 0x34) = val; }  // offset 0x34
 
 // 0x80147444 (12 bytes)
 void TreeSimImpl::ClearError() { *(short*)((char*)this + 0x34) = 0; }
 
 // 0x8014853C (20 bytes)
-bool TreeSimImpl::GetLastTransition() { return *(int*)((char*)this + 0x28) == 254; }  // compare with constant
+void TreeSimImpl::GetLastTransition() { return *(int*)((char*)this + 0x28) == 254; }  // compare with constant
 
 // 0x80148818 (4 bytes)
 void TreeSimImpl::StackJustPopped() { }
 
 // 0x80149294 (8 bytes)
-int TreeSimImpl::GetIterations() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+void TreeSimImpl::GetIterations() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x8014929C (8 bytes)
-int TreeSimImpl::GetLastResult() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
+void TreeSimImpl::GetLastResult() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
 
 // 0x801492A4 (16 bytes)
-bool TreeSimImpl::HasMainTreeSim() { return *(int*)((char*)this + 0x38) != 0; }
+void TreeSimImpl::HasMainTreeSim() { return *(int*)((char*)this + 0x38) != 0; }
 
 // 0x801492B4 (8 bytes)
-void TreeSimImpl::SetNoMainTreeSim(bool) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
+void TreeSimImpl::SetNoMainTreeSim(bool val) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
 
 // 0x801492BC (4 bytes)
 void TreeSimImpl::AsTreeSim() { }
+#if 0
 
 // 0x801492C0 (4 bytes)
 void TreeSimImpl::AsTreeSim() const { }
-
 #endif
+

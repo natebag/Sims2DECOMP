@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIStaticModel
@@ -6,42 +5,45 @@
 // 13 functions, 128 bytes
 
 // 0x8022DAE0 (8 bytes)
-void EIStaticModel::ModifyColor(unsigned int) { *(int*)((char*)this + 0x114) = val; }  // offset 0x114
+void EIStaticModel::ModifyColor(unsigned int val) { *(int*)((char*)this + 0x114) = val; }  // offset 0x114
 
 // 0x8022DAE8 (8 bytes)
 int EIStaticModel::GetModifiableColor() { return *(int*)((char*)this + 0x114); }  // offset 0x114
 
 // 0x8022E070 (12 bytes)
-void* EIStaticModel::GetTypeInfo() const { return (void*)0x8050B400; }  // global data pointer
+const ETypeInfo* EIStaticModel::GetTypeInfo() const { return (void*)0x8050B400; }  // global data pointer
 
 // 0x8022E07C (12 bytes)
-int EIStaticModel::GetTypeName() const { return *(int*)0x8050B40C; }  // global variable
+const char* EIStaticModel::GetTypeName() const { return *(int*)0x8050B40C; }  // global variable
 
 // 0x8022E088 (12 bytes)
-int EIStaticModel::GetTypeKey() const { return *(int*)0x8050B410; }  // global variable
+u32 EIStaticModel::GetTypeKey() const { return *(int*)0x8050B410; }  // global variable
 
 // 0x8022E094 (12 bytes)
 unsigned short EIStaticModel::GetTypeVersion() const { return *(unsigned short*)0x8050B414; }  // global variable
 
 // 0x8022E0A0 (12 bytes)
-void* EIStaticModel::GetTypeInfoStatic() { return (void*)0x8050B400; }  // global data pointer
+const ETypeInfo* EIStaticModel::GetTypeInfoStatic() { return (void*)0x8050B400; }  // global data pointer
 
 // 0x8022E0AC (12 bytes)
 unsigned short EIStaticModel::GetReadVersion() { return *(unsigned short*)0x8050B416; }  // global variable
 
 // 0x8022E16C (8 bytes)
-int EIStaticModel::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* EIStaticModel::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 
 // 0x8022E274 (8 bytes)
-int EIStaticModel::GetModelId() { return *(int*)((char*)this + 0x110); }  // offset 0x110
+u32 EIStaticModel::GetModelId() { return *(int*)((char*)this + 0x110); }  // offset 0x110
 
 // 0x8022E27C (8 bytes)
-int EIStaticModel::GetModel() { return *(int*)((char*)this + 0x120); }  // offset 0x120
+ERModel* EIStaticModel::GetModel() { return *(int*)((char*)this + 0x120); }  // offset 0x120
+#if 0
 
 // 0x8022E284 (8 bytes)
-void* EIStaticModel::GetDrawMatrix() { return (char*)this + 0x80; }  // offset 0x80
+EMat4* EIStaticModel::GetDrawMatrix() { return (char*)this + 0x80; }  // offset 0x80
+#endif
+#if 0
 
 // 0x8022E28C (8 bytes)
-void* EIStaticModel::GetOrient() const { return (char*)this + 0xC0; }  // offset 0xC0
-
+EMat4* EIStaticModel::GetOrient() const { return (char*)this + 0xC0; }  // offset 0xC0
 #endif
+

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERSoundTrackData
@@ -9,24 +8,27 @@
 void* ERSoundTrackData::GetTypeInfo() const { return (void*)0x8050D874; }  // global data pointer
 
 // 0x8036A614 (12 bytes)
-int ERSoundTrackData::GetTypeName() const { return *(int*)0x8050D880; }  // global variable
+void ERSoundTrackData::GetTypeName() const { return *(int*)0x8050D880; }  // global variable
 
 // 0x8036A620 (12 bytes)
-int ERSoundTrackData::GetTypeKey() const { return *(int*)0x8050D884; }  // global variable
+void ERSoundTrackData::GetTypeKey() const { return *(int*)0x8050D884; }  // global variable
+#if 0
 
 // 0x8036A62C (12 bytes)
 unsigned short ERSoundTrackData::GetTypeVersion() const { return *(unsigned short*)0x8050D888; }  // global variable
+#endif
 
 // 0x8036A638 (12 bytes)
 void* ERSoundTrackData::GetTypeInfoStatic() { return (void*)0x8050D874; }  // global data pointer
+#if 0
 
 // 0x8036A644 (12 bytes)
 unsigned short ERSoundTrackData::GetReadVersion() { return *(unsigned short*)0x8050D88A; }  // global variable
+#endif
 
 // 0x8036A6C4 (16 bytes)
-void* ERSoundTrackData::GetInstruction(unsigned int) { return (char*)(*(void**)((char*)this + 0x14)) + index * 4; }  // deref ptr, array stride=4
+void ERSoundTrackData::GetInstruction(unsigned int index) { return (char*)(*(void**)((char*)this + 0x14)) + index * 4; }  // deref ptr, array stride=4
 
 // 0x8036A6D4 (20 bytes)
-int ERSoundTrackData::GetProgramSize() { return ((char*)(*(void**)((char*)this + 0x18)) - (char*)(*(void**)((char*)this + 0x14))) / 4; }  // count = (end-start)/4
+void ERSoundTrackData::GetProgramSize() { return ((char*)(*(void**)((char*)this + 0x18)) - (char*)(*(void**)((char*)this + 0x14))) / 4; }  // count = (end-start)/4
 
-#endif

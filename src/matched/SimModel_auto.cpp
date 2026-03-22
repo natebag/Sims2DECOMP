@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SimModel
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x800714C4 (8 bytes)
-int SimModel::VerifyRequiredModels() const { return 1; }
+bool SimModel::VerifyRequiredModels() const { return 1; }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cHitTimer
@@ -6,6 +5,5 @@
 // 1 functions, 16 bytes
 
 // 0x803A2D84 (16 bytes)
-int cHitTimer::Stop() { *(int*)((char*)this + 0x0) = 0; return 1; }
+bool cHitTimer::Stop() { *(int*)((char*)this + 0x0) = 0; return 1; }
 
-#endif

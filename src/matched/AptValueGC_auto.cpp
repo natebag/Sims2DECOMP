@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptValueGC
@@ -8,52 +7,3 @@
 // 0x80281D1C (8 bytes)
 bool AptValueGC::IsGarbageCollected() const { return true; }
 
-// 0x80287DD0 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x8028F9AC (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802938B8 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x80298BC0 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802A865C (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802ABDC4 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802AEC34 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802AFC0C (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802B42E8 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802B5C24 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802B6100 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802B78B0 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802B87FC (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802BA21C (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802BB634 (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-// 0x802C4F7C (8 bytes)
-bool AptValueGC::IsGarbageCollected() const { return true; }
-
-#endif

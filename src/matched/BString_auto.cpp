@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for BString
@@ -6,21 +5,22 @@
 // 6 functions, 68 bytes
 
 // 0x8009C014 (12 bytes)
-int BString::ref_count() const { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0xC); }  // double deref
+void BString::ref_count() const { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0xC); }  // double deref
 
 // 0x8009C064 (12 bytes)
-int BString::point() { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x0); }  // double deref
+void BString::point() { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x0); }  // double deref
 
 // 0x8009C070 (12 bytes)
-void* BString::len() { return (char*)(*(void**)((char*)this + 0x0)) + 0x4; }  // deref + offset
+void BString::len() { return (char*)(*(void**)((char*)this + 0x0)) + 0x4; }  // deref + offset
 
 // 0x8009CAD8 (8 bytes)
-int BString::eos() { return 0; }
+void BString::eos() { return 0; }
 
 // 0x8009FF4C (12 bytes)
-int BString::length() const { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x4); }  // double deref
+void BString::length() const { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x4); }  // double deref
+#if 0
 
 // 0x8009FF58 (12 bytes)
-int BString::reserve() const { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x8); }  // double deref
-
+void BString::reserve() const { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x8); }  // double deref
 #endif
+

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for StateMachineState
@@ -22,9 +21,11 @@ void StateMachineState::DrawTopmost(ERC *) { }
 
 // 0x803A02BC (4 bytes)
 void StateMachineState::Shutdown() { }
+#if 0
 
 // 0x803A02C0 (4 bytes)
 void StateMachineState::Reset() { }
+#endif
 
 // 0x803A02C4 (4 bytes)
 void StateMachineState::Update(float) { }
@@ -32,4 +33,3 @@ void StateMachineState::Update(float) { }
 // 0x803A02C8 (4 bytes)
 void StateMachineState::Draw(ERC *) { }
 
-#endif

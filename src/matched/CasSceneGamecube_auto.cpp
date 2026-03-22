@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasSceneGamecube
@@ -6,9 +5,8 @@
 // 2 functions, 16 bytes
 
 // 0x80175764 (8 bytes)
-int CasSceneGamecube::GetSceneName() const { return /* SDA global @ r13-31552 */; }  // lwz r3,-31552(r13)
+void CasSceneGamecube::GetSceneName() const {  }  // lwz r3,-31552(r13)
 
 // 0x80175784 (8 bytes)
-int CasSceneGamecube::GetRoomFromCameraAngle(unsigned int) const { return 0; }
+unsigned CasSceneGamecube::GetRoomFromCameraAngle(unsigned int) const { return 0; }
 
-#endif

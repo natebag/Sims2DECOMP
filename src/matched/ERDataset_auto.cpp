@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERDataset
@@ -9,18 +8,21 @@
 void* ERDataset::GetTypeInfo() const { return (void*)0x8050D824; }  // global data pointer
 
 // 0x80369840 (12 bytes)
-int ERDataset::GetTypeName() const { return *(int*)0x8050D830; }  // global variable
+void ERDataset::GetTypeName() const { return *(int*)0x8050D830; }  // global variable
 
 // 0x8036984C (12 bytes)
-int ERDataset::GetTypeKey() const { return *(int*)0x8050D834; }  // global variable
+void ERDataset::GetTypeKey() const { return *(int*)0x8050D834; }  // global variable
+#if 0
 
 // 0x80369858 (12 bytes)
 unsigned short ERDataset::GetTypeVersion() const { return *(unsigned short*)0x8050D838; }  // global variable
+#endif
 
 // 0x80369864 (12 bytes)
 void* ERDataset::GetTypeInfoStatic() { return (void*)0x8050D824; }  // global data pointer
+#if 0
 
 // 0x80369870 (12 bytes)
 unsigned short ERDataset::GetReadVersion() { return *(unsigned short*)0x8050D83A; }  // global variable
-
 #endif
+

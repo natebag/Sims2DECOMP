@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for UIHDTV
@@ -6,24 +5,23 @@
 // 7 functions, 60 bytes
 
 // 0x8017B994 (4 bytes)
-void UIHDTV::UIHDTV() { }
+UIHDTV::UIHDTV() { }
 
 // 0x8017BEF4 (12 bytes)
-int UIHDTV::GetScreenHeight() { /* double deref: lwz r9,-26392(r13); lwz r3,28(r9) */ return 0; }
+void UIHDTV::GetScreenHeight() { /* double deref: lwz r9,-26392(r13); lwz r3,28(r9) */ return 0; }
 
 // 0x8017BF00 (12 bytes)
-int UIHDTV::GetScreenWidth() { /* double deref: lwz r9,-26392(r13); lwz r3,24(r9) */ return 0; }
+void UIHDTV::GetScreenWidth() { /* double deref: lwz r9,-26392(r13); lwz r3,24(r9) */ return 0; }
 
 // 0x8017BF0C (8 bytes)
-int UIHDTV::GetNewXPosition(int) { return first; }  // mr r3,r4
+void UIHDTV::GetNewXPosition(int first) { return first; }  // mr r3,r4
 
 // 0x8017BF14 (8 bytes)
-int UIHDTV::GetNewYPosition(int) { return first; }  // mr r3,r4
+void UIHDTV::GetNewYPosition(int first) { return first; }  // mr r3,r4
 
 // 0x8017BF1C (8 bytes)
-int UIHDTV::GetNewWidth(int) { return first; }  // mr r3,r4
+void UIHDTV::GetNewWidth(int first) { return first; }  // mr r3,r4
 
 // 0x8017BF24 (8 bytes)
-int UIHDTV::GetNewHeight(int) { return first; }  // mr r3,r4
+void UIHDTV::GetNewHeight(int first) { return first; }  // mr r3,r4
 
-#endif

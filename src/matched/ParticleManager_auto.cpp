@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ParticleManager
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x8032B714 (8 bytes)
-bool ParticleManager::CanCache(EResource *) { return true; }
+void ParticleManager::CanCache(EResource *) {  }
 
-#endif

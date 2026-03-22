@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeTableQuickData
@@ -12,7 +11,7 @@ int TreeTableQuickData::SaveDataByID(ObjectDataID &) { return 0; }
 int TreeTableQuickData::GetDataSourceType() const { return 1; }
 
 // 0x8015E4EC (20 bytes)
-void TreeTableQuickData::AddRef() { *(int*)((char*)this + 0x20) += 1; }  // refcount increment
+int TreeTableQuickData::AddRef() { *(int*)((char*)this + 0x20) += 1; }  // refcount increment
 
 // 0x8015E8AC (8 bytes)
 int TreeTableQuickData::LoadFromIndex(unsigned int, int) { return 0; }
@@ -21,10 +20,10 @@ int TreeTableQuickData::LoadFromIndex(unsigned int, int) { return 0; }
 int TreeTableQuickData::GetResourceName(StringBuffer &) const { return 0; }
 
 // 0x8015E8BC (8 bytes)
-void TreeTableQuickData::SetResourceName(StringBuffer &) { return 0; }
+int TreeTableQuickData::SetResourceName(StringBuffer &) { return 0; }
 
 // 0x8015E8C4 (8 bytes)
-bool TreeTableQuickData::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
+int TreeTableQuickData::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
 // 0x8015E948 (4 bytes)
 void TreeTableQuickData::SwapEntries(int, int) { }
@@ -51,21 +50,20 @@ int TreeTableQuickData::Save(unsigned int, short) { return -45; }
 int TreeTableQuickData::Save() { return -45; }
 
 // 0x8015E980 (8 bytes)
-bool TreeTableQuickData::GetIsTuned() const { return false; }
+int TreeTableQuickData::GetIsTuned() const { return false; }
 
 // 0x8015E988 (4 bytes)
 void TreeTableQuickData::SetIsTuned(bool) { }
 
 // 0x8015E98C (8 bytes)
-void TreeTableQuickData::AddEntry(short, short) { return 0; }
+int TreeTableQuickData::AddEntry(short, short) { return 0; }
 
 // 0x8015E994 (8 bytes)
-void TreeTableQuickData::RemoveEntry(ITreeTableEntry *) { return 0; }
+int TreeTableQuickData::RemoveEntry(ITreeTableEntry *) { return 0; }
 
 // 0x8015E99C (4 bytes)
 void TreeTableQuickData::SetPrefixCheckTreeID(short) { }
 
 // 0x8015E9A0 (8 bytes)
-int TreeTableQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
+TreeTable* TreeTableQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
-#endif

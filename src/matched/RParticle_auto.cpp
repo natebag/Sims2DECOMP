@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for RParticle
@@ -9,24 +8,29 @@
 void* RParticle::GetTypeInfo() const { return (void*)0x8050D8EC; }  // global data pointer
 
 // 0x8036C1F4 (12 bytes)
-int RParticle::GetTypeName() const { return *(int*)0x8050D8F8; }  // global variable
+void RParticle::GetTypeName() const { return *(int*)0x8050D8F8; }  // global variable
 
 // 0x8036C200 (12 bytes)
-int RParticle::GetTypeKey() const { return *(int*)0x8050D8FC; }  // global variable
+void RParticle::GetTypeKey() const { return *(int*)0x8050D8FC; }  // global variable
+#if 0
 
 // 0x8036C20C (12 bytes)
 unsigned short RParticle::GetTypeVersion() const { return *(unsigned short*)0x8050D900; }  // global variable
+#endif
 
 // 0x8036C218 (12 bytes)
 void* RParticle::GetTypeInfoStatic() { return (void*)0x8050D8EC; }  // global data pointer
+#if 0
 
 // 0x8036C224 (12 bytes)
 unsigned short RParticle::GetReadVersion() { return *(unsigned short*)0x8050D902; }  // global variable
+#endif
+#if 0
 
 // 0x8036C2D4 (8 bytes)
-int RParticle::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* RParticle::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x8036C308 (8 bytes)
-int RParticle::GetData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
+void RParticle::GetData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
-#endif

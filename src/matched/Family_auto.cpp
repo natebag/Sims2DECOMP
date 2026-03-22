@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Family
@@ -6,6 +5,5 @@
 // 1 functions, 20 bytes
 
 // 0x800B6AEC (20 bytes)
-void Family::Family() { *(void**)((char*)this + 0x0) = (void*)0x8046EDC8; }  // vtable init
+Family::Family() { *(void**)((char*)this + 0x0) = (void*)0x8046EDC8; }  // vtable init
 
-#endif

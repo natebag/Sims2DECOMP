@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for REffectsAttachment
@@ -9,18 +8,21 @@
 void* REffectsAttachment::GetTypeInfo() const { return (void*)0x8050CF50; }  // global data pointer
 
 // 0x80322AC4 (12 bytes)
-int REffectsAttachment::GetTypeName() const { return *(int*)0x8050CF5C; }  // global variable
+void REffectsAttachment::GetTypeName() const { return *(int*)0x8050CF5C; }  // global variable
 
 // 0x80322AD0 (12 bytes)
-int REffectsAttachment::GetTypeKey() const { return *(int*)0x8050CF60; }  // global variable
+void REffectsAttachment::GetTypeKey() const { return *(int*)0x8050CF60; }  // global variable
+#if 0
 
 // 0x80322ADC (12 bytes)
 unsigned short REffectsAttachment::GetTypeVersion() const { return *(unsigned short*)0x8050CF64; }  // global variable
+#endif
 
 // 0x80322AE8 (12 bytes)
 void* REffectsAttachment::GetTypeInfoStatic() { return (void*)0x8050CF50; }  // global data pointer
+#if 0
 
 // 0x80322AF4 (12 bytes)
 unsigned short REffectsAttachment::GetReadVersion() { return *(unsigned short*)0x8050CF66; }  // global variable
-
 #endif
+

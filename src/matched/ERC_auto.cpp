@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERC
@@ -6,7 +5,7 @@
 // 20 functions, 108 bytes
 
 // 0x802F682C (16 bytes)
-void ERC::Connect(EDLEntry *, EDLEntry *) { *(int*)((char*)this + 0x4) = p4; *(char*)((char*)this + 0x0) = 7; }
+void ERC::Connect(EDLEntry * p4,  EDLEntry *) { *(int*)((char*)this + 0x4) = p4; *(char*)((char*)this + 0x0) = 7; }
 
 // 0x802F6BE0 (4 bytes)
 void ERC::TriFan(EGEVert *, int) { }
@@ -27,7 +26,7 @@ void ERC::PointList(EGEVert *, int) { }
 void ERC::ParticleListInfo(EGEParticleListInfo *) { }
 
 // 0x802F706C (8 bytes)
-bool ERC::ParticleListBegin(unsigned int, unsigned int) { return false; }
+int ERC::ParticleListBegin(unsigned int, unsigned int) { return false; }
 
 // 0x802F7074 (4 bytes)
 void ERC::ParticleListEnd(unsigned int) { }
@@ -55,14 +54,15 @@ void ERC::SetAlphaPlane(float, EVec4, float, float) { }
 
 // 0x802F979C (4 bytes)
 void ERC::SetFog(float, float, EVec4) { }
+#if 0
 
 // 0x802F9AB8 (4 bytes)
 void ERC::LightsRadiosity(EVec3 &, EVec3 &, float) { }
+#endif
 
 // 0x802F9B0C (8 bytes)
-int ERC::AllocVertexData(unsigned int) { return 0; }
+void* ERC::AllocVertexData(unsigned int) { return 0; }
 
 // 0x802F9B14 (12 bytes)
-void ERC::SetCopyDataCallback(void (*)(void *, void *), void *) { *(int*)((char*)this + 0x58) = p5; *(int*)((char*)this + 0x54) = p4; }
+void ERC::SetCopyDataCallback(void (*p4)(void *, void *), void * p5) { *(int*)((char*)this + 0x58) = p5; *(int*)((char*)this + 0x54) = p4; }
 
-#endif

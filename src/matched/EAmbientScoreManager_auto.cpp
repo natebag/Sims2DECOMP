@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAmbientScoreManager
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80322CC4 (8 bytes)
-bool EAmbientScoreManager::CanCache(EResource *) { return true; }
+void EAmbientScoreManager::CanCache(EResource *) {  }
 
-#endif

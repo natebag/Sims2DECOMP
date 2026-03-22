@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EQuickdataManager
@@ -6,9 +5,8 @@
 // 2 functions, 16 bytes
 
 // 0x80325580 (8 bytes)
-bool EQuickdataManager::CanCache(EResource *) { return true; }
+void EQuickdataManager::CanCache(EResource *) { return true; }
 
 // 0x80325588 (8 bytes)
-int EQuickdataManager::GetCurrentLanguage() const { return *(int*)((char*)this + 0xD20); }  // offset 0xD20
+void EQuickdataManager::GetCurrentLanguage() const { return *(int*)((char*)this + 0xD20); }  // offset 0xD20
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EModelManager
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80324FF8 (8 bytes)
-bool EModelManager::CanCache(EResource *) { return true; }
+void EModelManager::CanCache(EResource *) {  }
 
-#endif

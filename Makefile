@@ -55,7 +55,8 @@ CXXFLAGS := $(ARCH_FLAGS) $(OPT_FLAGS) \
 	-fno-builtin \
 	-fshort-wchar \
 	-nostdinc++ \
-	-Wall -Wno-unused
+	-Wall -Wno-unused -Wno-return-type \
+	-fpermissive
 
 CFLAGS := $(ARCH_FLAGS) $(OPT_FLAGS) \
 	-fno-builtin \
@@ -94,9 +95,10 @@ SKELETON_SRCS := $(addprefix $(SKELETON_DIR)/,$(addsuffix .s,$(SKELETON_SECTIONS
 SKELETON_OBJS := $(SKELETON_SRCS:.s=.o)
 
 # Decompiled C/C++ source files (including auto-matched in src/matched/)
-C_SRCS   := $(shell find src/ -name '*.c' 2>/dev/null)
-CXX_SRCS := $(shell find src/ -name '*.cpp' 2>/dev/null)
-ASM_SRCS := $(shell find src/ -name '*.s' 2>/dev/null)
+# Use wildcard instead of find for Windows compatibility
+C_SRCS   := $(wildcard src/**/*.c) $(wildcard src/**/**/*.c)
+CXX_SRCS := $(wildcard src/**/*.cpp) $(wildcard src/**/**/*.cpp)
+ASM_SRCS := $(wildcard src/**/*.s) $(wildcard src/**/**/*.s)
 
 # Object files from decompiled sources
 C_OBJS   := $(C_SRCS:src/%.c=$(BUILD_DIR)/obj/%.o)

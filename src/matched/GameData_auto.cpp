@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for GameData
@@ -12,6 +11,5 @@ void GameData::SystemPostUpdate() { }
 void GameData::StageOutputActualTimes(char *) { }
 
 // 0x8003DDA0 (8 bytes)
-int GameData::GetBuildBuyPlayer() const { return *(int*)((char*)this + 0x128); }  // offset 0x128
+void GameData::GetBuildBuyPlayer() const { return *(int*)((char*)this + 0x128); }  // offset 0x128
 
-#endif

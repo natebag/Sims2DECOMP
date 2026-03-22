@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CTGFileImpl
@@ -6,13 +5,13 @@
 // 5 functions, 40 bytes
 
 // 0x8007CEE8 (8 bytes)
-bool CTGFileImpl::IsWritable() { return false; }
+int CTGFileImpl::IsWritable() { return false; }
 
 // 0x8007CF28 (8 bytes)
 int CTGFileImpl::Write(void *, int) { return 0; }
 
 // 0x8007CFBC (8 bytes)
-void CTGFileImpl::SetSize(int) { return 0; }
+int CTGFileImpl::SetSize(int) { return 0; }
 
 // 0x8007CFC4 (8 bytes)
 int CTGFileImpl::Flush() { return 0; }
@@ -20,4 +19,3 @@ int CTGFileImpl::Flush() { return 0; }
 // 0x8007CFCC (8 bytes)
 int CTGFileImpl::FlushCache() { return 1; }
 
-#endif

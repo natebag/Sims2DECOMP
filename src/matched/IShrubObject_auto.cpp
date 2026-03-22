@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IShrubObject
@@ -6,21 +5,20 @@
 // 6 functions, 72 bytes
 
 // 0x80054414 (12 bytes)
-void* IShrubObject::GetTypeInfo() const { return (void*)0x8050B868; }  // global data pointer
+const ETypeInfo* IShrubObject::GetTypeInfo() const { return (void*)0x8050B868; }  // global data pointer
 
 // 0x80054420 (12 bytes)
-int IShrubObject::GetTypeName() const { return *(int*)0x8050B874; }  // global variable
+const char* IShrubObject::GetTypeName() const { return *(int*)0x8050B874; }  // global variable
 
 // 0x8005442C (12 bytes)
-int IShrubObject::GetTypeKey() const { return *(int*)0x8050B878; }  // global variable
+u32 IShrubObject::GetTypeKey() const { return *(int*)0x8050B878; }  // global variable
 
 // 0x80054438 (12 bytes)
 unsigned short IShrubObject::GetTypeVersion() const { return *(unsigned short*)0x8050B87C; }  // global variable
 
 // 0x80054444 (12 bytes)
-void* IShrubObject::GetTypeInfoStatic() { return (void*)0x8050B868; }  // global data pointer
+const ETypeInfo* IShrubObject::GetTypeInfoStatic() { return (void*)0x8050B868; }  // global data pointer
 
 // 0x80054450 (12 bytes)
 unsigned short IShrubObject::GetReadVersion() { return *(unsigned short*)0x8050B87E; }  // global variable
 
-#endif

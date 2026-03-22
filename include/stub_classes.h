@@ -20387,5 +20387,4 @@ public:
     char _stub_data[256];
 };
 
-
 #endif // STUB_CLASSES_H

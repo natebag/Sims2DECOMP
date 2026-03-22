@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResourceMap
@@ -6,10 +5,10 @@
 // 9 functions, 68 bytes
 
 // 0x80327E30 (8 bytes)
-int EResourceMap::GetSize() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+void EResourceMap::GetSize() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x80327E38 (16 bytes)
-bool EResourceMap::IsEmpty() { return *(int*)((char*)this + 0x4) != 0; }
+void EResourceMap::IsEmpty() { return *(int*)((char*)this + 0x4) != 0; }
 
 // 0x80327EA0 (4 bytes)
 void EResourceMap::PrintLoadedResources(char *) { }
@@ -21,15 +20,14 @@ void EResourceMap::PrintResourceSizes(char *) { }
 void EResourceMap::RefreshResources() { }
 
 // 0x80327EAC (8 bytes)
-int EResourceMap::GetNumEntries() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+void EResourceMap::GetNumEntries() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x80327EB4 (8 bytes)
-int EResourceMap::GetMaxEntries() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void EResourceMap::GetMaxEntries() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x80327EBC (8 bytes)
-int EResourceMap::GetMaxLoaded() { return *(int*)((char*)this + 0xC); }  // offset 0xC
+void EResourceMap::GetMaxLoaded() { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x80327EC4 (8 bytes)
-int EResourceMap::GetMaxUsed() { return *(int*)((char*)this + 0x10); }  // offset 0x10
+void EResourceMap::GetMaxUsed() { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
-#endif

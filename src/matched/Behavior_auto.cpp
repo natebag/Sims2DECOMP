@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Behavior
@@ -6,7 +5,7 @@
 // 8 functions, 88 bytes
 
 // 0x800AB300 (20 bytes)
-void Behavior::Behavior() { *(void**)((char*)this + 0x0) = (void*)0x8046E878; }  // vtable init
+Behavior::Behavior() { *(void**)((char*)this + 0x0) = (void*)0x8046E878; }  // vtable init
 
 // 0x800AB540 (12 bytes)
 int Behavior::GetNamespaceID() { return *(int*)((char*)(*(void**)((char*)this + 0x4)) + 0x4); }  // double deref
@@ -15,18 +14,17 @@ int Behavior::GetNamespaceID() { return *(int*)((char*)(*(void**)((char*)this + 
 int Behavior::GetSemiGlobalNamespaceID() { return *(int*)((char*)(*(void**)((char*)this + 0x4)) + 0x8); }  // double deref
 
 // 0x800AB558 (8 bytes)
-int Behavior::GetGlobNamespaceID() { return /* SDA global @ r13-31848 */; }  // lwz r3,-31848(r13)
+int Behavior::GetGlobNamespaceID() { return 0; }  // lwz r3,-31848(r13)
 
 // 0x800AB8C0 (4 bytes)
 void Behavior::GetNodeText(short, BehaviorNode *, StringBuffer &) { }
 
 // 0x800AD118 (8 bytes)
-int Behavior::GetOwner() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+ObjSelector* Behavior::GetOwner() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x800AD120 (8 bytes)
-int Behavior::GetLanguage() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+Language* Behavior::GetLanguage() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800AD1A4 (16 bytes)
 void Behavior::SetDefaultParam(BehaviorNodeParam *) { *(int*)((char*)this + 0x4) = -1; *(int*)((char*)this + 0x0) = -1; }
 
-#endif

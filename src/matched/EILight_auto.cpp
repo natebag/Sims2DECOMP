@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EILight
@@ -6,19 +5,19 @@
 // 19 functions, 168 bytes
 
 // 0x80228008 (12 bytes)
-void* EILight::GetTypeInfo() const { return (void*)0x8050CB80; }  // global data pointer
+const ETypeInfo* EILight::GetTypeInfo() const { return (void*)0x8050CB80; }  // global data pointer
 
 // 0x80228014 (12 bytes)
-int EILight::GetTypeName() const { return *(int*)0x8050CB8C; }  // global variable
+const char* EILight::GetTypeName() const { return *(int*)0x8050CB8C; }  // global variable
 
 // 0x80228020 (12 bytes)
-int EILight::GetTypeKey() const { return *(int*)0x8050CB90; }  // global variable
+u32 EILight::GetTypeKey() const { return *(int*)0x8050CB90; }  // global variable
 
 // 0x8022802C (12 bytes)
 unsigned short EILight::GetTypeVersion() const { return *(unsigned short*)0x8050CB94; }  // global variable
 
 // 0x80228038 (12 bytes)
-void* EILight::GetTypeInfoStatic() { return (void*)0x8050CB80; }  // global data pointer
+const ETypeInfo* EILight::GetTypeInfoStatic() { return (void*)0x8050CB80; }  // global data pointer
 
 // 0x80228044 (12 bytes)
 unsigned short EILight::GetReadVersion() { return *(unsigned short*)0x8050CB96; }  // global variable
@@ -36,30 +35,31 @@ void EILight::Setup() { }
 int EILight::GetLightType() { return 0; }
 
 // 0x802280F8 (8 bytes)
-void EILight::UseScaleIntensity(bool) { *(int*)((char*)this + 0xA8) = val; }  // offset 0xA8
+void EILight::UseScaleIntensity(bool val) { *(int*)((char*)this + 0xA8) = val; }  // offset 0xA8
 
 // 0x80228160 (8 bytes)
-void EILight::SetIntensity(float) { *(float*)((char*)this + 0x8C) = val; }  // offset 0x8C
+void EILight::SetIntensity(float val) { *(float*)((char*)this + 0x8C) = val; }  // offset 0x8C
 
 // 0x80228168 (8 bytes)
 float EILight::GetIntensity() const { return *(float*)((char*)this + 0x8C); }  // offset 0x8C
+#if 0
 
 // 0x80228190 (8 bytes)
-void* EILight::GetColor() const { return (char*)this + 0x90; }  // offset 0x90
+EVec3* EILight::GetColor() const { return (char*)this + 0x90; }  // offset 0x90
+#endif
 
 // 0x80228198 (8 bytes)
-void EILight::Enable(bool) { *(int*)((char*)this + 0x88) = val; }  // offset 0x88
+void EILight::Enable(bool val) { *(int*)((char*)this + 0x88) = val; }  // offset 0x88
 
 // 0x802281A0 (8 bytes)
 int EILight::IsEnabled() { return *(int*)((char*)this + 0x88); }  // offset 0x88
 
 // 0x802281A8 (12 bytes)
-float EILight::GetFalloffEnd() { return *(float*)0x8040E684; }  // global float
+void EILight::GetFalloffEnd() { return *(float*)0x8040E684; }  // global float
 
 // 0x802281B4 (8 bytes)
-void EILight::SetHaveLightsChanged(bool) { /* SDA global @ r13-28500 = param */ }  // stw r3,-28500(r13)
+void EILight::SetHaveLightsChanged(bool) { }  // stw r3,-28500(r13)
 
 // 0x802281BC (8 bytes)
-int EILight::HaveLightsChanged() { return /* SDA global @ r13-28500 */; }  // lwz r3,-28500(r13)
+int EILight::HaveLightsChanged() { return 0; }  // lwz r3,-28500(r13)
 
-#endif

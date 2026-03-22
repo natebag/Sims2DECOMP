@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MUStateMachine
@@ -6,18 +5,17 @@
 // 5 functions, 44 bytes
 
 // 0x800939C0 (8 bytes)
-int MUStateMachine::GetCurRequest() { return /* SDA global @ r13-21368 */; }  // lwz r3,-21368(r13)
+int MUStateMachine::GetCurRequest() { return 0; }  // lwz r3,-21368(r13)
 
 // 0x800939C8 (12 bytes)
-void MUStateMachine::ClearResult() { /* SDA global @ r13-21372 = 0 */ }
+void MUStateMachine::ClearResult() { }
 
 // 0x800939D4 (8 bytes)
-void MUStateMachine::SetHouseNumber(int) { /* SDA global @ r13-21360 = param */ }  // stw r3,-21360(r13)
+void MUStateMachine::SetHouseNumber(int) { }  // stw r3,-21360(r13)
 
 // 0x80093BCC (8 bytes)
-int MUStateMachine::GetHouseNumber() { return /* SDA global @ r13-21360 */; }  // lwz r3,-21360(r13)
+int MUStateMachine::GetHouseNumber() { return 0; }  // lwz r3,-21360(r13)
 
 // 0x80093BD4 (8 bytes)
-int MUStateMachine::GetMUWrapper() { return *(int*)((char*)this + 0x98); }  // offset 0x98
+MUWrapper* MUStateMachine::GetMUWrapper() { return *(int*)((char*)this + 0x98); }  // offset 0x98
 
-#endif

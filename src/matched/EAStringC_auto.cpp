@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAStringC
@@ -6,21 +5,24 @@
 // 6 functions, 56 bytes
 
 // 0x802B4D3C (12 bytes)
-void* EAStringC::c_str() const { return (char*)(*(void**)((char*)this + 0x0)) + 0x8; }  // deref + offset
+const char* EAStringC::c_str() const { return (char*)(*(void**)((char*)this + 0x0)) + 0x8; }  // deref + offset
+#if 0
 
 // 0x802B4DD0 (12 bytes)
 void* EAStringC::operator char *() const { return (char*)(*(void**)((char*)this + 0x0)) + 0x8; }  // deref + offset
+#endif
 
 // 0x802BCC90 (8 bytes)
-int EAStringC::FindOneOf(char *) const { return 0; }
+void EAStringC::FindOneOf(char *) const { return 0; }
 
 // 0x802BCC98 (8 bytes)
-int EAStringC::ReverseFind(char) const { return 0; }
+void EAStringC::ReverseFind(char) const { return 0; }
 
 // 0x802BCE38 (8 bytes)
-int EAStringC::Insert(int, char *) { return 0; }
+void EAStringC::Insert(int, char *) { return 0; }
+#if 0
 
 // 0x802BCE40 (8 bytes)
-int EAStringC::Insert(int, char) { return 0; }
-
+void EAStringC::Insert(int, char) { return 0; }
 #endif
+

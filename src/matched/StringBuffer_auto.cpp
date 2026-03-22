@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for StringBuffer
@@ -6,15 +5,14 @@
 // 4 functions, 40 bytes
 
 // 0x800A65E4 (8 bytes)
-int StringBuffer::capacity() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
+unsigned int StringBuffer::capacity() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x800A6610 (16 bytes)
 void StringBuffer::erase() { *(char*)((char*)(*(void**)((char*)this + 0x0)) + 0x0) = 0; }
 
 // 0x800A6718 (8 bytes)
-int StringBuffer::c_str() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
+const char* StringBuffer::c_str() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x800A6720 (8 bytes)
-int StringBuffer::buffer() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+char* StringBuffer::buffer() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
-#endif

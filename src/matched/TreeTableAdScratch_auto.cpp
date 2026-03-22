@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeTableAdScratch
@@ -6,15 +5,14 @@
 // 4 functions, 44 bytes
 
 // 0x80149760 (20 bytes)
-void TreeTableAdScratch::AddRef() { *(int*)((char*)this + 0xC) += 1; }  // refcount increment
+int TreeTableAdScratch::AddRef() { *(int*)((char*)this + 0xC) += 1; }  // refcount increment
 
 // 0x80149B08 (8 bytes)
-void TreeTableAdScratch::SetPersonalityAd(int) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
+void TreeTableAdScratch::SetPersonalityAd(int val) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
 
 // 0x80149B18 (8 bytes)
-void TreeTableAdScratch::SetMin(int) { *(short*)((char*)this + 0x6) = val; }  // offset 0x6
+void TreeTableAdScratch::SetMin(int val) { *(short*)((char*)this + 0x6) = val; }  // offset 0x6
 
 // 0x80149B48 (8 bytes)
-void TreeTableAdScratch::SetRange(int) { *(short*)((char*)this + 0x8) = val; }  // offset 0x8
+void TreeTableAdScratch::SetRange(int val) { *(short*)((char*)this + 0x8) = val; }  // offset 0x8
 
-#endif

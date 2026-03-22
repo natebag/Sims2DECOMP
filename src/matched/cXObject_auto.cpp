@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXObject
@@ -6,42 +5,41 @@
 // 13 functions, 120 bytes
 
 // 0x800D95EC (8 bytes)
-int cXObject::GetPersonWidth() { return /* SDA global @ r13-31916 */; }  // lwz r3,-31916(r13)
+int cXObject::GetPersonWidth() { return 0; }  // lwz r3,-31916(r13)
 
 // 0x800D95F4 (8 bytes)
-int cXObject::GetFreeWill() { return /* SDA global @ r13-31912 */; }  // lwz r3,-31912(r13)
+bool cXObject::GetFreeWill() { return 0; }  // lwz r3,-31912(r13)
 
 // 0x800D95FC (8 bytes)
-int cXObject::GetAutoCenter() { return /* SDA global @ r13-31904 */; }  // lwz r3,-31904(r13)
+bool cXObject::GetAutoCenter() { return 0; }  // lwz r3,-31904(r13)
 
 // 0x800D9604 (8 bytes)
-void cXObject::SetAutoCenter(bool) { /* SDA global @ r13-31904 = param */ }  // stw r3,-31904(r13)
+void cXObject::SetAutoCenter(bool) { }  // stw r3,-31904(r13)
 
 // 0x800D960C (8 bytes)
-int cXObject::GetAutoReset() { return /* SDA global @ r13-31900 */; }  // lwz r3,-31900(r13)
+bool cXObject::GetAutoReset() { return 0; }  // lwz r3,-31900(r13)
 
 // 0x800D9614 (8 bytes)
-void cXObject::SetAutoReset(bool) { /* SDA global @ r13-31900 = param */ }  // stw r3,-31900(r13)
+void cXObject::SetAutoReset(bool) { }  // stw r3,-31900(r13)
 
 // 0x800D961C (8 bytes)
-void cXObject::GetGlobalInitTreeID() { return 271; }
+short int cXObject::GetGlobalInitTreeID() { return 271; }
 
 // 0x800D9624 (8 bytes)
-int cXObject::GetGlobalMainTreeID() { return 391; }
+short int cXObject::GetGlobalMainTreeID() { return 391; }
 
 // 0x800DB9A0 (8 bytes)
-void cXObject::SetGlobalFreeWillOverride(bool) { /* SDA global @ r13-31908 = param */ }  // stw r3,-31908(r13)
+void cXObject::SetGlobalFreeWillOverride(bool) { }  // stw r3,-31908(r13)
 
 // 0x800EA98C (12 bytes)
-void cXObject::setObjectImpl(cXObjectImpl *) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x0) = val; }  // double deref setter
+void cXObject::setObjectImpl(cXObjectImpl * val) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x0) = val; }  // double deref setter
 
 // 0x800EA998 (12 bytes)
-void cXObject::setPersonImpl(cXPersonImpl *) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x4) = val; }  // double deref setter
+void cXObject::setPersonImpl(cXPersonImpl * val) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x4) = val; }  // double deref setter
 
 // 0x800EA9A4 (12 bytes)
-void cXObject::setMTObjectImpl(cXMTObjectImpl *) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x8) = val; }  // double deref setter
+void cXObject::setMTObjectImpl(cXMTObjectImpl * val) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x8) = val; }  // double deref setter
 
 // 0x800EA9B0 (12 bytes)
-void cXObject::setPortalImpl(cXPortalImpl *) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0xC) = val; }  // double deref setter
+void cXObject::setPortalImpl(cXPortalImpl * val) { *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0xC) = val; }  // double deref setter
 
-#endif

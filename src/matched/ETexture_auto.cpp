@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ETexture
@@ -10,36 +9,44 @@ void ETexture::Validate() { }
 
 // 0x80365078 (4 bytes)
 void ETexture::Select(int) { }
+#if 0
 
 // 0x803650AC (8 bytes)
-int ETexture::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* ETexture::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x803650E0 (8 bytes)
-unsigned char ETexture::GetImageFormat() { return *(unsigned char*)((char*)this + 0x18); }  // offset 0x18
+void ETexture::GetImageFormat() { return *(unsigned char*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x803650E8 (8 bytes)
-unsigned char ETexture::GetBitsPerImagePixel() { return *(unsigned char*)((char*)this + 0x1A); }  // offset 0x1A
+void ETexture::GetBitsPerImagePixel() { return *(unsigned char*)((char*)this + 0x1A); }  // offset 0x1A
+#if 0
 
 // 0x803650F0 (8 bytes)
 unsigned short ETexture::GetXSize() { return *(unsigned short*)((char*)this + 0x10); }  // offset 0x10
+#endif
+#if 0
 
 // 0x803650F8 (8 bytes)
 unsigned short ETexture::GetYSize() { return *(unsigned short*)((char*)this + 0x12); }  // offset 0x12
+#endif
 
 // 0x80365100 (8 bytes)
-unsigned char ETexture::GetPaletteFormat() { return *(unsigned char*)((char*)this + 0x19); }  // offset 0x19
+void ETexture::GetPaletteFormat() { return *(unsigned char*)((char*)this + 0x19); }  // offset 0x19
 
 // 0x80365108 (8 bytes)
-unsigned char ETexture::GetBitsPerPaletteEntry() { return *(unsigned char*)((char*)this + 0x1B); }  // offset 0x1B
+void ETexture::GetBitsPerPaletteEntry() { return *(unsigned char*)((char*)this + 0x1B); }  // offset 0x1B
+#if 0
 
 // 0x80365110 (8 bytes)
 unsigned short ETexture::GetPaletteSize() { return *(unsigned short*)((char*)this + 0x14); }  // offset 0x14
+#endif
 
 // 0x80365118 (8 bytes)
-int ETexture::GetFlags() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void ETexture::GetFlags() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x80365120 (8 bytes)
-int ETexture::Lock() { return 1; }
+void ETexture::Lock() { return 1; }
 
 // 0x80365128 (4 bytes)
 void ETexture::Unlock() { }
@@ -60,9 +67,8 @@ void ETexture::UpdatePalette() { return 0; }
 void ETexture::ClearTileFlags() { *(unsigned int*)((char*)this + 0x8) &= 0xFFFFFFFC; }  // clear low 2 bits
 
 // 0x80365188 (16 bytes)
-void ETexture::ClearSwizzleFlag() { /* modify bitfield [25:23] at offset 0x8 */ }
+void ETexture::ClearSwizzleFlag() { }
 
 // 0x80365198 (16 bytes)
 void ETexture::SetSwizzleFlag() { *(unsigned int*)((char*)this + 0x8) |= 0x80; }  // set flags
 
-#endif

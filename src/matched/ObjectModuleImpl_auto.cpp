@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectModuleImpl
@@ -27,21 +26,22 @@ void ObjectModuleImpl::PersonalityAccessed(cXPerson *, int, bool) { }
 void ObjectModuleImpl::RelationshipAccessed(cXObject *, cXObject *, int, bool) { }
 
 // 0x800F9928 (8 bytes)
-int ObjectModuleImpl::GetFolder() { return /* SDA global @ r13-21508 */; }  // lwz r3,-21508(r13)
+ObjectFolder* ObjectModuleImpl::GetFolder() { return 0; }  // lwz r3,-21508(r13)
 
 // 0x800F9980 (8 bytes)
-int ObjectModuleImpl::GetSim() { return /* SDA global @ r13-21496 */; }  // lwz r3,-21496(r13)
+cXObject* ObjectModuleImpl::GetSim() { return 0; }  // lwz r3,-21496(r13)
 
 // 0x800F99A8 (20 bytes)
 int ObjectModuleImpl::GetNumPeople() { return ((char*)(*(void**)((char*)this + 0x205C)) - (char*)(*(void**)((char*)this + 0x2058))) / 4; }  // count = (end-start)/4
 
 // 0x800F99BC (16 bytes)
-int ObjectModuleImpl::GetPortal(int) { return ((int*)(*(void**)((char*)this + 0x2068)))[index]; }  // ptr->array[index], elem_size=4
+cXObject* ObjectModuleImpl::GetPortal(int index) { return ((int*)(*(void**)((char*)this + 0x2068)))[index]; }  // ptr->array[index], elem_size=4
 
 // 0x800F99CC (20 bytes)
 int ObjectModuleImpl::GetNumPortals() { return ((char*)(*(void**)((char*)this + 0x206C)) - (char*)(*(void**)((char*)this + 0x2068))) / 4; }  // count = (end-start)/4
+#if 0
 
 // 0x800F99E0 (16 bytes)
-void* ObjectModuleImpl::GetGlobalRoutingSlot(int) { return (char*)(*(void**)((char*)this + 0x2078)) + index * 60; }  // struct array, stride=60
-
+cXObject* ObjectModuleImpl::GetGlobalRoutingSlot(int index) { return (char*)(*(void**)((char*)this + 0x2078)) + index * 60; }  // struct array, stride=60
 #endif
+

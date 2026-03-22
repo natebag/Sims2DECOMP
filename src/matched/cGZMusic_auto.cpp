@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cGZMusic
@@ -12,22 +11,22 @@ void cGZMusic::Init() { return 1; }
 void cGZMusic::AddRef() { *(int*)((char*)this + 0x4) += 1; }  // refcount increment
 
 // 0x800BADA4 (8 bytes)
-int cGZMusic::IsPlaying() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void cGZMusic::IsPlaying() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800BAEAC (8 bytes)
-int cGZMusic::Load() { return 1; }
+void cGZMusic::Load() { return 1; }
 
 // 0x800BAEB4 (8 bytes)
-int cGZMusic::Unload() { return 1; }
+void cGZMusic::Unload() { return 1; }
 
 // 0x800BAEBC (8 bytes)
-int cGZMusic::GetVolume() { return *(int*)((char*)this + 0x14); }  // offset 0x14
+void cGZMusic::GetVolume() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x800BB0D0 (8 bytes)
-int cGZMusic::GetPan() { return 512; }
+void cGZMusic::GetPan() { return 512; }
 
 // 0x800BB184 (8 bytes)
-int cGZMusic::GetFrequency() { return 22050; }
+void cGZMusic::GetFrequency() { return 22050; }
 
 // 0x800BB18C (8 bytes)
 void cGZMusic::SetFrequency(int) { return 1; }
@@ -35,4 +34,3 @@ void cGZMusic::SetFrequency(int) { return 1; }
 // 0x800BB194 (8 bytes)
 void cGZMusic::SetPosition(unsigned int) { return 1; }
 
-#endif

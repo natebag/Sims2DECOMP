@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EApp
@@ -15,13 +14,13 @@ void EApp::CleanupAfterMovie() { }
 void EApp::StopMovie() { *(int*)((char*)this + 0x454) = 0; }
 
 // 0x802E2910 (12 bytes)
-int EApp::GetRootDirectory() { return *(int*)((char*)(*(void**)((char*)this + 0x470)) + 0x0); }  // double deref
+const char* EApp::GetRootDirectory() { return *(int*)((char*)(*(void**)((char*)this + 0x470)) + 0x0); }  // double deref
 
 // 0x802E291C (12 bytes)
-void* EApp::GetBuildVersion() { return (void*)0x8042E7A8; }  // global data pointer
+const char* EApp::GetBuildVersion() { return (void*)0x8042E7A8; }  // global data pointer
 
 // 0x802E2928 (12 bytes)
-void* EApp::GetAppName() { return (void*)0x8042E7DC; }  // global data pointer
+const char* EApp::GetAppName() { return (void*)0x8042E7DC; }  // global data pointer
 
 // 0x802E2934 (8 bytes)
 int EApp::GetPrefetchBlockSize() { return 0; }
@@ -33,19 +32,19 @@ int EApp::GetScratchBuffSize() { return 0; }
 int EApp::GetEventTableSize() { return 8; }
 
 // 0x802E294C (8 bytes)
-void* EApp::GetFullArgString() const { return (char*)this + 0x350; }  // offset 0x350
+const char* EApp::GetFullArgString() const { return (char*)this + 0x350; }  // offset 0x350
 
 // 0x802E2954 (8 bytes)
 int EApp::GetGameState() const { return *(int*)((char*)this + 0x468); }  // offset 0x468
 
 // 0x802E295C (8 bytes)
-void EApp::SetGameState(OVERALL_GAME_STATE) { *(int*)((char*)this + 0x468) = val; }  // offset 0x468
+void EApp::SetGameState(OVERALL_GAME_STATE val) { *(int*)((char*)this + 0x468) = val; }  // offset 0x468
 
 // 0x802E2964 (8 bytes)
 int EApp::GetMenuOwner() const { return *(int*)((char*)this + 0x46C); }  // offset 0x46C
 
 // 0x802E296C (8 bytes)
-void EApp::SetMenuOwner(OVERALL_GAME_STATE) { *(int*)((char*)this + 0x46C) = val; }  // offset 0x46C
+void EApp::SetMenuOwner(OVERALL_GAME_STATE val) { *(int*)((char*)this + 0x46C) = val; }  // offset 0x46C
 
 // 0x802E2974 (4 bytes)
 void EApp::ShowInitialDisplay() { }
@@ -60,9 +59,8 @@ void EApp::Update() { }
 void EApp::UpdateAfterHotSync() { }
 
 // 0x802E2984 (12 bytes)
-unsigned int EApp::GetAppStackSize() { return 0x00018000; }
+int EApp::GetAppStackSize() { return 0x00018000; }
 
 // 0x802E2990 (4 bytes)
 void EApp::Shutdown() { }
 
-#endif

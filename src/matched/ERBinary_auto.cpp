@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERBinary
@@ -9,24 +8,27 @@
 void* ERBinary::GetTypeInfo() const { return (void*)0x8050D7D4; }  // global data pointer
 
 // 0x8036855C (12 bytes)
-int ERBinary::GetTypeName() const { return *(int*)0x8050D7E0; }  // global variable
+void ERBinary::GetTypeName() const { return *(int*)0x8050D7E0; }  // global variable
 
 // 0x80368568 (12 bytes)
-int ERBinary::GetTypeKey() const { return *(int*)0x8050D7E4; }  // global variable
+void ERBinary::GetTypeKey() const { return *(int*)0x8050D7E4; }  // global variable
+#if 0
 
 // 0x80368574 (12 bytes)
 unsigned short ERBinary::GetTypeVersion() const { return *(unsigned short*)0x8050D7E8; }  // global variable
+#endif
 
 // 0x80368580 (12 bytes)
 void* ERBinary::GetTypeInfoStatic() { return (void*)0x8050D7D4; }  // global data pointer
+#if 0
 
 // 0x8036858C (12 bytes)
 unsigned short ERBinary::GetReadVersion() { return *(unsigned short*)0x8050D7EA; }  // global variable
+#endif
 
 // 0x8036860C (8 bytes)
-int ERBinary::GetData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
+void ERBinary::GetData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x80368614 (8 bytes)
-int ERBinary::GetDataSize() { return *(int*)((char*)this + 0x18); }  // offset 0x18
+void ERBinary::GetDataSize() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
-#endif

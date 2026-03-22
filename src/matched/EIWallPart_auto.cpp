@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIWallPart
@@ -9,27 +8,32 @@
 void* EIWallPart::GetTypeInfo() const { return (void*)0x8050B3B0; }  // global data pointer
 
 // 0x8003056C (12 bytes)
-int EIWallPart::GetTypeName() const { return *(int*)0x8050B3BC; }  // global variable
+void EIWallPart::GetTypeName() const { return *(int*)0x8050B3BC; }  // global variable
 
 // 0x80030578 (12 bytes)
-int EIWallPart::GetTypeKey() const { return *(int*)0x8050B3C0; }  // global variable
+void EIWallPart::GetTypeKey() const { return *(int*)0x8050B3C0; }  // global variable
+#if 0
 
 // 0x80030584 (12 bytes)
 unsigned short EIWallPart::GetTypeVersion() const { return *(unsigned short*)0x8050B3C4; }  // global variable
+#endif
 
 // 0x80030590 (12 bytes)
 void* EIWallPart::GetTypeInfoStatic() { return (void*)0x8050B3B0; }  // global data pointer
+#if 0
 
 // 0x8003059C (12 bytes)
 unsigned short EIWallPart::GetReadVersion() { return *(unsigned short*)0x8050B3C6; }  // global variable
+#endif
+#if 0
 
 // 0x8003061C (8 bytes)
-int EIWallPart::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* EIWallPart::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x80030654 (8 bytes)
-void EIWallPart::SetForceFadeOff(bool) { *(int*)((char*)this + 0x3B0) = val; }  // offset 0x3B0
+void EIWallPart::SetForceFadeOff(bool val) { *(int*)((char*)this + 0x3B0) = val; }  // offset 0x3B0
 
 // 0x8003065C (4 bytes)
 void EIWallPart::RealizeShaderTuning() { }
 
-#endif

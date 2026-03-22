@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeTableAdQuickData
@@ -6,19 +5,27 @@
 // 10 functions, 84 bytes
 
 // 0x8015E32C (20 bytes)
-void TreeTableAdQuickData::AddRef() { *(int*)((char*)this + 0x8) += 1; }  // refcount increment
+int TreeTableAdQuickData::AddRef() { *(int*)((char*)this + 0x8) += 1; }  // refcount increment
+#if 0
 
 // 0x8015E590 (12 bytes)
 short TreeTableAdQuickData::GetPersonalityAd() const { return *(short*)((char*)(*(void**)((char*)this + 0x4)) + 0x0); }  // double deref signed short
+#endif
+#if 0
 
 // 0x8015E59C (12 bytes)
 short TreeTableAdQuickData::GetMin() const { return *(short*)((char*)(*(void**)((char*)this + 0x4)) + 0x2); }  // double deref signed short
+#endif
+#if 0
 
 // 0x8015E5BC (12 bytes)
 short TreeTableAdQuickData::GetRange() const { return *(short*)((char*)(*(void**)((char*)this + 0x4)) + 0x4); }  // double deref signed short
+#endif
+#if 0
 
 // 0x8015E5C8 (4 bytes)
 void TreeTableAdQuickData::operator=(ITreeTableAd &) { }
+#endif
 
 // 0x8015E5CC (4 bytes)
 void TreeTableAdQuickData::SetPersonalityAd(int) { }
@@ -33,6 +40,5 @@ void TreeTableAdQuickData::SetMax(int) { }
 void TreeTableAdQuickData::SetRange(int) { }
 
 // 0x8015E5DC (8 bytes)
-int TreeTableAdQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
+TreeTableAd* TreeTableAdQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
-#endif

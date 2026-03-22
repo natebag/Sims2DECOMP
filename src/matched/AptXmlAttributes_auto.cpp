@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptXmlAttributes
@@ -9,9 +8,8 @@
 void AptXmlAttributes::PreDestroy() { *(int*)((char*)this + 0x24) = 0; }
 
 // 0x802C4FDC (8 bytes)
-int AptXmlAttributes::operator new [](unsigned int) { return 0; }
+void* AptXmlAttributes::operator new [](unsigned int) { return (void*)0; }
 
 // 0x802C4FE4 (4 bytes)
 void AptXmlAttributes::operator delete [](void *) { }
 
-#endif

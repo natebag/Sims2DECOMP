@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Interaction
@@ -6,16 +5,16 @@
 // 31 functions, 304 bytes
 
 // 0x800C1C74 (8 bytes)
-int Interaction::GetStackObject() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
+cXObject* Interaction::GetStackObject() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x800C1C7C (8 bytes)
-int Interaction::GetPerson() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
+cXPerson* Interaction::GetPerson() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800C1C84 (8 bytes)
-int Interaction::GetIconObject() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
+cXObject* Interaction::GetIconObject() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x800C1C8C (8 bytes)
-void Interaction::SetIconObject(cXObject *) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
+void Interaction::SetIconObject(cXObject * val) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
 
 // 0x800C1D20 (12 bytes)
 int Interaction::GetTextColor() const { /* bitfield extract from offset 0x3C */ return 0; }
@@ -25,12 +24,14 @@ int Interaction::GetType() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x800C1D4C (8 bytes)
 float Interaction::GetAttenuation() const { return *(float*)((char*)this + 0x30); }  // offset 0x30
+#if 0
 
 // 0x800C1D5C (8 bytes)
-void* Interaction::GetStackVars() { return (char*)this + 0x18; }  // offset 0x18
+short int* Interaction::GetStackVars() { return (char*)this + 0x18; }  // offset 0x18
+#endif
 
 // 0x800C1D64 (8 bytes)
-int Interaction::GetLocalVars() { return *(int*)((char*)this + 0x24); }  // offset 0x24
+short int* Interaction::GetLocalVars() { return *(int*)((char*)this + 0x24); }  // offset 0x24
 
 // 0x800C1D6C (8 bytes)
 int Interaction::GetLocalVarsCount() { return *(int*)((char*)this + 0x20); }  // offset 0x20
@@ -42,13 +43,13 @@ int Interaction::GetTreeTabEntryIndex() const { return *(int*)((char*)this + 0x1
 int Interaction::GetPriority() const { return *(int*)((char*)this + 0x28); }  // offset 0x28
 
 // 0x800C1D84 (8 bytes)
-void Interaction::SetPriority(int) { *(int*)((char*)this + 0x28) = val; }  // offset 0x28
+void Interaction::SetPriority(int val) { *(int*)((char*)this + 0x28) = val; }  // offset 0x28
 
 // 0x800C1DA4 (8 bytes)
 int Interaction::GetID() const { return *(int*)((char*)this + 0x38); }  // offset 0x38
 
 // 0x800C1DAC (8 bytes)
-void Interaction::SetID(int) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
+void Interaction::SetID(int val) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
 
 // 0x800C1DB4 (12 bytes)
 bool Interaction::GetAutoFirstSelect() const { return *(int*)((char*)this + 0x3C) & 1; }  // low bit
@@ -93,9 +94,8 @@ bool Interaction::GetRunAsSub() const { return (*(int*)((char*)this + 0x3C) >> 1
 int Interaction::GetFlags() const { return *(int*)((char*)this + 0x3C); }  // offset 0x3C
 
 // 0x800C1FF8 (8 bytes)
-void Interaction::SetFlags(int) { *(int*)((char*)this + 0x3C) = val; }  // offset 0x3C
+void Interaction::SetFlags(int val) { *(int*)((char*)this + 0x3C) = val; }  // offset 0x3C
 
 // 0x800C2000 (8 bytes)
-void Interaction::SetShader(EActionIcon *) const { return 0; }
+int Interaction::SetShader(EActionIcon *) const { return 0; }
 
-#endif

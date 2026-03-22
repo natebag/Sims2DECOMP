@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIGameInstance
@@ -6,21 +5,20 @@
 // 6 functions, 72 bytes
 
 // 0x802277FC (12 bytes)
-void* EIGameInstance::GetTypeInfo() const { return (void*)0x8050CBD0; }  // global data pointer
+const ETypeInfo* EIGameInstance::GetTypeInfo() const { return (void*)0x8050CBD0; }  // global data pointer
 
 // 0x80227808 (12 bytes)
-int EIGameInstance::GetTypeName() const { return *(int*)0x8050CBDC; }  // global variable
+const char* EIGameInstance::GetTypeName() const { return *(int*)0x8050CBDC; }  // global variable
 
 // 0x80227814 (12 bytes)
-int EIGameInstance::GetTypeKey() const { return *(int*)0x8050CBE0; }  // global variable
+u32 EIGameInstance::GetTypeKey() const { return *(int*)0x8050CBE0; }  // global variable
 
 // 0x80227820 (12 bytes)
 unsigned short EIGameInstance::GetTypeVersion() const { return *(unsigned short*)0x8050CBE4; }  // global variable
 
 // 0x8022782C (12 bytes)
-void* EIGameInstance::GetTypeInfoStatic() { return (void*)0x8050CBD0; }  // global data pointer
+const ETypeInfo* EIGameInstance::GetTypeInfoStatic() { return (void*)0x8050CBD0; }  // global data pointer
 
 // 0x80227838 (12 bytes)
 unsigned short EIGameInstance::GetReadVersion() { return *(unsigned short*)0x8050CBE6; }  // global variable
 
-#endif

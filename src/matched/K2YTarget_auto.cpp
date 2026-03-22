@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for K2YTarget
@@ -6,12 +5,11 @@
 // 3 functions, 32 bytes
 
 // 0x801E7098 (8 bytes)
-int K2YTarget::GetMode() { return /* SDA global @ r13-30256 */; }  // lwz r3,-30256(r13)
+int K2YTarget::GetMode() { return 0; }  // lwz r3,-30256(r13)
 
 // 0x801E70A0 (12 bytes)
-void* K2YTarget::GetSavedFirstName() { return (void*)0x8050C0E4; }  // global data pointer
+short unsigned int* K2YTarget::GetSavedFirstName() { return (void*)0x8050C0E4; }  // global data pointer
 
 // 0x801E70AC (12 bytes)
-void* K2YTarget::GetSavedLastName() { return (void*)0x8050C124; }  // global data pointer
+short unsigned int* K2YTarget::GetSavedLastName() { return (void*)0x8050C124; }  // global data pointer
 
-#endif

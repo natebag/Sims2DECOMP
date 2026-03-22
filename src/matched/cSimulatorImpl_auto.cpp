@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cSimulatorImpl
@@ -6,46 +5,54 @@
 // 19 functions, 176 bytes
 
 // 0x8014131C (8 bytes)
-int cSimulatorImpl::IsStalled() { return *(int*)((char*)this + 0x9C); }  // offset 0x9C
+bool cSimulatorImpl::IsStalled() { return *(int*)((char*)this + 0x9C); }  // offset 0x9C
+#if 0
 
 // 0x801413DC (16 bytes)
 int cSimulatorImpl::GetFunds(cSimulator::tFundsPlayerNumber) { /* add fields: 120(r3) + 116(r3) */ return 0; }
+#endif
+#if 0
 
 // 0x801415E4 (16 bytes)
-void cSimulatorImpl::SetGlobal(short, short) { ((short*)((char*)this + 0x14))[index] = val; }  // short array[index] store
+void cSimulatorImpl::SetGlobal(short val,  short) { ((short*)((char*)this + 0x14))[index] = val; }  // short array[index] store
+#endif
 
 // 0x80141A2C (12 bytes)
 int cSimulatorImpl::GetLightingIntensity() { return *(unsigned short*)((char*)this + 0x68) & 0x1FF; }
 
 // 0x80141A38 (12 bytes)
-bool cSimulatorImpl::GetStrobeOn() { return (*(unsigned short*)((char*)this + 0x68) >> 9) & 1; }  // bit 9 from short
+int cSimulatorImpl::GetStrobeOn() { return (*(unsigned short*)((char*)this + 0x68) >> 9) & 1; }  // bit 9 from short
 
 // 0x80141A44 (8 bytes)
-void cSimulatorImpl::SetGbaStatus(short) { *(short*)((char*)this + 0x6A) = val; }  // offset 0x6A
+void cSimulatorImpl::SetGbaStatus(short val) { *(short*)((char*)this + 0x6A) = val; }  // offset 0x6A
 
 // 0x80141A4C (8 bytes)
-void cSimulatorImpl::SetGbaMoney(short) { *(short*)((char*)this + 0x6C) = val; }  // offset 0x6C
+void cSimulatorImpl::SetGbaMoney(short val) { *(short*)((char*)this + 0x6C) = val; }  // offset 0x6C
 
 // 0x80141A54 (8 bytes)
-void cSimulatorImpl::SetGbaNumMinigames(short) { *(short*)((char*)this + 0x6E) = val; }  // offset 0x6E
+void cSimulatorImpl::SetGbaNumMinigames(short val) { *(short*)((char*)this + 0x6E) = val; }  // offset 0x6E
 
 // 0x80141A84 (8 bytes)
 float cSimulatorImpl::GetSpeedMultiplier() { return *(float*)((char*)this + 0xA8); }  // offset 0xA8
+#if 0
 
 // 0x80141AC0 (8 bytes)
-void cSimulatorImpl::SetMode(cSimulator::Mode) { *(short*)((char*)this + 0x3A) = val; }  // offset 0x3A
+void cSimulatorImpl::SetMode(cSimulator::Mode val) { *(short*)((char*)this + 0x3A) = val; }  // offset 0x3A
+#endif
 
 // 0x80141AC8 (8 bytes)
 int cSimulatorImpl::GetTicks() { return *(int*)((char*)this + 0x7C); }  // offset 0x7C
+#if 0
 
 // 0x80141B08 (8 bytes)
-void cSimulatorImpl::SetTimeOfDay(TimeOfDay) { *(short*)((char*)this + 0x1C) = val; }  // offset 0x1C
+void cSimulatorImpl::SetTimeOfDay(TimeOfDay val) { *(short*)((char*)this + 0x1C) = val; }  // offset 0x1C
+#endif
 
 // 0x80141B10 (8 bytes)
 int cSimulatorImpl::GetLotValue() { return *(int*)((char*)this + 0x84); }  // offset 0x84
 
 // 0x80141B18 (8 bytes)
-void cSimulatorImpl::SetLotValue(int) { *(int*)((char*)this + 0x84) = val; }  // offset 0x84
+void cSimulatorImpl::SetLotValue(int val) { *(int*)((char*)this + 0x84) = val; }  // offset 0x84
 
 // 0x80141B20 (8 bytes)
 int cSimulatorImpl::GetArchValue() { return *(int*)((char*)this + 0x8C); }  // offset 0x8C
@@ -54,12 +61,11 @@ int cSimulatorImpl::GetArchValue() { return *(int*)((char*)this + 0x8C); }  // o
 int cSimulatorImpl::GetObjectsValue() { return *(int*)((char*)this + 0x88); }  // offset 0x88
 
 // 0x80141B90 (8 bytes)
-int cSimulatorImpl::GetProbe() { return *(int*)((char*)this + 0x94); }  // offset 0x94
+SimLoopProbe* cSimulatorImpl::GetProbe() { return *(int*)((char*)this + 0x94); }  // offset 0x94
 
 // 0x80141B98 (8 bytes)
-void cSimulatorImpl::SetProbe(SimLoopProbe *) { *(int*)((char*)this + 0x94) = val; }  // offset 0x94
+void cSimulatorImpl::SetProbe(SimLoopProbe * val) { *(int*)((char*)this + 0x94) = val; }  // offset 0x94
 
 // 0x80141BA0 (8 bytes)
-int cSimulatorImpl::GetPassiveInfluenceSystem() { return *(int*)((char*)this + 0x174); }  // offset 0x174
+SimLoopProbe* cSimulatorImpl::GetPassiveInfluenceSystem() { return *(int*)((char*)this + 0x174); }  // offset 0x174
 
-#endif

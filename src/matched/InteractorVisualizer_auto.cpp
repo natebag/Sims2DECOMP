@@ -19,5 +19,4 @@ void InteractorModule::InteractorVisualizer::DestroyResources(InteractorModule::
 
 // 0x802172F8 (4 bytes)
 void InteractorModule::InteractorVisualizer::Draw(InteractorModule::SocialModeInteractor &) { }
-
 #endif

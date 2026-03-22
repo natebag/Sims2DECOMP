@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TreeTableEntryQuickData
@@ -6,13 +5,15 @@
 // 47 functions, 408 bytes
 
 // 0x8015E40C (20 bytes)
-void TreeTableEntryQuickData::AddRef() { *(int*)((char*)this + 0x18) += 1; }  // refcount increment
+int TreeTableEntryQuickData::AddRef() { *(int*)((char*)this + 0x18) += 1; }  // refcount increment
 
 // 0x8015E5E4 (12 bytes)
 short TreeTableEntryQuickData::GetIndex() const { return *(short*)((char*)(*(void**)((char*)this + 0x4)) + 0x14); }  // double deref signed short
+#if 0
 
 // 0x8015E5F0 (12 bytes)
 short TreeTableEntryQuickData::GetOrderIndex() const { return *(short*)((char*)(*(void**)((char*)this + 0x4)) + 0x1A); }  // double deref signed short
+#endif
 
 // 0x8015E618 (16 bytes)
 bool TreeTableEntryQuickData::GetCanJoin() const { return (*(int*)((char*)(*(void**)((char*)this + 0x4)) + 0x10) >> 1) & 1; }  // double deref bit 1
@@ -52,9 +53,11 @@ short TreeTableEntryQuickData::GetActionTreeID() const { return *(short*)((char*
 
 // 0x8015E774 (12 bytes)
 short TreeTableEntryQuickData::GetCheckTreeID() const { return *(short*)((char*)(*(void**)((char*)this + 0x4)) + 0x0); }  // double deref signed short
+#if 0
 
 // 0x8015E780 (12 bytes)
 unsigned short TreeTableEntryQuickData::GetAttenuation() const { return *(unsigned short*)((char*)(*(void**)((char*)this + 0x4)) + 0xE); }  // double deref unsigned short
+#endif
 
 // 0x8015E7B0 (12 bytes)
 float TreeTableEntryQuickData::GetCustomAttenuationValue() const { return *(float*)((char*)(*(void**)((char*)this + 0x4)) + 0x8); }  // double deref float
@@ -63,7 +66,7 @@ float TreeTableEntryQuickData::GetCustomAttenuationValue() const { return *(floa
 short TreeTableEntryQuickData::GetAutonomyThreshold() const { return *(short*)((char*)(*(void**)((char*)this + 0x4)) + 0x16); }  // double deref signed short
 
 // 0x8015E7C8 (12 bytes)
-int TreeTableEntryQuickData::GetFlags() const { return *(int*)((char*)(*(void**)((char*)this + 0x4)) + 0x10); }  // double deref
+short int TreeTableEntryQuickData::GetFlags() const { return *(int*)((char*)(*(void**)((char*)this + 0x4)) + 0x10); }  // double deref
 
 // 0x8015E7D4 (16 bytes)
 bool TreeTableEntryQuickData::GetUseCustomActivation() const { return (*(int*)((char*)(*(void**)((char*)this + 0x4)) + 0x10) >> 12) & 1; }  // double deref bit 12
@@ -121,9 +124,11 @@ void TreeTableEntryQuickData::SetActionTreeID(short) { }
 
 // 0x8015E884 (4 bytes)
 void TreeTableEntryQuickData::SetCheckTreeID(short) { }
+#if 0
 
 // 0x8015E888 (4 bytes)
 void TreeTableEntryQuickData::SetAttenuation(ITreeTableEntry::Attenuation) { }
+#endif
 
 // 0x8015E88C (4 bytes)
 void TreeTableEntryQuickData::SetCustomAttenuation(float) { }
@@ -144,6 +149,5 @@ void TreeTableEntryQuickData::SetActivationSubtile(unsigned char, unsigned char)
 void TreeTableEntryQuickData::SetActivationExtents(unsigned char, unsigned char, unsigned char, unsigned char) { }
 
 // 0x8015E8A4 (8 bytes)
-int TreeTableEntryQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
+TreeTableEntry* TreeTableEntryQuickData::GetImplementation() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcScheduler
@@ -12,9 +11,8 @@ void ENgcScheduler::TextureLoadsComplete(ESchedCommand *) { }
 void ENgcScheduler::RenderingComplete(ESchedCommand *) { }
 
 // 0x8034D9E8 (8 bytes)
-int ENgcScheduler::GetLastRetraceCount() { return 1; }
+void ENgcScheduler::GetLastRetraceCount() {  }
 
 // 0x8034DBA8 (4 bytes)
 void ENgcScheduler::RendFrameComplete(ESchedCommand *) { }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERenderSurface
@@ -6,15 +5,14 @@
 // 4 functions, 32 bytes
 
 // 0x80364EB8 (8 bytes)
-int ERenderSurface::GetXSize() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+void ERenderSurface::GetXSize() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80364EC0 (8 bytes)
-int ERenderSurface::GetYSize() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+void ERenderSurface::GetYSize() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x80364EC8 (8 bytes)
-void ERenderSurface::SetFlags(unsigned int) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
+void ERenderSurface::SetFlags(unsigned int val) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 
 // 0x80364F5C (8 bytes)
-int ERenderSurface::GetFlags() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void ERenderSurface::GetFlags() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
-#endif

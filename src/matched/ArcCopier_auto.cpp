@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ArcCopier
@@ -6,12 +5,11 @@
 // 3 functions, 32 bytes
 
 // 0x80321704 (12 bytes)
-void ArcCopier::TerminateCopy() { /* SDA global @ r13-26640 = 1 */ }
+void ArcCopier::TerminateCopy() { }
 
 // 0x80321710 (12 bytes)
-void ArcCopier::ResumeCopy() { /* SDA global @ r13-26640 = 0 */ }
+void ArcCopier::ResumeCopy() { }
 
 // 0x8032171C (8 bytes)
-int ArcCopier::IsTerminatingCopy() { return /* SDA global @ r13-26640 */; }  // lwz r3,-26640(r13)
+void ArcCopier::IsTerminatingCopy() {  }  // lwz r3,-26640(r13)
 
-#endif

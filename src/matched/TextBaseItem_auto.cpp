@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TextBaseItem
@@ -9,55 +8,61 @@
 void TextBaseItem::Reset() { *(int*)((char*)this + 0x4) = 1; }
 
 // 0x80087198 (8 bytes)
-int TextBaseItem::GetColor() { return *(int*)((char*)this + 0x44); }  // offset 0x44
+EVec4* TextBaseItem::GetColor() { return *(int*)((char*)this + 0x44); }  // offset 0x44
 
 // 0x800871A0 (12 bytes)
-void TextBaseItem::SetAlpha(float) { *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0xC) = val; }  // double deref float setter
+void TextBaseItem::SetAlpha(float val) { *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0xC) = val; }  // double deref float setter
 
 // 0x800871AC (12 bytes)
 float TextBaseItem::GetAlpha() { return *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0xC); }  // double deref float
 
 // 0x800871B8 (8 bytes)
-void TextBaseItem::SetShadowAlpha(float) { *(float*)((char*)this + 0x48) = val; }  // offset 0x48
+void TextBaseItem::SetShadowAlpha(float val) { *(float*)((char*)this + 0x48) = val; }  // offset 0x48
 
 // 0x800871C0 (8 bytes)
 float TextBaseItem::GetShadowAlpha() { return *(float*)((char*)this + 0x48); }  // offset 0x48
 
 // 0x800871C8 (8 bytes)
-void TextBaseItem::SetShadowSize(float) { *(float*)((char*)this + 0x4C) = val; }  // offset 0x4C
+void TextBaseItem::SetShadowSize(float val) { *(float*)((char*)this + 0x4C) = val; }  // offset 0x4C
 
 // 0x800871D0 (8 bytes)
 float TextBaseItem::GetShadowSize() { return *(float*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x800871D8 (20 bytes)
-void TextBaseItem::SetPos(EVec2 &) { /* copy two fields: 4(r4)->40(r3), 0(r4)->36(r3) */ }
+void TextBaseItem::SetPos(EVec2 &) { }
+#if 0
 
 // 0x800871EC (8 bytes)
-void* TextBaseItem::GetPos() { return (char*)this + 0x24; }  // offset 0x24
+EVec2* TextBaseItem::GetPos() { return (char*)this + 0x24; }  // offset 0x24
+#endif
 
 // 0x800871F4 (8 bytes)
-void TextBaseItem::SetPosX(float) { *(float*)((char*)this + 0x24) = val; }  // offset 0x24
+void TextBaseItem::SetPosX(float val) { *(float*)((char*)this + 0x24) = val; }  // offset 0x24
 
 // 0x800871FC (8 bytes)
 float TextBaseItem::GetPosX() { return *(float*)((char*)this + 0x24); }  // offset 0x24
 
 // 0x80087204 (8 bytes)
-void TextBaseItem::SetPosY(float) { *(float*)((char*)this + 0x28) = val; }  // offset 0x28
+void TextBaseItem::SetPosY(float val) { *(float*)((char*)this + 0x28) = val; }  // offset 0x28
 
 // 0x8008720C (8 bytes)
 float TextBaseItem::GetPosY() { return *(float*)((char*)this + 0x28); }  // offset 0x28
+#if 0
 
 // 0x8008724C (8 bytes)
-void* TextBaseItem::GetDisplaySize() { return (char*)this + 0x2C; }  // offset 0x2C
+EVec2* TextBaseItem::GetDisplaySize() { return (char*)this + 0x2C; }  // offset 0x2C
+#endif
 
 // 0x80087254 (8 bytes)
 float TextBaseItem::GetDisplaySizeX() { return *(float*)((char*)this + 0x2C); }  // offset 0x2C
 
 // 0x8008725C (8 bytes)
 float TextBaseItem::GetDisplaySizeY() { return *(float*)((char*)this + 0x30); }  // offset 0x30
+#if 0
 
 // 0x8008729C (8 bytes)
-void* TextBaseItem::GetDisplayPadSize() { return (char*)this + 0x34; }  // offset 0x34
+EVec2* TextBaseItem::GetDisplayPadSize() { return (char*)this + 0x34; }  // offset 0x34
+#endif
 
 // 0x800872A4 (8 bytes)
 float TextBaseItem::GetDisplayPadSizeX() { return *(float*)((char*)this + 0x34); }  // offset 0x34
@@ -66,15 +71,16 @@ float TextBaseItem::GetDisplayPadSizeX() { return *(float*)((char*)this + 0x34);
 float TextBaseItem::GetDisplayPadSizeY() { return *(float*)((char*)this + 0x38); }  // offset 0x38
 
 // 0x8008730C (8 bytes)
-int TextBaseItem::GetText() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
+short unsigned int* TextBaseItem::GetText() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x80087354 (8 bytes)
-int TextBaseItem::GetFont() const { return *(int*)((char*)this + 0x50); }  // offset 0x50
+ERFont* TextBaseItem::GetFont() const { return *(int*)((char*)this + 0x50); }  // offset 0x50
 
 // 0x8008739C (8 bytes)
 float TextBaseItem::GetFontSize() const { return *(float*)((char*)this + 0x54); }  // offset 0x54
+#if 0
 
 // 0x800873A4 (8 bytes)
-int TextBaseItem::GetStyle() const { return *(int*)((char*)this + 0x6C); }  // offset 0x6C
-
+ItemStyle TextBaseItem::GetStyle() const { return *(int*)((char*)this + 0x6C); }  // offset 0x6C
 #endif
+

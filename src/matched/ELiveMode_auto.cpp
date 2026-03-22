@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ELiveMode
@@ -12,30 +11,33 @@ void ELiveMode::PauseAllSounds() { }
 void ELiveMode::ResumeAllSounds() { }
 
 // 0x80090038 (8 bytes)
-int ELiveMode::InTransportMode() { return *(int*)((char*)this + 0x28); }  // offset 0x28
+void ELiveMode::InTransportMode() { return *(int*)((char*)this + 0x28); }  // offset 0x28
 
 // 0x80090040 (20 bytes)
-bool ELiveMode::IsIntroCameraTriggered() { return *(int*)((char*)this + 0xC) == 1; }  // compare with constant
+void ELiveMode::IsIntroCameraTriggered() { return *(int*)((char*)this + 0xC) == 1; }  // compare with constant
 
 // 0x80090054 (12 bytes)
 void ELiveMode::ResetIntroCamera() { *(int*)((char*)this + 0xC) = 0; }
+#if 0
 
 // 0x80090060 (8 bytes)
-void ELiveMode::SetIntroCameraState(IntroCameraStartState) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+void ELiveMode::SetIntroCameraState(IntroCameraStartState val) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+#endif
 
 // 0x80090068 (8 bytes)
-int ELiveMode::GetIntroCameraState() { return *(int*)((char*)this + 0xC); }  // offset 0xC
+void ELiveMode::GetIntroCameraState() { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x80090088 (8 bytes)
-void ELiveMode::SetGoingToNeighborhoodMode(bool) { *(int*)((char*)this + 0x24) = val; }  // offset 0x24
+void ELiveMode::SetGoingToNeighborhoodMode(bool val) { *(int*)((char*)this + 0x24) = val; }  // offset 0x24
 
 // 0x80090090 (8 bytes)
-void ELiveMode::SetInitialized(bool) { *(int*)((char*)this + 0x30) = val; }  // offset 0x30
+void ELiveMode::SetInitialized(bool val) { *(int*)((char*)this + 0x30) = val; }  // offset 0x30
+#if 0
 
 // 0x80090098 (8 bytes)
 int ELiveMode::IsInitialized() { return *(int*)((char*)this + 0x30); }  // offset 0x30
+#endif
 
 // 0x800900A0 (8 bytes)
-void ELiveMode::SetDontDraw(bool) { *(int*)((char*)this + 0x34) = val; }  // offset 0x34
+void ELiveMode::SetDontDraw(bool val) { *(int*)((char*)this + 0x34) = val; }  // offset 0x34
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcTextureCMPR
@@ -7,8 +6,9 @@
 
 // 0x80351534 (4 bytes)
 void ENgcTextureCMPR::SwizzleImage(unsigned char *, int, int, unsigned char *) { }
+#if 0
 
 // 0x80351568 (8 bytes)
-int ENgcTextureCMPR::operator new(unsigned int, void *) { return first; }  // mr r3,r4
-
+void* ENgcTextureCMPR::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 #endif
+

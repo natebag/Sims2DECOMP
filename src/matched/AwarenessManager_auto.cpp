@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AwarenessManager
@@ -6,27 +5,26 @@
 // 8 functions, 72 bytes
 
 // 0x80012250 (8 bytes)
-void AwarenessManager::SetIsRaining(bool) { /* SDA global @ r13-32696 = param */ }  // stw r3,-32696(r13)
+void AwarenessManager::SetIsRaining(bool) { }  // stw r3,-32696(r13)
 
 // 0x80014248 (8 bytes)
-int AwarenessManager::GetAwarenessAction() { return *(int*)((char*)this + 0x18); }  // offset 0x18
+void AwarenessManager::GetAwarenessAction() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x80014250 (8 bytes)
-int AwarenessManager::GetAwareOfObject() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+void AwarenessManager::GetAwareOfObject() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
 
 // 0x80014258 (12 bytes)
-bool AwarenessManager::IsMemoryAwarenessAnimPending() { return (*(int*)((char*)this + 0x0) >> 4) & 1; }  // bit 4
+void AwarenessManager::IsMemoryAwarenessAnimPending() { return (*(int*)((char*)this + 0x0) >> 4) & 1; }  // bit 4
 
 // 0x80014264 (12 bytes)
-bool AwarenessManager::IsAutoCarryActive() { return (*(int*)((char*)this + 0x0) >> 9) & 1; }  // bit 9
+void AwarenessManager::IsAutoCarryActive() { return (*(int*)((char*)this + 0x0) >> 9) & 1; }  // bit 9
 
 // 0x80014270 (8 bytes)
-void AwarenessManager::SetTimeMultiplier(float) { *(float*)((char*)this + 0x2C) = val; }  // offset 0x2C
+void AwarenessManager::SetTimeMultiplier(float val) { *(float*)((char*)this + 0x2C) = val; }  // offset 0x2C
 
 // 0x80014278 (8 bytes)
-void AwarenessManager::SetPauseMultiplier(float) { *(float*)((char*)this + 0x30) = val; }  // offset 0x30
+void AwarenessManager::SetPauseMultiplier(float val) { *(float*)((char*)this + 0x30) = val; }  // offset 0x30
 
 // 0x80014280 (8 bytes)
-int AwarenessManager::GetStateFlags() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+void AwarenessManager::GetStateFlags() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
-#endif

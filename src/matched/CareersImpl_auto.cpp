@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CareersImpl
@@ -12,6 +11,5 @@ int CareersImpl::GetNumCareers() { return *(int*)((char*)(*(void**)((char*)this 
 int CareersImpl::GetSuit(Job &, bool) { /* lwz r3,104(r4) */ return 0; }
 
 // 0x800B1B68 (20 bytes)
-void CareersImpl::CareersImpl() { *(void**)((char*)this + 0x0) = (void*)0x8046E938; }  // vtable init
+CareersImpl::CareersImpl() { *(void**)((char*)this + 0x0) = (void*)0x8046E938; }  // vtable init
 
-#endif

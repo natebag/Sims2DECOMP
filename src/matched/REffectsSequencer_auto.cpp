@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for REffectsSequencer
@@ -12,24 +11,27 @@ void REffectsSequencer::DelRefSubResources() { }
 void REffectsSequencer::AddRefSubResources() { }
 
 // 0x8036AF44 (8 bytes)
-int REffectsSequencer::TryIncrementSubResources() { return 1; }
+void REffectsSequencer::TryIncrementSubResources() { return 1; }
 
 // 0x8036B160 (12 bytes)
 void* REffectsSequencer::GetTypeInfo() const { return (void*)0x8050D8C4; }  // global data pointer
 
 // 0x8036B16C (12 bytes)
-int REffectsSequencer::GetTypeName() const { return *(int*)0x8050D8D0; }  // global variable
+void REffectsSequencer::GetTypeName() const { return *(int*)0x8050D8D0; }  // global variable
 
 // 0x8036B178 (12 bytes)
-int REffectsSequencer::GetTypeKey() const { return *(int*)0x8050D8D4; }  // global variable
+void REffectsSequencer::GetTypeKey() const { return *(int*)0x8050D8D4; }  // global variable
+#if 0
 
 // 0x8036B184 (12 bytes)
 unsigned short REffectsSequencer::GetTypeVersion() const { return *(unsigned short*)0x8050D8D8; }  // global variable
+#endif
 
 // 0x8036B190 (12 bytes)
 void* REffectsSequencer::GetTypeInfoStatic() { return (void*)0x8050D8C4; }  // global data pointer
+#if 0
 
 // 0x8036B19C (12 bytes)
 unsigned short REffectsSequencer::GetReadVersion() { return *(unsigned short*)0x8050D8DA; }  // global variable
-
 #endif
+

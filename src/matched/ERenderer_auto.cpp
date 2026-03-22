@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERenderer
@@ -8,4 +7,3 @@
 // 0x80364DA4 (8 bytes)
 void ERenderer::GetCurrentTexture(int) { return 0; }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EEdithTreeSetMan
@@ -8,4 +7,3 @@
 // 0x80324B74 (8 bytes)
 void EEdithTreeSetMan::CanCache(EResource *) { return 1; }
 
-#endif

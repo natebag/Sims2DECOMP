@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cGZSnd
@@ -12,19 +11,19 @@ void cGZSnd::Init() { return 1; }
 void cGZSnd::AddRef() { *(int*)((char*)this + 0x4) += 1; }  // refcount increment
 
 // 0x800BA658 (8 bytes)
-int cGZSnd::Load() { return 1; }
+void cGZSnd::Load() { return 1; }
 
 // 0x800BA660 (8 bytes)
-int cGZSnd::Unload() { return 1; }
+void cGZSnd::Unload() { return 1; }
 
 // 0x800BA668 (8 bytes)
-int cGZSnd::GetVolume() { return *(int*)((char*)this + 0x20); }  // offset 0x20
+void cGZSnd::GetVolume() { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x800BA81C (8 bytes)
-int cGZSnd::GetPan() { return *(int*)((char*)this + 0x24); }  // offset 0x24
+void cGZSnd::GetPan() { return *(int*)((char*)this + 0x24); }  // offset 0x24
 
 // 0x800BA8DC (8 bytes)
-int cGZSnd::GetFrequency() { return 22050; }
+void cGZSnd::GetFrequency() { return 22050; }
 
 // 0x800BA8E4 (8 bytes)
 void cGZSnd::SetFrequency(int) { return 1; }
@@ -32,4 +31,3 @@ void cGZSnd::SetFrequency(int) { return 1; }
 // 0x800BA8EC (8 bytes)
 void cGZSnd::SetPosition(unsigned int) { return 1; }
 
-#endif

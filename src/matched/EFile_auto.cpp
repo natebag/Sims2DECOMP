@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFile
@@ -6,45 +5,52 @@
 // 14 functions, 112 bytes
 
 // 0x802C60FC (8 bytes)
-void EFile::SetErrorSimulation(bool) { /* SDA global @ r13-26888 = param */ }  // stw r3,-26888(r13)
+void EFile::SetErrorSimulation(bool) { }  // stw r3,-26888(r13)
+#if 0
 
 // 0x802C68C8 (8 bytes)
-int EFile::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* EFile::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x802C6904 (8 bytes)
-int EFile::Allocate(unsigned int &) { return 0; }
+void EFile::Allocate(unsigned int &) { return 0; }
 
 // 0x802C690C (8 bytes)
-int EFile::GetIOMode() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void EFile::GetIOMode() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x802C6914 (8 bytes)
-int EFile::GetAccessMode() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
+void EFile::GetAccessMode() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x802C691C (8 bytes)
-int EFile::GetDeviceType() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
+void EFile::GetDeviceType() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x802C6924 (8 bytes)
-void* EFile::GetDrive() const { return (char*)this + 0x18; }  // offset 0x18
+void EFile::GetDrive() const { return (char*)this + 0x18; }  // offset 0x18
 
 // 0x802C692C (8 bytes)
-int EFile::GetPath() const { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+void EFile::GetPath() const { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
 
 // 0x802C6934 (8 bytes)
-int EFile::GetName() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
+void EFile::GetName() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x802C693C (8 bytes)
-void* EFile::GetExt() const { return (char*)this + 0x24; }  // offset 0x24
+void EFile::GetExt() const { return (char*)this + 0x24; }  // offset 0x24
 
 // 0x802C6944 (8 bytes)
-int EFile::GetLength() const { return *(int*)((char*)this + 0x14); }  // offset 0x14
+void EFile::GetLength() const { return *(int*)((char*)this + 0x14); }  // offset 0x14
+#if 0
 
 // 0x802C694C (8 bytes)
-void EFile::SetDevice(EFile::DeviceType) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
+void EFile::SetDevice(EFile::DeviceType val) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
+#endif
+#if 0
 
 // 0x802C6954 (8 bytes)
-void EFile::SetAccess(EFile::AccessMode) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+void EFile::SetAccess(EFile::AccessMode val) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+#endif
+#if 0
 
 // 0x802C695C (8 bytes)
-void EFile::SetMode(EFile::IOMode) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
-
+void EFile::SetMode(EFile::IOMode val) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 #endif
+

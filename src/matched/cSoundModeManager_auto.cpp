@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cSoundModeManager
@@ -6,15 +5,14 @@
 // 4 functions, 64 bytes
 
 // 0x800B0458 (16 bytes)
-void cSoundModeManager::FadeOutMusic(unsigned int) { *(int*)((char*)this + 0xC) = p4; *(int*)((char*)this + 0x4) = 1; }
+void cSoundModeManager::FadeOutMusic(unsigned int p4) { *(int*)((char*)this + 0xC) = p4; *(int*)((char*)this + 0x4) = 1; }
 
 // 0x800B0468 (16 bytes)
-void cSoundModeManager::FadeInMusic(unsigned int) { *(int*)((char*)this + 0xC) = p4; *(int*)((char*)this + 0x8) = 1; }
+void cSoundModeManager::FadeInMusic(unsigned int p4) { *(int*)((char*)this + 0xC) = p4; *(int*)((char*)this + 0x8) = 1; }
 
 // 0x800B0478 (16 bytes)
-void cSoundModeManager::FadeOutSFX(unsigned int) { *(int*)((char*)this + 0x18) = p4; *(int*)((char*)this + 0x10) = 1; }
+void cSoundModeManager::FadeOutSFX(unsigned int p4) { *(int*)((char*)this + 0x18) = p4; *(int*)((char*)this + 0x10) = 1; }
 
 // 0x800B0488 (16 bytes)
-void cSoundModeManager::FadeInSFX(unsigned int) { *(int*)((char*)this + 0x18) = p4; *(int*)((char*)this + 0x14) = 1; }
+void cSoundModeManager::FadeInSFX(unsigned int p4) { *(int*)((char*)this + 0x18) = p4; *(int*)((char*)this + 0x14) = 1; }
 
-#endif

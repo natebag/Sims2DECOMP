@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcTextureC4_32
@@ -6,12 +5,13 @@
 // 3 functions, 24 bytes
 
 // 0x80350C10 (8 bytes)
-int ENgcTextureC4_32::GetTEVStageCount() { return 2; }
+void ENgcTextureC4_32::GetTEVStageCount() { return 2; }
 
 // 0x80350C18 (8 bytes)
-int ENgcTextureC4_32::GetTEXCount() { return 2; }
+void ENgcTextureC4_32::GetTEXCount() { return 2; }
+#if 0
 
 // 0x80350C50 (8 bytes)
-int ENgcTextureC4_32::operator new(unsigned int, void *) { return first; }  // mr r3,r4
-
+void* ENgcTextureC4_32::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 #endif
+

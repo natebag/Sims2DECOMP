@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Neighbor
@@ -6,7 +5,7 @@
 // 4 functions, 32 bytes
 
 // 0x800C90B4 (8 bytes)
-int Neighbor::GetRelations() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
+RelationList* Neighbor::GetRelations() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x800C9794 (8 bytes)
 int Neighbor::GetLatestPersDataVersion() { return 8; }
@@ -15,6 +14,5 @@ int Neighbor::GetLatestPersDataVersion() { return 8; }
 int Neighbor::GetGUID() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800C9A94 (8 bytes)
-void Neighbor::SetGUID(int) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
+void Neighbor::SetGUID(int val) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 
-#endif

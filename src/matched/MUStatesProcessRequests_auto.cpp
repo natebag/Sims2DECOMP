@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MUStatesProcessRequests
@@ -6,6 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x80093C48 (12 bytes)
-int MUStatesProcessRequests::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
+MUWrapper* MUStatesProcessRequests::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
 
-#endif

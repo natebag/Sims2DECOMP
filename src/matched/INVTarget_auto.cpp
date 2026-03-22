@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for INVTarget
@@ -12,7 +11,7 @@ void INVTarget::FireCodeDialogZeroInputCallback() { }
 void INVTarget::CannotGrabToInventoryDialogZeroInputCallback() { }
 
 // 0x801F4784 (16 bytes)
-int INVTarget::SetOnMsgInvRemoveObjectInfo(char *) { *(int*)((char*)this + 0x88) = 0; return 1; }
+void INVTarget::SetOnMsgInvRemoveObjectInfo(char *) { *(int*)((char*)this + 0x88) = 0;  }
 
 // 0x801F4794 (4 bytes)
 void INVTarget::SetOnMsgInvClose(char *) { }
@@ -33,6 +32,5 @@ void INVTarget::GetOnMsgInvShpCurrentCell(char *) { }
 void INVTarget::GetOnMsgInvShpIsTabEnabled(char *) { }
 
 // 0x80203D68 (8 bytes)
-bool INVTarget::GetSelectedShoppingCategoryListIdx() { return *(unsigned char*)((char*)this + 0x3250); }  // offset 0x3250
+int INVTarget::GetSelectedShoppingCategoryListIdx() { return *(unsigned char*)((char*)this + 0x3250); }  // offset 0x3250
 
-#endif

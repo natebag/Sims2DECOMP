@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for XObjLang
@@ -15,18 +14,17 @@ void XObjLang::GetNodeText(Behavior *, short, BehaviorNode *, StringBuffer &) { 
 void XObjLang::GetPrimName(short, StringBuffer &) { }
 
 // 0x80152378 (8 bytes)
-bool XObjLang::IsSingleExit(BehaviorNode *) { return false; }
+void XObjLang::IsSingleExit(BehaviorNode *) { return false; }
 
 // 0x80152380 (8 bytes)
-int XObjLang::CountPrimitives() { return 0; }
+void XObjLang::CountPrimitives() { return 0; }
 
 // 0x80152388 (8 bytes)
-int XObjLang::GetSwizzler() { return 0; }
+void XObjLang::GetSwizzler() { return 0; }
 
 // 0x801523A4 (8 bytes)
-int XObjLang::GetMaxConstants() { return 128; }
+void XObjLang::GetMaxConstants() { return 128; }
 
 // 0x80152824 (8 bytes)
-int XObjLang::GetSelector() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+void XObjLang::GetSelector() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
-#endif

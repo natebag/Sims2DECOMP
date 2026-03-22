@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptObject
@@ -6,9 +5,8 @@
 // 2 functions, 24 bytes
 
 // 0x802B63AC (12 bytes)
-bool AptObject::getHasClass() const { return (*(int*)((char*)this + 0x20) >> 23) & 1; }  // bit 23
+int AptObject::getHasClass() const { return (*(int*)((char*)this + 0x20) >> 23) & 1; }  // bit 23
 
 // 0x802B63D8 (12 bytes)
-bool AptObject::getInMainInst() const { return (*(int*)((char*)this + 0x20) >> 22) & 1; }  // bit 22
+int AptObject::getInMainInst() const { return (*(int*)((char*)this + 0x20) >> 22) & 1; }  // bit 22
 
-#endif

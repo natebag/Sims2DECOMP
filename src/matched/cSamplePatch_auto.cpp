@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cSamplePatch
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80118F0C (8 bytes)
-void cSamplePatch::SetLooped(int) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
+void cSamplePatch::SetLooped(int val) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
 
-#endif

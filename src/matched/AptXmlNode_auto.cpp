@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptXmlNode
@@ -9,21 +8,20 @@
 void AptXmlNode::PreDestroy() { *(int*)((char*)this + 0x24) = 0; }
 
 // 0x802BB338 (8 bytes)
-int AptXmlNode::sMethod_appendChild(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
+AptValue* AptXmlNode::sMethod_appendChild(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
 
 // 0x802BB340 (8 bytes)
-int AptXmlNode::sMethod_cloneNode(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
+AptValue* AptXmlNode::sMethod_cloneNode(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
 
 // 0x802BB4D4 (8 bytes)
-int AptXmlNode::sMethod_insertBefore(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
+AptValue* AptXmlNode::sMethod_insertBefore(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
 
 // 0x802BB4DC (8 bytes)
-int AptXmlNode::sMethod_removeNode(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
+AptValue* AptXmlNode::sMethod_removeNode(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
 
 // 0x802BB694 (8 bytes)
-int AptXmlNode::operator new [](unsigned int) { return 0; }
+void* AptXmlNode::operator new [](unsigned int) { return (void*)0; }
 
 // 0x802BB69C (4 bytes)
 void AptXmlNode::operator delete [](void *) { }
 
-#endif

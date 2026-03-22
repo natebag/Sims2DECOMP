@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENCamera
@@ -6,10 +5,10 @@
 // 4 functions, 28 bytes
 
 // 0x8035D20C (8 bytes)
-void ENCamera::SetID(int) { *(int*)((char*)this + 0x40) = val; }  // offset 0x40
+void ENCamera::SetID(int val) { *(int*)((char*)this + 0x40) = val; }  // offset 0x40
 
 // 0x8035D248 (4 bytes)
-void ENCamera::GetName() { }
+char* ENCamera::GetName() { }
 
 // 0x8035D24C (8 bytes)
 int ENCamera::GetID() { return *(int*)((char*)this + 0x40); }  // offset 0x40
@@ -17,4 +16,3 @@ int ENCamera::GetID() { return *(int*)((char*)this + 0x40); }  // offset 0x40
 // 0x8035D254 (8 bytes)
 int ENCamera::GetKeys() { return *(int*)((char*)this + 0x44); }  // offset 0x44
 
-#endif

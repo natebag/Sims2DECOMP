@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptScriptFunctionByteCodeBlock
@@ -6,13 +5,13 @@
 // 6 functions, 44 bytes
 
 // 0x802B9180 (8 bytes)
-int AptScriptFunctionByteCodeBlock::GetName() const { return *(int*)((char*)this + 0x3C); }  // offset 0x3C
+const char* AptScriptFunctionByteCodeBlock::GetName() const { return *(int*)((char*)this + 0x3C); }  // offset 0x3C
 
 // 0x802B9188 (8 bytes)
 int AptScriptFunctionByteCodeBlock::GetNumArguments() { return 0; }
 
 // 0x802B9190 (8 bytes)
-int AptScriptFunctionByteCodeBlock::GetByteCodeBase() { return *(int*)((char*)this + 0x34); }  // offset 0x34
+void* AptScriptFunctionByteCodeBlock::GetByteCodeBase() { return *(int*)((char*)this + 0x34); }  // offset 0x34
 
 // 0x802B9198 (8 bytes)
 int AptScriptFunctionByteCodeBlock::GetByteCodeSize() { return *(int*)((char*)this + 0x38); }  // offset 0x38
@@ -21,6 +20,5 @@ int AptScriptFunctionByteCodeBlock::GetByteCodeSize() { return *(int*)((char*)th
 void AptScriptFunctionByteCodeBlock::SetArgument(AptValue *, int) { }
 
 // 0x802B91BC (8 bytes)
-int AptScriptFunctionByteCodeBlock::Duplicate(AptCIH *) { return 0; }
+AptCIH* AptScriptFunctionByteCodeBlock::Duplicate(AptCIH *) { return 0; }
 
-#endif

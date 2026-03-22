@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasScene
@@ -6,21 +5,20 @@
 // 6 functions, 56 bytes
 
 // 0x801657D8 (8 bytes)
-void CasScene::SetMediator(CasMediator *) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
+void CasScene::SetMediator(CasMediator * val) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x80165BCC (16 bytes)
-void CasScene::SetCameraParams(float, float, float) { *(float*)((char*)this + 0xB14) = f3; *(float*)((char*)this + 0xABC) = f1; *(float*)((char*)this + 0xB10) = f2; }
+void CasScene::SetCameraParams(float f1, float f2, float f3) { *(float*)((char*)this + 0xB14) = f3; *(float*)((char*)this + 0xABC) = f1; *(float*)((char*)this + 0xB10) = f2; }
 
 // 0x801672B0 (8 bytes)
-void* CasScene::GetLights() { return (char*)this + 0x8; }  // offset 0x8
+void CasScene::GetLights() { return (char*)this + 0x8; }  // offset 0x8
 
 // 0x801672B8 (8 bytes)
-int CasScene::Get3DWindow() const { return *(int*)((char*)this + 0xB18); }  // offset 0xB18
+void CasScene::Get3DWindow() const { return *(int*)((char*)this + 0xB18); }  // offset 0xB18
 
 // 0x801672C0 (8 bytes)
-int CasScene::GetRoomFromCameraAngle(unsigned int) const { return 0; }
+unsigned int CasScene::GetRoomFromCameraAngle(unsigned int) const { return 0; }
 
 // 0x801672C8 (8 bytes)
-int CasScene::GetAmbientScoreName() const { return /* SDA global @ r13-31572 */; }  // lwz r3,-31572(r13)
+void CasScene::GetAmbientScoreName() const { return 0; }  // lwz r3,-31572(r13)
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIPortalPointLight
@@ -9,30 +8,33 @@
 void* EIPortalPointLight::GetTypeInfo() const { return (void*)0x8050CC70; }  // global data pointer
 
 // 0x8022B044 (12 bytes)
-int EIPortalPointLight::GetTypeName() const { return *(int*)0x8050CC7C; }  // global variable
+void EIPortalPointLight::GetTypeName() const { return *(int*)0x8050CC7C; }  // global variable
 
 // 0x8022B050 (12 bytes)
-int EIPortalPointLight::GetTypeKey() const { return *(int*)0x8050CC80; }  // global variable
+void EIPortalPointLight::GetTypeKey() const { return *(int*)0x8050CC80; }  // global variable
+#if 0
 
 // 0x8022B05C (12 bytes)
 unsigned short EIPortalPointLight::GetTypeVersion() const { return *(unsigned short*)0x8050CC84; }  // global variable
+#endif
 
 // 0x8022B068 (12 bytes)
 void* EIPortalPointLight::GetTypeInfoStatic() { return (void*)0x8050CC70; }  // global data pointer
+#if 0
 
 // 0x8022B074 (12 bytes)
 unsigned short EIPortalPointLight::GetReadVersion() { return *(unsigned short*)0x8050CC86; }  // global variable
+#endif
 
 // 0x8022B0F4 (8 bytes)
-int EIPortalPointLight::GetLightType() { return 4; }
+void EIPortalPointLight::GetLightType() { return 4; }
 
 // 0x8022B0FC (8 bytes)
-int EIPortalPointLight::GetPortal() { return *(int*)((char*)this + 0xD4); }  // offset 0xD4
+void EIPortalPointLight::GetPortal() { return *(int*)((char*)this + 0xD4); }  // offset 0xD4
 
 // 0x8022B104 (8 bytes)
-bool EIPortalPointLight::IsPointLight() { return true; }
+void EIPortalPointLight::IsPointLight() { return true; }
 
 // 0x8022B10C (8 bytes)
-int EIPortalPointLight::GetRoomId() { return *(int*)((char*)this + 0xC0); }  // offset 0xC0
+void EIPortalPointLight::GetRoomId() { return *(int*)((char*)this + 0xC0); }  // offset 0xC0
 
-#endif

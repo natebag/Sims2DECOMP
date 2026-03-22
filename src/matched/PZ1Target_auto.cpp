@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PZ1Target
@@ -6,6 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x801E70C4 (12 bytes)
-void* PZ1Target::GetTLA() const { return (void*)0x803F3F5C; }  // global data pointer
+const char* PZ1Target::GetTLA() const { return (void*)0x803F3F5C; }  // global data pointer
 
-#endif

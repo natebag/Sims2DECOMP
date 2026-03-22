@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESimsApp
@@ -6,30 +5,29 @@
 // 9 functions, 96 bytes
 
 // 0x80003FDC (8 bytes)
-int ESimsApp::GetStartLot() { return /* SDA global @ r13-32752 */; }  // lwz r3,-32752(r13)
+void ESimsApp::GetStartLot() { return 0; }  // lwz r3,-32752(r13)
 
 // 0x80003FE4 (8 bytes)
-void ESimsApp::SetStartLot(int) { /* SDA global @ r13-32752 = val */ }  // stw r4,-32752(r13)
+void ESimsApp::SetStartLot(int val) { }  // stw r4,-32752(r13)
 
 // 0x800044B4 (12 bytes)
-void* ESimsApp::GetBuildVersion() { return (void*)0x803DB270; }  // global data pointer
+void ESimsApp::GetBuildVersion() { return (void*)0x803DB270; }  // global data pointer
 
 // 0x800044C0 (8 bytes)
-int ESimsApp::GetDefaultLanguage() { return 0; }
+void ESimsApp::GetDefaultLanguage() { return 0; }
 
 // 0x80005410 (8 bytes)
-void ESimsApp::SetGameState(OVERALL_GAME_STATE) { *(int*)((char*)this + 0x468) = val; }  // offset 0x468
+void ESimsApp::SetGameState(OVERALL_GAME_STATE val) { *(int*)((char*)this + 0x468) = val; }  // offset 0x468
 
 // 0x80005D2C (20 bytes)
-void ESimsApp::TakeBigScreenshot(int, int) { *(int*)((char*)this + 0x4A4) = p5; *(int*)((char*)this + 0x49C) = 1; *(int*)((char*)this + 0x4A0) = p4; }
+void ESimsApp::TakeBigScreenshot(int p4, int p5) { *(int*)((char*)this + 0x4A4) = p5; *(int*)((char*)this + 0x49C) = 1; *(int*)((char*)this + 0x4A0) = p4; }
 
 // 0x80006380 (12 bytes)
-void* ESimsApp::GetAppName() { return (void*)0x803DAF88; }  // global data pointer
+void ESimsApp::GetAppName() { return (void*)0x803DAF88; }  // global data pointer
 
 // 0x8000638C (8 bytes)
-int ESimsApp::GetEventTableSize() { return 0; }
+void ESimsApp::GetEventTableSize() { return 0; }
 
 // 0x80006394 (12 bytes)
-void* ESimsApp::GetNghName() { return (void*)0x8050B1D0; }  // global data pointer
+void ESimsApp::GetNghName() { return (void*)0x8050B1D0; }  // global data pointer
 
-#endif

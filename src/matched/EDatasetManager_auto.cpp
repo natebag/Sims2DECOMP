@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EDatasetManager
@@ -9,18 +8,17 @@
 void EDatasetManager::ManageDasFile(char *) { }
 
 // 0x8032471C (8 bytes)
-float EDatasetManager::GetLoadProgress() const { return *(float*)((char*)this + 0xD20); }  // offset 0xD20
+void EDatasetManager::GetLoadProgress() const { return *(float*)((char*)this + 0xD20); }  // offset 0xD20
 
 // 0x80324780 (8 bytes)
-void EDatasetManager::SetLoadProgress(float) { *(float*)((char*)this + 0xD20) = val; }  // offset 0xD20
+void EDatasetManager::SetLoadProgress(float val) { *(float*)((char*)this + 0xD20) = val; }  // offset 0xD20
 
 // 0x80324848 (8 bytes)
-void EDatasetManager::SetLoadingEnabled(bool) { /* SDA global @ r13-26632 = param */ }  // stw r3,-26632(r13)
+void EDatasetManager::SetLoadingEnabled(bool) { }  // stw r3,-26632(r13)
 
 // 0x80324850 (8 bytes)
-int EDatasetManager::GetLoadingEnabled() { return /* SDA global @ r13-26632 */; }  // lwz r3,-26632(r13)
+void EDatasetManager::GetLoadingEnabled() { return 0; }  // lwz r3,-26632(r13)
 
 // 0x8032494C (8 bytes)
 void EDatasetManager::CanCache(EResource *) { return 1; }
 
-#endif

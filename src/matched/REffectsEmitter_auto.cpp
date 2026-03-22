@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for REffectsEmitter
@@ -9,33 +8,36 @@
 void* REffectsEmitter::GetTypeInfo() const { return (void*)0x8050D89C; }  // global data pointer
 
 // 0x8036AC3C (12 bytes)
-int REffectsEmitter::GetTypeName() const { return *(int*)0x8050D8A8; }  // global variable
+void REffectsEmitter::GetTypeName() const { return *(int*)0x8050D8A8; }  // global variable
 
 // 0x8036AC48 (12 bytes)
-int REffectsEmitter::GetTypeKey() const { return *(int*)0x8050D8AC; }  // global variable
+void REffectsEmitter::GetTypeKey() const { return *(int*)0x8050D8AC; }  // global variable
+#if 0
 
 // 0x8036AC54 (12 bytes)
 unsigned short REffectsEmitter::GetTypeVersion() const { return *(unsigned short*)0x8050D8B0; }  // global variable
+#endif
 
 // 0x8036AC60 (12 bytes)
 void* REffectsEmitter::GetTypeInfoStatic() { return (void*)0x8050D89C; }  // global data pointer
+#if 0
 
 // 0x8036AC6C (12 bytes)
 unsigned short REffectsEmitter::GetReadVersion() { return *(unsigned short*)0x8050D8B2; }  // global variable
+#endif
 
 // 0x8036AD78 (8 bytes)
-int REffectsEmitter::GetEmitterInitData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
+void REffectsEmitter::GetEmitterInitData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x8036AD80 (8 bytes)
-int REffectsEmitter::GetParticleBirthData() { return *(int*)((char*)this + 0x18); }  // offset 0x18
+void REffectsEmitter::GetParticleBirthData() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x8036AD88 (8 bytes)
-int REffectsEmitter::GetTexture() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+void REffectsEmitter::GetTexture() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
 
 // 0x8036AD90 (8 bytes)
-int REffectsEmitter::Refreshed() { return *(int*)((char*)this + 0x20); }  // offset 0x20
+void REffectsEmitter::Refreshed() { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x8036AD98 (12 bytes)
 void REffectsEmitter::RefreshClear() { *(int*)((char*)this + 0x20) = 0; }
 
-#endif

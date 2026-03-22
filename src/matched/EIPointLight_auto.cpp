@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIPointLight
@@ -6,19 +5,19 @@
 // 9 functions, 96 bytes
 
 // 0x8022A560 (12 bytes)
-void* EIPointLight::GetTypeInfo() const { return (void*)0x8050CC48; }  // global data pointer
+const ETypeInfo* EIPointLight::GetTypeInfo() const { return (void*)0x8050CC48; }  // global data pointer
 
 // 0x8022A56C (12 bytes)
-int EIPointLight::GetTypeName() const { return *(int*)0x8050CC54; }  // global variable
+const char* EIPointLight::GetTypeName() const { return *(int*)0x8050CC54; }  // global variable
 
 // 0x8022A578 (12 bytes)
-int EIPointLight::GetTypeKey() const { return *(int*)0x8050CC58; }  // global variable
+u32 EIPointLight::GetTypeKey() const { return *(int*)0x8050CC58; }  // global variable
 
 // 0x8022A584 (12 bytes)
 unsigned short EIPointLight::GetTypeVersion() const { return *(unsigned short*)0x8050CC5C; }  // global variable
 
 // 0x8022A590 (12 bytes)
-void* EIPointLight::GetTypeInfoStatic() { return (void*)0x8050CC48; }  // global data pointer
+const ETypeInfo* EIPointLight::GetTypeInfoStatic() { return (void*)0x8050CC48; }  // global data pointer
 
 // 0x8022A59C (12 bytes)
 unsigned short EIPointLight::GetReadVersion() { return *(unsigned short*)0x8050CC5E; }  // global variable
@@ -32,4 +31,3 @@ float EIPointLight::GetFalloffEnd() { return *(float*)((char*)this + 0xC8); }  /
 // 0x8022A64C (8 bytes)
 int EIPointLight::GetRoomId() { return *(int*)((char*)this + 0xC0); }  // offset 0xC0
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for G2DTarget
@@ -12,6 +11,5 @@ int G2DTarget::IsG2DActive() { return *(int*)((char*)this + 0x88); }  // offset 
 int G2DTarget::IsG2DSpawned() { return *(int*)((char*)this + 0x84); }  // offset 0x84
 
 // 0x801E7050 (8 bytes)
-int G2DTarget::IsInitComplete() { return /* SDA global @ r13-30368 */; }  // lwz r3,-30368(r13)
+int G2DTarget::IsInitComplete() { return 0; }  // lwz r3,-30368(r13)
 
-#endif

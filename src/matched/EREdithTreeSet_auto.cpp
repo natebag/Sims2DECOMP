@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EREdithTreeSet
@@ -9,21 +8,24 @@
 void* EREdithTreeSet::GetTypeInfo() const { return (void*)0x8050CE60; }  // global data pointer
 
 // 0x8030FBAC (12 bytes)
-int EREdithTreeSet::GetTypeName() const { return *(int*)0x8050CE6C; }  // global variable
+void EREdithTreeSet::GetTypeName() const { return *(int*)0x8050CE6C; }  // global variable
 
 // 0x8030FBB8 (12 bytes)
-int EREdithTreeSet::GetTypeKey() const { return *(int*)0x8050CE70; }  // global variable
+void EREdithTreeSet::GetTypeKey() const { return *(int*)0x8050CE70; }  // global variable
+#if 0
 
 // 0x8030FBC4 (12 bytes)
 unsigned short EREdithTreeSet::GetTypeVersion() const { return *(unsigned short*)0x8050CE74; }  // global variable
+#endif
 
 // 0x8030FBD0 (12 bytes)
 void* EREdithTreeSet::GetTypeInfoStatic() { return (void*)0x8050CE60; }  // global data pointer
+#if 0
 
 // 0x8030FBDC (12 bytes)
 unsigned short EREdithTreeSet::GetReadVersion() { return *(unsigned short*)0x8050CE76; }  // global variable
+#endif
 
 // 0x8030FC5C (8 bytes)
-int EREdithTreeSet::GetNumTrees() { return *(int*)((char*)this + 0x18); }  // offset 0x18
+void EREdithTreeSet::GetNumTrees() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
-#endif

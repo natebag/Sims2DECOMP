@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cHitMan
@@ -6,12 +5,11 @@
 // 3 functions, 28 bytes
 
 // 0x801164A4 (12 bytes)
-int cHitMan::RegisterSourceDataRequestHandler(bool (*)(int, int, int *)) { *(int*)((char*)this + 0x30) = val; return 1; }
+bool cHitMan::RegisterSourceDataRequestHandler(bool (*val)(int, int, int *)) { *(int*)((char*)this + 0x30) = val; return 1; }
 
 // 0x80116DEC (8 bytes)
-int cHitMan::StartCallbackTimer() { return 0; }
+bool cHitMan::StartCallbackTimer() { return 0; }
 
 // 0x80116DF4 (8 bytes)
-int cHitMan::StopCallbackTimer() { return 0; }
+bool cHitMan::StopCallbackTimer() { return 0; }
 
-#endif

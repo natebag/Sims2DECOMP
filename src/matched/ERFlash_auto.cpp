@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERFlash
@@ -9,21 +8,26 @@
 void* ERFlash::GetTypeInfo() const { return (void*)0x8050CE88; }  // global data pointer
 
 // 0x80313D28 (12 bytes)
-int ERFlash::GetTypeName() const { return *(int*)0x8050CE94; }  // global variable
+void ERFlash::GetTypeName() const { return *(int*)0x8050CE94; }  // global variable
 
 // 0x80313D34 (12 bytes)
-int ERFlash::GetTypeKey() const { return *(int*)0x8050CE98; }  // global variable
+void ERFlash::GetTypeKey() const { return *(int*)0x8050CE98; }  // global variable
+#if 0
 
 // 0x80313D40 (12 bytes)
 unsigned short ERFlash::GetTypeVersion() const { return *(unsigned short*)0x8050CE9C; }  // global variable
+#endif
 
 // 0x80313D4C (12 bytes)
 void* ERFlash::GetTypeInfoStatic() { return (void*)0x8050CE88; }  // global data pointer
+#if 0
 
 // 0x80313D58 (12 bytes)
 unsigned short ERFlash::GetReadVersion() { return *(unsigned short*)0x8050CE9E; }  // global variable
+#endif
+#if 0
 
 // 0x80313E08 (8 bytes)
-int ERFlash::operator new(unsigned int, void *) { return first; }  // mr r3,r4
-
+void* ERFlash::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 #endif
+

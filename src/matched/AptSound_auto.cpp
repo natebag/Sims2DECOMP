@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptSound
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x802ABB50 (8 bytes)
-int AptSound::sMethod_stop(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
+AptValue* AptSound::sMethod_stop(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for LoadGameTarget
@@ -6,18 +5,23 @@
 // 5 functions, 32 bytes
 
 // 0x8018AAE8 (8 bytes)
-int LoadGameTarget::GetResult() { return *(int*)((char*)this + 0x10C); }  // offset 0x10C
+void LoadGameTarget::GetResult() { return *(int*)((char*)this + 0x10C); }  // offset 0x10C
+#if 0
 
 // 0x8018AAF0 (4 bytes)
 void LoadGameTarget::ImportLoad(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+#endif
+#if 0
 
 // 0x8018CCBC (4 bytes)
 void LoadGameTarget::ImportSave(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+#endif
+#if 0
 
 // 0x8018CCC0 (4 bytes)
 void LoadGameTarget::ImportSaveComplete(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+#endif
 
 // 0x8018CCE8 (12 bytes)
-int LoadGameTarget::GetPlayerNum() { return *(int*)((char*)(*(void**)((char*)this + 0x118)) + 0x190); }  // double deref
+void LoadGameTarget::GetPlayerNum() { return *(int*)((char*)(*(void**)((char*)this + 0x118)) + 0x190); }  // double deref
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectFolderImpl
@@ -21,15 +20,14 @@ void ObjectFolderImpl::ResumeObjectFiles() { }
 int ObjectFolderImpl::DoCommand(short, int) { return 1; }
 
 // 0x800F2074 (8 bytes)
-bool ObjectFolderImpl::IsNamespaceWriteable(unsigned int) { return false; }
+int ObjectFolderImpl::IsNamespaceWriteable(unsigned int) { return false; }
 
 // 0x800F207C (8 bytes)
-bool ObjectFolderImpl::IsBehaviorWriteable(unsigned int) { return false; }
+int ObjectFolderImpl::IsBehaviorWriteable(unsigned int) { return false; }
 
 // 0x800F29E8 (8 bytes)
 void* ObjectFolderImpl::GetBehaviorFinder() { return (char*)this + 0x4; }  // offset 0x4
 
 // 0x800F29F0 (8 bytes)
-int ObjectFolderImpl::GetObjectsDatabase() { return *(int*)((char*)this + 0x690); }  // offset 0x690
+void* ObjectFolderImpl::GetObjectsDatabase() { return *(int*)((char*)this + 0x690); }  // offset 0x690
 
-#endif

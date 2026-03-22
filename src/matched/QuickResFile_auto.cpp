@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickResFile
@@ -9,7 +8,7 @@
 int QuickResFile::Create(StringBuffer &) { return -95; }
 
 // 0x80132A5C (8 bytes)
-void QuickResFile::Delete(StringBuffer &) { return -95; }
+int QuickResFile::Delete(StringBuffer &) { return -95; }
 
 // 0x80132AA4 (8 bytes)
 int QuickResFile::CloseForReopen() { return 0; }
@@ -36,57 +35,82 @@ int QuickResFile::GetIndType(short) { return 0; }
 int QuickResFile::Count(int) { return 0; }
 
 // 0x80132BA0 (8 bytes)
-int QuickResFile::GetByID(int, short, void (*)(void *, int)) { return 0; }
+int* QuickResFile::GetByID(int, short, void (*)(void *, int)) { return 0; }
 
 // 0x80132BA8 (8 bytes)
-int QuickResFile::GetByName(int, StringBuffer &, void (*)(void *, int)) { return 0; }
+int* QuickResFile::GetByName(int, StringBuffer &, void (*)(void *, int)) { return 0; }
 
 // 0x80132BB0 (8 bytes)
-int QuickResFile::GetByIndex(int, short, void (*)(void *, int)) { return 0; }
+int* QuickResFile::GetByIndex(int, short, void (*)(void *, int)) { return 0; }
 
 // 0x80132BB8 (8 bytes)
-int QuickResFile::GetByIDAndLanguage(int, short, char, void (*)(void *, int)) { return 0; }
+int* QuickResFile::GetByIDAndLanguage(int, short, char, void (*)(void *, int)) { return 0; }
+#if 0
 
 // 0x80132BE4 (8 bytes)
 int QuickResFile::GetResType(Memory::HandleNode *) { return 0; }
+#endif
+#if 0
 
 // 0x80132BEC (12 bytes)
-void QuickResFile::GetID(Memory::HandleNode *, short *) { /* li r0,0; sth r0,0(r5) */ }
+void QuickResFile::GetID(Memory::HandleNode *, short *) { }
+#endif
+#if 0
 
 // 0x80132BF8 (12 bytes)
-void QuickResFile::GetIndex(Memory::HandleNode *, short *) { /* li r0,0; sth r0,0(r5) */ }
+void QuickResFile::GetIndex(Memory::HandleNode *, short *) { }
+#endif
+#if 0
 
 // 0x80132C04 (8 bytes)
 int QuickResFile::GetLanguage(Memory::HandleNode *) { return 0; }
+#endif
 
 // 0x80132C30 (8 bytes)
 int QuickResFile::FindUniqueID(int) { return 0; }
+#if 0
 
 // 0x80132C38 (4 bytes)
 void QuickResFile::Detach(Memory::HandleNode *) { }
+#endif
+#if 0
 
 // 0x80132C3C (4 bytes)
 void QuickResFile::Load(Memory::HandleNode *) { }
+#endif
+#if 0
 
 // 0x80132C40 (8 bytes)
 bool QuickResFile::IsLittleEndian(Memory::HandleNode *) { return false; }
+#endif
+#if 0
 
 // 0x80132C48 (4 bytes)
 void QuickResFile::SetID(Memory::HandleNode *, short) { }
+#endif
+#if 0
 
 // 0x80132C4C (4 bytes)
 void QuickResFile::Add(Memory::HandleNode *, int, short, StringBuffer &, bool) { }
+#endif
+#if 0
 
 // 0x80132C50 (4 bytes)
 void QuickResFile::AddWithLanguage(Memory::HandleNode *, int, short, StringBuffer &, char, bool) { }
+#endif
+#if 0
 
 // 0x80132C54 (4 bytes)
 void QuickResFile::Write(Memory::HandleNode *) { }
+#endif
+#if 0
 
 // 0x80132C58 (4 bytes)
 void QuickResFile::Remove(Memory::HandleNode *) { }
+#endif
+#if 0
 
 // 0x80132C5C (4 bytes)
 void QuickResFile::SetInfo(Memory::HandleNode *, short, StringBuffer &, char) { }
-
 #endif
+

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESim
@@ -12,51 +11,54 @@ void ESim::DoLightingCalculation() { }
 void* ESim::GetTypeInfo() const { return (void*)0x8050B428; }  // global data pointer
 
 // 0x800350FC (12 bytes)
-int ESim::GetTypeName() const { return *(int*)0x8050B434; }  // global variable
+void ESim::GetTypeName() const { return *(int*)0x8050B434; }  // global variable
 
 // 0x80035108 (12 bytes)
-int ESim::GetTypeKey() const { return *(int*)0x8050B438; }  // global variable
+void ESim::GetTypeKey() const { return *(int*)0x8050B438; }  // global variable
+#if 0
 
 // 0x80035114 (12 bytes)
 unsigned short ESim::GetTypeVersion() const { return *(unsigned short*)0x8050B43C; }  // global variable
+#endif
 
 // 0x80035120 (12 bytes)
 void* ESim::GetTypeInfoStatic() { return (void*)0x8050B428; }  // global data pointer
+#if 0
 
 // 0x8003512C (12 bytes)
 unsigned short ESim::GetReadVersion() { return *(unsigned short*)0x8050B43E; }  // global variable
+#endif
 
 // 0x80035308 (4 bytes)
 void ESim::SetXOb(cXObject *) { }
 
 // 0x8003530C (8 bytes)
-int ESim::GetShadow() { return *(int*)((char*)this + 0x3E0); }  // offset 0x3E0
+void ESim::GetShadow() { return *(int*)((char*)this + 0x3E0); }  // offset 0x3E0
 
 // 0x80035314 (8 bytes)
-int ESim::GetPerson() { return *(int*)((char*)this + 0x3D0); }  // offset 0x3D0
+void ESim::GetPerson() { return *(int*)((char*)this + 0x3D0); }  // offset 0x3D0
 
 // 0x80035330 (8 bytes)
-int ESim::GetSimHead() { return *(int*)((char*)this + 0x628); }  // offset 0x628
+void ESim::GetSimHead() { return *(int*)((char*)this + 0x628); }  // offset 0x628
 
 // 0x80035338 (8 bytes)
-int ESim::GetSimModel() { return *(int*)((char*)this + 0x63C); }  // offset 0x63C
+void ESim::GetSimModel() { return *(int*)((char*)this + 0x63C); }  // offset 0x63C
 
 // 0x80035340 (12 bytes)
-void ESim::SetVanityDraw(bool, unsigned int) { *(int*)((char*)this + 0x3D4) = p5; *(int*)((char*)this + 0x3DC) = p4; }
+void ESim::SetVanityDraw(bool p4, unsigned int p5) { *(int*)((char*)this + 0x3D4) = p5; *(int*)((char*)this + 0x3DC) = p4; }
 
 // 0x8003534C (16 bytes)
-int ESim::UseVanityDraw(unsigned int *) { /* store 980(r3)->0(r4), return 988(r3) */ return 0; }
+void ESim::UseVanityDraw(unsigned int *) { /* store 980(r3)->0(r4), return 988(r3) */ return 0; }
 
 // 0x8003535C (8 bytes)
-int ESim::GetPlumbBobState() { return *(int*)((char*)this + 0x3EC); }  // offset 0x3EC
+void ESim::GetPlumbBobState() { return *(int*)((char*)this + 0x3EC); }  // offset 0x3EC
 
 // 0x80035364 (8 bytes)
-void ESim::SetSkillmeterValue(float) { *(float*)((char*)this + 0x3F0) = val; }  // offset 0x3F0
+void ESim::SetSkillmeterValue(float val) { *(float*)((char*)this + 0x3F0) = val; }  // offset 0x3F0
 
 // 0x8003536C (8 bytes)
-int ESim::GetIsModelLoaded() { return *(int*)((char*)this + 0x638); }  // offset 0x638
+void ESim::GetIsModelLoaded() { return *(int*)((char*)this + 0x638); }  // offset 0x638
 
 // 0x80035374 (8 bytes)
-int ESim::GetIsChangingOutfit() { return *(int*)((char*)this + 0x3D8); }  // offset 0x3D8
+void ESim::GetIsChangingOutfit() { return *(int*)((char*)this + 0x3D8); }  // offset 0x3D8
 
-#endif

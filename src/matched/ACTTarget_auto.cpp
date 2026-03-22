@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ACTTarget
@@ -15,9 +14,8 @@ void ACTTarget::HideActionQueue() { *(int*)((char*)this + 0xD8) = 0; }
 int ACTTarget::IsActionQueueActive() { return *(int*)((char*)this + 0xD0); }  // offset 0xD0
 
 // 0x801A2B34 (8 bytes)
-bool ACTTarget::IsActionQueueAvailable(int) const { return true; }
+int ACTTarget::IsActionQueueAvailable(int) const { return true; }
 
 // 0x801A2C30 (4 bytes)
 void ACTTarget::DebugListValidation() { }
 
-#endif

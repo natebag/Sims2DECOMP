@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickDataSlotDescList
@@ -6,30 +5,31 @@
 // 9 functions, 88 bytes
 
 // 0x801448F0 (20 bytes)
-void QuickDataSlotDescList::AddRef() { *(int*)((char*)this + 0x5C) += 1; }  // refcount increment
+int QuickDataSlotDescList::AddRef() { *(int*)((char*)this + 0x5C) += 1; }  // refcount increment
 
 // 0x8014512C (8 bytes)
-void QuickDataSlotDescList::AddSlot(SlotDescriptor &) { return 0; }
+int QuickDataSlotDescList::AddSlot(SlotDescriptor &) { return 0; }
 
 // 0x80145134 (8 bytes)
-void QuickDataSlotDescList::RemoveSlot(int) { return 0; }
+int QuickDataSlotDescList::RemoveSlot(int) { return 0; }
+#if 0
 
 // 0x80145154 (16 bytes)
-void* QuickDataSlotDescList::GetSlot(int) { return (char*)(*(void**)((char*)this + 0x54)) + index * 72; }  // struct array, stride=72
+SlotDescriptor* QuickDataSlotDescList::GetSlot(int index) { return (char*)(*(void**)((char*)this + 0x54)) + index * 72; }  // struct array, stride=72
+#endif
 
 // 0x80145164 (8 bytes)
-void QuickDataSlotDescList::GetStringSetID() const { return 0; }
+int QuickDataSlotDescList::GetStringSetID() const { return 0; }
 
 // 0x8014516C (4 bytes)
 void QuickDataSlotDescList::SetStringSetID(int) { }
 
 // 0x80145170 (8 bytes)
-bool QuickDataSlotDescList::SaveDataByID(ObjectDataID &) { return false; }
+int QuickDataSlotDescList::SaveDataByID(ObjectDataID &) { return false; }
 
 // 0x80145178 (8 bytes)
-bool QuickDataSlotDescList::GetDataSourceType() const { return true; }
+int QuickDataSlotDescList::GetDataSourceType() const { return true; }
 
 // 0x80145180 (8 bytes)
-bool QuickDataSlotDescList::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
+int QuickDataSlotDescList::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
-#endif

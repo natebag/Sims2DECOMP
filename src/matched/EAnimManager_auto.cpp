@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAnimManager
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80322E48 (8 bytes)
-bool EAnimManager::CanCache(EResource *) { return true; }
+void EAnimManager::CanCache(EResource *) {  }
 
-#endif

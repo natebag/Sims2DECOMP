@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FamilyImpl
@@ -12,25 +11,25 @@ int FamilyImpl::CountMembers() { return ((char*)(*(void**)((char*)this + 0x28)) 
 int FamilyImpl::MyDoCommand(short, int) { return 0; }
 
 // 0x800B6B00 (8 bytes)
-int FamilyImpl::GetResfileStorageId(short) { return first; }  // mr r3,r4
+short int FamilyImpl::GetResfileStorageId(short first) { return first; }  // mr r3,r4
 
 // 0x800B6B08 (8 bytes)
 int FamilyImpl::GetNumber() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800B6B10 (8 bytes)
-void FamilyImpl::SetNumber(int) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
+void FamilyImpl::SetNumber(int val) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 
 // 0x800B6B18 (8 bytes)
 int FamilyImpl::GetHouseNumber() { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x800B6B20 (8 bytes)
-void FamilyImpl::SetHouseNumber(int) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+void FamilyImpl::SetHouseNumber(int val) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
 
 // 0x800B6B28 (8 bytes)
 int FamilyImpl::GetCreationOrder() { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x800B6B30 (8 bytes)
-void FamilyImpl::SetCreationOrder(int) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
+void FamilyImpl::SetCreationOrder(int val) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
 
 // 0x800B6B38 (8 bytes)
 int FamilyImpl::GetFunds() { return *(int*)((char*)this + 0x14); }  // offset 0x14
@@ -39,10 +38,10 @@ int FamilyImpl::GetFunds() { return *(int*)((char*)this + 0x14); }  // offset 0x
 int FamilyImpl::GetHouseValue() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x800B6B68 (8 bytes)
-void FamilyImpl::SetHouseValue(int) { *(int*)((char*)this + 0x18) = val; }  // offset 0x18
+void FamilyImpl::SetHouseValue(int val) { *(int*)((char*)this + 0x18) = val; }  // offset 0x18
 
 // 0x800B6B70 (16 bytes)
-void FamilyImpl::SetFriendCount(int) { *(int*)((char*)this + 0x1C) = p4; *(int*)((char*)this + 0x20) = 0; }
+void FamilyImpl::SetFriendCount(int p4) { *(int*)((char*)this + 0x1C) = p4; *(int*)((char*)this + 0x20) = 0; }
 
 // 0x800B6BA0 (12 bytes)
 bool FamilyImpl::GetHasPhone() { return *(int*)((char*)this + 0x34) & 1; }  // low bit
@@ -63,10 +62,10 @@ bool FamilyImpl::GetHasP1DoneCAS() { return (*(int*)((char*)this + 0x34) >> 4) &
 bool FamilyImpl::GetHasP2DoneCAS() { return (*(int*)((char*)this + 0x34) >> 5) & 1; }  // bit 5
 
 // 0x800B6C88 (8 bytes)
-int FamilyImpl::GetInventory() { return 0; }
+void* FamilyImpl::GetInventory() { return 0; }
 
 // 0x800B6C90 (8 bytes)
-int FamilyImpl::GetGoalAndUnlockData() { return 0; }
+void* FamilyImpl::GetGoalAndUnlockData() { return 0; }
 
 // 0x800B6C98 (8 bytes)
 int FamilyImpl::GetStatValue(int) const { return 0; }
@@ -74,4 +73,3 @@ int FamilyImpl::GetStatValue(int) const { return 0; }
 // 0x800B6CA0 (8 bytes)
 int FamilyImpl::GetStatRef(int, short **) { return 0; }
 
-#endif

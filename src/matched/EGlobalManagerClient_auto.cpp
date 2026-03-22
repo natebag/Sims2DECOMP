@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EGlobalManagerClient
@@ -6,9 +5,8 @@
 // 2 functions, 12 bytes
 
 // 0x803C1CF0 (8 bytes)
-int EGlobalManagerClient::ManagedStartup() { return 1; }
+void EGlobalManagerClient::ManagedStartup() {  }
 
 // 0x803C1CF8 (4 bytes)
 void EGlobalManagerClient::ManagedShutdown() { }
 
-#endif

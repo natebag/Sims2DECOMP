@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFontCharacter
@@ -12,21 +11,20 @@ void EFontCharacter::Construct(EFontCharacter *) { *(void**)((char*)this + 0x0) 
 void EFontCharacter::Destruct(EFontCharacter *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
 
 // 0x80364718 (12 bytes)
-void* EFontCharacter::GetTypeInfo() const { return (void*)0x8050D6BC; }  // global data pointer
+const ETypeInfo* EFontCharacter::GetTypeInfo() const { return (void*)0x8050D6BC; }  // global data pointer
 
 // 0x80364724 (12 bytes)
-int EFontCharacter::GetTypeName() const { return *(int*)0x8050D6C8; }  // global variable
+const char* EFontCharacter::GetTypeName() const { return *(int*)0x8050D6C8; }  // global variable
 
 // 0x80364730 (12 bytes)
-int EFontCharacter::GetTypeKey() const { return *(int*)0x8050D6CC; }  // global variable
+u32 EFontCharacter::GetTypeKey() const { return *(int*)0x8050D6CC; }  // global variable
 
 // 0x8036473C (12 bytes)
 unsigned short EFontCharacter::GetTypeVersion() const { return *(unsigned short*)0x8050D6D0; }  // global variable
 
 // 0x80364748 (12 bytes)
-void* EFontCharacter::GetTypeInfoStatic() { return (void*)0x8050D6BC; }  // global data pointer
+const ETypeInfo* EFontCharacter::GetTypeInfoStatic() { return (void*)0x8050D6BC; }  // global data pointer
 
 // 0x80364754 (12 bytes)
 unsigned short EFontCharacter::GetReadVersion() { return *(unsigned short*)0x8050D6D2; }  // global variable
 
-#endif

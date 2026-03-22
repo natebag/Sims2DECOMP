@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptBoolean
@@ -15,6 +14,5 @@ void AptBoolean::ForceDelete() { /* lwz r0,-26916(r13); stw r0,12(r3); stw r3,-2
 void AptBoolean::Destroy() { /* lwz r0,-26916(r13); stw r0,12(r3); stw r3,-26916(r13) */ }
 
 // 0x802BBAD8 (8 bytes)
-int AptBoolean::GetBool() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
+u32 AptBoolean::GetBool() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
-#endif

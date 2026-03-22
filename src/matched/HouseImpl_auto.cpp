@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for HouseImpl
@@ -6,15 +5,14 @@
 // 4 functions, 36 bytes
 
 // 0x800BC984 (8 bytes)
-int HouseImpl::GetFamily() { return *(int*)((char*)this + 0x14); }  // offset 0x14
+Family* HouseImpl::GetFamily() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x800BC98C (8 bytes)
-int HouseImpl::GetSizeScoreCurve() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+void* HouseImpl::GetSizeScoreCurve() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
 
 // 0x800BC994 (8 bytes)
-int HouseImpl::GetFurnishingsScoreCurve() { return *(int*)((char*)this + 0x20); }  // offset 0x20
+void* HouseImpl::GetFurnishingsScoreCurve() { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x800BC99C (12 bytes)
 void HouseImpl::SetFamilyToNull() { *(int*)((char*)this + 0x14) = 0; }
 
-#endif

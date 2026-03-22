@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cFixedWorldImpl
@@ -6,10 +5,10 @@
 // 7 functions, 56 bytes
 
 // 0x8014CDC4 (8 bytes)
-int cFixedWorldImpl::GetFloorLayer() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
+FloorLayer* cFixedWorldImpl::GetFloorLayer() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
 
 // 0x8014CDCC (8 bytes)
-int cFixedWorldImpl::GetWalls() { return *(int*)((char*)this + 0x38); }  // offset 0x38
+WallLayer* cFixedWorldImpl::GetWalls() { return *(int*)((char*)this + 0x38); }  // offset 0x38
 
 // 0x80151C30 (8 bytes)
 int cFixedWorldImpl::GetXSize() const { return *(int*)((char*)this + 0x14); }  // offset 0x14
@@ -21,9 +20,8 @@ int cFixedWorldImpl::GetYSize() const { return *(int*)((char*)this + 0x18); }  /
 int cFixedWorldImpl::GetMaxSize() const { return 64; }
 
 // 0x8015235C (8 bytes)
-int cFixedWorldImpl::GetInfluenceMap() { return *(int*)((char*)this + 0x3C); }  // offset 0x3C
+InfluenceMap* cFixedWorldImpl::GetInfluenceMap() { return *(int*)((char*)this + 0x3C); }  // offset 0x3C
 
 // 0x80152364 (8 bytes)
-int cFixedWorldImpl::GetPassiveInfluenceMap() { return *(int*)((char*)this + 0x40); }  // offset 0x40
+InfluenceMap* cFixedWorldImpl::GetPassiveInfluenceMap() { return *(int*)((char*)this + 0x40); }  // offset 0x40
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EyeToyManager
@@ -6,24 +5,25 @@
 // 7 functions, 56 bytes
 
 // 0x80328CD4 (8 bytes)
-bool EyeToyManager::IsPhysicallyConnected(int) { return false; }
+void EyeToyManager::IsPhysicallyConnected(int) { return false; }
 
 // 0x80328CDC (8 bytes)
-int EyeToyManager::GetPhysicalConnectionCount() { return 0; }
+void EyeToyManager::GetPhysicalConnectionCount() { return 0; }
 
 // 0x80328E90 (16 bytes)
-void EyeToyManager::ResumeStreams() { /* lwz+li+stw */ }
+void EyeToyManager::ResumeStreams() { }
 
 // 0x80328F44 (12 bytes)
-int EyeToyManager::ConvertHandleToInstancePtr(int) { /* lwz r0,-26608(r13); add r3,r0,r3 */ return 0; }
+void EyeToyManager::ConvertHandleToInstancePtr(int) { /* lwz r0,-26608(r13); add r3,r0,r3 */ return 0; }
 
 // 0x80328F50 (4 bytes)
 void EyeToyManager::ConvertInstanceIndexToHandle(int) { }
+#if 0
 
 // 0x80328F54 (4 bytes)
 void EyeToyManager::NormalizeTexture(EyeToyManager::NormalizationParams *) { }
+#endif
 
 // 0x80328F58 (4 bytes)
 void EyeToyManager::CleanUpBufferBetaHack() { }
 
-#endif

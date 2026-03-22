@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ImageProcessingManager
@@ -6,9 +5,8 @@
 // 2 functions, 12 bytes
 
 // 0x8032A290 (8 bytes)
-int ImageProcessingManager::LinkTexture(unsigned int, unsigned int) { return /* SDA global @ r13-26592 */; }  // lwz r3,-26592(r13)
+void ImageProcessingManager::LinkTexture(unsigned int, unsigned int) {  }  // lwz r3,-26592(r13)
 
 // 0x8032A298 (4 bytes)
 void ImageProcessingManager::DummyFree(void *) { }
 
-#endif

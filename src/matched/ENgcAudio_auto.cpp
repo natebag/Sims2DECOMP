@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcAudio
@@ -9,22 +8,22 @@
 void ENgcAudio::AudioAlarmHandler(OSAlarm *, OSContext *) { }
 
 // 0x8032BEDC (8 bytes)
-int ENgcAudio::GetIndexFromVoice(EVoice *) { return 0; }
+void ENgcAudio::GetIndexFromVoice(EVoice *) { return 0; }
 
 // 0x8032BEE4 (8 bytes)
-int ENgcAudio::GetVoiceFromIndex(unsigned char) { return 0; }
+void ENgcAudio::GetVoiceFromIndex(unsigned char) { return 0; }
 
 // 0x8032C468 (8 bytes)
-float ENgcAudio::GetMusicVolume() { return *(float*)((char*)this + 0x4); }  // offset 0x4
+void ENgcAudio::GetMusicVolume() { return *(float*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x8032C534 (8 bytes)
-float ENgcAudio::GetMusicPan() { return *(float*)((char*)this + 0x8); }  // offset 0x8
+void ENgcAudio::GetMusicPan() { return *(float*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x8032CB0C (8 bytes)
-int ENgcAudio::IsPausedDueToDiscError() { return *(int*)((char*)this + 0x38); }  // offset 0x38
+void ENgcAudio::IsPausedDueToDiscError() { return *(int*)((char*)this + 0x38); }  // offset 0x38
 
 // 0x8032CB14 (8 bytes)
-void ENgcAudio::SetDiscErrorCallback(void (*)(bool)) { *(int*)((char*)this + 0x3C) = val; }  // offset 0x3C
+void ENgcAudio::SetDiscErrorCallback(void (*val)(bool)) { *(int*)((char*)this + 0x3C) = val; }  // offset 0x3C
 
 // 0x8032CC1C (4 bytes)
 void ENgcAudio::Flush(bool) { }
@@ -35,4 +34,3 @@ void ENgcAudio::AddEvent(EA_EVENT, EMsgQueue &, unsigned int) { }
 // 0x8032CC24 (4 bytes)
 void ENgcAudio::RemoveEvent(EA_EVENT, EMsgQueue &, unsigned int) { }
 
-#endif

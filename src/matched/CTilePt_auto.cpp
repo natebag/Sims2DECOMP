@@ -34,5 +34,4 @@ void CTilePt::SetLevel(int) { *(char*)((char*)this + 0x2) = val; }  // offset 0x
 
 // 0x800B4DF0 (12 bytes)
 void CTilePt::SetLevel(CTilePt &) { /* copy byte: 2(r4) -> 2(r3) */ }
-
 #endif

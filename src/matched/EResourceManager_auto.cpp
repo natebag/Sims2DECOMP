@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResourceManager
@@ -15,12 +14,13 @@ void EResourceManager::LogResourceLoad(EResource *) { }
 void EResourceManager::ResourceDestructing(EResource *) { }
 
 // 0x803276FC (8 bytes)
-int EResourceManager::GetOverriddenFile(unsigned int, unsigned int &) { return 0; }
+void EResourceManager::GetOverriddenFile(unsigned int, unsigned int &) { return 0; }
+#if 0
 
 // 0x80327ECC (8 bytes)
 int EResourceManager::IsInitialized() { return *(int*)((char*)this + 0x48); }  // offset 0x48
+#endif
 
 // 0x80327ED4 (8 bytes)
-bool EResourceManager::CanCache() { return false; }
+void EResourceManager::CanCache() { return false; }
 
-#endif

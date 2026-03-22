@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CUnlockDisplayObject
@@ -6,36 +5,35 @@
 // 11 functions, 92 bytes
 
 // 0x800799C4 (8 bytes)
-int CUnlockDisplayObject::GetModel() { return *(int*)((char*)this + 0x14); }  // offset 0x14
+void* CUnlockDisplayObject::GetModel() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x80079A54 (8 bytes)
-int CUnlockDisplayObject::IsSimple() { return *(int*)((char*)this + 0x80); }  // offset 0x80
+bool CUnlockDisplayObject::IsSimple() { return *(int*)((char*)this + 0x80); }  // offset 0x80
 
 // 0x80079A5C (8 bytes)
-void CUnlockDisplayObject::SetModelID(unsigned int) { *(int*)((char*)this + 0x2C) = val; }  // offset 0x2C
+void CUnlockDisplayObject::SetModelID(unsigned int val) { *(int*)((char*)this + 0x2C) = val; }  // offset 0x2C
 
 // 0x80079B80 (8 bytes)
-void CUnlockDisplayObject::SetAnimationLoops(unsigned int) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
+void CUnlockDisplayObject::SetAnimationLoops(unsigned int val) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
 
 // 0x80079B88 (8 bytes)
-void CUnlockDisplayObject::SetPlayAndHold(bool) { *(int*)((char*)this + 0x6C) = val; }  // offset 0x6C
+void CUnlockDisplayObject::SetPlayAndHold(bool val) { *(int*)((char*)this + 0x6C) = val; }  // offset 0x6C
 
 // 0x80079C18 (8 bytes)
-int CUnlockDisplayObject::IsReady() { return *(int*)((char*)this + 0x74); }  // offset 0x74
+bool CUnlockDisplayObject::IsReady() { return *(int*)((char*)this + 0x74); }  // offset 0x74
 
 // 0x80079C20 (12 bytes)
 void CUnlockDisplayObject::SetTrigger() { *(int*)((char*)this + 0x70) = 1; }
 
 // 0x80079C2C (8 bytes)
-int CUnlockDisplayObject::IsDone() { return *(int*)((char*)this + 0x78); }  // offset 0x78
+bool CUnlockDisplayObject::IsDone() { return *(int*)((char*)this + 0x78); }  // offset 0x78
 
 // 0x80079C34 (8 bytes)
 float CUnlockDisplayObject::GetRadius() { return *(float*)((char*)this + 0x28); }  // offset 0x28
 
 // 0x80079C60 (8 bytes)
-int CUnlockDisplayObject::HasDrawn() { return *(int*)((char*)this + 0x7C); }  // offset 0x7C
+bool CUnlockDisplayObject::HasDrawn() { return *(int*)((char*)this + 0x7C); }  // offset 0x7C
 
 // 0x80079C68 (8 bytes)
 int CUnlockDisplayObject::GetType() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
-#endif

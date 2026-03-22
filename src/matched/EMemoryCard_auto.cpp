@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EMemoryCard
@@ -6,33 +5,32 @@
 // 10 functions, 76 bytes
 
 // 0x803C769C (8 bytes)
-int EMemoryCard::OpenForIO(char *, unsigned int) { return 1; }
+void EMemoryCard::OpenForIO(char *, unsigned int) { return 1; }
 
 // 0x803C76A4 (8 bytes)
-int EMemoryCard::CloseForIO(char *, unsigned int) { return 1; }
+void EMemoryCard::CloseForIO(char *, unsigned int) { return 1; }
 
 // 0x803C76AC (8 bytes)
-int EMemoryCard::GetFileRefCount(char *, unsigned int) { return 0; }
+void EMemoryCard::GetFileRefCount(char *, unsigned int) { return 0; }
 
 // 0x803C76B4 (8 bytes)
 void EMemoryCard::LoadDataChunkS(char *, unsigned int, unsigned int, unsigned int, void *) { return 1; }
 
 // 0x803C76BC (8 bytes)
-int EMemoryCard::SaveDataChunkS(char *, unsigned int, unsigned int, unsigned int, void *) { return 1; }
+void EMemoryCard::SaveDataChunkS(char *, unsigned int, unsigned int, unsigned int, void *) { return 1; }
 
 // 0x803C76C4 (8 bytes)
-int EMemoryCard::CreateFileS(char *, unsigned int, unsigned int) { return 1; }
+void EMemoryCard::CreateFileS(char *, unsigned int, unsigned int) { return 1; }
 
 // 0x803C76CC (4 bytes)
 void EMemoryCard::SetMemCardCopyProtection(unsigned int) { }
 
 // 0x803C76D0 (8 bytes)
-bool EMemoryCard::PollCards(bool) { return true; }
+void EMemoryCard::PollCards(bool) { return true; }
 
 // 0x803C76D8 (8 bytes)
-bool EMemoryCard::IsPolledCardAvailable(unsigned int) { return true; }
+void EMemoryCard::IsPolledCardAvailable(unsigned int) { return true; }
 
 // 0x803C76E0 (8 bytes)
-bool EMemoryCard::IsWrongDevice(unsigned int) { return false; }
+void EMemoryCard::IsWrongDevice(unsigned int) { return false; }
 
-#endif

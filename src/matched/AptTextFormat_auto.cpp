@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptTextFormat
@@ -6,9 +5,8 @@
 // 2 functions, 12 bytes
 
 // 0x802AFFF8 (8 bytes)
-int AptTextFormat::operator new [](unsigned int) { return 0; }
+void* AptTextFormat::operator new [](unsigned int) { return (void*)0; }
 
 // 0x802B0000 (4 bytes)
 void AptTextFormat::operator delete [](void *) { }
 
-#endif

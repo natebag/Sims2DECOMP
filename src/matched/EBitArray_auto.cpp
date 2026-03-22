@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EBitArray
@@ -12,9 +11,8 @@ void EBitArray::Print() { }
 int EBitArray::GetSize() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x802E0818 (16 bytes)
-bool EBitArray::IsEmpty() const { return *(int*)((char*)this + 0x4) != 0; }
+int EBitArray::IsEmpty() const { return *(int*)((char*)this + 0x4) != 0; }
 
 // 0x802E0914 (8 bytes)
-int EBitArray::GetBuffer() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+u32* EBitArray::GetBuffer() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
-#endif

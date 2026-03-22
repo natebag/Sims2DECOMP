@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AmbientSoundPlayer
@@ -6,12 +5,11 @@
 // 3 functions, 24 bytes
 
 // 0x800A9330 (8 bytes)
-void AmbientSoundPlayer::SetScorePlayer(AmbientScorePlayer *) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
+void AmbientSoundPlayer::SetScorePlayer(AmbientScorePlayer * val) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x800A9338 (8 bytes)
-void AmbientSoundPlayer::SetAmbientSound(ERAmbientSound *) { *(int*)((char*)this + 0x4) = val; }  // offset 0x4
+void AmbientSoundPlayer::SetAmbientSound(ERAmbientSound * val) { *(int*)((char*)this + 0x4) = val; }  // offset 0x4
 
 // 0x800AA9B4 (8 bytes)
-int AmbientSoundPlayer::GetAmbientSound() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+ERAmbientSound* AmbientSoundPlayer::GetAmbientSound() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
-#endif

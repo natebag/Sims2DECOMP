@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for iResFile
@@ -6,18 +5,17 @@
 // 5 functions, 48 bytes
 
 // 0x8013553C (16 bytes)
-void iResFile::Link() { /* lwz r0,-31680(r13); stw r0,0(r3); stw r3,-31680(r13) */ }
+void iResFile::Link() { }
 
 // 0x80135624 (8 bytes)
 int iResFile::GetError() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x8013562C (8 bytes)
-void iResFile::SetError(int) { *(int*)((char*)this + 0x4) = val; }  // offset 0x4
+void iResFile::SetError(int val) { *(int*)((char*)this + 0x4) = val; }  // offset 0x4
 
 // 0x801358B8 (8 bytes)
-int iResFile::GetResFileData() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
+ResFile* iResFile::GetResFileData() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x801358C0 (8 bytes)
-void iResFile::SetResFileData(ResFile *) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
+void iResFile::SetResFileData(ResFile * val) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 
-#endif

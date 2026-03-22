@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EMemoryMeterWin
@@ -10,8 +9,9 @@ void EMemoryMeterWin::Init() { }
 
 // 0x8005799C (4 bytes)
 void EMemoryMeterWin::Reset() { }
+#if 0
 
 // 0x80057C14 (4 bytes)
 void EMemoryMeterWin::SetEvent(Panelstateman::PanelEvent, unsigned int) { }
-
 #endif
+

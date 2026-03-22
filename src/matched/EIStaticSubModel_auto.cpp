@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIStaticSubModel
@@ -6,33 +5,34 @@
 // 10 functions, 104 bytes
 
 // 0x8022F588 (8 bytes)
-void EIStaticSubModel::ModifyColor(unsigned int) { *(int*)((char*)this + 0x94) = val; }  // offset 0x94
+void EIStaticSubModel::ModifyColor(unsigned int val) { *(int*)((char*)this + 0x94) = val; }  // offset 0x94
 
 // 0x8022F590 (8 bytes)
 int EIStaticSubModel::GetModifiableColor() { return *(int*)((char*)this + 0x94); }  // offset 0x94
 
 // 0x8022F7D8 (12 bytes)
-void* EIStaticSubModel::GetTypeInfo() const { return (void*)0x8050CCC0; }  // global data pointer
+const ETypeInfo* EIStaticSubModel::GetTypeInfo() const { return (void*)0x8050CCC0; }  // global data pointer
 
 // 0x8022F7E4 (12 bytes)
-int EIStaticSubModel::GetTypeName() const { return *(int*)0x8050CCCC; }  // global variable
+const char* EIStaticSubModel::GetTypeName() const { return *(int*)0x8050CCCC; }  // global variable
 
 // 0x8022F7F0 (12 bytes)
-int EIStaticSubModel::GetTypeKey() const { return *(int*)0x8050CCD0; }  // global variable
+u32 EIStaticSubModel::GetTypeKey() const { return *(int*)0x8050CCD0; }  // global variable
 
 // 0x8022F7FC (12 bytes)
 unsigned short EIStaticSubModel::GetTypeVersion() const { return *(unsigned short*)0x8050CCD4; }  // global variable
 
 // 0x8022F808 (12 bytes)
-void* EIStaticSubModel::GetTypeInfoStatic() { return (void*)0x8050CCC0; }  // global data pointer
+const ETypeInfo* EIStaticSubModel::GetTypeInfoStatic() { return (void*)0x8050CCC0; }  // global data pointer
 
 // 0x8022F814 (12 bytes)
 unsigned short EIStaticSubModel::GetReadVersion() { return *(unsigned short*)0x8050CCD6; }  // global variable
 
 // 0x8022F8D4 (8 bytes)
-int EIStaticSubModel::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* EIStaticSubModel::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#if 0
 
 // 0x8022F910 (8 bytes)
-void* EIStaticSubModel::GetBoundSphere() { return (char*)this + 0x80; }  // offset 0x80
-
+EBoundSphere* EIStaticSubModel::GetBoundSphere() { return (char*)this + 0x80; }  // offset 0x80
 #endif
+

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for NeighborhoodImpl
@@ -15,7 +14,7 @@ int NeighborhoodImpl::GetHouseNumberForLevel(int) { return 0; }
 int NeighborhoodImpl::GetNumFamilies() { return ((char*)(*(void**)((char*)this + 0x60)) - (char*)(*(void**)((char*)this + 0x5C))) / 4; }  // count = (end-start)/4
 
 // 0x800CEB34 (16 bytes)
-int NeighborhoodImpl::GetFamilyByIndex(int) { return ((int*)(*(void**)((char*)this + 0x5C)))[index]; }  // ptr->array[index], elem_size=4
+FamilyImpl* NeighborhoodImpl::GetFamilyByIndex(int index) { return ((int*)(*(void**)((char*)this + 0x5C)))[index]; }  // ptr->array[index], elem_size=4
 
 // 0x800D1294 (8 bytes)
 int NeighborhoodImpl::GetHouseNumber() { return *(int*)((char*)this + 0x70); }  // offset 0x70
@@ -24,24 +23,27 @@ int NeighborhoodImpl::GetHouseNumber() { return *(int*)((char*)this + 0x70); }  
 void NeighborhoodImpl::UnloadHouse() { }
 
 // 0x800D18B0 (16 bytes)
-short NeighborhoodImpl::GetNeighborhoodVar(int) const { return ((short*)((char*)this + 0x84))[index]; }  // short array[index]
+short NeighborhoodImpl::GetNeighborhoodVar(int index) const { return ((short*)((char*)this + 0x84))[index]; }  // short array[index]
+#if 0
 
 // 0x800D18C0 (16 bytes)
-void* NeighborhoodImpl::GetNeighborhoodVarRef(int) { return (char*)this + index * 2 + 0x84; }  // array elem addr, stride=2, base_off=0x84
+short int* NeighborhoodImpl::GetNeighborhoodVarRef(int index) { return (char*)this + index * 2 + 0x84; }  // array elem addr, stride=2, base_off=0x84
+#endif
+#if 0
 
 // 0x800D18D0 (16 bytes)
-void NeighborhoodImpl::SetNeighborhoodVar(int, short) { ((short*)((char*)this + 0x84))[index] = val; }  // short array[index] store
+void NeighborhoodImpl::SetNeighborhoodVar(int val,  short) { ((short*)((char*)this + 0x84))[index] = val; }  // short array[index] store
+#endif
 
 // 0x800D1928 (20 bytes)
 int NeighborhoodImpl::GetNumNeighborHouses() { return ((char*)(*(void**)((char*)this + 0x50)) - (char*)(*(void**)((char*)this + 0x4C))) / 4; }  // count = (end-start)/4
 
 // 0x800D193C (16 bytes)
-int NeighborhoodImpl::GetNeighborHouseByIndex(int) { return ((int*)(*(void**)((char*)this + 0x4C)))[index]; }  // ptr->array[index], elem_size=4
+int* NeighborhoodImpl::GetNeighborHouseByIndex(int index) { return ((int*)(*(void**)((char*)this + 0x4C)))[index]; }  // ptr->array[index], elem_size=4
 
 // 0x800D194C (4 bytes)
-void NeighborhoodImpl::GetImpl() { }
+NeighborhoodImpl* NeighborhoodImpl::GetImpl() { }
 
 // 0x800D1950 (8 bytes)
-void NeighborhoodImpl::SetHouseNum(int) { *(int*)((char*)this + 0x70) = val; }  // offset 0x70
+void NeighborhoodImpl::SetHouseNum(int val) { *(int*)((char*)this + 0x70) = val; }  // offset 0x70
 
-#endif

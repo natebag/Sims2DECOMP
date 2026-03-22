@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjSelector
@@ -6,21 +5,24 @@
 // 6 functions, 52 bytes
 
 // 0x801108DC (12 bytes)
-int ObjSelector::GetGUID() const { return *(int*)((char*)(*(void**)((char*)this + 0x38)) + 0x1C); }  // double deref
+void ObjSelector::GetGUID() const { return *(int*)((char*)(*(void**)((char*)this + 0x38)) + 0x1C); }  // double deref
 
 // 0x801108E8 (4 bytes)
 void ObjSelector::SetObjectName(char *) { }
 
 // 0x801108EC (4 bytes)
 void ObjSelector::ChangedDef() { }
+#if 0
 
 // 0x80111054 (12 bytes)
 short ObjSelector::GetThumbnailGraphicIndex() { return *(short*)((char*)(*(void**)((char*)this + 0x38)) + 0x96); }  // double deref signed short
+#endif
+#if 0
 
 // 0x80111188 (12 bytes)
 short ObjSelector::GetShadowBrightness() { return *(short*)((char*)(*(void**)((char*)this + 0x38)) + 0x9E); }  // double deref signed short
+#endif
 
 // 0x803A5208 (8 bytes)
-int ObjSelector::GetSimDescription() const { return *(int*)((char*)this + 0x8C); }  // offset 0x8C
+void* ObjSelector::GetSimDescription() const { return *(int*)((char*)this + 0x8C); }  // offset 0x8C
 
-#endif

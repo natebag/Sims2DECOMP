@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CUnlockDisplayObjectSim
@@ -12,6 +11,5 @@ void CUnlockDisplayObjectSim::Setup() { }
 int CUnlockDisplayObjectSim::IsMale() { return *(int*)((char*)(*(void**)((char*)this + 0x1B4)) + 0x84); }  // double deref
 
 // 0x80079F84 (8 bytes)
-bool CUnlockDisplayObjectSim::IsAdult() { return true; }
+int CUnlockDisplayObjectSim::IsAdult() { return true; }
 
-#endif

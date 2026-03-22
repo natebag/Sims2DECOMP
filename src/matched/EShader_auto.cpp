@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EShader
@@ -15,34 +14,38 @@ void EShader::Select(ERC *, unsigned int) { }
 void* EShader::GetMaterial() const { return (char*)this + 0x10; }  // offset 0x10
 
 // 0x802FAAEC (8 bytes)
-int EShader::GetSurfaceProperties() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
+u32 EShader::GetSurfaceProperties() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x802FAB08 (16 bytes)
-int EShader::GetModifiableColor(unsigned int) const { return ((int*)((char*)this + 0x40))[index]; }  // array[index], elem_size=4
+void* EShader::GetModifiableColor(unsigned int index) const { return ((int*)((char*)this + 0x40))[index]; }  // array[index], elem_size=4
+#if 0
 
 // 0x802FAB18 (16 bytes)
-void EShader::SetTexture(ETexture *, int) { ((int*)((char*)this + 0x64))[index] = val; }  // array[index] store, elem_size=64
+void EShader::SetTexture(ETexture * val,  int) { ((int*)((char*)this + 0x64))[index] = val; }  // array[index] store, elem_size=64
+#endif
 
 // 0x802FAB28 (16 bytes)
-void EShader::SetMultiTexture(ETexture *, int) { /* indexed int store via ptr at 104(r3) */ }
+void EShader::SetMultiTexture(ETexture *, int) { }
 
 // 0x802FAB38 (16 bytes)
-void EShader::UndoOverrideTexture() { /* modify bitfield [7:5] at offset 0x4 */ }
+void EShader::UndoOverrideTexture() { }
 
 // 0x802FAB48 (4 bytes)
 void EShader::SetAlternateShader(EShader *) { }
 
 // 0x802FAB4C (4 bytes)
-void EShader::GetShaderDef() const { }
+EShaderDef* EShader::GetShaderDef() const { }
 
 // 0x802FAB68 (12 bytes)
 bool EShader::IsCylindricalFacer() const { return (*(int*)((char*)this + 0x4) >> 3) & 1; }  // bit 3
 
 // 0x802FAB74 (8 bytes)
-int EShader::GetShaderUpdate() const { return *(int*)((char*)this + 0xE8); }  // offset 0xE8
+EShaderUpdate* EShader::GetShaderUpdate() const { return *(int*)((char*)this + 0xE8); }  // offset 0xE8
+#if 0
 
 // 0x802FABC0 (16 bytes)
-void EShader::SetAlphaTestThreshold(float, int) { ((float*)((char*)this + 0x78))[index] = val; }  // float array[index] store
+void EShader::SetAlphaTestThreshold(float val,  int) { ((float*)((char*)this + 0x78))[index] = val; }  // float array[index] store
+#endif
 
 // 0x802FABD0 (4 bytes)
 void EShader::UpdateMaterialCoefficients() { }
@@ -53,4 +56,3 @@ void EShader::RemoveGeometryModes(unsigned int) { }
 // 0x802FABF4 (4 bytes)
 void EShader::AddGeometryModes(unsigned int) { }
 
-#endif

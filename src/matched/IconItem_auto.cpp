@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IconItem
@@ -9,15 +8,14 @@
 void IconItem::Startup() { *(int*)((char*)this + 0x30) = 0; }
 
 // 0x800878A4 (8 bytes)
-void IconItem::SetAlpha(float) { *(float*)((char*)this + 0x2C) = val; }  // offset 0x2C
+void IconItem::SetAlpha(float val) { *(float*)((char*)this + 0x2C) = val; }  // offset 0x2C
 
 // 0x800878AC (8 bytes)
 float IconItem::GetAlpha() { return *(float*)((char*)this + 0x2C); }  // offset 0x2C
 
 // 0x800878B4 (8 bytes)
-void IconItem::SetShader(ERShader *) { *(int*)((char*)this + 0x30) = val; }  // offset 0x30
+void IconItem::SetShader(ERShader * val) { *(int*)((char*)this + 0x30) = val; }  // offset 0x30
 
 // 0x800878BC (8 bytes)
-int IconItem::GetShader() { return *(int*)((char*)this + 0x30); }  // offset 0x30
+ERShader* IconItem::GetShader() { return *(int*)((char*)this + 0x30); }  // offset 0x30
 
-#endif

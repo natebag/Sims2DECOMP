@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for M2MTarget
@@ -15,9 +14,8 @@ int M2MTarget::GetDevice() { return *(int*)((char*)this + 0x10C); }  // offset 0
 int M2MTarget::GetSaveGameID() { return *(int*)((char*)this + 0x110); }  // offset 0x110
 
 // 0x801C1D00 (8 bytes)
-void M2MTarget::IsItemEnabledSaveGameSelect(int) { return 0; }
+int M2MTarget::IsItemEnabledSaveGameSelect(int) { return 0; }
 
 // 0x801E7090 (8 bytes)
 int M2MTarget::GetPlayerNum() { return *(int*)((char*)this + 0x190); }  // offset 0x190
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CameraDirector
@@ -6,9 +5,8 @@
 // 2 functions, 24 bytes
 
 // 0x8001C830 (16 bytes)
-void CameraDirector::SetHoldState(float) { *(float*)((char*)this + 0x168) = fval; *(int*)((char*)this + 0x160) = 2; }
+void CameraDirector::SetHoldState(float fval) { *(float*)((char*)this + 0x168) = fval; *(int*)((char*)this + 0x160) = 2; }
 
 // 0x8001CAF8 (8 bytes)
-int CameraDirector::GetFrameEffectsManager() { return *(int*)((char*)this + 0x2D0); }  // offset 0x2D0
+FrameEffectsManager* CameraDirector::GetFrameEffectsManager() { return *(int*)((char*)this + 0x2D0); }  // offset 0x2D0
 
-#endif

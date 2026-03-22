@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataID
@@ -6,12 +5,11 @@
 // 3 functions, 32 bytes
 
 // 0x8015BAF4 (16 bytes)
-void ObjectDataID::ObjectDataID(unsigned int, unsigned short) { *(int*)((char*)this + 0x0) = p4; *(short*)((char*)this + 0x4) = p5; }
+ObjectDataID::ObjectDataID(unsigned int p4, unsigned short p5) { *(int*)((char*)this + 0x0) = p4; *(short*)((char*)this + 0x4) = p5; }
 
 // 0x8015BBE8 (8 bytes)
-void ObjectDataID::SetNamespaceID(unsigned int) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
+void ObjectDataID::SetNamespaceID(unsigned int val) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x8015BBF0 (8 bytes)
-void ObjectDataID::SetResourceID(unsigned short) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
+void ObjectDataID::SetResourceID(unsigned short val) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
 
-#endif

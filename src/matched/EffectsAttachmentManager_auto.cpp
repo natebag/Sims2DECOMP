@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EffectsAttachmentManager
@@ -6,9 +5,8 @@
 // 2 functions, 16 bytes
 
 // 0x80328844 (8 bytes)
-int EffectsAttachmentManager::GetRow(int) { return 0; }
+void EffectsAttachmentManager::GetRow(int) {  }
 
 // 0x803288F8 (8 bytes)
-bool EffectsAttachmentManager::CanCache(EResource *) { return true; }
+void EffectsAttachmentManager::CanCache(EResource *) {  }
 
-#endif

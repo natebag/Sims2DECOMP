@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EOrderTableEntry
@@ -6,6 +5,5 @@
 // 1 functions, 20 bytes
 
 // 0x8023122C (20 bytes)
-void EOrderTableEntry::EOrderTableEntry() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
+EOrderTableEntry::EOrderTableEntry() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for RelMatrixImpl
@@ -9,6 +8,5 @@
 void RelMatrixImpl::Init() { return 1; }
 
 // 0x801354C0 (20 bytes)
-int RelMatrixImpl::CountKeys() { return ((char*)(*(void**)((char*)this + 0x8)) - (char*)(*(void**)((char*)this + 0x4))) / 4; }  // count = (end-start)/4
+void RelMatrixImpl::CountKeys() { return ((char*)(*(void**)((char*)this + 0x8)) - (char*)(*(void**)((char*)this + 0x4))) / 4; }  // count = (end-start)/4
 
-#endif

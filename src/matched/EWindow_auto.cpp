@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EWindow
@@ -6,10 +5,10 @@
 // 6 functions, 36 bytes
 
 // 0x80300AE8 (8 bytes)
-int EWindow::GetCurrentWindow() { return /* SDA global @ r13-26708 */; }  // lwz r3,-26708(r13)
+void EWindow::GetCurrentWindow() {  }  // lwz r3,-26708(r13)
 
 // 0x80300AF0 (8 bytes)
-int EWindow::GetCurrent3DWindow() { return /* SDA global @ r13-26704 */; }  // lwz r3,-26704(r13)
+void EWindow::GetCurrent3DWindow() {  }  // lwz r3,-26704(r13)
 
 // 0x80300AF8 (4 bytes)
 void EWindow::WindowMatrixChanged() { }
@@ -21,6 +20,5 @@ void EWindow::InputCoordinatesChanged() { }
 void EWindow::OutputCoordinatesChanged() { }
 
 // 0x80300B04 (8 bytes)
-int EWindow::Cast3DWindow() { return 0; }
+void EWindow::Cast3DWindow() {  }
 
-#endif

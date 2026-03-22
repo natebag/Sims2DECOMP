@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasClothingUnlocks
@@ -6,9 +5,8 @@
 // 2 functions, 32 bytes
 
 // 0x8015F058 (16 bytes)
-bool CasClothingUnlocks::CheckBodyIndex(unsigned int) const { return val <= 39; }  // range check
+void CasClothingUnlocks::CheckBodyIndex(unsigned int val) const { return val <= 39; }  // range check
 
 // 0x8015F068 (16 bytes)
-bool CasClothingUnlocks::CheckTextureIndex(unsigned int) const { return val <= 29; }  // range check
+void CasClothingUnlocks::CheckTextureIndex(unsigned int val) const { return val <= 29; }  // range check
 
-#endif

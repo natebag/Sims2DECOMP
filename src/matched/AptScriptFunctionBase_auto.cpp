@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptScriptFunctionBase
@@ -9,6 +8,5 @@
 void AptScriptFunctionBase::PreDestroy() { }
 
 // 0x802B8420 (16 bytes)
-int AptScriptFunctionBase::GetRegisterValue(int) { /* lwz+slwi+lwzx indexed */ return 0; }
+AptValue* AptScriptFunctionBase::GetRegisterValue(int) { /* lwz+slwi+lwzx indexed */ return 0; }
 
-#endif

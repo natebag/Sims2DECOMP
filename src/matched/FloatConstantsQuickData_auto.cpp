@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FloatConstantsQuickData
@@ -12,7 +11,7 @@ int FloatConstantsQuickData::SaveDataByID(ObjectDataID &) { return 0; }
 int FloatConstantsQuickData::GetDataSourceType() const { return 1; }
 
 // 0x800B717C (20 bytes)
-void FloatConstantsQuickData::AddRef() { *(int*)((char*)this + 0x10) += 1; }  // refcount increment
+int FloatConstantsQuickData::AddRef() { *(int*)((char*)this + 0x10) += 1; }  // refcount increment
 
 // 0x800B71EC (8 bytes)
 int FloatConstantsQuickData::LoadFromIndex(unsigned int, int) { return 0; }
@@ -21,9 +20,8 @@ int FloatConstantsQuickData::LoadFromIndex(unsigned int, int) { return 0; }
 int FloatConstantsQuickData::GetResourceName(StringBuffer &) const { return 0; }
 
 // 0x800B71FC (8 bytes)
-void FloatConstantsQuickData::SetResourceName(StringBuffer &) { return 0; }
+int FloatConstantsQuickData::SetResourceName(StringBuffer &) { return 0; }
 
 // 0x800B7204 (8 bytes)
-bool FloatConstantsQuickData::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
+int FloatConstantsQuickData::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EController
@@ -6,25 +5,25 @@
 // 12 functions, 124 bytes
 
 // 0x80304294 (8 bytes)
-void EController::OverrideStatus(int) { *(int*)((char*)this + 0x4) = val; }  // offset 0x4
+void EController::OverrideStatus(int val) { *(int*)((char*)this + 0x4) = val; }  // offset 0x4
 
 // 0x80304434 (8 bytes)
-bool EController::HasVibration() const { return false; }
+int EController::HasVibration() const { return false; }
 
 // 0x80304774 (12 bytes)
-int EController::StopMotorOne(float) { *(float*)((char*)this + 0x1E4) = val; return 1; }
+int EController::StopMotorOne(float val) { *(float*)((char*)this + 0x1E4) = val; return 1; }
 
 // 0x803047E4 (12 bytes)
-int EController::StopMotorTwo(float) { *(float*)((char*)this + 0x1E8) = val; return 1; }
+int EController::StopMotorTwo(float val) { *(float*)((char*)this + 0x1E8) = val; return 1; }
 
 // 0x80304D10 (8 bytes)
 int EController::IsControlFake() { return *(int*)((char*)this + 0x1AC); }  // offset 0x1AC
 
 // 0x80304D18 (8 bytes)
-void EController::SetControlFake(bool) { *(int*)((char*)this + 0x1AC) = val; }  // offset 0x1AC
+void EController::SetControlFake(bool val) { *(int*)((char*)this + 0x1AC) = val; }  // offset 0x1AC
 
 // 0x80304D20 (8 bytes)
-void EController::SetFakeButtons(unsigned int) { *(int*)((char*)this + 0x1B0) = val; }  // offset 0x1B0
+void EController::SetFakeButtons(unsigned int val) { *(int*)((char*)this + 0x1B0) = val; }  // offset 0x1B0
 
 // 0x80304FE8 (16 bytes)
 void EController::SetBtnExcl() { *(int*)((char*)(*(void**)((char*)this + 0x200)) + 0x78) = 1; }  // deref + init
@@ -36,9 +35,8 @@ int EController::GetId() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 int EController::GetStatus() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x8030589C (12 bytes)
-bool EController::IsStable() { return (*(int*)((char*)this + 0x4) >> 1) & 1; }  // bit 1
+int EController::IsStable() { return (*(int*)((char*)this + 0x4) >> 1) & 1; }  // bit 1
 
 // 0x80305D58 (16 bytes)
-int EController::AreAxesSwapped(int) { return ((int*)((char*)this + 0x18C))[index]; }  // array[index], elem_size=4
+int EController::AreAxesSwapped(int index) { return ((int*)((char*)this + 0x18C))[index]; }  // array[index], elem_size=4
 
-#endif

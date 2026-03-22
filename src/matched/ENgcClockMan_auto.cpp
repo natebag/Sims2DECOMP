@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcClockMan
@@ -6,7 +5,7 @@
 // 3 functions, 28 bytes
 
 // 0x8032D9EC (20 bytes)
-void ENgcClockMan::ENgcClockMan() { *(void**)((char*)this + 0x0) = (void*)0x8047C2A0; }  // vtable init
+ENgcClockMan::ENgcClockMan() { *(void**)((char*)this + 0x0) = (void*)0x8047C2A0; }  // vtable init
 
 // 0x8032DA34 (4 bytes)
 void ENgcClockMan::Init() { }
@@ -14,4 +13,3 @@ void ENgcClockMan::Init() { }
 // 0x8032DA38 (4 bytes)
 void ENgcClockMan::Update() { }
 
-#endif

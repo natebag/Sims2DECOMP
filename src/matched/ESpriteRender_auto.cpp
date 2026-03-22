@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESpriteRender
@@ -6,13 +5,13 @@
 // 5 functions, 48 bytes
 
 // 0x80036E70 (8 bytes)
-int ESpriteRender::GetObject() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void ESpriteRender::GetObject() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x80036E78 (8 bytes)
-int ESpriteRender::GetMarked() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+void ESpriteRender::GetMarked() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80036E80 (8 bytes)
-int ESpriteRender::GetMarkedAsNew() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+void ESpriteRender::GetMarkedAsNew() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x80036E88 (12 bytes)
 void ESpriteRender::Mark() { *(int*)((char*)this + 0x0) = 1; }
@@ -20,4 +19,3 @@ void ESpriteRender::Mark() { *(int*)((char*)this + 0x0) = 1; }
 // 0x80036E94 (12 bytes)
 void ESpriteRender::MarkAsNew() { *(int*)((char*)this + 0x4) = 1; }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIAmbLight
@@ -6,19 +5,19 @@
 // 7 functions, 80 bytes
 
 // 0x80226F1C (12 bytes)
-void* EIAmbLight::GetTypeInfo() const { return (void*)0x8050CB58; }  // global data pointer
+const ETypeInfo* EIAmbLight::GetTypeInfo() const { return (void*)0x8050CB58; }  // global data pointer
 
 // 0x80226F28 (12 bytes)
-int EIAmbLight::GetTypeName() const { return *(int*)0x8050CB64; }  // global variable
+const char* EIAmbLight::GetTypeName() const { return *(int*)0x8050CB64; }  // global variable
 
 // 0x80226F34 (12 bytes)
-int EIAmbLight::GetTypeKey() const { return *(int*)0x8050CB68; }  // global variable
+u32 EIAmbLight::GetTypeKey() const { return *(int*)0x8050CB68; }  // global variable
 
 // 0x80226F40 (12 bytes)
 unsigned short EIAmbLight::GetTypeVersion() const { return *(unsigned short*)0x8050CB6C; }  // global variable
 
 // 0x80226F4C (12 bytes)
-void* EIAmbLight::GetTypeInfoStatic() { return (void*)0x8050CB58; }  // global data pointer
+const ETypeInfo* EIAmbLight::GetTypeInfoStatic() { return (void*)0x8050CB58; }  // global data pointer
 
 // 0x80226F58 (12 bytes)
 unsigned short EIAmbLight::GetReadVersion() { return *(unsigned short*)0x8050CB6E; }  // global variable
@@ -26,4 +25,3 @@ unsigned short EIAmbLight::GetReadVersion() { return *(unsigned short*)0x8050CB6
 // 0x80226FD8 (8 bytes)
 int EIAmbLight::GetLightType() { return 1; }
 
-#endif

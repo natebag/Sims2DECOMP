@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasSimRenderer
@@ -6,15 +5,16 @@
 // 4 functions, 32 bytes
 
 // 0x8016FB54 (8 bytes)
-int CasSimRenderer::GetPositionNum() const { return *(int*)((char*)this + 0x214); }  // offset 0x214
+unsigned int CasSimRenderer::GetPositionNum() const { return *(int*)((char*)this + 0x214); }  // offset 0x214
 
 // 0x8016FB5C (8 bytes)
-void CasSimRenderer::SetPositionNum(unsigned int) { *(int*)((char*)this + 0x214) = val; }  // offset 0x214
+void CasSimRenderer::SetPositionNum(unsigned int val) { *(int*)((char*)this + 0x214) = val; }  // offset 0x214
 
 // 0x8016FB64 (8 bytes)
-void CasSimRenderer::SetSimRotation(float) { *(float*)((char*)this + 0x20C) = val; }  // offset 0x20C
+void CasSimRenderer::SetSimRotation(float val) { *(float*)((char*)this + 0x20C) = val; }  // offset 0x20C
+#if 0
 
 // 0x8016FB6C (8 bytes)
-void* CasSimRenderer::GetSimModel() { return (char*)this + 0x8; }  // offset 0x8
-
+SimModel* CasSimRenderer::GetSimModel() { return (char*)this + 0x8; }  // offset 0x8
 #endif
+

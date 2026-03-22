@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimsObjectModel
@@ -12,45 +11,48 @@ void ISimsObjectModel::SetPosStatic(EVec3 &, float) { }
 void ISimsObjectModel::SetOutOfWorld() { }
 
 // 0x80053CE0 (12 bytes)
-void* ISimsObjectModel::GetTypeInfo() const { return (void*)0x8050B7C8; }  // global data pointer
+const ETypeInfo* ISimsObjectModel::GetTypeInfo() const { return (void*)0x8050B7C8; }  // global data pointer
 
 // 0x80053CEC (12 bytes)
-int ISimsObjectModel::GetTypeName() const { return *(int*)0x8050B7D4; }  // global variable
+const char* ISimsObjectModel::GetTypeName() const { return *(int*)0x8050B7D4; }  // global variable
 
 // 0x80053CF8 (12 bytes)
-int ISimsObjectModel::GetTypeKey() const { return *(int*)0x8050B7D8; }  // global variable
+u32 ISimsObjectModel::GetTypeKey() const { return *(int*)0x8050B7D8; }  // global variable
 
 // 0x80053D04 (12 bytes)
 unsigned short ISimsObjectModel::GetTypeVersion() const { return *(unsigned short*)0x8050B7DC; }  // global variable
 
 // 0x80053D10 (12 bytes)
-void* ISimsObjectModel::GetTypeInfoStatic() { return (void*)0x8050B7C8; }  // global data pointer
+const ETypeInfo* ISimsObjectModel::GetTypeInfoStatic() { return (void*)0x8050B7C8; }  // global data pointer
 
 // 0x80053D1C (12 bytes)
 unsigned short ISimsObjectModel::GetReadVersion() { return *(unsigned short*)0x8050B7DE; }  // global variable
 
 // 0x80053D9C (8 bytes)
-int ISimsObjectModel::GetShadow() { return *(int*)((char*)this + 0x44C); }  // offset 0x44C
+void* ISimsObjectModel::GetShadow() { return *(int*)((char*)this + 0x44C); }  // offset 0x44C
 
 // 0x80053DA4 (12 bytes)
 bool ISimsObjectModel::GetDynamic() { return (*(int*)((char*)this + 0x32C) >> 6) & 1; }  // bit 6
+#if 0
 
 // 0x80053DD8 (8 bytes)
-void* ISimsObjectModel::GetPos() { return (char*)this + 0x404; }  // offset 0x404
+EVec3* ISimsObjectModel::GetPos() { return (char*)this + 0x404; }  // offset 0x404
+#endif
+#if 0
 
 // 0x80053E00 (8 bytes)
-void* ISimsObjectModel::GetDir() { return (char*)this + 0x410; }  // offset 0x410
+EVec3* ISimsObjectModel::GetDir() { return (char*)this + 0x410; }  // offset 0x410
+#endif
 
 // 0x80053E28 (8 bytes)
 float ISimsObjectModel::GetRot() { return *(float*)((char*)this + 0x3F0); }  // offset 0x3F0
 
 // 0x80053E30 (8 bytes)
-void ISimsObjectModel::SetRot(float) { *(float*)((char*)this + 0x3F0) = val; }  // offset 0x3F0
+void ISimsObjectModel::SetRot(float val) { *(float*)((char*)this + 0x3F0) = val; }  // offset 0x3F0
 
 // 0x80053E38 (8 bytes)
-int ISimsObjectModel::GetILight() { return *(int*)((char*)this + 0x460); }  // offset 0x460
+void* ISimsObjectModel::GetILight() { return *(int*)((char*)this + 0x460); }  // offset 0x460
 
 // 0x80053E74 (12 bytes)
-bool ISimsObjectModel::ShouldKillAllAnimTracks(unsigned int) { return val != 0; }  // subfic+adde bool cast
+bool ISimsObjectModel::ShouldKillAllAnimTracks(unsigned int val) { return val != 0; }  // subfic+adde bool cast
 
-#endif

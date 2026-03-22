@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cSampleChannel
@@ -6,6 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x80119278 (12 bytes)
-int cSampleChannel::Snd(int) { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x18); }  // double deref
+void* cSampleChannel::Snd(int) { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x18); }  // double deref
 
-#endif

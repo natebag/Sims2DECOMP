@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EMemoryWriteStream
@@ -6,9 +5,10 @@
 // 2 functions, 16 bytes
 
 // 0x802E0EF8 (8 bytes)
-int EMemoryWriteStream::GetPos() const { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+void EMemoryWriteStream::GetPos() const { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+#if 0
 
 // 0x802E0F00 (8 bytes)
 int EMemoryWriteStream::Read(void *, int) { return 0; }
-
 #endif
+

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EInstance
@@ -6,25 +5,25 @@
 // 48 functions, 344 bytes
 
 // 0x8022921C (8 bytes)
-void EInstance::SetContext(int) { /* SDA global @ r13-28496 = param */ }  // stw r3,-28496(r13)
+void EInstance::SetContext(int) { }  // stw r3,-28496(r13)
 
 // 0x80229224 (8 bytes)
-int EInstance::GetContext() { return /* SDA global @ r13-28496 */; }  // lwz r3,-28496(r13)
+int EInstance::GetContext() { return 0; }  // lwz r3,-28496(r13)
 
 // 0x802293A0 (12 bytes)
-void* EInstance::GetTypeInfo() const { return (void*)0x8050B7A0; }  // global data pointer
+const ETypeInfo* EInstance::GetTypeInfo() const { return (void*)0x8050B7A0; }  // global data pointer
 
 // 0x802293AC (12 bytes)
-int EInstance::GetTypeName() const { return *(int*)0x8050B7AC; }  // global variable
+const char* EInstance::GetTypeName() const { return *(int*)0x8050B7AC; }  // global variable
 
 // 0x802293B8 (12 bytes)
-int EInstance::GetTypeKey() const { return *(int*)0x8050B7B0; }  // global variable
+u32 EInstance::GetTypeKey() const { return *(int*)0x8050B7B0; }  // global variable
 
 // 0x802293C4 (12 bytes)
 unsigned short EInstance::GetTypeVersion() const { return *(unsigned short*)0x8050B7B4; }  // global variable
 
 // 0x802293D0 (12 bytes)
-void* EInstance::GetTypeInfoStatic() { return (void*)0x8050B7A0; }  // global data pointer
+const ETypeInfo* EInstance::GetTypeInfoStatic() { return (void*)0x8050B7A0; }  // global data pointer
 
 // 0x802293DC (12 bytes)
 unsigned short EInstance::GetReadVersion() { return *(unsigned short*)0x8050B7B6; }  // global variable
@@ -42,7 +41,7 @@ void EInstance::DoAnimation() { }
 void EInstance::DoLightingCalculation() { }
 
 // 0x8022946C (8 bytes)
-bool EInstance::VisibilityTest(E3DWindow &) { return true; }
+int EInstance::VisibilityTest(E3DWindow &) { return true; }
 
 // 0x80229474 (4 bytes)
 void EInstance::Draw(ELevelDrawData &) { }
@@ -63,58 +62,74 @@ void EInstance::SetOrient(EMat4 &) { }
 void EInstance::RebuildShaders() { }
 
 // 0x802294A0 (8 bytes)
-void EInstance::GetUpdatePriority() { return 50; }
+int EInstance::GetUpdatePriority() { return 50; }
 
 // 0x802294A8 (4 bytes)
 void EInstance::RegisterFloor() { }
+#if 0
 
 // 0x802295C4 (8 bytes)
-void EInstance::SetPortalType(EPortalType) { *(int*)((char*)this + 0x14) = val; }  // offset 0x14
+void EInstance::SetPortalType(EPortalType val) { *(int*)((char*)this + 0x14) = val; }  // offset 0x14
+#endif
+#if 0
 
 // 0x802295CC (8 bytes)
-int EInstance::GetPortalType() { return *(int*)((char*)this + 0x14); }  // offset 0x14
+EPortalType EInstance::GetPortalType() { return *(int*)((char*)this + 0x14); }  // offset 0x14
+#endif
+#if 0
 
 // 0x802295D4 (12 bytes)
-void EInstance::RegisterOtherSideFn(unsigned int, void (*)(unsigned int, bool, short &, short &)) { *(int*)((char*)this + 0x20) = p5; *(int*)((char*)this + 0x24) = p4; }
+void EInstance::RegisterOtherSideFn(unsigned int p4, void (*p5)(unsigned int, bool, short &, short &)) { *(int*)((char*)this + 0x20) = p5; *(int*)((char*)this + 0x24) = p4; }
+#endif
 
 // 0x802295E0 (8 bytes)
-int EInstance::GetThisSideData() { return *(int*)((char*)this + 0x28); }  // offset 0x28
+u32 EInstance::GetThisSideData() { return *(int*)((char*)this + 0x28); }  // offset 0x28
+#if 0
 
 // 0x802295E8 (8 bytes)
-int EInstance::GetThisSideFn() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+PortalSideFn EInstance::GetThisSideFn() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+#endif
 
 // 0x802295F0 (8 bytes)
-int EInstance::GetOtherSideData() { return *(int*)((char*)this + 0x24); }  // offset 0x24
+u32 EInstance::GetOtherSideData() { return *(int*)((char*)this + 0x24); }  // offset 0x24
+#if 0
 
 // 0x802295F8 (8 bytes)
-int EInstance::GetOtherSideFn() { return *(int*)((char*)this + 0x20); }  // offset 0x20
+PortalSideFn EInstance::GetOtherSideFn() { return *(int*)((char*)this + 0x20); }  // offset 0x20
+#endif
+#if 0
 
 // 0x80229600 (12 bytes)
-void EInstance::RegisterThisSideFn(unsigned int, void (*)(unsigned int, bool, short &, short &)) { *(int*)((char*)this + 0x1C) = p5; *(int*)((char*)this + 0x28) = p4; }
+void EInstance::RegisterThisSideFn(unsigned int p4, void (*p5)(unsigned int, bool, short &, short &)) { *(int*)((char*)this + 0x1C) = p5; *(int*)((char*)this + 0x28) = p4; }
+#endif
+#if 0
 
 // 0x8022960C (12 bytes)
-void EInstance::RegisterHiddenFn(unsigned int, bool (*)(unsigned int)) { *(int*)((char*)this + 0x30) = p5; *(int*)((char*)this + 0x2C) = p4; }
+void EInstance::RegisterHiddenFn(unsigned int p4, bool (*p5)(unsigned int)) { *(int*)((char*)this + 0x30) = p5; *(int*)((char*)this + 0x2C) = p4; }
+#endif
 
 // 0x80229654 (8 bytes)
-void EInstance::SetShadowInterpolated(bool) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+void EInstance::SetShadowInterpolated(bool val) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
 
 // 0x8022965C (4 bytes)
 void EInstance::GetShadowCenter(EVec3 &) const { }
+#if 0
 
 // 0x80229660 (8 bytes)
-void* EInstance::GetBounds() const { return (char*)this + 0x3C; }  // offset 0x3C
+const EBound3* EInstance::GetBounds() const { return (char*)this + 0x3C; }  // offset 0x3C
+#endif
 
 // 0x80229668 (4 bytes)
 void EInstance::ReadInstanceData(EStream &, bool) { }
 
 // 0x8022966C (8 bytes)
-bool EInstance::CanReloadInstanceData() { return false; }
+int EInstance::CanReloadInstanceData() { return false; }
 
 // 0x80229674 (8 bytes)
-int EInstance::GetLevel() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+ERLevel* EInstance::GetLevel() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x8022967C (4 bytes)
-void EInstance::GetOwner() { }
+void* EInstance::GetOwner() { }
 
 // 0x80229680 (8 bytes)
 int EInstance::GetNumRoomID() { return 0; }
@@ -123,7 +138,7 @@ int EInstance::GetNumRoomID() { return 0; }
 int EInstance::GetRoomID(unsigned int) { return 0; }
 
 // 0x802296E4 (8 bytes)
-bool EInstance::HasModifiableColor() { return false; }
+int EInstance::HasModifiableColor() { return false; }
 
 // 0x802296EC (4 bytes)
 void EInstance::ModifyColor(unsigned int) { }
@@ -141,7 +156,7 @@ void EInstance::AboutToBeRemovedFromLevel(ERLevel *) { }
 void EInstance::RemovedFromLevel(ERLevel *) { }
 
 // 0x8022971C (8 bytes)
-int EInstance::GetShadowOwner() { return *(int*)((char*)this + 0x18); }  // offset 0x18
+EInstance* EInstance::GetShadowOwner() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x80229724 (8 bytes)
 int EInstance::IsWall() { return *(int*)((char*)this + 0x10); }  // offset 0x10
@@ -149,4 +164,3 @@ int EInstance::IsWall() { return *(int*)((char*)this + 0x10); }  // offset 0x10
 // 0x80229740 (4 bytes)
 void EInstance::RealizeShaderTuning() { }
 
-#endif

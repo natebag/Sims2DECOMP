@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcTexture
@@ -6,9 +5,10 @@
 // 2 functions, 20 bytes
 
 // 0x8034FA70 (12 bytes)
-int ENgcTexture::GetGXTexFmt() { return *(int*)((char*)(*(void**)((char*)this + 0x28)) + 0x70); }  // double deref
+void ENgcTexture::GetGXTexFmt() { return *(int*)((char*)(*(void**)((char*)this + 0x28)) + 0x70); }  // double deref
+#if 0
 
 // 0x8034FC0C (8 bytes)
-int ENgcTexture::operator new(unsigned int, void *) { return first; }  // mr r3,r4
-
+void* ENgcTexture::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 #endif
+

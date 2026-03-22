@@ -847,5 +847,4 @@ unsigned char VMBASEIsPageLocked() { /* indexed byte load via ptr at -21528(r13)
 
 // 0x8039B228 (8 bytes)
 void __VMBASESetSwapPageCallback() { /* SDA global @ r13-21524 = param */ }  // stw r3,-21524(r13)
-
 #endif

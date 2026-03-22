@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESimsCam
@@ -12,28 +11,38 @@ float ESimsCam::GetFarPlane() { return *(float*)((char*)(*(void**)((char*)this +
 void ESimsCam::CursorMoved(int, EVec3 &) { }
 
 // 0x8001AD94 (12 bytes)
-int ESimsCam::SetControllerFilterId(unsigned int) { *(int*)((char*)this + 0x560) = val; return 1; }
+int ESimsCam::SetControllerFilterId(unsigned int val) { *(int*)((char*)this + 0x560) = val; return 1; }
 
 // 0x8001ADA0 (8 bytes)
-int ESimsCam::GetControllerFilterId() const { return *(int*)((char*)this + 0x560); }  // offset 0x560
+unsigned int ESimsCam::GetControllerFilterId() const { return *(int*)((char*)this + 0x560); }  // offset 0x560
 
 // 0x8001ADA8 (16 bytes)
 int ESimsCam::ClearControllerFilterId() { *(int*)((char*)this + 0x560) = 0; return 1; }
+#if 0
 
 // 0x8001EA2C (8 bytes)
-void* ESimsCam::GetEye() const { return (char*)this + 0x418; }  // offset 0x418
+const EVec3* ESimsCam::GetEye() const { return (char*)this + 0x418; }  // offset 0x418
+#endif
+#if 0
 
 // 0x8001EA34 (8 bytes)
-void* ESimsCam::GetTarget() const { return (char*)this + 0x43C; }  // offset 0x43C
+const EVec3* ESimsCam::GetTarget() const { return (char*)this + 0x43C; }  // offset 0x43C
+#endif
+#if 0
 
 // 0x8001EA3C (8 bytes)
-void* ESimsCam::GetUp() const { return (char*)this + 0x424; }  // offset 0x424
+const EVec3* ESimsCam::GetUp() const { return (char*)this + 0x424; }  // offset 0x424
+#endif
+#if 0
 
 // 0x8001EA44 (8 bytes)
-void* ESimsCam::GetForward() const { return (char*)this + 0x424; }  // offset 0x424
+const EVec3* ESimsCam::GetForward() const { return (char*)this + 0x424; }  // offset 0x424
+#endif
+#if 0
 
 // 0x8001EA6C (8 bytes)
-void* ESimsCam::GetWin() { return (char*)this + 0x10; }  // offset 0x10
+E3DWindow* ESimsCam::GetWin() { return (char*)this + 0x10; }  // offset 0x10
+#endif
 
 // 0x8001EA74 (8 bytes)
 float ESimsCam::GetZoom() const { return *(float*)((char*)this + 0x448); }  // offset 0x448
@@ -42,7 +51,7 @@ float ESimsCam::GetZoom() const { return *(float*)((char*)this + 0x448); }  // o
 float ESimsCam::GetTilt() const { return *(float*)((char*)this + 0x450); }  // offset 0x450
 
 // 0x8001EA84 (8 bytes)
-void ESimsCam::SetTilt(float) { *(float*)((char*)this + 0x450) = val; }  // offset 0x450
+void ESimsCam::SetTilt(float val) { *(float*)((char*)this + 0x450) = val; }  // offset 0x450
 
 // 0x8001EA8C (8 bytes)
 int ESimsCam::GetbMoved() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
@@ -57,24 +66,25 @@ int ESimsCam::GetMode() const { return *(int*)((char*)this + 0x3CC); }  // offse
 int ESimsCam::GetPlayerId() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x8001EAAC (8 bytes)
-void ESimsCam::ForceFullScreen(bool) { *(int*)((char*)this + 0x54C) = val; }  // offset 0x54C
+void ESimsCam::ForceFullScreen(bool val) { *(int*)((char*)this + 0x54C) = val; }  // offset 0x54C
 
 // 0x8001EAB4 (8 bytes)
-int ESimsCam::IsForceFullScreen() { return *(int*)((char*)this + 0x54C); }  // offset 0x54C
+bool ESimsCam::IsForceFullScreen() { return *(int*)((char*)this + 0x54C); }  // offset 0x54C
 
 // 0x8001EABC (8 bytes)
-void ESimsCam::SetCenterNew(bool) { *(int*)((char*)this + 0x540) = val; }  // offset 0x540
+void ESimsCam::SetCenterNew(bool val) { *(int*)((char*)this + 0x540) = val; }  // offset 0x540
+#if 0
 
 // 0x8001EAC4 (8 bytes)
 unsigned short ESimsCam::GetRoomId() { return *(unsigned short*)((char*)this + 0x544); }  // offset 0x544
+#endif
 
 // 0x8001EACC (8 bytes)
 int ESimsCam::GetRoomWallsOpaque() { return *(int*)((char*)this + 0x548); }  // offset 0x548
 
 // 0x8001EAD4 (8 bytes)
-void ESimsCam::SetInterpolatingToOrFromSocialModeCameraFlag(bool) { *(int*)((char*)this + 0x564) = val; }  // offset 0x564
+void ESimsCam::SetInterpolatingToOrFromSocialModeCameraFlag(bool val) { *(int*)((char*)this + 0x564) = val; }  // offset 0x564
 
 // 0x8001EADC (8 bytes)
-void ESimsCam::SetInterpolatingFromLotIntroCameraFlag(bool) { *(int*)((char*)this + 0x568) = val; }  // offset 0x568
+void ESimsCam::SetInterpolatingFromLotIntroCameraFlag(bool val) { *(int*)((char*)this + 0x568) = val; }  // offset 0x568
 
-#endif

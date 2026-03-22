@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for INGTarget
@@ -12,9 +11,8 @@ int INGTarget::SetRefrigeratorLevel(int) { /* lwz+stw+mr swap */ return 0; }
 unsigned int INGTarget::get_blank_shader_id() const { return 0x9F93FF74; }
 
 // 0x801BC984 (20 bytes)
-bool INGTarget::is_group_meal() const { return *(int*)((char*)this + 0x8C) == 2; }  // compare with constant
+int INGTarget::is_group_meal() const { return *(int*)((char*)this + 0x8C) == 2; }  // compare with constant
 
 // 0x801BC998 (16 bytes)
 int INGTarget::RCPOnCancel() { *(int*)((char*)this + 0x458) = 2; return 1; }
 
-#endif

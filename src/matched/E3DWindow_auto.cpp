@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for E3DWindow
@@ -6,21 +5,20 @@
 // 6 functions, 44 bytes
 
 // 0x802E767C (8 bytes)
-void* E3DWindow::GetLookPos() { return (char*)this + 0x280; }  // offset 0x280
+void E3DWindow::GetLookPos() { return (char*)this + 0x280; }  // offset 0x280
 
 // 0x802E7684 (8 bytes)
-void* E3DWindow::GetLookDir() { return (char*)this + 0x290; }  // offset 0x290
+void E3DWindow::GetLookDir() { return (char*)this + 0x290; }  // offset 0x290
 
 // 0x802E768C (8 bytes)
-void* E3DWindow::GetLookAt() { return (char*)this + 0xA0; }  // offset 0xA0
+void E3DWindow::GetLookAt() { return (char*)this + 0xA0; }  // offset 0xA0
 
 // 0x802E7694 (8 bytes)
-void* E3DWindow::GetProjection() const { return (char*)this + 0x160; }  // offset 0x160
+void E3DWindow::GetProjection() const { return (char*)this + 0x160; }  // offset 0x160
 
 // 0x802E769C (8 bytes)
-void* E3DWindow::GetNormalizedProjection() const { return (char*)this + 0x1E0; }  // offset 0x1E0
+void E3DWindow::GetNormalizedProjection() const { return (char*)this + 0x1E0; }  // offset 0x1E0
 
 // 0x802E76A4 (4 bytes)
 void E3DWindow::Cast3DWindow() { }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EMovie
@@ -6,21 +5,22 @@
 // 6 functions, 56 bytes
 
 // 0x80364CCC (8 bytes)
-int EMovie::Load(EFile *, unsigned int, unsigned int, unsigned int) { return 0; }
+void EMovie::Load(EFile *, unsigned int, unsigned int, unsigned int) { return 0; }
 
 // 0x80364CD4 (12 bytes)
-void EMovie::Start(int, int) { *(int*)((char*)this + 0x4) = p5; *(int*)((char*)this + 0x0) = p4; }
+void EMovie::Start(int p4, int p5) { *(int*)((char*)this + 0x4) = p5; *(int*)((char*)this + 0x0) = p4; }
 
 // 0x80364CE0 (4 bytes)
 void EMovie::Stop() { }
+#if 0
 
 // 0x80364CE4 (4 bytes)
 void EMovie::Reset() { }
+#endif
 
 // 0x80364CE8 (8 bytes)
-bool EMovie::IsFinished() { return true; }
+void EMovie::IsFinished() { return true; }
 
 // 0x80364D24 (20 bytes)
-void EMovie::EMovie() { *(void**)((char*)this + 0x8) = (void*)0x8047DA40; }  // vtable init
+EMovie::EMovie() { *(void**)((char*)this + 0x8) = (void*)0x8047DA40; }  // vtable init
 
-#endif

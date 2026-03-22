@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERSoundEvent
@@ -9,36 +8,43 @@
 void* ERSoundEvent::GetTypeInfo() const { return (void*)0x8050D84C; }  // global data pointer
 
 // 0x80369F3C (12 bytes)
-int ERSoundEvent::GetTypeName() const { return *(int*)0x8050D858; }  // global variable
+void ERSoundEvent::GetTypeName() const { return *(int*)0x8050D858; }  // global variable
 
 // 0x80369F48 (12 bytes)
-int ERSoundEvent::GetTypeKey() const { return *(int*)0x8050D85C; }  // global variable
+void ERSoundEvent::GetTypeKey() const { return *(int*)0x8050D85C; }  // global variable
+#if 0
 
 // 0x80369F54 (12 bytes)
 unsigned short ERSoundEvent::GetTypeVersion() const { return *(unsigned short*)0x8050D860; }  // global variable
+#endif
 
 // 0x80369F60 (12 bytes)
 void* ERSoundEvent::GetTypeInfoStatic() { return (void*)0x8050D84C; }  // global data pointer
+#if 0
 
 // 0x80369F6C (12 bytes)
 unsigned short ERSoundEvent::GetReadVersion() { return *(unsigned short*)0x8050D862; }  // global variable
+#endif
+#if 0
 
 // 0x8036A01C (8 bytes)
-int ERSoundEvent::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* ERSoundEvent::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x8036A050 (8 bytes)
-unsigned char ERSoundEvent::GetEventType() { return *(unsigned char*)((char*)this + 0x14); }  // offset 0x14
+void ERSoundEvent::GetEventType() { return *(unsigned char*)((char*)this + 0x14); }  // offset 0x14
+#if 0
 
 // 0x8036A058 (8 bytes)
 unsigned short ERSoundEvent::GetVolume() { return *(unsigned short*)((char*)this + 0x18); }  // offset 0x18
+#endif
 
 // 0x8036A060 (8 bytes)
-unsigned char ERSoundEvent::GetProb() { return *(unsigned char*)((char*)this + 0x1A); }  // offset 0x1A
+void ERSoundEvent::GetProb() { return *(unsigned char*)((char*)this + 0x1A); }  // offset 0x1A
 
 // 0x8036A068 (8 bytes)
-void ERSoundEvent::SetVolume(int) { *(short*)((char*)this + 0x18) = val; }  // offset 0x18
+void ERSoundEvent::SetVolume(int val) { *(short*)((char*)this + 0x18) = val; }  // offset 0x18
 
 // 0x8036A070 (8 bytes)
-void ERSoundEvent::SetProb(int) { *(char*)((char*)this + 0x1A) = val; }  // offset 0x1A
+void ERSoundEvent::SetProb(int val) { *(char*)((char*)this + 0x1A) = val; }  // offset 0x1A
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SaveGameTarget
@@ -6,9 +5,8 @@
 // 2 functions, 20 bytes
 
 // 0x8018DE08 (8 bytes)
-int SaveGameTarget::GetResult() { return *(int*)((char*)this + 0x110); }  // offset 0x110
+void SaveGameTarget::GetResult() { return *(int*)((char*)this + 0x110); }  // offset 0x110
 
 // 0x8018FFB0 (12 bytes)
-int SaveGameTarget::GetPlayerNum() { return *(int*)((char*)(*(void**)((char*)this + 0x118)) + 0x190); }  // double deref
+void SaveGameTarget::GetPlayerNum() { return *(int*)((char*)(*(void**)((char*)this + 0x118)) + 0x190); }  // double deref
 
-#endif

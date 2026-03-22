@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcRenderSurface
@@ -6,9 +5,8 @@
 // 2 functions, 20 bytes
 
 // 0x8034C314 (8 bytes)
-int ENgcRenderSurface::GetTexture() { return *(int*)((char*)this + 0x28); }  // offset 0x28
+void ENgcRenderSurface::GetTexture() { return *(int*)((char*)this + 0x28); }  // offset 0x28
 
 // 0x8034C70C (12 bytes)
 void ENgcRenderSurface::Select() { *(int*)((char*)this + 0x24) = 1; }
 
-#endif

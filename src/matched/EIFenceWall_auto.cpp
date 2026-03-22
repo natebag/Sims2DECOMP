@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIFenceWall
@@ -9,24 +8,29 @@
 void* EIFenceWall::GetTypeInfo() const { return (void*)0x8050B3D8; }  // global data pointer
 
 // 0x80030724 (12 bytes)
-int EIFenceWall::GetTypeName() const { return *(int*)0x8050B3E4; }  // global variable
+void EIFenceWall::GetTypeName() const { return *(int*)0x8050B3E4; }  // global variable
 
 // 0x80030730 (12 bytes)
-int EIFenceWall::GetTypeKey() const { return *(int*)0x8050B3E8; }  // global variable
+void EIFenceWall::GetTypeKey() const { return *(int*)0x8050B3E8; }  // global variable
+#if 0
 
 // 0x8003073C (12 bytes)
 unsigned short EIFenceWall::GetTypeVersion() const { return *(unsigned short*)0x8050B3EC; }  // global variable
+#endif
 
 // 0x80030748 (12 bytes)
 void* EIFenceWall::GetTypeInfoStatic() { return (void*)0x8050B3D8; }  // global data pointer
+#if 0
 
 // 0x80030754 (12 bytes)
 unsigned short EIFenceWall::GetReadVersion() { return *(unsigned short*)0x8050B3EE; }  // global variable
+#endif
+#if 0
 
 // 0x80030814 (8 bytes)
-int EIFenceWall::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* EIFenceWall::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x80030898 (8 bytes)
-bool EIFenceWall::IsOpaque() { return false; }
+void EIFenceWall::IsOpaque() { return false; }
 
-#endif

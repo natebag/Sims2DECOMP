@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MODTarget
@@ -15,6 +14,5 @@ void MODTarget::HideMood() { *(int*)((char*)this + 0x90) = 0; }
 int MODTarget::IsMoodActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88
 
 // 0x801CAAB4 (8 bytes)
-void MODTarget::SetTextButtonPressed(bool) { *(int*)((char*)this + 0xF8) = val; }  // offset 0xF8
+void MODTarget::SetTextButtonPressed(bool val) { *(int*)((char*)this + 0xF8) = val; }  // offset 0xF8
 
-#endif

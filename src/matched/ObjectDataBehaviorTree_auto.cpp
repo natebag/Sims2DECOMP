@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataBehaviorTree
@@ -15,21 +14,20 @@ short ObjectDataBehaviorTree::GetNumNodes() const { return *(short*)((char*)(*(v
 unsigned char ObjectDataBehaviorTree::GetType() const { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x54)) + 0x4); }  // double deref byte
 
 // 0x8015AB20 (12 bytes)
-void ObjectDataBehaviorTree::SetType(unsigned char) { *(char*)((char*)(*(void**)((char*)this + 0x54)) + 0x4) = val; }  // double deref byte setter
+void ObjectDataBehaviorTree::SetType(unsigned char val) { *(char*)((char*)(*(void**)((char*)this + 0x54)) + 0x4) = val; }  // double deref byte setter
 
 // 0x8015AB94 (12 bytes)
-void ObjectDataBehaviorTree::SetNumParams(unsigned char) { *(char*)((char*)(*(void**)((char*)this + 0x54)) + 0x5) = val; }  // double deref byte setter
+void ObjectDataBehaviorTree::SetNumParams(unsigned char val) { *(char*)((char*)(*(void**)((char*)this + 0x54)) + 0x5) = val; }  // double deref byte setter
 
 // 0x8015AC10 (12 bytes)
-void ObjectDataBehaviorTree::SetNumLocals(unsigned char) { *(char*)((char*)(*(void**)((char*)this + 0x54)) + 0x6) = val; }  // double deref byte setter
+void ObjectDataBehaviorTree::SetNumLocals(unsigned char val) { *(char*)((char*)(*(void**)((char*)this + 0x54)) + 0x6) = val; }  // double deref byte setter
 
 // 0x8015AC1C (12 bytes)
 unsigned char ObjectDataBehaviorTree::GetTreeVersion() const { return *(unsigned char*)((char*)(*(void**)((char*)this + 0x54)) + 0xB); }  // double deref byte
 
 // 0x8015AC28 (12 bytes)
-void ObjectDataBehaviorTree::SetTreeVersion(unsigned char) { *(int*)((char*)(*(void**)((char*)this + 0x54)) + 0x8) = val; }  // double deref setter
+void ObjectDataBehaviorTree::SetTreeVersion(unsigned char val) { *(int*)((char*)(*(void**)((char*)this + 0x54)) + 0x8) = val; }  // double deref setter
 
 // 0x8015AC50 (8 bytes)
-void ObjectDataBehaviorTree::SetResID(short) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
+void ObjectDataBehaviorTree::SetResID(short val) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
 
-#endif

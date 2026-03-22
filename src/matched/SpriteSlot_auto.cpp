@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for SpriteSlot
@@ -9,16 +8,16 @@
 int SpriteSlot::GetTicksPerFrame() { return 12; }
 
 // 0x801453CC (8 bytes)
-void SpriteSlot::UseBalloonSprite(int) { *(int*)((char*)this + 0x3C) = val; }  // offset 0x3C
+void SpriteSlot::UseBalloonSprite(int val) { *(int*)((char*)this + 0x3C) = val; }  // offset 0x3C
 
 // 0x801453D4 (8 bytes)
-void SpriteSlot::UseOverlaySprite(int) { *(int*)((char*)this + 0x40) = val; }  // offset 0x40
+void SpriteSlot::UseOverlaySprite(int val) { *(int*)((char*)this + 0x40) = val; }  // offset 0x40
 
 // 0x801453DC (8 bytes)
-void SpriteSlot::SetOptions(int) { *(int*)((char*)this + 0x48) = val; }  // offset 0x48
+void SpriteSlot::SetOptions(int val) { *(int*)((char*)this + 0x48) = val; }  // offset 0x48
 
 // 0x801453E4 (8 bytes)
-void SpriteSlot::SetPopSize(float) { *(float*)((char*)this + 0x5C) = val; }  // offset 0x5C
+void SpriteSlot::SetPopSize(float val) { *(float*)((char*)this + 0x5C) = val; }  // offset 0x5C
 
 // 0x80145408 (8 bytes)
 int SpriteSlot::GetSpriteID() const { return *(int*)((char*)this + 0x18); }  // offset 0x18
@@ -33,10 +32,10 @@ int SpriteSlot::GetOverlaySpriteID() const { return *(int*)((char*)this + 0x40);
 int SpriteSlot::GetCurrentFrame() const { return *(int*)((char*)this + 0x30); }  // offset 0x30
 
 // 0x80145428 (8 bytes)
-int SpriteSlot::GetPPerson() { return *(int*)((char*)this + 0x64); }  // offset 0x64
+cXPerson* SpriteSlot::GetPPerson() { return *(int*)((char*)this + 0x64); }  // offset 0x64
 
 // 0x80145430 (8 bytes)
-void SpriteSlot::SetPriority(int) { *(int*)((char*)this + 0x44) = val; }  // offset 0x44
+void SpriteSlot::SetPriority(int val) { *(int*)((char*)this + 0x44) = val; }  // offset 0x44
 
 // 0x80145438 (8 bytes)
 int SpriteSlot::GetPriority() const { return *(int*)((char*)this + 0x44); }  // offset 0x44
@@ -48,16 +47,16 @@ int SpriteSlot::GetOptions() const { return *(int*)((char*)this + 0x48); }  // o
 bool SpriteSlot::GetIsSkillMeter() const { return (*(int*)((char*)this + 0x48) >> 4) & 1; }  // bit 4
 
 // 0x80145454 (8 bytes)
-int SpriteSlot::GetShowOverInactivePeople() const { return *(int*)((char*)this + 0x60); }  // offset 0x60
+bool SpriteSlot::GetShowOverInactivePeople() const { return *(int*)((char*)this + 0x60); }  // offset 0x60
 
 // 0x8014545C (8 bytes)
-void SpriteSlot::SetShowOverInactivePeople(bool) { *(int*)((char*)this + 0x60) = val; }  // offset 0x60
+void SpriteSlot::SetShowOverInactivePeople(bool val) { *(int*)((char*)this + 0x60) = val; }  // offset 0x60
 
 // 0x80145464 (8 bytes)
 float SpriteSlot::GetAltOffset() const { return *(float*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x8014546C (8 bytes)
-void SpriteSlot::SetAltOffset(float) { *(float*)((char*)this + 0xC) = val; }  // offset 0xC
+void SpriteSlot::SetAltOffset(float val) { *(float*)((char*)this + 0xC) = val; }  // offset 0xC
 
 // 0x80145474 (8 bytes)
 float SpriteSlot::GetSizeMultiplierX() const { return *(float*)((char*)this + 0x50); }  // offset 0x50
@@ -68,4 +67,3 @@ float SpriteSlot::GetSizeMultiplierY() const { return *(float*)((char*)this + 0x
 // 0x80145484 (8 bytes)
 float SpriteSlot::GetAlpha() const { return *(float*)((char*)this + 0x58); }  // offset 0x58
 
-#endif

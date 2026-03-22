@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AmbientScorePlayer
@@ -6,19 +5,19 @@
 // 7 functions, 60 bytes
 
 // 0x800A8764 (8 bytes)
-void AmbientScorePlayer::SetTime(float) { *(float*)((char*)this + 0x34) = val; }  // offset 0x34
+void AmbientScorePlayer::SetTime(float val) { *(float*)((char*)this + 0x34) = val; }  // offset 0x34
 
 // 0x800A876C (8 bytes)
 float AmbientScorePlayer::GetTime() { return *(float*)((char*)this + 0x34); }  // offset 0x34
 
 // 0x800A8B10 (12 bytes)
-int AmbientScorePlayer::SetVolume(int) { *(int*)((char*)this + 0x14) = val; return 1; }
+int AmbientScorePlayer::SetVolume(int val) { *(int*)((char*)this + 0x14) = val; return 1; }
 
 // 0x800A8B1C (8 bytes)
 int AmbientScorePlayer::GetVolume() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x800A8B24 (8 bytes)
-int AmbientScorePlayer::GetAmbientScore() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+ERAmbientScore* AmbientScorePlayer::GetAmbientScore() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800A8B2C (8 bytes)
 int AmbientScorePlayer::GetNumPlaying() { return *(int*)((char*)this + 0x10); }  // offset 0x10
@@ -26,4 +25,3 @@ int AmbientScorePlayer::GetNumPlaying() { return *(int*)((char*)this + 0x10); } 
 // 0x800A8B34 (8 bytes)
 void* AmbientScorePlayer::GetListenerInfos() { return (char*)this + 0x20; }  // offset 0x20
 
-#endif

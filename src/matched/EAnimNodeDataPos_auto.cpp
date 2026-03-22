@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAnimNodeDataPos
@@ -9,15 +8,16 @@
 void* EAnimNodeDataPos::GetTypeInfo() const { return (void*)0x8050D7AC; }  // global data pointer
 
 // 0x803C980C (12 bytes)
-int EAnimNodeDataPos::GetTypeName() const { return *(int*)0x8050D7B8; }  // global variable
+void EAnimNodeDataPos::GetTypeName() const { return *(int*)0x8050D7B8; }  // global variable
 
 // 0x803C9818 (12 bytes)
-int EAnimNodeDataPos::GetTypeKey() const { return *(int*)0x8050D7BC; }  // global variable
+void EAnimNodeDataPos::GetTypeKey() const { return *(int*)0x8050D7BC; }  // global variable
+#if 0
 
 // 0x803C9824 (12 bytes)
 unsigned short EAnimNodeDataPos::GetTypeVersion() const { return *(unsigned short*)0x8050D7C0; }  // global variable
+#endif
 
 // 0x803CA8CC (16 bytes)
 void EAnimNodeDataPos::Destruct(EAnimNodeDataPos *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
 
-#endif

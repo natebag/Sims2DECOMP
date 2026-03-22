@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickDataBehaviorConstants
@@ -12,12 +11,11 @@ void QuickDataBehaviorConstants::SetValueCount(int) { }
 void QuickDataBehaviorConstants::AddRef() { *(int*)((char*)this + 0x1C) += 1; }  // refcount increment
 
 // 0x8015A7F0 (8 bytes)
-int QuickDataBehaviorConstants::SaveDataByID(ObjectDataID &) { return 0; }
+void QuickDataBehaviorConstants::SaveDataByID(ObjectDataID &) {  }
 
 // 0x8015A7F8 (8 bytes)
-int QuickDataBehaviorConstants::GetDataSourceType() const { return 1; }
+void QuickDataBehaviorConstants::GetDataSourceType() const {  }
 
 // 0x8015A800 (8 bytes)
-bool QuickDataBehaviorConstants::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
+void QuickDataBehaviorConstants::LoadOnlyNameAndIDFromIndex(unsigned int, int) {  }
 
-#endif

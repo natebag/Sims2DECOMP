@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptValueNoGC
@@ -11,34 +10,3 @@ bool AptValueNoGC::IsGarbageCollected() const { return false; }
 // 0x80281D2C (4 bytes)
 void AptValueNoGC::RegisterReferences() const { }
 
-// 0x802AEC3C (8 bytes)
-bool AptValueNoGC::IsGarbageCollected() const { return false; }
-
-// 0x802AEC44 (4 bytes)
-void AptValueNoGC::RegisterReferences() const { }
-
-// 0x802B42F0 (8 bytes)
-bool AptValueNoGC::IsGarbageCollected() const { return false; }
-
-// 0x802B42F8 (4 bytes)
-void AptValueNoGC::RegisterReferences() const { }
-
-// 0x802BB8D4 (8 bytes)
-bool AptValueNoGC::IsGarbageCollected() const { return false; }
-
-// 0x802BB8DC (4 bytes)
-void AptValueNoGC::RegisterReferences() const { }
-
-// 0x802BBB84 (8 bytes)
-bool AptValueNoGC::IsGarbageCollected() const { return false; }
-
-// 0x802BBB8C (4 bytes)
-void AptValueNoGC::RegisterReferences() const { }
-
-// 0x802BBE40 (8 bytes)
-bool AptValueNoGC::IsGarbageCollected() const { return false; }
-
-// 0x802BBE48 (4 bytes)
-void AptValueNoGC::RegisterReferences() const { }
-
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataObjDefinition
@@ -12,27 +11,30 @@ void ObjectDataObjDefinition::Detach() { *(char*)((char*)this + 0x1A) = 0; }
 void ObjectDataObjDefinition::ResetResData() { }
 
 // 0x8015C110 (8 bytes)
-void ObjectDataObjDefinition::SetResDataName(unsigned int, short, char *) { return 0; }
+int ObjectDataObjDefinition::SetResDataName(unsigned int, short, char *) { return 0; }
 
 // 0x8015C1E8 (12 bytes)
 unsigned int ObjectDataObjDefinition::GetResourceType() const { return 0x4F424A44; }
 
 // 0x8015C6F8 (8 bytes)
-void ObjectDataObjDefinition::LoadFromDBByID(unsigned int, short) { return 0; }
+int ObjectDataObjDefinition::LoadFromDBByID(unsigned int, short) { return 0; }
 
 // 0x8015C700 (8 bytes)
-void ObjectDataObjDefinition::SaveToDB(unsigned int, short, StringBuffer &) { return 0; }
+int ObjectDataObjDefinition::SaveToDB(unsigned int, short, StringBuffer &) { return 0; }
 
 // 0x8015C778 (20 bytes)
-void ObjectDataObjDefinition::AddRef() { *(int*)((char*)this + 0x14) += 1; }  // refcount increment
+int ObjectDataObjDefinition::AddRef() { *(int*)((char*)this + 0x14) += 1; }  // refcount increment
 
 // 0x8015CA2C (8 bytes)
-void ObjectDataObjDefinition::SetResID(short) { *(short*)((char*)this + 0x18) = val; }  // offset 0x18
+void ObjectDataObjDefinition::SetResID(short val) { *(short*)((char*)this + 0x18) = val; }  // offset 0x18
+#if 0
 
 // 0x8015CA34 (8 bytes)
 int ObjectDataObjDefinition::GetData() { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
+#endif
+#if 0
 
 // 0x8015CA3C (8 bytes)
 int ObjectDataObjDefinition::GetData() const { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
-
 #endif
+

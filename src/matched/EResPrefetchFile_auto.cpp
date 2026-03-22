@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResPrefetchFile
@@ -9,21 +8,20 @@
 void EResPrefetchFile::Destroy() { }
 
 // 0x803131A8 (8 bytes)
-int EResPrefetchFile::Write(void *, unsigned int) { return 0; }
+void EResPrefetchFile::Write(void *, unsigned int) { return 0; }
 
 // 0x803131B0 (8 bytes)
-int EResPrefetchFile::Flush() { return 1; }
+void EResPrefetchFile::Flush() { return 1; }
 
 // 0x803131B8 (8 bytes)
-int EResPrefetchFile::GetLastError() const { return 0; }
+void EResPrefetchFile::GetLastError() const { return 0; }
 
 // 0x803131C0 (8 bytes)
-int EResPrefetchFile::GetSystemHandle() const { return 0; }
+void EResPrefetchFile::GetSystemHandle() const { return 0; }
 
 // 0x803131C8 (8 bytes)
-int EResPrefetchFile::Tell() const { return *(int*)((char*)this + 0x40); }  // offset 0x40
+void EResPrefetchFile::Tell() const { return *(int*)((char*)this + 0x40); }  // offset 0x40
 
 // 0x80313338 (8 bytes)
-int EResPrefetchFile::GetResMan() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
+void EResPrefetchFile::GetResMan() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
 
-#endif

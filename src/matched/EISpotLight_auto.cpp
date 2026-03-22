@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EISpotLight
@@ -6,21 +5,20 @@
 // 6 functions, 72 bytes
 
 // 0x8022B818 (12 bytes)
-void* EISpotLight::GetTypeInfo() const { return (void*)0x8050CC98; }  // global data pointer
+const ETypeInfo* EISpotLight::GetTypeInfo() const { return (void*)0x8050CC98; }  // global data pointer
 
 // 0x8022B824 (12 bytes)
-int EISpotLight::GetTypeName() const { return *(int*)0x8050CCA4; }  // global variable
+const char* EISpotLight::GetTypeName() const { return *(int*)0x8050CCA4; }  // global variable
 
 // 0x8022B830 (12 bytes)
-int EISpotLight::GetTypeKey() const { return *(int*)0x8050CCA8; }  // global variable
+u32 EISpotLight::GetTypeKey() const { return *(int*)0x8050CCA8; }  // global variable
 
 // 0x8022B83C (12 bytes)
 unsigned short EISpotLight::GetTypeVersion() const { return *(unsigned short*)0x8050CCAC; }  // global variable
 
 // 0x8022B848 (12 bytes)
-void* EISpotLight::GetTypeInfoStatic() { return (void*)0x8050CC98; }  // global data pointer
+const ETypeInfo* EISpotLight::GetTypeInfoStatic() { return (void*)0x8050CC98; }  // global data pointer
 
 // 0x8022B854 (12 bytes)
 unsigned short EISpotLight::GetReadVersion() { return *(unsigned short*)0x8050CCAE; }  // global variable
 
-#endif

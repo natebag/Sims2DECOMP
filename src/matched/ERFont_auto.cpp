@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERFont
@@ -9,30 +8,37 @@
 void* ERFont::GetTypeInfo() const { return (void*)0x8050CEB0; }  // global data pointer
 
 // 0x80317854 (12 bytes)
-int ERFont::GetTypeName() const { return *(int*)0x8050CEBC; }  // global variable
+void ERFont::GetTypeName() const { return *(int*)0x8050CEBC; }  // global variable
 
 // 0x80317860 (12 bytes)
-int ERFont::GetTypeKey() const { return *(int*)0x8050CEC0; }  // global variable
+void ERFont::GetTypeKey() const { return *(int*)0x8050CEC0; }  // global variable
+#if 0
 
 // 0x8031786C (12 bytes)
 unsigned short ERFont::GetTypeVersion() const { return *(unsigned short*)0x8050CEC4; }  // global variable
+#endif
 
 // 0x80317878 (12 bytes)
 void* ERFont::GetTypeInfoStatic() { return (void*)0x8050CEB0; }  // global data pointer
+#if 0
 
 // 0x80317884 (12 bytes)
 unsigned short ERFont::GetReadVersion() { return *(unsigned short*)0x8050CEC6; }  // global variable
+#endif
+#if 0
 
 // 0x80317944 (8 bytes)
-int ERFont::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* ERFont::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x80317980 (8 bytes)
-float ERFont::GetYSize() { return *(float*)((char*)this + 0x4C); }  // offset 0x4C
+void ERFont::GetYSize() { return *(float*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80317988 (8 bytes)
-float ERFont::GetAspect() { return *(float*)((char*)this + 0x50); }  // offset 0x50
+void ERFont::GetAspect() { return *(float*)((char*)this + 0x50); }  // offset 0x50
+#if 0
 
 // 0x80317A40 (8 bytes)
 void* ERFont::GetColor() { return (char*)this + 0x58; }  // offset 0x58
-
 #endif
+

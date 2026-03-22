@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PlayerFamilyImpl
@@ -6,21 +5,20 @@
 // 6 functions, 52 bytes
 
 // 0x8012D1AC (8 bytes)
-void* PlayerFamilyImpl::GetClothingUnlocks() { return (char*)this + 0xC8; }  // offset 0xC8
+void PlayerFamilyImpl::GetClothingUnlocks() { return (char*)this + 0xC8; }  // offset 0xC8
 
 // 0x8012D1B4 (8 bytes)
-void* PlayerFamilyImpl::GetInventory() { return (char*)this + 0x38; }  // offset 0x38
+void PlayerFamilyImpl::GetInventory() { return (char*)this + 0x38; }  // offset 0x38
 
 // 0x8012D1BC (8 bytes)
-void* PlayerFamilyImpl::GetGoalAndUnlockData() { return (char*)this + 0xCDC; }  // offset 0xCDC
+void PlayerFamilyImpl::GetGoalAndUnlockData() { return (char*)this + 0xCDC; }  // offset 0xCDC
 
 // 0x8012D1C4 (8 bytes)
-int PlayerFamilyImpl::GetTotalAspirationScore() const { return *(int*)((char*)this + 0xD60); }  // offset 0xD60
+void PlayerFamilyImpl::GetTotalAspirationScore() const { return *(int*)((char*)this + 0xD60); }  // offset 0xD60
 
 // 0x8012D1CC (8 bytes)
-void PlayerFamilyImpl::SetTotalAspirationScore(int) { *(int*)((char*)this + 0xD60) = val; }  // offset 0xD60
+void PlayerFamilyImpl::SetTotalAspirationScore(int val) { *(int*)((char*)this + 0xD60) = val; }  // offset 0xD60
 
 // 0x8012D1D4 (12 bytes)
 void PlayerFamilyImpl::ConvertToRegularFamilyOnWrite() { *(int*)((char*)this + 0xD64) = 1; }
 
-#endif

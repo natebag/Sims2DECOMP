@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Commander
@@ -6,12 +5,11 @@
 // 3 functions, 24 bytes
 
 // 0x800B42B4 (8 bytes)
-int Commander::DoCommand(short, int) { return 0; }
+bool Commander::DoCommand(short, int) { return 0; }
 
 // 0x800B43DC (8 bytes)
 int Commander::GetType() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x800B43E4 (8 bytes)
-int Commander::GetNext() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+Commander* Commander::GetNext() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
-#endif

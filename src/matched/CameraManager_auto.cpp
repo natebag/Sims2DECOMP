@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CameraManager
@@ -6,7 +5,7 @@
 // 5 functions, 52 bytes
 
 // 0x8001EB3C (20 bytes)
-void CameraManager::CameraManager() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
+CameraManager::CameraManager() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
 
 // 0x8001EB78 (4 bytes)
 void CameraManager::Initialize() { }
@@ -18,6 +17,5 @@ void CameraManager::Shutdown() { }
 void CameraManager::SetCamera(int, ESimsCam *) { /* indexed array store, shift=2 */ }
 
 // 0x8001ECA0 (12 bytes)
-int CameraManager::GetCamera(int) { /* indexed array load, elem_size=4 */ return 0; }
+void CameraManager::GetCamera(int) { /* indexed array load, elem_size=4 */  }
 
-#endif

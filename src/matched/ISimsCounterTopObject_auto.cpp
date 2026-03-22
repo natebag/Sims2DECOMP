@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimsCounterTopObject
@@ -6,21 +5,20 @@
 // 6 functions, 72 bytes
 
 // 0x80054280 (12 bytes)
-void* ISimsCounterTopObject::GetTypeInfo() const { return (void*)0x8050B840; }  // global data pointer
+const ETypeInfo* ISimsCounterTopObject::GetTypeInfo() const { return (void*)0x8050B840; }  // global data pointer
 
 // 0x8005428C (12 bytes)
-int ISimsCounterTopObject::GetTypeName() const { return *(int*)0x8050B84C; }  // global variable
+const char* ISimsCounterTopObject::GetTypeName() const { return *(int*)0x8050B84C; }  // global variable
 
 // 0x80054298 (12 bytes)
-int ISimsCounterTopObject::GetTypeKey() const { return *(int*)0x8050B850; }  // global variable
+u32 ISimsCounterTopObject::GetTypeKey() const { return *(int*)0x8050B850; }  // global variable
 
 // 0x800542A4 (12 bytes)
 unsigned short ISimsCounterTopObject::GetTypeVersion() const { return *(unsigned short*)0x8050B854; }  // global variable
 
 // 0x800542B0 (12 bytes)
-void* ISimsCounterTopObject::GetTypeInfoStatic() { return (void*)0x8050B840; }  // global data pointer
+const ETypeInfo* ISimsCounterTopObject::GetTypeInfoStatic() { return (void*)0x8050B840; }  // global data pointer
 
 // 0x800542BC (12 bytes)
 unsigned short ISimsCounterTopObject::GetReadVersion() { return *(unsigned short*)0x8050B856; }  // global variable
 
-#endif

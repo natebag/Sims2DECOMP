@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for BSplineVolume
@@ -9,6 +8,5 @@
 void BSplineVolume::Write(EStream &) { }
 
 // 0x8030F3BC (8 bytes)
-int BSplineVolume::GetID() { return *(int*)((char*)this + 0x80); }  // offset 0x80
+void BSplineVolume::GetID() { return *(int*)((char*)this + 0x80); }  // offset 0x80
 
-#endif

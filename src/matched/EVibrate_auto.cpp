@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EVibrate
@@ -9,9 +8,8 @@
 void EVibrate::Disable() { *(int*)((char*)this + 0x0) = 0; }
 
 // 0x80307CBC (8 bytes)
-int EVibrate::IsOn() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+void EVibrate::IsOn() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x8030833C (8 bytes)
 void EVibrate::UpdateVibration() { return 1; }
 
-#endif

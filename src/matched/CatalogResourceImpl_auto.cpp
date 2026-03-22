@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CatalogResourceImpl
@@ -6,12 +5,11 @@
 // 3 functions, 48 bytes
 
 // 0x800B1D64 (16 bytes)
-void CatalogResourceImpl::GetName() { /* lwz+mr+stw */ }
+StringHandle CatalogResourceImpl::GetName() { /* lwz+mr+stw */ }
 
 // 0x800B1D74 (16 bytes)
-void CatalogResourceImpl::GetDescription() { /* lwz+mr+stw */ }
+StringHandle CatalogResourceImpl::GetDescription() { /* lwz+mr+stw */ }
 
 // 0x800B1D84 (16 bytes)
-void CatalogResourceImpl::GetShortName() { /* lwz+mr+stw */ }
+StringHandle CatalogResourceImpl::GetShortName() { /* lwz+mr+stw */ }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptViewer
@@ -9,15 +8,14 @@
 void AptViewer::Update() { }
 
 // 0x80010D68 (8 bytes)
-bool AptViewer::ReadController(int, bool, int, bool) { return false; }
+void AptViewer::ReadController(int, bool, int, bool) { return false; }
 
 // 0x80011E14 (8 bytes)
-int AptViewer::UIOn() { return 1; }
+void AptViewer::UIOn() { return 1; }
 
 // 0x80011E1C (16 bytes)
-int AptViewer::AllowControllerReading(bool) { int old = *(int*)((char*)this + 0x3A4); *(int*)((char*)this + 0x3A4) = val; return old; }  // swap setter
+void AptViewer::AllowControllerReading(bool val) { int old = *(int*)((char*)this + 0x3A4); *(int*)((char*)this + 0x3A4) = val; return old; }  // swap setter
 
 // 0x80011E58 (8 bytes)
-int AptViewer::IsReadControllerActive() { return *(int*)((char*)this + 0x3A4); }  // offset 0x3A4
+void AptViewer::IsReadControllerActive() { return *(int*)((char*)this + 0x3A4); }  // offset 0x3A4
 
-#endif

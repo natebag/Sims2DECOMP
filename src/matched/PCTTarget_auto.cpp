@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PCTTarget
@@ -6,16 +5,18 @@
 // 7 functions, 76 bytes
 
 // 0x801D49D0 (16 bytes)
-int PCTTarget::get_cell_info_array_index(unsigned int) const { /* deref 180(r3) * 6 + param */ return 0; }
+unsigned int PCTTarget::get_cell_info_array_index(unsigned int) const { /* deref 180(r3) * 6 + param */ return 0; }
+#if 0
 
 // 0x801D613C (8 bytes)
 int PCTTarget::get_motive_rating_label(unsigned int, unsigned wchar_t *) const { return 1; }
+#endif
 
 // 0x801D61AC (8 bytes)
 int PCTTarget::refresh_text_field(char *, unsigned int) { return 1; }
 
 // 0x801D61B4 (8 bytes)
-bool PCTTarget::set_control_visible(char *, bool) { return true; }
+int PCTTarget::set_control_visible(char *, bool) { return true; }
 
 // 0x801D6DE0 (12 bytes)
 void PCTTarget::buy_fail_dialog_selection_callback(int) { *(int*)((char*)this + 0xF0) = 0; }
@@ -26,4 +27,3 @@ void PCTTarget::ZeroInputCallback() { *(int*)((char*)this + 0xF0) = 0; }
 // 0x801D875C (12 bytes)
 void PCTTarget::DialogClosedCallback() { *(int*)((char*)this + 0xF0) = 0; }
 
-#endif

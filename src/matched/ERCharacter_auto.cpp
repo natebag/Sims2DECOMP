@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERCharacter
@@ -12,24 +11,29 @@ void ERCharacter::PrintNodes() { }
 void* ERCharacter::GetTypeInfo() const { return (void*)0x8050D7FC; }  // global data pointer
 
 // 0x80368C50 (12 bytes)
-int ERCharacter::GetTypeName() const { return *(int*)0x8050D808; }  // global variable
+void ERCharacter::GetTypeName() const { return *(int*)0x8050D808; }  // global variable
 
 // 0x80368C5C (12 bytes)
-int ERCharacter::GetTypeKey() const { return *(int*)0x8050D80C; }  // global variable
+void ERCharacter::GetTypeKey() const { return *(int*)0x8050D80C; }  // global variable
+#if 0
 
 // 0x80368C68 (12 bytes)
 unsigned short ERCharacter::GetTypeVersion() const { return *(unsigned short*)0x8050D810; }  // global variable
+#endif
 
 // 0x80368C74 (12 bytes)
 void* ERCharacter::GetTypeInfoStatic() { return (void*)0x8050D7FC; }  // global data pointer
+#if 0
 
 // 0x80368C80 (12 bytes)
 unsigned short ERCharacter::GetReadVersion() { return *(unsigned short*)0x8050D812; }  // global variable
+#endif
+#if 0
 
 // 0x80368D30 (8 bytes)
-int ERCharacter::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* ERCharacter::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x80368D64 (16 bytes)
-void* ERCharacter::GetNode(int) { return (char*)(*(void**)((char*)this + 0x14)) + index * 184; }  // struct array, stride=184
+void ERCharacter::GetNode(int index) { return (char*)(*(void**)((char*)this + 0x14)) + index * 184; }  // struct array, stride=184
 
-#endif

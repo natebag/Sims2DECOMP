@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasListener
@@ -6,10 +5,10 @@
 // 9 functions, 44 bytes
 
 // 0x80161BA0 (8 bytes)
-void CasListener::SetMediator(CasMediator *) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
+void CasListener::SetMediator(CasMediator * val) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x80161BA8 (8 bytes)
-int CasListener::GetMediator() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
+CasMediator* CasListener::GetMediator() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80161BB0 (4 bytes)
 void CasListener::HandleEventChangeFocus(CasEventChangeFocus &) { }
@@ -32,4 +31,3 @@ void CasListener::HandleEventMorphSim(CasEventMorphSimS2C &) { }
 // 0x80161BC8 (4 bytes)
 void CasListener::HandleEventResetSimDraw(CasEventResetSimDraw &) { }
 
-#endif

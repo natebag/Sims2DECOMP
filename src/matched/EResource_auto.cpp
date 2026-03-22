@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResource
@@ -9,55 +8,63 @@
 void* EResource::GetTypeInfo() const { return (void*)0x8050CD38; }  // global data pointer
 
 // 0x803121A4 (12 bytes)
-int EResource::GetTypeName() const { return *(int*)0x8050CD44; }  // global variable
+void EResource::GetTypeName() const { return *(int*)0x8050CD44; }  // global variable
 
 // 0x803121B0 (12 bytes)
-int EResource::GetTypeKey() const { return *(int*)0x8050CD48; }  // global variable
+void EResource::GetTypeKey() const { return *(int*)0x8050CD48; }  // global variable
+#if 0
 
 // 0x803121BC (12 bytes)
 unsigned short EResource::GetTypeVersion() const { return *(unsigned short*)0x8050CD4C; }  // global variable
+#endif
 
 // 0x803121C8 (12 bytes)
 void* EResource::GetTypeInfoStatic() { return (void*)0x8050CD38; }  // global data pointer
+#if 0
 
 // 0x803121D4 (12 bytes)
 unsigned short EResource::GetReadVersion() { return *(unsigned short*)0x8050CD4E; }  // global variable
+#endif
 
 // 0x8031226C (8 bytes)
 void EResource::IsSafeToDelete() { return 1; }
 
 // 0x80312274 (8 bytes)
-int EResource::GetResId() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void EResource::GetResId() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x8031227C (8 bytes)
-void EResource::SetResId(unsigned int) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
+void EResource::SetResId(unsigned int val) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 
 // 0x8031228C (16 bytes)
-void EResource::SetResSize(unsigned int) { /* set bitfield [0:23] at offset 0x10 */ }
+void EResource::SetResSize(unsigned int) { }
 
 // 0x8031229C (12 bytes)
-unsigned int EResource::GetResSize() { return *(unsigned int*)((char*)this + 0x10) >> 8; }
+void EResource::GetResSize() { return *(unsigned int*)((char*)this + 0x10) >> 8; }
 
 // 0x803122A8 (4 bytes)
 void EResource::SetResName(char *) { }
 
 // 0x803122AC (12 bytes)
-void* EResource::GetResName() { return (void*)0x80420498; }  // global data pointer
+void EResource::GetResName() { return (void*)0x80420498; }  // global data pointer
 
 // 0x803122B8 (4 bytes)
 void EResource::SetCheckPoint(unsigned int) { }
 
 // 0x803122BC (8 bytes)
-int EResource::GetCheckPoint() { return 0; }
+void EResource::GetCheckPoint() { return 0; }
+#if 0
 
 // 0x803122FC (8 bytes)
-int EResource::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* EResource::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#endif
 
 // 0x80312338 (4 bytes)
 void EResource::Init() { }
+#if 0
 
 // 0x8031233C (4 bytes)
 void EResource::Refresh(EFile *) { }
+#endif
 
 // 0x80312340 (4 bytes)
 void EResource::DelRefSubResources() { }
@@ -66,9 +73,8 @@ void EResource::DelRefSubResources() { }
 void EResource::AddRefSubResources() { }
 
 // 0x80312348 (8 bytes)
-int EResource::TryIncrementSubResources() { return 1; }
+void EResource::TryIncrementSubResources() { return 1; }
 
 // 0x80312350 (4 bytes)
 void EResource::DetachClone() { }
 
-#endif

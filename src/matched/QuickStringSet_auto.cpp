@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for QuickStringSet
@@ -10,9 +9,11 @@ void QuickStringSet::Copy(StringSet *) { }
 
 // 0x800A7768 (4 bytes)
 void QuickStringSet::SetString(int, char *, char) { }
+#if 0
 
 // 0x800A776C (4 bytes)
 void QuickStringSet::SetString(int, unsigned wchar_t *, char) { }
+#endif
 
 // 0x800A7770 (4 bytes)
 void QuickStringSet::InsertString(int, char *, char) { }
@@ -28,15 +29,19 @@ void QuickStringSet::SetDescription(int, char *, char) { }
 
 // 0x800A77A8 (4 bytes)
 void QuickStringSet::SetName(StringBuffer *) { }
+#if 0
 
 // 0x800A7BF0 (8 bytes)
 void QuickStringSet::Save(iResFile *, short) { return 0; }
+#endif
 
 // 0x800A7BF8 (8 bytes)
-bool QuickStringSet::LoadDef(bool, bool) { return false; }
+void QuickStringSet::LoadDef(bool, bool) { return false; }
+#if 0
 
 // 0x800A7C00 (8 bytes)
 void QuickStringSet::Save() { return 0; }
+#endif
 
 // 0x800A7C20 (4 bytes)
 void QuickStringSet::WriteAnsiToDB() { }
@@ -65,4 +70,3 @@ void QuickStringSet::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return 0; }
 // 0x800A7D44 (20 bytes)
 void QuickStringSet::AddRef() { *(int*)((char*)this + 0x10) += 1; }  // refcount increment
 
-#endif

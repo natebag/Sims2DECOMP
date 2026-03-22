@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjectDataBehaviorConstants
@@ -6,18 +5,19 @@
 // 5 functions, 64 bytes
 
 // 0x80159C0C (12 bytes)
-int ObjectDataBehaviorConstants::CountValues() const { return *(unsigned short*)((char*)this + 0x4) & 0x7FFF; }
+void ObjectDataBehaviorConstants::CountValues() const { return *(unsigned short*)((char*)this + 0x4) & 0x7FFF; }
 
 // 0x80159C44 (16 bytes)
-void ObjectDataBehaviorConstants::SetValue(int, short) { /* indexed short store via ptr at 20(r3) */ }
+void ObjectDataBehaviorConstants::SetValue(int, short) { }
 
 // 0x80159D88 (12 bytes)
-bool ObjectDataBehaviorConstants::IsTuning() const { return (*(short*)((char*)this + 0x4) >> 15) & 1; }  // bit 15 from signed short
+void ObjectDataBehaviorConstants::IsTuning() const { return (*(short*)((char*)this + 0x4) >> 15) & 1; }  // bit 15 from signed short
 
 // 0x80159DDC (8 bytes)
 void ObjectDataBehaviorConstants::SetResourceName(StringBuffer &) { return 0; }
+#if 0
 
 // 0x8015A6F4 (16 bytes)
 short ObjectDataBehaviorConstants::GetValue(int) const { /* indexed signed short load via ptr at 20(r3) */ return 0; }
-
 #endif
+

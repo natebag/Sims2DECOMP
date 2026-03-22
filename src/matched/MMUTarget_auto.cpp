@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for MMUTarget
@@ -6,13 +5,15 @@
 // 8 functions, 64 bytes
 
 // 0x801C59E0 (8 bytes)
-int MMUTarget::GetSingleton() { return /* SDA global @ r13-30180 */; }  // lwz r3,-30180(r13)
+MMUTarget* MMUTarget::GetSingleton() { return 0; }  // lwz r3,-30180(r13)
 
 // 0x801C59E8 (12 bytes)
 void MMUTarget::OnCreditsClose() { *(int*)((char*)this + 0xFC) = 1; }
+#if 0
 
 // 0x801C86B4 (16 bytes)
-void MMUTarget::ChangeScreenMode(MMUTarget::MMU_MODE) { /* lwz r0,140(r3); stw r4,140(r3); stw r0,144(r3) */ }
+void MMUTarget::ChangeScreenMode(MMUTarget::MMU_MODE) { }
+#endif
 
 // 0x801C8788 (4 bytes)
 void MMUTarget::OnCancelDialog() { }
@@ -29,4 +30,3 @@ int MMUTarget::GetCurrentMainScreenChoice() const { return *(int*)((char*)this +
 // 0x801E7080 (8 bytes)
 int MMUTarget::GetCurrentGameplayChoice() const { return *(int*)((char*)this + 0xB8); }  // offset 0xB8
 
-#endif

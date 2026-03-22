@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PAZTarget
@@ -6,6 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x801E70B8 (12 bytes)
-void* PAZTarget::GetTLA() const { return (void*)0x803F3F54; }  // global data pointer
+const char* PAZTarget::GetTLA() const { return (void*)0x803F3F54; }  // global data pointer
 
-#endif

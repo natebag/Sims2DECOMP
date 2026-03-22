@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for UIObjectBase
@@ -6,13 +5,13 @@
 // 5 functions, 28 bytes
 
 // 0x803A05E8 (8 bytes)
-int UIObjectBase::GetLocalizable(char *) { return 0; }
+void UIObjectBase::GetLocalizable(char *) {  }
 
 // 0x803A06A0 (4 bytes)
 void UIObjectBase::SetVariable(char *, char *) { }
 
 // 0x803A06A4 (8 bytes)
-int UIObjectBase::GetVariable(char *) { return 0; }
+void UIObjectBase::GetVariable(char *) {  }
 
 // 0x803A06AC (4 bytes)
 void UIObjectBase::Update() { }
@@ -20,4 +19,3 @@ void UIObjectBase::Update() { }
 // 0x803A06B0 (4 bytes)
 void UIObjectBase::Draw(ERC *) { }
 
-#endif

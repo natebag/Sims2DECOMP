@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CameraMotionSystem
@@ -6,12 +5,15 @@
 // 3 functions, 36 bytes
 
 // 0x8001606C (20 bytes)
-void CameraMotionSystem::CameraMotionSystem(SimsCameraParameters *) { *(int*)((char*)this + 0x0) = 0; *(int*)((char*)this + 0x4) = p4; }
+CameraMotionSystem::CameraMotionSystem(SimsCameraParameters * p4) { *(int*)((char*)this + 0x0) = 0; *(int*)((char*)this + 0x4) = p4; }
+#if 0
 
 // 0x800160A8 (8 bytes)
-void CameraMotionSystem::SetMotionType(CameraMotionType) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
+void CameraMotionSystem::SetMotionType(CameraMotionType val) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
+#endif
+#if 0
 
 // 0x800160B0 (8 bytes)
-int CameraMotionSystem::GetMotionType() { return *(int*)((char*)this + 0x0); }  // offset 0x0
-
+CameraMotionType CameraMotionSystem::GetMotionType() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 #endif
+

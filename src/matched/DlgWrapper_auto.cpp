@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for DlgWrapper
@@ -6,54 +5,53 @@
 // 17 functions, 172 bytes
 
 // 0x8007E5E0 (8 bytes)
-int DlgWrapper::GetFont() { return *(int*)((char*)this + 0xA8); }  // offset 0xA8
+void DlgWrapper::GetFont() { return *(int*)((char*)this + 0xA8); }  // offset 0xA8
 
 // 0x8007E5E8 (8 bytes)
-int DlgWrapper::GetDialogPane() { return *(int*)((char*)this + 0xAC); }  // offset 0xAC
+void DlgWrapper::GetDialogPane() { return *(int*)((char*)this + 0xAC); }  // offset 0xAC
 
 // 0x8007E650 (20 bytes)
-void DlgWrapper::SetDialogPos(EVec2 &) { /* copy two fields: 4(r4)->192(r3), 0(r4)->188(r3) */ }
+void DlgWrapper::SetDialogPos(EVec2 &) { }
 
 // 0x8007E664 (8 bytes)
-void DlgWrapper::SetDialogPosX(float) { *(float*)((char*)this + 0xBC) = val; }  // offset 0xBC
+void DlgWrapper::SetDialogPosX(float val) { *(float*)((char*)this + 0xBC) = val; }  // offset 0xBC
 
 // 0x8007E66C (8 bytes)
-void DlgWrapper::SetDialogPosY(float) { *(float*)((char*)this + 0xC0) = val; }  // offset 0xC0
+void DlgWrapper::SetDialogPosY(float val) { *(float*)((char*)this + 0xC0) = val; }  // offset 0xC0
 
 // 0x8007E674 (8 bytes)
-void* DlgWrapper::GetDialogPos() { return (char*)this + 0xBC; }  // offset 0xBC
+void DlgWrapper::GetDialogPos() { return (char*)this + 0xBC; }  // offset 0xBC
 
 // 0x8007E67C (8 bytes)
-float DlgWrapper::GetDialogPosX() const { return *(float*)((char*)this + 0xBC); }  // offset 0xBC
+void DlgWrapper::GetDialogPosX() const { return *(float*)((char*)this + 0xBC); }  // offset 0xBC
 
 // 0x8007E684 (8 bytes)
-float DlgWrapper::GetDialogPosY() const { return *(float*)((char*)this + 0xC0); }  // offset 0xC0
+void DlgWrapper::GetDialogPosY() const { return *(float*)((char*)this + 0xC0); }  // offset 0xC0
 
 // 0x8007E758 (8 bytes)
-void* DlgWrapper::GetDialogSize() { return (char*)this + 0xC4; }  // offset 0xC4
+void DlgWrapper::GetDialogSize() { return (char*)this + 0xC4; }  // offset 0xC4
 
 // 0x8007E760 (8 bytes)
-float DlgWrapper::GetDialogSizeX() const { return *(float*)((char*)this + 0xC4); }  // offset 0xC4
+void DlgWrapper::GetDialogSizeX() const { return *(float*)((char*)this + 0xC4); }  // offset 0xC4
 
 // 0x8007E768 (8 bytes)
-float DlgWrapper::GetDialogSizeY() const { return *(float*)((char*)this + 0xC8); }  // offset 0xC8
+void DlgWrapper::GetDialogSizeY() const { return *(float*)((char*)this + 0xC8); }  // offset 0xC8
 
 // 0x8007E770 (8 bytes)
-float DlgWrapper::GetDialogWidth() const { return *(float*)((char*)this + 0xC4); }  // offset 0xC4
+void DlgWrapper::GetDialogWidth() const { return *(float*)((char*)this + 0xC4); }  // offset 0xC4
 
 // 0x8007E778 (8 bytes)
-float DlgWrapper::GetDialogHeight() const { return *(float*)((char*)this + 0xC8); }  // offset 0xC8
+void DlgWrapper::GetDialogHeight() const { return *(float*)((char*)this + 0xC8); }  // offset 0xC8
 
 // 0x8007E780 (16 bytes)
-float DlgWrapper::GetDialogPadSizeX() const { return *(float*)((char*)(*(void**)((char*)(*(void**)((char*)this + 0xAC)) + 0x64)) + 0x34); }  // triple deref float
+void DlgWrapper::GetDialogPadSizeX() const { return *(float*)((char*)(*(void**)((char*)(*(void**)((char*)this + 0xAC)) + 0x64)) + 0x34); }  // triple deref float
 
 // 0x8007E790 (16 bytes)
-float DlgWrapper::GetDialogPadSizeY() const { return *(float*)((char*)(*(void**)((char*)(*(void**)((char*)this + 0xAC)) + 0x64)) + 0x38); }  // triple deref float
+void DlgWrapper::GetDialogPadSizeY() const { return *(float*)((char*)(*(void**)((char*)(*(void**)((char*)this + 0xAC)) + 0x64)) + 0x38); }  // triple deref float
 
 // 0x8007F06C (8 bytes)
-int DlgWrapper::IsAptDrawable() { return *(int*)((char*)this + 0xB4); }  // offset 0xB4
+void DlgWrapper::IsAptDrawable() { return *(int*)((char*)this + 0xB4); }  // offset 0xB4
 
 // 0x8007F074 (16 bytes)
-int DlgWrapper::SetPlayer(int) { int old = *(int*)((char*)this + 0xCC); *(int*)((char*)this + 0xCC) = val; return old; }  // swap setter
+void DlgWrapper::SetPlayer(int val) { int old = *(int*)((char*)this + 0xCC); *(int*)((char*)this + 0xCC) = val; return old; }  // swap setter
 
-#endif

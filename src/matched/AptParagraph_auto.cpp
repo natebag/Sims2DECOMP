@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptParagraph
@@ -6,9 +5,8 @@
 // 2 functions, 16 bytes
 
 // 0x8000FC68 (8 bytes)
-float AptParagraph::GetParagraphHeight() { return *(float*)((char*)this + 0x30); }  // offset 0x30
+void AptParagraph::GetParagraphHeight() { return *(float*)((char*)this + 0x30); }  // offset 0x30
 
 // 0x8000FC70 (8 bytes)
-float AptParagraph::GetPrintWidth() { return *(float*)((char*)this + 0x24); }  // offset 0x24
+void AptParagraph::GetPrintWidth() { return *(float*)((char*)this + 0x24); }  // offset 0x24
 
-#endif

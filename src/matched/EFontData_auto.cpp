@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EFontData
@@ -6,21 +5,20 @@
 // 6 functions, 72 bytes
 
 // 0x80364B3C (12 bytes)
-void* EFontData::GetTypeInfo() const { return (void*)0x8050D734; }  // global data pointer
+const ETypeInfo* EFontData::GetTypeInfo() const { return (void*)0x8050D734; }  // global data pointer
 
 // 0x80364B48 (12 bytes)
-int EFontData::GetTypeName() const { return *(int*)0x8050D740; }  // global variable
+const char* EFontData::GetTypeName() const { return *(int*)0x8050D740; }  // global variable
 
 // 0x80364B54 (12 bytes)
-int EFontData::GetTypeKey() const { return *(int*)0x8050D744; }  // global variable
+u32 EFontData::GetTypeKey() const { return *(int*)0x8050D744; }  // global variable
 
 // 0x80364B60 (12 bytes)
 unsigned short EFontData::GetTypeVersion() const { return *(unsigned short*)0x8050D748; }  // global variable
 
 // 0x80364B6C (12 bytes)
-void* EFontData::GetTypeInfoStatic() { return (void*)0x8050D734; }  // global data pointer
+const ETypeInfo* EFontData::GetTypeInfoStatic() { return (void*)0x8050D734; }  // global data pointer
 
 // 0x80364B78 (12 bytes)
 unsigned short EFontData::GetReadVersion() { return *(unsigned short*)0x8050D74A; }  // global variable
 
-#endif

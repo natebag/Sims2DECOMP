@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERQuickdata
@@ -12,9 +11,8 @@ void ERQuickdata::UnlockImage() { }
 void ERQuickdata::LockImage() { }
 
 // 0x8031C62C (8 bytes)
-int ERQuickdata::GetImage() const { return *(int*)((char*)this + 0x14); }  // offset 0x14
+void ERQuickdata::GetImage() const { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x8031C634 (8 bytes)
-int ERQuickdata::GetImageSize() const { return *(int*)((char*)this + 0x18); }  // offset 0x18
+void ERQuickdata::GetImageSize() const { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
-#endif

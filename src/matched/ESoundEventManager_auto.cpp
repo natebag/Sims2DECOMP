@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESoundEventManager
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80328498 (8 bytes)
-bool ESoundEventManager::CanCache(EResource *) { return true; }
+void ESoundEventManager::CanCache(EResource *) {  }
 
-#endif

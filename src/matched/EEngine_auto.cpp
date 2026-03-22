@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EEngine
@@ -6,7 +5,7 @@
 // 12 functions, 80 bytes
 
 // 0x802E2B3C (12 bytes)
-void EEngine::ManagedShutdown() { /* SDA global @ r13-26512 = 0 */ }
+void EEngine::ManagedShutdown() { }
 
 // 0x802E2B48 (4 bytes)
 void EEngine::Line() { }
@@ -18,19 +17,19 @@ void EEngine::PrintBanner() { }
 void EEngine::PrintConfiguration() { }
 
 // 0x802E38B8 (8 bytes)
-void EEngine::EnableFrameRatePredictiveSmoothing(bool) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
+void EEngine::EnableFrameRatePredictiveSmoothing(bool val) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 
 // 0x802E38C0 (4 bytes)
 void EEngine::Reboot() { }
 
 // 0x802E38C4 (8 bytes)
-void EEngine::SetCurrentLevel(ERLevel *) { *(int*)((char*)this + 0x30) = val; }  // offset 0x30
+void EEngine::SetCurrentLevel(ERLevel * val) { *(int*)((char*)this + 0x30) = val; }  // offset 0x30
 
 // 0x802E38CC (8 bytes)
-int EEngine::GetCurrentLevel() { return *(int*)((char*)this + 0x30); }  // offset 0x30
+ERLevel* EEngine::GetCurrentLevel() { return *(int*)((char*)this + 0x30); }  // offset 0x30
 
 // 0x802E38D4 (8 bytes)
-void EEngine::SetResetAllowed(bool) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+void EEngine::SetResetAllowed(bool val) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
 
 // 0x802E38DC (8 bytes)
 int EEngine::CanReset() { return *(int*)((char*)this + 0xC); }  // offset 0xC
@@ -41,4 +40,3 @@ void EEngine::SignalShutdown() { }
 // 0x802E38E8 (8 bytes)
 int EEngine::ManagedStartup() { return 1; }
 
-#endif

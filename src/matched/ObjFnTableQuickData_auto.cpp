@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ObjFnTableQuickData
@@ -21,15 +20,14 @@ int ObjFnTableQuickData::SaveDataByID(ObjectDataID &) { return 0; }
 int ObjFnTableQuickData::GetResourceName(StringBuffer &) const { return 0; }
 
 // 0x80110248 (8 bytes)
-void ObjFnTableQuickData::SetResourceName(StringBuffer &) { return 0; }
+int ObjFnTableQuickData::SetResourceName(StringBuffer &) { return 0; }
 
 // 0x801102C0 (20 bytes)
-void ObjFnTableQuickData::AddRef() { *(int*)((char*)this + 0x14) += 1; }  // refcount increment
+int ObjFnTableQuickData::AddRef() { *(int*)((char*)this + 0x14) += 1; }  // refcount increment
 
 // 0x80110330 (8 bytes)
 int ObjFnTableQuickData::LoadFromIndex(unsigned int, int) { return 0; }
 
 // 0x80110338 (8 bytes)
-bool ObjFnTableQuickData::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
+int ObjFnTableQuickData::LoadOnlyNameAndIDFromIndex(unsigned int, int) { return false; }
 
-#endif

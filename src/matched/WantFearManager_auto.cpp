@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WantFearManager
@@ -7,11 +6,12 @@
 
 // 0x8014BD04 (4 bytes)
 void WantFearManager::CaptureLog(bool) { }
+#if 0
 
 // 0x8014BF20 (16 bytes)
-void* WantFearManager::GetEventByIndex(int) const { return (char*)(*(void**)((char*)this + 0x8)) + index * 36; }  // struct array, stride=36
+const int* WantFearManager::GetEventByIndex(int index) const { return (char*)(*(void**)((char*)this + 0x8)) + index * 36; }  // struct array, stride=36
+#endif
 
 // 0x8014BFBC (16 bytes)
-int WantFearManager::GetTreeByIndex(int) const { return ((int*)(*(void**)((char*)this + 0xC)))[index]; }  // ptr->array[index], elem_size=4
+const int* WantFearManager::GetTreeByIndex(int index) const { return ((int*)(*(void**)((char*)this + 0xC)))[index]; }  // ptr->array[index], elem_size=4
 
-#endif

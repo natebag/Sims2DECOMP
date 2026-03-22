@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Slot
@@ -6,12 +5,11 @@
 // 3 functions, 44 bytes
 
 // 0x80142968 (20 bytes)
-void Slot::Slot() { *(void**)((char*)this + 0x0) = (void*)0x80464A30; }  // vtable init
+Slot::Slot() { *(void**)((char*)this + 0x0) = (void*)0x80464A30; }  // vtable init
 
 // 0x8014297C (20 bytes)
-void Slot::Slot(SlotDescriptor *) { *(void**)((char*)this + 0x0) = (void*)0x80464A30; }  // vtable init
+Slot::Slot(SlotDescriptor *) { *(void**)((char*)this + 0x0) = (void*)0x80464A30; }  // vtable init
 
 // 0x80142990 (4 bytes)
 void Slot::WriteSlot(SlotDescriptor *) { }
 
-#endif

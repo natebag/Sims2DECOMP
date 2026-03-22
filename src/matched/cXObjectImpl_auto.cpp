@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXObjectImpl
@@ -27,7 +26,7 @@ bool cXObjectImpl::IsBeingDraggedAround() { return false; }
 int cXObjectImpl::GetLevel() const { return *(int*)((char*)this + 0x80); }  // offset 0x80
 
 // 0x800E2ACC (8 bytes)
-void cXObjectImpl::SetLevel(int) { *(int*)((char*)this + 0x80) = val; }  // offset 0x80
+void cXObjectImpl::SetLevel(int val) { *(int*)((char*)this + 0x80) = val; }  // offset 0x80
 
 // 0x800E3044 (12 bytes)
 void cXObjectImpl::ClearOverrideRenderPosition() { *(int*)((char*)this + 0xCC) = 0; }
@@ -39,111 +38,120 @@ void cXObjectImpl::GetNumTiles(int &, int &) { /* stw r0,0(r4) */; /* stw r0,0(r
 int cXObjectImpl::GetNumAttr() { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x800EAA44 (4 bytes)
-void cXObjectImpl::CastToObjectImpl() { }
+cXObjectImpl* cXObjectImpl::CastToObjectImpl() { }
 
 // 0x800EAB38 (8 bytes)
-int cXObjectImpl::GetSyncObject() { return *(int*)((char*)this + 0xDC); }  // offset 0xDC
+s8 cXObjectImpl::GetSyncObject() { return *(int*)((char*)this + 0xDC); }  // offset 0xDC
 
 // 0x800EAB40 (12 bytes)
 void cXObjectImpl::ClearSyncObject() { *(int*)((char*)this + 0xDC) = 0; }
 
 // 0x800EAB4C (8 bytes)
-int cXObjectImpl::WaitingForSync() { return *(int*)((char*)this + 0xE4); }  // offset 0xE4
+bool cXObjectImpl::WaitingForSync() { return *(int*)((char*)this + 0xE4); }  // offset 0xE4
 
 // 0x800EABC4 (8 bytes)
-int cXObjectImpl::GetFreeWill() { return /* SDA global @ r13-31912 */; }  // lwz r3,-31912(r13)
+bool cXObjectImpl::GetFreeWill() { return 0; }  // lwz r3,-31912(r13)
 
 // 0x800EABCC (8 bytes)
-int cXObjectImpl::GetAutoCenter() { return /* SDA global @ r13-31904 */; }  // lwz r3,-31904(r13)
+bool cXObjectImpl::GetAutoCenter() { return 0; }  // lwz r3,-31904(r13)
 
 // 0x800EABD4 (8 bytes)
-void cXObjectImpl::SetAutoCenter(bool) { /* SDA global @ r13-31904 = param */ }  // stw r3,-31904(r13)
+void cXObjectImpl::SetAutoCenter(bool) { }  // stw r3,-31904(r13)
 
 // 0x800EABDC (8 bytes)
-int cXObjectImpl::GetAutoReset() { return /* SDA global @ r13-31900 */; }  // lwz r3,-31900(r13)
+bool cXObjectImpl::GetAutoReset() { return 0; }  // lwz r3,-31900(r13)
 
 // 0x800EABE4 (8 bytes)
-void cXObjectImpl::SetAutoReset(bool) { /* SDA global @ r13-31900 = param */ }  // stw r3,-31900(r13)
+void cXObjectImpl::SetAutoReset(bool) { }  // stw r3,-31900(r13)
 
 // 0x800EABEC (20 bytes)
 int cXObjectImpl::HierCountSlots() { return ((char*)(*(void**)((char*)this + 0x94)) - (char*)(*(void**)((char*)this + 0x90))) / 32; }  // count = (end-start)/32
+#if 0
 
 // 0x800EAF0C (16 bytes)
-void cXObjectImpl::SetTemp(int, short) { ((short*)((char*)this + 0x16))[index] = val; }  // short array[index] store
+void cXObjectImpl::SetTemp(int val,  short) { ((short*)((char*)this + 0x16))[index] = val; }  // short array[index] store
+#endif
 
 // 0x800EAF1C (16 bytes)
-void cXObjectImpl::SetAttr(int, short) { /* indexed short store via ptr at 8(r3) */ }
+void cXObjectImpl::SetAttr(int, short) { }
 
 // 0x800EAF2C (8 bytes)
-int cXObjectImpl::GetObjectProbe() { return 0; }
+ObjectProbe* cXObjectImpl::GetObjectProbe() { return 0; }
 
 // 0x800EAF34 (4 bytes)
 void cXObjectImpl::SetObjectProbe(ObjectProbe *) { }
 
 // 0x800EAF38 (12 bytes)
-int cXObjectImpl::GetFolder() { return *(int*)((char*)(*(void**)((char*)this + 0x8C)) + 0x50); }  // double deref
+void* cXObjectImpl::GetFolder() { return *(int*)((char*)(*(void**)((char*)this + 0x8C)) + 0x50); }  // double deref
 
 // 0x800EB0BC (8 bytes)
 void* cXObjectImpl::GetRect() { return (char*)this + 0x70; }  // offset 0x70
 
 // 0x800EB0EC (16 bytes)
-short cXObjectImpl::GetTemp(int) { return ((short*)((char*)this + 0x16))[index]; }  // short array[index]
+short cXObjectImpl::GetTemp(int index) { return ((short*)((char*)this + 0x16))[index]; }  // short array[index]
 
 // 0x800EB0FC (16 bytes)
 short cXObjectImpl::GetAttr(int) { /* indexed signed short load via ptr at 8(r3) */ return 0; }
 
 // 0x800EB10C (8 bytes)
-int cXObjectImpl::GetModule() { return *(int*)((char*)this + 0x58); }  // offset 0x58
+ObjectModule* cXObjectImpl::GetModule() { return *(int*)((char*)this + 0x58); }  // offset 0x58
 
 // 0x800EB2CC (8 bytes)
-int cXObjectImpl::GetDef() { return *(int*)((char*)this + 0x88); }  // offset 0x88
+ObjDef* cXObjectImpl::GetDef() { return *(int*)((char*)this + 0x88); }  // offset 0x88
+#if 0
 
 // 0x800EB2D4 (12 bytes)
 short cXObjectImpl::GetType() { return *(short*)((char*)(*(void**)((char*)this + 0x88)) + 0x12); }  // double deref signed short
+#endif
 
 // 0x800EB2E8 (20 bytes)
-void cXObjectImpl::GetLocation(FTilePt *) const { /* copy two fields: 104(r3)->0(r4), 108(r3)->4(r4) */ }
+void cXObjectImpl::GetLocation(FTilePt *) const { }
+#if 0
 
 // 0x800EB2FC (8 bytes)
 void* cXObjectImpl::GetLocation() { return (char*)this + 0x68; }  // offset 0x68
+#endif
+#if 0
 
 // 0x800EB328 (8 bytes)
 int cXObjectImpl::GetSelector() { return *(int*)((char*)this + 0x8C); }  // offset 0x8C
+#endif
+#if 0
 
 // 0x800EB330 (8 bytes)
 int cXObjectImpl::GetSelector() const { return *(int*)((char*)this + 0x8C); }  // offset 0x8C
+#endif
 
 // 0x800EB338 (12 bytes)
-int cXObjectImpl::GetBehavior() { return *(int*)((char*)(*(void**)((char*)this + 0x8C)) + 0xC); }  // double deref
+void* cXObjectImpl::GetBehavior() { return *(int*)((char*)(*(void**)((char*)this + 0x8C)) + 0xC); }  // double deref
 
 // 0x800EB3EC (8 bytes)
-int cXObjectImpl::GetRelMatrix() { return *(int*)((char*)this + 0x60); }  // offset 0x60
+void* cXObjectImpl::GetRelMatrix() { return *(int*)((char*)this + 0x60); }  // offset 0x60
 
 // 0x800EB414 (16 bytes)
-void* cXObjectImpl::GetRoutingSlot(int) { return (char*)(*(void**)((char*)this + 0xA0)) + index * 60; }  // struct array, stride=60
+void* cXObjectImpl::GetRoutingSlot(int index) { return (char*)(*(void**)((char*)this + 0xA0)) + index * 60; }  // struct array, stride=60
 
 // 0x800EB844 (8 bytes)
-int cXObjectImpl::GetNextImpl() { return *(int*)((char*)this + 0x5C); }  // offset 0x5C
+cXObjectImpl* cXObjectImpl::GetNextImpl() { return *(int*)((char*)this + 0x5C); }  // offset 0x5C
 
 // 0x800EB8C4 (12 bytes)
 void cXObjectImpl::TagGraphicsField() { *(int*)((char*)this + 0xE8) = 1; }
 
 // 0x800EB8D0 (12 bytes)
-int cXObjectImpl::GetName() const { return *(int*)((char*)(*(void**)((char*)this + 0x8C)) + 0x14); }  // double deref
+const char* cXObjectImpl::GetName() const { return *(int*)((char*)(*(void**)((char*)this + 0x8C)) + 0x14); }  // double deref
 
 // 0x800EB8DC (4 bytes)
-void cXObjectImpl::GetObjectImplementation() { }
+cXObjectImpl* cXObjectImpl::GetObjectImplementation() { }
 
 // 0x800EB8E0 (8 bytes)
-void cXObjectImpl::SetOverrideDialogReturnCode(TreeReturnCode) { /* sth r4,-31828(r13) */ }
+void cXObjectImpl::SetOverrideDialogReturnCode(TreeReturnCode) { }
 
 // 0x800FA1E8 (12 bytes)
-int cXObjectImpl::TryUIEffect(StackElem *, XPrimParam *) { /* r3=0, r4=1 */ return 0; }
+void cXObjectImpl::TryUIEffect(StackElem *, XPrimParam *) { /* r3=0, r4=1 */ return 0; }
 
 // 0x8010D3BC (12 bytes)
-int cXObjectImpl::TryFindTreeNew(StackElem *, FindTreeNewParam *) { /* r3=0, r4=0 */ return 0; }
+void cXObjectImpl::TryFindTreeNew(StackElem *, FindTreeNewParam *) { /* r3=0, r4=0 */ return 0; }
 
 // 0x8010D5AC (4 bytes)
 void cXObjectImpl::Backtrace() { }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptCIH
@@ -6,48 +5,49 @@
 // 15 functions, 144 bytes
 
 // 0x80293978 (12 bytes)
-bool AptCIH::getHasClass() const { return (*(int*)((char*)this + 0x5C) >> 14) & 1; }  // bit 14
+int AptCIH::getHasClass() const { return (*(int*)((char*)this + 0x5C) >> 14) & 1; }  // bit 14
 
 // 0x802939A4 (12 bytes)
-bool AptCIH::getASChanged() const { return (*(int*)((char*)this + 0x5C) >> 15) & 1; }  // bit 15
+int AptCIH::getASChanged() const { return (*(int*)((char*)this + 0x5C) >> 15) & 1; }  // bit 15
 
 // 0x802939C4 (12 bytes)
 int AptCIH::getZombieState() const { /* bitfield extract from offset 0x5C */ return 0; }
+#if 0
 
 // 0x802939E0 (8 bytes)
 unsigned short AptCIH::getZombieCount() { return *(unsigned short*)((char*)this + 0x5C); }  // offset 0x5C
+#endif
 
 // 0x80293B08 (8 bytes)
-int AptCIH::getSpriteInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getSpriteInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293B10 (8 bytes)
-int AptCIH::getSpriteInstBase() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getSpriteInstBase() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293B18 (8 bytes)
-int AptCIH::getTextInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getTextInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293B20 (8 bytes)
-int AptCIH::getStaticTextInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getStaticTextInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293B28 (8 bytes)
-int AptCIH::getMorphInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getMorphInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293B30 (8 bytes)
-int AptCIH::getButtonInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getButtonInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293B38 (8 bytes)
-int AptCIH::getAnimationInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getAnimationInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293B40 (8 bytes)
-int AptCIH::getShapeInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getShapeInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293B48 (8 bytes)
-int AptCIH::getCharacterInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
+void* AptCIH::getCharacterInst() const { return *(int*)((char*)this + 0x4C); }  // offset 0x4C
 
 // 0x80293F9C (12 bytes)
-bool AptCIH::IsInCtor() const { return (*(int*)((char*)this + 0x5C) >> 10) & 1; }  // bit 10
+int AptCIH::IsInCtor() const { return (*(int*)((char*)this + 0x5C) >> 10) & 1; }  // bit 10
 
 // 0x80293FA8 (16 bytes)
-void AptCIH::SetInCtor(unsigned int) { /* set bitfield [21:21] at offset 0x5C */ }
+void AptCIH::SetInCtor(unsigned int) { }
 
-#endif

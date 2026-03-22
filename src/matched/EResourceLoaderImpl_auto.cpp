@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EResourceLoaderImpl
@@ -9,12 +8,11 @@
 void EResourceLoaderImpl::Update() { }
 
 // 0x80311C88 (8 bytes)
-void EResourceLoaderImpl::EnableReloads(bool) { *(int*)((char*)this + 0x3E0) = val; }  // offset 0x3E0
+void EResourceLoaderImpl::EnableReloads(bool val) { *(int*)((char*)this + 0x3E0) = val; }  // offset 0x3E0
 
 // 0x80311C90 (12 bytes)
 void EResourceLoaderImpl::PauseLoads() { *(int*)((char*)this + 0x3E8) = 1; }
 
 // 0x80311CC8 (8 bytes)
-int EResourceLoaderImpl::AreLoadsPaused() { return *(int*)((char*)this + 0x3E8); }  // offset 0x3E8
+void EResourceLoaderImpl::AreLoadsPaused() { return *(int*)((char*)this + 0x3E8); }  // offset 0x3E8
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for GameEffectsManager
@@ -6,6 +5,5 @@
 // 1 functions, 4 bytes
 
 // 0x8003E008 (4 bytes)
-void GameEffectsManager::GameEffectsManager() { }
+GameEffectsManager::GameEffectsManager() { }
 
-#endif

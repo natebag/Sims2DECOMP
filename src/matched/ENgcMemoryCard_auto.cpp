@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcMemoryCard
@@ -15,45 +14,52 @@ void ENgcMemoryCard::EndCardOperation() { *(int*)((char*)this + 0x4) += -1; }
 void ENgcMemoryCard::UnInitMemoryCard() { return 1; }
 
 // 0x80330D70 (8 bytes)
-int ENgcMemoryCard::OpenForIO(char *, unsigned int) { return 1; }
+void ENgcMemoryCard::OpenForIO(char *, unsigned int) { return 1; }
 
 // 0x80330D78 (8 bytes)
-int ENgcMemoryCard::CloseForIO(char *, unsigned int) { return 1; }
+void ENgcMemoryCard::CloseForIO(char *, unsigned int) { return 1; }
 
 // 0x803332E0 (8 bytes)
-int ENgcMemoryCard::UnFormatCardS(unsigned int) { return 0; }
+void ENgcMemoryCard::UnFormatCardS(unsigned int) { return 0; }
 
 // 0x803332E8 (8 bytes)
 void ENgcMemoryCard::LoadDataA(char *, unsigned int, unsigned int, void *, EMC_Operation *) { return 0; }
 
 // 0x803332F0 (8 bytes)
-int ENgcMemoryCard::SaveDataA(char *, unsigned int, unsigned int, void *, EMC_Operation *) { return 0; }
+void ENgcMemoryCard::SaveDataA(char *, unsigned int, unsigned int, void *, EMC_Operation *) { return 0; }
 
 // 0x803332F8 (8 bytes)
 void ENgcMemoryCard::DeleteDataA(char *, unsigned int, unsigned int, EMC_Operation *) { return 0; }
 
 // 0x80333300 (8 bytes)
-int ENgcMemoryCard::FormatCardA(unsigned int, EMC_Operation *) { return 0; }
+void ENgcMemoryCard::FormatCardA(unsigned int, EMC_Operation *) { return 0; }
 
 // 0x80333308 (8 bytes)
-int ENgcMemoryCard::UnFormatCardA(unsigned int, EMC_Operation *) { return 0; }
+void ENgcMemoryCard::UnFormatCardA(unsigned int, EMC_Operation *) { return 0; }
+#if 0
 
 // 0x80333310 (8 bytes)
-bool ENgcMemoryCard::UpdateOperation(EMC_Operation, bool &) { return false; }
+void ENgcMemoryCard::UpdateOperation(EMC_Operation, bool &) { return false; }
+#endif
+#if 0
 
 // 0x80333CB4 (16 bytes)
-void ENgcMemoryCard::IsSpaceAvailable(unsigned int, EMC_SaveType, bool &) { /* li+li+stw */ }
+void ENgcMemoryCard::IsSpaceAvailable(unsigned int, EMC_SaveType, bool &) { }
+#endif
+#if 0
 
 // 0x80333CC4 (16 bytes)
-void ENgcMemoryCard::CheckForOverwriteSpace(unsigned int, unsigned int, EMC_SaveType, bool &) { /* li+li+stw */ }
+void ENgcMemoryCard::CheckForOverwriteSpace(unsigned int, unsigned int, EMC_SaveType, bool &) { }
+#endif
 
 // 0x80334888 (8 bytes)
-bool ENgcMemoryCard::GetFileListA(unsigned int, char *, unsigned int, char (*)[31], EMC_Operation *) { return true; }
+void ENgcMemoryCard::GetFileListA(unsigned int, char *, unsigned int, char (*)[31], EMC_Operation *) { return true; }
+#if 0
 
 // 0x80334890 (4 bytes)
 void ENgcMemoryCard::SetupSaveTypes(EMC_SaveType, unsigned int) { }
+#endif
 
 // 0x80334894 (4 bytes)
 void ENgcMemoryCard::SetGameCode(char *) { }
 
-#endif

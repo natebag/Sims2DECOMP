@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERTexture
@@ -9,21 +8,26 @@
 void* ERTexture::GetTypeInfo() const { return (void*)0x8050CF28; }  // global data pointer
 
 // 0x803212B4 (12 bytes)
-int ERTexture::GetTypeName() const { return *(int*)0x8050CF34; }  // global variable
+void ERTexture::GetTypeName() const { return *(int*)0x8050CF34; }  // global variable
 
 // 0x803212C0 (12 bytes)
-int ERTexture::GetTypeKey() const { return *(int*)0x8050CF38; }  // global variable
+void ERTexture::GetTypeKey() const { return *(int*)0x8050CF38; }  // global variable
+#if 0
 
 // 0x803212CC (12 bytes)
 unsigned short ERTexture::GetTypeVersion() const { return *(unsigned short*)0x8050CF3C; }  // global variable
+#endif
 
 // 0x803212D8 (12 bytes)
 void* ERTexture::GetTypeInfoStatic() { return (void*)0x8050CF28; }  // global data pointer
+#if 0
 
 // 0x803212E4 (12 bytes)
 unsigned short ERTexture::GetReadVersion() { return *(unsigned short*)0x8050CF3E; }  // global variable
+#endif
+#if 0
 
 // 0x80321394 (8 bytes)
-int ERTexture::operator new(unsigned int, void *) { return first; }  // mr r3,r4
-
+void* ERTexture::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 #endif
+

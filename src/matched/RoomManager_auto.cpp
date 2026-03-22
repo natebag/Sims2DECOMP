@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for RoomManager
@@ -9,6 +8,5 @@
 void RoomManager::InitLights() { }
 
 // 0x8013884C (8 bytes)
-int RoomManager::GetRoomManager() { return /* SDA global @ r13-31676 */; }  // lwz r3,-31676(r13)
+RoomManager* RoomManager::GetRoomManager() { return 0; }  // lwz r3,-31676(r13)
 
-#endif

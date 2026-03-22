@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EAllocGroup
@@ -6,9 +5,8 @@
 // 2 functions, 12 bytes
 
 // 0x80359E60 (8 bytes)
-void EAllocGroup::SetAllocHeap(EAHeap *) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+void EAllocGroup::SetAllocHeap(EAHeap * val) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
 
 // 0x80359F34 (4 bytes)
 void EAllocGroup::Validate() { }
 
-#endif

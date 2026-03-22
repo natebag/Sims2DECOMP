@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ArcFileInfo
@@ -6,12 +5,11 @@
 // 3 functions, 24 bytes
 
 // 0x80321DA4 (8 bytes)
-int ArcFileInfo::GetName() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+void ArcFileInfo::GetName() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80321DAC (8 bytes)
-int ArcFileInfo::GetSourceLen() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void ArcFileInfo::GetSourceLen() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x80321DB4 (8 bytes)
-int ArcFileInfo::GetCopiedSize() { return *(int*)((char*)this + 0xC); }  // offset 0xC
+void ArcFileInfo::GetCopiedSize() { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
-#endif

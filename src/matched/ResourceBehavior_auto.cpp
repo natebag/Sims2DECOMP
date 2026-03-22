@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ResourceBehavior
@@ -6,6 +5,5 @@
 // 1 functions, 20 bytes
 
 // 0x800ACBB4 (20 bytes)
-void ResourceBehavior::AddRef() { *(int*)((char*)this + 0x1C) += 1; }  // refcount increment
+int ResourceBehavior::AddRef() { *(int*)((char*)this + 0x1C) += 1; }  // refcount increment
 
-#endif

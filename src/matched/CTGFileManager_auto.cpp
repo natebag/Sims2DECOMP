@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CTGFileManager
@@ -6,10 +5,10 @@
 // 7 functions, 48 bytes
 
 // 0x8007D350 (4 bytes)
-void CTGFileManager::CTGFileManager() { }
+CTGFileManager::CTGFileManager() { }
 
 // 0x8007D37C (8 bytes)
-void CTGFileManager::Init() { return 1; }
+int CTGFileManager::Init() { return 1; }
 
 // 0x8007D384 (4 bytes)
 void CTGFileManager::Shutdown() { }
@@ -18,7 +17,7 @@ void CTGFileManager::Shutdown() { }
 int CTGFileManager::CreateFile(char *) { return 1; }
 
 // 0x8007D4CC (8 bytes)
-void CTGFileManager::DeleteFile(char *) { return 1; }
+int CTGFileManager::DeleteFile(char *) { return 1; }
 
 // 0x8007D4D4 (8 bytes)
 int CTGFileManager::MoveFile(char *, char *) { return 1; }
@@ -26,4 +25,3 @@ int CTGFileManager::MoveFile(char *, char *) { return 1; }
 // 0x8007D4DC (8 bytes)
 int CTGFileManager::CopyFile(char *, char *) { return 1; }
 
-#endif

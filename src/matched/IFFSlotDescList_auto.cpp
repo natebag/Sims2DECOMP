@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for IFFSlotDescList
@@ -6,18 +5,19 @@
 // 5 functions, 56 bytes
 
 // 0x80145014 (20 bytes)
-void IFFSlotDescList::AddRef() { *(int*)((char*)this + 0x64) += 1; }  // refcount increment
+int IFFSlotDescList::AddRef() { *(int*)((char*)this + 0x64) += 1; }  // refcount increment
+#if 0
 
 // 0x8014529C (16 bytes)
-void* IFFSlotDescList::GetSlot(int) { return (char*)(*(void**)((char*)this + 0x54)) + index * 72; }  // struct array, stride=72
+SlotDescriptor* IFFSlotDescList::GetSlot(int index) { return (char*)(*(void**)((char*)this + 0x54)) + index * 72; }  // struct array, stride=72
+#endif
 
 // 0x801452AC (8 bytes)
-void IFFSlotDescList::GetStringSetID() const { return 0; }
+int IFFSlotDescList::GetStringSetID() const { return 0; }
 
 // 0x801452B4 (4 bytes)
 void IFFSlotDescList::SetStringSetID(int) { }
 
 // 0x801452B8 (8 bytes)
-bool IFFSlotDescList::GetDataSourceType() const { return 2; }
+int IFFSlotDescList::GetDataSourceType() const { return 2; }
 
-#endif

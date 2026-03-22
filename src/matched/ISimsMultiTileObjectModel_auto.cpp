@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ISimsMultiTileObjectModel
@@ -6,21 +5,20 @@
 // 6 functions, 72 bytes
 
 // 0x800540EC (12 bytes)
-void* ISimsMultiTileObjectModel::GetTypeInfo() const { return (void*)0x8050B818; }  // global data pointer
+const ETypeInfo* ISimsMultiTileObjectModel::GetTypeInfo() const { return (void*)0x8050B818; }  // global data pointer
 
 // 0x800540F8 (12 bytes)
-int ISimsMultiTileObjectModel::GetTypeName() const { return *(int*)0x8050B824; }  // global variable
+const char* ISimsMultiTileObjectModel::GetTypeName() const { return *(int*)0x8050B824; }  // global variable
 
 // 0x80054104 (12 bytes)
-int ISimsMultiTileObjectModel::GetTypeKey() const { return *(int*)0x8050B828; }  // global variable
+u32 ISimsMultiTileObjectModel::GetTypeKey() const { return *(int*)0x8050B828; }  // global variable
 
 // 0x80054110 (12 bytes)
 unsigned short ISimsMultiTileObjectModel::GetTypeVersion() const { return *(unsigned short*)0x8050B82C; }  // global variable
 
 // 0x8005411C (12 bytes)
-void* ISimsMultiTileObjectModel::GetTypeInfoStatic() { return (void*)0x8050B818; }  // global data pointer
+const ETypeInfo* ISimsMultiTileObjectModel::GetTypeInfoStatic() { return (void*)0x8050B818; }  // global data pointer
 
 // 0x80054128 (12 bytes)
 unsigned short ISimsMultiTileObjectModel::GetReadVersion() { return *(unsigned short*)0x8050B82E; }  // global variable
 
-#endif

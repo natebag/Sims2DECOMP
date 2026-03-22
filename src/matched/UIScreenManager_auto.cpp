@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for UIScreenManager
@@ -8,4 +7,3 @@
 // 0x8017F87C (8 bytes)
 void UIScreenManager::process_cheats(UIScreenID) { return 1; }
 
-#endif

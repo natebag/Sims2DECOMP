@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EIDirLight
@@ -6,27 +5,28 @@
 // 8 functions, 88 bytes
 
 // 0x80227418 (12 bytes)
-void* EIDirLight::GetTypeInfo() const { return (void*)0x8050CBA8; }  // global data pointer
+const ETypeInfo* EIDirLight::GetTypeInfo() const { return (void*)0x8050CBA8; }  // global data pointer
 
 // 0x80227424 (12 bytes)
-int EIDirLight::GetTypeName() const { return *(int*)0x8050CBB4; }  // global variable
+const char* EIDirLight::GetTypeName() const { return *(int*)0x8050CBB4; }  // global variable
 
 // 0x80227430 (12 bytes)
-int EIDirLight::GetTypeKey() const { return *(int*)0x8050CBB8; }  // global variable
+u32 EIDirLight::GetTypeKey() const { return *(int*)0x8050CBB8; }  // global variable
 
 // 0x8022743C (12 bytes)
 unsigned short EIDirLight::GetTypeVersion() const { return *(unsigned short*)0x8050CBBC; }  // global variable
 
 // 0x80227448 (12 bytes)
-void* EIDirLight::GetTypeInfoStatic() { return (void*)0x8050CBA8; }  // global data pointer
+const ETypeInfo* EIDirLight::GetTypeInfoStatic() { return (void*)0x8050CBA8; }  // global data pointer
 
 // 0x80227454 (12 bytes)
 unsigned short EIDirLight::GetReadVersion() { return *(unsigned short*)0x8050CBBE; }  // global variable
 
 // 0x802274D4 (8 bytes)
 int EIDirLight::GetLightType() { return 2; }
+#if 0
 
 // 0x802274FC (8 bytes)
-void* EIDirLight::GetDir() const { return (char*)this + 0xAC; }  // offset 0xAC
-
+EVec3* EIDirLight::GetDir() const { return (char*)this + 0xAC; }  // offset 0xAC
 #endif
+

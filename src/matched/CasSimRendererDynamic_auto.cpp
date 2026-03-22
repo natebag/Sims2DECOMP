@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasSimRendererDynamic
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80172C20 (8 bytes)
-void CasSimRendererDynamic::LockSimRotation(bool) { *(int*)((char*)this + 0x21C) = val; }  // offset 0x21C
+void CasSimRendererDynamic::LockSimRotation(bool val) { *(int*)((char*)this + 0x21C) = val; }  // offset 0x21C
 
-#endif

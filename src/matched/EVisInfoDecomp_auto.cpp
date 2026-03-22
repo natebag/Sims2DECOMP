@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EVisInfoDecomp
@@ -6,9 +5,8 @@
 // 2 functions, 20 bytes
 
 // 0x803620E8 (12 bytes)
-void EVisInfoDecomp::Init(EBitArray *, int) { *(int*)((char*)this + 0x4) = p5; *(int*)((char*)this + 0x0) = p4; }
+void EVisInfoDecomp::Init(EBitArray * p4, int p5) { *(int*)((char*)this + 0x4) = p5; *(int*)((char*)this + 0x0) = p4; }
 
 // 0x8036212C (8 bytes)
-int EVisInfoDecomp::GetBitCount() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void EVisInfoDecomp::GetBitCount() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
-#endif

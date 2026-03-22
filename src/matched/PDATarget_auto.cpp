@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PDATarget
@@ -6,12 +5,11 @@
 // 3 functions, 48 bytes
 
 // 0x801FEFA0 (16 bytes)
-int PDATarget::SetStartFireOnExit(bool) { int old = *(int*)((char*)this + 0x16C); *(int*)((char*)this + 0x16C) = val; return old; }  // swap setter
+int PDATarget::SetStartFireOnExit(bool val) { int old = *(int*)((char*)this + 0x16C); *(int*)((char*)this + 0x16C) = val; return old; }  // swap setter
 
 // 0x8020375C (16 bytes)
-int PDATarget::GetINVTarget(int) const { return ((int*)((char*)this + 0x134))[index]; }  // array[index], elem_size=4
+INVTarget* PDATarget::GetINVTarget(int index) const { return ((int*)((char*)this + 0x134))[index]; }  // array[index], elem_size=4
 
 // 0x8020376C (16 bytes)
-int PDATarget::GetPdaMode(int) { return ((int*)((char*)this + 0x14C))[index]; }  // array[index], elem_size=4
+int PDATarget::GetPdaMode(int index) { return ((int*)((char*)this + 0x14C))[index]; }  // array[index], elem_size=4
 
-#endif

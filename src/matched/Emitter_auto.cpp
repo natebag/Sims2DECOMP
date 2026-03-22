@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Emitter
@@ -6,12 +5,11 @@
 // 3 functions, 28 bytes
 
 // 0x8023869C (8 bytes)
-int Emitter::Get() { return *(int*)((char*)this + 0x7C); }  // offset 0x7C
+pemitter* Emitter::Get() { return *(int*)((char*)this + 0x7C); }  // offset 0x7C
 
 // 0x80238974 (12 bytes)
-void Emitter::SetScale(float) { *(float*)((char*)(*(void**)((char*)this + 0x7C)) + 0xBC) = val; }  // double deref float setter
+void Emitter::SetScale(float val) { *(float*)((char*)(*(void**)((char*)this + 0x7C)) + 0xBC) = val; }  // double deref float setter
 
 // 0x802389D4 (8 bytes)
-bool Emitter::VisibilityTest(E3DWindow &) { return false; }
+int Emitter::VisibilityTest(E3DWindow &) { return false; }
 
-#endif

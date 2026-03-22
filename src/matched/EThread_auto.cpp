@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EThread
@@ -6,16 +5,16 @@
 // 9 functions, 56 bytes
 
 // 0x802D858C (8 bytes)
-int EThread::GetStack() { return *(int*)((char*)this + 0x31C); }  // offset 0x31C
+void* EThread::GetStack() { return *(int*)((char*)this + 0x31C); }  // offset 0x31C
 
 // 0x802D8594 (8 bytes)
 int EThread::GetStackSize() { return *(int*)((char*)this + 0x320); }  // offset 0x320
 
 // 0x802D867C (8 bytes)
-void EThread::SetThreadName(char *) { *(int*)((char*)this + 0x32C) = val; }  // offset 0x32C
+void EThread::SetThreadName(char * val) { *(int*)((char*)this + 0x32C) = val; }  // offset 0x32C
 
 // 0x802D8684 (8 bytes)
-int EThread::GetThreadName() { return *(int*)((char*)this + 0x32C); }  // offset 0x32C
+char* EThread::GetThreadName() { return *(int*)((char*)this + 0x32C); }  // offset 0x32C
 
 // 0x802D868C (4 bytes)
 void EThread::Main() { }
@@ -32,4 +31,3 @@ int EThread::GetStackUsage() { return 0; }
 // 0x802E1800 (4 bytes)
 void EThread::PrintAllThreads() { }
 
-#endif

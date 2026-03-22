@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PaneItem
@@ -7,30 +6,32 @@
 
 // 0x803A07B8 (4 bytes)
 void PaneItem::Shutdown() { }
+#if 0
 
 // 0x803A07BC (12 bytes)
 void PaneItem::Reset() { *(int*)((char*)this + 0x4) = 1; }
+#endif
 
 // 0x803A07C8 (4 bytes)
 void PaneItem::CalculateSize() { }
 
 // 0x803A07CC (20 bytes)
-void PaneItem::SetPos(EVec2 &) { /* copy two fields: 4(r4)->16(r3), 0(r4)->12(r3) */ }
+void PaneItem::SetPos(EVec2 &) { }
 
 // 0x803A07E0 (8 bytes)
-void* PaneItem::GetPos() { return (char*)this + 0xC; }  // offset 0xC
+void PaneItem::GetPos() { return (char*)this + 0xC; }  // offset 0xC
 
 // 0x803A07E8 (8 bytes)
-void PaneItem::SetPosX(float) { *(float*)((char*)this + 0xC) = val; }  // offset 0xC
+void PaneItem::SetPosX(float val) { *(float*)((char*)this + 0xC) = val; }  // offset 0xC
 
 // 0x803A07F0 (8 bytes)
-float PaneItem::GetPosX() const { return *(float*)((char*)this + 0xC); }  // offset 0xC
+void PaneItem::GetPosX() const { return *(float*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x803A07F8 (8 bytes)
-void PaneItem::SetPosY(float) { *(float*)((char*)this + 0x10) = val; }  // offset 0x10
+void PaneItem::SetPosY(float val) { *(float*)((char*)this + 0x10) = val; }  // offset 0x10
 
 // 0x803A0800 (8 bytes)
-float PaneItem::GetPosY() const { return *(float*)((char*)this + 0x10); }  // offset 0x10
+void PaneItem::GetPosY() const { return *(float*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x803A0970 (4 bytes)
 void PaneItem::Startup() { }
@@ -38,4 +39,3 @@ void PaneItem::Startup() { }
 // 0x803A0974 (4 bytes)
 void PaneItem::Draw(ERC *, float) { }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcTextureBase
@@ -12,13 +11,13 @@ void ENgcTextureBase::Unlock() { *(int*)((char*)this + 0x44) += -1; }
 void ENgcTextureBase::Invalidate() { }
 
 // 0x80350238 (8 bytes)
-int ENgcTextureBase::UpdatePalette() { return *(int*)((char*)this + 0x90); }  // offset 0x90
+void ENgcTextureBase::UpdatePalette() { return *(int*)((char*)this + 0x90); }  // offset 0x90
 
 // 0x80350470 (8 bytes)
-int ENgcTextureBase::GetTEVStageCount() { return 1; }
+void ENgcTextureBase::GetTEVStageCount() { return 1; }
 
 // 0x80350478 (8 bytes)
-int ENgcTextureBase::GetTEXCount() { return 1; }
+void ENgcTextureBase::GetTEXCount() { return 1; }
 
 // 0x80350608 (16 bytes)
 void ENgcTextureBase::SetSwizzleFlag() { *(unsigned int*)((char*)this + 0x8) |= 0x80; }  // set flags
@@ -26,4 +25,3 @@ void ENgcTextureBase::SetSwizzleFlag() { *(unsigned int*)((char*)this + 0x8) |= 
 // 0x80350618 (4 bytes)
 void ENgcTextureBase::UnswizzleImage(unsigned char *, int, int, unsigned char *) { }
 
-#endif

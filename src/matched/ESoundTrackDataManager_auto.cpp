@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ESoundTrackDataManager
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x803285F8 (8 bytes)
-bool ESoundTrackDataManager::CanCache(EResource *) { return true; }
+void ESoundTrackDataManager::CanCache(EResource *) {  }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ENgcRenderer
@@ -9,33 +8,32 @@
 void ENgcRenderer::ShowPerfGraphs(bool) { }
 
 // 0x8033B724 (16 bytes)
-int ENgcRenderer::GetCurrentTexture(int) { return ((int*)((char*)this + 0x4638))[index]; }  // array[index], elem_size=4
+void ENgcRenderer::GetCurrentTexture(int index) { return ((int*)((char*)this + 0x4638))[index]; }  // array[index], elem_size=4
 
 // 0x8033CDEC (4 bytes)
 void ENgcRenderer::VIPostRetraceCallback(unsigned long) { }
 
 // 0x80343D54 (12 bytes)
-void ENgcRenderer::Goto(EDLEntry *) { /* lwz r0,4(r4); stw r0,1244(r3) */ }
+void ENgcRenderer::Goto(EDLEntry *) { }
 
 // 0x8034443C (4 bytes)
 void ENgcRenderer::TextureMatrix(EDLEntry *) { }
 
 // 0x80344714 (16 bytes)
-void ENgcRenderer::SetAlpha(float) { *(float*)((char*)this + 0x3A4) = fval; *(int*)((char*)this + 0x510) = 1; }
+void ENgcRenderer::SetAlpha(float fval) { *(float*)((char*)this + 0x3A4) = fval; *(int*)((char*)this + 0x510) = 1; }
 
 // 0x80349F30 (12 bytes)
 void ENgcRenderer::ProcessFrameEffects(float, float, float, float, EVec3 &, EVec3 &) { }  // empty (stack frame only)
 
 // 0x80349F3C (8 bytes)
-int ENgcRenderer::GetRenderStateCache() { return *(int*)((char*)this + 0x4D8); }  // offset 0x4D8
+void ENgcRenderer::GetRenderStateCache() { return *(int*)((char*)this + 0x4D8); }  // offset 0x4D8
 
 // 0x80349F44 (8 bytes)
-int ENgcRenderer::GetNextExternalFrameBuffer() { return *(int*)((char*)this + 0x34C); }  // offset 0x34C
+void ENgcRenderer::GetNextExternalFrameBuffer() { return *(int*)((char*)this + 0x34C); }  // offset 0x34C
 
 // 0x80349FD4 (8 bytes)
-int ENgcRenderer::GetFrameEffectsScratchMemory() { return *(int*)((char*)this + 0x464C); }  // offset 0x464C
+void ENgcRenderer::GetFrameEffectsScratchMemory() { return *(int*)((char*)this + 0x464C); }  // offset 0x464C
 
 // 0x8034A778 (4 bytes)
 void ENgcRenderer::NoOp(EDLEntry *) { }
 
-#endif

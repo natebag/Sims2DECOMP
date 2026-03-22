@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for Wrapper
@@ -6,7 +5,7 @@
 // 6 functions, 28 bytes
 
 // 0x80086840 (8 bytes)
-void Wrapper::WrapperStartup(UIObjectBase *) { *(int*)((char*)this + 0x88) = val; }  // offset 0x88
+void Wrapper::WrapperStartup(UIObjectBase * val) { *(int*)((char*)this + 0x88) = val; }  // offset 0x88
 
 // 0x80086984 (4 bytes)
 void Wrapper::WrapperRestoreMessageHandler() { }
@@ -23,4 +22,3 @@ void Wrapper::WrapperUpdate() { }
 // 0x80086AE8 (4 bytes)
 void Wrapper::WrapperCallFunction(char *) { }
 
-#endif

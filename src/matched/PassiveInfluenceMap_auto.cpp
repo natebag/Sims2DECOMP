@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for PassiveInfluenceMap
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80113DA8 (8 bytes)
-bool PassiveInfluenceMap::ValidateMissing(PassiveInfluenceItem *) { return true; }
+BOOL PassiveInfluenceMap::ValidateMissing(PassiveInfluenceItem *) { return true; }
 
-#endif

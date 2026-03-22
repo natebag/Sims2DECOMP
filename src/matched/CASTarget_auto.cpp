@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CASTarget
@@ -6,13 +5,13 @@
 // 9 functions, 80 bytes
 
 // 0x80194EBC (8 bytes)
-void CASTarget::SetHandleInput(bool) { *(int*)((char*)this + 0x8C) = val; }  // offset 0x8C
+void CASTarget::SetHandleInput(bool val) { *(int*)((char*)this + 0x8C) = val; }  // offset 0x8C
 
 // 0x801960F4 (4 bytes)
 void CASTarget::DialogNoSelectionCallback() { }
 
 // 0x80196364 (20 bytes)
-bool CASTarget::IsViewingCAR() { return *(int*)((char*)this + 0x104) == 3; }  // compare with constant
+int CASTarget::IsViewingCAR() { return *(int*)((char*)this + 0x104) == 3; }  // compare with constant
 
 // 0x801A07F8 (8 bytes)
 int CASTarget::IsShuttingdown() { return *(int*)((char*)this + 0x1630); }  // offset 0x1630
@@ -27,9 +26,8 @@ int CASTarget::GetCurPartUIFocus() { return *(int*)((char*)this + 0xA4); }  // o
 int CASTarget::GetCurrentSimNumber() { return *(int*)((char*)this + 0x134C); }  // offset 0x134C
 
 // 0x801A08A8 (8 bytes)
-int CASTarget::GetGeneticsTarget() { return *(int*)((char*)this + 0x1370); }  // offset 0x1370
+void* CASTarget::GetGeneticsTarget() { return *(int*)((char*)this + 0x1370); }  // offset 0x1370
 
 // 0x801A08B0 (8 bytes)
-int CASTarget::GetNPCEditor() { return *(int*)((char*)this + 0x1354); }  // offset 0x1354
+void* CASTarget::GetNPCEditor() { return *(int*)((char*)this + 0x1354); }  // offset 0x1354
 
-#endif

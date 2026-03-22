@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for basic_string_ref
@@ -12,9 +11,8 @@ void basic_string_ref::throwlength() { }
 void basic_string_ref::throwrange() { }
 
 // 0x8009C608 (8 bytes)
-int basic_string_ref::eos() { return 0; }
+void basic_string_ref::eos() {  }
 
 // 0x8009C610 (20 bytes)
-void basic_string_ref::basic_string_ref() { *(int*)((char*)this + 0xC) += 1; }  // refcount increment
+basic_string_ref::basic_string_ref() { *(int*)((char*)this + 0xC) += 1; }  // refcount increment
 
-#endif

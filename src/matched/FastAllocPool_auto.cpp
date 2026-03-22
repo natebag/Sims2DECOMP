@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FastAllocPool
@@ -9,7 +8,7 @@
 int FastAllocPool::GetAlignment() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x802D7228 (8 bytes)
-int FastAllocPool::GetPoolStart() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
+void* FastAllocPool::GetPoolStart() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x802D7240 (8 bytes)
 int FastAllocPool::GetBlockSize() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
@@ -17,4 +16,3 @@ int FastAllocPool::GetBlockSize() const { return *(int*)((char*)this + 0xC); }  
 // 0x802D7248 (8 bytes)
 int FastAllocPool::GetPoolBlocks() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ECheatDMI
@@ -6,9 +5,8 @@
 // 2 functions, 24 bytes
 
 // 0x80021930 (12 bytes)
-int ECheatDMI::GetType() { return *(int*)((char*)(*(void**)((char*)this + 0xC)) + 0x4C); }  // double deref
+void ECheatDMI::GetType() { return *(int*)((char*)(*(void**)((char*)this + 0xC)) + 0x4C); }  // double deref
 
 // 0x8002193C (12 bytes)
-int ECheatDMI::GetVariable() { return *(int*)((char*)(*(void**)((char*)this + 0xC)) + 0x50); }  // double deref
+void ECheatDMI::GetVariable() { return *(int*)((char*)(*(void**)((char*)this + 0xC)) + 0x50); }  // double deref
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CUnlockDisplay
@@ -6,16 +5,16 @@
 // 7 functions, 76 bytes
 
 // 0x80078008 (8 bytes)
-void CUnlockDisplay::SetViewZoomFactor(float) { *(float*)((char*)this + 0x498) = val; }  // offset 0x498
+void CUnlockDisplay::SetViewZoomFactor(float val) { *(float*)((char*)this + 0x498) = val; }  // offset 0x498
 
 // 0x80078010 (16 bytes)
-void CUnlockDisplay::ManualCameraPos(float, float, float) { *(float*)((char*)this + 0x4A4) = f3; *(float*)((char*)this + 0x49C) = f1; *(float*)((char*)this + 0x4A0) = f2; }
+void CUnlockDisplay::ManualCameraPos(float f1, float f2, float f3) { *(float*)((char*)this + 0x4A4) = f3; *(float*)((char*)this + 0x49C) = f1; *(float*)((char*)this + 0x4A0) = f2; }
 
 // 0x80078DAC (12 bytes)
 void CUnlockDisplay::RemoveAllDirectLights() { *(int*)((char*)this + 0x440) = 0; }
 
 // 0x80078FDC (8 bytes)
-int CUnlockDisplay::IsDone() { return *(int*)((char*)this + 0x45C); }  // offset 0x45C
+bool CUnlockDisplay::IsDone() { return *(int*)((char*)this + 0x45C); }  // offset 0x45C
 
 // 0x80078FE4 (12 bytes)
 void CUnlockDisplay::Hide() { *(int*)((char*)this + 0x458) = 1; }
@@ -26,4 +25,3 @@ void CUnlockDisplay::UnHide() { *(int*)((char*)this + 0x458) = 0; }
 // 0x80078FFC (8 bytes)
 int CUnlockDisplay::DonePreloadObject() { return *(int*)((char*)this + 0x450); }  // offset 0x450
 
-#endif

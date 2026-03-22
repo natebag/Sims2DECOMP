@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERLevel
@@ -12,49 +11,57 @@ void ERLevel::ValidateInstanceInLevel(EInstance *) { }
 void ERLevel::GroupWallInstances() { }
 
 // 0x802380F4 (12 bytes)
-void* ERLevel::GetTypeInfo() const { return (void*)0x8050CCE8; }  // global data pointer
+const ETypeInfo* ERLevel::GetTypeInfo() const { return (void*)0x8050CCE8; }  // global data pointer
 
 // 0x80238100 (12 bytes)
-int ERLevel::GetTypeName() const { return *(int*)0x8050CCF4; }  // global variable
+const char* ERLevel::GetTypeName() const { return *(int*)0x8050CCF4; }  // global variable
 
 // 0x8023810C (12 bytes)
-int ERLevel::GetTypeKey() const { return *(int*)0x8050CCF8; }  // global variable
+u32 ERLevel::GetTypeKey() const { return *(int*)0x8050CCF8; }  // global variable
 
 // 0x80238118 (12 bytes)
 unsigned short ERLevel::GetTypeVersion() const { return *(unsigned short*)0x8050CCFC; }  // global variable
 
 // 0x80238124 (12 bytes)
-void* ERLevel::GetTypeInfoStatic() { return (void*)0x8050CCE8; }  // global data pointer
+const ETypeInfo* ERLevel::GetTypeInfoStatic() { return (void*)0x8050CCE8; }  // global data pointer
 
 // 0x80238130 (12 bytes)
 unsigned short ERLevel::GetReadVersion() { return *(unsigned short*)0x8050CCFE; }  // global variable
 
 // 0x802381E0 (8 bytes)
-int ERLevel::operator new(unsigned int, void *) { return first; }  // mr r3,r4
+void* ERLevel::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
+#if 0
 
 // 0x80238214 (12 bytes)
-void* ERLevel::GetSun() { return (char*)this + 0x2E2F0; }  // large offset member addr
+EILight* ERLevel::GetSun() { return (char*)this + 0x2E2F0; }  // large offset member addr
+#endif
+#if 0
 
 // 0x80238220 (12 bytes)
-void* ERLevel::GetSunAmbient() { return (char*)this + 0x2E3A8; }  // large offset member addr
+EILight* ERLevel::GetSunAmbient() { return (char*)this + 0x2E3A8; }  // large offset member addr
+#endif
 
 // 0x8023822C (12 bytes)
-void ERLevel::SetDayNightLightTable(LevelLighting *) { *(int*)((char*)this + 0x2E454) = val; }  // large offset setter
+void ERLevel::SetDayNightLightTable(LevelLighting * val) { *(int*)((char*)this + 0x2E454) = val; }  // large offset setter
 
 // 0x80238238 (12 bytes)
-void ERLevel::SetRainInfoTable(levelraininfo *) { *(int*)((char*)this + 0x2E458) = val; }  // large offset setter
+void ERLevel::SetRainInfoTable(levelraininfo * val) { *(int*)((char*)this + 0x2E458) = val; }  // large offset setter
 
 // 0x80238244 (12 bytes)
-void ERLevel::SetSunYawOffset(float) { *(float*)((char*)this + 0x2E45C) = val; }  // large offset float setter
+void ERLevel::SetSunYawOffset(float val) { *(float*)((char*)this + 0x2E45C) = val; }  // large offset float setter
+#if 0
 
 // 0x80238250 (12 bytes)
-void ERLevel::SetWallFadeState(EWallUpDownStateType) { *(int*)((char*)this + 0x2E2D4) = val; }  // large offset setter
+void ERLevel::SetWallFadeState(EWallUpDownStateType val) { *(int*)((char*)this + 0x2E2D4) = val; }  // large offset setter
+#endif
+#if 0
 
 // 0x8023825C (12 bytes)
-int ERLevel::WallFadeState() { return *(int*)((char*)this + 0x2E2D4); }  // large offset getter
+EWallUpDownStateType ERLevel::WallFadeState() { return *(int*)((char*)this + 0x2E2D4); }  // large offset getter
+#endif
 
 // 0x80238290 (8 bytes)
-int ERLevel::IsDrawingOrderTable() { return /* SDA global @ r13-28428 */; }  // lwz r3,-28428(r13)
+int ERLevel::IsDrawingOrderTable() { return 0; }  // lwz r3,-28428(r13)
 
 // 0x80238298 (12 bytes)
 int ERLevel::IsInUse() { return *(int*)((char*)this + 0x2A2B0); }  // large offset getter
@@ -63,10 +70,10 @@ int ERLevel::IsInUse() { return *(int*)((char*)this + 0x2A2B0); }  // large offs
 int ERLevel::GetRoomCount() { return *(int*)((char*)this + 0x2A2B4); }  // large offset getter
 
 // 0x802382E0 (12 bytes)
-void ERLevel::SetRainBlend(float) { *(float*)((char*)this + 0x2E2E8) = val; }  // large offset float setter
+void ERLevel::SetRainBlend(float val) { *(float*)((char*)this + 0x2E2E8) = val; }  // large offset float setter
 
 // 0x802382EC (12 bytes)
-int ERLevel::GetStorableVersion() const { return *(int*)((char*)this + 0x2A198); }  // large offset getter
+u32 ERLevel::GetStorableVersion() const { return *(int*)((char*)this + 0x2A198); }  // large offset getter
 
 // 0x80238348 (12 bytes)
 int ERLevel::GetNumInstances() { return *(int*)((char*)this + 0x2C2B8); }  // large offset getter
@@ -75,6 +82,5 @@ int ERLevel::GetNumInstances() { return *(int*)((char*)this + 0x2C2B8); }  // la
 int ERLevel::GetNumVisibleInstances() { return *(int*)((char*)this + 0x2E2CC); }  // large offset getter
 
 // 0x80238388 (12 bytes)
-void ERLevel::SetDrawWallShadowsFunc(void (*)(TNodeList<EInstance *> &, EVec3 &, ELevelDrawData &)) { *(int*)((char*)this + 0x2E2D8) = val; }  // large offset setter
+void ERLevel::SetDrawWallShadowsFunc(void (*val)(TNodeList<EInstance *> &, EVec3 &, ELevelDrawData &)) { *(int*)((char*)this + 0x2E2D8) = val; }  // large offset setter
 
-#endif

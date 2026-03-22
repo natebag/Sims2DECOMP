@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERAnim
@@ -9,21 +8,26 @@
 void* ERAnim::GetTypeInfo() const { return (void*)0x8050D784; }  // global data pointer
 
 // 0x80368098 (12 bytes)
-int ERAnim::GetTypeName() const { return *(int*)0x8050D790; }  // global variable
+void ERAnim::GetTypeName() const { return *(int*)0x8050D790; }  // global variable
 
 // 0x803680A4 (12 bytes)
-int ERAnim::GetTypeKey() const { return *(int*)0x8050D794; }  // global variable
+void ERAnim::GetTypeKey() const { return *(int*)0x8050D794; }  // global variable
+#if 0
 
 // 0x803680B0 (12 bytes)
 unsigned short ERAnim::GetTypeVersion() const { return *(unsigned short*)0x8050D798; }  // global variable
+#endif
 
 // 0x803680BC (12 bytes)
 void* ERAnim::GetTypeInfoStatic() { return (void*)0x8050D784; }  // global data pointer
+#if 0
 
 // 0x803680C8 (12 bytes)
 unsigned short ERAnim::GetReadVersion() { return *(unsigned short*)0x8050D79A; }  // global variable
+#endif
+#if 0
 
 // 0x80368178 (8 bytes)
-int ERAnim::operator new(unsigned int, void *) { return first; }  // mr r3,r4
-
+void* ERAnim::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 #endif
+

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERAmbientScore
@@ -9,18 +8,21 @@
 void* ERAmbientScore::GetTypeInfo() const { return (void*)0x8050D75C; }  // global data pointer
 
 // 0x80367230 (12 bytes)
-int ERAmbientScore::GetTypeName() const { return *(int*)0x8050D768; }  // global variable
+void ERAmbientScore::GetTypeName() const { return *(int*)0x8050D768; }  // global variable
 
 // 0x8036723C (12 bytes)
-int ERAmbientScore::GetTypeKey() const { return *(int*)0x8050D76C; }  // global variable
+void ERAmbientScore::GetTypeKey() const { return *(int*)0x8050D76C; }  // global variable
+#if 0
 
 // 0x80367248 (12 bytes)
 unsigned short ERAmbientScore::GetTypeVersion() const { return *(unsigned short*)0x8050D770; }  // global variable
+#endif
 
 // 0x80367254 (12 bytes)
 void* ERAmbientScore::GetTypeInfoStatic() { return (void*)0x8050D75C; }  // global data pointer
+#if 0
 
 // 0x80367260 (12 bytes)
 unsigned short ERAmbientScore::GetReadVersion() { return *(unsigned short*)0x8050D772; }  // global variable
-
 #endif
+

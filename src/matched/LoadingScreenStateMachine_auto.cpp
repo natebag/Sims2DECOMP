@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for LoadingScreenStateMachine
@@ -6,30 +5,29 @@
 // 9 functions, 108 bytes
 
 // 0x80090E04 (8 bytes)
-int LoadingScreenStateMachine::GetLoadingScreen() { return *(int*)((char*)this + 0x98); }  // offset 0x98
+void LoadingScreenStateMachine::GetLoadingScreen() { return *(int*)((char*)this + 0x98); }  // offset 0x98
 
 // 0x80090E0C (12 bytes)
 void LoadingScreenStateMachine::LoadStarted() { *(int*)((char*)this + 0xA0) = 0; }
 
 // 0x80090E18 (8 bytes)
-int LoadingScreenStateMachine::IsLoadComplete() { return *(int*)((char*)this + 0xA4); }  // offset 0xA4
+void LoadingScreenStateMachine::IsLoadComplete() { return *(int*)((char*)this + 0xA4); }  // offset 0xA4
 
 // 0x80090E88 (12 bytes)
 void LoadingScreenStateMachine::FaderStop() { *(int*)((char*)this + 0xB4) = 0; }
 
 // 0x80090F74 (8 bytes)
-int LoadingScreenStateMachine::GetSingleton() { return /* SDA global @ r13-32160 */; }  // lwz r3,-32160(r13)
+void LoadingScreenStateMachine::GetSingleton() { return 0; }  // lwz r3,-32160(r13)
 
 // 0x80090FA4 (16 bytes)
-bool LoadingScreenStateMachine::IsFadedIn() { /* SDA double deref bit 2 */ return 0; }
+void LoadingScreenStateMachine::IsFadedIn() { /* SDA double deref bit 2 */ return 0; }
 
 // 0x80090FB4 (16 bytes)
-bool LoadingScreenStateMachine::IsFadingOut() { /* SDA double deref bit 1 */ return 0; }
+void LoadingScreenStateMachine::IsFadingOut() { /* SDA double deref bit 1 */ return 0; }
 
 // 0x80090FC4 (16 bytes)
-bool LoadingScreenStateMachine::IsFadedOut() { /* SDA double deref bit 3 */ return 0; }
+void LoadingScreenStateMachine::IsFadedOut() { /* SDA double deref bit 3 */ return 0; }
 
 // 0x80090FD4 (12 bytes)
 void LoadingScreenStateMachine::LoadFinished() { *(int*)((char*)this + 0xA4) = 1; }
 
-#endif

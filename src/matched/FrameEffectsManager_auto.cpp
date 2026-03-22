@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FrameEffectsManager
@@ -6,12 +5,11 @@
 // 3 functions, 24 bytes
 
 // 0x80357968 (8 bytes)
-int FrameEffectsManager::MotionBlurObject() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+void FrameEffectsManager::MotionBlurObject() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80357970 (8 bytes)
-int FrameEffectsManager::BloomObject() { return *(int*)((char*)this + 0x4); }  // offset 0x4
+void FrameEffectsManager::BloomObject() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x80357978 (8 bytes)
-int FrameEffectsManager::DepthOfFieldObject() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void FrameEffectsManager::DepthOfFieldObject() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
-#endif

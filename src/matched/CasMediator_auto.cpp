@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CasMediator
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80162028 (8 bytes)
-int CasMediator::GetNumListeners() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
+u32 CasMediator::GetNumListeners() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
-#endif

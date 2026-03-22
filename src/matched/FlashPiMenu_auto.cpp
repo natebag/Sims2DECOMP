@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FlashPiMenu
@@ -13,11 +12,12 @@ void FlashPiMenu::CleanUpAllMenus() { }
 
 // 0x8003A7EC (12 bytes)
 void FlashPiMenu::Kill() { *(int*)((char*)this + 0x4) = 1; }
+#if 0
 
 // 0x8003AFB8 (20 bytes)
-void FlashPiMenu::FlashPiMenu() { *(void**)((char*)this + 0xC) = (void*)0x8046B680; }  // vtable init
+FlashPiMenu::FlashPiMenu() { *(void**)((char*)this + 0xC) = (void*)0x8046B680; }  // vtable init
+#endif
 
 // 0x8003AFCC (8 bytes)
-unsigned char FlashPiMenu::GetPlayerId() { return *(unsigned char*)((char*)this + 0xB); }  // offset 0xB
+void FlashPiMenu::GetPlayerId() { return *(unsigned char*)((char*)this + 0xB); }  // offset 0xB
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for TTabScratchEntry
@@ -6,7 +5,7 @@
 // 38 functions, 428 bytes
 
 // 0x80149840 (20 bytes)
-void TTabScratchEntry::AddRef() { *(int*)((char*)this + 0x118) += 1; }  // refcount increment
+int TTabScratchEntry::AddRef() { *(int*)((char*)this + 0x118) += 1; }  // refcount increment
 
 // 0x80149B58 (12 bytes)
 bool TTabScratchEntry::GetAvailableToVisitors() const { return *(unsigned short*)((char*)this + 0x110) & 1; }  // low bit
@@ -27,7 +26,7 @@ bool TTabScratchEntry::GetAvailableToGhosts() const { return (*(unsigned short*)
 bool TTabScratchEntry::GetAvailableToChildrenDemo() const { return (*(unsigned short*)((char*)this + 0x110) >> 5) & 1; }  // bit 5 from short
 
 // 0x80149C98 (8 bytes)
-void TTabScratchEntry::SetJoinIndex(int) { *(short*)((char*)this + 0x116) = val; }  // offset 0x116
+void TTabScratchEntry::SetJoinIndex(int val) { *(short*)((char*)this + 0x116) = val; }  // offset 0x116
 
 // 0x80149CA0 (12 bytes)
 bool TTabScratchEntry::GetDebugOnly() const { return (*(unsigned short*)((char*)this + 0x110) >> 7) & 1; }  // bit 7 from short
@@ -46,51 +45,69 @@ bool TTabScratchEntry::GetMustRun() const { return (*(unsigned short*)((char*)th
 
 // 0x80149D90 (8 bytes)
 int TTabScratchEntry::CountAds() const { return 16; }
+#if 0
 
 // 0x80149D98 (20 bytes)
-void* TTabScratchEntry::GetRangeRef(int) const { return (char*)this + index * 16 + 0x8 + 0x8; }  // nested array offset
+void* TTabScratchEntry::GetRangeRef(int index) const { return (char*)this + index * 16 + 0x8 + 0x8; }  // nested array offset
+#endif
+#if 0
 
 // 0x80149DAC (20 bytes)
-void* TTabScratchEntry::GetMinRef(int) const { return (char*)this + index * 16 + 0x8 + 0x6; }  // nested array offset
+void* TTabScratchEntry::GetMinRef(int index) const { return (char*)this + index * 16 + 0x8 + 0x6; }  // nested array offset
+#endif
+#if 0
 
 // 0x80149DC0 (20 bytes)
-void* TTabScratchEntry::GetPersonalityVarRef(int) const { return (char*)this + index * 16 + 0x8 + 0x4; }  // nested array offset
+void* TTabScratchEntry::GetPersonalityVarRef(int index) const { return (char*)this + index * 16 + 0x8 + 0x4; }  // nested array offset
+#endif
+#if 0
 
 // 0x80149DD4 (20 bytes)
-void* TTabScratchEntry::GetRangeRef(int) { return (char*)this + index * 16 + 0x8 + 0x8; }  // nested array offset
+void* TTabScratchEntry::GetRangeRef(int index) { return (char*)this + index * 16 + 0x8 + 0x8; }  // nested array offset
+#endif
+#if 0
 
 // 0x80149DE8 (20 bytes)
-void* TTabScratchEntry::GetMinRef(int) { return (char*)this + index * 16 + 0x8 + 0x6; }  // nested array offset
+void* TTabScratchEntry::GetMinRef(int index) { return (char*)this + index * 16 + 0x8 + 0x6; }  // nested array offset
+#endif
+#if 0
 
 // 0x80149DFC (20 bytes)
-void* TTabScratchEntry::GetPersonalityVarRef(int) { return (char*)this + index * 16 + 0x8 + 0x4; }  // nested array offset
+void* TTabScratchEntry::GetPersonalityVarRef(int index) { return (char*)this + index * 16 + 0x8 + 0x4; }  // nested array offset
+#endif
+#if 0
 
 // 0x80149E10 (16 bytes)
-void* TTabScratchEntry::GetAd(int) const { return (char*)this + index * 16 + 0x8; }  // array elem addr, stride=16, base_off=0x8
+void* TTabScratchEntry::GetAd(int index) const { return (char*)this + index * 16 + 0x8; }  // array elem addr, stride=16, base_off=0x8
+#endif
+#if 0
 
 // 0x80149E20 (16 bytes)
-void* TTabScratchEntry::GetAd(int) { return (char*)this + index * 16 + 0x8; }  // array elem addr, stride=16, base_off=0x8
+void* TTabScratchEntry::GetAd(int index) { return (char*)this + index * 16 + 0x8; }  // array elem addr, stride=16, base_off=0x8
+#endif
 
 // 0x80149E80 (8 bytes)
-void TTabScratchEntry::SetActionTreeID(short) { *(short*)((char*)this + 0x6) = val; }  // offset 0x6
+void TTabScratchEntry::SetActionTreeID(short val) { *(short*)((char*)this + 0x6) = val; }  // offset 0x6
 
 // 0x80149E90 (8 bytes)
-void TTabScratchEntry::SetCheckTreeID(short) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
+void TTabScratchEntry::SetCheckTreeID(short val) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
 
 // 0x80149E98 (8 bytes)
 int TTabScratchEntry::GetAttenuation() const { return *(int*)((char*)this + 0x108); }  // offset 0x108
+#if 0
 
 // 0x80149EA0 (8 bytes)
-void TTabScratchEntry::SetAttenuation(ITreeTableEntry::Attenuation) { *(int*)((char*)this + 0x108) = val; }  // offset 0x108
+void TTabScratchEntry::SetAttenuation(ITreeTableEntry::Attenuation val) { *(int*)((char*)this + 0x108) = val; }  // offset 0x108
+#endif
 
 // 0x80149EA8 (8 bytes)
 float TTabScratchEntry::GetCustomAttenuationValue() const { return *(float*)((char*)this + 0x10C); }  // offset 0x10C
 
 // 0x80149EB0 (16 bytes)
-void TTabScratchEntry::SetCustomAttenuation(float) { *(float*)((char*)this + 0x10C) = fval; *(int*)((char*)this + 0x108) = 0; }
+void TTabScratchEntry::SetCustomAttenuation(float fval) { *(float*)((char*)this + 0x10C) = fval; *(int*)((char*)this + 0x108) = 0; }
 
 // 0x80149EC8 (8 bytes)
-void TTabScratchEntry::SetAutonomyThreshold(short) { *(short*)((char*)this + 0x114) = val; }  // offset 0x114
+void TTabScratchEntry::SetAutonomyThreshold(short val) { *(short*)((char*)this + 0x114) = val; }  // offset 0x114
 
 // 0x80149F1C (4 bytes)
 void TTabScratchEntry::SetName(BString2 &) { }
@@ -102,7 +119,7 @@ int TTabScratchEntry::GetOrderIndex() const { return 0; }
 void TTabScratchEntry::SetOrderIndex(int) { }
 
 // 0x80149F34 (8 bytes)
-int TTabScratchEntry::GetUseCustomActivation() const { return 0; }
+bool TTabScratchEntry::GetUseCustomActivation() const { return 0; }
 
 // 0x80149F3C (4 bytes)
 void TTabScratchEntry::SetUseCustomActivation(bool) { }
@@ -119,4 +136,3 @@ void TTabScratchEntry::GetActivationExtents(unsigned char &, unsigned char &, un
 // 0x80149F4C (4 bytes)
 void TTabScratchEntry::SetActivationExtents(unsigned char, unsigned char, unsigned char, unsigned char) { }
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for CDirtyXmlNode
@@ -21,18 +20,17 @@ void CDirtyXmlNode::insertBefore(IAptXmlNode *, IAptXmlNode *) { }
 void CDirtyXmlNode::setNodeName(char *) { }
 
 // 0x8023AB80 (8 bytes)
-int CDirtyXmlNode::nodeType() { return *(int*)((char*)this + 0x8); }  // offset 0x8
+void CDirtyXmlNode::nodeType() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x8023ABE0 (4 bytes)
 void CDirtyXmlNode::setNodeValue(char *) { }
 
 // 0x8023ABE4 (8 bytes)
-int CDirtyXmlNode::parentNode() { return *(int*)((char*)this + 0xC); }  // offset 0xC
+void CDirtyXmlNode::parentNode() { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x8023AC38 (4 bytes)
 void CDirtyXmlNode::removeNode() { }
 
 // 0x8023AC3C (8 bytes)
-int CDirtyXmlNode::toString() { return 0; }
+void CDirtyXmlNode::toString() { return 0; }
 
-#endif

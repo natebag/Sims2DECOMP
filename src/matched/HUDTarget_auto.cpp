@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for HUDTarget
@@ -18,12 +17,11 @@ void HUDTarget::OnHUDHide() { }
 void HUDTarget::DrawMotiveValues(ERC *, int) { }
 
 // 0x80189A50 (16 bytes)
-void* HUDTarget::GetActionQueueHUD(int) { return (char*)this + index * 796 + 0x108; }  // struct array, stride=796
+void HUDTarget::GetActionQueueHUD(int index) { return (char*)this + index * 796 + 0x108; }  // struct array, stride=796
 
 // 0x80189A78 (16 bytes)
-bool HUDTarget::HUDHideComplete() const { return *(unsigned char*)((char*)this + 0xE8) != 0; }
+void HUDTarget::HUDHideComplete() const { return *(unsigned char*)((char*)this + 0xE8) != 0; }
 
 // 0x80189AC8 (8 bytes)
-unsigned char HUDTarget::GetHudTransitionTarget() { return *(unsigned char*)((char*)this + 0x100); }  // offset 0x100
+void HUDTarget::GetHudTransitionTarget() { return *(unsigned char*)((char*)this + 0x100); }  // offset 0x100
 
-#endif

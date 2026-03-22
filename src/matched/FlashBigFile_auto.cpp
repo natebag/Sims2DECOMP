@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for FlashBigFile
@@ -6,9 +5,8 @@
 // 2 functions, 32 bytes
 
 // 0x803135AC (20 bytes)
-void FlashBigFile::FlashBigFile() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
+FlashBigFile::FlashBigFile() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
 
 // 0x80313948 (12 bytes)
-void* FlashBigFile::GetFlashName() { return (char*)(*(void**)((char*)this + 0x0)) + 0x18; }  // deref + offset
+void FlashBigFile::GetFlashName() { return (char*)(*(void**)((char*)this + 0x0)) + 0x18; }  // deref + offset
 
-#endif

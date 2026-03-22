@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EBoundTreeNode
@@ -12,18 +11,21 @@ void EBoundTreeNode::Destruct(EBoundTreeNode *) { *(void**)((char*)this + 0x0) =
 void* EBoundTreeNode::GetTypeInfo() const { return (void*)0x8050CD10; }  // global data pointer
 
 // 0x802C5D40 (12 bytes)
-int EBoundTreeNode::GetTypeName() const { return *(int*)0x8050CD1C; }  // global variable
+void EBoundTreeNode::GetTypeName() const { return *(int*)0x8050CD1C; }  // global variable
 
 // 0x802C5D4C (12 bytes)
-int EBoundTreeNode::GetTypeKey() const { return *(int*)0x8050CD20; }  // global variable
+void EBoundTreeNode::GetTypeKey() const { return *(int*)0x8050CD20; }  // global variable
+#if 0
 
 // 0x802C5D58 (12 bytes)
 unsigned short EBoundTreeNode::GetTypeVersion() const { return *(unsigned short*)0x8050CD24; }  // global variable
+#endif
 
 // 0x802C5D64 (12 bytes)
 void* EBoundTreeNode::GetTypeInfoStatic() { return (void*)0x8050CD10; }  // global data pointer
+#if 0
 
 // 0x802C5D70 (12 bytes)
 unsigned short EBoundTreeNode::GetReadVersion() { return *(unsigned short*)0x8050CD26; }  // global variable
-
 #endif
+

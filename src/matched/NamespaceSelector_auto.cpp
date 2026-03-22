@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for NamespaceSelector
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x800C8860 (8 bytes)
-int NamespaceSelector::GetTreeSetResource() { return *(int*)((char*)this + 0x30); }  // offset 0x30
+void NamespaceSelector::GetTreeSetResource() { return *(int*)((char*)this + 0x30); }  // offset 0x30
 
-#endif

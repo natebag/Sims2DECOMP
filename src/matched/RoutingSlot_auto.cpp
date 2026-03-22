@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for RoutingSlot
@@ -19,12 +18,16 @@ void RoutingSlot::FaceTowardsObject() { *(int*)((char*)this + 0x34) = -2; }
 
 // 0x80142BAC (12 bytes)
 void RoutingSlot::FaceAwayFromObject() { *(int*)((char*)this + 0x34) = -1; }
+#if 0
 
 // 0x80142BC8 (16 bytes)
-void RoutingSlot::SetDistances(int, int, int) { *(int*)((char*)this + 0x2C) = param6; *(int*)((char*)this + 0x24) = p4; *(int*)((char*)this + 0x28) = p5; }
+void RoutingSlot::SetDistances(int p4, int p5,  int) { *(int*)((char*)this + 0x2C) = param6; *(int*)((char*)this + 0x24) = p4; *(int*)((char*)this + 0x28) = p5; }
+#endif
+#if 0
 
 // 0x80142C30 (16 bytes)
-void RoutingSlot::SetMultiplier(RoutingSlot::VerticalPosition, int) { ((int*)((char*)this + 0x10))[index] = val; }  // array[index] store, elem_size=4
+void RoutingSlot::SetMultiplier(RoutingSlot::VerticalPosition val,  int) { ((int*)((char*)this + 0x10))[index] = val; }  // array[index] store, elem_size=4
+#endif
 
 // 0x801454C0 (16 bytes)
 bool RoutingSlot::IsOnTopOfObject() const { return *(unsigned char*)((char*)this + 0x1F) != 0; }
@@ -46,9 +49,11 @@ int RoutingSlot::GetResolution() const { return *(int*)((char*)this + 0x38); }  
 
 // 0x801455A0 (8 bytes)
 float RoutingSlot::GetGradient() const { return *(float*)((char*)this + 0x30); }  // offset 0x30
+#if 0
 
 // 0x801455A8 (16 bytes)
-int RoutingSlot::GetMultiplier(RoutingSlot::VerticalPosition) const { return ((int*)((char*)this + 0x10))[index]; }  // array[index], elem_size=4
+int RoutingSlot::GetMultiplier(RoutingSlot::VerticalPosition index) const { return ((int*)((char*)this + 0x10))[index]; }  // array[index], elem_size=4
+#endif
 
 // 0x801455B8 (8 bytes)
 int RoutingSlot::GetSnapTargetSlot() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
@@ -69,7 +74,7 @@ bool RoutingSlot::GetAllowDifferentAlts() const { return (*(int*)((char*)this + 
 bool RoutingSlot::GetUseAverageObjectLocation() const { return *(unsigned short*)((char*)this + 0x1C) & 1; }  // low bit
 
 // 0x801456C0 (8 bytes)
-void RoutingSlot::SetResolution(int) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
+void RoutingSlot::SetResolution(int val) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
 
 // 0x801456C8 (8 bytes)
 float RoutingSlot::GetXOffset() const { return *(float*)((char*)this + 0x4); }  // offset 0x4
@@ -80,4 +85,3 @@ float RoutingSlot::GetYOffset() const { return *(float*)((char*)this + 0x8); }  
 // 0x801456D8 (8 bytes)
 float RoutingSlot::GetAltOffset() const { return *(float*)((char*)this + 0xC); }  // offset 0xC
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ERTQuantize
@@ -6,9 +5,8 @@
 // 2 functions, 16 bytes
 
 // 0x802CF95C (8 bytes)
-int ERTQuantize::GetPaletteSize() { return *(int*)((char*)this + 0x10A8); }  // offset 0x10A8
+void ERTQuantize::GetPaletteSize() { return *(int*)((char*)this + 0x10A8); }  // offset 0x10A8
 
 // 0x802CF964 (8 bytes)
-int ERTQuantize::GetFullPaletteSize() { return *(int*)((char*)this + 0x1098); }  // offset 0x1098
+void ERTQuantize::GetFullPaletteSize() { return *(int*)((char*)this + 0x1098); }  // offset 0x1098
 
-#endif

@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EDataHeader
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x8035B320 (8 bytes)
-int EDataHeader::GetName() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+void EDataHeader::GetName() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
-#endif

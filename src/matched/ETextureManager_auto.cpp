@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for ETextureManager
@@ -6,6 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80328790 (8 bytes)
-bool ETextureManager::CanCache(EResource *) { return true; }
+void ETextureManager::CanCache(EResource *) {  }
 
-#endif

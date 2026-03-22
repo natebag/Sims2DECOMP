@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WrapperPaneBase
@@ -15,13 +14,15 @@ void WrapperPaneBase::Reset() { }
 bool WrapperPaneBase::IsDrawEnabled() { return *(int*)((char*)this + 0x4) & 1; }  // low bit
 
 // 0x80087AD4 (8 bytes)
-void WrapperPaneBase::SetAlpha(float) { *(float*)((char*)this + 0x30) = val; }  // offset 0x30
+void WrapperPaneBase::SetAlpha(float val) { *(float*)((char*)this + 0x30) = val; }  // offset 0x30
 
 // 0x80087ADC (8 bytes)
 float WrapperPaneBase::GetAlpha() { return *(float*)((char*)this + 0x30); }  // offset 0x30
+#if 0
 
 // 0x80087AE4 (8 bytes)
-void WrapperPaneBase::SetState(WrapperPaneBase::PaneState) { *(int*)((char*)this + 0x34) = val; }  // offset 0x34
+void WrapperPaneBase::SetState(WrapperPaneBase::PaneState val) { *(int*)((char*)this + 0x34) = val; }  // offset 0x34
+#endif
 
 // 0x80087AEC (12 bytes)
 void WrapperPaneBase::SetStateRunning() { *(int*)((char*)this + 0x34) = 0; }
@@ -51,24 +52,25 @@ bool WrapperPaneBase::IsStateDeclined() const { return *(int*)((char*)this + 0x3
 bool WrapperPaneBase::IsStateAlt1() const { return *(int*)((char*)this + 0x34) == 3; }  // compare with constant
 
 // 0x80088200 (8 bytes)
-int WrapperPaneBase::GetBackgroundShader() { return *(int*)((char*)this + 0x18); }  // offset 0x18
+ERShader* WrapperPaneBase::GetBackgroundShader() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x8008822C (8 bytes)
-void WrapperPaneBase::SetBackgroundAlpha(float) { *(float*)((char*)this + 0x2C) = val; }  // offset 0x2C
+void WrapperPaneBase::SetBackgroundAlpha(float val) { *(float*)((char*)this + 0x2C) = val; }  // offset 0x2C
+#if 0
 
 // 0x8008827C (16 bytes)
-int WrapperPaneBase::GetButton(WrapperPaneBase::ButtonType) { return ((int*)((char*)this + 0x40))[index]; }  // array[index], elem_size=4
+int WrapperPaneBase::GetButton(WrapperPaneBase::ButtonType index) { return ((int*)((char*)this + 0x40))[index]; }  // array[index], elem_size=4
+#endif
 
 // 0x800885B8 (8 bytes)
-int WrapperPaneBase::GetAcceptButton() { return *(int*)((char*)this + 0x40); }  // offset 0x40
+TextBaseItem* WrapperPaneBase::GetAcceptButton() { return *(int*)((char*)this + 0x40); }  // offset 0x40
 
 // 0x8008879C (8 bytes)
-int WrapperPaneBase::GetDeclineButton() { return *(int*)((char*)this + 0x44); }  // offset 0x44
+TextBaseItem* WrapperPaneBase::GetDeclineButton() { return *(int*)((char*)this + 0x44); }  // offset 0x44
 
 // 0x80088980 (8 bytes)
-int WrapperPaneBase::GetAlt1Button() { return *(int*)((char*)this + 0x48); }  // offset 0x48
+TextBaseItem* WrapperPaneBase::GetAlt1Button() { return *(int*)((char*)this + 0x48); }  // offset 0x48
 
 // 0x80088B64 (8 bytes)
 void* WrapperPaneBase::GetItemList() { return (char*)this + 0x8; }  // offset 0x8
 
-#endif

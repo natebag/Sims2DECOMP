@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cXPersonImpl
@@ -6,28 +5,34 @@
 // 54 functions, 504 bytes
 
 // 0x8012503C (12 bytes)
-unsigned int cXPersonImpl::ReconType() { return 0x50455253; }
+int cXPersonImpl::ReconType() { return 0x50455253; }
 
 // 0x801253A4 (16 bytes)
-float cXPersonImpl::GetMotive(int) { return ((float*)((char*)this + 0xA8))[index]; }  // float array[index]
+float cXPersonImpl::GetMotive(int index) { return ((float*)((char*)this + 0xA8))[index]; }  // float array[index]
+#if 0
 
 // 0x801253B4 (16 bytes)
-void* cXPersonImpl::GetMotiveRef(int) { return (char*)this + index * 4 + 0xA8; }  // array elem addr, stride=4, base_off=0xA8
+float* cXPersonImpl::GetMotiveRef(int index) { return (char*)this + index * 4 + 0xA8; }  // array elem addr, stride=4, base_off=0xA8
+#endif
+#if 0
 
 // 0x801253C4 (16 bytes)
-void* cXPersonImpl::GetOldMotiveRef(int) { return (char*)this + index * 4 + 0xE8; }  // array elem addr, stride=4, base_off=0xE8
+float* cXPersonImpl::GetOldMotiveRef(int index) { return (char*)this + index * 4 + 0xE8; }  // array elem addr, stride=4, base_off=0xE8
+#endif
+#if 0
 
 // 0x801253D4 (16 bytes)
-void cXPersonImpl::SetMotive(int, float) { ((float*)((char*)this + 0xA8))[index] = val; }  // float array[index] store
+void cXPersonImpl::SetMotive(int val,  float) { ((float*)((char*)this + 0xA8))[index] = val; }  // float array[index] store
+#endif
 
 // 0x80125AD0 (12 bytes)
-bool cXPersonImpl::IsIdle() { return !*(int*)((char*)this + 0x534); }  // inverted bool
+int cXPersonImpl::IsIdle() { return !*(int*)((char*)this + 0x534); }  // inverted bool
 
 // 0x801264C4 (4 bytes)
 void cXPersonImpl::DebugDumpHappyScape() { }
 
 // 0x8012953C (16 bytes)
-bool cXPersonImpl::IsSelected() { return (*(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x84) >> 1) & 1; }  // double deref bit 1
+int cXPersonImpl::IsSelected() { return (*(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x84) >> 1) & 1; }  // double deref bit 1
 
 // 0x8012B5D4 (4 bytes)
 void cXPersonImpl::StartRecording(int, int) { }
@@ -51,82 +56,88 @@ void cXPersonImpl::Track() { }
 void cXPersonImpl::GetJobSuitTex(StringBuffer &, StringBuffer &, StringBuffer &) { }
 
 // 0x8012B82C (8 bytes)
-void cXPersonImpl::SetFirstPlayerInSocialMode(bool) { *(int*)((char*)this + 0x544) = val; }  // offset 0x544
+void cXPersonImpl::SetFirstPlayerInSocialMode(bool val) { *(int*)((char*)this + 0x544) = val; }  // offset 0x544
 
 // 0x8012B8C4 (8 bytes)
-void cXPersonImpl::SetWaitingForSocialMode(bool) { *(int*)((char*)this + 0x54C) = val; }  // offset 0x54C
+void cXPersonImpl::SetWaitingForSocialMode(bool val) { *(int*)((char*)this + 0x54C) = val; }  // offset 0x54C
 
 // 0x8012C6DC (4 bytes)
-void cXPersonImpl::CastToPersonImpl() { }
+cXPersonImpl* cXPersonImpl::CastToPersonImpl() { }
 
 // 0x8012C6E0 (4 bytes)
-void cXPersonImpl::GetPersonImplementation() { }
+cXPersonImpl* cXPersonImpl::GetPersonImplementation() { }
 
 // 0x8012C758 (16 bytes)
-short cXPersonImpl::GetPersonData(int) const { return ((short*)((char*)this + 0x8))[index]; }  // short array[index]
+short cXPersonImpl::GetPersonData(int index) const { return ((short*)((char*)this + 0x8))[index]; }  // short array[index]
+#if 0
 
 // 0x8012C768 (16 bytes)
-void cXPersonImpl::SetPersonData(int, short) { ((short*)((char*)this + 0x8))[index] = val; }  // short array[index] store
+void cXPersonImpl::SetPersonData(int val,  short) { ((short*)((char*)this + 0x8))[index] = val; }  // short array[index] store
+#endif
+#if 0
 
 // 0x8012C778 (8 bytes)
-void* cXPersonImpl::GetPersonDataArray() { return (char*)this + 0x8; }  // offset 0x8
+short int* cXPersonImpl::GetPersonDataArray() { return (char*)this + 0x8; }  // offset 0x8
+#endif
 
 // 0x8012C7DC (8 bytes)
-void cXPersonImpl::SetIdleLoopCount(short) { *(short*)((char*)this + 0x540) = val; }  // offset 0x540
+void cXPersonImpl::SetIdleLoopCount(short val) { *(short*)((char*)this + 0x540) = val; }  // offset 0x540
 
 // 0x8012C7E4 (8 bytes)
 void* cXPersonImpl::GetDestList() { return (char*)this + 0x3F8; }  // offset 0x3F8
 
 // 0x8012C7EC (8 bytes)
-int cXPersonImpl::GetSAnimator() const { return *(int*)((char*)this + 0x3F4); }  // offset 0x3F4
+void* cXPersonImpl::GetSAnimator() const { return *(int*)((char*)this + 0x3F4); }  // offset 0x3F4
 
 // 0x8012C7F4 (8 bytes)
 unsigned short cXPersonImpl::GetCurrentRoom() const { return *(unsigned short*)((char*)this + 0x41C); }  // offset 0x41C
 
 // 0x8012C8C0 (16 bytes)
-int cXPersonImpl::GetSimDescription() { return *(int*)((char*)(*(int**)((char*)(*(void**)((char*)this + 0x0)) + 0x8C)) + 0x8C); }  // triple deref
+void* cXPersonImpl::GetSimDescription() { return *(int*)((char*)(*(int**)((char*)(*(void**)((char*)this + 0x0)) + 0x8C)) + 0x8C); }  // triple deref
 
 // 0x8012C8D0 (16 bytes)
-int cXPersonImpl::GetServiceNPC() { return *(int*)((char*)(*(int**)((char*)(*(void**)((char*)this + 0x0)) + 0x8C)) + 0x90); }  // triple deref
+void* cXPersonImpl::GetServiceNPC() { return *(int*)((char*)(*(int**)((char*)(*(void**)((char*)this + 0x0)) + 0x8C)) + 0x90); }  // triple deref
 
 // 0x8012C8E0 (12 bytes)
-bool cXPersonImpl::IsInvisible() { return *(unsigned short*)((char*)this + 0x9C) & 1; }  // low bit
+int cXPersonImpl::IsInvisible() { return *(unsigned short*)((char*)this + 0x9C) & 1; }  // low bit
 
 // 0x8012C8EC (12 bytes)
-bool cXPersonImpl::IsGreen() { return (*(unsigned short*)((char*)this + 0x9C) >> 1) & 1; }  // bit 1 from short
+int cXPersonImpl::IsGreen() { return (*(unsigned short*)((char*)this + 0x9C) >> 1) & 1; }  // bit 1 from short
 
 // 0x8012C8F8 (12 bytes)
-bool cXPersonImpl::IsGhost() { return (*(unsigned short*)((char*)this + 0x9C) >> 2) & 1; }  // bit 2 from short
+int cXPersonImpl::IsGhost() { return (*(unsigned short*)((char*)this + 0x9C) >> 2) & 1; }  // bit 2 from short
 
 // 0x8012C904 (12 bytes)
-bool cXPersonImpl::IsAlien() { return (*(unsigned short*)((char*)this + 0x9C) >> 3) & 1; }  // bit 3 from short
+int cXPersonImpl::IsAlien() { return (*(unsigned short*)((char*)this + 0x9C) >> 3) & 1; }  // bit 3 from short
 
 // 0x8012C910 (12 bytes)
-bool cXPersonImpl::IsInMotiveFailure() { return (*(unsigned short*)((char*)this + 0x9C) >> 4) & 1; }  // bit 4 from short
+int cXPersonImpl::IsInMotiveFailure() { return (*(unsigned short*)((char*)this + 0x9C) >> 4) & 1; }  // bit 4 from short
 
 // 0x8012C91C (12 bytes)
-bool cXPersonImpl::NeedsWantFearShuffle() { return (*(unsigned short*)((char*)this + 0x9C) >> 5) & 1; }  // bit 5 from short
+int cXPersonImpl::NeedsWantFearShuffle() { return (*(unsigned short*)((char*)this + 0x9C) >> 5) & 1; }  // bit 5 from short
+#if 0
 
 // 0x8012C980 (8 bytes)
-void* cXPersonImpl::GetMotives() { return (char*)this + 0xA8; }  // offset 0xA8
+float* cXPersonImpl::GetMotives() { return (char*)this + 0xA8; }  // offset 0xA8
+#endif
 
 // 0x8012C988 (8 bytes)
-int cXPersonImpl::GetMotiveEffects() { return *(int*)((char*)this + 0x408); }  // offset 0x408
+void* cXPersonImpl::GetMotiveEffects() { return *(int*)((char*)this + 0x408); }  // offset 0x408
 
 // 0x8012C990 (8 bytes)
-int cXPersonImpl::GetRecording() { return *(int*)((char*)this + 0x430); }  // offset 0x430
+void* cXPersonImpl::GetRecording() { return *(int*)((char*)this + 0x430); }  // offset 0x430
 
 // 0x8012C998 (8 bytes)
 int cXPersonImpl::GetRecordDuration() { return *(int*)((char*)this + 0x434); }  // offset 0x434
 
 // 0x8012C9A0 (8 bytes)
-void cXPersonImpl::SetRecordDuration(int) { *(int*)((char*)this + 0x434) = val; }  // offset 0x434
+void cXPersonImpl::SetRecordDuration(int val) { *(int*)((char*)this + 0x434) = val; }  // offset 0x434
 
 // 0x8012C9A8 (8 bytes)
 int cXPersonImpl::GetRecordMaxDuration() { return *(int*)((char*)this + 0x438); }  // offset 0x438
 
 // 0x8012C9B0 (8 bytes)
-void cXPersonImpl::SetRecordMaxDuration(int) { *(int*)((char*)this + 0x438) = val; }  // offset 0x438
+void cXPersonImpl::SetRecordMaxDuration(int val) { *(int*)((char*)this + 0x438) = val; }  // offset 0x438
 
 // 0x8012C9B8 (8 bytes)
 int cXPersonImpl::GetRecordStartTicks() { return *(int*)((char*)this + 0x440); }  // offset 0x440
@@ -141,19 +152,19 @@ int cXPersonImpl::GetRecordTicksElapsed() { return *(int*)((char*)this + 0x444);
 int cXPersonImpl::GetRecordSkill() { return *(int*)((char*)this + 0x448); }  // offset 0x448
 
 // 0x8012C9F8 (8 bytes)
-void cXPersonImpl::SetChangingOutfitMode(bool) { *(int*)((char*)this + 0x530) = val; }  // offset 0x530
+void cXPersonImpl::SetChangingOutfitMode(bool val) { *(int*)((char*)this + 0x530) = val; }  // offset 0x530
 
 // 0x8012CA00 (8 bytes)
 int cXPersonImpl::GetLastMotiveUpdateTick() { return *(int*)((char*)this + 0x538); }  // offset 0x538
 
 // 0x8012CA08 (8 bytes)
-void cXPersonImpl::SetLastMotiveUpdateTick(int) { *(int*)((char*)this + 0x538) = val; }  // offset 0x538
+void cXPersonImpl::SetLastMotiveUpdateTick(int val) { *(int*)((char*)this + 0x538) = val; }  // offset 0x538
 
 // 0x8012CA10 (8 bytes)
-int cXPersonImpl::IgnoringObject() { return *(int*)((char*)this + 0x53C); }  // offset 0x53C
+cXObject* cXPersonImpl::IgnoringObject() { return *(int*)((char*)this + 0x53C); }  // offset 0x53C
 
 // 0x8012CA18 (8 bytes)
-void cXPersonImpl::SetIgnoringObject(cXObject *) { *(int*)((char*)this + 0x53C) = val; }  // offset 0x53C
+void cXPersonImpl::SetIgnoringObject(cXObject * val) { *(int*)((char*)this + 0x53C) = val; }  // offset 0x53C
 
 // 0x8012CA20 (12 bytes)
 void cXPersonImpl::ClearIgnoringObject() { *(int*)((char*)this + 0x53C) = 0; }
@@ -167,4 +178,3 @@ int cXPersonImpl::IsFirstPlayerInSocialMode() { return *(int*)((char*)this + 0x5
 // 0x8012CA54 (8 bytes)
 int cXPersonImpl::IsWaitingForSocialMode() { return *(int*)((char*)this + 0x54C); }  // offset 0x54C
 
-#endif

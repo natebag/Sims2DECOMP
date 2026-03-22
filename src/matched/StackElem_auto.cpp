@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for StackElem
@@ -6,12 +5,11 @@
 // 3 functions, 24 bytes
 
 // 0x80148B7C (8 bytes)
-void* StackElem::GetParams() { return (char*)this + 0x14; }  // offset 0x14
+void StackElem::GetParams() { return (char*)this + 0x14; }  // offset 0x14
 
 // 0x801491AC (8 bytes)
-int StackElem::GetIgnoreDataBreakPoint() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
+void StackElem::GetIgnoreDataBreakPoint() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x801491B4 (8 bytes)
-void StackElem::SetIgnoreDataBreakPoint(bool) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+void StackElem::SetIgnoreDataBreakPoint(bool val) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
 
-#endif

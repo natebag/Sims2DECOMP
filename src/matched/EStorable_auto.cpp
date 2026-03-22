@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for EStorable
@@ -9,16 +8,20 @@
 void* EStorable::GetTypeInfo() const { return (void*)0x8050CBF8; }  // global data pointer
 
 // 0x803C142C (12 bytes)
-int EStorable::GetTypeName() const { return *(int*)0x8050CC04; }  // global variable
+void EStorable::GetTypeName() const { return *(int*)0x8050CC04; }  // global variable
 
 // 0x803C1438 (12 bytes)
-int EStorable::GetTypeKey() const { return *(int*)0x8050CC08; }  // global variable
+void EStorable::GetTypeKey() const { return *(int*)0x8050CC08; }  // global variable
+#if 0
 
 // 0x803C1444 (12 bytes)
 unsigned short EStorable::GetTypeVersion() const { return *(unsigned short*)0x8050CC0C; }  // global variable
+#endif
+#if 0
 
 // 0x803C1484 (4 bytes)
 void EStorable::Read(EStream &) { }
+#endif
 
 // 0x803C1488 (4 bytes)
 void EStorable::Write(EStream &) { }
@@ -29,4 +32,3 @@ void EStorable::Load(EFile &) { }
 // 0x803C247C (16 bytes)
 void EStorable::Construct(EStorable *) { *(void**)((char*)this + 0x0) = (void*)0x804790C8; }  // vtable/global ptr init
 
-#endif

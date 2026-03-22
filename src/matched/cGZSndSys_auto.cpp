@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cGZSndSys
@@ -6,10 +5,12 @@
 // 4 functions, 40 bytes
 
 // 0x800B9098 (16 bytes)
-void cGZSndSys::addToList(cGZSnd *) { /* linked list: load 1028(this), store to 60(param), store param to 1028(this) */ }
+void cGZSndSys::addToList(cGZSnd *) { }
+#if 0
 
 // 0x800B90E8 (16 bytes)
-void cGZSndSys::addToList(cGZMusic *) { /* linked list: load 1032(this), store to 36(param), store param to 1032(this) */ }
+void cGZSndSys::addToList(cGZMusic *) { }
+#endif
 
 // 0x800B9FB0 (4 bytes)
 void cGZSndSys::preloadMusic() { }
@@ -17,4 +18,3 @@ void cGZSndSys::preloadMusic() { }
 // 0x800B9FB4 (4 bytes)
 void cGZSndSys::unloadMusic() { }
 
-#endif

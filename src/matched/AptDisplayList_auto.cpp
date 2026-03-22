@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for AptDisplayList
@@ -6,9 +5,8 @@
 // 2 functions, 16 bytes
 
 // 0x8029B9EC (8 bytes)
-int AptDisplayList::getState() { return *(int*)((char*)this + 0x0); }  // offset 0x0
+AptDisplayListState* AptDisplayList::getState() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x8029B9F4 (8 bytes)
-void AptDisplayList::useState(AptDisplayListState *) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
+void AptDisplayList::useState(AptDisplayListState * val) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
-#endif

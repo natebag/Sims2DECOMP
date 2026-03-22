@@ -1,4 +1,3 @@
-#if 0
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for StateMachine
@@ -6,7 +5,7 @@
 // 18 functions, 176 bytes
 
 // 0x80095DFC (16 bytes)
-void StateMachine::ReturnFromState(int) { *(int*)((char*)this + 0x8C) = p4; *(int*)((char*)this + 0x88) = 1; }
+void StateMachine::ReturnFromState(int p4) { *(int*)((char*)this + 0x8C) = p4; *(int*)((char*)this + 0x88) = 1; }
 
 // 0x80095E28 (12 bytes)
 int StateMachine::GetCurStateStage() const { return *(int*)((char*)(*(void**)((char*)this + 0x3C)) + 0xC); }  // double deref
@@ -30,7 +29,7 @@ void StateMachine::Reset() { }
 int StateMachine::GetMachineId() const { return *(int*)((char*)this + 0x1C); }  // offset 0x1C
 
 // 0x80096B2C (8 bytes)
-int StateMachine::GetManager() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
+StateMachineManager* StateMachine::GetManager() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x80096B34 (8 bytes)
 float StateMachine::GetFrameDeltaTime() const { return *(float*)((char*)this + 0x28); }  // offset 0x28
@@ -59,4 +58,3 @@ int StateMachine::IsEnabled() { return *(int*)((char*)this + 0x94); }  // offset
 // 0x80096B88 (8 bytes)
 int StateMachine::IsPausedUpdate() { return *(int*)((char*)this + 0x24); }  // offset 0x24
 
-#endif
