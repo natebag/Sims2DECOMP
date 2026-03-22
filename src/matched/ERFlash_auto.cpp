@@ -8,10 +8,10 @@
 void* ERFlash::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12664" : "=r"(__p)); return __p; }
 
 // 0x80313D28 (12 bytes)
-void ERFlash::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12652(%%r9)" : "=r"(__val)); return __val; }
+void ERFlash::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12652(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80313D34 (12 bytes)
-void ERFlash::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12648(%%r9)" : "=r"(__val)); return __val; }
+void ERFlash::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12648(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80313D40 (12 bytes)

@@ -11,13 +11,13 @@ void ISimsWallObjectModel::CreateShadow() { }
 const ETypeInfo* ISimsWallObjectModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18448" : "=r"(__p)); return __p; }
 
 // 0x80053F64 (12 bytes)
-const char* ISimsWallObjectModel::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18436(%%r9)" : "=r"(__val)); return (const char*)__val; }
+const char* ISimsWallObjectModel::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18436(%%r9)" : "=r"(__val) : : "r9"); return (const char*)__val; }
 
 // 0x80053F70 (12 bytes)
-u32 ISimsWallObjectModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18432(%%r9)" : "=r"(__val)); return __val; }
+u32 ISimsWallObjectModel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18432(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80053F7C (12 bytes)
-unsigned short ISimsWallObjectModel::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18428(%%r9)" : "=r"(__val)); return __val; }
+unsigned short ISimsWallObjectModel::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18428(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80053F88 (12 bytes)
 const ETypeInfo* ISimsWallObjectModel::GetTypeInfoStatic() { return (void*)0x8050B7F0; }  // global data pointer

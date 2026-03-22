@@ -8,13 +8,13 @@
 const ETypeInfo* EISpotLight::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13160" : "=r"(__p)); return __p; }
 
 // 0x8022B824 (12 bytes)
-const char* EISpotLight::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13148(%%r9)" : "=r"(__val)); return (const char*)__val; }
+const char* EISpotLight::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13148(%%r9)" : "=r"(__val) : : "r9"); return (const char*)__val; }
 
 // 0x8022B830 (12 bytes)
-u32 EISpotLight::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13144(%%r9)" : "=r"(__val)); return __val; }
+u32 EISpotLight::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13144(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022B83C (12 bytes)
-unsigned short EISpotLight::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13140(%%r9)" : "=r"(__val)); return __val; }
+unsigned short EISpotLight::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13140(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022B848 (12 bytes)
 const ETypeInfo* EISpotLight::GetTypeInfoStatic() { return (void*)0x8050CC98; }  // global data pointer

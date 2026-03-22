@@ -13,10 +13,10 @@ void* EIFloor::operator new(unsigned int, void *) { return (void*)0; }  // mr r3
 void* EIFloor::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18568" : "=r"(__p)); return __p; }
 
 // 0x80048404 (12 bytes)
-void EIFloor::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18556(%%r9)" : "=r"(__val)); return __val; }
+void EIFloor::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18556(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80048410 (12 bytes)
-void EIFloor::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18552(%%r9)" : "=r"(__val)); return __val; }
+void EIFloor::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18552(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x8004841C (12 bytes)

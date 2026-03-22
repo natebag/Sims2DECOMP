@@ -8,10 +8,10 @@
 void* ERFont::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12624" : "=r"(__p)); return __p; }
 
 // 0x80317854 (12 bytes)
-void ERFont::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12612(%%r9)" : "=r"(__val)); return __val; }
+void ERFont::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12612(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80317860 (12 bytes)
-void ERFont::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12608(%%r9)" : "=r"(__val)); return __val; }
+void ERFont::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12608(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x8031786C (12 bytes)
@@ -19,7 +19,7 @@ unsigned short ERFont::GetTypeVersion() const { return *(unsigned short*)0x8050C
 #endif
 
 // 0x80317878 (12 bytes)
-void* ERFont::GetTypeInfoStatic() { return (void*)0x8050CEB0; }  // global data pointer
+void* ERFont::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12624" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x80317884 (12 bytes)

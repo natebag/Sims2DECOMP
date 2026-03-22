@@ -8,10 +8,10 @@
 void* ERDataset::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10204" : "=r"(__p)); return __p; }
 
 // 0x80369840 (12 bytes)
-void ERDataset::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10192(%%r9)" : "=r"(__val)); return __val; }
+void ERDataset::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10192(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8036984C (12 bytes)
-void ERDataset::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10188(%%r9)" : "=r"(__val)); return __val; }
+void ERDataset::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10188(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80369858 (12 bytes)

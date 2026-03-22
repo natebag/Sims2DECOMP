@@ -50,16 +50,16 @@ void cXObjectImpl::ClearSyncObject() { *(int*)((char*)this + 0xDC) = 0; }
 bool cXObjectImpl::WaitingForSync(){ return *(int*)((char*)this + 0xE4); }
 
 // 0x800EABC4 (8 bytes)
-bool cXObjectImpl::GetFreeWill(){ int __sda; __asm__ __volatile__("lwz %0, -31912(%%r13)" : "=r"(__sda)); return __sda; }
+bool cXObjectImpl::GetFreeWill(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -31912(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800EABCC (8 bytes)
-bool cXObjectImpl::GetAutoCenter(){ int __sda; __asm__ __volatile__("lwz %0, -31904(%%r13)" : "=r"(__sda)); return __sda; }
+bool cXObjectImpl::GetAutoCenter(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -31904(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800EABD4 (8 bytes)
 void cXObjectImpl::SetAutoCenter(bool) { }  // stw r3,-31904(r13)
 
 // 0x800EABDC (8 bytes)
-bool cXObjectImpl::GetAutoReset(){ int __sda; __asm__ __volatile__("lwz %0, -31900(%%r13)" : "=r"(__sda)); return __sda; }
+bool cXObjectImpl::GetAutoReset(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -31900(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800EABE4 (8 bytes)
 void cXObjectImpl::SetAutoReset(bool) { }  // stw r3,-31900(r13)

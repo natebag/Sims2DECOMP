@@ -8,10 +8,10 @@
 void* EIWallPart::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19536" : "=r"(__p)); return __p; }
 
 // 0x8003056C (12 bytes)
-void EIWallPart::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19524(%%r9)" : "=r"(__val)); return __val; }
+void EIWallPart::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19524(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80030578 (12 bytes)
-void EIWallPart::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19520(%%r9)" : "=r"(__val)); return __val; }
+void EIWallPart::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19520(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80030584 (12 bytes)

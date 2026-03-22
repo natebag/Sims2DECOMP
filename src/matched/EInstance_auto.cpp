@@ -8,16 +8,16 @@
 void EInstance::SetContext(int) { }  // stw r3,-28496(r13)
 
 // 0x80229224 (8 bytes)
-int EInstance::GetContext(){ int __sda; __asm__ __volatile__("lwz %0, -28496(%%r13)" : "=r"(__sda)); return __sda; }
+int EInstance::GetContext(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -28496(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x802293A0 (12 bytes)
 const ETypeInfo* EInstance::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18528" : "=r"(__p)); return __p; }
 
 // 0x802293AC (12 bytes)
-const char* EInstance::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18516(%%r9)" : "=r"(__val)); return (const char*)__val; }
+const char* EInstance::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18516(%%r9)" : "=r"(__val) : : "r9"); return (const char*)__val; }
 
 // 0x802293B8 (12 bytes)
-u32 EInstance::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18512(%%r9)" : "=r"(__val)); return __val; }
+u32 EInstance::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18512(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x802293C4 (12 bytes)
 unsigned short EInstance::GetTypeVersion() const { return *(unsigned short*)0x8050B7B4; }  // global variable

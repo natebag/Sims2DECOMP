@@ -8,10 +8,10 @@
 void* ERShader::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12544" : "=r"(__p)); return __p; }
 
 // 0x80320540 (12 bytes)
-void ERShader::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12532(%%r9)" : "=r"(__val)); return __val; }
+void ERShader::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12532(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8032054C (12 bytes)
-void ERShader::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12528(%%r9)" : "=r"(__val)); return __val; }
+void ERShader::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12528(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80320558 (12 bytes)

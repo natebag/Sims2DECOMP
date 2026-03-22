@@ -8,10 +8,10 @@
 void* RParticle::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10004" : "=r"(__p)); return __p; }
 
 // 0x8036C1F4 (12 bytes)
-void RParticle::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -9992(%%r9)" : "=r"(__val)); return __val; }
+void RParticle::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -9992(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8036C200 (12 bytes)
-void RParticle::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -9988(%%r9)" : "=r"(__val)); return __val; }
+void RParticle::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -9988(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x8036C20C (12 bytes)

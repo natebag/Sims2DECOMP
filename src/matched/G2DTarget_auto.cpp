@@ -11,5 +11,5 @@ int G2DTarget::IsG2DActive() { return *(int*)((char*)this + 0x88); }  // offset 
 int G2DTarget::IsG2DSpawned() { return *(int*)((char*)this + 0x84); }  // offset 0x84
 
 // 0x801E7050 (8 bytes)
-int G2DTarget::IsInitComplete(){ int __sda; __asm__ __volatile__("lwz %0, -30368(%%r13)" : "=r"(__sda)); return __sda; }
+int G2DTarget::IsInitComplete(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -30368(%%r13)" : "=r"(__sda)); return __sda; }
 

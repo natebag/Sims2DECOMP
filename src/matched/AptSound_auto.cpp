@@ -5,5 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x802ABB50 (8 bytes)
-AptValue* AptSound::sMethod_stop(AptValue *, int){ int __sda; __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
+AptValue* AptSound::sMethod_stop(AptValue *, int){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
 

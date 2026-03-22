@@ -11,13 +11,13 @@ void EFontPage::Destruct(EFontPage *){ register void* __vt __asm__("r9"); __asm_
 const ETypeInfo* EFontPage::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10524" : "=r"(__p)); return __p; }
 
 // 0x80364878 (12 bytes)
-const char* EFontPage::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10512(%%r9)" : "=r"(__val)); return (const char*)__val; }
+const char* EFontPage::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10512(%%r9)" : "=r"(__val) : : "r9"); return (const char*)__val; }
 
 // 0x80364884 (12 bytes)
-u32 EFontPage::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10508(%%r9)" : "=r"(__val)); return __val; }
+u32 EFontPage::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10508(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80364890 (12 bytes)
-unsigned short EFontPage::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10504(%%r9)" : "=r"(__val)); return __val; }
+unsigned short EFontPage::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10504(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8036489C (12 bytes)
 const ETypeInfo* EFontPage::GetTypeInfoStatic() { return (void*)0x8050D6E4; }  // global data pointer

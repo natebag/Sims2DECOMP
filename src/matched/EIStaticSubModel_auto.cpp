@@ -14,10 +14,10 @@ int EIStaticSubModel::GetModifiableColor() { return *(int*)((char*)this + 0x94);
 const ETypeInfo* EIStaticSubModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13120" : "=r"(__p)); return __p; }
 
 // 0x8022F7E4 (12 bytes)
-const char* EIStaticSubModel::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13108(%%r9)" : "=r"(__val)); return (const char*)__val; }
+const char* EIStaticSubModel::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13108(%%r9)" : "=r"(__val) : : "r9"); return (const char*)__val; }
 
 // 0x8022F7F0 (12 bytes)
-u32 EIStaticSubModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13104(%%r9)" : "=r"(__val)); return __val; }
+u32 EIStaticSubModel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13104(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022F7FC (12 bytes)
 unsigned short EIStaticSubModel::GetTypeVersion() const { return *(unsigned short*)0x8050CCD4; }  // global variable

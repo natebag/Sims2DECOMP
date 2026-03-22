@@ -14,10 +14,10 @@ int EIStaticModel::GetModifiableColor() { return *(int*)((char*)this + 0x114); }
 const ETypeInfo* EIStaticModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19456" : "=r"(__p)); return __p; }
 
 // 0x8022E07C (12 bytes)
-const char* EIStaticModel::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19444(%%r9)" : "=r"(__val)); return (const char*)__val; }
+const char* EIStaticModel::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19444(%%r9)" : "=r"(__val) : : "r9"); return (const char*)__val; }
 
 // 0x8022E088 (12 bytes)
-u32 EIStaticModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19440(%%r9)" : "=r"(__val)); return __val; }
+u32 EIStaticModel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19440(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022E094 (12 bytes)
 unsigned short EIStaticModel::GetTypeVersion() const { return *(unsigned short*)0x8050B414; }  // global variable

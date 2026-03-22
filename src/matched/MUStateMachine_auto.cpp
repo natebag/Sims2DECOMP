@@ -5,7 +5,7 @@
 // 5 functions, 44 bytes
 
 // 0x800939C0 (8 bytes)
-int MUStateMachine::GetCurRequest(){ int __sda; __asm__ __volatile__("lwz %0, -21368(%%r13)" : "=r"(__sda)); return __sda; }
+int MUStateMachine::GetCurRequest(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -21368(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800939C8 (12 bytes)
 void MUStateMachine::ClearResult() { }

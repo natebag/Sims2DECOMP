@@ -11,10 +11,10 @@ void ESim::DoLightingCalculation() { }
 void* ESim::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19416" : "=r"(__p)); return __p; }
 
 // 0x800350FC (12 bytes)
-void ESim::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19404(%%r9)" : "=r"(__val)); return __val; }
+void ESim::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19404(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80035108 (12 bytes)
-void ESim::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19400(%%r9)" : "=r"(__val)); return __val; }
+void ESim::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19400(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80035114 (12 bytes)

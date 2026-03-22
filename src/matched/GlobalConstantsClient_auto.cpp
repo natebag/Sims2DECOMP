@@ -5,5 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x800EC07C (8 bytes)
-short GlobalConstantsClient::GetFileID(){ int __sda; __asm__ __volatile__("lwz %0, -31848(%%r13)" : "=r"(__sda)); return __sda; }
+short GlobalConstantsClient::GetFileID(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -31848(%%r13)" : "=r"(__sda)); return __sda; }
 

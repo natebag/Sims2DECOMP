@@ -11,10 +11,10 @@ void ERCharacter::PrintNodes() { }
 void* ERCharacter::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10244" : "=r"(__p)); return __p; }
 
 // 0x80368C50 (12 bytes)
-void ERCharacter::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10232(%%r9)" : "=r"(__val)); return __val; }
+void ERCharacter::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10232(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80368C5C (12 bytes)
-void ERCharacter::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10228(%%r9)" : "=r"(__val)); return __val; }
+void ERCharacter::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10228(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80368C68 (12 bytes)

@@ -8,10 +8,10 @@
 void* EIFenceWall::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19496" : "=r"(__p)); return __p; }
 
 // 0x80030724 (12 bytes)
-void EIFenceWall::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19484(%%r9)" : "=r"(__val)); return __val; }
+void EIFenceWall::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19484(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80030730 (12 bytes)
-void EIFenceWall::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19480(%%r9)" : "=r"(__val)); return __val; }
+void EIFenceWall::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19480(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x8003073C (12 bytes)

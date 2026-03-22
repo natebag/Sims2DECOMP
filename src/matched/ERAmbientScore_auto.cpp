@@ -8,10 +8,10 @@
 void* ERAmbientScore::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10404" : "=r"(__p)); return __p; }
 
 // 0x80367230 (12 bytes)
-void ERAmbientScore::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10392(%%r9)" : "=r"(__val)); return __val; }
+void ERAmbientScore::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10392(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8036723C (12 bytes)
-void ERAmbientScore::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10388(%%r9)" : "=r"(__val)); return __val; }
+void ERAmbientScore::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10388(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80367248 (12 bytes)

@@ -8,10 +8,10 @@
 void* ERBinary::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10284" : "=r"(__p)); return __p; }
 
 // 0x8036855C (12 bytes)
-void ERBinary::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10272(%%r9)" : "=r"(__val)); return __val; }
+void ERBinary::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10272(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80368568 (12 bytes)
-void ERBinary::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10268(%%r9)" : "=r"(__val)); return __val; }
+void ERBinary::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10268(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80368574 (12 bytes)

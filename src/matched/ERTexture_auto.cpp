@@ -8,10 +8,10 @@
 void* ERTexture::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12504" : "=r"(__p)); return __p; }
 
 // 0x803212B4 (12 bytes)
-void ERTexture::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12492(%%r9)" : "=r"(__val)); return __val; }
+void ERTexture::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12492(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x803212C0 (12 bytes)
-void ERTexture::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12488(%%r9)" : "=r"(__val)); return __val; }
+void ERTexture::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12488(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x803212CC (12 bytes)

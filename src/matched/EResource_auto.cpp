@@ -8,10 +8,10 @@
 void* EResource::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13000" : "=r"(__p)); return __p; }
 
 // 0x803121A4 (12 bytes)
-void EResource::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12988(%%r9)" : "=r"(__val)); return __val; }
+void EResource::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12988(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x803121B0 (12 bytes)
-void EResource::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12984(%%r9)" : "=r"(__val)); return __val; }
+void EResource::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12984(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x803121BC (12 bytes)

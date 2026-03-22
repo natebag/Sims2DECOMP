@@ -17,10 +17,10 @@ void REffectsSequencer::TryIncrementSubResources() { return 1; }
 void* REffectsSequencer::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10044" : "=r"(__p)); return __p; }
 
 // 0x8036B16C (12 bytes)
-void REffectsSequencer::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10032(%%r9)" : "=r"(__val)); return __val; }
+void REffectsSequencer::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10032(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8036B178 (12 bytes)
-void REffectsSequencer::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10028(%%r9)" : "=r"(__val)); return __val; }
+void REffectsSequencer::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10028(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x8036B184 (12 bytes)

@@ -14,13 +14,13 @@ void ERLevel::GroupWallInstances() { }
 const ETypeInfo* ERLevel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13080" : "=r"(__p)); return __p; }
 
 // 0x80238100 (12 bytes)
-const char* ERLevel::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13068(%%r9)" : "=r"(__val)); return (const char*)__val; }
+const char* ERLevel::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13068(%%r9)" : "=r"(__val) : : "r9"); return (const char*)__val; }
 
 // 0x8023810C (12 bytes)
-u32 ERLevel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13064(%%r9)" : "=r"(__val)); return __val; }
+u32 ERLevel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13064(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80238118 (12 bytes)
-unsigned short ERLevel::GetTypeVersion() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13060(%%r9)" : "=r"(__val)); return __val; }
+unsigned short ERLevel::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13060(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80238124 (12 bytes)
 const ETypeInfo* ERLevel::GetTypeInfoStatic() { return (void*)0x8050CCE8; }  // global data pointer
@@ -61,7 +61,7 @@ EWallUpDownStateType ERLevel::WallFadeState() { return *(int*)((char*)this + 0x2
 #endif
 
 // 0x80238290 (8 bytes)
-int ERLevel::IsDrawingOrderTable(){ int __sda; __asm__ __volatile__("lwz %0, -28428(%%r13)" : "=r"(__sda)); return __sda; }
+int ERLevel::IsDrawingOrderTable(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -28428(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x80238298 (12 bytes)
 int ERLevel::IsInUse() { return *(int*)((char*)this + 0x2A2B0); }  // large offset getter

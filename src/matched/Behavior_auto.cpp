@@ -14,7 +14,7 @@ int Behavior::GetNamespaceID() { return *(int*)((char*)(*(void**)((char*)this + 
 int Behavior::GetSemiGlobalNamespaceID() { return *(int*)((char*)(*(void**)((char*)this + 0x4)) + 0x8); }  // double deref
 
 // 0x800AB558 (8 bytes)
-int Behavior::GetGlobNamespaceID(){ int __sda; __asm__ __volatile__("lwz %0, -31848(%%r13)" : "=r"(__sda)); return __sda; }
+int Behavior::GetGlobNamespaceID(){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -31848(%%r13)" : "=r"(__sda)); return __sda; }
 
 // 0x800AB8C0 (4 bytes)
 void Behavior::GetNodeText(short, BehaviorNode *, StringBuffer &) { }

@@ -8,10 +8,10 @@
 void* EIPortalPointLight::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13200" : "=r"(__p)); return __p; }
 
 // 0x8022B044 (12 bytes)
-void EIPortalPointLight::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13188(%%r9)" : "=r"(__val)); return __val; }
+void EIPortalPointLight::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13188(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022B050 (12 bytes)
-void EIPortalPointLight::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13184(%%r9)" : "=r"(__val)); return __val; }
+void EIPortalPointLight::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13184(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x8022B05C (12 bytes)

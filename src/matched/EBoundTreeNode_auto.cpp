@@ -11,10 +11,10 @@ void EBoundTreeNode::Destruct(EBoundTreeNode *){ register void* __vt __asm__("r9
 void* EBoundTreeNode::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13040" : "=r"(__p)); return __p; }
 
 // 0x802C5D40 (12 bytes)
-void EBoundTreeNode::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13028(%%r9)" : "=r"(__val)); return __val; }
+void EBoundTreeNode::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13028(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x802C5D4C (12 bytes)
-void EBoundTreeNode::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13024(%%r9)" : "=r"(__val)); return __val; }
+void EBoundTreeNode::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13024(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x802C5D58 (12 bytes)

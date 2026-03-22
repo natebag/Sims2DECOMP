@@ -50,10 +50,10 @@ void* ISimInstance::operator new(unsigned int, void *) { return (void*)0; }  // 
 void* ISimInstance::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19376" : "=r"(__p)); return __p; }
 
 // 0x800568B8 (12 bytes)
-void ISimInstance::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19364(%%r9)" : "=r"(__val)); return __val; }
+void ISimInstance::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19364(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x800568C4 (12 bytes)
-void ISimInstance::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19360(%%r9)" : "=r"(__val)); return __val; }
+void ISimInstance::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19360(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x800568D0 (12 bytes)
@@ -61,7 +61,7 @@ unsigned short ISimInstance::GetTypeVersion() const { return *(unsigned short*)0
 #endif
 
 // 0x800568DC (12 bytes)
-void* ISimInstance::GetTypeInfoStatic() { return (void*)0x8050B450; }  // global data pointer
+void* ISimInstance::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19376" : "=r"(__p)); return __p; }
 #if 0
 
 // 0x800568E8 (12 bytes)

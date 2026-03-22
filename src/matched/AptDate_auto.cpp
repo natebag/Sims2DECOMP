@@ -5,5 +5,5 @@
 // 1 functions, 8 bytes
 
 // 0x80296888 (8 bytes)
-AptValue* AptDate::sMethod_UTC(AptValue *, int){ int __sda; __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
+AptValue* AptDate::sMethod_UTC(AptValue *, int){ register int __sda __asm__("r3"); __asm__ __volatile__("lwz %0, -22936(%%r13)" : "=r"(__sda)); return (AptValue*)__sda; }
 

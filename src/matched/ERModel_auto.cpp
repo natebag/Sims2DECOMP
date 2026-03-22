@@ -23,10 +23,10 @@ void ERModel::GetNumMorphBases() { return *(int*)((char*)this + 0x108); }  // of
 void* ERModel::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12584" : "=r"(__p)); return __p; }
 
 // 0x8031B2B0 (12 bytes)
-void ERModel::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12572(%%r9)" : "=r"(__val)); return __val; }
+void ERModel::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12572(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8031B2BC (12 bytes)
-void ERModel::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12568(%%r9)" : "=r"(__val)); return __val; }
+void ERModel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12568(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x8031B2C8 (12 bytes)

@@ -8,10 +8,10 @@
 void* ERSoundEvent::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10164" : "=r"(__p)); return __p; }
 
 // 0x80369F3C (12 bytes)
-void ERSoundEvent::GetTypeName() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10152(%%r9)" : "=r"(__val)); return __val; }
+void ERSoundEvent::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10152(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80369F48 (12 bytes)
-void ERSoundEvent::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10148(%%r9)" : "=r"(__val)); return __val; }
+void ERSoundEvent::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10148(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 #if 0
 
 // 0x80369F54 (12 bytes)

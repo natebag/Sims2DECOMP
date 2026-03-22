@@ -8,10 +8,10 @@
 const ETypeInfo* EIDirLight::GetTypeInfo() const{ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13400" : "=r"(__p)); return __p; }
 
 // 0x80227424 (12 bytes)
-const char* EIDirLight::GetTypeName() const{ void* __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13388(%%r9)" : "=r"(__val)); return (const char*)__val; }
+const char* EIDirLight::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13388(%%r9)" : "=r"(__val) : : "r9"); return (const char*)__val; }
 
 // 0x80227430 (12 bytes)
-u32 EIDirLight::GetTypeKey() const{ int __val; __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13384(%%r9)" : "=r"(__val)); return __val; }
+u32 EIDirLight::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13384(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022743C (12 bytes)
 unsigned short EIDirLight::GetTypeVersion() const { return *(unsigned short*)0x8050CBBC; }  // global variable
