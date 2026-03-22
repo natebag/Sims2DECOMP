@@ -5,10 +5,10 @@
 // 4 functions, 40 bytes
 
 // 0x801C9AE4 (12 bytes)
-void MODTarget::ShowMood() { *(int*)((char*)this + 0x90) = 1; }
+void MODTarget::ShowMood() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x801C9AF0 (12 bytes)
-void MODTarget::HideMood() { *(int*)((char*)this + 0x90) = 0; }
+void MODTarget::HideMood() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x801C9C84 (8 bytes)
 int MODTarget::IsMoodActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88

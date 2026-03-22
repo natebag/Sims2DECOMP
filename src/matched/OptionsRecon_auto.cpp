@@ -11,5 +11,5 @@ int OptionsRecon::WriteToMemoryCard(char *, unsigned char) { return 0; }
 int OptionsRecon::ReadFromMemoryCard(char *, unsigned char) { return 0; }
 
 // 0x80058F80 (12 bytes)
-void OptionsRecon::RestorePrefsForOnline() { *(int*)((char*)this + 0x10) = *(int*)((char*)this + 0x50); }
+void OptionsRecon::RestorePrefsForOnline() { register int __r0 __asm__("r0") = *(int*)((char*)this + 0x50); __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x10) = __r0; }
 

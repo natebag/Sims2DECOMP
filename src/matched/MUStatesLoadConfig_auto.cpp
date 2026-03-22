@@ -5,7 +5,7 @@
 // 2 functions, 24 bytes
 
 // 0x80093118 (12 bytes)
-void MUStatesLoadConfig::Reset() { *(int*)((char*)this + 0x1C) = 0; }
+void MUStatesLoadConfig::Reset() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x1C) = __r0; }
 
 // 0x800941F8 (12 bytes)
 MUWrapper* MUStatesLoadConfig::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref

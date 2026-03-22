@@ -5,7 +5,7 @@
 // 5 functions, 44 bytes
 
 // 0x80084914 (12 bytes)
-void IconItem::Startup() { *(int*)((char*)this + 0x30) = 0; }
+void IconItem::Startup() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x30) = __r0; }
 
 // 0x800878A4 (8 bytes)
 void IconItem::SetAlpha(float val) { *(float*)((char*)this + 0x2C) = val; }  // offset 0x2C

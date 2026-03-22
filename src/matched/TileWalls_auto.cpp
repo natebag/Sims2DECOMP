@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x80146F04 (12 bytes)
-void TileWalls::RemoveAllWalls() { *(int*)((char*)this + 0x0) = 0; }
+void TileWalls::RemoveAllWalls() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x0) = __r0; }
 

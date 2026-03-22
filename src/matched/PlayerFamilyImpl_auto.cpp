@@ -20,5 +20,5 @@ void PlayerFamilyImpl::GetTotalAspirationScore() const { return *(int*)((char*)t
 void PlayerFamilyImpl::SetTotalAspirationScore(int val) { *(int*)((char*)this + 0xD60) = val; }  // offset 0xD60
 
 // 0x8012D1D4 (12 bytes)
-void PlayerFamilyImpl::ConvertToRegularFamilyOnWrite() { *(int*)((char*)this + 0xD64) = 1; }
+void PlayerFamilyImpl::ConvertToRegularFamilyOnWrite() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xD64) = __r0; }
 

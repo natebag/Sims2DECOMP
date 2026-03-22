@@ -11,13 +11,13 @@ void RoutingSlot::SetIsOnTopOfObject() { *(unsigned int*)((char*)this + 0x1C) &=
 void RoutingSlot::AllowAnyRotation() { *(unsigned int*)((char*)this + 0x1C) |= 0x100; }  // set flags
 
 // 0x80142B94 (12 bytes)
-void RoutingSlot::AllowAnyFacing() { *(int*)((char*)this + 0x34) = -3; }
+void RoutingSlot::AllowAnyFacing() { register int __r0 __asm__("r0") = -3; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x34) = __r0; }
 
 // 0x80142BA0 (12 bytes)
-void RoutingSlot::FaceTowardsObject() { *(int*)((char*)this + 0x34) = -2; }
+void RoutingSlot::FaceTowardsObject() { register int __r0 __asm__("r0") = -2; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x34) = __r0; }
 
 // 0x80142BAC (12 bytes)
-void RoutingSlot::FaceAwayFromObject() { *(int*)((char*)this + 0x34) = -1; }
+void RoutingSlot::FaceAwayFromObject() { register int __r0 __asm__("r0") = -1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x34) = __r0; }
 #if 0
 
 // 0x80142BC8 (16 bytes)

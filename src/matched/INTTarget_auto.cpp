@@ -5,10 +5,10 @@
 // 3 functions, 32 bytes
 
 // 0x801F8D98 (12 bytes)
-void INTTarget::ShowInterestMeter() { *(int*)((char*)this + 0x94) = 1; }
+void INTTarget::ShowInterestMeter() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x94) = __r0; }
 
 // 0x801F8DA4 (12 bytes)
-void INTTarget::HideInterestMeter() { *(int*)((char*)this + 0x94) = 0; }
+void INTTarget::HideInterestMeter() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x94) = __r0; }
 
 // 0x801F8E8C (8 bytes)
 int INTTarget::IsInterestMeterActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88

@@ -5,10 +5,10 @@
 // 5 functions, 44 bytes
 
 // 0x801A21EC (12 bytes)
-void ACTTarget::ShowActionQueue() { *(int*)((char*)this + 0xD8) = 1; }
+void ACTTarget::ShowActionQueue() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xD8) = __r0; }
 
 // 0x801A21F8 (12 bytes)
-void ACTTarget::HideActionQueue() { *(int*)((char*)this + 0xD8) = 0; }
+void ACTTarget::HideActionQueue() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xD8) = __r0; }
 
 // 0x801A23BC (8 bytes)
 int ACTTarget::IsActionQueueActive() { return *(int*)((char*)this + 0xD0); }  // offset 0xD0

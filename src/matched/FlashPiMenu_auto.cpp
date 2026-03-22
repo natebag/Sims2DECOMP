@@ -11,7 +11,7 @@ void FlashPiMenu::Update() { }
 void FlashPiMenu::CleanUpAllMenus() { }
 
 // 0x8003A7EC (12 bytes)
-void FlashPiMenu::Kill() { *(int*)((char*)this + 0x4) = 1; }
+void FlashPiMenu::Kill() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x4) = __r0; }
 #if 0
 
 // 0x8003AFB8 (20 bytes)

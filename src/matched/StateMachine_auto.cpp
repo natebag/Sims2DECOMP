@@ -38,19 +38,19 @@ float StateMachine::GetFrameDeltaTime() const { return *(float*)((char*)this + 0
 int StateMachine::GetReturnVal() const { return *(int*)((char*)this + 0x90); }  // offset 0x90
 
 // 0x80096B44 (12 bytes)
-void StateMachine::ResetReturnVal() { *(int*)((char*)this + 0x90) = 0; }
+void StateMachine::ResetReturnVal() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x80096B50 (12 bytes)
-void StateMachine::Enable() { *(int*)((char*)this + 0x94) = 1; }
+void StateMachine::Enable() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x94) = __r0; }
 
 // 0x80096B5C (12 bytes)
-void StateMachine::Disable() { *(int*)((char*)this + 0x94) = 0; }
+void StateMachine::Disable() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x94) = __r0; }
 
 // 0x80096B68 (12 bytes)
-void StateMachine::PauseUpdate() { *(int*)((char*)this + 0x24) = 1; }
+void StateMachine::PauseUpdate() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x24) = __r0; }
 
 // 0x80096B74 (12 bytes)
-void StateMachine::UnpauseUpdate() { *(int*)((char*)this + 0x24) = 0; }
+void StateMachine::UnpauseUpdate() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x24) = __r0; }
 
 // 0x80096B80 (8 bytes)
 int StateMachine::IsEnabled() { return *(int*)((char*)this + 0x94); }  // offset 0x94

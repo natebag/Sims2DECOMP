@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x800597E0 (12 bytes)
-void PlumbBobStack::Reset() { *(int*)((char*)this + 0x0) = 0; }
+void PlumbBobStack::Reset() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x0) = __r0; }
 

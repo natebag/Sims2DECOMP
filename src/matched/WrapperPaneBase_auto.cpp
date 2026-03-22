@@ -25,16 +25,16 @@ void WrapperPaneBase::SetState(WrapperPaneBase::PaneState val) { *(int*)((char*)
 #endif
 
 // 0x80087AEC (12 bytes)
-void WrapperPaneBase::SetStateRunning() { *(int*)((char*)this + 0x34) = 0; }
+void WrapperPaneBase::SetStateRunning() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x34) = __r0; }
 
 // 0x80087AF8 (12 bytes)
-void WrapperPaneBase::SetStateAccepted() { *(int*)((char*)this + 0x34) = 1; }
+void WrapperPaneBase::SetStateAccepted() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x34) = __r0; }
 
 // 0x80087B04 (12 bytes)
-void WrapperPaneBase::SetStateDeclined() { *(int*)((char*)this + 0x34) = 2; }
+void WrapperPaneBase::SetStateDeclined() { register int __r0 __asm__("r0") = 2; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x34) = __r0; }
 
 // 0x80087B10 (12 bytes)
-void WrapperPaneBase::SetStateAlt1() { *(int*)((char*)this + 0x34) = 3; }
+void WrapperPaneBase::SetStateAlt1() { register int __r0 __asm__("r0") = 3; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x34) = __r0; }
 
 // 0x80087B1C (8 bytes)
 int WrapperPaneBase::GetState() const { return *(int*)((char*)this + 0x34); }  // offset 0x34

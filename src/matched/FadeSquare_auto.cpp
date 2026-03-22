@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x8021CEE4 (12 bytes)
-void FadeSquare::StartFade() { *(int*)((char*)this + 0x14) = 1; }
+void FadeSquare::StartFade() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x14) = __r0; }
 

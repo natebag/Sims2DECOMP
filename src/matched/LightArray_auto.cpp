@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x80228EF4 (12 bytes)
-void LightArray::Init() { *(int*)((char*)this + 0xD00) = 0; }
+void LightArray::Init() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xD00) = __r0; }
 

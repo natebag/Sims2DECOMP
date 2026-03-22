@@ -5,10 +5,10 @@
 // 4 functions, 40 bytes
 
 // 0x801BD870 (12 bytes)
-void ITBTarget::ShowIntroThoughtBalloon() { *(int*)((char*)this + 0x98) = 1; }
+void ITBTarget::ShowIntroThoughtBalloon() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x98) = __r0; }
 
 // 0x801BD87C (12 bytes)
-void ITBTarget::HideIntroThoughtBalloon() { *(int*)((char*)this + 0x98) = 0; }
+void ITBTarget::HideIntroThoughtBalloon() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x98) = __r0; }
 
 // 0x801BD8F4 (8 bytes)
 int ITBTarget::IsIntroThoughtBalloonActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88

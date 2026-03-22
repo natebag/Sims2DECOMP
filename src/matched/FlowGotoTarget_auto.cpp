@@ -8,5 +8,5 @@
 int FlowGotoTarget::GetStateRequest() { return *(int*)((char*)this + 0x84); }  // offset 0x84
 
 // 0x8017B988 (12 bytes)
-void FlowGotoTarget::SetPendingStateCurrent() { *(int*)((char*)this + 0x88) = *(int*)((char*)this + 0x84); }
+void FlowGotoTarget::SetPendingStateCurrent() { register int __r0 __asm__("r0") = *(int*)((char*)this + 0x84); __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x88) = __r0; }
 

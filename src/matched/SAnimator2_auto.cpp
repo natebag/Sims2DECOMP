@@ -11,7 +11,7 @@ void SAnimator2::Render(int) { }
 void SAnimator2::ResetSuits() { }
 
 // 0x8005D124 (12 bytes)
-void SAnimator2::SnapToGrid() { *(int*)((char*)this + 0x24) = 1; }
+void SAnimator2::SnapToGrid() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x24) = __r0; }
 
 // 0x8005E7C8 (4 bytes)
 void SAnimator2::SetAnimDisplacements(float, float, float) { }

@@ -26,5 +26,5 @@ ObjSelector* Behavior::GetOwner() { return *(int*)((char*)this + 0x4); }  // off
 Language* Behavior::GetLanguage() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x800AD1A4 (16 bytes)
-void Behavior::SetDefaultParam(BehaviorNodeParam *) { *(int*)((char*)this + 0x4) = -1; *(int*)((char*)this + 0x0) = -1; }
+void Behavior::SetDefaultParam(BehaviorNodeParam *) { register int __r0 __asm__("r0") = -1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x4) = __r0; *(int*)((char*)this + 0x0) = __r0; }
 

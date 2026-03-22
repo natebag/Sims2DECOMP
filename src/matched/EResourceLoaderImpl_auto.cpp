@@ -11,7 +11,7 @@ void EResourceLoaderImpl::Update() { }
 void EResourceLoaderImpl::EnableReloads(bool val) { *(int*)((char*)this + 0x3E0) = val; }  // offset 0x3E0
 
 // 0x80311C90 (12 bytes)
-void EResourceLoaderImpl::PauseLoads() { *(int*)((char*)this + 0x3E8) = 1; }
+void EResourceLoaderImpl::PauseLoads() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x3E8) = __r0; }
 
 // 0x80311CC8 (8 bytes)
 void EResourceLoaderImpl::AreLoadsPaused() { return *(int*)((char*)this + 0x3E8); }  // offset 0x3E8

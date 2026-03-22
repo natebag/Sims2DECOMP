@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x8013DA08 (12 bytes)
-void SeqResFile::ClearOpenSpecs() { *(int*)((char*)this + 0xD0) = 0; }
+void SeqResFile::ClearOpenSpecs() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xD0) = __r0; }
 

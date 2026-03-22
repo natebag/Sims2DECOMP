@@ -5,10 +5,10 @@
 // 5 functions, 44 bytes
 
 // 0x801C3C84 (12 bytes)
-void MDITarget::ShowModelessDialog() { *(int*)((char*)this + 0x9C) = 1; }
+void MDITarget::ShowModelessDialog() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x9C) = __r0; }
 
 // 0x801C3C90 (12 bytes)
-void MDITarget::HideModelessDialog() { *(int*)((char*)this + 0x9C) = 0; }
+void MDITarget::HideModelessDialog() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x9C) = __r0; }
 
 // 0x801C3C9C (4 bytes)
 void MDITarget::UpdateModelessDialogs() { }

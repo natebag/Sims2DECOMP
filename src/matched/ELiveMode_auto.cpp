@@ -17,7 +17,7 @@ void ELiveMode::InTransportMode() { return *(int*)((char*)this + 0x28); }  // of
 void ELiveMode::IsIntroCameraTriggered() { return *(int*)((char*)this + 0xC) == 1; }  // compare with constant
 
 // 0x80090054 (12 bytes)
-void ELiveMode::ResetIntroCamera() { *(int*)((char*)this + 0xC) = 0; }
+void ELiveMode::ResetIntroCamera() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xC) = __r0; }
 #if 0
 
 // 0x80090060 (8 bytes)

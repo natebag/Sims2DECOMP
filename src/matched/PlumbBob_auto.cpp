@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x8005A45C (12 bytes)
-void PlumbBob::BecomeTransitionIndicator() { *(int*)((char*)this + 0x160) = 1; }
+void PlumbBob::BecomeTransitionIndicator() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x160) = __r0; }
 

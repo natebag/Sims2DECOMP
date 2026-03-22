@@ -5,8 +5,8 @@
 // 2 functions, 24 bytes
 
 // 0x80132F40 (12 bytes)
-void ReconBuffer::EnableCompression() { *(int*)((char*)this + 0x18) = 1; }
+void ReconBuffer::EnableCompression() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x18) = __r0; }
 
 // 0x801332C4 (12 bytes)
-void ReconBuffer::PadBits() { *(int*)((char*)this + 0x28) = 0; }
+void ReconBuffer::PadBits() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x28) = __r0; }
 

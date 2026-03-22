@@ -29,7 +29,7 @@ int cXObjectImpl::GetLevel() const { return *(int*)((char*)this + 0x80); }  // o
 void cXObjectImpl::SetLevel(int val) { *(int*)((char*)this + 0x80) = val; }  // offset 0x80
 
 // 0x800E3044 (12 bytes)
-void cXObjectImpl::ClearOverrideRenderPosition() { *(int*)((char*)this + 0xCC) = 0; }
+void cXObjectImpl::ClearOverrideRenderPosition() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xCC) = __r0; }
 
 // 0x800E324C (16 bytes)
 void cXObjectImpl::GetNumTiles(int &, int &) { /* stw r0,0(r4) */; /* stw r0,0(r5) */; }

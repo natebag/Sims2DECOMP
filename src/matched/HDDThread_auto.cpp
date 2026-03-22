@@ -8,7 +8,7 @@
 void HDDThread::InitAndRun() { }
 
 // 0x80321F14 (12 bytes)
-void HDDThread::DoCopy() { *(int*)((char*)this + 0x5C4) = 1; }
+void HDDThread::DoCopy() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x5C4) = __r0; }
 
 // 0x80321FC0 (4 bytes)
 void HDDThread::SpeedTest() { }

@@ -23,7 +23,7 @@ void CUnlockDisplayObject::SetPlayAndHold(bool val) { *(int*)((char*)this + 0x6C
 bool CUnlockDisplayObject::IsReady() { return *(int*)((char*)this + 0x74); }  // offset 0x74
 
 // 0x80079C20 (12 bytes)
-void CUnlockDisplayObject::SetTrigger() { *(int*)((char*)this + 0x70) = 1; }
+void CUnlockDisplayObject::SetTrigger() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x70) = __r0; }
 
 // 0x80079C2C (8 bytes)
 bool CUnlockDisplayObject::IsDone() { return *(int*)((char*)this + 0x78); }  // offset 0x78

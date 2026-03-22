@@ -8,7 +8,7 @@
 void TreeSimImpl::SetError(short val) { *(short*)((char*)this + 0x34) = val; }  // offset 0x34
 
 // 0x80147444 (12 bytes)
-void TreeSimImpl::ClearError() { *(short*)((char*)this + 0x34) = 0; }
+void TreeSimImpl::ClearError() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(short*)((char*)this + 0x34) = __r0; }
 
 // 0x8014853C (20 bytes)
 void TreeSimImpl::GetLastTransition() { return *(int*)((char*)this + 0x28) == 254; }  // compare with constant

@@ -17,7 +17,7 @@ int ESimsCam::SetControllerFilterId(unsigned int val) { *(int*)((char*)this + 0x
 unsigned int ESimsCam::GetControllerFilterId() const { return *(int*)((char*)this + 0x560); }  // offset 0x560
 
 // 0x8001ADA8 (16 bytes)
-int ESimsCam::ClearControllerFilterId() { *(int*)((char*)this + 0x560) = 0; return 1; }
+int ESimsCam::ClearControllerFilterId() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x560) = __r0; return 1; }
 #if 0
 
 // 0x8001EA2C (8 bytes)

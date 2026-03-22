@@ -8,7 +8,7 @@
 MMUTarget* MMUTarget::GetSingleton() { return 0; }  // lwz r3,-30180(r13)
 
 // 0x801C59E8 (12 bytes)
-void MMUTarget::OnCreditsClose() { *(int*)((char*)this + 0xFC) = 1; }
+void MMUTarget::OnCreditsClose() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xFC) = __r0; }
 #if 0
 
 // 0x801C86B4 (16 bytes)

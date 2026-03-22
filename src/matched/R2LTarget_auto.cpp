@@ -11,7 +11,7 @@ void R2LTarget::Update() { }
 void R2LTarget::onHelpDialogSelection(int) { }
 
 // 0x801DCE78 (12 bytes)
-void R2LTarget::onSummaryDialogZeroInputCallback() { *(int*)((char*)this + 0xB8) = 0; }
+void R2LTarget::onSummaryDialogZeroInputCallback() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xB8) = __r0; }
 
 // 0x801DCE84 (12 bytes)
 void R2LTarget::onSummaryDialogDialogClosedCallback() { *(int*)((char*)this + 0xB8) = 0; }

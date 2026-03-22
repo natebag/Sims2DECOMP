@@ -14,8 +14,8 @@ void ESpriteRender::GetMarked() { return *(int*)((char*)this + 0x0); }  // offse
 void ESpriteRender::GetMarkedAsNew() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x80036E88 (12 bytes)
-void ESpriteRender::Mark() { *(int*)((char*)this + 0x0) = 1; }
+void ESpriteRender::Mark() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x0) = __r0; }
 
 // 0x80036E94 (12 bytes)
-void ESpriteRender::MarkAsNew() { *(int*)((char*)this + 0x4) = 1; }
+void ESpriteRender::MarkAsNew() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x4) = __r0; }
 

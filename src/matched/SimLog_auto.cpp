@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x8013FADC (12 bytes)
-void SimLog::BeginLogging() { *(int*)((char*)this + 0x0) = 1; }
+void SimLog::BeginLogging() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x0) = __r0; }
 

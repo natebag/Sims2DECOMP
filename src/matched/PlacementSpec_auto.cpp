@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x800DCDF4 (12 bytes)
-PlacementSpec::PlacementSpec(bool) { *(int*)((char*)this + 0x0) = 0; }
+PlacementSpec::PlacementSpec(bool) { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x0) = __r0; }
 

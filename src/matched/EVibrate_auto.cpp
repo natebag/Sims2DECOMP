@@ -5,7 +5,7 @@
 // 3 functions, 28 bytes
 
 // 0x80307CB0 (12 bytes)
-void EVibrate::Disable() { *(int*)((char*)this + 0x0) = 0; }
+void EVibrate::Disable() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x0) = __r0; }
 
 // 0x80307CBC (8 bytes)
 void EVibrate::IsOn() { return *(int*)((char*)this + 0x0); }  // offset 0x0

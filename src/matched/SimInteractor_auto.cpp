@@ -51,7 +51,7 @@ void InteractorModule::SimInteractor::ReturnPlumbobToSim(PlumbBob *, EVec3 &) { 
 #endif
 
 // 0x8021F0AC (12 bytes)
-void InteractorModule::SimInteractor::SetupCutToSim() { *(int*)((char*)this + 0x188) = 1; }
+void InteractorModule::SimInteractor::SetupCutToSim() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x188) = __r0; }
 
 #if 0
 // 0x8021F0B8 (16 bytes)

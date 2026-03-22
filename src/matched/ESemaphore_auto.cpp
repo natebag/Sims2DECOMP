@@ -8,7 +8,7 @@
 int ESemaphore::GetObject(int) { return 0; }
 
 // 0x802D78C8 (12 bytes)
-void ESemaphore::Destroy() { *(int*)((char*)this + 0x4) = 0; }
+void ESemaphore::Destroy() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x4) = __r0; }
 
 // 0x802D79F8 (8 bytes)
 int ESemaphore::GetCurrentCount() { return *(int*)((char*)this + 0xC); }  // offset 0xC

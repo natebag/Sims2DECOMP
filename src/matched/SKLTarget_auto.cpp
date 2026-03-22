@@ -5,10 +5,10 @@
 // 4 functions, 44 bytes
 
 // 0x801E1628 (12 bytes)
-void SKLTarget::ShowSkills() { *(int*)((char*)this + 0x90) = 1; }
+void SKLTarget::ShowSkills() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x801E1634 (16 bytes)
-void SKLTarget::HideSkills() { *(int*)((char*)this + 0x9C) = 0; *(int*)((char*)this + 0x90) = 0; }
+void SKLTarget::HideSkills() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x9C) = __r0; *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x801E19BC (8 bytes)
 int SKLTarget::IsSkillsActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88

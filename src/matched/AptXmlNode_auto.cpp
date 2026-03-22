@@ -5,7 +5,7 @@
 // 7 functions, 56 bytes
 
 // 0x802BA42C (12 bytes)
-void AptXmlNode::PreDestroy() { *(int*)((char*)this + 0x24) = 0; }
+void AptXmlNode::PreDestroy() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x24) = __r0; }
 
 // 0x802BB338 (8 bytes)
 AptValue* AptXmlNode::sMethod_appendChild(AptValue *, int) { return 0; }  // lwz r3,-22936(r13)

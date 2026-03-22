@@ -5,7 +5,7 @@
 // 3 functions, 24 bytes
 
 // 0x802C4ECC (12 bytes)
-void AptXmlAttributes::PreDestroy() { *(int*)((char*)this + 0x24) = 0; }
+void AptXmlAttributes::PreDestroy() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x24) = __r0; }
 
 // 0x802C4FDC (8 bytes)
 void* AptXmlAttributes::operator new [](unsigned int) { return (void*)0; }

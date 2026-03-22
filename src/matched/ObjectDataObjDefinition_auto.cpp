@@ -5,7 +5,7 @@
 // 10 functions, 96 bytes
 
 // 0x8015BEDC (12 bytes)
-void ObjectDataObjDefinition::Detach() { *(char*)((char*)this + 0x1A) = 0; }
+void ObjectDataObjDefinition::Detach() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(char*)((char*)this + 0x1A) = __r0; }
 
 // 0x8015BF30 (4 bytes)
 void ObjectDataObjDefinition::ResetResData() { }

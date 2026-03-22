@@ -18,4 +18,4 @@ namespace INGTarget {
 INGTarget::IngInfo::IngInfo() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
 
 // 0x801B9448 (16 bytes)
-void INGTarget::IngInfo::erase() { *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x0) = 0; }
+void INGTarget::IngInfo::erase() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x4) = __r0; *(int*)((char*)this + 0x0) = __r0; }

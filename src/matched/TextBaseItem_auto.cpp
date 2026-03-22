@@ -5,7 +5,7 @@
 // 24 functions, 216 bytes
 
 // 0x80087104 (12 bytes)
-void TextBaseItem::Reset() { *(int*)((char*)this + 0x4) = 1; }
+void TextBaseItem::Reset() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x4) = __r0; }
 
 // 0x80087198 (8 bytes)
 EVec4* TextBaseItem::GetColor() { return *(int*)((char*)this + 0x44); }  // offset 0x44

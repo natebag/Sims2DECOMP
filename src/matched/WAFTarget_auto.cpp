@@ -5,16 +5,16 @@
 // 5 functions, 56 bytes
 
 // 0x801E3574 (12 bytes)
-void WAFTarget::ShowWantsAndFears() { *(int*)((char*)this + 0x90) = 1; }
+void WAFTarget::ShowWantsAndFears() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x801E3580 (16 bytes)
-void WAFTarget::HideWantsAndFears() { *(int*)((char*)this + 0x9C) = 0; *(int*)((char*)this + 0x90) = 0; }
+void WAFTarget::HideWantsAndFears() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x9C) = __r0; *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x801E38F8 (8 bytes)
 int WAFTarget::IsWantsAndFearsActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88
 
 // 0x801E4A00 (12 bytes)
-void WAFTarget::OnGlowEffectComplete() { *(int*)((char*)this + 0x270) = 0; }
+void WAFTarget::OnGlowEffectComplete() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x270) = __r0; }
 
 // 0x801E4F24 (8 bytes)
 void WAFTarget::SetTextButtonPressed(bool val) { *(int*)((char*)this + 0x9C) = val; }  // offset 0x9C

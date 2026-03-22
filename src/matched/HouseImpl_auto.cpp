@@ -14,5 +14,5 @@ void* HouseImpl::GetSizeScoreCurve() { return *(int*)((char*)this + 0x1C); }  //
 void* HouseImpl::GetFurnishingsScoreCurve() { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x800BC99C (12 bytes)
-void HouseImpl::SetFamilyToNull() { *(int*)((char*)this + 0x14) = 0; }
+void HouseImpl::SetFamilyToNull() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x14) = __r0; }
 

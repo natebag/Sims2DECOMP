@@ -5,7 +5,7 @@
 // 3 functions, 28 bytes
 
 // 0x80091B78 (12 bytes)
-void MUStatesLoadGame::Reset() { *(int*)((char*)this + 0x1C) = 0; }
+void MUStatesLoadGame::Reset() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x1C) = __r0; }
 
 // 0x80091B84 (4 bytes)
 void MUStatesLoadGame::Draw(ERC *) { }

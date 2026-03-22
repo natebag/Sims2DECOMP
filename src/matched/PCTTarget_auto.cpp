@@ -19,10 +19,10 @@ int PCTTarget::refresh_text_field(char *, unsigned int) { return 1; }
 int PCTTarget::set_control_visible(char *, bool) { return true; }
 
 // 0x801D6DE0 (12 bytes)
-void PCTTarget::buy_fail_dialog_selection_callback(int) { *(int*)((char*)this + 0xF0) = 0; }
+void PCTTarget::buy_fail_dialog_selection_callback(int) { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xF0) = __r0; }
 
 // 0x801D8750 (12 bytes)
-void PCTTarget::ZeroInputCallback() { *(int*)((char*)this + 0xF0) = 0; }
+void PCTTarget::ZeroInputCallback() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xF0) = __r0; }
 
 // 0x801D875C (12 bytes)
 void PCTTarget::DialogClosedCallback() { *(int*)((char*)this + 0xF0) = 0; }

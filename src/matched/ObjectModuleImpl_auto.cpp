@@ -5,7 +5,7 @@
 // 13 functions, 124 bytes
 
 // 0x800F69B0 (12 bytes)
-void ObjectModuleImpl::ClearKillQueue() { *(int*)((char*)this + 0x2048) = *(int*)((char*)this + 0x2044); }
+void ObjectModuleImpl::ClearKillQueue() { register int __r0 __asm__("r0") = *(int*)((char*)this + 0x2044); __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x2048) = __r0; }
 
 // 0x800F82C0 (4 bytes)
 void ObjectModuleImpl::EnqueueObjectDialog(cXObject *, StackElem *, DialogParam *) { }

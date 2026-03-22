@@ -11,7 +11,7 @@ void EApp::SetupForMovie() { }
 void EApp::CleanupAfterMovie() { }
 
 // 0x802E2710 (12 bytes)
-void EApp::StopMovie() { *(int*)((char*)this + 0x454) = 0; }
+void EApp::StopMovie() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x454) = __r0; }
 
 // 0x802E2910 (12 bytes)
 const char* EApp::GetRootDirectory() { return *(int*)((char*)(*(void**)((char*)this + 0x470)) + 0x0); }  // double deref

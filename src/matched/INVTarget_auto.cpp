@@ -20,7 +20,7 @@ void INVTarget::SetOnMsgInvClose(char *) { }
 void INVTarget::SetOnMsgInvShpQueryTab(char *) { }
 
 // 0x801F5B94 (12 bytes)
-void INVTarget::SetOnMsgInvShpRemoveObjectInfo(char *) { *(int*)((char*)this + 0x88) = 0; }
+void INVTarget::SetOnMsgInvShpRemoveObjectInfo(char *) { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x88) = __r0; }
 
 // 0x801F60D4 (4 bytes)
 void INVTarget::InstallShoppingCategoryShaders() { }

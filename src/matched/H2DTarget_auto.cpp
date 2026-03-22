@@ -11,5 +11,5 @@ void H2DTarget::Draw(ERC *) { }
 int H2DTarget::GetPausePlayer() { return *(int*)((char*)this + 0xD0); }  // offset 0xD0
 
 // 0x801B90C0 (12 bytes)
-void H2DTarget::RewardMomentDialogClosed() { *(int*)((char*)this + 0xE0) = 1; }
+void H2DTarget::RewardMomentDialogClosed() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xE0) = __r0; }
 

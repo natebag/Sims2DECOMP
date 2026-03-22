@@ -8,5 +8,5 @@
 void O2TTarget::SaveGame(char *, char *) { *(int*)((char*)this + 0x250) = 0; *(int*)((char*)this + 0x90) = 1; }
 
 // 0x801CFA60 (12 bytes)
-void O2TTarget::OnCancelDialog() { *(int*)((char*)this + 0x250) = 0; }
+void O2TTarget::OnCancelDialog() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x250) = __r0; }
 

@@ -5,5 +5,5 @@
 // 1 functions, 12 bytes
 
 // 0x8019D50C (12 bytes)
-void CASMorphTarget::ExitMorphScreenDone() { *(int*)((char*)this + 0x1C0) = 0; }
+void CASMorphTarget::ExitMorphScreenDone() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x1C0) = __r0; }
 

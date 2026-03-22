@@ -8,8 +8,8 @@
 int BBHTarget::IsBuildBuyHUDActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88
 
 // 0x801A3E9C (12 bytes)
-void BBHTarget::ShowBuildBuyHUD() { *(int*)((char*)this + 0x90) = 1; }
+void BBHTarget::ShowBuildBuyHUD() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x801A3EA8 (12 bytes)
-void BBHTarget::HideBuildBuyHUD() { *(int*)((char*)this + 0x90) = 0; }
+void BBHTarget::HideBuildBuyHUD() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x90) = __r0; }
 

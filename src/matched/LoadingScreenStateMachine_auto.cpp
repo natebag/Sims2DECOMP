@@ -8,13 +8,13 @@
 void LoadingScreenStateMachine::GetLoadingScreen() { return *(int*)((char*)this + 0x98); }  // offset 0x98
 
 // 0x80090E0C (12 bytes)
-void LoadingScreenStateMachine::LoadStarted() { *(int*)((char*)this + 0xA0) = 0; }
+void LoadingScreenStateMachine::LoadStarted() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xA0) = __r0; }
 
 // 0x80090E18 (8 bytes)
 void LoadingScreenStateMachine::IsLoadComplete() { return *(int*)((char*)this + 0xA4); }  // offset 0xA4
 
 // 0x80090E88 (12 bytes)
-void LoadingScreenStateMachine::FaderStop() { *(int*)((char*)this + 0xB4) = 0; }
+void LoadingScreenStateMachine::FaderStop() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xB4) = __r0; }
 
 // 0x80090F74 (8 bytes)
 void LoadingScreenStateMachine::GetSingleton() { return 0; }  // lwz r3,-32160(r13)
@@ -29,5 +29,5 @@ void LoadingScreenStateMachine::IsFadingOut() { /* SDA double deref bit 1 */ ret
 void LoadingScreenStateMachine::IsFadedOut() { /* SDA double deref bit 3 */ return 0; }
 
 // 0x80090FD4 (12 bytes)
-void LoadingScreenStateMachine::LoadFinished() { *(int*)((char*)this + 0xA4) = 1; }
+void LoadingScreenStateMachine::LoadFinished() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0xA4) = __r0; }
 

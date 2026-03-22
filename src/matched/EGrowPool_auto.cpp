@@ -5,5 +5,5 @@
 // 1 functions, 20 bytes
 
 // 0x8035C13C (20 bytes)
-void EGrowPool::Init() { *(int*)((char*)this + 0x8) = 0; *(int*)((char*)this + 0x0) = 0; *(int*)((char*)this + 0x4) = 0; }
+void EGrowPool::Init() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x8) = __r0; *(int*)((char*)this + 0x0) = __r0; *(int*)((char*)this + 0x4) = __r0; }
 

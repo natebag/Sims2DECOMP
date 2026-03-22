@@ -5,5 +5,5 @@
 // 1 functions, 16 bytes
 
 // 0x803A2D84 (16 bytes)
-bool cHitTimer::Stop() { *(int*)((char*)this + 0x0) = 0; return 1; }
+bool cHitTimer::Stop() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x0) = __r0; return 1; }
 

@@ -5,7 +5,7 @@
 // 2 functions, 20 bytes
 
 // 0x801B41B8 (12 bytes)
-void FCMTarget::HideFireCodeMeter() { *(int*)((char*)this + 0x90) = 0; }
+void FCMTarget::HideFireCodeMeter() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x90) = __r0; }
 
 // 0x801B4458 (8 bytes)
 int FCMTarget::IsFireCodeMeterActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88
