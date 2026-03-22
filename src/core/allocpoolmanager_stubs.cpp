@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804690D8 | 108 bytes
 void AllocPoolManager<ProtectedAllocPool>::InitPoolByIndex(int, unsigned int *, unsigned char *) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8026F0A4 | 160 bytes
 GetVariableCommandTable::GetVariableCommandTable(void) { }
@@ -15,7 +16,7 @@ GetVariableCommandTable::~GetVariableCommandTable(void) { }
 void GetVariableCommandTable::AddRecord(char *, CBFunctor1wRet<char *, char *> &) { }
 
 // 0x8026F248 | 144 bytes
-void GetVariableCommandTable::RemoveRecord(GetVariableCommandTable::GetVariableCommandTableRecord *) { }
+void GetVariableCommandTable::RemoveRecord(int *) { }
 
 // 0x8026F2D8 | 284 bytes
 void GetVariableCommandTable::InstallCommand(char *, CBFunctor1wRet<char *, char *> &) { }

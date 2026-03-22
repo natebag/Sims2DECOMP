@@ -4,9 +4,10 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80225C8C | 280 bytes
-void IFFBehaviorConstants::LoadData(iResFile *, Memory::HandleNode *) { }
+void IFFBehaviorConstants::LoadData(iResFile *, int *) { }
 
 // 0x80225DA4 | 160 bytes
 void IFFBehaviorConstants::LoadFromIndex(unsigned int, int) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80175ECC | 3504 bytes
 cXObjectImpl::cXObjectImpl(int, ObjSelector *, ObjectModule *) { }

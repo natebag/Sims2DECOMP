@@ -10,6 +10,7 @@
 //   - SDA-relative addressing for static sLastUniqueID
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class Interaction;

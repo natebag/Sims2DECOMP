@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8005D3D0 | 36 bytes
 FlashPiMenu::FlashPiMenu(int) { }

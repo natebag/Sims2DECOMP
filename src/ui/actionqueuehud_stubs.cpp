@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80282718 | 232 bytes
 ActionQueueHUD::ActionQueueHUD(void) { }
@@ -48,10 +49,10 @@ void ActionQueueHUD::RunIngame(void) { }
 void ActionQueueHUD::OnUserCancelledAction(unsigned int) { }
 
 // 0x8028325C | 276 bytes
-void ActionQueueHUD::AddAction(ActionQueueHUD::ActionQueueItem &, Interaction *, unsigned int) { }
+void ActionQueueHUD::AddAction(int &, Interaction *, unsigned int) { }
 
 // 0x80283370 | 260 bytes
-void ActionQueueHUD::SetAction(ActionQueueHUD::ActionQueueItem &, Interaction *) { }
+void ActionQueueHUD::SetAction(int &, Interaction *) { }
 
 // 0x80283474 | 468 bytes
 void ActionQueueHUD::RemoveAction(Interaction *) { }
@@ -81,4 +82,4 @@ void ActionQueueHUD::GetPlayerSim(void) const { }
 void ActionQueueHUD::ActionQueueItem::SetupItem(char *, unsigned int, ERShader *, unsigned int) { }
 
 // 0x802853A0 | 108 bytes
-void ActionQueueHUD::ActionQueueItem::UpdateItem(ActionQueueHUD::ActionQueueItem &) { }
+void ActionQueueHUD::ActionQueueItem::UpdateItem(int &) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802DB86C | 5256 bytes
 M2MTarget::M2MTarget(void) { }
@@ -63,10 +64,10 @@ void M2MTarget::SpawnNoSaveBeforeQuitDialog(void) { }
 void M2MTarget::SpawnStartNGCNoMemCardDialog(void) { }
 
 // 0x802DF334 | 328 bytes
-void M2MTarget::GetItemTextMemCardSelect(int, unsigned wchar_t *) { }
+void M2MTarget::GetItemTextMemCardSelect(int, wchar_t *) { }
 
 // 0x802DF47C | 88 bytes
-void M2MTarget::GetItemTextSaveGameSelect(int, unsigned wchar_t *) { }
+void M2MTarget::GetItemTextSaveGameSelect(int, wchar_t *) { }
 
 // 0x802DF4D4 | 192 bytes
 void M2MTarget::IsItemEnabledMemCardSelect(int) { }
@@ -105,7 +106,7 @@ void M2MTarget::IsItemEnabled(int) { }
 void M2MTarget::CalcNumItems(void) { }
 
 // 0x802E0468 | 1052 bytes
-void M2MTarget::SetCurrState(M2MTarget::WidgetState) { }
+void M2MTarget::SetCurrState(int) { }
 
 // 0x802E0884 | 236 bytes
 void M2MTarget::UnloadDialog(void) { }

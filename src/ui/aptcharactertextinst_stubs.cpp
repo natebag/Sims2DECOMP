@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80406E7C | 852 bytes
 void AptCharacterTextInst::SetText(AptCIH *) { }

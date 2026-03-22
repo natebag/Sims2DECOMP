@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800F4B54 | 112 bytes
 void LiveModeInitState::Shutdown(void) { }

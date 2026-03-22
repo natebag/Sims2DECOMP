@@ -55,7 +55,7 @@ PlacementObject::~PlacementObject() {
 // objectmanipulator.obj | 0x80219230 | 184 bytes
 // ============================================================================
 // NON_MATCHING: command dispatch
-void PlaceManipulator::OnCommandPressed(InteractorInputManager::InteractorCommand cmd, float value) {
+void PlaceManipulator::OnCommandPressed(int cmd, float value) {
     // Handle button presses for object placement
     // A button: confirm placement
     // B button: cancel
@@ -78,7 +78,7 @@ void PlaceManipulator::CancelSession() {
 // objectmanipulator.obj | 0x802192E8 | 232 bytes
 // ============================================================================
 // NON_MATCHING: command dispatch
-void GrabManipulator::OnCommandPressed(InteractorInputManager::InteractorCommand cmd, float value) {
+void GrabManipulator::OnCommandPressed(int cmd, float value) {
     // Handle button presses for grab mode
     // A button: grab/place object
     // B button: cancel grab
@@ -132,7 +132,7 @@ void GrabManipulator::CancelSession() {
 // objectmanipulator.obj | 0x802193D0 | 76 bytes
 // ============================================================================
 // NON_MATCHING: codegen
-void ObjectManipulator::OnCommandUpdate(InteractorInputManager::InteractorCommand cmd, float value) {
+void ObjectManipulator::OnCommandUpdate(int cmd, float value) {
     // Update stick values for cursor movement
     // Base class handles stick value storage
 }
@@ -142,7 +142,7 @@ void ObjectManipulator::OnCommandUpdate(InteractorInputManager::InteractorComman
 // objectmanipulator.obj | 0x8021941C | 108 bytes
 // ============================================================================
 // NON_MATCHING: codegen
-void ObjectManipulator::OnCommandReleased(InteractorInputManager::InteractorCommand cmd) {
+void ObjectManipulator::OnCommandReleased(int cmd) {
     // Handle command release for object manipulation
 }
 

@@ -4,6 +4,7 @@
 //            MeasureDistance, InitAST, EvalPoint, ~SpacePartition
 
 #include "types.h"
+#include "stub_classes.h"
 
 // External functions
 extern "C" {

@@ -4,9 +4,10 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802960B4 | 368 bytes
-void RepTitleSupport::GetRepTitleRaw(int, RepTitleSupport::eRepTitleRaw) { }
+void RepTitleSupport::GetRepTitleRaw(int, int) { }
 
 // 0x80296224 | 56 bytes
 void RepTitleSupport::GetRepTitleLevel(int) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8029FC70 | 2312 bytes
 CASGeneticsTarget::CASGeneticsTarget(void) { }
@@ -21,7 +22,7 @@ void CASGeneticsTarget::SetVariableSubnav(int, int) { }
 void CASGeneticsTarget::GetVariable(char *) { }
 
 // 0x802A0C88 | 316 bytes
-void CASGeneticsTarget::GetLocalizableSubnav(int, unsigned wchar_t *) { }
+void CASGeneticsTarget::GetLocalizableSubnav(int, wchar_t *) { }
 
 // 0x802A0DC4 | 112 bytes
 void CASGeneticsTarget::SetGrandparentIndex(unsigned int, int) { }

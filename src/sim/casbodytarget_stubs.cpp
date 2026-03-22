@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8029F0F4 | 1080 bytes
 CASBodyTarget::CASBodyTarget(void) { }
@@ -15,7 +16,7 @@ CASBodyTarget::~CASBodyTarget(void) { }
 void CASBodyTarget::SetVariableSubnav(int, int) { }
 
 // 0x8029F774 | 496 bytes
-void CASBodyTarget::GetLocalizableSubnav(int, unsigned wchar_t *) { }
+void CASBodyTarget::GetLocalizableSubnav(int, wchar_t *) { }
 
 // 0x8029F964 | 204 bytes
 void CASBodyTarget::HandleHairSubnav(int) { }

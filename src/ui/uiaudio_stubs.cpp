@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8026E208 | 280 bytes
 UIAUDIO::UIAUDIO(void) { }
@@ -15,7 +16,7 @@ UIAUDIO::~UIAUDIO(void) { }
 void UIAUDIO::AddEntry(char *, unsigned int, char *) { }
 
 // 0x8026E494 | 152 bytes
-void UIAUDIO::RemoveEntry(UIAUDIO::UIAUDIORecord *) { }
+void UIAUDIO::RemoveEntry(int *) { }
 
 // 0x8026E52C | 232 bytes
 void UIAUDIO::InstallEntry(char *, unsigned int, char *) { }

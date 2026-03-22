@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802540DC | 52 bytes
 CasSimDescriptionS2C::CasSimDescriptionS2C(void) { }
@@ -57,7 +58,7 @@ void CasSimDescriptionS2C::SwitchInnerLayerTorso(bool) { }
 void CasSimDescriptionS2C::SwitchMidLayerTorso(bool) { }
 
 // 0x80256C0C | 64 bytes
-void CasSimDescriptionS2C::SetMidLayerTorsoStyle(Sim::MidLayerTorsoStyleS2C, CasSimPartsS2C &) { }
+void CasSimDescriptionS2C::SetMidLayerTorsoStyle(int, CasSimPartsS2C &) { }
 
 // 0x80256C4C | 124 bytes
 void CasSimDescriptionS2C::InnerLayerHalfTorsoRequired(CasSimPartsS2C &) { }

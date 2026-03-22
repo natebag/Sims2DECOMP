@@ -285,7 +285,7 @@ MUWrapper* MUStatesDisplay::GetWrapper() {
 
 // 0x800937E8 - 52 bytes
 // NON_MATCHING - uses static globals via r13, takes request as r3 (not this ptr)
-MUStateMachine::eMURequest MUStateMachine::MURequest(MUStateMachine::eMURequest request) {
+MUStateMachine::eMURequest MUStateMachine::MURequest(int request) {
     int req = (int)request;
     int result = 0;
     if (s_curRequest == 0) {
@@ -305,7 +305,7 @@ MUStateMachine::eMURequest MUStateMachine::MURequest(MUStateMachine::eMURequest 
 
 // 0x8009381C - 28 bytes
 // NON_MATCHING - static function, takes request as r3
-MUStateMachine::eMURequest MUStateMachine::MUPollForResult(MUStateMachine::eMURequest request) {
+MUStateMachine::eMURequest MUStateMachine::MUPollForResult(int request) {
     int result = 0;
     if (s_curResult == (int)request) {
         result = s_requestResult;

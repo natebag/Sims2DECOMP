@@ -3,6 +3,7 @@
 // 1 functions, 296 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // XmlMemberIndex::in_word_set(char *, unsigned int) - 0x802C4CC4 | 296 bytes

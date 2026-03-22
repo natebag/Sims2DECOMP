@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8012E6E0 | 56 bytes
 void cAudioInfo::CurrentSimSpeed(void) { }
@@ -12,7 +13,7 @@ void cAudioInfo::CurrentSimSpeed(void) { }
 void cAudioInfo::GetObjectPosition(int, cAudioWorldCoord &) { }
 
 // 0x8012E808 | 1108 bytes
-void cAudioInfo::GetObjectData(int, cAudioInfo::DataIdx) { }
+void cAudioInfo::GetObjectData(int, int) { }
 
 // 0x8012EC5C | 428 bytes
 void cAudioInfo::OutdoorTileRatio(void) { }

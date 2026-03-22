@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8028544C | 10652 bytes
 HUDTarget::HUDTarget(void) { }
@@ -171,7 +172,7 @@ void HUDTarget::CalculateJobScore(void) { }
 void HUDTarget::GetHUDData(short, short &) { }
 
 // 0x8028B9A8 | 128 bytes
-void HUDTarget::AnimateHUDControl(short, HUDTarget::EControlAnimType) { }
+void HUDTarget::AnimateHUDControl(short, int) { }
 
 // 0x8028BA28 | 332 bytes
 void HUDTarget::GotoCAS(unsigned short, unsigned short, int, int) { }

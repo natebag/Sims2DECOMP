@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802B3748 | 2228 bytes
 BBHTarget::BBHTarget(int) { }
@@ -33,4 +34,4 @@ void BBHTarget::UpdateBuildBuyHUD(void) { }
 void BBHTarget::SetSellingPig(bool) { }
 
 // 0x802B4A48 | 88 bytes
-void BBHTarget::SetBBHMode(BBHTarget::eBBHMode) { }
+void BBHTarget::SetBBHMode(int) { }

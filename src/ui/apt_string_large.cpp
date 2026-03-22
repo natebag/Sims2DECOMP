@@ -3,6 +3,7 @@
 // 13 functions, 6368 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // StringMembersIndex::in_word_set(char *, unsigned int) - 0x802AC144 | 416 bytes

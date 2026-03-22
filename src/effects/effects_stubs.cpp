@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8006654C | 52 bytes
 Effects::EffectsVisitor::~EffectsVisitor(void) { }
@@ -60,34 +61,34 @@ void Effects::EffectsManager::Render(ERC *) { }
 void Effects::EffectsManager::DeleteAll(void) { }
 
 // 0x8052D35C | 220 bytes
-void Effects::EffectsManager::CreateEffect(REffectsEmitter &, Effects::Effect::ClientParams *) { }
+void Effects::EffectsManager::CreateEffect(REffectsEmitter &, int *) { }
 
 // 0x8052D440 | 128 bytes
-void Effects::EffectsManager::DeleteEffect(Effects::Effect &) { }
+void Effects::EffectsManager::DeleteEffect(int &) { }
 
 // 0x8052D4C0 | 56 bytes
-void Effects::EffectsManager::ScheduleEffectForDeletion(Effects::EffectsManager::EffectEntry *) { }
+void Effects::EffectsManager::ScheduleEffectForDeletion(int *) { }
 
 // 0x8052D4F8 | 144 bytes
-void Effects::EffectsManager::AddEffect(Effects::Effect *) { }
+void Effects::EffectsManager::AddEffect(int *) { }
 
 // 0x8052D588 | 52 bytes
-void Effects::EffectsManager::AddEntryToList(Effects::EffectsManager::EffectEntry *, TNodeList<Effects::EffectsManager::EffectEntry *> &) { }
+void Effects::EffectsManager::AddEntryToList(int *, TNodeList<int *> &) { }
 
 // 0x8052D5BC | 124 bytes
-void Effects::EffectsManager::RemoveEntryFromList(Effects::EffectsManager::EffectEntry *, TNodeList<Effects::EffectsManager::EffectEntry *> &, NLIteratorPtrType **) { }
+void Effects::EffectsManager::RemoveEntryFromList(int *, TNodeList<int *> &, NLIteratorPtrType **) { }
 
 // 0x8052D638 | 64 bytes
-void Effects::EffectsManager::FindEffectInList(Effects::Effect *, TNodeList<Effects::EffectsManager::EffectEntry *> &, NLIteratorPtrType **) { }
+void Effects::EffectsManager::FindEffectInList(int *, TNodeList<int *> &, NLIteratorPtrType **) { }
 
 // 0x8052D678 | 36 bytes
-void Effects::EffectsManager::ForEachActiveEffect(Effects::EffectsVisitor &) { }
+void Effects::EffectsManager::ForEachActiveEffect(int &) { }
 
 // 0x8052D69C | 36 bytes
-void Effects::EffectsManager::ForEachDeletedEffect(Effects::EffectsVisitor &) { }
+void Effects::EffectsManager::ForEachDeletedEffect(int &) { }
 
 // 0x8052D6C0 | 120 bytes
-void Effects::EffectsManager::ForEachEffectInList(Effects::EffectsVisitor &, TNodeList<Effects::EffectsManager::EffectEntry *> &) { }
+void Effects::EffectsManager::ForEachEffectInList(int &, TNodeList<int *> &) { }
 
 // 0x8052D738 | 4 bytes
 void Effects::InitEffectsMath(void) { }
@@ -108,7 +109,7 @@ void Effects::Mat4Copy34(EMat4 &, EMat4 &) { }
 Effects::EffectsResourceTracking::EffectsResourceTracking(void) { }
 
 // 0x8052DDE4 | 8 bytes
-void Effects::EffectsResourceTracking::Visit(Effects::Effect &) { }
+void Effects::EffectsResourceTracking::Visit(int &) { }
 
 // 0x8052DFAC | 36 bytes
 void Effects::EffectsResourceTracking::UpdateForkResourceStats(void) { }
@@ -189,10 +190,10 @@ void Effects::FastParticleEmitter::Update(float) { }
 void Effects::FastParticleEmitter::Stop(void) { }
 
 // 0x805306BC | 2540 bytes
-void Effects::FastParticleEmitter::ComputeDispersionPositionAndVelocity(Effects::FastParticleState *, float, float, float) { }
+void Effects::FastParticleEmitter::ComputeDispersionPositionAndVelocity(int *, float, float, float) { }
 
 // 0x805310A8 | 252 bytes
-void Effects::FastParticleEmitter::DieOnLastFrame_Lifetime(Effects::FastParticlePacket *, unsigned int) { }
+void Effects::FastParticleEmitter::DieOnLastFrame_Lifetime(int *, unsigned int) { }
 
 // 0x805311A4 | 104 bytes
 void Effects::FastParticleEmitter::Render(ERC *) { }
@@ -201,7 +202,7 @@ void Effects::FastParticleEmitter::Render(ERC *) { }
 void Effects::FastParticleEmitter::DoSimulationAndRender(ERC *) { }
 
 // 0x80531940 | 60 bytes
-void Effects::FastParticleEmitter::Accept(Effects::EffectsVisitor &) { }
+void Effects::FastParticleEmitter::Accept(int &) { }
 
 // 0x8053197C | 632 bytes
 void Effects::FastParticleEmitter::ComputeMaxParticles(void) { }
@@ -228,4 +229,4 @@ void Effects::FastParticleEmitter::PreRollParticles(void) { }
 void Effects::FastParticleEmitter::AllocateParticlePackets(int) { }
 
 // 0x805320C0 | 1584 bytes
-void Effects::FastParticleEmitter::RenderQuad(ERC *, Effects::FastParticleQuad &, float, EVec4 &, float, EVec4 &, Effects::FastParticleParticleInitData &) { }
+void Effects::FastParticleEmitter::RenderQuad(ERC *, int &, float, EVec4 &, float, EVec4 &, int &) { }

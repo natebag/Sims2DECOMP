@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80202618 | 216 bytes
 cSimulatorImpl::cSimulatorImpl(void) { }
@@ -48,10 +49,10 @@ void cSimulatorImpl::Resume(void) { }
 void cSimulatorImpl::SetCurrentHour(int) { }
 
 // 0x802039D0 | 288 bytes
-void cSimulatorImpl::SetFunds(int, cSimulator::tFundsPlayerNumber) { }
+void cSimulatorImpl::SetFunds(int, int) { }
 
 // 0x80203AF0 | 112 bytes
-void cSimulatorImpl::Spend(ExpenseType, int, cSimulator::tFundsPlayerNumber) { }
+void cSimulatorImpl::Spend(ExpenseType, int, int) { }
 
 // 0x80203B60 | 96 bytes
 void cSimulatorImpl::ClearHistory(void) { }

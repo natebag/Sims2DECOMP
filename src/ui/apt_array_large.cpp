@@ -3,6 +3,7 @@
 // 12 functions, 4776 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // ArrayMembersIndex::in_word_set(char *, unsigned int) - 0x80285800 | 264 bytes

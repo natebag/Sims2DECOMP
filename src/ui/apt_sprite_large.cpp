@@ -3,6 +3,7 @@
 // 1 functions, 328 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // SpriteMembersIndex::in_word_set(char *, unsigned int) - 0x802ABE9C | 328 bytes

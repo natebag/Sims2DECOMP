@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8013E6A0 | 120 bytes
 void CBMemberTranslator0<EdithDialogPrimitive, void (UIDialog::*)(UIDialog *)>::thunk(CBFunctorBase &) { }

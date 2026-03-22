@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802D9528 | 4612 bytes
 K2YTarget::K2YTarget(void) { }
@@ -27,7 +28,7 @@ void K2YTarget::GetLocalizable(char *) { }
 void K2YTarget::GetKeybits(int, int) { }
 
 // 0x802DB70C | 96 bytes
-void K2YTarget::SetStartMode(K2YTarget::eK2yboardMode) { }
+void K2YTarget::SetStartMode(int) { }
 
 // 0x802DB76C | 256 bytes
 void K2YTarget::SaveName(void) { }

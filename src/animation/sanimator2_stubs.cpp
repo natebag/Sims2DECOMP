@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800A04FC | 732 bytes
 SAnimator2::SAnimator2(void) { }
@@ -207,7 +208,7 @@ void SAnimator2::UnloadDCOptionalMotionAnims(void) { }
 void SAnimator2::UnloadSMOptionalMotionAnims(void) { }
 
 // 0x800AB12C | 108 bytes
-void SAnimator2::CheckOptionalMotionAnimStatusOnStateChange(SAnimator2::eAnimState) { }
+void SAnimator2::CheckOptionalMotionAnimStatusOnStateChange(int) { }
 
 // 0x800AB198 | 1264 bytes
 void SAnimator2::handleTurnAnimation(void) { }
@@ -285,13 +286,13 @@ void SAnimator2::setNewModel(char *, bool, bool) { }
 void SAnimator2::RestoreNonCostumeRelatedSimDescriptionItems(CasSimDescriptionS2C *, CasSimDescriptionS2C *, bool) { }
 
 // 0x800AEE7C | 380 bytes
-void SAnimator2::GetCostumeName(SAnimator::OutfitS2C) { }
+void SAnimator2::GetCostumeName(int) { }
 
 // 0x800AF000 | 108 bytes
 void SAnimator2::GetCarryHandPosAndDir(EVec3 &, EVec3 &, EMat4 &) { }
 
 // 0x800AF06C | 188 bytes
-void SAnimator2::GetBonePos(SAnimator::BoneIdx, EVec3 &) { }
+void SAnimator2::GetBonePos(int, EVec3 &) { }
 
 // 0x800AF128 | 108 bytes
 void SAnimator2::PropsHaveAlpha(void) { }
@@ -378,7 +379,7 @@ void SAnimator2::DetachMonitoredTrack(void) { }
 void SAnimator2::updateDesiredAndDeltaDir(float &, float &) { }
 
 // 0x800B47E4 | 116 bytes
-void SAnimator2::setFirstFollowMode(SAnimator2::eFollowMode) { }
+void SAnimator2::setFirstFollowMode(int) { }
 
 // 0x800B4894 | 124 bytes
 void SAnimator2::setFollowEnd(void) { }
@@ -417,7 +418,7 @@ void SAnimator2::getDeltaDirFromDesiredDir(float) { }
 void SAnimator2::getDesiredDir(void) { }
 
 // 0x800B5798 | 176 bytes
-void SAnimator2::GetMovementVelocityFromStyle(SAnimator2::eWalkRunStyle) { }
+void SAnimator2::GetMovementVelocityFromStyle(int) { }
 
 // 0x800B5848 | 852 bytes
 void SAnimator2::setAnimationState(void) { }

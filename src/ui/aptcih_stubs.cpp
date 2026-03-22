@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8040E8D8 | 192 bytes
 AptCIH::~AptCIH(void) { }
@@ -33,7 +34,7 @@ void AptCIH::ensureStringAllocated(AptCIH *) { }
 void AptCIH::deallocAssetStringRecursive(void) { }
 
 // 0x8040F730 | 1840 bytes
-void AptCIH::render(AptRenderingContext *, AptMath::ClipTransform_t *, AptMaskRenderOperation) { }
+void AptCIH::render(AptRenderingContext *, int *, AptMaskRenderOperation) { }
 
 // 0x8040FE60 | 448 bytes
 void AptCIH::_getBoundingRect(AptRenderingContext *, AptRect *) { }

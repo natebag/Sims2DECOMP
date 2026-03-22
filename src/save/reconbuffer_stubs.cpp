@@ -4,9 +4,10 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801F0594 | 172 bytes
-ReconBuffer::ReconBuffer(void *, int, ReconBuffer::Mode, bool) { }
+ReconBuffer::ReconBuffer(void *, int, int, bool) { }
 
 // 0x801F0680 | 124 bytes
 ReconBuffer::~ReconBuffer(void) { }

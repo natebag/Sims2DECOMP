@@ -97,7 +97,7 @@ void EYETarget::Update() {
 }
 
 // 0x8020377C - 8 bytes
-void EYETarget::SetState(EYETarget::eState state) {
+void EYETarget::SetState(int state) {
     *(int*)((char*)this + 172) = (int)state;
 }
 
@@ -220,21 +220,21 @@ int StaticIsSkillUpgradeObject(int guid) {
 }
 
 // 0x801ECC58 - 32 bytes
-u32 StaticGetShaderId(InteractorModule::WallPainter::WallPaperData* data) {
+u32 StaticGetShaderId(int* data) {
     if (data == 0) return 0xD59C7BB5u;
     void* inner = *(void**)data;
     return *(u32*)((char*)inner + 8);
 }
 
 // 0x801ECC78 - 32 bytes
-u32 StaticGetShaderId(InteractorModule::WallManipulator::WallData* data) {
+u32 StaticGetShaderId(int* data) {
     if (data == 0) return 0xD59C7BB5u;
     void* inner = *(void**)data;
     return *(u32*)inner;
 }
 
 // 0x801ECC98 - 32 bytes
-u32 StaticGetShaderId(InteractorModule::FloorData* data) {
+u32 StaticGetShaderId(int* data) {
     if (data == 0) return 0xD59C7BB5u;
     void* inner = *(void**)data;
     return *(u32*)((char*)inner + 12);
@@ -325,31 +325,31 @@ void INVTarget::StartActionMenu() {
 }
 
 // 0x801F15FC - 40 bytes
-void INVTarget::PlaceModeCallback(InteractorModule::PlaceManipulator::CallbackData* data) {
+void INVTarget::PlaceModeCallback(int* data) {
     void* userData = *(void**)((char*)data + 4);
     INVTarget_PlaceImpl(userData, data);
 }
 
 // 0x801F1974 - 40 bytes
-void INVTarget::WallManipulatorCallback(InteractorModule::WallManipulator::CallbackData* data) {
+void INVTarget::WallManipulatorCallback(int* data) {
     void* userData = *(void**)((char*)data + 4);
     INVTarget_WallManipImpl(userData, data);
 }
 
 // 0x801F1B6C - 40 bytes
-void INVTarget::WallPainterCallback(InteractorModule::WallPainter::CallbackData* data) {
+void INVTarget::WallPainterCallback(int* data) {
     void* userData = *(void**)((char*)data + 4);
     INVTarget_WallPaintImpl(userData, data);
 }
 
 // 0x801F1B94 - 40 bytes
-void INVTarget::FloorModeCallback(InteractorModule::FloorPainter::CallbackData* data) {
+void INVTarget::FloorModeCallback(int* data) {
     void* userData = *(void**)((char*)data + 4);
     INVTarget_FloorImpl(userData, data);
 }
 
 // 0x801F1DDC - 40 bytes
-void INVTarget::GrabModeCallback(InteractorModule::GrabManipulator::CallbackData* data) {
+void INVTarget::GrabModeCallback(int* data) {
     void* userData = *(void**)((char*)data + 4);
     INVTarget_GrabImpl(userData, data);
 }
@@ -566,7 +566,7 @@ void OPTTarget::Update() {
 
 // 0x801FEAA0 - 60 bytes
 // NON_MATCHING: complex logic with subfic/subfe/neg pattern for != 13 check
-void PDATarget::SetupFirstOpenMessage(int player, PDATarget::ePDAMode mode) {
+void PDATarget::SetupFirstOpenMessage(int player, int mode) {
     if ((int)mode == 13) return;
     if (player == 2) {
         s_pdaFirstOpen[0] = (int)mode;

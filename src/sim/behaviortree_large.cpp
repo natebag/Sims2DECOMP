@@ -10,6 +10,7 @@
 //   - SDA-relative addressing
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class ObjectDataBehaviorTree;

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8047EC48 | 76 bytes
 ESingleLock::ESingleLock(ESyncObject *, bool, bool) { }

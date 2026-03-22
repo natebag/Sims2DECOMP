@@ -4,12 +4,13 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80532954 | 204 bytes
 void MotionBlur::UpdateTargetParameters(float) { }
 
 // 0x80532A20 | 52 bytes
-void MotionBlur::EffectStateChanged(FrameEffect::EffectState) { }
+void MotionBlur::EffectStateChanged(int) { }
 
 // 0x80532A54 | 24 bytes
 void MotionBlur::EffectIsFinishedFadingIn(float) const { }

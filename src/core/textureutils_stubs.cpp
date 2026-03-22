@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804CCB6C | 288 bytes
 void TextureUtils::LoadTexture(unsigned int, ETexture *) { }

@@ -10,6 +10,7 @@
 //   - Virtual dispatch codegen differs (bctr vs blrl)
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations - this file is standalone to avoid header conflicts
 // All functions are NON_MATCHING stubs for documentation purposes

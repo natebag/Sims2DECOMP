@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80291A5C | 2084 bytes
 SaveGameTarget::SaveGameTarget(M2MTarget *, int, int) { }
@@ -60,7 +61,7 @@ void SaveGameTarget::SpawnFormatFailDialog(void) { }
 void SaveGameTarget::SpawnFormatSuccessDialog(void) { }
 
 // 0x80294330 | 724 bytes
-void SaveGameTarget::SpawnNoSpaceDialog(SaveGameTarget::NoSpaceType) { }
+void SaveGameTarget::SpawnNoSpaceDialog(int) { }
 
 // 0x80294604 | 472 bytes
 void SaveGameTarget::SpawnOverwriteDialog(void) { }

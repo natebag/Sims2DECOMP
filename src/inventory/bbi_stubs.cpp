@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8007AA68 | 48 bytes
 BBI::InventoryItem::InventoryItem(void) { }
@@ -12,13 +13,13 @@ BBI::InventoryItem::InventoryItem(void) { }
 BBI::InventoryItem::~InventoryItem(void) { }
 
 // 0x8007AACC | 136 bytes
-void BBI::InventoryItem::SetItemCategory(BBI::InventoryItem::eItemCategory) { }
+void BBI::InventoryItem::SetItemCategory(int) { }
 
 // 0x8007AB54 | 12 bytes
 void BBI::InventoryItem::GetItemCategory(void) const { }
 
 // 0x8007AB60 | 136 bytes
-void BBI::InventoryItem::SetItemSubcategory(BBI::InventoryItem::eItemSubcategory) { }
+void BBI::InventoryItem::SetItemSubcategory(int) { }
 
 // 0x8007ABE8 | 12 bytes
 void BBI::InventoryItem::GetItemSubcategory(void) const { }
@@ -45,7 +46,7 @@ void BBI::InventoryItem::SetItemColorIndex(unsigned char) { }
 void BBI::InventoryItem::GetItemColorIndex(void) const { }
 
 // 0x8007AD90 | 60 bytes
-void BBI::InventoryItem::CopyTo(BBI::InventoryItem *) const { }
+void BBI::InventoryItem::CopyTo(int *) const { }
 
 // 0x8007ADCC | 32 bytes
 BBI::InventoryItems::InventoryItems(void) { }
@@ -63,7 +64,7 @@ void BBI::InventoryItems::AddItemsByGuid(int, int, unsigned char) { }
 void BBI::InventoryItems::RemoveItemsByGuid(int, int, unsigned char) { }
 
 // 0x8007B114 | 440 bytes
-void BBI::InventoryItems::DeleteItem(BBI::InventoryItem *) { }
+void BBI::InventoryItems::DeleteItem(int *) { }
 
 // 0x8007B2CC | 128 bytes
 void BBI::InventoryItems::Clear(void) { }
@@ -75,10 +76,10 @@ void BBI::InventoryItems::GetItemCount(void) const { }
 void BBI::InventoryItems::CountItemsByGuid(int) const { }
 
 // 0x8007B424 | 140 bytes
-void BBI::InventoryItems::CountItemsByCategory(BBI::InventoryItem::eItemCategory) const { }
+void BBI::InventoryItems::CountItemsByCategory(int) const { }
 
 // 0x8007B4B0 | 160 bytes
-void BBI::InventoryItems::GetItemsByCategory(BBI::InventoryItem::eItemCategory, BBI::InventoryItem **, unsigned int) const { }
+void BBI::InventoryItems::GetItemsByCategory(int, int **, unsigned int) const { }
 
 // 0x8007B550 | 68 bytes
 void BBI::InventoryItems::GetItemByGuid(int, unsigned char) const { }
@@ -93,19 +94,19 @@ void BBI::InventoryItems::GetContainerSize(void) const { }
 void BBI::InventoryItems::GetItemAtIndex(int) const { }
 
 // 0x8007B6A0 | 144 bytes
-void BBI::InventoryItems::CanAddBuilderItem(BBI::InventoryItem::eItemSubcategory, int, int) const { }
+void BBI::InventoryItems::CanAddBuilderItem(int, int, int) const { }
 
 // 0x8007B730 | 204 bytes
-void BBI::InventoryItems::AddBuilderItem(BBI::InventoryItem::eItemSubcategory, int, int) { }
+void BBI::InventoryItems::AddBuilderItem(int, int, int) { }
 
 // 0x8007B7FC | 116 bytes
-void BBI::InventoryItems::RemoveBuilderItem(BBI::InventoryItem::eItemSubcategory, int, int) { }
+void BBI::InventoryItems::RemoveBuilderItem(int, int, int) { }
 
 // 0x8007B870 | 68 bytes
-void BBI::InventoryItems::GetBuilderItem(BBI::InventoryItem::eItemSubcategory, int) const { }
+void BBI::InventoryItems::GetBuilderItem(int, int) const { }
 
 // 0x8007B8B4 | 144 bytes
-void BBI::InventoryItems::GetBuilderItemIndex(BBI::InventoryItem::eItemSubcategory, int) const { }
+void BBI::InventoryItems::GetBuilderItemIndex(int, int) const { }
 
 // 0x8007B944 | 184 bytes
 void BBI::InventoryItems::DoStreamWrite(ReconBuffer *, int) { }
@@ -126,7 +127,7 @@ void BBI::InventoryItems::GetItemIndexByGuid(int, unsigned char) const { }
 void BBI::InventoryItems::CreateNewItemFromGuid(int) const { }
 
 // 0x8007BE40 | 116 bytes
-void BBI::InventoryItems::CreateNewBuilderItem(BBI::InventoryItem::eItemSubcategory, int) const { }
+void BBI::InventoryItems::CreateNewBuilderItem(int, int) const { }
 
 // 0x8007BEB4 | 216 bytes
 void BBI::InventoryItems::CreateNewItemFromSelector(ObjSelector *) const { }

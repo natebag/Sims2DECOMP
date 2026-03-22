@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x803ABC0C | 148 bytes
 void Emitter::Create(char *, float *, pemitterinfo *, void (*)(particle *, PVector4 *, float, float, PVector4 *, void *), void (*)(void *), void (*)(pemitter *, PVector4 *, PVector4 *), void *) { }

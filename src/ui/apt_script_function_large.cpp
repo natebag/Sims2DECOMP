@@ -3,6 +3,7 @@
 // 7 functions, 3472 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptScriptFunctionBase::AptScriptFunctionBase(AptVirtualFunctionTable_Indices, AptScriptFunctionBase *, AptCIH *, bool) - 0x802B7A74 | 736 bytes

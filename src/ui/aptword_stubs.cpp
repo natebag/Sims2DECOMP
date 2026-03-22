@@ -4,12 +4,13 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80011FC0 | 1736 bytes
 void AptWord::Draw(ERC *, EMat4 *, EVec4 *, EVec4 *) { }
 
 // 0x80012688 | 244 bytes
-void AptWord::SetWord(unsigned wchar_t *, int, EVec2 &) { }
+void AptWord::SetWord(wchar_t *, int, EVec2 &) { }
 
 // 0x8001277C | 176 bytes
 void AptWord::Resize(float) { }

@@ -3,6 +3,7 @@
 // 4 functions, 2688 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptMovie::resolve(unsigned char *, AptConstFile *, int *) - 0x802A8C44 | 900 bytes

@@ -7,6 +7,7 @@
 // EDummyFile is a no-op file implementation.
 
 #include "types.h"
+#include "stub_classes.h"
 
 //=============================================================================
 // EDummyFile - dummy file that does nothing

@@ -3,6 +3,7 @@
 // 1 functions, 408 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptGC::CleanUnreachable(void) - 0x8029C69C | 408 bytes

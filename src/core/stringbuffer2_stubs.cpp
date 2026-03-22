@@ -4,9 +4,10 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80127E04 | 136 bytes
-StringBuffer2::StringBuffer2(unsigned wchar_t *, unsigned int) { }
+StringBuffer2::StringBuffer2(wchar_t *, unsigned int) { }
 
 // 0x80127E8C | 8 bytes
 void StringBuffer2::capacity(void) const { }
@@ -18,13 +19,13 @@ void StringBuffer2::length(void) const { }
 void StringBuffer2::erase(void) { }
 
 // 0x80127EC8 | 424 bytes
-void StringBuffer2::append(unsigned wchar_t *, int) { }
+void StringBuffer2::append(wchar_t *, int) { }
 
 // 0x80128070 | 8 bytes
 void StringBuffer2::c_str(void) const { }
 
 // 0x80128080 | 64 bytes
-void StringBuffer2::copy(unsigned wchar_t *) { }
+void StringBuffer2::copy(wchar_t *) { }
 
 // 0x80128144 | 68 bytes
 void StringBuffer2::compare(StringBuffer2 &) const { }
@@ -48,10 +49,10 @@ void StringBuffer2::appendChar(wchar_t) { }
 void StringBuffer2::appendNum(int) { }
 
 // 0x8012852C | 180 bytes
-void StringBuffer2::find(unsigned wchar_t *, int) const { }
+void StringBuffer2::find(wchar_t *, int) const { }
 
 // 0x801285E0 | 232 bytes
-void StringBuffer2::findNoCase(unsigned wchar_t *, int) const { }
+void StringBuffer2::findNoCase(wchar_t *, int) const { }
 
 // 0x801286C8 | 60 bytes
 void StringBuffer2::assignDebug(StringBuffer &) { }

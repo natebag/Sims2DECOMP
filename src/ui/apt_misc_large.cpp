@@ -3,6 +3,7 @@
 // 13 functions, 6296 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptMemoryAllocationsT::operator+(AptMemoryAllocationsT &) - 0x80268714 | 288 bytes

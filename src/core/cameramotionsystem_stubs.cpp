@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8002314C | 324 bytes
 void CameraMotionSystem::RubberBandInterpolate(EVec3 *, EVec3, float) { }

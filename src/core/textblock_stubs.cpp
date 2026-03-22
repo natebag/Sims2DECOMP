@@ -4,15 +4,16 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800DA8C0 | 16 bytes
 void TextBlock::SetDirty(void) { }
 
 // 0x800E4074 | 112 bytes
-TextBlock::TextBlock(unsigned wchar_t *, EVec2 &, EVec4 *, ERFont *, float, bool, bool, bool) { }
+TextBlock::TextBlock(wchar_t *, EVec2 &, EVec4 *, ERFont *, float, bool, bool, bool) { }
 
 // 0x800E411C | 316 bytes
-void TextBlock::Set(unsigned wchar_t *, EVec2 &, EVec2 &, EVec4 *, ERFont *, float, bool, bool, bool) { }
+void TextBlock::Set(wchar_t *, EVec2 &, EVec2 &, EVec4 *, ERFont *, float, bool, bool, bool) { }
 
 // 0x800E4258 | 308 bytes
 void TextBlock::Clear(void) { }

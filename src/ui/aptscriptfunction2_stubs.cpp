@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80436B84 | 80 bytes
 AptScriptFunction2::AptScriptFunction2(AptScriptFunctionBase *, AptAction_DefineFunction2 *, AptCIH *) { }

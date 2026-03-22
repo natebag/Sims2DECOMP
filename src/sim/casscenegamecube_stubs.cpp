@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8026C1E0 | 60 bytes
 CasSceneGamecube::CasSceneGamecube(void) { }
@@ -12,7 +13,7 @@ CasSceneGamecube::CasSceneGamecube(void) { }
 CasSceneGamecube::~CasSceneGamecube(void) { }
 
 // 0x8026C24C | 200 bytes
-void CasSceneGamecube::GetMirrorCorners(CasScene::RoomId, EVec3 *) const { }
+void CasSceneGamecube::GetMirrorCorners(int, EVec3 *) const { }
 
 // 0x8026C314 | 8 bytes
 void CasSceneGamecube::GetSceneName(void) const { }

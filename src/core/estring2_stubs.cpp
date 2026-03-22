@@ -4,9 +4,10 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8046DC00 | 80 bytes
-void EString2::Deallocate(unsigned wchar_t *) { }
+void EString2::Deallocate(wchar_t *) { }
 
 // 0x8046DC50 | 212 bytes
 void EString2::Tokenize(wchar_t, TArray<EString2, TArrayDefaultAllocator> &) { }
@@ -21,19 +22,19 @@ void EString2::MakeCopyFromChars(char *) { }
 void EString2::GetNextToken(int &, int, wchar_t) { }
 
 // 0x8046E018 | 152 bytes
-void EString2::MakeCopy(unsigned wchar_t *) { }
+void EString2::MakeCopy(wchar_t *) { }
 
 // 0x8046E268 | 192 bytes
 void EString2::Allocate(int, bool) { }
 
 // 0x8046E360 | 76 bytes
-void EString2::Compare(unsigned wchar_t *) const { }
+void EString2::Compare(wchar_t *) const { }
 
 // 0x8046E3FC | 172 bytes
 void EString2::GetEString(void) const { }
 
 // 0x8046E4A8 | 116 bytes
-void EString2::CompareNoCase(unsigned wchar_t *) const { }
+void EString2::CompareNoCase(wchar_t *) const { }
 
 // 0x8046E51C | 128 bytes
 void EString2::Mid(int, int) const { }
@@ -45,7 +46,7 @@ void EString2::Left(int) const { }
 void EString2::Right(int) const { }
 
 // 0x8046E668 | 88 bytes
-void EString2::operator+=(unsigned wchar_t *) { }
+void EString2::operator+=(wchar_t *) { }
 
 // 0x8046EB20 | 100 bytes
 void EString2::FindReverse(wchar_t) const { }

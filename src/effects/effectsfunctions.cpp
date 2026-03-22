@@ -6,6 +6,7 @@
 // Effects namespace contains particle/visual effect utility functions.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class ERC;

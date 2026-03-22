@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800D843C | 1768 bytes
 void DlgWrapper::Startup(void) { }
@@ -105,13 +106,13 @@ void DlgWrapper::GetDialogPadSizeY(void) const { }
 void DlgWrapper::GetTitleWidth(void) const { }
 
 // 0x800DAE98 | 120 bytes
-void DlgWrapper::SetTitleText(unsigned wchar_t *) { }
+void DlgWrapper::SetTitleText(wchar_t *) { }
 
 // 0x800DAF10 | 144 bytes
 void DlgWrapper::SetTitleFontSize(float) { }
 
 // 0x800DAFA0 | 120 bytes
-void DlgWrapper::SetBodyText(unsigned wchar_t *) { }
+void DlgWrapper::SetBodyText(wchar_t *) { }
 
 // 0x800DB018 | 264 bytes
 void DlgWrapper::SetBodyFont(ERFont *) { }
@@ -129,7 +130,7 @@ void DlgWrapper::SetBodyPosX(float) { }
 void DlgWrapper::SetBodyPosY(float) { }
 
 // 0x800DB370 | 132 bytes
-void DlgWrapper::SetAcceptText(unsigned wchar_t *) { }
+void DlgWrapper::SetAcceptText(wchar_t *) { }
 
 // 0x800DB3F4 | 276 bytes
 void DlgWrapper::SetAcceptFont(ERFont *) { }
@@ -147,7 +148,7 @@ void DlgWrapper::SetAcceptPosX(float) { }
 void DlgWrapper::SetAcceptPosY(float) { }
 
 // 0x800DB78C | 132 bytes
-void DlgWrapper::SetDeclineText(unsigned wchar_t *) { }
+void DlgWrapper::SetDeclineText(wchar_t *) { }
 
 // 0x800DB810 | 276 bytes
 void DlgWrapper::SetDeclineFont(ERFont *) { }
@@ -165,7 +166,7 @@ void DlgWrapper::SetDeclinePosX(float) { }
 void DlgWrapper::SetDeclinePosY(float) { }
 
 // 0x800DBBA8 | 132 bytes
-void DlgWrapper::SetAlt1Text(unsigned wchar_t *) { }
+void DlgWrapper::SetAlt1Text(wchar_t *) { }
 
 // 0x800DBC2C | 276 bytes
 void DlgWrapper::SetAlt1Font(ERFont *) { }
@@ -189,13 +190,13 @@ void DlgWrapper::SetBodyPadSize(EVec2 &) { }
 void DlgWrapper::SetButtonContext(char *) { }
 
 // 0x800DC08C | 48 bytes
-void DlgWrapper::AddAcceptButton(unsigned wchar_t *) { }
+void DlgWrapper::AddAcceptButton(wchar_t *) { }
 
 // 0x800DC0BC | 48 bytes
-void DlgWrapper::AddDeclineButton(unsigned wchar_t *) { }
+void DlgWrapper::AddDeclineButton(wchar_t *) { }
 
 // 0x800DC0EC | 48 bytes
-void DlgWrapper::AddAlt1Button(unsigned wchar_t *) { }
+void DlgWrapper::AddAlt1Button(wchar_t *) { }
 
 // 0x800DC11C | 8 bytes
 void DlgWrapper::IsAptDrawable(void) { }

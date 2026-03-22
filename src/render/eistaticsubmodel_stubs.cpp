@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8039771C | 152 bytes
 EIStaticSubModel::EIStaticSubModel(void) { }
@@ -63,7 +64,7 @@ void EIStaticSubModel::RebuildShaders(void) { }
 void EIStaticSubModel::RealizeShaderTuning(void) { }
 
 // 0x80399028 | 40 bytes
-void EIStaticSubModel::GetInstName(EInstance::InstType &) { }
+void EIStaticSubModel::GetInstName(int &) { }
 
 // 0x8039A290 | 40 bytes
 void EIStaticSubModel::New(void) { }

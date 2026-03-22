@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802AFEE0 | 7532 bytes
 ACTTarget::ACTTarget(int) { }
@@ -30,7 +31,7 @@ void ACTTarget::UpdateActionQueue(void) { }
 void ACTTarget::AddAction(int, Interaction *, BString2 &, unsigned int, ERShader *, unsigned int) { }
 
 // 0x802B2A68 | 800 bytes
-void ACTTarget::PlaceItem(ACTTarget::ACTRecord *, int, Interaction *, int, cXPerson *, BString2 &, unsigned int, ERShader *, unsigned int) { }
+void ACTTarget::PlaceItem(int *, int, Interaction *, int, cXPerson *, BString2 &, unsigned int, ERShader *, unsigned int) { }
 
 // 0x802B2D88 | 644 bytes
 void ACTTarget::RemoveAction(int, Interaction *) { }

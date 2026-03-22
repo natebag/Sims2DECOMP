@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80421390 | 416 bytes
 void MathMembersIndex::in_word_set(char *, unsigned int) { }

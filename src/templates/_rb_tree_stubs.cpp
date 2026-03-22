@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8008CCF4 | 92 bytes
 void _Rb_tree<ERModel *, pair<ERModel *, model_dat>, _Select1st<pair<ERModel *, model_dat> >, less<ERModel *>, allocator<pair<ERModel *, model_dat> > >::_M_erase(_Rb_tree_node<pair<ERModel *, model_dat> > *) { }
@@ -108,13 +109,13 @@ void _Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select
 void _Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select1st<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > >, less<CTilePt>, allocator<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > > >::insert_unique(pair<CTilePt, pair<DiagonalNode, DiagonalNode> > &) { }
 
 // 0x8022A4D8 | 92 bytes
-void _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::_M_erase(_Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > *) { }
+void _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::_M_erase(_Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, int> > *) { }
 
 // 0x8022A75C | 356 bytes
-void _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> &, _Rb_tree_node_base *) { }
+void _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<pair<unsigned int, ObjectDataID>, int> &, _Rb_tree_node_base *) { }
 
 // 0x8022A930 | 356 bytes
-void _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::insert_unique(pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> &) { }
+void _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::insert_unique(pair<pair<unsigned int, ObjectDataID>, int> &) { }
 
 // 0x8024B504 | 92 bytes
 void _Rb_tree<CasListener *, CasListener *, _Identity<CasListener *>, less<CasListener *>, allocator<CasListener *> >::_M_erase(_Rb_tree_node<CasListener *> *) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804FA584 | 108 bytes
 EResourceManager::EResourceManager(void) { }
@@ -96,7 +97,7 @@ void EResourceManager::RefreshResources(void) { }
 void EResourceManager::Refresh(EResource *) { }
 
 // 0x804FC398 | 188 bytes
-void EResourceManager::DelRef(unsigned int, EResourceManager::DelRefMode) { }
+void EResourceManager::DelRef(unsigned int, int) { }
 
 // 0x804FC498 | 60 bytes
 void EResourceManager::DelRefAsync(char *) { }
@@ -156,4 +157,4 @@ void EResourceManager::GetOverriddenFile(unsigned int, unsigned int &) { }
 void EResourceManager::CanCache(void) { }
 
 // 0x805005D0 | 24 bytes
-void EResourceManager::ResourceIndexRecord::CheckPos(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &) { }
+void EResourceManager::ResourceIndexRecord::CheckPos(int &, int &) { }

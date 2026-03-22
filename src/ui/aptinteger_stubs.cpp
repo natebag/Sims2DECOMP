@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8043A86C | 132 bytes
 void AptInteger::ClearPool(void) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8020F1F0 | 420 bytes
 void TTabScratchEntry::CopyFrom(ITreeTableEntry *) { }

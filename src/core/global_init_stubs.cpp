@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8001E048 | 44 bytes
 // PRAGMA_STUB: global constructors keyed to AwarenessManager::m_bIsRaining

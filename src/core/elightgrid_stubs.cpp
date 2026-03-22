@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8039B6F4 | 136 bytes
 ELightGrid::ELightGrid(void) { }
@@ -21,10 +22,10 @@ void ELightGrid::AddRoomToVertex(int, int, int) { }
 void ELightGrid::Update(TNodeList<EILight *> &, EInstance **, int, int) { }
 
 // 0x8039BDC0 | 696 bytes
-void ELightGrid::ConnectPortalLights(ELightGrid::RoomData *) { }
+void ELightGrid::ConnectPortalLights(int *) { }
 
 // 0x8039C078 | 476 bytes
-void ELightGrid::RoomData::FindClosestLights(EVec3 &, int, int, ELightGrid::LightData *, ELightGrid::LightWeight *, int) { }
+void ELightGrid::RoomData::FindClosestLights(EVec3 &, int, int, int *, int *, int) { }
 
 // 0x8039C254 | 380 bytes
 void ELightGrid::EvaluatePointLights(int, int) { }
@@ -48,10 +49,10 @@ void ELightGrid::RoomData::EvaluateAmbientAndDirectionalLights(void) { }
 void ELightGrid::EvaluatePortalLights(int, int) { }
 
 // 0x8039C938 | 768 bytes
-void ELightGrid::EvaluatePortalLight(ELightGrid::LightData *, ELightGrid::PortalData *) { }
+void ELightGrid::EvaluatePortalLight(int *, int *) { }
 
 // 0x8039CDA4 | 508 bytes
-void ELightGrid::GetLightWeightsAtLocation(EVec3 &, int, ELightGrid::LightWeight *) { }
+void ELightGrid::GetLightWeightsAtLocation(EVec3 &, int, int *) { }
 
 // 0x8039CFA0 | 200 bytes
 void ELightGrid::GetLightsAtLocation(EVec3 &, int) const { }

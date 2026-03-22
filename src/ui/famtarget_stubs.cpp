@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802C4500 | 11936 bytes
 FAMTarget::FAMTarget(void) { }
@@ -33,7 +34,7 @@ void FAMTarget::UpdateLotSelectShaders(void) { }
 void FAMTarget::UpdateTempShaders(void) { }
 
 // 0x802C879C | 340 bytes
-void FAMTarget::GetFamilyText(char *, unsigned wchar_t *) { }
+void FAMTarget::GetFamilyText(char *, wchar_t *) { }
 
 // 0x802C88F0 | 80 bytes
 void FAMTarget::OnLotSelect(void) { }
@@ -66,34 +67,34 @@ void FAMTarget::OnDownKeyPressed(char *, char *) { }
 void FAMTarget::OnXKeyPressed(char *, char *) { }
 
 // 0x802CA6FC | 92 bytes
-void FAMTarget::GetNumberOfChoicesInState(FAMTarget::FAM_STATE) { }
+void FAMTarget::GetNumberOfChoicesInState(int) { }
 
 // 0x802CA760 | 264 bytes
 void FAMTarget::GoUpMenuTree(void) { }
 
 // 0x802CA868 | 276 bytes
-void FAMTarget::GetNameForFamilyInLotSelect(char *, unsigned wchar_t *) { }
+void FAMTarget::GetNameForFamilyInLotSelect(char *, wchar_t *) { }
 
 // 0x802CA97C | 192 bytes
-void FAMTarget::GetMoneyForFamilyInLotSelect(char *, unsigned wchar_t *) { }
+void FAMTarget::GetMoneyForFamilyInLotSelect(char *, wchar_t *) { }
 
 // 0x802CAA3C | 788 bytes
 void FAMTarget::UpdateFamilySelectShaders(void) { }
 
 // 0x802CAD50 | 104 bytes
-void FAMTarget::GetSelectedLotDescription(unsigned wchar_t *) { }
+void FAMTarget::GetSelectedLotDescription(wchar_t *) { }
 
 // 0x802CADB8 | 100 bytes
-void FAMTarget::ConvertNumericMoneyToString(int, unsigned wchar_t *) { }
+void FAMTarget::ConvertNumericMoneyToString(int, wchar_t *) { }
 
 // 0x802CAE1C | 152 bytes
-void FAMTarget::GetMoneyForFamily(Family *, unsigned wchar_t *) { }
+void FAMTarget::GetMoneyForFamily(Family *, wchar_t *) { }
 
 // 0x802CAEB4 | 80 bytes
 void FAMTarget::GetLotName(int) { }
 
 // 0x802CAF04 | 188 bytes
-void FAMTarget::GetNameForFamily(Family *, unsigned wchar_t *) { }
+void FAMTarget::GetNameForFamily(Family *, wchar_t *) { }
 
 // 0x802CAFC0 | 212 bytes
 void FAMTarget::SetCurrentChoice(char *) { }

@@ -3,6 +3,7 @@
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 struct EFile {
@@ -112,7 +113,7 @@ bool EFileSystem::Create(EFile*& outFile, char* path, char* relPath,
     bool found = false;
 
     // Check if device is default
-    if (device == (EFile::DeviceType)0x80000000) {
+    if (device == (int)0x80000000) {
         device = (EFile::DeviceType)(u32)m_defaultDevice;
     }
 

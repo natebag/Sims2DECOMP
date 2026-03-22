@@ -3,6 +3,7 @@
 // 17 functions from the EA general purpose memory allocator
 
 #include "types.h"
+#include "stub_classes.h"
 
 namespace EA {
 namespace Allocator {

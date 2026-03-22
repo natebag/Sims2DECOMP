@@ -4,6 +4,7 @@
 // All NON_MATCHING - vtable dispatch, SDA addressing, register allocation
 
 #include "types.h"
+#include "stub_classes.h"
 
 extern "C" {
     void* operator_new_wrapper(unsigned int size);

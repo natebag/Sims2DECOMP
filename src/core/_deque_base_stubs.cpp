@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800084D8 | 76 bytes
 void _Deque_base<StateMachineStatus *, allocator<StateMachineStatus *> >::_M_create_nodes(StateMachineStatus ***, StateMachineStatus ***) { }
@@ -30,25 +31,25 @@ void _Deque_base<int, allocator<int> >::_M_destroy_nodes(int **, int **) { }
 _Deque_base<int, allocator<int> >::~_Deque_base(void) { }
 
 // 0x803166F4 | 76 bytes
-void _Deque_base<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_create_nodes(FAMTarget::FAM_STATE **, FAMTarget::FAM_STATE **) { }
+void _Deque_base<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_create_nodes(int **, int **) { }
 
 // 0x80316740 | 260 bytes
 void _Deque_base<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_initialize_map(unsigned int) { }
 
 // 0x80316844 | 84 bytes
-void _Deque_base<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_destroy_nodes(FAMTarget::FAM_STATE **, FAMTarget::FAM_STATE **) { }
+void _Deque_base<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_destroy_nodes(int **, int **) { }
 
 // 0x80316898 | 128 bytes
 _Deque_base<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::~_Deque_base(void) { }
 
 // 0x80316DA4 | 76 bytes
-void _Deque_base<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_create_nodes(MMUTarget::MMU_MENU_STATE **, MMUTarget::MMU_MENU_STATE **) { }
+void _Deque_base<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_create_nodes(int **, int **) { }
 
 // 0x80316DF0 | 260 bytes
 void _Deque_base<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_initialize_map(unsigned int) { }
 
 // 0x80316EF4 | 84 bytes
-void _Deque_base<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_destroy_nodes(MMUTarget::MMU_MENU_STATE **, MMUTarget::MMU_MENU_STATE **) { }
+void _Deque_base<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_destroy_nodes(int **, int **) { }
 
 // 0x80316F48 | 128 bytes
 _Deque_base<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::~_Deque_base(void) { }

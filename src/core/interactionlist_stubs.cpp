@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801C1D68 | 100 bytes
 void InteractionList::push_back(Interaction &) { }

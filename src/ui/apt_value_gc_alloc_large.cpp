@@ -3,6 +3,7 @@
 // 1 functions, 568 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptValueGC_PoolManager::GetNextAptValue(AptValue *) - 0x802B51E8 | 568 bytes

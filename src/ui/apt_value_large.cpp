@@ -3,6 +3,7 @@
 // 6 functions, 3172 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // ObjectIndex::in_word_set(char *, unsigned int) - 0x802B02F8 | 448 bytes

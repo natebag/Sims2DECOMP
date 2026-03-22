@@ -3,6 +3,7 @@
 // 22 functions, 8944 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // KeyMembersIndex::in_word_set(char *, unsigned int) - 0x802A275C | 356 bytes

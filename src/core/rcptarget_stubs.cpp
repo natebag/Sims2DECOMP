@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80305898 | 4788 bytes
 RCPTarget::RCPTarget(cRCPEventHandler *, int) { }
@@ -12,7 +13,7 @@ RCPTarget::RCPTarget(cRCPEventHandler *, int) { }
 RCPTarget::~RCPTarget(void) { }
 
 // 0x80306E5C | 444 bytes
-void RCPTarget::make_recipe_text(RCPTarget::Recipe *, BString2 &) { }
+void RCPTarget::make_recipe_text(int *, BString2 &) { }
 
 // 0x80307018 | 1156 bytes
 void RCPTarget::SetVariable(char *, char *) { }
@@ -39,7 +40,7 @@ void RCPTarget::install_lock_shaders(void) { }
 void RCPTarget::install_ing_shaders(void) { }
 
 // 0x803084CC | 324 bytes
-void RCPTarget::get_plus_shaders(RCPTarget::Recipe &, unsigned int &, unsigned int &) { }
+void RCPTarget::get_plus_shaders(int &, unsigned int &, unsigned int &) { }
 
 // 0x80308610 | 460 bytes
-void RCPTarget::get_proc_shaders(RCPTarget::Recipe &, unsigned int &, unsigned int &) { }
+void RCPTarget::get_proc_shaders(int &, unsigned int &, unsigned int &) { }

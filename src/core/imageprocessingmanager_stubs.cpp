@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80501DFC | 104 bytes
 void ImageProcessingManager::Open(int) { }
@@ -12,7 +13,7 @@ void ImageProcessingManager::Open(int) { }
 void ImageProcessingManager::Close(void) { }
 
 // 0x80501EA0 | 108 bytes
-void ImageProcessingManager::SetStageFilter(int, ImageProcessingManager::FilterDescriptor *) { }
+void ImageProcessingManager::SetStageFilter(int, int *) { }
 
 // 0x80501F0C | 20 bytes
 void ImageProcessingManager::SetStageCallback(int, void (*)(ETexture *)) { }
@@ -24,16 +25,16 @@ void ImageProcessingManager::ExecuteAsync(ETexture *, ETexture *, void (*)(EText
 void ImageProcessingManager::Execute(ETexture *, ETexture *) { }
 
 // 0x805021C8 | 24 bytes
-void ImageProcessingManager::HasBaseColorParam(ImageProcessingManager::eFilter) { }
+void ImageProcessingManager::HasBaseColorParam(int) { }
 
 // 0x805021E0 | 24 bytes
-void ImageProcessingManager::HasHSVParam(ImageProcessingManager::eFilter) { }
+void ImageProcessingManager::HasHSVParam(int) { }
 
 // 0x805021F8 | 24 bytes
-void ImageProcessingManager::HasThreshParam(ImageProcessingManager::eFilter) { }
+void ImageProcessingManager::HasThreshParam(int) { }
 
 // 0x80502210 | 24 bytes
-void ImageProcessingManager::HasBlendParam(ImageProcessingManager::eFilter) { }
+void ImageProcessingManager::HasBlendParam(int) { }
 
 // 0x80502C94 | 8 bytes
 void ImageProcessingManager::LinkTexture(unsigned int, unsigned int) { }
@@ -42,4 +43,4 @@ void ImageProcessingManager::LinkTexture(unsigned int, unsigned int) { }
 void ImageProcessingManager::DummyFree(void *) { }
 
 // 0x80502CA0 | 1384 bytes
-void ImageProcessingManager::CompositeEdges(short *, short *, int, int, ImageProcessingManager::BlendParams *) { }
+void ImageProcessingManager::CompositeEdges(short *, short *, int, int, int *) { }

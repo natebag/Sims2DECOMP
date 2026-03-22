@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8016AA98 | 352 bytes
 void _c2DArray::ReadFromDisk(iResFile *, int, short, void (*)(void *, int)) { }

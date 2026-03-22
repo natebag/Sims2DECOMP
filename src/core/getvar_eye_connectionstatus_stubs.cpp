@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8032104C | 112 bytes
 void GetVar_EYE_connectionStatus::Handler(char *) { }

@@ -4,12 +4,13 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80033FC8 | 8 bytes
 void EDummyFile::Write(void *, unsigned int) { }
 
 // 0x80033FD0 | 116 bytes
-void EDummyFile::Seek(int, EFile::SeekType) { }
+void EDummyFile::Seek(int, int) { }
 
 // 0x80034044 | 8 bytes
 void EDummyFile::Tell(void) const { }

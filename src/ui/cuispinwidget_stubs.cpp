@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804B2B90 | 32 bytes
 void CUISpinWidget::ButtonCallback(unsigned int, unsigned int, int) { }

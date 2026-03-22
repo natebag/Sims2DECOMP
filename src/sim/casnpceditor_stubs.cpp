@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8024BE60 | 124 bytes
 CasNpcEditor::CasNpcEditor(void) { }
@@ -12,7 +13,7 @@ CasNpcEditor::CasNpcEditor(void) { }
 CasNpcEditor::~CasNpcEditor(void) { }
 
 // 0x8024BF54 | 324 bytes
-void CasNpcEditor::Enable(CasNpcEditor::eNPCEditTypeFlag) { }
+void CasNpcEditor::Enable(int) { }
 
 // 0x8024C098 | 1200 bytes
 void CasNpcEditor::Update(float) { }

@@ -6,6 +6,7 @@
 // DlgWrapper manages dialog display, positioning, input handling.
 
 #include "types.h"
+#include "stub_classes.h"
 
 struct EVec2 { float x, y; };
 

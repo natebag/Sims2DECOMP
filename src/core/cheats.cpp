@@ -5,6 +5,7 @@
 // Small functions (<=64 bytes) decompiled from the cheats object file.
 
 #include "types.h"
+#include "stub_classes.h"
 
 //=============================================================================
 // Cheats class

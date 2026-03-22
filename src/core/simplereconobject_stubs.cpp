@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80037024 | 32 bytes
 SimpleReconObject<ObjectSaveTypeTable2>::~SimpleReconObject(void) { }

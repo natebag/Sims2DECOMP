@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8014E150 | 112 bytes
 IFFResFile2::IFFResFile2(void) { }
@@ -57,13 +58,13 @@ void IFFResFile2::GetByName(int, StringBuffer &, void (*)(void *, int)) { }
 void IFFResFile2::GetByIndex(int, short, void (*)(void *, int)) { }
 
 // 0x8014F420 | 188 bytes
-void IFFResFile2::GetName(Memory::HandleNode *, StringBuffer &) { }
+void IFFResFile2::GetName(int *, StringBuffer &) { }
 
 // 0x8014F590 | 176 bytes
-void IFFResFile2::GetResType(Memory::HandleNode *) { }
+void IFFResFile2::GetResType(int *) { }
 
 // 0x8014F640 | 176 bytes
-void IFFResFile2::GetID(Memory::HandleNode *, short *) { }
+void IFFResFile2::GetID(int *, short *) { }
 
 // 0x8014F778 | 272 bytes
 void IFFResFile2::FindUniqueName(int, StringBuffer &) { }
@@ -72,28 +73,28 @@ void IFFResFile2::FindUniqueName(int, StringBuffer &) { }
 void IFFResFile2::FindUniqueID(int) { }
 
 // 0x8014F920 | 228 bytes
-void IFFResFile2::Detach(Memory::HandleNode *) { }
+void IFFResFile2::Detach(int *) { }
 
 // 0x8014FA04 | 128 bytes
-void IFFResFile2::Load(Memory::HandleNode *) { }
+void IFFResFile2::Load(int *) { }
 
 // 0x8014FA84 | 192 bytes
-void IFFResFile2::IsLittleEndian(Memory::HandleNode *) { }
+void IFFResFile2::IsLittleEndian(int *) { }
 
 // 0x8014FB44 | 180 bytes
-void IFFResFile2::SetID(Memory::HandleNode *, short) { }
+void IFFResFile2::SetID(int *, short) { }
 
 // 0x8014FBF8 | 416 bytes
-void IFFResFile2::AddWithLanguage(Memory::HandleNode *, int, short, StringBuffer &, char, bool) { }
+void IFFResFile2::AddWithLanguage(int *, int, short, StringBuffer &, char, bool) { }
 
 // 0x8014FDD4 | 736 bytes
-void IFFResFile2::Write(Memory::HandleNode *) { }
+void IFFResFile2::Write(int *) { }
 
 // 0x801500B4 | 268 bytes
-void IFFResFile2::Remove(Memory::HandleNode *) { }
+void IFFResFile2::Remove(int *) { }
 
 // 0x801501C0 | 440 bytes
-void IFFResFile2::SetInfo(Memory::HandleNode *, short, StringBuffer &, char) { }
+void IFFResFile2::SetInfo(int *, short, StringBuffer &, char) { }
 
 // 0x80150378 | 480 bytes
 void IFFResFile2::LoadNode(IFFResNode *, void (*)(void *, int), int) { }

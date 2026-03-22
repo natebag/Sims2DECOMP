@@ -3,6 +3,7 @@
 // 214 functions, 104416 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // ACTTarget::~ACTTarget(void) - 0x801A19B0 | 620 bytes

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x803266D8 | 5652 bytes
 INVTarget::INVTarget(int) { }
@@ -18,7 +19,7 @@ void INVTarget::GetPlayerFunds(void) const { }
 void INVTarget::SetPlayerFunds(int) { }
 
 // 0x803284C0 | 176 bytes
-void INVTarget::FormatMoneyString(int, bool, unsigned wchar_t *) { }
+void INVTarget::FormatMoneyString(int, bool, wchar_t *) { }
 
 // 0x80328570 | 984 bytes
 void INVTarget::SetVariable(char *, char *) { }
@@ -30,10 +31,10 @@ void INVTarget::GetVariable(char *) { }
 void INVTarget::GetLocalizable(char *) { }
 
 // 0x80329514 | 656 bytes
-void INVTarget::GetOnLocMsgInvObjectName(unsigned wchar_t *) { }
+void INVTarget::GetOnLocMsgInvObjectName(wchar_t *) { }
 
 // 0x803297A4 | 476 bytes
-void INVTarget::GetOnLocMsgInvObjectDescription(unsigned wchar_t *) { }
+void INVTarget::GetOnLocMsgInvObjectDescription(wchar_t *) { }
 
 // 0x80329EC0 | 868 bytes
 void INVTarget::Cheat_OnSetCurrentTabMode(int) { }
@@ -93,7 +94,7 @@ void INVTarget::SetPageIdxCheatString(char *, int) { }
 void INVTarget::SetFileNameCheatString(char *, int, char *) { }
 
 // 0x8032C2FC | 200 bytes
-void INVTarget::SetCatalogNameCheatString(char *, int, unsigned wchar_t *) { }
+void INVTarget::SetCatalogNameCheatString(char *, int, wchar_t *) { }
 
 // 0x8032C3F8 | 276 bytes
 void INVTarget::SetAllObjectRelatedCheatStrings(ObjSelector *) { }
@@ -108,22 +109,22 @@ void INVTarget::FireCodeDialogSelectionCallback(int) { }
 void INVTarget::CannotGrabToInventoryDialogSelectionCallback(int) { }
 
 // 0x8032CB54 | 272 bytes
-void INVTarget::PlaceModeCallbackImpl(InteractorModule::PlaceManipulator::CallbackData *) { }
+void INVTarget::PlaceModeCallbackImpl(int *) { }
 
 // 0x8032CCD8 | 592 bytes
-void INVTarget::CommittChangesToInventory(InteractorModule::WallManipulator::CallbackData *) { }
+void INVTarget::CommittChangesToInventory(int *) { }
 
 // 0x8032CF28 | 256 bytes
-void INVTarget::WallManipulatorCallbackImpl(InteractorModule::WallManipulator::CallbackData *) { }
+void INVTarget::WallManipulatorCallbackImpl(int *) { }
 
 // 0x8032D16C | 256 bytes
-void INVTarget::WallPainterCallbackImpl(InteractorModule::WallPainter::CallbackData *) { }
+void INVTarget::WallPainterCallbackImpl(int *) { }
 
 // 0x8032D354 | 144 bytes
-void INVTarget::FloorModeCallbackImpl(InteractorModule::FloorPainter::CallbackData *) { }
+void INVTarget::FloorModeCallbackImpl(int *) { }
 
 // 0x8032D3E4 | 472 bytes
-void INVTarget::GrabModeCallbackImpl(InteractorModule::GrabManipulator::CallbackData *) { }
+void INVTarget::GrabModeCallbackImpl(int *) { }
 
 // 0x8032D630 | 504 bytes
 void INVTarget::EnterPlaceAnyObjectModeUsingNewInteractorApi(ObjSelector *) { }
@@ -192,10 +193,10 @@ void INVTarget::ClearAllObjectInfoData(void) { }
 void INVTarget::GetObjectRating(ObjSelector *, int &, int &) { }
 
 // 0x80333934 | 404 bytes
-void INVTarget::GetMotiveText(ObjSelector *, unsigned wchar_t *) { }
+void INVTarget::GetMotiveText(ObjSelector *, wchar_t *) { }
 
 // 0x80333E8C | 136 bytes
-void INVTarget::GetNumberOfBuildItemsToBuy(BBI::InventoryItem::eItemSubcategory, int) { }
+void INVTarget::GetNumberOfBuildItemsToBuy(int, int) { }
 
 // 0x80333F14 | 640 bytes
 void INVTarget::SetOnMsgInvShpItemSelected(char *) { }
@@ -216,13 +217,13 @@ void INVTarget::SetOnMsgInvShpSelectColor(char *) { }
 void INVTarget::InstallShoppingObjectShaders(int) { }
 
 // 0x80334624 | 320 bytes
-void INVTarget::InstallWallPaperShaders(vector<InteractorModule::WallPaperData, allocator<InteractorModule::WallPaperData> > *, int) { }
+void INVTarget::InstallWallPaperShaders(vector<int, allocator<int> > *, int) { }
 
 // 0x80334764 | 496 bytes
-void INVTarget::InstallWallShaders(vector<InteractorModule::WallData, allocator<InteractorModule::WallData> > *, int) { }
+void INVTarget::InstallWallShaders(vector<int, allocator<int> > *, int) { }
 
 // 0x80334954 | 320 bytes
-void INVTarget::InstallFloorTileShaders(vector<InteractorModule::FloorData, allocator<InteractorModule::FloorData> > *, int) { }
+void INVTarget::InstallFloorTileShaders(vector<int, allocator<int> > *, int) { }
 
 // 0x80334A94 | 320 bytes
 void INVTarget::InstallObjListShaders(vector<ObjSelector *, allocator<ObjSelector *> > *, int) { }
@@ -237,25 +238,25 @@ void INVTarget::GetOnMsgInvObjectInfoReady(char *) { }
 void INVTarget::GetOnMsgInvShpItemCount(char *) { }
 
 // 0x80335004 | 336 bytes
-void INVTarget::GetOnLocMsgInvShpObjectName(unsigned wchar_t *) { }
+void INVTarget::GetOnLocMsgInvShpObjectName(wchar_t *) { }
 
 // 0x80335154 | 208 bytes
-void INVTarget::GetOnLocMsgInvShpObjectDescription(unsigned wchar_t *) { }
+void INVTarget::GetOnLocMsgInvShpObjectDescription(wchar_t *) { }
 
 // 0x80335224 | 152 bytes
-void INVTarget::GetOnLocMsgInvShpBudget(unsigned wchar_t *) { }
+void INVTarget::GetOnLocMsgInvShpBudget(wchar_t *) { }
 
 // 0x803352BC | 84 bytes
-void INVTarget::GetOnLocMsgInvMotiveText(unsigned wchar_t *) { }
+void INVTarget::GetOnLocMsgInvMotiveText(wchar_t *) { }
 
 // 0x80335310 | 104 bytes
-void INVTarget::GetOnLocMsgInvShpMotiveText(unsigned wchar_t *) { }
+void INVTarget::GetOnLocMsgInvShpMotiveText(wchar_t *) { }
 
 // 0x80335378 | 68 bytes
 void INVTarget::GetOnMsgInvShpObjectInfoReady(char *) { }
 
 // 0x803353BC | 988 bytes
-void INVTarget::GetSelectedShoppingItem(int, InteractorModule::ShoppingItem &, int &) { }
+void INVTarget::GetSelectedShoppingItem(int, int &, int &) { }
 
 // 0x80335798 | 992 bytes
 void INVTarget::GetOnMsgInvShpCanPurchase(char *) { }
@@ -279,16 +280,16 @@ void INVTarget::GetOnMsgInvShpCategoryN(char *, int) { }
 void INVTarget::ExitFloorTilingMode(bool) { }
 
 // 0x8033627C | 728 bytes
-void INVTarget::EnterWallBuildMode(InteractorModule::WallData *, INVTarget::eInteractorMode) { }
+void INVTarget::EnterWallBuildMode(int *, int) { }
 
 // 0x80336554 | 724 bytes
-void INVTarget::EnterWallPaperingMode(InteractorModule::WallPaperData *, INVTarget::eInteractorMode) { }
+void INVTarget::EnterWallPaperingMode(int *, int) { }
 
 // 0x80336828 | 780 bytes
-void INVTarget::EnterFloorTilingMode(InteractorModule::FloorData *, INVTarget::eInteractorMode) { }
+void INVTarget::EnterFloorTilingMode(int *, int) { }
 
 // 0x80336B34 | 100 bytes
-void INVTarget::IsPackagedItem(BBI::InventoryItem *) { }
+void INVTarget::IsPackagedItem(int *) { }
 
 // 0x80336B98 | 108 bytes
 void INVTarget::GetOnMsgInvShpIsPack(char *) { }

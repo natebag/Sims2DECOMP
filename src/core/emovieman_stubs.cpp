@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804F9F80 | 188 bytes
 void EMovieMan::AllocateAndLoadResource(EFile *, unsigned int, unsigned int) { }

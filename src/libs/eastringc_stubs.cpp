@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x803EB1F8 | 104 bytes
 EAStringC::~EAStringC(void) { }
@@ -132,7 +133,7 @@ void EAStringC::UTF8_MakeUpper(void) { }
 void EAStringC::UTF8_Initialize(int) { }
 
 // 0x8043D6F0 | 356 bytes
-void EAStringC::ChangeBuffer(unsigned int, unsigned int, unsigned int, EAStringC::CBPushZero, unsigned int) { }
+void EAStringC::ChangeBuffer(unsigned int, unsigned int, unsigned int, int, unsigned int) { }
 
 // 0x8043D854 | 184 bytes
 void EAStringC::InitFromBuffer(char *) { }

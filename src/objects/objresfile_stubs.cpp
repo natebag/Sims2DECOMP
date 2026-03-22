@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801BE7F4 | 156 bytes
 ObjResFile::ObjResFile(void) { }

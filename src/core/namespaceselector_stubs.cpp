@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8015A5E4 | 244 bytes
 NamespaceSelector::~NamespaceSelector(void) { }
@@ -24,7 +25,7 @@ void NamespaceSelector::FlushBehaviorConstant(short) { }
 void NamespaceSelector::FlushSoundInfo(short) { }
 
 // 0x8015A7B0 | 112 bytes
-void NamespaceSelector::FlushCacheItem(short, list<NamespaceSelector::DataCache, allocator<NamespaceSelector::DataCache> > &) { }
+void NamespaceSelector::FlushCacheItem(short, list<int, allocator<int> > &) { }
 
 // 0x8015A820 | 36 bytes
 void NamespaceSelector::FlushStringSet(short) { }
@@ -33,7 +34,7 @@ void NamespaceSelector::FlushStringSet(short) { }
 void NamespaceSelector::FlushAllCaches(void) { }
 
 // 0x8015A974 | 2028 bytes
-void NamespaceSelector::GetCacheItem(short, list<NamespaceSelector::DataCache, allocator<NamespaceSelector::DataCache> > &, unsigned int, unsigned int) { }
+void NamespaceSelector::GetCacheItem(short, list<int, allocator<int> > &, unsigned int, unsigned int) { }
 
 // 0x8015B160 | 8 bytes
 void NamespaceSelector::GetTreeSetResource(void) { }

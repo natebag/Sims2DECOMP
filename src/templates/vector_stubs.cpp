@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8000F9F8 | 824 bytes
 void vector<AptAuxIDToChar, allocator<AptAuxIDToChar> >::_M_fill_insert(AptAuxIDToChar *, unsigned int, AptAuxIDToChar &) { }
@@ -12,7 +13,7 @@ void vector<AptAuxIDToChar, allocator<AptAuxIDToChar> >::_M_fill_insert(AptAuxID
 void vector<Neighbor *, allocator<Neighbor *> >::_M_fill_insert(Neighbor **, unsigned int, Neighbor *&) { }
 
 // 0x8012AECC | 1396 bytes
-void vector<AmbientScorePlayer::ListenerInfo, allocator<AmbientScorePlayer::ListenerInfo> >::_M_fill_insert(AmbientScorePlayer::ListenerInfo *, unsigned int, AmbientScorePlayer::ListenerInfo &) { }
+void vector<AmbientScorePlayer::ListenerInfo, allocator<AmbientScorePlayer::ListenerInfo> >::_M_fill_insert(int *, unsigned int, int &) { }
 
 // 0x8013B7AC | 380 bytes
 void vector<unsigned int, allocator<unsigned int> >::operator=(vector<unsigned int, allocator<unsigned int> > &) { }
@@ -117,7 +118,7 @@ void vector<CasSimDescriptionS2C *, allocator<CasSimDescriptionS2C *> >::_M_fill
 void vector<CasSimDescriptionS2C *, allocator<CasSimDescriptionS2C *> >::reserve(unsigned int) { }
 
 // 0x802490C0 | 640 bytes
-void vector<CasGenetics::Grandparent *, allocator<CasGenetics::Grandparent *> >::_M_fill_insert(CasGenetics::Grandparent **, unsigned int, CasGenetics::Grandparent *&) { }
+void vector<CasGenetics::Grandparent *, allocator<CasGenetics::Grandparent *> >::_M_fill_insert(int **, unsigned int, int *&) { }
 
 // 0x802493F4 | 308 bytes
 void vector<CasGenetics::Grandparent *, allocator<CasGenetics::Grandparent *> >::reserve(unsigned int) { }
@@ -135,31 +136,31 @@ void vector<pair<InteractorModule::InteractorInputManager::InteractorCommand, pa
 void vector<InteractorModule::InteractorManager::ActiveInteractor, allocator<InteractorModule::InteractorManager::ActiveInteractor> >::reserve(unsigned int) { }
 
 // 0x8035CEDC | 824 bytes
-void vector<InteractorModule::InteractorManager::ActiveInteractor, allocator<InteractorModule::InteractorManager::ActiveInteractor> >::_M_fill_insert(InteractorModule::InteractorManager::ActiveInteractor *, unsigned int, InteractorModule::InteractorManager::ActiveInteractor &) { }
+void vector<InteractorModule::InteractorManager::ActiveInteractor, allocator<InteractorModule::InteractorManager::ActiveInteractor> >::_M_fill_insert(int *, unsigned int, int &) { }
 
 // 0x8035D214 | 360 bytes
 void vector<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *>, allocator<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *> > >::reserve(unsigned int) { }
 
 // 0x8035D37C | 820 bytes
-void vector<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *>, allocator<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *> > >::_M_fill_insert(pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *> *, unsigned int, pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *> &) { }
+void vector<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *>, allocator<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *> > >::_M_fill_insert(pair<int, int *> *, unsigned int, pair<int, int *> &) { }
 
 // 0x8035D6B0 | 376 bytes
 void vector<InteractorModule::InteractorInfo, allocator<InteractorModule::InteractorInfo> >::reserve(unsigned int) { }
 
 // 0x8035D828 | 1000 bytes
-void vector<InteractorModule::InteractorInfo, allocator<InteractorModule::InteractorInfo> >::_M_fill_insert(InteractorModule::InteractorInfo *, unsigned int, InteractorModule::InteractorInfo &) { }
+void vector<InteractorModule::InteractorInfo, allocator<InteractorModule::InteractorInfo> >::_M_fill_insert(int *, unsigned int, int &) { }
 
 // 0x8035DC10 | 536 bytes
 void vector<vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >, allocator<vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> > > >::reserve(unsigned int) { }
 
 // 0x8035DE28 | 380 bytes
-void vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >::operator=(vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> > &) { }
+void vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >::operator=(vector<int *, allocator<int *> > &) { }
 
 // 0x8035DFA4 | 1928 bytes
-void vector<vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >, allocator<vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> > > >::_M_fill_insert(vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> > *, unsigned int, vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> > &) { }
+void vector<vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >, allocator<vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> > > >::_M_fill_insert(vector<int *, allocator<int *> > *, unsigned int, vector<int *, allocator<int *> > &) { }
 
 // 0x8035E72C | 640 bytes
-void vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >::_M_fill_insert(InteractorModule::Interactor **, unsigned int, InteractorModule::Interactor *&) { }
+void vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >::_M_fill_insert(int **, unsigned int, int *&) { }
 
 // 0x80362E74 | 360 bytes
 void vector<pair<unsigned int, ERModel *>, allocator<pair<unsigned int, ERModel *> > >::reserve(unsigned int) { }
@@ -195,10 +196,10 @@ void vector<InteractorModule::FenceSellCount, allocator<InteractorModule::FenceS
 void vector<InteractorModule::PatternSellCount, allocator<InteractorModule::PatternSellCount> >::reserve(unsigned int) { }
 
 // 0x8038318C | 544 bytes
-void vector<InteractorModule::FenceSellCount, allocator<InteractorModule::FenceSellCount> >::operator=(vector<InteractorModule::FenceSellCount, allocator<InteractorModule::FenceSellCount> > &) { }
+void vector<InteractorModule::FenceSellCount, allocator<InteractorModule::FenceSellCount> >::operator=(vector<int, allocator<int> > &) { }
 
 // 0x803879F4 | 544 bytes
-void vector<InteractorModule::PatternSellCount, allocator<InteractorModule::PatternSellCount> >::operator=(vector<InteractorModule::PatternSellCount, allocator<InteractorModule::PatternSellCount> > &) { }
+void vector<InteractorModule::PatternSellCount, allocator<InteractorModule::PatternSellCount> >::operator=(vector<int, allocator<int> > &) { }
 
 // 0x804D266C | 640 bytes
 void vector<unsigned int, allocator<unsigned int> >::_M_fill_insert(unsigned int *, unsigned int, unsigned int &) { }

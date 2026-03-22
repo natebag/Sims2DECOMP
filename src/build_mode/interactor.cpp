@@ -649,7 +649,7 @@ void InteractorModule::PlacementObject::ResetDirection() {
 // 0x80203DD0 - 52 bytes
 // NON_MATCHING - sets vtable at +0x5C, conditionally calls operator delete
 // DirectInteractor::~DirectInteractor - needs exact vtable address
-static void DirectInteractor_dtor_stub(InteractorModule::DirectInteractor* self, int flags) {
+static void DirectInteractor_dtor_stub(int* self, int flags) {
     // lis r9, hi(vtable); addi r9, r9, lo(vtable)
     // stw r9, 92(r3) -- store vtable at +0x5C
     // andi. r0, r4, 1; beq skip; bl __dl__FUl
@@ -659,7 +659,7 @@ static void DirectInteractor_dtor_stub(InteractorModule::DirectInteractor* self,
 // 0x802094B8 - 52 bytes
 // NON_MATCHING - sets vtable at +0x5C, conditionally calls operator delete
 // Interactor::~Interactor - needs exact vtable address
-static void Interactor_dtor_stub(InteractorModule::Interactor* self, int flags) {
+static void Interactor_dtor_stub(int* self, int flags) {
     (void)self; (void)flags;
 }
 

@@ -3,6 +3,7 @@
 // Original: engine_ngc_release_dvd.lib(e_graphics.obj)
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EGraphics;

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80019160 | 96 bytes
 AwarenessManager::AwarenessManager(void) { }
@@ -75,10 +76,10 @@ void AwarenessManager::GetActiveMemoryCategory(cXObject *, int &, int &) { }
 void AwarenessManager::StarMemoryAwarenessSprite(void) { }
 
 // 0x8001A578 | 100 bytes
-void AwarenessManager::SetPendingMemoryAwarenessAnim(AwarenessManager::eAwarenessAction, int) { }
+void AwarenessManager::SetPendingMemoryAwarenessAnim(int, int) { }
 
 // 0x8001A5DC | 480 bytes
-void AwarenessManager::StartMemoryAwarenessAnimation(AwarenessManager::eAwarenessAction, int) { }
+void AwarenessManager::StartMemoryAwarenessAnimation(int, int) { }
 
 // 0x8001A7BC | 388 bytes
 void AwarenessManager::SetMemoryAwarenessActionToTry(cXObject *) { }

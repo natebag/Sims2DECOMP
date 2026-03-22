@@ -6,6 +6,7 @@
 // This file covers related inlevel.obj and loadingscreenstate.obj large functions.
 
 #include "types.h"
+#include "stub_classes.h"
 
 extern "C" {
     void* operator_new_wrapper(u32 size);

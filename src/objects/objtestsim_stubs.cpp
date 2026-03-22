@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801C0C88 | 148 bytes
 ObjTestSim::~ObjTestSim(void) { }
@@ -21,7 +22,7 @@ void ObjTestSim::AppendInteractionsForMenu(InteractionList &, int) { }
 void ObjTestSim::RunMenuCheckTree(InteractionList &, Interaction &) { }
 
 // 0x801C1910 | 208 bytes
-void ObjTestSim::MakeNewMenuItem(unsigned wchar_t *, short *, StackElem *, short) { }
+void ObjTestSim::MakeNewMenuItem(wchar_t *, short *, StackElem *, short) { }
 
 // 0x801C19E0 | 780 bytes
 void ObjTestSim::AppendInteractionsForAuto(InteractionList &) { }

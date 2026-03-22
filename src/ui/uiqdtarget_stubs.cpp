@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80275CD4 | 1088 bytes
 UIQDTarget::UIQDTarget(void) { }
@@ -18,7 +19,7 @@ void UIQDTarget::GetVariable(char *) { }
 void UIQDTarget::GetQuickdataText(char *) { }
 
 // 0x80276A30 | 2092 bytes
-void UIQDTarget::UIQDSubstitutionStrings(unsigned wchar_t *) { }
+void UIQDTarget::UIQDSubstitutionStrings(wchar_t *) { }
 
 // 0x8027725C | 440 bytes
-void UIQDTarget::UIQDRemoveEmbeddedControl(unsigned wchar_t *) { }
+void UIQDTarget::UIQDRemoveEmbeddedControl(wchar_t *) { }

@@ -4,9 +4,10 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8029660C | 260 bytes
-void SerializeUIGameData::Load(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void SerializeUIGameData::Load(int, int &) { }
 
 // 0x80296710 | 128 bytes
 void SerializeUIGameData::SetupPlayerUIData(void) { }
@@ -15,10 +16,10 @@ void SerializeUIGameData::SetupPlayerUIData(void) { }
 void SerializeUIGameData::AllocateLoadBuffers(void) { }
 
 // 0x8029681C | 468 bytes
-void SerializeUIGameData::Save(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void SerializeUIGameData::Save(int, int &) { }
 
 // 0x802969F0 | 60 bytes
-void SerializeUIGameData::SaveComplete(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void SerializeUIGameData::SaveComplete(int, int &) { }
 
 // 0x80296A2C | 668 bytes
-void SerializeUIGameData::SerializeUIData(int, unsigned int *, SerializeUIGameData::eUIGameData_Direction, bool) { }
+void SerializeUIGameData::SerializeUIData(int, unsigned int *, int, bool) { }

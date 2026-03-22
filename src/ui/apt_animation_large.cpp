@@ -3,6 +3,7 @@
 // 13 functions, 7160 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptCharacterAnimation::Link(AptCharacter *, void *) - 0x80283024 | 720 bytes

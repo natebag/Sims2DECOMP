@@ -77,7 +77,7 @@ ESimsCam::ESimsCam()
 }
 
 // ============================================================================
-// {anonymous}::HandleEffectNote(ESimsCam*, EAnimNote&, anim::PropKind)
+// {anonymous}::HandleEffectNote(ESimsCam*, EAnimNote&, int)
 // Address: 0x80015A50, Size: 408 bytes
 // NON_MATCHING
 // ============================================================================

@@ -3,6 +3,7 @@
 // 6 functions, 2424 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptLoader::Invalidate(AptFile *) - 0x8029E474 | 260 bytes

@@ -6,6 +6,7 @@
 // TreeSim is the behavior tree simulation system.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class TreeSimImpl;

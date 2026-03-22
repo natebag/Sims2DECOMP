@@ -3,6 +3,7 @@
 // 2 functions, 588 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // DOGMA_PoolManager::DOGMA_PoolManager(unsigned int, unsigned int, unsigned int, unsigned int, unsigned char, bool, unsigned char, bool, unsigned char, bool) - 0x802B565C | 264 bytes

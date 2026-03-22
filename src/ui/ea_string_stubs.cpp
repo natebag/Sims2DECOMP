@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x803EAC38 | 1336 bytes
 // PRAGMA_STUB: void EA::String::BasicString<StringAsVectorEncoding<AptFileSavedInputState>, StringAsVectorPolicy>::Insert<AptFileSavedInputState *>(AptFileSavedInputState * &, AptFileSavedInputState * &, EA::String::BasicString<StringAsVectorEncoding<AptFileSavedInputState>, StringAsVectorPolicy>::DbgIterator &)

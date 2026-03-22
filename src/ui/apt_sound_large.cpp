@@ -3,6 +3,7 @@
 // 3 functions, 1200 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // SoundMembersIndex::in_word_set(char *, unsigned int) - 0x802AB740 | 264 bytes

@@ -4,12 +4,13 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80094784 | 100 bytes
 void MorphUtilities::ApplyAllMorphs(CasSimDescriptionS2C &) { }
 
 // 0x800947E8 | 628 bytes
-void MorphUtilities::ApplyMorph(CasEventMorphSimS2C::MorphPartS2C, float) { }
+void MorphUtilities::ApplyMorph(int, float) { }
 
 // 0x80094A5C | 304 bytes
 void MorphUtilities::ApplyMorphHead(float) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800652B8 | 4 bytes
 GameEffectsManager::GameEffectsManager(void) { }

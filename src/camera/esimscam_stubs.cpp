@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80023734 | 556 bytes
 void ESimsCam::GetNearPlane(void) { }
@@ -30,7 +31,7 @@ void ESimsCam::HandleZoom(void) { }
 void ESimsCam::UpdateWin(void) { }
 
 // 0x80024BCC | 772 bytes
-void ESimsCam::CalcEyePosition(EVec3 &, ESimsCam::CameraParameters &) { }
+void ESimsCam::CalcEyePosition(EVec3 &, int &) { }
 
 // 0x80024ED0 | 300 bytes
 void ESimsCam::ResetPos(float) { }

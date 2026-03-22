@@ -3,6 +3,7 @@
 // 91 functions, 47184 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptActionInterpreter::loadVariables(AptValue *, AptValue *, EAStringC *) - 0x8026D454 | 620 bytes

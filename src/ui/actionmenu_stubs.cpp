@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8027F42C | 92 bytes
 ActionMenu::MenuItem::MenuItem(void) { }
@@ -15,10 +16,10 @@ ActionMenu::MenuItem::~MenuItem(void) { }
 void ActionMenu::MenuItem::Setup(cXObject *, Interaction *, BString2 &, unsigned int, ERShader *, bool) { }
 
 // 0x8027F594 | 16 bytes
-void ActionMenu::MenuItem::AddItem(ActionMenu::MenuItem *) { }
+void ActionMenu::MenuItem::AddItem(int *) { }
 
 // 0x8027F5A4 | 104 bytes
-void ActionMenu::MenuItem::AddSubItem(ActionMenu::MenuItem *) { }
+void ActionMenu::MenuItem::AddSubItem(int *) { }
 
 // 0x8027F60C | 24 bytes
 void ActionMenu::MenuItem::GetNthItem(int) { }

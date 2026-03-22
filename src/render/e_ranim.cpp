@@ -6,6 +6,7 @@
 // ERAnim and related classes are resource types for animations.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EStream;

@@ -6,6 +6,7 @@
 // ENgcEngine is the top-level engine object managing init/update/render.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EController;

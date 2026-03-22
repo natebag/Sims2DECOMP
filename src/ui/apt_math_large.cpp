@@ -3,6 +3,7 @@
 // 1 functions, 272 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptMath::ClipStackMakeUnit(void) - 0x802A2574 | 272 bytes

@@ -3,6 +3,7 @@
 // 8 functions, 3408 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptNativeHash::~AptNativeHash(void) - 0x802A98CC | 260 bytes

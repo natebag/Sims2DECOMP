@@ -356,7 +356,7 @@ void GeneralAllocator::MMapFree(void* ptr, unsigned int size) {
 // subfic r0,r4,0; adde r3,r0,r4
 // This is a clever PPC idiom: ((-x) + x + carry) = (x != 0 ? 1 : 0)
 // ============================================================================
-int PPM_VERIFY(EA::Allocator::GeneralAllocator* alloc, bool condition) {
+int PPM_VERIFY(int* alloc, bool condition) {
     return condition ? 1 : 0;
 }
 

@@ -3,6 +3,7 @@
 // 1 functions, 336 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptObject::DoesImplementObject(AptValue *) const - 0x802B5FB0 | 336 bytes

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8004A658 | 12 bytes
 void * EIFenceWall::GetTypeInfo(void) const { return 0; }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8052AF80 | 88 bytes
 ENgcTextureC8_32::ENgcTextureC8_32(void) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802D2F3C | 9500 bytes
 INGTarget::INGTarget(void) { }
@@ -42,16 +43,16 @@ void INGTarget::get_current_inginfo(void) { }
 void INGTarget::get_current_mix_inginfo(void) { }
 
 // 0x802D701C | 168 bytes
-void INGTarget::add_mix_ing(INGTarget::IngInfo *, unsigned int) { }
+void INGTarget::add_mix_ing(int *, unsigned int) { }
 
 // 0x802D70F0 | 140 bytes
-void INGTarget::query_enabled(INGTarget::IngInfo *) const { }
+void INGTarget::query_enabled(int *) const { }
 
 // 0x802D717C | 144 bytes
 void INGTarget::mix_ingredients(void) { }
 
 // 0x802D7234 | 236 bytes
-void INGTarget::get_mix_ing_name(unsigned int, unsigned wchar_t *) const { }
+void INGTarget::get_mix_ing_name(unsigned int, wchar_t *) const { }
 
 // 0x802D7320 | 96 bytes
 void INGTarget::get_total_cost(unsigned int *) const { }

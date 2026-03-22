@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80438E84 | 120 bytes
 AptXmlNode::AptXmlNode(AptVirtualFunctionTable_Indices, IAptXmlNode *) { }

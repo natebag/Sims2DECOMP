@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80259FB4 | 172 bytes
 CasSimPartsS2C::CasSimPartsS2C(void) { }
@@ -24,7 +25,7 @@ void CasSimPartsS2C::GetNumBodyTextures(eBodyPartS2C, unsigned int) const { }
 void CasSimPartsS2C::GetNumTattooTextures(eTattooTextureTypeS2C) const { }
 
 // 0x8025A5A4 | 3240 bytes
-void CasSimPartsS2C::GetModelID(eBodyPartS2C, unsigned int, Sim::SimPartsS2CParam) const { }
+void CasSimPartsS2C::GetModelID(eBodyPartS2C, unsigned int, int) const { }
 
 // 0x8025B24C | 392 bytes
 void CasSimPartsS2C::GetSkinTextureID(eSkinColorType, eBodyTypeS2C, eSimPartsMapLocation) { }
@@ -63,19 +64,19 @@ void CasSimPartsS2C::OuterLayerTorsoHidesMusicPlayer(unsigned int) const { }
 void CasSimPartsS2C::LongSleeveDoesNotHideArmAccessory(eBodyPartS2C, unsigned int) const { }
 
 // 0x8025CD00 | 268 bytes
-void CasSimPartsS2C::OuterLayerCollarIsAHood(unsigned int, Sim::OuterLayerCollarStyleS2C) const { }
+void CasSimPartsS2C::OuterLayerCollarIsAHood(unsigned int, int) const { }
 
 // 0x8025CE0C | 188 bytes
-void CasSimPartsS2C::OuterLayerTorsoIsAHood(unsigned int, Sim::OuterLayerTorsoStyleS2C) const { }
+void CasSimPartsS2C::OuterLayerTorsoIsAHood(unsigned int, int) const { }
 
 // 0x8025CEC8 | 260 bytes
-void CasSimPartsS2C::CanBeWornSleeveless(eBodyPartS2C, unsigned int, Sim::SimPartsS2CParam) const { }
+void CasSimPartsS2C::CanBeWornSleeveless(eBodyPartS2C, unsigned int, int) const { }
 
 // 0x8025CFCC | 216 bytes
-void CasSimPartsS2C::MidLayerTorsoHidesBelt(unsigned int, Sim::MidLayerTorsoStyleS2C, unsigned int) const { }
+void CasSimPartsS2C::MidLayerTorsoHidesBelt(unsigned int, int, unsigned int) const { }
 
 // 0x8025D0A4 | 220 bytes
-void CasSimPartsS2C::OuterLayerTorsoHidesBelt(unsigned int, Sim::OuterLayerTorsoStyleS2C, unsigned int) const { }
+void CasSimPartsS2C::OuterLayerTorsoHidesBelt(unsigned int, int, unsigned int) const { }
 
 // 0x8025D180 | 608 bytes
 void CasSimPartsS2C::GetUnlockGroupNum(eBodyPartS2C, unsigned int) const { }
@@ -87,7 +88,7 @@ void CasSimPartsS2C::GetTattoosForLocation(eTattooTextureTypeS2C, unsigned char 
 void CasSimPartsS2C::ConvertTattooTextureTypeToLocation(eTattooTextureTypeS2C) const { }
 
 // 0x8025D714 | 168 bytes
-void CasSimPartsS2C::GetIndexFromResId(eBodyPartS2C, int, Sim::SimPartsS2CParam, int *) { }
+void CasSimPartsS2C::GetIndexFromResId(eBodyPartS2C, int, int, int *) { }
 
 // 0x8025D7BC | 44 bytes
 void CasSimPartsS2C::GetGameStateModelID(unsigned int) const { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804681A4 | 384 bytes
 void EAHeap::InitializeHeapStatics(void) { }
@@ -27,7 +28,7 @@ void EAHeap::AllocTest(void) { }
 void EAHeap::Clear(void) { }
 
 // 0x80468C18 | 80 bytes
-void EAHeap::ValidateHeap(EA::Allocator::GeneralAllocator::HeapValidationLevel) { }
+void EAHeap::ValidateHeap(int) { }
 
 // 0x80469A94 | 248 bytes
 void EAHeap::GetGlobalSmallAllocCount(int) { }

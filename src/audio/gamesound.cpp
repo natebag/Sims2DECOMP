@@ -143,7 +143,7 @@ void DiscErrorCallback(bool isError) {
 // Otherwise calls cBoxX::Event with specific params
 // ============================================================================
 // NON_MATCHING: Complex control flow, GCC codegen differs significantly
-void cSoundPlayer::SetGameMode(snd::eMode mode) {
+void cSoundPlayer::SetGameMode(int mode) {
     if (m_soundEnabled == 0) return;
     if (m_initialized == 0) return;
     if (g_pSoundBox == 0) return;
@@ -152,7 +152,7 @@ void cSoundPlayer::SetGameMode(snd::eMode mode) {
     // Original: lwz r9,r13-26824; lwz r0,1104(r9); cmpwi r0,0; bne skip
     // Skipping this complex global check for now
 
-    if (mode == snd::eMode_DiscError) {
+    if (mode == int) {
         cSoundModeManager_SetMode((void*)((char*)g_pSoundBox + 0x30), 5);
     } else {
         cBoxX_Event(g_pSoundBox, 0x24, mode, 0, 0, 0.0f);

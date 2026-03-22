@@ -3,6 +3,7 @@
 // 14 functions, 5104 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // DateMembersIndex::in_word_set(char *, unsigned int) - 0x80293FD8 | 416 bytes

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80471FE0 | 120 bytes
 void EVec4::ToU8s(unsigned char *) const { }

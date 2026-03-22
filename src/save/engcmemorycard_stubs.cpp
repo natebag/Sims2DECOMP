@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80509AF8 | 32 bytes
 ENgcMemoryCard::ENgcMemoryCard(void) { }
@@ -21,7 +22,7 @@ void ENgcMemoryCard::BeginCardOperation(void) { }
 void ENgcMemoryCard::EndCardOperation(void) { }
 
 // 0x80509B84 | 280 bytes
-void ENgcMemoryCard::SetComments(unsigned wchar_t *, unsigned wchar_t *) { }
+void ENgcMemoryCard::SetComments(wchar_t *, wchar_t *) { }
 
 // 0x80509C9C | 412 bytes
 void ENgcMemoryCard::InitMemoryCard(void) { }

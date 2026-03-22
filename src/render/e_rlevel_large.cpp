@@ -4,6 +4,7 @@
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
 
 #include "types.h"
+#include "stub_classes.h"
 
 struct EVec3 { float x, y, z; };
 struct EVec4 { float x, y, z, w; };

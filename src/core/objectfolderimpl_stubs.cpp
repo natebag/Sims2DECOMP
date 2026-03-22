@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8018CCD0 | 456 bytes
 ObjectFolderImpl::ObjectFolderImpl(void) { }
@@ -51,7 +52,7 @@ void ObjectFolderImpl::AddUserSelector(int, short) { }
 void ObjectFolderImpl::GetSemiGlobalID(unsigned int) { }
 
 // 0x8018E50C | 1140 bytes
-void ObjectFolderImpl::AddSelector(ObjDefinition *, char *, char *, ResFile *, short, Sim::NPC *) { }
+void ObjectFolderImpl::AddSelector(ObjDefinition *, char *, char *, ResFile *, short, int *) { }
 
 // 0x8018E980 | 472 bytes
 void ObjectFolderImpl::OpenResFile(ObjSelector *) { }

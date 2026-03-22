@@ -3,6 +3,7 @@
 // 10 functions, 4796 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptCIH::Remove(void) - 0x8028FEC8 | 292 bytes

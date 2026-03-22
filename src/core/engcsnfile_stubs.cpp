@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804730DC | 88 bytes
 ENgcSNFile::ENgcSNFile(void) { }
@@ -12,7 +13,7 @@ ENgcSNFile::ENgcSNFile(void) { }
 ENgcSNFile::~ENgcSNFile(void) { }
 
 // 0x80473198 | 304 bytes
-void ENgcSNFile::Creator(EFile *, char *, char *, EFile::DeviceType, EFile::AccessMode, unsigned int) { }
+void ENgcSNFile::Creator(EFile *, char *, char *, int, int, unsigned int) { }
 
 // 0x804732C8 | 84 bytes
 void ENgcSNFile::Destroy(void) { }
@@ -21,4 +22,4 @@ void ENgcSNFile::Destroy(void) { }
 void ENgcSNFile::BufferReadRequest(unsigned char *, int) { }
 
 // 0x804734D0 | 68 bytes
-void ENgcSNFile::Seek(int, EFile::SeekType) { }
+void ENgcSNFile::Seek(int, int) { }

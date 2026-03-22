@@ -6,6 +6,7 @@
 // ISimInstance is the interface for sim placement/rendering in the world.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EStream;

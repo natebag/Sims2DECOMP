@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8014075C | 400 bytes
 void cSoundPlayer::Update(void) { }

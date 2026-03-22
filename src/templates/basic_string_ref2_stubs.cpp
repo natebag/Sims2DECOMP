@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80120008 | 80 bytes
 void basic_string_ref2::delete_ptr(void) { }

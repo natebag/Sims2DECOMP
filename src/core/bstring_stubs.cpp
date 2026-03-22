@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8011BF04 | 96 bytes
 void BString::delete_ref(void) { }
@@ -129,4 +130,4 @@ void BString::compare(BString &, unsigned int, unsigned int) const { }
 void BString::length(void) const { }
 
 // 0x8011FEB4 | 124 bytes
-void BString::assignDebug(unsigned wchar_t *) { }
+void BString::assignDebug(wchar_t *) { }

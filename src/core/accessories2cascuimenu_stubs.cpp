@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802438C4 | 1376 bytes
 void Accessories2CasCUIMenu::SetupWindow(CUIWindow *) { }

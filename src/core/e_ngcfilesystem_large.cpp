@@ -4,6 +4,7 @@
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 extern "C" void* DVDOpen(const char* path, void* fileInfo);

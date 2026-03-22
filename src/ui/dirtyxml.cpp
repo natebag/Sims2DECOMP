@@ -6,6 +6,7 @@
 // CDirtyXmlNode/Doc implement the IAptXmlNode interface for APT UI scripting.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class IAptXmlNode;

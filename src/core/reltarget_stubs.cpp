@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80342F34 | 7764 bytes
 RELTarget::RELTarget(int) { }

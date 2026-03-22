@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800F4544 | 52 bytes
 InteractorModule::Interactor::InteractorParams::~InteractorParams(void) { }
@@ -15,7 +16,7 @@ InteractorModule::DirectInteractor::DirectInteractor(void) { }
 InteractorModule::DirectInteractor::~DirectInteractor(void) { }
 
 // 0x8034E734 | 688 bytes
-void InteractorModule::DirectInteractor::OnStart(InteractorModule::Interactor::InteractorParams *) { }
+void InteractorModule::DirectInteractor::OnStart(int *) { }
 
 // 0x8034E9E4 | 136 bytes
 void InteractorModule::DirectInteractor::OnStop(void) { }
@@ -57,10 +58,10 @@ void InteractorModule::DirectInteractor::ShouldHighlightObject(cXObject *, float
 void InteractorModule::DirectInteractor::CancelQueuedActions(void) { }
 
 // 0x8034FA0C | 1644 bytes
-void InteractorModule::DirectInteractor::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::DirectInteractor::OnCommandPressed(int, float) { }
 
 // 0x80350078 | 112 bytes
-void InteractorModule::DirectInteractor::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::DirectInteractor::OnCommandReleased(int) { }
 
 // 0x80350168 | 924 bytes
 void InteractorModule::DirectInteractor::ExecuteActionMenu(void) { }
@@ -99,7 +100,7 @@ void InteractorModule::FloorPainter::OnCreate(void) { }
 void InteractorModule::FloorPainter::OnDestroy(void) { }
 
 // 0x8035256C | 904 bytes
-void InteractorModule::FloorPainter::OnStart(InteractorModule::Interactor::InteractorParams *) { }
+void InteractorModule::FloorPainter::OnStart(int *) { }
 
 // 0x803528F4 | 240 bytes
 void InteractorModule::FloorPainter::OnStop(void) { }
@@ -126,13 +127,13 @@ void InteractorModule::FloorPainter::UpdateStockChanges(int *, int) { }
 void InteractorModule::FloorPainter::HandleActionCmdInPlaceMode(void) { }
 
 // 0x8035397C | 1176 bytes
-void InteractorModule::FloorPainter::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::FloorPainter::OnCommandPressed(int, float) { }
 
 // 0x80353E14 | 188 bytes
-void InteractorModule::FloorPainter::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::FloorPainter::OnCommandReleased(int) { }
 
 // 0x80353ED0 | 76 bytes
-void InteractorModule::FloorPainter::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::FloorPainter::OnCommandUpdate(int, float) { }
 
 // 0x80353F74 | 208 bytes
 void InteractorModule::FloorPainter::IsValidFloorPlacement(CTilePt &, FloorPattern) { }
@@ -180,10 +181,10 @@ InteractorModule::FloorPainter::CallbackData::~CallbackData(void) { }
 InteractorModule::Interactor::Interactor(void) { }
 
 // 0x80357358 | 104 bytes
-void InteractorModule::Interactor::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::Interactor::OnCommandReleased(int) { }
 
 // 0x803573C0 | 88 bytes
-void InteractorModule::Interactor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::Interactor::OnCommandUpdate(int, float) { }
 
 // 0x80357418 | 68 bytes
 void InteractorModule::Interactor::ResetInputState(void) { }
@@ -198,7 +199,7 @@ InteractorModule::Interactor::~Interactor(void) { }
 void InteractorModule::Interactor::Moved(void) { }
 
 // 0x8035879C | 276 bytes
-void InteractorModule::Debug_GetNameFromCommand(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::Debug_GetNameFromCommand(int) { }
 
 // 0x803588B0 | 52 bytes
 InteractorModule::InteractorInputManager::InstanceData::InstanceData(void) { }
@@ -207,10 +208,10 @@ InteractorModule::InteractorInputManager::InstanceData::InstanceData(void) { }
 InteractorModule::InteractorInputManager::InstanceData::~InstanceData(void) { }
 
 // 0x8035897C | 2260 bytes
-void InteractorModule::InteractorInputManager::InstanceData::AddCommandMapping(InteractorModule::InteractorInputManager::InteractorCommand, ECTRL_CMD) { }
+void InteractorModule::InteractorInputManager::InstanceData::AddCommandMapping(int, ECTRL_CMD) { }
 
 // 0x80359BB4 | 516 bytes
-void InteractorModule::InteractorInputManager::InstanceData::OpenSession(int, InteractorModule::Interactor *, int, InteractorModule::InteractorInputManager::ButtonSemantic *, int, InteractorModule::InteractorInputManager::StickSemantic *, char *) { }
+void InteractorModule::InteractorInputManager::InstanceData::OpenSession(int, int *, int, int *, int, int *, char *) { }
 
 // 0x80359DB8 | 124 bytes
 void InteractorModule::InteractorInputManager::InstanceData::CloseSession(void) { }
@@ -231,7 +232,7 @@ InteractorModule::InteractorInputManager::~InteractorInputManager(void) { }
 void InteractorModule::InteractorInputManager::Update(float) { }
 
 // 0x8035A370 | 168 bytes
-void InteractorModule::InteractorInputManager::OpenSession(int, InteractorModule::Interactor *, int, InteractorModule::InteractorInputManager::ButtonSemantic *, int, InteractorModule::InteractorInputManager::StickSemantic *, char *) { }
+void InteractorModule::InteractorInputManager::OpenSession(int, int *, int, int *, int, int *, char *) { }
 
 // 0x8035A418 | 44 bytes
 void InteractorModule::InteractorInputManager::CloseSession(int) { }
@@ -246,7 +247,7 @@ InteractorModule::InteractorManager::InteractorManager(void) { }
 InteractorModule::InteractorManager::~InteractorManager(void) { }
 
 // 0x8035AA68 | 664 bytes
-void InteractorModule::InteractorManager::Initialize(InteractorModule::InteractorManager::InteractorParams &) { }
+void InteractorModule::InteractorManager::Initialize(int &) { }
 
 // 0x8035AD00 | 120 bytes
 void InteractorModule::InteractorManager::Shutdown(void) { }
@@ -258,7 +259,7 @@ void InteractorModule::InteractorManager::Update(float) { }
 void InteractorModule::InteractorManager::ChangeActiveInteractorToNull(int) { }
 
 // 0x8035AE54 | 104 bytes
-void InteractorModule::InteractorManager::GetPlayerInteractor(int, InteractorModule::InteractorType) { }
+void InteractorModule::InteractorManager::GetPlayerInteractor(int, int) { }
 
 // 0x8035AEBC | 72 bytes
 void InteractorModule::InteractorManager::GetPlayerInteractorInfo(int) const { }
@@ -330,7 +331,7 @@ void InteractorModule::GetPersonPosition(EVec3 *, cXPerson *, bool, bool) { }
 void InteractorModule::GetObjectPosition(EVec3 *, cXObject *) { }
 
 // 0x803637C0 | 320 bytes
-void InteractorModule::SnapPositionToTile(EVec3 &, EVec3 &, InteractorModule::IMSnapType) { }
+void InteractorModule::SnapPositionToTile(EVec3 &, EVec3 &, int) { }
 
 // 0x80363900 | 376 bytes
 void InteractorModule::GetCameraRelativeStickAngle(EVec2 &, ESimsCam *, float *) { }
@@ -339,7 +340,7 @@ void InteractorModule::GetCameraRelativeStickAngle(EVec2 &, ESimsCam *, float *)
 void InteractorModule::MoveCursorAlongCameraTargetVector(EVec3 &, EVec2 &, ESimsCam *, float) { }
 
 // 0x80363D90 | 868 bytes
-void InteractorModule::MoveCursorOneTileAlongCameraTargetVector(EVec3 &, EVec2 &, ESimsCam *, InteractorModule::IMSnapType) { }
+void InteractorModule::MoveCursorOneTileAlongCameraTargetVector(EVec3 &, EVec2 &, ESimsCam *, int) { }
 
 // 0x803640F4 | 280 bytes
 void InteractorModule::ClampPosToWorld(EVec3 &) { }
@@ -390,10 +391,10 @@ void InteractorModule::CoreIsLegalToPlace(cXObject *, FTilePt &, int &) { }
 void InteractorModule::IsLegalToPlaceMultiTileAtLocation(cXObject *, FTilePt &) { }
 
 // 0x80365070 | 1204 bytes
-void InteractorModule::IsLegalToPlaceSingleTileAtLocation(cXObject *, FTilePt &, InteractorModule::PlacementData *) { }
+void InteractorModule::IsLegalToPlaceSingleTileAtLocation(cXObject *, FTilePt &, int *) { }
 
 // 0x80365524 | 280 bytes
-void InteractorModule::IsLegalToPlaceAtLocation(cXObject *, FTilePt &, InteractorModule::PlacementData *) { }
+void InteractorModule::IsLegalToPlaceAtLocation(cXObject *, FTilePt &, int *) { }
 
 // 0x8036563C | 520 bytes
 void InteractorModule::FinalUserPlaceObject(cXObject *) { }
@@ -432,7 +433,7 @@ void InteractorModule::ForcePointDir(CTilePt &, CTilePt &) { }
 void InteractorModule::EorGetAdjacentTile(TileWallsSegment &, int, DiagonalSideSelector &, CTilePt &, CTilePt &) { }
 
 // 0x80366EBC | 52 bytes
-void InteractorModule::GetInteractorResourceSet(InteractorModule::Interactor *) { }
+void InteractorModule::GetInteractorResourceSet(int *) { }
 
 // 0x80366EF0 | 76 bytes
 void InteractorModule::IsCameraDirectorInControl(int) { }
@@ -444,10 +445,10 @@ void InteractorModule::SetCameraFilter(int) { }
 void InteractorModule::ClearCameraFilter(int) { }
 
 // 0x80367018 | 540 bytes
-void InteractorModule::IncrementSellCountForPattern(int, vector<InteractorModule::PatternSellCount, allocator<InteractorModule::PatternSellCount> > &) { }
+void InteractorModule::IncrementSellCountForPattern(int, vector<int, allocator<int> > &) { }
 
 // 0x80367234 | 540 bytes
-void InteractorModule::IncrementSellCountForObjectGuid(int, vector<InteractorModule::InvStock, allocator<InteractorModule::InvStock> > &) { }
+void InteractorModule::IncrementSellCountForObjectGuid(int, vector<int, allocator<int> > &) { }
 
 // 0x80367450 | 300 bytes
 void InteractorModule::CheckNewSimInSocialMode(unsigned int) { }
@@ -465,16 +466,16 @@ void InteractorModule::InteractorVisualizer::Initialize(void) { }
 void InteractorModule::InteractorVisualizer::Shutdown(void) { }
 
 // 0x80368F34 | 400 bytes
-void InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::FloorPainter &) { }
+void InteractorModule::InteractorVisualizer::CreateResources(int &) { }
 
 // 0x803690C4 | 32 bytes
-void InteractorModule::InteractorVisualizer::DestroyResources(InteractorModule::FloorPainter &) { }
+void InteractorModule::InteractorVisualizer::DestroyResources(int &) { }
 
 // 0x803690E4 | 200 bytes
-void InteractorModule::InteractorVisualizer::PreDraw(InteractorModule::FloorPainter &) { }
+void InteractorModule::InteractorVisualizer::PreDraw(int &) { }
 
 // 0x803691AC | 1936 bytes
-void InteractorModule::InteractorVisualizer::Draw(InteractorModule::FloorPainter &) { }
+void InteractorModule::InteractorVisualizer::Draw(int &) { }
 
 // 0x8036993C | 800 bytes
 void InteractorModule::InteractorVisualizer::DrawFloorRectPreview(ERC *, EVec3 &, EVec3 &) { }
@@ -483,25 +484,25 @@ void InteractorModule::InteractorVisualizer::DrawFloorRectPreview(ERC *, EVec3 &
 void InteractorModule::InteractorVisualizer::DrawFloorRoomPreview(ERC *, EVec3 &) { }
 
 // 0x8036A464 | 608 bytes
-void InteractorModule::InteractorVisualizer::DrawWallpaperRoomPreview(InteractorModule::WallPainter &) { }
+void InteractorModule::InteractorVisualizer::DrawWallpaperRoomPreview(int &) { }
 
 // 0x8036A6C4 | 628 bytes
-void InteractorModule::InteractorVisualizer::DrawWallpaperPreviewOnAffectedWalls(InteractorModule::WallPainter &) { }
+void InteractorModule::InteractorVisualizer::DrawWallpaperPreviewOnAffectedWalls(int &) { }
 
 // 0x8036AB0C | 1176 bytes
 void InteractorModule::InteractorVisualizer::DrawWallpaperRectPreview(ERShader *, EVec2 &, EVec2 &, float) { }
 
 // 0x8036B354 | 224 bytes
-void InteractorModule::InteractorVisualizer::DrawWallRectPreview(InteractorModule::WallManipulator &) { }
+void InteractorModule::InteractorVisualizer::DrawWallRectPreview(int &) { }
 
 // 0x8036B434 | 1324 bytes
 void InteractorModule::InteractorVisualizer::DrawVerticalRect(ERShader *, EVec2 &, EVec2 &, float, int, float) { }
 
 // 0x8036B960 | 596 bytes
-void InteractorModule::InteractorVisualizer::DrawRoomPreview(InteractorModule::WallManipulator &) { }
+void InteractorModule::InteractorVisualizer::DrawRoomPreview(int &) { }
 
 // 0x8036BBB4 | 1612 bytes
-void InteractorModule::InteractorVisualizer::DrawPreviewOnAffectedWalls(InteractorModule::WallManipulator &) { }
+void InteractorModule::InteractorVisualizer::DrawPreviewOnAffectedWalls(int &) { }
 
 // 0x8036C930 | 140 bytes
 void InteractorModule::InteractorVisualizer::InteractorOrderTableCallback(ELevelDrawData &, EOrderTableData *) { }
@@ -510,31 +511,31 @@ void InteractorModule::InteractorVisualizer::InteractorOrderTableCallback(ELevel
 void InteractorModule::InteractorVisualizer::SetupDrawCallback(EHouse *, int) { }
 
 // 0x8036CA6C | 80 bytes
-void InteractorModule::InteractorVisualizer::CreateSimpleResourceSet(InteractorModule::Interactor &, int) { }
+void InteractorModule::InteractorVisualizer::CreateSimpleResourceSet(int &, int) { }
 
 // 0x8036CABC | 272 bytes
-void InteractorModule::InteractorVisualizer::DrawSimpleResourceSet(InteractorModule::Interactor &, int, EVec3 &, float) { }
+void InteractorModule::InteractorVisualizer::DrawSimpleResourceSet(int &, int, EVec3 &, float) { }
 
 // 0x8036CBCC | 292 bytes
-void InteractorModule::InteractorVisualizer::SelectShader(InteractorModule::Interactor &, int) { }
+void InteractorModule::InteractorVisualizer::SelectShader(int &, int) { }
 
 // 0x8036D30C | 464 bytes
-void InteractorModule::InteractorVisualizer::DrawResource(InteractorModule::Interactor &, int, EVec3 &, EMat4 *) { }
+void InteractorModule::InteractorVisualizer::DrawResource(int &, int, EVec3 &, EMat4 *) { }
 
 // 0x8036D4DC | 3544 bytes
-void InteractorModule::InteractorVisualizer::CreateResourceSet(InteractorModule::Interactor &) { }
+void InteractorModule::InteractorVisualizer::CreateResourceSet(int &) { }
 
 // 0x8036E2B4 | 180 bytes
-void InteractorModule::InteractorVisualizer::AddModelToResourceSet(InteractorModule::Interactor &, int) { }
+void InteractorModule::InteractorVisualizer::AddModelToResourceSet(int &, int) { }
 
 // 0x8036E368 | 184 bytes
-void InteractorModule::InteractorVisualizer::AddOrderTableToResourceSet(InteractorModule::Interactor &, EOrderTableData &) { }
+void InteractorModule::InteractorVisualizer::AddOrderTableToResourceSet(int &, EOrderTableData &) { }
 
 // 0x8036E420 | 416 bytes
-void InteractorModule::InteractorVisualizer::DestroyResourceSet(InteractorModule::Interactor &) { }
+void InteractorModule::InteractorVisualizer::DestroyResourceSet(int &) { }
 
 // 0x8036E5C0 | 160 bytes
-void InteractorModule::InteractorVisualizer::GetInteractorResourceSet(InteractorModule::Interactor *) { }
+void InteractorModule::InteractorVisualizer::GetInteractorResourceSet(int *) { }
 
 // 0x80371024 | 108 bytes
 void InteractorModule::InteractorVisualizer::SetDefaultLights(void) { }
@@ -546,22 +547,22 @@ InteractorModule::ObjectManipulator::ObjectManipulator(void) { }
 InteractorModule::ObjectManipulator::~ObjectManipulator(void) { }
 
 // 0x803711F4 | 564 bytes
-void InteractorModule::ObjectManipulator::OnStart(InteractorModule::Interactor::InteractorParams *) { }
+void InteractorModule::ObjectManipulator::OnStart(int *) { }
 
 // 0x80371464 | 4 bytes
-void InteractorModule::ObjectManipulator::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::ObjectManipulator::OnCommandPressed(int, float) { }
 
 // 0x80371468 | 184 bytes
-void InteractorModule::PlaceManipulator::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::PlaceManipulator::OnCommandPressed(int, float) { }
 
 // 0x80371520 | 232 bytes
-void InteractorModule::GrabManipulator::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::GrabManipulator::OnCommandPressed(int, float) { }
 
 // 0x80371608 | 76 bytes
-void InteractorModule::ObjectManipulator::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::ObjectManipulator::OnCommandUpdate(int, float) { }
 
 // 0x80371654 | 108 bytes
-void InteractorModule::ObjectManipulator::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::ObjectManipulator::OnCommandReleased(int) { }
 
 // 0x80371718 | 2368 bytes
 void InteractorModule::ObjectManipulator::Update(float) { }
@@ -570,13 +571,13 @@ void InteractorModule::ObjectManipulator::Update(float) { }
 void InteractorModule::ObjectManipulator::UpdateObjectHighlights(EIObjectMan *) { }
 
 // 0x80372334 | 380 bytes
-void InteractorModule::ObjectManipulator::UpdateOverlapIntersection(InteractorModule::Interactor::OverlapData *) { }
+void InteractorModule::ObjectManipulator::UpdateOverlapIntersection(int *) { }
 
 // 0x80372608 | 348 bytes
-void InteractorModule::GrabManipulator::OnStart(InteractorModule::Interactor::InteractorParams *) { }
+void InteractorModule::GrabManipulator::OnStart(int *) { }
 
 // 0x80372824 | 332 bytes
-void InteractorModule::PlaceManipulator::StartPlacement(InteractorModule::PlaceManipulator::PlaceManipulatorParams *) { }
+void InteractorModule::PlaceManipulator::StartPlacement(int *) { }
 
 // 0x80372970 | 388 bytes
 void InteractorModule::GrabManipulator::TryGrabbingWorldObject(void) { }
@@ -636,10 +637,10 @@ void InteractorModule::PlacementObject::AssignOffsetsToGridObject(cXMTObjectImpl
 void InteractorModule::PlacementObject::Pickup(void) { }
 
 // 0x80374990 | 152 bytes
-void InteractorModule::PlacementObject::IsLegalToPlaceAtLocation(FTilePt &, InteractorModule::PlacementData &) { }
+void InteractorModule::PlacementObject::IsLegalToPlaceAtLocation(FTilePt &, int &) { }
 
 // 0x80374A28 | 544 bytes
-void InteractorModule::PlacementObject::Place(FTilePt &, InteractorModule::PlacementData &) { }
+void InteractorModule::PlacementObject::Place(FTilePt &, int &) { }
 
 // 0x80374C48 | 352 bytes
 void InteractorModule::PlacementObject::Drop(void) { }
@@ -654,7 +655,7 @@ void InteractorModule::PlacementObject::Destroy(void) { }
 void InteractorModule::PlacementObject::SetDirection(int) { }
 
 // 0x803750B4 | 1700 bytes
-void InteractorModule::PlacementObject::Rotate(InteractorModule::PlacementObject::RotateDirection) { }
+void InteractorModule::PlacementObject::Rotate(int) { }
 
 // 0x80375758 | 748 bytes
 void InteractorModule::PlacementObject::ResetLocation(void) { }
@@ -684,7 +685,7 @@ InteractorModule::SimInteractor::SimInteractor(void) { }
 InteractorModule::SimInteractor::~SimInteractor(void) { }
 
 // 0x80377AC4 | 712 bytes
-void InteractorModule::SimInteractor::OnStart(InteractorModule::Interactor::InteractorParams *) { }
+void InteractorModule::SimInteractor::OnStart(int *) { }
 
 // 0x80377D8C | 136 bytes
 void InteractorModule::SimInteractor::OnStop(void) { }
@@ -699,13 +700,13 @@ void InteractorModule::SimInteractor::Update(float) { }
 void InteractorModule::SimInteractor::GetBeamScale(void) { }
 
 // 0x803786B4 | 36 bytes
-void InteractorModule::SimInteractor::GetInteractorInfo(InteractorModule::InteractorInfo &) { }
+void InteractorModule::SimInteractor::GetInteractorInfo(int &) { }
 
 // 0x80378730 | 1116 bytes
-void InteractorModule::SimInteractor::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::SimInteractor::OnCommandPressed(int, float) { }
 
 // 0x80378B8C | 204 bytes
-void InteractorModule::SimInteractor::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::SimInteractor::OnCommandReleased(int) { }
 
 // 0x80378CD0 | 208 bytes
 void InteractorModule::SimInteractor::ReturnPlumbBobToOwner(void) { }
@@ -717,7 +718,7 @@ void InteractorModule::SimInteractor::ImmediatelyCutCursorAndCameraToPos(EVec3 &
 void InteractorModule::SimInteractor::TryCutToSim(void) { }
 
 // 0x80378FA8 | 496 bytes
-void InteractorModule::SimInteractor::UpdateOverlapIntersection(InteractorModule::Interactor::OverlapData *) { }
+void InteractorModule::SimInteractor::UpdateOverlapIntersection(int *) { }
 
 // 0x80379198 | 784 bytes
 void InteractorModule::SimInteractor::ExecuteActionMenu(void) { }
@@ -741,7 +742,7 @@ InteractorModule::SocialModeInteractor::SocialModeInteractor(void) { }
 InteractorModule::SocialModeInteractor::~SocialModeInteractor(void) { }
 
 // 0x8037B00C | 276 bytes
-void InteractorModule::SocialModeInteractor::OnStart(InteractorModule::Interactor::InteractorParams *) { }
+void InteractorModule::SocialModeInteractor::OnStart(int *) { }
 
 // 0x8037B120 | 128 bytes
 void InteractorModule::SocialModeInteractor::OnStop(void) { }
@@ -750,13 +751,13 @@ void InteractorModule::SocialModeInteractor::OnStop(void) { }
 void InteractorModule::SocialModeInteractor::Update(float) { }
 
 // 0x8037B228 | 4 bytes
-void InteractorModule::SocialModeInteractor::GetInteractorInfo(InteractorModule::InteractorInfo &) { }
+void InteractorModule::SocialModeInteractor::GetInteractorInfo(int &) { }
 
 // 0x8037B22C | 4 bytes
-void InteractorModule::SocialModeInteractor::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::SocialModeInteractor::OnCommandPressed(int, float) { }
 
 // 0x8037B234 | 4 bytes
-void InteractorModule::SocialModeInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::SocialModeInteractor::OnCommandUpdate(int, float) { }
 
 // 0x8037B2D0 | 380 bytes
 void InteractorModule::SocialModeInteractor::SetupInteractionMenu(cXObject *, InteractionList &) { }
@@ -771,13 +772,13 @@ InteractorModule::WallManipulator::~WallManipulator(void) { }
 void InteractorModule::WallManipulator::OnCreate(void) { }
 
 // 0x8037CCC4 | 1028 bytes
-void InteractorModule::WallManipulator::OnStart(InteractorModule::Interactor::InteractorParams *) { }
+void InteractorModule::WallManipulator::OnStart(int *) { }
 
 // 0x8037D0C8 | 188 bytes
 void InteractorModule::WallManipulator::OnStop(void) { }
 
 // 0x8037D1A8 | 1884 bytes
-void InteractorModule::WallManipulator::CommittTransaction(InteractorModule::Interactor::ClientNotificationState) { }
+void InteractorModule::WallManipulator::CommittTransaction(int) { }
 
 // 0x8037D904 | 688 bytes
 void InteractorModule::WallManipulator::FinalizePlacement(void) { }
@@ -813,13 +814,13 @@ void InteractorModule::WallManipulator::ClearWallFadeOffList(void) { }
 void InteractorModule::WallManipulator::Update(float) { }
 
 // 0x8037F124 | 292 bytes
-void InteractorModule::WallManipulator::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::WallManipulator::OnCommandPressed(int, float) { }
 
 // 0x8037F248 | 132 bytes
-void InteractorModule::WallManipulator::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::WallManipulator::OnCommandReleased(int) { }
 
 // 0x8037F2CC | 76 bytes
-void InteractorModule::WallManipulator::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::WallManipulator::OnCommandUpdate(int, float) { }
 
 // 0x8037F398 | 532 bytes
 void InteractorModule::WallManipulator::GetWallLineCost(EVec3 &, EVec3 &, bool &, bool, bool) { }
@@ -876,10 +877,10 @@ InteractorModule::WallPainter::~WallPainter(void) { }
 void InteractorModule::WallPainter::OnCreate(void) { }
 
 // 0x8038385C | 936 bytes
-void InteractorModule::WallPainter::OnStart(InteractorModule::Interactor::InteractorParams *) { }
+void InteractorModule::WallPainter::OnStart(int *) { }
 
 // 0x80383C64 | 908 bytes
-void InteractorModule::WallPainter::CommittTransaction(InteractorModule::Interactor::ClientNotificationState) { }
+void InteractorModule::WallPainter::CommittTransaction(int) { }
 
 // 0x80383FF0 | 432 bytes
 void InteractorModule::WallPainter::HandleFinalizeRequest(void) { }
@@ -903,13 +904,13 @@ void InteractorModule::WallPainter::UpdateStickState(void) { }
 void InteractorModule::WallPainter::Update(float) { }
 
 // 0x80384CC8 | 348 bytes
-void InteractorModule::WallPainter::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::WallPainter::OnCommandPressed(int, float) { }
 
 // 0x80384E24 | 196 bytes
-void InteractorModule::WallPainter::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::WallPainter::OnCommandReleased(int) { }
 
 // 0x80384EE8 | 76 bytes
-void InteractorModule::WallPainter::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::WallPainter::OnCommandUpdate(int, float) { }
 
 // 0x80384F8C | 1656 bytes
 void InteractorModule::WallPainter::CountWallsInRoomSelection(void) { }

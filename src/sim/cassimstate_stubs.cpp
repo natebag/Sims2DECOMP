@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80267F10 | 80 bytes
 CasSimState::CasSimState(void) { }
@@ -18,13 +19,13 @@ void CasSimState::GetMoreThanOneOption(unsigned char) { }
 void CasSimState::GetNextAvailableSleeveStyle(eBodyPartS2C, signed char, bool, CasSimPartsS2C &) { }
 
 // 0x80269188 | 272 bytes
-void CasSimState::GetNextSleeveStyle(eBodyPartS2C, Sim::SleeveStyleS2C, bool) { }
+void CasSimState::GetNextSleeveStyle(eBodyPartS2C, int, bool) { }
 
 // 0x80269298 | 208 bytes
 void CasSimState::GetNextAvailableMidLayerTorsoStyle(signed char, bool, CasSimPartsS2C &) { }
 
 // 0x80269368 | 280 bytes
-void CasSimState::GetNextMidLayerTorsoStyle(Sim::MidLayerTorsoStyleS2C, bool) { }
+void CasSimState::GetNextMidLayerTorsoStyle(int, bool) { }
 
 // 0x80269480 | 212 bytes
 void CasSimState::GetNextAvailableMidLayerCollarStyle(signed char, CasSimPartsS2C &) { }
@@ -66,4 +67,4 @@ void CasSimState::HandleEventChangeSim(CasEventChangeSimS2C &) { }
 void CasSimState::HandleEventMorphSim(CasEventMorphSimS2C &) { }
 
 // 0x8026A74C | 108 bytes
-void CasSimState::SetSimName(unsigned wchar_t *, unsigned wchar_t *) { }
+void CasSimState::SetSimName(wchar_t *, wchar_t *) { }

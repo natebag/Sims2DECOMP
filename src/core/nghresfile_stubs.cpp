@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8016D2DC | 244 bytes
 NghResFile::NghResFile(void) { }
@@ -21,7 +22,7 @@ void NghResFile::GetByID(int, short, void (*)(void *, int)) { }
 void NghResFile::GetByIndex(int, short, void (*)(void *, int)) { }
 
 // 0x8016DD8C | 564 bytes
-void NghResFile::Add(Memory::HandleNode *, int, short, StringBuffer &, bool) { }
+void NghResFile::Add(int *, int, short, StringBuffer &, bool) { }
 
 // 0x8016E0E4 | 168 bytes
 void NghResFile::FlushHouseData(unsigned int) { }
@@ -156,16 +157,16 @@ void NghResFile::SetFileName(char *) { }
 void NghResFile::GetMemoryCardCache(void) { }
 
 // 0x80175030 | 556 bytes
-void NghResFile::RegisterSection(NghResFile::RegistryID, void (*)(NghResFile::SectionID, NghResFile::SaveRecord &), void (*)(NghResFile::SectionID, NghResFile::SaveRecord &), void (*)(NghResFile::SectionID, NghResFile::SaveRecord &)) { }
+void NghResFile::RegisterSection(int, void (*)(int, int &), void (*)(int, int &), void (*)(int, int &)) { }
 
 // 0x8017525C | 128 bytes
-void NghResFile::FindNodeInRegistry(NghResFile::RegistryID, NghResFile::RegistryNode &) { }
+void NghResFile::FindNodeInRegistry(int, int &) { }
 
 // 0x801752DC | 112 bytes
-void NghResFile::SectionSaveViaRegistry(NghResFile::RegistryID, NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void NghResFile::SectionSaveViaRegistry(int, int, int &) { }
 
 // 0x8017534C | 112 bytes
-void NghResFile::SaveCompleteViaRegistry(NghResFile::RegistryID, NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void NghResFile::SaveCompleteViaRegistry(int, int, int &) { }
 
 // 0x801753BC | 112 bytes
-void NghResFile::SectionLoadViaRegistry(NghResFile::RegistryID, NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void NghResFile::SectionLoadViaRegistry(int, int, int &) { }

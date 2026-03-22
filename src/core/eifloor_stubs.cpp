@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800746A8 | 1160 bytes
 void EIFloor::DoLightingCalculation(void) { }
@@ -45,7 +46,7 @@ void EIFloor::TestCreateFloors(void) { }
 void EIFloor::IsRoomInFloor(unsigned short) { }
 
 // 0x80076E9C | 20 bytes
-void EIFloor::GetInstName(EInstance::InstType &) { }
+void EIFloor::GetInstName(int &) { }
 
 // 0x800784EC | 40 bytes
 void EIFloor::New(void) { }

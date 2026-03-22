@@ -6,6 +6,7 @@
 // EyeToyClient manages the EyeToy camera peripheral interface.
 
 #include "types.h"
+#include "stub_classes.h"
 
 //=============================================================================
 // EyeToyClient

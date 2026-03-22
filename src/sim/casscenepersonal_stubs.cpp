@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8026C434 | 60 bytes
 CasScenePersonal::CasScenePersonal(void) { }
@@ -12,13 +13,13 @@ CasScenePersonal::CasScenePersonal(void) { }
 CasScenePersonal::~CasScenePersonal(void) { }
 
 // 0x8026C4A0 | 200 bytes
-void CasScenePersonal::GetMirrorCorners(CasScene::RoomId, EVec3 *) const { }
+void CasScenePersonal::GetMirrorCorners(int, EVec3 *) const { }
 
 // 0x8026C568 | 8 bytes
 void CasScenePersonal::GetSceneName(void) const { }
 
 // 0x8026C570 | 56 bytes
-void CasScenePersonal::GetRoomModelId(CasScene::RoomId) const { }
+void CasScenePersonal::GetRoomModelId(int) const { }
 
 // 0x8026C5A8 | 8 bytes
 void CasScenePersonal::GetRoomFromCameraAngle(unsigned int) const { }

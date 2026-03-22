@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802069F4 | 3628 bytes
 void SlotLoader::Load(short, vector<ObjectSlot, allocator<ObjectSlot> > *, vector<RoutingSlot, allocator<RoutingSlot> > *, vector<SpriteSlot, allocator<SpriteSlot> > *, cXObject *) { }

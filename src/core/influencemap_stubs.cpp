@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80078B8C | 1280 bytes
 void InfluenceMap::CalculateAffectedArea(cXObject *, ITreeTableEntry *, FTileRect &) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8027E0F0 | 164 bytes
 UIUserDrawCBTable::UIUserDrawCBTable(void) { }
@@ -15,7 +16,7 @@ UIUserDrawCBTable::~UIUserDrawCBTable(void) { }
 void UIUserDrawCBTable::AddRecord(char *, CBFunctor2<ERC *, structDrawCBparams *> *, char *) { }
 
 // 0x8027E2AC | 204 bytes
-void UIUserDrawCBTable::RemoveRecord(UIUserDrawCBTable::UserDrawCBTableRecord *) { }
+void UIUserDrawCBTable::RemoveRecord(int *) { }
 
 // 0x8027E378 | 280 bytes
 void UIUserDrawCBTable::InstallEntry(char *, CBFunctor2<ERC *, structDrawCBparams *> *, char *) { }

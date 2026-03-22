@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8009A7F4 | 76 bytes
 void PlumbBob::PlumbBobOrderTableCallback(ELevelDrawData &, EOrderTableData *) { }
@@ -45,7 +46,7 @@ void PlumbBob::SetParticleDrawState(bool) { }
 void PlumbBob::SetParticleVisibility(bool) { }
 
 // 0x8009B364 | 200 bytes
-void PlumbBob::SetState(PlumbBob::PlumbBob_MotionState) { }
+void PlumbBob::SetState(int) { }
 
 // 0x8009B494 | 116 bytes
 void PlumbBob::SetColor(EVec3 *) { }

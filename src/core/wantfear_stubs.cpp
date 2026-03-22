@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802108A0 | 516 bytes
 void WantFear::Event::GetEventText(signed char, BString2 &) const { }
@@ -18,7 +19,7 @@ void WantFear::Bookmark::GetBaseShader(Neighbor *) const { }
 void WantFear::Bookmark::GetBackgroundShader(Neighbor *) const { }
 
 // 0x80211BA0 | 452 bytes
-void WantFear::Bookmark::SatisfiedBy(WantFear::Notification &) const { }
+void WantFear::Bookmark::SatisfiedBy(int &) const { }
 
 // 0x80211D64 | 436 bytes
 void WantFear::Bookmark::IsValid(Neighbor *, bool) const { }

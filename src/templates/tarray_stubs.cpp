@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80004550 | 80 bytes
 void TArray<EString, TArrayDefaultAllocator>::Destruct(EString *, int) { }
@@ -165,7 +166,7 @@ void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Init(void) { }
 TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::TArray(void) { }
 
 // 0x8045D770 | 28 bytes
-void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Destruct(EFileSystem::FileCreator *, int) { }
+void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Destruct(int *, int) { }
 
 // 0x8045D78C | 76 bytes
 void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Deallocate(void) { }
@@ -174,22 +175,22 @@ void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Deallocate(void) 
 TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::~TArray(void) { }
 
 // 0x8045D818 | 76 bytes
-void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Construct(EFileSystem::FileCreator *, int) { }
+void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Construct(int *, int) { }
 
 // 0x8045D864 | 76 bytes
-void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Copy(EFileSystem::FileCreator *, EFileSystem::FileCreator *, int) { }
+void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Copy(int *, int *, int) { }
 
 // 0x8045D8B0 | 300 bytes
 void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::SetSize(int, int) { }
 
 // 0x8045D9DC | 92 bytes
-void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::CopyReverse(EFileSystem::FileCreator *, EFileSystem::FileCreator *, int) { }
+void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::CopyReverse(int *, int *, int) { }
 
 // 0x8045DA38 | 220 bytes
-void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Insert(EFileSystem::FileCreator *, int, int) { }
+void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Insert(int *, int, int) { }
 
 // 0x8045DB14 | 40 bytes
-void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Add(EFileSystem::FileCreator &) { }
+void TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::Add(int &) { }
 
 // 0x80463D44 | 48 bytes
 TArray<ENDummyPoint, TArrayDefaultAllocator>::TArray(void) { }

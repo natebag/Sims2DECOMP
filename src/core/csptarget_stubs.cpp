@@ -4,9 +4,10 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802B9570 | 9328 bytes
-CSPTarget::CSPTarget(CSPTarget::eTabs, int) { }
+CSPTarget::CSPTarget(int, int) { }
 
 // 0x802BB9E0 | 508 bytes
 CSPTarget::~CSPTarget(void) { }
@@ -21,7 +22,7 @@ void CSPTarget::GetVariable(char *) { }
 void CSPTarget::GetLocalizable(char *) { }
 
 // 0x802BCD74 | 504 bytes
-void CSPTarget::ChangeSelectedTab(CSPTarget::eTabs) { }
+void CSPTarget::ChangeSelectedTab(int) { }
 
 // 0x802BCF6C | 2024 bytes
 void CSPTarget::SetupCareer(cXPerson *) { }

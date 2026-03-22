@@ -290,7 +290,7 @@ short SimpleReconObject<ThumbnailLoader>::GetType(void) {
 
 // ObjectIterator::ObjectIterator(cXObject *, ObjectIterator::IterateType) - 0x800f2a6c (20 bytes)
 // mr r9,r3; stw r4,4(r9); stw r5,8(r9); stw r4,0(r9); blr
-ObjectIterator::ObjectIterator(cXObject* start, ObjectIterator::IterateType type) {
+ObjectIterator::ObjectIterator(cXObject* start, int type) {
     m_current = start;
     m_start = start;
     m_type = type;
@@ -402,7 +402,7 @@ cXObject* ObjectModuleImpl::GetSelectedPerson(int index) {
 
 // ObjectModuleImpl::SetSimFlag(int, ObjectModule::SimFlag, bool) - 0x800f9578 (56 bytes)
 // Loads flags array at +0x1c, indexes by (simIndex-1)*4, sets/clears bit
-void ObjectModuleImpl::SetSimFlag(int simIndex, ObjectModule::SimFlag flag, bool value) {
+void ObjectModuleImpl::SetSimFlag(int simIndex, int flag, bool value) {
     int* flags = *(int**)((char*)this + 0x1c);
     int idx = (simIndex - 1);
     int shifted = flag << 16;
@@ -416,7 +416,7 @@ void ObjectModuleImpl::SetSimFlag(int simIndex, ObjectModule::SimFlag flag, bool
 
 // ObjectModuleImpl::GetSimFlag(int, ObjectModule::SimFlag) - 0x800f95b0 (40 bytes)
 // Loads flags array at +0x1c, indexes by (simIndex-1)*4, tests bit
-int ObjectModuleImpl::GetSimFlag(int simIndex, ObjectModule::SimFlag flag) {
+int ObjectModuleImpl::GetSimFlag(int simIndex, int flag) {
     int* flags = *(int**)((char*)this + 0x1c);
     int idx = (simIndex - 1);
     int shifted = flag << 16;
@@ -735,7 +735,7 @@ int InteractionList::size(void) const {
 
 // InteractionList::increment(InteractionList::iterator &) - 0x801132f0 (24 bytes)
 // Advances iterator to next node
-void InteractionList::increment(InteractionList::iterator& it) {
+void InteractionList::increment(int& it) {
     // NON_MATCHING - advances node pointer
     // Original likely does: it.m_node = it.m_node->next
 }

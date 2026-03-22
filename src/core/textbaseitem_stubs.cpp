@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800E4D5C | 152 bytes
 void TextBaseItem::Startup(void) { }
@@ -12,7 +13,7 @@ void TextBaseItem::Startup(void) { }
 void TextBaseItem::Draw(ERC *, float) { }
 
 // 0x800E4ED0 | 128 bytes
-void TextBaseItem::SetText(unsigned wchar_t *) { }
+void TextBaseItem::SetText(wchar_t *) { }
 
 // 0x800E4F50 | 560 bytes
 void TextBaseItem::SetStyle(ItemStyle) { }

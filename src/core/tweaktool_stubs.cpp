@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800CBF4C | 656 bytes
 void TweakTool::AddCheckbox(CUIWindow *, unsigned short, unsigned int &, unsigned int &, char *, bool) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802F6240 | 284 bytes
 void PCTTarget::cCellInfo::Init(ObjSelector *, IGoalUnlock *) { }
@@ -12,13 +13,13 @@ void PCTTarget::cCellInfo::Init(ObjSelector *, IGoalUnlock *) { }
 void PCTTarget::cCellInfo::GetPrice(void) const { }
 
 // 0x802F64D0 | 348 bytes
-void PCTTarget::cCellInfo::GetName(unsigned wchar_t *) const { }
+void PCTTarget::cCellInfo::GetName(wchar_t *) const { }
 
 // 0x802F662C | 140 bytes
-void PCTTarget::cCellInfo::GetDesc(unsigned wchar_t *) const { }
+void PCTTarget::cCellInfo::GetDesc(wchar_t *) const { }
 
 // 0x802F66B8 | 8168 bytes
-PCTTarget::PCTTarget(PCTTarget::ePCTMode, int) { }
+PCTTarget::PCTTarget(int, int) { }
 
 // 0x802F86A0 | 756 bytes
 PCTTarget::~PCTTarget(void) { }
@@ -78,7 +79,7 @@ void PCTTarget::update_object_shader(void) { }
 void PCTTarget::calc_motive_ratings(void) { }
 
 // 0x802FC2EC | 176 bytes
-void PCTTarget::get_motive_rating_value(unsigned int, unsigned wchar_t *) const { }
+void PCTTarget::get_motive_rating_value(unsigned int, wchar_t *) const { }
 
 // 0x802FC3AC | 92 bytes
 void PCTTarget::set_dialog_visible(bool) { }
@@ -99,10 +100,10 @@ void PCTTarget::CreateGrabObjectMenu(TNodeList<ISimInstance *> &) { }
 void PCTTarget::setup_interactor_camera(bool) { }
 
 // 0x802FC908 | 780 bytes
-void PCTTarget::enter_tool_mode(PCTTarget::ePCTType, bool) { }
+void PCTTarget::enter_tool_mode(int, bool) { }
 
 // 0x802FCC14 | 1556 bytes
-void PCTTarget::GrabManipulatorCallback(InteractorModule::Interactor::CallbackData *) { }
+void PCTTarget::GrabManipulatorCallback(int *) { }
 
 // 0x802FD234 | 124 bytes
 void PCTTarget::delete_dialog_selection_callback(int) { }
@@ -114,37 +115,37 @@ void PCTTarget::sell_dialog_selection_callback(int) { }
 void PCTTarget::enter_place_tombstone_mode(void) { }
 
 // 0x802FD59C | 624 bytes
-void PCTTarget::enter_place_mode(PCTTarget::cCellInfo *) { }
+void PCTTarget::enter_place_mode(int *) { }
 
 // 0x802FD80C | 160 bytes
 void PCTTarget::PickedUpObject(cXObject *) { }
 
 // 0x802FD8AC | 888 bytes
-void PCTTarget::PlaceModeCallback(InteractorModule::Interactor::CallbackData *) { }
+void PCTTarget::PlaceModeCallback(int *) { }
 
 // 0x802FDC24 | 704 bytes
-void PCTTarget::enter_wall_mode(PCTTarget::cCellInfo *, bool) { }
+void PCTTarget::enter_wall_mode(int *, bool) { }
 
 // 0x802FDEE4 | 616 bytes
-void PCTTarget::WallManipulatorCallback(InteractorModule::Interactor::CallbackData *) { }
+void PCTTarget::WallManipulatorCallback(int *) { }
 
 // 0x802FE14C | 244 bytes
-void PCTTarget::calc_wall_value(InteractorModule::Interactor::CallbackData *) { }
+void PCTTarget::calc_wall_value(int *) { }
 
 // 0x802FE240 | 696 bytes
-void PCTTarget::enter_wallpaper_mode(PCTTarget::cCellInfo *, bool) { }
+void PCTTarget::enter_wallpaper_mode(int *, bool) { }
 
 // 0x802FE4F8 | 176 bytes
-void PCTTarget::calc_wallpaper_value(InteractorModule::Interactor::CallbackData *) { }
+void PCTTarget::calc_wallpaper_value(int *) { }
 
 // 0x802FE5A8 | 556 bytes
-void PCTTarget::WallPainterCallback(InteractorModule::Interactor::CallbackData *) { }
+void PCTTarget::WallPainterCallback(int *) { }
 
 // 0x802FE7D4 | 560 bytes
-void PCTTarget::enter_floor_mode(PCTTarget::cCellInfo *, bool) { }
+void PCTTarget::enter_floor_mode(int *, bool) { }
 
 // 0x802FEA04 | 412 bytes
-void PCTTarget::FloorPainterCallback(InteractorModule::Interactor::CallbackData *) { }
+void PCTTarget::FloorPainterCallback(int *) { }
 
 // 0x802FEBA0 | 244 bytes
-void PCTTarget::calc_floor_tile_value(InteractorModule::Interactor::CallbackData *) { }
+void PCTTarget::calc_floor_tile_value(int *) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8034C148 | 84 bytes
 GetVar_SaveStatus::GetVar_SaveStatus(char *) { }

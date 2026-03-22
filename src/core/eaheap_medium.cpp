@@ -31,7 +31,7 @@ EAHeap::EAHeap(char* name, void* buffer, unsigned int size, EAHeap* parent, EAHe
 // ============================================================================
 // NON_MATCHING - recursive call pattern
 EAHeap* EAHeap::FindHeapForAddress(void* addr) const {
-    if (((EA::Allocator::GeneralAllocator*)this)->FindCoreBlockForAddress(addr) != 0) {
+    if (((int*)this)->FindCoreBlockForAddress(addr) != 0) {
         return (EAHeap*)this;
     }
     if (m_parentHeap != 0) {

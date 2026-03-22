@@ -274,7 +274,7 @@ void ESimsCam::Reset() {
 // camera.obj | 0x80016B54 | 128 bytes
 // ============================================================================
 // NON_MATCHING: switch codegen differs (cascaded cmpwi vs jump table)
-void ESimsCam::SetState(Panelstateman::Panelstate state) {
+void ESimsCam::SetState(int state) {
     int s = (int)state;
     if (s <= 4) {
         if (s >= 3 || s == 0) {
@@ -297,7 +297,7 @@ void ESimsCam::SetState(Panelstateman::Panelstate state) {
 // camera.obj | 0x80016BD4 | 96 bytes
 // ============================================================================
 // NON_MATCHING: conditional return (bnelr) vs GCC branch
-void ESimsCam::SetMode(ESimsCam::CameraMode mode) {
+void ESimsCam::SetMode(int mode) {
     // Look up camera array from global + player ID offset
     int playerId = *(int*)((char*)this + 0x04);
     void* cameraArray = (void*)0x80475EE4; // approximation

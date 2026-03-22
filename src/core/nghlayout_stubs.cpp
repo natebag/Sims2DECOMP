@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8016BD0C | 68 bytes
 void NghLayout::GetSectionNumberForOffset(unsigned int) { }
@@ -12,4 +13,4 @@ void NghLayout::GetSectionNumberForOffset(unsigned int) { }
 void NghLayout::GetSubSectionNumberForOffset(unsigned int) { }
 
 // 0x8016BDD8 | 528 bytes
-void NghLayout::IsOffsetARegistrySubSection(unsigned int, NghResFile::RegistryID &, NghResFile::SectionID &) { }
+void NghLayout::IsOffsetARegistrySubSection(unsigned int, int &, int &) { }

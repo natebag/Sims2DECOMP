@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80232B68 | 48 bytes
 CasEventMorphSimS2C::~CasEventMorphSimS2C(void) { }

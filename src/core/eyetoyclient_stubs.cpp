@@ -4,21 +4,22 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800571B0 | 172 bytes
-void EyeToyClient::saveHeader(NghResFile::SaveRecord &) { }
+void EyeToyClient::saveHeader(int &) { }
 
 // 0x8005725C | 244 bytes
-void EyeToyClient::saveTexture(int, NghResFile::SaveRecord &) { }
+void EyeToyClient::saveTexture(int, int &) { }
 
 // 0x80057350 | 240 bytes
-void EyeToyClient::Save(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void EyeToyClient::Save(int, int &) { }
 
 // 0x80057440 | 4 bytes
-void EyeToyClient::SaveComplete(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void EyeToyClient::SaveComplete(int, int &) { }
 
 // 0x80057444 | 180 bytes
-void EyeToyClient::loadHeader(NghResFile::SaveRecord &) { }
+void EyeToyClient::loadHeader(int &) { }
 
 // 0x800574F8 | 8 bytes
 void EyeToyClient::loadTexture_alloc(unsigned int, unsigned int) { }
@@ -27,7 +28,7 @@ void EyeToyClient::loadTexture_alloc(unsigned int, unsigned int) { }
 void EyeToyClient::loadTexture_dealloc(void *) { }
 
 // 0x80057624 | 240 bytes
-void EyeToyClient::Load(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void EyeToyClient::Load(int, int &) { }
 
 // 0x80057714 | 76 bytes
 void EyeToyClient::LoadDefaultSettings(void) { }
@@ -108,7 +109,7 @@ void EyeToyClient::ApplyPresetFilter(int) { }
 void EyeToyClient::ApplyFunFrame(int) { }
 
 // 0x80059520 | 212 bytes
-void EyeToyClient::WriteTextureToRepSlot(int, ETexture *, EyeToyClient::SlotImageType) { }
+void EyeToyClient::WriteTextureToRepSlot(int, ETexture *, int) { }
 
 // 0x800595F4 | 84 bytes
 void EyeToyClient::SaveSessionToSlot(int) { }
@@ -150,7 +151,7 @@ void EyeToyClient::SetRepTexture(int, ETexture *) { }
 void EyeToyClient::GetRepTexture(int) { }
 
 // 0x80059B8C | 136 bytes
-void EyeToyClient::GetRepShaderERTextureID(EyeToyClient::RepShaderMapping) { }
+void EyeToyClient::GetRepShaderERTextureID(int) { }
 
 // 0x80059C14 | 48 bytes
 void EyeToyClient::RestoreDefaults(void) { }
@@ -192,31 +193,31 @@ void EyeToyClient::Debug::SetCUIFilterPipeline(void) { }
 void EyeToyClient::Debug::WriteTGAToHost(ETexture *) { }
 
 // 0x8005A108 | 1504 bytes
-void EyeToyClient::CUIParams::UpdateWidgetValues(CUIWindow *, int, ImageProcessingManager::eFilter) { }
+void EyeToyClient::CUIParams::UpdateWidgetValues(CUIWindow *, int, int) { }
 
 // 0x8005A6E8 | 32 bytes
-void EyeToyClient::CUIParams::SetDefaults_None(ImageProcessingManager::FilterParams *) { }
+void EyeToyClient::CUIParams::SetDefaults_None(int *) { }
 
 // 0x8005A708 | 32 bytes
-void EyeToyClient::CUIParams::SetDefaults_BaseColorNeutral(ImageProcessingManager::FilterParams *) { }
+void EyeToyClient::CUIParams::SetDefaults_BaseColorNeutral(int *) { }
 
 // 0x8005A728 | 60 bytes
-void EyeToyClient::CUIParams::SetDefaults_BaseColorPlusHalf(ImageProcessingManager::FilterParams *) { }
+void EyeToyClient::CUIParams::SetDefaults_BaseColorPlusHalf(int *) { }
 
 // 0x8005A764 | 84 bytes
-void EyeToyClient::CUIParams::SetDefaults_BlendEdge(ImageProcessingManager::FilterParams *) { }
+void EyeToyClient::CUIParams::SetDefaults_BlendEdge(int *) { }
 
 // 0x8005A7B8 | 72 bytes
-void EyeToyClient::CUIParams::SetDefaults_HSV(ImageProcessingManager::FilterParams *) { }
+void EyeToyClient::CUIParams::SetDefaults_HSV(int *) { }
 
 // 0x8005A800 | 52 bytes
-void EyeToyClient::CUIParams::SetDefaults_Posterize(ImageProcessingManager::FilterParams *) { }
+void EyeToyClient::CUIParams::SetDefaults_Posterize(int *) { }
 
 // 0x8005A834 | 52 bytes
-void EyeToyClient::CUIParams::SetDefaults_Solarize(ImageProcessingManager::FilterParams *) { }
+void EyeToyClient::CUIParams::SetDefaults_Solarize(int *) { }
 
 // 0x8005A868 | 68 bytes
-void EyeToyClient::CUIParams::SetDefaults_EdgePixel(ImageProcessingManager::FilterParams *) { }
+void EyeToyClient::CUIParams::SetDefaults_EdgePixel(int *) { }
 
 // 0x8005A8AC | 852 bytes
 void EyeToyClient::CUIParams::AddLabelSpinWidget(CUIWindow *, CUISpinState *, int, int, int, int, int, int, char *, char *, EVec3 &, bool) { }
@@ -246,7 +247,7 @@ void EyeToyClient::CUIParams::AddFunFrameWidgets(CUIWindow *, int, int) { }
 void EyeToyClient::CUIParams::SetupWindow(CUIWindow *) { }
 
 // 0x8005B98C | 364 bytes
-void EyeToyClient::CUIParams::UpdateParamData(ImageProcessingManager::FilterParams *, int, float) { }
+void EyeToyClient::CUIParams::UpdateParamData(int *, int, float) { }
 
 // 0x8005BAF8 | 1308 bytes
 void EyeToyClient::CUIParams::WindowNotify(CUIWindow *, int) { }

@@ -3,6 +3,7 @@
 // 1 functions, 300 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptRenderingContext::expandBoundingRect(AptRect *, AptRect *) - 0x802AB614 | 300 bytes

@@ -3,6 +3,7 @@
 // 89 functions, 46268 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // EYETarget::AddSetVar(SetVar *) - 0x801E8844 | 336 bytes

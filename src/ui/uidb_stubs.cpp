@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802703BC | 3280 bytes
 void UIDB::UIDBInit(void) { }
@@ -27,7 +28,7 @@ void UIDB::UIDBSetInt(char *, int) { }
 void UIDB::UIDBSetFloat(char *, float) { }
 
 // 0x8027152C | 276 bytes
-void UIDB::UIDBSetString(char *, unsigned wchar_t *) { }
+void UIDB::UIDBSetString(char *, wchar_t *) { }
 
 // 0x80271640 | 236 bytes
-void UIDB::UIDBFindRecord(char *, UIDBData::eUIDBDataType) { }
+void UIDB::UIDBFindRecord(char *, int) { }

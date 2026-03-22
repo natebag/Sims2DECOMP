@@ -5,6 +5,7 @@
 // Medium functions (65-256 bytes) decompiled from the background object file.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 extern void* operator_new(u32 size);

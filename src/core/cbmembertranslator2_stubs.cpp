@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80273604 | 120 bytes
 void CBMemberTranslator2<char *, char *, UIDBTarget, void (UIDBTarget::*)(UIDBTarget *, char *, char *)>::thunk(CBFunctorBase &, char *, char *) { }

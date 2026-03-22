@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802AB598 | 1496 bytes
 CASRoommateTarget::CASRoommateTarget(void) { }
@@ -18,7 +19,7 @@ void CASRoommateTarget::SetVariable(char *, char *) { }
 void CASRoommateTarget::SetVariableSubnav(int, int) { }
 
 // 0x802ABFFC | 280 bytes
-void CASRoommateTarget::GetLocalizableSubnav(int, unsigned wchar_t *) { }
+void CASRoommateTarget::GetLocalizableSubnav(int, wchar_t *) { }
 
 // 0x802AC114 | 196 bytes
 void CASRoommateTarget::GetVariable(char *) { }

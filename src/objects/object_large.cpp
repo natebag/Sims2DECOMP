@@ -12,6 +12,7 @@
 //   - GCC destructor ABI
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class cXObject;

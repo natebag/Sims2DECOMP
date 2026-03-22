@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8014CF70 | 156 bytes
-void IconGroup::GetBalloonSpriteID(IconGroup::BalloonType) { }
+void IconGroup::GetBalloonSpriteID(int) { }

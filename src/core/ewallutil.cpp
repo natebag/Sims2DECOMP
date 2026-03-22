@@ -5,6 +5,7 @@
 // Small functions (<=64 bytes) decompiled from the ewallutil object file.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Lookup tables
 extern int g_wallTypeIds[6];      // at 0x80423A94

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8026BF74 | 60 bytes
 CasSceneDefault::CasSceneDefault(void) { }
@@ -12,7 +13,7 @@ CasSceneDefault::CasSceneDefault(void) { }
 CasSceneDefault::~CasSceneDefault(void) { }
 
 // 0x8026BFE0 | 200 bytes
-void CasSceneDefault::GetMirrorCorners(CasScene::RoomId, EVec3 *) const { }
+void CasSceneDefault::GetMirrorCorners(int, EVec3 *) const { }
 
 // 0x8026C0A8 | 8 bytes
 void CasSceneDefault::GetSceneName(void) const { }

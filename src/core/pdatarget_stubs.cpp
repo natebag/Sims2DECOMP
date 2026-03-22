@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8033E220 | 252 bytes
 void PDATarget::SetupMoney(void) { }
@@ -24,7 +25,7 @@ void PDATarget::GetVariable(char *) { }
 void PDATarget::Draw(ERC *) { }
 
 // 0x80340B40 | 1008 bytes
-void PDATarget::HandleSubTargetStateChange(FlowGotoTarget::eFlashState) { }
+void PDATarget::HandleSubTargetStateChange(int) { }
 
 // 0x803413B8 | 1852 bytes
 void PDATarget::SetupSkinShaders(int, int) { }

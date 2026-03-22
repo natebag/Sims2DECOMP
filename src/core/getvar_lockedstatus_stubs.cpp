@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80320DE4 | 160 bytes
 GetVar_LockedStatus::GetVar_LockedStatus(char *, unsigned int) { }

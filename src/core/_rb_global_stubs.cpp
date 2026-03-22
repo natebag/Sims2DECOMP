@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8002DA08 | 88 bytes
 void _Rb_global<bool>::_M_increment(_Rb_tree_node_base *) { }

@@ -3,6 +3,7 @@
 // 1 functions, 368 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // _randReloadMersenneTwister(void) - 0x802AAF5C | 368 bytes

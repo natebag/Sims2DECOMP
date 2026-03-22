@@ -5,6 +5,7 @@
 // each have only a few small functions, to maximize coverage.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EStream;

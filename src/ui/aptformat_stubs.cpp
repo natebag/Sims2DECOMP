@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8000FFA8 | 552 bytes
 AptFormat::AptFormat(AptWord *) { }
@@ -15,7 +16,7 @@ AptFormat::~AptFormat(void) { }
 void AptFormat::Draw(EMat4 *, EVec4 *, EVec4 *) { }
 
 // 0x80010DBC | 2360 bytes
-void AptFormat::InitForParticles(AptFormat::aptFormat_PartFX) { }
+void AptFormat::InitForParticles(int) { }
 
 // 0x800116F4 | 1240 bytes
 void AptFormat::ProcessParticles(ERC *, EMat4 *, EVec2 &, EVec2 &, float, float) { }

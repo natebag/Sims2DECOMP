@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800DC204 | 2060 bytes
 void MUWrapper::Startup(void) { }
@@ -42,13 +43,13 @@ void MUWrapper::SetVariable(char *, char *) { }
 void MUWrapper::GetVariable(char *) { }
 
 // 0x800DFCB8 | 20 bytes
-void MUWrapper::SetDisplayOkType(MUStateMachine::eMUDisplayOk) { }
+void MUWrapper::SetDisplayOkType(int) { }
 
 // 0x800DFCCC | 20 bytes
-void MUWrapper::SetQueryType(MUStateMachine::eMUQuery) { }
+void MUWrapper::SetQueryType(int) { }
 
 // 0x800DFCE0 | 20 bytes
-void MUWrapper::SetInfoType(MUStateMachine::eMUInfo) { }
+void MUWrapper::SetInfoType(int) { }
 
 // 0x800DFCF4 | 5160 bytes
 void MUWrapper::SetupDisplayOkType(void) { }
@@ -66,7 +67,7 @@ MUWrapper::MUWrapper(void) { }
 MUWrapper::~MUWrapper(void) { }
 
 // 0x800E3F8C | 8 bytes
-void MUWrapper::SetScreenConfiguration(MUWrapper::eMUScreenConfiguration) { }
+void MUWrapper::SetScreenConfiguration(int) { }
 
 // 0x800E3F94 | 8 bytes
 void MUWrapper::SetBackgroundDrawEnable(bool) { }

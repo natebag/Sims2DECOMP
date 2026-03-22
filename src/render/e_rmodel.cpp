@@ -6,6 +6,7 @@
 // ERModel is the resource class for 3D models.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EStream;

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8053E228 | 424 bytes
 void ScalarDecomp::Init(EBitArray *, int) { }

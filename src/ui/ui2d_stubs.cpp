@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8026CD54 | 188 bytes
 UI2D::UI2D(void) { }
@@ -15,7 +16,7 @@ UI2D::~UI2D(void) { }
 void UI2D::AddEntry(char *, unsigned int, ERShader *, char *, int) { }
 
 // 0x8026D068 | 412 bytes
-void UI2D::RemoveEntry(UI2D::UI2DRecord *) { }
+void UI2D::RemoveEntry(int *) { }
 
 // 0x8026D204 | 196 bytes
 void UI2D::InstallEntry(char *, unsigned int, char *, int) { }

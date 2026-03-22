@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801397A0 | 108 bytes
 ChainResFile::ChainResFile(void) { }
@@ -57,16 +58,16 @@ void ChainResFile::GetByName(int, StringBuffer &, void (*)(void *, int)) { }
 void ChainResFile::GetByIndex(int, short, void (*)(void *, int)) { }
 
 // 0x8013A6E4 | 196 bytes
-void ChainResFile::GetName(Memory::HandleNode *, StringBuffer &) { }
+void ChainResFile::GetName(int *, StringBuffer &) { }
 
 // 0x8013A7A8 | 200 bytes
-void ChainResFile::GetResType(Memory::HandleNode *) { }
+void ChainResFile::GetResType(int *) { }
 
 // 0x8013A870 | 196 bytes
-void ChainResFile::GetID(Memory::HandleNode *, short *) { }
+void ChainResFile::GetID(int *, short *) { }
 
 // 0x8013A934 | 192 bytes
-void ChainResFile::IsLittleEndian(Memory::HandleNode *) { }
+void ChainResFile::IsLittleEndian(int *) { }
 
 // 0x8013AAB8 | 192 bytes
 void ChainResFile::FindUniqueName(int, StringBuffer &) { }
@@ -75,22 +76,22 @@ void ChainResFile::FindUniqueName(int, StringBuffer &) { }
 void ChainResFile::FindUniqueID(int) { }
 
 // 0x8013ABDC | 188 bytes
-void ChainResFile::Detach(Memory::HandleNode *) { }
+void ChainResFile::Detach(int *) { }
 
 // 0x8013ACBC | 196 bytes
-void ChainResFile::SetID(Memory::HandleNode *, short) { }
+void ChainResFile::SetID(int *, short) { }
 
 // 0x8013ADBC | 540 bytes
-void ChainResFile::AddWithLanguage(Memory::HandleNode *, int, short, StringBuffer &, char, bool) { }
+void ChainResFile::AddWithLanguage(int *, int, short, StringBuffer &, char, bool) { }
 
 // 0x8013AFD8 | 220 bytes
-void ChainResFile::Write(Memory::HandleNode *) { }
+void ChainResFile::Write(int *) { }
 
 // 0x8013B0B4 | 220 bytes
-void ChainResFile::Remove(Memory::HandleNode *) { }
+void ChainResFile::Remove(int *) { }
 
 // 0x8013B190 | 244 bytes
-void ChainResFile::SetInfo(Memory::HandleNode *, short, StringBuffer &, char) { }
+void ChainResFile::SetInfo(int *, short, StringBuffer &, char) { }
 
 // 0x8013B284 | 500 bytes
 void ChainResFile::AddProhibitedType(iResFile *, unsigned int) { }

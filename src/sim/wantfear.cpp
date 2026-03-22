@@ -25,7 +25,7 @@ const WantFear::Event* WantFear::Node::GetEvent() const {
 // MATCHING
 // Adjusts node and child index pointers by base offsets
 // ============================================================================
-void WantFear::Tree::FixupPointers(signed char* indexBase, WantFear::Node* nodeBase) {
+void WantFear::Tree::FixupPointers(signed char* indexBase, int* nodeBase) {
     // m_nodes offset is shifted left by 5 (32-byte nodes)
     // m_childIndexData is raw byte offset
     m_childIndexData = (void*)((u8*)m_childIndexData + (u32)indexBase);
@@ -38,7 +38,7 @@ void WantFear::Tree::FixupPointers(signed char* indexBase, WantFear::Node* nodeB
 // MATCHING
 // Returns the Nth child node of a given parent node
 // ============================================================================
-const WantFear::Node* WantFear::Tree::GetNthChildOfNode(WantFear::Node* node, short n) const {
+const WantFear::Node* WantFear::Tree::GetNthChildOfNode(int* node, short n) const {
     short index = ((short*)m_childIndexData)[node->m_firstChildIndex + n];
     return (const Node*)((u8*)m_nodes + (index << 5));
 }
@@ -71,7 +71,7 @@ void WantFear::Bookmark::Clear() {
 // Address: 0x8014ABA0, Size: 40 bytes
 // NON_MATCHING - conditional return (beqlr) pattern may differ
 // ============================================================================
-WantFear::Bookmark::Bookmark(unsigned short treeId, short countdown, WantFear::Node* node, unsigned short adIndex) {
+WantFear::Bookmark::Bookmark(unsigned short treeId, short countdown, int* node, unsigned short adIndex) {
     m_countdown = 0;
     m_treeId = treeId;
     m_adIndex = adIndex;

@@ -708,7 +708,7 @@ INGTarget::IngInfo* INGTarget::get_current_ingredient() {
 }
 
 // 0x801BBCCC - 44 bytes
-int INGTarget::get_ingredient_type(INGTarget::IngInfo& info) const {
+int INGTarget::get_ingredient_type(int& info) const {
     int* p = (int*)info.m_field00;
     if (p == 0) return 0;
     int* q = (int*)info.m_field04;
@@ -835,7 +835,7 @@ void M2MTarget::ZeroInputCallback() {
 }
 
 // 0x801C1094 - 52 bytes
-void M2MTarget::OnSlotSelectItemSelected(int slot, M2MTarget::ResultStruct& result) {
+void M2MTarget::OnSlotSelectItemSelected(int slot, int& result) {
     if (result.m_field00 == 255) {
         result.m_field00 = slot;
         result.m_field04 = -1;
@@ -846,7 +846,7 @@ void M2MTarget::OnSlotSelectItemSelected(int slot, M2MTarget::ResultStruct& resu
 }
 
 // 0x801C10C8 - 64 bytes
-int M2MTarget::OnGetNumItems(M2MTarget::ResultStruct& result) {
+int M2MTarget::OnGetNumItems(int& result) {
     if (result.m_field00 == 255) return 2;
     if (result.m_field04 == 255) return 8;
     if (result.m_field08 != 0) return 0;
@@ -1133,7 +1133,7 @@ const char* PZ1Target::GetTLA() const {
 // ============================================================================
 
 // 0x801D1E40 - 48 bytes
-void PCTTarget::static_GrabManipulatorCallback(InteractorModule::Interactor::CallbackData* data) {
+void PCTTarget::static_GrabManipulatorCallback(int* data) {
     void* userData = data->m_userData;
     if (userData != 0) {
         PCTTarget_GrabCallback(userData, data);
@@ -1141,7 +1141,7 @@ void PCTTarget::static_GrabManipulatorCallback(InteractorModule::Interactor::Cal
 }
 
 // 0x801D1E70 - 48 bytes
-void PCTTarget::static_PlaceModeCallback(InteractorModule::Interactor::CallbackData* data) {
+void PCTTarget::static_PlaceModeCallback(int* data) {
     void* userData = data->m_userData;
     if (userData != 0) {
         PCTTarget_PlaceCallback(userData, data);
@@ -1149,7 +1149,7 @@ void PCTTarget::static_PlaceModeCallback(InteractorModule::Interactor::CallbackD
 }
 
 // 0x801D1EA0 - 48 bytes
-void PCTTarget::static_WallManipulatorCallback(InteractorModule::Interactor::CallbackData* data) {
+void PCTTarget::static_WallManipulatorCallback(int* data) {
     void* userData = data->m_userData;
     if (userData != 0) {
         PCTTarget_WallManipCallback(userData, data);
@@ -1157,7 +1157,7 @@ void PCTTarget::static_WallManipulatorCallback(InteractorModule::Interactor::Cal
 }
 
 // 0x801D1ED0 - 48 bytes
-void PCTTarget::static_WallPainterCallback(InteractorModule::Interactor::CallbackData* data) {
+void PCTTarget::static_WallPainterCallback(int* data) {
     void* userData = data->m_userData;
     if (userData != 0) {
         PCTTarget_WallPaintCallback(userData, data);
@@ -1165,7 +1165,7 @@ void PCTTarget::static_WallPainterCallback(InteractorModule::Interactor::Callbac
 }
 
 // 0x801D1F00 - 48 bytes
-void PCTTarget::static_FloorPainterCallback(InteractorModule::Interactor::CallbackData* data) {
+void PCTTarget::static_FloorPainterCallback(int* data) {
     void* userData = data->m_userData;
     if (userData != 0) {
         PCTTarget_FloorCallback(userData, data);

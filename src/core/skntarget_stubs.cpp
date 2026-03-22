@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80347748 | 2712 bytes
 SKNTarget::SKNTarget(int) { }

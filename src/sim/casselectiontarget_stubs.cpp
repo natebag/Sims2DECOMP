@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802A1D08 | 4432 bytes
 CASSelectionTarget::CASSelectionTarget(void) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802E0B14 | 2456 bytes
 MDITarget::MDITarget(void) { }
@@ -27,7 +28,7 @@ void MDITarget::Update(void) { }
 void MDITarget::SpawnModelessDialog(UIDialog *) { }
 
 // 0x802E1EC0 | 80 bytes
-void MDITarget::AddToList(MDITarget::ModelessDialog *) { }
+void MDITarget::AddToList(int *) { }
 
 // 0x802E1F18 | 204 bytes
 void MDITarget::DeleteAllModelessDialogs(void) { }

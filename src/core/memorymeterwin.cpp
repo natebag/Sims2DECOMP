@@ -42,7 +42,7 @@ void EMemoryMeterWin::Reset(void) {
 // bl EMemoryMeterWin::PollMemoryLevels
 // lwz r0,12(r1); mtlr r0; addi r1,r1,8; blr
 // NON_MATCHING - GCC tail-call-optimizes to 'b' instead of bl+prolog/epilog
-void EMemoryMeterWin::SetState(Panelstateman::Panelstate state) {
+void EMemoryMeterWin::SetState(int state) {
     PollMemoryLevels();
 }
 
@@ -52,7 +52,7 @@ void EMemoryMeterWin::SetState(Panelstateman::Panelstate state) {
 // Empty no-op (just blr)
 // ============================================================================
 // blr
-void EMemoryMeterWin::SetEvent(Panelstateman::PanelEvent event, unsigned int param) {
+void EMemoryMeterWin::SetEvent(int event, unsigned int param) {
     // empty
 }
 

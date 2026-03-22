@@ -3,6 +3,7 @@
 // 8 functions, 3892 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // _getButtonScore(AptInputType, int, int, int, int) - 0x8029CA14 | 364 bytes

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8012B5C8 | 1224 bytes
 void AmbientSoundPlayer::Start(void) { }

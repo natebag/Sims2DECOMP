@@ -3,6 +3,7 @@
 // 1 functions, 352 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // StageMembersIndex::in_word_set(char *, unsigned int) - 0x802ABFE4 | 352 bytes

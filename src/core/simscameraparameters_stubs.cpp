@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800221C0 | 1084 bytes
 SimsCameraParameters::SimsCameraParameters(void) { }

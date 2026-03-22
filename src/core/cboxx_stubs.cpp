@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80131FE4 | 180 bytes
 cBoxX::cBoxX(void) { }

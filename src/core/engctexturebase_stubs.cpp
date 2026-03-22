@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80529DD8 | 124 bytes
 ENgcTextureBase::ENgcTextureBase(unsigned int, int, int) { }

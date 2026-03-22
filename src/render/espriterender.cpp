@@ -6,6 +6,7 @@
 // ESpriteRender handles 2D sprite rendering, ESpriteRenderMan manages them.
 
 #include "types.h"
+#include "stub_classes.h"
 
 //=============================================================================
 // ESpriteRenderMan

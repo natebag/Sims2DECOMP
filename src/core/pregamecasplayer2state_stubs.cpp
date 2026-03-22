@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8010A0EC | 112 bytes
 void PreGameCasPlayer2State::Startup(void) { }

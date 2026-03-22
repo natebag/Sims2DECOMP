@@ -5,6 +5,7 @@
 // Small functions (<=64 bytes) decompiled from the cameramanager object file.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // External functions
 extern void EStorable_Delete(void* ptr);

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802A6070 | 1080 bytes
 CASMiscTarget::CASMiscTarget(void) { }
@@ -15,4 +16,4 @@ CASMiscTarget::~CASMiscTarget(void) { }
 void CASMiscTarget::GetVariable(char *) { }
 
 // 0x802A6724 | 1376 bytes
-void CASMiscTarget::GetLocalizableSubnav(UIScreenID, int, unsigned wchar_t *) { }
+void CASMiscTarget::GetLocalizableSubnav(UIScreenID, int, wchar_t *) { }

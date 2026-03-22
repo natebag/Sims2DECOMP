@@ -6,6 +6,7 @@
 // Each function needs to be decompiled to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EStream;

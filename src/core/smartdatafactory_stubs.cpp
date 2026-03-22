@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80229418 | 124 bytes
 SmartDataFactory::SmartDataFactory(void) { }
@@ -24,10 +25,10 @@ void SmartDataFactory::Release(void) { }
 void SmartDataFactory::GetDataProvider(unsigned int, ObjectDataID &) const { }
 
 // 0x80229764 | 328 bytes
-void SmartDataFactory::SetDataProvider(unsigned int, ObjectDataID &, ISmartDataFactory::tDataProvider) { }
+void SmartDataFactory::SetDataProvider(unsigned int, ObjectDataID &, int) { }
 
 // 0x802298AC | 108 bytes
 void SmartDataFactory::CreateObject(unsigned int, unsigned int, void **) { }
 
 // 0x802299A0 | 2256 bytes
-void SmartDataFactory::CreateObjectFromProvider(unsigned int, ISmartDataFactory::tDataProvider, void **) { }
+void SmartDataFactory::CreateObjectFromProvider(unsigned int, int, void **) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80120100 | 96 bytes
 void BString2::delete_ref(void) { }
@@ -27,37 +28,37 @@ void* BString2::operator[](unsigned int) const { }
 void BString2::eos(void) { }
 
 // 0x80120C68 | 220 bytes
-void BString2::assign_str(unsigned wchar_t *, unsigned int) { }
+void BString2::assign_str(wchar_t *, unsigned int) { }
 
 // 0x80120D44 | 336 bytes
-void BString2::append_str(unsigned wchar_t *, unsigned int) { }
+void BString2::append_str(wchar_t *, unsigned int) { }
 
 // 0x80120E94 | 588 bytes
-void BString2::insert_str(unsigned int, unsigned wchar_t *, unsigned int) { }
+void BString2::insert_str(unsigned int, wchar_t *, unsigned int) { }
 
 // 0x801210E0 | 772 bytes
-void BString2::replace_str(unsigned int, unsigned int, unsigned wchar_t *, unsigned int) { }
+void BString2::replace_str(unsigned int, unsigned int, wchar_t *, unsigned int) { }
 
 // 0x801213E4 | 208 bytes
-void BString2::compare_str(unsigned int, unsigned wchar_t *, unsigned int, unsigned int) const { }
+void BString2::compare_str(unsigned int, wchar_t *, unsigned int, unsigned int) const { }
 
 // 0x801214B4 | 292 bytes
-void BString2::find_str(unsigned wchar_t *, unsigned int, unsigned int) const { }
+void BString2::find_str(wchar_t *, unsigned int, unsigned int) const { }
 
 // 0x801215D8 | 332 bytes
-void BString2::rfind_str(unsigned wchar_t *, unsigned int, unsigned int) const { }
+void BString2::rfind_str(wchar_t *, unsigned int, unsigned int) const { }
 
 // 0x80121724 | 224 bytes
-void BString2::find_first_of_str(unsigned wchar_t *, unsigned int, unsigned int) const { }
+void BString2::find_first_of_str(wchar_t *, unsigned int, unsigned int) const { }
 
 // 0x80121804 | 260 bytes
-void BString2::find_last_of_str(unsigned wchar_t *, unsigned int, unsigned int) const { }
+void BString2::find_last_of_str(wchar_t *, unsigned int, unsigned int) const { }
 
 // 0x80121908 | 192 bytes
-void BString2::find_first_not_of_str(unsigned wchar_t *, unsigned int, unsigned int) const { }
+void BString2::find_first_not_of_str(wchar_t *, unsigned int, unsigned int) const { }
 
 // 0x801219C8 | 252 bytes
-void BString2::find_last_not_of_str(unsigned wchar_t *, unsigned int, unsigned int) const { }
+void BString2::find_last_not_of_str(wchar_t *, unsigned int, unsigned int) const { }
 
 // 0x80121AC4 | 32 bytes
 BString2::BString2(void) { }
@@ -96,7 +97,7 @@ void BString2::c_str(void) const { }
 void BString2::reserve(unsigned int) { }
 
 // 0x801235F0 | 172 bytes
-void BString2::copy(unsigned wchar_t *, unsigned int, unsigned int) const { }
+void BString2::copy(wchar_t *, unsigned int, unsigned int) const { }
 
 // 0x8012369C | 108 bytes
 void BString2::find(BString2 &, unsigned int) const { }

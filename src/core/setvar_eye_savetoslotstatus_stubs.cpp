@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x803214B4 | 140 bytes
 void SetVar_EYE_saveToSlotStatus::Handler(char *) { }

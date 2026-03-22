@@ -61,37 +61,37 @@ void AptActionInterpreter::PrepareForExecution(AptActionSetup* setup) {
 // ============================================================================
 // Stub action handlers (no-op, just blr) - ALL MATCHING
 // ============================================================================
-void AptActionInterpreter::_FunctionAptActionEnd(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionEnd(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionToggleQuality(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionToggleQuality(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionStopSounds(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionStopSounds(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionStringLessThan(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionStringLessThan(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionMBLength(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionMBLength(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionCharToAscii(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionCharToAscii(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionMBSubString(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionMBSubString(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionMBCharToAscii(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionMBCharToAscii(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionMBAsciiToChar(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionMBAsciiToChar(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionBitURShift(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionBitURShift(AptActionInterpreter* interp, int* ctx) {
 }
 
-void AptActionInterpreter::_FunctionAptActionWaitForFrame(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionWaitForFrame(AptActionInterpreter* interp, int* ctx) {
 }
 
 // ============================================================================
@@ -100,7 +100,7 @@ void AptActionInterpreter::_FunctionAptActionWaitForFrame(AptActionInterpreter* 
 // Sets ctx->m_returnFlag = 1
 // ============================================================================
 // NON_MATCHING
-void AptActionInterpreter::_FunctionAptActionReturn(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionReturn(AptActionInterpreter* interp, int* ctx) {
     ctx->m_returnFlag = 1;
 }
 
@@ -110,7 +110,7 @@ void AptActionInterpreter::_FunctionAptActionReturn(AptActionInterpreter* interp
 // Loads scope+stack from ctx, calls _doEnumerate
 // ============================================================================
 // NON_MATCHING
-void AptActionInterpreter::_FunctionAptActionEnumerate(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionEnumerate(AptActionInterpreter* interp, int* ctx) {
     interp->_doEnumerate((AptValue*)ctx->m_scope, (AptValue*)ctx->m_stack);
 }
 
@@ -120,7 +120,7 @@ void AptActionInterpreter::_FunctionAptActionEnumerate(AptActionInterpreter* int
 // Same as Enumerate - loads scope+stack from ctx, calls _doEnumerate
 // ============================================================================
 // NON_MATCHING
-void AptActionInterpreter::_FunctionAptActionEnumerate2(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionEnumerate2(AptActionInterpreter* interp, int* ctx) {
     interp->_doEnumerate((AptValue*)ctx->m_scope, (AptValue*)ctx->m_stack);
 }
 
@@ -130,7 +130,7 @@ void AptActionInterpreter::_FunctionAptActionEnumerate2(AptActionInterpreter* in
 // Reads dictionary count+size from aligned stream position
 // ============================================================================
 // NON_MATCHING
-void AptActionInterpreter::_FunctionAptActionDefineDictionary(AptActionInterpreter* interp, AptActionInterpreter::LocalContextT* ctx) {
+void AptActionInterpreter::_FunctionAptActionDefineDictionary(AptActionInterpreter* interp, int* ctx) {
     u8* ptr = (u8*)((((u32)ctx->m_streamPos) + 3) & ~3);
     ctx->m_streamPos = (u32)(ptr + 8);
     interp->m_dictCount = *(u32*)(ptr);

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8027DABC | 168 bytes
 UIUpdateTable::UIUpdateTable(void) { }
@@ -12,13 +13,13 @@ UIUpdateTable::UIUpdateTable(void) { }
 UIUpdateTable::~UIUpdateTable(void) { }
 
 // 0x8027DC14 | 204 bytes
-void UIUpdateTable::AddRecord(UIUpdateTable::UpdateTablePriority, CBFunctor0 &, char *) { }
+void UIUpdateTable::AddRecord(int, CBFunctor0 &, char *) { }
 
 // 0x8027DCE0 | 156 bytes
-void UIUpdateTable::RemoveRecord(UIUpdateTable::UpdateTableRecord *) { }
+void UIUpdateTable::RemoveRecord(int *) { }
 
 // 0x8027DD7C | 256 bytes
-void UIUpdateTable::InstallEntry(UIUpdateTable::UpdateTablePriority, CBFunctor0 &, char *) { }
+void UIUpdateTable::InstallEntry(int, CBFunctor0 &, char *) { }
 
 // 0x8027DE7C | 84 bytes
 void UIUpdateTable::UnInstallEntry(CBFunctor0 &) { }

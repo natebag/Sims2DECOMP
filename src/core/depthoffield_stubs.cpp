@@ -4,12 +4,13 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80532C94 | 392 bytes
 void DepthOfField::UpdateTargetParameters(float) { }
 
 // 0x80532E1C | 68 bytes
-void DepthOfField::EffectStateChanged(FrameEffect::EffectState) { }
+void DepthOfField::EffectStateChanged(int) { }
 
 // 0x80532E60 | 24 bytes
 void DepthOfField::EffectIsFinishedFadingIn(float) const { }

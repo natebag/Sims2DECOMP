@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800FD5E8 | 424 bytes
 LoadingScreenStateMachine::LoadingScreenStateMachine(int, int) { }
@@ -30,13 +31,13 @@ void LoadingScreenStateMachine::IsReadyToLoad(void) { }
 void LoadingScreenStateMachine::IsLoading(void) { }
 
 // 0x800FDC50 | 252 bytes
-void LoadingScreenStateMachine::StartLoad(CLoadingScreen::eLoadingScreenMode) { }
+void LoadingScreenStateMachine::StartLoad(int) { }
 
 // 0x800FDD4C | 64 bytes
 void LoadingScreenStateMachine::LoadFinishedNow(void) { }
 
 // 0x800FDD8C | 52 bytes
-void LoadingScreenStateMachine::StartingLoad(CLoadingScreen::eLoadingScreenMode) { }
+void LoadingScreenStateMachine::StartingLoad(int) { }
 
 // 0x800FDDC0 | 24 bytes
 void LoadingScreenStateMachine::LoadFinishing(void) { }

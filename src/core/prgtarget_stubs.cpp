@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802FECAC | 5104 bytes
 PRGTarget::PRGTarget(int) { }
@@ -15,10 +16,10 @@ PRGTarget::~PRGTarget(void) { }
 void PRGTarget::SetVariable(char *, char *) { }
 
 // 0x80300330 | 96 bytes
-void PRGTarget::FormatFraction(unsigned wchar_t *, int, int) { }
+void PRGTarget::FormatFraction(wchar_t *, int, int) { }
 
 // 0x80300390 | 104 bytes
-void PRGTarget::FormatPercentage(unsigned wchar_t *, int, int) { }
+void PRGTarget::FormatPercentage(wchar_t *, int, int) { }
 
 // 0x803003F8 | 112 bytes
 void PRGTarget::GetUnlockedFashions(void) { }

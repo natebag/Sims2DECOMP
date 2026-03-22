@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804F8634 | 308 bytes
 void EDatasetManager::ManageDasFile(char *) { }
@@ -18,7 +19,7 @@ void EDatasetManager::AddRefAsync(char *) { }
 void EDatasetManager::AddRefAsyncIfNotLoaded(char *) { }
 
 // 0x804F88B8 | 48 bytes
-void EDatasetManager::DelRef(EResource *, EResourceManager::DelRefMode) { }
+void EDatasetManager::DelRef(EResource *, int) { }
 
 // 0x804F88E8 | 8 bytes
 void EDatasetManager::GetLoadProgress(void) const { }

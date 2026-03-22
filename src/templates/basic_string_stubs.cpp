@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80229038 | 96 bytes
 basic_string<char, char_traits<char>, allocator<char> >::basic_string(void) { }
@@ -12,4 +13,4 @@ basic_string<char, char_traits<char>, allocator<char> >::basic_string(void) { }
 void basic_string<char, char_traits<char>, allocator<char> >::reserve(unsigned int) { }
 
 // 0x803169AC | 176 bytes
-basic_string<wchar_t, char_traits<wchar_t>, allocator<wchar_t> >::basic_string(unsigned wchar_t *, allocator<wchar_t> &) { }
+basic_string<wchar_t, char_traits<wchar_t>, allocator<wchar_t> >::basic_string(wchar_t *, allocator<wchar_t> &) { }

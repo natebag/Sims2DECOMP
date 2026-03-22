@@ -5,6 +5,7 @@
 // All NON_MATCHING - GCC vs SN Systems codegen differences
 
 #include "types.h"
+#include "stub_classes.h"
 
 extern "C" {
     void* operator_new_wrapper(u32 size);

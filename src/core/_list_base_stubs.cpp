@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8001D0FC | 108 bytes
 void _List_base<pair<cXObject *, int>, allocator<pair<cXObject *, int> > >::clear(void) { }

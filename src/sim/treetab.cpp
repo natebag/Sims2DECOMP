@@ -401,7 +401,7 @@ int TTabScratchEntry::GetAttenuation() const {
 }
 
 // 80149ea0 - 8 bytes
-void TTabScratchEntry::SetAttenuation(ITreeTableEntry::Attenuation val) {
+void TTabScratchEntry::SetAttenuation(int val) {
     m_attenuation = (int)val;
 }
 

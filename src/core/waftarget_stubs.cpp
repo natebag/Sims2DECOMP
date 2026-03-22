@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8030C8CC | 10208 bytes
 WAFTarget::WAFTarget(int) { }
@@ -27,7 +28,7 @@ void WAFTarget::Update(void) { }
 void WAFTarget::UpdateWantsAndFears(void) { }
 
 // 0x80310014 | 1188 bytes
-void WAFTarget::NewWantsAndFearsIcon(int, unsigned int, unsigned int, WAFTarget::eWAFIconAnim, Neighbor *) { }
+void WAFTarget::NewWantsAndFearsIcon(int, unsigned int, unsigned int, int, Neighbor *) { }
 
 // 0x803104B8 | 640 bytes
 void WAFTarget::StartAnimation(int) { }

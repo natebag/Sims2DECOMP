@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802E2D2C | 8228 bytes
 MMUTarget::MMUTarget(void) { }
@@ -93,7 +94,7 @@ void MMUTarget::GoUpMenuTree(char *, char *) { }
 void MMUTarget::GetNumberOfControllers(void) { }
 
 // 0x802E78A8 | 72 bytes
-void MMUTarget::GetNumberOfChoicesInState(MMUTarget::MMU_MENU_STATE) { }
+void MMUTarget::GetNumberOfChoicesInState(int) { }
 
 // 0x802E78F0 | 316 bytes
 void MMUTarget::IncrementChoice(char *, char *) { }

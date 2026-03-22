@@ -3,6 +3,7 @@
 // 3 functions
 
 #include "types.h"
+#include "stub_classes.h"
 
 extern "C" {
     int strcmp_impl(const char* a, const char* b);

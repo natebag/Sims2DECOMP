@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800602B8 | 300 bytes
 GameData::GameData(void) { }
@@ -63,10 +64,10 @@ void GameData::SystemPostUpdate(void) { }
 void GameData::IsDrawCtrlMessageDisabled(void) { }
 
 // 0x800627CC | 24 bytes
-void GameData::SetCtrlDrawMessageDisable(GameData::eCtrlDisableBits) { }
+void GameData::SetCtrlDrawMessageDisable(int) { }
 
 // 0x800627E4 | 24 bytes
-void GameData::ClearCtrlDrawMessageDisable(GameData::eCtrlDisableBits) { }
+void GameData::ClearCtrlDrawMessageDisable(int) { }
 
 // 0x800627FC | 756 bytes
 void GameData::SystemPostDraw(ERC *) { }

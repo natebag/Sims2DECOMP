@@ -3,6 +3,7 @@
 // 6 functions, 2872 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptScriptColour::AptScriptColour(AptValue *) - 0x802B65F4 | 352 bytes

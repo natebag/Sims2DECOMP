@@ -3,6 +3,7 @@
 // 2 functions, 920 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // StringPool::Teardown(void) - 0x802C4314 | 300 bytes

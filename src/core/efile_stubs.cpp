@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8045C458 | 68 bytes
 EFile::EFile(void) { }
@@ -57,10 +58,10 @@ void EFile::GetExt(void) const { }
 void EFile::GetLength(void) const { }
 
 // 0x8045CE10 | 8 bytes
-void EFile::SetDevice(EFile::DeviceType) { }
+void EFile::SetDevice(int) { }
 
 // 0x8045CE18 | 8 bytes
-void EFile::SetAccess(EFile::AccessMode) { }
+void EFile::SetAccess(int) { }
 
 // 0x8045CE20 | 8 bytes
-void EFile::SetMode(EFile::IOMode) { }
+void EFile::SetMode(int) { }

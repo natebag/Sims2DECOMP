@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8013D304 | 660 bytes
 EdithDialogPrimitive::EdithDialogPrimitive(void) { }
@@ -15,7 +16,7 @@ EdithDialogPrimitive::~EdithDialogPrimitive(void) { }
 void EdithDialogPrimitive::SelectionCallback(int) { }
 
 // 0x8013D5EC | 252 bytes
-void EdithDialogPrimitive::AssignString(StringSet *, BString2 &, int, unsigned wchar_t *, bool) { }
+void EdithDialogPrimitive::AssignString(StringSet *, BString2 &, int, wchar_t *, bool) { }
 
 // 0x8013D6E8 | 268 bytes
 void EdithDialogPrimitive::ResetDialogParameters(void) { }

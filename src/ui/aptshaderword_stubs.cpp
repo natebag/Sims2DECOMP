@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80012A6C | 964 bytes
 void AptShaderWord::Draw(ERC *, EMat4 *, EVec4 *, EVec4 *) { }

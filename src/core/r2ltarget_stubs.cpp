@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x803018D8 | 3720 bytes
 R2LTarget::R2LTarget(int) { }

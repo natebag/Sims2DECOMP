@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80066630 | 40 bytes
 EGlobal::~EGlobal(void) { }
@@ -120,7 +121,7 @@ void EGlobal::GetNghFamilyName(BString2 &) { }
 void EGlobal::GetNghHouseName(BString2 &) { }
 
 // 0x8006950C | 440 bytes
-void EGlobal::ConvertUnicodeToShiftJIS(unsigned wchar_t *, unsigned wchar_t *, unsigned int) { }
+void EGlobal::ConvertUnicodeToShiftJIS(wchar_t *, wchar_t *, unsigned int) { }
 
 // 0x800696C4 | 164 bytes
 void EGlobal::GetFloorIndex(FloorTile *) { }

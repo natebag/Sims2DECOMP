@@ -47,7 +47,7 @@ void WantFear::Bookmark::ResetCountdown() {
 // Checks if two bookmarks point to the same node
 // ============================================================================
 // NON_MATCHING: comparison codegen
-bool WantFear::Bookmark::IsDuplicateNode(WantFear::Bookmark& other) const {
+bool WantFear::Bookmark::IsDuplicateNode(int& other) const {
     if (m_node == 0 || other.m_node == 0) return false;
     return (m_treeId == other.m_treeId && m_node == other.m_node);
 }
@@ -58,7 +58,7 @@ bool WantFear::Bookmark::IsDuplicateNode(WantFear::Bookmark& other) const {
 // Checks if two bookmarks reference the same event
 // ============================================================================
 // NON_MATCHING: event comparison
-bool WantFear::Bookmark::IsDuplicateEvent(WantFear::Bookmark& other) const {
+bool WantFear::Bookmark::IsDuplicateEvent(int& other) const {
     if (m_node == 0 || other.m_node == 0) return false;
     // Compare event references from both nodes
     return (m_node->m_eventRef == other.m_node->m_eventRef);
@@ -109,7 +109,7 @@ u32 WantFear::Bookmark::GetOverlayShader(Neighbor* neighbor) const {
 // Gets shader for a want/fear category
 // ============================================================================
 // NON_MATCHING: shader database lookup
-u32 WantFearManager::GetCategoryShader(WantFear::TargetType type, short param) {
+u32 WantFearManager::GetCategoryShader(int type, short param) {
     // Map target type + param to shader ID
     // Look up in shader database
     return 0;
@@ -120,7 +120,7 @@ u32 WantFearManager::GetCategoryShader(WantFear::TargetType type, short param) {
 // wantfear.obj | 0x8014B44C | 144 bytes
 // ============================================================================
 // NON_MATCHING: shader lookup
-static u32 Bookmark_GetBackgroundShader(WantFear::Bookmark* bm, Neighbor* neighbor) {
+static u32 Bookmark_GetBackgroundShader(int* bm, Neighbor* neighbor) {
     if (bm->m_node == 0) return 0;
     // Get background shader for the want/fear display
     return 0;

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804CC068 | 796 bytes
 void LZSSCompressor::Encode(unsigned char *, int, unsigned char *, int) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80052BB8 | 208 bytes
 ESpriteRender::ESpriteRender(void) { }
@@ -30,10 +31,10 @@ void ESpriteRender::DrawDirectly(ERC *) { }
 void ESpriteRender::SetSprite(void) { }
 
 // 0x80054324 | 620 bytes
-void ESpriteRender::SetUpRect(ERC *, EVec3 &, float, float, ESpriteRender::SpriteData &) { }
+void ESpriteRender::SetUpRect(ERC *, EVec3 &, float, float, int &) { }
 
 // 0x80054590 | 1368 bytes
-void ESpriteRender::SetUpDoubleRect(ERC *, EVec3 &, float, float, ERShader *, ERShader *, ESpriteRender::SpriteData &) { }
+void ESpriteRender::SetUpDoubleRect(ERC *, EVec3 &, float, float, ERShader *, ERShader *, int &) { }
 
 // 0x80055CF0 | 52 bytes
 void* ESpriteRender::operator new(unsigned int) { }

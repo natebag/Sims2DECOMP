@@ -226,7 +226,7 @@ short cSimulatorImpl::GetMode(void) {
 // cSimulatorImpl::SetMode(cSimulator::Mode) - 0x80141ac0 (8 bytes)
 // sth r4, 58(r3); blr
 // ============================================================================
-void cSimulatorImpl::SetMode(cSimulator::Mode mode) {
+void cSimulatorImpl::SetMode(int mode) {
     m_mode = (short)mode;
 }
 

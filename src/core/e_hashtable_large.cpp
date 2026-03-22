@@ -4,6 +4,7 @@
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
 
 #include "types.h"
+#include "stub_classes.h"
 
 extern "C" void* EAHeap_Alloc(int size);
 extern "C" void EAHeap_Free2(void* ptr);

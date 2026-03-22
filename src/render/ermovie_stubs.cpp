@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804E78EC | 216 bytes
 ERMovie::ERMovie(EFile *, unsigned int, unsigned int, unsigned int) { }

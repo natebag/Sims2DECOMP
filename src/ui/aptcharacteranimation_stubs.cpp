@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80400C78 | 1312 bytes
 void AptCharacterAnimation::Fixup(void *, AptConstFile *, void *) { }

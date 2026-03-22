@@ -4,12 +4,13 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80532AB8 | 240 bytes
 void Bloom::UpdateTargetParameters(float) { }
 
 // 0x80532BA8 | 136 bytes
-void Bloom::EffectStateChanged(FrameEffect::EffectState) { }
+void Bloom::EffectStateChanged(int) { }
 
 // 0x80532C30 | 24 bytes
 void Bloom::EffectIsFinishedFadingIn(float) const { }

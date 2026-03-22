@@ -5,6 +5,7 @@
 // Small functions (<=64 bytes) decompiled from the e_animnodedatapos object file.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EStream;

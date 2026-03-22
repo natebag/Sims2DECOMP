@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802987BC | 5348 bytes
 CASTarget::CASTarget(bool) { }
@@ -111,13 +112,13 @@ void CASTarget::ConvertPartUIFocusToModList(char *) { }
 void CASTarget::CreateModStrFromValues(char *, BitFlags<unsigned int>) { }
 
 // 0x8029E9AC | 636 bytes
-void CASTarget::SpawnYesNoDialog(unsigned int, unsigned wchar_t *, unsigned wchar_t *, int) { }
+void CASTarget::SpawnYesNoDialog(unsigned int, wchar_t *, wchar_t *, int) { }
 
 // 0x8029EC28 | 180 bytes
 void CASTarget::DialogYesNoSelectionCallback(int) { }
 
 // 0x8029ECE0 | 564 bytes
-void CASTarget::SpawnOKDialog(unsigned wchar_t *, unsigned wchar_t *) { }
+void CASTarget::SpawnOKDialog(wchar_t *, wchar_t *) { }
 
 // 0x8029EF14 | 56 bytes
 void CASTarget::DialogOKSelectionCallback(int) { }

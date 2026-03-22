@@ -5,6 +5,7 @@
 // Small functions (<=64 bytes) decompiled from the eorhouse object file.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // External functions
 extern void* UIStringLookup_GetString(int id);

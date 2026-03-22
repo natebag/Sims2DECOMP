@@ -3,6 +3,7 @@
 // 14 functions, 7384 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptDisplayListState::findInst(int, EAStringC *, AptCIH **, AptCIH **) - 0x80299340 | 272 bytes

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802CC9A8 | 3112 bytes
 G2DTarget::G2DTarget(void) { }

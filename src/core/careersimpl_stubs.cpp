@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80138B8C | 660 bytes
 void CareersImpl::Load(void) { }
@@ -18,7 +19,7 @@ void CareersImpl::GetCareerByID(int) { }
 void CareersImpl::GetJobPerformance(int) { }
 
 // 0x801390D0 | 372 bytes
-void CareersImpl::GetOfferDialogText(unsigned wchar_t *, Career &, int, bool) { }
+void CareersImpl::GetOfferDialogText(wchar_t *, Career &, int, bool) { }
 
 // 0x80139244 | 364 bytes
 void CareersImpl::GetBehCareerData(Career &, int, int, short *) { }

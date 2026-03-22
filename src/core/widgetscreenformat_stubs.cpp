@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8027E72C | 84 bytes
 WidgetScreenFormat::~WidgetScreenFormat(void) { }
@@ -12,13 +13,13 @@ WidgetScreenFormat::~WidgetScreenFormat(void) { }
 void WidgetScreenFormat::LaunchWidgetScreenLayout(char **, int, int) { }
 
 // 0x8027E85C | 128 bytes
-void WidgetScreenFormat::IterateScreenLayout(char **, WidgetScreenFormat::IterationType) { }
+void WidgetScreenFormat::IterateScreenLayout(char **, int) { }
 
 // 0x8027E8DC | 592 bytes
-void WidgetScreenFormat::IterateTags(WidgetScreenFormat::IterationType) { }
+void WidgetScreenFormat::IterateTags(int) { }
 
 // 0x8027EB2C | 584 bytes
-void WidgetScreenFormat::GetNextTag(WidgetScreenFormat::IterationType) { }
+void WidgetScreenFormat::GetNextTag(int) { }
 
 // 0x8027ED74 | 140 bytes
 void WidgetScreenFormat::IsValidTag(char *) { }

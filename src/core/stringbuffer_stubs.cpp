@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80127690 | 356 bytes
 void StringBuffer::append(char *, int) { }
@@ -30,4 +31,4 @@ void StringBuffer::find(char *, int) const { }
 void StringBuffer::findNoCase(char *, int) const { }
 
 // 0x80127D74 | 100 bytes
-void StringBuffer::assignDebug(unsigned wchar_t *) { }
+void StringBuffer::assignDebug(wchar_t *) { }

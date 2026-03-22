@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802AAC00 | 1112 bytes
 CASTattooTarget::CASTattooTarget(void) { }
@@ -15,7 +16,7 @@ CASTattooTarget::~CASTattooTarget(void) { }
 void CASTattooTarget::SetVariable(char *, char *) { }
 
 // 0x802AB258 | 272 bytes
-void CASTattooTarget::GetLocalizableSubnav(int, unsigned wchar_t *) { }
+void CASTattooTarget::GetLocalizableSubnav(int, wchar_t *) { }
 
 // 0x802AB368 | 332 bytes
 void CASTattooTarget::RemoveClothesForTattoo(void) { }

@@ -3,6 +3,7 @@
 // 3 functions, 812 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptXml::CleanNativeFunctions(void) - 0x802B942C | 284 bytes

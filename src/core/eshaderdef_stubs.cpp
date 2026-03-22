@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8049E2EC | 368 bytes
 void EShaderDef::operator=(EShaderDef &) { }

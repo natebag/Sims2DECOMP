@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80144FA4 | 124 bytes
 cGZSnd::cGZSnd(void) { }

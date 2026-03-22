@@ -11,6 +11,7 @@
 //   - Division by 10 magic constant differences
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class cXObject;

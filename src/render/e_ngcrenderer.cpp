@@ -6,6 +6,7 @@
 // This is the main GC renderer with 159 small functions.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class EDLEntry;

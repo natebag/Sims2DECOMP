@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800034C0 | 396 bytes
 void OverrideMotionBlurSettingsFromTokens(FrameEffectsMotionBlurDataElement *, EString *, int) { }
@@ -18,7 +19,7 @@ void OverrideDOFSettingsFromTokens(FrameEffectsDepthOfFieldDataElement *, EStrin
 void InterpolateSmooth<float>(float *, float &, float, float) { }
 
 // 0x80022028 | 408 bytes
-void HandleEffectNote(ESimsCam *, EAnimNote &, anim::PropKind) { }
+void HandleEffectNote(ESimsCam *, EAnimNote &, int) { }
 
 // 0x8002DA60 | 60 bytes
 float InterpolateLinear<float>(float, float, float, float, float) {
@@ -77,13 +78,13 @@ void CasSceneDummy::CanPlayerRotateSim(void) const { }
 void CasSceneDummy::HandleEventChangeFocus(CasEventChangeFocus &) { }
 
 // 0x80231058 | 8 bytes
-void CasSceneDummy::GetMirrorCorners(CasScene::RoomId, EVec3 *) const { }
+void CasSceneDummy::GetMirrorCorners(int, EVec3 *) const { }
 
 // 0x80231060 | 12 bytes
 void CasSceneDummy::GetSceneName(void) const { }
 
 // 0x8023106C | 8 bytes
-void CasSceneDummy::GetRoomModelId(CasScene::RoomId) const { }
+void CasSceneDummy::GetRoomModelId(int) const { }
 
 // 0x80232418 | 32 bytes
 void CasSimRendererTest::~CasSimRendererTest(void) { }

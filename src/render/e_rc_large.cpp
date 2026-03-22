@@ -3,6 +3,7 @@
 // Original: engine_ngc_release_dvd.lib(e_rc.obj)
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class ERC;

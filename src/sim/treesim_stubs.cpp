@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801962E0 | 176 bytes
 void TreeSim::_dyncastimpl(SCID) { }

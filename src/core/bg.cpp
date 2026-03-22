@@ -6,6 +6,7 @@
 // BG handles background loading stages during game startup/transitions.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // External functions
 extern void BG_ExecuteState(const char* name);

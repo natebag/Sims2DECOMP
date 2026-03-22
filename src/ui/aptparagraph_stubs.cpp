@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80013288 | 104 bytes
 void AptParagraph::Draw(ERC *, EMat4 *, EVec4 *, EVec4 *) { }
@@ -12,7 +13,7 @@ void AptParagraph::Draw(ERC *, EMat4 *, EVec4 *, EVec4 *) { }
 void AptParagraph::AddLine(AptLine *) { }
 
 // 0x80013328 | 7440 bytes
-void AptParagraph::Build(EVec2 &, EVec2 &, float, EVec4 &, AptStringAlignment, unsigned wchar_t *) { }
+void AptParagraph::Build(EVec2 &, EVec2 &, float, EVec4 &, AptStringAlignment, wchar_t *) { }
 
 // 0x80015038 | 8 bytes
 void AptParagraph::GetParagraphHeight(void) { }
@@ -21,7 +22,7 @@ void AptParagraph::GetParagraphHeight(void) { }
 void AptParagraph::GetPrintWidth(void) { }
 
 // 0x80015048 | 348 bytes
-void AptParagraph::GetWideHexValue(unsigned wchar_t *, int, int) { }
+void AptParagraph::GetWideHexValue(wchar_t *, int, int) { }
 
 // 0x800151A4 | 108 bytes
 void AptParagraph::SetFormattingEnable(int) { }

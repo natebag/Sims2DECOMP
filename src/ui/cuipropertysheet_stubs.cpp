@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804B9C64 | 280 bytes
 void CUIPropertySheet::SetupWindow(CUIWindow *) { }

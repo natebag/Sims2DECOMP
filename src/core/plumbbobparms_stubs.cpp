@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8009C1F4 | 424 bytes
 PlumbBobParms::PlumbBobParms(void) { }

@@ -365,7 +365,7 @@ int cXObjectImpl::GetNumAttr() {
 
 // cXObjectImpl::SetMiscFlag(cXObject::MiscFlag, bool) @ 0x800eaa48, 32 bytes
 // NON_MATCHING: GCC uses branch-less OR/ANDC, original uses beqlr
-void cXObjectImpl::SetMiscFlag(cXObject::MiscFlag flag, bool value) {
+void cXObjectImpl::SetMiscFlag(int flag, bool value) {
     int flags = *(int*)((char*)this + 0x84);
     flags &= ~flag; // andc
     *(int*)((char*)this + 0x84) = flags;
@@ -376,7 +376,7 @@ void cXObjectImpl::SetMiscFlag(cXObject::MiscFlag flag, bool value) {
 
 // cXObjectImpl::GetMiscFlag(cXObject::MiscFlag) @ 0x800eaa68, 24 bytes
 // NON_MATCHING: GCC uses addic/subfe, original uses bnelr branch
-bool cXObjectImpl::GetMiscFlag(cXObject::MiscFlag flag) {
+bool cXObjectImpl::GetMiscFlag(int flag) {
     int flags = *(int*)((char*)this + 0x84);
     if (flags & flag) return true;
     return false;

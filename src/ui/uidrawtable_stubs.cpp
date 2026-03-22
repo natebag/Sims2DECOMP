@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802737E4 | 168 bytes
 UIDrawTable::UIDrawTable(void) { }
@@ -12,13 +13,13 @@ UIDrawTable::UIDrawTable(void) { }
 UIDrawTable::~UIDrawTable(void) { }
 
 // 0x8027393C | 204 bytes
-void UIDrawTable::AddRecord(UIDrawTable::DrawTablePriority, CBFunctor1<ERC *> &, char *) { }
+void UIDrawTable::AddRecord(int, CBFunctor1<ERC *> &, char *) { }
 
 // 0x80273A08 | 156 bytes
-void UIDrawTable::RemoveRecord(UIDrawTable::DrawTableRecord *) { }
+void UIDrawTable::RemoveRecord(int *) { }
 
 // 0x80273AA4 | 256 bytes
-void UIDrawTable::InstallEntry(UIDrawTable::DrawTablePriority, CBFunctor1<ERC *> &, char *) { }
+void UIDrawTable::InstallEntry(int, CBFunctor1<ERC *> &, char *) { }
 
 // 0x80273BA4 | 84 bytes
 void UIDrawTable::UnInstallEntry(CBFunctor1<ERC *> &) { }

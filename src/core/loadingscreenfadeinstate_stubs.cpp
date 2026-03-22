@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800FCE1C | 436 bytes
 void LoadingScreenFadeInState::Update(float) { }

@@ -18,7 +18,7 @@ extern "C" int ObjectDB_GetIndexFromGuid(int);
 // Type 5:           128 slots
 
 // Helper: get number of unlock slots for a type
-static int GetUnlockSlotCount(IGoalUnlock::UnlockType type) {
+static int GetUnlockSlotCount(int type) {
     switch (type) {
         case IGoalUnlock::kUnlockType_Objects: return 32;
         case IGoalUnlock::kUnlockType_1:       return 208;
@@ -50,7 +50,7 @@ void GoalUnlock::DoStream(ReconBuffer* buffer, int version) {
 // Returns number of unlocked items of a given type
 // ============================================================================
 // NON_MATCHING: bit counting loop
-int GoalUnlock::GetUnlockCount(IGoalUnlock::UnlockType type) {
+int GoalUnlock::GetUnlockCount(int type) {
     int firstVar = GetFirstUnlockVar(type);
     int slotCount = GetUnlockSlotCount(type);
     int count = 0;
@@ -80,7 +80,7 @@ int GoalUnlock::GetObjectIndexFromGuid(int guid) {
 // Returns the first variable index for a given unlock type
 // ============================================================================
 // NON_MATCHING: switch codegen
-int GoalUnlock::GetFirstUnlockVar(IGoalUnlock::UnlockType type) {
+int GoalUnlock::GetFirstUnlockVar(int type) {
     switch (type) {
         case IGoalUnlock::kUnlockType_Objects: return 0;
         case IGoalUnlock::kUnlockType_1:       return 32;
@@ -98,7 +98,7 @@ int GoalUnlock::GetFirstUnlockVar(IGoalUnlock::UnlockType type) {
 // Checks if a specific item is unlocked
 // ============================================================================
 // NON_MATCHING: bit manipulation codegen
-int GoalUnlock::IsUnlocked(IGoalUnlock::UnlockType type, short index) {
+int GoalUnlock::IsUnlocked(int type, short index) {
     int firstVar = GetFirstUnlockVar(type);
     int slotCount = GetUnlockSlotCount(type);
     if (index < 0 || index >= slotCount) return 0;
@@ -114,7 +114,7 @@ int GoalUnlock::IsUnlocked(IGoalUnlock::UnlockType type, short index) {
 // Unlocks a specific item
 // ============================================================================
 // NON_MATCHING: bit set + notification
-void GoalUnlock::GrantUnlock(IGoalUnlock::UnlockType type, short index) {
+void GoalUnlock::GrantUnlock(int type, short index) {
     int firstVar = GetFirstUnlockVar(type);
     int slotCount = GetUnlockSlotCount(type);
     if (index < 0 || index >= slotCount) return;
@@ -132,7 +132,7 @@ void GoalUnlock::GrantUnlock(IGoalUnlock::UnlockType type, short index) {
 // Checks if an item was recently unlocked (for notification)
 // ============================================================================
 // NON_MATCHING: bit manipulation with offset
-int GoalUnlock::IsRecentlyUnlocked(IGoalUnlock::UnlockType type, short index) {
+int GoalUnlock::IsRecentlyUnlocked(int type, short index) {
     int firstVar = GetFirstUnlockVar(type);
     int slotCount = GetUnlockSlotCount(type);
     if (index < 0 || index >= slotCount) return 0;
@@ -150,7 +150,7 @@ int GoalUnlock::IsRecentlyUnlocked(IGoalUnlock::UnlockType type, short index) {
 // Sets or clears the recently-unlocked flag
 // ============================================================================
 // NON_MATCHING: bit set/clear codegen
-void GoalUnlock::SetRecentlyUnlocked(IGoalUnlock::UnlockType type, short index, bool recent) {
+void GoalUnlock::SetRecentlyUnlocked(int type, short index, bool recent) {
     int firstVar = GetFirstUnlockVar(type);
     int slotCount = GetUnlockSlotCount(type);
     if (index < 0 || index >= slotCount) return;
@@ -171,6 +171,6 @@ void GoalUnlock::SetRecentlyUnlocked(IGoalUnlock::UnlockType type, short index, 
 // Returns total number of unlock slots for a type
 // ============================================================================
 // NON_MATCHING: switch codegen
-int GoalUnlock::GetUnlockTotal(IGoalUnlock::UnlockType type) {
+int GoalUnlock::GetUnlockTotal(int type) {
     return GetUnlockSlotCount(type);
 }

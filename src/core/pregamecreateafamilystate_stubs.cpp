@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8010A2EC | 272 bytes
 void PreGameCreateAFamilyState::Update(float) { }

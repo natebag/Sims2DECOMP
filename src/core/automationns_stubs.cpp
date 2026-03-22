@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x803B248C | 108 bytes
 void AutomationNS::Lua_iLog(lua_State *) { }
@@ -123,7 +124,7 @@ void AutomationNS::Lua_iExitDirectControl(lua_State *) { }
 void AutomationNS::PrintStack(lua_State *) { }
 
 // 0x803B6014 | 1056 bytes
-void AutomationNS::CASGetPartIndex(CasSimDescriptionS2C *, CasEventChangeSimS2C::SimPartS2C) { }
+void AutomationNS::CASGetPartIndex(CasSimDescriptionS2C *, int) { }
 
 // 0x803B7BA8 | 72 bytes
 void AutomationNS::LuaGetConfig(void) { }
@@ -132,7 +133,7 @@ void AutomationNS::LuaGetConfig(void) { }
 void AutomationNS::LuaConfig::LuaSetup(void) { }
 
 // 0x803B7CC8 | 200 bytes
-void AutomationNS::LuaConfig::LuaShutdown(AutomationNS::LuaConfig::Status) { }
+void AutomationNS::LuaConfig::LuaShutdown(int) { }
 
 // 0x803B7D90 | 524 bytes
 void AutomationNS::LuaConfig::LuaRunScript(char *, bool) { }
@@ -168,13 +169,13 @@ void AutomationNS::ScriptLog::Shutdown(void) { }
 void AutomationNS::ScriptLog::Write(char *) { }
 
 // 0x803B8C2C | 340 bytes
-void AutomationNS::ScriptLog::WriteMetric(char *, AutomationNS::ScriptLog::ReportingLevel) { }
+void AutomationNS::ScriptLog::WriteMetric(char *, int) { }
 
 // 0x803B8D80 | 724 bytes
 void AutomationNS::ScriptLog::WriteStandardMetrics(void) { }
 
 // 0x803B9054 | 328 bytes
-void AutomationNS::ScriptLog::GetMetricsHeader(EString &, AutomationNS::ScriptLog::ReportingLevel) { }
+void AutomationNS::ScriptLog::GetMetricsHeader(EString &, int) { }
 
 // 0x803B919C | 144 bytes
 void AutomationNS::ScriptLog::Initialize(void) { }
@@ -213,7 +214,7 @@ void AutomationNS::TaskLog::CheckForUpdates(EString &) { }
 void AutomationNS::TaskLog::Initialize(void) { }
 
 // 0x803B98E0 | 196 bytes
-void AutomationNS::LuaTable::LuaReturnTableList(lua_State *, list<AutomationNS::LuaTable *, allocator<AutomationNS::LuaTable *> > *) { }
+void AutomationNS::LuaTable::LuaReturnTableList(lua_State *, list<int *, allocator<int *> > *) { }
 
 // 0x803B99A4 | 212 bytes
 void AutomationNS::LuaObjectTable::LuaReturnTable(lua_State *) { }

@@ -3,6 +3,7 @@
 // 16 functions
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class ERC;

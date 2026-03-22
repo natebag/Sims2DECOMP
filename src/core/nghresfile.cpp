@@ -5,6 +5,7 @@
 // Small functions (<=64 bytes) decompiled from the nghresfile object file.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 struct StringBuffer { u8 data[64]; };  // Opaque struct, actual size unknown
@@ -191,22 +192,22 @@ public:
 
     // GetName - empty
     // Address: 0x800D3D3C, Size: 4
-    void GetName(Memory::HandleNode*, StringBuffer&) {}
+    void GetName(int*, StringBuffer&) {}
 
     // GetResType - returns 0
     // Address: 0x800D3D40, Size: 8
-    int GetResType(Memory::HandleNode*) { return 0; }
+    int GetResType(int*) { return 0; }
 
     // GetID
     // Address: 0x800D3D48, Size: 16
-    void GetID(Memory::HandleNode* node, short* outID) {
+    void GetID(int* node, short* outID) {
         void* data = m_handleData;
         *outID = *(short*)((u8*)data + 8);
     }
 
     // GetIndex - empty
     // Address: 0x800D3D58, Size: 4
-    void GetIndex(Memory::HandleNode*, short*) {}
+    void GetIndex(int*, short*) {}
 
     // FindUniqueName - empty
     // Address: 0x800D3D5C, Size: 4

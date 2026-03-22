@@ -3,6 +3,7 @@
 // 15 functions, 5176 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // EAStringC::operator+(EAStringC &) const - 0x802BC2C0 | 276 bytes

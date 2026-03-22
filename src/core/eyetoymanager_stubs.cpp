@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8050160C | 72 bytes
 void EyeToyManager::Open(int, int, bool) { }
@@ -18,7 +19,7 @@ void EyeToyManager::IsPhysicallyConnected(int) { }
 void EyeToyManager::GetPhysicalConnectionCount(void) { }
 
 // 0x805016E8 | 24 bytes
-void EyeToyManager::OpenInstance(int, void (*)(char *, int), EyeToyDefs::Resolution, bool, void (*)(int)) { }
+void EyeToyManager::OpenInstance(int, void (*)(char *, int), int, bool, void (*)(int)) { }
 
 // 0x80501700 | 56 bytes
 void EyeToyManager::CloseInstance(int) { }
@@ -42,7 +43,7 @@ void EyeToyManager::StartStream(int) { }
 void EyeToyManager::StopStream(int) { }
 
 // 0x80501858 | 40 bytes
-void EyeToyManager::ResetStream(int, EyeToyDefs::Resolution) { }
+void EyeToyManager::ResetStream(int, int) { }
 
 // 0x80501880 | 20 bytes
 void EyeToyManager::PauseStreams(void) { }
@@ -54,7 +55,7 @@ void EyeToyManager::ResumeStreams(void) { }
 void EyeToyManager::GetDimensions(int, int *, int *) { }
 
 // 0x805018E8 | 40 bytes
-void EyeToyManager::SetAttributes(int, EyeToyDefs::AttribFlags, EyeToyDefs::Attributes *) { }
+void EyeToyManager::SetAttributes(int, int, int *) { }
 
 // 0x80501910 | 56 bytes
 void EyeToyManager::GetAttributes(int) { }
@@ -66,7 +67,7 @@ void EyeToyManager::ConvertHandleToInstancePtr(int) { }
 void EyeToyManager::ConvertInstanceIndexToHandle(int) { }
 
 // 0x80501958 | 4 bytes
-void EyeToyManager::NormalizeTexture(EyeToyManager::NormalizationParams *) { }
+void EyeToyManager::NormalizeTexture(int *) { }
 
 // 0x8050195C | 4 bytes
 void EyeToyManager::CleanUpBufferBetaHack(void) { }

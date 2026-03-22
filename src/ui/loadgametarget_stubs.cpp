@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8028D678 | 2036 bytes
 LoadGameTarget::LoadGameTarget(M2MTarget *, int, int) { }
@@ -24,7 +25,7 @@ void LoadGameTarget::Update(void) { }
 void LoadGameTarget::GetResult(void) { }
 
 // 0x8028E8E0 | 4 bytes
-void LoadGameTarget::ImportLoad(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void LoadGameTarget::ImportLoad(int, int &) { }
 
 // 0x8028E8E4 | 1132 bytes
 void LoadGameTarget::PerformMemoryCardChecks(void) { }
@@ -96,10 +97,10 @@ void LoadGameTarget::BGCall_PerformLoad(void) { }
 void LoadGameTarget::BGExec_PerformLoad(void *) { }
 
 // 0x802915E8 | 96 bytes
-void LoadGameTarget::ImportSave(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void LoadGameTarget::ImportSave(int, int &) { }
 
 // 0x80291648 | 96 bytes
-void LoadGameTarget::ImportSaveComplete(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+void LoadGameTarget::ImportSaveComplete(int, int &) { }
 
 // 0x802916A8 | 36 bytes
 void LoadGameTarget::GetDevice(void) { }

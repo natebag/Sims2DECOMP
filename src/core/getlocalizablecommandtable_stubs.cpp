@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8026FBE8 | 160 bytes
 GetLocalizableCommandTable::GetLocalizableCommandTable(void) { }
@@ -12,19 +13,19 @@ GetLocalizableCommandTable::GetLocalizableCommandTable(void) { }
 GetLocalizableCommandTable::~GetLocalizableCommandTable(void) { }
 
 // 0x8026FD28 | 100 bytes
-void GetLocalizableCommandTable::AddRecord(char *, CBFunctor1wRet<char *, unsigned wchar_t *> &) { }
+void GetLocalizableCommandTable::AddRecord(char *, CBFunctor1wRet<char *, wchar_t *> &) { }
 
 // 0x8026FD8C | 144 bytes
-void GetLocalizableCommandTable::RemoveRecord(GetLocalizableCommandTable::GetLocalizableCommandTableRecord *) { }
+void GetLocalizableCommandTable::RemoveRecord(int *) { }
 
 // 0x8026FE1C | 284 bytes
-void GetLocalizableCommandTable::InstallCommand(char *, CBFunctor1wRet<char *, unsigned wchar_t *> &) { }
+void GetLocalizableCommandTable::InstallCommand(char *, CBFunctor1wRet<char *, wchar_t *> &) { }
 
 // 0x8026FF38 | 188 bytes
 void GetLocalizableCommandTable::UnInstallCommand(char *) { }
 
 // 0x8026FFF4 | 96 bytes
-void GetLocalizableCommandTable::UnInstallAllCommands(CBFunctor1wRet<char *, unsigned wchar_t *> &) { }
+void GetLocalizableCommandTable::UnInstallAllCommands(CBFunctor1wRet<char *, wchar_t *> &) { }
 
 // 0x80270054 | 96 bytes
 void GetLocalizableCommandTable::ContainsCommand(char *) { }

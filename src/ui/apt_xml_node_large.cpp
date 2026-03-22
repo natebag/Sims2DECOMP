@@ -3,6 +3,7 @@
 // 4 functions, 1616 bytes
 
 #include "types.h"
+#include "stub_classes.h"
 
 // ============================================================================
 // AptXmlNode::CleanNativeFunctions(void) - 0x802BA4AC | 412 bytes

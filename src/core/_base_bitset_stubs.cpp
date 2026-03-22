@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80008470 | 104 bytes
 void _Base_bitset<3>::_M_do_find_first(unsigned int) const { }

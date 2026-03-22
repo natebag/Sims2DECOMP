@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801438B8 | 48 bytes
 void cIGZSndSys::CreateInstance(void) { }

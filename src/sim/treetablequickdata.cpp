@@ -310,7 +310,7 @@ void TreeTableEntryQuickData::SetActionTreeID(short val) {}
 // 8015e884
 void TreeTableEntryQuickData::SetCheckTreeID(short val) {}
 // 8015e888
-void TreeTableEntryQuickData::SetAttenuation(ITreeTableEntry::Attenuation val) {}
+void TreeTableEntryQuickData::SetAttenuation(int val) {}
 // 8015e88c
 void TreeTableEntryQuickData::SetCustomAttenuation(float val) {}
 // 8015e890

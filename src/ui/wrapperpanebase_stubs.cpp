@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x800E5664 | 780 bytes
 void WrapperPaneBase::DrawBackground(ERC *) { }
@@ -63,7 +64,7 @@ void WrapperPaneBase::GetVariable(char *) { }
 void WrapperPaneBase::SetVariable(char *, char *) { }
 
 // 0x800E7500 | 872 bytes
-void WrapperPaneBase::AddButton(WrapperPaneBase::ButtonType, bool, unsigned wchar_t *) { }
+void WrapperPaneBase::AddButton(int, bool, wchar_t *) { }
 
 // 0x800E7868 | 308 bytes
 void WrapperPaneBase::ShowEnabledButtons(void) { }
@@ -72,10 +73,10 @@ void WrapperPaneBase::ShowEnabledButtons(void) { }
 void WrapperPaneBase::HideEnabledButtons(void) { }
 
 // 0x800E7AD0 | 344 bytes
-void WrapperPaneBase::ShowButton(WrapperPaneBase::ButtonType) { }
+void WrapperPaneBase::ShowButton(int) { }
 
 // 0x800E7C28 | 344 bytes
-void WrapperPaneBase::HideButton(WrapperPaneBase::ButtonType) { }
+void WrapperPaneBase::HideButton(int) { }
 
 // 0x800E9B48 | 364 bytes
 WrapperPaneBase::WrapperPaneBase(int, int) { }
@@ -87,19 +88,19 @@ WrapperPaneBase::~WrapperPaneBase(void) { }
 void WrapperPaneBase::AddItem(PaneItem *) { }
 
 // 0x800EA990 | 296 bytes
-void WrapperPaneBase::SetButtonFont(WrapperPaneBase::ButtonType, ERFont *) { }
+void WrapperPaneBase::SetButtonFont(int, ERFont *) { }
 
 // 0x800EAAB8 | 180 bytes
-void WrapperPaneBase::SetButtonFontSize(WrapperPaneBase::ButtonType, float) { }
+void WrapperPaneBase::SetButtonFontSize(int, float) { }
 
 // 0x800EAB6C | 184 bytes
-void WrapperPaneBase::SetButtonPos(WrapperPaneBase::ButtonType, EVec2 &) { }
+void WrapperPaneBase::SetButtonPos(int, EVec2 &) { }
 
 // 0x800EAC24 | 180 bytes
-void WrapperPaneBase::SetButtonPosX(WrapperPaneBase::ButtonType, float) { }
+void WrapperPaneBase::SetButtonPosX(int, float) { }
 
 // 0x800EACD8 | 180 bytes
-void WrapperPaneBase::SetButtonPosY(WrapperPaneBase::ButtonType, float) { }
+void WrapperPaneBase::SetButtonPosY(int, float) { }
 
 // 0x800EAE18 | 276 bytes
 void WrapperPaneBase::SetAcceptFont(ERFont *) { }

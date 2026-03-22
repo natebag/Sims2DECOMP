@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8020A0B4 | 612 bytes
 void TileWalls::GenerateRotationLookups(void) { }
@@ -12,7 +13,7 @@ void TileWalls::GenerateRotationLookups(void) { }
 void TileWalls::GetPlacement(TileWallsSegment) const { }
 
 // 0x8020A418 | 264 bytes
-void TileWalls::SetPlacement(TileWalls::SheerPlacement, TileWallsSegment) { }
+void TileWalls::SetPlacement(int, TileWallsSegment) { }
 
 // 0x8020A520 | 648 bytes
 void TileWalls::Rotate(int) { }

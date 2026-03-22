@@ -6,6 +6,7 @@
 // These are string table pointers used by the UI system.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // All 56 "small functions" in this obj file are actually BSS globals
 // (static string pointers) and global ctor/dtor pairs, not real functions.

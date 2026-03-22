@@ -434,7 +434,7 @@ void AptCIH::SetInCtor(unsigned int val) {
 // AptDate::dateGetNumDaysInYear
 // NON_MATCHING - GCC emits tail call, SN emits full wrapper
 int AptDate::dateGetNumDaysInYear(int year) {
-    if (AptDate::dateIsLeapYear(year)) {
+    if (int(year)) {
         return 366;
     }
     return 365;

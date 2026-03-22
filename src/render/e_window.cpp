@@ -5,6 +5,7 @@
 // Medium functions (65-256 bytes) decompiled from the e_window object file.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class ERenderSurface;

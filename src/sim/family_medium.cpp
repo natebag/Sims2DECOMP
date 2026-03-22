@@ -10,6 +10,7 @@
 //   - GCC loop codegen
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations - this file is standalone to avoid header conflicts
 // All functions are NON_MATCHING stubs for documentation purposes

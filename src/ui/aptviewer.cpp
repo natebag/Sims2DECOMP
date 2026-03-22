@@ -6,6 +6,7 @@
 // AptViewer manages the Flash/ActionScript-based UI system.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class UIObjectBase;

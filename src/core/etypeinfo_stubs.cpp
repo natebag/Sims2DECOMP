@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8047092C | 136 bytes
 // PRAGMA_STUB: ETypeInfo::Register(EStorable *(*)(void), void (*)(void *), void (*)(void *), unsigned short, char *, ETypeInfo *)

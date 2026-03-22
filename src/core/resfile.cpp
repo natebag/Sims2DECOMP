@@ -98,7 +98,7 @@ void iResFile::SetResFileData(ResFile* data) {
 // iResFile::GetLanguage - Default implementation
 // 0x8013579C (size=60)
 // NON_MATCHING - vtable dispatch with SN Systems ABI adjustor thunks
-int iResFile::GetLanguage(Memory::HandleNode* node) {
+int iResFile::GetLanguage(int* node) {
     // Original dispatches through vtable to call GetID(node, &id)
     // via SN Systems adjustor thunk, then returns 0
     short id;
@@ -169,7 +169,7 @@ iResFile* ChainResFile::_dyncastimpl(SCID id) {
 
 // ChainResFile::Load - Sets error and returns (stub that calls SetError)
 // 0x800B3230 (size=36)
-void ChainResFile::Load(Memory::HandleNode* node) {
+void ChainResFile::Load(int* node) {
     SetError(-95);
 }
 
@@ -183,7 +183,7 @@ Memory::HandleNode* ChainResFile::GetByID(int type, short id, void (*callback)(v
 // ChainResFile::Add - Delegates to AddWithLanguage with lang=0
 // 0x800B3318 (size=60)
 // NON_MATCHING - vtable dispatch
-int ChainResFile::Add(Memory::HandleNode* node, int type, short id, StringBuffer& name, bool flag) {
+int ChainResFile::Add(int* node, int type, short id, StringBuffer& name, bool flag) {
     return AddWithLanguage(node, type, id, name, 0, flag);
 }
 
@@ -299,31 +299,31 @@ Memory::HandleNode* QuickResFile::GetByIDAndLanguage(int type, short id, char la
 
 // QuickResFile::GetName - Clears the output StringBuffer
 // 0x80132BC0 (size=36)
-void QuickResFile::GetName(Memory::HandleNode* node, StringBuffer& name) {
+void QuickResFile::GetName(int* node, StringBuffer& name) {
     StringBuffer_Clear(name);
 }
 
 // QuickResFile::GetResType
 // 0x80132BE4 (size=8)
-int QuickResFile::GetResType(Memory::HandleNode* node) {
+int QuickResFile::GetResType(int* node) {
     return 0;
 }
 
 // QuickResFile::GetID
 // 0x80132BEC (size=12)
-void QuickResFile::GetID(Memory::HandleNode* node, short* id) {
+void QuickResFile::GetID(int* node, short* id) {
     *id = 0;
 }
 
 // QuickResFile::GetIndex
 // 0x80132BF8 (size=12)
-void QuickResFile::GetIndex(Memory::HandleNode* node, short* index) {
+void QuickResFile::GetIndex(int* node, short* index) {
     *index = 0;
 }
 
 // QuickResFile::GetLanguage
 // 0x80132C04 (size=8)
-int QuickResFile::GetLanguage(Memory::HandleNode* node) {
+int QuickResFile::GetLanguage(int* node) {
     return 0;
 }
 
@@ -341,52 +341,52 @@ int QuickResFile::FindUniqueID(int type) {
 
 // QuickResFile::Detach
 // 0x80132C38 (size=4)
-void QuickResFile::Detach(Memory::HandleNode* node) {
+void QuickResFile::Detach(int* node) {
 }
 
 // QuickResFile::Load
 // 0x80132C3C (size=4)
-void QuickResFile::Load(Memory::HandleNode* node) {
+void QuickResFile::Load(int* node) {
 }
 
 // QuickResFile::IsLittleEndian
 // 0x80132C40 (size=8)
-int QuickResFile::IsLittleEndian(Memory::HandleNode* node) {
+int QuickResFile::IsLittleEndian(int* node) {
     return 0;
 }
 
 // QuickResFile::SetID
 // 0x80132C48 (size=4)
-void QuickResFile::SetID(Memory::HandleNode* node, short id) {
+void QuickResFile::SetID(int* node, short id) {
 }
 
 // QuickResFile::Add
 // 0x80132C4C (size=4)
-int QuickResFile::Add(Memory::HandleNode* node, int type, short id, StringBuffer& name, bool flag) {
+int QuickResFile::Add(int* node, int type, short id, StringBuffer& name, bool flag) {
     return 0;
 }
 
 // QuickResFile::AddWithLanguage
 // 0x80132C50 (size=4)
-int QuickResFile::AddWithLanguage(Memory::HandleNode* node, int type, short id, StringBuffer& name, char lang, bool flag) {
+int QuickResFile::AddWithLanguage(int* node, int type, short id, StringBuffer& name, char lang, bool flag) {
     return 0;
 }
 
 // QuickResFile::Write
 // 0x80132C54 (size=4)
-int QuickResFile::Write(Memory::HandleNode* node) {
+int QuickResFile::Write(int* node) {
     return 0;
 }
 
 // QuickResFile::Remove
 // 0x80132C58 (size=4)
-int QuickResFile::Remove(Memory::HandleNode* node) {
+int QuickResFile::Remove(int* node) {
     return 0;
 }
 
 // QuickResFile::SetInfo
 // 0x80132C5C (size=4)
-void QuickResFile::SetInfo(Memory::HandleNode* node, short id, StringBuffer& name, char lang) {
+void QuickResFile::SetInfo(int* node, short id, StringBuffer& name, char lang) {
 }
 
 // QuickResFile::_dyncastimpl
@@ -513,7 +513,7 @@ Memory::HandleNode* IFFResFile2::GetByID(int type, short id, void (*callback)(vo
 // IFFResFile2::Add - Delegates to AddWithLanguage with lang=0
 // 0x800BF8E4 (size=60)
 // NON_MATCHING - vtable dispatch pattern
-int IFFResFile2::Add(Memory::HandleNode* node, int type, short id, StringBuffer& name, bool flag) {
+int IFFResFile2::Add(int* node, int type, short id, StringBuffer& name, bool flag) {
     return AddWithLanguage(node, type, id, name, 0, flag);
 }
 
@@ -607,18 +607,18 @@ Memory::HandleNode* NghResFile::GetByName(int type, StringBuffer& name, void (*c
 
 // NghResFile::GetName - No-op (stub)
 // 0x800D3D3C (size=4)
-void NghResFile::GetName(Memory::HandleNode* node, StringBuffer& name) {
+void NghResFile::GetName(int* node, StringBuffer& name) {
 }
 
 // NghResFile::GetResType - Returns 0 (stub)
 // 0x800D3D40 (size=8)
-int NghResFile::GetResType(Memory::HandleNode* node) {
+int NghResFile::GetResType(int* node) {
     return 0;
 }
 
 // NghResFile::GetID - Gets ID from internal node data
 // 0x800D3D48 (size=16)
-void NghResFile::GetID(Memory::HandleNode* node, short* id) {
+void NghResFile::GetID(int* node, short* id) {
     // r3+0x180 -> pointer to node, then +8 -> ID field
     void* internalNode = *(void**)((char*)this + 0x180);
     *id = *(unsigned short*)((char*)internalNode + 8);
@@ -626,7 +626,7 @@ void NghResFile::GetID(Memory::HandleNode* node, short* id) {
 
 // NghResFile::GetIndex - No-op (stub)
 // 0x800D3D58 (size=4)
-void NghResFile::GetIndex(Memory::HandleNode* node, short* index) {
+void NghResFile::GetIndex(int* node, short* index) {
 }
 
 // NghResFile::FindUniqueName - No-op (stub)
@@ -642,40 +642,40 @@ int NghResFile::FindUniqueID(int type) {
 
 // NghResFile::Detach - No-op (stub)
 // 0x800D3D68 (size=4)
-void NghResFile::Detach(Memory::HandleNode* node) {
+void NghResFile::Detach(int* node) {
 }
 
 // NghResFile::Load - No-op (stub)
 // 0x800D3D6C (size=4)
-void NghResFile::Load(Memory::HandleNode* node) {
+void NghResFile::Load(int* node) {
 }
 
 // NghResFile::IsLittleEndian - Always returns 1 (true)
 // 0x800D3D70 (size=8)
-int NghResFile::IsLittleEndian(Memory::HandleNode* node) {
+int NghResFile::IsLittleEndian(int* node) {
     return 1;
 }
 
 // NghResFile::SetID - No-op (stub)
 // 0x800D3D78 (size=4)
-void NghResFile::SetID(Memory::HandleNode* node, short id) {
+void NghResFile::SetID(int* node, short id) {
 }
 
 // NghResFile::Write - No-op (stub)
 // 0x800D3F6C (size=4)
-int NghResFile::Write(Memory::HandleNode* node) {
+int NghResFile::Write(int* node) {
     return 0;
 }
 
 // NghResFile::Remove - No-op (stub)
 // 0x800D3F70 (size=4)
-int NghResFile::Remove(Memory::HandleNode* node) {
+int NghResFile::Remove(int* node) {
     return 0;
 }
 
 // NghResFile::SetInfo - No-op (stub)
 // 0x800D3F74 (size=4)
-void NghResFile::SetInfo(Memory::HandleNode* node, short id, StringBuffer& name, char lang) {
+void NghResFile::SetInfo(int* node, short id, StringBuffer& name, char lang) {
 }
 
 // NghResFile::SetCurrentHouse - Store house number (0-based internally, 1-based input)

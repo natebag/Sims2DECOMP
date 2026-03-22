@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80008448 | 40 bytes
 void __node_alloc<false, 0>::_M_deallocate(void *, unsigned int) { }

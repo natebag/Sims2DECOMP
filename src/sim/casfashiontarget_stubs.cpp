@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802A4FF8 | 1328 bytes
 CASFashionTarget::CASFashionTarget(void) { }
@@ -30,4 +31,4 @@ void CASFashionTarget::GetVariable(char *) { }
 void CASFashionTarget::GetLocalizable(char *) { }
 
 // 0x802A5D54 | 796 bytes
-void CASFashionTarget::GetLocalizableSubnav(UIScreenID, int, unsigned wchar_t *) { }
+void CASFashionTarget::GetLocalizableSubnav(UIScreenID, int, wchar_t *) { }

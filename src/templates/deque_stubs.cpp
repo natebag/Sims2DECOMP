@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8011136C | 456 bytes
 void deque<StateMachineStatus *, allocator<StateMachineStatus *> >::_M_reallocate_map(unsigned int, bool) { }
@@ -30,13 +31,13 @@ void deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_pop_back_
 void deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_reallocate_map(unsigned int, bool) { }
 
 // 0x80316D0C | 152 bytes
-void deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_push_back_aux_v(FAMTarget::FAM_STATE &) { }
+void deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_push_back_aux_v(int &) { }
 
 // 0x80316FC8 | 456 bytes
 void deque<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_reallocate_map(unsigned int, bool) { }
 
 // 0x80317190 | 152 bytes
-void deque<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_push_back_aux_v(MMUTarget::MMU_MENU_STATE &) { }
+void deque<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_push_back_aux_v(int &) { }
 
 // 0x80317228 | 104 bytes
 void deque<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_pop_back_aux(void) { }

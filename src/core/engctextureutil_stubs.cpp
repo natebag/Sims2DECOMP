@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8052B9FC | 172 bytes
 void ENgcTextureUtil::SwizzleToRGB5A3(unsigned char *, int, int, unsigned char *) { }

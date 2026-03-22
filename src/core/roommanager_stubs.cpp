@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801F4C84 | 264 bytes
 RoomManager::RoomManager(void) { }
@@ -42,10 +43,10 @@ void RoomManager::UpdateRooms(void) { }
 void RoomManager::OffsetWorld(CTilePt &) { }
 
 // 0x801F5B84 | 580 bytes
-void RoomManager::ProcessDegenerateTile(CTilePt &, unsigned short, Room::Sides) { }
+void RoomManager::ProcessDegenerateTile(CTilePt &, unsigned short, int) { }
 
 // 0x801F5DC8 | 412 bytes
-void RoomManager::ResolveDiagonal(CTilePt &, Room **, Room **, Room::Sides *, Room::Sides *) { }
+void RoomManager::ResolveDiagonal(CTilePt &, Room **, Room **, int *, int *) { }
 
 // 0x801F609C | 196 bytes
 void RoomManager::ResetRooms(void) { }

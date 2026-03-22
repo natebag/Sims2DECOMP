@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8047EDE8 | 88 bytes
 ENgcFile::ENgcFile(void) { }
@@ -12,7 +13,7 @@ ENgcFile::ENgcFile(void) { }
 ENgcFile::~ENgcFile(void) { }
 
 // 0x8047EEA4 | 312 bytes
-void ENgcFile::Creator(EFile *, char *, char *, EFile::DeviceType, EFile::AccessMode, unsigned int) { }
+void ENgcFile::Creator(EFile *, char *, char *, int, int, unsigned int) { }
 
 // 0x8047EFDC | 84 bytes
 void ENgcFile::Destroy(void) { }
@@ -21,4 +22,4 @@ void ENgcFile::Destroy(void) { }
 void ENgcFile::BufferReadRequest(unsigned char *, int) { }
 
 // 0x8047F1F8 | 292 bytes
-void ENgcFile::Seek(int, EFile::SeekType) { }
+void ENgcFile::Seek(int, int) { }

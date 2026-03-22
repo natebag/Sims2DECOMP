@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80437258 | 116 bytes
 AptScriptFunctionByteCodeBlock::AptScriptFunctionByteCodeBlock(unsigned char *, int, AptConstantPool, char *, AptCIH *, AptScriptFunctionBase *) { }

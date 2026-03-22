@@ -6,6 +6,7 @@
 // AwarenessManager handles NPC awareness of events, weather, other sims.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class cXObject;

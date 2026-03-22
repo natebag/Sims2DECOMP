@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8016205C | 296 bytes
 NeighborhoodImpl::~NeighborhoodImpl(void) { }
@@ -96,13 +97,13 @@ void NeighborhoodImpl::DumpState(void) { }
 void NeighborhoodImpl::UpdateInstanceVisitorTypes(void) { }
 
 // 0x80167768 | 152 bytes
-void NeighborhoodImpl::NotifyAllNeighbors(WantFear::Notification &, Neighbor *) { }
+void NeighborhoodImpl::NotifyAllNeighbors(int &, Neighbor *) { }
 
 // 0x80167800 | 324 bytes
-void NeighborhoodImpl::NotifyAllResidents(WantFear::Notification &, Neighbor *) { }
+void NeighborhoodImpl::NotifyAllResidents(int &, Neighbor *) { }
 
 // 0x80167944 | 380 bytes
-void NeighborhoodImpl::NotifyAllPersons(WantFear::Notification &, Neighbor *) { }
+void NeighborhoodImpl::NotifyAllPersons(int &, Neighbor *) { }
 
 // 0x8016A7D4 | 72 bytes
 void NeighborhoodImpl::GetPlayerVisitingAnotherHouse(void) const { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80392F20 | 176 bytes
 EIStaticModel::EIStaticModel(void) { }
@@ -99,7 +100,7 @@ void EIStaticModel::DrawImmediateGhosted(ERC *, EAnimController *) { }
 void EIStaticModel::TagAsGrabbed(void) { }
 
 // 0x80396128 | 40 bytes
-void EIStaticModel::GetInstName(EInstance::InstType &) { }
+void EIStaticModel::GetInstName(int &) { }
 
 // 0x80397374 | 40 bytes
 void EIStaticModel::New(void) { }

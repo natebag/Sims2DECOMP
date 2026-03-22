@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802E7EB4 | 4368 bytes
 MODTarget::MODTarget(int) { }
@@ -30,19 +31,19 @@ void MODTarget::DrawMoodHeadCallback(ERC *, structDrawCBparams *) { }
 void MODTarget::UpdateMood(void) { }
 
 // 0x802E9C94 | 448 bytes
-void MODTarget::SelectDpadArrow(MODTarget::eSidePanelId) { }
+void MODTarget::SelectDpadArrow(int) { }
 
 // 0x802E9E54 | 924 bytes
-void MODTarget::SelectDpadButton(MODTarget::eSidePanelId) { }
+void MODTarget::SelectDpadButton(int) { }
 
 // 0x802EA1F0 | 632 bytes
-void MODTarget::SetWarning(MODTarget::eSidePanelId, bool, bool) { }
+void MODTarget::SetWarning(int, bool, bool) { }
 
 // 0x802EA468 | 604 bytes
 void MODTarget::SetMeterValue(float, bool) { }
 
 // 0x802EA6C4 | 768 bytes
-void MODTarget::SetDpadIcons(MODTarget::eSidePanelIcon) { }
+void MODTarget::SetDpadIcons(int) { }
 
 // 0x802EA9C4 | 104 bytes
 void MODTarget::DisplayPaused(void) { }

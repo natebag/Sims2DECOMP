@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x801F8EA0 | 196 bytes
 void SpacePartition::FindInterfaceRect(int, int, IRect *) { }

@@ -11,6 +11,7 @@
 //   - STL vector implementation differences
 
 #include "types.h"
+#include "stub_classes.h"
 
 // Forward declarations
 class FamilyImpl;

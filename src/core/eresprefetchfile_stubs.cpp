@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x804DC84C | 88 bytes
 EResPrefetchFile::EResPrefetchFile(void) { }
@@ -33,7 +34,7 @@ void EResPrefetchFile::GetSystemHandle(void) const { }
 void EResPrefetchFile::Tell(void) const { }
 
 // 0x804DCA6C | 212 bytes
-void EResPrefetchFile::Seek(int, EFile::SeekType) { }
+void EResPrefetchFile::Seek(int, int) { }
 
 // 0x804DCB40 | 92 bytes
 void EResPrefetchFile::SetStreamBuffer(EResourceManager *, char *, void *, unsigned int, unsigned int) { }

@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8000893C | 240 bytes
 EStream & operator<<<int, TArrayERCharacterAllocator>(EStream &, TArray<int, TArrayERCharacterAllocator> &) { }
@@ -270,13 +271,13 @@ Memory::HandleNode * ReconSaveObject<CasGenetics>(CasGenetics *, int, int) {
 }
 
 // 0x80284D18 | 380 bytes
-void arrayRemove<ActionQueueHUD::ActionQueueItem>(ActionQueueHUD::ActionQueueItem *, unsigned int, unsigned int, unsigned int) { }
+void arrayRemove<ActionQueueHUD::ActionQueueItem>(int *, unsigned int, unsigned int, unsigned int) { }
 
 // 0x80284E94 | 368 bytes
 void arrayRemove<unsigned int>(unsigned int *, unsigned int, unsigned int, unsigned int) { }
 
 // 0x80285004 | 256 bytes
-void arrayInsert<ActionQueueHUD::ActionQueueItem>(ActionQueueHUD::ActionQueueItem *, unsigned int, ActionQueueHUD::ActionQueueItem &, unsigned int) { }
+void arrayInsert<ActionQueueHUD::ActionQueueItem>(int *, unsigned int, int &, unsigned int) { }
 
 // 0x80285104 | 200 bytes
 void arrayInsert<AptCIH *>(AptCIH * *, unsigned int, AptCIH * &, unsigned int) { }

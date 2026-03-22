@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8026D884 | 360 bytes
 UI3D::UI3D(void) { }
@@ -15,7 +16,7 @@ UI3D::~UI3D(void) { }
 void UI3D::AddEntry(char *, unsigned int, unsigned int, unsigned int, int, char *) { }
 
 // 0x8026DC7C | 260 bytes
-void UI3D::RemoveEntry(UI3D::UI3DRecord *) { }
+void UI3D::RemoveEntry(int *) { }
 
 // 0x8026DD80 | 264 bytes
 void UI3D::InstallEntry(char *, unsigned int, unsigned int, unsigned int, char *, int) { }

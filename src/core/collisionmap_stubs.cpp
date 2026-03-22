@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x80033220 | 1800 bytes
 void CollisionMap::DoesCollideEnvironment(EVec2 &, EVec2 &, float, bool, bool, EVec2 &) { }

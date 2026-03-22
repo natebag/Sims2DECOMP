@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x802D051C | 3340 bytes
 H2DTarget::H2DTarget(void) { }
@@ -48,7 +49,7 @@ void H2DTarget::SpawnIntroThoughtBalloon(UIDialog *) { }
 void H2DTarget::IsUserReadingIntroThoughtBalloon(void) { }
 
 // 0x802D2858 | 92 bytes
-void H2DTarget::NewWantFearIcon(int, int, unsigned int, unsigned int, WAFTarget::eWAFIconAnim, Neighbor *) { }
+void H2DTarget::NewWantFearIcon(int, int, unsigned int, unsigned int, int, Neighbor *) { }
 
 // 0x802D28B4 | 68 bytes
 void H2DTarget::AddAction(int, Interaction *, BString2 &, unsigned int, ERShader *, unsigned int) { }

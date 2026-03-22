@@ -4,6 +4,7 @@
 // Each function needs proper decompilation to match the original binary.
 
 #include "types.h"
+#include "stub_classes.h"
 
 // 0x8045CE28 | 108 bytes
 EFileSystem::EFileSystem(void) { }
@@ -21,19 +22,19 @@ EFileSystem::FileCreator::FileCreator(void) { }
 void EFileSystem::FileCreator::TallyBits(int, int, int) const { }
 
 // 0x8045D064 | 212 bytes
-void EFileSystem::FileCreator::GetScore(EFile::DeviceType, EFile::IOMode, EFile::AccessMode, char *) const { }
+void EFileSystem::FileCreator::GetScore(int, int, int, char *) const { }
 
 // 0x8045D138 | 8 bytes
 void EFileSystem::FileCreator::GetCreatorCB(void) const { }
 
 // 0x8045D140 | 200 bytes
-void EFileSystem::FindCreator(EFile::DeviceType, EFile::IOMode, EFile::AccessMode, char *) const { }
+void EFileSystem::FindCreator(int, int, int, char *) const { }
 
 // 0x8045D4C4 | 76 bytes
 void EFileSystem::Destroy(EFile *&) { }
 
 // 0x8045D510 | 96 bytes
-void EFileSystem::Init(EFile::DeviceType) { }
+void EFileSystem::Init(int) { }
 
 // 0x8045D570 | 8 bytes
 void EFileSystem::InitHDDFileSystem(void) { }
@@ -66,7 +67,7 @@ void EFileSystem::HDDIsUnformatted(void) { }
 void EFileSystem::GetDefaultType(void) const { }
 
 // 0x8045D5E4 | 172 bytes
-void EFileSystem::RegisterFileCreator(EFile::DeviceType, EFile::IOMode, EFile::AccessMode, char *, EFile *(*)(EFile *, char *, char *, EFile::DeviceType, EFile::AccessMode, unsigned int)) { }
+void EFileSystem::RegisterFileCreator(int, int, int, char *, EFile *(*)(EFile *, char *, char *, int, int, unsigned int)) { }
 
 // 0x8045D690 | 156 bytes
-void EFileSystem::ParseMode(char *, EFile::IOMode &) { }
+void EFileSystem::ParseMode(char *, int &) { }
