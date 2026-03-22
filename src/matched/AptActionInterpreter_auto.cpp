@@ -3,41 +3,43 @@
 // 13 functions, 64 bytes
 
 // 0x8026F4B8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptActionInterpreter::cbCallMethod_ASSetPropFlags(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
 
 // 0x802729D4 (4 bytes)
-void AptActionInterpreter::_FunctionAptActionEnd(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionEnd(AptActionInterpreter *, int *) { }
 
 // 0x80272BBC (4 bytes)
-void AptActionInterpreter::_FunctionAptActionToggleQuality(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionToggleQuality(AptActionInterpreter *, int *) { }
 
 // 0x80272BC0 (4 bytes)
-void AptActionInterpreter::_FunctionAptActionStopSounds(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionStopSounds(AptActionInterpreter *, int *) { }
 
 // 0x80275D1C (4 bytes)
-void AptActionInterpreter::_FunctionAptActionStringLessThan(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionStringLessThan(AptActionInterpreter *, int *) { }
 
 // 0x80275EB0 (4 bytes)
-void AptActionInterpreter::_FunctionAptActionMBLength(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionMBLength(AptActionInterpreter *, int *) { }
 
 // 0x80275EB4 (4 bytes)
-void AptActionInterpreter::_FunctionAptActionCharToAscii(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionCharToAscii(AptActionInterpreter *, int *) { }
 
 // 0x80276234 (4 bytes)
-void AptActionInterpreter::_FunctionAptActionMBSubString(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionMBSubString(AptActionInterpreter *, int *) { }
 
 // 0x80276238 (4 bytes)
-void AptActionInterpreter::_FunctionAptActionMBCharToAscii(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionMBCharToAscii(AptActionInterpreter *, int *) { }
 
 // 0x8027623C (4 bytes)
-void AptActionInterpreter::_FunctionAptActionMBAsciiToChar(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionMBAsciiToChar(AptActionInterpreter *, int *) { }
 
 // 0x802769BC (12 bytes)
-void AptActionInterpreter::_FunctionAptActionReturn(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { /* li r0,1; stw r0,20(r4) */ }
+void AptActionInterpreter::_FunctionAptActionReturn(AptActionInterpreter *, int *) { /* li r0,1; stw r0,20(r4) */ }
 
 // 0x8027CEB4 (4 bytes)
-void AptActionInterpreter::_FunctionAptActionBitURShift(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionBitURShift(AptActionInterpreter *, int *) { }
 
 // 0x8027DAD4 (4 bytes)
-void AptActionInterpreter::_FunctionAptActionWaitForFrame(AptActionInterpreter *, AptActionInterpreter::LocalContextT *) { }
+void AptActionInterpreter::_FunctionAptActionWaitForFrame(AptActionInterpreter *, int *) { }
 

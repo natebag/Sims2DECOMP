@@ -3,6 +3,8 @@
 // 3 functions, 28 bytes
 
 // 0x8009200C (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MUStatesLoadHouse::Reset() { *(int*)((char*)this + 0x1C) = 0; }
 
 // 0x80092018 (4 bytes)

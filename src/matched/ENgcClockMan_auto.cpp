@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x8032DA34 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcClockMan::Init() { }
 
 // 0x8032DA38 (4 bytes)

@@ -3,6 +3,8 @@
 // 2 functions, 20 bytes
 
 // 0x80145328 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjectSlot::GetHeight() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x80145348 (12 bytes)

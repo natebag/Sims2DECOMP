@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x8020B690 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int InteractorModule::InteractorManager::GetInputManager() { return /* SDA global @ r13-28512 */; }  // lwz r3,-28512(r13)
 
 // 0x8020B698 (8 bytes)

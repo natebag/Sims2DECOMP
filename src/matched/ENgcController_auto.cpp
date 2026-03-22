@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x803C711C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool ENgcController::HasVibration() const { return true; }
 

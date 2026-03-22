@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8020377C (8 bytes)
-void EYETarget::SetState(EYETarget::eState) { *(int*)((char*)this + 0xAC) = val; }  // offset 0xAC
+#include "types.h"
+#include "stub_classes.h"
+void EYETarget::SetState(int) { *(int*)((char*)this + 0xAC) = val; }  // offset 0xAC
 

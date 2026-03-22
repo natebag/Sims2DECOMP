@@ -3,6 +3,8 @@
 // 18 functions, 172 bytes
 
 // 0x80142B94 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void RoutingSlot::AllowAnyFacing() { *(int*)((char*)this + 0x34) = -3; }
 
 // 0x80142BA0 (12 bytes)

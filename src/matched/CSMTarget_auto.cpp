@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x801A7674 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CSMTarget::IsCSIMActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88
 

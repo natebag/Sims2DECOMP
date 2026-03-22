@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x800595AC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* Player::GetInteractorColor() { return (void*)0x80485594; }  // global data pointer
 

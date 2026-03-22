@@ -3,6 +3,8 @@
 // 9 functions, 72 bytes
 
 // 0x800BABF8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void cGZMusic::Init() { return 1; }
 
 // 0x800BADA4 (8 bytes)

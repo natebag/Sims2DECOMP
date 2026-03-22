@@ -3,6 +3,8 @@
 // 11 functions, 64 bytes
 
 // 0x802FA9E4 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EShader::SetShadowAlpha(float) { }
 
 // 0x802FAAA8 (4 bytes)

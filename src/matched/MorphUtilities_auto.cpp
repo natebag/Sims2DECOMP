@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x80057C18 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MorphUtilities::MorphUtilities(EIStaticModel **) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 

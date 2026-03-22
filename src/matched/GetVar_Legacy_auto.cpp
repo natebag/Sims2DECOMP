@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x801E9480 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void GetVar_Legacy::Handler(char *) { }
 

@@ -87,7 +87,7 @@ int Room::IsPool(void) {
 // Rotates a room side enum by a number of 90-degree turns.
 // Returns 0 if side is NONE (0).
 // ============================================================================
-Room::Sides Room::Rotate(int side, int amount) {
+int Room::Rotate(int side, int amount) {
     if (side == 0) {
         return (Sides)0;
     }

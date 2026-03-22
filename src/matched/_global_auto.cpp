@@ -3,6 +3,8 @@
 // 207 functions, 1600 bytes
 
 // 0x80006024 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int NGCGetLanguage() { return 0; }
 
 // 0x800063F8 (12 bytes)

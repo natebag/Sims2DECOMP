@@ -3,6 +3,8 @@
 // 2 functions, 20 bytes
 
 // 0x801B41B8 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void FCMTarget::HideFireCodeMeter() { *(int*)((char*)this + 0x90) = 0; }
 
 // 0x801B4458 (8 bytes)

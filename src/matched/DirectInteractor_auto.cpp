@@ -3,6 +3,8 @@
 // 3 functions, 28 bytes
 
 // 0x80206118 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int InteractorModule::DirectInteractor::GetControlStatus() { return *(int*)((char*)this + 0x64); }  // offset 0x64
 
 // 0x80206120 (12 bytes)

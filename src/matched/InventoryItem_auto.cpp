@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8004A20C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int BBI::InventoryItem::GetItemGuid() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x8004A2D8 (8 bytes)

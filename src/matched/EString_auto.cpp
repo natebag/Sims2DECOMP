@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x803B0A6C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EString::operator char *() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
 

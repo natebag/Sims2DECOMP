@@ -3,6 +3,8 @@
 // 9 functions, 76 bytes
 
 // 0x8015BEDC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ObjectDataObjDefinition::Detach() { *(char*)((char*)this + 0x1A) = 0; }
 
 // 0x8015BF30 (4 bytes)

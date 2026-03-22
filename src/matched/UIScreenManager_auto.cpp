@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8017F87C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void UIScreenManager::process_cheats(UIScreenID) { return 1; }
 

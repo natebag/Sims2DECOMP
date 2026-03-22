@@ -3,11 +3,13 @@
 // 3 functions, 12 bytes
 
 // 0x80057998 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EMemoryMeterWin::Init() { }
 
 // 0x8005799C (4 bytes)
 void EMemoryMeterWin::Reset() { }
 
 // 0x80057C14 (4 bytes)
-void EMemoryMeterWin::SetEvent(Panelstateman::PanelEvent, unsigned int) { }
+void EMemoryMeterWin::SetEvent(int, unsigned int) { }
 

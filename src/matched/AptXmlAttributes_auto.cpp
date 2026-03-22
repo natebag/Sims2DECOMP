@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x802C4ECC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AptXmlAttributes::PreDestroy() { *(int*)((char*)this + 0x24) = 0; }
 
 // 0x802C4FDC (8 bytes)

@@ -3,6 +3,8 @@
 // 16 functions, 144 bytes
 
 // 0x800334F8 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ESim::DoLightingCalculation() { }
 
 // 0x800350F0 (12 bytes)

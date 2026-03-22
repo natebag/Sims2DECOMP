@@ -3,6 +3,8 @@
 // 11 functions, 92 bytes
 
 // 0x800799C4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CUnlockDisplayObject::GetModel() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x80079A54 (8 bytes)

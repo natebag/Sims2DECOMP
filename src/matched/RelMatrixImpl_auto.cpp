@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x80134B18 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void RelMatrixImpl::Init() { return 1; }
 

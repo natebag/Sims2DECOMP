@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x80020D08 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ECheats::WriteCheatsFile() { }
 
 // 0x80020D0C (4 bytes)

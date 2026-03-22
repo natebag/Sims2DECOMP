@@ -3,6 +3,8 @@
 // 12 functions, 120 bytes
 
 // 0x80369F30 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERSoundEvent::GetTypeInfo() const { return (void*)0x8050D84C; }  // global data pointer
 
 // 0x80369F3C (12 bytes)

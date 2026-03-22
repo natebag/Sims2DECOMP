@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x8032E638 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcEngine::InitializeProfiler() { }
 
 // 0x8032E884 (8 bytes)

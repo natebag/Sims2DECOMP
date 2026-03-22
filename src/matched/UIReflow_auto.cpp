@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x8017EDA4 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void UIReflow::Debug_PrintBlock() { }
 

@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x8001EB78 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CameraManager::Initialize() { }
 
 // 0x8001EB7C (4 bytes)

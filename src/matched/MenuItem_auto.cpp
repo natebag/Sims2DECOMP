@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x80183248 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ActionMenu::MenuItem::GetNext() { return *(int*)((char*)this + 0x60); }  // offset 0x60
 
 // 0x80183250 (8 bytes)

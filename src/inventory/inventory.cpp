@@ -62,7 +62,7 @@ void InventoryItem::SetItemCategory(eItemCategory category) {
 // NON_MATCHING: member offset differs (GCC +0x04 vs SN +0x00)
 // BBI::InventoryItem::GetItemCategory(void) const @ 0x8004a0f8, 12 bytes
 // Original: lbz r3,0(r3); extsb r3,r3; blr
-InventoryItem::eItemCategory InventoryItem::GetItemCategory() const {
+int InventoryItem::GetItemCategory() const {
     return (eItemCategory)(s8)m_category;
 }
 
@@ -76,7 +76,7 @@ void InventoryItem::SetItemSubcategory(eItemSubcategory subcategory) {
 // NON_MATCHING: member offset differs (GCC +0x07 vs SN +0x03)
 // BBI::InventoryItem::GetItemSubcategory(void) const @ 0x8004a138, 12 bytes
 // Original: lbz r3,3(r3); extsb r3,r3; blr
-InventoryItem::eItemSubcategory InventoryItem::GetItemSubcategory() const {
+int InventoryItem::GetItemSubcategory() const {
     return (eItemSubcategory)(s8)m_subcategory;
 }
 

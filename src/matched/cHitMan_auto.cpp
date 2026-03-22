@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80116DEC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int cHitMan::StartCallbackTimer() { return 0; }
 
 // 0x80116DF4 (8 bytes)

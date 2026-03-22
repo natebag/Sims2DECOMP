@@ -3,6 +3,8 @@
 // 14 functions, 128 bytes
 
 // 0x80293978 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool AptCIH::getHasClass() const { return (*(int*)((char*)this + 0x5C) >> 14) & 1; }  // bit 14
 
 // 0x802939A4 (12 bytes)

@@ -3,6 +3,8 @@
 // 2 functions, 24 bytes
 
 // 0x8021ECB0 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void InteractorModule::SimInteractor::ReturnPlumbobToSim(PlumbBob *, EVec3 &) { *(int*)((char*)this + 0x214) = 0; }
 
 // 0x8021F0AC (12 bytes)

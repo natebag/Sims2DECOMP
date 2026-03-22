@@ -3,6 +3,8 @@
 // 6 functions, 36 bytes
 
 // 0x80300AE8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EWindow::GetCurrentWindow() { return /* SDA global @ r13-26708 */; }  // lwz r3,-26708(r13)
 
 // 0x80300AF0 (8 bytes)

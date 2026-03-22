@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x802D21F8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EStream::GetFile() { return 0; }
 
 // 0x802D283C (8 bytes)

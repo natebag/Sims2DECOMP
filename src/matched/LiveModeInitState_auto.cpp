@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x8008BC24 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void LiveModeInitState::Shutdown() { }
 
 // 0x8008C9BC (4 bytes)

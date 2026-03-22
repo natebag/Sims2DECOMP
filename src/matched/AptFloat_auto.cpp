@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x802BBD94 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 float AptFloat::GetFloat() const { return *(float*)((char*)this + 0xC); }  // offset 0xC
 

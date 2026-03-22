@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80130580 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 unsigned int cXPortalImpl::ReconType() { return 0x444F4F52; }
 
 // 0x8013280C (4 bytes)

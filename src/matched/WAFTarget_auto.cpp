@@ -3,6 +3,8 @@
 // 4 functions, 40 bytes
 
 // 0x801E3574 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void WAFTarget::ShowWantsAndFears() { *(int*)((char*)this + 0x90) = 1; }
 
 // 0x801E38F8 (8 bytes)

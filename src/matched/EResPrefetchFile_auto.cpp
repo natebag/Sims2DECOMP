@@ -3,6 +3,8 @@
 // 7 functions, 52 bytes
 
 // 0x80313078 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EResPrefetchFile::Destroy() { }
 
 // 0x803131A8 (8 bytes)

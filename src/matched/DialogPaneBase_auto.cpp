@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80088D20 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int DialogPaneBase::GetTitleTextItem() { return *(int*)((char*)this + 0x60); }  // offset 0x60
 
 // 0x80088D28 (8 bytes)

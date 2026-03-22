@@ -3,6 +3,8 @@
 // 13 functions, 92 bytes
 
 // 0x8003E5B4 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 unsigned int EGlobal::GetGameFontID() { return 0x67F664FB; }
 
 // 0x8003F0CC (4 bytes)

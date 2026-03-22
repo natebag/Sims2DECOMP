@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x80172C20 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CasSimRendererDynamic::LockSimRotation(bool) { *(int*)((char*)this + 0x21C) = val; }  // offset 0x21C
 

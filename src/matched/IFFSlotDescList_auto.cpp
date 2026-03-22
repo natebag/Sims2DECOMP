@@ -3,6 +3,8 @@
 // 3 functions, 20 bytes
 
 // 0x801452AC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void IFFSlotDescList::GetStringSetID() const { return 0; }
 
 // 0x801452B4 (4 bytes)

@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x8014B440 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 unsigned int WantFear::Bookmark::GetOverlayShader(Neighbor *) const { return 0x9F93FF74; }
 

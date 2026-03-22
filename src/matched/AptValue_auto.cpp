@@ -3,6 +3,8 @@
 // 39 functions, 232 bytes
 
 // 0x802B4248 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool AptValue::GetNativeHashVirtual() { return false; }
 
 // 0x802B4250 (8 bytes)

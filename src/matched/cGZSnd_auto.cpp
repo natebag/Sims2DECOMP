@@ -3,6 +3,8 @@
 // 8 functions, 64 bytes
 
 // 0x800BA090 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void cGZSnd::Init() { return 1; }
 
 // 0x800BA658 (8 bytes)

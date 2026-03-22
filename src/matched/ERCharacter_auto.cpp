@@ -3,6 +3,8 @@
 // 8 functions, 84 bytes
 
 // 0x80368B18 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ERCharacter::PrintNodes() { }
 
 // 0x80368C44 (12 bytes)

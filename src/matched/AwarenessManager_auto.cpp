@@ -3,6 +3,8 @@
 // 8 functions, 72 bytes
 
 // 0x80012250 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AwarenessManager::SetIsRaining(bool) { /* SDA global @ r13-32696 = param */ }  // stw r3,-32696(r13)
 
 // 0x80014248 (8 bytes)

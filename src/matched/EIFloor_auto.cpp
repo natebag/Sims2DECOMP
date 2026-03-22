@@ -3,6 +3,8 @@
 // 9 functions, 92 bytes
 
 // 0x80048344 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EIFloor::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 
 // 0x800483F8 (12 bytes)

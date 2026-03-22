@@ -3,6 +3,8 @@
 // 6 functions, 44 bytes
 
 // 0x802E767C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* E3DWindow::GetLookPos() { return (char*)this + 0x280; }  // offset 0x280
 
 // 0x802E7684 (8 bytes)

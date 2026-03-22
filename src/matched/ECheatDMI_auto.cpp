@@ -3,6 +3,8 @@
 // 2 functions, 24 bytes
 
 // 0x80021930 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ECheatDMI::GetType() { return *(int*)((char*)(*(void**)((char*)this + 0xC)) + 0x4C); }  // double deref
 
 // 0x8002193C (12 bytes)

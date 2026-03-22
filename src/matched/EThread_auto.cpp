@@ -3,6 +3,8 @@
 // 9 functions, 56 bytes
 
 // 0x802D858C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EThread::GetStack() { return *(int*)((char*)this + 0x31C); }  // offset 0x31C
 
 // 0x802D8594 (8 bytes)

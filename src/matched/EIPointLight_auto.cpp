@@ -3,6 +3,8 @@
 // 9 functions, 96 bytes
 
 // 0x8022A560 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EIPointLight::GetTypeInfo() const { return (void*)0x8050CC48; }  // global data pointer
 
 // 0x8022A56C (12 bytes)

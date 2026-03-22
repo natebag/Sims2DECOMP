@@ -156,7 +156,7 @@ void GeneralAllocator::LinkCoreBlock(CoreBlock* block, CoreBlock* after) {
 // Returns the CoreBlock or NULL
 // ============================================================================
 // NON_MATCHING - loop/branch structure may differ
-GeneralAllocator::CoreBlock* GeneralAllocator::FindCoreBlockForAddress(void* addr) const {
+int* GeneralAllocator::FindCoreBlockForAddress(void* addr) const {
     CoreBlock* sentinel = (CoreBlock*)((char*)this + 0x44C);
     CoreBlock* block = *(CoreBlock**)((char*)this + 0x46C);
     if (block == sentinel) {

@@ -3,6 +3,8 @@
 // 8 functions, 56 bytes
 
 // 0x80147434 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TreeSimImpl::SetError(short) { *(short*)((char*)this + 0x34) = val; }  // offset 0x34
 
 // 0x80147444 (12 bytes)

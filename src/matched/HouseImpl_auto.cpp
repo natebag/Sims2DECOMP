@@ -3,6 +3,8 @@
 // 4 functions, 36 bytes
 
 // 0x800BC984 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int HouseImpl::GetFamily() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x800BC98C (8 bytes)

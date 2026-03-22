@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x802BCC90 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EAStringC::FindOneOf(char *) const { return 0; }
 
 // 0x802BCC98 (8 bytes)

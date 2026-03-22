@@ -3,6 +3,8 @@
 // 8 functions, 52 bytes
 
 // 0x80327E30 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EResourceMap::GetSize() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x80327EA0 (4 bytes)

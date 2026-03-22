@@ -3,6 +3,8 @@
 // 6 functions, 60 bytes
 
 // 0x80078008 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CUnlockDisplay::SetViewZoomFactor(float) { *(float*)((char*)this + 0x498) = val; }  // offset 0x498
 
 // 0x80078DAC (12 bytes)

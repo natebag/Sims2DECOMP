@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x802AFFF8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptTextFormat::operator new [](unsigned int) { return 0; }
 
 // 0x802B0000 (4 bytes)

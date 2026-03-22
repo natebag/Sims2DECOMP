@@ -3,6 +3,8 @@
 // 28 functions, 196 bytes
 
 // 0x80132A54 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int QuickResFile::Create(StringBuffer &) { return -95; }
 
 // 0x80132A5C (8 bytes)
@@ -45,44 +47,44 @@ int QuickResFile::GetByIndex(int, short, void (*)(void *, int)) { return 0; }
 int QuickResFile::GetByIDAndLanguage(int, short, char, void (*)(void *, int)) { return 0; }
 
 // 0x80132BE4 (8 bytes)
-int QuickResFile::GetResType(Memory::HandleNode *) { return 0; }
+int QuickResFile::GetResType(int *) { return 0; }
 
 // 0x80132BEC (12 bytes)
-void QuickResFile::GetID(Memory::HandleNode *, short *) { /* li r0,0; sth r0,0(r5) */ }
+void QuickResFile::GetID(int *, short *) { /* li r0,0; sth r0,0(r5) */ }
 
 // 0x80132BF8 (12 bytes)
-void QuickResFile::GetIndex(Memory::HandleNode *, short *) { /* li r0,0; sth r0,0(r5) */ }
+void QuickResFile::GetIndex(int *, short *) { /* li r0,0; sth r0,0(r5) */ }
 
 // 0x80132C04 (8 bytes)
-int QuickResFile::GetLanguage(Memory::HandleNode *) { return 0; }
+int QuickResFile::GetLanguage(int *) { return 0; }
 
 // 0x80132C30 (8 bytes)
 int QuickResFile::FindUniqueID(int) { return 0; }
 
 // 0x80132C38 (4 bytes)
-void QuickResFile::Detach(Memory::HandleNode *) { }
+void QuickResFile::Detach(int *) { }
 
 // 0x80132C3C (4 bytes)
-void QuickResFile::Load(Memory::HandleNode *) { }
+void QuickResFile::Load(int *) { }
 
 // 0x80132C40 (8 bytes)
-bool QuickResFile::IsLittleEndian(Memory::HandleNode *) { return false; }
+bool QuickResFile::IsLittleEndian(int *) { return false; }
 
 // 0x80132C48 (4 bytes)
-void QuickResFile::SetID(Memory::HandleNode *, short) { }
+void QuickResFile::SetID(int *, short) { }
 
 // 0x80132C4C (4 bytes)
-void QuickResFile::Add(Memory::HandleNode *, int, short, StringBuffer &, bool) { }
+void QuickResFile::Add(int *, int, short, StringBuffer &, bool) { }
 
 // 0x80132C50 (4 bytes)
-void QuickResFile::AddWithLanguage(Memory::HandleNode *, int, short, StringBuffer &, char, bool) { }
+void QuickResFile::AddWithLanguage(int *, int, short, StringBuffer &, char, bool) { }
 
 // 0x80132C54 (4 bytes)
-void QuickResFile::Write(Memory::HandleNode *) { }
+void QuickResFile::Write(int *) { }
 
 // 0x80132C58 (4 bytes)
-void QuickResFile::Remove(Memory::HandleNode *) { }
+void QuickResFile::Remove(int *) { }
 
 // 0x80132C5C (4 bytes)
-void QuickResFile::SetInfo(Memory::HandleNode *, short, StringBuffer &, char) { }
+void QuickResFile::SetInfo(int *, short, StringBuffer &, char) { }
 

@@ -3,6 +3,8 @@
 // 26 functions, 168 bytes
 
 // 0x800D3BB8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void NghResFile::Delete(StringBuffer &) { return 0; }
 
 // 0x800D3BC0 (8 bytes)
@@ -36,13 +38,13 @@ int NghResFile::GetIndType(short) { return 0; }
 int NghResFile::GetByName(int, StringBuffer &, void (*)(void *, int)) { return 0; }
 
 // 0x800D3D3C (4 bytes)
-void NghResFile::GetName(Memory::HandleNode *, StringBuffer &) { }
+void NghResFile::GetName(int *, StringBuffer &) { }
 
 // 0x800D3D40 (8 bytes)
-int NghResFile::GetResType(Memory::HandleNode *) { return 0; }
+int NghResFile::GetResType(int *) { return 0; }
 
 // 0x800D3D58 (4 bytes)
-void NghResFile::GetIndex(Memory::HandleNode *, short *) { }
+void NghResFile::GetIndex(int *, short *) { }
 
 // 0x800D3D5C (4 bytes)
 void NghResFile::FindUniqueName(int, StringBuffer &) { }
@@ -51,25 +53,25 @@ void NghResFile::FindUniqueName(int, StringBuffer &) { }
 int NghResFile::FindUniqueID(int) { return 0; }
 
 // 0x800D3D68 (4 bytes)
-void NghResFile::Detach(Memory::HandleNode *) { }
+void NghResFile::Detach(int *) { }
 
 // 0x800D3D6C (4 bytes)
-void NghResFile::Load(Memory::HandleNode *) { }
+void NghResFile::Load(int *) { }
 
 // 0x800D3D70 (8 bytes)
-bool NghResFile::IsLittleEndian(Memory::HandleNode *) { return true; }
+bool NghResFile::IsLittleEndian(int *) { return true; }
 
 // 0x800D3D78 (4 bytes)
-void NghResFile::SetID(Memory::HandleNode *, short) { }
+void NghResFile::SetID(int *, short) { }
 
 // 0x800D3F6C (4 bytes)
-void NghResFile::Write(Memory::HandleNode *) { }
+void NghResFile::Write(int *) { }
 
 // 0x800D3F70 (4 bytes)
-void NghResFile::Remove(Memory::HandleNode *) { }
+void NghResFile::Remove(int *) { }
 
 // 0x800D3F74 (4 bytes)
-void NghResFile::SetInfo(Memory::HandleNode *, short, StringBuffer &, char) { }
+void NghResFile::SetInfo(int *, short, StringBuffer &, char) { }
 
 // 0x800D8EE0 (8 bytes)
 void NghResFile::SetStoreChecksum(bool) { *(int*)((char*)this + 0x18C) = val; }  // offset 0x18C

@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x801445C4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int SlotLoader::Save(short, vector<ObjectSlot, allocator<ObjectSlot> > *, vector<RoutingSlot, allocator<RoutingSlot> > *, vector<SpriteSlot, allocator<SpriteSlot> > *, cXObject *) { return 1; }
 
 // 0x801445CC (4 bytes)

@@ -3,6 +3,8 @@
 // 4 functions, 28 bytes
 
 // 0x80010640 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AptViewer::Update() { }
 
 // 0x80010D68 (8 bytes)

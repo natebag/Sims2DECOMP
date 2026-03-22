@@ -3,13 +3,15 @@
 // 4 functions, 24 bytes
 
 // 0x802D8FA8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EA::Allocator::GeneralAllocator::GetPageSize() { return 4096; }
 
 // 0x802D9350 (4 bytes)
 void EA::Allocator::GeneralAllocator::AdjustHighFence() { }
 
 // 0x802D93A8 (8 bytes)
-int EA::Allocator::GeneralAllocator::ChunkMatchesLowHigh(int, EA::Allocator::GeneralAllocator::Chunk *, unsigned int) const { return 1; }
+int EA::Allocator::GeneralAllocator::ChunkMatchesLowHigh(int, int *, unsigned int) const { return 1; }
 
 // 0x802DA584 (4 bytes)
 void EA::Allocator::GeneralAllocator::TraceFunctionDefault(char *, void *) { }

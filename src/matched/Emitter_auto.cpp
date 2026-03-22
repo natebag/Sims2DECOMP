@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8023869C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int Emitter::Get() { return *(int*)((char*)this + 0x7C); }  // offset 0x7C
 
 // 0x802389D4 (8 bytes)

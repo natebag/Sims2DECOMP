@@ -3,6 +3,8 @@
 // 7 functions, 76 bytes
 
 // 0x80051218 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ISimsWallObjectModel::CreateShadow() { }
 
 // 0x80053F58 (12 bytes)

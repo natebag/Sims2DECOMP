@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x803AEC98 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjectDataFactoryQuickData<ITreeTable>::GetDataSourceType() const { return 1; }
 

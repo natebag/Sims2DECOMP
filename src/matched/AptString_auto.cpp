@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x802AD0D4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptString::sMethod_lastIndexOf(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
 
 // 0x802AECFC (8 bytes)

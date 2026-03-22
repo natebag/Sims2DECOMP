@@ -3,6 +3,8 @@
 // 20 functions, 144 bytes
 
 // 0x8015E018 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int TreeTableQuickData::SaveDataByID(ObjectDataID &) { return 0; }
 
 // 0x8015E020 (8 bytes)

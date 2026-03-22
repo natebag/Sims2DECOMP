@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x8036486C (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EFontPage::GetTypeInfo() const { return (void*)0x8050D6E4; }  // global data pointer
 
 // 0x80364878 (12 bytes)

@@ -3,6 +3,8 @@
 // 4 functions, 48 bytes
 
 // 0x803C9800 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EAnimNodeDataPos::GetTypeInfo() const { return (void*)0x8050D7AC; }  // global data pointer
 
 // 0x803C980C (12 bytes)

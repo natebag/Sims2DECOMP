@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x8013FADC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void SimLog::BeginLogging() { *(int*)((char*)this + 0x0) = 1; }
 

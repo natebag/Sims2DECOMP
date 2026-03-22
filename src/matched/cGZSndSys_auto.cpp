@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x800B9FB0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void cGZSndSys::preloadMusic() { }
 
 // 0x800B9FB4 (4 bytes)

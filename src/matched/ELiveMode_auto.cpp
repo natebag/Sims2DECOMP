@@ -3,6 +3,8 @@
 // 10 functions, 76 bytes
 
 // 0x8008EF14 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ELiveMode::PauseAllSounds() { }
 
 // 0x8008EF18 (4 bytes)

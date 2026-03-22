@@ -3,6 +3,8 @@
 // 8 functions, 88 bytes
 
 // 0x80368550 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERBinary::GetTypeInfo() const { return (void*)0x8050D7D4; }  // global data pointer
 
 // 0x8036855C (12 bytes)

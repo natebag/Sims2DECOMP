@@ -3,6 +3,8 @@
 // 3 functions, 16 bytes
 
 // 0x8035220C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void Effects::GetDefaultRenderContext() { return 0; }
 
 // 0x80352214 (4 bytes)

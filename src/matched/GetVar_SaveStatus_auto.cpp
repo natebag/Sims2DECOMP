@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x801E9488 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void GetVar_SaveStatus::Handler(char *) { }
 

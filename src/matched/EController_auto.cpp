@@ -3,6 +3,8 @@
 // 8 functions, 68 bytes
 
 // 0x80304294 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EController::OverrideStatus(int) { *(int*)((char*)this + 0x4) = val; }  // offset 0x4
 
 // 0x80304434 (8 bytes)

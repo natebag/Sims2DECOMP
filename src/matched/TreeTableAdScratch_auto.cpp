@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x80149B08 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TreeTableAdScratch::SetPersonalityAd(int) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
 
 // 0x80149B18 (8 bytes)

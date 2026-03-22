@@ -3,7 +3,9 @@
 // 5 functions, 32 bytes
 
 // 0x8021922C (4 bytes)
-void InteractorModule::ObjectManipulator::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+#include "types.h"
+#include "stub_classes.h"
+void InteractorModule::ObjectManipulator::OnCommandPressed(int, float) { }
 
 // 0x8021A030 (4 bytes)
 void InteractorModule::ObjectManipulator::SetUIDebugName(cXObject *) { }

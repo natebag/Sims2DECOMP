@@ -3,7 +3,9 @@
 // 6 functions, 60 bytes
 
 // 0x801D613C (8 bytes)
-int PCTTarget::get_motive_rating_label(unsigned int, unsigned wchar_t *) const { return 1; }
+#include "types.h"
+#include "stub_classes.h"
+int PCTTarget::get_motive_rating_label(unsigned int, wchar_t *) const { return 1; }
 
 // 0x801D61AC (8 bytes)
 int PCTTarget::refresh_text_field(char *, unsigned int) { return 1; }

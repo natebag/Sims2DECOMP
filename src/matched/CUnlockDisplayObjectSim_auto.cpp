@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x80079EAC (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CUnlockDisplayObjectSim::Setup() { }
 
 // 0x80079F78 (12 bytes)

@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x80039510 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EyeToyClient::Debug::WriteTGAToHost(short *, int, int) { }
 

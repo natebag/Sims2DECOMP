@@ -176,7 +176,7 @@ void ChainResFile::Load(int* node) {
 // ChainResFile::GetByID - Delegates to GetByIDAndLanguage with lang=0
 // 0x800B2A48 (size=60)
 // NON_MATCHING - vtable dispatch
-Memory::HandleNode* ChainResFile::GetByID(int type, short id, void (*callback)(void*, int)) {
+int* ChainResFile::GetByID(int type, short id, void (*callback)(void*, int)) {
     return GetByIDAndLanguage(type, id, 0, callback);
 }
 
@@ -275,25 +275,25 @@ int QuickResFile::Count(int type) {
 
 // QuickResFile::GetByID
 // 0x80132BA0 (size=8)
-Memory::HandleNode* QuickResFile::GetByID(int type, short id, void (*callback)(void*, int)) {
+int* QuickResFile::GetByID(int type, short id, void (*callback)(void*, int)) {
     return 0;
 }
 
 // QuickResFile::GetByName
 // 0x80132BA8 (size=8)
-Memory::HandleNode* QuickResFile::GetByName(int type, StringBuffer& name, void (*callback)(void*, int)) {
+int* QuickResFile::GetByName(int type, StringBuffer& name, void (*callback)(void*, int)) {
     return 0;
 }
 
 // QuickResFile::GetByIndex
 // 0x80132BB0 (size=8)
-Memory::HandleNode* QuickResFile::GetByIndex(int type, short index, void (*callback)(void*, int)) {
+int* QuickResFile::GetByIndex(int type, short index, void (*callback)(void*, int)) {
     return 0;
 }
 
 // QuickResFile::GetByIDAndLanguage
 // 0x80132BB8 (size=8)
-Memory::HandleNode* QuickResFile::GetByIDAndLanguage(int type, short id, char lang, void (*callback)(void*, int)) {
+int* QuickResFile::GetByIDAndLanguage(int type, short id, char lang, void (*callback)(void*, int)) {
     return 0;
 }
 
@@ -506,7 +506,7 @@ int IFFResFile2::ValidFile(void) {
 // IFFResFile2::GetByID - Delegates to GetByIDAndLanguage with lang=0
 // 0x800BED18 (size=60)
 // NON_MATCHING - vtable dispatch pattern
-Memory::HandleNode* IFFResFile2::GetByID(int type, short id, void (*callback)(void*, int)) {
+int* IFFResFile2::GetByID(int type, short id, void (*callback)(void*, int)) {
     return GetByIDAndLanguage(type, id, 0, callback);
 }
 
@@ -601,7 +601,7 @@ int NghResFile::GetIndType(short index) {
 
 // NghResFile::GetByName - Returns 0 (stub)
 // 0x800D3CC8 (size=8)
-Memory::HandleNode* NghResFile::GetByName(int type, StringBuffer& name, void (*callback)(void*, int)) {
+int* NghResFile::GetByName(int type, StringBuffer& name, void (*callback)(void*, int)) {
     return 0;
 }
 

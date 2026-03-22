@@ -3,6 +3,8 @@
 // 5 functions, 36 bytes
 
 // 0x80353090 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void Effects::FastParticleEmitter::InitPlatform() { }
 
 // 0x803549E0 (8 bytes)

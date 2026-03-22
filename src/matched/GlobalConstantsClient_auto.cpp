@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x800EC07C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int GlobalConstantsClient::GetFileID() { return /* SDA global @ r13-31848 */; }  // lwz r3,-31848(r13)
 

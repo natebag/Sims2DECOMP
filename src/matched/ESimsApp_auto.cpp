@@ -3,6 +3,8 @@
 // 8 functions, 76 bytes
 
 // 0x80003FDC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ESimsApp::GetStartLot() { return /* SDA global @ r13-32752 */; }  // lwz r3,-32752(r13)
 
 // 0x80003FE4 (8 bytes)

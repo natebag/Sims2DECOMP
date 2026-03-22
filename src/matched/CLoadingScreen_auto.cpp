@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x800578A4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CLoadingScreen::GetMode() const { return *(int*)((char*)this + 0x354); }  // offset 0x354
 

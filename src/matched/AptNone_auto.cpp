@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x802B4454 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AptNone::AddRef(char *, char *, int) { }
 
 // 0x802B4458 (4 bytes)

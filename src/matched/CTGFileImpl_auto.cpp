@@ -3,6 +3,8 @@
 // 5 functions, 40 bytes
 
 // 0x8007CEE8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool CTGFileImpl::IsWritable() { return false; }
 
 // 0x8007CF28 (8 bytes)

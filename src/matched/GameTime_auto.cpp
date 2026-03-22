@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80147088 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int GameTime::CountDaysInMonth(int, int) { return 30; }
 
 // 0x80147090 (8 bytes)

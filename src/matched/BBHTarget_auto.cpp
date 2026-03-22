@@ -3,6 +3,8 @@
 // 3 functions, 32 bytes
 
 // 0x801A3E94 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int BBHTarget::IsBuildBuyHUDActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88
 
 // 0x801A3E9C (12 bytes)

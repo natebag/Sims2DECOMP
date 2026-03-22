@@ -78,7 +78,7 @@ static inline void _SetAmbientVolume(s8 v) {
 // Uses beqlr (conditional return)
 // ============================================================================
 // NON_MATCHING: GCC likely won't emit beqlr (conditional blr)
-snd::eMode cSoundPlayer::GetGameMode() {
+int cSoundPlayer::GetGameMode() {
     if (g_pSoundBox == 0) {
         return (snd::eMode)3;
     }

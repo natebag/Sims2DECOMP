@@ -3,6 +3,8 @@
 // 5 functions, 44 bytes
 
 // 0x801C3C84 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MDITarget::ShowModelessDialog() { *(int*)((char*)this + 0x9C) = 1; }
 
 // 0x801C3C90 (12 bytes)

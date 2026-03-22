@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8015BAE4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjectDataFactoryIFF<ITreeTable>::operator()() const { return 0; }
 
 // 0x803AEC90 (8 bytes)

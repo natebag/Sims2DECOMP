@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8015BA54 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ObjectDataFactoryDatabase<StringSet>::operator()() const { return 0; }
 
 // 0x803AECD0 (8 bytes)

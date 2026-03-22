@@ -3,6 +3,8 @@
 // 20 functions, 180 bytes
 
 // 0x800B6810 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int FamilyImpl::MyDoCommand(short, int) { return 0; }
 
 // 0x800B6B00 (8 bytes)

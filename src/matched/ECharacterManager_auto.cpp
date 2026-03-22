@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8032333C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool ECharacterManager::CanCache(EResource *) { return true; }
 

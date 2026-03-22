@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x803382F4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ERSampledata::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 
 // 0x80338324 (8 bytes)

@@ -3,6 +3,8 @@
 // 5 functions, 48 bytes
 
 // 0x80036E70 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ESpriteRender::GetObject() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 
 // 0x80036E78 (8 bytes)

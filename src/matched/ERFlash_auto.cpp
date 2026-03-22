@@ -3,6 +3,8 @@
 // 7 functions, 80 bytes
 
 // 0x80313D1C (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERFlash::GetTypeInfo() const { return (void*)0x8050CE88; }  // global data pointer
 
 // 0x80313D28 (12 bytes)

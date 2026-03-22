@@ -3,6 +3,8 @@
 // 2 functions, 20 bytes
 
 // 0x801A08B8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CASGeneticsTarget::GetCasGenetics() { return *(int*)((char*)this + 0x94); }  // offset 0x94
 
 // 0x801A08E8 (12 bytes)

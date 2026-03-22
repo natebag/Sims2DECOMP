@@ -3,16 +3,18 @@
 // 12 functions, 80 bytes
 
 // 0x802092A4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void InteractorModule::Interactor::AttachCamera(ESimsCam *) { *(int*)((char*)this + 0x4) = val; }  // offset 0x4
 
 // 0x802092AC (8 bytes)
 int InteractorModule::Interactor::GetAttachedCamera() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x802094EC (4 bytes)
-void InteractorModule::Interactor::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::Interactor::OnCommandPressed(int, float) { }
 
 // 0x80209510 (4 bytes)
-void InteractorModule::Interactor::UpdateOverlapIntersection(InteractorModule::Interactor::OverlapData *) { }
+void InteractorModule::Interactor::UpdateOverlapIntersection(int *) { }
 
 // 0x80209514 (4 bytes)
 void InteractorModule::Interactor::ExecuteObjectActionMenu(cXObject *) { }

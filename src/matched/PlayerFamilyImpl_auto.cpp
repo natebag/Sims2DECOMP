@@ -3,6 +3,8 @@
 // 6 functions, 52 bytes
 
 // 0x8012D1AC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* PlayerFamilyImpl::GetClothingUnlocks() { return (char*)this + 0xC8; }  // offset 0xC8
 
 // 0x8012D1B4 (8 bytes)

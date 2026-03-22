@@ -3,6 +3,8 @@
 // 6 functions, 52 bytes
 
 // 0x800AB540 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int Behavior::GetNamespaceID() { return *(int*)((char*)(*(void**)((char*)this + 0x4)) + 0x4); }  // double deref
 
 // 0x800AB54C (12 bytes)

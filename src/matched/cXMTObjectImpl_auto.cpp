@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x800C6C50 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 unsigned int cXMTObjectImpl::ReconType() { return 0x584D544F; }
 
 // 0x800C7D5C (4 bytes)

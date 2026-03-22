@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80363378 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EDL::GetStart() { return *(int*)((char*)this + 0x48); }  // offset 0x48
 
 // 0x80363408 (8 bytes)

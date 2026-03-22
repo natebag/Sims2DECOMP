@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80328844 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EffectsAttachmentManager::GetRow(int) { return 0; }
 
 // 0x803288F8 (8 bytes)

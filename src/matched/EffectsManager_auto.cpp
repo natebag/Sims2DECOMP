@@ -3,8 +3,10 @@
 // 2 functions, 16 bytes
 
 // 0x803523C8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void Effects::EffectsManager::Shutdown() { return 1; }
 
 // 0x80352710 (8 bytes)
-int Effects::EffectsManager::CreateEffect(REffectsSequencer &, Effects::Effect::ClientParams *) { return 0; }
+int Effects::EffectsManager::CreateEffect(REffectsSequencer &, int *) { return 0; }
 

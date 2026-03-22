@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x80322AB8 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* REffectsAttachment::GetTypeInfo() const { return (void*)0x8050CF50; }  // global data pointer
 
 // 0x80322AC4 (12 bytes)

@@ -3,6 +3,8 @@
 // 6 functions, 36 bytes
 
 // 0x80326718 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EResourceManager::PrintUnmanagedResources() { }
 
 // 0x80326C08 (4 bytes)

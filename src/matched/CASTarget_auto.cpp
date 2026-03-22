@@ -3,6 +3,8 @@
 // 8 functions, 60 bytes
 
 // 0x80194EBC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CASTarget::SetHandleInput(bool) { *(int*)((char*)this + 0x8C) = val; }  // offset 0x8C
 
 // 0x801960F4 (4 bytes)

@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x803B0AB8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int SimpleReconObject<CasGenetics>::GetType() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 

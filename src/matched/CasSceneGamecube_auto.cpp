@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80175764 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CasSceneGamecube::GetSceneName() const { return /* SDA global @ r13-31552 */; }  // lwz r3,-31552(r13)
 
 // 0x80175784 (8 bytes)

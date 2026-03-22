@@ -3,6 +3,8 @@
 // 7 functions, 60 bytes
 
 // 0x8017B994 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void UIHDTV::UIHDTV() { }
 
 // 0x8017BEF4 (12 bytes)

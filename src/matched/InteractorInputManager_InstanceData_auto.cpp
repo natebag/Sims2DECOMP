@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8020AAE8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int InteractorModule::InteractorInputManager::InstanceData::GetControllerFilterId() const { return *(int*)((char*)this + 0x14); }  // offset 0x14
 

@@ -3,6 +3,8 @@
 // 8 functions, 88 bytes
 
 // 0x8036C1E8 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* RParticle::GetTypeInfo() const { return (void*)0x8050D8EC; }  // global data pointer
 
 // 0x8036C1F4 (12 bytes)

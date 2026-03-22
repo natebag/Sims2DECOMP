@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x802C5D34 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EBoundTreeNode::GetTypeInfo() const { return (void*)0x8050CD10; }  // global data pointer
 
 // 0x802C5D40 (12 bytes)

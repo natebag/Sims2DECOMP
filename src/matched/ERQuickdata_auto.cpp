@@ -3,6 +3,8 @@
 // 4 functions, 24 bytes
 
 // 0x8031B8F0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ERQuickdata::UnlockImage() { }
 
 // 0x8031B8F4 (4 bytes)

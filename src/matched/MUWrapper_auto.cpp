@@ -3,7 +3,9 @@
 // 3 functions, 24 bytes
 
 // 0x80083954 (8 bytes)
-void MUWrapper::SetScreenConfiguration(MUWrapper::eMUScreenConfiguration) { *(int*)((char*)this + 0xAC) = val; }  // offset 0xAC
+#include "types.h"
+#include "stub_classes.h"
+void MUWrapper::SetScreenConfiguration(int) { *(int*)((char*)this + 0xAC) = val; }  // offset 0xAC
 
 // 0x8008395C (8 bytes)
 void MUWrapper::SetBackgroundDrawEnable(bool) { *(int*)((char*)this + 0xC8) = val; }  // offset 0xC8

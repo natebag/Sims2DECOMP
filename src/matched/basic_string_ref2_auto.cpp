@@ -3,6 +3,8 @@
 // 3 functions, 16 bytes
 
 // 0x800A0108 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void basic_string_ref2::throwlength() { }
 
 // 0x800A010C (4 bytes)

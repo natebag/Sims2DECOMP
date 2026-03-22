@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8032B714 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool ParticleManager::CanCache(EResource *) { return true; }
 

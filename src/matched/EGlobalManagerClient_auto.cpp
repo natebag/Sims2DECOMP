@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x803C1CF0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EGlobalManagerClient::ManagedStartup() { return 1; }
 
 // 0x803C1CF8 (4 bytes)

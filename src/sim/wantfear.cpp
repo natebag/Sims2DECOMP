@@ -15,7 +15,7 @@ extern WantFearManager* g_pWantFearManager;
 // Loads event ref from node, calls WantFearManager::GetEvent
 // NON_MATCHING - tail call pattern: GCC may optimize differently than SN
 // ============================================================================
-const WantFear::Event* WantFear::Node::GetEvent() const {
+const int* WantFear::Node::GetEvent() const {
     return g_pWantFearManager->GetEvent(m_eventRef);
 }
 
@@ -38,7 +38,7 @@ void WantFear::Tree::FixupPointers(signed char* indexBase, int* nodeBase) {
 // MATCHING
 // Returns the Nth child node of a given parent node
 // ============================================================================
-const WantFear::Node* WantFear::Tree::GetNthChildOfNode(int* node, short n) const {
+const int* WantFear::Tree::GetNthChildOfNode(int* node, short n) const {
     short index = ((short*)m_childIndexData)[node->m_firstChildIndex + n];
     return (const Node*)((u8*)m_nodes + (index << 5));
 }
@@ -184,7 +184,7 @@ void WantFearManager::CaptureLog(bool enable) {
 // MATCHING
 // Returns event at given index (events are 36 bytes each)
 // ============================================================================
-const WantFear::Event* WantFearManager::GetEventByIndex(int index) const {
+const int* WantFearManager::GetEventByIndex(int index) const {
     return (const WantFear::Event*)((u8*)m_events + index * 36);
 }
 
@@ -194,6 +194,6 @@ const WantFear::Event* WantFearManager::GetEventByIndex(int index) const {
 // MATCHING
 // Returns tree pointer at given index
 // ============================================================================
-const WantFear::Tree* WantFearManager::GetTreeByIndex(int index) const {
+const int* WantFearManager::GetTreeByIndex(int index) const {
     return m_trees[index];
 }

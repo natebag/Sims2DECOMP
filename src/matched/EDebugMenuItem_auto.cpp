@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x803C4160 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EDebugMenuItem::GetDescription(char *, int) { /* li r0,0; stb r0,0(r4) */ }
 
 // 0x803C416C (12 bytes)

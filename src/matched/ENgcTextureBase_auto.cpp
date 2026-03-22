@@ -3,6 +3,8 @@
 // 5 functions, 32 bytes
 
 // 0x8034FE38 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcTextureBase::Invalidate() { }
 
 // 0x80350238 (8 bytes)

@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x80228EF4 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void LightArray::Init() { *(int*)((char*)this + 0xD00) = 0; }
 

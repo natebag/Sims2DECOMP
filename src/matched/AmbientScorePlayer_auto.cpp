@@ -3,6 +3,8 @@
 // 6 functions, 48 bytes
 
 // 0x800A8764 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AmbientScorePlayer::SetTime(float) { *(float*)((char*)this + 0x34) = val; }  // offset 0x34
 
 // 0x800A876C (8 bytes)

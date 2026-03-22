@@ -3,6 +3,8 @@
 // 16 functions, 140 bytes
 
 // 0x80087A5C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int WrapperPaneBase::GetPaneId() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80087A64 (4 bytes)
@@ -15,7 +17,7 @@ void WrapperPaneBase::SetAlpha(float) { *(float*)((char*)this + 0x30) = val; }  
 float WrapperPaneBase::GetAlpha() { return *(float*)((char*)this + 0x30); }  // offset 0x30
 
 // 0x80087AE4 (8 bytes)
-void WrapperPaneBase::SetState(WrapperPaneBase::PaneState) { *(int*)((char*)this + 0x34) = val; }  // offset 0x34
+void WrapperPaneBase::SetState(int) { *(int*)((char*)this + 0x34) = val; }  // offset 0x34
 
 // 0x80087AEC (12 bytes)
 void WrapperPaneBase::SetStateRunning() { *(int*)((char*)this + 0x34) = 0; }

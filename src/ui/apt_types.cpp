@@ -73,7 +73,7 @@ void AptAnimationPoolData::Reset() {
 
 // AptActionQueueC::IncrementDequeLocation
 // NON_MATCHING - register allocation differs
-AptActionQueueC::AptActionPool* AptActionQueueC::IncrementDequeLocation(AptActionPool* pool) {
+int* AptActionQueueC::IncrementDequeLocation(AptActionPool* pool) {
     AptActionPool* next = (AptActionPool*)((u8*)pool + 20);
     u8* end = (u8*)m_poolStart + m_poolCount * 20;
     if ((u8*)next == end) {

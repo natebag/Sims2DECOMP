@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x800492E0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool InfluenceMap::ValidateMissing(cXObject *) { return true; }
 

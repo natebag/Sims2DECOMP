@@ -117,7 +117,7 @@ void Interaction::SetIconObject(cXObject* obj) {
 // Address: 0x800C1D20 | Size: 12 bytes
 // lwz r3,60(r3); rlwinm r3,r3,20,29,31; blr
 // ============================================================================
-Interaction::tColor Interaction::GetTextColor() const {
+int Interaction::GetTextColor() const {
     return (tColor)((m_flags >> FLAG_TEXT_COLOR_SHIFT) & 7);
 }
 

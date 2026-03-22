@@ -3,6 +3,8 @@
 // 7 functions, 56 bytes
 
 // 0x802BA42C (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AptXmlNode::PreDestroy() { *(int*)((char*)this + 0x24) = 0; }
 
 // 0x802BB338 (8 bytes)

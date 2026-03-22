@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x8032F630 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcGraphics::GetScreenShot(char *) { }
 

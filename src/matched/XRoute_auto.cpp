@@ -3,6 +3,8 @@
 // 3 functions, 20 bytes
 
 // 0x80152FE8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void XRoute::SetCurrentGoal(int) { *(int*)((char*)this + 0x54) = val; }  // offset 0x54
 
 // 0x8015303C (8 bytes)

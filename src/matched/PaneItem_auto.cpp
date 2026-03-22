@@ -3,6 +3,8 @@
 // 10 functions, 68 bytes
 
 // 0x803A07B8 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void PaneItem::Shutdown() { }
 
 // 0x803A07BC (12 bytes)

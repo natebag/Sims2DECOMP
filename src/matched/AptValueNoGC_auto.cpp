@@ -3,6 +3,8 @@
 // 12 functions, 72 bytes
 
 // 0x80281D24 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool AptValueNoGC::IsGarbageCollected() const { return false; }
 
 // 0x80281D2C (4 bytes)

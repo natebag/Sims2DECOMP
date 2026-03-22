@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x8036A608 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERSoundTrackData::GetTypeInfo() const { return (void*)0x8050D874; }  // global data pointer
 
 // 0x8036A614 (12 bytes)

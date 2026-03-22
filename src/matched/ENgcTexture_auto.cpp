@@ -3,6 +3,8 @@
 // 2 functions, 20 bytes
 
 // 0x8034FA70 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ENgcTexture::GetGXTexFmt() { return *(int*)((char*)(*(void**)((char*)this + 0x28)) + 0x70); }  // double deref
 
 // 0x8034FC0C (8 bytes)

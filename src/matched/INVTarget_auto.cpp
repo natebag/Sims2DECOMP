@@ -3,6 +3,8 @@
 // 9 functions, 48 bytes
 
 // 0x801F146C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void INVTarget::FireCodeDialogZeroInputCallback() { }
 
 // 0x801F14BC (4 bytes)

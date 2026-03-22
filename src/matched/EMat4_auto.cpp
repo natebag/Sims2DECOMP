@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x802CA640 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EMat4::Print() const { }
 

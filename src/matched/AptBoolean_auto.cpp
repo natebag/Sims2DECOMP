@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x802BBAD8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptBoolean::GetBool() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
 

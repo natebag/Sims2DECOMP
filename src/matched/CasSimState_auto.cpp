@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80175294 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* CasSimState::GetSimDescription() { return (char*)this + 0x8; }  // offset 0x8
 
 // 0x8017529C (8 bytes)

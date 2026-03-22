@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x803AECB0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjectDataFactoryQuickData<ObjFnTable>::GetDataSourceType() const { return 1; }
 

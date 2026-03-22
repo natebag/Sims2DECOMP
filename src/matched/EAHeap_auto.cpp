@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x802D09D4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EAHeap::GetCurrentCheckPoint() { return /* SDA global @ r13-26860 */; }  // lwz r3,-26860(r13)
 

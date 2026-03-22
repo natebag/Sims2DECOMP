@@ -3,6 +3,8 @@
 // 7 functions, 80 bytes
 
 // 0x803212A8 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERTexture::GetTypeInfo() const { return (void*)0x8050CF28; }  // global data pointer
 
 // 0x803212B4 (12 bytes)

@@ -3,6 +3,8 @@
 // 15 functions, 120 bytes
 
 // 0x8014131C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int cSimulatorImpl::IsStalled() { return *(int*)((char*)this + 0x9C); }  // offset 0x9C
 
 // 0x80141A44 (8 bytes)
@@ -18,7 +20,7 @@ void cSimulatorImpl::SetGbaNumMinigames(short) { *(short*)((char*)this + 0x6E) =
 float cSimulatorImpl::GetSpeedMultiplier() { return *(float*)((char*)this + 0xA8); }  // offset 0xA8
 
 // 0x80141AC0 (8 bytes)
-void cSimulatorImpl::SetMode(cSimulator::Mode) { *(short*)((char*)this + 0x3A) = val; }  // offset 0x3A
+void cSimulatorImpl::SetMode(int) { *(short*)((char*)this + 0x3A) = val; }  // offset 0x3A
 
 // 0x80141AC8 (8 bytes)
 int cSimulatorImpl::GetTicks() { return *(int*)((char*)this + 0x7C); }  // offset 0x7C

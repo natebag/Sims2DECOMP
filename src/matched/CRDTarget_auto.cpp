@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x801A4C6C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CRDTarget::Draw(ERC *) { }
 
 // 0x801A4F80 (4 bytes)

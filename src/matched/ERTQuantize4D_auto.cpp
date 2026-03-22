@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8035FF48 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ERTQuantize4D::GetPaletteSize() { return *(int*)((char*)this + 0x1024); }  // offset 0x1024
 

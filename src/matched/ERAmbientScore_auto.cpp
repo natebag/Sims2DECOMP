@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x80367224 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERAmbientScore::GetTypeInfo() const { return (void*)0x8050D75C; }  // global data pointer
 
 // 0x80367230 (12 bytes)

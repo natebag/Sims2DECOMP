@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x8022B818 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EISpotLight::GetTypeInfo() const { return (void*)0x8050CC98; }  // global data pointer
 
 // 0x8022B824 (12 bytes)

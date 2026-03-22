@@ -3,6 +3,8 @@
 // 6 functions, 28 bytes
 
 // 0x8015E5C8 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TreeTableAdQuickData::operator=(ITreeTableAd &) { }
 
 // 0x8015E5CC (4 bytes)

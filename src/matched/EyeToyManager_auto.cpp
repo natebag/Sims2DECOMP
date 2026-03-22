@@ -3,6 +3,8 @@
 // 5 functions, 28 bytes
 
 // 0x80328CD4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool EyeToyManager::IsPhysicallyConnected(int) { return false; }
 
 // 0x80328CDC (8 bytes)
@@ -12,7 +14,7 @@ int EyeToyManager::GetPhysicalConnectionCount() { return 0; }
 void EyeToyManager::ConvertInstanceIndexToHandle(int) { }
 
 // 0x80328F54 (4 bytes)
-void EyeToyManager::NormalizeTexture(EyeToyManager::NormalizationParams *) { }
+void EyeToyManager::NormalizeTexture(int *) { }
 
 // 0x80328F58 (4 bytes)
 void EyeToyManager::CleanUpBufferBetaHack() { }

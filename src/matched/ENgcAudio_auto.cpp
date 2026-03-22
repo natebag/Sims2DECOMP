@@ -3,6 +3,8 @@
 // 10 functions, 64 bytes
 
 // 0x8032B9F0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcAudio::AudioAlarmHandler(OSAlarm *, OSContext *) { }
 
 // 0x8032BEDC (8 bytes)

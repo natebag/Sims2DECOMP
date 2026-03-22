@@ -3,6 +3,8 @@
 // 5 functions, 40 bytes
 
 // 0x802847A4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AptAnimationPoolData::setInputMask(AptCIH *) { *(int*)((char*)this + 0x94) = val; }  // offset 0x94
 
 // 0x80293950 (8 bytes)

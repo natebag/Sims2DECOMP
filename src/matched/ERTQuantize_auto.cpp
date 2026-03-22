@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x802CF95C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ERTQuantize::GetPaletteSize() { return *(int*)((char*)this + 0x10A8); }  // offset 0x10A8
 
 // 0x802CF964 (8 bytes)

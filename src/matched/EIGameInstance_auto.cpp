@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x802277FC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EIGameInstance::GetTypeInfo() const { return (void*)0x8050CBD0; }  // global data pointer
 
 // 0x80227808 (12 bytes)

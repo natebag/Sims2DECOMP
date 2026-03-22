@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8029B9EC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptDisplayList::getState() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x8029B9F4 (8 bytes)

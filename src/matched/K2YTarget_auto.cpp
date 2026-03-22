@@ -3,6 +3,8 @@
 // 3 functions, 32 bytes
 
 // 0x801E7098 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int K2YTarget::GetMode() { return /* SDA global @ r13-30256 */; }  // lwz r3,-30256(r13)
 
 // 0x801E70A0 (12 bytes)

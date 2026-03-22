@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8001CAF8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CameraDirector::GetFrameEffectsManager() { return *(int*)((char*)this + 0x2D0); }  // offset 0x2D0
 

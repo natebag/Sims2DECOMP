@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x8012CC48 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void PiecewiseFn::Reset() { *(int*)((char*)this + 0x8) = 0; }
 

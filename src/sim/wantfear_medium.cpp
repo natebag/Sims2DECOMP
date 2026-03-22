@@ -20,7 +20,7 @@ extern WantFearManager* g_pWantFearManager;
 // Looks up an event by ID using linear search
 // ============================================================================
 // NON_MATCHING: loop codegen
-const WantFear::Event* WantFearManager::GetEvent(unsigned short eventId) const {
+const int* WantFearManager::GetEvent(unsigned short eventId) const {
     if (m_events == 0) return 0;
     // Linear search through events array
     // Compare eventId field at offset +0x00
@@ -83,7 +83,7 @@ bool WantFear::Bookmark::GetType() const {
 // Looks up a tree by ID using linear search
 // ============================================================================
 // NON_MATCHING: loop codegen
-const WantFear::Tree* WantFearManager::GetTree(unsigned short treeId) const {
+const int* WantFearManager::GetTree(unsigned short treeId) const {
     if (m_trees == 0) return 0;
     // Linear search through trees array
     // Compare tree ID
@@ -132,7 +132,7 @@ static u32 Bookmark_GetBackgroundShader(int* bm, Neighbor* neighbor) {
 // Traverses the want/fear tree to get next bookmark
 // ============================================================================
 // NON_MATCHING: tree traversal
-WantFear::Node* WantFear::Bookmark::GetNextBookmarkAlongBranch(short branchIndex) {
+int* WantFear::Bookmark::GetNextBookmarkAlongBranch(short branchIndex) {
     if (m_node == 0) return 0;
     // Get the tree for this bookmark
     const WantFear::Tree* tree = g_pWantFearManager->GetTree(m_treeId);
@@ -176,7 +176,7 @@ WantFearManager::~WantFearManager() {
 // Gets the root node of a story tree
 // ============================================================================
 // NON_MATCHING: complex tree search
-const WantFear::Node* WantFearManager::GetStoryTreeRoot(short param1, short param2) const {
+const int* WantFearManager::GetStoryTreeRoot(short param1, short param2) const {
     if (m_trees == 0) return 0;
     // Search through trees for story tree matching params
     // Story trees have bit 0 set in m_storyFlag

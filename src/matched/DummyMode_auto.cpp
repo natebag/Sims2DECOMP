@@ -3,6 +3,8 @@
 // 4 functions, 16 bytes
 
 // 0x800998B8 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void DummyMode::Init(int) { }
 
 // 0x800998BC (4 bytes)

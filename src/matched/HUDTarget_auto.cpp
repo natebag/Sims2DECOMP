@@ -3,6 +3,8 @@
 // 5 functions, 24 bytes
 
 // 0x80187FFC (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void HUDTarget::OnHUDShow() { }
 
 // 0x80188000 (4 bytes)

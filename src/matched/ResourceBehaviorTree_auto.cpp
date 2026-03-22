@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8015B06C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ResourceBehaviorTree::SaveDataByID(ObjectDataID &) { return 0; }
 
 // 0x8015B99C (8 bytes)

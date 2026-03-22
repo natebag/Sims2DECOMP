@@ -3,6 +3,8 @@
 // 3 functions, 36 bytes
 
 // 0x802B8F18 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptScriptFunction2::GetName() const { return *(int*)((char*)(*(void**)((char*)this + 0x34)) + 0x0); }  // double deref
 
 // 0x802B8F24 (12 bytes)

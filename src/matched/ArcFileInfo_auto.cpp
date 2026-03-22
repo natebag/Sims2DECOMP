@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x80321DA4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ArcFileInfo::GetName() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80321DAC (8 bytes)

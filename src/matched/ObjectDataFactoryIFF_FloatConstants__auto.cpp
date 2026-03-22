@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8015BAAC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjectDataFactoryIFF<FloatConstants>::operator()() const { return 0; }
 
 // 0x803AECC0 (8 bytes)

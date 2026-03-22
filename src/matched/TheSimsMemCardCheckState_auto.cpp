@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x800970E8 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TheSimsMemCardCheckState::Shutdown() { }
 
 // 0x800970EC (4 bytes)

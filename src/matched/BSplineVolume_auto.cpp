@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x8030E1B4 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void BSplineVolume::Write(EStream &) { }
 
 // 0x8030F3BC (8 bytes)

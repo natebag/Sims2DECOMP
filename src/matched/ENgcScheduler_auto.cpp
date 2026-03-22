@@ -3,6 +3,8 @@
 // 4 functions, 20 bytes
 
 // 0x8034D9E0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcScheduler::TextureLoadsComplete(ESchedCommand *) { }
 
 // 0x8034D9E4 (4 bytes)

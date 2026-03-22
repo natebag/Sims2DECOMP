@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8017B980 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int FlowGotoTarget::GetStateRequest() { return *(int*)((char*)this + 0x84); }  // offset 0x84
 

@@ -3,6 +3,8 @@
 // 7 functions, 52 bytes
 
 // 0x8014512C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void QuickDataSlotDescList::AddSlot(SlotDescriptor &) { return 0; }
 
 // 0x80145134 (8 bytes)

@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8015BAB4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjectDataFactoryDatabase<FloatConstants>::operator()() const { return 0; }
 
 // 0x803AECB8 (8 bytes)

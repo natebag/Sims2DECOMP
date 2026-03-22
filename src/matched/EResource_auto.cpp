@@ -3,6 +3,8 @@
 // 20 functions, 160 bytes
 
 // 0x80312198 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EResource::GetTypeInfo() const { return (void*)0x8050CD38; }  // global data pointer
 
 // 0x803121A4 (12 bytes)

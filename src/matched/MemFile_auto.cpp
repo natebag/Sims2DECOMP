@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x800A64E0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int MemFile::Writable() { return *(int*)((char*)this + 0x10C); }  // offset 0x10C
 

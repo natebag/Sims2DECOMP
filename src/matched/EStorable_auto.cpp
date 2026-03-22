@@ -3,6 +3,8 @@
 // 7 functions, 60 bytes
 
 // 0x803C1420 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EStorable::GetTypeInfo() const { return (void*)0x8050CBF8; }  // global data pointer
 
 // 0x803C142C (12 bytes)

@@ -3,6 +3,8 @@
 // 7 functions, 56 bytes
 
 // 0x802C70AC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EFileSystem::InitHDDFileSystem() { return 1; }
 
 // 0x802C70B4 (8 bytes)

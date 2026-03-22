@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x801B8480 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void H2DTarget::Draw(ERC *) { }
 
 // 0x801B8A38 (8 bytes)

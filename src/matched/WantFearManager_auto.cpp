@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x8014BD04 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void WantFearManager::CaptureLog(bool) { }
 

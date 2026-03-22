@@ -3,6 +3,8 @@
 // 4 functions, 24 bytes
 
 // 0x80364CCC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EMovie::Load(EFile *, unsigned int, unsigned int, unsigned int) { return 0; }
 
 // 0x80364CE0 (4 bytes)

@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x803A8CB0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int PassiveInfluenceObject::GetObject() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x803A8CB8 (8 bytes)

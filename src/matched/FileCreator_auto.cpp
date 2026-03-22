@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x802C6C74 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EFileSystem::FileCreator::GetCreatorCB() const { return *(int*)((char*)this + 0x0); }  // offset 0x0
 

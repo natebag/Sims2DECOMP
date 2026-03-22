@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x80136FB0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void RoomManager::InitLights() { }
 
 // 0x8013884C (8 bytes)

@@ -3,6 +3,8 @@
 // 17 functions, 160 bytes
 
 // 0x80095E28 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int StateMachine::GetCurStateStage() const { return *(int*)((char*)(*(void**)((char*)this + 0x3C)) + 0xC); }  // double deref
 
 // 0x80095EA8 (12 bytes)

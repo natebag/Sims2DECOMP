@@ -3,6 +3,8 @@
 // 7 functions, 80 bytes
 
 // 0x80226F1C (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EIAmbLight::GetTypeInfo() const { return (void*)0x8050CB58; }  // global data pointer
 
 // 0x80226F28 (12 bytes)

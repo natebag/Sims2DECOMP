@@ -3,6 +3,8 @@
 // 15 functions, 96 bytes
 
 // 0x8023AF78 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CDirtyXml::contentType() { return 0; }
 
 // 0x8023AF80 (4 bytes)

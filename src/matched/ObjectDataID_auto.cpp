@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8015BBE8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ObjectDataID::SetNamespaceID(unsigned int) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x8015BBF0 (8 bytes)

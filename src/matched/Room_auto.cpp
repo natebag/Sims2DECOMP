@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x801386D4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int Room::IsPool() { return *(int*)((char*)this + 0x94); }  // offset 0x94
 

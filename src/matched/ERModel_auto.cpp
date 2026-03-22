@@ -3,6 +3,8 @@
 // 26 functions, 232 bytes
 
 // 0x80318B00 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ERModel::GetLatticeCount() { return *(int*)((char*)this + 0x114); }  // offset 0x114
 
 // 0x80318B08 (8 bytes)

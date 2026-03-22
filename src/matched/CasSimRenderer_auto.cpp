@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x8016FB54 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CasSimRenderer::GetPositionNum() const { return *(int*)((char*)this + 0x214); }  // offset 0x214
 
 // 0x8016FB5C (8 bytes)

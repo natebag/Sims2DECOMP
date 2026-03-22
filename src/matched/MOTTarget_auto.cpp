@@ -3,6 +3,8 @@
 // 5 functions, 44 bytes
 
 // 0x801CBB58 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MOTTarget::ShowMotives() { *(int*)((char*)this + 0x160) = 1; }
 
 // 0x801CBB74 (4 bytes)

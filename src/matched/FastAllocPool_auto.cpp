@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x802D7220 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int FastAllocPool::GetAlignment() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x802D7228 (8 bytes)

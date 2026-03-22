@@ -3,6 +3,8 @@
 // 3 functions, 32 bytes
 
 // 0x801F8D98 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void INTTarget::ShowInterestMeter() { *(int*)((char*)this + 0x94) = 1; }
 
 // 0x801F8DA4 (12 bytes)

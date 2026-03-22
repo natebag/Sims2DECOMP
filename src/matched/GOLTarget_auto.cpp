@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x801EC094 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void GOLTarget::Update() { }
 
 // 0x801EC098 (4 bytes)

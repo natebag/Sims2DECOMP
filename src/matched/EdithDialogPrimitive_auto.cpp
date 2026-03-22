@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x800B5F20 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EdithDialogPrimitive::GetModalDialogResult() const { return *(int*)((char*)this + 0x88); }  // offset 0x88
 

@@ -3,6 +3,8 @@
 // 7 functions, 40 bytes
 
 // 0x8033B720 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcRenderer::ShowPerfGraphs(bool) { }
 
 // 0x8033CDEC (4 bytes)

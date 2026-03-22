@@ -3,6 +3,8 @@
 // 8 functions, 88 bytes
 
 // 0x80030718 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EIFenceWall::GetTypeInfo() const { return (void*)0x8050B3D8; }  // global data pointer
 
 // 0x80030724 (12 bytes)

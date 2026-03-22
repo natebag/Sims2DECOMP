@@ -3,6 +3,8 @@
 // 5 functions, 44 bytes
 
 // 0x800939C0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int MUStateMachine::GetCurRequest() { return /* SDA global @ r13-21368 */; }  // lwz r3,-21368(r13)
 
 // 0x800939C8 (12 bytes)

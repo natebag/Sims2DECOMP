@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x80361F34 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EVec4::Print() { }
 

@@ -3,6 +3,8 @@
 // 6 functions, 48 bytes
 
 // 0x800BC454 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int HouseStats::GetSquareFeet() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x800BC95C (8 bytes)

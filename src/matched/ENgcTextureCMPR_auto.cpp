@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x80351534 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcTextureCMPR::SwizzleImage(unsigned char *, int, int, unsigned char *) { }
 
 // 0x80351568 (8 bytes)

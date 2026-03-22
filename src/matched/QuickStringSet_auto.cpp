@@ -3,13 +3,15 @@
 // 19 functions, 116 bytes
 
 // 0x800A761C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void QuickStringSet::Copy(StringSet *) { }
 
 // 0x800A7768 (4 bytes)
 void QuickStringSet::SetString(int, char *, char) { }
 
 // 0x800A776C (4 bytes)
-void QuickStringSet::SetString(int, unsigned wchar_t *, char) { }
+void QuickStringSet::SetString(int, wchar_t *, char) { }
 
 // 0x800A7770 (4 bytes)
 void QuickStringSet::InsertString(int, char *, char) { }

@@ -390,7 +390,7 @@ void InteractorModule::SimInteractor::SetupCutToSim() {
 }
 
 // 0x8021F0B8 - 16 bytes: mulli r4, r4, 28; addi r4, r4, 100; add r3, r3, r4; blr
-InteractorModule::FadeSquare* InteractorModule::SimInteractor::GetFadeSquare(int index) {
+int* InteractorModule::SimInteractor::GetFadeSquare(int index) {
     return (FadeSquare*)((u8*)this + index * 28 + 100);
 }
 

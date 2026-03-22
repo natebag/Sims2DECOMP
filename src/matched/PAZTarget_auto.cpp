@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x801E70B8 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* PAZTarget::GetTLA() const { return (void*)0x803F3F54; }  // global data pointer
 

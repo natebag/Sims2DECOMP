@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80325580 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool EQuickdataManager::CanCache(EResource *) { return true; }
 
 // 0x80325588 (8 bytes)

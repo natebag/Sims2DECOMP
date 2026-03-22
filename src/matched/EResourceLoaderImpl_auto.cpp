@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x803104B0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EResourceLoaderImpl::Update() { }
 
 // 0x80311C88 (8 bytes)

@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x80159DDC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ObjectDataBehaviorConstants::SetResourceName(StringBuffer &) { return 0; }
 

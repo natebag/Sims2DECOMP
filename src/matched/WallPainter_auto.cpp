@@ -3,6 +3,8 @@
 // 11 functions, 108 bytes
 
 // 0x80226830 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int InteractorModule::WallPainter::GetShaderID() { return *(int*)((char*)(*(void**)((char*)this + 0x90)) + 0x8); }  // double deref
 
 // 0x80226960 (12 bytes)

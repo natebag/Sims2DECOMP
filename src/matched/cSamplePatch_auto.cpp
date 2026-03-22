@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x80118F0C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void cSamplePatch::SetLooped(int) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
 

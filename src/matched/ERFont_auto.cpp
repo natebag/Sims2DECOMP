@@ -3,6 +3,8 @@
 // 10 functions, 104 bytes
 
 // 0x80317848 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERFont::GetTypeInfo() const { return (void*)0x8050CEB0; }  // global data pointer
 
 // 0x80317854 (12 bytes)

@@ -3,6 +3,8 @@
 // 8 functions, 56 bytes
 
 // 0x8010FFCC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjFnTableQuickData::GetDataSourceType() const { return 1; }
 
 // 0x8011005C (4 bytes)

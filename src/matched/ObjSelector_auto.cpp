@@ -3,6 +3,8 @@
 // 4 functions, 28 bytes
 
 // 0x801108DC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjSelector::GetGUID() const { return *(int*)((char*)(*(void**)((char*)this + 0x38)) + 0x1C); }  // double deref
 
 // 0x801108E8 (4 bytes)

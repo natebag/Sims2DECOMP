@@ -3,6 +3,8 @@
 // 6 functions, 36 bytes
 
 // 0x800CCD00 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void NeighborhoodImpl::PostSim() { }
 
 // 0x800CDD38 (8 bytes)

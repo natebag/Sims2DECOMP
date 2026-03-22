@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x80093F18 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int MUStatesAutoSaveNew::GetWrapper() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x98); }  // double deref
 

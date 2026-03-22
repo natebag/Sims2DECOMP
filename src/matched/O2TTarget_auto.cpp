@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x801CFA60 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void O2TTarget::OnCancelDialog() { *(int*)((char*)this + 0x250) = 0; }
 

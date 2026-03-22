@@ -3,6 +3,8 @@
 // 3 functions, 16 bytes
 
 // 0x801D0B64 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void PAZBase::Update() { }
 
 // 0x801D0B68 (8 bytes)

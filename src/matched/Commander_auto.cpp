@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x800B42B4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int Commander::DoCommand(short, int) { return 0; }
 
 // 0x800B43DC (8 bytes)

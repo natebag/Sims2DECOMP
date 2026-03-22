@@ -3,6 +3,8 @@
 // 3 functions, 16 bytes
 
 // 0x80089E20 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EGameState::InTransportMode() { return 0; }
 
 // 0x80089E28 (4 bytes)

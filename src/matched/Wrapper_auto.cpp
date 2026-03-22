@@ -3,6 +3,8 @@
 // 6 functions, 28 bytes
 
 // 0x80086840 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void Wrapper::WrapperStartup(UIObjectBase *) { *(int*)((char*)this + 0x88) = val; }  // offset 0x88
 
 // 0x80086984 (4 bytes)

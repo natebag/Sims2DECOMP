@@ -3,6 +3,8 @@
 // 2 functions, 24 bytes
 
 // 0x802B63AC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool AptObject::getHasClass() const { return (*(int*)((char*)this + 0x20) >> 23) & 1; }  // bit 23
 
 // 0x802B63D8 (12 bytes)

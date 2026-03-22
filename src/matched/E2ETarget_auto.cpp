@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x801E7088 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int E2ETarget::GetTopLevelState() { return *(int*)((char*)this + 0xD8); }  // offset 0xD8
 

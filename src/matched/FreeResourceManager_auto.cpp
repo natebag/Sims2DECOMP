@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x803293F0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int FreeResourceManager::GetUnreferencedResourceCount() { return *(int*)((char*)this + 0xCA0); }  // offset 0xCA0
 

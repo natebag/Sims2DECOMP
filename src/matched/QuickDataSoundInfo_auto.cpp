@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x80145934 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int QuickDataSoundInfo::LoadFromIndex(unsigned int, int) { return 0; }
 
 // 0x8014593C (8 bytes)

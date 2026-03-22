@@ -3,6 +3,8 @@
 // 14 functions, 112 bytes
 
 // 0x802C60FC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EFile::SetErrorSimulation(bool) { /* SDA global @ r13-26888 = param */ }  // stw r3,-26888(r13)
 
 // 0x802C68C8 (8 bytes)
@@ -36,11 +38,11 @@ void* EFile::GetExt() const { return (char*)this + 0x24; }  // offset 0x24
 int EFile::GetLength() const { return *(int*)((char*)this + 0x14); }  // offset 0x14
 
 // 0x802C694C (8 bytes)
-void EFile::SetDevice(EFile::DeviceType) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
+void EFile::SetDevice(int) { *(int*)((char*)this + 0x10) = val; }  // offset 0x10
 
 // 0x802C6954 (8 bytes)
-void EFile::SetAccess(EFile::AccessMode) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
+void EFile::SetAccess(int) { *(int*)((char*)this + 0xC) = val; }  // offset 0xC
 
 // 0x802C695C (8 bytes)
-void EFile::SetMode(EFile::IOMode) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
+void EFile::SetMode(int) { *(int*)((char*)this + 0x8) = val; }  // offset 0x8
 

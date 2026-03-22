@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x801E9484 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void GetVar_EYE_targetState::Handler(char *) { }
 

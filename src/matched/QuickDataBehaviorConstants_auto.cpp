@@ -3,6 +3,8 @@
 // 4 functions, 28 bytes
 
 // 0x8015A06C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void QuickDataBehaviorConstants::SetValueCount(int) { }
 
 // 0x8015A7F0 (8 bytes)

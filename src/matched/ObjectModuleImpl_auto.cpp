@@ -3,6 +3,8 @@
 // 8 functions, 40 bytes
 
 // 0x800F82C0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ObjectModuleImpl::EnqueueObjectDialog(cXObject *, StackElem *, DialogParam *) { }
 
 // 0x800F82C4 (4 bytes)

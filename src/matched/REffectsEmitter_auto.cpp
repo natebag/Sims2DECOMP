@@ -3,6 +3,8 @@
 // 11 functions, 116 bytes
 
 // 0x8036AC30 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* REffectsEmitter::GetTypeInfo() const { return (void*)0x8050D89C; }  // global data pointer
 
 // 0x8036AC3C (12 bytes)

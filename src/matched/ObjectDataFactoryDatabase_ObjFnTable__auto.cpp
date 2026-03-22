@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8015BA84 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ObjectDataFactoryDatabase<ObjFnTable>::operator()() const { return 0; }
 
 // 0x803AECA0 (8 bytes)

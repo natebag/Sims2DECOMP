@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8015BA4C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ObjectDataFactoryIFF<StringSet>::operator()() const { return 0; }
 
 // 0x803AECD8 (8 bytes)

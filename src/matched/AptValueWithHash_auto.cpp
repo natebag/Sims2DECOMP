@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x802B4170 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* AptValueWithHash::GetNativeHashVirtual() { return (char*)this + 0xC; }  // offset 0xC
 
 // 0x802B4178 (8 bytes)

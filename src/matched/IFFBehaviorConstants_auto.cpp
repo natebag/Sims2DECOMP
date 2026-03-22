@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8015A8A8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int IFFBehaviorConstants::GetDataSourceType() const { return 2; }
 

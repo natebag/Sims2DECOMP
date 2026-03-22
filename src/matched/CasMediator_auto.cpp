@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x80162028 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CasMediator::GetNumListeners() const { return *(int*)((char*)this + 0x8); }  // offset 0x8
 

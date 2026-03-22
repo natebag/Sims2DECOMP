@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x800714C4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int SimModel::VerifyRequiredModels() const { return 1; }
 

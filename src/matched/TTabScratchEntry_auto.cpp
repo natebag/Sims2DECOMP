@@ -3,6 +3,8 @@
 // 17 functions, 108 bytes
 
 // 0x80149C98 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TTabScratchEntry::SetJoinIndex(int) { *(short*)((char*)this + 0x116) = val; }  // offset 0x116
 
 // 0x80149D90 (8 bytes)
@@ -18,7 +20,7 @@ void TTabScratchEntry::SetCheckTreeID(short) { *(short*)((char*)this + 0x4) = va
 int TTabScratchEntry::GetAttenuation() const { return *(int*)((char*)this + 0x108); }  // offset 0x108
 
 // 0x80149EA0 (8 bytes)
-void TTabScratchEntry::SetAttenuation(ITreeTableEntry::Attenuation) { *(int*)((char*)this + 0x108) = val; }  // offset 0x108
+void TTabScratchEntry::SetAttenuation(int) { *(int*)((char*)this + 0x108) = val; }  // offset 0x108
 
 // 0x80149EA8 (8 bytes)
 float TTabScratchEntry::GetCustomAttenuationValue() const { return *(float*)((char*)this + 0x10C); }  // offset 0x10C

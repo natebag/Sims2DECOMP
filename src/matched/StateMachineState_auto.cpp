@@ -3,6 +3,8 @@
 // 8 functions, 40 bytes
 
 // 0x80095B10 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int StateMachineState::OwnerGetReturnVal() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0x90); }  // double deref
 
 // 0x80095B2C (4 bytes)

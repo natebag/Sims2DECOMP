@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x80119278 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int cSampleChannel::Snd(int) { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x18); }  // double deref
 

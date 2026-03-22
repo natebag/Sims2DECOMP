@@ -49,7 +49,7 @@ void CLoadingScreen::operator delete(void* ptr) {
 // 0x800578a4 - 8 bytes
 // lwz r3, 0x354(r3); blr
 // ============================================================================
-CLoadingScreen::eLoadingScreenMode CLoadingScreen::GetMode(void) const {
+int CLoadingScreen::GetMode(void) const {
     return m_mode;
 }
 

@@ -3,6 +3,8 @@
 // 3 functions, 20 bytes
 
 // 0x802E00AC (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EBitArray::Print() { }
 
 // 0x802E076C (8 bytes)

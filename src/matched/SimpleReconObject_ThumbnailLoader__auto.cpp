@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x803A82B0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int SimpleReconObject<ThumbnailLoader>::GetType() { return *(int*)((char*)this + 0x8); }  // offset 0x8
 

@@ -3,6 +3,8 @@
 // 12 functions, 80 bytes
 
 // 0x802E2B3C (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EEngine::ManagedShutdown() { /* SDA global @ r13-26512 = 0 */ }
 
 // 0x802E2B48 (4 bytes)

@@ -3,6 +3,8 @@
 // 11 functions, 124 bytes
 
 // 0x80320534 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERShader::GetTypeInfo() const { return (void*)0x8050CF00; }  // global data pointer
 
 // 0x80320540 (12 bytes)

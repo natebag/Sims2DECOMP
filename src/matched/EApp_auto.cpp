@@ -3,6 +3,8 @@
 // 20 functions, 152 bytes
 
 // 0x802E24B0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EApp::SetupForMovie() { }
 
 // 0x802E24B4 (4 bytes)

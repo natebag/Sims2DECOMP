@@ -3,6 +3,8 @@
 // 27 functions, 192 bytes
 
 // 0x8005631C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ISimInstance::Create(cXObject *, EHouse *) { }
 
 // 0x80056320 (4 bytes)

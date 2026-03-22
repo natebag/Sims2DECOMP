@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x80054280 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ISimsCounterTopObject::GetTypeInfo() const { return (void*)0x8050B840; }  // global data pointer
 
 // 0x8005428C (12 bytes)

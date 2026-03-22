@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x802CCB00 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EQuat::Print() { }
 

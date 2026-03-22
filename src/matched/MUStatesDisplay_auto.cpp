@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x800931B0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MUStatesDisplay::Startup() { }
 
 // 0x80094270 (12 bytes)

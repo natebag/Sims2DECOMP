@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x8008B5AC (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void InLevelBaseState::dialog_zero_input_callback() { }
 

@@ -3,6 +3,8 @@
 // 5 functions, 40 bytes
 
 // 0x802E1B78 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ENgcFile::Write(void *, unsigned int) { return 0; }
 
 // 0x802E1BDC (8 bytes)

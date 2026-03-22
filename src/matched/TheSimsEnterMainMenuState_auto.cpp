@@ -3,6 +3,8 @@
 // 3 functions, 12 bytes
 
 // 0x80097FDC (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TheSimsEnterMainMenuState::Shutdown() { }
 
 // 0x800985F8 (4 bytes)

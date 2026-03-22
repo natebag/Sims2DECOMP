@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x800949E4 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void PreGameCasPlayer1State::Startup() { }
 
 // 0x800949E8 (4 bytes)

@@ -3,6 +3,8 @@
 // 10 functions, 52 bytes
 
 // 0x8023A8F8 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CDirtyXmlNode::appendChild(IAptXmlNode *) { }
 
 // 0x8023AA00 (4 bytes)

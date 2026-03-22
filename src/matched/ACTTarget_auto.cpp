@@ -3,6 +3,8 @@
 // 5 functions, 44 bytes
 
 // 0x801A21EC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ACTTarget::ShowActionQueue() { *(int*)((char*)this + 0xD8) = 1; }
 
 // 0x801A21F8 (12 bytes)

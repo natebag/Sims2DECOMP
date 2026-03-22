@@ -3,6 +3,8 @@
 // 38 functions, 276 bytes
 
 // 0x8012503C (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 unsigned int cXPersonImpl::ReconType() { return 0x50455253; }
 
 // 0x801264C4 (4 bytes)

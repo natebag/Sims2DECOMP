@@ -28,10 +28,8 @@ enum eItemCategory { _eItemCategory_dummy = 0 };
 enum eItemSubcategory { _eItemSubcategory_dummy = 0 };
 enum eLOD { _eLOD_dummy = 0 };
 enum eLightType { _eLightType_dummy = 0 };
-enum eLoadingScreenMode { _eLoadingScreenMode_dummy = 0 };
 enum eLotType { _eLotType_dummy = 0 };
 enum eMURequest { _eMURequest_dummy = 0 };
-enum eMode { _eMode_dummy = 0 };
 enum eMotiveIndex { _eMotiveIndex_dummy = 0 };
 enum eObjectType { _eObjectType_dummy = 0 };
 enum eOrientation { _eOrientation_dummy = 0 };
@@ -778,7 +776,6 @@ class HDDThread;
 class HDDTool;
 class HTIteratorPtrType;
 class HUDTarget;
-class HandleNode;
 class HeadHatHairCasCUIMenu;
 class HeapUseInfo;
 class HeapValidationLevel;
@@ -920,7 +917,6 @@ class MdfData;
 class MemCardSaveLoad;
 class MemFile;
 class MemPoolTool;
-class Memory;
 class MemoryAllocDisplay;
 class MemoryBlockDetail;
 class MemoryBlockDisplay;
@@ -1116,7 +1112,6 @@ class SetVar_EYE_state;
 class SetVar_EYE_topLevelCurrSel;
 class SetVariableCommandTable;
 class SetVariableCommandTableRecord;
-class Sides;
 class SimCUIProbeDisplay;
 class SimImageMaker;
 class SimInteractor;
@@ -1254,7 +1249,6 @@ class WallPainterParams;
 class WallPattern;
 class WallStyle;
 class WallTile;
-class WantFear;
 class WantFearCUIMenu;
 class WantFearManager;
 class WidgetScreenFormat;
@@ -1802,7 +1796,7 @@ public:
 
 class AptBoolean {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void DeleteThis();
     void ForceDelete();
@@ -1930,7 +1924,7 @@ public:
 
 class AptCharacterButtonInst {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void PreDestroy();
     void* operator new(unsigned int size);
@@ -2016,7 +2010,7 @@ public:
 
 class AptCharacterTextInst {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void* operator new(unsigned int size);
     void operator delete(void* ptr, unsigned int size);
@@ -2134,7 +2128,7 @@ public:
 
 class AptExtObject {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void SetFunction(char *, AptNativeFunction *);
     AptExtObject(int);
@@ -2178,7 +2172,7 @@ public:
 
 class AptFloat {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void DeleteThis();
     void ForceDelete();
@@ -2241,7 +2235,7 @@ public:
 
 class AptInteger {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void DeleteThis();
     void ForceDelete();
@@ -2647,7 +2641,7 @@ public:
 
 class AptString {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     AptValue* sMethod_lastIndexOf(AptValue* thisObj, int argc);
     void cpy(EAStringC* src);
@@ -2690,7 +2684,7 @@ public:
 
 class AptTextFormat {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void* operator new(unsigned int size);
     void operator delete(void* ptr, unsigned int size);
@@ -2937,7 +2931,7 @@ public:
 
 class AptXmlAttributes {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void PreDestroy();
     void* operator new(unsigned int size);
@@ -2950,7 +2944,7 @@ public:
 
 class AptXmlNode {
 public:
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void PreDestroy();
     AptValue* sMethod_appendChild(AptValue* thisObj, int argc);
@@ -5169,7 +5163,7 @@ public:
     void Deallocate(void *, unsigned int);
     void ConsumeFreeBlockBySize(unsigned int);
     void AddFreeBlockBySize(void *, unsigned int);
-    void * operator new [](unsigned int size);
+    void* operator new [](unsigned int size);
     void operator delete [](void * p);
     void* operator new(unsigned int size);
     void operator delete(void* ptr, unsigned int size);

@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x803285F8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool ESoundTrackDataManager::CanCache(EResource *) { return true; }
 

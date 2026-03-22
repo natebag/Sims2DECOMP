@@ -3,6 +3,8 @@
 // 7 functions, 48 bytes
 
 // 0x8007D350 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CTGFileManager::CTGFileManager() { }
 
 // 0x8007D37C (8 bytes)

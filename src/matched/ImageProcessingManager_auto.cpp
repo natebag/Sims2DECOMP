@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x8032A290 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ImageProcessingManager::LinkTexture(unsigned int, unsigned int) { return /* SDA global @ r13-26592 */; }  // lwz r3,-26592(r13)
 
 // 0x8032A298 (4 bytes)

@@ -3,6 +3,8 @@
 // 3 functions, 12 bytes
 
 // 0x800A5158 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CTGDump::CTGDump() { }
 
 // 0x800A5184 (4 bytes)

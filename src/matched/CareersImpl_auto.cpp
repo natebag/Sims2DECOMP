@@ -3,6 +3,8 @@
 // 2 functions, 20 bytes
 
 // 0x800B1698 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CareersImpl::GetNumCareers() { return *(int*)((char*)(*(void**)((char*)this + 0x8)) + 0xC); }  // double deref
 
 // 0x800B1B4C (8 bytes)

@@ -3,6 +3,8 @@
 // 3 functions, 32 bytes
 
 // 0x80321704 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ArcCopier::TerminateCopy() { /* SDA global @ r13-26640 = 1 */ }
 
 // 0x80321710 (12 bytes)

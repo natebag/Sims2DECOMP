@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x802C862C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EFixedString::ReleaseBuffer() { }
 

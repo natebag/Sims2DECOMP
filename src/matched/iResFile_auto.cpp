@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x80135624 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int iResFile::GetError() { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x8013562C (8 bytes)

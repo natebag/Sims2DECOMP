@@ -3,6 +3,8 @@
 // 13 functions, 96 bytes
 
 // 0x803301BC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcMemoryCard::UnInitMemoryCard() { return 1; }
 
 // 0x80330D70 (8 bytes)

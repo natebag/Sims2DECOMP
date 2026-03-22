@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x802ABB50 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptSound::sMethod_stop(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
 

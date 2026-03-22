@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x801DBB98 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void R2LTarget::Update() { }
 
 // 0x801DCE28 (4 bytes)

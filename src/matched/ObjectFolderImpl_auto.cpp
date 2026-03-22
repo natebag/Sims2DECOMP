@@ -3,6 +3,8 @@
 // 9 functions, 56 bytes
 
 // 0x800EFDC4 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ObjectFolderImpl::CreatingResFile(iResFile *) { }
 
 // 0x800EFDC8 (4 bytes)

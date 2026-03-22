@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x802F249C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EMirrorPortal::SetNumCorners(int) { *(int*)((char*)this + 0x38) = val; }  // offset 0x38
 
 // 0x802F2550 (8 bytes)

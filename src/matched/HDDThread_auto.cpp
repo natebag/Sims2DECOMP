@@ -3,6 +3,8 @@
 // 4 functions, 24 bytes
 
 // 0x80321E70 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void HDDThread::InitAndRun() { }
 
 // 0x80321F14 (12 bytes)

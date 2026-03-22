@@ -3,6 +3,8 @@
 // 3 functions, 12 bytes
 
 // 0x8028FAE4 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AptCharacterInst::PreDestroy() { }
 
 // 0x8029C418 (4 bytes)

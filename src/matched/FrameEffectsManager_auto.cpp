@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x80357968 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int FrameEffectsManager::MotionBlurObject() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80357970 (8 bytes)

@@ -3,6 +3,8 @@
 // 21 functions, 164 bytes
 
 // 0x80019A00 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ESimsCam::CursorMoved(int, EVec3 &) { }
 
 // 0x8001ADA0 (8 bytes)

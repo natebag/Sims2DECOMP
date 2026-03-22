@@ -3,6 +3,8 @@
 // 10 functions, 76 bytes
 
 // 0x803C769C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EMemoryCard::OpenForIO(char *, unsigned int) { return 1; }
 
 // 0x803C76A4 (8 bytes)

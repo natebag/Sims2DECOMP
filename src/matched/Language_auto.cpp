@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x803A2B90 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool Language::IsSingleExit(BehaviorNode *) { return false; }
 
 // 0x803A2B98 (8 bytes)

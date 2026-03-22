@@ -3,6 +3,8 @@
 // 4 functions, 40 bytes
 
 // 0x801C9AE4 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MODTarget::ShowMood() { *(int*)((char*)this + 0x90) = 1; }
 
 // 0x801C9AF0 (12 bytes)

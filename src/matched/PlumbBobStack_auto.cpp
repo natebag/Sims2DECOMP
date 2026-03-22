@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x800597E0 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void PlumbBobStack::Reset() { *(int*)((char*)this + 0x0) = 0; }
 

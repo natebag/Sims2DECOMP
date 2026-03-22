@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x802B6218 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptPrototype::GetSuperConstructor() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
 

@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x802012DC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int RELTarget::GetFace(int) { return 6; }
 
 // 0x802012E4 (8 bytes)

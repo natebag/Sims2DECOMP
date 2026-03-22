@@ -3,6 +3,8 @@
 // 4 functions, 28 bytes
 
 // 0x802CC474 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENDummy::SetID(int) { *(int*)((char*)this + 0x40) = val; }  // offset 0x40
 
 // 0x802CC4B0 (4 bytes)

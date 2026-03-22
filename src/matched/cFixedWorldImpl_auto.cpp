@@ -3,6 +3,8 @@
 // 7 functions, 56 bytes
 
 // 0x8014CDC4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int cFixedWorldImpl::GetFloorLayer() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
 
 // 0x8014CDCC (8 bytes)

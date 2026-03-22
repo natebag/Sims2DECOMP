@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8032D98C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool EAudioSampleManager::CanCache(EResource *) { return true; }
 

@@ -3,6 +3,8 @@
 // 6 functions, 48 bytes
 
 // 0x800B70FC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int FloatConstantsQuickData::SaveDataByID(ObjectDataID &) { return 0; }
 
 // 0x800B7174 (8 bytes)

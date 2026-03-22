@@ -3,6 +3,8 @@
 // 9 functions, 72 bytes
 
 // 0x800D95EC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int cXObject::GetPersonWidth() { return /* SDA global @ r13-31916 */; }  // lwz r3,-31916(r13)
 
 // 0x800D95F4 (8 bytes)

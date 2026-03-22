@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8035071C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ENgcTextureC4::operator new(unsigned int, void *) { return first; }  // mr r3,r4
 

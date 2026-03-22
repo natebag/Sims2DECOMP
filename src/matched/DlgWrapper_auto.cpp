@@ -3,6 +3,8 @@
 // 13 functions, 104 bytes
 
 // 0x8007E5E0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int DlgWrapper::GetFont() { return *(int*)((char*)this + 0xA8); }  // offset 0xA8
 
 // 0x8007E5E8 (8 bytes)

@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x80196A50 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CASBodyTarget::SetVariable(char *, char *) { }
 

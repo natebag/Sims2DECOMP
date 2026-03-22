@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x801BBE14 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 unsigned int INGTarget::get_blank_shader_id() const { return 0x9F93FF74; }
 

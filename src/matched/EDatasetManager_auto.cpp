@@ -3,6 +3,8 @@
 // 6 functions, 44 bytes
 
 // 0x80324598 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EDatasetManager::ManageDasFile(char *) { }
 
 // 0x8032471C (8 bytes)

@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x800A9330 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AmbientSoundPlayer::SetScorePlayer(AmbientScorePlayer *) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x800A9338 (8 bytes)

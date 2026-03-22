@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8015AC50 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ObjectDataBehaviorTree::SetResID(short) { *(short*)((char*)this + 0x4) = val; }  // offset 0x4
 

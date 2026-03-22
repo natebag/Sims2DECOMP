@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x801A9918 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CSPTarget::Update() { }
 
 // 0x801AA57C (4 bytes)

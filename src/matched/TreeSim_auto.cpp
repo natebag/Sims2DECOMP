@@ -3,6 +3,8 @@
 // 19 functions, 152 bytes
 
 // 0x801491E4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TreeSim::setObjectImpl(cXObjectImpl *) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x801491EC (8 bytes)

@@ -3,17 +3,19 @@
 // 5 functions, 36 bytes
 
 // 0x80217130 (8 bytes)
-bool InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::DirectInteractor &) { return true; }
+#include "types.h"
+#include "stub_classes.h"
+bool InteractorModule::InteractorVisualizer::CreateResources(int &) { return true; }
 
 // 0x80217138 (8 bytes)
-void InteractorModule::InteractorVisualizer::DestroyResources(InteractorModule::DirectInteractor &) { return 1; }
+void InteractorModule::InteractorVisualizer::DestroyResources(int &) { return 1; }
 
 // 0x8021728C (8 bytes)
-bool InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::SocialModeInteractor &) { return true; }
+bool InteractorModule::InteractorVisualizer::CreateResources(int &) { return true; }
 
 // 0x80217294 (8 bytes)
-void InteractorModule::InteractorVisualizer::DestroyResources(InteractorModule::SocialModeInteractor &) { return 1; }
+void InteractorModule::InteractorVisualizer::DestroyResources(int &) { return 1; }
 
 // 0x802172F8 (4 bytes)
-void InteractorModule::InteractorVisualizer::Draw(InteractorModule::SocialModeInteractor &) { }
+void InteractorModule::InteractorVisualizer::Draw(int &) { }
 

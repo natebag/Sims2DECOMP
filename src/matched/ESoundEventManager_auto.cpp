@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x80328498 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool ESoundEventManager::CanCache(EResource *) { return true; }
 

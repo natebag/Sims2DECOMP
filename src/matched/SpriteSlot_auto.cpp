@@ -3,6 +3,8 @@
 // 21 functions, 172 bytes
 
 // 0x80145364 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int SpriteSlot::GetTicksPerFrame() { return 12; }
 
 // 0x801453CC (8 bytes)

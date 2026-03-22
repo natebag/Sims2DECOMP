@@ -3,6 +3,8 @@
 // 9 functions, 88 bytes
 
 // 0x8036AF3C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void REffectsSequencer::DelRefSubResources() { }
 
 // 0x8036AF40 (4 bytes)

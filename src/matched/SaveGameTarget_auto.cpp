@@ -3,6 +3,8 @@
 // 2 functions, 20 bytes
 
 // 0x8018DE08 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int SaveGameTarget::GetResult() { return *(int*)((char*)this + 0x110); }  // offset 0x110
 
 // 0x8018FFB0 (12 bytes)

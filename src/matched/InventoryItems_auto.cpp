@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8004AA5C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int BBI::InventoryItems::GetContainerSize() const { return 36; }
 

@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x800160A8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CameraMotionSystem::SetMotionType(CameraMotionType) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x800160B0 (8 bytes)

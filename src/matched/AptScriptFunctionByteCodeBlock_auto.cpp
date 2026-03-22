@@ -3,6 +3,8 @@
 // 6 functions, 44 bytes
 
 // 0x802B9180 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptScriptFunctionByteCodeBlock::GetName() const { return *(int*)((char*)this + 0x3C); }  // offset 0x3C
 
 // 0x802B9188 (8 bytes)

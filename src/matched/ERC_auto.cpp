@@ -3,6 +3,8 @@
 // 18 functions, 80 bytes
 
 // 0x802F6BE0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ERC::TriFan(EGEVert *, int) { }
 
 // 0x802F6BE4 (4 bytes)

@@ -3,6 +3,8 @@
 // 8 functions, 52 bytes
 
 // 0x8015236C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void XObjLang::GetTreeTypeName(int, StringBuffer &) { }
 
 // 0x80152370 (4 bytes)

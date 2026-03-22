@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x80351420 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ENgcTextureC8_32::GetTEVStageCount() { return 2; }
 
 // 0x80351428 (8 bytes)

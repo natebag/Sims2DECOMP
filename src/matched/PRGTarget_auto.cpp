@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x801DA620 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void PRGTarget::UpdateShaders() { }
 

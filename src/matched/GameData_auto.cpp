@@ -3,6 +3,8 @@
 // 3 functions, 16 bytes
 
 // 0x8003CE78 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void GameData::SystemPostUpdate() { }
 
 // 0x8003DC38 (4 bytes)

@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x800898C0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CreateASimBaseState::Draw(ERC *) { }
 

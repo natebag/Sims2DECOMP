@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x8032344C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EControllerManager::Shutdown() { }
 
 // 0x80323AF0 (8 bytes)

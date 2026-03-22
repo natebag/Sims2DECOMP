@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x801329AC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int PropTableImpl::GetEntryName(int) { return 0; }
 

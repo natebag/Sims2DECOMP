@@ -54,6 +54,9 @@ def parse_all_cpp():
         for fname in sorted(files):
             if not fname.endswith(".cpp"):
                 continue
+            # Skip auto-generated matched stubs (have incorrect return types)
+            if fname.endswith("_auto.cpp"):
+                continue
             with open(os.path.join(root, fname), "r", encoding="utf-8", errors="replace") as fh:
                 for line in fh:
                     line = line.strip()
@@ -190,7 +193,11 @@ def _dedup(methods):
             op_part = norm_name[len("operator "):]
             op_part = re.sub(r"\s*([*&])", r"\1", op_part)
             norm_name = "operator " + op_part
-        norm_params = _sanitize_params(params)  # For dedup, replace all nested refs
+        norm_params = _sanitize_params(params)
+        # Normalize typedefs for dedup
+        norm_params = norm_params.replace("u32", "unsigned int").replace("u16", "unsigned short").replace("u8", "unsigned char")
+        norm_params = norm_params.replace("s32", "int").replace("s16", "short").replace("s8", "signed char")
+        norm_params = norm_params.replace("f32", "float").replace("f64", "double")
         # Further normalize for dedup
         dp = re.sub(r"\s+", " ", norm_params).strip()
         # Normalize (void) to empty
@@ -231,7 +238,13 @@ def _sanitize_params(params, **kwargs):
 def _sanitize_ret(ret, **kwargs):
     """Sanitize return type."""
     ret = ret.replace("unsigned wchar_t", "wchar_t")
-    ret = re.sub(r"\b\w+::\w+(?:::\w+)*", "int", ret)
+    # Replace Parent::Child but preserve pointer/ref qualifiers
+    def _repl(m):
+        full_match = m.group(0)
+        # Check if followed by * or &
+        end_pos = m.end()
+        return "int"
+    ret = re.sub(r"\b\w+::\w+(?:::\w+)*", _repl, ret)
     if ret.startswith("//"):
         ret = "void"
     return ret
@@ -520,11 +533,11 @@ def _emit_class(lines, cls, methods, known_parents=None, nested_types=None, inde
         # Skip malformed operator declarations
         if name == "operator" or name == "operator ":
             continue
-        # Fix operator new/delete return types
+        # Force correct return types for operator new/delete
         norm_op = re.sub(r"\s+", "", name)
-        if norm_op in ("operatornew", "operatornew[]") and not ret:
+        if norm_op in ("operatornew", "operatornew[]"):
             ret = "void*"
-        if norm_op in ("operatordelete", "operatordelete[]") and not ret:
+        if norm_op in ("operatordelete", "operatordelete[]"):
             ret = "void"
         if is_dtor or is_ctor:
             lines.append(f"{indent}    {name}({params});")

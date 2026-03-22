@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x8039E4B0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool EFenceWall::IsWallsOpaque(int) { return false; }
 

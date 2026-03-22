@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x801A0934 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CASRoommateTarget::GetSelectedSlot() const { return *(int*)((char*)this + 0x90); }  // offset 0x90
 

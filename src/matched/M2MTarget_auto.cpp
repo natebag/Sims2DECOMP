@@ -3,6 +3,8 @@
 // 5 functions, 36 bytes
 
 // 0x801C0C9C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void M2MTarget::ZeroInputCallback() { }
 
 // 0x801C1108 (8 bytes)

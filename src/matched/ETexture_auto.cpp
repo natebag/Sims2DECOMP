@@ -3,6 +3,8 @@
 // 17 functions, 116 bytes
 
 // 0x80365074 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ETexture::Validate() { }
 
 // 0x80365078 (4 bytes)

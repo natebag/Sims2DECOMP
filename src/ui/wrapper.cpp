@@ -326,7 +326,7 @@ void WrapperPaneBase::SetStateAlt1() {
 }
 
 // 0x80087b1c | 8 bytes
-WrapperPaneBase::PaneState WrapperPaneBase::GetState() const {
+int WrapperPaneBase::GetState() const {
     return m_state;
 }
 

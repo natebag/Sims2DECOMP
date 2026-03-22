@@ -3,6 +3,8 @@
 // 7 functions, 52 bytes
 
 // 0x80022684 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EDummyFile::Read(void *, unsigned int) { return second; }  // mr r3,r5
 
 // 0x8002268C (8 bytes)

@@ -3,6 +3,8 @@
 // 6 functions, 24 bytes
 
 // 0x801B070C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void FAMTarget::Shutdown() { }
 
 // 0x801B0710 (4 bytes)

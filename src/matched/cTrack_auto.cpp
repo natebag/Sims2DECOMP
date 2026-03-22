@@ -3,6 +3,8 @@
 // 3 functions, 28 bytes
 
 // 0x801178A0 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int cTrack::StartPos() { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0x30); }  // double deref
 
 // 0x80119DC0 (8 bytes)

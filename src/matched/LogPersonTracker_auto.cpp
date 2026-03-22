@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x8013EDD0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void LogPersonTracker::Print() { }
 
 // 0x8013EDD4 (4 bytes)

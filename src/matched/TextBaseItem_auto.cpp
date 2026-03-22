@@ -3,6 +3,8 @@
 // 21 functions, 172 bytes
 
 // 0x80087104 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TextBaseItem::Reset() { *(int*)((char*)this + 0x4) = 1; }
 
 // 0x80087198 (8 bytes)

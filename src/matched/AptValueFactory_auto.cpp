@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x802B5124 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptValueFactory::CreateUndefined() { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
 

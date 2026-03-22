@@ -3,5 +3,7 @@
 // 1 functions, 8 bytes
 
 // 0x800AAC2C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AnimTableImpl::GetEntryName(int) { return 0; }
 

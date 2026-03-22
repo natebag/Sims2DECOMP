@@ -3,6 +3,8 @@
 // 7 functions, 80 bytes
 
 // 0x8030FBA0 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* EREdithTreeSet::GetTypeInfo() const { return (void*)0x8050CE60; }  // global data pointer
 
 // 0x8030FBAC (12 bytes)

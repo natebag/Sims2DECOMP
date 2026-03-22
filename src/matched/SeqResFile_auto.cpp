@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x8013DA08 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void SeqResFile::ClearOpenSpecs() { *(int*)((char*)this + 0xD0) = 0; }
 

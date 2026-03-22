@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x80364EB8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ERenderSurface::GetXSize() { return *(int*)((char*)this + 0x0); }  // offset 0x0
 
 // 0x80364EC0 (8 bytes)

@@ -3,6 +3,8 @@
 // 3 functions, 28 bytes
 
 // 0x801E1628 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void SKLTarget::ShowSkills() { *(int*)((char*)this + 0x90) = 1; }
 
 // 0x801E19BC (8 bytes)

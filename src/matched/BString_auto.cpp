@@ -3,6 +3,8 @@
 // 5 functions, 56 bytes
 
 // 0x8009C014 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int BString::ref_count() const { return *(int*)((char*)(*(void**)((char*)this + 0x0)) + 0xC); }  // double deref
 
 // 0x8009C064 (12 bytes)

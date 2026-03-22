@@ -3,6 +3,8 @@
 // 6 functions, 60 bytes
 
 // 0x80090E04 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int LoadingScreenStateMachine::GetLoadingScreen() { return *(int*)((char*)this + 0x98); }  // offset 0x98
 
 // 0x80090E0C (12 bytes)

@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x802B4534 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void AptExtern::AddRef(char *, char *, int) { }
 
 // 0x802B4538 (4 bytes)

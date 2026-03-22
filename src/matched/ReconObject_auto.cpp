@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80134768 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ReconObject::DoStream(ReconBuffer *, int) { }
 
 // 0x8013476C (12 bytes)

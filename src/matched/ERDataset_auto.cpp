@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x80369834 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ERDataset::GetTypeInfo() const { return (void*)0x8050D824; }  // global data pointer
 
 // 0x80369840 (12 bytes)

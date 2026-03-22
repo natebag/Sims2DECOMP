@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x8005A45C (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void PlumbBob::BecomeTransitionIndicator() { *(int*)((char*)this + 0x160) = 1; }
 

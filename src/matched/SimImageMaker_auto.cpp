@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8006EBCC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void SimImageMaker::SetGender(bool) { *(int*)((char*)this + 0x88) = val; }  // offset 0x88
 
 // 0x8006EBD4 (8 bytes)

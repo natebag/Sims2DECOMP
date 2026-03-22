@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8017590C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int CasScenePersonal::GetSceneName() const { return /* SDA global @ r13-31548 */; }  // lwz r3,-31548(r13)
 
 // 0x8017592C (8 bytes)

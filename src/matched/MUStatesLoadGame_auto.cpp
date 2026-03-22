@@ -3,6 +3,8 @@
 // 3 functions, 28 bytes
 
 // 0x80091B78 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MUStatesLoadGame::Reset() { *(int*)((char*)this + 0x1C) = 0; }
 
 // 0x80091B84 (4 bytes)

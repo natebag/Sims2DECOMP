@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x8021CEE4 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void FadeSquare::StartFade() { *(int*)((char*)this + 0x14) = 1; }
 

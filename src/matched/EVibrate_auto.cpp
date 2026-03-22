@@ -3,6 +3,8 @@
 // 3 functions, 28 bytes
 
 // 0x80307CB0 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EVibrate::Disable() { *(int*)((char*)this + 0x0) = 0; }
 
 // 0x80307CBC (8 bytes)

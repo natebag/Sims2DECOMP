@@ -3,16 +3,18 @@
 // 7 functions, 44 bytes
 
 // 0x8021F3D8 (4 bytes)
-void InteractorModule::SocialModeInteractor::GetInteractorInfo(InteractorModule::InteractorInfo &) { }
+#include "types.h"
+#include "stub_classes.h"
+void InteractorModule::SocialModeInteractor::GetInteractorInfo(int &) { }
 
 // 0x8021F3DC (4 bytes)
-void InteractorModule::SocialModeInteractor::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::SocialModeInteractor::OnCommandPressed(int, float) { }
 
 // 0x8021F3E0 (4 bytes)
-void InteractorModule::SocialModeInteractor::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) { }
+void InteractorModule::SocialModeInteractor::OnCommandReleased(int) { }
 
 // 0x8021F3E4 (4 bytes)
-void InteractorModule::SocialModeInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float) { }
+void InteractorModule::SocialModeInteractor::OnCommandUpdate(int, float) { }
 
 // 0x8021F57C (12 bytes)
 void InteractorModule::SocialModeInteractor::ResetChosenAction() { *(short*)((char*)this + 0x60) = -1; }

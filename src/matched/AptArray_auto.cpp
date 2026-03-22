@@ -3,6 +3,8 @@
 // 2 functions, 12 bytes
 
 // 0x80287E40 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptArray::length() { return *(int*)((char*)this + 0x2C); }  // offset 0x2C
 
 // 0x80287EF0 (4 bytes)

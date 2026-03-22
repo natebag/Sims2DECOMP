@@ -3,6 +3,8 @@
 // 41 functions, 296 bytes
 
 // 0x802F0F80 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EGraphics::ManagedShutdown() { }
 
 // 0x802F11A8 (4 bytes)

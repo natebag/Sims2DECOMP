@@ -3,6 +3,8 @@
 // 4 functions, 36 bytes
 
 // 0x802D7854 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ESemaphore::GetObject(int) { return 0; }
 
 // 0x802D78C8 (12 bytes)

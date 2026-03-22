@@ -3,6 +3,8 @@
 // 28 functions, 132 bytes
 
 // 0x8015E6FC (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int TreeTableEntryQuickData::CountAds() const { return 16; }
 
 // 0x8015E7C8 (12 bytes)
@@ -63,7 +65,7 @@ void TreeTableEntryQuickData::SetActionTreeID(short) { }
 void TreeTableEntryQuickData::SetCheckTreeID(short) { }
 
 // 0x8015E888 (4 bytes)
-void TreeTableEntryQuickData::SetAttenuation(ITreeTableEntry::Attenuation) { }
+void TreeTableEntryQuickData::SetAttenuation(int) { }
 
 // 0x8015E88C (4 bytes)
 void TreeTableEntryQuickData::SetCustomAttenuation(float) { }

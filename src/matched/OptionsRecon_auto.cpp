@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x80058D24 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int OptionsRecon::WriteToMemoryCard(char *, unsigned char) { return 0; }
 
 // 0x80058E54 (8 bytes)

@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x800BCB68 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void IconGroupImpl::GetLabel(StringBuffer &) { }
 
 // 0x800BCB6C (4 bytes)

@@ -3,8 +3,10 @@
 // 2 functions, 16 bytes
 
 // 0x8003E188 (8 bytes)
-void EffectsPreRenderVisitor::Visit(Effects::Effect &) { return 1; }
+#include "types.h"
+#include "stub_classes.h"
+void EffectsPreRenderVisitor::Visit(int &) { return 1; }
 
 // 0x8003E190 (8 bytes)
-void EffectsPreRenderVisitor::Visit(Effects::EffectsSequencer &) { return 1; }
+void EffectsPreRenderVisitor::Visit(int &) { return 1; }
 

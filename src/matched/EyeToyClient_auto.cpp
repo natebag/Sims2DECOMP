@@ -3,7 +3,9 @@
 // 10 functions, 68 bytes
 
 // 0x80037650 (4 bytes)
-void EyeToyClient::SaveComplete(NghResFile::SectionID, NghResFile::SaveRecord &) { }
+#include "types.h"
+#include "stub_classes.h"
+void EyeToyClient::SaveComplete(int, int &) { }
 
 // 0x80037708 (8 bytes)
 int EyeToyClient::loadTexture_alloc(unsigned int, unsigned int) { return /* SDA global @ r13-25032 */; }  // lwz r3,-25032(r13)

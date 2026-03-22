@@ -742,7 +742,7 @@ void InteractionList::increment(int& it) {
 
 // InteractionList::iterator::operator++(void) - 0x80113308 (52 bytes)
 // NON_MATCHING - calls increment, returns iterator
-InteractionList::iterator& InteractionList::iterator::operator++(void) {
+int& InteractionList::iterator::operator++(void) {
     // Original calls InteractionList::increment on this
     return *this;
 }

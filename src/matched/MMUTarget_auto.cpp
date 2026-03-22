@@ -3,6 +3,8 @@
 // 7 functions, 48 bytes
 
 // 0x801C59E0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int MMUTarget::GetSingleton() { return /* SDA global @ r13-30180 */; }  // lwz r3,-30180(r13)
 
 // 0x801C59E8 (12 bytes)

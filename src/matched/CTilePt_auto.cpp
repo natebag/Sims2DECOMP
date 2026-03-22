@@ -3,6 +3,8 @@
 // 2 functions, 20 bytes
 
 // 0x800B45D0 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CTilePt::CTilePt() { *(char*)((char*)this + 0x2) = 0; }
 
 // 0x800B4DE8 (8 bytes)

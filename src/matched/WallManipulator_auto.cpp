@@ -3,6 +3,8 @@
 // 9 functions, 96 bytes
 
 // 0x80223F88 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 bool InteractorModule::WallManipulator::IsValidWallSegment() { return (*(int*)((char*)this + 0xC4) >> 7) & 1; }  // bit 7
 
 // 0x80223F94 (12 bytes)

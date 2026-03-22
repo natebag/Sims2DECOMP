@@ -3,6 +3,8 @@
 // 5 functions, 28 bytes
 
 // 0x803A05E8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int UIObjectBase::GetLocalizable(char *) { return 0; }
 
 // 0x803A06A0 (4 bytes)

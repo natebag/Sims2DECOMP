@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x80209194 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* InteractorModule::FloorPainter::GetAnchorPos() { return (char*)this + 0x64; }  // offset 0x64
 
 // 0x8020919C (8 bytes)

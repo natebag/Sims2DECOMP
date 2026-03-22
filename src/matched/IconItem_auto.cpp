@@ -3,6 +3,8 @@
 // 5 functions, 44 bytes
 
 // 0x80084914 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void IconItem::Startup() { *(int*)((char*)this + 0x30) = 0; }
 
 // 0x800878A4 (8 bytes)

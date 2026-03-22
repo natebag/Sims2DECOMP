@@ -3,6 +3,8 @@
 // 4 functions, 28 bytes
 
 // 0x80039DE0 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void FlashPiMenu::Update() { }
 
 // 0x80039DE4 (4 bytes)

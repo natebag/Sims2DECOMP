@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x801B5A04 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int G2DTarget::IsG2DActive() { return *(int*)((char*)this + 0x88); }  // offset 0x88
 
 // 0x801B5A0C (8 bytes)

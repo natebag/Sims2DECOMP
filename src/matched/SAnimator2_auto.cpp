@@ -3,6 +3,8 @@
 // 35 functions, 260 bytes
 
 // 0x8005C78C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void SAnimator2::Render(int) { }
 
 // 0x8005D120 (4 bytes)
@@ -60,7 +62,7 @@ int SAnimator2::GetAnimState() { return *(int*)((char*)this + 0x2C); }  // offse
 int SAnimator2::GetFollowMode() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 
 // 0x80069104 (8 bytes)
-void SAnimator2::SetDesiredAnimState(SAnimator2::eAnimState) { *(int*)((char*)this + 0xB0) = val; }  // offset 0xB0
+void SAnimator2::SetDesiredAnimState(int) { *(int*)((char*)this + 0xB0) = val; }  // offset 0xB0
 
 // 0x8006910C (8 bytes)
 void SAnimator2::SetCameraZoomRatio(float) { *(float*)((char*)this + 0xB8) = val; }  // offset 0xB8

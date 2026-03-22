@@ -3,6 +3,8 @@
 // 10 functions, 96 bytes
 
 // 0x80233364 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ERLevel::ValidateInstanceInLevel(EInstance *) { }
 
 // 0x802337D0 (4 bytes)

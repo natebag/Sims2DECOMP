@@ -3,6 +3,8 @@
 // 13 functions, 128 bytes
 
 // 0x8022DAE0 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EIStaticModel::ModifyColor(unsigned int) { *(int*)((char*)this + 0x114) = val; }  // offset 0x114
 
 // 0x8022DAE8 (8 bytes)

@@ -3,6 +3,8 @@
 // 6 functions, 72 bytes
 
 // 0x800540EC (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void* ISimsMultiTileObjectModel::GetTypeInfo() const { return (void*)0x8050B818; }  // global data pointer
 
 // 0x800540F8 (12 bytes)

@@ -3,6 +3,8 @@
 // 3 functions, 12 bytes
 
 // 0x802FD24C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ESubModelShader::DrawNormals(ERC *) { }
 
 // 0x802FD250 (4 bytes)

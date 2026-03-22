@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x802D8080 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int ENgcSNFile::Tell() const { return *(int*)((char*)this + 0x30); }  // offset 0x30
 
 // 0x802D8088 (8 bytes)

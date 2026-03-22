@@ -3,6 +3,8 @@
 // 5 functions, 40 bytes
 
 // 0x801657D8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CasScene::SetMediator(CasMediator *) { *(int*)((char*)this + 0x0) = val; }  // offset 0x0
 
 // 0x801672B0 (8 bytes)

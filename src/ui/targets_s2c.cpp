@@ -699,7 +699,7 @@ int INGTarget::SetRefrigeratorLevel(int level) {
 
 // 0x801BBBF0 - 52 bytes
 // NON_MATCHING: calls get_ingredient_list_impl, checks null, returns field
-INGTarget::IngInfo* INGTarget::get_current_ingredient() {
+int* INGTarget::get_current_ingredient() {
     IngInfo* info = (IngInfo*)INGTarget_getIngredientListImpl(this);
     if (info != 0) {
         return (IngInfo*)*(int*)info;
@@ -723,7 +723,7 @@ u32 INGTarget::get_blank_shader_id() const {
 
 // 0x801BC114 - 64 bytes
 // NON_MATCHING: loop with CTR, checks grid ingredients
-INGTarget::IngInfo* INGTarget::get_grid_ingredient(short id) {
+int* INGTarget::get_grid_ingredient(short id) {
     void** grid = (void**)((char*)this + 432);
     for (int i = 0; i < 12; i++) {
         void* ing = grid[i];
@@ -740,7 +740,7 @@ INGTarget::IngInfo* INGTarget::get_grid_ingredient(short id) {
 
 // 0x801BC154 - 60 bytes
 // NON_MATCHING: loop with CTR, checks mix ingredients
-INGTarget::IngInfo* INGTarget::get_mix_ingredient(short id) const {
+int* INGTarget::get_mix_ingredient(short id) const {
     void** mix = (void**)((char*)this + 480);
     for (int i = 0; i < 4; i++) {
         if (mix != 0) {

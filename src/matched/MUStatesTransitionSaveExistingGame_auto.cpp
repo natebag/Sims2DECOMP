@@ -3,6 +3,8 @@
 // 2 functions, 24 bytes
 
 // 0x80092ED8 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MUStatesTransitionSaveExistingGame::Reset() { *(int*)((char*)this + 0x1C) = 0; }
 
 // 0x80094180 (12 bytes)

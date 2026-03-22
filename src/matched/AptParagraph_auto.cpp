@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x8000FC68 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 float AptParagraph::GetParagraphHeight() { return *(float*)((char*)this + 0x30); }  // offset 0x30
 
 // 0x8000FC70 (8 bytes)

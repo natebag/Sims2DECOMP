@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x800C2D88 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void MotiveCurveSet::PrintMotiveGraph(__sFILE *, StringSet *) { }
 
 // 0x800C2D8C (4 bytes)

@@ -3,6 +3,8 @@
 // 35 functions, 284 bytes
 
 // 0x800DB168 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void cXObjectImpl::PreSave() { }
 
 // 0x800DE780 (8 bytes)

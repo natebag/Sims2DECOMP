@@ -3,5 +3,7 @@
 // 1 functions, 12 bytes
 
 // 0x80146F04 (12 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void TileWalls::RemoveAllWalls() { *(int*)((char*)this + 0x0) = 0; }
 

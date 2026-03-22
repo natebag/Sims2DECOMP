@@ -3,6 +3,8 @@
 // 4 functions, 32 bytes
 
 // 0x800C90B4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int Neighbor::GetRelations() const { return *(int*)((char*)this + 0x10); }  // offset 0x10
 
 // 0x800C9794 (8 bytes)

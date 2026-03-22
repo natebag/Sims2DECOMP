@@ -3,6 +3,8 @@
 // 30 functions, 292 bytes
 
 // 0x800C1C74 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int Interaction::GetStackObject() const { return *(int*)((char*)this + 0xC); }  // offset 0xC
 
 // 0x800C1C7C (8 bytes)

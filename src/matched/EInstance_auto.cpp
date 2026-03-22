@@ -3,6 +3,8 @@
 // 45 functions, 308 bytes
 
 // 0x8022921C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EInstance::SetContext(int) { /* SDA global @ r13-28496 = param */ }  // stw r3,-28496(r13)
 
 // 0x80229224 (8 bytes)

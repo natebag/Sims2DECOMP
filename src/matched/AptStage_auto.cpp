@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x802A864C (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int AptStage::sMethod_addListener(AptValue *, int) { return /* SDA global @ r13-22936 */; }  // lwz r3,-22936(r13)
 
 // 0x802A8654 (8 bytes)

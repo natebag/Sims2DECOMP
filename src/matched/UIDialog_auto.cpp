@@ -3,6 +3,8 @@
 // 3 functions, 12 bytes
 
 // 0x801E7044 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void UIDialog::SelectionCallback(int) { }
 
 // 0x801E7048 (4 bytes)

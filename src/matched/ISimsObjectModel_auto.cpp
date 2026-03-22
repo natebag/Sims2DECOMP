@@ -3,6 +3,8 @@
 // 15 functions, 140 bytes
 
 // 0x8004EB6C (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ISimsObjectModel::SetPosStatic(EVec3 &, float) { }
 
 // 0x8004ED20 (4 bytes)

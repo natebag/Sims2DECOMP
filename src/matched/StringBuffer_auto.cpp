@@ -3,6 +3,8 @@
 // 3 functions, 24 bytes
 
 // 0x800A65E4 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int StringBuffer::capacity() const { return *(int*)((char*)this + 0x4); }  // offset 0x4
 
 // 0x800A6718 (8 bytes)

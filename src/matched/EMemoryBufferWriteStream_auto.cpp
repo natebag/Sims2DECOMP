@@ -3,6 +3,8 @@
 // 2 functions, 16 bytes
 
 // 0x802E0EE8 (8 bytes)
+#include "types.h"
+#include "stub_classes.h"
 int EMemoryBufferWriteStream::GetPos() const { return *(int*)((char*)this + 0x20); }  // offset 0x20
 
 // 0x802E0EF0 (8 bytes)

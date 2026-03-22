@@ -3,6 +3,8 @@
 // 2 functions, 8 bytes
 
 // 0x803C41D4 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void EScratchBuffUser::AcquireBuffer(void *, unsigned int) { }
 
 // 0x803C41D8 (4 bytes)

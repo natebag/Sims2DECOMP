@@ -3,6 +3,8 @@
 // 6 functions, 24 bytes
 
 // 0x8033A1BC (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void ENgcRC::TriList(int, float *, float *, unsigned char *, signed char *, unsigned char *, bool) { }
 
 // 0x8033A1C0 (4 bytes)

@@ -3,5 +3,7 @@
 // 1 functions, 4 bytes
 
 // 0x80163D48 (4 bytes)
+#include "types.h"
+#include "stub_classes.h"
 void CasNpcEditor::MakeDataset(UserDataSaveLoad) { }
 
