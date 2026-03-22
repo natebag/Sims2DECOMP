@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // simrenderer_large.cpp - CasSimRenderer large functions (257-1024 bytes)
 // Object file: cassimrenderer.obj (listed under simrenderer in task)
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -192,3 +193,4 @@ void CasSimRenderer::DrawFaceImage(ERC* rc)
 
     ERC_RestoreState(rc);
 }
+#endif

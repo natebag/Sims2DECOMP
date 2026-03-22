@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptobject_stubs.cpp - Stub implementations for Aptobject
 // Auto-generated from symbols.json - 6 functions
 // These are stub implementations to register progress.
@@ -23,3 +24,4 @@ void AptObject::SetPrototype(AptValue *) { }
 
 // 0x8043502C | 104 bytes
 AptObject::~AptObject(void) { }
+#endif

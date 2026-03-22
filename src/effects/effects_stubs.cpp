@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // effects_stubs.cpp - Stub implementations for Effects
 // Auto-generated from symbols.json - 75 functions
 // These are stub implementations to register progress.
@@ -230,3 +231,4 @@ void Effects::FastParticleEmitter::AllocateParticlePackets(int) { }
 
 // 0x805320C0 | 1584 bytes
 void Effects::FastParticleEmitter::RenderQuad(ERC *, int &, float, EVec4 &, float, EVec4 &, int &) { }
+#endif

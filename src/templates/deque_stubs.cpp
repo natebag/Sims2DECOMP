@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // deque_stubs.cpp - Stub implementations for Deque
 // Auto-generated from symbols.json - 19 functions
 // These are stub implementations to register progress.
@@ -62,3 +63,4 @@ void deque<EString, allocator<EString> >::_M_push_back_aux_v(EString &) { }
 
 // 0x80500220 | 112 bytes
 void deque<EString, allocator<EString> >::_M_pop_back_aux(void) { }
+#endif

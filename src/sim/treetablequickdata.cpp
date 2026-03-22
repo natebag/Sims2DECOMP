@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // treetablequickdata.cpp - TreeTableQuickData, TreeTableEntryQuickData, TreeTableAdQuickData
 // Decompiled from The Sims 2 GameCube (u2_ngc_release_dvd)
 // Object file: treetablequickdata.obj
@@ -502,3 +503,4 @@ bool TreeTableEntryQuickData::GetDebugOnly() const {
 // 8015dc9c - 28 bytes
 // TreeTableEntryQuickData::GetName(void) const
 // NON_MATCHING - needs proper string handling
+#endif

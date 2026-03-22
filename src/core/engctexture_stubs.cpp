@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // engctexture_stubs.cpp - Stub implementations for Engctexture
 // Auto-generated from symbols.json - 22 functions
 // These are stub implementations to register progress.
@@ -71,3 +72,4 @@ void* ENgcTexture::operator new(unsigned int) { }
 
 // 0x80529DAC | 44 bytes
 void ENgcTexture::operator delete(void *) { }
+#endif

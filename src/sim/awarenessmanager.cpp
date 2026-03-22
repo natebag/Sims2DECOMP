@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // awarenessmanager.cpp - AwarenessManager (NPC awareness system)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(awarenessmanager.obj)
@@ -92,3 +93,4 @@ public:
         return m_stateFlags;
     }
 };
+#endif

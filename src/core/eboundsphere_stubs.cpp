@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eboundsphere_stubs.cpp - Stub implementations for Eboundsphere
 // Auto-generated from symbols.json - 2 functions
 // These are stub implementations to register progress.
@@ -11,3 +12,4 @@ void EBoundSphere::Combine(EBoundSphere &, EBoundSphere &) { }
 
 // 0x80536AE4 | 132 bytes
 void EBoundSphere::ComputeFast(EVec3 *, int) { }
+#endif

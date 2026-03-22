@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // simplereconobject_stubs.cpp - Stub implementations for Simplereconobject
 // Auto-generated from symbols.json - 54 functions
 // These are stub implementations to register progress.
@@ -167,3 +168,4 @@ void SimpleReconObject<CasGenetics>::DoStream(ReconBuffer *, int) { }
 
 // 0x802497B4 | 8 bytes
 void SimpleReconObject<CasGenetics>::GetType(void) { }
+#endif

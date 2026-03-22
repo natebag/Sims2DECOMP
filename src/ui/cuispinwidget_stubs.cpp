@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cuispinwidget_stubs.cpp - Stub implementations for Cuispinwidget
 // Auto-generated from symbols.json - 6 functions
 // These are stub implementations to register progress.
@@ -23,3 +24,4 @@ CUISpinWidget::CUISpinWidget(void) { }
 
 // 0x804B64BC | 84 bytes
 CUISpinWidget::~CUISpinWidget(void) { }
+#endif

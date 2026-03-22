@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_redblacktree_large.cpp - ERedBlackTree large functions (257-1024 bytes)
 // Object file: base_ngc_release_dvd.lib(e_redblacktree.obj)
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -340,3 +341,4 @@ void ERedBlackTree::Remove(void* iter)
     // Free the spliced node
     EAHeap_Free2(splice);
 }
+#endif

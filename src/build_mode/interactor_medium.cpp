@@ -48,7 +48,7 @@ Interactor::Interactor() {
 // Handles command release events (stick centering)
 // ============================================================================
 // NON_MATCHING: switch codegen
-void Interactor::OnCommandReleased(int cmd) {
+void Interactor::OnCommandReleased(InteractorInputManager::InteractorCommand cmd) {
     switch (cmd) {
         case InteractorInputManager::kCmdLeftStickX:
             m_leftStick.x = 0.0f;
@@ -77,7 +77,7 @@ void Interactor::OnCommandReleased(int cmd) {
 // Handles command update events (stick value changes)
 // ============================================================================
 // NON_MATCHING: switch codegen
-void Interactor::OnCommandUpdate(int cmd, float value) {
+void Interactor::OnCommandUpdate(InteractorInputManager::InteractorCommand cmd, float value) {
     switch (cmd) {
         case InteractorInputManager::kCmdLeftStickX:
             m_leftStick.x = value;

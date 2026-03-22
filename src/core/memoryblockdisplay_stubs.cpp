@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // memoryblockdisplay_stubs.cpp - Stub implementations for Memoryblockdisplay
 // Auto-generated from symbols.json - 18 functions
 // These are stub implementations to register progress.
@@ -59,3 +60,4 @@ void MemoryBlockDisplay::MouseDown(CUIWindow *, EVec2) { }
 
 // 0x804C2A5C | 88 bytes
 void MemoryBlockDisplay::MouseDoubleClick(CUIWindow *, EVec2) { }
+#endif

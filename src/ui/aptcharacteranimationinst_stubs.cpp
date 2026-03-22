@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptcharacteranimationinst_stubs.cpp - Stub implementations for Aptcharacteranimationinst
 // Auto-generated from symbols.json - 2 functions
 // These are stub implementations to register progress.
@@ -11,3 +12,4 @@ AptCharacterAnimationInst::AptCharacterAnimationInst(AptSharedPtr<AptFile>) { }
 
 // 0x80401A24 | 124 bytes
 AptCharacterAnimationInst::~AptCharacterAnimationInst(void) { }
+#endif

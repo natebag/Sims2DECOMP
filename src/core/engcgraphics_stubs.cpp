@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // engcgraphics_stubs.cpp - Stub implementations for Engcgraphics
 // Auto-generated from symbols.json - 21 functions
 // These are stub implementations to register progress.
@@ -68,3 +69,4 @@ void ENgcGraphics::DrawCensorRects(ERC *) { }
 
 // 0x805098CC | 136 bytes
 void ENgcGraphics::ProcessFrameEffects(void) { }
+#endif

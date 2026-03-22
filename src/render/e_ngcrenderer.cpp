@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_ngcrenderer.cpp - ENgcRenderer (GameCube hardware renderer)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(e_ngcrenderer.obj)
@@ -791,3 +792,4 @@ extern void ENgcRenderer_UpdateDirtyState(void* rend);
 // NON_MATCHING: GX setup calls
 //=============================================================================
 // Begins particle list rendering setup
+#endif

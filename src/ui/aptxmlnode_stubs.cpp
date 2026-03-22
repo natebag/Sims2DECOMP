@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptxmlnode_stubs.cpp - Stub implementations for Aptxmlnode
 // Auto-generated from symbols.json - 7 functions
 // These are stub implementations to register progress.
@@ -26,3 +27,4 @@ void AptXmlNode::sMethod_hasChildNodes(AptValue *, int) { }
 
 // 0x80439FB4 | 336 bytes
 void AptXmlNode::sMethod_toString(AptValue *, int) { }
+#endif

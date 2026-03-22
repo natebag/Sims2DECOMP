@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // engctexturebase_stubs.cpp - Stub implementations for Engctexturebase
 // Auto-generated from symbols.json - 21 functions
 // These are stub implementations to register progress.
@@ -68,3 +69,4 @@ void ENgcTextureBase::SetSwizzleFlag(void) { }
 
 // 0x8052A7B0 | 4 bytes
 void ENgcTextureBase::UnswizzleImage(unsigned char *, int, int, unsigned char *) { }
+#endif

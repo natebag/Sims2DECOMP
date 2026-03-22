@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // _rb_global_stubs.cpp - Stub implementations for  Rb Global
 // Auto-generated from symbols.json - 6 functions
 // These are stub implementations to register progress.
@@ -23,3 +24,4 @@ void _Rb_global<bool>::_M_decrement(_Rb_tree_node_base *) { }
 
 // 0x801262FC | 1012 bytes
 void _Rb_global<bool>::_Rebalance_for_erase(_Rb_tree_node_base *, _Rb_tree_node_base *&, _Rb_tree_node_base *&, _Rb_tree_node_base *&) { }
+#endif

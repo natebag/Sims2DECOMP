@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptanimationpooldata_stubs.cpp - Stub implementations for Aptanimationpooldata
 // Auto-generated from symbols.json - 23 functions
 // These are stub implementations to register progress.
@@ -74,3 +75,4 @@ void AptAnimationPoolData::ProcessAptInput(unsigned int, bool) { }
 
 // 0x8041CCC8 | 112 bytes
 void AptAnimationPoolData::ProcessInputs(void) { }
+#endif

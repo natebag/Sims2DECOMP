@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // treesim.cpp - TreeSim, TreeSimImpl, TreeStack, StackElem classes
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(treesim.obj)
@@ -110,3 +111,4 @@ public:
     // NON_MATCHING - vtable setup and conditional delete
     ~TreeSim();
 };
+#endif

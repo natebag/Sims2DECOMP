@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // wrapper.cpp - UI wrapper/widget functions
 // Object file: wrapper.obj
 // Decompiled small functions (<=64 bytes)
@@ -1027,3 +1028,4 @@ extern "C" void __static_initialization_and_destruction_0(int, int);
 static void __attribute__((constructor)) _GLOBAL__I_wrapper() {
     __static_initialization_and_destruction_0(1, 0xFFFF);
 }
+#endif

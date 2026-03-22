@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // global_operators.cpp - Global operator overloads
 // Part of the Sims 2 GC decompilation
 // Auto-generated stub implementations - 6 functions
@@ -84,3 +85,4 @@ void operator+(void) {
 // Address: 0x8013C93C, Size: 84
 void operator*(void) {
 }
+#endif

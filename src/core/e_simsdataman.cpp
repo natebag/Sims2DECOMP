@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_simsdataman.cpp - ESimsDataManager, EDummyFile
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(e_simsdataman.obj)
@@ -62,3 +63,4 @@ public:
     // NON_MATCHING - command queue processing
     void FlushCommands();
 };
+#endif

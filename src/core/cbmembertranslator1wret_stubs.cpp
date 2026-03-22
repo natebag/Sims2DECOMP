@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cbmembertranslator1wret_stubs.cpp - Stub implementations for Cbmembertranslator1Wret
 // Auto-generated from symbols.json - 122 functions
 // These are stub implementations to register progress.
@@ -371,3 +372,4 @@ void CBMemberTranslator1wRet<char *, char *, SKNTarget, char *(SKNTarget::*)(SKN
 
 // 0x8034E4A4 | 120 bytes
 void CBMemberTranslator1wRet<char *, unsigned wchar_t *, SKNTarget, unsigned wchar_t *(UIObjectBase::*)(UIObjectBase *, char *)>::thunk(CBFunctorBase &, char *) { }
+#endif

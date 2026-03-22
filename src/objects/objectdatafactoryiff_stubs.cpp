@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // objectdatafactoryiff_stubs.cpp - Stub implementations for Objectdatafactoryiff
 // Auto-generated from symbols.json - 8 functions
 // These are stub implementations to register progress.
@@ -29,3 +30,4 @@ void ObjectDataFactoryIFF<FloatConstants>::GetDataSourceType(void) const { }
 
 // 0x8022AB98 | 8 bytes
 void ObjectDataFactoryIFF<StringSet>::GetDataSourceType(void) const { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // getvariablecommandtable_stubs.cpp - Stub implementations for Getvariablecommandtable
 // Auto-generated from symbols.json - 11 functions
 // These are stub implementations to register progress.
@@ -38,3 +39,4 @@ GetVariableCommandTable::GetVariableCommandTableRecord::~GetVariableCommandTable
 
 // 0x802701F8 | 76 bytes
 void GetVariableCommandTable::Shutdown(void) { }
+#endif

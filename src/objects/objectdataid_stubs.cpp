@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // objectdataid_stubs.cpp - Stub implementations for Objectdataid
 // Auto-generated from symbols.json - 5 functions
 // These are stub implementations to register progress.
@@ -20,3 +21,4 @@ void ObjectDataID::SetNamespaceID(unsigned int) { }
 
 // 0x8022812C | 8 bytes
 void ObjectDataID::SetResourceID(unsigned short) { }
+#endif

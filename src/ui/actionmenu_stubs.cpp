@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // actionmenu_stubs.cpp - Stub implementations for Actionmenu
 // Auto-generated from symbols.json - 30 functions
 // These are stub implementations to register progress.
@@ -95,3 +96,4 @@ void ActionMenu::TerminateMenu(void) { }
 
 // 0x80280FC0 | 108 bytes
 void ActionMenu::GetPlayerSim(void) const { }
+#endif

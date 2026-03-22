@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cbmembertranslator0_stubs.cpp - Stub implementations for Cbmembertranslator0
 // Auto-generated from symbols.json - 69 functions
 // These are stub implementations to register progress.
@@ -212,3 +213,4 @@ void CBMemberTranslator0<RGTTarget, void (UIObjectBase::*)(UIObjectBase *)>::thu
 
 // 0x8034E51C | 120 bytes
 void CBMemberTranslator0<SKNTarget, void (UIObjectBase::*)(UIObjectBase *)>::thunk(CBFunctorBase &) { }
+#endif

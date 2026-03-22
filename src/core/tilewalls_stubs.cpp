@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // tilewalls_stubs.cpp - Stub implementations for Tilewalls
 // Auto-generated from symbols.json - 24 functions
 // These are stub implementations to register progress.
@@ -77,3 +78,4 @@ void TileWalls::RemoveWall(TileWallsSegment) { }
 
 // 0x8020BB28 | 252 bytes
 void TileWalls::Next(TileWallsSegment) const { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eifencewall_stubs.cpp - Stub implementations for Eifencewall
 // Auto-generated from symbols.json - 18 functions
 // These are stub implementations to register progress.
@@ -59,3 +60,4 @@ void EIFenceWall::operator delete(void *) { }
 
 // 0x8004A7D8 | 8 bytes
 void EIFenceWall::IsOpaque(void) { }
+#endif

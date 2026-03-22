@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptvalue_stubs.cpp - Stub implementations for Aptvalue
 // Auto-generated from symbols.json - 12 functions
 // These are stub implementations to register progress.
@@ -41,3 +42,4 @@ void AptValue::ForceDelete(void) { }
 
 // 0x804330CC | 212 bytes
 AptValue::AptValue(AptVirtualFunctionTable_Indices) { }
+#endif

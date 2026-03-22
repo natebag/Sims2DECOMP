@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eiwallpart_stubs.cpp - Stub implementations for Eiwallpart
 // Auto-generated from symbols.json - 39 functions
 // These are stub implementations to register progress.
@@ -122,3 +123,4 @@ void EIWallPart::SetForceFadeOff(bool) { }
 
 // 0x8004A59C | 4 bytes
 void EIWallPart::RealizeShaderTuning(void) { }
+#endif

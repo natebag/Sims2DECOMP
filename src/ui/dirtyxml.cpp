@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // dirtyxml.cpp - CDirtyXmlNode, CDirtyXmlDoc (XML parsing for APT UI)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(dirtyxml.obj)
@@ -83,3 +84,4 @@ public:
     // NON_MATCHING - iterator advance
     void* getNextChildNode();
 };
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eresourcemanager_stubs.cpp - Stub implementations for Eresourcemanager
 // Auto-generated from symbols.json - 51 functions
 // These are stub implementations to register progress.
@@ -158,3 +159,4 @@ void EResourceManager::CanCache(void) { }
 
 // 0x805005D0 | 24 bytes
 void EResourceManager::ResourceIndexRecord::CheckPos(int &, int &) { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // uiuserdrawcbtable_stubs.cpp - Stub implementations for Uiuserdrawcbtable
 // Auto-generated from symbols.json - 12 functions
 // These are stub implementations to register progress.
@@ -41,3 +42,4 @@ void UIUserDrawCBTable::Instance(void) { }
 
 // 0x8027E6C4 | 76 bytes
 void UIUserDrawCBTable::Shutdown(void) { }
+#endif

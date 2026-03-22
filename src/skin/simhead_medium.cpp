@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // simhead_medium.cpp - ESims3DHead medium functions (65-256 bytes)
 // Object file: simhead.obj
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -154,3 +155,4 @@ void* ESims3DHead::operator new(unsigned int size) {
     void* heap = EAHeap_Get();
     return EAHeap_MallocAligned(heap, size, 32);
 }
+#endif

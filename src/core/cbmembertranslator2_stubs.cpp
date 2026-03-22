@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cbmembertranslator2_stubs.cpp - Stub implementations for Cbmembertranslator2
 // Auto-generated from symbols.json - 65 functions
 // These are stub implementations to register progress.
@@ -200,3 +201,4 @@ void CBMemberTranslator2<char *, char *, RGTTarget, void (RGTTarget::*)(RGTTarge
 
 // 0x8034E42C | 120 bytes
 void CBMemberTranslator2<char *, char *, SKNTarget, void (SKNTarget::*)(SKNTarget *, char *, char *)>::thunk(CBFunctorBase &, char *, char *) { }
+#endif

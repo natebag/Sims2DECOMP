@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cameradirector_stubs.cpp - Stub implementations for Cameradirector
 // Auto-generated from symbols.json - 18 functions
 // These are stub implementations to register progress.
@@ -59,3 +60,4 @@ void CameraDirector::ForceDisableHud(bool) { }
 
 // 0x8002BCB0 | 36 bytes
 void CameraDirector::IsForceDisableHud(void) { }
+#endif

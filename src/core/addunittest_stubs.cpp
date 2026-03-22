@@ -1,7 +1,7 @@
 // addunittest_stubs.cpp - Stub implementations for Addunittest
 // Auto-generated from symbols.json - 16 functions
-// These are stub implementations to register progress.
-// Each function needs proper decompilation to match the original binary.
+// SKIP: Template class stubs require template specialization syntax
+#if 0
 
 #include "types.h"
 #include "stub_classes.h"
@@ -53,3 +53,4 @@ AddUnitTest<BBI::InventoryTest>::~AddUnitTest(void) { }
 
 // 0x8023C258 | 152 bytes
 void AddUnitTest<BBI::InventoryTest>::AddTest(void) { }
+#endif

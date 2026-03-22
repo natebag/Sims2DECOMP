@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // simrenderer_medium.cpp - SimRenderer medium functions (65-256 bytes)
 // Object file: simrenderer.obj
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -72,3 +73,4 @@ void SimRenderer::RenderGhosted(ERC* rc, EIStaticModel** models, EMat4* mat, uns
     // Render all body parts
     // Restore render state
 }
+#endif

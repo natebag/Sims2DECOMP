@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // goalunlock_medium.cpp - GoalUnlock medium functions (65-256 bytes)
 // Object file: goalunlock.obj
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -174,3 +175,4 @@ void GoalUnlock::SetRecentlyUnlocked(int type, short index, bool recent) {
 int GoalUnlock::GetUnlockTotal(int type) {
     return GetUnlockSlotCount(type);
 }
+#endif

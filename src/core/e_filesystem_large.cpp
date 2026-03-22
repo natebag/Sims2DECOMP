@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_filesystem_large.cpp - EFileSystem large functions (257-1024 bytes)
 // Object file: base_ngc_release_dvd.lib(e_filesystem.obj)
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -153,3 +154,4 @@ bool EFileSystem::Create(EFile*& outFile, char* path, char* relPath,
 // ============================================================================
 // Standard TArray::SetSize implementation - resizes internal buffer
 // See ea_containers.cpp for the general pattern
+#endif

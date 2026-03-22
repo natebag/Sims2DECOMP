@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eroomwall_stubs.cpp - Stub implementations for Eroomwall
 // Auto-generated from symbols.json - 23 functions
 // These are stub implementations to register progress.
@@ -74,3 +75,4 @@ void ERoomWall::SafeDelete(void) { }
 
 // 0x8004A894 | 16 bytes
 void ERoomWall::GetShortDistToCam(int) { }
+#endif

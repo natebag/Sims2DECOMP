@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // ctilept_stubs.cpp - Stub implementations for Ctilept
 // Auto-generated from symbols.json - 32 functions
 // These are stub implementations to register progress.
@@ -101,3 +102,4 @@ void CTilePt::GetDirection(CTilePt &, CTilePt &) { }
 
 // 0x8013CF90 | 484 bytes
 void CTilePt::GetTileDirection(CTilePt &, CTilePt &) { }
+#endif

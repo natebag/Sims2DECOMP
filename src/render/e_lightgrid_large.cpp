@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_lightgrid_large.cpp - ELightGrid large functions (257-1024 bytes)
 // Object file: u2_ngc_release_dvd/e_lightgrid.obj
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -303,3 +304,4 @@ void ELightGrid::AddProbe(EVec3& pos, EVec4& color, float radius)
     // Allocates probe in linked list
     // NON_MATCHING: probe allocation and list management
 }
+#endif

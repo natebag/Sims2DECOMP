@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // _list_base_stubs.cpp - Stub implementations for  List Base
 // Auto-generated from symbols.json - 11 functions
 // These are stub implementations to register progress.
@@ -38,3 +39,4 @@ void _List_base<ACTTarget::iqRecord *, allocator<ACTTarget::iqRecord *> >::clear
 
 // 0x803B7A20 | 108 bytes
 void _List_base<AutomationNS::LuaTable *, allocator<AutomationNS::LuaTable *> >::clear(void) { }
+#endif

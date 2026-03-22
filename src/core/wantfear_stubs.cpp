@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // wantfear_stubs.cpp - Stub implementations for Wantfear
 // Auto-generated from symbols.json - 10 functions
 // These are stub implementations to register progress.
@@ -35,3 +36,4 @@ void WantFear::Bookmark::DoStream(ReconBuffer *, int) { }
 
 // 0x80212590 | 204 bytes
 void WantFear::Bookmark::GetDebugNotification(void) const { }
+#endif

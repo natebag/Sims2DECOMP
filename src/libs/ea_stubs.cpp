@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // ea_stubs.cpp - Stub implementations for Ea
 // Auto-generated from symbols.json - 108 functions
 // These are stub implementations to register progress.
@@ -329,3 +330,4 @@ void EA::Allocator::GeneralAllocator::MMapAlloc(unsigned int, unsigned int *) { 
 
 // 0x80479C00 | 36 bytes
 void EA::Allocator::GeneralAllocator::MMapFree(void *, unsigned int) { }
+#endif

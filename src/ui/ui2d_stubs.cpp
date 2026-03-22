@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // ui2d_stubs.cpp - Stub implementations for Ui2D
 // Auto-generated from symbols.json - 12 functions
 // These are stub implementations to register progress.
@@ -41,3 +42,4 @@ UI2D::UI2DRecord::~UI2DRecord(void) { }
 
 // 0x8026D838 | 76 bytes
 void UI2D::Shutdown(void) { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP: template specialization
 // allocpoolmanager_stubs.cpp - Stub implementations for Allocpoolmanager
 // Auto-generated from symbols.json - 10 functions
 // These are stub implementations to register progress.
@@ -35,3 +36,4 @@ void AllocPoolManager<FastAllocPool>::FindPoolForBlock(void *) { }
 
 // 0x8046976C | 64 bytes
 void AllocPoolManager<FastAllocPool>::Validate(void) { }
+#endif

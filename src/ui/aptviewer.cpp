@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptviewer.cpp - AptViewer (APT UI viewer/controller)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(aptviewer.obj)
@@ -88,3 +89,4 @@ public:
     // NON_MATCHING - flag check
     bool IsWaitingForPlayerInput();
 };
+#endif

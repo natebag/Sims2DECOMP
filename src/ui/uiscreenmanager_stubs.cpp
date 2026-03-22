@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // uiscreenmanager_stubs.cpp - Stub implementations for Uiscreenmanager
 // Auto-generated from symbols.json - 19 functions
 // These are stub implementations to register progress.
@@ -62,3 +63,4 @@ void UIScreenManager::Update(void) { }
 
 // 0x8027B458 | 64 bytes
 void UIScreenManager::PopQueue(int) { }
+#endif

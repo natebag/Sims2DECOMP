@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eaheap_medium.cpp - Medium-sized functions (65-128 bytes) from e_standard_heap.obj and fastallocpool.obj
 // From: base_ngc_release_dvd.lib
 
@@ -240,3 +241,4 @@ void ProtectedAllocPool::Free(void* ptr) {
 //   __tcf_13     - 0x802d06a0 (108 bytes) - ProtectedAllocPool manager dtor
 //   __tcf_14     - 0x802d088c (108 bytes) - FastAllocPool manager dtor
 // ============================================================================
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // emat4_stubs.cpp - Stub implementations for Emat4
 // Auto-generated from symbols.json - 34 functions
 // These are stub implementations to register progress.
@@ -107,3 +108,4 @@ void EMat4::TexturePerspectiveProjection(EVec3 &, EVec3 &, EVec3 &, float, float
 
 // 0x80462B50 | 140 bytes
 void EMat4::TexturePlanarProjection(EVec3 &, EVec3 &, EVec3 &, float, float, float, float) { }
+#endif

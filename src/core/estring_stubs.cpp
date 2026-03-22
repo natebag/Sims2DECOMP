@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // estring_stubs.cpp - Stub implementations for Estring
 // Auto-generated from symbols.json - 25 functions
 // These are stub implementations to register progress.
@@ -80,3 +81,4 @@ void EString::Insert(int, char) { }
 
 // 0x8046D5B4 | 124 bytes
 void EString::CharsEqualNoCase(char, char) { }
+#endif

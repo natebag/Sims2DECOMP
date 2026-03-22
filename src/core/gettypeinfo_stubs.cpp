@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // gettypeinfo_stubs.cpp - Stub implementations for progress tracking
 // Auto-generated - 59 entries
 // These are stub implementations to register progress.
@@ -182,3 +183,4 @@ void * REffectsSequencer::GetTypeInfo(void) const { return 0; }
 
 // 0x805422E8 | 12 bytes
 void * REffectsSequencer::GetTypeInfoStatic(void) { return 0; }
+#endif

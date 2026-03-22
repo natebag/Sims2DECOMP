@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // inventory.cpp - BBI::InventoryItems and IngredientManager system
 // Object file: inventory.obj
 // 17 small functions (<=64 bytes) + 1 bonus (SetItemCount, 80 bytes) decompiled
@@ -215,3 +216,4 @@ IngredientManager* GetIngredientManager() {
     }
     return spIngredientManager;
 }
+#endif

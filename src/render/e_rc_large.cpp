@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_rc_large.cpp - ERC class large functions (257-1024 bytes)
 // Part of the Sims 2 GC decompilation
 // Original: engine_ngc_release_dvd.lib(e_rc.obj)
@@ -512,3 +513,4 @@ void ERC::CopyScreenToTexture(ETexture* tex, EVec4& srcRect, EVec2& dstSize)
         ((Fn)fn)(thisPtr);
     }
 }
+#endif

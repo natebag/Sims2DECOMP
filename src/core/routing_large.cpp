@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // routing_large.cpp - SpacePartition/Path large functions (257-512 bytes)
 // Object file: routing.obj
 // Functions: GetIntersectingPartitionRect, EstimateDistanceToGoal,
@@ -367,3 +368,4 @@ void SpacePartition_Destructor(void* self, int flags) {
         operator_delete_wrapper(self);
     }
 }
+#endif

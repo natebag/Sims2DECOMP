@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // memorymeterwin.cpp - Debug memory meter window small functions
 // From: memorymeterwin.obj
 // Small functions (<=64 bytes) decompiled from this object
@@ -68,3 +69,4 @@ Panelstateman::~Panelstateman(void) {
     // compiler generates: *(this+4) = &Panelstateman_vtable;
     // if (__in_charge & 1) __builtin_delete(this);
 }
+#endif

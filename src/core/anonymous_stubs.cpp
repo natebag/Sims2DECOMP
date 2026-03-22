@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // anonymous_stubs.cpp - Stub implementations for Anonymous
 // Auto-generated from symbols.json - 37 functions
 // These are stub implementations to register progress.
@@ -118,3 +119,4 @@ void BlendJitteredScratchBufferWithFrameBuffer(_GXTexObj *, _GXTexObj *, _GXColo
 
 // 0x80535690 | 836 bytes
 void SetDefaultRenderStates(ENgcRenderStateCache *, _GXRenderModeObj &) { }
+#endif

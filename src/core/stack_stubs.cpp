@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // stack_stubs.cpp - Stub implementations for Stack
 // Auto-generated from symbols.json - 4 functions
 // These are stub implementations to register progress.
@@ -17,3 +18,4 @@ stack<MMUTarget::MMU_MENU_STATE, deque<MMUTarget::MMU_MENU_STATE, allocator<MMUT
 
 // 0x8031A5EC | 292 bytes
 stack<FAMTarget::FAM_STATE, deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> > >::~stack(void) { }
+#endif

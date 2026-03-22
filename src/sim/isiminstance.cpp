@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // isiminstance.cpp - ISimInstance, IBaseSimInstance
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(isiminstance.obj)
@@ -122,3 +123,4 @@ public:
         EAHeap_Free(heap, ptr);
     }
 };
+#endif

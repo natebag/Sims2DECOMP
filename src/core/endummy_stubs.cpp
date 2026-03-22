@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // endummy_stubs.cpp - Stub implementations for Endummy
 // Auto-generated from symbols.json - 12 functions
 // These are stub implementations to register progress.
@@ -41,3 +42,4 @@ void ENDummy::GetKeys(void) { }
 
 // 0x80463EFC | 108 bytes
 void ENDummy::GetDummyPoint(int) { }
+#endif

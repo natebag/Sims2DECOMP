@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptxmlattributes_stubs.cpp - Stub implementations for Aptxmlattributes
 // Auto-generated from symbols.json - 3 functions
 // These are stub implementations to register progress.
@@ -14,3 +15,4 @@ AptXmlAttributes::AptXmlAttributes(AptVirtualFunctionTable_Indices, IAptXmlNode 
 
 // 0x80443F7C | 164 bytes
 void AptXmlAttributes::objectMemberSet(AptValue *, EAStringC *, AptValue *) { }
+#endif

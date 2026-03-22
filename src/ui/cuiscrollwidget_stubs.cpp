@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cuiscrollwidget_stubs.cpp - Stub implementations for Cuiscrollwidget
 // Auto-generated from symbols.json - 11 functions
 // These are stub implementations to register progress.
@@ -38,3 +39,4 @@ void CUIScrollWidget::SetCursor(EVec2, float) { }
 
 // 0x804B2B48 | 72 bytes
 void CUIScrollWidget::MouseUp(EVec2, int, float) { }
+#endif

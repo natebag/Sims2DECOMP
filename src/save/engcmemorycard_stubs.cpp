@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // engcmemorycard_stubs.cpp - Stub implementations for Engcmemorycard
 // Auto-generated from symbols.json - 40 functions
 // These are stub implementations to register progress.
@@ -125,3 +126,4 @@ void ENgcMemoryCard::DoesFileExist(char *, unsigned int, bool &) { }
 
 // 0x8050E9B4 | 356 bytes
 void ENgcMemoryCard::GetSectorSize(int, unsigned int &) { }
+#endif

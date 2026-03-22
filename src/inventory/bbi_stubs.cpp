@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // bbi_stubs.cpp - Stub implementations for Bbi
 // Auto-generated from symbols.json - 44 functions
 // These are stub implementations to register progress.
@@ -137,3 +138,4 @@ void BBI::InventoryItems::GetItemCategoryFromObjDefinition(ObjDefinition *) { }
 
 // 0x8023C32C | 32 bytes
 BBI::InventoryTest::~InventoryTest(void) { }
+#endif

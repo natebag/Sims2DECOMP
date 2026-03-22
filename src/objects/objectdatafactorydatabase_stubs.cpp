@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // objectdatafactorydatabase_stubs.cpp - Stub implementations for Objectdatafactorydatabase
 // Auto-generated from symbols.json - 8 functions
 // These are stub implementations to register progress.
@@ -29,3 +30,4 @@ void ObjectDataFactoryDatabase<FloatConstants>::GetDataSourceType(void) const { 
 
 // 0x8022AB90 | 8 bytes
 void ObjectDataFactoryDatabase<StringSet>::GetDataSourceType(void) const { }
+#endif

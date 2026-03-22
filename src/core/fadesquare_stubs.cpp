@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // fadesquare_stubs.cpp - Stub implementations for Fadesquare
 // Auto-generated from symbols.json - 8 functions
 // These are stub implementations to register progress.
@@ -29,3 +30,4 @@ void FadeSquare::ShouldDraw(void) { }
 
 // 0x80377634 | 644 bytes
 void FadeSquare::Draw(ERC *, EVec3 &) { }
+#endif

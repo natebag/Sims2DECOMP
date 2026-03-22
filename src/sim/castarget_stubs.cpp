@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // castarget_stubs.cpp - Stub implementations for Castarget
 // Auto-generated from symbols.json - 44 functions
 // These are stub implementations to register progress.
@@ -137,3 +138,4 @@ void CASTarget::DeallocateMorphResources(int) { }
 
 // 0x802AE380 | 80 bytes
 void CASTarget::SetHasSimInSlot(int, bool) { }
+#endif

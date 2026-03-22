@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // wantfear_medium.cpp - WantFear/WantFearManager medium functions (65-256 bytes)
 // Object file: wantfear.obj
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -209,3 +210,4 @@ int WantFearManager::Lottery(unsigned int* weights, unsigned int count) const {
     }
     return (int)(count - 1);
 }
+#endif

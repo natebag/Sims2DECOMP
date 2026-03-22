@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // casgenetics_stubs.cpp - Stub implementations for Casgenetics
 // Auto-generated from symbols.json - 18 functions
 // These are stub implementations to register progress.
@@ -59,3 +60,4 @@ CasGenetics::Grandparent::~Grandparent(void) { }
 
 // 0x80247F54 | 76 bytes
 void CasGenetics::FemaleFacialFeatureLocked(signed char) { }
+#endif

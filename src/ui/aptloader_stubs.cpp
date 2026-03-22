@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptloader_stubs.cpp - Stub implementations for Aptloader
 // Auto-generated from symbols.json - 10 functions
 // These are stub implementations to register progress.
@@ -35,3 +36,4 @@ void AptLoader::CompleteLoad(AptSharedPtr<AptFile>, void *, void *, void *) { }
 
 // 0x8041D630 | 788 bytes
 void AptLoader::CancelPreloadedAnimation(EAStringC &) { }
+#endif

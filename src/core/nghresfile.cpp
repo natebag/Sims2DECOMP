@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // nghresfile.cpp - NghResFile (neighborhood resource file) and related functions
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(nghresfile.obj)
@@ -213,3 +214,4 @@ public:
     // Address: 0x800D3D5C, Size: 4
     void FindUniqueName(int, StringBuffer&) {}
 };
+#endif

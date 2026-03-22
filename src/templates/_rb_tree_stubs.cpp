@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // _rb_tree_stubs.cpp - Stub implementations for  Rb Tree
 // Auto-generated from symbols.json - 43 functions
 // These are stub implementations to register progress.
@@ -134,3 +135,4 @@ void _Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, greater<int>, al
 
 // 0x803176D8 | 116 bytes
 void _Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, greater<int>, allocator<pair<int, int> > >::insert_equal(pair<int, int> &) { }
+#endif

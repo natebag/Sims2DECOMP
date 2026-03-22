@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_window_large.cpp - EWindow large functions (257-1024 bytes)
 // Object file: engine_ngc_release_dvd.lib(e_window.obj)
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -204,3 +205,4 @@ void EWindow::Select(ERC* rc)
         // NON_MATCHING: modified projection for tiled rendering
     }
 }
+#endif

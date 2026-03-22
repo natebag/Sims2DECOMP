@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptscriptfunctionbytecodeblock_stubs.cpp - Stub implementations for Aptscriptfunctionbytecodeblock
 // Auto-generated from symbols.json - 2 functions
 // These are stub implementations to register progress.
@@ -11,3 +12,4 @@ AptScriptFunctionByteCodeBlock::AptScriptFunctionByteCodeBlock(unsigned char *, 
 
 // 0x80437C94 | 88 bytes
 AptScriptFunctionByteCodeBlock::~AptScriptFunctionByteCodeBlock(void) { }
+#endif

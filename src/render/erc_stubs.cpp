@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // erc_stubs.cpp - Stub implementations for Erc
 // Auto-generated from symbols.json - 16 functions
 // These are stub implementations to register progress.
@@ -53,3 +54,4 @@ void ERC::DirectRect(EVec2 &, EVec2 &, EVec4 &, float) { }
 
 // 0x8049C5C8 | 208 bytes
 void ERC::Vertex(int, int, float *, float *, unsigned char *, signed char *, unsigned char *) { }
+#endif

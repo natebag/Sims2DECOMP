@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // effectsfunctions.cpp - Effects namespace functions
 // Part of the Sims 2 GC decompilation
 // Original: engine_ngc_release_dvd.lib(effectsfunctions.obj)
@@ -45,3 +46,4 @@ void* GetTextureFromID(unsigned int id);
 void FreeFastAllocPool(FastAllocPool* pool);
 
 } // namespace Effects
+#endif

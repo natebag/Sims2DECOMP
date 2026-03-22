@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // relationscmp_stubs.cpp - Stub implementations for Relationscmp
 // Auto-generated from symbols.json - 1 functions
 // These are stub implementations to register progress.
@@ -8,3 +9,4 @@
 
 // 0x8006FC48 | 668 bytes
 void RelationsCmp::operator()(Neighbor *, Neighbor *) { }
+#endif

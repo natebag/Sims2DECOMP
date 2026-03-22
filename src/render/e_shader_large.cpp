@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_shader_large.cpp - EShader large functions (257-1024 bytes)
 // Part of the Sims 2 GC decompilation
 // Original: engine_ngc_release_dvd.lib(e_shader.obj)
@@ -237,3 +238,4 @@ void EShaderDef_CopyAssign(void* dst, void* src)
         ((u32*)dst)[i] = ((u32*)src)[i];
     }
 }
+#endif

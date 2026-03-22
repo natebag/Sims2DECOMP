@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // egamestateman_stubs.cpp - Stub implementations for Egamestateman
 // Auto-generated from symbols.json - 5 functions
 // These are stub implementations to register progress.
@@ -20,3 +21,4 @@ void EGameStateMan::DeleteAllStates(void) { }
 
 // 0x800EF388 | 168 bytes
 void EGameStateMan::Update(void) { }
+#endif

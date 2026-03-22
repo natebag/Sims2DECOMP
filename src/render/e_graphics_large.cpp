@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_graphics_large.cpp - EGraphics large functions (257-1024 bytes)
 // Part of the Sims 2 GC decompilation
 // Original: engine_ngc_release_dvd.lib(e_graphics.obj)
@@ -107,3 +108,4 @@ void EGraphics_DrawTiming(void* self)
 
     // NON_MATCHING: ERC vtable calls for drawing
 }
+#endif

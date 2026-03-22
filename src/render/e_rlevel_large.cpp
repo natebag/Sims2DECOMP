@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_rlevel_large.cpp - ERLevel large functions (257-1024 bytes)
 // Object file: u2_ngc_release_dvd/e_rlevel.obj
 // Section at 0x80231120, size 0x72CC = 29388 bytes - many functions
@@ -247,3 +248,4 @@ void ERLevel::RemoveInstance(void* inst)
     // NON_MATCHING: linked list removal
     if (m_numInstances > 0) m_numInstances--;
 }
+#endif

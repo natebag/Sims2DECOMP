@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // free_template_stubs.cpp - Stub implementations for Free Template
 // Auto-generated from symbols.json - 103 functions
 // These are stub implementations to register progress.
@@ -340,3 +341,4 @@ void __final_insertion_sort<EResourceManager::ResourceIndexRecord *, bool (*)(ER
 
 // 0x804FFEFC | 144 bytes
 void sort<EResourceManager::ResourceIndexRecord *, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)) { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // objectdatafactoryquickdata_stubs.cpp - Stub implementations for Objectdatafactoryquickdata
 // Auto-generated from symbols.json - 8 functions
 // These are stub implementations to register progress.
@@ -29,3 +30,4 @@ void ObjectDataFactoryQuickData<FloatConstants>::GetDataSourceType(void) const {
 
 // 0x8022ABA0 | 8 bytes
 void ObjectDataFactoryQuickData<StringSet>::GetDataSourceType(void) const { }
+#endif

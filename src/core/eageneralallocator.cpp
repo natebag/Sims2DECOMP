@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eageneralallocator.cpp - EA::Allocator::GeneralAllocator implementation
 // From: base_ngc_release_dvd.lib(eageneralallocator.obj)
 // Small functions (<=64 bytes) decompiled from this object
@@ -405,3 +406,4 @@ int PPMMutexUnlock(void* mutex) {
 int PPMMutexGetLockCount(void* mutex) {
     return *(int*)((char*)mutex + 0x0C);
 }
+#endif

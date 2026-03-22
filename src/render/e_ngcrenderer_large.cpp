@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_ngcrenderer_large.cpp - ENgcRenderer large functions (257-1024 bytes)
 // Part of the Sims 2 GC decompilation
 // Original: engine_ngc_release_dvd.lib(e_ngcrenderer.obj)
@@ -738,3 +739,4 @@ void __DEMODiagnoseHang(void)
     // Reads GX state, checks for stall conditions
     // NON_MATCHING: register reads, debug output
 }
+#endif

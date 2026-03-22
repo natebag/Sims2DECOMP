@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptparagraph_stubs.cpp - Stub implementations for Aptparagraph
 // Auto-generated from symbols.json - 7 functions
 // These are stub implementations to register progress.
@@ -26,3 +27,4 @@ void AptParagraph::GetWideHexValue(wchar_t *, int, int) { }
 
 // 0x800151A4 | 108 bytes
 void AptParagraph::SetFormattingEnable(int) { }
+#endif

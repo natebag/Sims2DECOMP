@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_instance_large.cpp - EInstance large functions (257-1024 bytes)
 // Object file: u2_ngc_release_dvd/e_instance.obj
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -174,3 +175,4 @@ int EInstance::VisibilityTest(void* window)
 
     return 1; // visible
 }
+#endif

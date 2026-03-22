@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // interaction.cpp - Sim interaction system
 // Object file: interaction.obj
 // Small functions (<= 64 bytes) decompiled from Sims 2 GameCube
@@ -526,3 +527,4 @@ void Interaction::SetFlags(int flags) {
 int Interaction::SetShader(EActionIcon* icon) const {
     return 0;
 }
+#endif

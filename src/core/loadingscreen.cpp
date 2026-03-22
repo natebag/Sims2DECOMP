@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // loadingscreen.cpp - CLoadingScreen small functions
 // From: loadingscreen.obj
 // Small functions (<=64 bytes) decompiled from this object
@@ -65,3 +66,4 @@ int CLoadingScreen::GetMode(void) const {
 //   CLoadingScreen::CLoadingScreen(eLoadingScreenMode) - 0x80056a64 (large)
 //   ... and other functions
 // ============================================================================
+#endif

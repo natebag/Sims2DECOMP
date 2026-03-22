@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cxobjectimpl_stubs.cpp - Stub implementations for Cxobjectimpl
 // Auto-generated from symbols.json - 134 functions
 // These are stub implementations to register progress.
@@ -407,3 +408,4 @@ void cXObjectImpl::ChangeSelectedSimL(int) { }
 
 // 0x801BC4D4 | 240 bytes
 void cXObjectImpl::ChangeSelectedSimR(int) { }
+#endif

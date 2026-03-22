@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_window.cpp - EWindow class (window/viewport management)
 // Part of the Sims 2 GC decompilation
 // Original: engine_ngc_release_dvd.lib(e_window.obj)
@@ -179,3 +180,4 @@ public:
 //=============================================================================
 // Tests if rectangle overlaps clip rect
 // Returns 1 if overlapping, 0 if not
+#endif

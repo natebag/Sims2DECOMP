@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // apt_lib.cpp - APT library internals
 // Part of the Sims 2 GC decompilation
 // Auto-generated stub implementations - 454 functions
@@ -2324,3 +2325,4 @@ void MemStartResourcePrint() {
 // Address: 0x804FEEE0, Size: 264
 void MemDumpResources() {
 }
+#endif

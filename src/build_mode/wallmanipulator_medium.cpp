@@ -117,7 +117,7 @@ void WallManipulator::SendBuildItemCountChangeEvent(int delta) {
 // wallmanipulator.obj | 0x802219B4 | 208 bytes
 // ============================================================================
 // NON_MATCHING: complex command dispatch
-void WallManipulator::OnCommandPressed(int cmd, float value) {
+void WallManipulator::OnCommandPressed(InteractorInputManager::InteractorCommand cmd, float value) {
     // Handle A: anchor wall segment or confirm
     // Handle B: cancel current wall segment
     // Handle triggers: change wall type
@@ -128,7 +128,7 @@ void WallManipulator::OnCommandPressed(int cmd, float value) {
 // wallmanipulator.obj | 0x80221A84 | 132 bytes
 // ============================================================================
 // NON_MATCHING: command release handling
-void WallManipulator::OnCommandReleased(int cmd) {
+void WallManipulator::OnCommandReleased(InteractorInputManager::InteractorCommand cmd) {
     // Handle release of wall placement buttons
 }
 
@@ -137,7 +137,7 @@ void WallManipulator::OnCommandReleased(int cmd) {
 // wallmanipulator.obj | 0x80221B08 | 76 bytes
 // ============================================================================
 // NON_MATCHING: codegen
-void WallManipulator::OnCommandUpdate(int cmd, float value) {
+void WallManipulator::OnCommandUpdate(InteractorInputManager::InteractorCommand cmd, float value) {
     // Update cursor position for wall building
 }
 

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptscriptfunctionbase_stubs.cpp - Stub implementations for Aptscriptfunctionbase
 // Auto-generated from symbols.json - 14 functions
 // These are stub implementations to register progress.
@@ -47,3 +48,4 @@ void AptScriptFunctionBase::CreateFrameStack(void) { }
 
 // 0x80437640 | 356 bytes
 void AptScriptFunctionBase::CreatingNestedFunction(void) { }
+#endif

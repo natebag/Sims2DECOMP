@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // echeatdmi_stubs.cpp - Stub implementations for Echeatdmi
 // Auto-generated from symbols.json - 6 functions
 // These are stub implementations to register progress.
@@ -23,3 +24,4 @@ void ECheatDMI::GetType(void) { }
 
 // 0x80033214 | 12 bytes
 void ECheatDMI::GetVariable(void) { }
+#endif

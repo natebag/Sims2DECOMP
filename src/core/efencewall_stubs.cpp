@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // efencewall_stubs.cpp - Stub implementations for Efencewall
 // Auto-generated from symbols.json - 5 functions
 // These are stub implementations to register progress.
@@ -20,3 +21,4 @@ void EFenceWall::IsWallsOpaque(int) { }
 
 // 0x8004A930 | 16 bytes
 void EFenceWall::CalWallsOpaque(int) { }
+#endif

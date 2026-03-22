@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // apt_action.cpp - AptActionInterpreter small functions
 // From libaptz.a(AptActionInterpreter.cpp.obj)
 
@@ -175,3 +176,4 @@ void AptValueNoGC::RegisterReferences() const {
 //
 // See apt_value.cpp for implementations.
 // ============================================================================
+#endif

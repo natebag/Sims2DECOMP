@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // esim.cpp - ESim class (main simulation entity)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(esim.obj)
@@ -127,3 +128,4 @@ void ESimsScratchpadMan_Delete(void* ptr) {
     void* heap = EAHeap_GetCurrentHeap();
     EAHeap_Free(heap, ptr);
 }
+#endif

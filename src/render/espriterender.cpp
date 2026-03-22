@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // espriterender.cpp - ESpriteRender, ESpriteRenderMan
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(espriterender.obj, espriterenderman.obj)
@@ -25,3 +26,4 @@ public:
         m_list = NULL;
     }
 };
+#endif

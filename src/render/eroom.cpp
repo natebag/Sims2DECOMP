@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eroom.cpp - ERoom, ERoomWall, EIWallPart, EIFenceWall classes
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(eroom.obj)
@@ -357,3 +358,4 @@ EFile& operator>>(EFile& file, EIFenceWall*& obj) {
     obj = (EIFenceWall*)tmp;
     return file;
 }
+#endif

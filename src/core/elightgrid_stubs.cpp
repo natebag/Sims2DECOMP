@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // elightgrid_stubs.cpp - Stub implementations for Elightgrid
 // Auto-generated from symbols.json - 21 functions
 // These are stub implementations to register progress.
@@ -68,3 +69,4 @@ void ELightGrid::EvaluateLamps(void) { }
 
 // 0x8039D1B8 | 224 bytes
 void ELightGrid::EvaluateLampsOn(void) { }
+#endif

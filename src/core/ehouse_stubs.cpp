@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // ehouse_stubs.cpp - Stub implementations for Ehouse
 // Auto-generated from symbols.json - 25 functions
 // These are stub implementations to register progress.
@@ -80,3 +81,4 @@ void EHouse::InsertHouseObject(EOrderTableData *) { }
 
 // 0x800398DC | 40 bytes
 void EHouse::Refresh(void) { }
+#endif

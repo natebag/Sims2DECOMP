@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // efilesystem_stubs.cpp - Stub implementations for Efilesystem
 // Auto-generated from symbols.json - 22 functions
 // These are stub implementations to register progress.
@@ -71,3 +72,4 @@ void EFileSystem::RegisterFileCreator(int, int, int, char *, EFile *(*)(EFile *,
 
 // 0x8045D690 | 156 bytes
 void EFileSystem::ParseMode(char *, int &) { }
+#endif

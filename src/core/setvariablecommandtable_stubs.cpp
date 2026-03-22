@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // setvariablecommandtable_stubs.cpp - Stub implementations for Setvariablecommandtable
 // Auto-generated from symbols.json - 11 functions
 // These are stub implementations to register progress.
@@ -38,3 +39,4 @@ SetVariableCommandTable::SetVariableCommandTableRecord::~SetVariableCommandTable
 
 // 0x802702B4 | 76 bytes
 void SetVariableCommandTable::Shutdown(void) { }
+#endif

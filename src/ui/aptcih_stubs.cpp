@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptcih_stubs.cpp - Stub implementations for Aptcih
 // Auto-generated from symbols.json - 44 functions
 // These are stub implementations to register progress.
@@ -137,3 +138,4 @@ void AptCIH::GetCosAngle(AptMatrix *) { }
 
 // 0x80412A14 | 88 bytes
 void AptCIH::GetVectorLength(AptMatrix *) { }
+#endif

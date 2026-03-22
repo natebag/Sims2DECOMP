@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // getlocalizablecommandtable_stubs.cpp - Stub implementations for Getlocalizablecommandtable
 // Auto-generated from symbols.json - 11 functions
 // These are stub implementations to register progress.
@@ -38,3 +39,4 @@ GetLocalizableCommandTable::GetLocalizableCommandTableRecord::~GetLocalizableCom
 
 // 0x80270370 | 76 bytes
 void GetLocalizableCommandTable::Shutdown(void) { }
+#endif

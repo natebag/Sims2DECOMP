@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // rooms.cpp - Room system
 // Object file: rooms.obj
 // Source: c:\BuildAgent\cm3-build22-NGC\CMBuild\
@@ -117,3 +118,4 @@ RoomScoreConstants::RoomScoreConstants(void)
 // SN calls __static_initialization_and_destruction_0(1, 0xFFFF).
 // GCC generates _GLOBAL__sub_I_ functions with direct constructor calls.
 // ============================================================================
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // elivemode_stubs.cpp - Stub implementations for Elivemode
 // Auto-generated from symbols.json - 28 functions
 // These are stub implementations to register progress.
@@ -89,3 +90,4 @@ void ELiveMode::SetInitialized(bool) { }
 
 // 0x800FC824 | 8 bytes
 void ELiveMode::SetDontDraw(bool) { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cas_medium.cpp - CasMediator/CasScene medium functions (65-256 bytes)
 // Object files: casmediator.obj, casscene.obj
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -181,3 +182,4 @@ void CasScene::GetObjectPosition(unsigned int objId, EVec3& outPos, float& outAn
     // Look up object by ID in scene
     // Extract position and angle from its transform
 }
+#endif

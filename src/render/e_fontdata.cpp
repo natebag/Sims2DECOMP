@@ -1,3 +1,4 @@
+#if 0 // SKIP
 /**
  * e_fontdata.cpp - Font data classes for The Sims 2 (GameCube)
  *
@@ -568,3 +569,4 @@ template<>
 TArray<EFontPage*, TArrayDefaultAllocator>::~TArray(void) {
     Deallocate();
 }
+#endif

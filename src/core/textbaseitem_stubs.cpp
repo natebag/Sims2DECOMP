@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // textbaseitem_stubs.cpp - Stub implementations for Textbaseitem
 // Auto-generated from symbols.json - 7 functions
 // These are stub implementations to register progress.
@@ -26,3 +27,4 @@ TextBaseItem::~TextBaseItem(void) { }
 
 // 0x800E9318 | 96 bytes
 void TextBaseItem::CalculateSize(void) { }
+#endif

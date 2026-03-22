@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // ui3d_stubs.cpp - Stub implementations for Ui3D
 // Auto-generated from symbols.json - 11 functions
 // These are stub implementations to register progress.
@@ -38,3 +39,4 @@ UI3D::UI3DRecord::~UI3DRecord(void) { }
 
 // 0x8026E144 | 76 bytes
 void UI3D::Shutdown(void) { }
+#endif

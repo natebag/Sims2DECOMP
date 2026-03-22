@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // aptlinker_stubs.cpp - Stub implementations for Aptlinker
 // Auto-generated from symbols.json - 6 functions
 // These are stub implementations to register progress.
@@ -23,3 +24,4 @@ void AptLinker::Load(EAStringC &, EAStringC) { }
 
 // 0x8041F950 | 360 bytes
 void AptLinker::CancelLoad(AptCIH *) { }
+#endif

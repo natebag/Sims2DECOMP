@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // efloorshdtblnode_stubs.cpp - Stub implementations for Efloorshdtblnode
 // Auto-generated from symbols.json - 12 functions
 // These are stub implementations to register progress.
@@ -41,3 +42,4 @@ void EFloorShdTblNode::RemapFloorAndGrassId(unsigned int) { }
 
 // 0x80076EB0 | 484 bytes
 void EFloorShdTblNode::PreviewTable(void) { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // memorymetercuitool_stubs.cpp - Stub implementations for Memorymetercuitool
 // Auto-generated from symbols.json - 6 functions
 // These are stub implementations to register progress.
@@ -23,3 +24,4 @@ void MemoryMeterCUITool::DrawWindow(CUIWindow *, ERC *) { }
 
 // 0x800946AC | 72 bytes
 MemoryMeterCUITool::~MemoryMeterCUITool(void) { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // __node_alloc_stubs.cpp - Stub implementations for   Node Alloc
 // Auto-generated from symbols.json - 4 functions
 // These are stub implementations to register progress.
@@ -17,3 +18,4 @@ void __node_alloc<false, 0>::_S_refill(unsigned int) { }
 
 // 0x800088EC | 80 bytes
 void __node_alloc<false, 0>::_M_allocate(unsigned int) { }
+#endif

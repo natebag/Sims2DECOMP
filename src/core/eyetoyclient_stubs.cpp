@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eyetoyclient_stubs.cpp - Stub implementations for Eyetoyclient
 // Auto-generated from symbols.json - 85 functions
 // These are stub implementations to register progress.
@@ -260,3 +261,4 @@ EyeToyClient::CUIParams::~CUIParams(void) { }
 
 // 0x8005C944 | 12 bytes
 void EyeToyClient::CUIParams::GetWindowName(void) { }
+#endif

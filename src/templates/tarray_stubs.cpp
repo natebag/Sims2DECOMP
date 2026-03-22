@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // tarray_stubs.cpp - Stub implementations for Tarray
 // Auto-generated from symbols.json - 241 functions
 // These are stub implementations to register progress.
@@ -728,3 +729,4 @@ void TArray<ENCameraPoint, TArrayDefaultAllocator>::Deallocate(void) { }
 
 // 0x805391B4 | 64 bytes
 TArray<ENCameraPoint, TArrayDefaultAllocator>::~TArray(void) { }
+#endif

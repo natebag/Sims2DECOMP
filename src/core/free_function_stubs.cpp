@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // free_function_stubs.cpp - Stub implementations for Free Function
 // Auto-generated from symbols.json - 6 functions
 // These are stub implementations to register progress.
@@ -23,3 +24,4 @@ void _half$localstatic0$sqrt(float) { }
 
 // 0x80791250 | 8 bytes
 void hree$localstatic1$sqrt(float) { }
+#endif

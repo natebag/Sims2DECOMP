@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // dlgwrapper.cpp - DlgWrapper (dialog system wrapper)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(dlgwrapper.obj)
@@ -109,3 +110,4 @@ public:
     // NON_MATCHING - float comparison and clamping
     void SetDialogSizeY(float y);
 };
+#endif

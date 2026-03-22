@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // interactionlist_stubs.cpp - Stub implementations for Interactionlist
 // Auto-generated from symbols.json - 3 functions
 // These are stub implementations to register progress.
@@ -14,3 +15,4 @@ void InteractionList::clear(void) { }
 
 // 0x801C1FDC | 52 bytes
 void InteractionList::iterator::operator++(void) { }
+#endif

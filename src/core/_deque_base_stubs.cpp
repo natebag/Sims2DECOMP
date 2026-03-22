@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // _deque_base_stubs.cpp - Stub implementations for  Deque Base
 // Auto-generated from symbols.json - 24 functions
 // These are stub implementations to register progress.
@@ -77,3 +78,4 @@ void _Deque_base<EString, allocator<EString> >::_M_destroy_nodes(EString **, ESt
 
 // 0x804FF18C | 128 bytes
 _Deque_base<EString, allocator<EString> >::~_Deque_base(void) { }
+#endif

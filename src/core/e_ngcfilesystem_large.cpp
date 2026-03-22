@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_ngcfilesystem_large.cpp - ENgcFileSystem large functions (257-1024 bytes)
 // Object file: base_ngc_release_dvd.lib(e_ngcfilesystem.obj)
 // Section at 0x802D73C0, size 0x0398
@@ -172,3 +173,4 @@ int ENgcFileSystem::GetLength(void* fileHandle)
     if (!file) return 0;
     return file->m_length;
 }
+#endif

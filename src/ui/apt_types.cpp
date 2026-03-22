@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // apt_types.cpp - Small functions from APT library types
 // From libaptz.a: AptAnimation, AptArray, AptCIH, AptDate, AptLoad,
 //   AptNativeHash, AptObject, AptSound, AptTextFormat
@@ -588,3 +589,4 @@ AptValue* AptObject::Lookup(EAStringC* key) const {
     AptNativeHash* hash = (AptNativeHash*)((u8*)this + 0x0C);
     return hash->Lookup(key);
 }
+#endif

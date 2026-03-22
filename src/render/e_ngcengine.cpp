@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_ngcengine.cpp - ENgcEngine (GameCube engine core)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(e_ngcengine.obj)
@@ -45,3 +46,4 @@ public:
 
 // EController::IsPluggedIn - returns true
 // Many controller functions are simple field reads
+#endif

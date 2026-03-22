@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // treetab.cpp - TreeTable, TTabScratchEntry, TreeTableAdScratch
 // Decompiled from The Sims 2 GameCube (u2_ngc_release_dvd)
 // Object file: treetab.obj
@@ -478,3 +479,4 @@ void TTabScratchEntry::GetActivationExtents(unsigned char& a, unsigned char& b, 
 void TTabScratchEntry::SetActivationExtents(unsigned char a, unsigned char b, unsigned char c, unsigned char d) {
     // Stub - does nothing
 }
+#endif

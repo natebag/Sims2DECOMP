@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_animnodedatapos.cpp - EAnimNodeDataPos (animation node position data)
 // Part of the Sims 2 GC decompilation
 // Original: engine_ngc_release_dvd.lib(e_animnodedatapos.obj)
@@ -74,3 +75,4 @@ public:
     static void Construct(EAnimNodeDataPos* ptr);
     static void Destruct(EAnimNodeDataPos* ptr);
 };
+#endif

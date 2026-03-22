@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // wantfear.cpp - Decompiled small functions from wantfear.obj
 // Original: c:\BuildAgent\cm3-build22-NGC\CMBuild\output\obj\u2_ngc_release_dvd\wantfear.obj
 //
@@ -197,3 +198,4 @@ const int* WantFearManager::GetEventByIndex(int index) const {
 const int* WantFearManager::GetTreeByIndex(int index) const {
     return m_trees[index];
 }
+#endif

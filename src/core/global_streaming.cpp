@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // global_streaming.cpp - Streaming operators (EStream/EFile)
 // Part of the Sims 2 GC decompilation
 // Auto-generated stub implementations - 11 functions
@@ -119,3 +120,4 @@ EFile & operator>><unsigned int, int>(void) {
 EStream & operator>><unsigned int, TArrayDefaultAllocator>(void) {
     static EStream dummy; return dummy;
 }
+#endif

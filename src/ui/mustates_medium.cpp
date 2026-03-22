@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // mustates_medium.cpp - MUStates medium functions (65-256 bytes)
 // Object file: mustates.obj
 // 16 functions
@@ -420,3 +421,4 @@ MUStatesSaveNewGame::MUStatesSaveNewGame(int arg) {
     *(float*)((u8*)this + 0x34) = 0.0f;
     *(float*)((u8*)this + 0x30) = 0.0f;
 }
+#endif

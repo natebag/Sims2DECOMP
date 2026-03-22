@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // global_templates.cpp - Template function instantiations
 // Part of the Sims 2 GC decompilation
 // Auto-generated stub implementations - 404 functions
@@ -2126,3 +2127,4 @@ unsigned int CopyTArray<ENCamera, TArrayERModelAllocator>(void) {
 unsigned int CopyTArray<SimsLightInfo, TArrayERModelAllocator>(void) {
     return 0;
 }
+#endif

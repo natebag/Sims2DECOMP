@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eorhouse.cpp - EHouse (house management)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(eorhouse.obj)
@@ -53,3 +54,4 @@ public:
 // NON_MATCHING - string lookup
 //=============================================================================
 const char* GetHouseNameText(int id);
+#endif

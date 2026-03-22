@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // uiaudio_stubs.cpp - Stub implementations for Uiaudio
 // Auto-generated from symbols.json - 16 functions
 // These are stub implementations to register progress.
@@ -53,3 +54,4 @@ void UIAUDIO::Instance(void) { }
 
 // 0x8026ECC8 | 76 bytes
 void UIAUDIO::Shutdown(void) { }
+#endif

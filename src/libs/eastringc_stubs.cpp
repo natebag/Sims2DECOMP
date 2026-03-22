@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eastringc_stubs.cpp - Stub implementations for Eastringc
 // Auto-generated from symbols.json - 46 functions
 // These are stub implementations to register progress.
@@ -143,3 +144,4 @@ void EAStringC::CalculateHashValue(void) const { }
 
 // 0x8043D97C | 164 bytes
 void EAStringC::UTF8_ReadCharacter(char *, int *) { }
+#endif

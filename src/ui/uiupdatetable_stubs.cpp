@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // uiupdatetable_stubs.cpp - Stub implementations for Uiupdatetable
 // Auto-generated from symbols.json - 13 functions
 // These are stub implementations to register progress.
@@ -44,3 +45,4 @@ void UIUpdateTable::Instance(void) { }
 
 // 0x8027E0A4 | 76 bytes
 void UIUpdateTable::Shutdown(void) { }
+#endif

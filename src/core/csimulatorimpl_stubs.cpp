@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // csimulatorimpl_stubs.cpp - Stub implementations for Csimulatorimpl
 // Auto-generated from symbols.json - 23 functions
 // These are stub implementations to register progress.
@@ -74,3 +75,4 @@ void cSimulatorImpl::GetGlobal(short) { }
 
 // 0x80204194 | 88 bytes
 void cSimulatorImpl::GetGlobalRef(short, short **) { }
+#endif

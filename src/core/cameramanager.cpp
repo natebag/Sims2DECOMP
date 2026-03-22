@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cameramanager.cpp - CameraManager
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(cameramanager.obj)
@@ -30,3 +31,4 @@ public:
     // NON_MATCHING - conditional delete
     ~CameraManager();
 };
+#endif

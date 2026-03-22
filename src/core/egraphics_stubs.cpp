@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // egraphics_stubs.cpp - Stub implementations for Egraphics
 // Auto-generated from symbols.json - 22 functions
 // These are stub implementations to register progress.
@@ -71,3 +72,4 @@ void EGraphics::SetBloom(void) { }
 
 // 0x80495400 | 432 bytes
 void EGraphics::DrawDebugText(float, float, char *,...) { }
+#endif

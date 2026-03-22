@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cuiwindow_stubs.cpp - Stub implementations for Cuiwindow
 // Auto-generated from symbols.json - 41 functions
 // These are stub implementations to register progress.
@@ -128,3 +129,4 @@ void CUIWindow::DrawRect(ERC *, TRect<float>, EVec3) { }
 
 // 0x804B4B80 | 92 bytes
 void CUIWindow::DrawText(ERC *, EVec2, float, EVec3, char *, EFontAlignX, EFontAlignY) { }
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // encamera_stubs.cpp - Stub implementations for Encamera
 // Auto-generated from symbols.json - 5 functions
 // These are stub implementations to register progress.
@@ -20,3 +21,4 @@ void ENCamera::SetCameraPoint(int, ENCameraPoint) { }
 
 // 0x80539268 | 140 bytes
 void ENCamera::GetCameraPoint(int) { }
+#endif

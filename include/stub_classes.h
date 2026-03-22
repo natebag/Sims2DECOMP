@@ -1379,6 +1379,7 @@ struct TileWallsSegment { int _data[4]; };
 
 class ACTTarget {
 public:
+    class iqRecord { public: ~iqRecord(void); };
     ACTTarget(int);
     ~ACTTarget(void);
     void SetVariable(char *, char *);

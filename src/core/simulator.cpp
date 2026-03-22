@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // ============================================================================
 // simulator.cpp - Game simulator implementation
 // Object file: simulator.obj
@@ -354,3 +355,4 @@ void ExpenseReport::reset(void) {
 // ============================================================================
 cSimulator::~cSimulator(void) {
 }
+#endif

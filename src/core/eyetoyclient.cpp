@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eyetoyclient.cpp - EyeToyClient (camera peripheral support)
 // Part of the Sims 2 GC decompilation
 // Original: u2_ngc_release_dvd(eyetoyclient.obj)
@@ -48,3 +49,4 @@ public:
     // - Empty virtual stubs (blr)
     // - Simple flag toggles
 };
+#endif

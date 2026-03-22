@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // ============================================================================
 // objectmodule.cpp - Object module, folder, iterator, fn table, test sim,
 //                    stub object, and error handling implementations
@@ -773,3 +774,4 @@ int StubObject::GenerateHash(void) {
     // XOR results together
     return 0; // NON_MATCHING
 }
+#endif

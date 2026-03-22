@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // engcrc_stubs.cpp - Stub implementations for Engcrc
 // Auto-generated from symbols.json - 59 functions
 // These are stub implementations to register progress.
@@ -182,3 +183,4 @@ void ENgcRC::ParticleListBegin(unsigned int, unsigned int) { }
 
 // 0x80515540 | 40 bytes
 void ENgcRC::ParticleListEnd(unsigned int) { }
+#endif

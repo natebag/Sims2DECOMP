@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // vector_stubs.cpp - Stub implementations for Vector
 // Auto-generated from symbols.json - 73 functions
 // These are stub implementations to register progress.
@@ -224,3 +225,4 @@ void vector<AttachmentNode, allocator<AttachmentNode> >::_M_fill_insert(Attachme
 
 // 0x804FF234 | 396 bytes
 void vector<EResourceManager::ResourceIndexRecord, allocator<EResourceManager::ResourceIndexRecord> >::reserve(unsigned int) { }
+#endif

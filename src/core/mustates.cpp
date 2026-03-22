@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // mustates.cpp - MU (Memory Unit) state machine states
 // From: c:\BuildAgent\cm3-build22-NGC\CMBuild\output\obj\u2_ngc_release_dvd\mustates.obj
 // 70 small functions (<=64 bytes) decompiled
@@ -312,3 +313,4 @@ int MUStateMachine::MUPollForResult(int request) {
     }
     return (eMURequest)result;
 }
+#endif

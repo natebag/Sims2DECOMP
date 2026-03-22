@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // eroom_stubs.cpp - Stub implementations for Eroom
 // Auto-generated from symbols.json - 25 functions
 // These are stub implementations to register progress.
@@ -80,3 +81,4 @@ void ERoom::DeleteWallAtTile(CTilePt &, TileWalls &, TileWallsSegment) { }
 
 // 0x800485D8 | 532 bytes
 void ERoom::KillArchitecturalObject(CTilePt &, TileWallsSegment, int &, bool) { }
+#endif

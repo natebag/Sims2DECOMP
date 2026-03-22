@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // resfile.cpp - Resource file system
 // Covers: resfile.obj, chainresfile.obj, objresfile.obj, iffresfile2.obj,
 //         quickresfile.obj, seqresfile.obj, nghresfile.obj, stdresfile.obj
@@ -1049,3 +1050,4 @@ IFFBehResFile::~IFFBehResFile(void) {
 // 0x800D9400 (size=44)
 // NON_MATCHING - compiler-generated static fini
 // Calls __static_init_nghresfile(0, 0xFFFF)
+#endif

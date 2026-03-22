@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // automationns_stubs.cpp - Stub implementations for Automationns
 // Auto-generated from symbols.json - 84 functions
 // These are stub implementations to register progress.
@@ -257,3 +258,4 @@ void AutomationNS::LuaWait::ClearEvents(void) { }
 
 // 0x803BA52C | 120 bytes
 void AutomationNS::LuaWait::GetEventList(void) { }
+#endif

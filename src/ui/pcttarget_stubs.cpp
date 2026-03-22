@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // pcttarget_stubs.cpp - Stub implementations for Pcttarget
 // Auto-generated from symbols.json - 48 functions
 // These are stub implementations to register progress.
@@ -149,3 +150,4 @@ void PCTTarget::FloorPainterCallback(int *) { }
 
 // 0x802FEBA0 | 244 bytes
 void PCTTarget::calc_floor_tile_value(int *) { }
+#endif

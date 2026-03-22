@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_mirrorportal_large.cpp - EMirrorPortal large functions (257-1024 bytes)
 // Object file: engine_ngc_release_dvd.lib(e_mirrorportal.obj)
 // All NON_MATCHING due to: GCC vs SN Systems codegen differences
@@ -237,3 +238,4 @@ void EMirrorPortal::InitRC(ERC* rc)
     // Apply modified projection
     ERC_ProjectionMatrix(rc, m_reflProjMat);
 }
+#endif

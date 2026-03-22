@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // targets_tsc3.cpp - All small functions (<=64 bytes) from targets_tsc3.obj
 // 101 functions total - TSC3 UI target/event handler classes
 //
@@ -714,3 +715,4 @@ GetVar_EYE_connectionStatus::~GetVar_EYE_connectionStatus() {
 // 0x803BAE3C - 52 bytes
 GetVar_Legacy::~GetVar_Legacy() {
 }
+#endif

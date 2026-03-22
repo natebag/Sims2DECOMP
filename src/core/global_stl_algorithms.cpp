@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // global_stl_algorithms.cpp - STL algorithm template instantiations
 // Part of the Sims 2 GC decompilation
 // Auto-generated stub implementations - 1 functions
@@ -59,3 +60,4 @@ struct CBFunctorBase;
 // Address: 0x801E6234, Size: 664
 void _S_sort<ScoredInteraction, allocator<ScoredInteraction>, less<ScoredInteraction> >(void) {
 }
+#endif

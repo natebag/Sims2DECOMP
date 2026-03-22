@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // ebound3_stubs.cpp - Stub implementations for Ebound3
 // Auto-generated from symbols.json - 5 functions
 // These are stub implementations to register progress.
@@ -20,3 +21,4 @@ void EBound3::Compute(EVec3 *, int) { }
 
 // 0x8045BB84 | 216 bytes
 void EBound3::CalcBoundSphere(EBoundSphere &) { }
+#endif

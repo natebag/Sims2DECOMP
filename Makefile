@@ -150,10 +150,11 @@ $(BUILD_DIR)/obj:
 
 #--- Linking ---
 
-# Link all objects into ELF
+# Link all objects into ELF (use response file for Windows arg length limit)
 $(OUTPUT_ELF): $(ALL_OBJS) $(LDSCRIPT) | $(BUILD_DIR)
-	@echo "  LINK    $@"
-	@$(LD) $(LDFLAGS) -o $@ $(ALL_OBJS)
+	@echo "  LINK    $@ ($(words $(ALL_OBJS)) objects)"
+	@echo $(ALL_OBJS) | tr ' ' '\n' > $(BUILD_DIR)/objects.rsp
+	@$(LD) $(LDFLAGS) -o $@ @$(BUILD_DIR)/objects.rsp
 
 # Convert ELF to DOL
 $(OUTPUT_DOL): $(OUTPUT_ELF)

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cuipane_stubs.cpp - Stub implementations for Cuipane
 // Auto-generated from symbols.json - 24 functions
 // These are stub implementations to register progress.
@@ -77,3 +78,4 @@ void CUIPane::operator delete(void *) { }
 
 // 0x804B5E04 | 72 bytes
 CUIPane::~CUIPane(void) { }
+#endif

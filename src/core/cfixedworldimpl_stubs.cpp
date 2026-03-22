@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // cfixedworldimpl_stubs.cpp - Stub implementations for Cfixedworldimpl
 // Auto-generated from symbols.json - 29 functions
 // These are stub implementations to register progress.
@@ -92,3 +93,4 @@ void cFixedWorldImpl::MayEditTile(CTilePt &) const { }
 
 // 0x8021BC1C | 492 bytes
 void cFixedWorldImpl::GetRoomIdFromPoint(CTilePt &) { }
+#endif

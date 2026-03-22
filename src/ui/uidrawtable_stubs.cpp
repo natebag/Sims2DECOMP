@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // uidrawtable_stubs.cpp - Stub implementations for Uidrawtable
 // Auto-generated from symbols.json - 11 functions
 // These are stub implementations to register progress.
@@ -38,3 +39,4 @@ UIDrawTable::DrawTableRecord::~DrawTableRecord(void) { }
 
 // 0x80273DD4 | 76 bytes
 void UIDrawTable::Shutdown(void) { }
+#endif

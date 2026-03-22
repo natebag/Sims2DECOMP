@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // wrapperpanebase_stubs.cpp - Stub implementations for Wrapperpanebase
 // Auto-generated from symbols.json - 47 functions
 // These are stub implementations to register progress.
@@ -146,3 +147,4 @@ void WrapperPaneBase::SetAlt1PosX(float) { }
 
 // 0x800EB958 | 160 bytes
 void WrapperPaneBase::SetAlt1PosY(float) { }
+#endif

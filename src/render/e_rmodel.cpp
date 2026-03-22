@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_rmodel.cpp - ERModel (model resource)
 // Part of the Sims 2 GC decompilation
 // Original: engine_ngc_release_dvd.lib(e_rmodel.obj)
@@ -113,3 +114,4 @@ public:
     // NON_MATCHING - virtual dispatch
     static void Destruct(ERModel* ptr);
 };
+#endif

@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // actionqueuehud_stubs.cpp - Stub implementations for Actionqueuehud
 // Auto-generated from symbols.json - 26 functions
 // These are stub implementations to register progress.
@@ -83,3 +84,4 @@ void ActionQueueHUD::ActionQueueItem::SetupItem(char *, unsigned int, ERShader *
 
 // 0x802853A0 | 108 bytes
 void ActionQueueHUD::ActionQueueItem::UpdateItem(int &) { }
+#endif

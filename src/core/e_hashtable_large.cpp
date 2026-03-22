@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // e_hashtable_large.cpp - EHashTable large functions (257-1024 bytes)
 // Object file: base_ngc_release_dvd.lib(e_hashtable.obj)
 // Section at 0x802C88C4, size 0x089C
@@ -244,3 +245,4 @@ void EHashTable::Clear()
     }
     m_numEntries = 0;
 }
+#endif

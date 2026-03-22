@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // targets_s2c.cpp - All small functions (<=64 bytes) from targets_s2c.obj
 // 196 functions total - S2C UI target/event handler classes
 //
@@ -1481,3 +1482,4 @@ InteractorModule::WallPainter::WallPainterParams::~WallPainterParams() {
         operator_delete_impl(this);
     }
 }
+#endif
