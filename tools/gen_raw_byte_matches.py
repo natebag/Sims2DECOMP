@@ -385,7 +385,7 @@ def main():
         size = sym.get('size', 0)
         addr = int(sym.get('address', '0x0'), 16)
 
-        if section != '.text':
+        if section not in ('.text', '.init'):
             continue
         if sym_type != 'function':
             continue
@@ -472,10 +472,33 @@ def main():
     total_bytes = sum(len(b) for b in all_injections.values())
     print(f"  Total bytes: {total_bytes:,}")
 
-    # Generate annotation files
+    # Generate annotation files for ALL rawbyte matches (not just new ones).
+    # This ensures the _rawbyte_auto.cpp files are always complete, even if
+    # re-run with different --max-size or after adding .init support.
     if not args.no_annotations:
         print(f"\n  Generating annotation files in src/matched/...")
-        files_w, funcs_w = generate_annotation_files(new_matches, symbols_by_addr)
+        # Determine which addresses need rawbyte annotations:
+        # all injected addresses minus those with existing (non-rawbyte) annotations
+        existing_non_rawbyte = set()
+        for cpp in MATCHED_DIR.glob("*.cpp"):
+            if cpp.stem.endswith("_rawbyte_auto"):
+                continue
+            with open(cpp) as fh:
+                in_if0 = 0
+                for line in fh:
+                    s = line.strip()
+                    if s == '#if 0':
+                        in_if0 += 1; continue
+                    elif s == '#endif' and in_if0 > 0:
+                        in_if0 -= 1; continue
+                    if in_if0 > 0: continue
+                    m = re.match(r'// 0x([0-9A-Fa-f]+)\s+\(\d+ bytes\)', s)
+                    if m:
+                        existing_non_rawbyte.add(int(m.group(1), 16))
+
+        rawbyte_matches = {a: b for a, b in all_injections.items()
+                           if a not in existing_non_rawbyte}
+        files_w, funcs_w = generate_annotation_files(rawbyte_matches, symbols_by_addr)
         print(f"  Wrote {files_w} files covering {funcs_w} functions")
 
     # Regenerate skeleton with ALL injections
