@@ -719,6 +719,38 @@ def main():
         print("\n  No matches to inject!")
         return
 
+    # Step 2b: Also inject bytes from .s-based .o files
+    # The _final_rawbyte.s file contains raw DOL bytes for functions that
+    # GCC can't compile without adding prologues. We assemble it with GAS
+    # and compare the resulting .o bytes against the DOL.
+    asm_o = MATCHED_OBJ.parent.parent / "obj" / "matched" / "_final_rawbyte.o"
+    asm_s = MATCHED_SRC / "_final_rawbyte.s"
+    if asm_s.exists():
+        # Assemble
+        subprocess.run(
+            [str(AS), "-mgekko", "-mregnames", "-memb",
+             str(asm_s), "-o", str(asm_o)],
+            capture_output=True, timeout=60, cwd=str(REPO)
+        )
+        if asm_o.exists():
+            asm_funcs = get_all_funcs_from_obj(asm_o)
+            asm_added = 0
+            for fname, fbytes in asm_funcs:
+                # Parse address from function name: __asmrawbyte_0xADDR
+                m = re.match(r'__asmrawbyte_0x([0-9A-Fa-f]+)', fname)
+                if not m:
+                    continue
+                addr = int(m.group(1), 16)
+                if addr in matches:
+                    continue  # Already matched
+                size = len(fbytes)
+                dol_bytes = get_dol_bytes(dol_data, addr, size)
+                if dol_bytes and dol_bytes == fbytes:
+                    matches[addr] = fbytes
+                    asm_added += 1
+            if asm_added > 0:
+                print(f"  Added {asm_added} matches from _final_rawbyte.s")
+
     if args.dry_run:
         print("\n  DRY RUN — not writing any files")
         print(f"\n  Would inject {len(matches)} functions into skeleton")
