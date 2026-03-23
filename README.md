@@ -10,36 +10,62 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 |--------|-------|
 | Byte-identical functions | **18,539 / 18,539 (100%)** |
 | Compiled C++ matches | **11,763 (63.5%)** |
-| Documented C++ decompilation | **23,525 lines across 17 system files** |
+| Portable C++ code | **9,717 lines** (ready for PC port) |
+| System documentation | **39,505 lines across 27 decomp files** |
+| DolphinSDK real C code | **2,602 lines** (195 functions) |
 | Class struct layouts | **643 classes, 9,910 fields** |
+| Total decompiled code | **51,824 lines** |
 | Total symbols in map | 39,037 |
 | Source files | 3,000+ .cpp, .s, .h |
 | Tools | 45+ Python scripts |
 | Toolchain | devkitPPC (GCC 15.2) + decomp-toolkit |
 
-### Game Systems Decompiled
+### Portable C++ (PC Port Ready)
 
-Every major system has a detailed C++ decompilation file with documented logic:
+Real, portable C++ code converted from PPC assembly in `src/decomp_cpp/`:
 
-| System | File | Lines | Key Discoveries |
-|--------|------|-------|-----------------|
-| Animation | `sanimator2_decomp.cpp` | 3,062 | Blend trees, state transitions, 236 methods |
-| Build Mode | `interactor_decomp.cpp` | 2,523 | Wall/floor/object manipulation, 13-bit state flags |
-| Sim Character | `cxpersonimpl_decomp.cpp` | 2,058 | Motive system, relationships, 26KB object |
-| Renderer | `engcrenderer_decomp.cpp` | 1,800 | 75-entry opcode table, GX→OpenGL notes |
-| State Machine | `statemachine_decomp.cpp` | 1,629 | Game flow: title→neighborhood→lot→live mode |
-| Asset Loading | `asset_loading_decomp.cpp` | 1,571 | .ARC format, .NGH format, async DVD loader |
-| Main Loop | `esimsapp_decomp.cpp` | 1,373 | 8-step update, 24-step init, 3 state machines |
-| Objects | `cxobjectimpl_decomp.cpp` | 1,223 | EdithVariableSet, data indices, 146 fields |
-| APT UI Engine | `apt_decomp.cpp` | 1,206 | 100 SWF opcodes, EA extensions, hybrid GC |
-| Create-A-Sim | `cas_decomp.cpp` | 1,183 | Genetics, body parts, clothing layers |
-| Neighborhood | `neighborhood_decomp.cpp` | 1,014 | .NGH save tags, families, lot management |
-| Save System | `save_decomp.cpp` | 929 | Memory card format, async save/load |
-| Effects | `effects_decomp.cpp` | 910 | Bloom, DOF, motion blur pipeline |
-| Camera | `camera_decomp.cpp` | 902 | 9-state director, rubber-band interpolation |
-| EAHeap | `eaheap_decomp.cpp` | 821 | 3-tier allocation, 13 named heaps |
-| Audio | `audio_decomp.cpp` | 708 | Ambient scores, 64-voice mixer, ARAM heap |
-| FastAllocPool | `fastallocpool_decomp.cpp` | 613 | DESU/EERF magic, binary search tree pools |
+| File | Lines | What |
+|------|-------|------|
+| `ui_system.cpp` | 3,260 | APT engine, 25+ opcodes, 12 UI targets, dialogs |
+| `gameplay.cpp` | 2,532 | cXPersonImpl motives, SAnimator2, behavior trees, CAS genetics |
+| `renderer.cpp` | 1,693 | ENgcRenderer, shaders, textures, models (with GX→OpenGL notes) |
+| `esimsapp.cpp` | 911 | Main loop, init, shutdown, all update functions |
+| `cxobjectimpl.cpp` | 732 | 77 game object functions, data system, EdithVariableSet |
+| `eaheap.cpp` | 589 | Memory allocator, 3-tier allocation, heap hierarchy |
+
+### Game Systems Documented
+
+Every major system has a detailed decompilation file (`*_decomp.cpp`) with documented logic:
+
+| System | Lines | Key Discoveries |
+|--------|-------|-----------------|
+| Animation (SAnimator2) | 3,062 | 9-state machine, blend trees, 5 follow modes |
+| Build Mode (InteractorModule) | 2,523 | Wall/floor/object manipulation, 13-bit state flags |
+| Sim Character (cXPersonImpl) | 2,058 | 7-motive happiness, action queue, death detection |
+| Skin Compositor | 1,796 | Bone transforms, clothing layers, texture compositing |
+| Renderer (ENgcRenderer) | 1,800 | 75-entry opcode table, 21 GX→OpenGL translation notes |
+| Inventory + Goals | 1,722 | Wants/fears, aspiration system, unlock progression |
+| Math/Utils | 1,627 | EVec3, EMat4, CTilePt isometric system, EController |
+| EGlobal + Config | 1,719 | 211-field global state, cheats, options save/load |
+| State Machine | 1,629 | Game flow: title→neighborhood→lot→live mode |
+| Behavior Trees | 1,606 | BHAV execution, primitives, TreeSim stack frames |
+| Particles + Lighting | 1,620 | Emitters, light grid, 5 light types, room evaluation |
+| Resources + Shaders | 1,596 | Resource refcounting, TEV stages, texture management |
+| Asset Loading | 1,571 | .ARC format, .NGH format, RefPack, async DVD loader |
+| UI Targets | 1,495 | 16 dialog controllers, HUD, screen navigation |
+| Containers/Strings | 1,475 | EString, BString, EHashTable, ERedBlackTree, TArray |
+| Main Loop (ESimsApp) | 1,373 | 8-step update, 24-step init, 3 state machines |
+| World/Rooms (ERLevel) | 1,324 | Tile grid, room detection, wall/floor rendering |
+| Objects (cXObjectImpl) | 1,223 | EdithVariableSet, data indices, 146 fields |
+| APT UI Engine | 1,206 | 100 SWF opcodes, EA extensions, hybrid GC |
+| CAS (Create-A-Sim) | 1,183 | Genetics blending, body parts, clothing cascade |
+| Neighborhood | 1,014 | .NGH save tags, families, lot management |
+| Save System | 929 | Memory card format, checksum, async save/load |
+| Effects | 910 | Bloom, DOF, motion blur pipeline |
+| Camera | 902 | 9-state director, rubber-band interpolation |
+| EAHeap | 821 | 3-tier allocation, DESU/EERF magic, 13 heaps |
+| Audio | 708 | Ambient scores, 64-voice mixer, ARAM heap |
+| FastAllocPool | 613 | Binary search tree init order, pool validation |
 
 ### How the Pipeline Works
 
