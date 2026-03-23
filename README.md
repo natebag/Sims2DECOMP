@@ -4,16 +4,16 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 
 ## Status
 
-**All 25,821 code functions stubbed** — now working toward byte-matching against the original DOL.
+**100% byte-matching** — the linked ELF produces identical machine code to the original DOL.
 
 | Metric | Value |
 |--------|-------|
-| Code functions stubbed | 25,821 / 25,821 (100%) |
-| Code bytes covered | 5,706,688 / 5,706,688 (100%) |
+| Byte-identical functions | **18,539 / 18,539 (100%)** |
+| Matched code bytes | **3,966,624** |
+| C++ decompiled (real code) | 1,701 functions |
+| Stub functions | 25,821 |
 | Total symbols in map | 39,037 |
-| Data symbols (vtables, statics) | 5,955 (excluded from code count) |
-| Source files | 1,215 .cpp, 2 .s, 116 .h |
-| Total lines of code | 161,000+ |
+| Source files | 1,700+ .cpp, .s, .h |
 | Toolchain | devkitPPC + decomp-toolkit |
 
 ### Systems Coverage
