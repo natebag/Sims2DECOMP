@@ -4,8 +4,8 @@ Extract leaf functions from asm_decomp and compile them as inline asm
 in src/matched/ files. Uses __attribute__((noreturn)) to prevent GCC
 from adding epilogue code after the inline asm block.
 
-These are "asm-verified" matches - they compile to byte-identical output
-using inline asm. A future step would convert them to real C++.
+Only processes TRUE LEAF functions (no bl, no .long branch, no blrl)
+because non-leaf functions have position-dependent branch offsets.
 """
 
 import os
@@ -59,7 +59,6 @@ def get_dol_bytes(dol_data, addr, size):
 
 
 def get_compiled_funcs(obj_path):
-    """Get function bytes from .o file."""
     result = subprocess.run(
         [OBJDUMP, "-d", str(obj_path)],
         capture_output=True, text=True, timeout=30
@@ -67,7 +66,6 @@ def get_compiled_funcs(obj_path):
     funcs = []
     current_name = None
     current_bytes = bytearray()
-
     for line in result.stdout.split("\n"):
         fm = re.match(r"^[0-9a-f]+ <(.+)>:", line)
         if fm:
@@ -82,62 +80,53 @@ def get_compiled_funcs(obj_path):
                 current_bytes.append(int(b, 16))
     if current_name and current_bytes:
         funcs.append((current_name, bytes(current_bytes)))
-
     return funcs
 
 
+def is_leaf_function(asm_body):
+    """Check if function has no calls (bl, blrl, .long branch)."""
+    for line in asm_body.strip().split('\n'):
+        stripped = line.strip().strip('"').rstrip('\\n').strip()
+        tokens = stripped.split()
+        if not tokens:
+            continue
+        op = tokens[0]
+        if op == 'bl' or op == 'blrl':
+            return False
+        if op == '.long' and '/* bl' in stripped:
+            return False
+    return True
+
+
 def parse_asm_decomp_file(filepath):
-    """Parse an asm_decomp file and extract functions + class declarations."""
+    """Parse an asm_decomp file and extract functions + header."""
     with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
         content = f.read()
 
-    # Extract class declarations (everything before first function)
     first_func_idx = content.find('// 0x')
     if first_func_idx < 0:
         return None, []
 
     header = content[:first_func_idx]
 
-    # Parse functions
-    pattern = r'// (0x[0-9A-Fa-f]+) \((\d+) bytes\)\n// (.+?)\n(?:(__attribute__\(\(noreturn\)\))\n)?(.+?)\{([\s\S]*?)\n\}'
+    pattern = r'// (0x[0-9A-Fa-f]+) \((\d+) bytes\)\n// (.+?)\n(?:__attribute__\(\(noreturn\)\)\n)?(.+?)\{([\s\S]*?)\n\}'
 
     funcs = []
     for m in re.finditer(pattern, content):
         addr = m.group(1)
         size = int(m.group(2))
         comment = m.group(3)
-        noreturn_attr = m.group(4) or ''
-        signature = m.group(5).strip()
-        body = m.group(6)
+        signature = m.group(4).strip()
+        body = m.group(6) if len(m.groups()) > 5 else m.group(5)
 
-        # Check if body is inline asm
-        if '__asm__ __volatile__' not in body:
-            continue
-
-        # Extract just the asm block
-        asm_match = re.search(r'__asm__ __volatile__\(\s*\n([\s\S]*?)\n\s*\);', body)
+        asm_match = re.search(r'__asm__ __volatile__\(\s*\n([\s\S]*?)\n\s*\);', body if len(m.groups()) > 5 else m.group(5))
         if not asm_match:
             continue
 
         asm_body = asm_match.group(1)
 
-        # Check for calls
-        has_call = False
-        has_stack_frame = False
-        for line in asm_body.strip().split('\n'):
-            stripped = line.strip().strip('"').rstrip('\\n')
-            tokens = stripped.split()
-            if not tokens:
-                continue
-            op = tokens[0]
-            if op == 'bl' or op == 'blrl':
-                has_call = True
-                break
-            if op == '.long' and '/* bl' in stripped:
-                has_call = True
-                break
-            if op == 'stwu' and '1,' in stripped:
-                has_stack_frame = True
+        if not is_leaf_function(asm_body):
+            continue
 
         funcs.append({
             'addr': addr,
@@ -145,55 +134,18 @@ def parse_asm_decomp_file(filepath):
             'comment': comment,
             'signature': signature,
             'asm_body': asm_body,
-            'has_call': has_call,
-            'has_stack_frame': has_stack_frame,
-            'noreturn_attr': noreturn_attr,
         })
 
     return header, funcs
 
 
-def compile_and_verify(src_content, expected_addr, expected_size, dol_data, tmp_dir):
-    """Compile source and verify byte match against DOL."""
-    src_path = os.path.join(tmp_dir, "test.cpp")
-    obj_path = os.path.join(tmp_dir, "test.o")
-
-    with open(src_path, 'w') as f:
-        f.write(src_content)
-
-    result = subprocess.run(
-        [CXX] + CXXFLAGS + ["-c", src_path, "-o", obj_path],
-        capture_output=True, text=True, timeout=30
-    )
-
-    if result.returncode != 0:
-        return False, f"Compile error: {result.stderr[:100]}"
-
-    dol_bytes = get_dol_bytes(dol_data, int(expected_addr, 16), expected_size)
-    if dol_bytes is None:
-        return False, "Not in DOL"
-
-    compiled_funcs = get_compiled_funcs(obj_path)
-    for name, fbytes in compiled_funcs:
-        if len(fbytes) == expected_size and fbytes == dol_bytes:
-            return True, name
-
-    # Check sizes
-    for name, fbytes in compiled_funcs:
-        if len(fbytes) == expected_size:
-            return False, f"Size OK but bytes differ ({name})"
-
-    sizes = [(name, len(fb)) for name, fb in compiled_funcs]
-    return False, f"Size mismatch: {sizes} expected {expected_size}"
-
-
 def main():
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--generate", action="store_true", help="Write matched files")
+    parser.add_argument("--generate", action="store_true")
     parser.add_argument("--min-size", type=int, default=20)
     parser.add_argument("--max-size", type=int, default=9999)
-    parser.add_argument("--file", help="Process only this asm_decomp file")
+    parser.add_argument("--file", help="Only process this file")
     args = parser.parse_args()
 
     print("=" * 70)
@@ -205,10 +157,10 @@ def main():
     os.makedirs(tmp_dir, exist_ok=True)
 
     asm_dir = REPO / "src" / "asm_decomp"
+    matched_dir = REPO / "src" / "matched"
 
     # Check existing matches
     matched_addrs = set()
-    matched_dir = REPO / "src" / "matched"
     for fname in os.listdir(matched_dir):
         if not fname.endswith('.cpp'):
             continue
@@ -220,39 +172,35 @@ def main():
 
     total_new_matches = 0
     total_attempted = 0
-    all_matches = defaultdict(list)  # source file -> list of matched funcs
+    total_compile_fail = 0
+    total_size_mismatch = 0
+    total_byte_mismatch = 0
+    all_matches = defaultdict(list)
 
     files = sorted(os.listdir(asm_dir))
     if args.file:
         files = [f for f in files if args.file in f]
 
-    for fname in files:
+    for file_idx, fname in enumerate(files):
         if not fname.endswith('.cpp'):
             continue
 
         filepath = asm_dir / fname
-        header, funcs = parse_asm_decomp_file(filepath)
-        if header is None:
+        result = parse_asm_decomp_file(filepath)
+        if result is None or result[0] is None:
             continue
 
+        header, funcs = result
+
         for func in funcs:
-            # Skip already matched
             if func['addr'] in matched_addrs:
                 continue
-
-            # Skip size out of range
             if func['size'] < args.min_size or func['size'] > args.max_size:
                 continue
-
-            # We handle ALL functions with inline asm, not just leaf
-            # For leaf functions (no call, no stack frame), we can use noreturn
-            # For non-leaf, the asm already has proper prologue/epilogue
 
             # Build test source
             src = '#include "types.h"\n\n'
             src += header + '\n'
-
-            # Add noreturn to prevent extra blr
             src += f'// {func["addr"]} ({func["size"]} bytes)\n'
             src += f'// {func["comment"]}\n'
             src += '__attribute__((noreturn))\n'
@@ -261,41 +209,75 @@ def main():
             src += '}\n'
 
             total_attempted += 1
-            matched, msg = compile_and_verify(src, func['addr'], func['size'], dol_data, tmp_dir)
+
+            # Compile
+            src_path = os.path.join(tmp_dir, "test.cpp")
+            obj_path = os.path.join(tmp_dir, "test.o")
+            with open(src_path, 'w') as f:
+                f.write(src)
+
+            result = subprocess.run(
+                [CXX] + CXXFLAGS + ["-c", src_path, "-o", obj_path],
+                capture_output=True, text=True, timeout=30
+            )
+
+            if result.returncode != 0:
+                total_compile_fail += 1
+                continue
+
+            # Get DOL bytes
+            dol_bytes = get_dol_bytes(dol_data, int(func['addr'], 16), func['size'])
+            if dol_bytes is None:
+                continue
+
+            # Get compiled bytes
+            compiled_funcs = get_compiled_funcs(obj_path)
+            matched = False
+            for name, fbytes in compiled_funcs:
+                if len(fbytes) == func['size'] and fbytes == dol_bytes:
+                    matched = True
+                    break
 
             if matched:
                 total_new_matches += 1
                 all_matches[fname].append(func)
-                if total_new_matches % 20 == 0:
-                    print(f"  [{total_new_matches}] {func['addr']} ({func['size']}B) {func['comment']}")
+                if total_new_matches <= 20 or total_new_matches % 50 == 0:
+                    print(f"  [{total_new_matches:4d}] {func['addr']} ({func['size']:3d}B) {func['comment']}")
+            else:
+                # Check why
+                for name, fbytes in compiled_funcs:
+                    if len(fbytes) == func['size']:
+                        total_byte_mismatch += 1
+                        break
+                else:
+                    total_size_mismatch += 1
 
-            if total_attempted % 200 == 0:
-                print(f"  Progress: {total_attempted} attempted, {total_new_matches} matched")
+        if (file_idx + 1) % 100 == 0:
+            print(f"  Files: {file_idx+1}/{len(files)}, Matches: {total_new_matches}")
 
     print(f"\n{'=' * 70}")
-    print(f"Results: {total_new_matches} new matches out of {total_attempted} attempted")
+    print(f"Results:")
+    print(f"  Attempted:       {total_attempted}")
+    print(f"  Matched:         {total_new_matches}")
+    print(f"  Compile fails:   {total_compile_fail}")
+    print(f"  Size mismatch:   {total_size_mismatch}")
+    print(f"  Byte mismatch:   {total_byte_mismatch}")
     print(f"{'=' * 70}")
 
     if args.generate and total_new_matches > 0:
-        print("\nGenerating matched files...")
+        print("\nWriting matched files...")
+        total_written = 0
 
         for fname, funcs in sorted(all_matches.items()):
             base = fname.replace('.cpp', '')
             out_path = matched_dir / f"{base}_asm_leaf.cpp"
 
-            # Check if file already exists - append if so
-            existing_addrs = set()
-            if out_path.exists():
-                with open(out_path, 'r') as f:
-                    for m in re.finditer(r'// (0x[0-9A-Fa-f]+) \(\d+ bytes\)', f.read()):
-                        existing_addrs.add(m.group(1))
-                funcs = [f for f in funcs if f['addr'] not in existing_addrs]
-                if not funcs:
-                    continue
-
-            # Read header from asm_decomp
+            # Read header
             filepath = asm_dir / fname
-            header, _ = parse_asm_decomp_file(filepath)
+            result = parse_asm_decomp_file(filepath)
+            if result is None or result[0] is None:
+                continue
+            header = result[0]
 
             total_bytes = sum(f['size'] for f in funcs)
 
@@ -305,15 +287,19 @@ def main():
                 f.write(f'// {len(funcs)} functions, {total_bytes} bytes\n\n')
                 f.write(header + '\n')
 
-                for func in funcs:
-                    f.write(f'// {func["addr"]} ({func["size"]} bytes)\n')
-                    f.write(f'// {func["comment"]}\n')
+                for func_info in funcs:
+                    f.write(f'// {func_info["addr"]} ({func_info["size"]} bytes)\n')
+                    f.write(f'// {func_info["comment"]}\n')
                     f.write('__attribute__((noreturn))\n')
-                    f.write(f'{func["signature"]} {{\n')
-                    f.write(f'    __asm__ __volatile__(\n{func["asm_body"]}\n    );\n')
+                    f.write(f'{func_info["signature"]} {{\n')
+                    f.write(f'    __asm__ __volatile__(\n{func_info["asm_body"]}\n    );\n')
                     f.write('}\n\n')
 
-            print(f"  Wrote {len(funcs)} functions ({total_bytes}B) to {out_path.name}")
+                total_written += len(funcs)
+
+            print(f"  {out_path.name}: {len(funcs)} functions ({total_bytes}B)")
+
+        print(f"\nTotal written: {total_written} functions")
 
     return total_new_matches
 

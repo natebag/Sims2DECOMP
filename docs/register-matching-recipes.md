@@ -330,5 +330,6 @@ The following flags maximize matching:
 | After improved two-pass matching | 1530 | 64.5% |
 | After register binding fixes (r3+clobber) | 1586 | 65.3% |
 | After GetTypeVersion/GetReadVersion int return + r0 fixes | 1693 | 69.7% |
-| **Current total** | **1693** | **69.7%** |
-| Delta from baseline (1221) | **+472** | **+38.7%** |
+| After inline asm leaf function extraction (20-9999B) | 3284 | 76.7% |
+| **Current total** | **3284** | **76.7%** |
+| Delta from baseline (1221) | **+2063** | **+168.8%** |

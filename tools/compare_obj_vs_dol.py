@@ -120,7 +120,7 @@ def main():
                 pending = (int(m.group(1), 16), int(m.group(2)))
                 continue
 
-            if pending and "::" in s and "{" in s and not s.startswith("//"):
+            if pending and "{" in s and not s.startswith("//") and not s.startswith("__attr") and ("::" in s or "(" in s):
                 addr, size = pending
                 orig_bytes = get_dol_bytes(dol_data, addr, size)
                 pending = None
@@ -178,7 +178,7 @@ def main():
                     ours_len = len(our_bytes) if our_bytes else 0
                     mismatch_list.append((addr, size, our_name, -1, our_bytes, orig_bytes))
 
-            elif s and not s.startswith("//") and not s.startswith("#"):
+            elif s and not s.startswith("//") and not s.startswith("#") and not s.startswith("__attr"):
                 pending = None
 
     pct = byte_match * 100.0 / total if total else 0
