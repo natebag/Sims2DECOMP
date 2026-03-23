@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for _global (branching leaf functions)
@@ -13,3 +14,4 @@ int GetNghIndex(int val) { int* __tbl = (int*)0x80424128; for (int __i = 0; __i 
 // 0x800D38B8 (56 bytes)
 int GetHouseIndex(int val) { int* __tbl = (int*)0x80424138; for (int __i = 0; __i < 6; __i++) { if (__tbl[__i] == val) return __i; } return -1; }
 
+#endif

@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for stack_L_int_deque_L_int_allocator_L_int_R_R_R
@@ -62,3 +63,5 @@ stack<int, deque<int, allocator<int> > >::~stack(void) {
     );
     __builtin_unreachable();
 }
+
+#endif

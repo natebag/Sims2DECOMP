@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cSimulatorImpl (medium functions)
@@ -7,3 +8,4 @@
 // 0x80141A5C (40 bytes)
 void cSimulatorImpl::PostSecondOfDay(int) { *(int*)((char*)this + 0x80) = /* subf */; }
 
+#endif

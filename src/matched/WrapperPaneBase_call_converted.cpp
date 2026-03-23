@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for WrapperPaneBase
@@ -29,3 +30,5 @@ void WrapperPaneBase::SetAlt1Font(ERFont *) { TextBlock::SetDirty()  /* on (this
 
 // 0x80088A14 (84 bytes)
 void WrapperPaneBase::SetAlt1FontSize(float) { TextBlock::SetDirty()  /* on (this->field_0x48 + 32) */; UpdateAptButtonWidth(2); }
+
+#endif

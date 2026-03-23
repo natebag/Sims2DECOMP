@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for stack_L_StateMachineStatus_ptr_deque_L_StateMachineStatus_ptr_allocator_L_StateMachineStat_a0dcc00a
@@ -62,3 +63,5 @@ stack<StateMachineStatus *, deque<StateMachineStatus *, allocator<StateMachineSt
     );
     __builtin_unreachable();
 }
+
+#endif

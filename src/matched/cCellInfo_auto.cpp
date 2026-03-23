@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for cCellInfo
@@ -6,3 +7,4 @@
 // 0x801D1F30 (36 bytes)
 void PCTTarget::cCellInfo::cCellInfo() { *(int*)((char*)this + 0x14) = 0; *(int*)((char*)this + 0x0) = 0; *(int*)((char*)this + 0x4) = 0; *(int*)((char*)this + 0x8) = 0; *(int*)((char*)this + 0xC) = 0; *(int*)((char*)this + 0x10) = 0; }
 
+#endif

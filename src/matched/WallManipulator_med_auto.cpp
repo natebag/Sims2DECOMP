@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WallManipulator (medium functions)
@@ -10,3 +11,4 @@ void InteractorModule::WallManipulator::SetAnchorPoint(EVec3 & val) { *(int*)((c
 // 0x80224010 (32 bytes)
 void InteractorModule::WallManipulator::SetAnchorPointDrawPos(EVec3 & val) { *(int*)((char*)this + 0x6C) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x74) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x70) = *(int*)((char*)&val + 0x4); }
 
+#endif

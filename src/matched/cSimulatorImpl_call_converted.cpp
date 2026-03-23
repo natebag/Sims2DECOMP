@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for cSimulatorImpl
@@ -5,3 +6,5 @@
 
 // 0x801410EC (72 bytes)
 void cSimulatorImpl::SetSpeed(SimSpeed) { UpdateSpeed(); GlobalDispatch(189, 0); }
+
+#endif

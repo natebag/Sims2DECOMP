@@ -1349,7 +1349,7 @@ struct EVec4 { float x, y, z, w; };
 #endif
 #ifndef EMAT4_DEFINED
 #define EMAT4_DEFINED
-class EMat4 { public: float m[4][4]; };
+class EMat4 { public: float m[4][4]; void Invert(); void Scale(float, float, float); void Mult4x4(EMat4 const&, EMat4 const&); void operator=(float); };
 #endif
 #ifndef EBOUND3_DEFINED
 #define EBOUND3_DEFINED
@@ -3405,6 +3405,7 @@ public:
     bool operator <<=(int);
     bool operator >>=(int);
     void CountBits(void) const;
+        BitArray64(BitArray64&);
     char _stub_data[256];
 };
 
@@ -4735,6 +4736,7 @@ public:
 
 class CasScene {
 public:
+    typedef int RoomId;
     void SetMediator(CasMediator* mediator);
     unsigned int GetRoomFromCameraAngle(unsigned int angle) const;
     void Init();
@@ -5506,8 +5508,8 @@ public:
     EAHeap* FindHeapForAddress(void* addr) const;
     void InitializeHeapStatics(void);
     void Init(void *, unsigned int);
-    void MallocAligned(unsigned int, unsigned int, unsigned int, int);
-    void Calloc(unsigned int, unsigned int, int);
+    void* MallocAligned(unsigned int, unsigned int, unsigned int, int);
+    void* Calloc(unsigned int, unsigned int, int);
     void Compact(void);
     void AllocTest(void);
     void Clear(void);
@@ -5697,6 +5699,8 @@ public:
     void CallbackIntermediateComputeMatrices(EMat4& mat);
     void SetTrackBlendHermiteSafe(eTrackFlags, float, float, float, float);
     char _stub_data[256];
+    void SetTrackPos(EACTrack*, float, bool);
+    void SetTrackIntensity(eTrackFlags, float);
 };
 
 class EAnimManager {
@@ -6386,6 +6390,8 @@ public:
     void RegisterFileCreator(int, int, int, char *, EFile *(*)(EFile *, char *, char *, int, int, unsigned int));
     void ParseMode(char *, int &);
     char _stub_data[256];
+    static void* FileCreator();
+    static void* Create(const char*);
 };
 
 class EFixedPool {
@@ -6975,6 +6981,7 @@ public:
     void* operator new(unsigned int);
     void operator delete(void *);
     void IsOpaque(void);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -7352,6 +7359,7 @@ public:
     void RealizeShaderTuning(void);
     void * GetTypeInfo(void) const;
     void * GetTypeInfoStatic(void);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -7486,6 +7494,7 @@ public:
     void EvaluateLampsOn(void);
     class RoomData { public: void EvaluateAmbientAndDirectionalLights(void); char _stub_data[256]; };
     char _stub_data[256];
+    int field_0x18;
 };
 
 class ELiveMode {
@@ -8242,6 +8251,7 @@ public:
     void CopyScreenToTexture(EDLEntry *);
     char _stub_data[256];
     void Callback(EDLEntry*);
+    void SetAlpha(float);
 };
 
 class ENgcSFXStreamer {
@@ -8619,6 +8629,7 @@ public:
     void CreateCopy(void) const;
     void* operator new(unsigned int);
     void operator delete(void *);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -8780,6 +8791,7 @@ public:
     void* operator new(unsigned int);
     void operator delete(void *);
     void GetNode(int);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -8854,6 +8866,7 @@ public:
     void CreateCopy(void) const;
     void* operator new(unsigned int);
     void operator delete(void *);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -8895,6 +8908,7 @@ public:
     void GetAspect(void);
     void GetStringSize(char *, EWindow *, bool);
     void SetColor(float);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -9108,6 +9122,7 @@ public:
     void GetNumAttachmentVerts(void);
     void GetNumLightPos(void);
     void GetLightPos(void);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -9241,6 +9256,7 @@ public:
     void SelectForShadowMask(ERC *);
     void CanColorBeModified(void);
     void GetModifiableColor(unsigned int);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -9269,6 +9285,7 @@ public:
     void GetProb(void);
     void SetVolume(int);
     void SetProb(int);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -9390,6 +9407,7 @@ public:
     void* operator new(unsigned int);
     void operator delete(void *);
     void Select(ERC *, int);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -9775,6 +9793,7 @@ public:
     void GetQ(int, int, EQuat &);
     char _stub_data[256];
     void Reset();
+    int field_0x4;
 };
 
 class EScheduler {
@@ -10648,6 +10667,7 @@ public:
     void Insert(void);
     void Find(unsigned int);
     void IsDerivedFrom(ETypeInfo *);
+    static void Register(ETypeInfo *);
     char _stub_data[256];
 };
 
@@ -10667,6 +10687,7 @@ public:
     void GetV(int, int, EVec3 &);
     char _stub_data[256];
     void Reset();
+    int field_0x4;
 };
 
 class EVibrate {
@@ -10820,8 +10841,8 @@ public:
     void Mat4Copy34(EMat4 &, EMat4 &);
     // Nested classes for asm matching
     class Effect { public: void DefaultInit(void); void SetParentTransform(EMat4 &); char _stub_data[256]; };
-    class EffectsManager { public: void Render(ERC *); void DeleteAll(void); char _stub_data[256]; };
-    class FastParticleEmitter { public: void DieOnLastFrame_Lifetime(int *, unsigned int); void AllocateParticlePackets(int); char _stub_data[256]; };
+    class EffectsManager { public: EffectsManager(); void Render(ERC *); void DeleteAll(void); char _stub_data[256]; };
+    class FastParticleEmitter { public: void DieOnLastFrame_Lifetime(int *, unsigned int); void AllocateParticlePackets(int); void ComputeCombinedMatrix(); char _stub_data[256]; };
     char _stub_data[256];
 };
 
@@ -11514,6 +11535,7 @@ public:
     void Init(void *, unsigned int, bool, bool, unsigned int (*)(int *, void *, unsigned int, void *), void *);
     void Shutdown(void);
     void SetOption(int, int);
+            void ClearFastBins();
     void SetMallocFailureFunction(bool (*)(int *, unsigned int, unsigned int, void *), void *);
     void SetHookFuncton(void (*)(int *, void *), void *);
     void SetTraceFunction(void (*)(char *, void *), void *);
@@ -11554,15 +11576,14 @@ public:
     void MallocInternal(unsigned int, int);
     void Free(void *);
     void FreeInternal(void *);
-    void MallocAligned(unsigned int, unsigned int, unsigned int, int);
-    void MallocAlignedInternal(unsigned int, unsigned int, unsigned int, int);
-    void Realloc(void *, unsigned int, int);
-    void ReallocInternal(void *, unsigned int, int);
-    void Calloc(unsigned int, unsigned int, int);
-    void CallocInternal(unsigned int, unsigned int, int);
+    void* MallocAligned(unsigned int, unsigned int, unsigned int, int);
+    void* MallocAlignedInternal(unsigned int, unsigned int, unsigned int, int);
+    void* Realloc(void *, unsigned int, int);
+    void* ReallocInternal(void *, unsigned int, int);
+    void* Calloc(unsigned int, unsigned int, int);
+    void* CallocInternal(unsigned int, unsigned int, int);
     void MallocMultiple(unsigned int, unsigned int, void **, int);
     void MallocMultipleInternal(unsigned int, unsigned int, unsigned int *, void **, int);
-    void ClearFastBins(void);
     void LinkCoreBlock(int *, int *);
     void UnlinkCoreBlock(int *);
     void AddCore(void *, unsigned int, bool, bool, unsigned int (*)(int *, void *, unsigned int, void *), void *);
@@ -12957,28 +12978,32 @@ public:
     class DirectInteractor { public: DirectInteractor(); void SendNeutralFreeMoveInput(void); void CancelQueuedActions(void); void ResetIdleTime(void); char _stub_data[256]; };
     class FloorPainter { public: FloorPainter(); ~FloorPainter(); void OnCommandReleased(int); void IsValidFloorPlacement(CTilePt &, int); void GetSelectedRectPoints(int &, int &, int &, int &); void SwapTools(void); char _stub_data[256]; };
     class GrabManipulator { public: GrabManipulator(); char _stub_data[256]; };
-    class Interactor { public: Interactor(); char _stub_data[256]; };
-    class InteractorInputManager { public: InteractorInputManager(); char _stub_data[256]; };
-    class InteractorManager { public: InteractorManager(); char _stub_data[256]; };
-    class InteractorResourceSet { public: InteractorResourceSet(); char _stub_data[256]; };
+    class InteractorInfo { public: char _stub_data[256]; };
+    class Interactor { public: Interactor(); void Update(float); void GetInteractorInfo(InteractorInfo &); void SnapToPos(EVec3 &); bool EitherStickCentered(); char _stub_data[256]; };
+    class InteractorInputManager { public: InteractorInputManager(); struct InstanceData { char _stub_data[256]; }; char _stub_data[256]; };
+    class InteractorManager { public: InteractorManager(); void Update(float); char _stub_data[256]; };
+    class InteractorResourceSet { public: InteractorResourceSet(); int GetOrderTableDataCount(); char _stub_data[256]; };
     class InteractorVisualizer { public: InteractorVisualizer(); void GetInteractorResourceSet(int *); char _stub_data[256]; };
     class ObjectManipulator { public: ObjectManipulator(); char _stub_data[256]; };
     class PlaceManipulator { public: PlaceManipulator(); char _stub_data[256]; };
     class PlacementObject { public: PlacementObject(); char _stub_data[256]; };
-    class SimInteractor { public: SimInteractor(); char _stub_data[256]; };
+    class SimInteractor { public: SimInteractor(); void GetInteractorInfo(InteractorInfo &); char _stub_data[256]; };
     class SocialModeInteractor { public: SocialModeInteractor(); char _stub_data[256]; };
     class WallManipulator {
     public:
         void OnCommandReleased(int);
+        bool IsAnchored();
+        void SetAnchorPoint(EVec3 &);
         class CallbackData { public: CallbackData(); char _stub_data[256]; };
         char _stub_data[256];
     };
-    class WallPainter { public: WallPainter(); char _stub_data[256]; };
+    class WallPainter { public: WallPainter(); bool IsAnchored(); void SetAnchorPoint(EVec3 &); char _stub_data[256]; };
     char _stub_data[256];
 };
 
 // Namespace stubs for ctor matching
 namespace BBI {
+    class InventoryItem { public: char _stub_data[256]; };
     class InventoryItems { public: InventoryItems(); char _stub_data[256]; };
 }
 
@@ -12988,13 +13013,16 @@ namespace EA {
         class GeneralAllocator {
         public:
             void FindAndSetNewTopChunk(void);
+            void SetOption(int, int);
+            int GetBlockSize(void *) const;
             char _stub_data[256];
         };
     };
 }
 
+
 namespace WantFear {
-    class Bookmark { public: Bookmark(unsigned short, short, int*, unsigned short); char _stub_data[256]; };
+    class Bookmark { public: Bookmark(unsigned short, short, int*, unsigned short); void Clear(); char _stub_data[256]; };
 }
 
 class Interests {
@@ -14579,6 +14607,7 @@ public:
     operator bool(void) const;
     void SetNamespaceID(unsigned int);
     void SetResourceID(unsigned short);
+        ObjectDataID(ObjectDataID&);
     char _stub_data[256];
 };
 
@@ -15872,6 +15901,7 @@ public:
     void* operator new(unsigned int);
     void operator delete(void *);
     void GetData(void);
+        static void* operator new(unsigned int, void*);
     char _stub_data[256];
 };
 
@@ -15903,6 +15933,7 @@ public:
     void ReconMark(void);
     void ReadToNextMark(void);
     void ReconString(BString &);
+        ReconBuffer(ReconBuffer&);
     char _stub_data[256];
 };
 
@@ -16376,6 +16407,7 @@ public:
     void exitAwarenessFollow(void);
     void StartAutoRun(float);
     char _stub_data[256];
+    int field_0x60c;
 };
 
 class SKLTarget {
@@ -16456,6 +16488,7 @@ public:
     void GetV(int, int, float &);
     char _stub_data[256];
     void Reset();
+    int field_0x4;
 };
 
 class ScreenshotTool {
@@ -17552,6 +17585,7 @@ public:
     bool IsValid() const;
     void JumpToEnd();
     void ReadCommand(void);
+        TrackDataReader(TrackDataReader&);
     char _stub_data[256];
 };
 
@@ -18963,6 +18997,8 @@ public:
     void StartCASMusic(void);
     void Update(void);
     char _stub_data[256];
+    void Resume();
+    void Pause();
 };
 
 class cSoundPlayer {

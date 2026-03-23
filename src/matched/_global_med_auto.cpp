@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for _global (medium functions)
@@ -43,3 +44,4 @@ void GXLoadNrmMtxIndx3x3() { *(char*)((char*)val + -0x8000) = 40; *(int*)((char*
 // 0x803920E8 (32 bytes)
 void __GXSetBWDials() { *(short*)(0x0xCC004000 + 0x12) = r3; *(short*)(0x0xCC004000 + 0x14) = val; *(short*)(0x0xCC004000 + 0x16) = val3; *(short*)(0x0xCC004000 + 0x18) = val4; *(short*)(0x0xCC004000 + 0x1A) = val5; }
 
+#endif

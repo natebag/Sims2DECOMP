@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for static_init
@@ -2370,3 +2371,5 @@ void __static_initialization_and_destruction_0() {
     );
     __builtin_unreachable();
 }
+
+#endif

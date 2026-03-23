@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for cXPersonImpl
@@ -245,3 +246,5 @@ void cXPersonImpl::DeleteTopAction(void) {
     );
     __builtin_unreachable();
 }
+
+#endif

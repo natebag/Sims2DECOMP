@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for stack_L_MMUTarget_MMU_MENU_STATE_deque_L_MMUTarget_MMU_MENU_STATE_allocator_L_MMUTarget_MM_8dc4e7ce
@@ -88,3 +89,5 @@ stack<MMUTarget::MMU_MENU_STATE, deque<MMUTarget::MMU_MENU_STATE, allocator<MMUT
     );
     __builtin_unreachable();
 }
+
+#endif

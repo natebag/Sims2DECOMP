@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for UIObjectBase
@@ -5,3 +6,5 @@
 
 // 0x80177D54 (84 bytes)
 void UIObjectBase::AptViewer_CallFunction(char *, char *, char *, int, char **) { AptViewer::NewCallFunction2(this, p0, p1, p2, p3)  /* on *(r9 + 0x5e80) */; }
+
+#endif

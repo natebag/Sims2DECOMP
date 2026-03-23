@@ -6,7 +6,7 @@
 // 10 functions, 120 bytes
 
 // 0x800B45D0 (12 bytes)
-void CTilePt::CTilePt() { *(char*)((char*)this + 0x2) = 0; }
+CTilePt::CTilePt() { *(char*)((char*)this + 0x2) = 0; }
 
 // 0x800B4CA8 (12 bytes)
 signed char CTilePt::GetX() const { return *(signed char*)((char*)this + 0x0); }  // signed byte

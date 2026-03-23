@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for node_alloc_L_false_0_R
@@ -33,3 +34,5 @@ void __node_alloc<false, 0>::_M_allocate(unsigned int) {
     );
     __builtin_unreachable();
 }
+
+#endif

@@ -273,7 +273,7 @@ void* EAHeap::Malloc(unsigned int size, int flags) {
         // Load pool manager from SDA: s_protectedPoolManager at r13-21324
         AllocPoolManager<ProtectedAllocPool>* poolMgr = s_poolBlocks;
         if (poolMgr) {
-            void* poolResult = poolMgr->Alloc(size);  // placeholder for AttemptPoolAlloc
+            void* poolResult = 0;  // placeholder: poolMgr->AttemptPoolAlloc(size)
             if (poolResult != 0) {
                 return poolResult;
             }

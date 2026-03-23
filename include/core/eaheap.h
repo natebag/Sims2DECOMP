@@ -33,6 +33,8 @@ public:
 
     void Init(void* buffer, unsigned int size);
     void* Malloc(unsigned int size, int align);
+    void* MallocAligned(unsigned int size, unsigned int alignment, unsigned int offset, int flags);
+    void* Calloc(unsigned int count, unsigned int size, int flags);
     void Free(void* ptr);
     void Clear(void);
     void Compact(void);

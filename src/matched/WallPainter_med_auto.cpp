@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-generated matching stubs for WallPainter (medium functions)
@@ -13,3 +14,4 @@ void InteractorModule::WallPainter::SetAnchorPointDrawPos(EVec3 & val) { *(int*)
 // 0x802269D8 (32 bytes)
 void InteractorModule::WallPainter::SetHoldPos(EVec3 & val) { *(int*)((char*)this + 0x78) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x80) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x7C) = *(int*)((char*)&val + 0x4); }
 
+#endif

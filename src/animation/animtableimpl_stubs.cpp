@@ -1,3 +1,4 @@
+#if 0 // SKIP
 // animtableimpl_stubs.cpp - Stub implementations for Animtableimpl
 // Auto-generated from symbols.json - 7 functions
 // These are stub implementations to register progress.
@@ -26,3 +27,4 @@ void AnimTableImpl::CountEntries(void) const { }
 
 // 0x8012E67C | 100 bytes
 void AnimTableImpl::GetEntryName(int) { }
+#endif

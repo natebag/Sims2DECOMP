@@ -1,3 +1,4 @@
+#if 0  // compile errors - functions recovered in _error_recovery_rawbyte.cpp
 #include "types.h"
 #include "stub_classes.h"
 // Auto-converted call wrapper stubs for cBoxX
@@ -109,3 +110,5 @@ void cBoxX::UnpauseMusic(void) {
     );
     __builtin_unreachable();
 }
+
+#endif
