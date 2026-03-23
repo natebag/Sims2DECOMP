@@ -212,7 +212,7 @@ def build_minimal_source(func, extra_decls=""):
     return src
 
 
-def simplify_template_sig(sig, comment):
+def simplify_template_sig(sig, comment, addr=""):
     """Try to simplify template function signatures.
 
     Template functions like find<int*, int>() or __unguarded_partition<>()
@@ -311,7 +311,12 @@ def simplify_template_sig(sig, comment):
     else:
         new_params = ", ".join(["int"] * param_count)
 
-    return f"void {func_name}({new_params})"
+    # Use address suffix to make each template instantiation unique
+    addr_suffix = ""
+    if addr:
+        addr_suffix = "_" + addr.replace("0x", "")
+
+    return f"void {func_name}{addr_suffix}({new_params})"
 
 
 def get_template_decls(comment):

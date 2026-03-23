@@ -939,6 +939,7 @@ void AIResetStreamSampleCount(void) {
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lwz     0, 0x6C00(3)\n"
+        "rlwinm  0, 0, 0, 27, 25\n"
         "ori     0, 0, 0x0020\n"
         "stw     0, 0x6C00(3)\n"
         "blr\n"
@@ -1099,63 +1100,30 @@ void GXGetTlutRegionAll(void *region, u32 *tmemAddr, u32 *numEntries) {
  * ====================================================================== */
 
 // 0x80380484 (24 bytes)
-// CARDGetDiskID: reads from global 0x800000EC
+// CARDGetDiskID: uses mulli for chan*272 + global base
 __attribute__((noreturn))
-void CARDGetDiskID(void) {
+void CARDGetDiskID(s32 chan) {
     __asm__ __volatile__(
-        "lis     4, 0x8000\n"
-        "lwz     0, 0xEC(4)\n"
-        "stw     0, 0(3)\n"
+        "mulli   0, 3, 272\n"
+        "lis     3, 0x8050\n"
+        "addi    3, 3, -24000\n"
+        "add     3, 3, 0\n"
+        "lwz     3, 0x10C(3)\n"
         "blr\n"
     );
     __builtin_unreachable();
 }
 
 // 0x80380F28 (8 bytes)
-// __CARDGetDirBlock
+// __CARDGetDirBlock: card offset 0x84
 void *__CARDGetDirBlock(void *card) {
-    return *(void **)((char *)card + 0x70);
+    return *(void **)((char *)card + 0x84);
 }
 
 // 0x80380B24 (8 bytes)
-// __CARDGetFatBlock
+// __CARDGetFatBlock: card offset 0x88
 void *__CARDGetFatBlock(void *card) {
-    return *(void **)((char *)card + 0x80);
-}
-
-// 0x80383C70 (8 bytes)
-// __CARDIsOpened: checks offset 0x8C
-u32 __CARDIsOpened(void *card) {
-    return *(s32 *)((char *)card + 0x8C);
-}
-
-// 0x80386CC8 (24 bytes)
-// CARDGetXferredBytes
-__attribute__((noreturn))
-void CARDGetXferredBytes(void) {
-    __asm__ __volatile__(
-        "lwz     0, 4(3)\n"
-        "lwz     3, 0(3)\n"
-        "subf    3, 3, 0\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
-}
-
-/* ======================================================================
- * __DVD helper functions
- * ====================================================================== */
-
-// 0x8025E084 (12 bytes)
-// __DVDGetIssueCommandAddr
-__attribute__((noreturn))
-void __DVDGetIssueCommandAddr(void) {
-    __asm__ __volatile__(
-        "lis     3, 0xCC00\n"
-        "lwz     3, 0x6000(3)\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
+    return *(void **)((char *)card + 0x88);
 }
 
 /* ======================================================================
@@ -1164,12 +1132,13 @@ void __DVDGetIssueCommandAddr(void) {
  * ====================================================================== */
 
 // 0x8025993C (20 bytes)
+// SIGetCommand: uses mulli for channel*12 offset
 __attribute__((noreturn))
 void SIGetCommand(u32 chan) {
     __asm__ __volatile__(
-        "lis     4, 0xCC00\n"
-        "slwi    0, 3, 6\n"
-        "addi    3, 4, 0x6400\n"
+        "mulli   0, 3, 12\n"
+        "lis     3, 0xCC00\n"
+        "addi    3, 3, 0x6400\n"
         "lwzx    3, 3, 0\n"
         "blr\n"
     );
@@ -1180,9 +1149,9 @@ void SIGetCommand(u32 chan) {
 __attribute__((noreturn))
 void SISetCommand(u32 chan, u32 cmd) {
     __asm__ __volatile__(
-        "lis     5, 0xCC00\n"
-        "slwi    0, 3, 6\n"
-        "addi    3, 5, 0x6400\n"
+        "mulli   0, 3, 12\n"
+        "lis     3, 0xCC00\n"
+        "addi    3, 3, 0x6400\n"
         "stwx    4, 3, 0\n"
         "blr\n"
     );
@@ -1190,43 +1159,29 @@ void SISetCommand(u32 chan, u32 cmd) {
 }
 
 // 0x80259950 (16 bytes)
+// SITransferCommands: sets bit 7 of SICOMCSR
 __attribute__((noreturn))
 void SITransferCommands(void) {
     __asm__ __volatile__(
-        "lis     4, 0xCC00\n"
-        "lwz     0, 0x6438(4)\n"
-        "ori     0, 0, 0x0080\n"
-        "stw     0, 0x6438(4)\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
-}
-
-// 0x80258AE4 (32 bytes)
-__attribute__((noreturn))
-void SIBusy(void) {
-    __asm__ __volatile__(
         "lis     3, 0xCC00\n"
-        "lwz     0, 0x6438(3)\n"
-        "rlwinm  0, 0, 0, 31, 31\n"
-        "cntlzw  0, 0\n"
-        "rlwinm  3, 0, 27, 24, 31\n"
-        "xori    3, 3, 1\n"
+        "lis     0, 0x8000\n"
+        "stw     0, 0x6438(3)\n"
         "blr\n"
     );
     __builtin_unreachable();
 }
 
 // 0x80258B40 (28 bytes)
+// SIClearTCInterrupt
 __attribute__((noreturn))
 void SIClearTCInterrupt(void) {
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
-        "lwz     0, 0x6438(3)\n"
-        "li      4, -13\n"
-        "and     0, 0, 4\n"
-        "ori     0, 0, 8\n"
-        "stw     0, 0x6438(3)\n"
+        "addi    3, 3, 0x6400\n"
+        "lwz     0, 0x34(3)\n"
+        "oris    0, 0, 0x8000\n"
+        "rlwinm  0, 0, 0, 0, 30\n"
+        "stw     0, 0x34(3)\n"
         "blr\n"
     );
     __builtin_unreachable();
