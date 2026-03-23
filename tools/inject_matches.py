@@ -388,57 +388,47 @@ def write_section_asm_with_injections(section, symbols, outdir, injections):
         cursor = 0
 
         for offset in offsets_sorted:
-            # Emit space to reach this offset
-            gap = offset - cursor
-            if gap > 0:
+            # Only emit .space if cursor hasn't already passed this offset.
+            # Cursor can be past offset when a prior symbol's injection covered
+            # this region (e.g. fall-through functions like _savefpr_14..31).
+            if cursor < offset:
+                gap = offset - cursor
                 f.write(f"    .space 0x{gap:X}\n")
                 cursor = offset
 
-            # Emit labels
-            if cursor <= offset:
-                # Check if any symbol at this offset has an injection
-                inject_data = None
-                inject_size = 0
+            # Determine injection data.
+            # Only inject if cursor is exactly at this offset — if cursor has
+            # passed (due to a prior overlapping injection), just emit labels.
+            inject_data = None
+            if cursor == offset:
                 for name, size, kind, addr in by_offset[offset]:
                     if addr in injections and kind == "function":
                         inject_data = injections[addr]
-                        inject_size = size
                         break
 
-                for name, size, kind, addr in by_offset[offset]:
-                    safe_name = sanitize_asm_name(name)
-                    anon = is_anon_symbol(name)
-                    if not anon:
-                        f.write(f"    .global {safe_name}\n")
-                    if kind == "function":
-                        f.write(f"    .type {safe_name}, @function\n")
-                    f.write(f"{safe_name}:\n")
-                    if kind == "function" and size > 0:
-                        f.write(f"    .size {safe_name}, 0x{size:X}\n")
-                    elif kind == "object" and size > 0:
-                        f.write(f"    .size {safe_name}, 0x{size:X}\n")
-
-                # If we have an injection for this offset, emit .byte instead of letting
-                # the next .space fill it. We need to advance cursor by the injected size.
-                if inject_data is not None and not is_bss:
-                    f.write(f"    # INJECTED: {len(inject_data)} bytes matching original DOL\n")
-                    f.write(format_bytes_as_asm(inject_data) + "\n")
-                    cursor = offset + len(inject_data)
-                    injected_count += 1
-
-        # After all labels, pad to section end
-        # First calculate max extent from all symbols
-        max_extent = cursor
-        for offset in offsets_sorted:
+            # Emit labels (always, even if cursor has passed — labels are
+            # position-independent and will point into the prior injection)
             for name, size, kind, addr in by_offset[offset]:
-                ext = offset + size
-                if ext > max_extent:
-                    max_extent = ext
+                safe_name = sanitize_asm_name(name)
+                anon = is_anon_symbol(name)
+                if not anon:
+                    f.write(f"    .global {safe_name}\n")
+                if kind == "function":
+                    f.write(f"    .type {safe_name}, @function\n")
+                f.write(f"{safe_name}:\n")
+                if kind == "function" and size > 0:
+                    f.write(f"    .size {safe_name}, 0x{size:X}\n")
+                elif kind == "object" and size > 0:
+                    f.write(f"    .size {safe_name}, 0x{size:X}\n")
 
-        if max_extent > cursor:
-            f.write(f"    .space 0x{max_extent - cursor:X}\n")
-            cursor = max_extent
+            # Emit injected bytes
+            if inject_data is not None and not is_bss:
+                f.write(f"    # INJECTED: {len(inject_data)} bytes matching original DOL\n")
+                f.write(format_bytes_as_asm(inject_data) + "\n")
+                cursor = offset + len(inject_data)
+                injected_count += 1
 
+        # Pad to section end
         remaining = total_size - cursor
         if remaining > 0:
             f.write(f"    .space 0x{remaining:X}\n")
