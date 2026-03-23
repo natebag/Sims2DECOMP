@@ -64,11 +64,11 @@ void ETexture::UpdateMipLevel(int, int &, int &) { return 0; }
 void ETexture::UpdatePalette() { return 0; }
 
 // 0x80365178 (16 bytes)
-void ETexture::ClearTileFlags() { *(unsigned int*)((char*)this + 0x8) &= 0xFFFFFFFC; }  // clear low 2 bits
+void ETexture::ClearTileFlags() { register unsigned int __r0 __asm__("r0") = *(unsigned int*)((char*)this + 0x8); __asm__ __volatile__("" : "+r"(__r0)); __r0 &= 0xFFFFFFFC; *(unsigned int*)((char*)this + 0x8) = __r0; }
 
 // 0x80365188 (16 bytes)
 void ETexture::ClearSwizzleFlag() { register unsigned int __r0 __asm__("r0") = *(unsigned int*)((char*)this + 0x8); __asm__ __volatile__("" : "+r"(__r0)); __r0 &= ~0x80; *(unsigned int*)((char*)this + 0x8) = __r0; }
 
 // 0x80365198 (16 bytes)
-void ETexture::SetSwizzleFlag() { *(unsigned int*)((char*)this + 0x8) |= 0x80; }  // set flags
+void ETexture::SetSwizzleFlag() { register unsigned int __r0 __asm__("r0") = *(unsigned int*)((char*)this + 0x8); __asm__ __volatile__("" : "+r"(__r0)); __r0 |= 0x80; *(unsigned int*)((char*)this + 0x8) = __r0; }
 

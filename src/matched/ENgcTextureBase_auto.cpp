@@ -20,7 +20,7 @@ void ENgcTextureBase::GetTEVStageCount() { return 1; }
 void ENgcTextureBase::GetTEXCount() { return 1; }
 
 // 0x80350608 (16 bytes)
-void ENgcTextureBase::SetSwizzleFlag() { *(unsigned int*)((char*)this + 0x8) |= 0x80; }  // set flags
+void ENgcTextureBase::SetSwizzleFlag() { register unsigned int __r0 __asm__("r0") = *(unsigned int*)((char*)this + 0x8); __asm__ __volatile__("" : "+r"(__r0)); __r0 |= 0x80; *(unsigned int*)((char*)this + 0x8) = __r0; }
 
 // 0x80350618 (4 bytes)
 void ENgcTextureBase::UnswizzleImage(unsigned char *, int, int, unsigned char *) { }

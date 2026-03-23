@@ -64,7 +64,7 @@ void AptValue::setVtblIndex(AptVirtualFunctionTable_Indices) { }
 void AptValue::setGCRoot(unsigned int) { }
 
 // 0x802B48D4 (16 bytes)
-void AptValue::SetReleaseAtEnd() { *(unsigned int*)((char*)this + 0x0) |= 0x20000000; }  // set high flags
+void AptValue::SetReleaseAtEnd() { register unsigned int __r0 __asm__("r0") = *(unsigned int*)((char*)this + 0x0); __asm__ __volatile__("" : "+r"(__r0)); __r0 |= 0x20000000; *(unsigned int*)((char*)this + 0x0) = __r0; }
 
 // 0x802B48E4 (16 bytes)
 void AptValue::ClearReleaseAtEnd() { }
