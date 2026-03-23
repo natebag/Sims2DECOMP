@@ -9,32 +9,37 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 | Metric | Value |
 |--------|-------|
 | Byte-identical functions | **18,539 / 18,539 (100%)** |
-| Matched code bytes | **3,966,624** |
-| C++ decompiled (real code) | 1,701 functions (9.2%) |
-| DOL byte-injected | 16,838 functions (90.8%) |
+| Compiled C++ matches | **11,763 (63.5%)** |
+| Documented C++ decompilation | **23,525 lines across 17 system files** |
+| Class struct layouts | **643 classes, 9,910 fields** |
 | Total symbols in map | 39,037 |
-| Source files | 1,700+ .cpp, .s, .h |
+| Source files | 3,000+ .cpp, .s, .h |
+| Tools | 45+ Python scripts |
 | Toolchain | devkitPPC (GCC 15.2) + decomp-toolkit |
 
-### Decompilation Progress
+### Game Systems Decompiled
 
-The binary matches 100%, but the *decompilation* is two-tiered:
+Every major system has a detailed C++ decompilation file with documented logic:
 
-- **1,701 functions** have real C++ source code that compiles to byte-identical output via GCC with SN Systems-compatible flags and register matching recipes
-- **16,838 functions** are DOL byte injections (original machine code embedded directly) — these need to be replaced with C++ one at a time
-
-The real decomp metric is how many functions have **real C++ code** rather than raw bytes:
-
-| System | C++ Matched | DOL Injected | Total |
-|--------|-------------|--------------|-------|
-| Memory / STL | ~600 | ~4,900 | 5,486 |
-| Misc / Runtime | ~400 | ~13,800 | 14,184 |
-| UI / APT | ~150 | ~1,080 | 1,228 |
-| Sim AI | ~80 | ~1,120 | 1,196 |
-| Rendering | ~100 | ~800 | 905 |
-| Build Mode | ~80 | ~650 | 727 |
-| Objects | ~100 | ~450 | 554 |
-| All Others | ~190 | ~1,040 | 1,178 |
+| System | File | Lines | Key Discoveries |
+|--------|------|-------|-----------------|
+| Animation | `sanimator2_decomp.cpp` | 3,062 | Blend trees, state transitions, 236 methods |
+| Build Mode | `interactor_decomp.cpp` | 2,523 | Wall/floor/object manipulation, 13-bit state flags |
+| Sim Character | `cxpersonimpl_decomp.cpp` | 2,058 | Motive system, relationships, 26KB object |
+| Renderer | `engcrenderer_decomp.cpp` | 1,800 | 75-entry opcode table, GX→OpenGL notes |
+| State Machine | `statemachine_decomp.cpp` | 1,629 | Game flow: title→neighborhood→lot→live mode |
+| Asset Loading | `asset_loading_decomp.cpp` | 1,571 | .ARC format, .NGH format, async DVD loader |
+| Main Loop | `esimsapp_decomp.cpp` | 1,373 | 8-step update, 24-step init, 3 state machines |
+| Objects | `cxobjectimpl_decomp.cpp` | 1,223 | EdithVariableSet, data indices, 146 fields |
+| APT UI Engine | `apt_decomp.cpp` | 1,206 | 100 SWF opcodes, EA extensions, hybrid GC |
+| Create-A-Sim | `cas_decomp.cpp` | 1,183 | Genetics, body parts, clothing layers |
+| Neighborhood | `neighborhood_decomp.cpp` | 1,014 | .NGH save tags, families, lot management |
+| Save System | `save_decomp.cpp` | 929 | Memory card format, async save/load |
+| Effects | `effects_decomp.cpp` | 910 | Bloom, DOF, motion blur pipeline |
+| Camera | `camera_decomp.cpp` | 902 | 9-state director, rubber-band interpolation |
+| EAHeap | `eaheap_decomp.cpp` | 821 | 3-tier allocation, 13 named heaps |
+| Audio | `audio_decomp.cpp` | 708 | Ambient scores, 64-voice mixer, ARAM heap |
+| FastAllocPool | `fastallocpool_decomp.cpp` | 613 | DESU/EERF magic, binary search tree pools |
 
 ### How the Pipeline Works
 
