@@ -106,8 +106,9 @@ SKELETON_OBJS := $(SKELETON_SRCS:.s=.o)
 
 # Decompiled C/C++ source files (including auto-matched in src/matched/)
 # Use wildcard instead of find for Windows compatibility
+# Exclude src/asm_decomp/ — those are inline-asm reference files, not compiled by default
 C_SRCS   := $(wildcard src/**/*.c) $(wildcard src/**/**/*.c)
-CXX_SRCS := $(wildcard src/**/*.cpp) $(wildcard src/**/**/*.cpp)
+CXX_SRCS := $(filter-out src/asm_decomp/%, $(wildcard src/**/*.cpp) $(wildcard src/**/**/*.cpp))
 ASM_SRCS := $(wildcard src/**/*.s) $(wildcard src/**/**/*.s)
 
 # Object files from decompiled sources
