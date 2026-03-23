@@ -5,7 +5,7 @@
 // 2 functions, 64 bytes
 
 // 0x80317A00 (40 bytes)
-void ERFont::SetColor(EVec4 & val) { *(float*)((char*)this + 0x58) = *(float*)((char*)val + 0x0); *(float*)((char*)this + 0x5C) = *(float*)((char*)val + 0x4); *(float*)((char*)this + 0x60) = *(float*)((char*)val + 0x8); *(float*)((char*)this + 0x64) = *(float*)((char*)val + 0xC); }
+void ERFont::SetColor(EVec4 & val) { *(float*)((char*)this + 0x58) = *(float*)((char*)&val + 0x0); *(float*)((char*)this + 0x5C) = *(float*)((char*)&val + 0x4); *(float*)((char*)this + 0x60) = *(float*)((char*)&val + 0x8); *(float*)((char*)this + 0x64) = *(float*)((char*)&val + 0xC); }
 
 // 0x80317A28 (24 bytes)
 void ERFont::SetColor(float fval) { *(float*)((char*)this + 0x58) = fp1; *(float*)((char*)this + 0xC) = fp1; *(float*)((char*)this + 0x4) = fp1; *(float*)((char*)this + 0x8) = fp1; }

@@ -5,16 +5,16 @@
 // 8 functions, 280 bytes
 
 // 0x800B45DC (32 bytes)
-CTilePt::CTilePt(CTilePt & val) { *(char*)((char*)this + 0x0) = *(unsigned char*)((char*)val + 0x0); *(char*)((char*)this + 0x1) = *(unsigned char*)((char*)val + 0x1); *(char*)((char*)this + 0x2) = *(unsigned char*)((char*)val + 0x2); }
+CTilePt::CTilePt(CTilePt & val) { *(char*)((char*)this + 0x0) = *(unsigned char*)((char*)&val + 0x0); *(char*)((char*)this + 0x1) = *(unsigned char*)((char*)&val + 0x1); *(char*)((char*)this + 0x2) = *(unsigned char*)((char*)&val + 0x2); }
 
 // 0x800B45FC (36 bytes)
 CTilePt::CTilePt(FTilePt & val, int val3) { *(char*)((char*)this + 0x0) = /* srawi */; *(char*)((char*)this + 0x2) = val3; *(char*)((char*)this + 0x1) = /* srawi */; }
 
 // 0x800B4620 (28 bytes)
-CTilePt::CTilePt(TilePt & val, int val3) { *(char*)((char*)this + 0x0) = *(unsigned char*)((char*)val + 0x3); *(char*)((char*)this + 0x2) = val3; *(char*)((char*)this + 0x1) = *(unsigned char*)((char*)val + 0x7); }
+CTilePt::CTilePt(TilePt & val, int val3) { *(char*)((char*)this + 0x0) = *(unsigned char*)((char*)&val + 0x3); *(char*)((char*)this + 0x2) = val3; *(char*)((char*)this + 0x1) = *(unsigned char*)((char*)&val + 0x7); }
 
 // 0x800B474C (32 bytes)
-void CTilePt::operator=(CTilePt & val) { *(char*)((char*)this + 0x0) = *(unsigned char*)((char*)val + 0x0); *(char*)((char*)this + 0x1) = *(unsigned char*)((char*)val + 0x1); *(char*)((char*)this + 0x2) = *(unsigned char*)((char*)val + 0x2); }
+void CTilePt::operator=(CTilePt & val) { *(char*)((char*)this + 0x0) = *(unsigned char*)((char*)&val + 0x0); *(char*)((char*)this + 0x1) = *(unsigned char*)((char*)&val + 0x1); *(char*)((char*)this + 0x2) = *(unsigned char*)((char*)&val + 0x2); }
 
 // 0x800B4810 (40 bytes)
 void CTilePt::operator+=(CTilePt &) { *(char*)((char*)this + 0x0) = /* add */; *(char*)((char*)this + 0x1) = /* add */; }

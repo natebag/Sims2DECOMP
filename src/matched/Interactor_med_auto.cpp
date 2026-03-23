@@ -8,8 +8,8 @@
 void InteractorModule::Interactor::Update(float) { *(int*)((char*)this + 0x14) = *(int*)((char*)this + 0x8); *(int*)((char*)this + 0x1C) = *(int*)((char*)this + 0x10); *(int*)((char*)this + 0x18) = *(int*)((char*)this + 0xC); }
 
 // 0x802092B4 (36 bytes)
-void InteractorModule::Interactor::GetInteractorInfo(InteractorModule::InteractorInfo & val) { *(float*)((char*)val + 0x0) = *(float*)((char*)this + 0x8); *(float*)((char*)val + 0x4) = *(float*)((char*)this + 0xC); *(int*)((char*)val + 0xC) = *(int*)((char*)this + 0x54); *(int*)((char*)val + 0x8) = *(int*)((char*)this + 0x50); }
+void InteractorModule::Interactor::GetInteractorInfo(InteractorModule::InteractorInfo & val) { *(float*)((char*)&val + 0x0) = *(float*)((char*)this + 0x8); *(float*)((char*)&val + 0x4) = *(float*)((char*)this + 0xC); *(int*)((char*)&val + 0xC) = *(int*)((char*)this + 0x54); *(int*)((char*)&val + 0x8) = *(int*)((char*)this + 0x50); }
 
 // 0x80209534 (40 bytes)
-void InteractorModule::Interactor::SnapToPos(EVec3 & val) { *(int*)((char*)this + 0x20) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x28) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x24) = *(int*)((char*)val + 0x4); *(int*)((char*)this + 0x2C) = 1; }
+void InteractorModule::Interactor::SnapToPos(EVec3 & val) { *(int*)((char*)this + 0x20) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x28) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x24) = *(int*)((char*)&val + 0x4); *(int*)((char*)this + 0x2C) = 1; }
 

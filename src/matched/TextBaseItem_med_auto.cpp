@@ -5,5 +5,5 @@
 // 1 functions, 40 bytes
 
 // 0x80087170 (40 bytes)
-void TextBaseItem::SetColor(EVec4 & val) { *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0x0) = *(float*)((char*)val + 0x0); *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0x4) = *(float*)((char*)val + 0x4); *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0x8) = *(float*)((char*)val + 0x8); *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0xC) = *(float*)((char*)val + 0xC); }
+void TextBaseItem::SetColor(EVec4 & val) { *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0x0) = *(float*)((char*)&val + 0x0); *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0x4) = *(float*)((char*)&val + 0x4); *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0x8) = *(float*)((char*)&val + 0x8); *(float*)((char*)(*(void**)((char*)this + 0x44)) + 0xC) = *(float*)((char*)&val + 0xC); }
 

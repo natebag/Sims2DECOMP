@@ -23,7 +23,6 @@ int ERFont::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volati
 
 // 0x80317944 (8 bytes)
 void* ERFont::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 
 // 0x80317980 (8 bytes)
 void ERFont::GetYSize() { return *(float*)((char*)this + 0x4C); }  // offset 0x4C

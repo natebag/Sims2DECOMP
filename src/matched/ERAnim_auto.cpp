@@ -23,5 +23,4 @@ int ERAnim::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volati
 
 // 0x80368178 (8 bytes)
 void* ERAnim::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 

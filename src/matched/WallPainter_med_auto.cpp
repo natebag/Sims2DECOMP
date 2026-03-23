@@ -5,11 +5,11 @@
 // 3 functions, 96 bytes
 
 // 0x80226998 (32 bytes)
-void InteractorModule::WallPainter::SetAnchorPoint(EVec3 & val) { *(int*)((char*)this + 0x60) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x68) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x64) = *(int*)((char*)val + 0x4); }
+void InteractorModule::WallPainter::SetAnchorPoint(EVec3 & val) { *(int*)((char*)this + 0x60) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x68) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x64) = *(int*)((char*)&val + 0x4); }
 
 // 0x802269B8 (32 bytes)
-void InteractorModule::WallPainter::SetAnchorPointDrawPos(EVec3 & val) { *(int*)((char*)this + 0x6C) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x74) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x70) = *(int*)((char*)val + 0x4); }
+void InteractorModule::WallPainter::SetAnchorPointDrawPos(EVec3 & val) { *(int*)((char*)this + 0x6C) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x74) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x70) = *(int*)((char*)&val + 0x4); }
 
 // 0x802269D8 (32 bytes)
-void InteractorModule::WallPainter::SetHoldPos(EVec3 & val) { *(int*)((char*)this + 0x78) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x80) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x7C) = *(int*)((char*)val + 0x4); }
+void InteractorModule::WallPainter::SetHoldPos(EVec3 & val) { *(int*)((char*)this + 0x78) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x80) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x7C) = *(int*)((char*)&val + 0x4); }
 

@@ -5,5 +5,5 @@
 // 1 functions, 40 bytes
 
 // 0x80087818 (40 bytes)
-void IconItem::SetColor(EVec4 & val) { *(int*)((char*)this + 0x20) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x28) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x24) = *(int*)((char*)val + 0x4); *(float*)((char*)this + 0x2C) = *(float*)((char*)val + 0xC); }
+void IconItem::SetColor(EVec4 & val) { *(int*)((char*)this + 0x20) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x28) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x24) = *(int*)((char*)&val + 0x4); *(float*)((char*)this + 0x2C) = *(float*)((char*)&val + 0xC); }
 

@@ -5,5 +5,5 @@
 // 1 functions, 32 bytes
 
 // 0x803A0808 (32 bytes)
-void PaneItem::SetSize(EVec2 & val) { *(int*)((char*)this + 0x4) = /* rlwinm */; *(int*)((char*)this + 0x14) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x18) = *(int*)((char*)val + 0x4); }
+void PaneItem::SetSize(EVec2 & val) { *(int*)((char*)this + 0x4) = /* rlwinm */; *(int*)((char*)this + 0x14) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x18) = *(int*)((char*)&val + 0x4); }
 

@@ -23,5 +23,4 @@ int ERTexture::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __vol
 
 // 0x80321394 (8 bytes)
 void* ERTexture::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 

@@ -38,7 +38,6 @@ int ERModel::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volat
 
 // 0x8031B390 (8 bytes)
 void* ERModel::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 
 // 0x8031B3F8 (16 bytes)
 void ERModel::GetLattice(int index) { return (char*)(*(void**)((char*)this + 0x110)) + index * 176; }  // struct array, stride=176

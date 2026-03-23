@@ -5,5 +5,5 @@
 // 1 functions, 32 bytes
 
 // 0x802274DC (32 bytes)
-void EIDirLight::SetDir(EVec3 & val) { *(int*)((char*)this + 0xAC) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0xB4) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0xB0) = *(int*)((char*)val + 0x4); }
+void EIDirLight::SetDir(EVec3 & val) { *(int*)((char*)this + 0xAC) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0xB4) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0xB0) = *(int*)((char*)&val + 0x4); }
 

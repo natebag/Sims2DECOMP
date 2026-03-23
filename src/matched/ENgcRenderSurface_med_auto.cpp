@@ -5,5 +5,5 @@
 // 1 functions, 32 bytes
 
 // 0x8034C404 (32 bytes)
-void ENgcRenderSurface::SetBackgroundColor(EVec3 & val) { *(int*)((char*)this + 0xC) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x14) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x10) = *(int*)((char*)val + 0x4); }
+void ENgcRenderSurface::SetBackgroundColor(EVec3 & val) { *(int*)((char*)this + 0xC) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x14) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x10) = *(int*)((char*)&val + 0x4); }
 

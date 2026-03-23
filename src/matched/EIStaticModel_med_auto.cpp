@@ -5,8 +5,8 @@
 // 2 functions, 72 bytes
 
 // 0x8022BB8C (40 bytes)
-void EIStaticModel::GetBoundSphere(EBoundSphere & val) { *(int*)((char*)val + 0x0) = *(int*)((char*)this + 0x100); *(int*)((char*)val + 0x4) = *(int*)((char*)this + 0x104); *(int*)((char*)val + 0x8) = *(int*)((char*)this + 0x108); *(float*)((char*)val + 0xC) = *(float*)((char*)this + 0x10C); }
+void EIStaticModel::GetBoundSphere(EBoundSphere & val) { *(int*)((char*)&val + 0x0) = *(int*)((char*)this + 0x100); *(int*)((char*)&val + 0x4) = *(int*)((char*)this + 0x104); *(int*)((char*)&val + 0x8) = *(int*)((char*)this + 0x108); *(float*)((char*)&val + 0xC) = *(float*)((char*)this + 0x10C); }
 
 // 0x8022E1A8 (32 bytes)
-void EIStaticModel::GetPos(EVec3 & val) { *(int*)((char*)val + 0x8) = *(int*)((char*)this + 0xF8); *(int*)((char*)val + 0x0) = *(int*)((char*)this + 0xF0); *(int*)((char*)val + 0x4) = *(int*)((char*)this + 0xF4); }
+void EIStaticModel::GetPos(EVec3 & val) { *(int*)((char*)&val + 0x8) = *(int*)((char*)this + 0xF8); *(int*)((char*)&val + 0x0) = *(int*)((char*)this + 0xF0); *(int*)((char*)&val + 0x4) = *(int*)((char*)this + 0xF4); }
 

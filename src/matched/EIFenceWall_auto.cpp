@@ -23,7 +23,6 @@ int EIFenceWall::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __v
 
 // 0x80030814 (8 bytes)
 void* EIFenceWall::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 
 // 0x80030898 (8 bytes)
 void EIFenceWall::IsOpaque() { return false; }

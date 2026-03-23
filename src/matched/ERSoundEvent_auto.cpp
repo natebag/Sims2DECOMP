@@ -23,7 +23,6 @@ int ERSoundEvent::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __
 
 // 0x8036A01C (8 bytes)
 void* ERSoundEvent::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 
 // 0x8036A050 (8 bytes)
 void ERSoundEvent::GetEventType() { return *(unsigned char*)((char*)this + 0x14); }  // offset 0x14

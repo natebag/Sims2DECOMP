@@ -5,5 +5,5 @@
 // 1 functions, 32 bytes
 
 // 0x80238954 (32 bytes)
-void Emitter::SetSortPos(EVec3 & val) { *(int*)((char*)this + 0x80) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x88) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x84) = *(int*)((char*)val + 0x4); }
+void Emitter::SetSortPos(EVec3 & val) { *(int*)((char*)this + 0x80) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x88) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x84) = *(int*)((char*)&val + 0x4); }
 

@@ -18,7 +18,6 @@ int EStorable::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__
 
 // 0x803C1484 (4 bytes)
 void EStorable::Read(EStream &) { }
-#endif
 
 // 0x803C1488 (4 bytes)
 void EStorable::Write(EStream &) { }

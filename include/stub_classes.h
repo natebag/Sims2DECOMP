@@ -1384,6 +1384,9 @@ struct EHeadOrient { char _data[0x78]; };
 #ifndef TILEWALLSSEGMENT_DEFINED
 #define TILEWALLSSEGMENT_DEFINED
 struct TileWallsSegment { int _data[4]; };
+
+// === Auto-added missing classes ===
+
 #endif
 
 // === Class declarations ===
@@ -1547,7 +1550,7 @@ public:
     void SetAmbientSound(ERAmbientSound* sound);
     void Update();
     ERAmbientSound* GetAmbientSound();
-    int IsValid();
+    bool IsValid();
     int IsFinished();
     int Pause();
     int UnPause();
@@ -1584,7 +1587,7 @@ public:
     void Load(unsigned int, short);
     void GetEntry(int);
     void GetID(void);
-    void CountEntries(void) const;
+    int CountEntries() const;
     void GetEntryName(int);
     char _stub_data[256];
 };
@@ -1720,6 +1723,9 @@ public:
     void _FunctionAptActionTry(AptActionInterpreter *, int *);
     ~AptActionInterpreter(void);
     char _stub_data[256];
+    void _FunctionAptActionGotoFrame(AptActionInterpreter*, int*);
+    void _FunctionAptActionStoreRegister(AptActionInterpreter*, int*);
+    void _FunctionAptActionBranchAlways(AptActionInterpreter*, int*);
 };
 
 class AptActionQueueC {
@@ -2090,7 +2096,7 @@ public:
     AptDisplayListState* getState();
     void useState(AptDisplayListState* state);
     void RemoveFromDisplayList(AptNativeHash* hash, AptCIH* cih);
-    void removeObject(AptControlRemoveObject2* ctrl);
+    void removeObject(int);
     AptDisplayList();
     void instantiateCharacter(int, AptCharacter *, EAStringC *, AptCIH *, int, int, AptCIH **, int *);
     void placeObjectNCXForm(AptCIH *, int, AptCharacter *, EAStringC *, AptCIH *, int, int, AptnCXForm *, AptMatrix *, AptEventActionSet *, float);
@@ -2381,6 +2387,7 @@ class AptMemoryAllocationsT {
 public:
     void operator +=(AptMemoryAllocationsT &);
     char _stub_data[256];
+    void Reset();
 };
 
 class AptMovie {
@@ -2500,7 +2507,7 @@ public:
 class AptPseudoDisplayList {
 public:
     void Insert(AptPseudoCIH_t* item, AptPseudoCIH_t* after);
-    void Remove(int depth);
+    void Remove(AptPseudoCIH_t*);
     void operator delete(void* ptr, unsigned int size);
     void ClearList(void);
     void FindInst(int, AptPseudoCIH_t **, AptPseudoCIH_t **);
@@ -2609,7 +2616,7 @@ public:
     int GetNumArguments();
     void* GetByteCodeBase();
     int GetByteCodeSize();
-    AptConstantPoolPair GetConstantPool();
+    void GetConstantPool();
     void SetArgument(AptValue* val, int index);
     AptCIH* Duplicate(AptCIH* cih);
     AptScriptFunctionByteCodeBlock(unsigned char *, int, AptConstantPool, char *, AptCIH *, AptScriptFunctionBase *);
@@ -3248,12 +3255,12 @@ public:
     void c_str(void) const;
     void reserve(unsigned int);
     void copy(char *, unsigned int, unsigned int) const;
-    void find(BString &, unsigned int) const;
-    void rfind(BString &, unsigned int) const;
-    void find_first_of(BString &, unsigned int) const;
-    void find_last_of(BString &, unsigned int) const;
-    void find_first_not_of(BString &, unsigned int) const;
-    void find_last_not_of(BString &, unsigned int) const;
+    void find(char*, unsigned int) const;
+    void rfind(char*, unsigned int) const;
+    void find_first_of(char*, unsigned int) const;
+    void find_last_of(char*, unsigned int) const;
+    void find_first_not_of(char*, unsigned int) const;
+    void find_last_not_of(char*, unsigned int) const;
     void substr(unsigned int, unsigned int) const;
     void compare(BString &, unsigned int, unsigned int) const;
     void length(void) const;
@@ -3294,12 +3301,12 @@ public:
     void c_str(void) const;
     void reserve(unsigned int);
     void copy(wchar_t *, unsigned int, unsigned int) const;
-    void find(BString2 &, unsigned int) const;
-    void rfind(BString2 &, unsigned int) const;
-    void find_first_of(BString2 &, unsigned int) const;
-    void find_last_of(BString2 &, unsigned int) const;
-    void find_first_not_of(BString2 &, unsigned int) const;
-    void find_last_not_of(BString2 &, unsigned int) const;
+    void find(short unsigned int*, unsigned int) const;
+    void rfind(short unsigned int*, unsigned int) const;
+    void find_first_of(short unsigned int*, unsigned int) const;
+    void find_last_of(short unsigned int*, unsigned int) const;
+    void find_first_not_of(short unsigned int*, unsigned int) const;
+    void find_last_not_of(short unsigned int*, unsigned int) const;
     void substr(unsigned int, unsigned int) const;
     void compare(BString2 &, unsigned int, unsigned int) const;
     void length(void) const;
@@ -3455,8 +3462,8 @@ class Bloom {
 public:
     void UpdateTargetParameters(float);
     void EffectStateChanged(int);
-    void EffectIsFinishedFadingIn(float) const;
-    void EffectIsFinishedFadingOut(float) const;
+    bool EffectIsFinishedFadingIn(float) const;
+    bool EffectIsFinishedFadingOut(float) const;
     void UpdateTuningUI(void);
     ~Bloom(void);
     void SetTargetSettings(BloomSettings &);
@@ -3774,7 +3781,7 @@ public:
     void getNextChildNode(void);
     void cloneNode(int);
     void firstChild(void);
-    void hasChildNodes(void);
+    bool hasChildNodes();
     void insertBefore(IAptXmlNode *, IAptXmlNode *);
     void lastChild(void);
     void nextSibling(void);
@@ -4393,18 +4400,18 @@ public:
     void SetCharacterID(unsigned int id);
     void SetAnimationID(unsigned int id);
     void SetPos(EVec3& pos);
-    EVec3 GetPos();
+    void GetPos();
     void SetRot(EVec3& rot);
-    EVec3 GetRot();
+    void GetRot();
     void SetRotAdd(EVec3& rotAdd);
-    EVec3 GetRotAdd();
+    void GetRotAdd();
     void SetAnimationLoops(unsigned int loops);
     void SetPlayAndHold(bool hold);
     bool IsReady();
     void SetTrigger();
     bool IsDone();
     float GetRadius();
-    EVec3 GetCenter();
+    void GetCenter();
     bool HasDrawn();
     int GetType();
     char _stub_data[256];
@@ -4435,7 +4442,7 @@ public:
     void InitCurrentCamera();
     void EnableControls();
     void DisableControls();
-    void AttachDummy(void* dummy, void* mat);
+    void AttachDummy(ENDummy*, EMat4*);
     void InterpToCancelCamera(float time, int type, bool flag);
     void SetFOV(float fov);
     void CheckCancelled();
@@ -4720,7 +4727,7 @@ public:
     void WriteCompositedTextures(CasSimDescriptionS2C *);
     void SaveCostume(void);
     void GetNpcData(unsigned int, UserDataSaveLoad *);
-    void IsLoadInProgress(void) const;
+    bool IsLoadInProgress() const;
     void GetGrandparent(unsigned int);
     void GetCostume(unsigned int);
     char _stub_data[256];
@@ -5080,7 +5087,7 @@ public:
     void Update(float);
     ~ChangeHouseLoadHouse(void);
     ChangeHouseLoadHouse(int);
-    void DatasetPendingAddRefAsync(void);
+    bool DatasetPendingAddRefAsync();
     char _stub_data[256];
 };
 
@@ -5160,12 +5167,13 @@ public:
     void Draw(ERC *);
     ~CreateASimBaseState(void);
     CreateASimBaseState(int);
-    void CASAccepted(void);
-    void CASCanceled(void);
+    bool CASAccepted();
+    bool CASCanceled();
     void IsFlowStateRequestPending(void);
     void GetFlowStateRequest(void);
     void SetFlowStateCurrent(void);
     char _stub_data[256];
+    void Reset();
 };
 
 class DOGMA_PoolManager {
@@ -5198,8 +5206,8 @@ class DepthOfField {
 public:
     void UpdateTargetParameters(float);
     void EffectStateChanged(int);
-    void EffectIsFinishedFadingIn(float) const;
-    void EffectIsFinishedFadingOut(float) const;
+    bool EffectIsFinishedFadingIn(float) const;
+    bool EffectIsFinishedFadingOut(float) const;
     void UpdateTuningUI(void);
     ~DepthOfField(void);
     void SetTargetSettings(DepthOfFieldSettings &);
@@ -5317,10 +5325,10 @@ public:
     ~DlgWrapper(void);
     void GetFont(void);
     void GetDialogPane(void);
-    void IsDialogUp(void);
-    void DialogAccepted(void);
-    void DialogDeclined(void);
-    void DialogAlt1(void);
+    bool IsDialogUp();
+    bool DialogAccepted();
+    bool DialogDeclined();
+    bool DialogAlt1();
     void SetDialogPos(EVec2 &);
     void SetDialogPosX(float);
     void SetDialogPosY(float);
@@ -5372,6 +5380,7 @@ public:
     void IsAptDrawable(void);
     void SetPlayer(int);
     char _stub_data[256];
+    void Reset();
 };
 
 class DummyMode {
@@ -5601,7 +5610,7 @@ public:
     ~EAnimController(void);
     void Deallocate(void);
     void DeallocateNodes(void);
-    void Init(unsigned int, eAnimatedObjectType, unsigned int);
+    void Init(char*, eAnimatedObjectType, unsigned int);
     void IsTrackValid(eTrackFlags);
     void ResumeTrack(eTrackFlags);
     void CalcOrientMatrix(EVec3 &, EVec3 &, EVec3 &, EMat4 &);
@@ -5638,17 +5647,17 @@ public:
     void TransferTrack(eTrackFlags, eTrackFlags);
     void GetTrackAnimId(eTrackFlags);
     void SetStaticBlendTrackAnim(eTrackFlags, unsigned int, float, int, float, EACTrack *);
-    void SetTrackAnim(eTrackFlags, unsigned int, int, float, EACTrack **);
+    void SetTrackAnim(eTrackFlags, char*);
     void GetTrackAnimName(eTrackFlags);
-    void SetTrackIntensity(eTrackFlags, float);
+    void SetTrackIntensity(EACTrack*, float, bool);
     void SetAllTrackIntensities(float);
     void GetTrackBlendTarget(eTrackFlags);
     void GetTrackIntensity(eTrackFlags);
     void GetTrackSpeed(eTrackFlags);
     void BlendAllOutgoingTracks(float, float, bool);
-    void SetTrackBlend(EACTrack *, float);
-    void SetTrackBlendSmooth(EACTrack *, float, float, float);
-    void SetTrackBlendHermite(EACTrack *, float, float, float, float);
+    void SetTrackBlend(eTrackFlags, float);
+    void SetTrackBlendSmooth(eTrackFlags, float, float, float);
+    void SetTrackBlendHermite(eTrackFlags, float, float, float, float);
     void BlendTrackIntensity(EACTrack *);
     void SetTrackPhaseLock(EACTrack *, EACTrack *, float);
     void SetProceduralTrack(eTrackFlags, void (*)(unsigned int, EACTrack *, ERCharacter *, EVec3 &, EVec3 &), void (*)(unsigned int, EACTrack *, EMat4 &, ERCharacter *, EACNodeState *), unsigned int);
@@ -5658,11 +5667,11 @@ public:
     void GetTrackFrameCount(eTrackFlags);
     void GetTrackFrame(eTrackFlags);
     void GetTrackPos(eTrackFlags);
-    void SetTrackPos(EACTrack *, float, bool);
+    void SetTrackPos(eTrackFlags, float, bool);
     void IsTrackAnimComplete(eTrackFlags);
     void ClearTrackAnimComplete(eTrackFlags);
     void GetTrackAnimDef(eTrackFlags);
-    void SetTrackSpeed(EACTrack *, float);
+    void SetTrackSpeed(eTrackFlags, float);
     void SetAllTrackSpeed(float);
     void VisibilityTest(EMat4 &);
     void CalcVisibilitySphere(EMat4 &, EBoundSphere &);
@@ -5680,13 +5689,13 @@ public:
     void CalcBillinearCoeff(float, float, float, float &, float &, float &, float &);
     void GetNonMainTrackFlagFromIndex(int);
     void Shutdown(void);
-    void SuspendTrack(EACTrack* track);
+    void SuspendTrack(eTrackFlags);
     void PrintTracks(void);
     void SetTrackBlendFactors(EACTrack* track, float* factors);
     void GetAnimDistance(eTrackFlags flags, EVec3& out);
     void PrepareForCollision(EMat4& mat);
     void CallbackIntermediateComputeMatrices(EMat4& mat);
-    void SetTrackBlendHermiteSafe(EACTrack* track, float a, float b, float c, float d);
+    void SetTrackBlendHermiteSafe(eTrackFlags, float, float, float, float);
     char _stub_data[256];
 };
 
@@ -5722,8 +5731,8 @@ public:
     void CleanupAfterMovie(void);
     void PlayMovie(unsigned int id, int a, int b);
     void StopMovie(void);
-    int IsMovieStarting(void);
-    int IsMoviePlaying(void);
+    bool IsMovieStarting();
+    bool IsMoviePlaying();
     EAHeap* GetMovieHeap(void);
     const char* GetRootDirectory(void);
     const char* GetBuildVersion(void);
@@ -5804,7 +5813,7 @@ public:
     int GetAllocByteCount(void);
     void FreeUnusedBufferSpace(void);
     int GetSize(void) const;
-    void Insert(EBitArray& src, int index);
+    void Insert(EBitArray&, int, int, int);
     void Add(bool value);
     void Add(EBitArray& src);
     void Add(EBitArray& src, int start, int count);
@@ -5983,8 +5992,8 @@ public:
     void InvertAxis(int axis, int sub);
     void Flush(void);
     int HasVibration(void) const;
-    int IsMotorOneActive(void) const;
-    int IsMotorTwoActive(void) const;
+    bool IsMotorOneActive() const;
+    bool IsMotorTwoActive() const;
     int StopMotorOne(float val);
     int StopMotorTwo(float val);
     void ResetControllerData(bool clearAll);
@@ -6451,7 +6460,7 @@ public:
     void Remove(float);
     void Find(float, unsigned int *) const;
     void RemoveAll(void);
-    void GetSize(void) const;
+    int GetSize() const;
     void SetValues(EFloatTree &, bool);
     void operator =(EFloatTree &);
     char _stub_data[256];
@@ -6643,7 +6652,7 @@ public:
     void SetCurHouse(int);
     void ClearCurHouse(void);
     void SelectWin(ERC *);
-    void GetWin(void);
+    void* GetWin();
     void SetCam(ESimsCam *);
     void GetCam(void);
     void SetCameraDirector(CameraDirector *);
@@ -6852,7 +6861,7 @@ public:
     HTIteratorPtrType* Find(unsigned int key, unsigned int* outValue) const;
     unsigned int& operator [](unsigned int key);
     void SetValue(unsigned int key, unsigned int value);
-    int Remove(unsigned int key);
+    void Remove(unsigned int, HTIteratorPtrType*);
     HTIteratorPtrType* FindNext(HTIteratorPtrType* iter, unsigned int* outValue) const;
     void FreeAll(void);
     EHashTable& operator =(EHashTable& other);
@@ -6861,7 +6870,7 @@ public:
     ~EHashTable(void);
     void ClearTable(void);
     void InsertNew(unsigned int, unsigned int, unsigned int);
-    void GetSize(void) const;
+    int GetSize() const;
     void SetTableSize(int);
     char _stub_data[256];
 };
@@ -6941,6 +6950,7 @@ public:
     void SafeDelete(void);
     void RegisterType(unsigned short);
     char _stub_data[256];
+    void Read(EStream&);
 };
 
 class EIFenceWall {
@@ -7041,7 +7051,7 @@ public:
     void SetIntensityScale(EVec3& scale);
     void UseScaleIntensity(bool use);
     void GetPosition(EVec3& pos);
-    EVec3* GetIntensityScale();
+    void GetIntensityScale();
     void SetIntensity(float intensity);
     float GetIntensity() const;
     void SetColor(EVec3& color);
@@ -7065,7 +7075,7 @@ public:
 class EIObjTileBoundRect {
 public:
     void AddTilePt(CTilePt &);
-    void Set(CTilePt &);
+    void Set(EVec2&);
     void PtInRect(CTilePt &);
     void GetCenter(EVec2 &);
     void Overlap(EIObjTileBoundRect &) const;
@@ -7205,7 +7215,7 @@ public:
     void GetBoundSphere(EBoundSphere &);
     void Setup(EInstance *, EAnimController *);
     void DeallocateModel(void);
-    void SetModel(unsigned int, bool, EInstance *, EAnimController *);
+    void SetModel(char*);
     void SetOrient(EMat4 &);
     void SlamOrient(EMat4 &, EMat4 &);
     void RegisterFloor(void);
@@ -7270,7 +7280,7 @@ public:
     int GetReadVersion();
     EStorable* CreateCopy() const;
     void* operator new(unsigned int size, void* ptr);
-    EBoundSphere* GetBoundSphere();
+    void GetBoundSphere(EBoundSphere&);
     EIStaticSubModel(void);
     ~EIStaticSubModel(void);
     void Deallocate(void);
@@ -7336,7 +7346,7 @@ public:
     int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
-    void IsDiagonal(void);
+    bool IsDiagonal();
     void isDiagonal(TileWallsSegment);
     void SetForceFadeOff(bool);
     void RealizeShaderTuning(void);
@@ -7504,7 +7514,7 @@ public:
     void ResetIntroCamera(void);
     void SetIntroCameraState(IntroCameraStartState);
     void GetIntroCameraState(void);
-    void IsRunningIntroCamera(void);
+    bool IsRunningIntroCamera();
     void SetGoingToNeighborhoodMode(bool);
     void SetInitialized(bool);
     void SetDontDraw(bool);
@@ -7914,7 +7924,7 @@ class ENgcMemoryCard {
 public:
     ENgcMemoryCard(void);
     ~ENgcMemoryCard(void);
-    void IsCardOperationInProgress(void);
+    bool IsCardOperationInProgress();
     void BeginCardOperation(void);
     void EndCardOperation(void);
     void SetComments(wchar_t *, wchar_t *);
@@ -8163,7 +8173,7 @@ public:
     void EnableRasterModes(EDLEntry *);
     void DisableRasterModes(EDLEntry *);
     void SetRasterModes(EDLEntry *);
-    void SetAlpha(float);
+    void SetAlpha(EDLEntry*);
     void Lights(EDLEntry *);
     void Rect(EDLEntry *);
     void DirectRect(EDLEntry *);
@@ -8231,6 +8241,7 @@ public:
     void LineStreakList(EDLEntry *);
     void CopyScreenToTexture(EDLEntry *);
     char _stub_data[256];
+    void Callback(EDLEntry*);
 };
 
 class ENgcSFXStreamer {
@@ -8679,7 +8690,7 @@ public:
     void ModelMatrix(EMat4* mat);
     void LightsRadiosity(EVec3_ref&, EVec3_ref&, float);
     void Validate();
-    EVec4* GetFogColor();
+    void GetFogColor();
     void* AllocVertexData(unsigned int);
     void SetCopyDataCallback(void (*fn)(void*, void*), void* ctx);
     bool IsOpen() const;
@@ -8862,7 +8873,7 @@ public:
     void SnapPosToPixel(EVec2 &, bool, bool, EWindow *);
     void SnapPosToPixelNormalize(EVec2 &, bool, bool, EWindow *);
     void DoDrawAlign(ERC *, void *, bool, EVec2, EFontAlignX, EFontAlignY, EVec2 *, EMat4 *, EFontMatrixType, fontFXcommand *, bool);
-    void Draw(ERC *, char *, EVec2 &, EFontAlignX, EFontAlignY, EVec2 *, EMat4 *, EFontMatrixType, fontFXcommand *, bool);
+    void Draw(ERC*, short unsigned int*, EVec2&, EFontAlignX, EFontAlignY, EVec2*, EMat4*, EFontMatrixType, fontFXcommand*, bool);
     void DrawDs(ERC *, char *, EVec2 &, EFontAlignX, EFontAlignY, EVec2 *, float, float, bool);
     void LoadFont(void);
     void Select(ERC *);
@@ -8883,7 +8894,7 @@ public:
     void GetYSize(void);
     void GetAspect(void);
     void GetStringSize(char *, EWindow *, bool);
-    void SetColor(EVec4 &);
+    void SetColor(float);
     char _stub_data[256];
 };
 
@@ -9045,7 +9056,7 @@ public:
     void RebuildAfterWelding(void);
     void GenerateMorphTargetDeltas(ERModel *);
     void RegisterMorphTarget(ERModel *, int);
-    void UnRegisterMorphTarget(int);
+    void UnRegisterMorphTarget(ERModel*);
     void SetMorphTargetWeight(int, float);
     void ResetMorph(void);
     void MorphTargets(void);
@@ -9139,7 +9150,7 @@ public:
     void findTableIndex(int, int, void *);
     void findRow(void *, unsigned int *);
     void FindTableName(void *, char **);
-    void GetRevisionNumber(void);
+    int GetRevisionNumber();
     void* operator new(unsigned int);
     void operator delete(void *);
     void GetImage(void) const;
@@ -9410,7 +9421,7 @@ public:
     ERedBlackTree(void);
     void FindParent(unsigned int) const;
     void FindNext(RBIteratorPtrType *, unsigned int *) const;
-    void GetSize(void) const;
+    int GetSize() const;
     void SetValues(ERedBlackTree &, bool);
     char _stub_data[256];
 };
@@ -9521,7 +9532,7 @@ public:
     int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
-    void IsManaged(void) const;
+    bool IsManaged() const;
     void IsSafeToDelete(void);
     void GetResId(void) const;
     void SetResId(unsigned int);
@@ -9636,12 +9647,12 @@ public:
     void IsResourceIncludedInLog(char *);
     void AddResource(EResource *, unsigned int);
     void LogResourceLoad(EResource *);
-    void AddRef(unsigned int, EFile *, int);
+    void AddRef(char*, EFile*, int);
     void AddRefAsync(char *);
     void GetIds(unsigned int *&, int &);
     void RefreshResources(void);
     void Refresh(EResource *);
-    void DelRef(unsigned int, int);
+    void DelRef(char*, int);
     void DelRefAsync(char *);
     void Detach(EResource *);
     void GetPos(unsigned int);
@@ -9763,6 +9774,7 @@ public:
     void GetQuatVal(int, EQuat &);
     void GetQ(int, int, EQuat &);
     char _stub_data[256];
+    void Reset();
 };
 
 class EScheduler {
@@ -9800,7 +9812,7 @@ public:
     void operator --(void);
     void Destroy(void);
     int GetObject(int idx);
-    int IsCreated(void);
+    bool IsCreated();
     int iAcquire(void);
     int iRelease(void);
     int GetCurrentCount(void);
@@ -9858,6 +9870,7 @@ public:
     void* GetTexture(int slot) const;
     bool IsAlphaShader() const;
     char _stub_data[256];
+    void SetScrollSpeed(EVec2&, int, bool);
 };
 
 class EShaderDef {
@@ -10247,6 +10260,7 @@ public:
     void CreateCopy(void) const;
     void * GetTypeInfo(void) const;
     char _stub_data[256];
+    void Read(EStream&);
 };
 
 class EStream {
@@ -10338,7 +10352,7 @@ public:
     void ConvertToBackslashes(void);
     void ConvertToForwardslashes(void);
     operator unsigned short*(void) const;
-    void Deallocate(wchar_t *);
+    void Deallocate(short unsigned int*);
     void Tokenize(wchar_t, TArray<EString2, TArrayDefaultAllocator> &);
     void GetLine(__sFILE *);
     void MakeCopyFromChars(char *);
@@ -10408,7 +10422,7 @@ public:
     void FindNext(SRBNCIteratorPtrType *, unsigned int *) const;
     void RemoveAll(void);
     void FreeAll(void);
-    void GetSize(void) const;
+    int GetSize() const;
     void SetValues(EStringRedBlackTreeNoCase &, bool);
     void operator =(EStringRedBlackTreeNoCase &);
     char _stub_data[256];
@@ -10429,7 +10443,7 @@ public:
     void Find(char *, unsigned int *) const;
     void RemoveAll(void);
     void FreeAll(void);
-    void GetSize(void) const;
+    int GetSize() const;
     void operator =(EStringTableNoCase &);
     void PreGrowTable(int);
     void FreeTable(void);
@@ -10652,6 +10666,7 @@ public:
     void GetVecVal(int, EVec3 &);
     void GetV(int, int, EVec3 &);
     char _stub_data[256];
+    void Reset();
 };
 
 class EVibrate {
@@ -11086,7 +11101,7 @@ public:
     void StartDraw(EVec3& pos, bool draw);
     void StartFade();
     void StopDraw();
-    int ShouldDraw();
+    bool ShouldDraw();
     FadeSquare(void);
     ~FadeSquare(void);
     void Update(float);
@@ -11307,7 +11322,7 @@ public:
     void Enable(bool);
     void Update(float, ERC *);
     void IsEffectRamping(void) const;
-    void IsEffectRunning(void) const;
+    int IsEffectRunning() const;
     void UpdateEffectState(void);
     ~FrameEffect(void);
     char _stub_data[256];
@@ -11371,7 +11386,7 @@ public:
     int IsG2DActive();
     int IsG2DSpawned();
     int IsInitComplete();
-    int HasPendingTransition();
+    bool HasPendingTransition();
     void PushAptButtonFilters();
     void UnloadUI();
     char _stub_data[256];
@@ -11424,7 +11439,7 @@ public:
     void SystemPreUpdate(void);
     void SystemPreDraw(ERC *);
     void SystemPostUpdate(void);
-    void IsDrawCtrlMessageDisabled(void);
+    bool IsDrawCtrlMessageDisabled();
     void SetCtrlDrawMessageDisable(int);
     void ClearCtrlDrawMessageDisable(int);
     void SystemPostDraw(ERC *);
@@ -11882,7 +11897,7 @@ public:
     void RequestQuitGame(bool);
     void GetJobBarCount(void);
     void GetActionQueueHUD(int);
-    void GetHUDMode(void) const;
+    bool GetHUDMode() const;
     void HUDHideComplete(void) const;
     void HideInProgress(void) const;
     void IsHUDVisible(void) const;
@@ -12320,8 +12335,8 @@ public:
     void GetOnLocMsgInvShpObjectName(wchar_t *);
     void GetOnLocMsgInvShpObjectDescription(wchar_t *);
     void GetOnLocMsgInvShpBudget(wchar_t *);
-    void GetOnLocMsgInvMotiveText(wchar_t *);
-    void GetOnLocMsgInvShpMotiveText(wchar_t *);
+    void GetOnLocMsgInvMotiveText(short unsigned int*);
+    void GetOnLocMsgInvShpMotiveText(short unsigned int*);
     void GetOnMsgInvShpObjectInfoReady(char *);
     void GetSelectedShoppingItem(int, int &, int &);
     void GetOnMsgInvShpCanPurchase(char *);
@@ -12409,6 +12424,7 @@ public:
     int GetReadVersion();
     IShrubObject* CreateCopy() const;
     char _stub_data[256];
+    void RegisterType(short unsigned int);
 };
 
 class ISimInstance {
@@ -12455,7 +12471,7 @@ public:
     void GetSimInstance(void);
     void IsMultiTilePart(void);
     void GetFlags(void);
-    void HasModel(void);
+    bool HasModel();
     void GetAnimController(void);
     char _stub_data[256];
 };
@@ -12479,6 +12495,7 @@ public:
     void New(void);
     void IsSinkId(cXObject *);
     char _stub_data[256];
+    void RegisterType(short unsigned int);
 };
 
 class ISimsMultiTileObjectModel {
@@ -12499,6 +12516,7 @@ public:
     void SetObjOrient(void);
     void New(void);
     char _stub_data[256];
+    void RegisterType(short unsigned int);
 };
 
 class ISimsObjectModel {
@@ -12558,7 +12576,7 @@ public:
     void ProcessPropertyEventTags(ObjAnimDef* animDef, float time);
     void InsertSubModelsInHouse(void* level);
     void PropigateFlagsToSubModels();
-    void UpdateShader(void* animDef);
+    void UpdateShader(ObjAnimDef*);
     void CalcDynamicOrient();
     void SetSOMModel(unsigned int modelID);
     void AnimStartImmediate(unsigned int animID);
@@ -12584,6 +12602,7 @@ public:
     void SetAutonomyScore(float);
     void New(void);
     char _stub_data[256];
+    void RegisterType(short unsigned int);
 };
 
 class ISimsWallObjectModel {
@@ -12605,6 +12624,7 @@ public:
     void SetObjOrient(void);
     void New(void);
     char _stub_data[256];
+    void RegisterType(short unsigned int);
 };
 
 class ITBTarget {
@@ -13064,7 +13084,7 @@ public:
     void GetName(void);
     void SetVariable(char *, char *);
     void GetVariable(char *);
-    int IsModeValid();
+    bool IsModeValid();
     char _stub_data[256];
 };
 
@@ -13140,7 +13160,7 @@ public:
     void DatasetFinishAddRefAsync(void);
     ~LiveModeInitState(void);
     LiveModeInitState(int);
-    void DatasetPendingAddRefAsync(void);
+    bool DatasetPendingAddRefAsync();
     char _stub_data[256];
 };
 
@@ -13233,7 +13253,7 @@ public:
     void Update(float);
     void CreateLoadingScreen(void);
     void DeleteLoadingScreen(void);
-    void IsReadyToLoad(void);
+    bool IsReadyToLoad();
     void IsLoading(void);
     void StartLoad(int);
     void LoadFinishedNow(void);
@@ -13729,7 +13749,7 @@ public:
 
 class MemFile {
 public:
-    BOOL ValidFile(void);
+    bool ValidFile();
     void SetFileName(StringBuffer& name);
     void Read1(signed char* out);
     BOOL Writable(void);
@@ -13963,8 +13983,8 @@ class MotionBlur {
 public:
     void UpdateTargetParameters(float);
     void EffectStateChanged(int);
-    void EffectIsFinishedFadingIn(float) const;
-    void EffectIsFinishedFadingOut(float) const;
+    bool EffectIsFinishedFadingIn(float) const;
+    bool EffectIsFinishedFadingOut(float) const;
     void UpdateTuningUI(void);
     ~MotionBlur(void);
     void SetTargetSettings(MotionBlurSettings &);
@@ -14748,7 +14768,7 @@ public:
     void MotiveAccessed(cXPerson* person, int motive, bool flag);
     void PersonalityAccessed(cXPerson* person, int personality, bool flag);
     void RelationshipAccessed(cXObject* objA, cXObject* objB, int rel, bool flag);
-    cXObject* GetTutorialObject(void);
+    int GetTutorialObject();
     int AdvanceSelectedPerson(int direction);
     cXObject* GetSelectedPerson(int index);
     void SetSimFlag(int simIndex, int flag, bool value);
@@ -14758,7 +14778,7 @@ public:
     int GetNumObjects(void);
     ObjectFolder* GetFolder(void);
     void AddObject(cXObject* obj, short id);
-    cXObject* GetFirst(void);
+    int GetFirst();
     cXObject* GetSim(void);
     cXObject* GetPeople(int index);
     int GetNumPeople(void);
@@ -15436,6 +15456,7 @@ public:
     PreGameState(int);
     void SetFlowStateCurrent(void);
     char _stub_data[256];
+    void Reset();
 };
 
 class ProfileBar {
@@ -15591,7 +15612,7 @@ public:
     int Close(void);
     void Update(void);
     int Writable(void);
-    int ValidFile(void);
+    bool ValidFile();
     int CountTypes(void);
     int GetIndType(short index);
     int Count(int type);
@@ -15643,7 +15664,7 @@ public:
     void LoadLocRes(unsigned int, short);
     void Save(unsigned int, short);
     void LoadDef(bool, bool);
-    void GetID(void);
+    short int GetID();
     void WriteAnsiToDB(void);
     void WriteWideToDB(void);
     void GetDataID(void) const;
@@ -15676,7 +15697,7 @@ public:
     void onHelpDialogSelection(int);
     void onSummaryDialogZeroInputCallback();
     void onSummaryDialogDialogClosedCallback();
-    int ScrollLeftEnabled();
+    bool ScrollLeftEnabled();
     int RecordIndexToGridIndex(int index);
     int GridIndexToRecordIndex(int index);
     int OldGridIndexToRecordIndex(int index);
@@ -16145,7 +16166,7 @@ public:
     void SetAnimDisplacements(float dx, float dy, float dz);
     float getPersonX();
     float getPersonY();
-    int IsFollowing();
+    bool IsFollowing();
     int IsInterruptable();
     void ResetCensorship();
     void SetPixelated(int pixelated);
@@ -16178,7 +16199,7 @@ public:
     EHeadOrient* GetHeadOrient();
     CasSimDescriptionS2C* GetNormalSimDescription() const;
     void SetNormalSimDescription(CasSimDescriptionS2C* desc);
-    bool IsStalled();
+    int IsStalled();
     float GetPauseMultiplier();
     void SetBoneIndex(int slot, int index);
     void SetRightHandBoneIndex(int index);
@@ -16434,6 +16455,7 @@ public:
     void GetVal(int, float &);
     void GetV(int, int, float &);
     char _stub_data[256];
+    void Reset();
 };
 
 class ScreenshotTool {
@@ -16836,7 +16858,7 @@ public:
     void Release(void);
     void GetDataProvider(unsigned int, ObjectDataID &) const;
     void SetDataProvider(unsigned int, ObjectDataID &, int);
-    void CreateObject(unsigned int, unsigned int, void **);
+    void CreateObject(unsigned int, ObjectDataID&, void**);
     void CreateObjectFromProvider(unsigned int, int, void **);
     char _stub_data[256];
 };
@@ -16857,7 +16879,7 @@ public:
 
 class SpacePartition {
 public:
-    void FindInterfaceRect(int, int, IRect *);
+    void FindInterfaceRect(ASTNode*, ASTNode*, IRect*);
     void FindInterfacePoint(ASTNode *, ASTNode *);
     SpacePartition(void);
     void GetIntersectingFreeRect(IRect *);
@@ -16983,7 +17005,7 @@ public:
     int GetLastStateId(void) const;
     int GetCallingStateId(void) const;
     float GetTimeInState(void) const;
-    StateMachineState* FindStateById(int stateId);
+    void* FindStateById(int);
     StateMachineState* FindState(StateMachineState* pState);
     void SetState(StateMachineState* pState);
     void Startup(void);
@@ -17079,7 +17101,7 @@ public:
     void copy(char* src);
     void copy(StringBuffer& src);
     void appendChar(char c);
-    void append(char *, int);
+    void append(StringBuffer&, int);
     void compare(StringBuffer &) const;
     void compareNoCase(StringBuffer &) const;
     void charAt(int) const;
@@ -17097,7 +17119,7 @@ public:
     void capacity(void) const;
     void length(void) const;
     void erase(void);
-    void append(wchar_t *, int);
+    void append(StringBuffer2&, int);
     void c_str(void) const;
     void copy(wchar_t *);
     void compare(StringBuffer2 &) const;
@@ -17448,7 +17470,7 @@ public:
     void Update(float);
     void Draw(ERC *);
     void IsFlowStateRequestPending(void);
-    void GetFlowStateRequest(void);
+    int GetFlowStateRequest();
     void SetFlowStateCurrent(void);
     ~TheSimsStateMachine(void);
     TheSimsStateMachine(int, int);
@@ -17679,7 +17701,7 @@ class TreeTableEntryQuickData {
 public:
     TreeTableEntryQuickData(TreeTableEntry *);
     ~TreeTableEntryQuickData(void);
-    void GetName(void) const;
+    int GetName() const;
     void QueryInterface(unsigned int, void **);
     void Release(void);
     int AddRef();
@@ -17752,7 +17774,7 @@ public:
     int SetResourceName(StringBuffer& buf);
     int LoadOnlyNameAndIDFromIndex(unsigned int param1, int param2);
     short GetID() const;
-    int CountMotiveAds() const;
+    short int CountMotiveAds() const;
     int CountEntries() const;
     short GetPrefixCheckTreeID() const;
     void SwapEntries(int a, int b);
@@ -18335,7 +18357,7 @@ public:
     void WrapperUpdate();
     void WrapperCallFunction(char* funcName);
     void WrapperReadController(bool param1, int playerIndex);
-    WrapperPaneBase* FindPaneById(int paneId);
+    void* FindPaneById(int);
     WrapperPaneBase* FindPane(WrapperPaneBase* pane);
     ~Wrapper(void);
     void WrapperShutdown(void);
@@ -18385,7 +18407,7 @@ public:
     void SetAcceptText(unsigned short* text);
     void SetDeclineText(unsigned short* text);
     void SetAlt1Text(unsigned short* text);
-    void SetButtonText(ButtonType type, unsigned short* text);
+    void SetButtonText(int, short unsigned int*);
     void UpdateAptButtonPosX(ButtonType type);
     void UpdateAptButtonPosY(ButtonType type);
     void UpdateAptButtonWidth(ButtonType type);
@@ -18518,7 +18540,7 @@ public:
     void ChooseStartingPoint(void);
     void ConstructGoals(void);
     RoutingSlot* GetRoutingSlot(void);
-    bool HasCurrentGoal(void);
+    int HasCurrentGoal();
     int CountGoals(void);
     RouteGoal* GetNthGoal(int n);
     void SetCurrentGoal(int index);
@@ -18546,7 +18568,7 @@ public:
     void ClearBytes(signed char);
     void SetSize(int, int);
     void DoStream(ReconBuffer *, bool);
-    void CopyFrom(BString &);
+    void CopyFrom(_c2DArray*);
     void CopyTo(_c2DArray *);
     void GetArray(BString &);
     void SetName(BString &);
@@ -19067,7 +19089,7 @@ public:
     void GetAverageLocation(void) const;
     void GetNumTiles(int &, int &);
     void GetFirstMultiTileObject(void);
-    void GetNextMultiTileObject(void);
+    int GetNextMultiTileObject();
     void GetMTObjectImplementation(void);
     void GetISimInstanceBaseVer(void);
     void CAST_IMPL(void);
@@ -19123,7 +19145,7 @@ public:
     void TestIntersection(FTilePt &, int);
     void GetSlotHeight(int);
     void GetTypeName(BString &);
-    void CalcShortDistance(cXObject *);
+    void CalcShortDistance(FTilePt*);
     void CalcDistance(cXObject *);
     void ReconHeader(ReconBuffer *, int);
     void ReconStream(ReconBuffer *, int, bool);
@@ -19284,7 +19306,7 @@ public:
     void SetTemp(int index, short value);
     short GetAttr(int index);
     void SetAttr(int index, short value);
-    cXObject* GetNext();
+    int GetNext();
     bool IsMultiTile();
     int CountObjectSlots();
     int HierCountSlots();
@@ -19442,7 +19464,7 @@ public:
     int IsIdle();
     void DebugDumpHappyScape();
     int IsSelected();
-    int IsSleeping();
+    bool IsSleeping();
     void InvalidateRoutes();
     void StartRecording(int a, int b);
     void StopRecording();
@@ -19465,7 +19487,7 @@ public:
     void SetIdleLoopCount(short count);
     void* GetSimDescription();
     void* GetServiceNPC();
-    int IsVisitor();
+    bool IsVisitor();
     int IsInvisible();
     int IsGreen();
     int IsGhost();
@@ -19492,11 +19514,11 @@ public:
     cXObject* IgnoringObject();
     void SetIgnoringObject(cXObject* obj);
     void ClearIgnoringObject();
-    int IsInSocialMode();
+    bool IsInSocialMode();
     int IsFirstPlayerInSocialMode();
     int IsSecondPlayerInSocialMode();
     int IsWaitingForSocialMode();
-    int GetPendingAction() const;
+    bool GetPendingAction() const;
     int GetRouteStackSize();
     void EORDrawStickFigure(int arg);
     int IsModelLoaded();
@@ -19548,7 +19570,7 @@ public:
     void SetSimSocialIntrestFromMotiveValue(cXPerson* person, float value);
     void InitializeStaticMemory();
     void CleanupStaticMemory();
-    void* GetNextQueueStr(int index);
+    void GetNextQueueStr(int);
     int IsPersonDying();
     void PreSave();
     void SetCurrentAction(Interaction& action);
@@ -19563,8 +19585,8 @@ public:
     void CancelAllButLastActions();
     Interaction* GetIndAction(int index, bool includeIdle);
     Interaction* GetCurrentAction();
-    cXObject* GetCurrentInteractionStackObject();
-    cXObject* GetCurrentInteractionIconObject();
+    void GetCurrentInteractionStackObject();
+    void GetCurrentInteractionIconObject();
     int Skipping3D();
     void UpdateCurrentRoom();
     void SetHilite(int hilite);

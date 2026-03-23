@@ -8,5 +8,5 @@
 void ESimsCam::SnapActualCameraParamsToTarget() { *(int*)((char*)this + 0x454) = *(int*)((char*)this + 0x43C); *(int*)((char*)this + 0x458) = *(int*)((char*)this + 0x440); *(int*)((char*)this + 0x45C) = *(int*)((char*)this + 0x444); *(int*)((char*)this + 0x460) = *(int*)((char*)this + 0x448); *(int*)((char*)this + 0x468) = *(int*)((char*)this + 0x450); *(int*)((char*)this + 0x464) = *(int*)((char*)this + 0x44C); }
 
 // 0x8001EA4C (32 bytes)
-void ESimsCam::SetTarget(EVec3 & val) { *(int*)((char*)this + 0x43C) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x444) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x440) = *(int*)((char*)val + 0x4); }
+void ESimsCam::SetTarget(EVec3 & val) { *(int*)((char*)this + 0x43C) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x444) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x440) = *(int*)((char*)&val + 0x4); }
 

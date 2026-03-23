@@ -5,5 +5,5 @@
 // 1 functions, 36 bytes
 
 // 0x8016F0E8 (36 bytes)
-void CasSimRenderer::SetPosition(EVec3 & val, float fval) { *(int*)((char*)this + 0x1EC) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x1F4) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x1F0) = *(int*)((char*)val + 0x4); *(float*)((char*)this + 0x208) = fp1; }
+void CasSimRenderer::SetPosition(EVec3 & val, float fval) { *(int*)((char*)this + 0x1EC) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x1F4) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x1F0) = *(int*)((char*)&val + 0x4); *(float*)((char*)this + 0x208) = fp1; }
 

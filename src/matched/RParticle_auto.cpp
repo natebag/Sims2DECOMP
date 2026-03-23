@@ -23,7 +23,6 @@ int RParticle::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __vol
 
 // 0x8036C2D4 (8 bytes)
 void* RParticle::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 
 // 0x8036C308 (8 bytes)
 void RParticle::GetData() { return *(int*)((char*)this + 0x14); }  // offset 0x14

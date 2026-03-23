@@ -5,8 +5,8 @@
 // 2 functions, 64 bytes
 
 // 0x80053DE0 (32 bytes)
-void ISimsObjectModel::SetPos(EVec3 & val) { *(int*)((char*)this + 0x404) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x40C) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x408) = *(int*)((char*)val + 0x4); }
+void ISimsObjectModel::SetPos(EVec3 & val) { *(int*)((char*)this + 0x404) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x40C) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x408) = *(int*)((char*)&val + 0x4); }
 
 // 0x80053E08 (32 bytes)
-void ISimsObjectModel::SetDir(EVec3 & val) { *(int*)((char*)this + 0x410) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x418) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x414) = *(int*)((char*)val + 0x4); }
+void ISimsObjectModel::SetDir(EVec3 & val) { *(int*)((char*)this + 0x410) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x418) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x414) = *(int*)((char*)&val + 0x4); }
 

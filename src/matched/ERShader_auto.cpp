@@ -23,7 +23,6 @@ int ERShader::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __vola
 
 // 0x80320620 (8 bytes)
 void* ERShader::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 
 // 0x80320750 (12 bytes)
 void ERShader::IsDayNightShader() { return (*(int*)((char*)this + 0x58) >> 5) & 1; }  // bit 5

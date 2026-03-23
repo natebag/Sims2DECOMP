@@ -5,11 +5,11 @@
 // 3 functions, 100 bytes
 
 // 0x802280D8 (32 bytes)
-void EILight::SetIntensityScale(EVec3 & val) { *(int*)((char*)this + 0x9C) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0xA4) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0xA0) = *(int*)((char*)val + 0x4); }
+void EILight::SetIntensityScale(EVec3 & val) { *(int*)((char*)this + 0x9C) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0xA4) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0xA0) = *(int*)((char*)&val + 0x4); }
 
 // 0x8022813C (36 bytes)
-void EILight::GetIntensityScale() { *(float*)((char*)this + 0x0) = *(float*)((char*)val + 0x9C); *(float*)((char*)this + 0x4) = *(float*)((char*)val + 0x4); *(float*)((char*)this + 0x8) = *(float*)((char*)val + 0x8); }
+void EILight::GetIntensityScale() { *(float*)((char*)this + 0x0) = *(float*)((char*)&val + 0x9C); *(float*)((char*)this + 0x4) = *(float*)((char*)&val + 0x4); *(float*)((char*)this + 0x8) = *(float*)((char*)&val + 0x8); }
 
 // 0x80228170 (32 bytes)
-void EILight::SetColor(EVec3 & val) { *(int*)((char*)this + 0x90) = *(int*)((char*)val + 0x0); *(int*)((char*)this + 0x98) = *(int*)((char*)val + 0x8); *(int*)((char*)this + 0x94) = *(int*)((char*)val + 0x4); }
+void EILight::SetColor(EVec3 & val) { *(int*)((char*)this + 0x90) = *(int*)((char*)&val + 0x0); *(int*)((char*)this + 0x98) = *(int*)((char*)&val + 0x8); *(int*)((char*)this + 0x94) = *(int*)((char*)&val + 0x4); }
 

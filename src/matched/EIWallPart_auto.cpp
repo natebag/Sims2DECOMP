@@ -23,7 +23,6 @@ int EIWallPart::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __vo
 
 // 0x8003061C (8 bytes)
 void* EIWallPart::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 
 // 0x80030654 (8 bytes)
 void EIWallPart::SetForceFadeOff(bool val) { *(int*)((char*)this + 0x3B0) = val; }  // offset 0x3B0

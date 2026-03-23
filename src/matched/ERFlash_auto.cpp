@@ -23,5 +23,4 @@ int ERFlash::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volat
 
 // 0x80313E08 (8 bytes)
 void* ERFlash::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
-#endif
 
