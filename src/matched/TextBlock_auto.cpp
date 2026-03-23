@@ -5,5 +5,5 @@
 // 1 functions, 16 bytes
 
 // 0x803A05D8 (16 bytes)
-void TextBlock::SetDirty() { *(unsigned int*)((char*)this + 0x38) |= 0x10000000; }  // set high flags
+void TextBlock::SetDirty() { register unsigned int __r0 __asm__("r0") = *(unsigned int*)((char*)this + 0x38); __asm__ __volatile__("" : "+r"(__r0)); __r0 |= 0x10000000; *(unsigned int*)((char*)this + 0x38) = __r0; }
 

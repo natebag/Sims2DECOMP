@@ -5,10 +5,10 @@
 // 25 functions, 280 bytes
 
 // 0x80142B54 (16 bytes)
-void RoutingSlot::SetIsOnTopOfObject() { *(unsigned int*)((char*)this + 0x1C) &= 0xFFFFFF00; }  // clear low 8 bits
+void RoutingSlot::SetIsOnTopOfObject() { register unsigned int __r0 __asm__("r0") = *(unsigned int*)((char*)this + 0x1C); __asm__ __volatile__("" : "+r"(__r0)); __r0 &= 0xFFFFFF00; *(unsigned int*)((char*)this + 0x1C) = __r0; }
 
 // 0x80142B84 (16 bytes)
-void RoutingSlot::AllowAnyRotation() { *(unsigned int*)((char*)this + 0x1C) |= 0x100; }  // set flags
+void RoutingSlot::AllowAnyRotation() { register unsigned int __r0 __asm__("r0") = *(unsigned int*)((char*)this + 0x1C); __asm__ __volatile__("" : "+r"(__r0)); __r0 |= 0x100; *(unsigned int*)((char*)this + 0x1C) = __r0; }
 
 // 0x80142B94 (12 bytes)
 void RoutingSlot::AllowAnyFacing() { register int __r0 __asm__("r0") = -3; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x34) = __r0; }
