@@ -20,14 +20,12 @@ const char* EInstance::GetTypeName() const{ register int __val __asm__("r3"); __
 u32 EInstance::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18512(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x802293C4 (12 bytes)
-unsigned short EInstance::GetTypeVersion() const { return *(unsigned short*)0x8050B7B4; }  // global variable
-
+int EInstance::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18508(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x802293D0 (12 bytes)
 const ETypeInfo* EInstance::GetTypeInfoStatic() { return (void*)0x8050B7A0; }  // global data pointer
 
 // 0x802293DC (12 bytes)
-unsigned short EInstance::GetReadVersion() { return *(unsigned short*)0x8050B7B6; }  // global variable
-
+int EInstance::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18506(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8022945C (4 bytes)
 void EInstance::Init() { }
 

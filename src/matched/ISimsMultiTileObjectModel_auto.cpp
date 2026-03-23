@@ -14,11 +14,10 @@ const char* ISimsMultiTileObjectModel::GetTypeName() const{ register int __val _
 u32 ISimsMultiTileObjectModel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18392(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80054110 (12 bytes)
-unsigned short ISimsMultiTileObjectModel::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18388(%%r9)" : "=r"(__val) : : "r9"); return __val; }
+int ISimsMultiTileObjectModel::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18388(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8005411C (12 bytes)
 const ETypeInfo* ISimsMultiTileObjectModel::GetTypeInfoStatic() { return (void*)0x8050B818; }  // global data pointer
 
 // 0x80054128 (12 bytes)
-unsigned short ISimsMultiTileObjectModel::GetReadVersion() { return *(unsigned short*)0x8050B82E; }  // global variable
-
+int ISimsMultiTileObjectModel::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18386(%%r9)" : "=r"(__val) : : "r9"); return __val; }

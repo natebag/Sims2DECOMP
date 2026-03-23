@@ -12,17 +12,11 @@ void ERAmbientScore::GetTypeName() const{ register int __val __asm__("r3"); __as
 
 // 0x8036723C (12 bytes)
 void ERAmbientScore::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10388(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80367248 (12 bytes)
-unsigned short ERAmbientScore::GetTypeVersion() const { return *(unsigned short*)0x8050D770; }  // global variable
-#endif
-
+int ERAmbientScore::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10384(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80367254 (12 bytes)
 void* ERAmbientScore::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10404" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80367260 (12 bytes)
-unsigned short ERAmbientScore::GetReadVersion() { return *(unsigned short*)0x8050D772; }  // global variable
-#endif
-
+int ERAmbientScore::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10382(%%r9)" : "=r"(__val) : : "r9"); return __val; }

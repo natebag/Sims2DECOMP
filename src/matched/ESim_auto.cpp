@@ -15,20 +15,14 @@ void ESim::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __vola
 
 // 0x80035108 (12 bytes)
 void ESim::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19400(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80035114 (12 bytes)
-unsigned short ESim::GetTypeVersion() const { return *(unsigned short*)0x8050B43C; }  // global variable
-#endif
-
+int ESim::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -19396(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80035120 (12 bytes)
 void* ESim::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19416" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x8003512C (12 bytes)
-unsigned short ESim::GetReadVersion() { return *(unsigned short*)0x8050B43E; }  // global variable
-#endif
-
+int ESim::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -19394(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80035308 (4 bytes)
 void ESim::SetXOb(cXObject *) { }
 

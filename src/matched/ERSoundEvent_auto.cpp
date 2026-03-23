@@ -12,20 +12,14 @@ void ERSoundEvent::GetTypeName() const{ register int __val __asm__("r3"); __asm_
 
 // 0x80369F48 (12 bytes)
 void ERSoundEvent::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10148(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80369F54 (12 bytes)
-unsigned short ERSoundEvent::GetTypeVersion() const { return *(unsigned short*)0x8050D860; }  // global variable
-#endif
-
+int ERSoundEvent::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10144(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80369F60 (12 bytes)
 void* ERSoundEvent::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10164" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80369F6C (12 bytes)
-unsigned short ERSoundEvent::GetReadVersion() { return *(unsigned short*)0x8050D862; }  // global variable
-#endif
-#if 0
+int ERSoundEvent::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10142(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8036A01C (8 bytes)
 void* ERSoundEvent::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

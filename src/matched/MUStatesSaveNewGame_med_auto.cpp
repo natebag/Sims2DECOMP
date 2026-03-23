@@ -5,5 +5,5 @@
 // 1 functions, 24 bytes
 
 // 0x800922DC (24 bytes)
-void MUStatesSaveNewGame::Reset() { *(int*)((char*)this + 0x2C) = 0; *(int*)((char*)this + 0x1C) = 0; *(int*)((char*)this + 0x20) = 0; *(int*)((char*)this + 0x28) = 0; }
+void MUStatesSaveNewGame::Reset() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x2C) = __r0; *(int*)((char*)this + 0x1C) = __r0; *(int*)((char*)this + 0x20) = __r0; *(int*)((char*)this + 0x28) = __r0; }
 

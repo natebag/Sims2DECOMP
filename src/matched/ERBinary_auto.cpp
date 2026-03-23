@@ -12,20 +12,14 @@ void ERBinary::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __
 
 // 0x80368568 (12 bytes)
 void ERBinary::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10268(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80368574 (12 bytes)
-unsigned short ERBinary::GetTypeVersion() const { return *(unsigned short*)0x8050D7E8; }  // global variable
-#endif
-
+int ERBinary::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10264(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80368580 (12 bytes)
 void* ERBinary::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10284" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x8036858C (12 bytes)
-unsigned short ERBinary::GetReadVersion() { return *(unsigned short*)0x8050D7EA; }  // global variable
-#endif
-
+int ERBinary::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10262(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8036860C (8 bytes)
 void ERBinary::GetData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 

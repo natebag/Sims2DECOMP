@@ -20,14 +20,13 @@ const char* ERLevel::GetTypeName() const{ register int __val __asm__("r3"); __as
 u32 ERLevel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13064(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80238118 (12 bytes)
-unsigned short ERLevel::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13060(%%r9)" : "=r"(__val) : : "r9"); return __val; }
+int ERLevel::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13060(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80238124 (12 bytes)
 const ETypeInfo* ERLevel::GetTypeInfoStatic() { return (void*)0x8050CCE8; }  // global data pointer
 
 // 0x80238130 (12 bytes)
-unsigned short ERLevel::GetReadVersion() { return *(unsigned short*)0x8050CCFE; }  // global variable
-
+int ERLevel::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13058(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x802381E0 (8 bytes)
 void* ERLevel::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 #if 0

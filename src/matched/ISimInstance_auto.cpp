@@ -54,20 +54,14 @@ void ISimInstance::GetTypeName() const{ register int __val __asm__("r3"); __asm_
 
 // 0x800568C4 (12 bytes)
 void ISimInstance::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19360(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x800568D0 (12 bytes)
-unsigned short ISimInstance::GetTypeVersion() const { return *(unsigned short*)0x8050B464; }  // global variable
-#endif
-
+int ISimInstance::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -19356(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x800568DC (12 bytes)
 void* ISimInstance::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19376" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x800568E8 (12 bytes)
-unsigned short ISimInstance::GetReadVersion() { return *(unsigned short*)0x8050B466; }  // global variable
-#endif
-
+int ISimInstance::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -19354(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x800569F0 (4 bytes)
 void ISimInstance::CleanupStuff(ERLevel *) { }
 

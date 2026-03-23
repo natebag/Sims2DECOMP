@@ -12,17 +12,11 @@ void REffectsAttachment::GetTypeName() const{ register int __val __asm__("r3"); 
 
 // 0x80322AD0 (12 bytes)
 void REffectsAttachment::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12448(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80322ADC (12 bytes)
-unsigned short REffectsAttachment::GetTypeVersion() const { return *(unsigned short*)0x8050CF64; }  // global variable
-#endif
-
+int REffectsAttachment::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12444(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80322AE8 (12 bytes)
 void* REffectsAttachment::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12464" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80322AF4 (12 bytes)
-unsigned short REffectsAttachment::GetReadVersion() { return *(unsigned short*)0x8050CF66; }  // global variable
-#endif
-
+int REffectsAttachment::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12442(%%r9)" : "=r"(__val) : : "r9"); return __val; }

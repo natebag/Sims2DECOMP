@@ -12,20 +12,14 @@ void EIPortalPointLight::GetTypeName() const{ register int __val __asm__("r3"); 
 
 // 0x8022B050 (12 bytes)
 void EIPortalPointLight::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13184(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x8022B05C (12 bytes)
-unsigned short EIPortalPointLight::GetTypeVersion() const { return *(unsigned short*)0x8050CC84; }  // global variable
-#endif
-
+int EIPortalPointLight::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13180(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8022B068 (12 bytes)
 void* EIPortalPointLight::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13200" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x8022B074 (12 bytes)
-unsigned short EIPortalPointLight::GetReadVersion() { return *(unsigned short*)0x8050CC86; }  // global variable
-#endif
-
+int EIPortalPointLight::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13178(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8022B0F4 (8 bytes)
 void EIPortalPointLight::GetLightType() { return 4; }
 

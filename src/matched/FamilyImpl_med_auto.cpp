@@ -5,5 +5,5 @@
 // 1 functions, 24 bytes
 
 // 0x800B6530 (24 bytes)
-void FamilyImpl::ClearFamily() { *(int*)((char*)this + 0x1C) = 0; *(int*)((char*)this + 0xC) = 0; *(int*)((char*)this + 0x14) = 0; *(int*)((char*)this + 0x18) = 0; }
+void FamilyImpl::ClearFamily() { register int __r0 __asm__("r0") = 0; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x1C) = __r0; *(int*)((char*)this + 0xC) = __r0; *(int*)((char*)this + 0x14) = __r0; *(int*)((char*)this + 0x18) = __r0; }
 

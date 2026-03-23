@@ -17,20 +17,14 @@ void EIFloor::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __v
 
 // 0x80048410 (12 bytes)
 void EIFloor::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18552(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x8004841C (12 bytes)
-unsigned short EIFloor::GetTypeVersion() const { return *(unsigned short*)0x8050B78C; }  // global variable
-#endif
-
+int EIFloor::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18548(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80048428 (12 bytes)
 void* EIFloor::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -18568" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80048434 (12 bytes)
-unsigned short EIFloor::GetReadVersion() { return *(unsigned short*)0x8050B78E; }  // global variable
-#endif
-
+int EIFloor::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18546(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8004850C (4 bytes)
 void EIFloor::Update() { }
 #if 0

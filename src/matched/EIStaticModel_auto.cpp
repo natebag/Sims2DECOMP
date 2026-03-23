@@ -20,14 +20,12 @@ const char* EIStaticModel::GetTypeName() const{ register int __val __asm__("r3")
 u32 EIStaticModel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19440(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022E094 (12 bytes)
-unsigned short EIStaticModel::GetTypeVersion() const { return *(unsigned short*)0x8050B414; }  // global variable
-
+int EIStaticModel::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -19436(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8022E0A0 (12 bytes)
 const ETypeInfo* EIStaticModel::GetTypeInfoStatic() { return (void*)0x8050B400; }  // global data pointer
 
 // 0x8022E0AC (12 bytes)
-unsigned short EIStaticModel::GetReadVersion() { return *(unsigned short*)0x8050B416; }  // global variable
-
+int EIStaticModel::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -19434(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8022E16C (8 bytes)
 void* EIStaticModel::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4
 

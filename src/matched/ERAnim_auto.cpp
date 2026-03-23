@@ -12,20 +12,14 @@ void ERAnim::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __vo
 
 // 0x803680A4 (12 bytes)
 void ERAnim::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10348(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x803680B0 (12 bytes)
-unsigned short ERAnim::GetTypeVersion() const { return *(unsigned short*)0x8050D798; }  // global variable
-#endif
-
+int ERAnim::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10344(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x803680BC (12 bytes)
 void* ERAnim::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10364" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x803680C8 (12 bytes)
-unsigned short ERAnim::GetReadVersion() { return *(unsigned short*)0x8050D79A; }  // global variable
-#endif
-#if 0
+int ERAnim::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10342(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80368178 (8 bytes)
 void* ERAnim::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

@@ -12,20 +12,14 @@ void EREdithTreeSet::GetTypeName() const{ register int __val __asm__("r3"); __as
 
 // 0x8030FBB8 (12 bytes)
 void EREdithTreeSet::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12688(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x8030FBC4 (12 bytes)
-unsigned short EREdithTreeSet::GetTypeVersion() const { return *(unsigned short*)0x8050CE74; }  // global variable
-#endif
-
+int EREdithTreeSet::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12684(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8030FBD0 (12 bytes)
 void* EREdithTreeSet::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12704" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x8030FBDC (12 bytes)
-unsigned short EREdithTreeSet::GetReadVersion() { return *(unsigned short*)0x8050CE76; }  // global variable
-#endif
-
+int EREdithTreeSet::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12682(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8030FC5C (8 bytes)
 void EREdithTreeSet::GetNumTrees() { return *(int*)((char*)this + 0x18); }  // offset 0x18
 

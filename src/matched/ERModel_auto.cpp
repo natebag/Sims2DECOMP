@@ -27,20 +27,14 @@ void ERModel::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __v
 
 // 0x8031B2BC (12 bytes)
 void ERModel::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12568(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x8031B2C8 (12 bytes)
-unsigned short ERModel::GetTypeVersion() const { return *(unsigned short*)0x8050CEEC; }  // global variable
-#endif
-
+int ERModel::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12564(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8031B2D4 (12 bytes)
 void* ERModel::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12584" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x8031B2E0 (12 bytes)
-unsigned short ERModel::GetReadVersion() { return *(unsigned short*)0x8050CEEE; }  // global variable
-#endif
-#if 0
+int ERModel::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12562(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8031B390 (8 bytes)
 void* ERModel::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

@@ -12,20 +12,14 @@ void EResource::GetTypeName() const{ register int __val __asm__("r3"); __asm__ _
 
 // 0x803121B0 (12 bytes)
 void EResource::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12984(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x803121BC (12 bytes)
-unsigned short EResource::GetTypeVersion() const { return *(unsigned short*)0x8050CD4C; }  // global variable
-#endif
-
+int EResource::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12980(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x803121C8 (12 bytes)
 void* EResource::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13000" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x803121D4 (12 bytes)
-unsigned short EResource::GetReadVersion() { return *(unsigned short*)0x8050CD4E; }  // global variable
-#endif
-
+int EResource::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12978(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8031226C (8 bytes)
 void EResource::IsSafeToDelete() { return 1; }
 

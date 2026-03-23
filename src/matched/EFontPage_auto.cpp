@@ -17,10 +17,10 @@ const char* EFontPage::GetTypeName() const{ register int __val __asm__("r3"); __
 u32 EFontPage::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10508(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80364890 (12 bytes)
-unsigned short EFontPage::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10504(%%r9)" : "=r"(__val) : : "r9"); return __val; }
+int EFontPage::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10504(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8036489C (12 bytes)
 const ETypeInfo* EFontPage::GetTypeInfoStatic() { return (void*)0x8050D6E4; }  // global data pointer
 
 // 0x803648A8 (12 bytes)
-unsigned short EFontPage::GetReadVersion() { return *(unsigned short*)0x8050D6FA; }  // global variable
+int EFontPage::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10502(%%r9)" : "=r"(__val) : : "r9"); return __val; }

@@ -5,5 +5,5 @@
 // 1 functions, 40 bytes
 
 // 0x8003E538 (40 bytes)
-void EGlobal::SetAuthorModeCheats() { *(int*)((char*)this + 0x3E4) = 1; *(int*)((char*)this + 0x3BC) = 1; *(int*)((char*)this + 0x3C0) = 1; *(int*)((char*)this + 0x3C8) = 1; *(int*)((char*)this + 0x3DC) = 1; *(int*)((char*)this + 0x3E8) = 1; *(int*)((char*)this + 0x3F0) = 1; *(int*)((char*)this + 0x404) = 1; }
+void EGlobal::SetAuthorModeCheats() { register int __r0 __asm__("r0") = 1; __asm__ __volatile__("" : "+r"(__r0)); *(int*)((char*)this + 0x3E4) = __r0; *(int*)((char*)this + 0x3BC) = __r0; *(int*)((char*)this + 0x3C0) = __r0; *(int*)((char*)this + 0x3C8) = __r0; *(int*)((char*)this + 0x3DC) = __r0; *(int*)((char*)this + 0x3E8) = __r0; *(int*)((char*)this + 0x3F0) = __r0; *(int*)((char*)this + 0x404) = __r0; }
 

@@ -14,14 +14,12 @@ const char* EIDirLight::GetTypeName() const{ register int __val __asm__("r3"); _
 u32 EIDirLight::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13384(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022743C (12 bytes)
-unsigned short EIDirLight::GetTypeVersion() const { return *(unsigned short*)0x8050CBBC; }  // global variable
-
+int EIDirLight::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13380(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80227448 (12 bytes)
 const ETypeInfo* EIDirLight::GetTypeInfoStatic() { return (void*)0x8050CBA8; }  // global data pointer
 
 // 0x80227454 (12 bytes)
-unsigned short EIDirLight::GetReadVersion() { return *(unsigned short*)0x8050CBBE; }  // global variable
-
+int EIDirLight::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13378(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x802274D4 (8 bytes)
 int EIDirLight::GetLightType() { return 2; }
 #if 0

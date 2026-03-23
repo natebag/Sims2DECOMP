@@ -12,11 +12,8 @@ void EAnimNodeDataPos::GetTypeName() const { return *(int*)0x8050D7B8; }  // glo
 
 // 0x803C9818 (12 bytes)
 void EAnimNodeDataPos::GetTypeKey() const { return *(int*)0x8050D7BC; }  // global variable
-#if 0
 
 // 0x803C9824 (12 bytes)
-unsigned short EAnimNodeDataPos::GetTypeVersion() const { return *(unsigned short*)0x8050D7C0; }  // global variable
-#endif
-
+int EAnimNodeDataPos::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10304(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x803CA8CC (16 bytes)
 void EAnimNodeDataPos::Destruct(EAnimNodeDataPos *){ register void* __vt __asm__("r9"); __asm__ __volatile__("lis %0, -32697\n""addi %0, %0, -28472" : "=r"(__vt)); *(void**)((char*)this + 0) = __vt; }

@@ -15,20 +15,14 @@ void ERCharacter::GetTypeName() const{ register int __val __asm__("r3"); __asm__
 
 // 0x80368C5C (12 bytes)
 void ERCharacter::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10228(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80368C68 (12 bytes)
-unsigned short ERCharacter::GetTypeVersion() const { return *(unsigned short*)0x8050D810; }  // global variable
-#endif
-
+int ERCharacter::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10224(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80368C74 (12 bytes)
 void* ERCharacter::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10244" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80368C80 (12 bytes)
-unsigned short ERCharacter::GetReadVersion() { return *(unsigned short*)0x8050D812; }  // global variable
-#endif
-#if 0
+int ERCharacter::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10222(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80368D30 (8 bytes)
 void* ERCharacter::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

@@ -14,11 +14,10 @@ const char* EIGameInstance::GetTypeName() const{ register int __val __asm__("r3"
 u32 EIGameInstance::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13344(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80227820 (12 bytes)
-unsigned short EIGameInstance::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13340(%%r9)" : "=r"(__val) : : "r9"); return __val; }
+int EIGameInstance::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13340(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022782C (12 bytes)
 const ETypeInfo* EIGameInstance::GetTypeInfoStatic() { return (void*)0x8050CBD0; }  // global data pointer
 
 // 0x80227838 (12 bytes)
-unsigned short EIGameInstance::GetReadVersion() { return *(unsigned short*)0x8050CBE6; }  // global variable
-
+int EIGameInstance::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13338(%%r9)" : "=r"(__val) : : "r9"); return __val; }

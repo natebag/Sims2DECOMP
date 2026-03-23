@@ -12,20 +12,14 @@ void EIFenceWall::GetTypeName() const{ register int __val __asm__("r3"); __asm__
 
 // 0x80030730 (12 bytes)
 void EIFenceWall::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -19480(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x8003073C (12 bytes)
-unsigned short EIFenceWall::GetTypeVersion() const { return *(unsigned short*)0x8050B3EC; }  // global variable
-#endif
-
+int EIFenceWall::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -19476(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80030748 (12 bytes)
 void* EIFenceWall::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -19496" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80030754 (12 bytes)
-unsigned short EIFenceWall::GetReadVersion() { return *(unsigned short*)0x8050B3EE; }  // global variable
-#endif
-#if 0
+int EIFenceWall::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -19474(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80030814 (8 bytes)
 void* EIFenceWall::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

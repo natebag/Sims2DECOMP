@@ -15,17 +15,11 @@ void EBoundTreeNode::GetTypeName() const{ register int __val __asm__("r3"); __as
 
 // 0x802C5D4C (12 bytes)
 void EBoundTreeNode::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13024(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x802C5D58 (12 bytes)
-unsigned short EBoundTreeNode::GetTypeVersion() const { return *(unsigned short*)0x8050CD24; }  // global variable
-#endif
-
+int EBoundTreeNode::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13020(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x802C5D64 (12 bytes)
 void* EBoundTreeNode::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -13040" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x802C5D70 (12 bytes)
-unsigned short EBoundTreeNode::GetReadVersion() { return *(unsigned short*)0x8050CD26; }  // global variable
-#endif
-
+int EBoundTreeNode::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13018(%%r9)" : "=r"(__val) : : "r9"); return __val; }

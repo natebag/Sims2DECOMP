@@ -12,20 +12,14 @@ void ERShader::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __
 
 // 0x8032054C (12 bytes)
 void ERShader::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12528(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80320558 (12 bytes)
-unsigned short ERShader::GetTypeVersion() const { return *(unsigned short*)0x8050CF14; }  // global variable
-#endif
-
+int ERShader::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12524(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80320564 (12 bytes)
 void* ERShader::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12544" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80320570 (12 bytes)
-unsigned short ERShader::GetReadVersion() { return *(unsigned short*)0x8050CF16; }  // global variable
-#endif
-#if 0
+int ERShader::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12522(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80320620 (8 bytes)
 void* ERShader::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

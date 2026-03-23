@@ -12,20 +12,14 @@ void REffectsEmitter::GetTypeName() const{ register int __val __asm__("r3"); __a
 
 // 0x8036AC48 (12 bytes)
 void REffectsEmitter::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10068(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x8036AC54 (12 bytes)
-unsigned short REffectsEmitter::GetTypeVersion() const { return *(unsigned short*)0x8050D8B0; }  // global variable
-#endif
-
+int REffectsEmitter::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10064(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8036AC60 (12 bytes)
 void* REffectsEmitter::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10084" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x8036AC6C (12 bytes)
-unsigned short REffectsEmitter::GetReadVersion() { return *(unsigned short*)0x8050D8B2; }  // global variable
-#endif
-
+int REffectsEmitter::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10062(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8036AD78 (8 bytes)
 void REffectsEmitter::GetEmitterInitData() { return *(int*)((char*)this + 0x14); }  // offset 0x14
 

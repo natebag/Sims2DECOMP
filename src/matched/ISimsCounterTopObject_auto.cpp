@@ -14,11 +14,10 @@ const char* ISimsCounterTopObject::GetTypeName() const{ register int __val __asm
 u32 ISimsCounterTopObject::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -18352(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x800542A4 (12 bytes)
-unsigned short ISimsCounterTopObject::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18348(%%r9)" : "=r"(__val) : : "r9"); return __val; }
+int ISimsCounterTopObject::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18348(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x800542B0 (12 bytes)
 const ETypeInfo* ISimsCounterTopObject::GetTypeInfoStatic() { return (void*)0x8050B840; }  // global data pointer
 
 // 0x800542BC (12 bytes)
-unsigned short ISimsCounterTopObject::GetReadVersion() { return *(unsigned short*)0x8050B856; }  // global variable
-
+int ISimsCounterTopObject::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -18346(%%r9)" : "=r"(__val) : : "r9"); return __val; }

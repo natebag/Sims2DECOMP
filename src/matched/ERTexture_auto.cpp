@@ -12,20 +12,14 @@ void ERTexture::GetTypeName() const{ register int __val __asm__("r3"); __asm__ _
 
 // 0x803212C0 (12 bytes)
 void ERTexture::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12488(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x803212CC (12 bytes)
-unsigned short ERTexture::GetTypeVersion() const { return *(unsigned short*)0x8050CF3C; }  // global variable
-#endif
-
+int ERTexture::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12484(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x803212D8 (12 bytes)
 void* ERTexture::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12504" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x803212E4 (12 bytes)
-unsigned short ERTexture::GetReadVersion() { return *(unsigned short*)0x8050CF3E; }  // global variable
-#endif
-#if 0
+int ERTexture::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12482(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80321394 (8 bytes)
 void* ERTexture::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

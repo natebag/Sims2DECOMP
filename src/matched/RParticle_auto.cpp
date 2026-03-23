@@ -12,20 +12,14 @@ void RParticle::GetTypeName() const{ register int __val __asm__("r3"); __asm__ _
 
 // 0x8036C200 (12 bytes)
 void RParticle::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -9988(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x8036C20C (12 bytes)
-unsigned short RParticle::GetTypeVersion() const { return *(unsigned short*)0x8050D900; }  // global variable
-#endif
-
+int RParticle::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -9984(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8036C218 (12 bytes)
 void* RParticle::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10004" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x8036C224 (12 bytes)
-unsigned short RParticle::GetReadVersion() { return *(unsigned short*)0x8050D902; }  // global variable
-#endif
-#if 0
+int RParticle::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -9982(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8036C2D4 (8 bytes)
 void* RParticle::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

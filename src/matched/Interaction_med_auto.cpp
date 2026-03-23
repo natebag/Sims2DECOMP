@@ -5,5 +5,5 @@
 // 1 functions, 36 bytes
 
 // 0x800C1780 (36 bytes)
-void Interaction::SetStackVars(short * val) { *(short*)((char*)this + 0x18) = *(unsigned short*)((char*)val + 0x0); *(short*)((char*)this + 0x1A) = *(unsigned short*)((char*)val + 0x2); *(short*)((char*)this + 0x1C) = *(unsigned short*)((char*)val + 0x4); *(short*)((char*)this + 0x1E) = *(unsigned short*)((char*)val + 0x6); }
+void Interaction::SetStackVars(short * val) { register int __r0 __asm__("r0") = *(unsigned short*)((char*)val + 0x0); __asm__ __volatile__("" : "+r"(__r0)); *(short*)((char*)this + 0x18) = __r0; *(short*)((char*)this + 0x1A) = *(unsigned short*)((char*)val + 0x2); register int __r0b __asm__("r0") = *(unsigned short*)((char*)val + 0x4); __asm__ __volatile__("" : "+r"(__r0b)); *(short*)((char*)this + 0x1C) = __r0b; *(short*)((char*)this + 0x1E) = *(unsigned short*)((char*)val + 0x6); }
 

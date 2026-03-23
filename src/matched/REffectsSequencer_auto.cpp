@@ -21,17 +21,11 @@ void REffectsSequencer::GetTypeName() const{ register int __val __asm__("r3"); _
 
 // 0x8036B178 (12 bytes)
 void REffectsSequencer::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10028(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x8036B184 (12 bytes)
-unsigned short REffectsSequencer::GetTypeVersion() const { return *(unsigned short*)0x8050D8D8; }  // global variable
-#endif
-
+int REffectsSequencer::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10024(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8036B190 (12 bytes)
 void* REffectsSequencer::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10044" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x8036B19C (12 bytes)
-unsigned short REffectsSequencer::GetReadVersion() { return *(unsigned short*)0x8050D8DA; }  // global variable
-#endif
-
+int REffectsSequencer::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10022(%%r9)" : "=r"(__val) : : "r9"); return __val; }

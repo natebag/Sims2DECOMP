@@ -14,14 +14,12 @@ const char* EIPointLight::GetTypeName() const{ register int __val __asm__("r3");
 u32 EIPointLight::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13224(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x8022A584 (12 bytes)
-unsigned short EIPointLight::GetTypeVersion() const { return *(unsigned short*)0x8050CC5C; }  // global variable
-
+int EIPointLight::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13220(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8022A590 (12 bytes)
 const ETypeInfo* EIPointLight::GetTypeInfoStatic() { return (void*)0x8050CC48; }  // global data pointer
 
 // 0x8022A59C (12 bytes)
-unsigned short EIPointLight::GetReadVersion() { return *(unsigned short*)0x8050CC5E; }  // global variable
-
+int EIPointLight::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13218(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x8022A61C (8 bytes)
 int EIPointLight::GetLightType() { return 3; }
 

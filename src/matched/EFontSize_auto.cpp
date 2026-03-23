@@ -14,11 +14,10 @@ const char* EFontSize::GetTypeName() const{ register int __val __asm__("r3"); __
 u32 EFontSize::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10468(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x803649F8 (12 bytes)
-unsigned short EFontSize::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10464(%%r9)" : "=r"(__val) : : "r9"); return __val; }
+int EFontSize::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10464(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80364A04 (12 bytes)
 const ETypeInfo* EFontSize::GetTypeInfoStatic() { return (void*)0x8050D70C; }  // global data pointer
 
 // 0x80364A10 (12 bytes)
-unsigned short EFontSize::GetReadVersion() { return *(unsigned short*)0x8050D722; }  // global variable
-
+int EFontSize::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10462(%%r9)" : "=r"(__val) : : "r9"); return __val; }

@@ -12,12 +12,9 @@ void EStorable::GetTypeName() const { return *(int*)0x8050CC04; }  // global var
 
 // 0x803C1438 (12 bytes)
 void EStorable::GetTypeKey() const { return *(int*)0x8050CC08; }  // global variable
-#if 0
 
 // 0x803C1444 (12 bytes)
-unsigned short EStorable::GetTypeVersion() const { return *(unsigned short*)0x8050CC0C; }  // global variable
-#endif
-#if 0
+int EStorable::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13300(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x803C1484 (4 bytes)
 void EStorable::Read(EStream &) { }

@@ -68,7 +68,7 @@ void InteractorModule::SocialModeInteractor::OnCommandUpdate(InteractorModule::I
 int InteractorModule::SocialModeInteractor::GetSelectionRadius(){ int __val; __asm__ __volatile__("lis %%r9, -32704\n""lfs %0, -8352(%%r9)" : "=r"(__val)); return __val; }
 
 // 0x8021F57C (12 bytes)
-void InteractorModule::SocialModeInteractor::ResetChosenAction() { *(short*)((char*)this + 0x60) = -1; }
+void InteractorModule::SocialModeInteractor::ResetChosenAction() { register int __r0 __asm__("r0") = -1; __asm__ __volatile__("" : "+r"(__r0)); *(short*)((char*)this + 0x60) = __r0; }
 
 // 0x8021F588 (8 bytes)
 int InteractorModule::SocialModeInteractor::GetTimout() { return *(int*)((char*)this + 0x6C); }  // offset 0x6C

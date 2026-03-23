@@ -12,20 +12,14 @@ void ERFlash::GetTypeName() const{ register int __val __asm__("r3"); __asm__ __v
 
 // 0x80313D34 (12 bytes)
 void ERFlash::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -12648(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80313D40 (12 bytes)
-unsigned short ERFlash::GetTypeVersion() const { return *(unsigned short*)0x8050CE9C; }  // global variable
-#endif
-
+int ERFlash::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12644(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80313D4C (12 bytes)
 void* ERFlash::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -12664" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80313D58 (12 bytes)
-unsigned short ERFlash::GetReadVersion() { return *(unsigned short*)0x8050CE9E; }  // global variable
-#endif
-#if 0
+int ERFlash::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -12642(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80313E08 (8 bytes)
 void* ERFlash::operator new(unsigned int, void *) { return (void*)0; }  // mr r3,r4

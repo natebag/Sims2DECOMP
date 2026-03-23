@@ -12,17 +12,11 @@ void ERDataset::GetTypeName() const{ register int __val __asm__("r3"); __asm__ _
 
 // 0x8036984C (12 bytes)
 void ERDataset::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -10188(%%r9)" : "=r"(__val) : : "r9"); return __val; }
-#if 0
 
 // 0x80369858 (12 bytes)
-unsigned short ERDataset::GetTypeVersion() const { return *(unsigned short*)0x8050D838; }  // global variable
-#endif
-
+int ERDataset::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10184(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80369864 (12 bytes)
 void* ERDataset::GetTypeInfoStatic(){ void* __p; __asm__ __volatile__("lis %0, -32688\n""addi %0, %0, -10204" : "=r"(__p)); return __p; }
-#if 0
 
 // 0x80369870 (12 bytes)
-unsigned short ERDataset::GetReadVersion() { return *(unsigned short*)0x8050D83A; }  // global variable
-#endif
-
+int ERDataset::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -10182(%%r9)" : "=r"(__val) : : "r9"); return __val; }

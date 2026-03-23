@@ -14,14 +14,13 @@ const char* EIAmbLight::GetTypeName() const{ register int __val __asm__("r3"); _
 u32 EIAmbLight::GetTypeKey() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lwz %0, -13464(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80226F40 (12 bytes)
-unsigned short EIAmbLight::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13460(%%r9)" : "=r"(__val) : : "r9"); return __val; }
+int EIAmbLight::GetTypeVersion() const{ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13460(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 
 // 0x80226F4C (12 bytes)
 const ETypeInfo* EIAmbLight::GetTypeInfoStatic() { return (void*)0x8050CB58; }  // global data pointer
 
 // 0x80226F58 (12 bytes)
-unsigned short EIAmbLight::GetReadVersion() { return *(unsigned short*)0x8050CB6E; }  // global variable
-
+int EIAmbLight::GetReadVersion(){ register int __val __asm__("r3"); __asm__ __volatile__("lis %%r9, -32688\n""lhz %0, -13458(%%r9)" : "=r"(__val) : : "r9"); return __val; }
 // 0x80226FD8 (8 bytes)
 int EIAmbLight::GetLightType() { return 1; }
 
