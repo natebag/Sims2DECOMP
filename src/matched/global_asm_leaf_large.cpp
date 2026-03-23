@@ -1,12 +1,12 @@
 #include "types.h"
 #include "stub_classes.h"
-// Inline asm leaf matches (large 20-9999B) for global
+// Inline asm leaf matches (extended) for global
 // 19 functions, 2240 bytes
 
 // 0x8039E4FC (112 bytes)
 // SpriteIdToResIdNode * FindRes<SpriteIdToResIdNode>(SpriteIdToResIdNode *, SpriteIdToResIdNode *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_8039E4FC(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_8039E500:\n"
@@ -46,7 +46,7 @@ void FindRes(int, int, int) {
 // 0x803A22D4 (112 bytes)
 // AStringSet * FindRes<AStringSet>(AStringSet *, AStringSet *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803A22D4(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803A22D8:\n"
@@ -86,7 +86,7 @@ void FindRes(int, int, int) {
 // 0x803A2344 (112 bytes)
 // WStringSet * FindRes<WStringSet>(WStringSet *, WStringSet *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803A2344(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803A2348:\n"
@@ -126,7 +126,7 @@ void FindRes(int, int, int) {
 // 0x803A2A4C (96 bytes)
 // AnimRefTable * FindRes<AnimRefTable>(AnimRefTable *, AnimRefTable *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803A2A4C(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803A2A50:\n"
@@ -162,7 +162,7 @@ void FindRes(int, int, int) {
 // 0x803A2AE0 (176 bytes)
 // short * find<short *, short>(short *, short *, short &)
 __attribute__((noreturn))
-void find(int, int, int) {
+void find_803A2AE0(int, int, int) {
     __asm__ __volatile__(
         "subf	0,3,4\n"
         "srawi.	11,0,3\n"
@@ -219,7 +219,7 @@ void find(int, int, int) {
 // 0x803A2DB4 (96 bytes)
 // CatalogData * FindRes<CatalogData>(CatalogData *, CatalogData *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803A2DB4(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803A2DB8:\n"
@@ -255,7 +255,7 @@ void FindRes(int, int, int) {
 // 0x803A3610 (96 bytes)
 // FloatConstantsData * FindRes<FloatConstantsData>(FloatConstantsData *, FloatConstantsData *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803A3610(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803A3614:\n"
@@ -291,7 +291,7 @@ void FindRes(int, int, int) {
 // 0x803A6A0C (176 bytes)
 // int * find<int *, int>(int *, int *, int &)
 __attribute__((noreturn))
-void find(int, int, int) {
+void find_803A6A0C(int, int, int) {
     __asm__ __volatile__(
         "subf	0,3,4\n"
         "srawi.	11,0,4\n"
@@ -348,7 +348,7 @@ void find(int, int, int) {
 // 0x803A869C (112 bytes)
 // ObjFnData * FindRes<ObjFnData>(ObjFnData *, ObjFnData *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803A869C(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803A86A0:\n"
@@ -388,7 +388,7 @@ void FindRes(int, int, int) {
 // 0x803ABB7C (96 bytes)
 // PropRefTable * FindRes<PropRefTable>(PropRefTable *, PropRefTable *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803ABB7C(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803ABB80:\n"
@@ -424,7 +424,7 @@ void FindRes(int, int, int) {
 // 0x803AD650 (96 bytes)
 // SlotDescList * FindRes<SlotDescList>(SlotDescList *, SlotDescList *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803AD650(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803AD654:\n"
@@ -460,7 +460,7 @@ void FindRes(int, int, int) {
 // 0x803ADF68 (96 bytes)
 // SndInfo * FindRes<SndInfo>(SndInfo *, SndInfo *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803ADF68(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803ADF6C:\n"
@@ -496,7 +496,7 @@ void FindRes(int, int, int) {
 // 0x803AE1F0 (112 bytes)
 // TreeTableEntry * FindRes<TreeTableEntry>(TreeTableEntry *, TreeTableEntry *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803AE1F0(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803AE1F4:\n"
@@ -536,7 +536,7 @@ void FindRes(int, int, int) {
 // 0x803AE820 (96 bytes)
 // BehaviorConstants * FindRes<BehaviorConstants>(BehaviorConstants *, BehaviorConstants *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803AE820(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803AE824:\n"
@@ -572,7 +572,7 @@ void FindRes(int, int, int) {
 // 0x803AE8FC (104 bytes)
 // ObjDefinition * * FindResIndirect<ObjDefinition *>(ObjDefinition * *, ObjDefinition * *, int)
 __attribute__((noreturn))
-void FindResIndirect(int, int, int) {
+void FindResIndirect_803AE8FC(int, int, int) {
     __asm__ __volatile__(
         "mr	10,3\n"
         ".L_803AE900:\n"
@@ -610,7 +610,7 @@ void FindResIndirect(int, int, int) {
 // 0x803AF234 (112 bytes)
 // TreeTable * FindRes<TreeTable>(TreeTable *, TreeTable *, int)
 __attribute__((noreturn))
-void FindRes(int, int, int) {
+void FindRes_803AF234(int, int, int) {
     __asm__ __volatile__(
         "mr	11,3\n"
         ".L_803AF238:\n"
@@ -650,7 +650,7 @@ void FindRes(int, int, int) {
 // 0x803BF2D4 (176 bytes)
 // unsigned int * find<unsigned int *, unsigned int>(unsigned int *, unsigned int *, unsigned int &)
 __attribute__((noreturn))
-void find(int, int, int) {
+void find_803BF2D4(int, int, int) {
     __asm__ __volatile__(
         "subf	0,3,4\n"
         "srawi.	11,0,4\n"
@@ -707,7 +707,7 @@ void find(int, int, int) {
 // 0x803C1750 (176 bytes)
 // EInstance ** find<EInstance **, EInstance *>(EInstance **, EInstance **, EInstance * &)
 __attribute__((noreturn))
-void find(int, int, int) {
+void find_803C1750(int, int, int) {
     __asm__ __volatile__(
         "subf	0,3,4\n"
         "srawi.	11,0,4\n"
@@ -764,7 +764,7 @@ void find(int, int, int) {
 // 0x803C774C (88 bytes)
 // float {anonymous}::InterpolateLinear<float>(float, float, float, float, float)
 __attribute__((noreturn))
-void InterpolateLinear(int, int, int, int, int) {
+void InterpolateLinear_803C774C(int, int, int, int, int) {
     __asm__ __volatile__(
         "lis	9,-32702\n"
         "fsubs	11,4,3\n"

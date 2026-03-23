@@ -1,12 +1,12 @@
 #include "types.h"
 #include "stub_classes.h"
-// Inline asm leaf matches (large 20-9999B) for static_init
+// Inline asm leaf matches (extended) for static_init
 // 19 functions, 2296 bytes
 
 // 0x800372D8 (208 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_800372D8() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -68,7 +68,7 @@ void __static_initialization_and_destruction_0() {
 // 0x80039514 (92 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_80039514() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -100,7 +100,7 @@ void __static_initialization_and_destruction_0() {
 // 0x80057738 (248 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_80057738() {
     __asm__ __volatile__(
         "stwu	1,-32(1)\n"
         "stmw	26,8(1)\n"
@@ -171,7 +171,7 @@ void __static_initialization_and_destruction_0() {
 // 0x8006E708 (88 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_8006E708() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -201,7 +201,7 @@ void __static_initialization_and_destruction_0() {
 // 0x8009591C (84 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_8009591C() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -230,7 +230,7 @@ void __static_initialization_and_destruction_0() {
 // 0x8016FB00 (84 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_8016FB00() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -259,7 +259,7 @@ void __static_initialization_and_destruction_0() {
 // 0x801755C4 (164 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_801755C4() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -308,7 +308,7 @@ void __static_initialization_and_destruction_0() {
 // 0x8017578C (132 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_8017578C() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -349,7 +349,7 @@ void __static_initialization_and_destruction_0() {
 // 0x80175934 (132 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_80175934() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -390,7 +390,7 @@ void __static_initialization_and_destruction_0() {
 // 0x801A07A4 (84 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_801A07A4() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -419,7 +419,7 @@ void __static_initialization_and_destruction_0() {
 // 0x802060C8 (80 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_802060C8() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -447,7 +447,7 @@ void __static_initialization_and_destruction_0() {
 // 0x80218E84 (140 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_80218E84() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -490,7 +490,7 @@ void __static_initialization_and_destruction_0() {
 // 0x802D5C50 (104 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_802D5C50() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -524,7 +524,7 @@ void __static_initialization_and_destruction_0() {
 // 0x802F0D1C (84 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_802F0D1C() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -555,7 +555,7 @@ void __static_initialization_and_destruction_0() {
 // 0x802F9A10 (112 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_802F9A10() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -591,7 +591,7 @@ void __static_initialization_and_destruction_0() {
 // 0x803007D8 (84 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_803007D8() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -620,7 +620,7 @@ void __static_initialization_and_destruction_0() {
 // 0x80323A4C (112 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_80323A4C() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -659,7 +659,7 @@ void __static_initialization_and_destruction_0() {
 // 0x80356584 (84 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_80356584() {
     __asm__ __volatile__(
         "li	0,0\n"
         "ori	0,0,65535\n"
@@ -690,7 +690,7 @@ void __static_initialization_and_destruction_0() {
 // 0x80362008 (180 bytes)
 // __static_initialization_and_destruction_0
 __attribute__((noreturn))
-void __static_initialization_and_destruction_0() {
+void __static_initialization_and_destruction_0_80362008() {
     __asm__ __volatile__(
         "stwu	1,-16(1)\n"
         "stmw	30,8(1)\n"

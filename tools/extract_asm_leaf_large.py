@@ -496,7 +496,7 @@ def main():
 
             # Strategy 4: simplified signature with stub_classes
             if not compiled:
-                new_sig = simplify_template_sig(func['signature'], func['comment'])
+                new_sig = simplify_template_sig(func['signature'], func['comment'], func['addr'])
                 if new_sig and new_sig != func['signature']:
                     final_func['signature'] = new_sig
                     src = build_stub_source(final_func)
@@ -596,20 +596,39 @@ def main():
                 if needs_template_decls:
                     # Write template decls only for those funcs, use stub for rest
                     f.write('#include "stub_classes.h"\n')
-                    f.write(f'// Inline asm leaf matches (large {args.min_size}-{args.max_size}B) for {base}\n')
+                    f.write(f'// Inline asm leaf matches (extended) for {base}\n')
                     f.write(f'// {len(funcs)} functions, {total_bytes} bytes\n\n')
                     for decl in sorted(template_decls_set):
                         f.write(decl + '\n')
                 else:
                     f.write('#include "stub_classes.h"\n')
-                    f.write(f'// Inline asm leaf matches (large {args.min_size}-{args.max_size}B) for {base}\n')
+                    f.write(f'// Inline asm leaf matches (extended) for {base}\n')
                     f.write(f'// {len(funcs)} functions, {total_bytes} bytes\n\n')
 
+                # Detect duplicate signatures and make them unique
+                sig_counts = {}
                 for func_info in funcs:
+                    sig = func_info["signature"]
+                    sig_counts[sig] = sig_counts.get(sig, 0) + 1
+
+                for func_info in funcs:
+                    sig = func_info["signature"]
+                    # If this signature appears more than once, add address suffix
+                    if sig_counts[sig] > 1:
+                        addr_suffix = "_" + func_info["addr"].replace("0x", "")
+                        # Insert suffix before the opening paren
+                        paren_idx = sig.find('(')
+                        if paren_idx >= 0:
+                            unique_sig = sig[:paren_idx] + addr_suffix + sig[paren_idx:]
+                        else:
+                            unique_sig = sig + addr_suffix
+                    else:
+                        unique_sig = sig
+
                     f.write(f'// {func_info["addr"]} ({func_info["size"]} bytes)\n')
                     f.write(f'// {func_info["comment"]}\n')
                     f.write('__attribute__((noreturn))\n')
-                    f.write(f'{func_info["signature"]} {{\n')
+                    f.write(f'{unique_sig} {{\n')
                     f.write(f'    __asm__ __volatile__(\n{func_info["asm_body"]}\n    );\n')
                     f.write('}\n\n')
 
