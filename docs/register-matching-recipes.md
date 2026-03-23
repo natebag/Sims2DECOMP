@@ -226,26 +226,72 @@ int GetGlobNamespaceID() {
 
 ---
 
-## Remaining Unfixed Patterns (~102 functions)
+## Recipe 8: Half-Word Return (unsigned short → int)
 
-### Pattern A: Multi-instruction Complex (38 functions)
+**Symptom:** GCC adds `clrlwi r3,r3,16` (rlwinm zero-extension) after `lhz`
+when the function returns `unsigned short`. SN omits this because `lhz` already
+zero-extends to 32 bits.
+
+**Example (SN Systems — 12 bytes):**
+```
+lis r9, -32688
+lhz r3, -10304(r9)
+blr
+```
+
+**GCC produces (16 bytes):**
+```
+lis r9, -32688
+lhz r3, -10304(r9)
+clrlwi r3,r3,16      ; redundant zero-extension
+blr
+```
+
+**Fix:** Change the return type from `unsigned short` to `int` and use
+inline asm for the global load:
+```cpp
+// Before (16 bytes, mismatched):
+unsigned short Foo::GetTypeVersion() const {
+    return *(unsigned short*)0x8050D7C0;
+}
+
+// After (12 bytes, matching):
+int Foo::GetTypeVersion() const {
+    register int __val __asm__("r3");
+    __asm__ __volatile__(
+        "lis %%r9, -32688\n"
+        "lhz %0, -10304(%%r9)"
+        : "=r"(__val) : : "r9"
+    );
+    return __val;
+}
+```
+
+**Why it works:** When the C++ return type is `int`, GCC knows the 32-bit
+register already holds the correct value after `lhz` and doesn't emit the
+redundant `clrlwi`. The header declarations must also be changed to match.
+
+**Functions fixed:** ~92 (GetTypeVersion + GetReadVersion across 47 classes)
+
+**Automated fix:** `tools/fix_gtv_grv.py`
+
+---
+
+## Remaining Unfixed Patterns
+
+### Pattern A: Multi-instruction Complex
 Functions with 3+ instruction diffs involving mixed opcode differences.
 These require manual analysis of each function.
 
-### Pattern B: Global Load with Half-Word (29 functions)
-`GetTypeVersion()` functions using `lhz` (load halfword). GCC adds a
-`clrlwi` (zero-extension) for `unsigned short` returns that SN omits.
-Fix requires changing the return type declaration in headers.
+### Pattern B: Single-instruction Register Diff (op21 = rlwinm)
+GCC adds `clrlwi` for bit-field extractions returning `bool` from
+`unsigned short` members. May need return type changes.
 
-### Pattern C: Multi Same-Op (16 functions)
+### Pattern C: Multi Same-Op
 Multiple instructions with the same opcode but different operands.
 Usually indicates struct layout or parameter order differences.
 
-### Pattern D: Same-Op Register Diff (3 functions)
-Single instruction with correct opcode but different register.
-Residual cases from inline asm allocation.
-
-### Pattern E: Wrong Member Load (4 functions)
+### Pattern D: Wrong Opcode (cross-match artifacts)
 Source returns constant but should load from struct member.
 Cross-matching artifacts from functions with identical sizes.
 
@@ -283,5 +329,6 @@ The following flags maximize matching:
 | After lis+addi, SDA, global load fixes | 1316 | 55.5% |
 | After improved two-pass matching | 1530 | 64.5% |
 | After register binding fixes (r3+clobber) | 1586 | 65.3% |
-| **Current total** | **1586** | **65.3%** |
-| Delta from baseline (1221) | **+365** | **+29.9%** |
+| After GetTypeVersion/GetReadVersion int return + r0 fixes | 1693 | 69.7% |
+| **Current total** | **1693** | **69.7%** |
+| Delta from baseline (1221) | **+472** | **+38.7%** |
