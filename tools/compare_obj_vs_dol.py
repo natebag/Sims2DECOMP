@@ -76,7 +76,7 @@ def main():
     match_list = []
     mismatch_list = []
 
-    for src_file in sorted(matched_dir.glob("*.cpp")):
+    for src_file in sorted(list(matched_dir.glob("*.cpp")) + list(matched_dir.glob("*.c"))):
         with open(src_file, "r") as f:
             content = f.read()
 

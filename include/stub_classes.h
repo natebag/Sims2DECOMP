@@ -71,6 +71,11 @@ typedef unsigned int StringHandle;
 typedef short TreeReturnCode;
 typedef int UIScreenID;
 
+// Additional forward declarations for asm matching
+class EAnimEvent;
+class TArrayERAnimAllocator;
+template <int N> class _Base_bitset;
+
 // Templates
 template <typename T> class AllocPoolManager;
 template <typename T> class AptSharedPtr;
@@ -7469,6 +7474,7 @@ public:
     void IsRoomAtLocation(EVec3 &, int);
     void EvaluateLamps(void);
     void EvaluateLampsOn(void);
+    class RoomData { public: void EvaluateAmbientAndDirectionalLights(void); char _stub_data[256]; };
     char _stub_data[256];
 };
 
@@ -10797,6 +10803,10 @@ public:
     void Mat4SetEulerAngles34(float, float, float, EMat4 &);
     void Mat4Multiply34(EMat4 &, EMat4 &, EMat4 &);
     void Mat4Copy34(EMat4 &, EMat4 &);
+    // Nested classes for asm matching
+    class Effect { public: void DefaultInit(void); void SetParentTransform(EMat4 &); char _stub_data[256]; };
+    class EffectsManager { public: void Render(ERC *); void DeleteAll(void); char _stub_data[256]; };
+    class FastParticleEmitter { public: void DieOnLastFrame_Lifetime(int *, unsigned int); void AllocateParticlePackets(int); char _stub_data[256]; };
     char _stub_data[256];
 };
 
@@ -12924,21 +12934,43 @@ public:
     void CheckNewSimInSocialMode(unsigned int);
     void WMNullFunc(...);
     // Nested classes for ctor matching
+    class DirectInteractor { public: DirectInteractor(); void SendNeutralFreeMoveInput(void); void CancelQueuedActions(void); void ResetIdleTime(void); char _stub_data[256]; };
+    class FloorPainter { public: FloorPainter(); ~FloorPainter(); void OnCommandReleased(int); void IsValidFloorPlacement(CTilePt &, int); void GetSelectedRectPoints(int &, int &, int &, int &); void SwapTools(void); char _stub_data[256]; };
+    class GrabManipulator { public: GrabManipulator(); char _stub_data[256]; };
     class Interactor { public: Interactor(); char _stub_data[256]; };
+    class InteractorInputManager { public: InteractorInputManager(); char _stub_data[256]; };
     class InteractorManager { public: InteractorManager(); char _stub_data[256]; };
     class InteractorResourceSet { public: InteractorResourceSet(); char _stub_data[256]; };
-    class InteractorVisualizer { public: InteractorVisualizer(); char _stub_data[256]; };
+    class InteractorVisualizer { public: InteractorVisualizer(); void GetInteractorResourceSet(int *); char _stub_data[256]; };
+    class ObjectManipulator { public: ObjectManipulator(); char _stub_data[256]; };
+    class PlaceManipulator { public: PlaceManipulator(); char _stub_data[256]; };
+    class PlacementObject { public: PlacementObject(); char _stub_data[256]; };
+    class SimInteractor { public: SimInteractor(); char _stub_data[256]; };
+    class SocialModeInteractor { public: SocialModeInteractor(); char _stub_data[256]; };
     class WallManipulator {
     public:
+        void OnCommandReleased(int);
         class CallbackData { public: CallbackData(); char _stub_data[256]; };
         char _stub_data[256];
     };
+    class WallPainter { public: WallPainter(); char _stub_data[256]; };
     char _stub_data[256];
 };
 
 // Namespace stubs for ctor matching
 namespace BBI {
     class InventoryItems { public: InventoryItems(); char _stub_data[256]; };
+}
+
+namespace EA {
+    class Allocator {
+    public:
+        class GeneralAllocator {
+        public:
+            void FindAndSetNewTopChunk(void);
+            char _stub_data[256];
+        };
+    };
 }
 
 namespace WantFear {
