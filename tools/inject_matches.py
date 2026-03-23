@@ -470,9 +470,12 @@ def compile_matched_sources():
     for src_file in sorted(MATCHED_SRC.glob("*.cpp")):
         obj_file = MATCHED_OBJ / (src_file.stem + ".o")
         # Skip if .o is newer than .cpp
-        if obj_file.exists() and obj_file.stat().st_mtime > src_file.stat().st_mtime:
-            compiled += 1
-            continue
+        try:
+            if obj_file.exists() and obj_file.stat().st_mtime > src_file.stat().st_mtime:
+                compiled += 1
+                continue
+        except (OSError, FileNotFoundError):
+            pass  # Recompile on stat failure
 
         result = subprocess.run(
             [str(CXX)] + cxxflags + ["-c", str(src_file), "-o", str(obj_file)],

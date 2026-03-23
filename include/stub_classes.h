@@ -1356,7 +1356,13 @@ struct EBoundSphere { EVec3 center; float radius; };
 #endif
 #ifndef CTILEPT_DEFINED
 #define CTILEPT_DEFINED
-struct CTilePt { short x, y; };
+struct CTilePt {
+    CTilePt(int);
+    CTilePt(int, int, int);
+    CTilePt(float, float, int);
+    CTilePt(int, int);
+    short x, y;
+};
 #endif
 #ifndef FTILEPT_DEFINED
 #define FTILEPT_DEFINED
@@ -4941,6 +4947,7 @@ public:
     CasSimDescriptionS2C* GetSimDescription();
     CasSimDescriptionS2C* GetStoredSimDescription();
     CasSimState(void);
+    CasSimState(int);
     void GetAdjacentIndex(unsigned char, bool);
     void GetMoreThanOneOption(unsigned char);
     void GetNextAvailableSleeveStyle(eBodyPartS2C, signed char, bool, CasSimPartsS2C &);
@@ -5557,6 +5564,7 @@ public:
     bool IsEmpty() const;
     const char* c_str() const;
     EAStringC();
+    EAStringC(int);
     char _stub_data[256];
 };
 
@@ -5697,7 +5705,7 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
+    int GetTypeVersion(void) const;
     void * GetTypeInfo(void) const;
     char _stub_data[256];
 };
@@ -5861,8 +5869,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void IsBoundTreeNode(EStorable *);
@@ -6486,9 +6494,9 @@ public:
     const ETypeInfo* GetTypeInfo(void) const;
     const char* GetTypeName(void) const;
     u32 GetTypeKey(void) const;
-    u16 GetTypeVersion(void) const;
+    int GetTypeVersion(void) const;
     const ETypeInfo* GetTypeInfoStatic(void);
-    u16 GetReadVersion(void);
+    int GetReadVersion(void);
     void RegisterType(u16 version);
     EFontCharacter* CreateCopy(void) const;
     ~EFontCharacter();
@@ -6509,9 +6517,9 @@ public:
     const ETypeInfo* GetTypeInfo(void) const;
     const char* GetTypeName(void) const;
     u32 GetTypeKey(void) const;
-    u16 GetTypeVersion(void) const;
+    int GetTypeVersion(void) const;
     const ETypeInfo* GetTypeInfoStatic(void);
-    u16 GetReadVersion(void);
+    int GetReadVersion(void);
     void RegisterType(u16 version);
     EFontData* CreateCopy(void) const;
     char _stub_data[256];
@@ -6538,9 +6546,9 @@ public:
     const ETypeInfo* GetTypeInfo(void) const;
     const char* GetTypeName(void) const;
     u32 GetTypeKey(void) const;
-    u16 GetTypeVersion(void) const;
+    int GetTypeVersion(void) const;
     const ETypeInfo* GetTypeInfoStatic(void);
-    u16 GetReadVersion(void);
+    int GetReadVersion(void);
     void RegisterType(u16 version);
     EFontPage* CreateCopy(void) const;
     ~EFontPage();
@@ -6563,9 +6571,9 @@ public:
     const ETypeInfo* GetTypeInfo(void) const;
     const char* GetTypeName(void) const;
     u32 GetTypeKey(void) const;
-    u16 GetTypeVersion(void) const;
+    int GetTypeVersion(void) const;
     const ETypeInfo* GetTypeInfoStatic(void);
-    u16 GetReadVersion(void);
+    int GetReadVersion(void);
     void RegisterType(u16 version);
     EFontSize* CreateCopy(void) const;
     char _stub_data[256];
@@ -6889,9 +6897,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     int GetLightType();
     void CalcLightOnPoint(EVec3 &, EVec3 &);
@@ -6911,9 +6919,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     int GetLightType();
     void SetDir(EVec3& dir);
@@ -6945,8 +6953,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -6977,8 +6985,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     ~EIFloor(void);
@@ -6995,9 +7003,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     EIGameInstance(void);
     ~EIGameInstance(void);
@@ -7017,9 +7025,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     void LightingParameters(EVec3& a, float& b, EVec3& c, EVec3& d);
     void CalcFullIntensityLightOnPoint(EVec3& a, float& b);
@@ -7090,9 +7098,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     EIPointAmbLight(void);
     void Write(EStream &);
@@ -7111,9 +7119,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     int GetLightType();
     void GetPosition(EVec3& pos);
@@ -7152,8 +7160,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void GetLightType(void);
@@ -7169,9 +7177,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     EISpotLight(void);
     void Write(EStream &);
@@ -7231,9 +7239,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     void* operator new(unsigned int size, void* ptr);
     void GetPos(EVec3& pos);
@@ -7252,9 +7260,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     void* operator new(unsigned int size, void* ptr);
     EBoundSphere* GetBoundSphere();
@@ -7319,8 +7327,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void IsDiagonal(void);
@@ -7363,9 +7371,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     void Init();
     void Update();
@@ -8558,8 +8566,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     char _stub_data[256];
@@ -8588,8 +8596,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -8625,8 +8633,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void GetData(void);
@@ -8748,8 +8756,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -8775,8 +8783,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     char _stub_data[256];
@@ -8800,8 +8808,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void GetNumTrees(void);
@@ -8823,8 +8831,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -8860,8 +8868,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -8882,9 +8890,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     EStorable* CreateCopy() const;
     void* operator new(unsigned int size, void* ptr);
     EILight* GetSun();
@@ -9059,8 +9067,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -9191,8 +9199,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -9233,8 +9241,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -9260,8 +9268,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void GetInstruction(unsigned int);
@@ -9358,8 +9366,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -9503,8 +9511,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void IsManaged(void) const;
@@ -9944,8 +9952,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void SetXOb(cXObject *);
@@ -10226,7 +10234,7 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
+    int GetTypeVersion(void) const;
     ~EStorable(void);
     void Write(EStream &);
     void Load(EFile &);
@@ -12386,9 +12394,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     IShrubObject* CreateCopy() const;
     char _stub_data[256];
 };
@@ -12426,8 +12434,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void operator delete(void *);
@@ -12451,9 +12459,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     ISimsCounterTopObject* CreateCopy() const;
     void SetObjOrient();
     ISimsCounterTopObject(void);
@@ -12471,9 +12479,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     ISimsMultiTileObjectModel* CreateCopy() const;
     ISimsMultiTileObjectModel();
     ~ISimsMultiTileObjectModel(void);
@@ -12496,9 +12504,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     ISimsObjectModel* CreateCopy() const;
     void* GetShadow();
     bool GetDynamic();
@@ -12577,9 +12585,9 @@ public:
     const ETypeInfo* GetTypeInfo() const;
     const char* GetTypeName() const;
     u32 GetTypeKey() const;
-    u16 GetTypeVersion() const;
+    int GetTypeVersion() const;
     const ETypeInfo* GetTypeInfoStatic();
-    u16 GetReadVersion();
+    int GetReadVersion();
     ISimsWallObjectModel* CreateCopy() const;
     ISimsWallObjectModel();
     ~ISimsWallObjectModel();
@@ -12915,8 +12923,27 @@ public:
     void IncrementSellCountForObjectGuid(int, vector<int, allocator<int> > &);
     void CheckNewSimInSocialMode(unsigned int);
     void WMNullFunc(...);
+    // Nested classes for ctor matching
+    class Interactor { public: Interactor(); char _stub_data[256]; };
+    class InteractorManager { public: InteractorManager(); char _stub_data[256]; };
+    class InteractorResourceSet { public: InteractorResourceSet(); char _stub_data[256]; };
+    class InteractorVisualizer { public: InteractorVisualizer(); char _stub_data[256]; };
+    class WallManipulator {
+    public:
+        class CallbackData { public: CallbackData(); char _stub_data[256]; };
+        char _stub_data[256];
+    };
     char _stub_data[256];
 };
+
+// Namespace stubs for ctor matching
+namespace BBI {
+    class InventoryItems { public: InventoryItems(); char _stub_data[256]; };
+}
+
+namespace WantFear {
+    class Bookmark { public: Bookmark(unsigned short, short, int*, unsigned short); char _stub_data[256]; };
+}
 
 class Interests {
 public:
@@ -15215,6 +15242,7 @@ class PlacementSpec {
 public:
     PlacementSpec(bool valid);
     PlacementSpec(cXObjectImpl* impl);
+    PlacementSpec(int, int, int, int);
     char _stub_data[256];
 };
 
@@ -15673,8 +15701,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     char _stub_data[256];
@@ -15698,8 +15726,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void Alloc(unsigned long);
@@ -15731,8 +15759,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     char _stub_data[256];
@@ -15784,8 +15812,8 @@ public:
     void SafeDelete(void);
     void GetTypeName(void) const;
     void GetTypeKey(void) const;
-    void GetTypeVersion(void) const;
-    void GetReadVersion(void);
+    int GetTypeVersion(void) const;
+    int GetReadVersion(void);
     void RegisterType(unsigned short);
     void CreateCopy(void) const;
     void* operator new(unsigned int);
@@ -17418,6 +17446,9 @@ public:
 class TileWalls {
 public:
     TileWalls(void);
+    TileWalls(TileWallStorage &);
+    TileWalls(TileWallStorage &, bool, bool, bool, bool);
+    TileWalls(TileWalls &);
     ~TileWalls(void);
     bool HasWall(TileWallsSegment seg) const;
     bool HasWall(void) const;

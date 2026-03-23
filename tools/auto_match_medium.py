@@ -87,6 +87,11 @@ def format_cpp_function_v2(func_name, func_info, return_type, body):
         if needs_names:
             int_idx = 0
             float_idx = 0
+            ref_params = set()  # Track which param names are reference types
+            multi_word_types = {'unsigned int', 'unsigned short', 'unsigned char',
+                                 'unsigned long', 'signed int', 'signed short',
+                                 'signed char', 'signed long', 'long long',
+                                 'unsigned long long', 'long double'}
             for i, p in enumerate(raw_parts):
                 p = p.strip()
                 if not p:
@@ -94,7 +99,9 @@ def format_cpp_function_v2(func_name, func_info, return_type, body):
                 # Check if this param type is float/double
                 is_float_param = p.startswith('float') or p.startswith('double')
                 # Check if it already has a name (word followed by another word)
-                has_name = len(p.split()) > 1 and not p.endswith('*') and not p.endswith('&')
+                # But watch out for multi-word types: "unsigned int", "unsigned short", etc.
+                has_name = (len(p.split()) > 1 and not p.endswith('*') and not p.endswith('&')
+                           and p not in multi_word_types)
                 if has_name:
                     param_parts.append(p)
                 elif is_float_param:
@@ -104,8 +111,21 @@ def format_cpp_function_v2(func_name, func_info, return_type, body):
                 else:
                     name = param_names[int_idx] if int_idx < len(param_names) else f'param{int_idx}'
                     param_parts.append(f'{p} {name}')
+                    # Track if this is a reference type (need &name in body)
+                    if p.rstrip().endswith('&'):
+                        ref_params.add(name)
                     int_idx += 1
             params_decl = ', '.join(param_parts)
+            # Fix body: replace (char*)paramname with (char*)&paramname for reference params
+            for rp in ref_params:
+                body = body.replace(f'(char*){rp} ', f'(char*)&{rp} ')
+                body = body.replace(f'(char*){rp})', f'(char*)&{rp})')
+            # Fix body: replace fp1/fp2/fp3 with fval/fval2/fval3 to match float param names
+            fp_to_fval = {'fp1': 'fval', 'fp2': 'fval2', 'fp3': 'fval3'}
+            for old_fp, new_fp in fp_to_fval.items():
+                if new_fp in params_decl:
+                    body = body.replace(f'= {old_fp};', f'= {new_fp};')
+                    body = body.replace(f'= {old_fp} ', f'= {new_fp} ')
         else:
             params_decl = params
 
@@ -467,20 +487,14 @@ def try_match_field_copy(func_name, insns, func_info):
                 src_base = 'this' if (load_base == 'r3' or load_base == this_reg) else load_base
                 dst_base = 'this' if (base == 'r3' or base == this_reg) else base
 
-                if src_base == 'this' and dst_base == 'this':
+                param_name_map = {'r4': 'val', 'r5': 'val3', 'r6': 'val4', 'r7': 'val5'}
+                src_name = 'this' if src_base == 'this' else param_name_map.get(src_base)
+                dst_name = 'this' if dst_base == 'this' else param_name_map.get(dst_base)
+
+                if src_name and dst_name:
                     statements.append(
-                        f'*({ctype}*)((char*)this + {format_offset(offset)}) = '
-                        f'*({ctype}*)((char*)this + {format_offset(load_off)});'
-                    )
-                elif src_base == 'r4' and dst_base == 'this':
-                    statements.append(
-                        f'*({ctype}*)((char*)this + {format_offset(offset)}) = '
-                        f'*({ctype}*)((char*)val + {format_offset(load_off)});'
-                    )
-                elif src_base == 'this' and dst_base == 'r4':
-                    statements.append(
-                        f'*({ctype}*)((char*)val + {format_offset(offset)}) = '
-                        f'*({ctype}*)((char*)this + {format_offset(load_off)});'
+                        f'*({ctype}*)((char*){dst_name} + {format_offset(offset)}) = '
+                        f'*({ctype}*)((char*){src_name} + {format_offset(load_off)});'
                     )
                 else:
                     return None, None
@@ -817,8 +831,11 @@ def try_match_load_compute_store(func_name, insns, func_info):
                 regs[reg] = ('field_load', ctype, offset + regs[base][1], 'this')
             elif base in regs and regs[base][0] == 'deref_load':
                 regs[reg] = ('triple_deref', ctype, offset, base)
-            elif base == 'r4':
-                regs[reg] = ('param_load', ctype, offset, 'r4')
+            elif base in regs and regs[base][0] == 'lis':
+                full_addr = reconstruct_address(regs[base][1], offset)
+                regs[reg] = ('global_load', ctype, full_addr)
+            elif base in ('r4', 'r5', 'r6', 'r7'):
+                regs[reg] = ('param_load', ctype, offset, base)
             elif base == 'r2':
                 regs[reg] = ('sda2_load', ctype, offset)
             else:
@@ -861,8 +878,9 @@ def try_match_load_compute_store(func_name, insns, func_info):
             elif base in regs and regs[base][0] == 'field_load':
                 # Store through dereferenced pointer
                 base_str = f'deref_{regs[base][2]:X}'
-            elif base == 'r4':
-                base_str = 'val'
+            elif base in ('r4', 'r5', 'r6', 'r7'):
+                param_name_map = {'r4': 'val', 'r5': 'val3', 'r6': 'val4', 'r7': 'val5'}
+                base_str = param_name_map[base]
             else:
                 return None, None
 
@@ -890,7 +908,9 @@ def try_match_load_compute_store(func_name, insns, func_info):
                 elif rv[0] == 'param':
                     val_str = rv[1].replace('r', 'param')
                 elif rv[0] == 'param_load':
-                    val_str = f'*({rv[1]}*)((char*)val + {format_offset(rv[2])})'
+                    param_name_map = {'r4': 'val', 'r5': 'val3', 'r6': 'val4', 'r7': 'val5'}
+                    pname = param_name_map.get(rv[3], 'val') if len(rv) > 3 else 'val'
+                    val_str = f'*({rv[1]}*)((char*){pname} + {format_offset(rv[2])})'
                 elif rv[0] == 'ori_result':
                     # Load + ori = set flag bits
                     src_reg = rv[1]
@@ -944,9 +964,9 @@ def try_match_load_compute_store(func_name, insns, func_info):
                 statements.append(
                     f'*({ctype}*)((char*)this + {format_offset(offset)}) = {val_str};'
                 )
-            elif base_str == 'val':
+            elif base_str in ('val', 'val3', 'val4', 'val5'):
                 statements.append(
-                    f'*({ctype}*)((char*)val + {format_offset(offset)}) = {val_str};'
+                    f'*({ctype}*)((char*){base_str} + {format_offset(offset)}) = {val_str};'
                 )
             elif base_str.startswith('deref_'):
                 off_hex = int(base_str[6:], 16)
