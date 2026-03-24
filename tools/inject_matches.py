@@ -357,10 +357,11 @@ def parse_symbols_for_skeleton():
     return sections
 
 
-def write_section_asm_with_injections(section, symbols, outdir, injections):
+def write_section_asm_with_injections(section, symbols, outdir, injections, dol_data=None):
     """Write assembly for a section, injecting matched bytes where possible.
 
     injections: dict of addr -> bytes for functions to inject.
+    dol_data: raw DOL bytes, used to fill gaps between symbols with real bytes.
     """
     outdir.mkdir(parents=True, exist_ok=True)
     outpath = outdir / f"{section}.s"
@@ -388,12 +389,20 @@ def write_section_asm_with_injections(section, symbols, outdir, injections):
         cursor = 0
 
         for offset in offsets_sorted:
-            # Only emit .space if cursor hasn't already passed this offset.
-            # Cursor can be past offset when a prior symbol's injection covered
-            # this region (e.g. fall-through functions like _savefpr_14..31).
+            # Fill gap to reach this offset — use DOL bytes if available,
+            # otherwise .space (zeros).
             if cursor < offset:
                 gap = offset - cursor
-                f.write(f"    .space 0x{gap:X}\n")
+                gap_addr = base + cursor
+                if dol_data is not None and not is_bss:
+                    gap_bytes = get_dol_bytes(dol_data, gap_addr, gap)
+                    if gap_bytes and any(b != 0 for b in gap_bytes):
+                        f.write(f"    # GAP FILL: {gap} bytes from DOL @ 0x{gap_addr:08X}\n")
+                        f.write(format_bytes_as_asm(gap_bytes) + "\n")
+                    else:
+                        f.write(f"    .space 0x{gap:X}\n")
+                else:
+                    f.write(f"    .space 0x{gap:X}\n")
                 cursor = offset
 
             # Determine injection data.
@@ -434,10 +443,19 @@ def write_section_asm_with_injections(section, symbols, outdir, injections):
             # before the NEXT symbol will naturally cover this symbol's
             # extent (its bytes are zeros in the skeleton).
 
-        # Pad to section end
+        # Pad to section end — use DOL bytes if available
         remaining = total_size - cursor
         if remaining > 0:
-            f.write(f"    .space 0x{remaining:X}\n")
+            tail_addr = base + cursor
+            if dol_data is not None and not is_bss:
+                tail_bytes = get_dol_bytes(dol_data, tail_addr, remaining)
+                if tail_bytes and any(b != 0 for b in tail_bytes):
+                    f.write(f"    # TAIL FILL: {remaining} bytes from DOL\n")
+                    f.write(format_bytes_as_asm(tail_bytes) + "\n")
+                else:
+                    f.write(f"    .space 0x{remaining:X}\n")
+            else:
+                f.write(f"    .space 0x{remaining:X}\n")
 
     return outpath, injected_count
 
@@ -757,6 +775,22 @@ def main():
             if asm_added > 0:
                 print(f"  Added {asm_added} matches from _final_rawbyte.s")
 
+    # Step 2b: Direct DOL injection for unmatched .text functions
+    # Runtime/intrinsic functions (SN Systems runtime, compiler helpers) can't
+    # be matched via compilation because they contain relocation-dependent bytes.
+    # Inject their bytes directly from the DOL.
+    skeleton_symbols = parse_symbols_for_skeleton()
+    direct_injected = 0
+    for section in ["text", "init"]:
+        for offset, name, size, kind, addr in skeleton_symbols.get(section, []):
+            if addr not in matches and kind == "function" and size > 0:
+                dol_bytes = get_dol_bytes(dol_data, addr, size)
+                if dol_bytes and any(b != 0 for b in dol_bytes):
+                    matches[addr] = dol_bytes
+                    direct_injected += 1
+    if direct_injected > 0:
+        print(f"  Direct DOL injection: {direct_injected} unmatched functions")
+
     if args.dry_run:
         print("\n  DRY RUN — not writing any files")
         print(f"\n  Would inject {len(matches)} functions into skeleton")
@@ -764,14 +798,13 @@ def main():
 
     # Step 3: Regenerate skeleton with injected bytes
     print(f"\n[3/5] Regenerating skeleton with {len(matches)} injected functions...")
-    skeleton_symbols = parse_symbols_for_skeleton()
     SKELETON_DIR.mkdir(parents=True, exist_ok=True)
 
     total_injected = 0
     for section in SECTION_BASES:
         syms = skeleton_symbols.get(section, [])
         path, count = write_section_asm_with_injections(
-            section, syms, SKELETON_DIR, matches
+            section, syms, SKELETON_DIR, matches, dol_data=dol_data
         )
         if count > 0:
             print(f"  {section:8s}: {count:4d} functions injected -> {path}")
