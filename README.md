@@ -10,11 +10,11 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 |--------|-------|
 | Byte-identical functions | **18,539 / 18,539 (100%)** |
 | Compiled C++ matches | **11,763 (63.5%)** |
-| Portable C++ code | **9,717 lines** (ready for PC port) |
-| System documentation | **39,505 lines across 27 decomp files** |
+| Portable C++ code | **41,799 lines** (18 files, ready for PC port) |
+| System documentation | **39,505 lines** (27 decomp files) |
 | DolphinSDK real C code | **2,602 lines** (195 functions) |
 | Class struct layouts | **643 classes, 9,910 fields** |
-| Total decompiled code | **51,824 lines** |
+| Total decompiled code | **83,906 lines** |
 | Total symbols in map | 39,037 |
 | Source files | 3,000+ .cpp, .s, .h |
 | Tools | 45+ Python scripts |
