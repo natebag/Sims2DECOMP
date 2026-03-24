@@ -13,8 +13,13 @@ Current milestone: **Milestone 1: FOUNDATION**
 
 ### Phase 1B: Build System
 - [x] Extract symbols from DVD map into dtk format (tools/sn_map_to_dtk.py — 23,068 symbols)
-- [ ] Set up function-level matching verification (`dtk dol diff`)
-- [ ] Create linker script for producing matching DOL
+- [x] Set up function-level matching verification (`dtk dol diff`)
+- [x] Create linker script for producing matching DOL (config/ldscript.lcf)
+- [x] Skeleton generator (tools/gen_skeleton.py) with overlapping symbol handling
+- [x] Inject pipeline (tools/inject_matches.py) — compiles, verifies, injects into skeleton
+- [x] Data section injection — .rodata/.data/.sdata/.sdata2/.ctors filled from DOL
+- [x] Gap filling — inter-symbol padding filled from DOL for 100% match
+- [x] **100% DOL byte match achieved** (4,644,364 / 4,644,364 bytes)
 - [ ] Create CI-ready build script (even if no CI yet)
 - [ ] Document build process in `docs/systems/build-system.md`
 
@@ -42,12 +47,12 @@ compile-and-diff workflow instead.
 ## Lane 3: Boot Decomp
 
 ### Phase 3A: Entry Point
-- [ ] Decompile `__start` (SN Systems crt0)
-- [ ] Decompile `__init_hardware`
-- [ ] Decompile `__premain`
-- [ ] Decompile `__init_vm`
-- [ ] Decompile `__flush_cache`
-- [ ] Verify all boot functions match original DOL
+- [x] `__start` — bytes matching via DOL injection (real C decomp is future work)
+- [x] `__init_hardware` — decompiled in src/boot/__ppc_eabi_init.s
+- [x] `__flush_cache` — decompiled in src/boot/__ppc_eabi_init.s
+- [ ] Decompile `__premain` to portable C
+- [ ] Decompile `__init_vm` to portable C
+- [ ] Decompile `__start` to portable C (currently injected bytes only)
 
 ### Phase 3B: Main Function
 - [ ] Identify and decompile `main()`
@@ -68,3 +73,13 @@ compile-and-diff workflow instead.
 - [ ] Document .NGH file format
 - [ ] Document .tpl texture format
 - [ ] Document .ddf disc descriptor format
+
+## Lane 5: Portable C++ Conversion (ongoing)
+
+The primary work toward a PC port. Convert remaining 1,214 asm_decomp stubs
+to real portable C++ that compiles on both PPC (matching) and x86 (PC port).
+
+### Priority targets (largest remaining asm stubs):
+- [ ] Batch convert remaining asm stubs in src/asm_decomp/
+- [ ] Focus on systems with lowest conversion %: UI/APT (82%), Sim AI (85%), Effects (86%)
+- [ ] Verify converted code compiles clean with `make compile`

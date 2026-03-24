@@ -1,17 +1,40 @@
-# Decomp Progress � Sims 2 GameCube
+# Decomp Progress — Sims 2 GameCube
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
+| DOL byte match | **100.000%** (4,644,364 / 4,644,364) |
 | Total symbols (map) | 36,913 |
-| Functions matching (injected) | 18,471 |
-| .text bytes matching | 3,951,578 / 3,961,920 |
-| .text match % | **99.74%** |
-| Total DOL bytes matching | 4,148,945 / 4,644,364 |
-| Total DOL match % | **89.33%** |
+| Functions injected (matching) | 18,539 |
 | Portable C++ files | 5,012 |
 | Remaining asm stubs | 1,214 |
+| Portable C++ lines | ~1,396,190 |
+| Asm stub lines | ~1,178,431 |
+
+## DOL Section Match (2026-03-24)
+
+| Section | Size | Match |
+|---------|------|-------|
+| .init | 960 | **100%** |
+| .text | 3,961,920 | **100%** |
+| .ctors | 1,056 | **100%** |
+| .rodata | 362,688 | **100%** |
+| .data | 306,176 | **100%** |
+| .sdata | 7,584 | **100%** |
+| .sdata2 | 3,980 | **100%** |
+| **TOTAL** | **4,644,364** | **100%** |
+
+## Portable C++ Conversion Progress
+
+The DOL match is achieved via byte injection from the original binary.
+The real decomp work is converting asm stubs to portable C++ for the PC port.
+
+| Metric | Value |
+|--------|-------|
+| By file count | 80.5% (5,012 / 6,226) |
+| By line count | ~54% (1.4M / 2.57M) |
+| Remaining asm stubs | 1,214 files |
 
 ## By System
 
