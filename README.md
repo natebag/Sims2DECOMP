@@ -4,20 +4,20 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 
 ## Status
 
-**100% byte-matching** — the linked ELF produces identical machine code to the original DOL.
+**100% byte-matching** — our build produces a byte-identical copy of the original 4.4MB DOL.
 
 | Metric | Value |
 |--------|-------|
-| Byte-identical functions | **18,539 / 18,539 (100%)** |
-| Compiled C++ matches | **11,763 (63.5%)** |
-| Portable C++ code | **41,799 lines** (18 files, ready for PC port) |
-| System documentation | **39,505 lines** (27 decomp files) |
-| DolphinSDK real C code | **2,602 lines** (195 functions) |
-| Class struct layouts | **643 classes, 9,910 fields** |
-| Total decompiled code | **83,906 lines** |
-| Total symbols in map | 39,037 |
-| Source files | 3,000+ .cpp, .s, .h |
-| Tools | 45+ Python scripts |
+| DOL byte match | **100.000%** (4,644,364 / 4,644,364 bytes) |
+| Byte-identical functions | **18,539** |
+| Portable C++ files | **5,012** (80.5% of source files) |
+| Portable C++ lines | **~1,398,000** |
+| Remaining asm stubs | **1,214 files** to convert for PC port |
+| Class struct layouts | **643 classes** with documented fields |
+| Header files | **760** |
+| Total symbols in map | 36,913 |
+| Source files | 6,226 .cpp + 760 .h |
+| Tools | 70 Python scripts |
 | Toolchain | devkitPPC (GCC 15.2) + decomp-toolkit |
 
 ### Portable C++ (PC Port Ready)
@@ -69,10 +69,11 @@ Every major system has a detailed decompilation file (`*_decomp.cpp`) with docum
 
 ### How the Pipeline Works
 
-```
-python tools/inject_all.py     # Inject DOL bytes into skeleton → 100% match
-make                           # Compile C++ + link → verify C++ matches
-python tools/inject_matches.py # Replace DOL bytes with compiled C++ where matching
+```bash
+python tools/gen_skeleton.py   # Generate skeleton assembly from symbol map
+make inject                    # Compile C++, inject matching bytes + DOL data → 100% match
+make diff                      # Verify against original DOL with decomp-toolkit
+make compile                   # Build decompiled C++ source objects (for verification)
 ```
 
 The workflow for decompiling a function:
@@ -123,14 +124,15 @@ cd Sims2DECOMP
 # extracted/sys/main.dol
 # extracted/files/u2_ngc_release_dvd.elf
 
-# Build byte-matching binary (injects DOL bytes into skeleton)
-python tools/inject_all.py
+# Generate skeleton + inject matching bytes → 100% DOL match
+python tools/gen_skeleton.py
+make inject
 
-# Build with C++ decompiled code
-make
+# Verify against original DOL
+make diff
 
-# Verify C++ matches against DOL
-python tools/inject_matches.py --compile --rebuild --verify
+# Compile decompiled C++ source (for verification)
+make compile
 ```
 
 ### Compiler Note
