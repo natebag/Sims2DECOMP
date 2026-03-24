@@ -23,8 +23,15 @@
  */
 
 #include "types.h"
-#include <cstring>  // memset, memcpy
-#include <cmath>    // sqrtf, fabsf, sinf, cosf, atan2f
+extern "C" {
+    void* memset(void* dst, int c, unsigned int n);
+    void* memcpy(void* dst, const void* src, unsigned int n);
+    float sqrtf(float x);
+    float fabsf(float x);
+    float sinf(float x);
+    float cosf(float x);
+    float atan2f(float y, float x);
+}
 
 // ============================================================================
 // FORWARD DECLARATIONS

@@ -1,6 +1,165 @@
 // containers_decomp.cpp - Core container and string class decompilation
 // Covers: EString, EString2, BString, BString2, EAStringC,
 //         EHashTable, ERedBlackTree, QuickStringSet, TArray
+
+#include "types.h"
+#include "core/e_string.h"
+#include "core/eaheap.h"
+
+extern "C" {
+    unsigned int strlen(const char* s);
+    int strcmp(const char* a, const char* b);
+    char* strchr(const char* s, int c);
+    void* memcpy(void* dst, const void* src, unsigned int n);
+    void* memset(void* dst, int c, unsigned int n);
+}
+
+// ---- Local struct definitions for types with layouts that differ from ----
+// ---- the auto-generated include/classes/*.h headers. These match the  ----
+// ---- field names revealed by disassembly analysis in this file.        ----
+
+// Forward-declare BString before basic_string_ref (needed for ctor signature)
+class BString;
+
+struct basic_string_ref {
+    char*        m_data;      // 0x00
+    unsigned int m_length;    // 0x04
+    unsigned int m_capacity;  // 0x08
+    int          m_refCount;  // 0x0C
+
+    basic_string_ref(char* src);
+    basic_string_ref(BString& src, unsigned int start, unsigned int len);
+    void delete_ptr(void);
+};
+
+class BString {
+public:
+    basic_string_ref* m_ref;  // 0x00
+
+    static basic_string_ref s_emptyRef;
+
+    BString(void);
+    ~BString(void);
+    int  ref_count(void) const;
+    unsigned int length(void) const;
+    char* point(void);
+    void  delete_ref(void);
+    BString& operator=(BString& src);
+};
+
+struct StringDataC {
+    u16  m_refCount;  // 0x00
+    u8   m_hashValid; // 0x02
+    u8   _pad;        // 0x03
+    u16  m_maxSize;   // 0x04
+    u16  m_hashLow;   // 0x06
+    // char m_buffer[1]; at 0x08
+};
+
+struct EAStringCAllocator {
+    void Free(void* ptr, unsigned int size);
+};
+
+class EAStringC {
+public:
+    StringDataC* m_pData;  // 0x00
+
+    static StringDataC    s_emptyData;
+    static EAStringCAllocator* s_allocator;
+
+    EAStringC(void);
+    EAStringC(EAStringC& src);
+    ~EAStringC(void);
+    EAStringC& operator=(EAStringC& src);
+    bool IsEmpty(void) const;
+    const char* c_str(void) const;
+};
+
+struct EHashTableNode {
+    EHashTableNode* m_globalNext;  // 0x00
+    EHashTableNode* m_globalPrev;  // 0x04
+    EHashTableNode* m_bucketNext;  // 0x08
+    unsigned int    m_key;         // 0x0C
+    unsigned int    m_value;       // 0x10
+};
+
+class EHashTable {
+public:
+    EHashTableNode*  m_head;       // 0x00
+    EHashTableNode*  m_tail;       // 0x04
+    EHashTableNode** m_buckets;    // 0x08
+    unsigned int     m_tableSize;  // 0x0C
+
+    EHashTable(int tableSize);
+    ~EHashTable(void);
+    void InitTable(int tableSize);
+    void ClearTable(void);
+    void RemoveAll(void);
+    void Insert(unsigned int key, unsigned int value, bool allowDuplicates);
+    EHashTableNode* InsertNew(unsigned int bucket, unsigned int key, unsigned int value);
+    EHashTableNode* Find(unsigned int bucket, unsigned int key) const;
+    EHashTableNode* Find(unsigned int key, unsigned int* valueOut) const;
+    int GetSize(void) const;
+};
+
+struct ERedBlackTreeNode {
+    ERedBlackTreeNode* m_left;      // 0x00
+    ERedBlackTreeNode* m_right;     // 0x04
+    ERedBlackTreeNode* m_parent;    // 0x08
+    ERedBlackTreeNode* m_listPrev;  // 0x0C
+    ERedBlackTreeNode* m_listNext;  // 0x10
+    unsigned int       m_color;     // 0x14
+    unsigned int       m_key;       // 0x18
+    unsigned int       m_value;     // 0x1C
+};
+
+class ERedBlackTree {
+public:
+    ERedBlackTreeNode* m_head;  // 0x00
+    ERedBlackTreeNode* m_tail;  // 0x04
+    ERedBlackTreeNode* m_root;  // 0x08
+
+    static ERedBlackTreeNode m_sentinel;
+
+    ERedBlackTree(void);
+    ERedBlackTreeNode* FindKeyOrParent(unsigned int key) const;
+    ERedBlackTreeNode* FindParent(unsigned int key) const;
+    ERedBlackTreeNode* Find(unsigned int key, unsigned int* valueOut) const;
+    ERedBlackTreeNode* Insert(unsigned int key, unsigned int value, bool allowDuplicates);
+    ERedBlackTreeNode* InsertAt(ERedBlackTreeNode* parent, unsigned int key, unsigned int value);
+    void RotateLeft(ERedBlackTreeNode* node);
+    void RotateRight(ERedBlackTreeNode* node);
+    void InsertFixup(ERedBlackTreeNode* node);
+    int GetSize(void) const;
+};
+
+struct StringSetData {
+    void* array;  // pointer to string array
+};
+
+struct QuickStringSetEntry {
+    void* array;  // pointer to string array
+};
+
+extern void** s_QuickStringSet_vtable;
+extern void*  s_nullPointer;
+
+class QuickStringSet {
+public:
+    void**              _vtable;    // 0x00
+    StringSetData*      m_ansiData; // 0x04
+    QuickStringSetEntry* m_entries; // 0x08
+    void*               m_locName; // 0x0C
+    unsigned int        m_refCount; // 0x10
+
+    QuickStringSet(void);
+    ~QuickStringSet(void);
+    int   Count(char langCode);
+    char* GetString(int index, char langCode);
+    void  AddRef(void);
+    void  Release(void);
+};
+
 //
 // These classes are the backbone of the entire codebase. Every system
 // in The Sims 2 GameCube uses one or more of them. Understanding their

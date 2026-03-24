@@ -1145,10 +1145,7 @@ public:
     static const char* in_word_set(const char* str, unsigned int len);
 };
 
-class KeyMembersIndex {
-public:
-    static const char* in_word_set(const char* str, unsigned int len);
-};
+// KeyMembersIndex already defined above
 
 class LoadVarsMembersIndex {
 public:
@@ -1300,6 +1297,20 @@ public:
     int          m_size;        // 0x0C
 
     void Load(void* rawData);
+};
+
+class SlotDescriptor {
+public:
+    u16 m_field_000;
+    u8  _pad_002[2];
+    float m_field_004;
+    float m_field_008;
+    float m_field_00C;
+    unsigned int m_field_010, m_field_014, m_field_018, m_field_01C;
+    unsigned int m_field_020, m_field_024, m_field_028, m_field_02C;
+    unsigned int m_field_030, m_field_034, m_field_038;
+    float m_field_03C;
+    unsigned int m_field_040, m_field_044;
 };
 
 class IFFSlotDescList {

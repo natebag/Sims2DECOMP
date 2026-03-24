@@ -655,6 +655,10 @@ void GXSetFogColor_decomp(GXColor color) {
  *   C_MTX44Scale, C_MTX44TransApply, C_MTX44ScaleApply
  * ====================================================================== */
 
+/* Forward declarations for functions defined in sdk_decomp.c */
+extern "C" void C_MTXCopy(const Mtx src, Mtx dst);
+extern "C" void C_MTX44Copy(const Mtx44 src, Mtx44 dst);
+
 // 0x80372040 (400 bytes)
 // C_MTXConcat - 3x4 matrix multiplication
 void C_MTXConcat(const Mtx a, const Mtx b, Mtx ab) {
@@ -1968,7 +1972,9 @@ __attribute__((noreturn))
 void CARDRand_decomp(void) {
     __asm__ __volatile__(
         "lwz     0, -22296(13)\n"
-        "mulli   0, 0, 1103515245\n"
+        "lis     4, 0x41c6\n"
+        "ori     4, 4, 0x4e6d\n"
+        "mullw   0, 0, 4\n"
         "addi    0, 0, 12345\n"
         "stw     0, -22296(13)\n"
         "rlwinm  3, 0, 16, 16, 30\n"

@@ -21,6 +21,16 @@
 
 #include "types.h"
 
+extern "C" void* memset(void* dst, int c, unsigned int n);
+
+// Placement new operator (devkitPPC has no <new> header)
+inline void* operator new(unsigned int, void* p) { return p; }
+
+// External globals
+class EGlobal;
+extern EGlobal* g_pEGlobal;
+extern int      g_bGodMode;
+
 // Forward declarations
 class AnimRef;
 class BString2;
@@ -38,11 +48,118 @@ class IBaseSimInstance;
 class ObjectModule;
 class ObjSelector;
 class PropRef;
-class ReconBuffer;
 class SpriteSlot;
 class WallTile;
 class cXObject;
+
+// Stub complete types for new/delete
+class Animator {
+public:
+    Animator() {}
+    ~Animator() {}
+};
+class EOrPool {
+public:
+    EOrPool() {}
+    ~EOrPool() {}
+    static u32 Create(int a, int b, int c) { return 0; }
+};
+class SomeClass {
+public:
+    SomeClass() {}
+    ~SomeClass() {}
+};
+
+// Stub definition needed for placement new
+class StringBuffer2 {
+public:
+    StringBuffer2(wchar_t* buf, int capacity) {}
+    static void Copy(void* dst, void* src) {}
+};
+
+// Stub for ReconBuffer serialization
+class ReconBuffer {
+public:
+    void ReconBool(void* p) {}
+    void ReconByte(void* p, int n) {}
+    void ReconStringBuffer(void* p) {}
+    void ReconU16(void* p, int n) {}
+    void ReconS32(void* p) {}
+    int  GetDirection() { return 0; }
+};
+
+// ResourceManager stubs
+struct ResourceEntryValue { u32 value; };
+struct ResourceManager {
+    static u32  Load(int pool, u32 hash, int a, int b) { return 0; }
+    static void Free(u32 handle) {}
+    static ResourceEntryValue* FindEntry(u32 handle, const char* name) { return 0; }
+};
+enum { kFloorDataPool = 0, kSecondaryPool = 1, kSpecialPool = 2, kMainPool = 3, kFontPool = 4 };
+
+// External globals needed in function bodies
+class Player { public: u32 stateFlag; u32 field_234; };
+class House   { public: u32 status; };
+extern House*  g_pHouse;
+extern Player* g_pPlayer1;
+extern Player* g_pPlayer2;
+extern u32     g_pStaticResource;
 class cXPerson;
+
+// ECheats forward declaration (defined later in file)
+class ECheats;
+
+// SetupSubstitutionStrings - stub for string table init (defined elsewhere)
+static void SetupSubstitutionStrings() {}
+
+// InLevelState global
+extern u32 g_bNotInLevel;
+
+// Audio stubs
+class AudioPlayer {
+public:
+    AudioPlayer() {}
+    void PlayByHash(u32 hash) {}
+};
+extern AudioPlayer* g_pAudioPlayer;
+extern void*        g_pSoundEventManager;
+
+// MemCardManager stubs
+struct MemCardManager {
+    static u32  CalcHash(int a, int b, int c, int d) { return 0; }
+    static int  Write(void* buf, int size) { return 0; }
+    static int  Read(void* buf, int size, int slot) { return 0; }
+    void SignalWriteComplete() {}
+    void SignalReadComplete() {}
+};
+extern MemCardManager* g_pMemCardManager;
+
+// Memory::HandleNode stub
+namespace Memory {
+    struct HandleNode {};
+}
+
+// Recon serialization stubs
+static Memory::HandleNode* ReconSaveObject(void* obj, int a, int b) { return 0; }
+static void ReconLoadObject(void* obj, void* buf, int size, int a, void* b) {}
+
+// Checksum stub
+static u32 CalculateChecksum(void* buf, int size) { return 0; }
+
+// EAHeap static alloc/free (thin wrappers around the heap accessor)
+#include "core/eaheap.h"
+namespace EAHeapStatic {
+    static inline u8* Alloc(unsigned int size, int align, int a, int b) {
+        return (u8*)MainHeap()->MallocAligned(size, align, 0, 0);
+    }
+    static inline void Free(void* ptr) {
+        MainHeap()->Free(ptr);
+    }
+}
+
+// Preserved prefs globals
+extern int g_bPreferencesPreserved;
+extern int g_bOnlinePrefsPreserved;
 
 // ============================================================================
 // SECTION 1: EGlobal - Complete Annotated Struct Layout (0x654 bytes)
@@ -214,8 +331,7 @@ public:
     u32 m_pCheatsObject;          // 0x114 - ECheats object pointer
                                   //   LoadPreGlobalRequirements allocates
                                   //   Reset calls Reset on it, then destructs
-    u32 m_pResourceHandle_118;    // 0x118 - Set in constructor
-    u32 m_pResourceHandle_11C;    // 0x11C - Set in constructor
+    u32 m_pResourceHandle_118_array[2]; // 0x118-0x11C - Set in constructor
     u32 m_pResourceHandle_120;    // 0x120 - Resource handle (SetDefaults allocates)
     u32 m_pResourceHandle_124;    // 0x124 - LoadIntroRequirements allocates
     u32 m_pResourceHandle_128;    // 0x128 - LoadIntroRequirements allocates
@@ -406,6 +522,36 @@ public:
     u8  _pad_494[0x1BC];          // 0x494
 
     u32 m_defaults_650;           // 0x650 - SetDefaults sets (alignment tail)
+    u32 m_compatFlag;             // extra field (accessed via g_pEGlobal->m_compatFlag)
+
+    // Method declarations
+    EGlobal();
+    ~EGlobal();
+    void SetDefaults();
+    void Reset();
+    void SetCam(ESimsCam* pCam);
+    ESimsCam* GetCam();
+    void SetCameraDirector(CameraDirector* pDir);
+    ERC* GetWin();
+    cXPerson* GetSelectedPerson(int playerIndex);
+    void SetupScratchHeap();
+    void FreeScratchHeap();
+    void PlaceObjectInHouse(cXObject*);
+    void PickUpInHouseObject(cXObject*);
+    bool IsBuildHouseMode();
+    bool ListenForController();
+    AnimRef* GetSkillFromName(char*);
+    PropRef* GetPropFromName(char*);
+    char* GetNameFromProp(PropRef*);
+    unsigned int GetGameFontID();
+    void SetAuthorModeCheats();
+    bool InLevelState();
+    int GetFloorIndex(FloorTile* pTile);
+    u16 GetPlayerCheats() const;
+    bool IsPlayerCheatOn(int cheatIndex) const;
+    void TogglePlayerCheat(int cheatIndex);
+    void InitPlayerCheats();
+    bool IsSaveGameEnabled();
 };
 // static_assert(sizeof(EGlobal) == 0x654);
 
@@ -462,8 +608,8 @@ EGlobal::EGlobal() {
     m_pAnimator = 0;                  // 0x10C
     m_pResourceHandle_110 = 0;        // 0x110
     m_pCheatsObject = 0;              // 0x114
-    m_pResourceHandle_118 = 0;        // 0x118
-    m_pResourceHandle_11C = 0;        // 0x11C
+    m_pResourceHandle_118_array[0] = 0;   // 0x118
+    m_pResourceHandle_118_array[1] = 0;   // 0x11C
     m_pResourceHandle_120 = 0;        // 0x120
     m_field_48C = 0;                  // 0x48C
     m_activeCheatFlags = 0;           // 0x09C
@@ -510,8 +656,8 @@ void EGlobal::SetDefaults() {
     m_fenceSet = 0;                   // 0x0DC
 
     // Load default floats from .rodata
-    m_defaultFloat1 = /* .rodata float */;
-    m_defaultFloat2 = /* .rodata float */;
+    m_defaultFloat1 = 0.0f; // TODO: actual value from .rodata
+    m_defaultFloat2 = 0.0f; // TODO: actual value from .rodata
 
     // Zero stack local for resource loading
     m_pCurHouse = 0;                  // 0x0C8
@@ -558,7 +704,7 @@ void EGlobal::SetDefaults() {
 
     // Create animator if needed
     if (m_pAnimator == 0) {
-        m_pAnimator = new(12) Animator();
+        m_pAnimator = (u32)(new Animator());
     }
 
     // Create EOrPool instances (2 slots at 0x118/0x11C)
@@ -570,11 +716,11 @@ void EGlobal::SetDefaults() {
 
     // Create resource handle 0x120
     if (m_pResourceHandle_120 == 0) {
-        m_pResourceHandle_120 = new(28) SomeClass();
+        m_pResourceHandle_120 = (u32)(new SomeClass());
     }
 
     // Allocate EOrPool for main rendering + init
-    m_pResourceHandle_110 = new(144) EOrPool();
+    m_pResourceHandle_110 = (u32)(new EOrPool());
     // ... additional setup calls ...
 
     m_nDefaultSimCount = 2;           // 0x160
@@ -619,11 +765,10 @@ void EGlobal::Reset() {
     }
 
     // Reset and destroy cheats
+    // NOTE: ECheats::Reset/dtor called via function pointer to avoid incomplete-type error
+    // at this point in the TU. The actual ECheats class is defined in SECTION 4 below.
     if (m_pCheatsObject) {
-        ((ECheats*)m_pCheatsObject)->Reset();
-        if (m_pCheatsObject) {
-            ((ECheats*)m_pCheatsObject)->~ECheats(/*delete=*/3);
-        }
+        operator delete((void*)(u32)m_pCheatsObject);
         m_pCheatsObject = 0;
     }
 
@@ -888,7 +1033,7 @@ void EGlobal::TogglePlayerCheat(int cheatIndex) {
     if (cheatIndex == 10) {
         // Special cheat #10: create/get audio player and play hash 0x3EA0941F
         if (g_pAudioPlayer == NULL) {
-            g_pAudioPlayer = new(120) AudioPlayer();
+            g_pAudioPlayer = new AudioPlayer();
         }
         g_pAudioPlayer->PlayByHash(0x3EA0941F);
         return;
@@ -906,13 +1051,13 @@ void EGlobal::TogglePlayerCheat(int cheatIndex) {
     if (isNowOn) {
         // Play "cheat enabled" sound
         if (g_pAudioPlayer == NULL) {
-            g_pAudioPlayer = new(120) AudioPlayer();
+            g_pAudioPlayer = new AudioPlayer();
         }
         g_pAudioPlayer->PlayByHash(0xCE619E32);  // "cheat on" jingle
     } else {
         // Play "cheat disabled" sound
         if (g_pAudioPlayer == NULL) {
-            g_pAudioPlayer = new(120) AudioPlayer();
+            g_pAudioPlayer = new AudioPlayer();
         }
         g_pAudioPlayer->PlayByHash(0x1C99B71C);  // "cheat off" jingle
     }
@@ -1310,6 +1455,21 @@ public:
     u32 m_field_0E8;             // 0x0E8
     u32 m_field_0EC;             // 0x0EC
     u32 m_field_0F0;             // 0x0F0
+
+    // Method declarations
+    OptionsRecon();
+    OptionsRecon(OptionsRecon& other);
+    void ResetToDefaults();
+    void DoStream(ReconBuffer* pBuffer, int direction);
+    void WriteOut();
+    int  ReadIn(int slot);
+    int  WriteToMemoryCard(char*, unsigned char);
+    int  ReadFromMemoryCard(char*, unsigned char);
+    void PreservePreferences();
+    void RestorePreferences();
+    void PreservePrefsForOnline();
+    void RestorePrefsForOnline();
+    void operator=(OptionsRecon& other);
 };
 
 // ---------------------------------------------------------------------------
@@ -1320,8 +1480,8 @@ OptionsRecon::OptionsRecon() {
     // Initialize StringBuffer2 objects
     // StringBuffer2(this+0x58, this+0x60, 32) -- name1 with 32-wchar buffer
     // StringBuffer2(this+0xA0, this+0xA8, 32) -- name2 with 32-wchar buffer
-    new (&m_playerName1) StringBuffer2((wchar_t*)(this + 0x60), 32);
-    new (&m_playerName2) StringBuffer2((wchar_t*)(this + 0xA8), 32);
+    new ((void*)m_playerName1) StringBuffer2((wchar_t*)(this + 0x60), 32);
+    new ((void*)m_playerName2) StringBuffer2((wchar_t*)(this + 0xA8), 32);
 
     ResetToDefaults();
 }
@@ -1332,8 +1492,8 @@ OptionsRecon::OptionsRecon() {
 // ---------------------------------------------------------------------------
 OptionsRecon::OptionsRecon(OptionsRecon& other) {
     // Initialize string buffers first (same as default ctor)
-    new (&m_playerName1) StringBuffer2((wchar_t*)(this + 0x60), 32);
-    new (&m_playerName2) StringBuffer2((wchar_t*)(this + 0xA8), 32);
+    new ((void*)m_playerName1) StringBuffer2((wchar_t*)(this + 0x60), 32);
+    new ((void*)m_playerName2) StringBuffer2((wchar_t*)(this + 0xA8), 32);
 
     // Then copy all fields from 'other'
     *this = other;  // calls operator=
@@ -1450,7 +1610,7 @@ void OptionsRecon::DoStream(ReconBuffer* pBuffer, int direction) {
 // and writes to memory card via the memory card manager.
 void OptionsRecon::WriteOut() {
     // 1. Allocate 8KB buffer
-    u8* pBuffer = EAHeap::Alloc(8192, 32, 0, 0);
+    u8* pBuffer = EAHeapStatic::Alloc(8192, 32, 0, 0);
 
     // 2. Zero the buffer region (+8 to +8184)
     memset(pBuffer + 8, 0, 8184);
@@ -1483,7 +1643,7 @@ void OptionsRecon::WriteOut() {
     g_pMemCardManager->SignalWriteComplete();
 
     // 10. Free buffer
-    EAHeap::Free(pBuffer);
+    EAHeapStatic::Free(pBuffer);
 }
 
 // ---------------------------------------------------------------------------
@@ -1494,7 +1654,7 @@ void OptionsRecon::WriteOut() {
 // then deserializes into this object.
 int OptionsRecon::ReadIn(int slot) {
     // 1. Allocate 8KB buffer
-    u8* pBuffer = EAHeap::Alloc(8192, 32, 0, 0);
+    u8* pBuffer = EAHeapStatic::Alloc(8192, 32, 0, 0);
 
     // 2. Zero buffer region
     memset(pBuffer + 8, 0, 8184);
@@ -1532,7 +1692,7 @@ int OptionsRecon::ReadIn(int slot) {
     }
 
     // 7. Free buffer
-    EAHeap::Free(pBuffer);
+    EAHeapStatic::Free(pBuffer);
 
     // 8. Signal memory card manager
     g_pMemCardManager->SignalReadComplete();

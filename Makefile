@@ -109,7 +109,10 @@ SKELETON_OBJS := $(SKELETON_SRCS:.s=.o)
 # Exclude src/asm_decomp/ — those are inline-asm reference files, not compiled by default
 C_SRCS   := $(wildcard src/**/*.c) $(wildcard src/**/**/*.c)
 CXX_SRCS := $(filter-out src/asm_decomp/%, $(wildcard src/**/*.cpp) $(wildcard src/**/**/*.cpp))
-ASM_SRCS := $(wildcard src/**/*.s) $(wildcard src/**/**/*.s)
+# Exclude __ppc_eabi_init.s — its .init section symbols (__init_hardware,
+# __flush_cache) are provided by the skeleton with injected matching bytes.
+# Compiling it separately would duplicate .init content and break symbol placement.
+ASM_SRCS := $(filter-out src/boot/__ppc_eabi_init.s, $(wildcard src/**/*.s) $(wildcard src/**/**/*.s))
 
 # Object files from decompiled sources
 C_OBJS   := $(C_SRCS:src/%.c=$(BUILD_DIR)/obj/%.o)
@@ -117,15 +120,22 @@ CXX_OBJS := $(CXX_SRCS:src/%.cpp=$(BUILD_DIR)/obj/%.o)
 ASM_OBJS := $(ASM_SRCS:src/%.s=$(BUILD_DIR)/obj/%.o)
 DECOMP_OBJS := $(C_OBJS) $(CXX_OBJS) $(ASM_OBJS)
 
-# All objects: decomp first (real code), skeleton last (fills gaps with stubs)
-ALL_OBJS := $(DECOMP_OBJS) $(SKELETON_OBJS)
+# For the final ELF, link ONLY skeleton objects. The skeleton contains all
+# bytes (originals + injected matches). Compiled source objects are used for
+# verification by inject_matches.py but must NOT be linked into the final ELF
+# because their .text/.init/.rodata/.data content would duplicate skeleton content
+# and shift symbol addresses.
+ALL_OBJS := $(SKELETON_OBJS)
 
 #==============================================================================
 # Rules
 #==============================================================================
-.PHONY: all clean diff test skeleton info inject progress
+.PHONY: all clean diff test skeleton info inject progress compile
 
 all: $(OUTPUT_ELF)
+
+# Compile decompiled source objects (for verification by inject_matches.py)
+compile: $(DECOMP_OBJS)
 
 #--- Skeleton generation ---
 

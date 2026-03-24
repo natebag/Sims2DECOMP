@@ -449,6 +449,7 @@ public:
     int GetLastCostume();
     void SetLastCostume(int costume);
     void UpdateAnimationValidity();
+    void updateDiagnosticDisplay();
 
     // Memory management
     void* operator new(u32 size);

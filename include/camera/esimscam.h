@@ -79,6 +79,7 @@ struct CameraMotionSystem {
     void MoveCamera(float dt);
     void SnapCamera();
     void RubberBandMove(float dt);
+    void RubberBandInterpolate(EVec3* result, EVec3 target, float dt);
     void SetRig(EVec3& eye, EVec3& target, EVec3& up);
 };
 
@@ -136,6 +137,7 @@ struct ESimsCam {
     u32 m_interpSocialMode;                 // 0x564
     u32 m_interpLotIntro;                   // 0x568
     void* m_vtable;                         // 0x56C
+    int m_activeNoiseSetting;               // (offset approximate, used in Update)
 
     // Inline zoom/rotAng/tilt accessors into targetParams
     float& zoom()   { return m_targetParams.data[3]; }
@@ -212,6 +214,12 @@ struct ESimsCam {
     void DrawDebug(ERC* rc);
     int CursorNotActive();
     void SetActiveNoiseSetting(CameraNoiseSetting setting);
+    void Update();
+    void FollowPlayerInteractor(int playerId);
+    void FollowSimStiff();
+    int HandleRotation();
+    int HandleZoom();
+    void UpdateWin();
     void ReadControllerZoom();
     void ReadControllerRotation();
 
@@ -253,7 +261,7 @@ struct CameraDirector {
     void AttachDummy(void* dummy, void* mat);
     void InterpToCancelCamera(float time, int type, bool flag);
     void SetFOV(float fov);
-    void CheckCancelled();
+    int CheckCancelled();
     void StartAnim(void* animRef, bool loop, bool flag);
     void UpdateAnimNoteTrack();
     void ProcessPropertyEventTags();
@@ -261,14 +269,21 @@ struct CameraDirector {
     void BlurInterp();
     void ProcessAnimEvents(void* animRef, int startFrame, int endFrame);
     void AnimEventHandler(void* animRef, void* note, int type);
-    void BeginCameraBloomInterp(void* bloomData);
+    void Update();
+    void Interp();
+    void ReleaseCurrentCamera();
+    void CalcCancelCam();
+    void UpdateCameraPosAndFOV();
+    void BeginCameraBloomInterp(CameraBloomDataElement* bloomData);
 };
 
 // CameraManager
 struct CameraManager {
     ESimsCam* m_cameras[4];
 
+    void Update();
     void SetCamera(int index, ESimsCam* cam);
+    ESimsCam* GetCamera(int index);
 };
 
 // ENCamera

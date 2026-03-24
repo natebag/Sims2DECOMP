@@ -61,15 +61,10 @@ class ERC;
 class ERModel;
 class ERShader;
 class EResourceManager;
-class EVec3;
-class Family;
 class Interaction;
-class Neighbor;
 class ObjDefinition;
 class ObjSelector;
 class ObjectModule;
-class ReconBuffer;
-class ResFile;
 class Room;
 class StringBuffer;
 class TreeTable;
@@ -78,8 +73,47 @@ class WrapperPaneBase;
 class cXObject;
 class cXPerson;
 class iResFile;
-struct CTilePt;
 struct ObjectDataID;
+class EMemoryWriteStream;
+
+// Minimal EVec3 stub
+class EVec3 {
+public:
+    float x, y, z;
+};
+
+// Minimal CTilePt stub (tile coordinate point)
+struct CTilePt {
+    short x, y;
+};
+
+// Minimal ReconBuffer stub (serialization buffer)
+class ReconBuffer {
+public:
+    void Recon16(short* val, int count) {}
+    void ReconInt(int* val, int count) {}
+    void ReconBool(bool* val) {}
+    void ReconFloat(float* val, int count) {}
+    void ReconByte(unsigned char* val, int count) {}
+};
+
+// Minimal Family stub
+class Family {
+public:
+    virtual int GetFamilyId() { return 0; }
+};
+
+// Minimal Neighbor stub
+class Neighbor {
+public:
+    Family* GetFamily() { return NULL; }
+};
+
+// Minimal ResFile stub (base class for resource files)
+class ResFile {
+public:
+    virtual ~ResFile() {}
+};
 
 extern EResourceManager* g_pResourceManager;
 extern void*             g_pObjectModule;

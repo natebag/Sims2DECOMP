@@ -79,6 +79,9 @@ public:
     char* m_buffer;         // 0x00 - pointer to heap-allocated null-terminated string
     static char m_null;     // shared null sentinel (1 byte, value 0)
 
+    // --- Constructors ---
+    EString() { SetToNull(); }
+
     // --- Internal buffer management ---
 
     // 0x802D293C (12 bytes)
@@ -275,6 +278,10 @@ struct basic_string_ref {
     u32   m_capacity;   // 0x08 - allocated capacity in chars (not counting null)
     u32   m_refCount;   // 0x0C - reference count (starts at 1)
 
+    // Empty/sentinel constructor
+    basic_string_ref(char* d, u32 l, u32 c, u32 r)
+        : m_data(d), m_length(l), m_capacity(c), m_refCount(r) {}
+
     // 0x8009C914 (188 bytes)
     basic_string_ref(char* src) {
         if (src != NULL) {
@@ -307,7 +314,7 @@ struct basic_string_ref {
 };
 
 // Global shared empty string ref
-static basic_string_ref s_emptyRef = { NULL, 0, 0, 0x7FFFFFFF };
+static basic_string_ref s_emptyRef(NULL, 0, 0, 0x7FFFFFFF);
 static const char s_emptyString[] = "";
 
 class BString {

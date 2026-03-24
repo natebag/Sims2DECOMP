@@ -1195,6 +1195,8 @@ static inline u8&  Ngh_u8(void* self, u32 off)  { return *(u8*)((u8*)self + off)
 
 // ---------- NghResFile::NghResFile ----------
 // Address: 0x8016D2DC, Size: 244 bytes
+static void NghResFile_init(void* self);  // forward declaration
+
 void NghResFile_Ctor(void* self) {
     // Call iResFile base linkage
     // iResFile::Link();

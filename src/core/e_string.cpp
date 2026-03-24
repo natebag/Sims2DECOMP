@@ -61,10 +61,9 @@ EString::EString(char c) {
 // EString::AllocBuffer - 0x802d2974 (52 bytes)
 // NON_MATCHING - Allocates a buffer through MainHeap
 // Original saves r4 (size) in r30, calls MainHeap(), then Malloc(result, r30, 0)
-// Return value stored in this->m_buffer done differently
-void EString::AllocBuffer(int size) {
+char* EString::AllocBuffer(int size) {
     EAHeap* heap = MainHeap();
-    m_buffer = (char*)EAHeap_Malloc(heap, size, 0);
+    return (char*)EAHeap_Malloc(heap, size, 0);
 }
 
 // EString::FreeBuffer - 0x802d29ac (52 bytes)

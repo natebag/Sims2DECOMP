@@ -1,14 +1,17 @@
-# Decomp Progress — Sims 2 GameCube
+# Decomp Progress ï¿½ Sims 2 GameCube
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total symbols | 31,776 |
-| Functions matched | 28,851 |
-| Bytes matched | 6,480,395 / 6,781,133 |
-| % Complete (funcs) | 90.79% |
-| % Complete (bytes) | 95.57% |
+| Total symbols (map) | 36,913 |
+| Functions matching (injected) | 18,471 |
+| .text bytes matching | 3,951,578 / 3,961,920 |
+| .text match % | **99.74%** |
+| Total DOL bytes matching | 4,148,945 / 4,644,364 |
+| Total DOL match % | **89.33%** |
+| Portable C++ files | 5,012 |
+| Remaining asm stubs | 1,214 |
 
 ## By System
 

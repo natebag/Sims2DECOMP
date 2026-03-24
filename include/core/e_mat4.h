@@ -20,8 +20,13 @@ public:
 
     void Mult4x4(EMat4& a, EMat4& b);
     void PreScale(float scale);
+    void PreScale(EVec3& v);
     void PostScale(float scale);
-    void PostTranslate(EVec3& translation);
+    void PostScale(EVec3& v);
+    void PostTranslate(EVec3& v);
+    void PostTranslate(float x, float y, float z);
+    void PreTranslate(EVec3& v);
+    void PreTranslate(float x, float y, float z);
 
     void GetColumn(int col, EVec3& out);
     void GetColumn(int col, EVec4& out);
@@ -31,8 +36,27 @@ public:
     float GetScaleX();
     float GetScaleY();
     float GetScaleZ();
+    float GetMaxScale() const;
 
     EMat4& operator=(EMat4& other);
+    EMat4& operator=(float val);
+
+    void Normalize(void);
+    void Transpose(EMat4& src);
+    void Transpose(void);
+    void Id(void);
+    void Translate(EVec3& v);
+    void Translate(float x, float y, float z);
+    void Scale(EVec3& v);
+    void Scale(float scale);
+    void Scale(float x, float y, float z);
+    void RotateX(float angle);
+    void RotateY(float angle);
+    void RotateZ(float angle);
+    void Clamp(void);
+    void GetHPR(float& heading, float& pitch, float& roll);
+    void OrientPosNormal(EVec3& pos, EVec3& unused, EVec3& normal);
+    void LookAtDirect(EVec3& target, EVec3& up, float scale);
 
     void ExtractAxisRotation(EVec3& axis) const;
     void Print() const;

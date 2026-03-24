@@ -114,34 +114,6 @@
 // ============================================================================
 
 class ERTexture;
-class CasSimDescriptionS2C;
-class CasSimPartsS2C;
-class EFile;
-class ERC;
-class EStream;
-class ERModel;
-class EShader;
-class ESMSStrip;
-class ESMBuildDisplayListData;
-class BSplineVolume;
-class ETexture;
-class ETextureDef;
-class SimModel;
-class SkinCompositor;
-struct EVec2 { float x, y; };
-struct EVec3 { float x, y, z; };
-struct EMat4 { float m[4][4]; };
-struct EBound3 { EVec3 min, max; };
-
-template<class T, class A> class TArray {
-public:
-    T*  m_data;     // +0x00
-    int m_size;     // +0x04
-    int m_capacity; // +0x08
-    void Init();
-    void SetSize(int, int);
-    // ...
-};
 
 // Body part enum (eBodyPartS2C) — 26 values from CAS system
 // Values determined from LoadAllTextureLayers switch cases and GetTextureIDs loop
@@ -176,10 +148,67 @@ enum eBodyPartS2C {
 };
 
 // Skin color / body type enums (from CasSimPartsS2C::GetSkinTextureID)
-enum eSkinColorType { /* light=0, medium=1, dark=2, alien=3 */ };
-enum eBodyTypeS2C   { /* ... */ };
-enum eSimPartsMapLocation { /* head=0, torso=1, legs=2, arms=3 */ };
-enum eTattooTextureTypeS2C { /* 0..2 for 3 tattoo slots */ };
+enum eSkinColorType { eSkinColor_Light = 0, eSkinColor_Medium = 1, eSkinColor_Dark = 2, eSkinColor_Alien = 3 };
+enum eBodyTypeS2C   { eBodyType_Normal = 0, eBodyType_Fit = 1, eBodyType_Heavy = 2 };
+enum eSimPartsMapLocation { eSimPartsMap_Head = 0, eSimPartsMap_Torso = 1, eSimPartsMap_Legs = 2, eSimPartsMap_Arms = 3 };
+enum eTattooTextureTypeS2C { eTattooType_0 = 0, eTattooType_1 = 1, eTattooType_2 = 2 };
+
+// CasSimDescriptionS2C — stub for skin compositor use
+class CasSimDescriptionS2C {
+public:
+    // Generic member access via offset casting
+    u8   m_bodyTypeMorphValues; // at offset 0x84 (gender/bodytype field)
+    u8   m_bodyPartIndex;       // body part model index array base
+    u8   m_bodyPartTextureIdx;  // body part texture index array base
+
+    u32  GetCompositeTextureID(const char* basePath, int quadrant) const { (void)basePath; (void)quadrant; return 0; }
+    void GetCompositeTextureName(char* buf, const char* basePath, int quadrant) const { (void)buf; (void)basePath; (void)quadrant; }
+    u8   GetBodyPartIndex(int part) const { (void)part; return 0; }
+    u8   GetBodyPartTextureIndex(int part) const { (void)part; return 0; }
+};
+
+// CasSimPartsS2C — stub for skin compositor use
+class CasSimPartsS2C {
+public:
+    u32         GetSkinTexturesDatasetID(int skinColor, int bodyType) const { (void)skinColor; (void)bodyType; return 0; }
+    u32         GetSkinTextureID(eSkinColorType skinColor, eBodyTypeS2C bodyType, eSimPartsMapLocation loc) const { (void)skinColor; (void)bodyType; (void)loc; return 0; }
+    int         GetNumBodyModels(int part) const { (void)part; return 0; }
+    void        SetGender(bool isMale) { (void)isMale; }
+    bool        OuterLayerTorsoIsAHood(s8 idx, u32 style) const { (void)idx; (void)style; return false; }
+    bool        OuterLayerCollarIsAHood(s8 idx, u32 style) const { (void)idx; (void)style; return false; }
+    const char* GetBodyPartName(eBodyPartS2C part) const { (void)part; return ""; }
+    u32         GetTextureID(eBodyPartS2C part, CasSimDescriptionS2C* desc, bool unk) const { (void)part; (void)desc; (void)unk; return 0; }
+    u32         GetReflectionTextureID(eBodyPartS2C part, CasSimDescriptionS2C* desc) const { (void)part; (void)desc; return 0; }
+    u32         GetTattooTextureID(eTattooTextureTypeS2C type, s8 slot) const { (void)type; (void)slot; return 0; }
+};
+class EFile;
+class ERC;
+class EStream;
+class ERModel;
+class EShader;
+class ESMSStrip;
+class ESMBuildDisplayListData;
+class BSplineVolume;
+class ETexture;
+class ETextureDef;
+class SimModel;
+class SkinCompositor;
+struct EVec2 { float x, y; };
+struct EVec3 { float x, y, z; };
+struct EMat4 { float m[4][4]; };
+struct EBound3 { EVec3 min, max; };
+
+template<class T, class A> class TArray {
+public:
+    T*  m_data;     // +0x00
+    int m_size;     // +0x04
+    int m_capacity; // +0x08
+    void Init();
+    void SetSize(int, int);
+    // ...
+};
+
+// (enums moved above class definitions — see top of forward declarations block)
 
 // External functions referenced by disassembly
 extern "C" {
@@ -207,23 +236,33 @@ extern "C" {
 //
 // ============================================================================
 
-// SkinCompositor struct layout (0x28 bytes)
-// Reconstructed from field access patterns across all 14 methods.
-//
-// Offset  Type     Name                 Description
-// ------  ----     ----                 -----------
-// 0x00    u16      m_textureSize        Composited texture dimensions (e.g., 128 or 256)
-// 0x02    u8[2]    _pad
-// 0x04    u32      m_hasAlphaChannel    Flag: texture format has alpha (controls blend path)
-// 0x08    void*    m_pScratchTexture    Primary scratch texture (ERTexture*, RGBA8)
-// 0x0C    void*    m_pMaskData          Pixel data for reflection/alpha mask
-// 0x10    u32      m_lowResFlag         0 = hi-res (256x256), 1 = lo-res (128x128)
-// 0x14    void*    m_pSimDescription    CasSimDescriptionS2C* — current Sim's CAS data
-// 0x18    void*    m_pSkinTexture       ERTexture* — the output composited skin texture
-// 0x1C    u8       m_quadrant           Current quadrant being composited (0-3)
-// 0x1D    u8[3]    _pad
-// 0x20    void*    m_pReflectionMask    Reflection mask texture data
-// 0x24    void*    m_pSimParts          CasSimPartsS2C* — body part database
+// SkinCompositor class (0x28 bytes)
+class SkinCompositor {
+public:
+    u16   m_textureSize;     // 0x00
+    u16   _pad_02;           // 0x02
+    u32   m_hasAlphaChannel; // 0x04
+    void* m_pScratchTexture; // 0x08
+    void* m_pMaskData;       // 0x0C
+    u32   m_lowResFlag;      // 0x10
+    void* m_pSimDescription; // 0x14
+    void* m_pSkinTexture;    // 0x18
+    u8    m_quadrant;        // 0x1C
+    u8    _pad_1D[3];        // 0x1D
+    void* m_pReflectionMask; // 0x20
+    void* m_pSimParts;       // 0x24
+
+    void CreateSkin(ERTexture* tex, unsigned char quadrant, CasSimDescriptionS2C* desc, bool lowRes);
+    void InitSkinTexture();
+    void LoadAllTextureLayers();
+    void BlendTexture(eBodyPartS2C bodyPart, u32 texID, u32 reflTexID);
+    void GetTextureIDs(u32& skinTexID, u32* partTexIDs, u32* texIDs2, u32* partReflIDs);
+    void GetFinalReflectionMask();
+    void FinalizeSkinTexture();
+    void InitScratchpadTextures(u32 resolution);
+};
+
+// SkinCompositor struct layout (0x28 bytes) — see class above
 
 
 // ============================================================================
@@ -267,15 +306,9 @@ void SkinCompositor::CreateSkin(ERTexture* tex, unsigned char quadrant,
     // Store lowRes flag in parts too
     // stw r30, 0x0C(parts)
 
-    // Select texture resolution
-    // lhz r11, -21264(r13) — base texture size from global config
-    u16 baseSize;  // from SDA (small data area)
-    u16 multiplier;
-    if (lowRes) {
-        multiplier = *(u16*)(-32202 + r13);  // lo-res multiplier
-    } else {
-        multiplier = *(u16*)(-32204 + r13);  // hi-res multiplier
-    }
+    // Select texture resolution (from SDA-relative globals)
+    u16 baseSize   = 128;  // from SDA at r13-21264
+    u16 multiplier = lowRes ? 1 : 2;  // from SDA at r13-32202 / r13-32204
     u16 resolution = (u16)(baseSize * multiplier);
 
     InitScratchpadTextures(resolution);  // bl 0x80075e8c
@@ -297,14 +330,9 @@ void SkinCompositor::CreateSkin(ERTexture* tex, unsigned char quadrant,
 // ============================================================================
 void SkinCompositor::InitSkinTexture()
 {
-    // Calculate actual size: base config * resolution multiplier
-    u16 configSize = *(u16*)(-21264 + r13);  // global texture size config
-    u16 multiplier;
-    if (m_lowResFlag != 0) {
-        multiplier = *(u16*)(-32202 + r13);  // lo-res
-    } else {
-        multiplier = *(u16*)(-32204 + r13);  // hi-res
-    }
+    // Calculate actual size from SDA-relative globals
+    u16 configSize = 128;  // from SDA at r13-21264
+    u16 multiplier = (m_lowResFlag != 0) ? 1 : 2;  // from SDA
     m_textureSize = (u16)(configSize * multiplier);
 
     m_hasAlphaChannel = 0;
@@ -475,7 +503,7 @@ void SkinCompositor::LoadAllTextureLayers()
 
     // Lock texture for compositing
     void* lockedData = ERTexture_Lock(m_pScratchTexture);
-    u32 savedData = lockedData;
+    void* savedData = lockedData;
 
     // ... vtable call to set write mode ...
     // ... vtable call to get extents ...
@@ -592,14 +620,10 @@ void SkinCompositor::BlendTexture(eBodyPartS2C bodyPart, u32 texID, u32 reflTexI
         }
     }
 
-    // Scale coordinates by resolution multiplier
-    u16 multiplier;
+    // Scale coordinates by resolution multiplier (from SDA globals)
+    u16 multiplier = (m_lowResFlag != 0) ? 1 : 2;
     for (int i = 0; i < 4; i++) {
-        if (m_lowResFlag != 0) {
-            multiplier = *(u16*)(-32202 + r13); // lo-res
-        } else {
-            multiplier = *(u16*)(-32204 + r13); // hi-res
-        }
+        (void)multiplier;
         // Multiply each coordinate component by the multiplier
     }
 

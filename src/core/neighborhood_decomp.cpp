@@ -122,24 +122,203 @@
  *   NotifyAllPersons        0x800D15B0   268B  -- Notify all persons
  */
 
+#include "types.h"
+
+extern "C" void* memset(void* dst, int c, unsigned int n);
+extern "C" void* operator_new(unsigned int size);
+extern "C" void  operator_delete_impl(void* ptr);
+
+// Placement new
+inline void* operator new(unsigned int, void* p) { return p; }
+
 // ============================================================================
-// Forward declarations
+// Forward declarations (incomplete types used only as pointers)
 // ============================================================================
 
-class NeighborhoodImpl;
-class Neighbor;
-class Family;
-class FamilyImpl;
-class PlayerFamilyImpl;
-class HouseImpl;
-class cFixedWorldImpl;
-class HoodManager;
-class NeighborhoodConstants;
 class NghResFile;
 class ReconBuffer;
 class ObjSelector;
 class cXPerson;
 class cSimulator;
+class HouseImpl;
+class HoodManager;
+
+// Family - base class for both FamilyImpl and PlayerFamilyImpl
+class Family {
+public:
+    int  GetCreationOrder()    { return 0; }
+    void SetCreationOrder(int) {}
+    void SetFunds(int)         {}
+    int  GetFunds()            { return 0; }
+    void SetHouseNumber(int)   {}
+    int  GetHouseNumber()      { return 0; }
+    int  GetHouseValue()       { return 0; }
+    void SetJustMovedIn(bool)  {}
+    bool TestMember(int guid)  { return false; }
+    void AddMember(int guid)   {}
+};
+
+// PlayerFamilyImpl stub
+class PlayerFamilyImpl : public Family {
+public:
+    PlayerFamilyImpl(int familyNumber) {}
+};
+
+// ============================================================================
+// Neighbor stub - used as pointer in NeighborhoodImpl methods
+// ============================================================================
+
+class Neighbor {
+public:
+    void** _vtable;
+    u8     _pad[0x10];
+    float  m_field_00C;   // 0x00C character flag
+    u8     _pad2[0x1A8];
+    int GetGUID() { return 0; }
+};
+
+// ============================================================================
+// FamilyImpl - complete class definition for methods defined in this file
+// ============================================================================
+
+struct ENodeList {
+    void* head;
+    void* tail;
+};
+static void ENodeList_Init(ENodeList* list) { list->head = 0; list->tail = 0; }
+extern void** FamilyImpl_vtable;
+
+class FamilyImpl : public Family {
+public:
+    void**    _vtable;       // 0x000
+    ENodeList m_memberList;  // 0x004
+    int       m_houseNumber; // 0x00C? -- initialized to -1
+    int       m_field_00C;   // 0x010
+    int       m_field_014;   // 0x014
+    int       m_field_018;   // 0x018
+    int       m_justMovedIn; // 0x020
+    int       m_field_024;   // 0x024
+    int       m_field_028;   // 0x028
+    int       m_field_02C;   // 0x02C
+    int       m_familyNumber;// 0x030? -- family number assigned at ctor
+    int       m_field_034;   // 0x034
+
+    FamilyImpl(int familyNumber);
+    ~FamilyImpl() {}
+};
+
+// ============================================================================
+// cFixedWorldImpl - complete class definition for methods defined in this file
+// ============================================================================
+
+struct FloorPattern { u8 data[4]; };
+struct TileWallStorage { u8 data[4]; };
+
+extern void** cFixedWorldImpl_vtable;
+extern void** cFixedWorldImpl_Commander_vtable;
+
+class cFixedWorldImpl {
+public:
+    void**         _vtable;
+    u8             _wallData[0x0C];       // 0x004 embedded wall struct
+    void**         _commanderVtable;      // 0x010
+    u8             _pad014[0x14];         // 0x014
+    int            m_xSize;              // embedded (approx 0x014)
+    int            m_ySize;
+    FloorPattern*  m_floorArray;
+    u16*           m_roomArray;
+    u8*            m_flagsArray;
+    void*          m_wallStorageArray;
+    int            m_allocatedX;
+    int            m_allocatedY;
+    int            m_routableMinX;
+    int            m_routableMinY;
+    int            m_routableMaxX;
+    int            m_routableMaxY;
+
+    cFixedWorldImpl(int xSize, int ySize);
+    cFixedWorldImpl() : m_xSize(0), m_ySize(0), m_floorArray(0), m_roomArray(0),
+        m_flagsArray(0), m_wallStorageArray(0), m_allocatedX(0), m_allocatedY(0),
+        m_routableMinX(0), m_routableMinY(0), m_routableMaxX(0), m_routableMaxY(0) {}
+    ~cFixedWorldImpl() {}
+    bool SetSize(int xSize, int ySize, bool preserveData);
+    void DeleteArrays();
+    int  GetMaxSize() { return 64; }
+};
+
+// ============================================================================
+// Simple vector-like container for Family*/Neighbor* pointers
+// ============================================================================
+
+template<typename T>
+struct SimpleVec {
+    T*  m_data;
+    int m_size;
+    int m_cap;
+    SimpleVec() : m_data(0), m_size(0), m_cap(0) {}
+    T* begin() { return m_data; }
+    T* end()   { return m_data + m_size; }
+    void push_back(T val) {}
+};
+
+// Sort helper stub
+static bool SortFamilyByCreation(Family*, Family*) { return false; }
+template<typename It, typename Cmp> static void sort(It, It, Cmp) {}
+
+// ============================================================================
+// NeighborhoodImpl - complete class definition for methods defined in this file
+// ============================================================================
+
+static int s_constantsInitialized = 0;
+extern void** NeighborhoodImpl_vtable;
+extern int    gMoneyForNewFamily;
+
+struct NeighborhoodConstants {
+    static void UpdateConstants() {}
+};
+
+class NeighborhoodImpl {
+public:
+    u8                     _pad000[0x004];
+    s16                    m_numNeighbors;   // 0x004
+    u8                     _pad006[0x006];
+    SimpleVec<Neighbor*>   m_neighborList;   // 0x00C
+    u8                     _pad018[0x034];
+    HouseImpl*             m_houseObject;    // 0x04C
+    cFixedWorldImpl*       m_fixedWorld;     // 0x050
+    u8                     _pad054[0x008];
+    s16                    m_numResidents;   // 0x058
+    u8                     _pad05A[0x002];
+    SimpleVec<Family*>     m_familyList;     // 0x05C
+    u8                     _pad068[0x008];
+    s16                    m_playerFamilyIdx;// 0x06C
+    s16                    m_field_06E;
+    u32                    m_numFamilies;    // 0x070
+    u32                    m_nextNeighborID; // 0x074
+    u32                    m_neighborIDEnd;  // 0x078
+    u8                     _pad07C[0x3CC];
+    int                    m_version;        // ~0x448
+
+    NeighborhoodImpl() {}
+    ~NeighborhoodImpl() {}
+    void Unload() {}
+    int  GetVersion(int v) { return 0; }
+    void RemoveNeighbor(Neighbor* n) {}
+    void UpdateFamilyNumbers() {}
+    Family* GetFamily(int num) { return 0; }
+    Family* GetFamilyInHouse(int lot) { return 0; }
+    Family* BaseMakeNewFamily(bool isPlayer, int num);
+    int     MoveIn(Family* f, int lot);
+    int     AddToFamily(Neighbor* n, Family* f);
+    int     GetFamilyNetWorth(Family* f);
+    void    Load(NghResFile* resFile);
+};
+
+// ReconLoadObject stub
+static int ReconLoadObject(void* obj, void* file, int tag, int ver, void* out) { return 0; }
+// DoContainerStream stub
+template<typename C>
+static int DoContainerStream(C& c, void* file, int tag, int ver, int flags) { return 0; }
 
 // ============================================================================
 // NeighborhoodImpl::Load -- Load neighborhood from file
@@ -185,6 +364,7 @@ void NeighborhoodImpl::Load(NghResFile* resFile) {
 
     // Step 3: Load base NeighborhoodImpl via template
     // ReconLoadObject<NeighborhoodImpl>(this, resFile, tag='NGHB', version=1, &status)
+    int status = 0;
     int loadStatus = ReconLoadObject(this, resFile, 'NGHB', 1, &status);
 
     // Step 4: Read version from loaded data

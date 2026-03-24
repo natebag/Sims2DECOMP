@@ -48,11 +48,33 @@
 //
 // =============================================================================
 
-#include <cstdlib>
-#include <cstring>
-#include <cstdio>
-#include <cstdarg>
-#include <cmath>
+extern "C" {
+    int    rand(void);
+    void*  malloc(unsigned int size);
+    void   free(void* ptr);
+    void*  memcpy(void* dst, const void* src, unsigned int n);
+    void*  memset(void* s, int c, unsigned int n);
+    int    strlen(const char* s);
+    char*  strcpy(char* dst, const char* src);
+    char*  strncpy(char* dst, const char* src, unsigned int n);
+    int    strcmp(const char* a, const char* b);
+    int    strncmp(const char* a, const char* b, unsigned int n);
+    int    sprintf(char* s, const char* fmt, ...);
+    int    snprintf(char* s, unsigned int n, const char* fmt, ...);
+    int    printf(const char* fmt, ...);
+    float  sqrtf(float x);
+    float  fabsf(float x);
+    float  sinf(float x);
+    float  cosf(float x);
+    float  floorf(float x);
+    float  ceilf(float x);
+    float  fmodf(float x, float y);
+    float  atan2f(float y, float x);
+    long   strtol(const char* s, char** end, int base);
+    int    atoi(const char* s);
+    double atof(const char* s);
+    void*  realloc(void* ptr, unsigned int size);
+}
 
 // -- Basic types (matching include/types.h) ----------------------------------
 typedef signed char    s8;

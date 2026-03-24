@@ -513,7 +513,7 @@ void SAnimator2::Update() {
                             // Animation wrapped - process remaining events from old end
                             int remaining = currentTick + intTickAdvance - duration;
                             *(u32*)((char*)this + 0xC8) = 0;
-                            processEvents(*(AnimRef**)((char*)this + 0xD4),
+                            processEvents(**(AnimRef**)((char*)this + 0xD4),
                                           0, remaining,
                                           (m_flags >> 8) & 1, false);
                         }
@@ -522,7 +522,7 @@ void SAnimator2::Update() {
                         *(u32*)((char*)this + 0xC8) = tick;
 
                         u32 prevTick = *(u32*)((char*)this + 0xC8);
-                        processEvents(*(AnimRef**)((char*)this + 0xD4),
+                        processEvents(**(AnimRef**)((char*)this + 0xD4),
                                       prevTick, intTickAdvance,
                                       (m_flags >> 8) & 1, false);
                     }

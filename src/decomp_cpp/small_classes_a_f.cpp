@@ -30,6 +30,7 @@ extern "C" {
     int   strlen(const char* s);
     char* strcpy(char* dst, const char* src);
     int   strcasecmp(const char* a, const char* b);
+    float sqrtf(float x);
 }
 
 class EAHeap;
@@ -44,31 +45,76 @@ extern void* operator_new_impl(unsigned int size);
 extern void  operator_delete_impl(void* ptr);
 
 // Forward declarations
-class AptValue;
-class AptWord;
 class AptVirtualFunctionTable;
 class DOGMA_PoolManager;
 class EMat4;
-class EMutex;
 class ERC;
 class ERModel;
 class EResourceManager;
-class EVec3;
 class EVec4;
 class BloomSettings;
 class TextBlock;
 class TextBaseItem;
 class PaneItem;
-class WrapperPaneBase;
 class BehaviorFinder;
 class ReconBuffer;
 class ResFile;
 class Behavior;
 class StringBuffer;
-class FloatConstantItem;
 class iResFile;
 struct ObjectDataID;
 struct CTilePt;
+
+// Minimal EVec3 stub (3 floats)
+class EVec3 {
+public:
+    float x, y, z;
+};
+
+// Minimal AptValue stub (base for all Apt types)
+class AptValue {
+public:
+    unsigned int m_flags;       // 0x00
+    unsigned int m_refCount;    // 0x04
+    void**       m_vtable;      // 0x08
+    AptValue(int vftIndex) : m_flags(0), m_refCount(0), m_vtable(0) {}
+    AptValue() : m_flags(0), m_refCount(0), m_vtable(0) {}
+    virtual ~AptValue() {}
+};
+
+// Minimal AptWord stub (linked list of words)
+class AptWord {
+public:
+    AptWord* m_next;    // 0x00
+    void Draw(ERC* rc, EMat4* mat, EVec4* color1, EVec4* color2) {}
+    void Destroy(int mode) {}
+};
+
+// Minimal EMutex stub (thread mutex)
+class EMutex {
+public:
+    void Lock(int timeout) {}
+    void Unlock() {}
+};
+
+// Minimal FloatConstantItem stub
+class FloatConstantItem {
+public:
+    const char* m_name;
+    float       m_value;
+};
+
+// Minimal WrapperPaneBase stub (base class for pane wrappers)
+class WrapperPaneBase {
+public:
+    virtual ~WrapperPaneBase() {}
+    void Shutdown() {}
+};
+
+// Forward declarations for Apt pool types (defined below)
+class AptBoolean;
+class AptFloat;
+class AptInteger;
 
 // Globals
 extern DOGMA_PoolManager* g_pDogmaPoolManager;      // r13 - 23020

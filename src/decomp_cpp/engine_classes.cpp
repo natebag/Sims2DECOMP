@@ -122,8 +122,11 @@ class ELights;
 class ELevelDrawData;
 class EOrderTableData;
 class LevelLightingEntry;
+class ERC;
+class EGEVert;
 
 // Animation types
+class EAnimController;
 class ERAnim;
 class EACTrack;
 class EACTrackStreams;

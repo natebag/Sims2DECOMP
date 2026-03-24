@@ -406,27 +406,33 @@ def write_section_asm_with_injections(section, symbols, outdir, injections):
                         inject_data = injections[addr]
                         break
 
-            # Emit labels (always, even if cursor has passed — labels are
-            # position-independent and will point into the prior injection)
-            for name, size, kind, addr in by_offset[offset]:
-                safe_name = sanitize_asm_name(name)
-                anon = is_anon_symbol(name)
-                if not anon:
-                    f.write(f"    .global {safe_name}\n")
-                if kind == "function":
-                    f.write(f"    .type {safe_name}, @function\n")
-                f.write(f"{safe_name}:\n")
-                if kind == "function" and size > 0:
-                    f.write(f"    .size {safe_name}, 0x{size:X}\n")
-                elif kind == "object" and size > 0:
-                    f.write(f"    .size {safe_name}, 0x{size:X}\n")
+            # Emit labels only if cursor hasn't passed this offset.
+            # Overlapping symbols (e.g. internal entry points within a larger
+            # function) can't be placed at their correct address by GAS — they
+            # would end up at the cursor position instead. Skip them.
+            if offset >= cursor:
+                for name, size, kind, addr in by_offset[offset]:
+                    safe_name = sanitize_asm_name(name)
+                    anon = is_anon_symbol(name)
+                    if not anon:
+                        f.write(f"    .global {safe_name}\n")
+                    if kind == "function":
+                        f.write(f"    .type {safe_name}, @function\n")
+                    f.write(f"{safe_name}:\n")
+                    if kind == "function" and size > 0:
+                        f.write(f"    .size {safe_name}, 0x{size:X}\n")
+                    elif kind == "object" and size > 0:
+                        f.write(f"    .size {safe_name}, 0x{size:X}\n")
 
-            # Emit injected bytes
+            # Emit injected bytes if we have a match
             if inject_data is not None and not is_bss:
                 f.write(f"    # INJECTED: {len(inject_data)} bytes matching original DOL\n")
                 f.write(format_bytes_as_asm(inject_data) + "\n")
                 cursor = offset + len(inject_data)
                 injected_count += 1
+            # No injection: don't advance cursor here. The .space gap
+            # before the NEXT symbol will naturally cover this symbol's
+            # extent (its bytes are zeros in the skeleton).
 
         # Pad to section end
         remaining = total_size - cursor
@@ -775,6 +781,74 @@ def main():
             pass
 
     print(f"  Total injected: {total_injected}")
+
+    # Step 3b: Fill data sections with raw DOL bytes
+    # Data sections (.rodata, .data, .sdata, .sdata2, .ctors) don't need
+    # compilation — we just copy the bytes directly from the DOL.
+    # .bss and .sbss are zero-initialized and already correct as .space.
+    DATA_SECTIONS = {"ctors", "rodata", "data", "sdata", "sdata2"}
+    data_filled = 0
+    for section in DATA_SECTIONS:
+        base = SECTION_BASES[section]
+        end_addr = SECTION_ENDS[section]
+        total_size = end_addr - base
+        flags = SECTION_FLAGS[section]
+
+        # Read entire section from DOL
+        section_bytes = get_dol_bytes(dol_data, base, total_size)
+        if section_bytes is None:
+            print(f"  {section:8s}: WARNING - could not read from DOL")
+            continue
+
+        # Rewrite the skeleton .s file with full DOL bytes + symbol labels
+        syms = skeleton_symbols.get(section, [])
+        outpath = SKELETON_DIR / f"{section}.s"
+        with open(outpath, 'w') as f:
+            f.write(f"# Auto-generated skeleton for .{section}\n")
+            f.write(f"# Base: 0x{base:08X}  End: 0x{end_addr:08X}  Size: 0x{total_size:X}\n")
+            f.write(f"# DATA FILLED: entire section from original DOL\n\n")
+            f.write(f"    .section .{section}, {flags}\n\n")
+
+            # Group symbols by offset for label placement
+            by_offset = defaultdict(list)
+            for offset, name, size, kind, addr in syms:
+                by_offset[offset].append((name, size, kind, addr))
+
+            offsets_sorted = sorted(by_offset.keys())
+            cursor = 0
+
+            for offset in offsets_sorted:
+                # Emit bytes from cursor to this offset
+                if cursor < offset:
+                    chunk = section_bytes[cursor:offset]
+                    f.write(format_bytes_as_asm(chunk) + "\n")
+                    cursor = offset
+
+                # Emit labels
+                if offset >= cursor:
+                    for name, size, kind, addr in by_offset[offset]:
+                        safe_name = sanitize_asm_name(name)
+                        anon = is_anon_symbol(name)
+                        if not anon:
+                            f.write(f"    .global {safe_name}\n")
+                        if kind == "function":
+                            f.write(f"    .type {safe_name}, @function\n")
+                        elif kind == "object":
+                            f.write(f"    .type {safe_name}, @object\n")
+                        f.write(f"{safe_name}:\n")
+                        if size > 0:
+                            f.write(f"    .size {safe_name}, 0x{size:X}\n")
+
+            # Emit remaining bytes after last symbol
+            if cursor < total_size:
+                chunk = section_bytes[cursor:total_size]
+                f.write(format_bytes_as_asm(chunk) + "\n")
+
+        data_filled += 1
+        print(f"  {section:8s}: {total_size:,} bytes from DOL -> {outpath}")
+
+    if data_filled > 0:
+        print(f"  Filled {data_filled} data sections from DOL")
 
     # Step 4: Rebuild
     if args.rebuild:

@@ -866,9 +866,10 @@ void CameraDirector::SetFOV(float fov) {
 // camera.obj | 0x8001CD20 | 212 bytes
 // ============================================================================
 // NON_MATCHING: complex control flow
-void CameraDirector::CheckCancelled() {
+int CameraDirector::CheckCancelled() {
     // Check various cancellation conditions
     // If cancelled, transition to cancel camera
+    return 0;
 }
 
 // ============================================================================
@@ -939,7 +940,7 @@ void CameraDirector::AnimEventHandler(void* animRef, void* note, int type) {
 // camera.obj | 0x8001E4C0 | 128 bytes
 // ============================================================================
 // NON_MATCHING: codegen
-void CameraDirector::BeginCameraBloomInterp(void* bloomData) {
+void CameraDirector::BeginCameraBloomInterp(CameraBloomDataElement* bloomData) {
     // Set up bloom interpolation parameters
 }
 
@@ -969,7 +970,7 @@ ESimsCam::ESimsCam() {
 void* ESimsCam::operator new(unsigned int size) {
     void* heap = EAHeap_Get();
     // EAHeap_MallocAligned(heap, size, alignment)
-    return 0; // placeholder
+    return (void*)0; // placeholder — NON_MATCHING
 }
 
 // ============================================================================

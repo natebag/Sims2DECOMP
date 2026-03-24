@@ -19,7 +19,6 @@ class ETypeInfo;
 class EMemoryWriteStream;
 class EStream;
 class EFile;
-class EString;
 class ERC;
 class ERenderSurface;
 class ERShader;
@@ -355,6 +354,16 @@ public:
     virtual ETypeInfo* GetTypeInfo() const = 0;
 };
 
+// Minimal EString stub for local variable usage in EResource methods
+class EString {
+public:
+    char* m_buffer;
+    static char m_null;
+    EString() { m_buffer = &m_null; }
+    void Deallocate(char*) {}
+};
+char EString::m_null = '\0';
+
 // ============================================================================
 // EResource - Reference-counted resource base class
 // ============================================================================
@@ -516,6 +525,8 @@ public:
     char*        m_buffer;     // 0x00
     unsigned int m_capacity;   // 0x04
     // inline char data follows at 0x08
+
+    StringBuffer() : m_buffer(0), m_capacity(0) {}
 
     StringBuffer(char* buffer, unsigned int capacity) {
         m_buffer = buffer;

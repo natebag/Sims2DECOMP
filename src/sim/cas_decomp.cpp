@@ -107,65 +107,247 @@
  */
 
 // ============================================================================
-// Forward declarations
+// Forward declarations and class stubs
 // ============================================================================
 
-class CasSimDescriptionS2C;
-class CasSimPartsS2C;
-class CasGenetics;
-class CasMediator;
-class CasSimState;
-class CASTarget;
-class CASGeneticsTarget;
-class CASSelectionTarget;
-class CASBodyTarget;
-class CASFashionTarget;
-class CASMiscTarget;
-class CASMorphTarget;
-class CASPersonalTarget;
-class CASTattooTarget;
-class CASRoommateTarget;
-class CasNpcEditor;
-class CasScene;
-class CasCostumes;
+// Basic type aliases
+typedef unsigned char  u8;
+typedef unsigned short u16;
+typedef unsigned int   u32;
+typedef signed char    s8;
+typedef signed short   s16;
+typedef signed int     s32;
+
+#ifndef NULL
+#define NULL 0
+#endif
+
+// External C functions
+extern "C" {
+    int  rand(void);
+    void memcpy(void* dst, const void* src, unsigned int n);
+    void memset(void* dst, int val, unsigned int n);
+}
+
+// Skin color blending helper (stub -- actual implementation in CasGenetics asm)
+static s8 BlendSkinColor(unsigned char c1, unsigned char c2) { return (s8)((c1 + c2) / 2); }
+
+// Opaque stub classes (used only as pointers or with new)
+class CasMediator      {};
+class CasSimState      {};
+class CasScene         {};
+class CasCostumes      {};
+
+// Sub-target classes - need complete type for "new" expressions
+class CASSelectionTarget { public: virtual ~CASSelectionTarget() {} };
+class CASBodyTarget      { public: virtual ~CASBodyTarget() {} };
+class CASFashionTarget   { public: virtual ~CASFashionTarget() {} };
+class CASMiscTarget      { public: virtual ~CASMiscTarget() {} };
+class CASMorphTarget     { public: virtual ~CASMorphTarget() {} };
+class CASPersonalTarget  { public: virtual ~CASPersonalTarget() {} };
+class CASTattooTarget    { public: virtual ~CASTattooTarget() {} };
+class CASRoommateTarget  { public: virtual ~CASRoommateTarget() {} };
+class CasNpcEditor       { public: virtual ~CasNpcEditor() {} };
+class UILoader           { public: virtual ~UILoader() {} };
+
+// StringBuffer utility namespace
+namespace StringBuffer {
+    inline void Copy(void* dst, const void* src) {}
+}
+
+// GameData namespace
+namespace GameData {
+    bool SaveCreateAFamily();
+}
+
+// Namespace for CAS globals
+namespace Globs {
+    extern unsigned int* pCASData;
+}
+
+// Global NPC slot data (accessed via r13-relative addressing)
+extern u32 npcSlot1;
+extern u32 npcSlot2;
+extern u32 npcSlot3;
+
+// CasSimDescriptionS2C - per-sim appearance descriptor
+class CasSimDescriptionS2C {
+public:
+    short m_ageGender;              // 0x000
+    unsigned char m_skinColorType;  // 0x002
+    unsigned char m_unused_003;     // 0x003
+    unsigned short m_bodyPartParam_004; // 0x004
+    unsigned short m_unused_006;    // 0x006
+    unsigned int  m_bodyPartParam_008; // 0x008
+    unsigned int  m_bodyPartParam_00C; // 0x00C
+    // 0x010-0x041: personality/interest data
+    unsigned char m_personalityData[0x32]; // 0x010
+    unsigned short m_personalityMarker;    // 0x042
+    unsigned char m_interestData[0x3E];    // 0x044
+    unsigned short m_interestMarker;       // 0x082
+    // body type
+    unsigned int   m_bodyType;          // 0x084
+    unsigned char  m_bodyTypeMorphParam; // 0x088
+    unsigned char  m_unused_089;        // 0x089
+    // body part model/texture indices
+    unsigned char m_headModelIdx;       // 0x08A
+    unsigned char m_headTextureIdx;     // 0x08B
+    unsigned char m_hairModelIdx;       // 0x08C
+    unsigned char m_facialHairModelIdx; // 0x08D
+    unsigned char m_facialHairTextureIdx; // 0x08E
+    unsigned char m_unused_08F;         // 0x08F
+    unsigned int  m_hairColor;          // 0x090
+    unsigned int  m_hairHighlight;      // 0x094
+    unsigned char m_eyeColorModelIdx;   // 0x098
+    unsigned char m_eyeColorTextureIdx; // 0x099
+    unsigned char m_unused_09A[2];      // 0x09A
+    // Inner layer
+    unsigned int  m_innerTorsoStyle;    // 0x09C
+    unsigned int  m_innerSleeveStyle;   // 0x0A0
+    unsigned char m_innerTorsoModelIdx; // 0x0A4
+    unsigned char m_innerTorsoTextureIdx; // 0x0A5
+    unsigned char m_unused_0A6[2];      // 0x0A6
+    // Mid layer
+    unsigned int  m_midTorsoStyle;      // 0x0A8
+    unsigned int  m_midCollarStyle;     // 0x0AC
+    unsigned int  m_midSleeveStyle;     // 0x0B0
+    unsigned char m_midTorsoModelIdx;   // 0x0B4
+    unsigned char m_midTorsoTextureIdx; // 0x0B5
+    unsigned char m_unused_0B6[2];      // 0x0B6
+    // Outer layer
+    unsigned int  m_outerTorsoStyle;    // 0x0B8
+    unsigned int  m_outerCollarStyle;   // 0x0BC
+    unsigned int  m_outerSleeveStyle;   // 0x0C0
+    unsigned char m_outerTorsoModelIdx; // 0x0C4
+    unsigned char m_outerTorsoTextureIdx; // 0x0C5
+    unsigned char m_unused_0C6[2];      // 0x0C6
+    // Lower body
+    unsigned int  m_lowerBodyStyle;     // 0x0C8
+    unsigned char m_lowerBodyModelIdx;  // 0x0CC
+    unsigned char m_lowerBodyTextureIdx; // 0x0CD
+    unsigned char m_unused_0CE[2];      // 0x0CE
+    unsigned int  m_bootTopDisplayed;   // 0x0D0
+    unsigned char m_shoeModelIdx;       // 0x0D4
+    unsigned char m_hatModelIdx;        // 0x0D5
+    unsigned char m_hatTextureIdx;      // 0x0D6
+    unsigned char m_unused_0D7;         // 0x0D7
+    unsigned int  m_hatStyle;           // 0x0D8
+    unsigned char m_glassesModelIdx;    // 0x0DC
+    unsigned char m_glassesTextureIdx;  // 0x0DD
+    unsigned char m_unused_0DE[2];      // 0x0DE
+    unsigned int  m_field_0E0;          // 0x0E0
+    unsigned int  m_field_0E4;          // 0x0E4
+    unsigned char m_armAccessoryModelIdx;   // 0x0E8
+    unsigned char m_armAccessoryTextureIdx; // 0x0E9
+    unsigned char m_bootTopModelIdx;    // 0x0EA
+    unsigned char m_bootTopTextureIdx;  // 0x0EB
+    unsigned int  m_field_0EC;          // 0x0EC
+    unsigned char m_tattooModelIdx;     // 0x0F0
+    unsigned char m_tattooTextureIdx;   // 0x0F1
+    unsigned char m_unused_0F2[6];      // 0x0F2
+    // Morph values
+    float m_morphNoseWidth;             // 0x0F8
+    float m_morphNoseLength;            // 0x0FC
+    float m_morphChinShape;             // 0x100
+    float m_morphCheekWidth;            // 0x104
+    float m_morphEyeSpacing;            // 0x108
+    float m_morphEyeSize;               // 0x10C
+    float m_morphLipWidth;              // 0x110
+    float m_morphJawWidth;              // 0x114
+    unsigned int m_field_118;           // 0x118
+
+    void ClearSim(bool isFemale);
+    void InitializeToDefaultCostume(bool isMale);
+};
+
+// eBodyPartS2C must be defined before CasSimPartsS2C uses it
+enum eBodyPartS2C {
+    kBodyPart_Head          = 0,
+    kBodyPart_Hair          = 1,
+    kBodyPart_FacialHair    = 2,
+    kBodyPart_EyeColor      = 6,
+    kBodyPart_Eyebrows      = 7,
+    kBodyPart_Glasses       = 8,
+    kBodyPart_InnerTorso    = 12,
+    kBodyPart_InnerCollar   = 13,
+    kBodyPart_InnerSleeve   = 14,
+    kBodyPart_MidTorso      = 15,
+    kBodyPart_MidCollar     = 16,
+    kBodyPart_MidSleeve     = 17,
+    kBodyPart_OuterTorso    = 18,
+    kBodyPart_OuterCollar   = 19,
+    kBodyPart_OuterSleeve   = 20,
+    kBodyPart_LowerBody     = 21,
+    kBodyPart_Shoes         = 22,
+    kBodyPart_Hat           = 23,
+    kBodyPart_ArmAccessory  = 24,
+    kBodyPart_BootTop       = 25,
+    kBodyPart_COUNT
+};
+
+// CasSimPartsS2C - static catalog of body parts
+class CasSimPartsS2C {
+public:
+    void** _vtable;     // 0x000
+    void*  m_partsData; // 0x004
+
+    int  GetNumBodyModels(eBodyPartS2C part) const;
+    void SetGender(bool isMale);
+};
+
+// CasGenetics - genetic blending system
+class CasGenetics {
+public:
+    void BlendSimDescriptions(
+        CasSimDescriptionS2C& parent1,
+        CasSimDescriptionS2C& parent2,
+        CasSimDescriptionS2C& output,
+        bool isMale);
+};
+
+// CASGeneticsTarget - genetics screen controller
+class CASGeneticsTarget {
+public:
+    void* m_parent1Texture;  // 0x414
+    void* m_parent2Texture;  // 0x418
+    static int s_GenerateState;
+    void BeginGenerate();
+    void SetGrandparentIndex(int slot, int idx);
+};
+int CASGeneticsTarget::s_GenerateState = 0;
+
+// CASTarget - top-level CAS controller
+class CASTarget {
+public:
+    int    m_casMode;           // 0x104
+    int    m_hasSimBitmask;     // 0x1348
+    void*  m_casScene;          // 0x1350
+    CasNpcEditor* m_npcEditor;  // 0x1354
+    CASGeneticsTarget* m_geneticsTarget;
+    CASMorphTarget*    m_morphTarget;
+    CASBodyTarget*     m_bodyTarget;
+    CASSelectionTarget* m_selectionTarget;
+    CASMiscTarget*     m_miscTarget;
+    CASFashionTarget*  m_fashionTarget;
+    CASPersonalTarget* m_personalTarget;
+    CASTattooTarget*   m_tattooTarget;
+    CASRoommateTarget* m_roommateTarget;
+    UILoader*          m_loaderUI;
+    void*              m_renderer;
+    void*              m_lastName;      // 0x1430 wchar_t* last name
+
+    int   GetCasMode() { return m_casMode; }
+    void* ChangeMediator(int mode) { return NULL; }
+    void  SaveSimToFamilySlot(int slotIndex);
+    void  SaveCASDataToNeighborhood();
+    void  Init(bool isNewSim);
+};
 
 // ============================================================================
 // ENUMERATIONS (reconstructed from switch tables and comparison values)
 // ============================================================================
 
-/**
- * eBodyPartS2C -- Identifies each customizable body part.
- *
- * Reconstructed from CasSimPartsS2C::GetNumBodyModels switch table at
- * 0x8016A9FC and CasSimDescriptionS2C::GetBodyPartIndex at 0x801675B0.
- * The switch cases map body part enum values to internal data array indices.
- */
-enum eBodyPartS2C {
-    kBodyPart_Head          = 0,   // Head mesh (face shape)
-    kBodyPart_Hair          = 1,   // Hair style
-    kBodyPart_FacialHair    = 2,   // Facial hair / stubble (male)
-    // 3-5: reserved / unused
-    kBodyPart_EyeColor      = 6,   // Eye color overlay (shared slot 6-8)
-    kBodyPart_Eyebrows      = 7,   // Eyebrow shape
-    kBodyPart_Glasses        = 8,   // Glasses accessory
-    // 9: body type morph (implicit, not a model)
-    // 10-11: tattoo related
-    kBodyPart_InnerTorso    = 12,  // Inner layer torso (undershirt)
-    kBodyPart_InnerCollar   = 13,  // Inner layer collar
-    kBodyPart_InnerSleeve   = 14,  // Inner layer sleeve style
-    kBodyPart_MidTorso      = 15,  // Mid layer torso (shirt)
-    kBodyPart_MidCollar     = 16,  // Mid layer collar
-    kBodyPart_MidSleeve     = 17,  // Mid layer sleeve
-    kBodyPart_OuterTorso    = 18,  // Outer layer torso (jacket)
-    kBodyPart_OuterCollar   = 19,  // Outer layer collar (hood)
-    kBodyPart_OuterSleeve   = 20,  // Outer layer sleeve
-    kBodyPart_LowerBody     = 21,  // Pants / skirt
-    kBodyPart_Shoes         = 22,  // Shoe mesh
-    kBodyPart_Hat           = 23,  // Hat accessory
-    kBodyPart_ArmAccessory  = 24,  // Arm accessory (watch, bracelet)
-    kBodyPart_BootTop       = 25,  // Boot-top overlay
-    kBodyPart_COUNT
-};
+// eBodyPartS2C is defined above (before CasSimPartsS2C)
 
 /**
  * eSkinColorType -- Skin tone selections.
@@ -653,6 +835,14 @@ void CasSimPartsS2C::SetGender(bool isMale) {
 //   ChooseRandomBodyPart    -- 0x80160974 (1028B)
 //   ChoosePersonalityTraits -- 0x80160900 (116B)
 
+// Helper function stubs (actual implementations elsewhere or non-matching)
+static void ChooseRandomBodyPart(int part, CasSimDescriptionS2C& output, int mutation) {
+    (void)part; (void)output; (void)mutation;
+}
+static void ChoosePersonalityTraits(CasSimDescriptionS2C& output) {
+    (void)output;
+}
+
 // ============================================================================
 // CasGenetics::BlendSimDescriptions -- Create child from two parents
 // ============================================================================
@@ -805,8 +995,9 @@ void CASTarget::SaveSimToFamilySlot(int slotIndex) {
     // Mark the slot as occupied
     // slwi r10, slotIndex, 2  (multiply by 4 for array index)
     // stwx r11(1), r9+r10     (store 1 into hasSimInSlot[slotIndex])
-    u32* familyData = Globs::pCASData;
-    familyData->hasSimInSlot[slotIndex] = 1;
+    u8* familyData = (u8*)Globs::pCASData;
+    // hasSimInSlot array at +0x620, 4 bytes each
+    *((u32*)(familyData + 0x620 + slotIndex * 4)) = 1;
 
     // If not in NPC edit mode (m_casMode at 0x104)
     if (m_casMode == 0) {
@@ -814,6 +1005,7 @@ void CASTarget::SaveSimToFamilySlot(int slotIndex) {
         // mulli r29, slotIndex, 0x188  (392 bytes per family slot)
         // StringBuffer::Copy into slot's name fields
         int slotOffset = slotIndex * 392;
+        (void)slotOffset;
 
         // Copy first name (32 wchar_t) to slot+0x18
         // Copy last name (32 wchar_t) to slot+0x58
@@ -827,18 +1019,21 @@ void CASTarget::SaveSimToFamilySlot(int slotIndex) {
     int srcOffset = slotIndex * 592;
     u8* src = (u8*)this + 0x108 + srcOffset + 0x010;
     int dstOffset = slotIndex * 392;
-    u8* dst = (u8*)familyData->m_slotData + dstOffset + 0x14;
+    // m_slotData pointer at +0x078 in familyData
+    void* slotDataBase = *(void**)(familyData + 0x078);
+    u8* dst = (u8*)slotDataBase + dstOffset + 0x14;
 
     // Block copy 288 bytes (sim description) in 24-byte chunks
     // This is an unrolled memcpy loop using lwz/stw pairs
     for (int i = 0; i < 288; i += 24) {
         // 6 lwz/stw pairs per iteration (24 bytes)
+        (void)src; (void)dst;
     }
     // Final 4-byte copy for remainder
 
     // Check the CAS mediator mode (at renderer+0x2C)
     // If mode == 0 or mode == 3, copy additional data
-    u32 mode = *(u32*)(this->m_renderer + 0x2C);
+    u32 mode = *(u32*)((u8*)this->m_renderer + 0x2C);
     if (mode == 0 || mode == 3) {
         // Copy personality data from the sim description
         // into the neighborhood family slot's personality fields
@@ -878,8 +1073,10 @@ void CASTarget::SaveCASDataToNeighborhood() {
 
     // Only process if CAS mode is 3 (Create-A-Family)
     if (m_casMode != 3) {
-        goto done;
+        return;
     }
+
+    u8* familyData = (u8*)Globs::pCASData;
 
     int firstSlot = 4;  // Track first occupied slot
     for (int i = 0; i <= 3; i++) {
@@ -894,39 +1091,39 @@ void CASTarget::SaveCASDataToNeighborhood() {
             SaveSimToFamilySlot(i);
         } else {
             // Clear the hasSimInSlot flag for empty slots
-            familyData->hasSimInSlot[i] = 0;
+            *((u32*)(familyData + 0x620 + i * 4)) = 0;
         }
     }
 
     if (firstSlot > 3) {
-        goto done;  // No sims were saved
+        return;  // No sims were saved
     }
 
     // Copy family name
     // If the family name string has length > 0, copy it to the
     // neighborhood's family record at familyData+0x650
-    if (m_lastName.Length() > 0) {
-        StringBuffer::Copy(familyData->m_familyName, m_lastName);
+    // m_lastName is a wchar_t* -- check if non-null as length proxy
+    if (m_lastName != NULL) {
+        StringBuffer::Copy(familyData + 0x650, m_lastName);
     } else {
         // Use the first sim's last name instead
+        void* slotDataBase = *(void**)(familyData + 0x078);
         int nameOffset = firstSlot * 392;
-        StringBuffer::Copy(familyData->m_familyName,
-                          familyData->m_slotData + nameOffset + 0x58);
+        StringBuffer::Copy(familyData + 0x650,
+                          (u8*)slotDataBase + nameOffset + 0x58);
     }
 
     // Save the family data
     // bl GameData::SaveCreateAFamily at 0x8003C728
     bool success = GameData::SaveCreateAFamily();
     if (!success) {
-        goto done;
+        return;
     }
 
     // Update neighborhood family relationships
     // Access global neighborhood pointer via r13
     // Neighborhood* ngh = *(Neighborhood**)(r13 - 0x53E4);
     // ngh->UpdateFamilyNumbers();
-done:
-    return;
 }
 
 // ============================================================================

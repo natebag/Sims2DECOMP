@@ -21,6 +21,12 @@ from collections import defaultdict
 SYMBOLS_FILE = Path("config/symbols.txt")
 OUTPUT_DIR = Path("build/skeleton")
 
+# Symbols that exist in compiled source files but whose .init/.text placement
+# conflicts with the skeleton. These are excluded from skeleton generation.
+# When a symbol is fully in the skeleton (with injected bytes), its source file
+# should be excluded from compilation instead — see Makefile ASM_EXCLUDE.
+COMPILED_SYMBOLS = set()
+
 # Map dtk section names (from symbols.txt) -> ELF section names (for linker)
 DTK_TO_ELF = {
     "init":   "init",
@@ -166,15 +172,18 @@ def write_section_asm(section, symbols, outdir):
         offsets_sorted = sorted(by_offset.keys())
         cursor = 0  # Bytes emitted so far
 
-        for offset in offsets_sorted:
-            # Emit space to reach this offset
+        for i, offset in enumerate(offsets_sorted):
+            # Emit space to reach this offset (if cursor hasn't passed it)
             gap = offset - cursor
             if gap > 0:
                 f.write(f"    .space 0x{gap:X}\n")
                 cursor = offset
 
-            # Emit labels (only if we're at or before this offset)
-            if cursor <= offset:
+            # Emit labels. Skip overlapping symbols where cursor has already
+            # passed their offset — GAS can't place them at the right address.
+            # (109 overlapping pairs in .text; these get their addresses from
+            # the inject step or compiled source instead.)
+            if offset >= cursor:
                 for name, size, kind in by_offset[offset]:
                     safe_name = sanitize_asm_name(name)
                     anon = is_anon_symbol(name)
@@ -183,28 +192,17 @@ def write_section_asm(section, symbols, outdir):
                     if kind == "function":
                         f.write(f"    .type {safe_name}, @function\n")
                     f.write(f"{safe_name}:\n")
-                    if kind == "function" and size > 0:
-                        f.write(f"    .size {safe_name}, 0x{size:X}\n")
-                    elif kind == "object" and size > 0:
+                    if size > 0:
                         f.write(f"    .size {safe_name}, 0x{size:X}\n")
 
-            # Track the furthest extent any symbol reaches
+            # Advance cursor to the furthest extent of symbols at this offset.
+            # This ensures .space is emitted between sequential non-overlapping
+            # symbols. For overlapping symbols (next offset < cursor), the gap
+            # check above will skip .space emission.
             for _, size, _ in by_offset[offset]:
-                end = offset + size
-                if end > cursor:
-                    pass  # Don't advance cursor yet — next label may be within
-
-        # After all labels, advance cursor to furthest extent
-        max_extent = cursor
-        for offset in offsets_sorted:
-            for _, size, _ in by_offset[offset]:
-                end = offset + size
-                if end > max_extent:
-                    max_extent = end
-
-        if max_extent > cursor:
-            f.write(f"    .space 0x{max_extent - cursor:X}\n")
-            cursor = max_extent
+                extent = offset + size
+                if extent > cursor:
+                    cursor = extent
 
         # Pad to section end
         remaining = total_size - cursor
@@ -225,8 +223,78 @@ def main():
         generated.append(path)
         print(f"  {section:8s}: {len(syms):5d} symbols -> {path}")
 
+    # Generate overlapping symbol definitions (absolute address assembly)
+    overlap_count = write_overlap_symbols(symbols, OUTPUT_DIR)
+
     print(f"\nGenerated {len(generated)} section files in {OUTPUT_DIR}/")
     print(f"Total symbols: {sum(len(symbols[s]) for s in symbols)}")
+    if overlap_count > 0:
+        print(f"Overlap symbols: {overlap_count} (in overlaps.s)")
+
+
+def write_overlap_symbols(symbols, outdir):
+    """Generate assembly for overlapping symbols using .set directives.
+
+    Overlapping symbols are internal entry points within larger functions
+    (e.g. NotDvdDsi inside DSIExcHandler). The skeleton can't place them
+    at the right address because the cursor has already passed their offset.
+    Instead, we use .set to define them at absolute addresses.
+    """
+    overlaps = []
+
+    for section in SECTION_BASES:
+        syms = symbols.get(section, [])
+        # syms are already sorted by offset
+        cursor = 0
+        for offset, name, size, kind in syms:
+            if offset < cursor:
+                # This symbol overlaps with the previous one
+                addr = SECTION_BASES[section] + offset
+                overlaps.append((name, addr, size, kind))
+            # Track furthest extent
+            extent = offset + size
+            if extent > cursor:
+                cursor = extent
+
+    if not overlaps:
+        return 0
+
+    # Find the parent symbol for each overlap (the symbol it's inside of).
+    # Define overlaps as parent_symbol + offset in linker script, which
+    # makes them section-relative (not ABS) so dtk is happy.
+    all_syms_by_section = defaultdict(list)
+    for section in SECTION_BASES:
+        syms = symbols.get(section, [])
+        for offset, name, size, kind in syms:
+            addr = SECTION_BASES[section] + offset
+            all_syms_by_section[section].append((addr, name, size, kind))
+        all_syms_by_section[section].sort()
+
+    outpath = outdir / "overlaps.ld"
+    with open(outpath, 'w') as f:
+        f.write("/* Auto-generated: overlapping symbol definitions */\n")
+        f.write("/* Defined relative to parent symbols for section membership. */\n\n")
+
+        for name, addr, size, kind in overlaps:
+            # Find which section and parent symbol
+            for sec_name, sec_syms in all_syms_by_section.items():
+                for i, (sa, sn, ss, sk) in enumerate(sec_syms):
+                    if sa <= addr < sa + ss and sn != name:
+                        # Found parent symbol — define as parent + offset
+                        offset_from_parent = addr - sa
+                        safe_name = sanitize_asm_name(name)
+                        parent_safe = sanitize_asm_name(sn)
+                        f.write(f"{safe_name} = {parent_safe} + 0x{offset_from_parent:X};\n")
+                        break
+                else:
+                    continue
+                break
+            else:
+                # Fallback: absolute definition
+                safe_name = sanitize_asm_name(name)
+                f.write(f"{safe_name} = 0x{addr:08X};\n")
+
+    return len(overlaps)
 
 
 if __name__ == "__main__":

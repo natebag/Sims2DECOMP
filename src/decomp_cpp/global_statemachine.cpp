@@ -275,6 +275,53 @@ public:
     // ---- Tail Gap (0x494 - 0x653) ----
     u8  _pad_494[0x1BC];           // 0x494-0x64F
     u32 m_defaults_650;              // 0x650
+
+    // ---- Method declarations ----
+    EGlobal();
+    ~EGlobal();
+    void      SetDefaults();
+    void      Reset();
+    void      SetCam(ESimsCam* pCam);
+    ESimsCam* GetCam();
+    void      SetCameraDirector(CameraDirector* pDir);
+    ERC*      GetWin();
+    cXPerson* GetSelectedPerson(int playerIndex);
+    void      SetupScratchHeap();
+    void      FreeScratchHeap();
+    void      PlaceObjectInHouse(cXObject*);
+    void      PickUpInHouseObject(cXObject*);
+    bool      IsBuildHouseMode();
+    AnimRef*  GetSkillFromName(char*);
+    PropRef*  GetPropFromName(char*);
+    char*     GetNameFromProp(PropRef*);
+    bool      ListenForController();
+    void      SetListenFlag(bool flag);
+    u32       GetGameFontID();
+    void      SetAuthorModeCheats();
+    bool      InLevelState();
+    int       GetFloorIndex(FloorTile* pTile);
+    int       GetWallIndex(WallTile* pTile);
+    int       GetFenceIndex(FenceData* pTile);
+    u16       GetPlayerCheats();
+    bool      IsPlayerCheatOn(int cheatIndex);
+    void      TogglePlayerCheat(int cheatIndex);
+    void      ClearPlayerCheats();
+    void      InitPlayerCheats();
+    u16       GetAllPlayerCheatsMask();
+    u16       GetPlayerCheatsMask(int playerIndex);
+    u16       GetPlayerCheatsSequence(int cheatIndex, int step);
+    u32       GetFloorSet();
+    u32       GetWallSet();
+    u32       GetFenceSet();
+    void      SetIsTransitionLoad(bool b);
+    bool      IsTransitionLoad();
+    void      SetUIDrawEnable(bool b);
+    void      SetUIUpdateEnable(bool b);
+    bool      IsUIDrawEnabled();
+    bool      IsUIUpdateEnabled();
+    void      SetIsLoadingFromMainMenu(bool b);
+    bool      IsLoadingFromMainMenu();
+    bool      IsSaveGameEnabled();
 };
 // static_assert(sizeof(EGlobal) == 0x654, "EGlobal size mismatch");
 
@@ -1187,24 +1234,6 @@ void StateMachineState::Draw(ERC* pRC)         { }
 void StateMachineState::DrawTopmost(ERC* pRC)  { }
 void StateMachineState::ValidateHeap(bool)     { }
 
-// Owner delegation methods
-void StateMachineState::OwnerSetNextState(int stateId, float delay) {
-    ((StateMachine*)m_pOwner)->SetNextState(stateId, delay);
-}
-void StateMachineState::OwnerCallState(int stateId) {
-    ((StateMachine*)m_pOwner)->CallState(stateId);
-}
-void StateMachineState::OwnerReturnFromState(int returnVal) {
-    ((StateMachine*)m_pOwner)->ReturnFromState(returnVal);
-}
-int StateMachineState::OwnerGetReturnVal() {
-    return ((StateMachine*)m_pOwner)->GetReturnVal();
-}
-void StateMachineState::OwnerResetReturnVal() {
-    ((StateMachine*)m_pOwner)->ResetReturnVal();
-}
-
-
 // ############################################################################
 //
 //  PART 5: StateMachineStatus (0x18 bytes)
@@ -1437,6 +1466,23 @@ public:
     int  IsEnabled();
     int  IsPausedUpdate();
 };
+
+// Owner delegation methods (defined here because StateMachine must be complete)
+void StateMachineState::OwnerSetNextState(int stateId, float delay) {
+    ((StateMachine*)m_pOwner)->SetNextState(stateId, delay);
+}
+void StateMachineState::OwnerCallState(int stateId) {
+    ((StateMachine*)m_pOwner)->CallState(stateId);
+}
+void StateMachineState::OwnerReturnFromState(int returnVal) {
+    ((StateMachine*)m_pOwner)->ReturnFromState(returnVal);
+}
+int StateMachineState::OwnerGetReturnVal() {
+    return ((StateMachine*)m_pOwner)->GetReturnVal();
+}
+void StateMachineState::OwnerResetReturnVal() {
+    ((StateMachine*)m_pOwner)->ResetReturnVal();
+}
 
 // ---------------------------------------------------------------------------
 // StateMachine::StateMachine(int, int)

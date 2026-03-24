@@ -81,13 +81,6 @@ extern void ModelHeap();
 extern void FlashesHeap();
 extern void AptHeap();
 
-// EAHeap operations
-namespace EAHeap {
-    extern void SetNextCheckPoint();
-    extern void Compact();
-    extern void* MallocAligned(u32 size, u32 align, u32 flags, int heap);
-    extern void* Calloc(u32 count, u32 size, int flags);
-}
 
 extern void* operator_new(u32 size);  // __builtin_new at 0x802d11b0
 extern void  operator_delete(void*);  // __builtin_delete at 0x802d1220

@@ -33,11 +33,25 @@
 //
 // =============================================================================
 
-#include <cstdlib>
-#include <cstring>
-#include <cstdio>
-#include <cstdarg>
-#include <cmath>
+#include "types.h"
+extern "C" {
+    void* malloc(unsigned int size);
+    void  free(void* ptr);
+    void* memset(void* dst, int c, unsigned int n);
+    void* memcpy(void* dst, const void* src, unsigned int n);
+    int   memcmp(const void* a, const void* b, unsigned int n);
+    unsigned int strlen(const char* s);
+    int   strcmp(const char* a, const char* b);
+    int   strncmp(const char* a, const char* b, unsigned int n);
+    char* strcpy(char* dst, const char* src);
+    char* strcat(char* dst, const char* src);
+    int   sprintf(char* buf, const char* fmt, ...);
+    int   printf(const char* fmt, ...);
+    double sqrt(double x);
+    double fabs(double x);
+    double floor(double x);
+    double ceil(double x);
+}
 
 // -- Basic types (matching include/types.h) --
 typedef signed char s8;
@@ -47,6 +61,10 @@ typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
 typedef float f32;
+typedef unsigned int uintptr_t;
+
+// Placement new operator (devkitPPC has no <new>)
+inline void* operator new(unsigned int, void* p) { return p; }
 
 
 // =============================================================================
@@ -70,7 +88,7 @@ class AptInitParmsT;
 class IAptXmlNode;
 class TextFormat;
 struct AptMovieclipInformation;
-struct AptMaskRenderOperation;
+struct AptMaskRenderOperation { int value; };
 struct _AptScriptFunctionState;
 class UIObjectBase;
 class ERC;
@@ -1912,7 +1930,7 @@ public:
         }
 
         // Determine root animation
-        u32 cihFlags = cih->m_flags;
+        u32 cihFlags = ((AptValue*)cih)->m_flags;
         u32 cihVt = cihFlags & 0x7F;
         bool isCIH = (cihVt >= APT_VFT_CIH_FIRST && cihVt <= APT_VFT_CIH_LAST);
         if (isCIH) {

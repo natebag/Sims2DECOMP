@@ -7,11 +7,25 @@
 class EStream;
 struct __sFILE;
 
-// TArray template - EA's dynamic array
-template <class T, class Alloc>
-class TArray;
-
 struct TArrayDefaultAllocator {};
+
+// TArray primary template - EA's dynamic array
+template <class T, class Alloc>
+class TArray {
+public:
+    T*   m_data;      // 0x00
+    int  m_size;      // 0x04
+    int  m_capacity;  // 0x08
+
+    void Init(void);
+    void Add(T& item);
+    void SetSize(int newSize, int newCap);
+    void Insert(T* src, int pos, int count);
+    void Destruct(T* ptr, int count);
+    void Construct(T* ptr, int count);
+    void Copy(T* dst, T* src, int count);
+    void CopyReverse(T* dst, T* src, int count);
+};
 
 // EString - EA's string class wrapping a char* buffer
 // Layout: single pointer member m_buffer at offset 0
@@ -22,12 +36,13 @@ public:
     static char m_null; // null character used as empty string
 
     // Constructors
+    EString();
     EString(char c);
     EString(char* start, char* end);
 
     // Buffer management
     void SetToNull(void);
-    void AllocBuffer(int size);
+    char* AllocBuffer(int size);
     void Deallocate(char* buf);
     void FreeBuffer(char* buf);
     void MakeCopy(char* src);
@@ -67,7 +82,7 @@ public:
     int FindReverse(char c) const;
 
     // Replace
-    void Replace(char* from, char* to);
+    int Replace(char* from, char* to);
     void Replace(char oldChar, char newChar);
     void Remove(char c);
 
@@ -119,6 +134,9 @@ public:
 
     // Comparison helpers
     static int CharsEqualNoCase(char a, char b);
+
+    // Cast operator
+    operator char*(void) const;
 };
 
 // Free operators

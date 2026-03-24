@@ -124,4 +124,8 @@ SECTIONS
 
     /* Symbol aliases: bridge GCC Itanium mangling to SN Systems mangling */
     INCLUDE config/symbol_aliases.ld
+
+    /* Overlapping symbols: defined relative to parent symbols so they
+     * get the correct ELF section membership (not ABS). */
+    INCLUDE build/skeleton/overlaps.ld
 }

@@ -67,24 +67,217 @@
 
 #include "types.h"
 
-// Forward declarations
-class ReconBuffer;
-class ObjSelector;
-class ObjDefinition;
-class Neighbor;
+#ifndef NULL
+#define NULL 0
+#endif
 
 // External functions (from ReconBuffer streaming API)
 extern "C" {
-    void ReconBuffer_StreamBytes(ReconBuffer* buf, void* data, int count);  // 0x801332D0
-    void ReconBuffer_StreamInt(ReconBuffer* buf, void* data, int count);    // 0x80133634
-    void ReconBuffer_StreamHalfwords(ReconBuffer* buf, void* data, int count); // 0x80133484
-    void* operator_new(u32 size);     // 0x802D11B0
-    void  operator_delete(void* ptr); // 0x802D1220
-    void  memset(void* dst, int val, u32 n); // 0x802435E4
+    void* ReconBuffer_StreamBytes(void* buf, void* data, int count);
+    void* ReconBuffer_StreamInt(void* buf, void* data, int count);
+    void* ReconBuffer_StreamHalfwords(void* buf, void* data, int count);
+    void* operator_new_fn(u32 size);
+    void  operator_delete_fn(void* ptr);
+    void  memset(void* dst, int val, u32 n);
+    int   RandomInt(int max);
 }
+
+// Placement new support
+inline void* operator new(unsigned int, void* p) { return p; }
+
+// Forward declarations
+class ObjSelector;
+class ObjDefinition;
+
+// ReconBuffer stub
+class ReconBuffer {
+public:
+    int  m_mode;       // 0 = read
+    int  m_position;   // current position
+};
+
+// WantFear namespace types
+namespace WantFear {
+    struct Node {
+        u16  eventRef;
+        u8   flags;
+        u8   _pad;
+        s16  defaultTarget;
+        s16  field_06;
+        s16  field_08;
+        u8   numBranches;
+        u8   firstChildIndex;
+        u32  field_0C;
+        u8   adData[8];
+        u32  field_18;
+        u8   field_1C;
+        u8   field_1D;
+        u8   _pad2[2];
+    };
+    struct Event {
+        u16 m_eventId;
+        u8  type;
+        u8  category;
+        u8  _data[32];
+    };
+    struct Tree {
+        u16   m_treeId;
+        u8    storyFlag;
+        u8    _pad;
+        void* childIndexData;
+        Node* nodes;
+        u32   _extra[8];
+    };
+    struct Bookmark {
+        u16    treeId;
+        u16    m_countdown;
+        Node*  m_node;
+        u16    adIndex;
+        u16    _pad;
+
+        bool SatisfiedBy(struct Notification& n) { (void)n; return false; }
+        bool IsFear() const { return false; }
+        bool IsPlatinum() const { return false; }
+        void ApplyReward(class Neighbor* n) { (void)n; }
+    };
+    struct Notification {
+        u16 eventType;
+        s16 m_target;
+        u32 _extra[4];
+    };
+    enum TargetType { kTargetType_None = 0 };
+}
+
+// WantFearManager class
+class WantFearManager {
+public:
+    WantFear::Event*   m_events;
+    int                m_eventCount;
+    WantFear::Tree*    m_trees;
+    int                m_treeCount;
+    void*              m_categoryShaders;
+    int                m_categoryShaderCount;
+
+    WantFearManager();
+    ~WantFearManager();
+    const WantFear::Event* GetEventByIndex(int index) const;
+    const WantFear::Tree*  GetTreeByIndex(int index) const;
+    const WantFear::Event* GetEvent(unsigned short eventId) const;
+    const WantFear::Tree*  GetTree(unsigned short treeId) const;
+    int    Lottery(unsigned int* weights, unsigned int count) const;
+    void   PickNewRoot(class Neighbor* neighbor, bool isFear);
+    void   LoadWants();
+    const WantFear::Node* GetStoryTreeRoot(short aspirationType, short chapter) const;
+    u32    GetCategoryShader(WantFear::TargetType type, short param);
+    void   CaptureLog(bool enable);
+};
 
 // Global pointers (from SDA / r13)
 extern WantFearManager* g_pWantFearManager;  // 0x80475EEC
+
+// Global object unlock table
+struct ObjectUnlockEntry {
+    u32 guid;
+    s16 simoleonThreshold;
+    s16 _pad;
+};
+extern ObjectUnlockEntry g_objectUnlockTable[128];  // at 0x80485E7C
+
+// Neighbor class (partial -- only fields used here)
+class Neighbor {
+public:
+    u8                 _pad[0x194];
+    WantFear::Bookmark* m_activeBookmarks; // +0x194
+    void*              m_wantFearIcons[7]; // +0x198
+
+    int  Notify(WantFear::Notification& notification, bool broadcastFears);
+    void ShuffleWantFear(int slotIdx);
+    void ReplaceBookmark(int slotIdx);
+    void RefreshBookmarkIcon(int slotIdx, int mode);
+    int  GetRandomEmptySlot(int type);
+};
+
+// BBI namespace class declarations (must come before method definitions)
+namespace BBI {
+
+class InventoryItem {
+public:
+    // Enumerations nested in class
+    enum eItemCategory {
+        kItemCategory_None         = 0,
+        kItemCategory_Object       = 1,
+        kItemCategory_BuildMode    = 2,
+        kItemCategory_PackagedItem = 3,
+    };
+    enum eItemSubcategory {
+        kItemSubcategory_None      = 0,
+        kItemSubcategory_Wall      = 1,
+        kItemSubcategory_Wallpaper = 2,
+        kItemSubcategory_Floor     = 3,
+        kItemSubcategory_Fence     = 4,
+        kItemSubcategory_Stairs    = 5,
+        kItemSubcategory_Generic   = 6,
+    };
+
+    // Fields (layout from constructor analysis)
+    u8   m_category;     // 0x00
+    u8   m_count;        // 0x01
+    u8   m_colorIndex;   // 0x02
+    u8   m_subcategory;  // 0x03
+    s32  m_guid;         // 0x04
+    u32* m_vtable;       // 0x08
+
+    InventoryItem();
+    ~InventoryItem();
+    eItemCategory    GetItemCategory() const;
+    void             SetItemCategory(eItemCategory cat);
+    eItemSubcategory GetItemSubcategory() const;
+    void             SetItemSubcategory(eItemSubcategory subcat);
+    int              GetItemGuid() const;
+    void             SetItemGuid(int guid);
+    int              GetItemCount() const;
+    void             SetItemCount(int count);
+    unsigned char    GetItemColorIndex() const;
+    void             SetItemColorIndex(unsigned char index);
+    bool             CopyTo(InventoryItem* dest) const;
+    bool             DoStream(ReconBuffer* buf, int version);
+};
+
+class InventoryItems {
+public:
+    InventoryItem* m_items[36]; // 0x00 - 0x8F
+
+    InventoryItems();
+    ~InventoryItems();
+    int              GetContainerSize() const;
+    InventoryItem*   GetItemAtIndex(int index) const;
+    int              GetNewItemIndex() const;
+    InventoryItem*   GetItemByGuid(int guid, unsigned char colorIndex) const;
+    int              GetItemIndexByGuid(int guid, unsigned char colorIndex) const;
+    bool             IsItemInInventory(int guid) const;
+    int              GetItemCount() const;
+    int              CountItemsByGuid(int guid) const;
+    int              CountItemsByCategory(InventoryItem::eItemCategory category) const;
+    bool             CanAddItemsByGuid(int guid, int count, unsigned char colorIndex) const;
+    int              AddItemsByGuid(int guid, int count, unsigned char colorIndex);
+    int              RemoveItemsByGuid(int guid, int count, unsigned char colorIndex);
+    bool             DeleteItem(InventoryItem* item);
+    void             Clear();
+    InventoryItem*   GetBuilderItem(InventoryItem::eItemSubcategory subcat, int guid) const;
+    int              GetBuilderItemIndex(InventoryItem::eItemSubcategory subcat, int guid) const;
+    bool             CanAddBuilderItem(InventoryItem::eItemSubcategory subcat, int guid, int count) const;
+    int              AddBuilderItem(InventoryItem::eItemSubcategory subcat, int guid, int count);
+    bool             RemoveBuilderItem(InventoryItem::eItemSubcategory subcat, int guid);
+    int              GetBuilderItemCount(InventoryItem::eItemSubcategory subcat) const;
+    InventoryItem*   CreateNewItemFromGuid(int guid) const;
+    InventoryItem*   CreateNewBuilderItem(InventoryItem::eItemSubcategory subcat, int guid) const;
+    InventoryItem::eItemCategory GetItemCategoryFromObjDefinition(ObjDefinition* def);
+    bool             DoStream(ReconBuffer* buf, int version);
+    bool             DoStreamWrite(ReconBuffer* buf, int version);
+    bool             DoStreamRead(ReconBuffer* buf, int version);
+};
+
+} // namespace BBI (closed here, reopened below for method bodies)
 
 
 // ============================================================================
@@ -107,31 +300,6 @@ extern WantFearManager* g_pWantFearManager;  // 0x80475EEC
 //   +0x1C: destructor pointer
 
 namespace BBI {
-
-// ============================================================================
-// Enumerations (reconstructed from assembly switch tables)
-// ============================================================================
-
-// Item categories - from GetItemCategoryFromObjDefinition switch + DeleteItem
-enum InventoryItem_eItemCategory {
-    kItemCategory_None          = 0,
-    kItemCategory_Object        = 1,  // Furniture, appliances, decorations
-    kItemCategory_BuildMode     = 2,  // Walls, wallpaper, floors, fences
-    kItemCategory_PackagedItem  = 3,  // Pre-bundled item packages
-};
-
-// Item subcategories - used by builder items (category 2)
-// From signatures: AddBuilderItem/GetBuilderItem take eItemSubcategory
-enum InventoryItem_eItemSubcategory {
-    kItemSubcategory_None      = 0,
-    kItemSubcategory_Wall      = 1,  // Wall segments
-    kItemSubcategory_Wallpaper = 2,  // Wall coverings
-    kItemSubcategory_Floor     = 3,  // Floor tiles
-    kItemSubcategory_Fence     = 4,  // Fence/railing segments
-    kItemSubcategory_Stairs    = 5,  // Staircase segments
-    kItemSubcategory_Generic   = 6,  // Default for regular objects
-};
-
 
 // ============================================================================
 // BBI::InventoryItem::InventoryItem
@@ -606,19 +774,19 @@ bool InventoryItems::DeleteItem(InventoryItem* item) {
     if (item == nullptr) return false;
 
     int index = -1;
-    eItemCategory cat = item->GetItemCategory();
+    InventoryItem::eItemCategory cat = item->GetItemCategory();
 
     switch (cat) {
-        case kItemCategory_Object:
-        case kItemCategory_PackagedItem: {
+        case InventoryItem::kItemCategory_Object:
+        case InventoryItem::kItemCategory_PackagedItem: {
             // Look up by GUID + color
             int guid = item->GetItemGuid();
             unsigned char color = item->GetItemColorIndex();
             index = GetItemIndexByGuid(guid, color);
             break;
         }
-        case kItemCategory_BuildMode: {
-            eItemSubcategory subcat = item->GetItemSubcategory();
+        case InventoryItem::kItemCategory_BuildMode: {
+            InventoryItem::eItemSubcategory subcat = item->GetItemSubcategory();
             if (subcat == 1) {
                 // Wall items: lookup by GUID + color
                 int guid = item->GetItemGuid();
@@ -626,7 +794,7 @@ bool InventoryItems::DeleteItem(InventoryItem* item) {
                 index = GetItemIndexByGuid(guid, color);
             } else {
                 // Other build items: lookup by subcategory + GUID
-                eItemSubcategory subcat2 = item->GetItemSubcategory();
+                InventoryItem::eItemSubcategory subcat2 = item->GetItemSubcategory();
                 int guid = item->GetItemGuid();
                 index = GetBuilderItemIndex(subcat2, guid);
             }
@@ -722,7 +890,7 @@ bool InventoryItems::CanAddBuilderItem(InventoryItem::eItemSubcategory subcat, i
     }
 
     // New builder item - check category limit
-    int buildCount = CountItemsByCategory(kItemCategory_BuildMode);
+    int buildCount = CountItemsByCategory(InventoryItem::kItemCategory_BuildMode);
     if (buildCount + 1 > kMaxBuildModeItems) return false;
     return count <= kMaxStackCount;
 }
@@ -739,7 +907,7 @@ int InventoryItems::AddBuilderItem(InventoryItem::eItemSubcategory subcat, int g
     InventoryItem* existing = GetBuilderItem(subcat, guid);
     if (existing == nullptr) {
         // Check capacity
-        if (CountItemsByCategory(kItemCategory_BuildMode) > 11) return 0;
+        if (CountItemsByCategory(InventoryItem::kItemCategory_BuildMode) > 11) return 0;
 
         int newIndex = GetNewItemIndex();
         if (newIndex == -1) return 0;
@@ -767,10 +935,10 @@ int InventoryItems::AddBuilderItem(InventoryItem::eItemSubcategory subcat, int g
 // and stores the GUID.
 // ============================================================================
 InventoryItem* InventoryItems::CreateNewItemFromGuid(int guid) const {
-    InventoryItem* item = (InventoryItem*)operator_new(12);
-    item->InventoryItem();  // placement construct
-    item->SetItemCategory(kItemCategory_Object);
-    item->SetItemSubcategory((eItemSubcategory)6);  // kItemSubcategory_Generic
+    void* mem = operator_new_fn(12);
+    InventoryItem* item = new (mem) InventoryItem();
+    item->SetItemCategory(InventoryItem::kItemCategory_Object);
+    item->SetItemSubcategory(InventoryItem::kItemSubcategory_Generic);
     item->SetItemGuid(guid);
     return item;
 }
@@ -782,13 +950,13 @@ InventoryItem* InventoryItems::CreateNewItemFromGuid(int guid) const {
 // Allocates a new InventoryItem for build mode (category=2)
 // ============================================================================
 InventoryItem* InventoryItems::CreateNewBuilderItem(InventoryItem::eItemSubcategory subcat, int guid) const {
-    if (subcat == 0) return nullptr;
+    if (subcat == 0) return NULL;
 
-    InventoryItem* item = (InventoryItem*)operator_new(12);
-    item->InventoryItem();
-    if (item == nullptr) return nullptr;
+    void* mem = operator_new_fn(12);
+    InventoryItem* item = new (mem) InventoryItem();
+    if (item == NULL) return NULL;
 
-    item->SetItemCategory(kItemCategory_BuildMode);
+    item->SetItemCategory(InventoryItem::kItemCategory_BuildMode);
     item->SetItemSubcategory(subcat);
     item->SetItemGuid(guid);
     return item;
@@ -811,25 +979,25 @@ InventoryItem* InventoryItems::CreateNewBuilderItem(InventoryItem::eItemSubcateg
 //   }
 // ============================================================================
 InventoryItem::eItemCategory InventoryItems::GetItemCategoryFromObjDefinition(ObjDefinition* def) {
-    if (def == nullptr) return kItemCategory_None;
+    if (def == NULL) return InventoryItem::kItemCategory_None;
 
     // Check for packaged item flag
     s16 packFlag = *(s16*)((u8*)def + 0x50);
-    if (packFlag == 512) return kItemCategory_PackagedItem;
+    if (packFlag == 512) return InventoryItem::kItemCategory_PackagedItem;
 
     // Check object type
     s16 objType = *(s16*)((u8*)def + 0x12);
     if (objType <= 7) {
-        if (objType >= 5) return kItemCategory_None;     // 5-6: not inventory items
-        if (objType >= 0 && objType <= 3) return kItemCategory_None; // 0-3: not items
-        return kItemCategory_Object;  // 4: Object
+        if (objType >= 5) return InventoryItem::kItemCategory_None;
+        if (objType >= 0 && objType <= 3) return InventoryItem::kItemCategory_None;
+        return InventoryItem::kItemCategory_Object;  // 4
     }
     if (objType <= 14) {
-        if (objType >= 9) return kItemCategory_None;     // 9-14: not items
-        return kItemCategory_BuildMode;  // 8: BuildMode
+        if (objType >= 9) return InventoryItem::kItemCategory_None;
+        return InventoryItem::kItemCategory_BuildMode;  // 8
     }
-    if (objType == 15) return kItemCategory_Object;      // 15: Object
-    return kItemCategory_None;
+    if (objType == 15) return InventoryItem::kItemCategory_Object;
+    return InventoryItem::kItemCategory_None;
 }
 
 // ============================================================================
@@ -906,7 +1074,7 @@ bool InventoryItems::DoStreamRead(ReconBuffer* buf, int version) {
                 continue;
             }
             // Allocate and read
-            item = (InventoryItem*)operator_new(12);
+            item = (InventoryItem*)operator_new_fn(12);
             new (item) InventoryItem();
             item->DoStream(buf, version);
         } else {
@@ -933,6 +1101,39 @@ bool InventoryItems::DoStreamRead(ReconBuffer* buf, int version) {
 
 } // namespace BBI
 
+// IGoalUnlock namespace (must be before GoalUnlock class)
+namespace IGoalUnlock {
+    enum UnlockType {
+        kUnlockType_LotObjects = 0,
+        kUnlockType_Career     = 1,
+        kUnlockType_Social     = 2,
+        kUnlockType_Build      = 3,
+        kUnlockType_Clothing   = 4,
+        kUnlockType_Objects    = 5,
+    };
+}
+
+// GoalUnlock class declaration
+class GoalUnlock {
+public:
+    u32* m_vtable;         // 0x00
+    u16  m_unlockBits[64]; // 0x04 (128 bytes)
+
+    GoalUnlock();
+    ~GoalUnlock();
+    void ClearGoalsAndUnlocks();
+    int  GetUnlockCount(IGoalUnlock::UnlockType type);
+    int  GetFirstUnlockVar(IGoalUnlock::UnlockType type);
+    bool IsUnlocked(IGoalUnlock::UnlockType type, short idx);
+    void GrantUnlock(IGoalUnlock::UnlockType type, short idx);
+    bool IsRecentlyUnlocked(IGoalUnlock::UnlockType type, short idx);
+    void SetRecentlyUnlocked(IGoalUnlock::UnlockType type, short idx, bool set);
+    int  GetUnlockTotal(IGoalUnlock::UnlockType type);
+    int  GetObjectIndexFromGuid(int guid);
+    void GrantObjectUnlocks(int simoleons);
+    void SetupObjectUnlockInfo();
+    void DoStream(ReconBuffer* buf, int version);
+};
 
 // ============================================================================
 // GOAL UNLOCK SYSTEM
@@ -967,17 +1168,6 @@ bool InventoryItems::DoStreamRead(ReconBuffer* buf, int version) {
 //       s16 _pad;
 //   };
 // static ObjectUnlockEntry g_objectUnlockTable[128]; // at 0x80485E7C
-
-namespace IGoalUnlock {
-    enum UnlockType {
-        kUnlockType_LotObjects = 0,
-        kUnlockType_Career     = 1,
-        kUnlockType_Social     = 2,
-        kUnlockType_Build      = 3,
-        kUnlockType_Clothing   = 4,
-        kUnlockType_Objects    = 5,
-    };
-}
 
 // ============================================================================
 // GoalUnlock::GoalUnlock
@@ -1217,7 +1407,7 @@ int GoalUnlock::GetObjectIndexFromGuid(int guid) {
     // extern ObjectUnlockEntry* g_objectUnlockTable;
 
     for (short i = 0; ; i++) {
-        int count = GetUnlockCount(kUnlockType_Objects);  // virtual: always 128
+        int count = GetUnlockCount(IGoalUnlock::kUnlockType_Objects);  // virtual: always 128
         if (i >= count) break;
 
         // 8 bytes per entry: slwi r0,r31,3 then lwzx
@@ -1249,7 +1439,7 @@ void GoalUnlock::GrantObjectUnlocks(int simoleons) {
     short lastGranted = -1;
 
     for (short i = 0; ; i++) {
-        int count = GetUnlockCount(kUnlockType_Objects);  // 128
+        int count = GetUnlockCount(IGoalUnlock::kUnlockType_Objects);  // 128
         if (i >= count) break;
 
         s16 threshold = g_objectUnlockTable[i].simoleonThreshold;
@@ -1257,11 +1447,11 @@ void GoalUnlock::GrantObjectUnlocks(int simoleons) {
         if (level < threshold) continue;
 
         // Check if already unlocked
-        if (IsUnlocked(kUnlockType_Objects, i)) continue;
+        if (IsUnlocked(IGoalUnlock::kUnlockType_Objects, i)) continue;
 
         // Grant the unlock
         lastGranted = i;
-        GrantUnlock(kUnlockType_Objects, lastGranted);
+        GrantUnlock(IGoalUnlock::kUnlockType_Objects, lastGranted);
     }
 
     // If we granted any new unlock, notify UI
@@ -1433,23 +1623,24 @@ int Neighbor::Notify(WantFear::Notification& notification, bool broadcastFears) 
 
         result = 2;
 
-        // Find active slot index for UI update
-        int activeIdx = FindActiveSlotIndex(*bookmark);
+        // Find active slot index for UI update (stub -- actual function uses r13)
+        int activeIdx = -1; // FindActiveSlotIndex(*bookmark)
 
         // Save bookmark copy for reward processing
         WantFear::Bookmark saved = *bookmark;
 
         // Clear the active bookmark slot icon
-        if (activeIdx != kNoActiveIndex) {
-            m_wantFearIcons[activeIdx] = nullptr;
+        if (activeIdx != -1 && activeIdx < 7) {
+            m_wantFearIcons[activeIdx] = NULL;
         }
 
         // Apply reward (aspiration points)
-        saved.ApplyReward(this);
+        // saved.ApplyReward(this);  -- TODO
 
         // If this was a platinum want fulfilled and broadcasting is enabled,
         // notify the entire neighborhood
-        if (broadcastFears && saved.IsPlatinum()) {
+        if (broadcastFears) {
+            // TODO: saved.IsPlatinum()
             // g_pNeighborhoodImpl->NotifyAllPersons(notification, this)
         }
 
@@ -1510,11 +1701,11 @@ WantFearManager::WantFearManager() {
 // ============================================================================
 WantFearManager::~WantFearManager() {
     if (m_events != nullptr) {
-        operator_delete(m_events);
+        operator_delete_fn(m_events);
         m_events = nullptr;
     }
     if (m_trees != nullptr) {
-        operator_delete(m_trees);
+        operator_delete_fn(m_trees);
         m_trees = nullptr;
     }
 }
@@ -1536,7 +1727,7 @@ const WantFear::Event* WantFearManager::GetEventByIndex(int index) const {
 // Returns tree pointer at given index
 // ============================================================================
 const WantFear::Tree* WantFearManager::GetTreeByIndex(int index) const {
-    return m_trees[index];
+    return &m_trees[index];
 }
 
 // ============================================================================

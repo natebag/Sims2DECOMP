@@ -104,14 +104,7 @@
 #include "types.h"
 
 // Forward declarations
-class cXObject;
-class ObjSelector;
 class ObjectModule;
-class ObjDef;
-class ObjectProbe;
-class EdithVariableSet;
-class FTilePt;
-class FTileRect;
 class HierarchySite;
 class PlacementSpec;
 class ReconBuffer;
@@ -125,8 +118,182 @@ class StringBuffer;
 class ISimInstance;
 struct RoutingSlot;
 
+// Minimal cXObject stub (virtual interface)
+class cXObject {
+public:
+    virtual int GetObjectClass() { return 0; }
+};
+
 typedef short TreeReturnCode;
 typedef int ObjEntryPoint;
+
+// Minimal stub types needed by cXObjectImpl methods
+class EdithVariableSet {
+public:
+    short* operator[](int index);
+    void WriteVar(int index, short value);
+    bool Contains(int index);
+};
+
+class FTilePt {
+public:
+    int x, y;
+};
+
+class FTileRect {
+public:
+    int x, y, w, h;
+};
+
+class ObjDef {
+public:
+    short m_type;       // 0x12
+    short m_multiTile;  // 0x14
+};
+
+class ObjectProbe {};
+
+class ObjSelector {
+public:
+    void* GetTreeTab();
+    void* GetAdultAnimTable();
+    void* GetChildAnimTable();
+    void* LoadSelFile();
+};
+
+// ============================================================================
+// cXObjectImpl class declaration
+// ============================================================================
+
+class cXObjectImpl {
+public:
+    // Static data
+    static int sXDirTable[9];
+    static int sYDirTable[9];
+    static int sFreeWill;
+    static int sAutoCenter;
+    static int sAutoReset;
+    static int overrideDialogReturnCode;
+
+    // Identity
+    void* CastToObjectImpl(void);
+    void* GetObjectImplementation(void);
+
+    // Data system
+    short GetData(int index);
+    void  SetData(int index, short value);
+    short GetTemp(int index);
+    void  SetTemp(int index, short value);
+    short GetAttr(int index);
+    void  SetAttr(int index, short value);
+    int   GetNumAttr(void);
+    bool  ContainsData(int index);
+
+    // Identity getters
+    short         GetID(void);
+    ObjDef*       GetDef(void);
+    short         GetType(void);
+    ObjectModule* GetModule(void);
+    ObjSelector*  GetSelector(void);
+    void*         GetBehavior(void);
+    void*         GetFolder(void);
+    const char*   GetName(void) const;
+    void*         GetTreeTab(void);
+    void*         GetAdultAnimTable(void);
+    void*         GetChildAnimTable(void);
+    void*         GetSelFile(void);
+
+    // Location
+    FTilePt*   GetLocation(void);
+    void       GetLocation(FTilePt* out) const;
+    int        GetLevel(void) const;
+    void       SetLevel(int level);
+    FTileRect* GetRect(void);
+    bool       IsInWorld(void);
+    void*      GetCTilePt(void) const;
+
+    // Misc flags
+    int  GetHilite(void);
+    void SetMiscFlag(int flag, bool value);
+    bool GetMiscFlag(int flag);
+
+    // Type checks
+    bool IsVehicle(void);
+    bool IsPerson(void);
+    bool IsPartOfMe(cXObject* other);
+    bool IsBeingDraggedAround(void);
+    bool IsMultiTile(void);
+    void GetNumTiles(int& outX, int& outY);
+
+    // Graph traversal
+    cXObjectImpl* GetNextImpl(void);
+    cXObject*     GetNext(void);
+
+    // Hierarchy
+    int          HierCountSlots(void);
+    int          CountObjectSlots(void);
+    int          GetNumRoutingSlots(void);
+    RoutingSlot* GetRoutingSlot(int index);
+
+    // Render / sync
+    void* GetSpriteSlot(void);
+    void* GetRelMatrix(void);
+    void* GetSyncObject(void);
+    void  ClearSyncObject(void);
+    int   WaitingForSync(void);
+    bool  IsRenderingRoot(void);
+    void  SetOverrideRenderPosition(float x, float y);
+    void  GetOverrideRenderPosition(float& outX, float& outY);
+    void  ClearOverrideRenderPosition(void);
+    void  SetDrawLabel(bool enable);
+    void  TagGraphicsField(void);
+    bool  HaveGraphicsBeenTagged(void);
+
+    // Static flags
+    bool GetFreeWill(void);
+    bool GetAutoCenter(void);
+    void SetAutoCenter(bool enable);
+    bool GetAutoReset(void);
+    void SetAutoReset(bool enable);
+
+    // Dialog return
+    void  SetOverrideDialogReturnCode(TreeReturnCode code);
+
+    // Object probe
+    ObjectProbe* GetObjectProbe(void);
+    void  SetObjectProbe(ObjectProbe* probe);
+
+    // Save/load
+    void PreSave(void);
+    void ForceLocation(void);
+    void Backtrace(void);
+
+    // Flags accessors
+    short          GetFlags(void);
+    short          GetWallPlacementFlags(void);
+    short          GetSize(void);
+    unsigned short GetRoom(void);
+
+    // State checks
+    bool IsBurning(void);
+    bool IsOccupied(void);
+    bool IsFireproof(void);
+    bool IsBroken(void);
+    bool IsDirty(void);
+    bool CanBurn(void);
+    bool SimIndependent(void);
+    void Kill(void);
+    bool SimEnabled(void);
+    void EnableSim(bool enable);
+    int  GetIdleStatus(void);
+    void SetIdleStatus(int status);
+    void ClearIdleStatus(void);
+
+    // Simulation
+    void      Simulate(int param);
+    cXObject* GetObjectFromID(short id);
+    void*     GetSim(void);
+};
 
 // ============================================================================
 // SECTION 1: STATIC DATA

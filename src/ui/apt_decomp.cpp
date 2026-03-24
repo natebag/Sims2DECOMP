@@ -34,6 +34,13 @@
 // =============================================================================
 
 #include "ui/apt_value.h"
+#include "ui/apt_action.h"
+
+extern "C" {
+    long  strtol(const char* str, char** endptr, int base);
+    int   atoi(const char* str);
+    double atof(const char* str);
+}
 
 
 // =============================================================================

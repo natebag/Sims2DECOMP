@@ -16,9 +16,13 @@
  */
 
 #include "types.h"
-#include <cstdlib>  // rand()
-#include <cstring>  // memset, memcpy
-#include <cmath>    // fabsf, fmodf
+extern "C" {
+    int   rand(void);
+    void* memset(void* dst, int c, unsigned int n);
+    void* memcpy(void* dst, const void* src, unsigned int n);
+    float fabsf(float x);
+    float fmodf(float x, float y);
+}
 
 // ============================================================================
 // FORWARD DECLARATIONS
@@ -841,8 +845,8 @@ struct cXPersonImpl {
         u32 deltaEnd   = *(u32*)((char*)this + 0x3E8);
 
         if (deltaBegin != 0 && deltaEnd != 0) {
-            char* entry = (char*)(uintptr_t)deltaBegin;
-            char* end   = (char*)(uintptr_t)deltaEnd;
+            char* entry = (char*)(unsigned int)deltaBegin;
+            char* end   = (char*)(unsigned int)deltaEnd;
             while (entry < end) {
                 u32 motiveIndex = *(u32*)entry;
                 f32 rate   = *(f32*)(entry + 4);

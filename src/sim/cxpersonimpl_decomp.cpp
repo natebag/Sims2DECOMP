@@ -173,7 +173,6 @@
 #include "types.h"
 
 // Forward declarations
-class cXPersonImpl;
 class cXPerson;
 class cXObject;
 class StackElem;
@@ -190,6 +189,279 @@ class MotiveEffects;
 class SAnimator2;
 class ObjSelector;
 class ObjectModule;
+
+// Complete cXPersonImpl class declaration
+class cXPersonImpl {
+public:
+    // Base object pointer (offset 0x000)
+    cXObject* m_object;   // 0x000
+
+    // Person data array at offset 0x008 (s16[])
+    s16 m_personData[32]; // at this+0x008 (64 bytes = up to 0x048)
+
+    // Visitor flag
+    s16 m_isVisitor;      // 0x048
+    u8  m_pad_04A[0x0A];  // to 0x054
+
+    // Social mode target & nearby fields
+    s16 m_field_054;      // 0x054
+    s16 m_field_056;      // 0x056
+    s16 m_socialModeTarget; // 0x058
+    u8  m_pad_05A[0x2A];
+
+    // Unknown small field at 0x03E (actually within personData range -- use direct access)
+    // s16 m_field_03E is personData[0x1F] approximately
+    // We expose it as an alias through a method or direct field:
+    s16 m_field_03E;      // 0x03E - part of personData but accessed separately
+
+    // NPC flag
+    u8  m_field_042;      // 0x042
+
+    // Male flag
+    s16 m_isMale;         // 0x084
+    u8  m_pad_086[0x12];
+
+    // Carrying flag
+    u8  m_bIsCarryingDCObject; // 0x0A
+
+    // Person flags bitfield (visibility, green, ghost, alien, etc.)
+    u16 m_personFlags;    // 0x09C
+    u8  m_pad_09E[0x08];
+
+    // Motive arrays
+    f32 m_motives[16];    // 0x0A8 (current)
+    f32 m_happyScore;     // within motive area
+    u8  m_pad_0EC[0x00];
+    f32 m_oldMotives[16]; // 0x0E8 (previous tick)
+
+    // field_12C (last tick counter near action queue area)
+    u32 m_field_12C;      // 0x12C
+
+    // Action queue at 0x130 (large sub-object)
+    u8  m_actionQueue[0x2B4]; // 0x130 to 0x3E4
+
+    // Animator at 0x3F4
+    SAnimator2* m_animator;       // 0x3F4
+
+    // MotiveEffects at 0x408
+    MotiveEffects* m_motiveEffects; // 0x408
+
+    // Route stack (at 0x40C)
+    XRoute* m_routeStackBegin;    // 0x40C
+    XRoute* m_routeStackEnd;      // 0x410
+
+    // Current room
+    u16 m_currentRoom;    // 0x41C
+    u8  m_pad_41E[2];
+
+    // Control stack at 0x420
+    u32* m_controlStackBegin; // 0x420
+    u32* m_controlStackEnd;   // 0x424
+
+    // Recording fields (approximate offsets in 0x428+ range)
+    void* m_recording;        // 0x428
+    u32   m_recordDuration;   // 0x42C
+    u32   m_recordMaxDuration; // 0x430
+    u32   m_recordStartTicks; // 0x434
+    u32   m_recordCurTicks;   // 0x438
+    u32   m_recordTicksElapsed; // 0x43C (at 0x444 per comment)
+    u32   m_recordSkill;      // 0x440
+    u32   m_lastMotiveUpdateTick; // 0x444 area
+
+    // Aspiration fields
+    f32 m_aspirationScore;
+    u32 m_aspirationStatus;
+
+    u8  m_pad_44C[0xE0];     // pad to 0x52C
+
+    // Action queue state
+    u32 m_changingOutfitMode;  // 0x530
+    u32 m_pad_534_adj;
+    u32 m_hasCurrentAction;    // 0x534
+    u8  m_pad_538[4];
+
+    // Ignoring object at 0x53C
+    cXObject* m_ignoringObject; // 0x53C
+
+    // Idle loop count at 0x540
+    s16 m_idleLoopCount;     // 0x540
+    s16 m_neighborID;        // nearby
+
+    // Social mode fields
+    u32 m_firstPlayerInSocialMode;  // 0x544
+    u32 m_secondPlayerInSocialMode; // 0x548
+    u32 m_waitingForSocialMode;     // 0x54C
+
+    u8  m_pad_550[0x1000];   // large pad -- real size is 0x66B0
+
+    // Methods
+    cXPersonImpl* CastToPersonImpl();
+    cXPersonImpl* GetPersonImplementation();
+    void DebugDumpHappyScape();
+    void StartRecording(int skill, int maxDuration);
+    void StopRecording();
+    void ClearRecording();
+    void LogEvent(char* a, char* b, char* c);
+    void Track();
+    void GetJobSuitTex(StringBuffer& a, StringBuffer& b, StringBuffer& c);
+    int  TickRecording();
+    f32  GetMotive(int index);
+    f32* GetMotiveRef(int index);
+    f32* GetOldMotiveRef(int index);
+    void SetMotive(int index, f32 value);
+    f32* GetMotives();
+    MotiveEffects* GetMotiveEffects();
+    void SimMotives();
+    void CalcHappy();
+    f32  GetAspirationScore();
+    void SetAspirationScore(f32 value);
+    int  GetAspirationStatus();
+    s16  GetPersonData(int index) const;
+    void SetPersonData(int index, s16 value);
+    s16* GetPersonDataArray();
+    s16  GetIdleState();
+    bool IsIdle();
+    int  GetPendingAction() const;
+    int  CountActions(bool includeCurrentAction);
+    bool IsInvisible();
+    bool IsGreen();
+    bool IsGhost();
+    bool IsAlien();
+    bool IsInMotiveFailure();
+    bool NeedsWantFearShuffle();
+    s16  GetVisibility();
+    void SetInvisible(bool invisible);
+    void SetIsAlien(bool alien);
+    bool IsVisitor();
+    bool IsSleeping();
+    bool IsMale();
+    bool IsFemale();
+    bool IsAdult();
+    bool IsDog();
+    bool IsCat();
+    bool IsMonkey();
+    bool IsPet();
+    bool IsChild();
+    bool IsSelected();
+    u16  GetCurrentRoom() const;
+    bool IsRouting();
+    XRoute* GetCurrentRoute();
+    int  GetRouteStackSize();
+    void InvalidateRoutes();
+    void* GetDestList();
+    bool IsInSocialMode();
+    bool IsFirstPlayerInSocialMode();
+    bool IsSecondPlayerInSocialMode();
+    bool IsWaitingForSocialMode();
+    void SetFirstPlayerInSocialMode(bool value);
+    void SetWaitingForSocialMode(bool value);
+    SAnimator2* GetSAnimator() const;
+    void* GetRecording();
+    u32  GetRecordDuration();
+    void SetRecordDuration(int duration);
+    u32  GetRecordMaxDuration();
+    void SetRecordMaxDuration(int maxDuration);
+    u32  GetRecordStartTicks();
+    u32  GetRecordCurTicks();
+    u32  GetRecordTicksElapsed();
+    u32  GetRecordSkill();
+    void SetChangingOutfitMode(bool mode);
+    u32  GetLastMotiveUpdateTick();
+    void SetLastMotiveUpdateTick(int tick);
+    void SetIdleLoopCount(s16 count);
+    cXObject* IgnoringObject();
+    void SetIgnoringObject(cXObject* obj);
+    void ClearIgnoringObject();
+    void* GetSimDescription();
+    void* GetServiceNPC();
+    u32  ReconType();
+    void SetAwareOfObject(cXObject* obj);
+    void SetAwareOfObjectKilled(cXObject* obj);
+    void ClearAwareOfObject(cXObject* obj);
+    cXObject* GetControllingObject();
+    int  GetSimMemory(cXPerson* targetSim, int memoryType);
+    void SetSimMemory(cXPerson* targetSim, int memoryType, int value);
+    int  GetDominantMemory(cXPerson* targetSim, int memoryType);
+    int  Simulate(int tickDelta);
+    bool IsModelLoaded();
+    bool IsPersonDying();
+    void SetCurrentActionText(BString2& text);
+    Interaction* GetCurrentAction();
+    Interaction* GetCurrentInteractionNC();
+    cXObject* GetCurrentInteractionStackObject();
+    cXObject* GetCurrentInteractionIconObject();
+    cXPerson* GetSocialModeTarget();
+    s16  GetNeighborID() const;
+    void SetNeighborID(s16 id);
+    bool IsCarrying();
+    void Turn(int direction);
+    bool IsCarryingDCObject();
+    bool IsPersonInFamily();
+    bool IsPrimarySim();
+    bool IsSelectableByPlayer();
+    void SetHilite(bool on);
+    void AttachToHUD();
+    bool UserCanPickup();
+    void SetIdlePlayerSimAutonomous(bool auto_);
+    void SetSecondPlayerInSocialMode(bool value);
+    void CheckFirstPlayerForFailedSocialModeEntry();
+    void CheckSecondPlayerForFailedSocialModeEntry();
+    void IncrementSimSocialInterest(int amt);
+    f32  GetSimSocialInterestAsMotiveValue();
+    void SetSimSocialIntrestFromMotiveValue(f32 val);
+    void InitWantFearIcons();
+    void SpawnWantFearDialog();
+    void* GetNormalSimDescription();
+    bool Skipping3D();
+    void UpdateCurrentRoom();
+    void Place();
+    void DumpDestList();
+    void ForceLocation();
+    void PreSave();
+    void ReconStream(ReconBuffer* buf);
+    void GosubObjectTree(void* tree);
+    void StackJustPopped(StackElem* elem, int result);
+    void UpdateCurrentAction();
+    void CompleteCurrentAction();
+    void DeleteTopAction();
+    void ActionSkipped(void* action);
+    void AddAction(void* action, int flags);
+    void RemoveAction(void* action);
+    void CancelLastAction();
+    void CancelAllActions();
+    void CancelAllButLastActions();
+    bool ShouldInterrupt(void* action);
+    void executeInterruptOnIdlePrimitve(void* prim);
+    void RunImmediateAction(void* action);
+    void Cleanup();
+    void Initialize();
+    void Reset();
+    void InitRoute(RoutingSlot* slot);
+    void AskOthersToMove(XRoute* route);
+    bool TrySetMotiveDelta(int motive, f32 delta, f32 target);
+    bool TryGosubFoundAction(void* action, int flags);
+    bool TryLookTowards(int target);
+    bool TryGotoRoutingSlot(RoutingSlot* slot);
+    bool TryGotoRelative(int x, int y);
+    bool TryRoomRouting(int roomId);
+    bool TryGetReachInfo(void* info);
+    bool TryReach(void* reach);
+    bool TryElement(void* elem);
+    bool TryChangeSuit(int suitType);
+    bool TryFindBestAction(void* context);
+    bool TryIdleForInput(void* input);
+    bool TryIdleAnimate(void* anim);
+    bool TryTestInteractingWith(cXObject* obj);
+    bool TrySocialMode(void* params);
+    void GetNextQueueStr(BString2& str);
+    void EORDrawStickFigure();
+    void InitializeStaticMemory();
+    void CleanupStaticMemory();
+    void SetAspirationStatus(int status);
+
+    cXPersonImpl();
+    virtual ~cXPersonImpl();
+};
 
 // External function declarations
 extern int GetGameTickCount(void*);                 // at 0x801096C4
