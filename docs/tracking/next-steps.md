@@ -1,85 +1,108 @@
 # Next Steps — Sims 2 GC Decomp
 
-Current milestone: **Milestone 1: FOUNDATION**
+Current milestone: **Milestone 2: PORTABLE C++ CONVERSION**
 
-## Lane 1: Toolchain & Build (HIGHEST PRIORITY)
+Last session: 2026-03-24 — 100% DOL byte match achieved, README updated, batch
+conversion of ~155 small classes. See `git log` for exact details.
 
-### Phase 1A: Environment Setup
-- [x] Verify devkitPPC is working (GCC 15.2.0 at F:\coding\Decompiles\Tools\devkitPro\devkitPPC)
-- [x] Download and configure decomp-toolkit (dtk 1.8.3 at F:\coding\Decompiles\Tools\)
-- [x] Create `config/sims2_gc.yml` with DOL sections from map file
-- [x] Set up basic Makefile / build script that compiles with devkitPPC
-- [x] Verify build output produces valid Gekko PPC assembly
+---
 
-### Phase 1B: Build System
-- [x] Extract symbols from DVD map into dtk format (tools/sn_map_to_dtk.py — 23,068 symbols)
-- [x] Set up function-level matching verification (`dtk dol diff`)
-- [x] Create linker script for producing matching DOL (config/ldscript.lcf)
-- [x] Skeleton generator (tools/gen_skeleton.py) with overlapping symbol handling
-- [x] Inject pipeline (tools/inject_matches.py) — compiles, verifies, injects into skeleton
-- [x] Data section injection — .rodata/.data/.sdata/.sdata2/.ctors filled from DOL
-- [x] Gap filling — inter-symbol padding filled from DOL for 100% match
-- [x] **100% DOL byte match achieved** (4,644,364 / 4,644,364 bytes)
-- [ ] Create CI-ready build script (even if no CI yet)
-- [ ] Document build process in `docs/systems/build-system.md`
+## How to pick up work
 
-**NOTE:** Full `dtk dol split` deferred — SN Systems binary causes section naming
-and cyclic dependency issues with dtk (designed for CodeWarrior). Using direct
-compile-and-diff workflow instead.
+Run `git log --oneline -5` to see the last session's commits, then continue
+with the highest-priority unchecked task below.
 
-## Lane 2: Symbol Analysis
+---
 
-### Phase 2A: Map File Parser
-- [x] Write `tools/map_parser.py` — parse `u2_ngc_release.map` into structured JSON
-- [x] Write `tools/sn_map_to_dtk.py` — convert SN Systems map to dtk format
-- [x] Extract symbols from DVD map (u2_ngc_release_dvd.map — the one matching the DOL)
-- [x] Generate symbol statistics (18,547 functions, 3.77 MB code)
-- [ ] Cross-reference release map with debug map for additional info
+## Lane 1: Big Fish (>5K lines) — HIGHEST PRIORITY
 
-### Phase 2B: Ghidra Setup
+These files contain the most asm lines. Converting them moves the needle fastest.
+
+### Tier 1 — Massive (>20K lines)
+- [ ] `global.cpp` (230,640 lines) — globals, static data, misc functions
+- [ ] `InteractorModule.cpp` (40,471 lines) — build mode / wall manipulation
+- [ ] `cXObjectImpl.cpp` (35,751 lines) — core object system
+- [ ] `AptActionInterpreter.cpp` (24,436 lines) — APT ActionScript VM
+- [ ] `cXPersonImpl.cpp` (20,023 lines) — sim person AI
+
+### Tier 2 — Large (10K-20K lines)
+- [ ] `SAnimator2.cpp` (15,998 lines) — animation system
+- [ ] `ENgcRenderer.cpp` (13,056 lines) — GameCube renderer
+- [ ] `INVTarget.cpp` (11,687 lines) — inventory UI target
+- [ ] `EAnimController.cpp` (10,212 lines) — animation controller
+- [ ] `static_init.cpp` (10,212 lines) — static initializers
+
+### Tier 3 — Medium-Large (5K-10K lines)
+- [ ] `EdithVariableSet.cpp` (8,431 lines)
+- [ ] `ObjectModuleImpl.cpp` (8,264 lines)
+- [ ] `AptCharacterInst.cpp` (8,058 lines)
+- [ ] `PCTTarget.cpp` (7,689 lines)
+- [ ] `ObjectFolderImpl.cpp` (7,239 lines)
+- [ ] `ERLevel.cpp` (6,936 lines)
+- [ ] `cFixedWorldImpl.cpp` (6,791 lines)
+- [ ] `ISimsObjectModel.cpp` (6,718 lines)
+- [ ] `StringPool.cpp` (6,615 lines)
+- [ ] `CASTarget.cpp` (6,480 lines)
+- [ ] `ENgcMemoryCard.cpp` (6,317 lines)
+- [ ] `EA.cpp` (6,286 lines)
+- [ ] `NghResFile.cpp` (6,154 lines)
+- [ ] `Effects.cpp` (5,780 lines)
+- [ ] `AptDate.cpp` (5,669 lines)
+- [ ] `NeighborhoodImpl.cpp` (5,641 lines)
+- [ ] `FAMTarget.cpp` (5,521 lines)
+- [ ] `CasSimPartsS2C.cpp` (5,365 lines)
+- [ ] `ESimsCam.cpp` (5,214 lines)
+
+## Lane 2: System Sweeps — complete lowest-% systems
+
+Focus on systems with the most remaining asm stubs:
+
+| System | Converted | Total | % | Remaining |
+|--------|-----------|-------|---|-----------|
+| UI / APT | 1,216 | 1,478 | 82.3% | 262 |
+| Sim AI | 1,187 | 1,389 | 85.5% | 202 |
+| Effects | 96 | 112 | 85.7% | 16 |
+| Build Mode | 730 | 837 | 87.2% | 107 |
+| Audio | 473 | 536 | 88.2% | 63 |
+| Misc | 16,669 | 18,723 | 89.0% | 2,054 |
+
+- [ ] Sweep UI/APT system — convert remaining 262 stubs
+- [ ] Sweep Sim AI system — convert remaining 202 stubs
+- [ ] Sweep Effects system — convert remaining 16 stubs (quick win!)
+- [ ] Sweep Build Mode — convert remaining 107 stubs
+- [ ] Sweep Audio — convert remaining 63 stubs
+
+## Lane 3: Small Batch — files <1K lines
+
+~790 remaining small files. Can be batch-converted in groups of 50-100.
+
+- [ ] Batch A: next 100 smallest asm stubs
+- [ ] Batch B: next 100
+- [ ] (continue until done)
+
+## Lane 4: Ghidra Setup (optional, as needed)
+
+Only pursue if a Big Fish file is too complex to convert without disassembly analysis.
+
 - [ ] Create Ghidra project for Sims 2 GC
 - [ ] Import `main.dol` with PowerPC/Gekko processor
 - [ ] Import `u2_ngc_release_dvd.elf` for debug symbols
-- [ ] Write `tools/symbol_importer.py` — Ghidra script to apply map symbols
-- [ ] Run auto-analysis with applied symbols
-- [ ] Identify and label vtables, string references, data sections
+- [ ] Apply map symbols via script
 
-## Lane 3: Boot Decomp
+## Lane 5: Documentation (low priority, do alongside other work)
 
-### Phase 3A: Entry Point
-- [x] `__start` — bytes matching via DOL injection (real C decomp is future work)
-- [x] `__init_hardware` — decompiled in src/boot/__ppc_eabi_init.s
-- [x] `__flush_cache` — decompiled in src/boot/__ppc_eabi_init.s
-- [ ] Decompile `__premain` to portable C
-- [ ] Decompile `__init_vm` to portable C
-- [ ] Decompile `__start` to portable C (currently injected bytes only)
+- [ ] Write CONTRIBUTING.md
+- [ ] Write `docs/systems/boot-sequence.md`
+- [ ] Document build flags used by EA
+- [ ] Create CI-ready build script
 
-### Phase 3B: Main Function
-- [ ] Identify and decompile `main()`
-- [ ] Trace initialization order (what gets set up and in what order)
-- [ ] Decompile early init functions called from main
-- [ ] Document the full boot -> main loop flow
+---
 
-## Lane 4: Documentation
+## Completed Milestones
 
-### Phase 4A: Project Docs
-- [x] Write README.md (project overview, goals, how to contribute)
-- [ ] Write CONTRIBUTING.md (how to decompile a function, style guide, PR process)
-- [ ] Write `docs/systems/boot-sequence.md` after boot is decompiled
-- [ ] Document the compiler and build flags used by EA
-
-### Phase 4B: Format Research
-- [ ] Document .arc archive format (`docs/file-formats/arc-format.md`)
-- [ ] Document .NGH file format
-- [ ] Document .tpl texture format
-- [ ] Document .ddf disc descriptor format
-
-## Lane 5: Portable C++ Conversion (ongoing)
-
-The primary work toward a PC port. Convert remaining 1,214 asm_decomp stubs
-to real portable C++ that compiles on both PPC (matching) and x86 (PC port).
-
-### Priority targets (largest remaining asm stubs):
-- [ ] Batch convert remaining asm stubs in src/asm_decomp/
-- [ ] Focus on systems with lowest conversion %: UI/APT (82%), Sim AI (85%), Effects (86%)
-- [ ] Verify converted code compiles clean with `make compile`
+### Milestone 1: FOUNDATION — DONE (2026-03-24)
+- devkitPPC toolchain working
+- 100% DOL byte match via inject pipeline
+- Map parser + symbol extraction done
+- README written
+- Progress tracker working

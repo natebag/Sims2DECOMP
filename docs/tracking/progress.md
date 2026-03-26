@@ -7,9 +7,9 @@
 | DOL byte match | **100.000%** (4,644,364 / 4,644,364) |
 | Total symbols (map) | 36,913 |
 | Functions injected (matching) | 18,539 |
-| Portable C++ files | 5,012 |
-| Remaining asm stubs | 1,214 |
-| Portable C++ lines | ~1,396,190 |
+| Portable C++ files | 5,014 |
+| Remaining asm stubs | 1,214 (78 more have portable C++ equivalents) |
+| Portable C++ lines | ~1,400,100 |
 | Asm stub lines | ~1,178,431 |
 
 ## DOL Section Match (2026-03-24)
@@ -32,9 +32,10 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 
 | Metric | Value |
 |--------|-------|
-| By file count | 80.5% (5,012 / 6,226) |
-| By line count | ~54% (1.4M / 2.57M) |
-| Remaining asm stubs | 1,214 files |
+| By file count | 80.7% (5,014 / 6,228) |
+| By line count | ~54.3% (1.4M / 2.58M) |
+| Remaining asm stubs | 1,214 files (78 now have portable C++ equivalents) |
+| Stubs with portable equiv | 78 (from this session: 51 small batch + 27 effects) |
 
 ## By System
 
@@ -45,7 +46,7 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 | Boot / SDK | 17 | 17 | 100.0% |
 | Build Mode | 730 | 837 | 87.2% |
 | Camera | 119 | 127 | 93.7% |
-| Effects | 96 | 112 | 85.7% |
+| Effects | 112 | 112 | 100.0% |
 | Goals | 32 | 34 | 94.1% |
 | Inventory | 62 | 65 | 95.4% |
 | Memory | 5883 | 5922 | 99.3% |
@@ -56,3 +57,11 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 | Sim AI | 1187 | 1389 | 85.5% |
 | Skin | 21 | 23 | 91.3% |
 | UI / APT | 1216 | 1478 | 82.3% |
+
+## Session Log
+
+### 2026-03-26: Small batch + Effects sweep
+- Converted 51 small asm stubs (39-49 lines each) → `src/decomp_cpp/small_classes_batch2.cpp` (1,565 lines)
+- Converted 27 Effects system stubs → `src/decomp_cpp/effects_system_sweep.cpp` (2,344 lines)
+- **Effects system now at 100%** portable C++ coverage
+- Total: 78 asm stubs converted, 3,909 lines of portable C++ added
