@@ -108,10 +108,8 @@ target_link_options(sims2pc PRIVATE
 )
 
 # Link libraries
-if(SDL2_FOUND)
-    target_include_directories(sims2pc PRIVATE ${SDL2_INCLUDE_DIRS})
-    target_link_libraries(sims2pc PRIVATE ${SDL2_LIBRARIES})
-    target_compile_definitions(sims2pc PRIVATE SIMS2_HAS_SDL2=1)
+if(WIN32 OR CYGWIN)
+    target_link_libraries(sims2pc PRIVATE -lgdi32 -luser32)
 endif()
 
 if(OpenGL_FOUND)
