@@ -7,9 +7,9 @@
 | DOL byte match | **100.000%** (4,644,364 / 4,644,364) |
 | Total symbols (map) | 36,913 |
 | Functions injected (matching) | 18,539 |
-| Portable C++ files | 5,027 |
-| Remaining asm stubs | 1,214 (~834 now have portable C++ equivalents) |
-| Portable C++ lines | ~1,425,548 |
+| Portable C++ files | 5,031 |
+| Remaining asm stubs | 1,214 (~1,019 now have portable C++ equivalents) |
+| Portable C++ lines | ~1,440,844 |
 | Asm stub lines | ~1,178,431 |
 
 ## DOL Section Match (2026-03-24)
@@ -35,7 +35,7 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 | By file count | 80.8% (5,023 / 6,237) |
 | By line count | ~54.6% (1.42M / 2.60M) |
 | Remaining asm stubs | 1,214 files (~720 now have portable C++ equivalents) |
-| Stubs with portable equiv | ~834 (across 2 sessions) |
+| Stubs with portable equiv | ~1,019 (across 2 sessions) |
 
 ## By System
 
@@ -84,3 +84,12 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 - Batch 3: 28 files (StateMachine, EHashTable, FamilyImpl, WorldMap, etc.) → `large_batch_3.cpp` (1,580 lines)
 - Batch 4: 30 files (EQuat, EConfig, SimsMemCardWrap, Interaction, etc.) → `large_batch_4.cpp` (3,171 lines)
 - Total: 114 asm stubs converted, 8,287 lines of portable C++ added
+
+### 2026-03-27: Worktree blitz on 1001-5000 line stubs
+- 4 parallel worktree agents converting extra-large stubs
+- Batch 1: 46 files (EFloatTree, RParticle, ERedBlackTree, TreeSimImpl, etc.) → `xl_batch_1.cpp` (3,475 lines)
+- Batch 2: 46 files (WantFear, SkinCompositor, ESpriteRender, Room, etc.) → `xl_batch_2.cpp` (3,048 lines)
+- Batch 3: 46 files (PlumbBob, EResourceManager, AptValue, EMat4, etc.) → `xl_batch_3.cpp` (4,604 lines)
+- Batch 4: 47 files (ESim, EGlobal, BString, ERModel, CameraDirector, etc.) → `xl_batch_4.cpp` (4,169 lines)
+- Total: 185 asm stubs converted, 15,296 lines of portable C++ added
+- **Running total: ~1,019 of 1,214 stubs now have portable C++ equivalents (83.9%)**
