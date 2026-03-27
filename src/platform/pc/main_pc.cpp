@@ -5,6 +5,11 @@
 #include "gl_renderer.h"
 #include "input_bridge.h"
 #include "platform/arc_reader.h"
+
+// Game bootstrap
+extern int game_bootstrap(const char* data_path);
+extern void game_update(float dt);
+extern void game_shutdown(void);
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -108,22 +113,15 @@ int main(int argc, char* argv[]) {
         printf("[MAIN] OpenGL rendering active\n");
     }
 
-    // Load game archives — try multiple paths
-    printf("[MAIN] Loading game archives...\n");
+    // Bootstrap the game engine
     const char* data_paths[] = {
-        "extracted/files/DATA",
-        "../extracted/files/DATA",
-        "../../extracted/files/DATA",
-        "../../../extracted/files/DATA",
-        "/f/coding/Decompiles/Sims 2/extracted/files/DATA",
-        "F:\\coding\\Decompiles\\Sims 2\\extracted\\files\\DATA",
-        NULL
+        "extracted/files/DATA", "../extracted/files/DATA",
+        "../../extracted/files/DATA", "../../../extracted/files/DATA", NULL
     };
-    int arc_loaded = 0;
-    for (int i = 0; data_paths[i] && arc_loaded == 0; i++) {
-        arc_loaded = arc_open_all(data_paths[i]);
+    int booted = 0;
+    for (int i = 0; data_paths[i] && !booted; i++) {
+        booted = game_bootstrap(data_paths[i]);
     }
-    printf("[MAIN] Loaded %d archives\n", arc_loaded);
 
     // Generate a Sims 2 themed test texture (checkerboard with game colors)
     unsigned int test_texture_id = 0;
@@ -180,8 +178,8 @@ int main(int argc, char* argv[]) {
         // Render frame
         gl_begin_frame();
 
-        // TODO: When game init is working, replace this test scene with:
-        // ESimsApp::Update() which calls UpdateDraw() etc.
+        // Game update (currently no-op, will call ESimsApp subsystems)
+        game_update(0.016f);
 
         // Test scene: render a textured quad to prove the pipeline works
         // This will be replaced with the real game loop (Session C)
@@ -246,6 +244,7 @@ int main(int argc, char* argv[]) {
         Sleep(16); // ~60fps
     }
 
+    game_shutdown();
     gl_shutdown();
     DestroyWindow(hwnd);
     return 0;
