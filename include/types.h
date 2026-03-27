@@ -33,11 +33,7 @@ typedef uintptr_t uptr;
 #define NULL  nullptr
 #endif
 
-// Placement new (portable across compilers)
-#ifndef SIMS2_PLACEMENT_NEW_DEFINED
-#define SIMS2_PLACEMENT_NEW_DEFINED
-inline void* operator new(std::size_t, void* p) noexcept { return p; }
-inline void operator delete(void*, void*) noexcept {}
-#endif
+// Placement new — use standard <new> header
+#include <new>
 
 #endif // TYPES_H

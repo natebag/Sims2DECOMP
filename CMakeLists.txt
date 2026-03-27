@@ -109,7 +109,7 @@ target_link_options(sims2pc PRIVATE
 
 # Link libraries
 if(WIN32 OR CYGWIN)
-    target_link_libraries(sims2pc PRIVATE -lgdi32 -luser32)
+    target_link_libraries(sims2pc PRIVATE -lgdi32 -luser32 -lopengl32)
 endif()
 
 if(OpenGL_FOUND)
