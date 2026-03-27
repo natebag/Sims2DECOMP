@@ -1,4 +1,4 @@
-# Next Steps — Sims 2 GC Decomp → PC Port
+# Next Steps — Sims 2 PC Port
 
 Current milestone: **Milestone 7: PC PORT** — IN PROGRESS
 
@@ -6,155 +6,125 @@ Last updated: 2026-03-27
 
 ---
 
-## Where We Are
+## What Works RIGHT NOW
 
-Decompilation is DONE. All 18,539 functions byte-matched, all 1,214 asm stubs
-converted to portable C++. `sims2pc.exe` compiles, links, runs, opens a Win32 window.
-
-**What works:** x86 build, platform stubs, Win32 window (1280x720)
-**What's needed:** asset loading, rendering, game loop, input, audio
+- `sims2pc.exe` builds, links, runs (1.2MB x86_64 Windows)
+- OpenGL window (1280x720) with rendered plumbob + textures
+- All 22 .arc archives load (2,378+ game resources in memory)
+- GX→OpenGL bridge (state, vertex, matrix, texture)
+- Input bridge (keyboard → PAD mapping)
+- Audio bridge (stubs ready)
+- Game loop fully traced (ESimsApp::Update)
 
 ---
 
-## PC Port Sprint Plan
+## SESSION C: Game Boot — THE NEXT BIG PUSH
 
-### SESSION A: Asset Loading — THE CRITICAL PATH
-**Can be parallelized across 2 CLI sessions + worktree agents**
+This is an iterative debugging session. Call `ESimsApp::Init()`, fix each crash,
+implement missing systems one at a time until the game boots.
 
-Without assets, nothing renders. The game's 1.2GB of content is in `.arc` archives
-on the GameCube disc at `extracted/files/DATA/`.
+### Step 1: Minimal Engine Init
+- [ ] Implement `ENgcEngine::InitMemoryManager()` — wire EAHeap to malloc
+- [ ] Implement `EGlobalManager::Startup()` — init global state singleton
+- [ ] Implement `EApp::SetArgs()` — store argc/argv
+- [ ] Call `MainInit()` from our main_pc.cpp
+- [ ] **Test:** does it crash? Fix the first crash.
 
-#### CLI Session 1: .arc Archive Reader
-- [ ] Reverse engineer .arc format (may already be partially documented)
-- [ ] Write `src/platform/pc/arc_reader.cpp` — open .arc, list entries, extract files
-- [ ] Map DVD file paths to PC filesystem paths (`extracted/files/DATA/`)
-- [ ] Implement `DVDOpen`/`DVDRead` stubs to read from extracted disc files
-- [ ] Test: list all files in an .arc, extract one successfully
+### Step 2: Resource System
+- [ ] Wire `EResourceManager::Init()` to use our arc_reader
+- [ ] Implement `EResourceLoaderImpl::Init()` — resource loading thread
+- [ ] Map resource type IDs to .arc file categories
+- [ ] **Test:** does `ESimsApp::Init()` get past resource loading?
 
-#### CLI Session 2: Texture + Model Parsers
-- [ ] Parse TPL texture format → raw RGBA pixels
-- [ ] Parse ERModel vertex/index data → renderable mesh
-- [ ] Write test harness that dumps a texture to BMP/PNG
-- [ ] Test: display a texture filename + dimensions from game data
+### Step 3: Renderer Bootstrap
+- [ ] Implement `ENgcRenderer::Init()` — route to our OpenGL context
+- [ ] Implement `ENgcGraphics::Init()` — framebuffer setup
+- [ ] Wire `ERC` (render context) to our gl_renderer
+- [ ] **Test:** does the game try to render something?
 
-### SESSION B: OpenGL Rendering Backend
-**4 worktree agents in parallel**
+### Step 4: UI System (APT)
+- [ ] Implement `AptViewer::Init()` — the Flash/ActionScript UI engine
+- [ ] Load flash UI files from flashes.arc (s2c_pause_mainmenu, etc.)
+- [ ] Implement basic APT rendering (text, buttons, backgrounds)
+- [ ] **Test:** does the main menu appear?
 
-Replace GX stubs with OpenGL. The game uses ~30 core GX functions.
+### Step 5: State Machine
+- [ ] Wire `TheSimsStateMachine` — the top-level game state machine
+- [ ] Implement `TheSimsMaxisLogoState` → `TheSimsMainMenuState` flow
+- [ ] **Test:** can you see the Maxis logo → main menu transition?
 
-#### Agent 1: OpenGL Context + Basic Setup
-- [ ] Add OpenGL context to Win32 window (wglCreateContext)
-- [ ] Implement `GXInit`, `GXSetViewport`, `GXSetScissor`
-- [ ] Implement `GXSetCullMode`, `GXSetZMode`, `GXSetBlendMode`
-- [ ] Clear screen to blue instead of black (proof of life)
+### Debugging Strategy
+For each crash:
+1. Check sims2pc.log for last successful step
+2. Add more logging around the crash point
+3. Identify which function/system is missing
+4. Implement minimal stub or real implementation
+5. Rebuild and try again
 
-#### Agent 2: Vertex Submission
-- [ ] Implement `GXBegin`/`GXEnd` → `glBegin`/`glEnd`
-- [ ] Implement `GXPosition3f32` → `glVertex3f`
-- [ ] Implement `GXNormal3f32` → `glNormal3f`
-- [ ] Implement `GXColor4u8` → `glColor4ub`
-- [ ] Implement `GXTexCoord2f32` → `glTexCoord2f`
+Most crashes will be NULL pointer dereferences from uninitialized globals.
+Fix: add `if (!ptr) return;` guards or initialize the globals properly.
 
-#### Agent 3: Texture Loading
-- [ ] Implement `GXInitTexObj` → `glGenTextures` + `glTexImage2D`
-- [ ] Implement `GXLoadTexObj` → `glBindTexture`
-- [ ] Handle GC texture formats (CMPR/DXT1, C4, C8, RGB5A3, RGBA8)
-- [ ] Implement `GXInvalidateTexAll`
+---
 
-#### Agent 4: Matrix + State
-- [ ] Implement `GXLoadPosMtxImm` → `glLoadMatrixf`
-- [ ] Implement `GXSetCurrentMtx`, projection setup
-- [ ] Implement TEV stage mapping to fixed-function GL
-- [ ] Implement fog, alpha test
+## SESSION D: Texture Decoding (can run in parallel)
 
-### SESSION C: Wire Up Game Loop
-**Sequential — needs Sessions A+B working first**
+The EA/GC texture pipeline:
+```
+.arc file → EA TXFL header → GC pixel data (CMPR/C4/C8/RGBA8) → RGBA → OpenGL
+```
 
-- [ ] Replace stub `main()` with call to decompiled `MainInit()`
-- [ ] Get EAHeap allocator working (already partially implemented)
-- [ ] Get EResourceManager loading .arc files via new arc_reader
-- [ ] Get EFileSystem::Init() pointing to extracted disc files
-- [ ] Debug crashes (this will be iterative)
-- [ ] Goal: get past boot to loading screen
+- [ ] Parse EA TXFL header (the 16-byte prefix before pixel data)
+- [ ] Feed pixel data to gc_texture_decode.cpp (CMPR decoder already exists)
+- [ ] Test with fonts.arc "systemfont" (simplest texture)
+- [ ] Test with textures.arc "title bg c" (title screen background)
+- [ ] Wire into GXInitTexObj so game textures auto-decode
 
-### SESSION D: Input + Audio
-**2 worktree agents in parallel**
+---
 
-#### Agent 1: Input
-- [ ] Map Win32 keyboard messages to PAD button flags
-- [ ] Map Xbox/PS controller (XInput) to PAD
-- [ ] Wire up analog sticks
-- [ ] Test: navigate a menu with keyboard
+## SESSION E: First Playable (after C+D)
 
-#### Agent 2: Audio
-- [ ] Implement basic WAV/PCM playback via Win32 waveOut
-- [ ] Hook up AX/DSP stubs to play sound effects
-- [ ] Hook up music playback (AmbientScorePlayer)
-- [ ] Test: hear a sound effect
-
-### SESSION E: First Playable
-- [ ] Fix remaining crashes
-- [ ] Get main menu rendering
-- [ ] Get Create-A-Sim working
+- [ ] Get past loading screen
+- [ ] Main menu renders with real textures
+- [ ] Navigate menu with keyboard
 - [ ] Load into a house
-- [ ] **THE MOMENT: play the game on PC**
-
----
-
-## Multi-CLI Strategy
-
-The user has 2 Claude CLI sessions available. Optimal split:
-
-| CLI 1 | CLI 2 |
-|-------|-------|
-| Session A1: .arc reader | Session A2: texture/model parsers |
-| Session B: OpenGL (4 worktree agents) | Session C: game loop wiring |
-| Session D1: input | Session D2: audio |
-
-Both CLIs can use worktree agents for parallel work within their tasks.
+- [ ] **THE MOMENT**
 
 ---
 
 ## Build Commands
 
 ```bash
-# PC build (from project root)
+# From project root:
 cd build_pc2
 export PATH="/f/coding/Decompiles/Tools/devkitPro/msys2/usr/bin:$PATH"
 cmake .. && make -j4
 
-# Run
+# Run:
 ./sims2pc.exe
 
-# GC build (original matching DOL)
-make inject
-make diff
+# Check log:
+cat sims2pc.log
 ```
 
 ---
 
-## Key Files
+## Key Architecture
 
-| File | What |
-|------|------|
-| `CMakeLists.txt` | PC build system |
-| `src/platform/pc/main_pc.cpp` | PC entry point (Win32 window) |
-| `src/platform/pc/gx_stubs.cpp` | GX→OpenGL stubs (to be implemented) |
-| `src/platform/pc/os_stubs.cpp` | OS/DVD/PAD stubs |
-| `include/platform/platform.h` | Platform abstraction types |
-| `src/decomp_cpp/*.cpp` | All portable game code (47 files) |
-| `extracted/files/DATA/*.arc` | Game assets |
+```
+main_pc.cpp (PC entry point)
+    ↓
+Win32 Window + OpenGL context
+    ↓
+arc_reader.cpp → loads all .arc files
+    ↓
+Game loop: gl_begin_frame → [game update] → gl_end_frame
+    ↓
+GX stubs → gx_gl_impl.cpp → OpenGL calls
+    ↓
+Texture bridge → gc_texture_decode → gl_create_texture
+```
 
----
-
-## Completed Milestones
-
-| # | Milestone | Completed |
-|---|-----------|-----------|
-| 1 | Foundation | 2026-03-24 |
-| 2 | Portable C++ Conversion | 2026-03-27 |
-| 3 | Core Systems | 2026-03-27 |
-| 4 | Gameplay Systems | 2026-03-27 |
-| 5 | Presentation & Polish | 2026-03-27 |
-| 6 | Full Match | 2026-03-27 |
-| 7 | **PC Port** | **IN PROGRESS** |
+When `ESimsApp::Init()` + `Update()` are wired in, the game will:
+1. Init memory, resources, renderer, UI, audio
+2. Start the state machine (logo → menu → gameplay)
+3. Each frame: UpdateCheats → UpdateApt → UpdateGame → UpdateAudio → UpdateDraw
