@@ -56,11 +56,22 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/f/coding/Decompiles/Sims 2/src/decomp_cpp/xl_batch_2.cpp" "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_2.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_2.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/decomp_cpp/xl_batch_3.cpp" "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_3.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_3.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/decomp_cpp/xl_batch_4.cpp" "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_4.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_4.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/arc_reader.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/audio_bridge.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/clib_wrappers.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/ea_texture.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/gc_texture_decode.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/gl_renderer.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_gl_impl.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_state_bridge.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_stubs.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_texture_bridge.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_vertex_bridge.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/input_bridge.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/main_pc.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/main_pc.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/main_pc.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/missing_stubs.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/os_stubs.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/tpl_parser.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -180,6 +180,9 @@ int main(int argc, char* argv[]) {
         // Render frame
         gl_begin_frame();
 
+        // TODO: When game init is working, replace this test scene with:
+        // ESimsApp::Update() which calls UpdateDraw() etc.
+
         // Test scene: render a textured quad to prove the pipeline works
         // This will be replaced with the real game loop (Session C)
         {

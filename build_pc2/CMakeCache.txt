@@ -290,9 +290,6 @@ OPENGL_opengl_LIBRARY:FILEPATH=OPENGL_opengl_LIBRARY-NOTFOUND
 //Path to a file.
 OPENGL_xmesa_INCLUDE_DIR:PATH=OPENGL_xmesa_INCLUDE_DIR-NOTFOUND
 
-//The directory containing a CMake configuration file for SDL2.
-SDL2_DIR:PATH=SDL2_DIR-NOTFOUND
-
 //Value Computed by CMake
 Sims2PC_BINARY_DIR:STATIC=/f/coding/Decompiles/Sims 2/build_pc2
 

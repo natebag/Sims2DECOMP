@@ -61,8 +61,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-MoE9Xx"
-      binary: "/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-MoE9Xx"
+      source: "/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-OOjZjo"
+      binary: "/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-OOjZjo"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -72,13 +72,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-MoE9Xx'
+        Change Dir: '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-OOjZjo'
         
-        Run Build Command(s): /opt/devkitpro/msys2/usr/bin/cmake.exe -E env VERBOSE=1 /opt/devkitpro/msys2/usr/bin/make.exe -f Makefile cmTC_48543/fast
-        /opt/devkitpro/msys2/usr/bin/make  -f CMakeFiles/cmTC_48543.dir/build.make CMakeFiles/cmTC_48543.dir/build
-        make[1]: Entering directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-MoE9Xx'
-        Building CXX object CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o
-        /opt/devkitpro/msys2/usr/bin/c++.exe   -v -o CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o -c /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /opt/devkitpro/msys2/usr/bin/cmake.exe -E env VERBOSE=1 /opt/devkitpro/msys2/usr/bin/make.exe -f Makefile cmTC_80678/fast
+        /opt/devkitpro/msys2/usr/bin/make  -f CMakeFiles/cmTC_80678.dir/build.make CMakeFiles/cmTC_80678.dir/build
+        make[1]: Entering directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-OOjZjo'
+        Building CXX object CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o
+        /opt/devkitpro/msys2/usr/bin/c++.exe   -v -o CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o -c /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/opt/devkitpro/msys2/usr/bin/c++
         Target: x86_64-pc-cygwin
@@ -86,8 +86,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib
         gcc version 15.2.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_48543.dir/'
-         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/cc1plus.exe -quiet -v -iprefix /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/ -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/../../include/w32api /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_48543.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o /tmp/cccPPxPu.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_80678.dir/'
+         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/cc1plus.exe -quiet -v -iprefix /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/ -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/../../include/w32api /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_80678.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o /tmp/ccWCFiAv.s
         GNU C++17 (GCC) version 15.2.0 (x86_64-pc-cygwin)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -112,14 +112,14 @@ events:
          /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api
         End of search list.
         Compiler executable checksum: 3a9cd7496f053e16c42169824ef6e47b
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_48543.dir/'
-         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/as.exe -v -o CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o /tmp/cccPPxPu.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_80678.dir/'
+         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/as.exe -v -o CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccWCFiAv.s
         GNU assembler version 2.46 (x86_64-pc-cygwin) using BFD version (GNU Binutils) 2.46
         COMPILER_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/
         LIBRARY_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_48543.exe
-        /opt/devkitpro/msys2/usr/bin/cmake.exe -E cmake_link_script CMakeFiles/cmTC_48543.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_80678.exe
+        /opt/devkitpro/msys2/usr/bin/cmake.exe -E cmake_link_script CMakeFiles/cmTC_80678.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/opt/devkitpro/msys2/usr/bin/c++
         COLLECT_LTO_WRAPPER=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe
@@ -130,14 +130,14 @@ events:
         gcc version 15.2.0 (GCC) 
         COMPILER_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/
         LIBRARY_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_48543.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_48543.'
-         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/ccR5Unn5.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_48543.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_48543.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_80678.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_80678.'
+         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/cctwbfSE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_80678.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_80678.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o
         collect2 version 15.2.0
-        /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/ccR5Unn5.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_48543.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_48543.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o
+        /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/cctwbfSE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_80678.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_80678.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o
         GNU ld (GNU Binutils) 2.46
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_48543.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_48543.'
-        /opt/devkitpro/msys2/usr/bin/c++.exe -Wl,--enable-auto-import -v -Wl,-v CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_48543.exe -Wl,--out-implib,libcmTC_48543.dll.a -Wl,--major-image-version,0,--minor-image-version,0
-        make[1]: Leaving directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-MoE9Xx'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_80678.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_80678.'
+        /opt/devkitpro/msys2/usr/bin/c++.exe -Wl,--enable-auto-import -v -Wl,-v CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_80678.exe -Wl,--out-implib,libcmTC_80678.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        make[1]: Leaving directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-OOjZjo'
         
       exitCode: 0
   -
@@ -178,13 +178,13 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-MoE9Xx']
+        ignore line: [Change Dir: '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-OOjZjo']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/devkitpro/msys2/usr/bin/cmake.exe -E env VERBOSE=1 /opt/devkitpro/msys2/usr/bin/make.exe -f Makefile cmTC_48543/fast]
-        ignore line: [/opt/devkitpro/msys2/usr/bin/make  -f CMakeFiles/cmTC_48543.dir/build.make CMakeFiles/cmTC_48543.dir/build]
-        ignore line: [make[1]: Entering directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-MoE9Xx']
-        ignore line: [Building CXX object CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/opt/devkitpro/msys2/usr/bin/c++.exe   -v -o CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o -c /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /opt/devkitpro/msys2/usr/bin/cmake.exe -E env VERBOSE=1 /opt/devkitpro/msys2/usr/bin/make.exe -f Makefile cmTC_80678/fast]
+        ignore line: [/opt/devkitpro/msys2/usr/bin/make  -f CMakeFiles/cmTC_80678.dir/build.make CMakeFiles/cmTC_80678.dir/build]
+        ignore line: [make[1]: Entering directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-OOjZjo']
+        ignore line: [Building CXX object CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/opt/devkitpro/msys2/usr/bin/c++.exe   -v -o CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o -c /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/opt/devkitpro/msys2/usr/bin/c++]
         ignore line: [Target: x86_64-pc-cygwin]
@@ -192,8 +192,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib]
         ignore line: [gcc version 15.2.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_48543.dir/']
-        ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/cc1plus.exe -quiet -v -iprefix /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/ -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/../../include/w32api /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_48543.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o /tmp/cccPPxPu.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_80678.dir/']
+        ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/cc1plus.exe -quiet -v -iprefix /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/ -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/../../include/w32api /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_80678.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o /tmp/ccWCFiAv.s]
         ignore line: [GNU C++17 (GCC) version 15.2.0 (x86_64-pc-cygwin)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -218,14 +218,14 @@ events:
         ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 3a9cd7496f053e16c42169824ef6e47b]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_48543.dir/']
-        ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/as.exe -v -o CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o /tmp/cccPPxPu.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_80678.dir/']
+        ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/as.exe -v -o CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccWCFiAv.s]
         ignore line: [GNU assembler version 2.46 (x86_64-pc-cygwin) using BFD version (GNU Binutils) 2.46]
         ignore line: [COMPILER_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/]
         ignore line: [LIBRARY_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_48543.exe]
-        ignore line: [/opt/devkitpro/msys2/usr/bin/cmake.exe -E cmake_link_script CMakeFiles/cmTC_48543.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_80678.exe]
+        ignore line: [/opt/devkitpro/msys2/usr/bin/cmake.exe -E cmake_link_script CMakeFiles/cmTC_80678.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/opt/devkitpro/msys2/usr/bin/c++]
         ignore line: [COLLECT_LTO_WRAPPER=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe]
@@ -236,13 +236,13 @@ events:
         ignore line: [gcc version 15.2.0 (GCC) ]
         ignore line: [COMPILER_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/]
         ignore line: [LIBRARY_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_48543.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_48543.']
-        link line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/ccR5Unn5.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_48543.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_48543.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_80678.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_80678.']
+        link line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/cctwbfSE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_80678.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_80678.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll] ==> ignore
           arg [-plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccR5Unn5.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cctwbfSE.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lmsys-2.0] ==> ignore
@@ -275,7 +275,7 @@ events:
           arg [--dll-search-prefix=msys-] ==> ignore
           arg [--tsaware] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_48543.exe] ==> ignore
+          arg [cmTC_80678.exe] ==> ignore
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o] ==> obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o]
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o] ==> obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o]
           arg [-L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0] ==> dir [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0]
@@ -285,9 +285,9 @@ events:
           arg [-L/usr/lib] ==> dir [/usr/lib]
           arg [--enable-auto-import] ==> ignore
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_48543.dll.a] ==> ignore
+          arg [libcmTC_80678.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -305,7 +305,7 @@ events:
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o] ==> obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o]
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o] ==> obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
         ignore line: [collect2 version 15.2.0]
-        ignore line: [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/ccR5Unn5.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_48543.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_48543.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_48543.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
+        ignore line: [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/cctwbfSE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_80678.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_80678.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_80678.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
         linker tool for 'CXX': /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld
         collapse obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o] ==> [/opt/devkitpro/msys2/usr/lib/crt0.o]
         collapse obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o] ==> [/opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o]
@@ -341,8 +341,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-H0SR22"
-      binary: "/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-H0SR22"
+      source: "/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-nwilnL"
+      binary: "/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-nwilnL"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -351,13 +351,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-H0SR22'
+        Change Dir: '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-nwilnL'
         
-        Run Build Command(s): /opt/devkitpro/msys2/usr/bin/cmake.exe -E env VERBOSE=1 /opt/devkitpro/msys2/usr/bin/make.exe -f Makefile cmTC_f0e64/fast
-        /opt/devkitpro/msys2/usr/bin/make  -f CMakeFiles/cmTC_f0e64.dir/build.make CMakeFiles/cmTC_f0e64.dir/build
-        make[1]: Entering directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-H0SR22'
-        Building C object CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o
-        /opt/devkitpro/msys2/usr/bin/cc.exe   -v -o CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o -c /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /opt/devkitpro/msys2/usr/bin/cmake.exe -E env VERBOSE=1 /opt/devkitpro/msys2/usr/bin/make.exe -f Makefile cmTC_b2fd9/fast
+        /opt/devkitpro/msys2/usr/bin/make  -f CMakeFiles/cmTC_b2fd9.dir/build.make CMakeFiles/cmTC_b2fd9.dir/build
+        make[1]: Entering directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-nwilnL'
+        Building C object CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o
+        /opt/devkitpro/msys2/usr/bin/cc.exe   -v -o CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o -c /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/opt/devkitpro/msys2/usr/bin/cc
         Target: x86_64-pc-cygwin
@@ -365,8 +365,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib
         gcc version 15.2.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_f0e64.dir/'
-         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/cc1.exe -quiet -v -iprefix /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/ -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/../../include/w32api /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_f0e64.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o /tmp/ccqeIZFW.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_b2fd9.dir/'
+         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/cc1.exe -quiet -v -iprefix /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/ -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/../../include/w32api /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b2fd9.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o /tmp/ccE7UtNG.s
         GNU C23 (GCC) version 15.2.0 (x86_64-pc-cygwin)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -385,14 +385,14 @@ events:
          /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api
         End of search list.
         Compiler executable checksum: 3ed07188a841f49cd6e76fe450b88516
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_f0e64.dir/'
-         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/as.exe -v -o CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o /tmp/ccqeIZFW.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_b2fd9.dir/'
+         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/as.exe -v -o CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o /tmp/ccE7UtNG.s
         GNU assembler version 2.46 (x86_64-pc-cygwin) using BFD version (GNU Binutils) 2.46
         COMPILER_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/
         LIBRARY_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_f0e64.exe
-        /opt/devkitpro/msys2/usr/bin/cmake.exe -E cmake_link_script CMakeFiles/cmTC_f0e64.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_b2fd9.exe
+        /opt/devkitpro/msys2/usr/bin/cmake.exe -E cmake_link_script CMakeFiles/cmTC_b2fd9.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/opt/devkitpro/msys2/usr/bin/cc
         COLLECT_LTO_WRAPPER=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe
@@ -403,14 +403,14 @@ events:
         gcc version 15.2.0 (GCC) 
         COMPILER_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/
         LIBRARY_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f0e64.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_f0e64.'
-         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/ccSzrLeJ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_f0e64.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_f0e64.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b2fd9.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_b2fd9.'
+         /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/cc3DcOOK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_b2fd9.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_b2fd9.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o
         collect2 version 15.2.0
-        /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/ccSzrLeJ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_f0e64.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_f0e64.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o
+        /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/cc3DcOOK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_b2fd9.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_b2fd9.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o
         GNU ld (GNU Binutils) 2.46
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f0e64.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_f0e64.'
-        /opt/devkitpro/msys2/usr/bin/cc.exe -Wl,--enable-auto-import -v -Wl,-v CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o -o cmTC_f0e64.exe -Wl,--out-implib,libcmTC_f0e64.dll.a -Wl,--major-image-version,0,--minor-image-version,0
-        make[1]: Leaving directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-H0SR22'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b2fd9.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_b2fd9.'
+        /opt/devkitpro/msys2/usr/bin/cc.exe -Wl,--enable-auto-import -v -Wl,-v CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o -o cmTC_b2fd9.exe -Wl,--out-implib,libcmTC_b2fd9.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        make[1]: Leaving directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-nwilnL'
         
       exitCode: 0
   -
@@ -445,13 +445,13 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-H0SR22']
+        ignore line: [Change Dir: '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-nwilnL']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/devkitpro/msys2/usr/bin/cmake.exe -E env VERBOSE=1 /opt/devkitpro/msys2/usr/bin/make.exe -f Makefile cmTC_f0e64/fast]
-        ignore line: [/opt/devkitpro/msys2/usr/bin/make  -f CMakeFiles/cmTC_f0e64.dir/build.make CMakeFiles/cmTC_f0e64.dir/build]
-        ignore line: [make[1]: Entering directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-H0SR22']
-        ignore line: [Building C object CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/opt/devkitpro/msys2/usr/bin/cc.exe   -v -o CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o -c /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /opt/devkitpro/msys2/usr/bin/cmake.exe -E env VERBOSE=1 /opt/devkitpro/msys2/usr/bin/make.exe -f Makefile cmTC_b2fd9/fast]
+        ignore line: [/opt/devkitpro/msys2/usr/bin/make  -f CMakeFiles/cmTC_b2fd9.dir/build.make CMakeFiles/cmTC_b2fd9.dir/build]
+        ignore line: [make[1]: Entering directory '/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/CMakeScratch/TryCompile-nwilnL']
+        ignore line: [Building C object CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/opt/devkitpro/msys2/usr/bin/cc.exe   -v -o CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o -c /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/opt/devkitpro/msys2/usr/bin/cc]
         ignore line: [Target: x86_64-pc-cygwin]
@@ -459,8 +459,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib]
         ignore line: [gcc version 15.2.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_f0e64.dir/']
-        ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/cc1.exe -quiet -v -iprefix /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/ -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/../../include/w32api /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_f0e64.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o /tmp/ccqeIZFW.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_b2fd9.dir/']
+        ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/cc1.exe -quiet -v -iprefix /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/ -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api -idirafter /opt/devkitpro/msys2/usr/bin/../lib/gcc/../../include/w32api /opt/devkitpro/msys2/usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b2fd9.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o /tmp/ccE7UtNG.s]
         ignore line: [GNU C23 (GCC) version 15.2.0 (x86_64-pc-cygwin)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -479,14 +479,14 @@ events:
         ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../include/w32api]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 3ed07188a841f49cd6e76fe450b88516]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_f0e64.dir/']
-        ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/as.exe -v -o CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o /tmp/ccqeIZFW.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_b2fd9.dir/']
+        ignore line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/as.exe -v -o CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o /tmp/ccE7UtNG.s]
         ignore line: [GNU assembler version 2.46 (x86_64-pc-cygwin) using BFD version (GNU Binutils) 2.46]
         ignore line: [COMPILER_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/]
         ignore line: [LIBRARY_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_f0e64.exe]
-        ignore line: [/opt/devkitpro/msys2/usr/bin/cmake.exe -E cmake_link_script CMakeFiles/cmTC_f0e64.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_b2fd9.exe]
+        ignore line: [/opt/devkitpro/msys2/usr/bin/cmake.exe -E cmake_link_script CMakeFiles/cmTC_b2fd9.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/opt/devkitpro/msys2/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe]
@@ -497,13 +497,13 @@ events:
         ignore line: [gcc version 15.2.0 (GCC) ]
         ignore line: [COMPILER_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/]
         ignore line: [LIBRARY_PATH=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib/:/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f0e64.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_f0e64.']
-        link line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/ccSzrLeJ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_f0e64.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_f0e64.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b2fd9.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_b2fd9.']
+        link line: [ /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/cc3DcOOK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_b2fd9.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_b2fd9.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll] ==> ignore
           arg [-plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccSzrLeJ.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc3DcOOK.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lmsys-2.0] ==> ignore
@@ -536,7 +536,7 @@ events:
           arg [--dll-search-prefix=msys-] ==> ignore
           arg [--tsaware] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_f0e64.exe] ==> ignore
+          arg [cmTC_b2fd9.exe] ==> ignore
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o] ==> obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o]
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o] ==> obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o]
           arg [-L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0] ==> dir [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0]
@@ -546,9 +546,9 @@ events:
           arg [-L/usr/lib] ==> dir [/usr/lib]
           arg [--enable-auto-import] ==> ignore
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_f0e64.dll.a] ==> ignore
+          arg [libcmTC_b2fd9.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -565,7 +565,7 @@ events:
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o] ==> obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o]
           arg [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o] ==> obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
         ignore line: [collect2 version 15.2.0]
-        ignore line: [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/ccSzrLeJ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_f0e64.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_f0e64.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_f0e64.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
+        ignore line: [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld -plugin /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/msys-lto_plugin.dll -plugin-opt=/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=/tmp/cc3DcOOK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmsys-2.0 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZdlPv --wrap _ZdaPv --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvRKSt9nothrow_t -Bdynamic --dll-search-prefix=msys- --tsaware -o cmTC_b2fd9.exe /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0 -L/opt/devkitpro/msys2/usr/bin/../lib/gcc -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/lib -L/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../.. -L/usr/lib --enable-auto-import -v CMakeFiles/cmTC_b2fd9.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_b2fd9.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lmsys-2.0 -ladvapi32 -lshell32 -luser32 -lkernel32 -lgcc_s -lgcc /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../default-manifest.o /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtend.o]
         linker tool for 'C': /opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../../x86_64-pc-cygwin/bin/ld
         collapse obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/../../../crt0.o] ==> [/opt/devkitpro/msys2/usr/lib/crt0.o]
         collapse obj [/opt/devkitpro/msys2/usr/bin/../lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o] ==> [/opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/crtbegin.o]

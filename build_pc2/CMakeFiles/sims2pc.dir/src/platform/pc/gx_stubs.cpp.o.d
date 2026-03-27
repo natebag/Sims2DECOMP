@@ -14,6 +14,8 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o: \
  /usr/include/stdint.h /usr/include/machine/_default_types.h \
  /usr/include/sys/features.h /usr/include/_newlib_version.h \
  /usr/include/sys/_intsup.h /usr/include/sys/_stdint.h \
+ /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/new \
+ /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/bits/exception.h \
  /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/cstring \
  /usr/include/string.h /usr/include/_ansi.h /usr/include/newlib.h \
  /usr/include/sys/config.h /usr/include/machine/ieeefp.h \
@@ -67,4 +69,8 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o: \
  /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/tr1/modified_bessel_func.tcc \
  /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/tr1/poly_hermite.tcc \
  /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/tr1/poly_laguerre.tcc \
- /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/tr1/riemann_zeta.tcc
+ /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/tr1/riemann_zeta.tcc \
+ /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_texture_bridge.h \
+ /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_vertex_bridge.h \
+ /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_state_bridge.h \
+ /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_constants.h

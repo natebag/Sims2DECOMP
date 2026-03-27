@@ -12,4 +12,6 @@ CMakeFiles/sims2pc.dir/src/decomp_cpp/cb_member_translators.cpp.o: \
  /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/stdint.h \
  /usr/include/stdint.h /usr/include/machine/_default_types.h \
  /usr/include/sys/features.h /usr/include/_newlib_version.h \
- /usr/include/sys/_intsup.h /usr/include/sys/_stdint.h
+ /usr/include/sys/_intsup.h /usr/include/sys/_stdint.h \
+ /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/new \
+ /opt/devkitpro/msys2/usr/lib/gcc/x86_64-pc-cygwin/15.2.0/include/c++/bits/exception.h

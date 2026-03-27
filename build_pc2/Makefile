@@ -1257,6 +1257,54 @@ src/decomp_cpp/xl_batch_4.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_4.cpp.s
 .PHONY : src/decomp_cpp/xl_batch_4.cpp.s
 
+src/platform/pc/arc_reader.o: src/platform/pc/arc_reader.cpp.o
+.PHONY : src/platform/pc/arc_reader.o
+
+# target to build an object file
+src/platform/pc/arc_reader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.o
+.PHONY : src/platform/pc/arc_reader.cpp.o
+
+src/platform/pc/arc_reader.i: src/platform/pc/arc_reader.cpp.i
+.PHONY : src/platform/pc/arc_reader.i
+
+# target to preprocess a source file
+src/platform/pc/arc_reader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.i
+.PHONY : src/platform/pc/arc_reader.cpp.i
+
+src/platform/pc/arc_reader.s: src/platform/pc/arc_reader.cpp.s
+.PHONY : src/platform/pc/arc_reader.s
+
+# target to generate assembly for a file
+src/platform/pc/arc_reader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.s
+.PHONY : src/platform/pc/arc_reader.cpp.s
+
+src/platform/pc/audio_bridge.o: src/platform/pc/audio_bridge.cpp.o
+.PHONY : src/platform/pc/audio_bridge.o
+
+# target to build an object file
+src/platform/pc/audio_bridge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o
+.PHONY : src/platform/pc/audio_bridge.cpp.o
+
+src/platform/pc/audio_bridge.i: src/platform/pc/audio_bridge.cpp.i
+.PHONY : src/platform/pc/audio_bridge.i
+
+# target to preprocess a source file
+src/platform/pc/audio_bridge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.i
+.PHONY : src/platform/pc/audio_bridge.cpp.i
+
+src/platform/pc/audio_bridge.s: src/platform/pc/audio_bridge.cpp.s
+.PHONY : src/platform/pc/audio_bridge.s
+
+# target to generate assembly for a file
+src/platform/pc/audio_bridge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.s
+.PHONY : src/platform/pc/audio_bridge.cpp.s
+
 src/platform/pc/c_linkage_stubs.o: src/platform/pc/c_linkage_stubs.c.o
 .PHONY : src/platform/pc/c_linkage_stubs.o
 
@@ -1305,6 +1353,126 @@ src/platform/pc/clib_wrappers.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.s
 .PHONY : src/platform/pc/clib_wrappers.cpp.s
 
+src/platform/pc/ea_texture.o: src/platform/pc/ea_texture.cpp.o
+.PHONY : src/platform/pc/ea_texture.o
+
+# target to build an object file
+src/platform/pc/ea_texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o
+.PHONY : src/platform/pc/ea_texture.cpp.o
+
+src/platform/pc/ea_texture.i: src/platform/pc/ea_texture.cpp.i
+.PHONY : src/platform/pc/ea_texture.i
+
+# target to preprocess a source file
+src/platform/pc/ea_texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.i
+.PHONY : src/platform/pc/ea_texture.cpp.i
+
+src/platform/pc/ea_texture.s: src/platform/pc/ea_texture.cpp.s
+.PHONY : src/platform/pc/ea_texture.s
+
+# target to generate assembly for a file
+src/platform/pc/ea_texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.s
+.PHONY : src/platform/pc/ea_texture.cpp.s
+
+src/platform/pc/gc_texture_decode.o: src/platform/pc/gc_texture_decode.cpp.o
+.PHONY : src/platform/pc/gc_texture_decode.o
+
+# target to build an object file
+src/platform/pc/gc_texture_decode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o
+.PHONY : src/platform/pc/gc_texture_decode.cpp.o
+
+src/platform/pc/gc_texture_decode.i: src/platform/pc/gc_texture_decode.cpp.i
+.PHONY : src/platform/pc/gc_texture_decode.i
+
+# target to preprocess a source file
+src/platform/pc/gc_texture_decode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.i
+.PHONY : src/platform/pc/gc_texture_decode.cpp.i
+
+src/platform/pc/gc_texture_decode.s: src/platform/pc/gc_texture_decode.cpp.s
+.PHONY : src/platform/pc/gc_texture_decode.s
+
+# target to generate assembly for a file
+src/platform/pc/gc_texture_decode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.s
+.PHONY : src/platform/pc/gc_texture_decode.cpp.s
+
+src/platform/pc/gl_renderer.o: src/platform/pc/gl_renderer.cpp.o
+.PHONY : src/platform/pc/gl_renderer.o
+
+# target to build an object file
+src/platform/pc/gl_renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o
+.PHONY : src/platform/pc/gl_renderer.cpp.o
+
+src/platform/pc/gl_renderer.i: src/platform/pc/gl_renderer.cpp.i
+.PHONY : src/platform/pc/gl_renderer.i
+
+# target to preprocess a source file
+src/platform/pc/gl_renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.i
+.PHONY : src/platform/pc/gl_renderer.cpp.i
+
+src/platform/pc/gl_renderer.s: src/platform/pc/gl_renderer.cpp.s
+.PHONY : src/platform/pc/gl_renderer.s
+
+# target to generate assembly for a file
+src/platform/pc/gl_renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.s
+.PHONY : src/platform/pc/gl_renderer.cpp.s
+
+src/platform/pc/gx_gl_impl.o: src/platform/pc/gx_gl_impl.cpp.o
+.PHONY : src/platform/pc/gx_gl_impl.o
+
+# target to build an object file
+src/platform/pc/gx_gl_impl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o
+.PHONY : src/platform/pc/gx_gl_impl.cpp.o
+
+src/platform/pc/gx_gl_impl.i: src/platform/pc/gx_gl_impl.cpp.i
+.PHONY : src/platform/pc/gx_gl_impl.i
+
+# target to preprocess a source file
+src/platform/pc/gx_gl_impl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.i
+.PHONY : src/platform/pc/gx_gl_impl.cpp.i
+
+src/platform/pc/gx_gl_impl.s: src/platform/pc/gx_gl_impl.cpp.s
+.PHONY : src/platform/pc/gx_gl_impl.s
+
+# target to generate assembly for a file
+src/platform/pc/gx_gl_impl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.s
+.PHONY : src/platform/pc/gx_gl_impl.cpp.s
+
+src/platform/pc/gx_state_bridge.o: src/platform/pc/gx_state_bridge.cpp.o
+.PHONY : src/platform/pc/gx_state_bridge.o
+
+# target to build an object file
+src/platform/pc/gx_state_bridge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o
+.PHONY : src/platform/pc/gx_state_bridge.cpp.o
+
+src/platform/pc/gx_state_bridge.i: src/platform/pc/gx_state_bridge.cpp.i
+.PHONY : src/platform/pc/gx_state_bridge.i
+
+# target to preprocess a source file
+src/platform/pc/gx_state_bridge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.i
+.PHONY : src/platform/pc/gx_state_bridge.cpp.i
+
+src/platform/pc/gx_state_bridge.s: src/platform/pc/gx_state_bridge.cpp.s
+.PHONY : src/platform/pc/gx_state_bridge.s
+
+# target to generate assembly for a file
+src/platform/pc/gx_state_bridge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.s
+.PHONY : src/platform/pc/gx_state_bridge.cpp.s
+
 src/platform/pc/gx_stubs.o: src/platform/pc/gx_stubs.cpp.o
 .PHONY : src/platform/pc/gx_stubs.o
 
@@ -1328,6 +1496,78 @@ src/platform/pc/gx_stubs.s: src/platform/pc/gx_stubs.cpp.s
 src/platform/pc/gx_stubs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.s
 .PHONY : src/platform/pc/gx_stubs.cpp.s
+
+src/platform/pc/gx_texture_bridge.o: src/platform/pc/gx_texture_bridge.cpp.o
+.PHONY : src/platform/pc/gx_texture_bridge.o
+
+# target to build an object file
+src/platform/pc/gx_texture_bridge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o
+.PHONY : src/platform/pc/gx_texture_bridge.cpp.o
+
+src/platform/pc/gx_texture_bridge.i: src/platform/pc/gx_texture_bridge.cpp.i
+.PHONY : src/platform/pc/gx_texture_bridge.i
+
+# target to preprocess a source file
+src/platform/pc/gx_texture_bridge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.i
+.PHONY : src/platform/pc/gx_texture_bridge.cpp.i
+
+src/platform/pc/gx_texture_bridge.s: src/platform/pc/gx_texture_bridge.cpp.s
+.PHONY : src/platform/pc/gx_texture_bridge.s
+
+# target to generate assembly for a file
+src/platform/pc/gx_texture_bridge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.s
+.PHONY : src/platform/pc/gx_texture_bridge.cpp.s
+
+src/platform/pc/gx_vertex_bridge.o: src/platform/pc/gx_vertex_bridge.cpp.o
+.PHONY : src/platform/pc/gx_vertex_bridge.o
+
+# target to build an object file
+src/platform/pc/gx_vertex_bridge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o
+.PHONY : src/platform/pc/gx_vertex_bridge.cpp.o
+
+src/platform/pc/gx_vertex_bridge.i: src/platform/pc/gx_vertex_bridge.cpp.i
+.PHONY : src/platform/pc/gx_vertex_bridge.i
+
+# target to preprocess a source file
+src/platform/pc/gx_vertex_bridge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.i
+.PHONY : src/platform/pc/gx_vertex_bridge.cpp.i
+
+src/platform/pc/gx_vertex_bridge.s: src/platform/pc/gx_vertex_bridge.cpp.s
+.PHONY : src/platform/pc/gx_vertex_bridge.s
+
+# target to generate assembly for a file
+src/platform/pc/gx_vertex_bridge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.s
+.PHONY : src/platform/pc/gx_vertex_bridge.cpp.s
+
+src/platform/pc/input_bridge.o: src/platform/pc/input_bridge.cpp.o
+.PHONY : src/platform/pc/input_bridge.o
+
+# target to build an object file
+src/platform/pc/input_bridge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o
+.PHONY : src/platform/pc/input_bridge.cpp.o
+
+src/platform/pc/input_bridge.i: src/platform/pc/input_bridge.cpp.i
+.PHONY : src/platform/pc/input_bridge.i
+
+# target to preprocess a source file
+src/platform/pc/input_bridge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.i
+.PHONY : src/platform/pc/input_bridge.cpp.i
+
+src/platform/pc/input_bridge.s: src/platform/pc/input_bridge.cpp.s
+.PHONY : src/platform/pc/input_bridge.s
+
+# target to generate assembly for a file
+src/platform/pc/input_bridge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.s
+.PHONY : src/platform/pc/input_bridge.cpp.s
 
 src/platform/pc/main_pc.o: src/platform/pc/main_pc.cpp.o
 .PHONY : src/platform/pc/main_pc.o
@@ -1400,6 +1640,30 @@ src/platform/pc/os_stubs.s: src/platform/pc/os_stubs.cpp.s
 src/platform/pc/os_stubs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.s
 .PHONY : src/platform/pc/os_stubs.cpp.s
+
+src/platform/pc/tpl_parser.o: src/platform/pc/tpl_parser.cpp.o
+.PHONY : src/platform/pc/tpl_parser.o
+
+# target to build an object file
+src/platform/pc/tpl_parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o
+.PHONY : src/platform/pc/tpl_parser.cpp.o
+
+src/platform/pc/tpl_parser.i: src/platform/pc/tpl_parser.cpp.i
+.PHONY : src/platform/pc/tpl_parser.i
+
+# target to preprocess a source file
+src/platform/pc/tpl_parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.i
+.PHONY : src/platform/pc/tpl_parser.cpp.i
+
+src/platform/pc/tpl_parser.s: src/platform/pc/tpl_parser.cpp.s
+.PHONY : src/platform/pc/tpl_parser.s
+
+# target to generate assembly for a file
+src/platform/pc/tpl_parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.s
+.PHONY : src/platform/pc/tpl_parser.cpp.s
 
 # Help Target
 help:
@@ -1551,15 +1815,45 @@ help:
 	@echo "... src/decomp_cpp/xl_batch_4.o"
 	@echo "... src/decomp_cpp/xl_batch_4.i"
 	@echo "... src/decomp_cpp/xl_batch_4.s"
+	@echo "... src/platform/pc/arc_reader.o"
+	@echo "... src/platform/pc/arc_reader.i"
+	@echo "... src/platform/pc/arc_reader.s"
+	@echo "... src/platform/pc/audio_bridge.o"
+	@echo "... src/platform/pc/audio_bridge.i"
+	@echo "... src/platform/pc/audio_bridge.s"
 	@echo "... src/platform/pc/c_linkage_stubs.o"
 	@echo "... src/platform/pc/c_linkage_stubs.i"
 	@echo "... src/platform/pc/c_linkage_stubs.s"
 	@echo "... src/platform/pc/clib_wrappers.o"
 	@echo "... src/platform/pc/clib_wrappers.i"
 	@echo "... src/platform/pc/clib_wrappers.s"
+	@echo "... src/platform/pc/ea_texture.o"
+	@echo "... src/platform/pc/ea_texture.i"
+	@echo "... src/platform/pc/ea_texture.s"
+	@echo "... src/platform/pc/gc_texture_decode.o"
+	@echo "... src/platform/pc/gc_texture_decode.i"
+	@echo "... src/platform/pc/gc_texture_decode.s"
+	@echo "... src/platform/pc/gl_renderer.o"
+	@echo "... src/platform/pc/gl_renderer.i"
+	@echo "... src/platform/pc/gl_renderer.s"
+	@echo "... src/platform/pc/gx_gl_impl.o"
+	@echo "... src/platform/pc/gx_gl_impl.i"
+	@echo "... src/platform/pc/gx_gl_impl.s"
+	@echo "... src/platform/pc/gx_state_bridge.o"
+	@echo "... src/platform/pc/gx_state_bridge.i"
+	@echo "... src/platform/pc/gx_state_bridge.s"
 	@echo "... src/platform/pc/gx_stubs.o"
 	@echo "... src/platform/pc/gx_stubs.i"
 	@echo "... src/platform/pc/gx_stubs.s"
+	@echo "... src/platform/pc/gx_texture_bridge.o"
+	@echo "... src/platform/pc/gx_texture_bridge.i"
+	@echo "... src/platform/pc/gx_texture_bridge.s"
+	@echo "... src/platform/pc/gx_vertex_bridge.o"
+	@echo "... src/platform/pc/gx_vertex_bridge.i"
+	@echo "... src/platform/pc/gx_vertex_bridge.s"
+	@echo "... src/platform/pc/input_bridge.o"
+	@echo "... src/platform/pc/input_bridge.i"
+	@echo "... src/platform/pc/input_bridge.s"
 	@echo "... src/platform/pc/main_pc.o"
 	@echo "... src/platform/pc/main_pc.i"
 	@echo "... src/platform/pc/main_pc.s"
@@ -1569,6 +1863,9 @@ help:
 	@echo "... src/platform/pc/os_stubs.o"
 	@echo "... src/platform/pc/os_stubs.i"
 	@echo "... src/platform/pc/os_stubs.s"
+	@echo "... src/platform/pc/tpl_parser.o"
+	@echo "... src/platform/pc/tpl_parser.i"
+	@echo "... src/platform/pc/tpl_parser.s"
 .PHONY : help
 
 
