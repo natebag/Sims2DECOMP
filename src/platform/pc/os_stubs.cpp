@@ -190,7 +190,10 @@ int CARDWrite(void* fileInfo, const void* addr, int length, int offset) { return
 int PADInit(void) { return 1; }
 
 // Forward declare input bridge function (defined in input_bridge.cpp)
+// Uses C++ linkage to match the definition
+} // temporarily close extern "C"
 extern int input_get_pad_status(void* status);
+extern "C" {
 
 int PADRead(PADStatus* status) {
     return input_get_pad_status(status);
@@ -204,8 +207,10 @@ void PADSetAnalogMode(int mode) { (void)mode; }
 // ============================================================================
 
 // Forward declare audio bridge (defined in audio_bridge.cpp)
+} // temporarily close extern "C"
 extern int audio_init(void);
 extern void audio_shutdown(void);
+extern "C" {
 
 void AXInit(void) {
     audio_init();
