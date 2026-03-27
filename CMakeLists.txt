@@ -21,11 +21,20 @@ endif()
 
 # Find SDL2 for PC builds
 if(SIMS2_PLATFORM STREQUAL "PC")
-    find_package(SDL2 QUIET)
-    if(SDL2_FOUND)
-        message(STATUS "Found SDL2: ${SDL2_INCLUDE_DIRS}")
+    # Try system SDL2 first, then fall back to local copy
+    set(SDL2_DIR "/f/coding/Decompiles/Tools/SDL2-2.30.11/x86_64-w64-mingw32")
+    if(EXISTS "${SDL2_DIR}/include/SDL2/SDL.h")
+        set(SDL2_FOUND TRUE)
+        set(SDL2_INCLUDE_DIRS "${SDL2_DIR}/include")
+        set(SDL2_LIBRARIES "${SDL2_DIR}/lib/libSDL2.dll.a" "${SDL2_DIR}/lib/libSDL2main.a")
+        message(STATUS "Found SDL2 (local): ${SDL2_DIR}")
     else()
-        message(STATUS "SDL2 not found — will use stubs (install SDL2 for window/input/audio)")
+        find_package(SDL2 QUIET)
+        if(SDL2_FOUND)
+            message(STATUS "Found SDL2 (system): ${SDL2_INCLUDE_DIRS}")
+        else()
+            message(STATUS "SDL2 not found — will use stubs")
+        endif()
     endif()
 
     find_package(OpenGL QUIET)
@@ -100,7 +109,8 @@ target_link_options(sims2pc PRIVATE
 
 # Link libraries
 if(SDL2_FOUND)
-    target_link_libraries(sims2pc PRIVATE SDL2::SDL2 SDL2::SDL2main)
+    target_include_directories(sims2pc PRIVATE ${SDL2_INCLUDE_DIRS})
+    target_link_libraries(sims2pc PRIVATE ${SDL2_LIBRARIES})
     target_compile_definitions(sims2pc PRIVATE SIMS2_HAS_SDL2=1)
 endif()
 

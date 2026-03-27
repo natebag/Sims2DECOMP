@@ -4,7 +4,7 @@
 #include "types.h"
 
 #ifdef SIMS2_HAS_SDL2
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #endif
 
 #include <cstdio>
