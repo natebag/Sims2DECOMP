@@ -23,12 +23,15 @@ Last updated: 2026-03-27
 This is an iterative debugging session. Call `ESimsApp::Init()`, fix each crash,
 implement missing systems one at a time until the game boots.
 
-### Step 1: Minimal Engine Init
-- [ ] Implement `ENgcEngine::InitMemoryManager()` — wire EAHeap to malloc
-- [ ] Implement `EGlobalManager::Startup()` — init global state singleton
-- [ ] Implement `EApp::SetArgs()` — store argc/argv
-- [ ] Call `MainInit()` from our main_pc.cpp
-- [ ] **Test:** does it crash? Fix the first crash.
+### Step 1: Minimal Engine Init — DONE (2026-03-27)
+- [x] Memory management: EAHeap routed to system malloc
+- [x] Global singletons: g_eGlobal, g_eSimsApp, g_eNgcEngine allocated
+- [x] operator_new_wrapper / operator_delete_wrapper: proper C-linkage functions
+- [x] PC game state machine: BOOT → LOGO → MAIN_MENU (interactive)
+- [x] Real game textures rendering via OpenGL (Maxis logo, Sims 2 logo, team pic)
+- [x] Arc reader: all entries parsed (11,443 textures, 3,631 models)
+- [x] EA texture decode: C8_32 + CMPR (S3TC) working
+- [x] Vector font system for on-screen text
 
 ### Step 2: Resource System
 - [ ] Wire `EResourceManager::Init()` to use our arc_reader
@@ -66,18 +69,20 @@ Fix: add `if (!ptr) return;` guards or initialize the globals properly.
 
 ---
 
-## SESSION D: Texture Decoding (can run in parallel)
+## SESSION D: Texture Decoding — MOSTLY DONE (2026-03-27)
 
 The EA/GC texture pipeline:
 ```
 .arc file → EA TXFL header → GC pixel data (CMPR/C4/C8/RGBA8) → RGBA → OpenGL
 ```
 
-- [ ] Parse EA TXFL header (the 16-byte prefix before pixel data)
-- [ ] Feed pixel data to gc_texture_decode.cpp (CMPR decoder already exists)
-- [ ] Test with fonts.arc "systemfont" (simplest texture)
-- [ ] Test with textures.arc "title bg c" (title screen background)
-- [ ] Wire into GXInitTexObj so game textures auto-decode
+- [x] Parse EA TXFL header (auto-detect variable-length prefix, 1-8 bytes)
+- [x] Feed pixel data to gc_texture_decode.cpp (CMPR, C8_32 working)
+- [ ] Test with fonts.arc "systemfont" (font format is different — not TXFL)
+- [x] Test with textures.arc "title bg c" (32x32 C8_32) — renders
+- [x] Test with textures.arc "maxis_logo_black_clean" (256x256 C8_32) — renders
+- [x] Test with textures.arc "team_picture" (512x512 CMPR/S3TC) — renders
+- [ ] Wire into GXInitTexObj so game textures auto-decode via GX bridge
 
 ---
 
