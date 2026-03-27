@@ -16,15 +16,34 @@ class EQuat;
 class EStorable;
 class EVec4;
 class EVec3;
-class EVec2;
+struct EVec2 { float x, y; };
 class EBoundSphere;
-class EString;
-class EString2;
+class EString {
+public:
+    int CompareNoCase(const char*) const { return 0; }
+    const char* c_str() const { return 0; }
+};
+class EString2 {
+public:
+    EString2() {}
+};
 class EBitArray;
 class EFile;
 class EFileSystem;
-class EAHeap;
-class FPHeap;
+class EAHeap {
+public:
+    EAHeap() {}
+    ~EAHeap() {}
+    void* Malloc(unsigned int, int) { return 0; }
+    void* MallocAligned(unsigned int, unsigned int, unsigned int, int) { return 0; }
+    void Free(void*) {}
+};
+class FPHeap {
+public:
+    FPHeap() {}
+    ~FPHeap() {}
+    void Free(void*) {}
+};
 class ENodeList;
 class ERedBlackTree;
 class EApp;
@@ -59,7 +78,7 @@ struct EXPORT_DIRECTORY;
 struct Vec;
 
 namespace EA { namespace Allocator { class GeneralAllocator; } }
-namespace ImageProcessingManager { struct FilterParams; struct BaseColor; }
+namespace ImageProcessingManager { struct FilterParams {}; struct BaseColor {}; }
 namespace BBI { }
 
 template <typename T> class TRect;
@@ -82,6 +101,11 @@ extern "C" {
 extern EAHeap* RootHeap(void);
 extern EAHeap* MainHeap(void);
 extern EAHeap* ResourceHeap(void);
+EAHeap* ShaderHeap(void);
+EAHeap* TextureHeap(void);
+EAHeap* AnimationHeap(void);
+EAHeap* ModelHeap(void);
+EAHeap* FlashesHeap(void);
 
 // ============================================================================
 // Stream operators for EQuat

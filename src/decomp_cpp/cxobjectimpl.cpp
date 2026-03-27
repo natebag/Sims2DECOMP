@@ -502,15 +502,15 @@ cXObject* cXObjectImpl::GetNext() {
 
 int cXObjectImpl::HierCountSlots() {
     // Each slot is 32 bytes; count = (end - begin) / 32
-    int begin = (int)(unsigned int)m_slotsBegin;
-    int end = (int)(unsigned int)m_slotsEnd;
+    int begin = (int)(uintptr_t)m_slotsBegin;
+    int end = (int)(uintptr_t)m_slotsEnd;
     return (end - begin) >> 5;
 }
 
 int cXObjectImpl::CountObjectSlots() {
     // Same as HierCountSlots but subtract 1 (slot 0 is reserved)
-    int begin = (int)(unsigned int)m_slotsBegin;
-    int end = (int)(unsigned int)m_slotsEnd;
+    int begin = (int)(uintptr_t)m_slotsBegin;
+    int end = (int)(uintptr_t)m_slotsEnd;
     return ((end - begin) >> 5) - 1;
 }
 

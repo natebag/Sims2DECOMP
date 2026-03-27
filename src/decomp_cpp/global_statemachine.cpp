@@ -564,7 +564,7 @@ int EGlobal::GetFloorIndex(FloorTile* pTile) {
         count = *((int*)pArray - 1);
     }
     for (int i = 0; i < count; i++) {
-        if (pArray[i] == (u32)pTile) {
+        if (pArray[i] == (u32)(uintptr_t)pTile) {
             return i;
         }
     }
@@ -578,7 +578,7 @@ int EGlobal::GetWallIndex(WallTile* pTile) {
         count = *((int*)pArray - 1);
     }
     for (int i = 0; i < count; i++) {
-        if (pArray[i] == (u32)pTile) {
+        if (pArray[i] == (u32)(uintptr_t)pTile) {
             return i;
         }
     }
@@ -592,7 +592,7 @@ int EGlobal::GetFenceIndex(FenceData* pTile) {
         count = *((int*)pArray - 1);
     }
     for (int i = 0; i < count; i++) {
-        if (pArray[i] == (u32)pTile) {
+        if (pArray[i] == (u32)(uintptr_t)pTile) {
             return i;
         }
     }
@@ -1673,7 +1673,7 @@ void StateMachine::SetState(StateMachineState* pState) {
 // ---------------------------------------------------------------------------
 void StateMachine::AddState(StateMachineState* pState) {
     if (FindState(pState) != NULL) {
-        pState->m_pOwner = (u32)this;
+        pState->m_pOwner = (u32)(uintptr_t)this;
         return;
     }
 
@@ -1715,7 +1715,7 @@ void StateMachine::AddState(StateMachineState* pState) {
         m_pStatesEnd = newEnd;
         m_pStatesCap = newBuf + newCount;
     }
-    pState->m_pOwner = (u32)this;
+    pState->m_pOwner = (u32)(uintptr_t)this;
 }
 
 // ---------------------------------------------------------------------------

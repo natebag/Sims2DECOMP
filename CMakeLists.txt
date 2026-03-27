@@ -71,7 +71,7 @@ file(GLOB CORE_SOURCES
 
 # Platform-specific sources
 if(SIMS2_PLATFORM STREQUAL "PC")
-    file(GLOB PLATFORM_SOURCES src/platform/pc/*.cpp)
+    file(GLOB PLATFORM_SOURCES src/platform/pc/*.cpp src/platform/pc/*.c)
 else()
     file(GLOB PLATFORM_SOURCES src/platform/gc/*.cpp)
 endif()
@@ -91,6 +91,11 @@ set_source_files_properties(src/platform/pc/clib_wrappers.cpp PROPERTIES COMPILE
 target_compile_options(sims2pc PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:/W3 /wd4244 /wd4267 /wd4305 /wd4996>
     $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wno-unused-variable -Wno-unused-function -Wno-sign-compare -Wno-narrowing -fpermissive -Wno-builtin-declaration-mismatch>
+)
+
+# Linker flags — allow duplicate symbols (decomp files have overlapping definitions)
+target_link_options(sims2pc PRIVATE
+    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wl,--allow-multiple-definition>
 )
 
 # Link libraries

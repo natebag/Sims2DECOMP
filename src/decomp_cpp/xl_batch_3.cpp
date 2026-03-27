@@ -66,7 +66,7 @@ public:
 };
 
 // Operator new/delete
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void operator delete(void*);
 extern void* __builtin_vec_new(unsigned int);
 extern void __builtin_vec_delete(void*);
@@ -76,7 +76,7 @@ extern void __builtin_vec_delete(void*);
 // ============================================================================
 class EMat4;
 class EVec2;
-class EVec3;
+struct EVec3 { float x, y, z; EVec3() : x(0), y(0), z(0) {} EVec3(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {} };
 class EVec4;
 class ERC;
 class EResource;
@@ -88,7 +88,12 @@ class ERFont;
 class ERSoundEvent;
 class EConfig;
 class EWindow;
-class E3DWindow;
+class E3DWindow {
+public:
+    char m_e3dWindowData[856];
+    E3DWindow() {}
+    virtual ~E3DWindow() {}
+};
 class ELights;
 class EBound3;
 class EStream;
@@ -103,7 +108,12 @@ class EBtnToCmdAssoc;
 class ELevelDrawData;
 class EOrderTableData;
 class EMutex;
-class EGameState;
+class EGameState {
+public:
+    char m_data[8];
+    EGameState() {}
+    virtual ~EGameState() {}
+};
 class AptValue;
 class AptCIH;
 class AptCXForm;
@@ -121,8 +131,15 @@ class AptLine;
 class AptFile;
 class AptActionBlock;
 class AptString;
-class EAStringC;
-struct AptMaskRenderOperation;
+class EAStringC {
+public:
+    char* m_buffer;
+    EAStringC() : m_buffer(0) {}
+    EAStringC(const char* s) : m_buffer((char*)s) {}
+    ~EAStringC() {}
+    const char* c_str() const { return m_buffer; }
+};
+struct AptMaskRenderOperation { int op; };
 struct AptnCXForm;
 class BString2;
 class StringBuffer;
@@ -130,8 +147,8 @@ class StringBuffer2;
 class iResFile;
 class UIObjectBase;
 class UIDialog;
-struct UIScreenID;
-struct ECTRL_CMD;
+struct UIScreenID { int id; };
+struct ECTRL_CMD { int cmd; };
 class SimModel;
 class Physics;
 class PlumbBobModel;
@@ -160,35 +177,43 @@ class PassiveInfluenceItem;
 class PassiveInfluenceObject;
 class PassiveInfluenceTarget;
 struct vert2;
-struct EWallUpDownStateType;
-struct TileWallsSegment;
-struct DiagonalSideSelector;
+struct EWallUpDownStateType { int state; };
+struct TileWallsSegment { int seg; };
+struct DiagonalSideSelector { int side; };
 class ERTQ4CacheNode;
 class ERTQ4Node;
 class GetVar;
 class SetVar;
 struct structDrawCBparams;
-struct tWantType;
+struct tWantType { int type; };
 class Interaction;
-struct ItemType;
+struct ItemType { int type; };
 class EResLoadCmdResult;
 class EResourceManager;
 class ReconBuffer;
 struct eBodyPartS2C;
 struct eTattooTextureTypeS2C;
-struct AptStringAlignment;
-struct AptVirtualFunctionTable_Indices;
+struct AptStringAlignment { int align; };
+struct AptVirtualFunctionTable_Indices { int idx; };
 class ECheatLookup;
 class ECheatDMI;
 template <typename T0> class TNodeList;
 template <typename T0> class allocator;
 template <typename T0, typename T1> class vector;
 template <typename T0, typename T1> class TArray;
-template <typename T0> class AptSharedPtr;
+template <typename T0> class AptSharedPtr { T0* m_ptr; public: AptSharedPtr() : m_ptr(0) {} };
 class TArrayDefaultAllocator;
 
 // psystem handle
 class psystem;
+
+// Minimal Physics base class
+class Physics {
+public:
+    char m_physicsData[296];
+    Physics() {}
+    virtual ~Physics() {}
+};
 
 // Globals
 extern float g_deltaTime;
@@ -223,6 +248,28 @@ public:
     // [492..503] m_particleSystems (Emitter*[3])
     // [500] m_numParticleSystems (int) -- actually overlaps, at offset 500
     // [504] m_updateCounter (int)
+
+    PlumbBob();
+    ~PlumbBob();
+    void PlumbBobOrderTableCallback(ELevelDrawData& drawData, EOrderTableData* orderData);
+    static void StartupAll();
+    static void ShutdownAll();
+    void Startup();
+    void EnableDraw(bool enable);
+    void Shutdown();
+    void AddParticleSystem(int resourceId);
+    void UpdateParticleSystem(int playerIdx);
+    void DestroyParticleSystems();
+    void SetParticleDrawState(bool visible);
+    void SetParticleVisibility(bool visible);
+    void SetState(int newState);
+    void SetColor(EVec3* color);
+    void SetScaleFromTween(int playerIdx, float tweenValue);
+    void Update(int playerIdx);
+    void DrawShadow(ERC* pRC);
+    void Draw(ERC* pRC);
+    void ResetMomentum(bool reset);
+    void SetModel(unsigned int hash);
 };
 
 // 0x800597EC
@@ -518,6 +565,50 @@ public:
     unsigned short* m_data; // [0]
     int m_length;           // [4]
     int m_capacity;         // [8]
+
+    EString2() : m_data(0), m_length(0), m_capacity(0) {}
+    EString2(unsigned short* start, unsigned short* end);
+    void Deallocate(unsigned short* ptr);
+    void Tokenize(wchar_t delim, TArray<EString2, TArrayDefaultAllocator>& result);
+    void GetLine(void* file);
+    void MakeCopyFromChars(char* src);
+    void GetNextToken(int& pos, int len, wchar_t delim);
+    void MakeCopy(unsigned short* src);
+    void operator=(wchar_t ch);
+    void operator=(char ch);
+    void Allocate(int size, bool preserve);
+    void GetEString() const;
+    void CompareNoCase(unsigned short* other) const;
+    void Mid(int start, int count) const;
+    void Left(int count) const;
+    void Right(int count) const;
+    void operator+=(unsigned short* str);
+    void operator+(wchar_t ch);
+    void operator+=(wchar_t ch);
+    void operator+(char* str) const;
+    void operator+(EString& other) const;
+    void operator+(char ch) const;
+    void operator+=(EString& other);
+    void operator+=(char* str);
+    void operator+=(char ch);
+    void Find(unsigned short* needle) const;
+    void Replace(unsigned short* find, unsigned short* replacement);
+    void FindReverse(wchar_t ch) const;
+    void Convert(float val);
+    void Convert(int val);
+    void Remove(wchar_t ch);
+    void RemoveTrailing(wchar_t ch);
+    void FixTrailingSlash();
+    void RemoveTrailingSlash();
+    void ExtractFilename() const;
+    void ExtractRoot() const;
+    void ExtractDirectory() const;
+    void ExtractExtension() const;
+    void MakeLegalFilename();
+
+    // Auto-generated method declarations
+    int Compare(unsigned short* other) const;
+    int Compare(char* other) const;
 };
 
 // 0x802D4070
@@ -826,6 +917,16 @@ class CSMTarget {
 public:
     // [0..127] base UI target fields
     // [128] vtable ptr
+
+    // Auto-generated method declarations
+    CSMTarget(int playerIdx);
+    ~CSMTarget();
+    void SetVariable(char* varName, char* value);
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void Update();
+    void TempInterface(BString2* a, BString2* b, BString2* c, BString2* d, bool e, bool f);
+    void SetIconDisable(bool disable);
 };
 
 // 0x801A61D0
@@ -878,6 +979,14 @@ void CSMTarget::SetIconDisable(bool disable) {
 
 class ENgcRenderStateCache {
     // Large struct ~1768 bytes for caching GX render state
+
+    // Auto-generated method declarations
+    void operator=(ENgcRenderStateCache& other);
+    void SaveState();
+    void RestoreState();
+    void SaveViewportState();
+    void RestoreViewportState();
+    void Apply(bool force);
 };
 
 // 0x8034A818
@@ -928,6 +1037,21 @@ class CUnlockDisplay : public E3DWindow {
     // [0..847] E3DWindow base
     // [848+] additional display fields
     // [1256] vtable
+
+    // Auto-generated method declarations
+    CUnlockDisplay();
+    ~CUnlockDisplay();
+    void makeObjects();
+    void destroyObjects();
+    void SetupForObject(ObjectDefinition* objDef, EVec3& pos, EVec3& rot, EVec3& scale);
+    void SetupForPromotion(cXPerson* person, void* data);
+    void Update();
+    void Draw(ERC* pRC);
+    void SetDirectLight(float x, float y, float z, int idx);
+    void ObjectHasMultiColor();
+    void SetMultiColorNumber(int num);
+    void SetDirectLightDir(EVec3 dir, bool normalize, int idx);
+    void GetBedOtherHalfIDs(unsigned int bedId, unsigned int& id1, unsigned int& id2);
 };
 
 // 0x800775AC
@@ -1009,6 +1133,30 @@ class RoomManager {
     // [8..11] m_roomFlags
     // [12] m_isDirty
     // [16+] m_partitions
+
+    // Auto-generated method declarations
+    RoomManager();
+    ~RoomManager();
+    void RoomScoreChanged(int roomId);
+    void RoomLightingChanged(int roomId);
+    void AllRoomsLightingChanged();
+    void AllRoomsScoreChanged();
+    void ComputeRooms();
+    void PrintStats();
+    void GetRoom(unsigned short roomId);
+    void GetNewRoom(unsigned short roomId);
+    void UpdateRooms();
+    void OffsetWorld(CTilePt& offset);
+    void ProcessDegenerateTile(CTilePt& tile, unsigned short roomId, int level);
+    void ResolveDiagonal(CTilePt& tile, Room** room1, Room** room2, int* side1, int* side2);
+    void ResolveDiagonal(CTilePt& tile, unsigned short* id1, unsigned short* id2, int* s1, int* s2);
+    void ResetRooms();
+    void GetOutsideAmbientLevel();
+    void ClearRoomPartitions();
+    void ResetRoomManager();
+    void SetRoomIntensityScale(int roomId, bool set, float scale);
+    void SetRoomIntensityColorScale(int roomId, bool set, int color, float scale);
+    void ChangeLightingGroup(unsigned short from, unsigned short to);
 };
 
 // 0x80135DAC
@@ -1134,6 +1282,26 @@ class cTrack {
     // [0] m_pSoundEvent (ERSoundEvent*)
     // [4..40] track state
     // [44] m_dataReader (TrackDataReader)
+
+    // Auto-generated method declarations
+    void HandleTrackFlowError(char* msg);
+    cTrack(ERSoundEvent* soundEvent);
+    ~cTrack();
+    void OnStartPlaying();
+    void OnEndPlaying();
+    void HandleTimerCallback();
+    void PlayPause(int cmd, int param1, int param2, float volume);
+    void Pause();
+    void Unpause();
+    void Stop();
+    void Kill();
+    void RegisterVal(int val);
+    void SetRegister(int reg, int val);
+    void DoCommand();
+    void NoteOn();
+    void SetPatch(SndEvtHitPatch* patch, float volume);
+    void CalculateCurrentVolume();
+    void UpdateVolPan();
 };
 
 // 0x80116460
@@ -1242,6 +1410,18 @@ void cTrack::UpdateVolPan() {
 
 class MDITarget {
     // Standard UI target layout
+
+    // Auto-generated method declarations
+    MDITarget();
+    ~MDITarget();
+    void SetVariable(char* varName, char* value);
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void Update();
+    void SpawnModelessDialog(UIDialog* dlg);
+    void AddToList(int* list);
+    void DeleteAllModelessDialogs();
+    void SetupModelessDialog();
 };
 
 // 0x801C2FCC
@@ -1304,6 +1484,17 @@ void MDITarget::SetupModelessDialog() {
 
 class GOLTarget {
     // Standard UI target layout
+
+    // Auto-generated method declarations
+    GOLTarget(int playerIdx);
+    ~GOLTarget();
+    void SetVariable(char* varName, char* value);
+    void IsMapGoalUnlocked(int map, int goal, int level);
+    void IsHouseUnlocked(int house, int level);
+    void IsApartmentUnlocked(int apt, int level);
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void InstallMapShader();
 };
 
 // 0x801EA6C0
@@ -1359,6 +1550,20 @@ void GOLTarget::InstallMapShader() {
 
 class AptKey {
     // Singleton APT key handler
+
+    // Auto-generated method declarations
+    void CleanNativeFunctions();
+    void objectMemberLookup(AptValue* result, EAStringC* name) const;
+    void sMethod_isDown(AptValue* result, int argCount);
+    void sMethod_isToggled(AptValue* result, int argCount);
+    void sMethod_getCode(AptValue* result, int argCount);
+    void sMethod_getAscii(AptValue* result, int argCount);
+    void sMethod_getController(AptValue* result, int argCount);
+    void sMethod_addListener(AptValue* result, int argCount);
+    void sMethod_removeListener(AptValue* result, int argCount);
+    void sMethod_getAnalogStickInfo(AptValue* result, int argCount);
+    AptKey();
+    ~AptKey();
 };
 
 // 0x802A4EEC
@@ -1430,6 +1635,28 @@ AptKey::~AptKey() {
 class ERTQuantize4D {
     // [0] vtable
     // Color quantization tree for texture compression
+
+    // Auto-generated method declarations
+    ~ERTQuantize4D();
+    void Deallocate();
+    void Init(unsigned int maxColors, unsigned int flags, void* (*allocFn)(unsigned int), void (*freeFn)(void*), bool useYUVA);
+    void InitializeCube();
+    void InitializeNode(unsigned char level, unsigned int id, ERTQ4Node* parent, EVec4& color);
+    void AddPixel(unsigned char* pixel);
+    void FlushAdd(ERTQ4CacheNode& cache);
+    void TransformToYuva(unsigned char* rgba, EVec4& yuva);
+    void TransformFromYUVA(EVec4& yuva, unsigned char* rgba);
+    void Classify(EVec4& color, int level);
+    void PruneLevel(ERTQ4Node* node);
+    void PruneChild(ERTQ4Node* node);
+    void Compute();
+    void Reduction();
+    void Reduce(ERTQ4Node* node);
+    void MColormap(ERTQ4Node* node);
+    void GetClosestColor(unsigned char* pixel);
+    void ClosestColor(ERTQ4Node* node);
+    void EVecToFVec(EVec4& src, unsigned short* dst);
+    void FVecToEVec(unsigned short* src, EVec4& dst);
 };
 
 // 0x8035EB34
@@ -1548,6 +1775,21 @@ class SimImageMaker {
     // [16+] EAnimController
     // [136] m_pModel
     // [140] m_pTexture
+
+    // Auto-generated method declarations
+    SimImageMaker();
+    ~SimImageMaker();
+    void Shutdown();
+    void SetToDefaultValues();
+    void SetPortraitModels(SimModel* model);
+    void OverrideLights(ELights& lights);
+    void OverrideBackground(unsigned int texId);
+    void CreateImage();
+    void InitWindow(E3DWindow& window, ERC* pRC);
+    void PoseSim(ERC* pRC);
+    void CopyToFinalImage(ETexture* tex);
+    void UpdateRepShaders(int idx);
+    void CreateImage32x32();
 };
 
 // 0x8006E814
@@ -1630,6 +1872,22 @@ void SimImageMaker::CreateImage32x32() {
 
 class ESimsApp {
     // Application singleton
+
+    // Auto-generated method declarations
+    void SetNghName(char* name);
+    void parseCommandLine();
+    ESimsApp();
+    void Shutdown();
+    void Init();
+    void ShowInitialDisplay();
+    void initContinue();
+    void UpdateCheats();
+    void UpdateApt();
+    void UpdateShaders(float dt);
+    void UpdateAudio();
+    void UpdateDraw();
+    void UpdateReset();
+    void Update();
 };
 
 // 0x80003FEC
@@ -1713,6 +1971,16 @@ void ESimsApp::Update() {
 
 class RELTarget {
     // Standard UI target + relationship display state
+
+    // Auto-generated method declarations
+    RELTarget(int playerIdx);
+    ~RELTarget();
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void SetVariable(char* varName, char* value);
+    void SetupRelationshipInformation();
+    void GetColor(int relationship);
+    void SetupPageShaders(int page);
 };
 
 // 0x801FFA8C
@@ -1765,6 +2033,22 @@ class PassiveInfluenceMap {
     // [0] m_width
     // [4] m_height
     // [8] m_grid (PassiveInfluenceItem** grid)
+
+    // Auto-generated method declarations
+    PassiveInfluenceMap(int width, int height);
+    ~PassiveInfluenceMap();
+    void AddItemToMap(PassiveInfluenceItem* item);
+    void RemoveItemFromMap(PassiveInfluenceItem* item);
+    void GetListForTile(int x, int y);
+    void EmptyMap();
+    void CheckObjectInfluence(PassiveInfluenceTarget* target);
+    void ApplyInfluence(PassiveInfluenceObject* obj, PassiveInfluenceTarget* target);
+    void CalculateTargetArea(PassiveInfluenceItem* item);
+    void FilledArc_Line(int x, int y, int radius, PassiveInfluenceItem* item);
+    void FilledArc_Polygon(int x1, int y1, int x2, int y2, int sides, int* xpts, vert2* verts);
+    void FilledArc(int cx, int cy, int r, int startAngle, int endAngle, PassiveInfluenceItem* item);
+    void CalculateAffectedArea(PassiveInfluenceItem* item);
+    void Validate();
 };
 
 // 0x801133E8
@@ -1858,6 +2142,23 @@ void PassiveInfluenceMap::Validate() {
 class AptValue {
     // [0] m_typeFlags (int) - type tag + flags
     // [4] m_value (union: int, float, pointer)
+
+    // Auto-generated method declarations
+    int toInteger() const;
+    float toFloat() const;
+    bool toBool() const;
+    void toString(char* buf) const;
+    void toString(EAStringC& str) const;
+    void urlEncode();
+    void urlEncodeCustomRender();
+    void findChild(EAStringC* name, AptValue* result);
+    bool isMCInParentChain() const;
+    bool CanCreateScriptObject() const;
+    void AddRef(char* file, char* func, int line);
+    void Release(char* file, char* func, int line);
+    void ForceDelete();
+    AptValue(AptVirtualFunctionTable_Indices indices);
+    AptValue(AptVirtualFunctionTable_Indices indices, int value);
 };
 
 // 0x802B04B8
@@ -1972,6 +2273,19 @@ AptValue::AptValue(AptVirtualFunctionTable_Indices indices, int value) {
 
 class HoodManager {
     // Manages families, relations, neighborhoods
+
+    // Auto-generated method declarations
+    void TestMoveInFamily(int houseIdx, Family* family);
+    void MoveInFamily(int houseIdx, Family* family, bool force);
+    void UnmarkFamilyForDeletion(int houseIdx, Family* family);
+    void EvictFamilyAndLiquidateAssets(int houseIdx);
+    void EvictFamily(int houseIdx, bool liquidate);
+    void RemoveAllObjects(int houseIdx);
+    void DemolishCurrentHouse(int houseIdx);
+    void ResetToPristine();
+    void ResetNeighbors();
+    void GetMatrix(Neighbor* n1, Neighbor* n2, RelMatrix** matrix, int* idx);
+    void GetRelatedPeople(int familyIdx, cXPerson* person, void* results);
 };
 
 // 0x80042F5C
@@ -2037,6 +2351,27 @@ class AptViewer : public E3DWindow {
     // [0..855] E3DWindow base
     // [856] m_mutex (EMutex)
     // [944+] filter data
+
+    // Auto-generated method declarations
+    AptViewer();
+    ~AptViewer();
+    void NewCallFunction(char* target, char* funcName, char* sig, int argCount, ...);
+    void NewCallFunction2(char* target, char* funcName, char* sig, int argCount, char** args);
+    void Init(UIObjectBase* parent);
+    void UpdateAll();
+    void Draw(ERC* pRC);
+    void Load(char* filename, bool async);
+    void LoadActionScript(char* filename, bool async);
+    void UnLoad();
+    void RepeatCheck(int key, int frame);
+    void NewReadController(int port, bool isPlayer1, int filterIdx, bool useApt);
+    void OnePlayerReadController(int port, int frame);
+    void PushAptButtonFilter(int port, char* name);
+    void PopAptButtonFilter(int port, unsigned int filterId);
+    void AddCmdToAptButtonFilter(int port, unsigned int filterId, ECTRL_CMD cmd);
+    void RemoveCmdFromAptButtonFilter(int port, unsigned int filterId, ECTRL_CMD cmd);
+    void GetCurrentAptButtonFilter(int port);
+    void GetPlayersController(int player);
 };
 
 // 0x800101F0
@@ -2143,6 +2478,43 @@ void AptViewer::GetPlayersController(int player) {
 
 class UIReflow {
     // Block-based UI layout with tweening support
+
+    // Auto-generated method declarations
+    ~UIReflow();
+    void SetFocus(UIScreenID screenId);
+    void ResetSize(char* id, int w, int h, int layer);
+    void ResetPosition(char* id, int x, int y, int layer);
+    void ResetZ(char* id, int z, int layer);
+    void ResetVisibility(char* id, bool visible, int layer);
+    void ResetAlpha(char* id, unsigned int alpha, int layer);
+    void ResetText(char* id, char* text, int layer);
+    void ResetColorOverride(char* id, unsigned int color, int layer);
+    void ResetFontSizeOverride(char* id, unsigned int size, int layer);
+    void ResetSwfAnimation(char* id, char* anim, int layer);
+    void ResetSwfFileName(char* id, char* filename, int layer);
+    void AddToBlock(char* data);
+    void ReallocateBlock();
+    void OpenTweenBlock(char* target, unsigned int duration, unsigned int easing, char* callback, int layer);
+    void SubmitTweenBlock();
+    void Tween_X(int x);
+    void Tween_Y(int y);
+    void Tween_Z(unsigned int z);
+    void Tween_H(unsigned int h);
+    void Tween_W(unsigned int w);
+    void Tween_XScale(float s);
+    void Tween_YScale(float s);
+    void Tween_Rotation(float deg);
+    void Tween_Alpha(unsigned int a);
+    void Tween_ColorOverride(unsigned int color);
+    void Tween_ColorOnlyOverride(unsigned int color);
+    void Tween_FontSizeOverride(unsigned int size);
+    void OpenReflowBlock();
+    void SubmitReflowBlock();
+    void Reflow_Id(char* id, int layer);
+    void Reflow_Visibility(bool visible);
+    void Reflow_StringChange(char* str);
+    void Reflow_SwfAnimation(char* anim);
+    void Reflow_SwfFile(char* file);
 };
 
 // 0x8017D254
@@ -2290,6 +2662,25 @@ void UIReflow::Reflow_SwfFile(char* file) { /* NOTE: asm-derived */ }
 
 class CASGeneticsTarget {
     // Standard UI target + genetics-specific state
+
+    // Auto-generated method declarations
+    CASGeneticsTarget();
+    ~CASGeneticsTarget();
+    void SetVariable(char* varName, char* value);
+    void SetVariableSubnav(int subnavId, int value);
+    void GetVariable(char* varName);
+    void GetLocalizableSubnav(int subnavId, unsigned short* buffer);
+    void SetGrandparentIndex(unsigned int parent, int idx);
+    void ShowGrandparentTexture(unsigned int parent, int idx);
+    void ClearGrandparentTexture(unsigned int parent);
+    void CreateParentTexture(unsigned int parent);
+    void ClearParentTexture(unsigned int parent);
+    void GetDefaultSim(bool isMale, CasSimDescriptionS2C& desc);
+    void SetDoneButtonState();
+    void BeginGenerate();
+    void HandleGenerateStageBG();
+    void Update();
+    void Draw(ERC* pRC);
 };
 
 // 0x80196F48
@@ -2385,6 +2776,13 @@ void CASGeneticsTarget::Draw(ERC* pRC) {
 
 class AptParagraph {
     // [0] m_pLines (AptLine* linked list)
+
+    // Auto-generated method declarations
+    void Draw(ERC* pRC, EMat4* matrix, EVec4* color, EVec4* bg);
+    void Build(EVec2& pos, EVec2& size, float lineSpacing, EVec4& color, AptStringAlignment align, unsigned short* text);
+    void GetWideHexValue(unsigned short* str, int offset, int len);
+    void SetFormattingEnable(int enable);
+    ~AptParagraph();
 };
 
 // 0x8000E06C
@@ -2427,6 +2825,41 @@ AptParagraph::~AptParagraph() {
 
 class EResourceLoaderImpl {
     // Resource loader with threading support
+
+    // Auto-generated method declarations
+    void IsBusy();
+    EResourceLoaderImpl();
+    ~EResourceLoaderImpl();
+    void Shutdown();
+    void TerminateThread();
+    void Init();
+    void FlushCommandQueue();
+    void AddManager(EResourceManager* mgr);
+    void RemoveManager(EResourceManager* mgr);
+    void Load(EResourceManager* mgr, unsigned int id, EFile* file, unsigned int offset, unsigned int size, bool async);
+    void Unload(EResourceManager* mgr, unsigned int id);
+    void ReadData(EFile* file, void* buf, unsigned int offset, unsigned int size, bool async, EResLoadCmdResult* result);
+    void ReadData(EResourceManager* mgr, void* buf, unsigned int offset, unsigned int size, bool async, EResLoadCmdResult* result);
+    void WriteData(EFile* file, void* buf, unsigned int offset, unsigned int size, bool async, EResLoadCmdResult* result);
+    void FindResourceManager(char* name);
+    void FindResourceManagerInternal(char* name);
+    void OpenFiles();
+    void CloseArchiveFile(EResourceManager* mgr);
+    void AddRefDelRefAllResources();
+    void PrintLoadedResources();
+    void PrintLoadedResources(char* filter);
+    void PrintResourceSizes();
+    void PrintResourceSizes(char* filter);
+    void FreeUnreferencedResources();
+    void FreeUnreferencedResources(char* filter);
+    void GetUnreferencedResourceCount();
+    void GetUnreferencedResourceCount(char* filter);
+    void deallocateGlobalIndex();
+    void allocateGlobalIndex();
+    void getIndexPointer(EString& name);
+    void Main();
+    void ProcessMessage(unsigned int msg);
+    void DoLoadResource(EResourceManager* mgr, unsigned int id, EFile* file, unsigned int offset, unsigned int size);
 };
 
 // 0x80310184
@@ -2581,6 +3014,21 @@ void EResourceLoaderImpl::DoLoadResource(EResourceManager* mgr, unsigned int id,
 
 class CASPersonalTarget {
     // Standard UI target + personality traits
+
+    // Auto-generated method declarations
+    CASPersonalTarget();
+    ~CASPersonalTarget();
+    void SetVariable(char* varName, char* value);
+    void HandlePersonalityAnimation(char* anim);
+    void ConvertFromPersonalityTextToEnum(char* text);
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void ParseSignText(short sign, unsigned short* buf);
+    void ParseDescriptionText(short desc, unsigned short* buf);
+    void ParsePersonalityText(char* trait, unsigned short* buf);
+    void SetVariableSubnav(UIScreenID screen, int subnav, int value);
+    void GetLocalizableSubnav(UIScreenID screen, int subnav, unsigned short* buf);
+    void CalcHighScoreAspShaderIds();
 };
 
 // 0x8019D518
@@ -2632,6 +3080,27 @@ void CASPersonalTarget::CalcHighScoreAspShaderIds() { /* NOTE: asm-derived */ }
 
 class ERoomWall {
     // Wall geometry and rendering data
+
+    // Auto-generated method declarations
+    void GetWallMeterValue(int& value);
+    void CalWallsOpaque(int level);
+    void CalShortDistToCam(int level);
+    void* operator new(std::size_t size);
+    ERoomWall(TileWallsSegment seg, DiagonalSideSelector side, CTilePt& tile, bool isDiag);
+    ~ERoomWall();
+    void GetWallDims(TileWallsSegment seg, DiagonalSideSelector side, EVec3& min, EVec3& max);
+    void SetWallUpDownMode(EWallUpDownStateType state, bool apply);
+    void AddTile(CTilePt& tile, TileWalls& walls, TileWallsSegment seg, DiagonalSideSelector side, bool rebuild);
+    void DrawWall(ERC* pRC);
+    void getRoomIdFromPoint(CTilePt& pt);
+    void getWallNormalOnSideOfCursor(EVec3& pos, EVec3& normal, EVec2& cursor, EVec2& wall);
+    void DrawWallpaperPreview(ERC* pRC, EVec2& pos);
+    void GetWallPaperCost(int wallpaper, unsigned short roomId);
+    void HasSegment(TileWallsSegment seg, CTilePt& start, CTilePt& end);
+    void DeleteWallAtTile(CTilePt& tile);
+    void RemoveWallsFromWorld();
+    void GetWallAtTile(CTilePt& tile);
+    ERoomWall();
 };
 
 // 0x800293A0
@@ -2644,7 +3113,7 @@ void ERoomWall::CalWallsOpaque(int level) { /* NOTE: asm-derived */ }
 void ERoomWall::CalShortDistToCam(int level) { /* NOTE: asm-derived */ }
 
 // 0x8002C54C
-void* ERoomWall::operator new(unsigned int size) {
+void* ERoomWall::operator new(std::size_t size) {
     // NOTE: asm-derived
     return MainHeap()->Malloc(size, 0);
 }
@@ -2712,6 +3181,15 @@ ERoomWall::ERoomWall() {
 
 class AptFormat {
     // Text formatting and particle effects for APT UI
+
+    // Auto-generated method declarations
+    AptFormat(AptWord* word);
+    ~AptFormat();
+    void Draw(EMat4* matrix, EVec4* color, EVec4* bg);
+    void InitForParticles(int count);
+    void ProcessParticles(ERC* pRC, EMat4* matrix, EVec2& pos, EVec2& size, float dt, float scale);
+    void CheckAsyncLoads();
+    void CopyForward(AptFormat* other);
 };
 
 // 0x8000AF88
@@ -2758,6 +3236,21 @@ void AptFormat::CopyForward(AptFormat* other) {
 
 class RCPTarget {
     // Standard UI target + recipe state
+
+    // Auto-generated method declarations
+    RCPTarget(cRCPEventHandler* handler, int playerIdx);
+    ~RCPTarget();
+    void make_recipe_text(int* recipe, BString2& text);
+    void SetVariable(char* varName, char* value);
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void Update();
+    void init_recipes();
+    void install_tab_shaders();
+    void install_lock_shaders();
+    void install_ing_shaders();
+    void get_plus_shaders(int& count, unsigned int& shader1, unsigned int& shader2);
+    void get_proc_shaders(int& count, unsigned int& shader1, unsigned int& shader2);
 };
 
 // 0x801DCF40
@@ -2812,6 +3305,16 @@ class EYETarget {
     // [152] m_mode
     // [164] m_exposure (float)
     // [168] m_callback (void*)
+
+    // Auto-generated method declarations
+    void SaveCurrentSetting();
+    EYETarget(int playerIdx);
+    void AddSetVar(SetVar* sv);
+    void AddGetVar(GetVar* gv);
+    ~EYETarget();
+    void SetVariable(char* varName, char* value);
+    void GetVariable(char* varName);
+    void RenderCallback(ERC* pRC, structDrawCBparams* params);
 };
 
 // 0x801E714C
@@ -2859,6 +3362,40 @@ void EYETarget::RenderCallback(ERC* pRC, structDrawCBparams* params) { /* NOTE: 
 
 class EyeToyClient {
     // Camera/video capture system
+
+    // Auto-generated method declarations
+    void saveHeader(int& record);
+    void saveTexture(int slot, int& record);
+    void Save(int slot, int& record);
+    void loadHeader(int& record);
+    void loadTexture(int slot, int& record);
+    void Load(int slot, int& record);
+    void LoadDefaultSettings();
+    void FindFirstConnectedEyeToy();
+    void AcquireTexture(int w, int h, int fmt);
+    void AcquireRenderSurface(int w, int h, int fmt);
+    void CopyTextureToShader(ERShader* shader, ETexture* tex);
+    void CompositeFF_callback(ETexture* tex);
+    void UpdateFunFrameLoading();
+    void SetFilterPipeline(int filter);
+    void Init();
+    void Shutdown();
+    void Update(float dt);
+    void Render();
+    void OpenSession();
+    void CloseSession();
+    void WriteTextureToRepSlot(int slot, ETexture* tex, int layer);
+    void SaveSessionToSlot(int slot);
+    void GetRepSlotUnLockedBits(int slot);
+    void GetFunFrameUnLockedBits(int slot);
+    float GetExposure();
+    void SetExposure(float val);
+    void SetHue(float val);
+
+    class Debug {
+    public:
+        static void WriteTGAToHost(ETexture* tex);
+    };
 };
 
 // 0x80037400
@@ -2954,6 +3491,25 @@ class CasScene {
     // [4] vtable
     // [256+] light data
     // [2704] camera data
+
+    // Auto-generated method declarations
+    CasScene();
+    ~CasScene();
+    void Init();
+    void Reload();
+    void Update(float dt);
+    void Draw(ERC* pRC);
+    void DrawRoom(ERC* pRC, int roomIdx, EMat4& transform);
+    void DrawRoomClothing(ERC* pRC, EMat4& transform);
+    void LoadLights(char* filename, int count);
+    void SetLights(int set);
+    void SetSceneLighting(int mode, bool apply);
+    void RepositionCamera(unsigned int camId, float x, float y);
+    void InitCamera(unsigned int camId);
+    void UpdateCamera(float dt);
+    void SetUpWindow(ERC* pRC);
+    void HandleEventChangeFocus(CasEventChangeFocus& event);
+    void GetObjectPosition(unsigned int objId, EVec3& pos, float& rot);
 };
 
 // 0x8016502C
@@ -3017,6 +3573,28 @@ void CasScene::GetObjectPosition(unsigned int objId, EVec3& pos, float& rot) { /
 
 class H2DTarget {
     // Standard UI target + HUD state for split-screen
+
+    // Auto-generated method declarations
+    H2DTarget();
+    ~H2DTarget();
+    void SetVariable(char* varName, char* value);
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void Update();
+    void IncPause(bool immediate);
+    void ReleasePause(bool immediate);
+    void CloseSidePanels(int player);
+    void SelectedPersonChanged(int player, cXPerson* person);
+    void SpawnRewardMomentDialog(int player, int reward);
+    void ACTCancelModeExited(int player);
+    void SpawnIntroThoughtBalloon(UIDialog* dlg);
+    void IsUserReadingIntroThoughtBalloon();
+    void NewWantFearIcon(int player, int slot, unsigned int iconId, unsigned int bgId, int type, Neighbor* neighbor);
+    void AddAction(int player, Interaction* action, BString2& name, unsigned int iconId, ERShader* shader, unsigned int bgId);
+    bool IsActionQueueAvailable(int player) const;
+    void CSIMActive(int player, bool active);
+    bool ShouldH2DBeVisible(int player) const;
+    void IsDialogActive();
 };
 
 // 0x801B727C
@@ -3093,6 +3671,26 @@ void H2DTarget::IsDialogActive() { /* NOTE: asm-derived */ }
 
 class PRGTarget {
     // Standard UI target + progress/stat tracking
+
+    // Auto-generated method declarations
+    PRGTarget(int playerIdx);
+    ~PRGTarget();
+    void SetVariable(char* varName, char* value);
+    void FormatFraction(unsigned short* buf, int num, int denom);
+    void FormatPercentage(unsigned short* buf, int num, int denom);
+    void GetUnlockedFashions();
+    void GetUnlockedRecipies();
+    void GetUnlockedObjects();
+    void GetTotalPromotions();
+    void GetMaxedCareers();
+    void GetTotalSkillPoints();
+    void GetMaxedSkills();
+    void GetNPCsHelped();
+    void GetUnlockedLots();
+    void GetLocalizable(char* key);
+    void GetVariable(char* varName);
+    void OnCancelKeyPressed(char* context, char* action);
+    void Shutdown();
 };
 
 // 0x801D8768
@@ -3159,6 +3757,24 @@ void PRGTarget::Shutdown() { /* NOTE: asm-derived */ }
 
 class WXFTarget {
     // Standard UI target + want/fear selection state
+
+    // Auto-generated method declarations
+    WXFTarget(int playerIdx);
+    ~WXFTarget();
+    void SetVariable(char* varName, char* value);
+    void GetLocalizable(char* key);
+    void GetVariable(char* varName);
+    void Shutdown();
+    void UpdateMenuState(char* menu, char* state);
+    void UpdateText();
+    void OnLeftKeyPressed(char* context, char* action);
+    void OnRightKeyPressed(char* context, char* action);
+    void OnCancelKeyPressed(char* context, char* action);
+    void UpdateShaders();
+    void GetBackgroundShader(tWantType type);
+    void UpdateWAFText(char* text);
+    void ShowHelp();
+    void GetAspirationIcon();
 };
 
 // 0x801E4F2C
@@ -3219,6 +3835,23 @@ void WXFTarget::GetAspirationIcon() { /* NOTE: asm-derived */ }
 
 class CRDTarget {
     // Standard UI target + credits scroll state
+
+    // Auto-generated method declarations
+    CRDTarget();
+    ~CRDTarget();
+    void SetVariable(char* varName, char* value);
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void Update();
+    void ShowCredits();
+    void HideCredits();
+    void StartCredits();
+    void EndCredits();
+    void SetupForCreditsRender(int mode);
+    void InitCreditsTextFetch();
+    void ScrollingCallback(ERC* pRC, structDrawCBparams* params);
+    void ShowPhoto();
+    void HidePhoto();
 };
 
 // 0x801A4070
@@ -3276,6 +3909,42 @@ void CRDTarget::HidePhoto() { /* NOTE: asm-derived */ }
 
 class ChainResFile {
     // Linked list of iResFile for multi-file resource lookup
+
+    // Auto-generated method declarations
+    ChainResFile();
+    ~ChainResFile();
+    void RemoveFile(iResFile* file);
+    void GetFile(short idx);
+    void Close();
+    void CloseForReopen();
+    void Reopen();
+    void Update();
+    void Writable();
+    void ValidFile();
+    void GetLanguage(int* lang);
+    void CountTypes();
+    void BuildTypeVector(vector<int, allocator<int> >& types);
+    void GetIndType(short idx);
+    void Count(int type);
+    void GetByIDAndLanguage(int type, short id, char lang, void (*callback)(void*, int));
+    void GetByName(int type, StringBuffer& name, void (*callback)(void*, int));
+    void GetByIndex(int type, short idx, void (*callback)(void*, int));
+    void GetName(int* handle, StringBuffer& name);
+    void GetResType(int* handle);
+    void GetID(int* handle, short* id);
+    void IsLittleEndian(int* handle);
+    void GetIndex(int* handle, short* idx);
+    void FindUniqueName(int type, StringBuffer& name);
+    void FindUniqueID(int type);
+    void Detach(int* handle);
+    void SetID(int* handle, short id);
+    void AddWithLanguage(int* handle, int type, short id, StringBuffer& name, char lang, bool replace);
+    void Write(int* handle);
+    void Remove(int* handle);
+    void SetInfo(int* handle, short id, StringBuffer& name, char lang);
+    void AddProhibitedType(iResFile* file, unsigned int type);
+    void AddExclusiveType(iResFile* file, unsigned int type);
+    void TypeWritable(unsigned int type);
 };
 
 // 0x800B1D94
@@ -3390,6 +4059,56 @@ void ChainResFile::TypeWritable(unsigned int type) { /* NOTE: asm-derived */ }
 
 class EController {
     // Controller state, button mapping, vibration
+
+    // Auto-generated method declarations
+    EController();
+    ~EController();
+    void Update();
+    void UpdateAutoRepeat();
+    void SetCommandMap(EBtnToCmdAssoc* map, int count);
+    void IsInUse();
+    void VibrateMotorOne(float intensity);
+    void VibrateMotorOne(float intensity, float duration);
+    void VibrateMotorTwo(float intensity);
+    void VibrateMotorTwo(float intensity, float duration);
+    void VibrateAll(float motor1, float motor2);
+    void VibrateAll(float m1Int, float m1Dur, float m2Int, float m2Dur);
+    void StopMotorOne();
+    void StopMotorTwo();
+    void StopVibration();
+    void UpdateVibration();
+    void PauseMotors();
+    void ResumeMotors();
+    void UpdateButtonData(unsigned int buttonMask);
+    void UpdateStickData(int stick, int axis, float value);
+    void AddPressedEventData(unsigned int button);
+    void AddReleasedEventData(unsigned int button);
+    void GetStick(int stick, int axis, unsigned int filter);
+    void IsStickFiltered(int stick, int axis, unsigned int filter);
+    void StickMoved(int stick, float threshold, unsigned int filter);
+    void GetLastStick(int stick, int axis, unsigned int filter);
+    void GetBtnResult(unsigned int btn, bool pressed, unsigned int filter);
+    void FindFirstCommand(unsigned int cmd);
+    void GetCmdResult(unsigned int cmd, unsigned int context, unsigned int filter, bool pressed);
+    void AddFilter(unsigned int id, char* name, int priority);
+    void RemoveFilter(unsigned int id);
+    void MoveFilterToTop(unsigned int id);
+    void SetFilter(unsigned int id, unsigned int mask);
+    void AddCmdToFilter(unsigned int id, unsigned int cmd);
+    void AddCmdsToFilter(unsigned int id, unsigned int* cmds, int count);
+    void RemoveCmdFromFilter(unsigned int id, unsigned int cmd);
+    void AddBtnToFilter(unsigned int id, unsigned int btn);
+    void RemoveBtnFromFilter(unsigned int id, unsigned int btn);
+    void GetCmdButtonMask(unsigned int cmd);
+    void GetFilterIndex(unsigned int id);
+    void GetFilterMask(unsigned int id);
+    void GetCmdDown(unsigned int cmd, unsigned int filter);
+    void GetCmdPressed(unsigned int cmd, unsigned int filter);
+    void GetCmdReleased(unsigned int cmd, unsigned int filter);
+    void GetCmdUp(unsigned int cmd, unsigned int filter);
+    void GetCmdRepeat(unsigned int cmd, unsigned int filter);
+    void GetBtnDown(unsigned int btn, unsigned int filter);
+    void GetBtnDownAny(unsigned int btn, unsigned int filter);
 };
 
 // 0x80303E58
@@ -3548,6 +4267,45 @@ void EController::GetBtnDownAny(unsigned int btn, unsigned int filter) { /* NOTE
 class EResourceManager {
     // [0] m_pArchiveFile
     // [4..] resource tables, hash maps
+
+    // Auto-generated method declarations
+    EResourceManager();
+    ~EResourceManager();
+    void Shutdown();
+    void Init(char* path);
+    void CalcPath();
+    void GetArchiveFile();
+    void ArchiveFileIsUsingHDD();
+    void ArchiveFileIsOpen();
+    void CloseArchiveFile();
+    void BinarySearch(unsigned int id, unsigned int* table, int count);
+    void LookupId(unsigned int id, unsigned int& offset, unsigned int& size);
+    void AddRefAll();
+    void AddDelRefAll();
+    void DelRefAll();
+    void PrintLoadedResources();
+    void PrintResourceSizes();
+    void GetRef(unsigned int id);
+    void ReadData(void* buf, unsigned int offset, unsigned int size);
+    void PreloadResource(unsigned int id);
+    void addRef(unsigned int id, EFile* file, unsigned int flags, bool async);
+    void TryIncrementResource(unsigned int id, EResource** ppRes);
+    void AddResource(EResource* res, unsigned int id, bool owned);
+    void AddRef(char* name, EFile* file, int flags);
+    void AddRefAsync(char* name);
+    void Refresh(EResource* res);
+    void Refresh(unsigned int id);
+    void AddRef(EResource* res);
+    void DelRef(unsigned int id, int flags);
+    void DelRef(char* name, int flags);
+    void DelRefAsync(unsigned int id);
+    void DelRef(EResource* res, int flags);
+    void Detach(EResource* res);
+    void IsLoaded(unsigned int id);
+    void CalcId(char* name);
+    void MakeSpace();
+    void Alloc(unsigned long size, unsigned int align);
+    void Free(void* ptr);
 };
 
 // 0x8032561C
@@ -3682,6 +4440,15 @@ class ECheats {
     // [0..255] cheat lookup data
     // [256..259] state
     // [260] m_isGodMode
+
+    // Auto-generated method declarations
+    ECheats();
+    ~ECheats();
+    void Init(EGlobal& global);
+    void EmptyLookupList();
+    void SetGodMode(bool enable);
+    void EnableCheats();
+    void DisableCheats();
 };
 
 // 0x8001ECAC
@@ -3732,6 +4499,46 @@ void ECheats::DisableCheats() {
 
 class EMat4 {
     // [0..63] float[4][4] matrix data
+
+    // Auto-generated method declarations
+    void PreScale(EVec3& scale);
+    void PreTranslate(EVec3& t);
+    void Normalize();
+    void Transpose(EMat4& result);
+    void Transpose();
+    void Id();
+    void Translate(EVec3& t);
+    void Scale(EVec3& s);
+    void RotateX(float angle);
+    void RotateY(float angle);
+    void RotateZ(float angle);
+    void Invert(EMat4& result);
+    void InvertSimple(EMat4& result);
+    void Rotate(EVec3& axis, float angle);
+    void PreRotateX(float angle);
+    void PostRotateX(float angle);
+    void PreRotateY(float angle);
+    void PostRotateY(float angle);
+    void PreRotateZ(float angle);
+    void PostRotateZ(float angle);
+    void PostScale(EVec3& s);
+    void Conform(EVec3& normal);
+    void OrientPosNormal(EVec3& pos, EVec3& dir, EVec3& up);
+    void Clamp();
+    float GetMaxScale() const;
+    void GetHPR(float& h, float& p, float& r);
+    void GetLookAtPos(EVec3& eye, EVec3& at, EVec3& up);
+    void LookAtPos(EVec3& eye, EVec3& at, EVec3& up);
+    void LookAt(EVec3& eye, EVec3& at, EVec3& up);
+    void LookAtDirect(EVec3& eye, EVec3& at, float roll);
+    void LookTo(EVec3& pos, EVec3& dir, EVec3& up);
+    void Projection(float fov, float aspect, float nearClip, float farClip);
+    void Ortho(float left, float right, float bottom, float top, float nearClip, float farClip);
+    void BlendEuler(float t, EMat4& a, EMat4& b);
+    void BlendQuat(float t, EMat4& a, EMat4& b);
+    void TexturePerspectiveProjection(EVec3& pos, EVec3& dir, EVec3& up, float fov, float aspect, float nearClip, float farClip);
+    void TexturePlanarProjection(EVec3& pos, EVec3& dir, EVec3& up, float scaleU, float scaleV, float offsetU, float offsetV);
+    void operator=(EMat4& other);
 };
 
 // 0x802C9270
@@ -3913,6 +4720,14 @@ void EMat4::operator=(EMat4& other) {
 class AptLinker {
     // [0..3] state
     // [4..15] pending loads (vector)
+
+    // Auto-generated method declarations
+    ~AptLinker();
+    void SwapOut(AptSharedPtr<AptFile> oldFile, AptSharedPtr<AptFile> newFile);
+    void Update();
+    void Notify(AptSharedPtr<AptFile> file);
+    void Load(EAStringC& filename, EAStringC scriptName);
+    void CancelLoad(AptCIH* cih);
 };
 
 // 0x8026BF54
@@ -3952,6 +4767,24 @@ void AptLinker::CancelLoad(AptCIH* cih) {
 
 class MODTarget {
     // Standard UI target + mood meter state
+
+    // Auto-generated method declarations
+    MODTarget(int playerIdx);
+    ~MODTarget();
+    void SetVariable(char* varName, char* value);
+    void GetVariable(char* varName);
+    void GetLocalizable(char* key);
+    void Update();
+    void DrawMoodHeadCallback(ERC* pRC, structDrawCBparams* params);
+    void UpdateMood();
+    void SelectDpadArrow(int dir);
+    void SelectDpadButton(int btn);
+    void SetWarning(int type, bool show, bool urgent);
+    void SetMeterValue(float value, bool animate);
+    void SetDpadIcons(int config);
+    void DisplayPaused();
+    void DisplayFastForward();
+    void TriggerAspirationChestDisplay();
 };
 
 // 0x801C87EC
@@ -4012,6 +4845,28 @@ void MODTarget::TriggerAspirationChestDisplay() { /* NOTE: asm-derived */ }
 
 class AptDisplayList {
     // Display list for APT (Flash-like) rendering
+
+    // Auto-generated method declarations
+    void instantiateCharacter(int depth, AptCharacter* character, EAStringC* name, AptCIH* cih, int type, int flags, AptCIH** outCIH, int* outIdx);
+    void _addToSetCaches(AptCIH* cih, int depth);
+    void placeObjectNCXForm(AptCIH* cih, int depth, AptCharacter* character, EAStringC* name, AptCIH* parentCIH, int type, int flags, AptnCXForm* cxForm, AptMatrix* matrix, AptEventActionSet* events, float ratio);
+    void placeObject(AptCIH* cih, int depth, AptCharacter* character, EAStringC* name, AptCIH* parentCIH, int type, int flags, AptCXForm* cxForm, AptMatrix* matrix, AptEventActionSet* events, float ratio, AptValue* filters);
+    void placeObject(AptControlPlaceObject2* placeObj, AptCIH* parentCIH);
+    void placeObject(AptPseudoCIH_t* pseudoCIH, AptCIH* parentCIH);
+    void removeObject(AptCIH* cih);
+    void removeObject(int depth);
+    void removeClonedObject(AptCIH* cih);
+    ~AptDisplayList();
+    void deallocAssetStringRecursive();
+    void render(AptRenderingContext* ctx, AptMaskRenderOperation maskOp);
+    void _getBoundingRect(AptRenderingContext* ctx, AptRect* rect);
+    void tick();
+    void clear(bool full);
+    void PreDestroy();
+    void AddToDisplayList(AptNativeHash* hash, AptPseudoCIH_t* pseudo, AptCIH* cih);
+    void ReplaceDisplyListItem(AptNativeHash* hash, AptCIH* oldCIH, AptPseudoCIH_t* pseudo, AptCIH* newCIH);
+    void mergeState(AptPseudoDisplayList* other, AptNativeHash* hash, bool deep);
+    void validate(AptCIH* parentCIH);
 };
 
 // 0x80299970
@@ -4108,6 +4963,30 @@ void AptDisplayList::validate(AptCIH* parentCIH) {
 
 class CASSelectionTarget {
     // Standard UI target + grid selection state
+
+    // Auto-generated method declarations
+    CASSelectionTarget();
+    ~CASSelectionTarget();
+    void SetVariable(char* varName, char* value);
+    void ConvertGridStringToOptionArrayIdx(char* str);
+    void GetVariable(char* varName);
+    void GetLockStateString(char* buf);
+    void ClearRecentlyUnlockedBitFlag(int flag);
+    void GetLocalizable(char* key);
+    void ScrollPageLeft();
+    void ScrollPageRight();
+    void ShiftShaderTexturesLeft();
+    void ShiftShaderTexturesRight();
+    void InitScreen();
+    void CreateSelectionShaders();
+    void LoadGridTextures(unsigned int startIdx, unsigned int endIdx);
+    void SetupInitialSelectionPage();
+    void ClearTextures(unsigned int startIdx, unsigned int endIdx);
+    void UpdateSelectionArrowState();
+    void ConvertUiFocusToBodyPart(unsigned int focus, eBodyPartS2C* part);
+    void ConvertUiFocusToBodyTextureType(unsigned int focus, eTattooTextureTypeS2C* type);
+    void ConvertCurUIFocusToChangeEvent(int& event);
+    void SetTitleShaderAccordingToCurUIFocus(unsigned int focus);
 };
 
 // 0x80198ABC
@@ -4194,6 +5073,53 @@ void CASSelectionTarget::SetTitleShaderAccordingToCurUIFocus(unsigned int focus)
 
 class WrapperPaneBase {
     // UI pane with button list and item management
+
+    // Auto-generated method declarations
+    void Shutdown();
+    void DrawBackground(ERC* pRC);
+    void DrawItems(ERC* pRC, bool selectedOnly);
+    void SetSelected(ItemType type, int idx);
+    void GetSelectedItem(ItemType type);
+    void GetEnabledItemIndexWithValue(ItemType type, int value);
+    void GetItem(ItemType type, int idx);
+    void SetItemFont(ItemType type, int idx, ERFont* font);
+    void SetItemFontSize(ItemType type, int idx, float size);
+    void SetItemPos(ItemType type, int idx, EVec2& pos);
+    void SetItemPosX(ItemType type, int idx, float x);
+    void SetItemPosY(ItemType type, int idx, float y);
+    void SetItemSize(ItemType type, int idx, EVec2& size);
+    void SetItemSizeX(ItemType type, int idx, float w);
+    void SetItemSizeY(ItemType type, int idx, float h);
+    void CalculateMenuWidthPixels();
+    void DeleteItemList();
+    void GetVariableButtonIndex(char* context, char* var);
+    void GetVariable(char* varName);
+    void SetVariable(char* varName, char* value);
+    void AddButton(int id, bool enabled, unsigned short* text);
+    void ShowEnabledButtons();
+    void HideEnabledButtons();
+    void ShowButton(int id);
+    void HideButton(int id);
+    WrapperPaneBase(int w, int h);
+    ~WrapperPaneBase();
+    void AddItem(PaneItem* item);
+    void SetButtonContext(char* ctx);
+    void SetButtonText(int id, unsigned short* text);
+    void SetButtonFont(int id, ERFont* font);
+    void SetButtonFontSize(int id, float size);
+    void SetButtonPos(int id, EVec2& pos);
+    void SetButtonPosX(int id, float x);
+    void SetButtonPosY(int id, float y);
+    void SetAcceptFont(ERFont* font);
+    void SetAcceptFontSize(float size);
+    void SetAcceptPos(EVec2& pos);
+    void SetAcceptPosX(float x);
+    void SetAcceptPosY(float y);
+    void SetDeclineFont(ERFont* font);
+    void SetDeclineFontSize(float size);
+    void SetDeclinePos(EVec2& pos);
+    void SetDeclinePosX(float x);
+    void SetDeclinePosY(float y);
 };
 
 // 0x80084AB4
@@ -4341,6 +5267,23 @@ void WrapperPaneBase::SetDeclinePosY(float y) { /* NOTE: asm-derived */ }
 class ELiveMode : public EGameState {
     // [0..7] EGameState base
     // [8] vtable
+
+    // Auto-generated method declarations
+    ~ELiveMode();
+    void Init(int playerCount);
+    void Reset(int playerCount);
+    void GotoStartMode();
+    void QuitToMainMenu();
+    void IsReadyForUpdate();
+    void UpdateIntroCamera();
+    void Update();
+    void Draw(ERC* pRC);
+    void DrawSplitScreenMask(ERC* pRC, E3DWindow& window, int player);
+    void InitPlayerXWindow(ERC* pRC, E3DWindow& window, int player);
+    void DrawSplitScreenDivider(ERC* pRC);
+    void DrawMain(ERC* pRC);
+    void StartIntroCamera(CameraDirector* director, ESimsCam* cam);
+    void EndIntroCamera(CameraDirector* director, ESimsCam* cam);
 };
 
 // 0x8008BB08
@@ -4407,6 +5350,33 @@ void ELiveMode::EndIntroCamera(CameraDirector* director, ESimsCam* cam) {
 
 class ERoom {
     // Room with wall lists, tile partitioning
+
+    // Auto-generated method declarations
+    ERoom();
+    ~ERoom();
+    void InitRoomLookupTab();
+    void GetNumWalls(unsigned short roomId);
+    void GetWallPaperCost(unsigned int wallpaper, unsigned short roomId);
+    void DrawWallpaperPreview(ERC* pRC, unsigned short roomId, EVec2& pos);
+    void IsRoomWallsOpaque(int level, int side);
+    void CalAllRoomOpaque(int level);
+    void GetShortDistToCam(int level, int side);
+    void GetOccludeAlpha(int level, int side);
+    void IsRoomRoofOpaque(int level, int side);
+    void CalRoofOpaque(int level);
+    void CalShortDistToCam(int level);
+    void SetWallState(EWallUpDownStateType state);
+    void UpdateWallFade(int level);
+    void Init();
+    void ProcStandardWalls(bool rebuild, int& wallCount, int& tileCount, bool preview);
+    void ProcDiagonalWalls(int& wallCount, int& tileCount, bool preview);
+    void ProcessCell(TNodeList<ERoomWall*>& walls, ERoomWallPtr& wallPtr, CTilePt& tile, TileWallsSegment seg, DiagonalSideSelector side, TileWalls& tileWalls, int level, int& wallCount, int& tileCount, bool preview);
+    void PreviewWallBuild(bool preview);
+    void FindWallContainingSegment(TNodeList<ERoomWall*>& walls, TileWallsSegment seg, CTilePt& start, CTilePt& end);
+    void GetWallFromTileAndSegment(TileWallsSegment seg, CTilePt& tile);
+    void DeleteERoomWallContainingSegment(TileWallsSegment seg, CTilePt& start, CTilePt& end);
+    void DeleteWallAtTile(CTilePt& tile, TileWalls& walls, TileWallsSegment seg);
+    void KillArchitecturalObject(CTilePt& tile, TileWallsSegment seg, int& count, bool force);
 };
 
 // 0x8002D778
@@ -4511,6 +5481,30 @@ void ERoom::KillArchitecturalObject(CTilePt& tile, TileWallsSegment seg, int& co
 
 class AptMathObj {
     // Singleton Math object for ActionScript
+
+    // Auto-generated method declarations
+    void CleanNativeFunctions();
+    void objectMemberLookup(AptValue* result, EAStringC* name) const;
+    void sMethod_sin(AptValue* result, int argCount);
+    void sMethod_cos(AptValue* result, int argCount);
+    void sMethod_atan2(AptValue* result, int argCount);
+    void sMethod_round(AptValue* result, int argCount);
+    void sMethod_min(AptValue* result, int argCount);
+    void sMethod_max(AptValue* result, int argCount);
+    void sMethod_abs(AptValue* result, int argCount);
+    void sMethod_acos(AptValue* result, int argCount);
+    void sMethod_asin(AptValue* result, int argCount);
+    void sMethod_atan(AptValue* result, int argCount);
+    void sMethod_ceil(AptValue* result, int argCount);
+    void sMethod_exp(AptValue* result, int argCount);
+    void sMethod_floor(AptValue* result, int argCount);
+    void sMethod_log(AptValue* result, int argCount);
+    void sMethod_pow(AptValue* result, int argCount);
+    void sMethod_random(AptValue* result, int argCount);
+    void sMethod_sqrt(AptValue* result, int argCount);
+    void sMethod_tan(AptValue* result, int argCount);
+    AptMathObj();
+    ~AptMathObj();
 };
 
 // 0x802A2B68

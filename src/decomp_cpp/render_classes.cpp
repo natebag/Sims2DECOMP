@@ -598,7 +598,7 @@ public:
                 m_textures[i] = NULL;
                 // Store next into particle data texture slot
                 u32* texSlot = (u32*)((u8*)m_particleData + 364 + i * 132);
-                *texSlot = (u32)next;
+                *texSlot = (u32)(uintptr_t)next;
             }
         }
     }
@@ -665,7 +665,7 @@ public:
 
             // Copy texture pointers back to particle data slots
             for (u32 i = 0; i < texCount; i++) {
-                pData[91 + i * 33] = (u32)m_textures[i];
+                pData[91 + i * 33] = (u32)(uintptr_t)m_textures[i];
             }
         } else {
             // Single texture, texture resource manager
@@ -834,7 +834,7 @@ public:
                     // m_textures[i] = EResourceManager::AddRef(g_pShaderResourceManager, texID, NULL, 0)
                 }
                 // Sync back to particle data
-                pData[91 + i * 33] = (u32)m_textures[i];
+                pData[91 + i * 33] = (u32)(uintptr_t)m_textures[i];
             }
         } else {
             // Single texture (texture resource)
@@ -877,7 +877,7 @@ public:
         u32* pData = (u32*)m_particleData;
 
         for (u32 i = 0; i < texCount; i++) {
-            pData[91 + i * 33] = (u32)m_textures[i]; // offset 364 + i*132
+            pData[91 + i * 33] = (u32)(uintptr_t)m_textures[i]; // offset 364 + i*132
         }
 
         // header.~EDataHeader()

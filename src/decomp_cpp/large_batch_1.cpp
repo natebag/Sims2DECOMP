@@ -53,9 +53,9 @@ public:
 };
 
 // Operator new/delete
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void operator delete(void*);
-extern void* __builtin_vec_new(unsigned int);
+extern void* __builtin_vec_new(std::size_t);
 extern void __builtin_vec_delete(void*);
 
 // ============================================================================
@@ -136,6 +136,320 @@ struct AttachmentNodeV1;
 class TreeTable;
 class TreeTableEntry;
 class TreeTableEntryQuickData;
+
+// Class declarations needed before method definitions
+class ENodeList {
+public:
+    void Remove(NLIteratorPtrType* node);
+    void AddHead(unsigned int data);
+    void AddHead(ENodeList& other);
+    void AddTail(unsigned int data);
+    void AddTail(ENodeList& other);
+    void* GetHead(void);
+    void* GetTail(void);
+    void* GetNext(void* node);
+    void* GetPrev(void* node);
+    bool IsEmpty(void) const;
+    void IsValidList(void) const;
+    void MoveContents(ENodeList& other);
+    void RemoveAll(void);
+    void FreeAll(void);
+    int GetCount(void) const;
+    void* FindNode(unsigned int data);
+    void InsertBefore(NLIteratorPtrType* pos, unsigned int data);
+    void InsertAfter(NLIteratorPtrType* pos, unsigned int data);
+};
+
+class EString;
+class EConfig;
+class EStringTableNoCase;
+class ETweak {
+public:
+    ETweak(void);
+    ~ETweak(void);
+    void Update(void);
+    void Read(void);
+    void FileName(char* name);
+    void AddVal(void* ptr, char* name, int type);
+    void AddVal(EString* ptr, char* name, int type);
+    void RemoveVal(void* ptr);
+    void RemoveAll(void);
+};
+
+class EResource;
+class ERTexture {
+public:
+    ERTexture(void);
+    ~ERTexture(void);
+    void Deallocate(void);
+    void Refresh(EFile* file);
+    void Load(EFile& file);
+    void LoadFromMemory(unsigned char* data);
+    void IsSafeToDelete(void);
+    void RegisterType(unsigned short typeId);
+};
+
+class EStream;
+class EMat4;
+struct ENDummyPoint {};
+class ENDummy {
+public:
+    ENDummy(void);
+    ~ENDummy(void);
+    void Write(EStream& stream);
+    void Read(EStream& stream);
+    void Read(unsigned char* data);
+    void SetDummyPoint(int index, ENDummyPoint point);
+    void GetDummyPointOrient(int index, EMat4& parentMat, EMat4& outMat);
+    void GetDummyPoint(int index);
+};
+
+class ObjectDataID;
+class MotiveConstantsClient {
+public:
+    void UpdateConstants(void);
+};
+
+class ResourceBehaviorTree {
+public:
+    ResourceBehaviorTree(void);
+    ~ResourceBehaviorTree(void);
+    void LoadFromIndex(unsigned int namespaceId, int index);
+    void LoadFromDataID(ObjectDataID& id);
+    void GetFromDataID(ObjectDataID& id);
+    void QueryInterface(unsigned int iid, void** ppv);
+    void Release(void);
+    void* operator new(std::size_t size);
+    void operator delete(void* ptr);
+};
+
+class EApp {
+public:
+    EApp(void);
+    void SetupPaths(void);
+    void Main(void);
+    void CreateAndStartAppThread(void);
+    void SystemUpdate(void);
+    void SetArgs(int argc, char** argv);
+    void GetArg(char* key) const;
+};
+
+class LoadingScreenStateMachine {
+public:
+    LoadingScreenStateMachine(int type, int param);
+    ~LoadingScreenStateMachine(void);
+    void Startup(void);
+    void CreateLoadingScreen(void);
+    void DeleteLoadingScreen(void);
+    void IsLoading(void);
+    void StartLoad(int mode);
+    void FaderStart(float duration, bool fadeIn);
+    void FaderUpdate(float dt);
+    void FaderGetFadeOpacity(void);
+};
+
+class ThumbnailLoader {
+public:
+    void DoStream(ReconBuffer* buffer, int mode);
+    void CreateEmptyThumbnail(void);
+    void DuplicateThumbnail(ETexture** outTex, ETexture* srcTex);
+};
+
+class StringBuffer {
+public:
+    void append(char* str, int maxLen);
+    void append(StringBuffer& other, int maxLen);
+    void compare(StringBuffer& other) const;
+    void compareNoCase(StringBuffer& other) const;
+    void compareNoCase(char* str, int len) const;
+    void charAt(int index) const;
+    void toLower(void);
+    void appendNum(int value);
+    void appendNum(int value, int width);
+    void find(char* needle, int startPos) const;
+    void findNoCase(char* needle, int startPos) const;
+    void assignDebug(unsigned short* wstr);
+};
+
+struct EVec4 {};
+struct AttachmentNode {};
+
+class EIPointLight {
+public:
+    EIPointLight(void);
+    void Write(EStream& stream);
+    void Read(EStream& stream);
+    void CalcFullIntensityLightOnPoint(EVec3& point, float& outIntensity);
+    void LightingParameters(EVec3& outDir, float& outIntensity, EVec3& outColor, EVec3& outSpecColor);
+    void SetPosition(EVec3& pos);
+    void Setup(void);
+    void RegisterType(unsigned short typeId);
+};
+
+class AptCharacterTextInst {
+public:
+    void SetText(AptCIH* cih);
+    void UpdateText(AptCIH* cih);
+    ~AptCharacterTextInst(void);
+};
+
+class AptShaderWord {
+public:
+    AptShaderWord(void);
+    ~AptShaderWord(void);
+    void Draw(ERC* rc, EMat4* mat, EVec4* color1, EVec4* color2);
+    void Resize(float size);
+    void SetShader(int shaderId);
+    void InsertSpace(void);
+};
+
+class PreGameState {
+public:
+    void Reset(void);
+    void Update(float dt);
+    void InsertPlayer2Roommate(void);
+};
+
+class EIObjTileBoundRect {
+public:
+    void AddTilePt(CTilePt& pt);
+    void AddTilePt(EVec2& pt);
+    void Set(CTilePt& pt);
+    void PtInRect(CTilePt& pt);
+    void Overlap(EIObjTileBoundRect& other) const;
+    void Scale(float scaleX, float scaleY);
+    void MirrorYX(void);
+};
+
+class AptError {
+public:
+    AptError(void);
+    AptError(EAStringC& msg);
+    ~AptError(void);
+    void objectMemberLookup(AptValue* target, EAStringC* memberName) const;
+    void objectMemberSet(AptValue* target, EAStringC* memberName, AptValue* value);
+    void sMethod_toString(AptValue* self, int argc);
+    void CleanNativeFunctions(void);
+};
+
+class TreeTableQuickData {
+public:
+    TreeTableQuickData(void);
+    ~TreeTableQuickData(void);
+    void LoadFromDataID(ObjectDataID& id);
+    void Load(unsigned int nsId, short resId);
+    void GetNthEntry(int n) const;
+    void GetEntryByIndex(int index) const;
+    void GetEntryByTreeID(short id1, short id2) const;
+    void GetNthOrderedEntry(int n) const;
+    void QueryInterface(unsigned int iid, void** ppv);
+    void Release(void);
+};
+
+class cGZMusic {
+public:
+    cGZMusic(void);
+    ~cGZMusic(void);
+    void Release(void);
+    void Play(void);
+    void Stop(void);
+    void Pause(void);
+    void Unpause(void);
+    void setVolume(int vol);
+    void FadeVolume(int startVol, int endVol, unsigned int duration);
+    void SetPan(int pan);
+    void reset(void);
+    void getPanSetting(void);
+};
+
+class EPathUtil {
+public:
+    static void MakeLegalFilename(char* dst, char* src);
+    static void FixSlashesInPlace(char* path);
+    static void FixTrailingSlash(char* dst, char* src);
+    static void RemoveDriveLetter(char* dst, char* src);
+    static void RemoveTrailingSlash(char* dst, char* src);
+    static void ExtractFilename(char* dst, char* src);
+    static void ExtractRoot(char* dst, char* src);
+    static void ExtractDirectory(char* dst, char* src);
+    static void ExtractExtension(char* dst, char* src);
+    static void RemoveRelationalDirectories(char* dst, char* src);
+};
+
+class EParticleEffect {
+public:
+    EParticleEffect(AttachmentNode& node, EMat4& mat);
+    ~EParticleEffect(void);
+    void UpdateParticleEffectLoad(void);
+    void SetPos(EMat4& mat, EVec3* offset);
+    void SetAlphaFade(float alpha);
+};
+
+class TheSimsMainMenuState {
+public:
+    TheSimsMainMenuState(void);
+    ~TheSimsMainMenuState(void);
+    void Startup(void);
+    void Shutdown(void);
+    void Reset(void);
+    void Update(float dt);
+    void LeavingMainMenuCleanup(void);
+};
+
+class ERAnim {
+public:
+    ERAnim(void);
+    ~ERAnim(void);
+    void Load(EFile* file);
+    void OldLoad(EFile* file);
+    void RegisterType(unsigned short typeId);
+};
+
+class Emitter {
+public:
+    Emitter(void);
+    ~Emitter(void);
+    void Create(char* name, float* matrix, pemitterinfo* info,
+        void (*updateCB)(particle*, PVector4*, float, float, PVector4*, void*),
+        void (*destroyCB)(void*),
+        void (*orientCB)(pemitter*, PVector4*, PVector4*),
+        void* userData);
+    void Reg(psystem* sys, bool addToLevel);
+    void UnReg(psystem* sys, bool removeFromLevel);
+    void SetMatrix(float* matrix);
+    void SetState(int state, int param);
+    void SetCallbacks(
+        void (*updateCB)(particle*, PVector4*, float, float, PVector4*, void*),
+        void (*destroyCB)(void*), void (*destroyCB2)(void*),
+        void (*orientCB)(pemitter*, PVector4*, PVector4*), void* userData,
+        void (*postDestCB)(void*), void* postDestData,
+        void (*intervalCB)(void*), void* intervalData);
+    void EmitterSetPostDestroyCallback(void (*cb)(void*), void* data);
+    void EmitterSetIntervalCallback(void (*cb)(void*), void* data);
+    void PEmitterSubmitParticlesCB(void* levelData, void* orderData);
+    void Draw(void* levelData);
+};
+
+class EDebugMenu {
+public:
+    void Add(EDebugMenuItem& item);
+    void Remove(EDebugMenuItem& item);
+    void ComputeMaxWidth(ERFont* font);
+    void Draw(void);
+    void Update(void);
+};
+
+class AptActionQueueC {
+public:
+    void ClearActions(void);
+    void AddActionBack(AptActionBlock* block, AptCIH* cih, unsigned int flags);
+    void AddActionFront(AptActionBlock* block, AptCIH* cih, unsigned int flags);
+    void AddFunctionBack(AptCIH* cih, AptValue* func, int argc, unsigned int flags);
+    void AddFunctionFront(AptCIH* cih, AptValue* func, int argc, unsigned int flags);
+    void RemoveActionFor(AptCIH* cih);
+    void GetDequeLocation(int index) const;
+    void RegisterReferences(void);
+};
 
 // Globals accessed via r13
 extern void* g_pTextureManager;     // r13-26392
@@ -606,10 +920,10 @@ ResourceBehaviorTree::~ResourceBehaviorTree(void) {
 }
 
 // 0x8015B0F8
-void* ResourceBehaviorTree::operator new(unsigned int size) {
+void* ResourceBehaviorTree::operator new(std::size_t size) {
     // NOTE: asm-derived - pool allocator with 104-byte block size
     // Falls back to MainHeap if pool empty
-    return MainHeap()->Malloc(size, 0);
+    return MainHeap()->Malloc((unsigned int)size, 0);
 }
 
 // 0x8015B164
@@ -687,7 +1001,7 @@ void EApp::SetArgs(int argc, char** argv) {
     *(char*)(self + 848) = 0;
     if ((unsigned int)argc > 100) argc = 0;
     // Process args...
-    *(char**)(self + 844) = argv;
+    *(char***)(self + 844) = argv;
     *(int*)(self + 840) = argc;
 }
 
@@ -885,12 +1199,11 @@ void StringBuffer::assignDebug(unsigned short* wstr) {
 // vector<XRoute, allocator<XRoute>> - XRoute is 164 bytes
 // ============================================================================
 
-// 0x803A9DA8
-void vector<XRoute, allocator<XRoute> >::_M_fill_insert(XRoute* pos, unsigned int n, XRoute& val) {
+// 0x803A9DA8 - vector<XRoute>::_M_fill_insert stub
+// NON_MATCHING: Template method defined inline in STL; stub here for linking
+static void vector_XRoute_fill_insert(XRoute* pos, unsigned int n, XRoute& val) {
     // NOTE: asm-derived - STL vector fill insert implementation for 164-byte elements
-    // Handles both in-place insertion (when capacity sufficient) and reallocation
-    // Each XRoute contains a sub-vector<RouteGoal> at offset 0 plus 148 bytes of flat data
-    // Uses copy construction, operator=, and memory management via __node_alloc
+    (void)pos; (void)n; (void)val;
 }
 
 // ============================================================================
@@ -1134,13 +1447,11 @@ void EIObjTileBoundRect::MirrorYX(void) {
 // vector<AttachmentNodeV1> - AttachmentNodeV1 is 32 bytes
 // ============================================================================
 
-// 0x803C5798
-void vector<AttachmentNodeV1, allocator<AttachmentNodeV1> >::_M_fill_insert(AttachmentNodeV1* pos, unsigned int n, AttachmentNodeV1& val) {
+// 0x803C5798 - vector<AttachmentNodeV1>::_M_fill_insert stub
+// NON_MATCHING: Template method; stub here for linking
+static void vector_AttachmentNodeV1_fill_insert(AttachmentNodeV1* pos, unsigned int n, AttachmentNodeV1& val) {
     // NOTE: asm-derived - STL vector fill insert for 32-byte elements
-    // Similar pattern to vector<XRoute> but with 32-byte element size
-    // Each element has: [0-7] 3 floats, [12-13] 2 bytes, [14] 1 byte copy,
-    // [16] float, [20-27] 3 more floats, [28] int
-    // Uses __node_alloc for small allocations
+    (void)pos; (void)n; (void)val;
 }
 
 // ============================================================================
@@ -1185,7 +1496,7 @@ AptError::AptError(void) {
 }
 
 // 0x802A8988
-AptError::AptError(EAStringC msg) {
+AptError::AptError(EAStringC& msg) {
     // NOTE: asm-derived - constructs with message string
     // Same as default ctor but copies msg to message member
 }
@@ -1712,19 +2023,18 @@ void EDebugMenu::Update(void) {
 // _Rb_tree<int, pair<int,int>, ...> - Red-black tree for int->int map
 // ============================================================================
 
-// 0x803A29F0
-void _Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > >::_M_erase(void* node) {
-    // Recursive tree node deletion
+// 0x803A29F0 - _Rb_tree<int,pair<int,int>>::_M_erase stub
+// NON_MATCHING: Template method; stub here for linking
+static void Rb_tree_int_int_erase(void* node) {
     // NOTE: asm-derived - post-order traversal delete
-    // For each node: erase right subtree, save left, deallocate node via __node_alloc (24 bytes)
-    // Then iterate to left child
+    (void)node;
 }
 
-// 0x803A4C0C
-void _Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > >::_M_insert(void* x, void* y, void* v, void* header) {
-    // NOTE: asm-derived - inserts new node, allocates 24 bytes via __node_alloc
-    // Copies key-value pair (8 bytes) into node at offset 16
-    // Calls _Rb_tree_rebalance for red-black fixup
+// 0x803A4C0C - _Rb_tree<int,pair<int,int>>::_M_insert stub
+// NON_MATCHING: Template method; stub here for linking
+static void Rb_tree_int_int_insert(void* x, void* y, void* v, void* header) {
+    // NOTE: asm-derived - inserts new node
+    (void)x; (void)y; (void)v; (void)header;
 }
 
 // (insert_unique, insert_unique with hint, _M_copy, operator= follow standard STL patterns)

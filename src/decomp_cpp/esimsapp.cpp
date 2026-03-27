@@ -28,7 +28,7 @@ extern "C" {
     int    strlen(const char*);
     char*  strchr(const char*, int);
     int    AtoI(const char*);
-    void   Sprintf(char*, const char*, ...);
+    int Sprintf(char*, const char*, ...);
 }
 
 // Debug output

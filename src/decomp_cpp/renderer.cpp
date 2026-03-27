@@ -649,7 +649,7 @@ void EShader_SetTexture(void* self, void* tex, int slot) {
 // Address: 0x802FAB28, Size: 16 bytes
 void EShader_SetMultiTexture(void* self, void* tex, int slot) {
     u32* texArray = *(u32**)((u8*)self + 0x68);
-    texArray[slot] = (u32)tex;
+    texArray[slot] = (u32)(uintptr_t)tex;
 }
 
 // ---------- EShader::Select (base) ----------
@@ -697,7 +697,7 @@ static void ERTexture_Deallocate(void* self);
 void ERTexture_Attach(void* self, void* tex) {
     // Deallocate old texture first
     ERTexture_Deallocate(self);
-    *(u32*)((u8*)self + 0x14) = (u32)tex;
+    *(u32*)((u8*)self + 0x14) = (u32)(uintptr_t)tex;
 }
 
 // ---------- ERTexture::Deallocate ----------
@@ -1003,7 +1003,7 @@ void ENgcRenderer_Ctor(void* self) {
     // ... base init ...
 
     // Set vtable
-    Rend_u32(self, 0x0338) = (u32)&ENgcRenderer_vtable;
+    Rend_u32(self, 0x0338) = (u32)(uintptr_t)&ENgcRenderer_vtable;
 
     // Initialize render state entries (2 entries, 64 bytes each at 0x0548)
     for (int i = 0; i < 2; i++) {
@@ -1048,7 +1048,7 @@ void ENgcRenderer_Ctor(void* self) {
 // ---------- ENgcRenderer::~ENgcRenderer ----------
 // Address: 0x8033B6EC, Size: 52 bytes
 void ENgcRenderer_Dtor(void* self) {
-    Rend_u32(self, 0x0338) = (u32)&ENgcRenderer_vtable;
+    Rend_u32(self, 0x0338) = (u32)(uintptr_t)&ENgcRenderer_vtable;
     _pRend = nullptr;
     // ERenderer::~ERenderer()
 }
@@ -1086,7 +1086,7 @@ static void ENgcRenderer_InitVideo(void* self, int& outWidth, int& outHeight) {
     void* heap = EAHeap_GetCurrentHeap();
     for (int i = 0; i < 2; i++) {
         void* fb = EAHeap_AllocAlign(heap, fbSize, 32, 0, 0);
-        Rend_u32(self, 0x0344 + i * 4) = (u32)fb;
+        Rend_u32(self, 0x0344 + i * 4) = (u32)(uintptr_t)fb;
         memset(fb, 0, fbSize);
     }
 
@@ -1162,7 +1162,7 @@ static void ENgcRenderer_FlushCmd(void* /*self*/, ENgcRendCommand* /*cmd*/) {
 // ---------- ENgcRenderer::Execute ----------
 // Address: 0x80341E28, Size: 192 bytes
 void ENgcRenderer_Execute(void* self, EDLEntry* dlStart) {
-    Rend_u32(self, 0x04DC) = (u32)dlStart;  // current DL pointer
+    Rend_u32(self, 0x04DC) = (u32)(uintptr_t)dlStart;  // current DL pointer
     Rend_u32(self, 0x04E0) = 0;             // overflow flag
 
     while (true) {
@@ -1170,7 +1170,7 @@ void ENgcRenderer_Execute(void* self, EDLEntry* dlStart) {
         u8 opcode = current[0];
 
         // Advance DL pointer past this 8-byte entry
-        Rend_u32(self, 0x04DC) = (u32)(current + 8);
+        Rend_u32(self, 0x04DC) = (u32)(uintptr_t)(current + 8);
 
         // Look up handler in jump table (75 entries, 8 bytes each)
         // JumpTableEntry* jte = &m_jumpTable[opcode];
@@ -1493,7 +1493,7 @@ void ENgcRenderer_SetTexture(void* self, void* tex, int slot) {
     }
 
     // Store new texture
-    Rend_u32(self, 0x4638 + slot * 4) = (u32)tex;
+    Rend_u32(self, 0x4638 + slot * 4) = (u32)(uintptr_t)tex;
 
     // PC PORT: glActiveTexture(GL_TEXTURE0 + slot)
     //          glBindTexture(GL_TEXTURE_2D, texId)
@@ -1535,7 +1535,7 @@ void ENgcRenderer_DisplayListCmd(void* self, EDLEntry* entry) {
     Rend_u32(self, 0x050C) = stackPtr + 1;
 
     void* dl = *(void**)((u8*)entry + 4);
-    Rend_u32(self, 0x4640) = (u32)dl;                         // m_currentDL
+    Rend_u32(self, 0x4640) = (u32)(uintptr_t)dl;                         // m_currentDL
     Rend_u32(self, 0x04DC) = *(u32*)((u8*)dl + 0x48);        // DL command start
 }
 

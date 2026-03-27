@@ -125,12 +125,14 @@ u32 GXGetFifoSize(GXFifoObj* fifo) {
 // GXInvalidateVtxCache - writes to GX FIFO (write-gather pipe)
 __attribute__((noreturn))
 void GXInvalidateVtxCache_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "li      0, 0x48\n"
         "lis     3, 0xCC01\n"
         "stb     0, -32768(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -141,6 +143,7 @@ void GXInvalidateVtxCache_decomp(void) {
 // Complex: modifies GX internal state struct
 __attribute__((noreturn))
 void GXClearVtxDesc_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -17720(13)\n"
         "li      0, 0\n"
@@ -155,6 +158,7 @@ void GXClearVtxDesc_decomp(void) {
         "stb     0, 1166(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -164,6 +168,7 @@ void GXClearVtxDesc_decomp(void) {
 // GXSetLineWidth - writes to GX state and FIFO
 __attribute__((noreturn))
 void GXSetLineWidth_decomp(u8 width, u32 texOffsets) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     5, -17720(13)\n"
         "clrlwi  0, 3, 24\n"
@@ -177,6 +182,7 @@ void GXSetLineWidth_decomp(u8 width, u32 texOffsets) {
         "sth     0, 2(5)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -184,6 +190,7 @@ void GXSetLineWidth_decomp(u8 width, u32 texOffsets) {
 // GXGetLineWidth
 __attribute__((noreturn))
 void GXGetLineWidth_decomp(u8* width, u32* texOffsets) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     5, -17720(13)\n"
         "lwz     0, 444(5)\n"
@@ -193,6 +200,7 @@ void GXGetLineWidth_decomp(u8* width, u32* texOffsets) {
         "stw     0, 0(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -200,6 +208,7 @@ void GXGetLineWidth_decomp(u8* width, u32* texOffsets) {
 // GXSetPointSize
 __attribute__((noreturn))
 void GXSetPointSize_decomp(u8 size, u32 texOffsets) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     5, -17720(13)\n"
         "clrlwi  0, 3, 24\n"
@@ -213,6 +222,7 @@ void GXSetPointSize_decomp(u8 size, u32 texOffsets) {
         "sth     0, 2(5)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -220,6 +230,7 @@ void GXSetPointSize_decomp(u8 size, u32 texOffsets) {
 // GXGetPointSize
 __attribute__((noreturn))
 void GXGetPointSize_decomp(u8* size, u32* texOffsets) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     5, -17720(13)\n"
         "lwz     0, 448(5)\n"
@@ -229,6 +240,7 @@ void GXGetPointSize_decomp(u8* size, u32* texOffsets) {
         "stw     0, 0(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -238,6 +250,7 @@ void GXGetPointSize_decomp(u8* size, u32* texOffsets) {
 // GXSetCullMode
 __attribute__((noreturn))
 void GXSetCullMode_decomp(u32 mode) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     4, -17720(13)\n"
         "rlwinm  0, 3, 0, 30, 31\n"
@@ -250,6 +263,7 @@ void GXSetCullMode_decomp(u32 mode) {
         "stw     0, -32768(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -257,6 +271,7 @@ void GXSetCullMode_decomp(u32 mode) {
 // GXGetCullMode
 __attribute__((noreturn))
 void GXGetCullMode_decomp(u32* mode) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     4, -17720(13)\n"
         "lwz     0, 452(4)\n"
@@ -266,6 +281,7 @@ void GXGetCullMode_decomp(u32* mode) {
         "stw     4, 0(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -275,6 +291,7 @@ void GXGetCullMode_decomp(u32* mode) {
 // GXSetDispCopyGamma
 __attribute__((noreturn))
 void GXSetDispCopyGamma_decomp(u32 gamma) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     4, -17720(13)\n"
         "li      0, 0\n"
@@ -282,6 +299,7 @@ void GXSetDispCopyGamma_decomp(u32 gamma) {
         "stw     0, 364(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -291,6 +309,7 @@ void GXSetDispCopyGamma_decomp(u32 gamma) {
 // GXClearBoundingBox
 __attribute__((noreturn))
 void GXClearBoundingBox_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     4, 0xCC01\n"
         "li      3, 0x61\n"
@@ -305,6 +324,7 @@ void GXClearBoundingBox_decomp(void) {
         "stw     3, -32768(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -312,6 +332,7 @@ void GXClearBoundingBox_decomp(void) {
 // GXReadBoundingBox
 __attribute__((noreturn))
 void GXReadBoundingBox_decomp(u16* top, u16* bottom, u16* left, u16* right) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     7, 0xCC01\n"
         "lhz     0, -28670(7)\n"
@@ -324,6 +345,7 @@ void GXReadBoundingBox_decomp(u16* top, u16* bottom, u16* left, u16* right) {
         "sth     0, 0(6)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -460,6 +482,7 @@ u32 GXGetTexObjMipMap(const GXTexObj* tex_obj) {
 // GXSetNumChans
 __attribute__((noreturn))
 void GXSetNumChans_decomp(u32 nChans) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     4, -17720(13)\n"
         "stw     3, 472(4)\n"
@@ -468,6 +491,7 @@ void GXSetNumChans_decomp(u32 nChans) {
         "stb     0, 1167(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -475,6 +499,7 @@ void GXSetNumChans_decomp(u32 nChans) {
 // GXSetNumTevStages
 __attribute__((noreturn))
 void GXSetNumTevStages_decomp(u8 nStages) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     4, -17720(13)\n"
         "addi    0, 3, -1\n"
@@ -485,6 +510,7 @@ void GXSetNumTevStages_decomp(u8 nStages) {
         "stb     0, 1177(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -492,6 +518,7 @@ void GXSetNumTevStages_decomp(u8 nStages) {
 // GXSetNumTexGens
 __attribute__((noreturn))
 void GXSetNumTexGens_decomp(u32 nTexGens) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     4, -17720(13)\n"
         "stw     3, 476(4)\n"
@@ -502,6 +529,7 @@ void GXSetNumTexGens_decomp(u32 nTexGens) {
         "stw     0, 480(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -511,6 +539,7 @@ void GXSetNumTexGens_decomp(u32 nTexGens) {
 // GXSetZMode
 __attribute__((noreturn))
 void GXSetZMode_decomp(BOOL compare_enable, u32 func, BOOL update_enable) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     6, -17720(13)\n"
         "clrlwi  0, 3, 24\n"
@@ -529,6 +558,7 @@ void GXSetZMode_decomp(BOOL compare_enable, u32 func, BOOL update_enable) {
         "sth     0, 2(6)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -536,6 +566,7 @@ void GXSetZMode_decomp(BOOL compare_enable, u32 func, BOOL update_enable) {
 // GXSetZCompLoc
 __attribute__((noreturn))
 void GXSetZCompLoc_decomp(BOOL before_tex) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     4, -17720(13)\n"
         "rlwimi  3, 3, 0, 0, 25\n"
@@ -545,6 +576,7 @@ void GXSetZCompLoc_decomp(BOOL before_tex) {
         "stb     0, 1177(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -554,6 +586,7 @@ void GXSetZCompLoc_decomp(BOOL before_tex) {
 // GXSetCurrentMtx
 __attribute__((noreturn))
 void GXSetCurrentMtx_decomp(u32 id) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     4, -17720(13)\n"
         "rlwinm  0, 3, 0, 26, 31\n"
@@ -565,6 +598,7 @@ void GXSetCurrentMtx_decomp(u32 id) {
         "stw     0, -32768(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -574,6 +608,7 @@ void GXSetCurrentMtx_decomp(u32 id) {
 // GXBeginDisplayList
 __attribute__((noreturn))
 void GXBeginDisplayList_decomp(void* list, u32 size) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -592,6 +627,7 @@ void GXBeginDisplayList_decomp(void* list, u32 size) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -601,6 +637,7 @@ void GXBeginDisplayList_decomp(void* list, u32 size) {
 // GXSetFogColor
 __attribute__((noreturn))
 void GXSetFogColor_decomp(GXColor color) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     0, -17720(13)\n"
         "rlwinm  4, 3, 0, 8, 31\n"
@@ -613,6 +650,7 @@ void GXSetFogColor_decomp(GXColor color) {
         "stw     4, -32768(0)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -796,10 +834,12 @@ void C_MTX44Transpose(const Mtx44 src, Mtx44 xPose) {
 // OSGetTick - reads TBL register
 __attribute__((noreturn))
 void OSGetTick_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mftb    3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -807,10 +847,12 @@ void OSGetTick_decomp(void) {
 // OSGetStackPointer - reads r1
 __attribute__((noreturn))
 void OSGetStackPointer_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mr      3, 1\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -818,12 +860,14 @@ void OSGetStackPointer_decomp(void) {
 // OSSwitchStack - swaps r1 with provided stack
 __attribute__((noreturn))
 void OSSwitchStack_decomp(void* newStack) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mr      5, 1\n"
         "mr      1, 3\n"
         "mr      3, 5\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -831,11 +875,13 @@ void OSSwitchStack_decomp(void* newStack) {
 // OSGetCurrentContext - reads from fixed memory
 __attribute__((noreturn))
 void OSGetCurrentContext_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0x8000\n"
         "lwz     3, 0xD4(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -843,11 +889,13 @@ void OSGetCurrentContext_decomp(void) {
 // OSGetCurrentThread - reads from fixed memory
 __attribute__((noreturn))
 void OSGetCurrentThread_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0x8000\n"
         "lwz     3, 0xE4(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -855,10 +903,12 @@ void OSGetCurrentThread_decomp(void) {
 // OSGetThreadPriority
 __attribute__((noreturn))
 void OSGetThreadPriority_decomp(OSThread* thread) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, 724(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -866,6 +916,7 @@ void OSGetThreadPriority_decomp(OSThread* thread) {
 // OSGetIdleFunction
 __attribute__((noreturn))
 void OSGetIdleFunction_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0x8000\n"
         "lwz     3, 0xE4(3)\n"
@@ -874,6 +925,7 @@ void OSGetIdleFunction_decomp(void) {
         "lwz     3, 728(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -881,10 +933,12 @@ void OSGetIdleFunction_decomp(void) {
 // OSSetAlarmTag
 __attribute__((noreturn))
 void OSSetAlarmTag_decomp(OSAlarm* alarm, u32 tag) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stw     4, 4(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -901,6 +955,7 @@ void OSCreateAlarm(OSAlarm* alarm) {
 // OSRegisterVersion
 __attribute__((noreturn))
 void OSRegisterVersion_decomp(const char* version) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     4, 0x8000\n"
         "lwz     0, 0x3110(4)\n"
@@ -912,6 +967,7 @@ void OSRegisterVersion_decomp(const char* version) {
         "stw     0, 0x3110(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -921,6 +977,7 @@ void OSRegisterVersion_decomp(const char* version) {
 // OSDisableInterrupts - manipulates MSR
 __attribute__((noreturn))
 void OSDisableInterrupts_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfmsr   3\n"
         "rlwinm  4, 3, 0, 17, 15\n"
@@ -928,6 +985,7 @@ void OSDisableInterrupts_decomp(void) {
         "rlwinm  3, 3, 17, 31, 31\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -935,6 +993,7 @@ void OSDisableInterrupts_decomp(void) {
 // OSEnableInterrupts - manipulates MSR
 __attribute__((noreturn))
 void OSEnableInterrupts_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfmsr   3\n"
         "ori     4, 3, 0x8000\n"
@@ -942,6 +1001,7 @@ void OSEnableInterrupts_decomp(void) {
         "rlwinm  3, 3, 17, 31, 31\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -949,6 +1009,7 @@ void OSEnableInterrupts_decomp(void) {
 // OSRestoreInterrupts
 __attribute__((noreturn))
 void OSRestoreInterrupts_decomp(BOOL enable) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "cmpwi   3, 0\n"
         "mfmsr   4\n"
@@ -963,6 +1024,7 @@ void OSRestoreInterrupts_decomp(BOOL enable) {
         "rlwinm  3, 4, 17, 31, 31\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -970,11 +1032,13 @@ void OSRestoreInterrupts_decomp(BOOL enable) {
 // OSGetInterruptMask
 __attribute__((noreturn))
 void OSGetInterruptMask_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0x8000\n"
         "lwz     3, 0xF0(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -996,11 +1060,13 @@ void OSNotifyUnlink(void) {
 // OSSetStringTable
 __attribute__((noreturn))
 void OSSetStringTable_decomp(void* table) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     4, 0x8000\n"
         "stw     3, 0x30D4(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1010,11 +1076,13 @@ void OSSetStringTable_decomp(void* table) {
 // OSGetPhysicalMemSize
 __attribute__((noreturn))
 void OSGetPhysicalMemSize_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0x8000\n"
         "lwz     3, 0x28(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1022,11 +1090,13 @@ void OSGetPhysicalMemSize_decomp(void) {
 // OSGetConsoleSimulatedMemSize
 __attribute__((noreturn))
 void OSGetConsoleSimulatedMemSize_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0x8000\n"
         "lwz     3, 0xF0(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1068,6 +1138,7 @@ void OSInitCond(OSCond* cond) {
 // OSSignalCond
 __attribute__((noreturn))
 void OSSignalCond_decomp(OSCond* cond) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1078,6 +1149,7 @@ void OSSignalCond_decomp(OSCond* cond) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1101,6 +1173,7 @@ s32 OSGetSemaphoreCount(OSSemaphore* sem) {
 // OSSetThreadSpecific
 __attribute__((noreturn))
 void OSSetThreadSpecific_decomp(u32 id, void* value) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     5, 0x8000\n"
         "lwz     5, 0xE4(5)\n"
@@ -1111,6 +1184,7 @@ void OSSetThreadSpecific_decomp(u32 id, void* value) {
         "stw     4, 736(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1118,6 +1192,7 @@ void OSSetThreadSpecific_decomp(u32 id, void* value) {
 // OSGetThreadSpecific
 __attribute__((noreturn))
 void OSGetThreadSpecific_decomp(u32 id) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     4, 0x8000\n"
         "lwz     4, 0xE4(4)\n"
@@ -1131,6 +1206,7 @@ void OSGetThreadSpecific_decomp(u32 id) {
         "lwz     3, 736(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1140,6 +1216,7 @@ void OSGetThreadSpecific_decomp(u32 id) {
 // OSGetResetCode
 __attribute__((noreturn))
 void OSGetResetCode_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lwz     0, 0x3024(3)\n"
@@ -1154,6 +1231,7 @@ void OSGetResetCode_decomp(void) {
         "2:\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1161,6 +1239,7 @@ void OSGetResetCode_decomp(void) {
 // OSSetBootDol
 __attribute__((noreturn))
 void OSSetBootDol_decomp(void* dol) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     4, 0x8000\n"
         "stw     3, 0x30E0(4)\n"
@@ -1168,6 +1247,7 @@ void OSSetBootDol_decomp(void* dol) {
         "stw     0, 0x30E4(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1177,6 +1257,7 @@ void OSSetBootDol_decomp(void* dol) {
 // OSGetResetSwitchState
 __attribute__((noreturn))
 void OSGetResetSwitchState_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lwz     3, 0x3000(3)\n"
@@ -1184,6 +1265,7 @@ void OSGetResetSwitchState_decomp(void) {
         "xori    3, 3, 1\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1193,9 +1275,11 @@ void OSGetResetSwitchState_decomp(void) {
 // OSLoadFPUContext - jumps to asm handler
 __attribute__((noreturn))
 void OSLoadFPUContext_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         ".long 0x48000671  /* b __OSLoadFPUContext */\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1203,9 +1287,11 @@ void OSLoadFPUContext_decomp(void) {
 // OSSaveFPUContext - jumps to asm handler
 __attribute__((noreturn))
 void OSSaveFPUContext_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         ".long 0x48000661  /* b __OSSaveFPUContext */\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1249,11 +1335,13 @@ void DVDRewindDir(DVDDir* dir) {
 // DVDGetCurrentDiskID
 __attribute__((noreturn))
 void DVDGetCurrentDiskID_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0x8000\n"
         "lwz     3, 0(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1267,6 +1355,7 @@ void DVDGetCurrentDiskID_decomp(void) {
 // DVDReset
 __attribute__((noreturn))
 void DVDReset_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1282,6 +1371,7 @@ void DVDReset_decomp(void) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1289,10 +1379,12 @@ void DVDReset_decomp(void) {
 // DVDGetFileInfoStatus
 __attribute__((noreturn))
 void DVDGetFileInfoStatus_decomp(DVDFileInfo* fileInfo) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "addi    3, 3, 0x24\n"
         ".long 0x4bfb3829  /* b DVDGetCommandBlockStatus */\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1300,6 +1392,7 @@ void DVDGetFileInfoStatus_decomp(DVDFileInfo* fileInfo) {
 // DVDPause
 __attribute__((noreturn))
 void DVDPause_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1318,6 +1411,7 @@ void DVDPause_decomp(void) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1332,6 +1426,7 @@ void DVDPause_decomp(void) {
 // PADSetSamplingRate
 __attribute__((noreturn))
 void PADSetSamplingRate_decomp(u32 msec) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1342,6 +1437,7 @@ void PADSetSamplingRate_decomp(u32 msec) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1352,6 +1448,7 @@ void PADSetSamplingRate_decomp(u32 msec) {
 // PADIsBarrel
 __attribute__((noreturn))
 void PADIsBarrel_decomp(u32 chan) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1373,6 +1470,7 @@ void PADIsBarrel_decomp(u32 chan) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1386,10 +1484,12 @@ void PADIsBarrel_decomp(u32 chan) {
 // VIGetNextFrameBuffer
 __attribute__((noreturn))
 void VIGetNextFrameBuffer_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -92(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1397,10 +1497,12 @@ void VIGetNextFrameBuffer_decomp(void) {
 // VIGetCurrentFrameBuffer
 __attribute__((noreturn))
 void VIGetCurrentFrameBuffer_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -100(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1408,10 +1510,12 @@ void VIGetCurrentFrameBuffer_decomp(void) {
 // VIGetRetraceCount
 __attribute__((noreturn))
 void VIGetRetraceCount_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -108(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1419,6 +1523,7 @@ void VIGetRetraceCount_decomp(void) {
 // VIGetDTVStatus
 __attribute__((noreturn))
 void VIGetDTVStatus_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1434,6 +1539,7 @@ void VIGetDTVStatus_decomp(void) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1447,6 +1553,7 @@ void VIGetDTVStatus_decomp(void) {
 // SIBusy
 __attribute__((noreturn))
 void SIBusy_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     0, -216(13)\n"
         "cmpwi   0, 0\n"
@@ -1457,6 +1564,7 @@ void SIBusy_decomp(void) {
         "li      3, 1\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1464,6 +1572,7 @@ void SIBusy_decomp(void) {
 // SIIsChanBusy
 __attribute__((noreturn))
 void SIIsChanBusy_decomp(s32 chan) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mulli   0, 3, 60\n"
         "lis     3, 0x804C\n"
@@ -1478,6 +1587,7 @@ void SIIsChanBusy_decomp(s32 chan) {
         "li      3, 0\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1485,6 +1595,7 @@ void SIIsChanBusy_decomp(s32 chan) {
 // SIClearTCInterrupt
 __attribute__((noreturn))
 void SIClearTCInterrupt_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lwz     0, 0x6438(3)\n"
@@ -1493,6 +1604,7 @@ void SIClearTCInterrupt_decomp(void) {
         "stw     0, 0x6438(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1500,6 +1612,7 @@ void SIClearTCInterrupt_decomp(void) {
 // SITransferCommands
 __attribute__((noreturn))
 void SITransferCommands_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lwz     0, 0x6438(3)\n"
@@ -1507,6 +1620,7 @@ void SITransferCommands_decomp(void) {
         "stw     0, 0x6438(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1514,6 +1628,7 @@ void SITransferCommands_decomp(void) {
 // SISetCommand
 __attribute__((noreturn))
 void SISetCommand_decomp(s32 chan, u32 command) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "slwi    0, 3, 2\n"
         "lis     3, 0xCC00\n"
@@ -1522,6 +1637,7 @@ void SISetCommand_decomp(s32 chan, u32 command) {
         "stw     4, 0x6400(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1529,6 +1645,7 @@ void SISetCommand_decomp(s32 chan, u32 command) {
 // SIGetCommand
 __attribute__((noreturn))
 void SIGetCommand_decomp(s32 chan) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "slwi    0, 3, 2\n"
         "lis     3, 0xCC00\n"
@@ -1537,6 +1654,7 @@ void SIGetCommand_decomp(s32 chan) {
         "lwz     3, 0x6400(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1544,9 +1662,11 @@ void SIGetCommand_decomp(s32 chan) {
 // SIProbe
 __attribute__((noreturn))
 void SIProbe_decomp(s32 chan) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         ".long 0x4bfffb95  /* b SIGetType */\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1554,6 +1674,7 @@ void SIProbe_decomp(s32 chan) {
 // SIRefreshSamplingRate
 __attribute__((noreturn))
 void SIRefreshSamplingRate_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1565,6 +1686,7 @@ void SIRefreshSamplingRate_decomp(void) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1613,10 +1735,12 @@ void EXI2_Unreserve(void) {
 // ARCheckInit
 __attribute__((noreturn))
 void ARCheckInit_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22624(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1636,10 +1760,12 @@ void ARSetSize(void) {
 // ARGetBaseAddress
 __attribute__((noreturn))
 void ARGetBaseAddress_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22620(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1647,10 +1773,12 @@ void ARGetBaseAddress_decomp(void) {
 // ARGetSize
 __attribute__((noreturn))
 void ARGetSize_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22616(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1658,10 +1786,12 @@ void ARGetSize_decomp(void) {
 // ARGetInternalSize
 __attribute__((noreturn))
 void ARGetInternalSize_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22612(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1669,6 +1799,7 @@ void ARGetInternalSize_decomp(void) {
 // ARQFlushQueue
 __attribute__((noreturn))
 void ARQFlushQueue_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1684,6 +1815,7 @@ void ARQFlushQueue_decomp(void) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1691,6 +1823,7 @@ void ARQFlushQueue_decomp(void) {
 // ARQSetChunkSize
 __attribute__((noreturn))
 void ARQSetChunkSize_decomp(u32 size) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1703,6 +1836,7 @@ void ARQSetChunkSize_decomp(u32 size) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1710,10 +1844,12 @@ void ARQSetChunkSize_decomp(u32 size) {
 // ARQGetChunkSize
 __attribute__((noreturn))
 void ARQGetChunkSize_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22500(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1721,10 +1857,12 @@ void ARQGetChunkSize_decomp(void) {
 // ARQCheckInit
 __attribute__((noreturn))
 void ARQCheckInit_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22516(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1732,6 +1870,7 @@ void ARQCheckInit_decomp(void) {
 // ARGetDMAStatus
 __attribute__((noreturn))
 void ARGetDMAStatus_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1747,6 +1886,7 @@ void ARGetDMAStatus_decomp(void) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1760,12 +1900,14 @@ void ARGetDMAStatus_decomp(void) {
 // DSPCheckMailToDSP
 __attribute__((noreturn))
 void DSPCheckMailToDSP_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lwz     3, 0x5000(3)\n"
         "rlwinm  3, 3, 17, 31, 31\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1773,12 +1915,14 @@ void DSPCheckMailToDSP_decomp(void) {
 // DSPCheckMailFromDSP
 __attribute__((noreturn))
 void DSPCheckMailFromDSP_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lwz     3, 0x5004(3)\n"
         "rlwinm  3, 3, 1, 31, 31\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1786,12 +1930,14 @@ void DSPCheckMailFromDSP_decomp(void) {
 // DSPReadCPUToDSPMbox
 __attribute__((noreturn))
 void DSPReadCPUToDSPMbox_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lwz     3, 0x5000(3)\n"
         "rlwinm  3, 3, 0, 1, 31\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1799,6 +1945,7 @@ void DSPReadCPUToDSPMbox_decomp(void) {
 // DSPReadMailFromDSP
 __attribute__((noreturn))
 void DSPReadMailFromDSP_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lhz     4, 0x5004(3)\n"
@@ -1806,6 +1953,7 @@ void DSPReadMailFromDSP_decomp(void) {
         "rlwimi  3, 4, 16, 0, 15\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1813,6 +1961,7 @@ void DSPReadMailFromDSP_decomp(void) {
 // DSPSendMailToDSP
 __attribute__((noreturn))
 void DSPSendMailToDSP_decomp(u32 mail) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     4, 0xCC00\n"
         "rlwinm  0, 3, 16, 16, 31\n"
@@ -1820,6 +1969,7 @@ void DSPSendMailToDSP_decomp(u32 mail) {
         "sth     3, 0x5002(4)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1827,10 +1977,12 @@ void DSPSendMailToDSP_decomp(u32 mail) {
 // DSPCheckInit
 __attribute__((noreturn))
 void DSPCheckInit_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22640(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1838,12 +1990,14 @@ void DSPCheckInit_decomp(void) {
 // DSPGetDMAStatus
 __attribute__((noreturn))
 void DSPGetDMAStatus_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lis     3, 0xCC00\n"
         "lhz     3, 0x5004(3)\n"
         "rlwinm  3, 3, 21, 31, 31\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1857,6 +2011,7 @@ void DSPGetDMAStatus_decomp(void) {
 // CARDGetDiskID
 __attribute__((noreturn))
 void CARDGetDiskID_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22320(13)\n"
         "cmplwi  3, 0\n"
@@ -1864,6 +2019,7 @@ void CARDGetDiskID_decomp(void) {
         "lis     3, 0x8000\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1877,10 +2033,12 @@ void CARDSetVendorID(u16 vendorID) {
 // CARDGetVendorID
 __attribute__((noreturn))
 void CARDGetVendorID_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22316(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1888,6 +2046,7 @@ void CARDGetVendorID_decomp(void) {
 // CARDSetFastMode
 __attribute__((noreturn))
 void CARDSetFastMode_decomp(BOOL enable) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1902,6 +2061,7 @@ void CARDSetFastMode_decomp(BOOL enable) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1909,6 +2069,7 @@ void CARDSetFastMode_decomp(BOOL enable) {
 // CARDGetFastMode
 __attribute__((noreturn))
 void CARDGetFastMode_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     3, -22308(13)\n"
         "cmpwi   3, 0\n"
@@ -1919,6 +2080,7 @@ void CARDGetFastMode_decomp(void) {
         "li      3, 0\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1926,6 +2088,7 @@ void CARDGetFastMode_decomp(void) {
 // CARDProbe
 __attribute__((noreturn))
 void CARDProbe_decomp(s32 chan) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1945,6 +2108,7 @@ void CARDProbe_decomp(s32 chan) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1952,6 +2116,7 @@ void CARDProbe_decomp(s32 chan) {
 // CARDCheckAsync
 __attribute__((noreturn))
 void CARDCheckAsync_decomp(s32 chan, void* callback) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -1963,6 +2128,7 @@ void CARDCheckAsync_decomp(s32 chan, void* callback) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1970,6 +2136,7 @@ void CARDCheckAsync_decomp(s32 chan, void* callback) {
 // CARDRand
 __attribute__((noreturn))
 void CARDRand_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "lwz     0, -22296(13)\n"
         "lis     4, 0x41c6\n"
@@ -1980,6 +2147,7 @@ void CARDRand_decomp(void) {
         "rlwinm  3, 0, 16, 16, 30\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1987,10 +2155,12 @@ void CARDRand_decomp(void) {
 // CARDSrand
 __attribute__((noreturn))
 void CARDSrand_decomp(u32 seed) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stw     3, -22296(13)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -1998,6 +2168,7 @@ void CARDSrand_decomp(u32 seed) {
 // CARDGetXferredBytes
 __attribute__((noreturn))
 void CARDGetXferredBytes_decomp(s32 chan) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mulli   0, 3, 360\n"
         "lis     3, 0x8057\n"
@@ -2006,6 +2177,7 @@ void CARDGetXferredBytes_decomp(s32 chan) {
         "lwz     3, 12(3)\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2013,6 +2185,7 @@ void CARDGetXferredBytes_decomp(s32 chan) {
 // CARDGetAttributes
 __attribute__((noreturn))
 void CARDGetAttributes_decomp(s32 chan, s32 fileNo, u8* attr) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -2032,6 +2205,7 @@ void CARDGetAttributes_decomp(s32 chan, s32 fileNo, u8* attr) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2046,6 +2220,7 @@ void CARDGetAttributes_decomp(s32 chan, s32 fileNo, u8* attr) {
 // DCInvalidateRange
 __attribute__((noreturn))
 void DCInvalidateRange_decomp(void* addr, u32 nBytes) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "cmplwi  4, 0\n"
         "blelr\n"
@@ -2060,6 +2235,7 @@ void DCInvalidateRange_decomp(void* addr, u32 nBytes) {
         "bdnz    1b\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2067,6 +2243,7 @@ void DCInvalidateRange_decomp(void* addr, u32 nBytes) {
 // DCFlushRange
 __attribute__((noreturn))
 void DCFlushRange_decomp(void* addr, u32 nBytes) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "cmplwi  4, 0\n"
         "blelr\n"
@@ -2082,6 +2259,7 @@ void DCFlushRange_decomp(void* addr, u32 nBytes) {
         "sync\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2089,6 +2267,7 @@ void DCFlushRange_decomp(void* addr, u32 nBytes) {
 // DCStoreRange
 __attribute__((noreturn))
 void DCStoreRange_decomp(void* addr, u32 nBytes) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "cmplwi  4, 0\n"
         "blelr\n"
@@ -2104,6 +2283,7 @@ void DCStoreRange_decomp(void* addr, u32 nBytes) {
         "sync\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2111,6 +2291,7 @@ void DCStoreRange_decomp(void* addr, u32 nBytes) {
 // DCFlushRangeNoSync
 __attribute__((noreturn))
 void DCFlushRangeNoSync_decomp(void* addr, u32 nBytes) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "cmplwi  4, 0\n"
         "blelr\n"
@@ -2125,6 +2306,7 @@ void DCFlushRangeNoSync_decomp(void* addr, u32 nBytes) {
         "bdnz    1b\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2132,6 +2314,7 @@ void DCFlushRangeNoSync_decomp(void* addr, u32 nBytes) {
 // DCStoreRangeNoSync
 __attribute__((noreturn))
 void DCStoreRangeNoSync_decomp(void* addr, u32 nBytes) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "cmplwi  4, 0\n"
         "blelr\n"
@@ -2146,6 +2329,7 @@ void DCStoreRangeNoSync_decomp(void* addr, u32 nBytes) {
         "bdnz    1b\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2153,6 +2337,7 @@ void DCStoreRangeNoSync_decomp(void* addr, u32 nBytes) {
 // ICInvalidateRange
 __attribute__((noreturn))
 void ICInvalidateRange_decomp(void* addr, u32 nBytes) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "cmplwi  4, 0\n"
         "blelr\n"
@@ -2169,6 +2354,7 @@ void ICInvalidateRange_decomp(void* addr, u32 nBytes) {
         "isync\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2180,6 +2366,7 @@ void ICInvalidateRange_decomp(void* addr, u32 nBytes) {
 // LCEnable
 __attribute__((noreturn))
 void LCEnable_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu    1, -16(1)\n"
         "mflr    0\n"
@@ -2190,6 +2377,7 @@ void LCEnable_decomp(void) {
         "addi    1, 1, 16\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2197,6 +2385,7 @@ void LCEnable_decomp(void) {
 // LCDisable
 __attribute__((noreturn))
 void LCDisable_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 920\n"
         "rlwinm  3, 3, 0, 4, 2\n"
@@ -2207,6 +2396,7 @@ void LCDisable_decomp(void) {
         "isync\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2214,6 +2404,7 @@ void LCDisable_decomp(void) {
 // LCStoreBlocks
 __attribute__((noreturn))
 void LCStoreBlocks_decomp(void* destAddr, void* srcAddr, u32 nBlocks) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "rlwinm  5, 5, 30, 27, 31\n"
         "ori     5, 5, 0x12\n"
@@ -2224,6 +2415,7 @@ void LCStoreBlocks_decomp(void* destAddr, void* srcAddr, u32 nBlocks) {
         "dcbst   0, 4\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2254,10 +2446,12 @@ void EventPreRetraceCallback(u32 retraceCount) {
 // PPCMfmsr
 __attribute__((noreturn))
 void PPCMfmsr_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfmsr   3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2265,10 +2459,12 @@ void PPCMfmsr_decomp(void) {
 // PPCMtmsr
 __attribute__((noreturn))
 void PPCMtmsr_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtmsr   3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2276,10 +2472,12 @@ void PPCMtmsr_decomp(u32 val) {
 // PPCMfhid0
 __attribute__((noreturn))
 void PPCMfhid0_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 1008\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2287,10 +2485,12 @@ void PPCMfhid0_decomp(void) {
 // PPCMthid0
 __attribute__((noreturn))
 void PPCMthid0_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   1008, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2298,10 +2498,12 @@ void PPCMthid0_decomp(u32 val) {
 // PPCMfhid2
 __attribute__((noreturn))
 void PPCMfhid2_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 920\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2309,10 +2511,12 @@ void PPCMfhid2_decomp(void) {
 // PPCMthid2
 __attribute__((noreturn))
 void PPCMthid2_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   920, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2320,10 +2524,12 @@ void PPCMthid2_decomp(u32 val) {
 // PPCMfwpar
 __attribute__((noreturn))
 void PPCMfwpar_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 921\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2331,10 +2537,12 @@ void PPCMfwpar_decomp(void) {
 // PPCMtwpar
 __attribute__((noreturn))
 void PPCMtwpar_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   921, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2342,10 +2550,12 @@ void PPCMtwpar_decomp(u32 val) {
 // PPCMfdmaU
 __attribute__((noreturn))
 void PPCMfdmaU_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 922\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2353,10 +2563,12 @@ void PPCMfdmaU_decomp(void) {
 // PPCMfdmaL
 __attribute__((noreturn))
 void PPCMfdmaL_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 923\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2364,10 +2576,12 @@ void PPCMfdmaL_decomp(void) {
 // PPCMtdmaU
 __attribute__((noreturn))
 void PPCMtdmaU_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   922, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2375,10 +2589,12 @@ void PPCMtdmaU_decomp(u32 val) {
 // PPCMtdmaL
 __attribute__((noreturn))
 void PPCMtdmaL_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   923, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2386,10 +2602,12 @@ void PPCMtdmaL_decomp(u32 val) {
 // PPCMfl2cr
 __attribute__((noreturn))
 void PPCMfl2cr_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 1017\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2397,10 +2615,12 @@ void PPCMfl2cr_decomp(void) {
 // PPCMtl2cr
 __attribute__((noreturn))
 void PPCMtl2cr_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   1017, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2408,10 +2628,12 @@ void PPCMtl2cr_decomp(u32 val) {
 // PPCMtdec
 __attribute__((noreturn))
 void PPCMtdec_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtdec   3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2419,10 +2641,12 @@ void PPCMtdec_decomp(u32 val) {
 // PPCSync
 __attribute__((noreturn))
 void PPCSync_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "sync\n"
         "blr\n"  // NOTE: 4 bytes = just sync + implicit return
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2430,11 +2654,13 @@ void PPCSync_decomp(void) {
 // PPCHalt - halts the CPU
 __attribute__((noreturn))
 void PPCHalt_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "sync\n"
         "1: nop\n"
         "b       1b\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2442,10 +2668,12 @@ void PPCHalt_decomp(void) {
 // PPCMfmmcr0
 __attribute__((noreturn))
 void PPCMfmmcr0_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 952\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2453,10 +2681,12 @@ void PPCMfmmcr0_decomp(void) {
 // PPCMtmmcr0
 __attribute__((noreturn))
 void PPCMtmmcr0_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   952, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2464,10 +2694,12 @@ void PPCMtmmcr0_decomp(u32 val) {
 // PPCMfmmcr1
 __attribute__((noreturn))
 void PPCMfmmcr1_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 956\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2475,10 +2707,12 @@ void PPCMfmmcr1_decomp(void) {
 // PPCMtmmcr1
 __attribute__((noreturn))
 void PPCMtmmcr1_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   956, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2486,10 +2720,12 @@ void PPCMtmmcr1_decomp(u32 val) {
 // PPCMfpmc1
 __attribute__((noreturn))
 void PPCMfpmc1_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 953\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2497,10 +2733,12 @@ void PPCMfpmc1_decomp(void) {
 // PPCMtpmc1
 __attribute__((noreturn))
 void PPCMtpmc1_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   953, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2508,10 +2746,12 @@ void PPCMtpmc1_decomp(u32 val) {
 // PPCMfpmc2
 __attribute__((noreturn))
 void PPCMfpmc2_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 954\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2519,10 +2759,12 @@ void PPCMfpmc2_decomp(void) {
 // PPCMtpmc2
 __attribute__((noreturn))
 void PPCMtpmc2_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   954, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2530,10 +2772,12 @@ void PPCMtpmc2_decomp(u32 val) {
 // PPCMfpmc3
 __attribute__((noreturn))
 void PPCMfpmc3_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 957\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2541,10 +2785,12 @@ void PPCMfpmc3_decomp(void) {
 // PPCMtpmc3
 __attribute__((noreturn))
 void PPCMtpmc3_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   957, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2552,10 +2798,12 @@ void PPCMtpmc3_decomp(u32 val) {
 // PPCMfpmc4
 __attribute__((noreturn))
 void PPCMfpmc4_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 958\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2563,10 +2811,12 @@ void PPCMfpmc4_decomp(void) {
 // PPCMtpmc4
 __attribute__((noreturn))
 void PPCMtpmc4_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   958, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2574,10 +2824,12 @@ void PPCMtpmc4_decomp(u32 val) {
 // PPCMfsia
 __attribute__((noreturn))
 void PPCMfsia_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfspr   3, 955\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2585,10 +2837,12 @@ void PPCMfsia_decomp(void) {
 // PPCMtsia
 __attribute__((noreturn))
 void PPCMtsia_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtspr   955, 3\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2596,6 +2850,7 @@ void PPCMtsia_decomp(u32 val) {
 // PPCMfhid4 - reads HID4 via cache workaround
 __attribute__((noreturn))
 void PPCMfhid4_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfmsr   4\n"
         "rlwinm  5, 4, 0, 17, 15\n"
@@ -2604,6 +2859,7 @@ void PPCMfhid4_decomp(void) {
         "mtmsr   4\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2611,6 +2867,7 @@ void PPCMfhid4_decomp(void) {
 // PPCMthid4 - writes HID4 via cache workaround
 __attribute__((noreturn))
 void PPCMthid4_decomp(u32 val) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mfmsr   4\n"
         "rlwinm  5, 4, 0, 17, 15\n"
@@ -2619,6 +2876,7 @@ void PPCMthid4_decomp(u32 val) {
         "mtmsr   4\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2626,10 +2884,12 @@ void PPCMthid4_decomp(u32 val) {
 // PPCDisableSpeculation
 __attribute__((noreturn))
 void PPCDisableSpeculation_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "isync\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2637,10 +2897,12 @@ void PPCDisableSpeculation_decomp(void) {
 // PPCSetFpNonIEEEMode
 __attribute__((noreturn))
 void PPCSetFpNonIEEEMode_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtfsb1  29\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -2648,10 +2910,12 @@ void PPCSetFpNonIEEEMode_decomp(void) {
 // PPCSetFpIEEEMode
 __attribute__((noreturn))
 void PPCSetFpIEEEMode_decomp(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "mtfsb0  29\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 

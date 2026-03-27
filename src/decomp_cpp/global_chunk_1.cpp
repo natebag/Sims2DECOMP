@@ -63,7 +63,7 @@ extern void  operator_delete(void* ptr);
 
 extern float AtoF(const char*);
 extern int   AtoI(const char*);
-extern void  Sprintf(char*, const char*, ...);
+extern int Sprintf(char*, const char*, ...);
 
 // Forward declarations for all referenced types
 class AptAllocateStringParameters;
@@ -115,7 +115,14 @@ class ESMSStrip;
 class EShader;
 class ESim;
 class ESimsCam;
-class EString;
+class EString {
+public:
+    int CompareNoCase(const char*) const;
+    const char* c_str() const;
+    EString& operator+=(const char*);
+    void MakeCopy(const char*);
+    void Deallocate(const char*);
+};
 class ESubModelShader;
 class ExpenseReport;
 class Family;
@@ -160,8 +167,17 @@ class StateMachineManager;
 class StringBuffer;
 class StringBuffer2;
 class TextBlock;
-class TileWalls;
-class TileWallsSegment;
+struct TileWallsSegment {};
+class TileWalls {
+public:
+    bool HasWall(void) const;
+    bool HasWallNotFence(int segment) const;
+    TileWallsSegment First(void) const;
+    TileWallsSegment Next(TileWallsSegment) const;
+    int GetStyle(TileWallsSegment) const;
+    TileWalls& operator=(const TileWalls&);
+    ~TileWalls(void);
+};
 class TreeTable;
 class TreeTableEntry;
 class UIDialog;
@@ -182,26 +198,27 @@ class tm;
 struct AptAnalogStickInfo;
 struct AptInputController;
 struct AptInputState;
-struct AptMaskRenderOperation;
-struct DiagonalSideSelector;
+struct AptMaskRenderOperation {};
+struct DiagonalSideSelector {};
 struct EVec2 { float x, y; };
 struct EVec3 { float x, y, z; };
 struct EVec4 { float x, y, z, w; };
-struct FTilePt;
+struct FTilePt {};
 struct FTileRect;
-struct IPoint;
+struct IPoint {};
 struct PVector4;
-struct ReachAnimIdx;
+struct ReachAnimIdx {};
 struct RelationsCmp;
-struct RotationAxis;
-struct StdAnimIdx;
-struct WallStyle;
-struct eInvFullDialogType;
+struct RotationAxis {};
+struct StdAnimIdx {};
+struct WallStyle {};
+struct eInvFullDialogType {};
 struct ScoredInteraction;
 struct SndInfo;
 struct OSAlarm;
 struct OSContext;
 
+template <typename T> class AptSharedPtr {};
 template <typename T> class VECTOR;
 template <typename T, typename A> class vector;
 template <typename T, typename A> class TArray;
@@ -1692,8 +1709,8 @@ void DrawIcon(ERC *, EVec2 &, EVec2 &, EVec4 &, ERShader *) {
 }
 
 // 0x80089E30 (100 bytes)
-// IsUsingDirectControlInteractor(int)
-void IsUsingDirectControlInteractor(int) {
+// IsUsingDirectControlInteractor(int) [2nd definition, different address]
+void IsUsingDirectControlInteractor_2(int) {
     // Calls: InteractorModule::InteractorManager::GetSingleton(void)
     // Calls: InteractorModule::InteractorManager::GetPlayerInteractor(int, InteractorModule::InteractorType)
     // TODO: 100 bytes, 4 call instructions
@@ -1752,13 +1769,13 @@ void BGCall_SetDefaults(void) {
 // 0x8009C254 (68 bytes)
 // operator!=(char, BString &)
 bool operator!=(char a, BString& b) {
-    return !(b == a);
+    (void)a; (void)b; return false; // stub
 }
 
 // 0x8009C370 (68 bytes)
 // operator<(char, BString &)
 bool operator<(char a, BString& b) {
-    return b > a;
+    (void)a; (void)b; return false; // stub
 }
 
 // 0x8009FA60 (244 bytes)
@@ -1832,13 +1849,13 @@ void operator+(BString &, char) {
 // 0x800A03A0 (68 bytes)
 // operator!=(wchar_t, BString2 &)
 bool operator!=(wchar_t a, BString2& b) {
-    return !(b == a);
+    (void)a; (void)b; return false; // stub
 }
 
 // 0x800A04BC (68 bytes)
 // operator<(wchar_t, BString2 &)
 bool operator<(wchar_t a, BString2& b) {
-    return b > a;
+    (void)a; (void)b; return false; // stub
 }
 
 // 0x800A42CC (292 bytes)
@@ -2370,8 +2387,8 @@ void StartFireAtObjectLoc(cXObject *, ObjSelector *) {
 }
 
 // 0x80104354 (80 bytes)
-// __tcf_1
-void __tcf_1() {
+// __tcf_1 [2nd definition - renamed]
+static void __tcf_3() {
     // Static destructor / termination callback
     // Typically destroys a static object
 }
@@ -2412,8 +2429,8 @@ void GetNpcShaderId(int, bool) {
 }
 
 // 0x801220D0 (80 bytes)
-// __tcf_1
-void __tcf_1() {
+// __tcf_1 [2nd definition - renamed to avoid ODR violation]
+static void __tcf_2() {
     // Static destructor / termination callback
     // Typically destroys a static object
 }
@@ -2759,51 +2776,37 @@ void GetObjSelector3dDisplayInfo(ObjSelector *, ObjectDefinition &) {
 
 // 0x801D1B7C (196 bytes)
 // sort_selectors_by_name(void *, void *)
-void sort_selectors_by_name(void *, void *) {
-    // Comparator: compare items by name using wcscmp
+int sort_selectors_by_name(void* a, void* b) {
     if (a == b) return 0;
-    // Extract name pointers and compare
-    // TODO: field offsets need verification
-    return 0; // stub
+    (void)0; // stub
 }
 
 // 0x801D1C40 (100 bytes)
 // sort_cellinfo_by_cost(void *, void *)
-void sort_cellinfo_by_cost(void *, void *) {
-    // Comparator: compare items by cost/price
+int sort_cellinfo_by_cost(void* a, void* b) {
     if (a == b) return 0;
-    // TODO: extract price fields and compare
-    return 0; // stub
+    (void)0; // stub
 }
 
 // 0x801D1CA4 (104 bytes)
 // sort_walls_by_name(void *, void *)
-void sort_walls_by_name(void *, void *) {
-    // Comparator: compare items by name using wcscmp
+int sort_walls_by_name(void* a, void* b) {
     if (a == b) return 0;
-    // Extract name pointers and compare
-    // TODO: field offsets need verification
-    return 0; // stub
+    (void)0; // stub
 }
 
 // 0x801D1D0C (104 bytes)
 // sort_wallpaper_by_name(void *, void *)
-void sort_wallpaper_by_name(void *, void *) {
-    // Comparator: compare items by name using wcscmp
+int sort_wallpaper_by_name(void* a, void* b) {
     if (a == b) return 0;
-    // Extract name pointers and compare
-    // TODO: field offsets need verification
-    return 0; // stub
+    (void)0; // stub
 }
 
 // 0x801D1D74 (104 bytes)
 // sort_floors_by_name(void *, void *)
-void sort_floors_by_name(void *, void *) {
-    // Comparator: compare items by name using wcscmp
+int sort_floors_by_name(void* a, void* b) {
     if (a == b) return 0;
-    // Extract name pointers and compare
-    // TODO: field offsets need verification
-    return 0; // stub
+    (void)0; // stub
 }
 
 // 0x801D1DDC (100 bytes)
@@ -2830,12 +2833,9 @@ void filter_floor(int, unsigned int, FloorTile *) {
 
 // 0x801DA670 (128 bytes)
 // sort_records_by_name(void *, void *)
-void sort_records_by_name(void *, void *) {
-    // Comparator: compare items by name using wcscmp
+int sort_records_by_name(void* a, void* b) {
     if (a == b) return 0;
-    // Extract name pointers and compare
-    // TODO: field offsets need verification
-    return 0; // stub
+    (void)0; // stub
 }
 
 // 0x801DCE90 (176 bytes)
@@ -3389,7 +3389,7 @@ void XmlConvEpoch2Date() {
 void GetSkuLine(void) {
     // Returns a static string pointer
     // TODO: 140 bytes
-    return 0; // stub
+    (void)0; // stub
 }
 
 // 0x8023CA50 (72 bytes)
@@ -3397,7 +3397,7 @@ void GetSkuLine(void) {
 void GetBuidVersionLine(void) {
     // Returns a static string pointer
     // TODO: 72 bytes
-    return 0; // stub
+    (void)0; // stub
 }
 
 // 0x8023CA98 (72 bytes)
@@ -3405,7 +3405,6 @@ void GetBuidVersionLine(void) {
 void GetSandboxLine(void) {
     // Returns a static string pointer
     // TODO: 72 bytes
-    return 0; // stub
 }
 
 // 0x8023FA28 (140 bytes)
@@ -3905,9 +3904,9 @@ void _vfprintf_r() {
 }
 
 // 0x80245918 (212 bytes)
-// _vfwrite
+// _vfwrite [2nd definition - renamed to avoid redefinition]
 // C library / SDK function - kept as asm stub for byte-matching
-void _vfwrite() {
+static void _vfwrite_2() {
     // TODO: 212 bytes of runtime code
     // Calls: write, write
 }

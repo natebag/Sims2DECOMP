@@ -66,7 +66,7 @@ public:
 };
 
 // Operator new/delete
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void operator delete(void*);
 extern void* __builtin_vec_new(unsigned int);
 extern void __builtin_vec_delete(void*);
@@ -219,7 +219,7 @@ public:
     void RemoveFixup(EFloatTreeNode*);
     void Remove(float);
     void Remove(FTIteratorPtrType*);
-    void Find(float, unsigned int*) const;
+    bool Find(float, unsigned int*) const;
     void RemoveAll(void);
     void SetValues(EFloatTree&, bool);
     void operator=(EFloatTree&);
@@ -265,7 +265,7 @@ void EFloatTree::RotateLeft(EFloatTreeNode* x) {
         *(void**)(self + 8) = y; // root = y
     }
     *(void**)(y + 0) = x;  // y->left = x
-    if (x != sentinel) {
+    if ((char*)x != sentinel) {
         *(void**)(xp + 8) = y; // x->parent = y
     }
 }
@@ -297,7 +297,7 @@ void EFloatTree::RotateRight(EFloatTreeNode* x) {
         *(void**)(self + 8) = y; // root = y
     }
     *(void**)(y + 4) = x;  // y->right = x
-    if (x != sentinel) {
+    if ((char*)x != sentinel) {
         *(void**)(xp + 8) = y; // x->parent = y
     }
 }
@@ -543,7 +543,7 @@ void EFloatTree::Remove(FTIteratorPtrType* iter) {
 }
 
 // 0x8035BE5C
-void EFloatTree::Find(float key, unsigned int* outValue) const {
+bool EFloatTree::Find(float key, unsigned int* outValue) const {
     // NOTE: asm-derived — search tree for key, return value if found
     char* self = (char*)this;
     char* sentinel = *(char**)(self + 8);
@@ -552,7 +552,7 @@ void EFloatTree::Find(float key, unsigned int* outValue) const {
         float nodeKey = *(float*)(node + 12);
         if (key == nodeKey) {
             if (outValue) *outValue = *(u32*)(node + 16);
-            return;
+            return true;
         }
         if (key < nodeKey) {
             node = *(char**)(node + 0); // go left
@@ -560,6 +560,7 @@ void EFloatTree::Find(float key, unsigned int* outValue) const {
             node = *(char**)(node + 4); // go right
         }
     }
+    return false;
 }
 
 // 0x8035BEB0
@@ -615,8 +616,8 @@ public:
     void RemoveFixup(ERedBlackTreeNode*);
     void Remove(unsigned int);
     void Remove(RBIteratorPtrType*);
-    void Find(unsigned int, unsigned int*) const;
-    void FindFirst(unsigned int, unsigned int*) const;
+    bool Find(unsigned int, unsigned int*) const;
+    bool FindFirst(unsigned int, unsigned int*) const;
     void RemoveAll(void);
     void FreeAll(void);
     void operator=(ERedBlackTree&);
@@ -659,7 +660,7 @@ void ERedBlackTree::RotateLeft(ERedBlackTreeNode* x) {
         *(void**)(self + 8) = y;
     }
     *(void**)(y + 0) = x;
-    if (x != sentinel) {
+    if ((char*)x != sentinel) {
         *(void**)(xp + 8) = y;
     }
 }
@@ -690,7 +691,7 @@ void ERedBlackTree::RotateRight(ERedBlackTreeNode* x) {
         *(void**)(self + 8) = y;
     }
     *(void**)(y + 4) = x;
-    if (x != sentinel) {
+    if ((char*)x != sentinel) {
         *(void**)(xp + 8) = y;
     }
 }
@@ -908,7 +909,7 @@ void ERedBlackTree::Remove(RBIteratorPtrType* iter) {
 }
 
 // 0x802CE3AC
-void ERedBlackTree::Find(unsigned int key, unsigned int* outValue) const {
+bool ERedBlackTree::Find(unsigned int key, unsigned int* outValue) const {
     char* self = (char*)this;
     char* sentinel = *(char**)(self + 8);
     char* node = sentinel;
@@ -916,20 +917,22 @@ void ERedBlackTree::Find(unsigned int key, unsigned int* outValue) const {
         u32 nodeKey = *(u32*)(node + 12);
         if (key == nodeKey) {
             if (outValue) *outValue = *(u32*)(node + 16);
-            return;
+            return true;
         }
         if (key < nodeKey) node = *(char**)(node + 0);
         else node = *(char**)(node + 4);
     }
+    return false;
 }
 
 // 0x802CE404
-void ERedBlackTree::FindFirst(unsigned int key, unsigned int* outValue) const {
+bool ERedBlackTree::FindFirst(unsigned int key, unsigned int* outValue) const {
     // NOTE: asm-derived — find first (leftmost) node with given key
     char* self = (char*)this;
     char* sentinel = *(char**)(self + 8);
     (void)key;
     (void)outValue;
+    return false;
 }
 
 // 0x802CE4A8
@@ -984,8 +987,8 @@ public:
     void Remove(char*);
     void Remove(SRBNCIteratorPtrType*);
     void Remove(EStringRedBlackTreeNoCase&);
-    void Find(char*, unsigned int*) const;
-    void FindFirst(char*, unsigned int*) const;
+    bool Find(char*, unsigned int*) const;
+    bool FindFirst(char*, unsigned int*) const;
     void FindNext(SRBNCIteratorPtrType*, unsigned int*) const;
     void RemoveAll(void);
     void FreeAll(void);
@@ -1019,7 +1022,7 @@ void EStringRedBlackTreeNoCase::RotateLeft(EStringRedBlackTreeNoCaseNoCaseNode* 
         *(void**)(self + 8) = y;
     }
     *(void**)(y + 0) = x;
-    if (x != sentinel) *(void**)(xp + 8) = y;
+    if ((char*)x != sentinel) *(void**)(xp + 8) = y;
 }
 
 // 0x803606FC
@@ -1039,7 +1042,7 @@ void EStringRedBlackTreeNoCase::RotateRight(EStringRedBlackTreeNoCaseNoCaseNode*
         *(void**)(self + 8) = y;
     }
     *(void**)(y + 4) = x;
-    if (x != sentinel) *(void**)(xp + 8) = y;
+    if ((char*)x != sentinel) *(void**)(xp + 8) = y;
 }
 
 // 0x80360778
@@ -1170,14 +1173,15 @@ void EStringRedBlackTreeNoCase::Remove(SRBNCIteratorPtrType* iter) {
 // 0x803610EC
 void EStringRedBlackTreeNoCase::Remove(EStringRedBlackTreeNoCase& other) { (void)other; }
 // 0x80361144
-void EStringRedBlackTreeNoCase::Find(char* key, unsigned int* outValue) const {
+bool EStringRedBlackTreeNoCase::Find(char* key, unsigned int* outValue) const {
     char* self = (char*)this;
     char* sentinel = *(char**)(self + 8);
     // Case-insensitive comparison using stricmp at offset 12
     (void)key; (void)outValue;
+    return false;
 }
 // 0x803611F8
-void EStringRedBlackTreeNoCase::FindFirst(char* key, unsigned int* outValue) const { (void)key; (void)outValue; }
+bool EStringRedBlackTreeNoCase::FindFirst(char* key, unsigned int* outValue) const { (void)key; (void)outValue; return false; }
 // 0x80361270
 void EStringRedBlackTreeNoCase::FindNext(SRBNCIteratorPtrType* iter, unsigned int* outValue) const { (void)iter; (void)outValue; }
 // 0x80361348
@@ -1429,7 +1433,7 @@ EBitArray::~EBitArray(void) {
 class EVec3Decomp {
 public:
     void Init(EBitArray*, int);
-    void* operator new(unsigned int);
+    void* operator new(std::size_t);
     void operator delete(void*);
     void GetFrame(float);
     void NextSegment(float);
@@ -1453,7 +1457,7 @@ void EVec3Decomp::Init(EBitArray* bits, int offset) {
 }
 
 // 0x802D5EAC
-void* EVec3Decomp::operator new(unsigned int size) {
+void* EVec3Decomp::operator new(std::size_t size) {
     return MainHeap()->Malloc(size, 0);
 }
 
@@ -2598,7 +2602,7 @@ EIObjectMan::EIObjectMan(EHouse* house) {
     char* self = (char*)this;
     *(u32*)(self + 0) = 0;
     // Init ERedBlackTree at offset 4
-    *(u32*)(self + 16) = (u32)house;
+    *(u32*)(self + 16) = (u32)(uintptr_t)house;
 }
 
 // 0x80054A08

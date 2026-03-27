@@ -1179,7 +1179,7 @@ public:
     // 0x802D7024 (112 bytes)
     void Init(void* memory, int blockSize, int blockCount) {
         // Align base to blockSize boundary
-        unsigned int addr = (unsigned int)memory;
+        unsigned int addr = (unsigned int)(uintptr_t)memory;
         unsigned int aligned = addr & ~(unsigned int)(blockSize - 1);
         if (aligned < addr) aligned += blockSize;
 
@@ -1212,16 +1212,16 @@ public:
         if (node == NULL) return true;
 
         // Check first node
-        if ((unsigned int)node < (unsigned int)m_basePtr) return false;
-        unsigned int end = (unsigned int)m_basePtr + m_blockSize * m_blockCount;
-        if ((unsigned int)node >= end) return false;
+        if ((uintptr_t)node < (uintptr_t)m_basePtr) return false;
+        uintptr_t end = (uintptr_t)m_basePtr + m_blockSize * m_blockCount;
+        if ((uintptr_t)node >= end) return false;
 
         // Walk the list
         while (node != NULL) {
             void* next = *(void**)((char*)node + 4);
             if (next == NULL) break;
-            if ((unsigned int)next < (unsigned int)m_basePtr) return false;
-            if ((unsigned int)next >= end) return false;
+            if ((uintptr_t)next < (uintptr_t)m_basePtr) return false;
+            if ((uintptr_t)next >= end) return false;
             node = next;
         }
         return true;

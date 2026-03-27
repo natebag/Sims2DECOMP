@@ -1667,7 +1667,7 @@ FastAllocPool::FastAllocPool(char* name, void* mem, int count, int elemSize) {
 void FastAllocPool::Init(void* mem, int elemSize, int count) {
     m_freeList = 0;
     // Align memory pointer
-    unsigned int addr = (unsigned int)mem;
+    unsigned int addr = (unsigned int)(uintptr_t)mem;
     unsigned int mask = addr | elemSize;
     unsigned int aligned = mask & (~mask + 1); // Round to alignment
     m_aligned = (void*)aligned;

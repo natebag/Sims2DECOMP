@@ -207,8 +207,9 @@ void _List_base<unsigned int, allocator<unsigned int> >::clear(void) {
 // vtable at data+0, dtor offset at vtable+24, dtor fn at vtable+28).
 // Node size: 20 (8 + 12 for DataCache which has a vtable ptr + more).
 // TOO COMPLEX for safe portable C++ conversion -- remains as inline asm.
-__attribute__((noreturn))
+template <>
 void _List_base<NamespaceSelector::DataCache, allocator<NamespaceSelector::DataCache> >::clear(void) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu	1,-24(1)\n"
         "mflr	0\n"
@@ -252,6 +253,7 @@ void _List_base<NamespaceSelector::DataCache, allocator<NamespaceSelector::DataC
         "addi	1,1,24\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -399,10 +401,10 @@ void _Rb_tree<short, pair<short, bool>, _Select1st<pair<short, bool> >, less<sho
 // _Rb_tree<pair<unsigned int, ObjectDataID>, pair<..., ISmartDataFactory::tDataProvider>, ...>::_M_erase(...)
 // Node size: 32
 template <>
-void _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::_M_erase(_Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, int> > * x) {
+void _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::_M_erase(_Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > * x) {
     while (x != 0) {
-        _M_erase((_Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, int> >*)(*(void**)((char*)x + 12)));
-        _Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, int> >* y = (_Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, int> >*)(*(void**)((char*)x + 8));
+        _M_erase((_Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >*)(*(void**)((char*)x + 12)));
+        _Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >* y = (_Rb_tree_node<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >*)(*(void**)((char*)x + 8));
         if (x) __node_alloc_M_deallocate(x, 32);
         x = y;
     }
@@ -442,8 +444,9 @@ void _Rb_tree<unsigned short, pair<unsigned short, Room *>, _Select1st<pair<unsi
 // Node size: 24
 // This one calls ~BString on the key before deallocation.
 // Keeping as inline asm because the destructor call is interleaved.
-__attribute__((noreturn))
+template <>
 void _Rb_tree<BString, pair<BString, unsigned int>, _Select1st<pair<BString, unsigned int> >, less<BString>, allocator<pair<BString, unsigned int> > >::_M_erase(_Rb_tree_node<pair<BString, unsigned int> > *) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu	1,-24(1)\n"
         "mflr	0\n"
@@ -475,6 +478,7 @@ void _Rb_tree<BString, pair<BString, unsigned int>, _Select1st<pair<BString, uns
         "addi	1,1,24\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -484,8 +488,9 @@ void _Rb_tree<BString, pair<BString, unsigned int>, _Select1st<pair<BString, uns
 // _Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, ...>::_M_erase(...)
 // Calls CTilePt::~CTilePt(void) on element at node+16 before dealloc.
 // Node size: 36
-__attribute__((noreturn))
+template <>
 void _Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select1st<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > >, less<CTilePt>, allocator<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > > >::_M_erase(_Rb_tree_node<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > > *) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu	1,-24(1)\n"
         "mflr	0\n"
@@ -517,6 +522,7 @@ void _Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select
         "addi	1,1,24\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 
@@ -526,8 +532,9 @@ void _Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select
 // _Rb_tree<unsigned int, pair<unsigned int, NamespaceSelector>, ...>::_M_erase(...)
 // Calls NamespaceSelector::~NamespaceSelector(void) at node+20 before dealloc.
 // Node size: 72
-__attribute__((noreturn))
+template <>
 void _Rb_tree<unsigned int, pair<unsigned int, NamespaceSelector>, _Select1st<pair<unsigned int, NamespaceSelector> >, less<unsigned int>, allocator<pair<unsigned int, NamespaceSelector> > >::_M_erase(_Rb_tree_node<pair<unsigned int, NamespaceSelector> > *) {
+#ifdef __powerpc__
     __asm__ __volatile__(
         "stwu	1,-24(1)\n"
         "mflr	0\n"
@@ -559,6 +566,7 @@ void _Rb_tree<unsigned int, pair<unsigned int, NamespaceSelector>, _Select1st<pa
         "addi	1,1,24\n"
         "blr\n"
     );
+#endif /* __powerpc__ */
     __builtin_unreachable();
 }
 

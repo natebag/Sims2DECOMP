@@ -189,7 +189,7 @@ struct ESimsCam {
     unsigned int GetControllerFilterId() const;
     int ClearControllerFilterId();
 
-    void* operator new(unsigned int size);
+    void* operator new(std::size_t size);
     void operator delete(void* ptr);
 
     // Medium functions

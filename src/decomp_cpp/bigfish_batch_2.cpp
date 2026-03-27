@@ -39,9 +39,9 @@ public:
 };
 
 // Operator new/delete
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void operator delete(void*);
-extern void* __builtin_vec_new(unsigned int);
+extern void* __builtin_vec_new(std::size_t);
 extern void __builtin_vec_delete(void*);
 
 // ============================================================================
@@ -64,7 +64,6 @@ class CTilePt;
 class DOGMA_PoolManager;
 class E3DWindow;
 class EAStringC;
-class EAnimController;
 class EAnimNote;
 class EACTrack;
 class EHouse;
@@ -75,14 +74,11 @@ class EMC_OpStatus;
 class ERAnim;
 class ERC;
 class ERLevel;
-class ERQuickdata;
 class EResourceManager;
 class ETypeInfo;
 class EVec3;
 class FTilePt;
 struct FloorPattern;
-class ISimInstance;
-class MemoryCardCache;
 class NghResFileSectionHeader;
 class ObjAnimDef;
 class ObjDefinition;
@@ -92,8 +88,6 @@ class ObjectDataObjDefinition;
 class Behavior;
 class ReconBuffer;
 class ResFile;
-class SimModel;
-class StringBuffer;
 class TileWalls;
 class TileWallStorage;
 struct TileWallsSegment;
@@ -101,10 +95,9 @@ class UIObjectBase;
 class UIDB;
 class UIDialog;
 struct UIScreenID;
-class iResFile;
 class cXObject;
 template <typename T0> class TArray;
-template <typename T0> class StackString;
+template <int N> class StackString;
 template <typename T0> class BitFlags;
 template <typename T0, typename T1> class _Deque_base;
 template <typename T0> class allocator;
@@ -131,6 +124,47 @@ extern void* TexGet(void* texPal, unsigned int index);
 namespace TileWallsNS {
     extern void GenerateRotationLookups();
 }
+
+// ============================================================================
+// Forward class definitions (used as base classes or called on by value below)
+// ============================================================================
+class iResFile {
+public:
+    iResFile();
+    ~iResFile();
+};
+
+class ISimInstance {};
+
+class EAnimController {
+public:
+    void SetTrackAnim(int trackFlags, unsigned int animId, int blendMode,
+                      float blendTime, EACTrack** outTrack);
+    void StopAllTracks();
+};
+
+class StringBuffer {
+public:
+    void erase();
+    void append(char* str, int len);
+};
+
+class MemoryCardCache {
+public:
+    void Init(/* NghLayout* */);
+    void Destroy();
+};
+
+class SimModel {
+public:
+    void DeallocateMorphResources();
+};
+
+class ERQuickdata {
+public:
+    void* getTable(const char* name);
+    void* getRow(void* table, const char* name);
+};
 
 // ============================================================================
 // NghResFile
@@ -408,7 +442,7 @@ public:
         unsigned char* alignedEnd = ptr + alignedSize;
 
         // Check alignment
-        if (size < 4 || ((unsigned int)ptr & 3) != 0) {
+        if (size < 4 || ((uintptr_t)ptr & 3) != 0) {
             // Fall through to byte check
         } else {
             // Build word from fill byte: AABBCCDD where all bytes are fillByte
@@ -1795,7 +1829,7 @@ public:
                 if (prev != 0) {
                     *(int*)((char*)prev + 164) = *(int*)((char*)sel + 164);
                     *(int*)((char*)sel + 164) = *(int*)((char*)buckets + bucketIdx);
-                    *(int*)((char*)buckets + bucketIdx) = (int)(unsigned int)sel;
+                    *(int*)((char*)buckets + bucketIdx) = (int)(uintptr_t)sel;
                 }
                 return sel;
             }
@@ -2004,64 +2038,3 @@ private:
 };
 
 
-// ============================================================================
-// ERQuickdata helper (used by ObjectFolderImpl)
-// ============================================================================
-class ERQuickdata {
-public:
-    void* getTable(const char* name);
-    void* getRow(void* table, const char* name);
-};
-
-// ============================================================================
-// EAnimController helper (used by ISimsObjectModel)
-// ============================================================================
-class EAnimController {
-public:
-    void SetTrackAnim(int trackFlags, unsigned int animId, int blendMode,
-                      float blendTime, EACTrack** outTrack);
-    void StopAllTracks();
-};
-
-// ============================================================================
-// StringBuffer helper (used by NghResFile)
-// ============================================================================
-class StringBuffer {
-public:
-    void erase();
-    void append(char* str, int len);
-};
-
-// ============================================================================
-// MemoryCardCache helper
-// ============================================================================
-class MemoryCardCache {
-public:
-    void Init(/* NghLayout* */);
-    void Destroy();
-};
-
-// ============================================================================
-// SimModel helper
-// ============================================================================
-class SimModel {
-public:
-    void DeallocateMorphResources();
-};
-
-// ============================================================================
-// iResFile base class stub
-// ============================================================================
-class iResFile {
-public:
-    iResFile();
-    ~iResFile();
-};
-
-// ============================================================================
-// ISimInstance base class stub
-// ============================================================================
-class ISimInstance {
-public:
-    ISimInstance();
-};

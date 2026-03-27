@@ -285,9 +285,9 @@ public:
         // Insert at the found leaf position
         if (prev != NULL) {
             if (myChecksum < prev->m_checksum) {
-                prev->m_reserved1 = (u32)this;
+                prev->m_reserved1 = (u32)(uintptr_t)this;
             } else {
-                prev->m_reserved2 = (u32)this;
+                prev->m_reserved2 = (u32)(uintptr_t)this;
             }
         }
     }
@@ -4225,10 +4225,10 @@ public:
     }
 
     // 0x80018DF4 (44 bytes)
-    void* operator new(unsigned int size) {
+    void* operator new(std::size_t size) {
         // Allocate from MainHeap
         EAHeap* heap = MainHeap();
-        return heap->Malloc(size, 0);
+        return heap->Malloc((unsigned int)size, 0);
     }
 };
 

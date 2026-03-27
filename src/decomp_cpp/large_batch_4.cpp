@@ -26,7 +26,7 @@ extern "C" {
     float acosf(float);
     float atan2f(float, float);
     float fabsf(float);
-    void  Sprintf(char* buf, char* fmt, ...);
+    int Sprintf(char* buf, char* fmt, ...);
     int   AtoI(char* str);
     float AtoF(char* str);
     int   wcslen(const unsigned short* s);
@@ -43,7 +43,7 @@ public:
 };
 
 extern void operator delete(void*);
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 
 // Forward declarations
 class AptCIH;
@@ -69,7 +69,7 @@ class EScratchBuffUser;
 class EString;
 class ETexture;
 class EVec2;
-class EVec3;
+struct EVec3 { float x, y, z; };
 class EVec4;
 class FTileRect;
 class GetLocalizableCommandTable;
@@ -104,7 +104,7 @@ struct ScalarKeyframe {};
 struct NLIteratorPtrType {};
 struct STNCIteratorPtrType {};
 
-template <typename T> class StackString;
+template <int N> class StackString;
 template <typename T> class AptSharedPtr;
 template <typename T0> class allocator;
 template <typename T0, typename T1> class vector;
@@ -189,6 +189,12 @@ public:
         return (const Interaction*)(m_actionData + physIdx * 68);
     }
     int Count() const { return m_tail - m_head; }
+
+    ActionQueue();
+    void AddActionToHUD(int index);
+    void RemoveActionFromHUD(int index);
+    bool IsVisibleAction(Interaction& action);
+    unsigned int FindVisualInsertGUID(int index);
 };
 
 extern void GetShaderForObject(cXObject* obj, EResource** outShader);
@@ -235,7 +241,8 @@ void ActionQueue::AddActionToHUD(int index) {
 
     cXObject* iconObj = action->GetIconObject();
     EResource* shader = 0;
-    unsigned int shaderResult = (unsigned int)GetShaderForObject(iconObj, &shader);
+    GetShaderForObject(iconObj, &shader);
+    unsigned int shaderResult = 0;
     if (shaderResult == 0 && shader == 0) return;
 
     unsigned int insertGUID = FindVisualInsertGUID(index);
@@ -581,7 +588,10 @@ public:
     EResource*  m_mirrorShader;       // +68
     int         m_isRendering;        // +72
 
+    EMirrorPortal();
+    ~EMirrorPortal();
     void SetNumCorners(int n);
+    void SetMirrorShader(unsigned int shaderID);
 };
 
 // 0x802F236C (176 bytes)
@@ -1055,7 +1065,23 @@ public:
     unsigned int m_mask;       // +16 - tableSize - 1
     int          m_threshold;  // +20 - grow threshold
 
+    EStringTableNoCase();
+    EStringTableNoCase(int size);
+    EStringTableNoCase(EStringTableNoCase& other);
+    ~EStringTableNoCase();
     void ClearTable();
+    void InitTable(int size);
+    void SetValue(char* key, unsigned int value);
+    void Insert(char* key, unsigned int value);
+    void InsertNew(unsigned int hash, char* key, unsigned int value);
+    void Remove(char* key);
+    void Remove(STNCIteratorPtrType* it);
+    void Remove(unsigned int hash, STNCIteratorPtrType* it);
+    void RemoveAll();
+    void FreeAll();
+    void PreGrowTable(int size);
+    void GrowTable();
+    void SetValues(EStringTableNoCase& other);
 };
 
 // 0x80361570 (88 bytes)
@@ -1599,6 +1625,18 @@ public:
     float   m_fadeTarget;     // +48
     void*   m_soundData;      // +52
     int     m_maxVolume;      // +56
+
+    cGZSnd();
+    ~cGZSnd();
+    void Release();
+    void Stop();
+    void Pause();
+    void Unpause();
+    void setVolume(int vol);
+    void FadeVolume(int startVol, int endVol, unsigned int duration);
+    void SetPan(int pan);
+    void reset();
+    void getLRVolume(int pan, float& leftVol, float& rightVol);
 };
 
 // 0x800B9FB8 (124 bytes)

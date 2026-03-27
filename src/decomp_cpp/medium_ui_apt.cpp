@@ -16,7 +16,11 @@ extern "C" {
 }
 
 // Forward declarations - engine types
-class EAHeap;
+class EAHeap {
+public:
+    void* Malloc(unsigned int size, int flags);
+    void  Free(void* ptr);
+};
 class ERC;
 class EStream;
 class EFile;
@@ -24,33 +28,80 @@ class EMat4;
 class EVec4;
 class EResource;
 class ETypeInfo;
-class EAStringC;
 class BString2;
+
+class EAStringC {
+public:
+    void* m_buffer;
+    EAStringC();
+    EAStringC(unsigned int);
+    EAStringC(unsigned int, unsigned int);
+    ~EAStringC();
+    void operator=(EAStringC&);
+    char* c_str() const;
+};
 
 extern EAHeap* MainHeap();
 void operator delete(void*, unsigned int);
 
+// APT type definitions
+class AptNativeHash;
+class AptDisplayList;
+class AptScriptFunctionBase;
+
+class AptValue {
+public:
+    int m_type;
+    AptValue();
+    virtual ~AptValue();
+    void SetString(EAStringC* str);
+    int GetType() const;
+    void toString(EAStringC& out);
+};
+
+// AptVirtualFunctionTable_Indices — index enum used in AptObject constructor
+struct AptVirtualFunctionTable_Indices { int idx; };
+
+// Forward declarations needed by AptRenderingContext
+class AptMatrix;
+class AptRect;
+class AptCXForm;
+
+class AptRenderingContext {
+public:
+    // offset 0-31: current colour transform (8 floats)
+    // offset 32-55: current vertex matrix (6 floats = AptMatrix)
+    // offset 56+: colour transform stack (32 bytes per entry)
+    // offset 568+: vertex matrix stack (24 bytes per entry)
+    // offset 952: colour stack depth
+    // offset 956: vertex stack depth
+    void pushColourTransform();
+    void popColourTransform();
+    void appendColourTransform(AptCXForm* cxform);
+    void getVertexMatrix(AptMatrix* outMatrix);
+    void pushVertexMatrix();
+    void popVertexMatrix();
+    void multMatrix(AptMatrix* a, AptMatrix* b, AptMatrix* result);
+    void appendVertexMatrix(AptMatrix* matrix);
+    void expandBoundingRect(AptRect* outRect, AptRect* srcRect);
+};
+
 // Forward declarations - APT types
-class AptValue;
 class AptValueGC;
 class AptString;
 class AptArray;
 class AptWord;
 class AptCIH;
 class AptFile;
-class AptDisplayList;
-class AptNativeHash;
 class AptMatrix;
 class AptRect;
 class AptCXForm;
 class AptAction_DefineFunction;
 class AptAction_DefineFunction2;
-class AptScriptFunctionBase;
 class AptPseudoCIH_t;
 class AptPseudoData_t;
 class IAptXmlNode;
-struct AptMaskRenderOperation;
-struct AptVirtualFunctionTable_Indices;
+struct AptMaskRenderOperation { int op; };
 class _AptScriptFunctionState;
 
 // Forward declarations - pool managers
@@ -520,6 +571,7 @@ public:
     void SetImplementedObjects(AptArray* arr, int count);
     AptValue* GetImplementedObjects(int* outCount) const;
     int DoesImplementObject(AptValue* obj) const;
+    AptObject() {}
     AptObject(AptVirtualFunctionTable_Indices idx, int hashSize);
     void SetPrototype(AptValue* proto);
     ~AptObject();
@@ -760,8 +812,8 @@ void AptMath::ClipStackInit(unsigned int maxDepth) {
     g_pAptClipStackRaw = raw;
     // Align to 16 bytes
     void* aligned = raw;
-    if (((unsigned int)raw & 15) != 0) {
-        aligned = (void*)(((unsigned int)raw + 16) & ~15u);
+    if (((uintptr_t)raw & 15) != 0) {
+        aligned = (void*)(((uintptr_t)raw + 16) & ~(uintptr_t)15u);
     }
     g_pAptClipStackData = aligned;
     g_aptClipStackMaxDepth = (short)maxDepth;
@@ -836,25 +888,7 @@ AptNativeFunction::~AptNativeFunction() {
 // ============================================================
 // AptRenderingContext - matrix stack and rendering context
 // ============================================================
-
-class AptRenderingContext {
-public:
-    // offset 0-31: current colour transform (8 floats)
-    // offset 32-55: current vertex matrix (6 floats = AptMatrix)
-    // offset 56+: colour transform stack (32 bytes per entry)
-    // offset 568+: vertex matrix stack (24 bytes per entry)
-    // offset 952: colour stack depth
-    // offset 956: vertex stack depth
-    void pushColourTransform();
-    void popColourTransform();
-    void appendColourTransform(AptCXForm* cxform);
-    void getVertexMatrix(AptMatrix* outMatrix);
-    void pushVertexMatrix();
-    void popVertexMatrix();
-    void multMatrix(AptMatrix* a, AptMatrix* b, AptMatrix* result);
-    void appendVertexMatrix(AptMatrix* matrix);
-    void expandBoundingRect(AptRect* outRect, AptRect* srcRect);
-};
+// (class defined at top of file)
 
 // 0x802AB1E4
 void AptRenderingContext::pushColourTransform() {
@@ -2031,7 +2065,7 @@ public:
     // offset 8: ObjectDataID
     // offset 24: data pointer
     // offset 28: ref count
-    void* operator new(unsigned int size);
+    void* operator new(std::size_t size);
     void operator delete(void* ptr);
     int LoadFromIndex(unsigned int namespaceID, int index);
     int LoadFromDataID(ObjectDataID& dataID);
@@ -2042,7 +2076,7 @@ public:
 };
 
 // 0x80159DE4
-void* QuickDataBehaviorConstants::operator new(unsigned int size) {
+void* QuickDataBehaviorConstants::operator new(std::size_t size) {
     if (size == 32) {
         // Check fixed pool for available block
         // Return from pool if available

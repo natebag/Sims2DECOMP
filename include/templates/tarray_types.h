@@ -49,7 +49,7 @@ template <typename T, typename Allocator>
 class TArray {
 public:
     T* m_data;
-    int m_size;
+    int m_count;  // also known as m_size
     int m_capacity;
 
     TArray(void);
@@ -65,7 +65,7 @@ public:
     void Deallocate(void);
     void Add(T &item);
     void Insert(T *pos, int index, int count);
-    TArray &operator=(TArray &other);
+    void operator=(TArray &other);
     void DeleteAll(void);
     void FreeAll(void);
     void SafeDeleteAll(void);

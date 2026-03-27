@@ -565,7 +565,7 @@ struct REffectsEmitter {
         if (m_emitterInitData != nullptr) {
             void* textureKey = *(void**)((u8*)m_emitterInitData + 0xC0);
             if (textureKey != nullptr) {
-                m_texture = ERTextureManager_Find(nullptr, (u32)(unsigned int)textureKey, 0, 0);
+                m_texture = ERTextureManager_Find(nullptr, (u32)(uintptr_t)textureKey, 0, 0);
             }
         }
     }

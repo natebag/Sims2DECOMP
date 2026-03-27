@@ -1307,7 +1307,7 @@ public:
 
         m_isActive = true;
         m_state = 0;
-        m_menuStack[0] = (int)&m_rootMenu; // pointer to root menu
+        m_menuStack[0] = (int)(uintptr_t)&m_rootMenu; // pointer to root menu
         m_menuDepths[0] = 0;
         m_targetObject = nullptr;
         m_playerIndex = 0;

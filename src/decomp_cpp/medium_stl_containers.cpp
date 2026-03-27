@@ -35,11 +35,12 @@ public:
     static void Free(void* ptr);
 };
 
-class EResourceManager {
-public:
-    static void* Alloc(unsigned long size, unsigned int align);
-    static void Free(void* ptr);
-};
+// Forward declarations for types used in _Rb_tree specializations
+struct ISimsObjectModel;
+struct CasListener;
+struct FileRec;
+struct NamespaceSelector;
+struct DiagonalNode;
 
 // ============================================================
 // Helper: small-buffer allocator (<=128 bytes uses node_alloc)
@@ -1225,6 +1226,54 @@ void basic_string_ref::delete_ptr(void) {
 // ============================================================
 // Layout: { unsigned int hi; unsigned int lo; } (8 bytes, big-endian 64-bit)
 // Uses compiler helpers __ashldi3 (64-bit shift left) and __ashrdi3 (arithmetic shift right)
+
+struct CTilePt;
+
+class BitArray64 {
+public:
+    unsigned int hi;
+    unsigned int lo;
+    BitArray64() : hi(0), lo(0) {}
+    ~BitArray64() {}
+    void BitArray64_ctor() { hi = 0; lo = 0; }
+    int IsSet(int bit) const;
+    int operator[](int bit) const;
+    void Set(int bit);
+    void Clear(int bit);
+    BitArray64& operator<<=(int shift);
+    BitArray64& operator>>=(int shift);
+    BitArray64& operator&=(BitArray64& other) { hi &= other.hi; lo &= other.lo; return *this; }
+    BitArray64& operator|=(BitArray64& other) { hi |= other.hi; lo |= other.lo; return *this; }
+    BitArray64& operator^=(BitArray64& other) { hi ^= other.hi; lo ^= other.lo; return *this; }
+    int CountBits(void) const;
+};
+
+class EBitArrayProxy {
+public:
+    void* m_array;
+    int m_index;
+    void operator|=(bool val);
+    void operator&=(bool val);
+    void operator^=(bool val);
+};
+
+class BitMatrix64 {
+public:
+    BitArray64 rows[64];
+    BitMatrix64(void);
+    BitMatrix64(BitMatrix64& other);
+    ~BitMatrix64(void);
+    BitMatrix64& operator=(BitMatrix64& other);
+    int IsSet(CTilePt& pt) const;
+    void Set(CTilePt& pt);
+    void Clear(CTilePt& pt);
+    BitMatrix64& operator&=(BitMatrix64& other);
+    BitMatrix64& operator|=(BitMatrix64& other);
+    BitMatrix64& operator^=(BitMatrix64& other);
+    BitMatrix64& operator<<=(int shift);
+    BitMatrix64& operator>>=(int shift);
+    int CountBits(void) const;
+};
 
 // 0x8009B7AC (80 bytes)
 int BitArray64::IsSet(int bit) const {

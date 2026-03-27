@@ -47,7 +47,7 @@ public:
 };
 
 // Operator new/delete
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void operator delete(void*);
 
 // Node allocator
@@ -82,11 +82,17 @@ class ReconBuffer;
 class CTilePt;
 class FTilePt;
 class RouteGoal;
-class RoutingSlot;
+class RoutingSlot {
+public:
+    void RoutingSlot_ctor();
+};
 class TileList;
 class cXObject;
 class cXPerson;
-class TreeSim;
+class TreeSim {
+public:
+    void* _dyncastimpl(int typeId);
+};
 class Family;
 class FamilyInfo;
 class HouseInfo;
@@ -169,8 +175,8 @@ public:
     // 0x80152DDC
     void Construct(cXObject* src, cXObject* tgt, RoutingSlot* slot) {
         char* self = (char*)this;
-        *(u32*)(self + 80) = (u32)src;   // sourceObj
-        *(u32*)(self + 76) = (u32)tgt;   // targetObj
+        *(uptr*)(self + 80) = (uptr)src;   // sourceObj
+        *(uptr*)(self + 76) = (uptr)tgt;   // targetObj
         *(u32*)(self + 132) = 0;
         *(u32*)(self + 128) = 0;         // blockingObj
 
@@ -390,7 +396,7 @@ public:
         // Allocate CameraMotionSystem (92 bytes)
         CameraMotionSystem* ms = (CameraMotionSystem*)::operator new(92);
         // CameraMotionSystem ctor with camera params
-        *(u32*)(self + 1360) = (u32)ms;
+        *(uptr*)(self + 1360) = (uptr)ms;
 
         // Initialize EVec3 fields to zero
         *(u32*)(self + 1192) = (u32)-1;
@@ -578,9 +584,9 @@ public:
     }
 
     // 0x8001E9A4
-    void* operator new(unsigned int size) {
+    void* operator new(std::size_t size) {
         EAHeap* heap = MainHeap();
-        return heap->Malloc(size, 0);
+        return heap->Malloc((unsigned int)size, 0);
     }
 };
 

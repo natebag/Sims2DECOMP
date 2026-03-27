@@ -26,11 +26,16 @@ int stricmp(const char* a, const char* b) {
 }
 float AtoF(const char* s) { return (float)atof(s); }
 int AtoI(const char* s) { return atoi(s); }
+int AtoI(char* s) { return atoi(s); }
 // AtoI with no args (linker shows "AtoI" without signature — function pointer?)
 // Provide via alias:
 static int AtoI_noarg(void) { return 0; }
 int (*AtoI_ptr)(void) = AtoI_noarg;
 
+// C++ linkage versions
+int Sprintf(char* buf, char* fmt, ...) {
+    va_list a; va_start(a, fmt); int r = vsprintf(buf, fmt, a); va_end(a); return r;
+}
 int Sprintf(char* buf, const char* fmt, ...) {
     va_list a; va_start(a, fmt);
     int r = vsprintf(buf, fmt, a);
@@ -44,17 +49,39 @@ extern "C" {
 void EORDbgTrace(const char* fmt, ...) {
     va_list a; va_start(a, fmt); vprintf(fmt, a); va_end(a);
 }
-void ProfileHook(void) {}
-void localConvertToWide(unsigned short* d, const char* s) {
-    if (!d || !s) return;
-    while (*s) *d++ = (unsigned short)(unsigned char)*s++;
-    *d = 0;
-}
+// ProfileHook defined below (C++ linkage)
 void* __builtin_vec_new(unsigned int n) { return malloc(n); }
 void __builtin_vec_delete(void* p) { free(p); }
 void* __builtin_new(unsigned int n) { return malloc(n); }
 void __builtin_delete(void* p) { free(p); }
 }
+
+// C++ linkage wrappers — some decomp files declare these without extern "C"
+// so the linker needs C++-mangled versions
+void localConvertToWide(unsigned short* d, const char* s) {
+    if (!d || !s) return;
+    while (*s) *d++ = (unsigned short)(unsigned char)*s++;
+    *d = 0;
+}
+
+int strcmp(const char* a, const char* b) { return ::strcmp(a, b); }
+
+// More C++ linkage stubs for symbols declared without extern "C" in decomp files
+void* small_alloc(unsigned int n) { return malloc(n); }
+void small_free(void* p) { free(p); }
+void* EAHeap_Alloc(int n) { return malloc(n); }
+void* EAHeap_MallocAligned(int n, int align) { return malloc(n); }
+void EGraphics_SetCameraBloom(float, float, float, float) {}
+void EGraphics_SetMotionBlur(float, float, float, float) {}
+void EMat4_Identity(void* m) { if (m) memset(m, 0, 64); }
+void ProfileHook() {}
+
+template<typename T> struct AllocPoolManager {
+    void* AttemptPoolAlloc(unsigned int, unsigned int) { return malloc(64); }
+    void* FindPoolForBlock(void*) { return nullptr; }
+};
+class ProtectedAllocPool;
+template struct AllocPoolManager<ProtectedAllocPool>;
 
 void* operator_new_impl(unsigned int n) { return malloc(n); }
 void operator_delete_impl(void* p) { free(p); }
@@ -69,8 +96,7 @@ void* operator_delete_wrapper = nullptr;
 void* __node_alloc_M_allocate(unsigned int n) { return malloc(n); }
 void* __node_alloc_M_deallocate(void* p, unsigned int) { free(p); return nullptr; }
 void node_alloc_deallocate(void* p, unsigned int) { free(p); }
-void* small_alloc(unsigned int n) { return malloc(n); }
-void small_free(void* p) { free(p); }
+// small_alloc/small_free defined above (C++ linkage)
 
 // ============================================================================
 // EAHeap stubs — two overload sets (void* and EAHeap*)
@@ -79,7 +105,7 @@ struct EAHeap { void MallocAligned(unsigned int, unsigned int, int, int); };
 void EAHeap::MallocAligned(unsigned int, unsigned int, int, int) {}
 
 void* EAHeap_GetCurrentHeap() { return nullptr; }
-void* EAHeap_Alloc(int n) { return malloc(n); }  // audio_save_camera.cpp signature
+// EAHeap_Alloc(int) defined above (C++ linkage)
 void* EAHeap_Alloc(void*, unsigned int n, int) { return malloc(n); }
 void* EAHeap_AllocAlign(void*, unsigned int n, unsigned int, int, int) { return malloc(n); }
 void  EAHeap_Free(void*, void* p) { free(p); }
@@ -189,11 +215,11 @@ void EBitArray_Set(void*, int, int) {}
 int CTilePt_GetX(void*) { return 0; }
 int CTilePt_GetY(void*) { return 0; }
 void EGraphics_SetCameraBloom(void) {}
-void EGraphics_SetCameraBloom(float, float, float, float) {}  // audio_save_camera.cpp
+// EGraphics_SetCameraBloom(float x4) defined above (C++ linkage)
 void EGraphics_SetMotionBlur(void) {}
-void EGraphics_SetMotionBlur(float, float, float, float) {}  // audio_save_camera.cpp
+// EGraphics_SetMotionBlur(float x4) defined above (C++ linkage)
 void EMat4_Identity(void) {}
-void EMat4_Identity(void* mat) { memset(mat, 0, 64); }  // audio_save_camera.cpp
+// EMat4_Identity(void*) defined above (C++ linkage)
 
 struct ENgcRenderStateCache { char data[64]; };
 void ENgcRenderStateCache_Restore(ENgcRenderStateCache*) {}
@@ -735,7 +761,7 @@ void EEngine::ShutdownThreads(bool) {}
 
 // --- EFileSystem_stub ---
 // EFileSystem already defined in headers — just provide the implementation
-// int EFileSystem::Init(int) { return 0; }
+int EFileSystem::Init(int) { return 0; }
 
 // --- EFixedPool ---
 void EFixedPool::Init(int, int, void*) {}
@@ -1044,5 +1070,7 @@ namespace {
 }
 
 // CareersImpl::operator delete — already defined earlier in this file at line 339
+
+// extern "C" versions are in c_linkage_stubs.c
 
 #endif // SIMS2_PLATFORM_PC

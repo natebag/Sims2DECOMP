@@ -677,7 +677,7 @@ public:
         if (relA < relB) return false;
 
         // Tie-break by pointer
-        return (unsigned int)a < (unsigned int)b;
+        return (uintptr_t)a < (uintptr_t)b;
     }
 
     // Forward declarations for Neighbor methods

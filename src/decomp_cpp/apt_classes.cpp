@@ -61,10 +61,6 @@ typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
 typedef float f32;
-typedef unsigned int uintptr_t;
-
-// Placement new operator (devkitPPC has no <new>)
-inline void* operator new(unsigned int, void* p) { return p; }
 
 
 // =============================================================================

@@ -37,7 +37,7 @@ public:
 };
 
 void  operator delete(void*);
-void* operator new(unsigned int);
+void* operator new(std::size_t);
 
 // Forward declarations
 class AptWord;
@@ -1046,14 +1046,14 @@ void* EHashTable::InsertNew(unsigned int bucket, unsigned int key, unsigned int 
 
     // Link into hash bucket
     int** table = (int**)*(void**)((char*)this + 8);
-    n[2] = (int)table[bucket]; // hashNext
+    n[2] = (int)(uintptr_t)table[bucket]; // hashNext
     table[bucket] = n;
 
     // Link into doubly-linked list
     int* tail = (int*)*(void**)((char*)this + 4);
-    n[0] = (int)tail; // prev
+    n[0] = (int)(uintptr_t)tail; // prev
     if (tail) {
-        tail[1] = (int)node; // tail->next = node
+        tail[1] = (int)(uintptr_t)node; // tail->next = node
     } else {
         *(void**)((char*)this + 0) = node; // m_head = node
     }

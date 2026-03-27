@@ -113,11 +113,13 @@ extern void  EString_Deallocate(void* str, void* data);
 extern void  ETypeInfo_Register(void* typeInfo, void* newFn, void* constructFn,
                                 void* destructFn, u16 key, const char* name, void* parent);
 
-extern void* memcpy(void* dst, const void* src, u32 size);
-extern void* memset(void* dst, int val, u32 size);
-extern int   strcmp(const char* a, const char* b);
-extern char* strstr(const char* hay, const char* needle);
-extern u32   strlen(const char* s);
+extern "C" {
+    extern void* memcpy(void* dst, const void* src, u32 size);
+    extern void* memset(void* dst, int val, u32 size);
+    extern int   strcmp(const char* a, const char* b);
+    extern char* strstr(const char* hay, const char* needle);
+    extern u32   strlen(const char* s);
+}
 
 // Vtable pointers (link-time resolved)
 extern void* EResource_vtable;
@@ -727,7 +729,7 @@ void ERTexture_Attach(void* self, void* tex) {
     // ERTexture_Deallocate(self);
 
     // Store new texture pointer
-    ERTexture_u32(self, 0x014) = (u32)tex;
+    ERTexture_u32(self, 0x014) = (u32)(uintptr_t)tex;
 }
 
 // ---------- ERTexture::Deallocate ----------
@@ -915,7 +917,7 @@ bool ERTexture_IsSafeToDelete(void* self) {
         void* (*getBound)(void*, int) = (void*(*)(void*, int))*(u32*)((u8*)sysVtbl + 28);
         void* boundTex = getBound((u8*)g_pShaderSystem + adj, slot);
 
-        if ((u32)boundTex == texPtr) {
+        if ((u32)(uintptr_t)boundTex == texPtr) {
             return false;  // Currently in use by GPU
         }
     }
@@ -1221,7 +1223,7 @@ void NghResFile_Ctor(void* self) {
 
     // Allocate registry node (28 bytes)
     void* reg = EAHeap_Malloc(MainHeap(), 28, 0);
-    Ngh_u32(self, 0x190) = (u32)reg;
+    Ngh_u32(self, 0x190) = (u32)(uintptr_t)reg;
     if (reg != NULL) {
         memset(reg, 0, 28);
     }
@@ -1254,7 +1256,7 @@ void NghResFile_Dtor(void* self, int hiddenParam) {
 void NghResFile_init(void* self) {
     // Allocate section type lookup table (4 entries x 4 bytes)
     void* sectionTable = EAHeap_Malloc(MainHeap(), 16, 0);
-    Ngh_u32(self, 0x138) = (u32)sectionTable;
+    Ngh_u32(self, 0x138) = (u32)(uintptr_t)sectionTable;
     if (sectionTable != NULL) {
         memset(sectionTable, 0, 16);
     }
@@ -1263,7 +1265,7 @@ void NghResFile_init(void* self) {
     for (int i = 0; i < 16; i++) {
         void* sectionData = EAHeap_Malloc(MainHeap(), 24, 0);
         // Store at this+0x13C + i*4
-        *(u32*)((u8*)self + 0x13C + i * 4) = (u32)sectionData;
+        *(u32*)((u8*)self + 0x13C + i * 4) = (u32)(uintptr_t)sectionData;
         if (sectionData != NULL) {
             memset(sectionData, 0, 24);
         }
@@ -1271,7 +1273,7 @@ void NghResFile_init(void* self) {
 
     // Allocate character data table (2 entries x 4 bytes)
     void* charData = EAHeap_Malloc(MainHeap(), 8, 0);
-    Ngh_u32(self, 0x17C) = (u32)charData;
+    Ngh_u32(self, 0x17C) = (u32)(uintptr_t)charData;
     if (charData != NULL) {
         memset(charData, 0, 8);
     }
@@ -1485,7 +1487,7 @@ void ChainResFile_AddFile(void* self, void* file) {
         u32* slotFile = (u32*)(slot - 4);
         if (*slotFile == 0) {
             // Empty slot found -- store file
-            *slotFile = (u32)file;
+            *slotFile = (u32)(uintptr_t)file;
             *(u32*)(slot + 16) = 1;  // mark active
             Chain_u32(self, 0x00C) = Chain_u32(self, 0x00C) + 1;
             return;
@@ -1501,7 +1503,7 @@ void ChainResFile_RemoveFile(void* self, void* file) {
     u8* slot = (u8*)self + 0x014;
     for (int i = 0; i < 8; i++) {
         u32* slotFile = (u32*)(slot - 4);
-        if (*slotFile == (u32)file) {
+        if (*slotFile == (u32)(uintptr_t)file) {
             *slotFile = 0;
             *(u32*)(slot + 16) = 0;  // mark inactive
             Chain_u32(self, 0x00C) = Chain_u32(self, 0x00C) - 1;
@@ -1837,7 +1839,7 @@ void EResourceManager_Dtor(void* self) {
 // ---------- EResourceManager::Init ----------
 // Address: 0x804FA720, Size: 920 bytes
 void EResourceManager_Init(void* self, char* name) {
-    ResMgr_u32(self, 0x040) = (u32)name;  // Store category name
+    ResMgr_u32(self, 0x040) = (u32)(uintptr_t)name;  // Store category name
 
     // Build archive file path: name + ".arc"
     // EResourceManager::CalcPath();
@@ -2136,7 +2138,7 @@ void EResourceLoaderImpl_AddManager(void* self, void* manager) {
     // Add manager to array
     u32 arrayPtr = ResLoader_u32(self, 0x040);
     if (arrayPtr != 0) {
-        ((u32*)arrayPtr)[count] = (u32)manager;
+        ((u32*)arrayPtr)[count] = (u32)(uintptr_t)manager;
     }
     ResLoader_u32(self, 0x348) = count + 1;
 
@@ -2154,7 +2156,7 @@ void EResourceLoaderImpl_RemoveManager(void* self, void* manager) {
 
     // Find and remove manager from array
     for (u32 i = 0; i < count; i++) {
-        if (((u32*)arrayPtr)[i] == (u32)manager) {
+        if (((u32*)arrayPtr)[i] == (u32)(uintptr_t)manager) {
             // Shift remaining entries down
             for (u32 j = i; j < count - 1; j++) {
                 ((u32*)arrayPtr)[j] = ((u32*)arrayPtr)[j + 1];

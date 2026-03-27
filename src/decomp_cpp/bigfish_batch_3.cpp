@@ -67,9 +67,9 @@ public:
 };
 
 // Operator new/delete
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void operator delete(void*);
-extern void* __builtin_vec_new(unsigned int);
+extern void* __builtin_vec_new(std::size_t);
 extern void __builtin_vec_delete(void*);
 
 // ============================================================================
@@ -89,7 +89,7 @@ template <typename T> class TNodeList;
 template <typename T> class allocator;
 template <typename T0, typename T1> class vector;
 template <typename T0, typename T1> class pair;
-template <typename T0, typename T1> class byte_key_map;
+template <int N, typename T0, typename T1> class byte_key_map;
 
 class NLIteratorPtrType;
 class EString;
@@ -234,6 +234,23 @@ public:
     BString2();
     ~BString2();
     BString2& operator=(unsigned short*);
+};
+
+// ============================================================================
+// Base class definitions needed before ERLevel and ObjectModuleImpl
+// ============================================================================
+class EResource {
+public:
+    EResource();
+    ~EResource();
+    void DelRef();
+    void SetName(char*);
+};
+
+class Commander {
+public:
+    Commander();
+    ~Commander();
 };
 
 // ============================================================================
@@ -2133,22 +2150,6 @@ public:
     void GetOnMsgInvBldDisplayInfo(char* msg);
 };
 
-// ============================================================================
-// Helper stubs for base classes referenced by ERLevel/ObjectModuleImpl
-// ============================================================================
-class EResource {
-public:
-    EResource();
-    ~EResource();
-    void DelRef();
-    void SetName(char*);
-};
-
-class Commander {
-public:
-    Commander();
-    ~Commander();
-};
 
 class ActionMenu {
 public:

@@ -129,8 +129,21 @@ typedef void (*EmitterUpdateCB)(pemitter*, PVector4*, PVector4*);
 
 // Float interpolation helpers
 namespace {
-    float InterpolateLinear_float(float current, float target, float startTime, float endTime, float t);
-    void InterpolateLinear_EVec3(EVec3* out, EVec3* a, EVec3* b, float startTime, float endTime, float t);
+    float InterpolateLinear_float(float start, float end, float startTime, float endTime, float t) {
+        if (endTime <= startTime) return end;
+        float pct = (t - startTime) / (endTime - startTime);
+        if (pct < 0.0f) pct = 0.0f;
+        if (pct > 1.0f) pct = 1.0f;
+        return start + (end - start) * pct;
+    }
+    void InterpolateLinear_EVec3(EVec3* out, EVec3* a, EVec3* b, float startTime, float endTime, float t) {
+        float pct = (endTime <= startTime) ? 1.0f : (t - startTime) / (endTime - startTime);
+        if (pct < 0.0f) pct = 0.0f;
+        if (pct > 1.0f) pct = 1.0f;
+        out->x = a->x + (b->x - a->x) * pct;
+        out->y = a->y + (b->y - a->y) * pct;
+        out->z = a->z + (b->z - a->z) * pct;
+    }
 }
 
 // ============================================================================
@@ -728,7 +741,7 @@ void Emitter::Draw(ELevelDrawData& drawData) {
     if (!pEmitter) return;
 
     int* thisI = (int*)this;
-    thisI[44] = (int)this; // offset 176 = this
+    thisI[44] = (int)(uintptr_t)this; // offset 176 = this
 
     int flags = *(int*)((char*)pEmitter + 80);
     if (flags & 0x02200000) {
@@ -832,7 +845,7 @@ void EmitterSpr3d::Create(char* name, float* matrix, pemitterinfo* info) {
 
 // 0x80239C78
 void EmitterSpr3d::CreateCameraFollowXYZ(char* name, float* matrix, pemitterinfo* info) {
-    int result = Create(name, matrix, info);
+    Create(name, matrix, info);
     // NOTE: Create returns via r3, check for -1
     Emitter* self = (Emitter*)this;
     // if result == -1, return
@@ -854,7 +867,7 @@ void EmitterSpr3d::CreateCameraFollowXYZ(char* name, float* matrix, pemitterinfo
 
 // 0x80239D40
 void EmitterSpr3d::CreateCameraFollowXY(char* name, float* matrix, pemitterinfo* info) {
-    int result = Create(name, matrix, info);
+    Create(name, matrix, info);
     Emitter* self = (Emitter*)this;
     // Same structure as CreateCameraFollowXYZ but with XY-only callbacks
     void* pData = self->Get();
@@ -938,7 +951,7 @@ int EParticleEffect::UpdateParticleEffectLoad() {
         if (iThis[26]) return 1; // already loaded
 
         EResource* res = EResourceManager::GetRef(iThis[24]);
-        iThis[26] = (int)res; // offset 104
+        iThis[26] = (int)(uintptr_t)res; // offset 104
         if (!res) return 0;
 
         // Get pemitterinfo from resource
@@ -961,7 +974,7 @@ int EParticleEffect::UpdateParticleEffectLoad() {
             emitter = new Emitter();
             // Create as EmitterSpr3d
         }
-        iThis[22] = (int)emitter; // offset 88
+        iThis[22] = (int)(uintptr_t)emitter; // offset 88
 
         // Register and set callbacks
         return 1;
@@ -970,7 +983,7 @@ int EParticleEffect::UpdateParticleEffectLoad() {
         if (iThis[27]) return 1; // offset 108, already loaded
 
         EResource* res = EResourceManager::GetRef(iThis[24]);
-        iThis[27] = (int)res;
+        iThis[27] = (int)(uintptr_t)res;
         if (!res) return 0;
 
         // Effects::EffectsManager::CreateEffect
@@ -1104,7 +1117,7 @@ int EParticleObj::CreateEffects(EMat4& mat, float scale, ObjAnimDef* animDef) {
     if (!resId) return 0;
 
     EResource* res = EResourceManager::AddRef(resId, 0, 0);
-    iThis[3] = (int)res; // offset 12
+    iThis[3] = (int)(uintptr_t)res; // offset 12
 
     if (!res) return 0;
 
@@ -1207,7 +1220,7 @@ EBoneParticle::EBoneParticle(cXPerson* person, AnimParticleData* data, bool loop
     *(short*)((char*)this + 64) = 0;
 
     // EMat4::Id()
-    iThis[20] = (int)person;  // offset 80
+    iThis[20] = (int)(uintptr_t)person;  // offset 80
     iThis[21] = *(int*)data;  // offset 84 = animId
     iThis[26] = 0; // offset 104
     iThis[27] = 0; // offset 108
@@ -1234,14 +1247,14 @@ int EBoneParticle::UpdateParticleLoad() {
         if (iThis[28]) return 1; // offset 112 already loaded
 
         EResource* res = EResourceManager::GetRef(iThis[24]); // offset 96
-        iThis[28] = (int)res;
+        iThis[28] = (int)(uintptr_t)res;
         if (!res) return 0;
 
         void* pInfo = *(void**)((char*)res + 20);
 
         // Create EmitterSpr3d
         Emitter* emitter = new Emitter();
-        iThis[26] = (int)emitter; // offset 104
+        iThis[26] = (int)(uintptr_t)emitter; // offset 104
 
         // EmitterSpr3d::Create
         // If creation failed, destroy emitter, return 1
@@ -1251,7 +1264,7 @@ int EBoneParticle::UpdateParticleLoad() {
         if (iThis[29]) return 1; // offset 116
 
         EResource* res = EResourceManager::GetRef(iThis[24]);
-        iThis[29] = (int)res;
+        iThis[29] = (int)(uintptr_t)res;
         if (!res) return 0;
 
         // Effects::EffectsManager::CreateEffect
@@ -1402,7 +1415,7 @@ void REffectsEmitter::AddRefSubResources() {
     if (!subResId) return;
 
     EResource* subRes = EResourceManager::AddRef(subResId, 0, 0);
-    iThis[7] = (int)subRes;
+    iThis[7] = (int)(uintptr_t)subRes;
 }
 
 // 0x8036A964
@@ -1418,7 +1431,7 @@ int REffectsEmitter::TryIncrementSubResources() {
     if (!EResourceManager::TryIncrementResource(subResId, &result)) {
         return 0;
     }
-    iThis[7] = (int)result;
+    iThis[7] = (int)(uintptr_t)result;
     return 1;
 }
 
@@ -1435,8 +1448,8 @@ void REffectsEmitter::Load(EFile* file) {
     // Allocate aligned memory for data
     void* data = MainHeap()->MallocAligned(header.m_size, 64, 0, 0);
     int* iThis = (int*)this;
-    iThis[6] = (int)data; // offset 24
-    iThis[5] = (int)data + 144; // offset 20 = data + 144
+    iThis[6] = (int)(uintptr_t)data; // offset 24
+    iThis[5] = (int)((uintptr_t)data + 144); // offset 20 = data + 144
 
     // Read data from file
     // Call virtual post-load via vtable
@@ -1660,7 +1673,7 @@ void RParticle::AddRefSubResources() {
         // Single texture: AddRef for model resource
         unsigned int resId = *(unsigned int*)((char*)data + 364);
         EResource* res = EResourceManager::AddRef(resId, 0, 0);
-        iThis[7] = (int)res; // offset 28
+        iThis[7] = (int)(uintptr_t)res; // offset 28
         *(unsigned int*)((char*)data + 364) = (unsigned int)(unsigned long)res;
     } else if (flags & 0x02000000) {
         // Multiple textures: AddRef for each
@@ -1668,14 +1681,14 @@ void RParticle::AddRefSubResources() {
         for (int i = 0; i < count; i++) {
             unsigned int resId = *(unsigned int*)((char*)data + 364 + i * 132);
             EResource* res = EResourceManager::AddRef(resId, 0, 0);
-            iThis[7 + i] = (int)res;
+            iThis[7 + i] = (int)(uintptr_t)res;
             *(unsigned int*)((char*)data + 364 + i * 132) = (unsigned int)(unsigned long)res;
         }
     } else {
         // Sprite texture
         unsigned int resId = *(unsigned int*)((char*)data + 364);
         EResource* res = EResourceManager::AddRef(resId, 0, 0);
-        iThis[7] = (int)res;
+        iThis[7] = (int)(uintptr_t)res;
         *(unsigned int*)((char*)data + 364) = (unsigned int)(unsigned long)res;
     }
 }
@@ -1692,7 +1705,7 @@ int RParticle::TryIncrementSubResources() {
         unsigned int resId = *(unsigned int*)((char*)data + 364);
         EResource* res = 0;
         if (!EResourceManager::TryIncrementResource(resId, &res)) return 0;
-        iThis[7] = (int)res;
+        iThis[7] = (int)(uintptr_t)res;
         *(unsigned int*)((char*)data + 364) = (unsigned int)(unsigned long)res;
     } else if (flags & 0x02000000) {
         int count = iThis[6]; // offset 24
@@ -1707,7 +1720,7 @@ int RParticle::TryIncrementSubResources() {
                 }
                 return 0;
             }
-            iThis[7 + i] = (int)res;
+            iThis[7 + i] = (int)(uintptr_t)res;
         }
         // Copy back to data
         for (int i = 0; i < count; i++) {
@@ -1717,7 +1730,7 @@ int RParticle::TryIncrementSubResources() {
         unsigned int resId = *(unsigned int*)((char*)data + 364);
         EResource* res = 0;
         if (!EResourceManager::TryIncrementResource(resId, &res)) return 0;
-        iThis[7] = (int)res;
+        iThis[7] = (int)(uintptr_t)res;
         *(unsigned int*)((char*)data + 364) = (unsigned int)(unsigned long)res;
     }
 
@@ -1743,7 +1756,7 @@ void RParticle::Load(EFile* file, unsigned int magic) {
     // Allocate 1420 bytes aligned to 16
     void* data = EResourceManager::Alloc(1420, 16);
     int* iThis = (int*)this;
-    iThis[5] = (int)data; // offset 20
+    iThis[5] = (int)(uintptr_t)data; // offset 20
     memset(data, 0, 1420);
 
     EDataHeader header;
@@ -1827,7 +1840,7 @@ public:
 MotiveEffects::MotiveEffects(cXPerson* person) {
     int* iThis = (int*)this;
     iThis[1] = 9; // 9 motives
-    iThis[0] = (int)((char*)this + 8); // curves array
+    iThis[0] = (int)(uintptr_t)((char*)this + 8); // curves array
 
     // Initialize 9 PiecewiseFn objects
     char* curves = (char*)this + 8;
@@ -1837,7 +1850,7 @@ MotiveEffects::MotiveEffects(cXPerson* person) {
         *(int*)((char*)fn + 16) = -1; // motive index = -1
     }
 
-    iThis[47] = (int)person; // offset 188
+    iThis[47] = (int)(uintptr_t)person; // offset 188
 
     // Get personality data from person
     // Set motive indices and initial curve points
@@ -1900,7 +1913,7 @@ public:
 FadeSquare::FadeSquare() {
     // AddRefAsync for the fade model resource
     int* iThis = (int*)this;
-    iThis[3] = (int)EResourceManager::AddRefAsync(0x969A60EA); // model hash
+    EResourceManager::AddRefAsync(0x969A60EA); // model hash (async, no return value)
     StopDraw();
 }
 
@@ -1920,7 +1933,7 @@ void FadeSquare::Update(float dt) {
     float* fThis = (float*)this;
 
     if (!iThis[3]) { // offset 12 - model not loaded
-        iThis[3] = (int)EResourceManager::GetRef(0x969A60EA);
+        iThis[3] = (int)(uintptr_t)EResourceManager::GetRef(0x969A60EA);
     }
 
     if (iThis[5]) { // offset 20 - isDrawing
@@ -2250,7 +2263,7 @@ int RainEffect::UpdateParticleRainSplashLoad() {
 
     // GetRef for splash resource
     EResource* res = EResourceManager::GetRef(0); // lookup by rain type
-    iThis[3] = (int)res;
+    iThis[3] = (int)(uintptr_t)res;
     if (!res) return 0;
 
     // Create EMat4::Id for splash position
@@ -2268,7 +2281,7 @@ int RainEffect::UpdateParticleRainLoad() {
 
     // GetRef for rain resource
     EResource* res = EResourceManager::GetRef(0); // lookup by rain type
-    iThis[0] = (int)res;
+    iThis[0] = (int)(uintptr_t)res;
     if (!res) return 0;
 
     // Create EmitterSpr3d with camera follow XYZ

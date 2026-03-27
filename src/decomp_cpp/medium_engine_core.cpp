@@ -14,7 +14,7 @@ extern "C" {
     char* strcpy(char*, const char*);
     char* strcat(char*, const char*);
     unsigned int strlen(const char*);
-    int Sprintf(char*, char*, ...);
+    int Sprintf(char*, const char*, ...);
     int Vsprintf(char*, char*, void*);
     float acosf(float);
     float cosf(float);
@@ -41,15 +41,54 @@ extern "C" {
     void OSSetAlarm(void*, int, unsigned int, void*);
 }
 
-class EAHeap;
-class ENodeList;
+class EAHeap {
+public:
+    void* Malloc(unsigned int size, int flags);
+    void* MallocAligned(unsigned int size, unsigned int align, int flags = 0, int extra = 0);
+    void Free(void* ptr);
+    void Compact();
+    void SetNextCheckPoint();
+};
+
+class NLIteratorPtrType;
+class ENodeList {
+public:
+    void Remove(NLIteratorPtrType* node);
+    void AddHead(unsigned int data);
+    void AddHead(ENodeList& other);
+    void AddTail(unsigned int data);
+    void AddTail(ENodeList& other);
+    void* GetHead(void);
+    void* GetTail(void);
+    void* GetNext(void* node);
+    void* GetPrev(void* node);
+    bool IsEmpty(void) const;
+    void IsValidList(void) const;
+    void MoveContents(ENodeList& other);
+    void RemoveAll(void);
+    void FreeAll(void);
+    int GetCount(void) const;
+    void* FindNode(unsigned int data);
+    void InsertBefore(NLIteratorPtrType* pos, unsigned int data);
+    void InsertAfter(NLIteratorPtrType* pos, unsigned int data);
+};
 class ERedBlackTree;
 class EResource;
 class EInstance;
 class EStream;
 class EVec3;
-class EBound3;
-class EBoundSphere;
+struct EBound3 {
+    float m_min[3];
+    float m_max[3];
+    void Compute(void* verts, int count);
+    void CalcBoundSphere(void* outSphere);
+};
+
+struct EBoundSphere {
+    float m_center[3];
+    float m_radius;
+    void Merge(EBoundSphere& a, EBoundSphere& b);
+};
 class EStorable;
 class ETypeInfo;
 class EMat4;
@@ -58,7 +97,17 @@ class ERC;
 class ESyncObject;
 class ESemaphore;
 class EController;
-class EDebugMenuItem;
+class EDebugMenuItem {
+public:
+    void* m_vtable;
+    EDebugMenuItem* m_next;
+    EDebugMenuItem* m_prev;
+    EDebugMenuItem();
+    virtual void GetDescription(char* buf, int maxLen);
+    virtual void GetValue(char* buf);
+    virtual void ButtonPress(int button);
+    virtual void ButtonPress(int button, float analog);
+};
 class EEngine;
 class EGlobal;
 class EGlobalManagerClient;
@@ -636,7 +685,7 @@ public:
     EDL2(int blockSize);
     ~EDL2(void);
     void Validate(void);
-    static void* operator new(unsigned int size);
+    static void* operator new(std::size_t size);
     static void operator delete(void* ptr);
     float GetAverageStripLength(void);
 };
@@ -1363,7 +1412,7 @@ int EMsgQueue2::Create(int capacity) {
     m_allocated = 1;
     // Create send semaphore (capacity, capacity)
     // Create receive semaphore (capacity, 0)
-    if (m_buffer && /* send ok && recv ok */) {
+    if (m_buffer /* && send ok && recv ok */) {
         m_capacity = capacity + 1;
         m_sendIdx = 0;
         m_recvIdx = 0;

@@ -40,9 +40,9 @@ public:
 };
 
 // Operator new/delete
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void operator delete(void*);
-extern void* __builtin_vec_new(unsigned int);
+extern void* __builtin_vec_new(std::size_t);
 extern void __builtin_vec_delete(void*);
 
 // ============================================================================
@@ -54,7 +54,7 @@ class EDL;
 class EDLEntry;
 class EGEVert;
 class EMat4;
-class EVec2;
+struct EVec2 {};
 class EVec3;
 class EVec4;
 class ERC;
@@ -63,7 +63,7 @@ class EBound3;
 class EResource;
 class EResourceManager;
 class EGraphics;
-class ERenderer;
+class ERenderer {};
 class ENodeList;
 class ERedBlackTree;
 class EAnimController;
@@ -105,7 +105,7 @@ class RoutingSlot;
 class TileList;
 class XRoute;
 class ISimInstance;
-class FTilePt;
+struct FTilePt {};
 class FTileRect;
 class PlacementSpec;
 class HierarchySite;
@@ -126,7 +126,7 @@ class CasSimDescriptionS2C;
 class REffectsAttachment;
 class RumbleDataElement;
 class CameraBloomDataElement;
-class CTilePt;
+struct CTilePt {};
 class AwarenessManager;
 
 // APT/UI
@@ -199,6 +199,83 @@ extern void VIWaitForRetrace();
 // ENgcRenderer — NGC graphics renderer (73 functions, 58,472 bytes)
 // Handles GX display list creation, rendering commands, frame management
 // ============================================================================
+
+class ENgcRenderer : public ERenderer {
+public:
+    ENgcRenderer(void);
+    void CreateGXDisplayList(EDL*, _GXPrimitive, int, unsigned short*, int, float*, float*, unsigned char*, signed char*, unsigned int&, bool);
+    void CreateGXDisplayList(EDL*, _GXPrimitive, int, unsigned short*, int, short*, short*, unsigned char*, signed char*, unsigned int&, bool);
+    void CreateGXDisplayList(EDL*, _GXPrimitive, int, float*, float*, unsigned char*, signed char*, unsigned int&, bool);
+    void CreateGXDisplayList(EDL*, _GXPrimitive, int, short*, short*, unsigned char*, signed char*, unsigned int&, bool, bool);
+    void SetClearColor(EVec3& color, bool flag);
+    void CycleToNextFrameBuffer(void);
+    void VIPreRetraceCallback(unsigned long);
+    void InitGX(_GXRenderModeObj*);
+    void InitGXVertexFormats(void);
+    void InitVideo(int& width, int& height);
+    void InitData(void);
+    void ClearRect(EVec4& rect, EVec4& color);
+    void BeginFrame(ENgcRendCommand*);
+    void DisplayList(ENgcRendCommand* cmd);
+    void EndFrame(ENgcRendCommand*);
+    void Swap(ENgcRendCommand*);
+    void PushAndClearViewport(void);
+    void UpdateLightingEquation(void);
+    void SetupTEVStagePassColor(_GXTevStageID stage);
+    void Setup1TEVStageTexture(int, int&, int, int&);
+    void Setup2TEVStageTexture(int, int&, int, int&);
+    void UpdateTEVStages(void);
+    void Execute(EDLEntry*);
+    void TriStrip(EGEVert* verts, int count);
+    void WeightedBlend(_GXPrimitive, int, float*, signed char*, float*, unsigned char*, unsigned char*, bool);
+    void TriStripPacked(EDLEntry* entry);
+    void TriStripPacked(int, float*, float*, unsigned char*, signed char*, unsigned char*, unsigned char*, bool);
+    void TriStripPackedInt(EDLEntry*);
+    void LineList(EGEVert* verts, int count);
+    void Viewport(EDLEntry*);
+    void Scissor(EDLEntry*);
+    void ModelMatrices(EMat4* matrices, int count);
+    void ModelMatrixIndex(int slot, int index);
+    void ModelMatrixIndices(EDLEntry*);
+    void ViewMatrix(EDLEntry*);
+    void ProjectionMatrix(EDLEntry*);
+    void WindowMatrix(EDLEntry*);
+    void SetTexture(ENgcTexture* tex, int stage);
+    void EnableGeometryModes(EDLEntry*);
+    void DisableGeometryModes(EDLEntry*);
+    void SetGeometryModes(EDLEntry*);
+    void Lights(EDLEntry*);
+    void Rect(EDLEntry*);
+    void DirectRect(EDLEntry*);
+    void Material(EDLEntry*);
+    void ZTest(EDLEntry*);
+    void AlphaTest(EDLEntry*);
+    void RenderSurface(EDLEntry*);
+    void SpriteListPacked(int, float*, float*, unsigned char*, signed char*, unsigned char*);
+    void QuadList(EDLEntry* entry);
+    void QuadList(int, float*, float*, unsigned char*, signed char*, unsigned char*, unsigned char*, bool);
+    void MovieFrame(EDLEntry*);
+    void RectListRot(EDLEntry*);
+    void RectList(EDLEntry*);
+    void Stencil(EDLEntry*);
+    void NgcGXDisplayListInt(EDLEntry*);
+    void NgcGXDisplayList(EDLEntry*);
+    void NgcTriListInt(EDLEntry*);
+    void NgcTriList(EDLEntry*);
+    void NgcScreenTriList(EDLEntry*);
+    void SetShader(ENgcShader* shader, unsigned int flags);
+    void ScrambleRect(EDLEntry* entry);
+    void ScrambleRect(EVec2& min, EVec2& max, float intensity);
+    void WeightedBlendInt(_GXPrimitive, int, short*, signed char*, short*, unsigned char*, unsigned char*, bool);
+    void SimpleSkinning(_GXPrimitive, int, short*, signed char*, short*, unsigned char*, unsigned char*, bool);
+    void ScaleTexture(_GXTexObj*, void*, int, float);
+    void DrawTextureToFullViewportWithJitter(float jitterX, float jitterY);
+    void DrawFrameWithBloomAndMotionBlur(float bloomAmount, float blurAmount);
+    void ProcessThumbnail(void* buffer, int size, float x, float y);
+    void GetCurrentRenderMode(void);
+    void ParticleListBegin(unsigned int count, unsigned int type);
+    void ParticleListEnd(unsigned int flags);
+};
 
 // 0x8033B50C (480 bytes)
 // Constructor: calls ERenderer base ctor, initializes vtable, frame buffers,
@@ -702,6 +779,168 @@ void ENgcRenderer::ParticleListEnd(unsigned int flags) {
 // SAnimator2 — Sim animation controller (158 functions, 66,260 bytes)
 // Manages walk/run/idle/skill animations, particle effects, props, movement
 // ============================================================================
+
+class SAnimator2 {
+public:
+    SAnimator2(void);
+    ~SAnimator2(void);
+    void Initialize(cXPerson*);
+    void InitStaticAnimationElements(void);
+    void TryChangeSuit(void);
+    void checkParticleCleanup(void);
+    void updateFreeMoveState(void);
+    void updateMovementState(void);
+    void Update(void);
+    void Reset(void);
+    void resolveSkillForPrimitive(StackElem*, IdleAnimateParam*, AnimRef*&);
+    void resolveSkillForPrimitive(StackElem*, AnimateNewParam*, AnimRef*&);
+    void loadSkillAnim(AnimRef*);
+    void TryIdleAnimate(StackElem*, IdleAnimateParam*);
+    void SelectAlgorithmicIdle(AnimRef*&);
+    void TryAnimate(StackElem*, AnimateNewParam*);
+    void BeginFollow(float speed);
+    void FollowOneStep(void);
+    void EndFollow(void);
+    void DequeueAnimEvent(int*);
+    void ReconStream(ReconBuffer*, int);
+    void getCorrectId(PropRef*);
+    void Dress(PropRef*);
+    void AddProp(unsigned int propId, bool visible);
+    void RemoveProp(unsigned int propId);
+    void PreloadDress(PropRef*);
+    void Undress(PropRef*);
+    void endFollowDone(void);
+    void followStandToTurnUpdate(float&, float&, float);
+    void followSidestepUpdate(float&, float&, float);
+    void followMiddleUpdate(float&, float&, float);
+    void followMoveToTurnUpdate(float&, float&, float);
+    void followDoneUpdate(float&, float&, float);
+    void endMoveAnimation(void);
+    void UpdatePortalMode(void);
+    void moveAnimation(void);
+    void awarenessMove(void);
+    void GetTurnRate(void);
+    void rotateAnimation(float current, float target, float rate);
+    void sidestepAlongNode(float& distance);
+    void advanceAlongNode(float& distance);
+    void getUseSpeed(float base, float mod, float anim, float scale);
+    void EnableWalkFade(unsigned int& flags, float start, float end, float duration);
+    void moveTowardsDestination(float& remaining, EVec2& target);
+    void updateRenderAnimation(void);
+    void updateParticles(void);
+    void handleMoodAnimations(void);
+    void playFootprint(char* surfaceType);
+    void getFootSound(char* outSound);
+    void handleSidestepAnimation(void);
+    void handleWalkRunAnimation(void);
+    void CheckCollision(EVec2& pos, EVec2& dir);
+    void handleFreeMoveWalkRunAnimation(void);
+    void handleRunStopAnimation(void);
+    void SetNextStateFromCompletedTurn(void);
+    void selectRandomIdle(void);
+    void handleSkillIdleAnimation(void);
+    void handleIdleAnimation(void);
+    void handleImpatientIdleAnimation(void);
+    void clearImpatientIdleAnimation(void);
+    void LoadSMOptionalMotionAnims(void);
+    void LoadDCOptionalMotionAnims(void);
+    void LoadOptionalIdleAnim(void);
+    void UnloadPendingLongIdleAnim(void);
+    void UnloadOptionalIdleAnim(void);
+    void UnloadDCOptionalMotionAnims(void);
+    void UnloadSMOptionalMotionAnims(void);
+    void CheckOptionalMotionAnimStatusOnStateChange(int newState);
+    void handleTurnAnimation(void);
+    void positionCharacter(EMat4* transform);
+    void AttachParticleEffect(unsigned int effectId, unsigned int boneId, int flags);
+    void DetachParticleEffect(unsigned int effectId, unsigned int boneId, int flags);
+    void GetEngineFormatPos(void);
+    void processEvents(AnimRef& anim, int startFrame, int endFrame, bool forward, bool loop);
+    void eventHandler(EAnimNote& event, int trackIndex);
+    void PreloadEvents(AnimRef*);
+    void PreloadBoneParticleEvent(REffectsAttachment*);
+    void _handleParticleEvent(REffectsAttachment*);
+    void procBoneParticleEvt(AnimParticleData*, bool attach);
+    void cleanupParticlesDelayed(TRedBlackTree<unsigned int, TRedBlackTree<unsigned int, EBoneParticle*>*>*);
+    void cleanupParticlesImmediate(TRedBlackTree<unsigned int, TRedBlackTree<unsigned int, EBoneParticle*>*>*);
+    void cleanupParticles(TRedBlackTree<unsigned int, TRedBlackTree<unsigned int, EBoneParticle*>*>*);
+    void playRumble(char* name);
+    void playRumble(RumbleDataElement*);
+    void triggerCameraBloom(char* name);
+    void triggerCameraBloom(CameraBloomDataElement*);
+    void triggerCameraBlur(char* name);
+    void startSkill(AnimRef* anim, bool blend, unsigned int flags);
+    void isAnimationDone(void);
+    void setPersonDirection(float angle);
+    void updateCarryAnimation(void);
+    void updateRenderModels(void);
+    void setJobModel(void);
+    void wearNormal(void);
+    void setNewModel(char* modelName, bool immediate, bool keepProps);
+    void RestoreNonCostumeRelatedSimDescriptionItems(CasSimDescriptionS2C*, CasSimDescriptionS2C*, bool);
+    void GetCostumeName(int costumeIndex);
+    void GetCarryHandPosAndDir(EVec3& pos, EVec3& dir, EMat4& transform);
+    void GetBonePos(int boneIndex, EVec3& outPos);
+    void PropsHaveAlpha(void);
+    void DrawProps(ERC* rc, bool shadow, EShader* overrideShader);
+    void DrawPropsShadow(ERC* rc);
+    void removeAllProps(void);
+    void updateCensor(void);
+    void DrawCensor(ERC*);
+    void GetFootSound(CTilePt& tile, char* outSound);
+    void UpdateAnimationValidity(void);
+    void setAwarenessFollowStart(float angle);
+    void shouldUseLowMotiveIdle(void);
+    void shouldUseLowMotiveWalk(void);
+    void IsSimulatorControlled(void);
+    void SetPlayerControl(bool controlled);
+    void* operator new(std::size_t size);
+    void getPersonDirection(void);
+    void EndAutoRun(void);
+    void getIndexOfPropID(unsigned int propId);
+    void SetDesiredFacing(float angle);
+    void clearSuspendedCarry(void);
+    void SetIdleAnimPlaybackParameters(EACTrack* track);
+    void determineFirstFollowMode(TileList* path);
+    void determineWalkRunStyle(float speed);
+    void StartDefaultIdle(void);
+    void updateDesiredAndDeltaDir(float& desiredDir, float& deltaDir);
+    void setFirstFollowMode(int mode);
+    void setFollowEnd(void);
+    void setFollowDone(void);
+    void defaultVelocity(int style);
+    void getAnimDuration(ERAnim*);
+    void setSideStepSpeedFromAnimation(AnimRef*);
+    void setMovementVelocityFromAnimation(void);
+    void setRotationRateFromShuffleDir(int dir, float speed);
+    void initShuffleRotation(float targetAngle);
+    void getIsLeftFootUp(void);
+    void getShuffleDirFromDeltaDir(float deltaDir);
+    void getDeltaDirFromDesiredDir(float desiredDir);
+    void getDesiredDir(void);
+    void GetMovementVelocityFromStyle(int style);
+    void setAnimationState(void);
+    void getTurnSkillID(AnimRef*& outAnim, int direction);
+    void getSidestepSkillIDs(AnimRef*& left, AnimRef*& right, float angle);
+    void getWalkRunSkillID(AnimRef*& outAnim);
+    void UpdateNPCAutoRunState(void);
+    void UpdateNPCAutoRun(void);
+    void DetachMonitoredTrack(void);
+    void getSidestepIntensity(void);
+    void initSidestep(void);
+    void initWalkRun(void);
+    void initWalkRunFadeOut(void);
+    void selectIdleOverlay(void);
+    void stopIdleOverlay(void);
+    void skillIsIdle(void);
+    void ShouldEndSkillTrack(void);
+    void startCarry(void);
+    void stopCarry(void);
+    void setAwarenessFollowEnd(void);
+    void setAwarenessFollowMiddle(void);
+    void exitAwarenessFollow(void);
+    void StartAutoRun(float speed);
+};
 
 // 0x8005BFD0 (620 bytes)
 // Constructor: sets vtable, initializes two ERedBlackTrees, AwarenessManager
@@ -1426,9 +1665,9 @@ void SAnimator2::SetPlayerControl(bool controlled) {
 
 // 0x80069038 (84 bytes)
 // Custom operator new
-void* SAnimator2::operator new(unsigned int size) {
+void* SAnimator2::operator new(std::size_t size) {
     // Allocates from MainHeap
-    return MainHeap()->Malloc(size, 0);
+    return MainHeap()->Malloc((unsigned int)size, 0);
 }
 
 // 0x80069230 (180 bytes)
@@ -1739,6 +1978,105 @@ void SAnimator2::StartAutoRun(float speed) {
 // cXPersonImpl — Person simulation implementation (96 functions, 70,864 bytes)
 // Handles person motives, actions, social, routing, animation control
 // ============================================================================
+
+class cXPersonImpl {
+public:
+    static void InitializeStaticMemory(void);
+    static void CleanupStaticMemory(void);
+    void GetNextQueueStr(int offset);
+    cXPersonImpl(int type, ObjSelector* selector, ObjectModule* module);
+    ~cXPersonImpl(void);
+    void Initialize(void);
+    void Reset(bool full);
+    void PostLoad(int version, bool fromSave);
+    void LoadMotiveEffects(void);
+    void PreSave(void);
+    void TrySetMotiveDelta(StackElem*, XPrimParam*);
+    void TryGosubFoundAction(StackElem*);
+    void TryLookTowards(StackElem*, XPrimParam*);
+    void TryGotoRoutingSlot(StackElem*, XPrimParam*);
+    void TryGotoRoutingSlot(StackElem*, RoutingSlot*);
+    void AskOthersToMove(XRoute* route);
+    void MoveOutOfWay(int urgency);
+    void MoveOutOfWay(XRoute* route, TileList& tiles);
+    void InitRoute(XRoute* route);
+    void TryGotoRelative(StackElem*, XPrimParam*);
+    void TryRoomRouting(XRoute* route);
+    void TryGetReachInfo(StackElem*, XPrimParam*, cXObject**, cXObject**, int*, float*);
+    void TryReach(StackElem*, XPrimParam*);
+    void NetTrySnapTo(StackElem*, XPrimParam*);
+    void TryElement(StackElem*, short elementId, XPrimParam*);
+    void Simulate(int deltaMs);
+    void ReconStream(ReconBuffer*, int, bool);
+    void SimMotives(void);
+    void GetAspirationScore(void);
+    void SetAspirationScore(float score);
+    void GetAspirationStatus(void);
+    void SpawnAspirationBalloon(int type);
+    void RunImmediateAction(Interaction* action);
+    void AddAction(Interaction* action);
+    void RemoveAction(int index);
+    void HasQueuedActionOfPri(int priority) const;
+    void CancelLastAction(void);
+    void CancelAllActions(void);
+    void CancelAllButLastActions(void);
+    void GetIndAction(int index, bool wrap);
+    void GetCurrentAction(void);
+    void GetCurrentInteractionStackObject(void);
+    void GetCurrentInteractionIconObject(void);
+    void ShouldInterrupt(void);
+    void TryTestInteractingWith(StackElem*, XPrimParam*);
+    void TryChangeSuit(StackElem*, XPrimParam*);
+    void TryIdleForInput(StackElem*, XPrimParam*);
+    void executeInterruptOnIdlePrimitve(StackElem*, short*, bool);
+    void TryIdleAnimate(StackElem*, XPrimParam*);
+    void TryFindBestAction(StackElem*);
+    void Skipping3D(void);
+    void UpdateCurrentRoom(void);
+    void Place(FTilePt& pos, int dir, cXObject* container, int slot);
+    void TrySocialMode(StackElem*, XPrimParam*);
+    void SetHilite(int hiliteMode);
+    void IsSelectableByPlayer(int playerIndex);
+    void IsPrimarySim(int playerIndex);
+    void AttachToHUD(bool attach);
+    void IsPersonInFamily(int familyId) const;
+    void ForceLocation(void);
+    void GosubObjectTree(cXObject* obj, short* treeId, short param, bool immediate);
+    void StackJustPopped(void);
+    void SetCurrentAction(Interaction& action);
+    void UpdateCurrentAction(void);
+    void Cleanup(cXObject* obj);
+    void CompleteCurrentAction(void);
+    void DeleteTopAction(void);
+    void ActionSkipped(Interaction& action);
+    void DumpDestList(char* label);
+    void IsDog(void);
+    void IsCat(void);
+    void IsMonkey(void);
+    void IsPet(void);
+    void IsChild(void);
+    void IsMale(void);
+    void UserCanPickup(void);
+    void Turn(int direction);
+    void IsPersonDying(void);
+    void SetSecondPlayerInSocialMode(bool inSocial);
+    void CheckFirstPlayerForFailedSocialModeEntry(void);
+    void CheckSecondPlayerForFailedSocialModeEntry(void);
+    void GetSocialModeTarget(void);
+    void IncrementSimSocialInterest(float amount);
+    void GetSimSocialInterestAsMotiveValue(cXPerson* otherSim);
+    void SetSimSocialIntrestFromMotiveValue(cXPerson* otherSim, float value);
+    void InitWantFearIcons(void);
+    void SpawnWantFearDialog(unsigned int eventId) const;
+    void SetIdlePlayerSimAutonomous(void);
+    void IsCarryingDCObject(void);
+    void GetNormalSimDescription(void);
+    void IsCarrying(void);
+    void GetControllingObject(void);
+    void GetSimMemory(cXPerson* otherSim, int memoryType);
+    void SetSimMemory(cXPerson* otherSim, int memoryType, int value);
+    void GetDominantMemory(cXPerson* otherSim, int category);
+};
 
 // 0x8011A824 (232 bytes)
 // Initializes static memory for all person instances
@@ -2342,6 +2680,157 @@ void cXPersonImpl::GetDominantMemory(cXPerson* otherSim, int category) {
 // (147 functions, 84,768 bytes)
 // Implements the APT ActionScript VM for the game's Flash-based UI
 // ============================================================================
+
+class AptActionInterpreter {
+public:
+    ~AptActionInterpreter(void);
+    void initialize(AptInitParmsT& parms);
+    void shutdown(void);
+    void _parseStream(unsigned char* stream, unsigned char* end, AptConstFile* constFile, int* result);
+    void loadVariables(AptValue* target, AptValue* url, EAStringC* vars);
+    void getObject(AptValue* scope, AptValue* name, EAStringC* path);
+    void getContext(AptValue* scope, AptValue* target, EAStringC* name, AptValue** outCtx, EAStringC& outName);
+    void getContext(AptValue* scope, AptValue* target, EAStringC* name, AptValue** outCtx, char* outName);
+    void setVariable(AptValue* scope, AptValue* target, EAStringC* name, AptValue* value, int flags1, int flags2, int flags3);
+    void cbCallMethod_setInterval(AptValue* args, int argc);
+    void cbCallMethod_clearInterval(AptValue* args, int argc);
+    void cbCallMethod_hitTest(AptCIH* cih, int argc);
+    void cbCallMethod_isNaN(AptValue* args, int argc);
+    void cbCallMethod_unescape(AptValue* args, int argc);
+    void cbCallMethod_escape(AptValue* args, int argc);
+    void cbCallMethod_boolean(AptValue* args, int argc);
+    void getName2(AptCIH* cih, EAStringC& outName);
+    void getName(AptCIH* cih, EAStringC& outName);
+    void _doCloneSprite(AptCIH* cih, AptValue* name, AptValue* depth, AptValue* initObj, int flags, AptValue* target);
+    void getVariable(AptValue* scope, AptValue* target, EAStringC* name, int flags1, int flags2, int flags3);
+    void valueToObject(AptValue* in, AptValue* scope, AptValue* this_ptr, AptValue** outObj);
+    void callFunction(AptValue* func, AptValue* this_ptr, int argc);
+    void CleanupAfterExecution(char* name, void* data);
+    void CleanupAfterExecution(void* ctx, AptActionSetup* setup);
+    void _createObject(AptValue* scope, AptValue* constructor, EAStringC* className, int argc, bool callCtor);
+    void _doEnumerate(AptValue* target, AptValue* scope);
+    void runStream(unsigned char* stream, AptCIH* cih, int length, AptCharacterInst* charInst);
+    void urlDecode(char* input, EAStringC& key, EAStringC& value);
+    void isFSCommand(char* url);
+    void doFSCommand(char* command, char* args);
+    void _FunctionAptActionNextFrame(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPrevFrame(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPlay(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStop(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionAdd(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionSubtract(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionMultiply(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDivide(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionEquals(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionLessThan(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionAnd(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionOr(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionNot(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStringEquals(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStringLength(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionSubString(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPop(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionToInteger(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGetVariable(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionSetVariable(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionSetTarget2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStringAdd(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGetProperty(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionSetProperty(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCloneSprite(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionRemoveSprite(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionTrace(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStartDragMovie(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStopDragMovie(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionRandom(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionAsciiToChar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGetTimer(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDelete(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDelete2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDefineLocal(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCallFunction(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionModulo(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionNewObject(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDefineLocal2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionInitArray(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionInitObject(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionTypeOf(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionTargetPath(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionAdd2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionLessThan2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionEquals2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionToNumber(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionToString(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushDuplicate(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStackSwap(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGetMember(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionSetMember(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionIncrement(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDecrement(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCallMethod(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionNewMethod(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionBitAnd(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionBitOr(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionBitXor(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionBitLShift(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionBitRShift(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStrictEquals(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGreater(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGotoFrame(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGetUrl(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStoreRegister(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionSetTarget(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGotoLabel(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionWith(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPush(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGetUrl2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDefineFunction(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDefineFunction2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionBranchIfTrue(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCallFrame(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionGotoFrame2(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionBranchAlways(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushThis(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushGlobal(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPush0(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPush1(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushTrue(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushFalse(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushNULL(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushUndefined(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCallFuncAndPop(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCallFuncSetVar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCallMethodPop(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCallMethodSetVar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushThisVariable(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushGlobalVariable(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushZeroSetVar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushString(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushStringDictByte(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushStringDictWord(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushStringGetVar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushStringGetMember(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushStringSetVar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushStringSetMember(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStringDictByteGetVar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionStringDictByteGetMember(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDictCallFuncPop(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDictCallFuncSetVar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDictCallMethodPop(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionDictCallMethodSetVar(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushFloat(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushByte(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushWord(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionPushDWord(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionBranchIfFalse(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionExtends(AptActionInterpreter* interp, int* ctx);
+    void isObjectOfType(AptValue* obj, AptValue* type);
+    void _FunctionAptActionInstanceOf(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionCastOp(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionImplementsOp(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionTry(AptActionInterpreter* interp, int* ctx);
+    void _FunctionAptActionThrow(AptActionInterpreter* interp, int* ctx);
+};
 
 // 0x8026C8BC (172 bytes)
 // Initializes the ActionScript interpreter
@@ -3135,6 +3624,179 @@ AptActionInterpreter::~AptActionInterpreter(void) {
 // cXObjectImpl — Object simulation implementation (169 functions, 125,508 bytes)
 // Core game object system: placement, hierarchy, interaction, behavior trees
 // ============================================================================
+
+class cXObjectImpl {
+public:
+    cXObjectImpl(int type, ObjSelector* selector, ObjectModule* module);
+    ~cXObjectImpl(void);
+    void Initialize(void);
+    void Reset(bool full);
+    void JustBorn(void);
+    void PostLoad(int version, bool fromSave);
+    void Cleanup(cXObject* other);
+    void SetHilite(int mode);
+    void GetCurrentValue(void);
+    void DayPassed(void);
+    void UpdateAge(void);
+    void GetObstacleAtLocation(FTilePt& pos, int dir, bool checkPeople);
+    void GetRootObject(FTilePt& pos, int dir);
+    void GetPlacementInfo(FTilePt* outPos, int* outDir, cXObject** outContainer, short* outSlot, bool* outPlaced);
+    void GetPlacementSpec(PlacementSpec* outSpec);
+    void GetPrevObjectSibling(void);
+    void HierGetParent(void);
+    void HierSetSite(HierarchySite* site);
+    void HierGetChild(int index);
+    void HierGetSite(HierarchySite* outSite);
+    void HierSever(void);
+    void HierGetObject(HierarchySite* site);
+    void GetContainerID(void);
+    void GetContainer(void);
+    void GetObjectSlot(int index);
+    void ExtractContainedSims(void);
+    void TestAndPlace(PlacementSpec* spec, bool testOnly);
+    void Pickup(void);
+    void CanPlace(FTilePt& pos, int dir, cXObject* container, int slot);
+    void Place(FTilePt& pos, int dir, cXObject* container, int slot);
+    void UpdateChairFacing(void);
+    void UpdateChairFacing(ObjectModule* mod, int dir, int flags, int param);
+    void TestIntersection(FTilePt& pos, int dir);
+    void ComputeRect(FTilePt& pos, FTileRect* outRect);
+    void SetLocation(FTilePt& pos, int dir);
+    void Turn(int dir);
+    void GetSlotHeight(int slotIndex);
+    void GetTypeName(BString& outName);
+    void CalcShortDistance(cXObject* other);
+    void CalcShortDistanceIn16thsOfTiles(cXObject* other);
+    void CalcDistanceWithPentalties(cXObject* other);
+    void CalcShortDistance(FTilePt* pos);
+    void CalcDistance(cXObject* other);
+    void ReconHeader(ReconBuffer* buf, int version);
+    void ReconStream(ReconBuffer* buf, int version, bool full);
+    void ReconSlots(ReconBuffer* buf, int version);
+    void FindGoodLocation(FindGoodLocationParams& params, FTilePt* outPos);
+    void GetFrontFaceDirection(void);
+    void UpdateWallAdjacency(void);
+    void GetTileWidth(void);
+    void GetAgeInMinutes(void);
+    void GetInteractionLeader(void);
+    void UserCanPickup(void);
+    void UserCanDelete(void);
+    void IsDeletedByEvict(void);
+    void UserPlace(FTilePt& pos, int dir, cXObject* container, int slot);
+    void UserCanPlace(FTilePt& pos, int dir, cXObject* container, int slot);
+    void UserPickup(bool force);
+    void IsFromCatalog(void);
+    void SetWasPlacedFromInventory(bool value);
+    void ShouldAutoRotate(void);
+    void GetRequiredSegment(void);
+    void CanChooseAutonomously(void);
+    void UpdateSimFlags(void);
+    void GetWallBlockFlags(void);
+    void GetAverageLocation(void) const;
+    void GetCTilePt(void) const;
+    void IsSpriteVisible(short spriteId);
+    void SyncObjectIsReady(signed char syncId);
+    void SetSyncObject(signed char syncId);
+    void SyncObjectIsReady(void);
+    void RunTree(ObjEntryPoint entry, short param, short* result);
+    void IsVehicle(void);
+    void IsPerson(void);
+    void SetColorIndex(unsigned char index);
+    void IsInteractionTile(void);
+    void SimObjectPlaced(ISimInstance* sim);
+    void IsEmissive(void);
+    void RunTree(char* treeName);
+    void RequiresWallAdjacency(void);
+    void GetTreeID(ObjEntryPoint entry);
+    void IsPortal(void);
+    void IsWindow(void);
+    void IsDoor(void);
+    void EnableSim(bool enable);
+    void HideForCutaway(void);
+    void IsRoof(void);
+    void GetContainedObject(int slotIndex);
+    void IsSupport(void);
+    void CanIntersectPeople(void);
+    void IsChair(void);
+    void GetFirstImpl(void);
+    void GetDebugName(char* buf, int bufSize) const;
+    void Error(short errorCode);
+    void HandleError(void);
+    void AllowIdleOptimization(void);
+    void TryUserEvent(StackElem*, XPrimParam*);
+    void TryTestObjectType(StackElem*, XPrimParam*);
+    void TryIsPersonInArea(StackElem*, XPrimParam*);
+    void UseKnownGoodLocation(TFGL_ACTIONS action, short param, FTilePt* pos, int dir, short flags);
+    void TryFindGoodLocation(StackElem*, XPrimParam*, TFGL_ACTIONS*, FTilePt*, int*, short*);
+    void TrySetBalloon(StackElem*, XPrimParam*);
+    void TryCallNamedTree(StackElem*, XPrimParam*);
+    void ParseUIString(BString2& outStr, StackElem* stack, short* vars, ObjSelector** selectors, bool localize);
+    void TryMakeActionString(StackElem*, XPrimParam*);
+    void TryPushAction(StackElem*, XPrimParam*);
+    void TryFind5WorstMotives(StackElem*, XPrimParam*);
+    void TryRelationship2(StackElem*, XPrimParam*);
+    void TryRelationship(StackElem*, XPrimParam*);
+    void TryTutorial(StackElem*, XPrimParam*);
+    void TryBurn(StackElem*, XPrimParam*);
+    void TryCreateObject(StackElem*, XPrimParam*);
+    void TryPreloadObject(StackElem*, XPrimParam*);
+    void TryDropOnto(StackElem*, XPrimParam*);
+    void TryBudget(StackElem*, XPrimParam*);
+    void TrySetToNext(StackElem*, XPrimParam*);
+    void TryFindFunctionalObject(StackElem*, XPrimParam*);
+    void TryCallFunctionalTree(StackElem*, XPrimParam*);
+    void TryGenericSimCall(StackElem*, XPrimParam*);
+    void ShowAllObjectDialogs(StackElem*, XPrimParam*);
+    void TransitionToNewHouse(short houseId, short doorId, short param);
+    void RewriteDialogParamIndices(DialogParam& param);
+    void TryDialog(StackElem*, XPrimParam*, bool modal);
+    void TryShowString(StackElem*, XPrimParam*);
+    void TryKillObject(StackElem*, XPrimParam*, short* result);
+    void KillSelf(bool immediate);
+    void TryIdle(StackElem*, XPrimParam*);
+    void TryUpdate(StackElem*, XPrimParam*);
+    void TryGrab(StackElem*, XPrimParam*);
+    void TryTreeBreak(StackElem*, XPrimParam*);
+    void TryRandom(StackElem*, XPrimParam*);
+    void TryRoomEffect(StackElem*, XPrimParam*);
+    void TryCheckObject(StackElem*, XPrimParam*);
+    void TryGbaCommunication(StackElem*, XPrimParam*);
+    void TryAnimateObject(StackElem*, XPrimParam*);
+    void TryCompleteGoal(StackElem*, CompleteGoalParam&);
+    void InventoryCommandParam_GetGuid(InventoryCommandParam& param);
+    void InventoryCommandParam_GetCount(InventoryCommandParam& param);
+    void TryInventoryCommand(StackElem*, XPrimParam*);
+    void TryCameraControl(StackElem*, XPrimParam*);
+    void TryDistanceTo(StackElem*, XPrimParam*);
+    void TryDirectionTo(StackElem*, XPrimParam*);
+    void TryNotifyStackObject(StackElem*, XPrimParam*);
+    void TryParticleEffect(StackElem*, XPrimParam*);
+    void TryMemory(StackElem*, XPrimParam*);
+    void TryPassiveInfluence(StackElem*, XPrimParam*);
+    void TryWantsAndFearsNotify(StackElem*, XPrimParam*);
+    void TryChangeWantFearTree(StackElem*, XPrimParam*);
+    void TrySetMotiveDelta(StackElem*, XPrimParam*);
+    void TryAnimate(StackElem*, AnimateNewParam*);
+    void Simulate(int deltaMs);
+    void TryElement(StackElem*, short id, XPrimParam*);
+    void TryKillSounds(StackElem*, KillSoundsParam*);
+    void TryPlaySound(StackElem*, PlaySoundParam*);
+    void GosubObjectTree(cXObject* obj, short* treeId, short param, bool immediate);
+    void RunTree(Behavior* beh, short param, char* name, short* result);
+    void TryExpression(ExpressionParam*);
+    void GetShortComboValue(signed char which, short* val1, short* val2);
+    void InterpValue(short type, short param, short** dataPtr, float** floatPtr, short* result, short** outPtr);
+    void InterpWriteValue(short type, short param, short** dataPtr, short value);
+    void TryDrop(void);
+    void TrySnap(StackElem*, XPrimParam*);
+    void TrySnap(FTilePt pos, int dir, cXObject* target, int slot, bool immediate, int flags, bool force);
+    void TryHUDCreate(StackElem*, XPrimParam*);
+    void TryHUDAddItem(StackElem*, XPrimParam*);
+    void TryHUDManage(StackElem*, XPrimParam*);
+    void TryHUDData(StackElem*, XPrimParam*);
+    void ChangeSelectedSimL(int playerIndex);
+    void ChangeSelectedSimR(int playerIndex);
+};
 
 // 0x800D962C (3500 bytes)
 // Constructor: creates object from type/selector/module
@@ -4163,6 +4825,365 @@ void cXObjectImpl::ChangeSelectedSimR(int playerIndex) {
 // Handles object placement, wall/floor building, direct control,
 // cursor management, and all build-mode interactions
 // ============================================================================
+
+namespace InteractorModule {
+    // Free functions
+    void Debug_GetNameFromCommand(int command);
+    void InitializeInteractorModule(void);
+    void ShutdownInteractorModule(void);
+    void GetPersonPosition(EVec3* outPos, cXPerson* person, bool useGround, bool useCenter);
+    void GetObjectPosition(EVec3* outPos, cXObject* obj);
+    void SnapPositionToTile(EVec3& inPos, EVec3& outPos, int flags);
+    void GetCameraRelativeStickAngle(EVec2& stickInput, ESimsCam* cam, float* outAngle);
+    void MoveCursorAlongCameraTargetVector(EVec3& pos, EVec2& input, ESimsCam* cam, float speed);
+    void MoveCursorOneTileAlongCameraTargetVector(EVec3& pos, EVec2& input, ESimsCam* cam, int gridSize);
+    void ClampPosToWorld(EVec3& pos);
+    void IsPosOutsideWorld(EVec3& pos);
+    void GetSnapPos(int& x, int& y, EVec3& pos);
+    void GetSnapPosWithOffset(EVec3& pos);
+    void CreateObjectFromSelector(ObjSelector* sel);
+    void CreateObjectFromGUID(unsigned int guid);
+    void DestroyObject(cXObject* obj);
+    void CanObjectBeDestroyed(cXObject* obj);
+    void GetCursorIntersectionObjects(vector<short, allocator<short> >& outList, int flags);
+    void GetObjectFromInt16(short id);
+    void GetLeadObjectImpl(cXObject* obj);
+    void AllPlayersActiveInputInteractors(int playerCount);
+    void IsObjectInRange(cXObject* obj);
+    void CoreIsLegalToPlace(cXObject* obj, FTilePt& pos, int& dir);
+    void IsLegalToPlaceMultiTileAtLocation(cXObject* obj, FTilePt& pos);
+    void IsLegalToPlaceSingleTileAtLocation(cXObject* obj, FTilePt& pos, int* outDir);
+    void IsLegalToPlaceAtLocation(cXObject* obj, FTilePt& pos, int* outDir);
+    void FinalUserPlaceObject(cXObject* obj);
+    void UpdateAllObjectsInWorldAfterFirstPickupOrFinalPlace(cXObject* obj);
+    void RecomputeLightingGrid(cXObject* obj);
+    void SetDirection(int dir, cXObject* obj);
+    void GetObjectInstancesList(cXObject* obj, TNodeList<ISimInstance*>& outList);
+    void ShadeModelToShowValidState(cXObjectImpl* impl, bool valid);
+    void GetVisibleSideOfWall(ESimsCam* cam, EVec3& wallStart, EVec3& wallEnd, EVec3* outNormal);
+    void ConvertVertsToTiles(EVec3& vert1, EVec3& vert2, CTilePt& outTile1, CTilePt& outTile2);
+    void GetAdjacentTileCoordinates(TilePtDir tileDir, int offset, EVec3& outPos);
+    void GetRoomIdFromPoint(CTilePt& pt);
+    void ForcePointDir(CTilePt& from, CTilePt& to);
+    void EorGetAdjacentTile(TileWallsSegment& seg, int side, DiagonalSideSelector& diagSel, CTilePt& outTile1, CTilePt& outTile2);
+    void IsCameraDirectorInControl(int playerIndex);
+    void SetCameraFilter(int filterType);
+    void ClearCameraFilter(int filterType);
+    void IncrementSellCountForPattern(int patternId, vector<int, allocator<int> >& counts);
+    void IncrementSellCountForObjectGuid(int guid, vector<int, allocator<int> >& counts);
+    void CheckNewSimInSocialMode(unsigned int simId);
+
+    // Inner classes
+    class Interactor {
+    public:
+        void OnCommandReleased(int cmd);
+        void OnCommandUpdate(int cmd, float value);
+        void ResetInputState(void);
+        void GetSelectionRadius(void);
+        void Moved(void);
+    };
+
+    class DirectInteractor {
+    public:
+        DirectInteractor(void);
+        void OnStart(int*);
+        void OnStop(void);
+        void ParseControls(void);
+        void GetDesiredAnimState(bool moving, EVec2 input);
+        void InitPlayerPos(void);
+        void UpdatePlumbBob(void);
+        void UpdateControlStatus(void);
+        void SetVelocityModifiers(void);
+        void SendNeutralFreeMoveInput(void);
+        void InterpretFreeMoveInput(void);
+        void Update(float dt);
+        void IsSimulatorPaused(void);
+        void ShouldHighlightObject(cXObject* obj, float dist);
+        void CancelQueuedActions(void);
+        void OnCommandPressed(int cmd, float value);
+        void OnCommandReleased(int cmd);
+        void ExecuteActionMenu(void);
+        void ExecuteObjectActionMenu(cXObject* obj);
+        void ChooseAction(Interaction* action);
+        void SetupCamera(void);
+        void UpdateObjectHighlights(EIObjectMan* objMan);
+        void ResetIdleTime(void);
+        void CameraDirectorPermitsDirectControl(void);
+        void UpdateInteractorPos(void);
+    };
+
+    class FloorPainter {
+    public:
+        FloorPainter(void);
+        ~FloorPainter(void);
+        void OnCreate(void);
+        void OnDestroy(void);
+        void OnStart(int*);
+        void OnStop(void);
+        void UpdateStickState(void);
+        void Update(float dt);
+        void SendBuildItemCountChangeEvent(int delta);
+        void SendSuccessEvent(int type);
+        void HandleActionCmdInRemoveMode(void);
+        void UpdateStockChanges(int* costs, int count);
+        void HandleActionCmdInPlaceMode(void);
+        void OnCommandPressed(int cmd, float value);
+        void OnCommandReleased(int cmd);
+        void OnCommandUpdate(int cmd, float value);
+        void IsValidFloorPlacement(CTilePt& pos, FloorPattern pattern);
+        void SetFloorTile(CTilePt* pos, FloorPattern pattern, int* cost);
+        void SetFloorTile(CTilePt& pos, FloorPattern pattern, Room* room, int* cost);
+        void RemoveFloorTile(CTilePt* pos, int* refund);
+        void GetSelectedRectPoints(int& x1, int& y1, int& x2, int& y2);
+        void PaintFloor(int* totalCost);
+        void RemoveFloor(int* totalRefund);
+        void PaintRoom(int* totalCost);
+        void RemoveRoom(int* totalRefund);
+        void CheckDiagForRoomContainment(Room* room, CTilePt& pos, TileWalls& walls, DiagonalSideSelector& sel1, DiagonalSideSelector& sel2);
+        void CancelSession(void);
+        void SwapTools(void);
+        void CurrentSelectionIsValid(int& outCount);
+    };
+
+    class GrabManipulator {
+    public:
+        GrabManipulator(void);
+        void OnCommandPressed(int cmd, float value);
+        void OnStart(int*);
+        void TryGrabbingWorldObject(void);
+        void TryGrabbingWorldObjectFromId(short objId);
+        void DestroyObjectInHand(void);
+        void DropCurrentObject(void);
+        void TryRemoveCurrentObjectFromWorld(void);
+        void CancelCurrentGrab(void);
+        void CancelSession(void);
+    };
+
+    class InteractorInputManager {
+    public:
+        InteractorInputManager(int playerIndex);
+        ~InteractorInputManager(void);
+        void Update(float dt);
+        class InstanceData {
+        public:
+            ~InstanceData(void);
+            void AddCommandMapping(int inputId, ECTRL_CMD cmd);
+            void AddCommandMapping(int inputId, int param1, int param2);
+            void OpenSession(int sessionId, int* cmds1, int count1, int* cmds2, int count2, int* cmds3, char* name);
+            void CloseSession(void);
+            void Update(float dt);
+        };
+    };
+
+    class InteractorManager {
+    public:
+        ~InteractorManager(void);
+        void Initialize(int& playerCount);
+        void Shutdown(void);
+        void Update(float dt);
+        void ChangeActiveInteractorToNull(int playerIndex);
+        void GetPlayerInteractor(int playerIndex, int interactorType);
+        void GetPlayerInteractorInfo(int playerIndex) const;
+        void CreatePlayerInteractorSets(void);
+        void DestroyPlayerInteractorSets(void);
+        void UpdateActivePlayerInteractors(float dt);
+    };
+
+    class InteractorResourceSet {
+    public:
+        InteractorResourceSet(int& flags);
+        ~InteractorResourceSet(void);
+        void AddModel(unsigned int id);
+        void RemoveModel(unsigned int id);
+        void GetModel(unsigned int id);
+        void AddShader(unsigned int id);
+        void RemoveShader(unsigned int id);
+        void GetShader(unsigned int id);
+        void AddTexture(unsigned int id);
+        void RemoveTexture(unsigned int id);
+        void GetTexture(unsigned int id);
+        void ClearSet(void);
+        void AddOrderTableData(EOrderTableData& data);
+    };
+
+    class InteractorVisualizer {
+    public:
+        ~InteractorVisualizer(void);
+        void Initialize(void);
+        void Shutdown(void);
+        void CreateResources(int& flags);
+        void PreDraw(int& flags);
+        void Draw(int& flags);
+        void DrawFloorRectPreview(ERC* rc, EVec3& min, EVec3& max);
+        void DrawFloorRoomPreview(ERC* rc, EVec3& pos);
+        void DrawWallpaperRoomPreview(int& flags);
+        void DrawWallpaperPreviewOnAffectedWalls(int& flags);
+        void DrawWallpaperRectPreview(ERShader* shader, EVec2& min, EVec2& max, float height);
+        void DrawWallRectPreview(int& flags);
+        void DrawVerticalRect(ERShader* shader, EVec2& min, EVec2& max, float height, int segments, float offset);
+        void DrawRoomPreview(int& flags);
+        void DrawPreviewOnAffectedWalls(int& flags);
+        void InteractorOrderTableCallback(ELevelDrawData& data, EOrderTableData* orderData);
+        void SetupDrawCallback(EHouse* house, int layer);
+        void CreateSimpleResourceSet(int& flags, int type);
+        void DrawSimpleResourceSet(int& flags, int type, EVec3& pos, float rot);
+        void SelectShader(int& flags, int type);
+        void Draw(int& flags, EVec3& pos);
+        void DrawResource(int& flags, int resId, EVec3& pos, EMat4* transform);
+        void CreateResourceSet(int& flags);
+        void AddModelToResourceSet(int& flags, int modelId);
+        void AddOrderTableToResourceSet(int& flags, EOrderTableData& data);
+        void DestroyResourceSet(int& flags);
+        void GetInteractorResourceSet(int* outSet);
+        void SetDefaultLights(void);
+    };
+
+    class ObjectManipulator {
+    public:
+        ObjectManipulator(void);
+        ~ObjectManipulator(void);
+        void OnStart(int*);
+        void OnCommandUpdate(int cmd, float value);
+        void OnCommandReleased(int cmd);
+        void Update(float dt);
+        void UpdateObjectHighlights(EIObjectMan* objMan);
+        void UpdateOverlapIntersection(int* result);
+    };
+
+    class PlaceManipulator {
+    public:
+        void OnCommandPressed(int cmd, float value);
+        void StartPlacement(int* params);
+        void TryPlacingCurrentObject(void);
+        void CancelSession(void);
+    };
+
+    class PlacementObject {
+    public:
+        ~PlacementObject(void);
+        void SetObjectColor(cXObject* obj, unsigned char colorIndex);
+        void CreateNewPlacementObjectFromGuid(unsigned int guid, unsigned char color);
+        void GrabExistingObjectInstanceFromId(short id);
+        void CreateGridObject(FTilePt& pos, cXObject* template_);
+        void CreateGridTile(ObjSelector* sel, cXMTObjectImpl* mtImpl, cXObjectImpl* impl);
+        void DestroyGridObject(cXMTObjectImpl*& mtImpl);
+        void InitializeGridObject(cXMTObjectImpl* mtImpl);
+        void AssignOffsetsToGridObject(cXMTObjectImpl* mtImpl, cXObjectImpl* impl);
+        void Pickup(void);
+        void IsLegalToPlaceAtLocation(FTilePt& pos, int& dir);
+        void Place(FTilePt& pos, int& dir);
+        void Drop(void);
+        void Initialize(void);
+        void Destroy(void);
+        void Reset(void);
+        void SetDirection(int dir);
+        void Rotate(int delta);
+        void ResetLocation(void);
+        void SetShaderToValidState(bool valid);
+    };
+
+    class SimInteractor {
+    public:
+        SimInteractor(void);
+        ~SimInteractor(void);
+        void OnStart(int*);
+        void OnStop(void);
+        void ParseControls(void);
+        void Update(float dt);
+        void GetBeamScale(void);
+        void OnCommandPressed(int cmd, float value);
+        void OnCommandReleased(int cmd);
+        void ReturnPlumbBobToOwner(void);
+        void ImmediatelyCutCursorAndCameraToPos(EVec3& pos);
+        void TryCutToSim(void);
+        void UpdateOverlapIntersection(int* result);
+        void ExecuteActionMenu(void);
+        void IsSimulatorPaused(void);
+        void UpdateObjectHighlights(EIObjectMan* objMan);
+        void SetupCamera(void);
+        void ChooseAction(Interaction* action);
+    };
+
+    class SocialModeInteractor {
+    public:
+        SocialModeInteractor(void);
+        void OnStart(int*);
+        void OnStop(void);
+        void Update(float dt);
+        void SetupInteractionMenu(cXObject* target, InteractionList& interactions);
+    };
+
+    class WallManipulator {
+    public:
+        WallManipulator(void);
+        ~WallManipulator(void);
+        void OnCreate(void);
+        void OnStart(int*);
+        void OnStop(void);
+        void CommittTransaction(int cost);
+        void FinalizePlacement(void);
+        void FinalizeWallDel(void);
+        void CountWallsInRoomSelection(void);
+        void FinalizeRoom(void);
+        void HandleFinalizeRequest(void);
+        void HandleSwapRequest(void);
+        void HandleExitRequest(void);
+        void ValidateWallSegment(void);
+        void UpdateStickState(void);
+        void ClearWallFadeOffList(void);
+        void Update(float dt);
+        void OnCommandPressed(int cmd, float value);
+        void OnCommandReleased(int cmd);
+        void OnCommandUpdate(int cmd, float value);
+        void GetWallLineCost(EVec3& start, EVec3& end, bool& valid, bool adding, bool checkBudget);
+        void SubmitLine(EVec3& start, EVec3& end, int& cost, bool adding, bool commit);
+        void DoesNotConflictWithExistingArchitecture(CTilePt& pos, TileWallsSegment seg);
+        void CanChangeTileAdd(CTilePt& pos, TileWallsSegment seg);
+        void CanChangeTileDelete(CTilePt& pos, TileWallsSegment seg);
+        void HandleDeleteLine(CTilePt& start, CTilePt& end, TilePtDir& dir, int cost);
+        void HandleAddLine(CTilePt start, CTilePt end, TilePtDir& dir, int cost);
+        void LegalWallTile(CTilePt& pos, TileWallsSegment seg);
+        void AddWallAtTile(CTilePt& pos, TileWalls& walls, TileWallsSegment seg);
+        void PreviewNRooms(void);
+        void IncrementSellCountForStyle(WallStyle style);
+        void CheckForAffectedWalls(EVec3& start, EVec3& end);
+        void SendBuildItemCountChangeEvent(int delta);
+        class CallbackData {
+        public:
+            ~CallbackData(void);
+        };
+    };
+
+    class WallPainter {
+    public:
+        WallPainter(void);
+        ~WallPainter(void);
+        void OnCreate(void);
+        void OnStart(int*);
+        void CommittTransaction(int cost);
+        void HandleFinalizeRequest(void);
+        void HandleSwapRequest(void);
+        void HandleExitRequest(void);
+        void AdjustCursorPosition(void);
+        void ValidateWallSegment(void);
+        void UpdateStickState(void);
+        void Update(float dt);
+        void OnCommandPressed(int cmd, float value);
+        void OnCommandReleased(int cmd);
+        void OnCommandUpdate(int cmd, float value);
+        void CountWallsInRoomSelection(void);
+        void FinalizePaperForRoom(void);
+        void FinalizePaperForLine(void);
+        void FinalizeSellPaperForLine(void);
+        void SubmitPaperLine(EVec2& start, EVec2& end, WallPattern pattern, int cost);
+        void SendBuildItemCountChangeEvent(int delta);
+        void RestoreFromHoldPos(EVec3& pos);
+        class CallbackData {
+        public:
+            ~CallbackData(void);
+        };
+    };
+} // namespace InteractorModule
 
 // --- InteractorModule top-level functions ---
 

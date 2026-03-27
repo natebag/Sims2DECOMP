@@ -45,7 +45,7 @@ extern "C" {
     float atan2f(float, float);
     float fabsf(float);
     float tanf(float);
-    void  Sprintf(char* buf, char* fmt, ...);
+    int Sprintf(char* buf, char* fmt, ...);
     int   AtoI(char* str);
     float AtoF(char* str);
     int   wcslen(const unsigned short* s);
@@ -74,7 +74,7 @@ public:
     void  Compact();
 };
 
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void  operator delete(void*);
 extern void* __builtin_vec_new(unsigned int);
 extern void  __builtin_vec_delete(void*);
@@ -118,7 +118,7 @@ class CasEventStoreSim;
 class CasSimDescriptionS2C;
 class CasSimPartsS2C;
 class CLoadingScreen;
-class CTilePt;
+struct CTilePt { short x; short y; };
 class DialogParam;
 class DOGMA_PoolManager;
 class E3DWindow;
@@ -171,8 +171,8 @@ class EString;
 class ETexture;
 class ETextureDef;
 class EVec2;
-class EVec3;
-class EVec4;
+struct EVec3 { float x, y, z; EVec3() : x(0), y(0), z(0) {} EVec3(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {} };
+struct EVec4 { float x, y, z, w; EVec4() : x(0), y(0), z(0), w(0) {} };
 class EViewport;
 class EWeldVert;
 class EWindow;
@@ -341,7 +341,7 @@ public:
 
     void GetWallType(unsigned char);
     void IsOpaque(void);
-    void* operator new(unsigned int);
+    void* operator new(std::size_t);
     void GetShadowModel(void);
     EIWallPart();
     void OptimizeOrderTable(void);
@@ -393,7 +393,7 @@ void EIWallPart::IsOpaque(void) {
 }
 
 // 0x80029768 (84 bytes)
-void* EIWallPart::operator new(unsigned int size) {
+void* EIWallPart::operator new(std::size_t size) {
     void* mem = MainHeap()->MallocAligned(size, 16, 0, 0);
     memset(mem, 0, size);
     return mem;

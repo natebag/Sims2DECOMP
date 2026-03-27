@@ -19,7 +19,7 @@ extern "C" {
     char* strcpy(char* dst, const char* src);
     int   strcmp(const char* s1, const char* s2);
     int   wcsncpy(void* dst, const void* src, int n);
-    void  Sprintf(char* buf, char* fmt, ...);
+    int Sprintf(char* buf, char* fmt, ...);
     void  Snprintf(char* buf, unsigned int size, char* fmt, ...);
     int   AtoI(char* str);
 }
@@ -41,45 +41,199 @@ class AptControl;
 class AptDisplayList;
 class AptNativeHash;
 class AptScriptFunctionBase;
+class EAStringC;
+class ReconBuffer;
+class StringBuffer;
+
+class AptScriptFunctionBase {
+public:
+    AptScriptFunctionBase();
+    AptScriptFunctionBase(int type, AptScriptFunctionBase* parent, AptCIH* cih, bool flag);
+    virtual ~AptScriptFunctionBase();
+};
+
+class AptValue {
+public:
+    int m_type;
+    AptValue();
+    virtual ~AptValue();
+    void SetString(EAStringC* str);
+    int GetType() const;
+    void toString(EAStringC& out);
+};
+
+class AptNativeHash {
+public:
+    AptNativeHash(int buckets);
+    ~AptNativeHash();
+    void Insert(EAStringC* key, void* val);
+    void* Lookup(EAStringC* key);
+};
+
+class AptDisplayList {
+public:
+    AptDisplayList();
+    ~AptDisplayList();
+    void AddObject(void* obj);
+    void RemoveObject(void* obj);
+};
+
 class AptValue;
 class AptValueGC;
 class AptValueGC_PoolManager;
 class AptVar;
 class BString2;
 class CasEvent;
-class CasSimDescriptionS2C;
+class CasSimDescriptionS2C {
+public:
+    void DoStream(ReconBuffer* buf, int version);
+};
 class CDirtyXmlNode;
-class DOGMA_PoolManager;
-class EAStringC;
+class DOGMA_PoolManager {
+public:
+    void* Allocate(unsigned int size);
+    void Deallocate(void* ptr, unsigned int size);
+};
+
+class EAStringC {
+public:
+    void* m_buffer;
+    EAStringC();
+    EAStringC(unsigned int);
+    EAStringC(unsigned int, unsigned int);
+    ~EAStringC();
+    void operator=(EAStringC&);
+    char* c_str() const;
+};
 class EClock;
 class EDebugMenuItem;
 class EDL;
 class EFile;
-class EFileSystem;
+class EFileSystem {
+public:
+    EFileSystem();
+    virtual ~EFileSystem();
+    virtual int Init(int deviceType);
+};
 class EGlobal;
-class EGlobalManager;
+class EGlobalManager {
+public:
+    static void Shutdown();
+};
 class ELights;
-class ENgcTextureBase;
-class EResource;
-class EResourceManager;
+class ENgcTextureBase {
+public:
+    ENgcTextureBase(int a, int b, int c);
+    virtual ~ENgcTextureBase();
+};
+class EFile {
+public:
+    virtual unsigned int GetSize();
+    virtual void Seek(unsigned int offset, int mode);
+};
+
+class EResource {
+public:
+    unsigned int m_id;
+    unsigned int m_fileSize;
+    unsigned int m_totalSize;
+    EFile*       m_file;
+    EResource();
+};
+
+class EResourceManager {
+public:
+    int m_field84;
+    void* Alloc(unsigned int size, unsigned int align);
+    void Free(void* ptr);
+    EResourceManager();
+};
+
 class ETextureDef;
 class ETypeInfo;
 class ERenderSurfaceDef;
-class ERCharacter;
-class ERFont;
-class ERMovie;
-class ERShader;
-class ERTexture;
+
+class ERCharacter {
+public:
+    unsigned int m_id;
+    ERCharacter();
+    void Load(EFile* file);
+};
+
+class ERFont {
+public:
+    unsigned int m_id;
+    ERFont();
+    void Load(EFile* file);
+};
+
+class ERMovie {
+public:
+    unsigned int m_id;
+    ERMovie(EFile* file, unsigned int fileSize, unsigned int offset, int param);
+};
+
+class ERShader {
+public:
+    unsigned int m_id;
+    ERShader();
+    void Load(EFile* file);
+};
+
+class ERTexture {
+public:
+    unsigned int m_id;
+    ERTexture();
+    void Load(EFile* file);
+};
 class EVec3;
 class EVec4;
-class IconGroupImpl;
-class MUWrapper;
+class IconGroupImpl {
+public:
+    IconGroupImpl();
+    ~IconGroupImpl();
+    void Init(int type);
+    int GetSpriteID(int spriteIdx);
+};
+class MUWrapper {
+public:
+    void SetQueryType(int type);
+};
 class ObjectDataID;
 class ObjSelector;
 class PlumbBob;
-class ReconBuffer;
-class StateMachine;
-class StateMachineState;
+class StringBuffer {
+public:
+    const char* c_str() const;
+    int length() const;
+    void copy(const StringBuffer& other);
+    void append(const char* str, int maxLen = -1);
+    StringBuffer();
+    ~StringBuffer();
+};
+
+class ReconBuffer {
+public:
+    void Recon32(int* ptr, int count);
+    void Recon16(short* ptr, int count);
+    void Recon8(unsigned char* ptr, int count);
+    void ReconInt(int* ptr, int count);
+    void ReconBool(bool* ptr);
+    void ReconString(StringBuffer& str);
+};
+class StateMachine {
+public:
+    void ReturnFromState(int result);
+    void SetState(int stateId, float param);
+    void CallState(int stateId, float param);
+};
+
+class StateMachineState {
+public:
+    void OwnerSetNextState(int stateId, float param);
+    void OwnerCallState(int stateId, float param = 0.0f);
+    void OwnerReturnFromState(int result);
+};
 class StringBuffer;
 class UIDialog;
 
@@ -235,7 +389,7 @@ void EAudioStreamManager::AllocateAndLoadResource(EFile* file, unsigned int offs
 // 0x80323008 (68 bytes)
 EAudioStreamManager::EAudioStreamManager() {
     // Call base EResourceManager constructor
-    EResourceManager::EResourceManager();
+    // base class EResourceManager initialized by compiler
     this->m_field84 = 1;
     // Set vtable at offset 3356
 }
@@ -244,6 +398,7 @@ EAudioStreamManager::EAudioStreamManager() {
 
 class EMovieMan : public EResourceManager {
 public:
+    int m_field3360;
     void AllocateAndLoadResource(EFile* file, unsigned int offset, unsigned int id);
     EMovieMan();
 };
@@ -263,7 +418,7 @@ void EMovieMan::AllocateAndLoadResource(EFile* file, unsigned int offset, unsign
 
 // 0x803251C8 (68 bytes)
 EMovieMan::EMovieMan() {
-    EResourceManager::EResourceManager();
+    // base class EResourceManager initialized by compiler
     this->m_field84 = 1;
     // Set vtable at offset 3356
 }
@@ -784,7 +939,7 @@ BackgroundPane::~BackgroundPane() {
     void* buf = *(void**)((u8*)this + 8);
     if (buf) {
         u32 endOff = *(u32*)((u8*)this + 20); // offset 12 of sub-struct at +8
-        u32 size = (endOff - (u32)buf) & ~3u;
+        u32 size = (endOff - (u32)(uintptr_t)buf) & ~3u;
         if (size > 128) {
             operator_delete_impl(buf);
         } else {
@@ -808,7 +963,7 @@ DialogPane::~DialogPane() {
     void* buf = *(void**)((u8*)this + 8);
     if (buf) {
         u32 endOff = *(u32*)((u8*)this + 20);
-        u32 size = (endOff - (u32)buf) & ~3u;
+        u32 size = (endOff - (u32)(uintptr_t)buf) & ~3u;
         if (size > 128) {
             operator_delete_impl(buf);
         } else {
@@ -830,7 +985,7 @@ MenuDialogPane::~MenuDialogPane() {
     void* buf = *(void**)((u8*)this + 8);
     if (buf) {
         u32 endOff = *(u32*)((u8*)this + 20);
-        u32 size = (endOff - (u32)buf) & ~3u;
+        u32 size = (endOff - (u32)(uintptr_t)buf) & ~3u;
         if (size > 128) {
             operator_delete_impl(buf);
         } else {
@@ -847,7 +1002,7 @@ MenuDialogPane::~MenuDialogPane() {
 
 class MUStateMachine {
 public:
-    int MUPollForResult(int request);
+    static int MUPollForResult(int request);
 };
 
 class ChangeHouseSaveHouse : public StateMachineState {
@@ -1889,7 +2044,7 @@ public:
 
 // 0x80145C38 (196 bytes)
 EdithResFile::EdithResFile() {
-    ChainResFile::ChainResFile();
+    // base class ChainResFile initialized by compiler
     // Set ChainResFile vtable at offset 12
 
     // Initialize 8 StringBuffers at offset 208+
@@ -2226,11 +2381,11 @@ void ECullPlane::SetPlane(EVec4& plane) {
         s8 posSign, negSign;
         if (m_plane[i] > zero) {
             // Component > 0: use max corner for positive test
-            posSign = (s8)(((int)&negArr[i] - (int)&posArr[0]) >> 2);
-            negSign = (s8)(((int)&posArr[i] - (int)&posArr[0]) >> 2);
+            posSign = (s8)(((int)(uintptr_t)&negArr[i] - (int)(uintptr_t)&posArr[0]) >> 2);
+            negSign = (s8)(((int)(uintptr_t)&posArr[i] - (int)(uintptr_t)&posArr[0]) >> 2);
         } else {
-            posSign = (s8)(((int)&posArr[i] - (int)&posArr[0]) >> 2);
-            negSign = (s8)(((int)&negArr[i] - (int)&posArr[0]) >> 2);
+            posSign = (s8)(((int)(uintptr_t)&posArr[i] - (int)(uintptr_t)&posArr[0]) >> 2);
+            negSign = (s8)(((int)(uintptr_t)&negArr[i] - (int)(uintptr_t)&posArr[0]) >> 2);
         }
         m_signs2[i] = posSign;
         m_signs1[i] = negSign;
@@ -2346,7 +2501,7 @@ void NeighborList::DeleteAll() {
 
     if (oldBegin) {
         u32 endAddr = *(u32*)((u8*)this + 12); // capacity end
-        u32 size = (endAddr - (u32)oldBegin) & ~3u;
+        u32 size = (endAddr - (u32)(uintptr_t)oldBegin) & ~3u;
         if (size > 128) {
             operator_delete_impl(oldBegin);
         } else {
@@ -2466,7 +2621,7 @@ AptScriptFunctionByteCodeBlock::AptScriptFunctionByteCodeBlock(
 // 0x802B91C4 (88 bytes)
 AptScriptFunctionByteCodeBlock::~AptScriptFunctionByteCodeBlock() {
     // Set vtable
-    AptScriptFunctionBase::~AptScriptFunctionBase();
+    // AptScriptFunctionBase base destructor called implicitly
     // if (shouldDelete) DOGMA_PoolManager::DeallocateAptValueGC(this, 72)
 }
 
@@ -2540,7 +2695,7 @@ int AptExtern::objectMemberSet(AptValue* obj, EAStringC* name, AptValue* value) 
 
     // Get the c_str from name and tempStr
     char* nameStr = name->c_str();
-    char* valStr  = (char*)tempStr; // operator char*
+    char* valStr  = tempStr.c_str(); // operator char*
 
     // Call the extern callback function pointer
     // Located at offset 60 of a global table
@@ -2553,7 +2708,7 @@ int AptExtern::objectMemberSet(AptValue* obj, EAStringC* name, AptValue* value) 
 // 0x802B453C (88 bytes)
 AptExtern::~AptExtern() {
     // Set derived vtable at offset 8
-    AptValue::~AptValue();
+    // AptValue base destructor called implicitly
     // if (shouldDelete) DOGMA_PoolManager::Deallocate(this, 12)
 }
 
@@ -2808,6 +2963,9 @@ void UserDataSaveLoad::DoStream(ReconBuffer* buf, int version) {
 class CreateASimBaseState {
 public:
     void Update(float dt);
+    void OwnerReturnFromState(int result);
+    void OwnerSetNextState(int stateId, float param = 0.0f);
+    void OwnerCallState(int stateId, float param = 0.0f);
 };
 
 class LoadingScreenStateMachine {
@@ -2816,7 +2974,7 @@ public:
     static void StartingLoad(int mode);
 };
 
-class InLevelCreateASimState : public StateMachineState {
+class InLevelCreateASimState : public CreateASimBaseState {
 public:
     // offset 32: m_field32 (int)
     // offset 40: m_casComplete (int)
@@ -2858,7 +3016,7 @@ void InLevelCreateASimState::Update(float dt) {
 // PreGameCreateAFamilyState
 // ============================================================================
 
-class PreGameCreateAFamilyState : public StateMachineState {
+class PreGameCreateAFamilyState : public CreateASimBaseState {
 public:
     // offset 32: m_field32 (int)
     // offset 40: m_casComplete (int)
@@ -2919,7 +3077,7 @@ ENgcFileSystem::~ENgcFileSystem() {
     if (g_ngcFileSystemInitialized == 0) {
         EGlobalManager::Shutdown();
     }
-    EFileSystem::~EFileSystem();
+    // EFileSystem base destructor called implicitly
 }
 
 // 0x802D7450 (152 bytes)

@@ -63,7 +63,7 @@ public:
 };
 
 // Operator new/delete
-extern void* operator new(unsigned int);
+extern void* operator new(std::size_t);
 extern void operator delete(void*);
 extern void* __builtin_vec_new(unsigned int);
 extern void __builtin_vec_delete(void*);
@@ -81,7 +81,11 @@ class EVec2;
 class EVec4;
 class EBound3;
 class ERC;
-class EResource;
+class EResource {
+public:
+    void DelRef(void);
+    void AddRef(void);
+};
 class EResourceManager;
 class EDataHeader;
 class ETypeInfo;
@@ -99,7 +103,14 @@ class ERenderSurface;
 class ERenderSurfaceDef;
 class EViewport;
 class EInstance;
-class ENodeList;
+class NLIteratorPtrType;
+class ENodeList {
+public:
+    void RemoveAll(void);
+    void Remove(NLIteratorPtrType*);
+    void AddHead(unsigned int);
+    void AddTail(unsigned int);
+};
 class EILight;
 class EWindow;
 class EPMDesc;
@@ -209,7 +220,7 @@ public:
                     bool flag, ERLevel* level, EBound3& bound, bool& outFlag); // NOTE: asm-derived (1640B)
 
     // 0x80047104
-    void EmptyTable(); { // NOTE: asm-derived
+    void EmptyTable() { // NOTE: asm-derived
         // Iterates through strip list and removes entries
     }
 
@@ -1060,7 +1071,7 @@ public:
     void Draw2D(ERC* rc, cXPerson* person); // NOTE: asm-derived
 
     // 0x8006E760
-    void* operator new(unsigned int size) {
+    void* operator new(std::size_t size) {
         return MainHeap()->Malloc(size, 0);
     }
 };
@@ -2473,7 +2484,7 @@ public:
     void Init(EBitArray* bits, int offset); // NOTE: asm-derived (384B)
 
     // 0x8035D468
-    void* operator new(unsigned int size); // NOTE: asm-derived
+    void* operator new(std::size_t size); // NOTE: asm-derived
 
     // 0x8035D50C
     void operator delete(void* ptr); // NOTE: asm-derived
@@ -3030,19 +3041,4 @@ public:
     void GetGlobalRef(short index, short** outRef); // NOTE: asm-derived
 };
 
-// ============================================================================
-// ENodeList helper (referenced by EFloorShdTblNode)
-// ============================================================================
-class ENodeList {
-public:
-    void RemoveAll();
-    void Remove(NLIteratorPtrType*);
-    void AddHead(unsigned int);
-    void AddTail(unsigned int);
-};
-
-class EResource {
-public:
-    void DelRef();
-    void AddRef();
-};
+// ENodeList and EResource are defined near the top of the file

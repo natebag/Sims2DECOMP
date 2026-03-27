@@ -64,7 +64,7 @@ class ERModel;
 class ERSoundEvent;
 class ERSoundTrackData;
 class EResource;
-class EResourceManager;
+class EResourceManager { public: static void* Alloc(unsigned int size, unsigned int align); static void Free(void* ptr); static unsigned int CalcId(char* name); };
 class EStorable;
 class ETypeInfo;
 class ReconBuffer;
@@ -1557,9 +1557,4 @@ public:
 //  EResourceManager static helper (used by several managers above)
 //
 // ############################################################################
-
-class EResourceManager {
-public:
-    static void* Alloc(unsigned int size, unsigned int align);
-    static unsigned int CalcId(char* name);
-};
+// (EResourceManager class is declared above)

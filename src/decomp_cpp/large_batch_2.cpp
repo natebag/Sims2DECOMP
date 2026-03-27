@@ -20,7 +20,7 @@ extern "C" {
     int   strcmp(const char* s1, const char* s2);
     int   wcscmp(const unsigned short* s1, const unsigned short* s2);
     int   wcslen(const unsigned short* s);
-    void  Sprintf(char* buf, const char* fmt, ...);
+    int Sprintf(char* buf, const char* fmt, ...);
     float sqrtf(float);
     float fabsf(float);
 }
@@ -41,9 +41,9 @@ extern EAHeap* AptHeap();
 extern EAHeap* DebugHeap();
 extern EAHeap* CUIHeap();
 
-void* operator new(unsigned int size);
+void* operator new(std::size_t size);
 void  operator delete(void* ptr);
-void* operator new[](unsigned int size);
+void* operator new[](std::size_t size);
 void  operator delete[](void* ptr);
 
 extern void* SimsAptMalloc(unsigned int size);
