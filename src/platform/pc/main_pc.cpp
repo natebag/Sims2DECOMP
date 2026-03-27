@@ -125,44 +125,40 @@ int main(int argc, char* argv[]) {
     }
     printf("[MAIN] Loaded %d archives\n", arc_loaded);
 
-    // Try to load a texture from the game
+    // Generate a Sims 2 themed test texture (checkerboard with game colors)
     unsigned int test_texture_id = 0;
-    int tex_w = 0, tex_h = 0;
-    char loaded_tex_name[256] = "none";
-    for (int i = 0; i < arc_count(); i++) {
-        ArcArchive* arc = arc_get(i);
-        if (!arc) continue;
-        // Find first texture entry
-        const ArcEntry* entry = arc_find(arc, "title bg c");
-        if (!entry) entry = arc_find(arc, "systemfont");
-        if (entry) {
-            u32 data_size = 0;
-            u8* data = arc_read(arc, entry, &data_size);
-            if (data && data_size > 64) {
-                // The texture data starts with a TPL-like header
-                // For now just create a test pattern texture from the raw bytes
-                int w = 128, h = 128;
-                u8* rgba = (u8*)malloc(w * h * 4);
-                for (int y = 0; y < h; y++) {
-                    for (int x = 0; x < w; x++) {
-                        int idx = (y * w + x) * 4;
-                        int src_idx = (y * w + x) % data_size;
-                        rgba[idx+0] = data[src_idx];       // R
-                        rgba[idx+1] = data[(src_idx+1) % data_size]; // G
-                        rgba[idx+2] = data[(src_idx+2) % data_size]; // B
-                        rgba[idx+3] = 255;                  // A
-                    }
+    {
+        int w = 128, h = 128;
+        u8* rgba = (u8*)malloc(w * h * 4);
+        for (int y = 0; y < h; y++) {
+            for (int x = 0; x < w; x++) {
+                int idx = (y * w + x) * 4;
+                bool check = ((x / 16) + (y / 16)) % 2 == 0;
+                if (check) {
+                    rgba[idx+0] = 0; rgba[idx+1] = 180; rgba[idx+2] = 80; rgba[idx+3] = 255; // Sims green
+                } else {
+                    rgba[idx+0] = 0; rgba[idx+1] = 40; rgba[idx+2] = 20; rgba[idx+3] = 255; // dark green
                 }
-                test_texture_id = gl_create_texture(rgba, w, h);
-                tex_w = w; tex_h = h;
-                strncpy(loaded_tex_name, entry->name, 255);
-                printf("[MAIN] Loaded texture '%s' (%u bytes) → GL texture %u\n",
-                       entry->name, data_size, test_texture_id);
-                free(rgba);
-                free(data);
-                break;
             }
-            if (data) free(data);
+        }
+        test_texture_id = gl_create_texture(rgba, w, h);
+        free(rgba);
+    }
+
+    // Log asset stats
+    {
+        FILE* lf = fopen("sims2pc.log", "a");
+        if (lf) {
+            int total_entries = 0;
+            for (int i = 0; i < arc_count(); i++) {
+                ArcArchive* a = arc_get(i);
+                if (a) {
+                    // Count entries via arc_find hack — we know the entry count from the log
+                    total_entries++; // Just count archives for now
+                }
+            }
+            fprintf(lf, "[MAIN] %d archives loaded, GL texture created\n", arc_count());
+            fclose(lf);
         }
     }
 
