@@ -203,8 +203,16 @@ void PADSetAnalogMode(int mode) { (void)mode; }
 // Audio
 // ============================================================================
 
-void AXInit(void) { printf("[AX STUB] AXInit\n"); }
-void AXQuit(void) { }
+// Forward declare audio bridge (defined in audio_bridge.cpp)
+extern int audio_init(void);
+extern void audio_shutdown(void);
+
+void AXInit(void) {
+    audio_init();
+}
+void AXQuit(void) {
+    audio_shutdown();
+}
 void AXSetMode(int mode) { (void)mode; }
 
 } // extern "C"

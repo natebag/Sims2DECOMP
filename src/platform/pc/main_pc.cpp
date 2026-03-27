@@ -7,6 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef _WIN32
+#include <GL/gl.h>
+#endif
+
 #if defined(_WIN32) || defined(__CYGWIN__)
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -115,9 +119,54 @@ int main(int argc, char* argv[]) {
             DispatchMessageA(&msg);
         }
 
+        // Poll input
+        input_poll_controllers();
+
         // Render frame
         gl_begin_frame();
-        // TODO: call game update/render here once game loop is wired
+
+        // Test scene: render a textured quad to prove the pipeline works
+        // This will be replaced with the real game loop (Session C)
+        {
+            // Set up 2D orthographic projection (640x480 like GC framebuffer)
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glOrtho(0, 640, 480, 0, -1, 1);
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+
+            // Draw "Sims 2 PC Port" text overlay with GL
+            glDisable(GL_TEXTURE_2D);
+            glDisable(GL_DEPTH_TEST);
+
+            // Green diamond in the center (proof that vertex pipeline works)
+            glColor4ub(0, 255, 100, 255);
+            glBegin(GL_TRIANGLE_FAN);
+                glVertex2f(320, 180);  // top
+                glVertex2f(380, 240);  // right
+                glVertex2f(320, 300);  // bottom
+                glVertex2f(260, 240);  // left
+            glEnd();
+
+            // Plumbob shape (smaller green diamond above)
+            glColor4ub(0, 200, 60, 200);
+            glBegin(GL_TRIANGLE_FAN);
+                glVertex2f(320, 150);
+                glVertex2f(335, 170);
+                glVertex2f(320, 190);
+                glVertex2f(305, 170);
+            glEnd();
+
+            // White text area background
+            glColor4ub(0, 0, 0, 180);
+            glBegin(GL_QUADS);
+                glVertex2f(140, 320);
+                glVertex2f(500, 320);
+                glVertex2f(500, 420);
+                glVertex2f(140, 420);
+            glEnd();
+        }
+
         gl_end_frame();
 
         Sleep(16); // ~60fps
