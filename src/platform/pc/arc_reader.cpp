@@ -103,35 +103,51 @@ ArcArchive* arc_open(const char* filepath) {
     }
     fread(data, 1, remaining, f);
 
-    long pos = 0;
-    while (pos < remaining - 12) {
-        // Check if we have a tagged entry:
-        // [u32 header_val] [4-char tag] [0xFFFFFFFF] [u32 name_len] [name] [data]
-        u32 header_val = read_be_u32(data + pos);
+    // Phase 1: Find all entry start positions by scanning for sentinel pattern.
+    // Entry format: [u32 header_val] [4-char ASCII tag] [0xFFFFFFFF] [u32 name_len] [name...]
+    // We search for 0xFFFFFFFF and validate the surrounding bytes.
+    std::vector<long> entry_starts;
+    entry_starts.reserve(16384);
 
-        // Check if bytes 4-7 are ASCII (type tag)
-        bool is_ascii_tag = true;
-        for (int i = 4; i < 8 && pos + i < remaining; i++) {
-            u8 c = data[pos + i];
-            if (c < 32 || c >= 127) { is_ascii_tag = false; break; }
+    for (long scan = 4; scan < remaining - 16; scan++) {
+        if (read_be_u32(data + scan + 4) != 0xFFFFFFFF) continue;
+
+        // Check ASCII tag at scan[0..3]
+        bool tag_ok = true;
+        for (int i = 0; i < 4; i++) {
+            u8 c = data[scan + i];
+            if (c < 32 || c >= 127) { tag_ok = false; break; }
         }
+        if (!tag_ok) continue;
 
-        if (!is_ascii_tag || pos + 16 > remaining) break;
+        // Validate name_len and name printability
+        u32 next_name_len = read_be_u32(data + scan + 8);
+        if (next_name_len < 2 || next_name_len > 256) continue;
+        if (scan + 12 + (long)next_name_len > remaining) continue;
+        bool name_ok = true;
+        for (u32 ni = 0; ni < next_name_len - 1; ni++) {
+            u8 nc = data[scan + 12 + ni];
+            if (nc < 32 || nc >= 127) { name_ok = false; break; }
+        }
+        if (!name_ok) continue;
 
-        // Check for sentinel
-        u32 sentinel = read_be_u32(data + pos + 8);
-        if (sentinel != 0xFFFFFFFF) break;
+        // Entry starts 4 bytes before the tag (header_val field)
+        entry_starts.push_back(scan - 4);
+    }
 
-        // Read name length
+    // Phase 2: Build entries from the sorted positions.
+    for (size_t ei = 0; ei < entry_starts.size(); ei++) {
+        long pos = entry_starts[ei];
+        if (pos + 16 > remaining) break;
+
         u32 name_len = read_be_u32(data + pos + 12);
-        if (name_len == 0 || name_len > 1024 || pos + 16 + name_len > remaining) break;
+        if (name_len == 0 || name_len > 256 || pos + 16 + (long)name_len > remaining) continue;
 
         ArcEntry entry;
         memcpy(entry.tag, data + pos + 4, 4);
         entry.tag[4] = '\0';
-        entry.header_value = header_val;
+        entry.header_value = read_be_u32(data + pos);
 
-        // Copy name (excluding null terminator)
         u32 copy_len = name_len - 1;
         if (copy_len > 255) copy_len = 255;
         memcpy(entry.name, data + pos + 16, copy_len);
@@ -143,45 +159,11 @@ ArcArchive* arc_open(const char* filepath) {
 
         entry.data_offset = 16 + (u32)pos + data_start; // absolute offset in file
 
-        // Find next entry to determine data size
-        // Scan forward for next sentinel pattern
-        u32 next_entry_pos = data_start;
-        bool found_next = false;
-
-        for (long scan = pos + data_start + 4; scan < remaining - 16; scan += 4) {
-            // Look for ASCII tag followed by 0xFFFFFFFF sentinel
-            bool tag_ok = true;
-            for (int i = 0; i < 4; i++) {
-                u8 c = data[scan + i];
-                if (c < 32 || c >= 127) { tag_ok = false; break; }
-            }
-            if (!tag_ok) continue;
-            if (read_be_u32(data + scan + 4) != 0xFFFFFFFF) continue;
-
-            // Validate: name_len must be reasonable and name must be printable
-            if (scan + 12 >= remaining) continue;
-            u32 next_name_len = read_be_u32(data + scan + 8);
-            if (next_name_len < 2 || next_name_len > 256) continue;
-            if (scan + 12 + next_name_len > remaining) continue;
-            bool name_ok = true;
-            for (u32 ni = 0; ni < next_name_len - 1 && name_ok; ni++) {
-                u8 nc = data[scan + 12 + ni];
-                if (nc < 32 || nc >= 127) name_ok = false;
-            }
-            if (!name_ok) continue;
-
-            // Confirmed next entry — back up 4 bytes for header_val
-            u32 next_start = (u32)(scan - 4);
-            entry.data_size = next_start - (u32)pos - data_start;
-            pos = next_start;
-            found_next = true;
-            break;
-        }
-
-        if (!found_next) {
+        // Data size = distance to next entry, or rest of file
+        if (ei + 1 < entry_starts.size()) {
+            entry.data_size = (u32)(entry_starts[ei + 1] - pos) - data_start;
+        } else {
             entry.data_size = (u32)(remaining - pos - data_start);
-            arc->entries.push_back(entry);
-            break;
         }
 
         arc->entries.push_back(entry);
