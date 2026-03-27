@@ -109,17 +109,25 @@ int game_bootstrap(const char* data_path) {
     return 1;
 }
 
+// Frame counter for boot status display
+static int g_frameCount = 0;
+
 // Called each frame from the render loop
 void game_update(float dt) {
-    // TODO: When ready, call:
-    // ESimsApp::UpdateCheats();
-    // ESimsApp::UpdateApt();
-    // ESimsApp::UpdateGame();
-    // ESimsApp::UpdateAudio();
-    // ESimsApp::UpdateShaders(dt);
-    // ESimsApp::UpdateDraw();
+    g_frameCount++;
     (void)dt;
+
+    // TODO: When subsystems are implemented, call:
+    // ESimsApp::UpdateCheats();
+    // ESimsApp::UpdateApt();    // Flash/ActionScript UI
+    // ESimsApp::UpdateGame();   // Sim AI, objects, physics
+    // ESimsApp::UpdateAudio();  // Sound mixing
+    // ESimsApp::UpdateShaders(dt); // Shader updates
+    // ESimsApp::UpdateDraw();   // Render the scene
 }
+
+int game_get_frame_count(void) { return g_frameCount; }
+int game_get_archive_count(void) { return arc_count(); }
 
 void game_shutdown(void) {
     log_boot("[BOOT] Game shutdown\n");

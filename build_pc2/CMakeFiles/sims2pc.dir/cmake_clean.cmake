@@ -103,6 +103,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o.d"
   "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o"
   "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o.d"
+  "CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o"
+  "CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o.d"
   "CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o"
   "CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o.d"
   "CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o"

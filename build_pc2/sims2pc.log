@@ -1,4 +1,12 @@
+[BOOT] Starting game bootstrap...
+[BOOT] Memory: using system malloc
+[BOOT] Global state initialized
 [ARC] Opened 0 archives from extracted/files/DATA
+[BOOT] Archives loaded: 0
+[BOOT] ERROR: No archives found at extracted/files/DATA
+[BOOT] Starting game bootstrap...
+[BOOT] Memory: using system malloc
+[BOOT] Global state initialized
 [ARC] Opened ../extracted/files/DATA/ambients.arc: 0 entries
 [ARC] Opened ../extracted/files/DATA/animatio.arc: 144 entries
 [ARC] Opened ../extracted/files/DATA/audiostr.arc: 0 entries
@@ -21,4 +29,11 @@
 [ARC] Opened ../extracted/files/DATA/soundtra.arc: 2 entries
 [ARC] Opened ../extracted/files/DATA/textures.arc: 207 entries
 [ARC] Opened 22 archives from ../extracted/files/DATA
+[BOOT] Archives loaded: 22
+[BOOT] Resources: fonts=1 models=1 textures=1
+[BOOT] Renderer: OpenGL (initialized by main)
+[BOOT] Game bootstrap complete — ready for render loop
+[BOOT] NOTE: Full game init (ESimsApp::Init) not yet wired.
+[BOOT]       Currently showing test scene. Next step: implement
+[BOOT]       subsystem inits one at a time until game boots.
 [MAIN] 22 archives loaded, GL texture created

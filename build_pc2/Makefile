@@ -1377,6 +1377,30 @@ src/platform/pc/ea_texture.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.s
 .PHONY : src/platform/pc/ea_texture.cpp.s
 
+src/platform/pc/game_bootstrap.o: src/platform/pc/game_bootstrap.cpp.o
+.PHONY : src/platform/pc/game_bootstrap.o
+
+# target to build an object file
+src/platform/pc/game_bootstrap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o
+.PHONY : src/platform/pc/game_bootstrap.cpp.o
+
+src/platform/pc/game_bootstrap.i: src/platform/pc/game_bootstrap.cpp.i
+.PHONY : src/platform/pc/game_bootstrap.i
+
+# target to preprocess a source file
+src/platform/pc/game_bootstrap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.i
+.PHONY : src/platform/pc/game_bootstrap.cpp.i
+
+src/platform/pc/game_bootstrap.s: src/platform/pc/game_bootstrap.cpp.s
+.PHONY : src/platform/pc/game_bootstrap.s
+
+# target to generate assembly for a file
+src/platform/pc/game_bootstrap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.s
+.PHONY : src/platform/pc/game_bootstrap.cpp.s
+
 src/platform/pc/gc_texture_decode.o: src/platform/pc/gc_texture_decode.cpp.o
 .PHONY : src/platform/pc/gc_texture_decode.o
 
@@ -1830,6 +1854,9 @@ help:
 	@echo "... src/platform/pc/ea_texture.o"
 	@echo "... src/platform/pc/ea_texture.i"
 	@echo "... src/platform/pc/ea_texture.s"
+	@echo "... src/platform/pc/game_bootstrap.o"
+	@echo "... src/platform/pc/game_bootstrap.i"
+	@echo "... src/platform/pc/game_bootstrap.s"
 	@echo "... src/platform/pc/gc_texture_decode.o"
 	@echo "... src/platform/pc/gc_texture_decode.i"
 	@echo "... src/platform/pc/gc_texture_decode.s"

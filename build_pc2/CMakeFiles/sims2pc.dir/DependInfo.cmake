@@ -60,6 +60,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/f/coding/Decompiles/Sims 2/src/platform/pc/audio_bridge.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/clib_wrappers.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/ea_texture.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/game_bootstrap.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/gc_texture_decode.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/gl_renderer.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_gl_impl.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o.d"
