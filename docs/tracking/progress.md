@@ -33,8 +33,8 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 | Metric | Value |
 |--------|-------|
 | By file count | 80.8% (5,023 / 6,237) |
-| By line count | ~54.6% (1.42M / 2.60M) |
-| Remaining asm stubs | 1,214 files (~720 now have portable C++ equivalents) |
+| By line count | ~55.3% (1.47M / 2.64M) |
+| Remaining asm stubs | 1,214 files — **ALL now have portable C++ equivalents** |
 | Stubs with portable equiv | **1,214 of 1,214 (100%)** |
 
 ## By System

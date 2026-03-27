@@ -10,9 +10,9 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 |--------|-------|
 | DOL byte match | **100.000%** (4,644,364 / 4,644,364 bytes) |
 | Byte-identical functions | **18,539** |
-| Portable C++ files | **5,012** (80.5% of source files) |
-| Portable C++ lines | **~1,398,000** |
-| Remaining asm stubs | **1,214 files** to convert for PC port |
+| Portable C++ files | **5,039** (80.8% of source files) |
+| Portable C++ lines | **~1,465,000** |
+| Remaining asm stubs | **1,214 files** — ALL have portable C++ equivalents |
 | Class struct layouts | **643 classes** with documented fields |
 | Header files | **760** |
 | Total symbols in map | 36,913 |
