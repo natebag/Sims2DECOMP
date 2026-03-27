@@ -7,9 +7,9 @@
 | DOL byte match | **100.000%** (4,644,364 / 4,644,364) |
 | Total symbols (map) | 36,913 |
 | Functions injected (matching) | 18,539 |
-| Portable C++ files | 5,023 |
-| Remaining asm stubs | 1,214 (~720 now have portable C++ equivalents) |
-| Portable C++ lines | ~1,417,261 |
+| Portable C++ files | 5,027 |
+| Remaining asm stubs | 1,214 (~834 now have portable C++ equivalents) |
+| Portable C++ lines | ~1,425,548 |
 | Asm stub lines | ~1,178,431 |
 
 ## DOL Section Match (2026-03-24)
@@ -35,7 +35,7 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 | By file count | 80.8% (5,023 / 6,237) |
 | By line count | ~54.6% (1.42M / 2.60M) |
 | Remaining asm stubs | 1,214 files (~720 now have portable C++ equivalents) |
-| Stubs with portable equiv | ~720 (across 2 sessions) |
+| Stubs with portable equiv | ~834 (across 2 sessions) |
 
 ## By System
 
@@ -76,3 +76,11 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 - Agent 3: ~104 game system stubs → `medium_game_systems.cpp` (2,243 lines)
 - Agent 4: ~92 engine/core stubs → `medium_engine_core.cpp` (2,547 lines)
 - Total: ~385 asm stubs converted, 8,383 lines of portable C++ added
+
+### 2026-03-27: Worktree blitz on 501-1000 line stubs
+- 4 parallel worktree agents converting large stubs
+- Batch 1: 28 files (ENodeList, ETweak, AptError, cGZMusic, EPathUtil, etc.) → `large_batch_1.cpp` (1,773 lines)
+- Batch 2: 28 files (EAHeap, GoalUnlock, WantFearManager, UI3D, etc.) → `large_batch_2.cpp` (1,763 lines)
+- Batch 3: 28 files (StateMachine, EHashTable, FamilyImpl, WorldMap, etc.) → `large_batch_3.cpp` (1,580 lines)
+- Batch 4: 30 files (EQuat, EConfig, SimsMemCardWrap, Interaction, etc.) → `large_batch_4.cpp` (3,171 lines)
+- Total: 114 asm stubs converted, 8,287 lines of portable C++ added
