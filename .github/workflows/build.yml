@@ -1,0 +1,124 @@
+# Sims 2 GameCube Decompilation — CI Pipeline
+#
+# Verifies the decompilation builds correctly on every push and PR.
+#
+# Two verification levels:
+#   1. ALWAYS: Compile all decompiled C++ source with devkitPPC (make compile)
+#   2. IF ORIGINAL FILES PRESENT: Full inject + DOL byte-match verification
+#
+# The original DOL (extracted/sys/main.dol) and ELF (extracted/files/u2_ngc_release_dvd.elf)
+# are copyrighted Nintendo GameCube game files and cannot be stored in the repo.
+# To enable full byte-match verification, add them as repository secrets:
+#   - ORIGINAL_DOL: base64-encoded contents of extracted/sys/main.dol
+#   - ORIGINAL_ELF: base64-encoded contents of extracted/files/u2_ngc_release_dvd.elf
+# Or place them in the expected paths via a self-hosted runner.
+
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build & Verify
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Toolchain setup ──────────────────────────────────────────────
+
+      - name: Install devkitPPC
+        uses: devkitPro/setup-devkitpro@v1
+        with:
+          packages: devkitPPC
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install decomp-toolkit (dtk)
+        run: |
+          # Download latest dtk release binary
+          DTK_VERSION=$(curl -s https://api.github.com/repos/encounter/decomp-toolkit/releases/latest | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
+          echo "Installing decomp-toolkit ${DTK_VERSION}..."
+          curl -fsSL "https://github.com/encounter/decomp-toolkit/releases/download/${DTK_VERSION}/dtk-x86_64-unknown-linux-musl.zip" -o dtk.zip
+          unzip -o dtk.zip -d /usr/local/bin
+          chmod +x /usr/local/bin/dtk
+          dtk --version
+
+      # ── Restore original game files (if secrets are set) ─────────────
+
+      - name: Restore original DOL and ELF from secrets
+        env:
+          ORIGINAL_DOL: ${{ secrets.ORIGINAL_DOL }}
+          ORIGINAL_ELF: ${{ secrets.ORIGINAL_ELF }}
+        run: |
+          if [ -n "${ORIGINAL_DOL}" ] && [ -n "${ORIGINAL_ELF}" ]; then
+            mkdir -p extracted/sys extracted/files
+            echo "${ORIGINAL_DOL}" | base64 -d > extracted/sys/main.dol
+            echo "${ORIGINAL_ELF}" | base64 -d > extracted/files/u2_ngc_release_dvd.elf
+            echo "Original game files restored from secrets."
+            echo "DOL size: $(stat -c%s extracted/sys/main.dol) bytes"
+            echo "ELF size: $(stat -c%s extracted/files/u2_ngc_release_dvd.elf) bytes"
+          else
+            echo "Secrets ORIGINAL_DOL / ORIGINAL_ELF not set -- skipping."
+          fi
+
+      - name: Check for original game files
+        id: check-originals
+        run: |
+          if [ -f "extracted/sys/main.dol" ] && [ -f "extracted/files/u2_ngc_release_dvd.elf" ]; then
+            echo "has_originals=true" >> "$GITHUB_OUTPUT"
+            echo "Original game files found -- full byte-match verification enabled."
+          else
+            echo "has_originals=false" >> "$GITHUB_OUTPUT"
+            echo "Original game files not found -- skipping byte-match verification."
+            echo "Only compilation checks will run. To enable full verification,"
+            echo "add ORIGINAL_DOL and ORIGINAL_ELF as base64-encoded repository secrets."
+          fi
+
+      # ── Build ────────────────────────────────────────────────────────
+
+      - name: Generate skeleton assembly
+        run: python3 tools/gen_skeleton.py
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+
+      - name: Compile decompiled C++ sources
+        run: |
+          make compile \
+            DEVKITPPC="${DEVKITPRO}/devkitPPC" \
+            DTK="dtk" \
+            PYTHON="python3"
+
+      # ── Full verification (only with original game files) ────────────
+
+      - name: Inject matched functions into skeleton
+        if: steps.check-originals.outputs.has_originals == 'true'
+        run: |
+          make inject \
+            DEVKITPPC="${DEVKITPRO}/devkitPPC" \
+            DTK="dtk" \
+            PYTHON="python3"
+
+      - name: Link final ELF
+        if: steps.check-originals.outputs.has_originals == 'true'
+        run: |
+          make \
+            DEVKITPPC="${DEVKITPRO}/devkitPPC" \
+            DTK="dtk" \
+            PYTHON="python3"
+
+      - name: Verify DOL byte-match
+        if: steps.check-originals.outputs.has_originals == 'true'
+        run: |
+          make diff \
+            DEVKITPPC="${DEVKITPRO}/devkitPPC" \
+            DTK="dtk" \
+            PYTHON="python3"

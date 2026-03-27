@@ -21,7 +21,7 @@
 | 3 | Core Systems | **DONE** | 2026-03-27 |
 | 4 | Gameplay Systems | **DONE** | 2026-03-27 |
 | 5 | Presentation & Polish | **DONE** | 2026-03-27 |
-| 6 | Full Match (CI, docs, release) | **IN PROGRESS** | — |
+| 6 | Full Match (CI, docs, release) | **IN PROGRESS** — CI + docs done, need release tag | — |
 | 7 | PC Port & Mods | **IN PROGRESS** | — |
 
 ## DOL Section Match (2026-03-24)

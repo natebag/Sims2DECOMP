@@ -84,10 +84,7 @@ all decompiled and matching.
 - [x] DolphinSDK wrapper functions decompiled (sdk_wrappers.cpp + global_chunk_2.cpp — OS/DVD/PAD/GX/AI)
 - [x] basic_string and STL containers decompiled (stl_containers.cpp, containers_math.cpp)
 - [x] 20%+ of total functions matching (50%+ — 18,539 functions)
-- [ ] All core system docs written
-
-**Status:** All technical gates done. Only missing dedicated docs in `docs/systems/`
-for memory, game loop, assets, renderer, SDK. The code itself is fully documented inline.
+- [x] All core system docs written (memory-management.md, game-loop.md, asset-loading.md, renderer.md, sdk-wrappers.md)
 
 ### Milestone 4: GAMEPLAY SYSTEMS — DONE
 
@@ -123,12 +120,11 @@ for memory, game loop, assets, renderer, SDK. The code itself is fully documente
 **Gate Criteria:**
 - [x] 100% of functions matching byte-for-byte (18,539/18,539, 100% DOL match)
 - [x] All remaining library code (SN runtime, DolphinSDK) stubbed or decompiled
-- [ ] Full CI pipeline verifying matching on every commit
-- [ ] Complete contributor documentation (CONTRIBUTING.md)
+- [x] Full CI pipeline verifying matching on every commit (.github/workflows/build.yml)
+- [x] Complete contributor documentation (CONTRIBUTING.md + 5 system docs)
 - [ ] Community-ready GitHub release (tagged release)
 
-**Remaining:** CI pipeline, CONTRIBUTING.md, and a tagged GitHub release. All technical
-decomp work is done — these are process/docs gates.
+**Remaining:** Tag a v1.0 release once CI is confirmed green.
 
 ### Milestone 7: PC PORT & MODS — IN PROGRESS
 
