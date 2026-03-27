@@ -97,12 +97,53 @@ int OSDisableInterrupts(void) { return 0; }
 void OSRestoreInterrupts(int level) { (void)level; }
 
 // ============================================================================
-// DVD file I/O (maps to standard file I/O)
+// DVD file I/O (maps GameCube disc paths to PC filesystem)
 // ============================================================================
 
-int DVDOpen(const char* fileName, DVDFileInfo* fileInfo) {
+// Base path for extracted disc files (set at startup)
+static char g_disc_base_path[512] = "extracted/files";
+
+void DVD_SetBasePath(const char* path) {
+    strncpy(g_disc_base_path, path, sizeof(g_disc_base_path) - 1);
+    printf("[DVD] Base path set to: %s\n", g_disc_base_path);
+}
+
+static FILE* dvd_try_open(const char* fileName) {
+    char full_path[1024];
+
+    // Try exact path first
     FILE* f = fopen(fileName, "rb");
-    if (!f) return 0;
+    if (f) return f;
+
+    // Try under disc base path
+    snprintf(full_path, sizeof(full_path), "%s/%s", g_disc_base_path, fileName);
+    f = fopen(full_path, "rb");
+    if (f) return f;
+
+    // Try with DATA/ prefix
+    snprintf(full_path, sizeof(full_path), "%s/DATA/%s", g_disc_base_path, fileName);
+    f = fopen(full_path, "rb");
+    if (f) return f;
+
+    // Try just the filename (strip any path)
+    const char* base = strrchr(fileName, '/');
+    if (!base) base = strrchr(fileName, '\\');
+    if (base) {
+        base++;
+        snprintf(full_path, sizeof(full_path), "%s/DATA/%s", g_disc_base_path, base);
+        f = fopen(full_path, "rb");
+        if (f) return f;
+    }
+
+    return nullptr;
+}
+
+int DVDOpen(const char* fileName, DVDFileInfo* fileInfo) {
+    FILE* f = dvd_try_open(fileName);
+    if (!f) {
+        fprintf(stderr, "[DVD] Failed to open: %s\n", fileName);
+        return 0;
+    }
     fileInfo->internal = f;
     return 1;
 }
@@ -148,10 +189,11 @@ int CARDWrite(void* fileInfo, const void* addr, int length, int offset) { return
 
 int PADInit(void) { return 1; }
 
+// Forward declare input bridge function (defined in input_bridge.cpp)
+extern int input_get_pad_status(void* status);
+
 int PADRead(PADStatus* status) {
-    memset(status, 0, sizeof(PADStatus) * 4); // 4 controllers
-    // TODO: read from SDL2 gamepad/keyboard
-    return 0;
+    return input_get_pad_status(status);
 }
 
 void PADReset(unsigned int mask) { (void)mask; }

@@ -2,8 +2,10 @@
 // Uses Win32 API directly for the window (no SDL2 dependency needed).
 
 #include "types.h"
-#include <cstdio>
-#include <cstdlib>
+#include "gl_renderer.h"
+#include "input_bridge.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #if defined(_WIN32) || defined(__CYGWIN__)
 #define WIN32_LEAN_AND_MEAN
@@ -23,6 +25,10 @@ LRESULT CALLBACK Sims2WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 g_running = false;
                 PostQuitMessage(0);
             }
+            input_handle_key((unsigned int)wParam, 1);
+            return 0;
+        case WM_KEYUP:
+            input_handle_key((unsigned int)wParam, 0);
             return 0;
         case WM_PAINT: {
             PAINTSTRUCT ps;
@@ -87,7 +93,17 @@ int main(int argc, char* argv[]) {
     ShowWindow(hwnd, SW_SHOW);
     UpdateWindow(hwnd);
 
-    // Message loop
+    // Initialize input
+    input_init();
+
+    // Initialize OpenGL
+    if (!gl_init(hwnd)) {
+        printf("[MAIN] OpenGL init failed — falling back to GDI\n");
+    } else {
+        printf("[MAIN] OpenGL rendering active\n");
+    }
+
+    // Message loop with OpenGL rendering
     MSG msg;
     while (g_running) {
         while (PeekMessageA(&msg, NULL, 0, 0, PM_REMOVE)) {
@@ -98,9 +114,16 @@ int main(int argc, char* argv[]) {
             TranslateMessage(&msg);
             DispatchMessageA(&msg);
         }
+
+        // Render frame
+        gl_begin_frame();
+        // TODO: call game update/render here once game loop is wired
+        gl_end_frame();
+
         Sleep(16); // ~60fps
     }
 
+    gl_shutdown();
     DestroyWindow(hwnd);
     return 0;
 }
