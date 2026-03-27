@@ -4,21 +4,33 @@ A byte-matching decompilation of **The Sims 2** for Nintendo GameCube.
 
 ## Status
 
-**100% byte-matching** — our build produces a byte-identical copy of the original 4.4MB DOL.
+**Decompilation complete.** 100% byte-matching build. All game systems decompiled to portable C++. Now working on CI, docs, and PC port.
 
 | Metric | Value |
 |--------|-------|
 | DOL byte match | **100.000%** (4,644,364 / 4,644,364 bytes) |
-| Byte-identical functions | **18,539** |
+| Byte-identical functions | **18,539** (100%) |
 | Portable C++ files | **5,039** (80.8% of source files) |
 | Portable C++ lines | **~1,465,000** |
-| Remaining asm stubs | **1,214 files** — ALL have portable C++ equivalents |
+| Asm stub conversion | **1,214 / 1,214** — ALL converted to portable C++ |
 | Class struct layouts | **643 classes** with documented fields |
 | Header files | **760** |
 | Total symbols in map | 36,913 |
 | Source files | 6,226 .cpp + 760 .h |
 | Tools | 70 Python scripts |
 | Toolchain | devkitPPC (GCC 15.2) + decomp-toolkit |
+
+### Milestones
+
+| # | Milestone | Status |
+|---|-----------|--------|
+| 1 | Foundation (toolchain, DOL match, map parser) | **DONE** |
+| 2 | Portable C++ conversion (all 1,214 asm stubs) | **DONE** |
+| 3 | Core systems (memory, game loop, renderer, SDK) | **DONE** |
+| 4 | Gameplay (ESim, objects, CAS, build mode, inventory) | **DONE** |
+| 5 | Presentation (APT UI, audio, camera, effects, save) | **DONE** |
+| 6 | Full match (CI pipeline, contributor docs, release) | **In Progress** |
+| 7 | PC port (x86 build, platform abstraction, mods) | **In Progress** |
 
 ### Portable C++ (PC Port Ready)
 

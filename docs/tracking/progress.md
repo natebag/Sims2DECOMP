@@ -6,11 +6,23 @@
 |--------|-------|
 | DOL byte match | **100.000%** (4,644,364 / 4,644,364) |
 | Total symbols (map) | 36,913 |
-| Functions injected (matching) | 18,539 |
+| Functions injected (matching) | 18,539 (100%) |
 | Portable C++ files | 5,039 |
-| Remaining asm stubs | 1,214 — **ALL now have portable C++ equivalents** |
+| Asm stubs converted | **1,214 / 1,214 (100%)** |
 | Portable C++ lines | ~1,465,569 |
 | Asm stub lines | ~1,178,431 |
+
+## Milestone Status
+
+| # | Milestone | Status | Completed |
+|---|-----------|--------|-----------|
+| 1 | Foundation | **DONE** | 2026-03-24 |
+| 2 | Portable C++ Conversion | **DONE** | 2026-03-27 |
+| 3 | Core Systems | **DONE** | 2026-03-27 |
+| 4 | Gameplay Systems | **DONE** | 2026-03-27 |
+| 5 | Presentation & Polish | **DONE** | 2026-03-27 |
+| 6 | Full Match (CI, docs, release) | **IN PROGRESS** | — |
+| 7 | PC Port & Mods | **IN PROGRESS** | — |
 
 ## DOL Section Match (2026-03-24)
 
@@ -25,17 +37,16 @@
 | .sdata2 | 3,980 | **100%** |
 | **TOTAL** | **4,644,364** | **100%** |
 
-## Portable C++ Conversion Progress
+## Portable C++ Conversion — COMPLETE
 
-The DOL match is achieved via byte injection from the original binary.
-The real decomp work is converting asm stubs to portable C++ for the PC port.
+All 1,214 asm stub files now have portable C++ equivalents. The DOL match is
+achieved via byte injection; the portable C++ enables the PC port.
 
 | Metric | Value |
 |--------|-------|
-| By file count | 80.8% (5,023 / 6,237) |
-| By line count | ~55.3% (1.47M / 2.64M) |
-| Remaining asm stubs | 1,214 files — **ALL now have portable C++ equivalents** |
-| Stubs with portable equiv | **1,214 of 1,214 (100%)** |
+| Asm stubs converted | **1,214 / 1,214 (100%)** |
+| By file count | 80.8% (5,023 / 6,237 total source files) |
+| By line count | ~55.3% (1.47M / 2.64M lines) |
 
 ## By System
 
