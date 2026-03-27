@@ -87,8 +87,9 @@ void* operator_new_impl(unsigned int n) { return malloc(n); }
 void operator_delete_impl(void* p) { free(p); }
 void* operator_vec_new_impl(unsigned int n) { return malloc(n); }
 void operator_vec_delete_impl(void* p) { free(p); }
-void* operator_new_wrapper = nullptr;
-void* operator_delete_wrapper = nullptr;
+// These must be extern "C" — decomp code declares them with C linkage
+extern "C" void* operator_new_wrapper(unsigned int n) { return malloc(n); }
+extern "C" void  operator_delete_wrapper(void* p) { free(p); }
 
 // ============================================================================
 // STL allocator stubs

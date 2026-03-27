@@ -148,21 +148,34 @@ ArcArchive* arc_open(const char* filepath) {
         u32 next_entry_pos = data_start;
         bool found_next = false;
 
-        for (long scan = pos + data_start + 4; scan < remaining - 12; scan += 4) {
-            // Look for ASCII tag followed by 0xFFFFFFFF
+        for (long scan = pos + data_start + 4; scan < remaining - 16; scan += 4) {
+            // Look for ASCII tag followed by 0xFFFFFFFF sentinel
             bool tag_ok = true;
             for (int i = 0; i < 4; i++) {
                 u8 c = data[scan + i];
                 if (c < 32 || c >= 127) { tag_ok = false; break; }
             }
-            if (tag_ok && read_be_u32(data + scan + 4) == 0xFFFFFFFF) {
-                // Found next entry — back up 4 bytes for header_val
-                u32 next_start = (u32)(scan - 4);
-                entry.data_size = next_start - (u32)pos - data_start;
-                pos = next_start;
-                found_next = true;
-                break;
+            if (!tag_ok) continue;
+            if (read_be_u32(data + scan + 4) != 0xFFFFFFFF) continue;
+
+            // Validate: name_len must be reasonable and name must be printable
+            if (scan + 12 >= remaining) continue;
+            u32 next_name_len = read_be_u32(data + scan + 8);
+            if (next_name_len < 2 || next_name_len > 256) continue;
+            if (scan + 12 + next_name_len > remaining) continue;
+            bool name_ok = true;
+            for (u32 ni = 0; ni < next_name_len - 1 && name_ok; ni++) {
+                u8 nc = data[scan + 12 + ni];
+                if (nc < 32 || nc >= 127) name_ok = false;
             }
+            if (!name_ok) continue;
+
+            // Confirmed next entry — back up 4 bytes for header_val
+            u32 next_start = (u32)(scan - 4);
+            entry.data_size = next_start - (u32)pos - data_start;
+            pos = next_start;
+            found_next = true;
+            break;
         }
 
         if (!found_next) {

@@ -123,44 +123,7 @@ int main(int argc, char* argv[]) {
         booted = game_bootstrap(data_paths[i]);
     }
 
-    // Generate a Sims 2 themed test texture (checkerboard with game colors)
-    unsigned int test_texture_id = 0;
-    {
-        int w = 128, h = 128;
-        u8* rgba = (u8*)malloc(w * h * 4);
-        for (int y = 0; y < h; y++) {
-            for (int x = 0; x < w; x++) {
-                int idx = (y * w + x) * 4;
-                bool check = ((x / 16) + (y / 16)) % 2 == 0;
-                if (check) {
-                    rgba[idx+0] = 0; rgba[idx+1] = 180; rgba[idx+2] = 80; rgba[idx+3] = 255; // Sims green
-                } else {
-                    rgba[idx+0] = 0; rgba[idx+1] = 40; rgba[idx+2] = 20; rgba[idx+3] = 255; // dark green
-                }
-            }
-        }
-        test_texture_id = gl_create_texture(rgba, w, h);
-        free(rgba);
-    }
-
-    // Log asset stats
-    {
-        FILE* lf = fopen("sims2pc.log", "a");
-        if (lf) {
-            int total_entries = 0;
-            for (int i = 0; i < arc_count(); i++) {
-                ArcArchive* a = arc_get(i);
-                if (a) {
-                    // Count entries via arc_find hack — we know the entry count from the log
-                    total_entries++; // Just count archives for now
-                }
-            }
-            fprintf(lf, "[MAIN] %d archives loaded, GL texture created\n", arc_count());
-            fclose(lf);
-        }
-    }
-
-    // Message loop with OpenGL rendering
+    // Message loop — game_update() handles all rendering via OpenGL
     MSG msg;
     while (g_running) {
         while (PeekMessageA(&msg, NULL, 0, 0, PM_REMOVE)) {
@@ -175,70 +138,9 @@ int main(int argc, char* argv[]) {
         // Poll input
         input_poll_controllers();
 
-        // Render frame
+        // Frame: begin → update (includes rendering) → end
         gl_begin_frame();
-
-        // Game update (currently no-op, will call ESimsApp subsystems)
         game_update(0.016f);
-
-        // Test scene: render a textured quad to prove the pipeline works
-        // This will be replaced with the real game loop (Session C)
-        {
-            // Set up 2D orthographic projection (640x480 like GC framebuffer)
-            glMatrixMode(GL_PROJECTION);
-            glLoadIdentity();
-            glOrtho(0, 640, 480, 0, -1, 1);
-            glMatrixMode(GL_MODELVIEW);
-            glLoadIdentity();
-
-            // Draw "Sims 2 PC Port" text overlay with GL
-            glDisable(GL_TEXTURE_2D);
-            glDisable(GL_DEPTH_TEST);
-
-            // Green diamond in the center (proof that vertex pipeline works)
-            glColor4ub(0, 255, 100, 255);
-            glBegin(GL_TRIANGLE_FAN);
-                glVertex2f(320, 180);  // top
-                glVertex2f(380, 240);  // right
-                glVertex2f(320, 300);  // bottom
-                glVertex2f(260, 240);  // left
-            glEnd();
-
-            // Plumbob shape (smaller green diamond above)
-            glColor4ub(0, 200, 60, 200);
-            glBegin(GL_TRIANGLE_FAN);
-                glVertex2f(320, 150);
-                glVertex2f(335, 170);
-                glVertex2f(320, 190);
-                glVertex2f(305, 170);
-            glEnd();
-
-            // White text area background
-            glColor4ub(0, 0, 0, 180);
-            glBegin(GL_QUADS);
-                glVertex2f(140, 320);
-                glVertex2f(500, 320);
-                glVertex2f(500, 420);
-                glVertex2f(140, 420);
-            glEnd();
-
-            // Render loaded game texture (raw data visualization)
-            if (test_texture_id > 0) {
-                glEnable(GL_TEXTURE_2D);
-                gl_bind_texture(test_texture_id);
-                glColor4ub(255, 255, 255, 255);
-                float qx = 420, qy = 50;
-                float qw = 200, qh = 200;
-                glBegin(GL_QUADS);
-                    glTexCoord2f(0, 0); glVertex2f(qx, qy);
-                    glTexCoord2f(1, 0); glVertex2f(qx+qw, qy);
-                    glTexCoord2f(1, 1); glVertex2f(qx+qw, qy+qh);
-                    glTexCoord2f(0, 1); glVertex2f(qx, qy+qh);
-                glEnd();
-                glDisable(GL_TEXTURE_2D);
-            }
-        }
-
         gl_end_frame();
 
         Sleep(16); // ~60fps
