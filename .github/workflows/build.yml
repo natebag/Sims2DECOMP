@@ -45,8 +45,7 @@ jobs:
         run: |
           DTK_VERSION=$(curl -s https://api.github.com/repos/encounter/decomp-toolkit/releases/latest | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
           echo "Installing decomp-toolkit ${DTK_VERSION}..."
-          curl -fsSL "https://github.com/encounter/decomp-toolkit/releases/download/${DTK_VERSION}/dtk-x86_64-unknown-linux-musl.zip" -o dtk.zip
-          unzip -o dtk.zip -d /usr/local/bin
+          curl -fsSL "https://github.com/encounter/decomp-toolkit/releases/download/${DTK_VERSION}/dtk-linux-x86_64" -o /usr/local/bin/dtk
           chmod +x /usr/local/bin/dtk
           dtk --version
 
