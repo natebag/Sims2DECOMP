@@ -33,9 +33,15 @@ jobs:
       # ── Toolchain setup ──────────────────────────────────────────────
 
       - name: Install devkitPPC
-        uses: devkitPro/setup-devkitpro@v1
-        with:
-          packages: devkitPPC
+        run: |
+          # Install devkitPro pacman repository and devkitPPC toolchain
+          wget -q https://apt.devkitpro.org/install-devkitpro-pacman
+          chmod +x install-devkitpro-pacman
+          sudo ./install-devkitpro-pacman
+          sudo dkp-pacman -Syu --noconfirm devkitPPC
+          echo "${DEVKITPRO}/devkitPPC/bin" >> $GITHUB_PATH
+        env:
+          DEVKITPRO: /opt/devkitpro
 
       - name: Set up Python
         uses: actions/setup-python@v5
