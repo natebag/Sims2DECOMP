@@ -7,9 +7,9 @@
 | DOL byte match | **100.000%** (4,644,364 / 4,644,364) |
 | Total symbols (map) | 36,913 |
 | Functions injected (matching) | 18,539 |
-| Portable C++ files | 5,031 |
-| Remaining asm stubs | 1,214 (~1,019 now have portable C++ equivalents) |
-| Portable C++ lines | ~1,440,844 |
+| Portable C++ files | 5,035 |
+| Remaining asm stubs | 1,214 (~1,182 now have portable C++ equivalents) |
+| Portable C++ lines | ~1,452,599 |
 | Asm stub lines | ~1,178,431 |
 
 ## DOL Section Match (2026-03-24)
@@ -35,7 +35,7 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 | By file count | 80.8% (5,023 / 6,237) |
 | By line count | ~54.6% (1.42M / 2.60M) |
 | Remaining asm stubs | 1,214 files (~720 now have portable C++ equivalents) |
-| Stubs with portable equiv | ~1,019 (across 2 sessions) |
+| Stubs with portable equiv | ~1,182 of 1,214 (97.4%) |
 
 ## By System
 
@@ -93,3 +93,12 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 - Batch 4: 47 files (ESim, EGlobal, BString, ERModel, CameraDirector, etc.) → `xl_batch_4.cpp` (4,169 lines)
 - Total: 185 asm stubs converted, 15,296 lines of portable C++ added
 - **Running total: ~1,019 of 1,214 stubs now have portable C++ equivalents (83.9%)**
+
+### 2026-03-27: Big Fish conversion (5K-40K line stubs)
+- 4 parallel worktree agents tackling the largest remaining files
+- Batch 1: 8 files (XRoute, ESimsCam, Effects, AptDate, etc.) → `bigfish_batch_1.cpp` (1,755 lines)
+- Batch 2: 8 files (EA, StringPool, ISimsObjectModel, ObjectFolderImpl, etc.) → `bigfish_batch_2.cpp` (2,067 lines)
+- Batch 3: 8 files (ERLevel, INVTarget, EAnimController, static_init, etc.) → `bigfish_batch_3.cpp` (2,159 lines)
+- Batch 4: 6 files (ENgcRenderer, SAnimator2, cXPersonImpl, AptActionInterpreter, cXObjectImpl, InteractorModule) → `bigfish_batch_4.cpp` (5,703 lines)
+- Total: 30 Big Fish stubs converted, 11,684 lines, 942+ functions cataloged
+- **Running total: ~1,182 of 1,214 stubs (97.4%) — only global.cpp (230K) remains as the sole unconverted mega-file**
