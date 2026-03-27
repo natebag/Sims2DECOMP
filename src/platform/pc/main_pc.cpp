@@ -4,6 +4,7 @@
 #include "types.h"
 #include "gl_renderer.h"
 #include "input_bridge.h"
+#include "platform/arc_reader.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -107,6 +108,64 @@ int main(int argc, char* argv[]) {
         printf("[MAIN] OpenGL rendering active\n");
     }
 
+    // Load game archives — try multiple paths
+    printf("[MAIN] Loading game archives...\n");
+    const char* data_paths[] = {
+        "extracted/files/DATA",
+        "../extracted/files/DATA",
+        "../../extracted/files/DATA",
+        "../../../extracted/files/DATA",
+        "/f/coding/Decompiles/Sims 2/extracted/files/DATA",
+        "F:\\coding\\Decompiles\\Sims 2\\extracted\\files\\DATA",
+        NULL
+    };
+    int arc_loaded = 0;
+    for (int i = 0; data_paths[i] && arc_loaded == 0; i++) {
+        arc_loaded = arc_open_all(data_paths[i]);
+    }
+    printf("[MAIN] Loaded %d archives\n", arc_loaded);
+
+    // Try to load a texture from the game
+    unsigned int test_texture_id = 0;
+    int tex_w = 0, tex_h = 0;
+    char loaded_tex_name[256] = "none";
+    for (int i = 0; i < arc_count(); i++) {
+        ArcArchive* arc = arc_get(i);
+        if (!arc) continue;
+        // Find first texture entry
+        const ArcEntry* entry = arc_find(arc, "title bg c");
+        if (!entry) entry = arc_find(arc, "systemfont");
+        if (entry) {
+            u32 data_size = 0;
+            u8* data = arc_read(arc, entry, &data_size);
+            if (data && data_size > 64) {
+                // The texture data starts with a TPL-like header
+                // For now just create a test pattern texture from the raw bytes
+                int w = 128, h = 128;
+                u8* rgba = (u8*)malloc(w * h * 4);
+                for (int y = 0; y < h; y++) {
+                    for (int x = 0; x < w; x++) {
+                        int idx = (y * w + x) * 4;
+                        int src_idx = (y * w + x) % data_size;
+                        rgba[idx+0] = data[src_idx];       // R
+                        rgba[idx+1] = data[(src_idx+1) % data_size]; // G
+                        rgba[idx+2] = data[(src_idx+2) % data_size]; // B
+                        rgba[idx+3] = 255;                  // A
+                    }
+                }
+                test_texture_id = gl_create_texture(rgba, w, h);
+                tex_w = w; tex_h = h;
+                strncpy(loaded_tex_name, entry->name, 255);
+                printf("[MAIN] Loaded texture '%s' (%u bytes) → GL texture %u\n",
+                       entry->name, data_size, test_texture_id);
+                free(rgba);
+                free(data);
+                break;
+            }
+            if (data) free(data);
+        }
+    }
+
     // Message loop with OpenGL rendering
     MSG msg;
     while (g_running) {
@@ -165,6 +224,22 @@ int main(int argc, char* argv[]) {
                 glVertex2f(500, 420);
                 glVertex2f(140, 420);
             glEnd();
+
+            // Render loaded game texture (raw data visualization)
+            if (test_texture_id > 0) {
+                glEnable(GL_TEXTURE_2D);
+                gl_bind_texture(test_texture_id);
+                glColor4ub(255, 255, 255, 255);
+                float qx = 420, qy = 50;
+                float qw = 200, qh = 200;
+                glBegin(GL_QUADS);
+                    glTexCoord2f(0, 0); glVertex2f(qx, qy);
+                    glTexCoord2f(1, 0); glVertex2f(qx+qw, qy);
+                    glTexCoord2f(1, 1); glVertex2f(qx+qw, qy+qh);
+                    glTexCoord2f(0, 1); glVertex2f(qx, qy+qh);
+                glEnd();
+                glDisable(GL_TEXTURE_2D);
+            }
         }
 
         gl_end_frame();

@@ -61,7 +61,7 @@ struct ArcArchive {
 ArcArchive* arc_open(const char* filepath) {
     FILE* f = fopen(filepath, "rb");
     if (!f) {
-        fprintf(stderr, "[ARC] Failed to open: %s\n", filepath);
+        // Only log at debug level — too spammy during path search
         return nullptr;
     }
 
@@ -176,7 +176,10 @@ ArcArchive* arc_open(const char* filepath) {
 
     free(data);
 
-    printf("[ARC] Opened %s: %zu entries\n", filepath, arc->entries.size());
+    {
+        FILE* lf = fopen("sims2pc.log", "a");
+        if (lf) { fprintf(lf, "[ARC] Opened %s: %zu entries\n", filepath, arc->entries.size()); fclose(lf); }
+    }
     return arc;
 }
 
@@ -301,6 +304,9 @@ int arc_open_all(const char* data_dir) {
         }
     }
 
-    printf("[ARC] Opened %d archives from %s\n", count, data_dir);
+    {
+        FILE* lf = fopen("sims2pc.log", "a");
+        if (lf) { fprintf(lf, "[ARC] Opened %d archives from %s\n", count, data_dir); fclose(lf); }
+    }
     return count;
 }

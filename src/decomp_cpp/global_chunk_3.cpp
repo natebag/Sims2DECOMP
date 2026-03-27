@@ -732,7 +732,8 @@ int StartMainThread() {
 }
 
 // 0x802E39F0 (68 bytes)
-int main(int argc, char** argv) {
+// Original GC main() — renamed to gc_main() so PC main_pc.cpp takes over
+int gc_main(int argc, char** argv) {
     // Entry point: calls __main(), MainInit(), StartMainThread()
     // __main();
     MainInit(argc, argv);
