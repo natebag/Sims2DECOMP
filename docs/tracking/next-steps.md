@@ -2,8 +2,9 @@
 
 Current milestone: **Milestone 2: PORTABLE C++ CONVERSION**
 
-Last session: 2026-03-24 — 100% DOL byte match achieved, README updated, batch
-conversion of ~155 small classes. See `git log` for exact details.
+Last session: 2026-03-27 — Worktree parallel blitz: 4 agents converted ~385 medium
+stubs (101-500 lines) in parallel. Previous session converted 330 small/template stubs.
+~720 asm stubs now have portable C++ equivalents. See `git log` for exact details.
 
 ---
 

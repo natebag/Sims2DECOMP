@@ -7,9 +7,9 @@
 | DOL byte match | **100.000%** (4,644,364 / 4,644,364) |
 | Total symbols (map) | 36,913 |
 | Functions injected (matching) | 18,539 |
-| Portable C++ files | 5,014 |
-| Remaining asm stubs | 1,214 (78 more have portable C++ equivalents) |
-| Portable C++ lines | ~1,400,100 |
+| Portable C++ files | 5,023 |
+| Remaining asm stubs | 1,214 (~720 now have portable C++ equivalents) |
+| Portable C++ lines | ~1,417,261 |
 | Asm stub lines | ~1,178,431 |
 
 ## DOL Section Match (2026-03-24)
@@ -32,10 +32,10 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 
 | Metric | Value |
 |--------|-------|
-| By file count | 80.7% (5,014 / 6,228) |
-| By line count | ~54.3% (1.4M / 2.58M) |
-| Remaining asm stubs | 1,214 files (78 now have portable C++ equivalents) |
-| Stubs with portable equiv | 78 (from this session: 51 small batch + 27 effects) |
+| By file count | 80.8% (5,023 / 6,237) |
+| By line count | ~54.6% (1.42M / 2.60M) |
+| Remaining asm stubs | 1,214 files (~720 now have portable C++ equivalents) |
+| Stubs with portable equiv | ~720 (across 2 sessions) |
 
 ## By System
 
@@ -60,8 +60,19 @@ The real decomp work is converting asm stubs to portable C++ for the PC port.
 
 ## Session Log
 
-### 2026-03-26: Small batch + Effects sweep
-- Converted 51 small asm stubs (39-49 lines each) → `src/decomp_cpp/small_classes_batch2.cpp` (1,565 lines)
-- Converted 27 Effects system stubs → `src/decomp_cpp/effects_system_sweep.cpp` (2,344 lines)
+### 2026-03-26: Small batch + Effects sweep + Templates + Medium batch
+- Converted 51 small asm stubs (39-49 lines) → `small_classes_batch2.cpp` (1,565 lines)
+- Converted 27 Effects system stubs → `effects_system_sweep.cpp` (2,344 lines)
+- Converted 147 CBMemberTranslator templates → `cb_member_translators.cpp` (1,142 lines)
+- Converted 21 STL containers → `stl_containers.cpp` (669 lines)
+- Converted 84 medium stubs (50-100 lines) → `medium_classes_batch.cpp` (3,058 lines)
 - **Effects system now at 100%** portable C++ coverage
-- Total: 78 asm stubs converted, 3,909 lines of portable C++ added
+- Total: 330 asm stubs converted, 8,778 lines of portable C++ added
+
+### 2026-03-27: Worktree parallel blitz on 101-500 line stubs
+- 4 parallel worktree agents converting medium stubs simultaneously
+- Agent 1: ~87 UI/APT stubs → `medium_ui_apt.cpp` (2,157 lines)
+- Agent 2: ~102 STL container stubs → `medium_stl_containers.cpp` (1,436 lines)
+- Agent 3: ~104 game system stubs → `medium_game_systems.cpp` (2,243 lines)
+- Agent 4: ~92 engine/core stubs → `medium_engine_core.cpp` (2,547 lines)
+- Total: ~385 asm stubs converted, 8,383 lines of portable C++ added
