@@ -68,6 +68,8 @@ static void log_boot(const char* fmt, ...) {
 static unsigned int g_titleTexture = 0;   // GL texture ID for title background
 static unsigned int g_maxisLogoTex = 0;   // GL texture ID for Maxis logo
 static unsigned int g_teamPicTex = 0;     // GL texture ID for team picture
+static unsigned int g_startScreenTex = 0; // GL texture ID for start screen
+static unsigned int g_engLogoTex = 0;     // GL texture ID for English Sims 2 logo
 
 // Detect EA texture header offset in raw data.
 // The .arc format stores a variable-length prefix (1-8 bytes) before the
@@ -462,26 +464,30 @@ static void update_main_menu(float dt) {
 }
 
 static void render_main_menu(void) {
-    // Background: try team picture, then title tex, else solid
-    unsigned int bgTex = g_teamPicTex ? g_teamPicTex : g_titleTexture;
+    // Background: try start screen, then team picture, else solid
+    unsigned int bgTex = g_startScreenTex ? g_startScreenTex :
+                         (g_teamPicTex ? g_teamPicTex : 0);
     if (bgTex) {
         gl_draw_texture_fullscreen(bgTex);
         // Dark overlay for readability
-        gl_draw_rect(0, 0, 640, 480, 0, 0, 0, 160);
+        gl_draw_rect(0, 0, 640, 480, 0, 0, 0, 140);
     } else {
         gl_draw_rect(0, 0, 640, 480, 5, 8, 25, 255);
     }
 
-    // Sims 2 logo texture in top-right if available
-    if (g_titleTexture && g_titleTexture != bgTex) {
+    // Sims 2 logo in top area
+    if (g_titleTexture) {
         glEnable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
         gl_bind_texture(g_titleTexture);
-        glColor4ub(255, 255, 255, 200);
+        glColor4ub(255, 255, 255, 230);
+        float lw = 200, lh = 100;
+        float lx = (640 - lw) / 2, ly = 20;
         glBegin(GL_QUADS);
-            glTexCoord2f(0, 0); glVertex2f(440, 10);
-            glTexCoord2f(1, 0); glVertex2f(630, 10);
-            glTexCoord2f(1, 1); glVertex2f(630, 130);
-            glTexCoord2f(0, 1); glVertex2f(440, 130);
+            glTexCoord2f(0, 0); glVertex2f(lx, ly);
+            glTexCoord2f(1, 0); glVertex2f(lx + lw, ly);
+            glTexCoord2f(1, 1); glVertex2f(lx + lw, ly + lh);
+            glTexCoord2f(0, 1); glVertex2f(lx, ly + lh);
         glEnd();
         glDisable(GL_TEXTURE_2D);
     }
@@ -565,11 +571,14 @@ int game_bootstrap(const char* data_path) {
 
     // Load game textures
     g_maxisLogoTex = load_arc_texture("maxis_logo_black_clean");
+    if (!g_maxisLogoTex) g_maxisLogoTex = load_arc_texture("ui_maxis");
     g_teamPicTex = load_arc_texture("team_picture");
-    g_titleTexture = load_arc_texture("ui_logo256_spa_light");  // Sims 2 logo
-    if (!g_titleTexture) g_titleTexture = load_arc_texture("title bg c");
-    log_boot("[BOOT] Textures: maxis=%u team=%u title=%u\n",
-             g_maxisLogoTex, g_teamPicTex, g_titleTexture);
+    g_startScreenTex = load_arc_texture("ui_start_screen");
+    g_engLogoTex = load_arc_texture("ui_logo256_english_light");
+    g_titleTexture = g_engLogoTex;
+    if (!g_titleTexture) g_titleTexture = load_arc_texture("ui_logo256_spa_light");
+    log_boot("[BOOT] Textures: maxis=%u team=%u start=%u logo=%u\n",
+             g_maxisLogoTex, g_teamPicTex, g_startScreenTex, g_titleTexture);
 
     // Set initial state
     g_pcState = PC_STATE_BOOT;
