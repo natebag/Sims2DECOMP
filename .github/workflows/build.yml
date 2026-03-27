@@ -6,12 +6,10 @@
 #   1. ALWAYS: Compile all decompiled C++ source with devkitPPC (make compile)
 #   2. IF ORIGINAL FILES PRESENT: Full inject + DOL byte-match verification
 #
-# The original DOL (extracted/sys/main.dol) and ELF (extracted/files/u2_ngc_release_dvd.elf)
-# are copyrighted Nintendo GameCube game files and cannot be stored in the repo.
+# The original DOL and ELF are copyrighted and cannot be stored in the repo.
 # To enable full byte-match verification, add them as repository secrets:
 #   - ORIGINAL_DOL: base64-encoded contents of extracted/sys/main.dol
 #   - ORIGINAL_ELF: base64-encoded contents of extracted/files/u2_ngc_release_dvd.elf
-# Or place them in the expected paths via a self-hosted runner.
 
 name: Build
 
@@ -25,32 +23,26 @@ jobs:
   build:
     name: Build & Verify
     runs-on: ubuntu-latest
+    container:
+      image: devkitpro/devkitppc:latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ── Toolchain setup ──────────────────────────────────────────────
-
-      - name: Install devkitPPC
+      - name: Verify toolchain
         run: |
-          # Install devkitPro pacman repository and devkitPPC toolchain
-          wget -q https://apt.devkitpro.org/install-devkitpro-pacman
-          chmod +x install-devkitpro-pacman
-          sudo ./install-devkitpro-pacman
-          sudo dkp-pacman -Syu --noconfirm devkitPPC
-          echo "${DEVKITPRO}/devkitPPC/bin" >> $GITHUB_PATH
-        env:
-          DEVKITPRO: /opt/devkitpro
+          echo "DEVKITPRO=${DEVKITPRO}"
+          echo "DEVKITPPC=${DEVKITPPC}"
+          powerpc-eabi-gcc --version | head -1
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Install Python
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq python3 python3-pip unzip > /dev/null
 
       - name: Install decomp-toolkit (dtk)
         run: |
-          # Download latest dtk release binary
           DTK_VERSION=$(curl -s https://api.github.com/repos/encounter/decomp-toolkit/releases/latest | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
           echo "Installing decomp-toolkit ${DTK_VERSION}..."
           curl -fsSL "https://github.com/encounter/decomp-toolkit/releases/download/${DTK_VERSION}/dtk-x86_64-unknown-linux-musl.zip" -o dtk.zip
@@ -85,8 +77,7 @@ jobs:
           else
             echo "has_originals=false" >> "$GITHUB_OUTPUT"
             echo "Original game files not found -- skipping byte-match verification."
-            echo "Only compilation checks will run. To enable full verification,"
-            echo "add ORIGINAL_DOL and ORIGINAL_ELF as base64-encoded repository secrets."
+            echo "To enable, add ORIGINAL_DOL and ORIGINAL_ELF as base64 repo secrets."
           fi
 
       # ── Build ────────────────────────────────────────────────────────
