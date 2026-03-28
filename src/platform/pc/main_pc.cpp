@@ -10,6 +10,7 @@
 extern int game_bootstrap(const char* data_path);
 extern void game_update(float dt);
 extern void game_shutdown(void);
+extern int game_quit_requested(void);
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -142,6 +143,11 @@ int main(int argc, char* argv[]) {
         gl_begin_frame();
         game_update(0.016f);
         gl_end_frame();
+
+        // Check for game-initiated quit
+        if (game_quit_requested()) {
+            g_running = false;
+        }
 
         Sleep(16); // ~60fps
     }

@@ -217,6 +217,9 @@ static int g_frameCount = 0;
 static int g_menuSelection = 0;
 static int g_menuItemCount = 4;
 static int g_prevButtons = 0;  // for edge detection
+static int g_quitRequested = 0;
+static int g_loadingProgress = 0;
+static const char* g_loadingMessage = "LOADING";
 
 // Input helper: read PAD buttons this frame
 extern int input_get_pad_status(void* status);
@@ -453,10 +456,25 @@ static void update_main_menu(float dt) {
     // A button / Enter = select
     if (button_pressed(buttons, 0x0100)) { // PAD_BUTTON_A
         log_boot("[MENU] Selected: %s\n", g_menuItems[g_menuSelection]);
-        if (g_menuSelection == 3) {
-            // Quit
+        switch (g_menuSelection) {
+        case 0: // New Game
+            g_pcState = PC_STATE_LOADING;
+            g_stateTimer = 0.0f;
+            g_loadingProgress = 0;
+            g_loadingMessage = "LOADING NEW GAME";
+            log_boot("[STATE] MAIN_MENU → LOADING\n");
+            break;
+        case 1: // Load Game
+            g_pcState = PC_STATE_LOADING;
+            g_stateTimer = 0.0f;
+            g_loadingProgress = 0;
+            g_loadingMessage = "LOADING SAVE";
+            log_boot("[STATE] MAIN_MENU → LOADING\n");
+            break;
+        case 3: // Quit
+            g_quitRequested = 1;
             log_boot("[MENU] Quit requested\n");
-            // Signal exit (will be handled by checking a flag)
+            break;
         }
     }
 
@@ -530,6 +548,73 @@ static void render_main_menu(void) {
     snprintf(buf, sizeof(buf), "%d ARCHIVES  FRAME %d",
              arc_count(), g_frameCount);
     gl_draw_string(400, 450, 1.2f, buf, 40, 60, 40);
+}
+
+// ============================================================================
+// Loading Screen (STATE_LOADING)
+// ============================================================================
+
+static void render_loading_screen(void) {
+    // Black background
+    gl_draw_rect(0, 0, 640, 480, 0, 0, 0, 255);
+
+    // Loading message
+    gl_draw_string(200, 200, 3.0f, g_loadingMessage, 0, 200, 80);
+
+    // Progress bar
+    float progress = g_loadingProgress / 100.0f;
+    if (progress > 1.0f) progress = 1.0f;
+    gl_draw_rect(100, 260, 440, 30, 20, 40, 20, 255);
+    gl_draw_rect(100, 260, 440.0f * progress, 30, 0, 220, 80, 255);
+
+    // Percentage text
+    char buf[32];
+    snprintf(buf, sizeof(buf), "%d", g_loadingProgress > 100 ? 100 : g_loadingProgress);
+    gl_draw_string(305, 265, 2.0f, buf, 255, 255, 255);
+
+    // Plumbob bouncing
+    float bobX = 100 + 440.0f * progress;
+    gl_draw_diamond(bobX, 245, 10, 14, 0, 255, 100, 255);
+
+    // Loading tip
+    gl_draw_string(130, 320, 1.5f, "TIP: PRESS Z TO INTERACT WITH OBJECTS",
+                   60, 100, 60);
+}
+
+// ============================================================================
+// Gameplay Screen (STATE_GAMEPLAY) — placeholder
+// ============================================================================
+
+static void render_gameplay_screen(void) {
+    // Render team picture as background (our only large texture)
+    if (g_teamPicTex) {
+        gl_draw_texture_fullscreen(g_teamPicTex);
+    } else {
+        gl_draw_rect(0, 0, 640, 480, 10, 20, 40, 255);
+    }
+
+    // Plumbob above center (the iconic Sims indicator)
+    float bobY = 120 + sinf(g_stateTimer * 1.5f) * 15.0f;
+    gl_draw_diamond(320, bobY, 20, 30, 0, 220, 80, 255);
+    gl_draw_diamond(320, bobY, 14, 22, 30, 255, 100, 180);
+
+    // HUD overlay
+    gl_draw_rect(0, 0, 640, 40, 0, 0, 0, 180);
+    gl_draw_string(10, 10, 2.0f, "THE SIMS 2 - GAMEPLAY", 0, 200, 80);
+
+    char frameBuf[64];
+    snprintf(frameBuf, sizeof(frameBuf), "FRAME %d", g_frameCount);
+    gl_draw_string(450, 10, 1.5f, frameBuf, 100, 140, 100);
+
+    // Bottom bar
+    gl_draw_rect(0, 440, 640, 40, 0, 0, 0, 180);
+    gl_draw_string(10, 450, 1.5f, "X:BACK TO MENU  ARROWS:LOOK  IJKL:MOVE",
+                   80, 120, 80);
+
+    // Archive stats
+    char arcBuf[64];
+    snprintf(arcBuf, sizeof(arcBuf), "%d ARCHIVES LOADED", arc_count());
+    gl_draw_string(400, 450, 1.2f, arcBuf, 60, 80, 60);
 }
 
 // ============================================================================
@@ -635,6 +720,32 @@ void game_update(float dt) {
         render_main_menu();
         break;
 
+    case PC_STATE_LOADING:
+        render_loading_screen();
+        // Simulate loading progress
+        g_loadingProgress += 2;
+        if (g_loadingProgress >= 100) {
+            log_boot("[STATE] LOADING → GAMEPLAY\n");
+            g_pcState = PC_STATE_GAMEPLAY;
+            g_stateTimer = 0.0f;
+        }
+        break;
+
+    case PC_STATE_GAMEPLAY:
+        render_gameplay_screen();
+        {
+            unsigned short btns = get_buttons();
+            // B button or Start returns to menu
+            if (button_pressed(btns, 0x0200) || button_pressed(btns, 0x1000)) {
+                log_boot("[STATE] GAMEPLAY → MAIN_MENU\n");
+                g_pcState = PC_STATE_MAIN_MENU;
+                g_stateTimer = 0.0f;
+                g_prevButtons = btns;
+            }
+            g_prevButtons = btns;
+        }
+        break;
+
     default:
         break;
     }
@@ -642,6 +753,7 @@ void game_update(float dt) {
 
 int game_get_frame_count(void) { return g_frameCount; }
 int game_get_archive_count(void) { return arc_count(); }
+int game_quit_requested(void) { return g_quitRequested; }
 
 void game_shutdown(void) {
     log_boot("[BOOT] Game shutdown (frame %d)\n", g_frameCount);
