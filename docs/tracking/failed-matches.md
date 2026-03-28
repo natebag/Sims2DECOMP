@@ -30,6 +30,20 @@ especially around:
 
 - `0x80016FB8` `ESimsCam::ApplyPan(float)` — stfs scheduled before lfs constant
 - `0x800210E4` `ECheatLookup::ECheatLookup(void)` — store order differs
+- `0x802E0E90` `EMemoryReadStream::EMemoryReadStream(void *)` — store order of zero-init fields reversed
+- `0x802E0EC4` `EMemoryBufferWriteStream::EMemoryBufferWriteStream(void *)` — same store order issue
+- `0x802CD9B8` `ERedBlackTree::ERedBlackTree(void)` — store order of init fields differs
+
+### extsb Injection Differences
+
+- `0x802D2C48` `EString::MakeUpper(void)` — SN compiler inserts extsb for char comparison; DOL does not
+- `0x802C75E8` `EFixedString::MakeCopy(char)` — register allocation differs (r11 vs r3)
+- `0x802E08E0` `EBitArray::operator[](int)` — SN emits `or r9,r3,r3` for struct return hidden param, compiler omits copy
+
+### Register Allocation (r29/r30 swap)
+
+- `0x802D1348` `realloc` — r3->r30/r4->r29 in DOL, reversed by compiler
+- `0x802D116C` `memalign` — same r29/r30 register allocation mismatch
 
 ### Conditional Branch Pattern Differences
 
