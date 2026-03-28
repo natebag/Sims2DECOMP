@@ -1,28 +1,33 @@
 # Decomp Progress — Sims 2 GameCube
 
+## HONEST STATUS
+
+**Functions actually decompiled (hand-written C++ that compiles to matching bytes): ~5 / 18,539 (0.03%)**
+
+The DOL "matches" via byte injection — the original bytes are copied into the build.
+This is NOT real decomp progress. Real progress = functions rewritten in C++ that
+the compiler produces matching output for.
+
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| DOL byte match | **100.000%** (4,644,364 / 4,644,364) |
+| Total functions | 18,539 |
+| **Functions ACTUALLY decompiled** | **~5 (~0.03%)** |
+| Functions byte-injected (original bytes copied) | 18,534 (99.97%) |
 | Total symbols (map) | 36,913 |
-| Functions injected (matching) | 18,539 (100%) |
-| Portable C++ files | 5,039 |
-| Asm stubs converted | **1,214 / 1,214 (100%)** |
-| Portable C++ lines | ~1,465,569 |
-| Asm stub lines | ~1,178,431 |
+| Empty C++ scaffolding files | 5,039 |
+| Class struct layouts documented | 643 |
+| Compiler flag match rate (GCC vs SN) | 47% of simple functions |
 
 ## Milestone Status
 
-| # | Milestone | Status | Completed |
-|---|-----------|--------|-----------|
-| 1 | Foundation | **DONE** | 2026-03-24 |
-| 2 | Portable C++ Conversion | **DONE** | 2026-03-27 |
-| 3 | Core Systems | **DONE** | 2026-03-27 |
-| 4 | Gameplay Systems | **DONE** | 2026-03-27 |
-| 5 | Presentation & Polish | **DONE** | 2026-03-27 |
-| 6 | Full Match (CI, docs, release) | **IN PROGRESS** — CI + docs done, need release tag | — |
-| 7 | PC Port & Mods | **IN PROGRESS** — game state machine, textures, menus working | — |
+| # | Milestone | Status | Notes |
+|---|-----------|--------|-------|
+| 1 | Infrastructure | **DONE** | Build system, dtk, symbols, CI |
+| 2 | Scaffolding | **DONE** | Empty C++ shells, struct layouts |
+| 3 | Actual Decomp | **IN PROGRESS** | ~5/18,539 functions — the real work |
+| 4 | PC Port | **BLOCKED** | Needs actual decomp first |
 
 ## DOL Section Match (2026-03-24)
 

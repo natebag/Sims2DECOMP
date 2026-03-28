@@ -1,158 +1,111 @@
-# Next Steps — Sims 2 PC Port
+# Next Steps — Sims 2 GC Decompilation
 
-Current milestone: **Milestone 7: PC PORT** — IN PROGRESS
+**Current focus: ACTUALLY DECOMPILING FUNCTIONS**
 
 Last updated: 2026-03-27
 
 ---
 
-## What Works RIGHT NOW
+## THE REAL WORK: Function-by-Function Matching
 
-- `sims2pc.exe` builds, links, runs (1.2MB x86_64 Windows)
-- OpenGL window (1280x720) with rendered plumbob + textures
-- All 22 .arc archives load (2,378+ game resources in memory)
-- GX→OpenGL bridge (state, vertex, matrix, texture)
-- Input bridge (keyboard → PAD mapping)
-- Audio bridge (stubs ready)
-- Game loop fully traced (ESimsApp::Update)
+Every function needs hand-written C++ that compiles to byte-identical PPC output.
+Currently: ~5 matched out of 18,539. This is the core decomp work.
 
----
+### Phase 1: Trivial Functions (target: 500+)
 
-## SESSION C: Game Boot — THE NEXT BIG PUSH
+8-byte getter/setter functions. Pattern: load a field, return it.
 
-This is an iterative debugging session. Call `ESimsApp::Init()`, fix each crash,
-implement missing systems one at a time until the game boots.
-
-### Step 1: Minimal Engine Init — DONE (2026-03-27)
-- [x] Memory management: EAHeap routed to system malloc
-- [x] Global singletons: g_eGlobal, g_eSimsApp, g_eNgcEngine allocated
-- [x] operator_new_wrapper / operator_delete_wrapper: proper C-linkage functions
-- [x] PC game state machine: BOOT → LOGO → MAIN_MENU (interactive)
-- [x] Real game textures rendering via OpenGL (Maxis logo, Sims 2 logo, team pic)
-- [x] Arc reader: all entries parsed (11,443 textures, 3,631 models)
-- [x] EA texture decode: C8_32 + CMPR (S3TC) working
-- [x] Vector font system for on-screen text
-
-### Step 2: Resource System
-- [ ] Wire `EResourceManager::Init()` to use our arc_reader
-- [ ] Implement `EResourceLoaderImpl::Init()` — resource loading thread
-- [ ] Map resource type IDs to .arc file categories
-- [ ] **Test:** does `ESimsApp::Init()` get past resource loading?
-
-### Step 3: Renderer Bootstrap
-- [ ] Implement `ENgcRenderer::Init()` — route to our OpenGL context
-- [ ] Implement `ENgcGraphics::Init()` — framebuffer setup
-- [ ] Wire `ERC` (render context) to our gl_renderer
-- [ ] **Test:** does the game try to render something?
-
-### Step 4: UI System (APT)
-- [ ] Implement `AptViewer::Init()` — the Flash/ActionScript UI engine
-- [ ] Load flash UI files from flashes.arc (s2c_pause_mainmenu, etc.)
-- [ ] Implement basic APT rendering (text, buttons, backgrounds)
-- [ ] **Test:** does the main menu appear?
-
-### Step 5: State Machine
-- [ ] Wire `TheSimsStateMachine` — the top-level game state machine
-- [ ] Implement `TheSimsMaxisLogoState` → `TheSimsMainMenuState` flow
-- [ ] **Test:** can you see the Maxis logo → main menu transition?
-
-### Debugging Strategy
-For each crash:
-1. Check sims2pc.log for last successful step
-2. Add more logging around the crash point
-3. Identify which function/system is missing
-4. Implement minimal stub or real implementation
-5. Rebuild and try again
-
-Most crashes will be NULL pointer dereferences from uninitialized globals.
-Fix: add `if (!ptr) return;` guards or initialize the globals properly.
-
----
-
-## SESSION D: Texture Decoding — MOSTLY DONE (2026-03-27)
-
-The EA/GC texture pipeline:
-```
-.arc file → EA TXFL header → GC pixel data (CMPR/C4/C8/RGBA8) → RGBA → OpenGL
+Example (already matched):
+```cpp
+// 0x801A23BC (8 bytes)
+int ACTTarget::IsActionQueueActive() {
+    return *(int*)((char*)this + 0xD0);
+}
 ```
 
-- [x] Parse EA TXFL header (auto-detect variable-length prefix, 1-8 bytes)
-- [x] Feed pixel data to gc_texture_decode.cpp (CMPR, C8_32 working)
-- [ ] Test with fonts.arc "systemfont" (font format is different — not TXFL)
-- [x] Test with textures.arc "title bg c" (32x32 C8_32) — renders
-- [x] Test with textures.arc "maxis_logo_black_clean" (256x256 C8_32) — renders
-- [x] Test with textures.arc "team_picture" (512x512 CMPR/S3TC) — renders
-- [ ] Wire into GXInitTexObj so game textures auto-decode via GX bridge
+**Functions to match:**
+- [ ] ESimsApp::GetStartLot (8B) — `lwz r3, -32752(r13); blr`
+- [ ] ESimsApp::GetDefaultLanguage (8B) — `li r3, 0; blr`
+- [ ] ESimsApp::SetGameState (8B) — `stw r4, 0x468(r3); blr`
+- [ ] ESimsApp::GetEventTableSize (8B) — `li r3, 0; blr`
+- [ ] AptViewer::UIOn (8B)
+- [ ] AptViewer::IsReadControllerActive (8B)
+- [ ] AwarenessManager::SetIsRaining (8B)
+- [ ] AwarenessManager::GetAwarenessAction (8B)
+- [ ] AwarenessManager::GetStateFlags (8B)
+- [ ] ~490 more 8-byte functions from the map file
+- [ ] ~1000+ 12-20 byte functions (constant returns, simple stores)
+
+### Phase 2: Small Functions with Pseudocode (target: 2000+)
+
+Functions 20-100 bytes where we have pseudocode from esimsapp_decomp.cpp
+and other analysis files. Write the C++, compile, compare.
+
+### Phase 3: Medium Functions (target: 5000+)
+
+Functions 100-500 bytes. Need Ghidra analysis of the disassembly.
+
+### Phase 4: Large Functions (target: remaining ~10,000)
+
+Functions 500+ bytes. Complex control flow, vtable dispatch, etc.
 
 ---
 
-## SESSION F: APT Flash UI Engine (enables real menus)
-
-The APT system is EA's custom Flash/ActionScript player. Each flash is a BIGF
-container with these sub-files:
-- `.apt` — main APT bytecode (ActionScript-like)
-- `.const` — constant pool (strings, IDs)
-- `.geo` — "PCGL geometry" — pre-compiled vector vertex data
-- `.tgq` — embedded textures (TXFL format)
-
-The BIGF container uses LE size, BE count. Prefix of 2 bytes before "BIGF".
-
-Key files to implement:
-- [ ] BIGF container parser
-- [ ] APT data parser (display list, character definitions)
-- [ ] APT const parser (string table, action bytecodes)
-- [ ] APT geo renderer (feed vertex data to OpenGL)
-- [ ] APT texture loader (reuse our TXFL decoder)
-- [ ] Basic ActionScript interpreter (button handling, state transitions)
-
-Priority flash files: s2c_main_menu, s2c_root, s2c_pause_game
-
----
-
-## SESSION E: First Playable (after C+D+F)
-
-- [ ] Get past loading screen
-- [ ] Main menu renders with real textures
-- [ ] Navigate menu with keyboard
-- [ ] Load into a house
-- [ ] **THE MOMENT**
-
----
-
-## Build Commands
+## Workflow for Matching a Function
 
 ```bash
-# From project root:
-cd build_pc2
-export PATH="/f/coding/Decompiles/Tools/devkitPro/msys2/usr/bin:$PATH"
-cmake .. && make -j4
+# 1. Find the function in the map file
+grep "FunctionName" extracted/files/u2_ngc_release.map
 
-# Run:
-./sims2pc.exe
+# 2. Look at the disassembly in the asm_decomp file or Ghidra
+cat src/asm_decomp/ClassName.cpp | grep -A 50 "FunctionName"
 
-# Check log:
-cat sims2pc.log
+# 3. Write C++ in src/matched/ClassName_matched.cpp
+
+# 4. Compile with devkitPPC
+make compile
+
+# 5. Compare bytes against DOL
+python tools/check_func.py src/matched/ClassName_matched.cpp FunctionName
+
+# 6. If match: inject into skeleton
+python tools/inject_matches.py --rebuild --verify
+
+# 7. Verify full DOL still matches
+make diff
 ```
 
 ---
 
-## Key Architecture
+## Agent Army Strategy
 
-```
-main_pc.cpp (PC entry point)
-    ↓
-Win32 Window + OpenGL context
-    ↓
-arc_reader.cpp → loads all .arc files
-    ↓
-Game loop: gl_begin_frame → [game update] → gl_end_frame
-    ↓
-GX stubs → gx_gl_impl.cpp → OpenGL calls
-    ↓
-Texture bridge → gc_texture_decode → gl_create_texture
-```
+For parallelizing decomp work across multiple AI agents:
 
-When `ESimsApp::Init()` + `Update()` are wired in, the game will:
-1. Init memory, resources, renderer, UI, audio
-2. Start the state machine (logo → menu → gameplay)
-3. Each frame: UpdateCheats → UpdateApt → UpdateGame → UpdateAudio → UpdateDraw
+1. Each agent gets: function name, address, size, disassembly bytes, class header, struct layout
+2. Agent writes C++ that should produce the same output
+3. Agent compiles with devkitPPC and compares bytes
+4. If match → commit. If not → iterate or flag for human review.
+
+See docs/specs/agent-decomp-strategy.md for the full plan.
+
+---
+
+## GCC vs SN Systems Problem
+
+The original game was compiled with SN Systems ProDG (proprietary, discontinued).
+We use devkitPPC (GCC). Flag sweep shows 47% byte-exact match rate.
+
+The other 53% of functions need:
+- Inline assembly hints for register allocation
+- Compiler-specific workarounds
+- Or acceptance that some functions can't match with GCC
+
+This is the hardest part of the project.
+
+---
+
+## PC Port (ON HOLD)
+
+The PC port prototype (`src/platform/pc/`) exists but is parked until real decomp
+progress is made. The game code can't run because all function bodies are empty.
+The port will become viable once substantial decomp work is done.

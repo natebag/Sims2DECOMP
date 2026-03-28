@@ -35,116 +35,80 @@ Use `/work` to pick up the next task. Full design doc: `docs/specs/sims2-gc-deco
 - **"Not Yet" items must not be worked on**
 - New discoveries: current milestone? Add it. Future milestone? Slot it. Neither? Icebox.
 
-### Milestone 1: FOUNDATION — DONE
+### Milestone 1: INFRASTRUCTURE — DONE
 
-**Goal:** Toolchain compiles a DOL. All 39K symbols imported and organized. Boot sequence decompiled and matching. Map parser and progress tracker working.
+**Goal:** Build toolchain that produces a DOL. Symbols imported. Build pipeline working.
 
-**Gate Criteria:**
-- [x] devkitPPC / SN Systems toolchain builds a valid GC DOL
-- [x] decomp-toolkit project config (direct compile+diff workflow)
-- [x] Symbol map parser extracts all symbols into structured data
-- [x] Symbols imported into Ghidra project with correct names and types *(deferred — inject pipeline replaced this need)*
-- [x] ELF debug info fully loaded in Ghidra *(deferred — inject pipeline replaced this need)*
-- [x] Boot sequence (`__start` → `__init_hardware`) decompiled and matching (asm stubs injected)
-- [x] Build system produces byte-matching DOL (100% — 4,644,364 / 4,644,364 bytes)
-- [x] Progress tracker reports % of functions/bytes matched
-- [x] `docs/systems/boot-sequence.md` written
-- [x] `docs/systems/build-system.md` written
-- [x] Project README written for future contributors
-
-**Note:** Ghidra gates deferred — the inject pipeline + map file workflow made Ghidra
-optional for matching. Can revisit if needed for understanding complex functions.
-
-### Milestone 2: PORTABLE C++ CONVERSION — DONE
-
-**Goal:** Convert all 1,214 remaining asm stub files (~1.18M lines) to portable C++ that
-compiles on both PPC (byte-matching) and x86 (future PC port).
+**What this actually means:** The build system uses `decomp-toolkit` to inject original
+bytes from the DOL into the linked ELF. The DOL "matches" because the bytes are copied,
+NOT because C++ was written that compiles to matching output. This is the standard
+starting point for a decomp project — not the finish line.
 
 **Gate Criteria:**
-- [x] 90%+ of asm stubs converted to portable C++ by file count (100% — all 1,214)
-- [x] All "big fish" files (>5,000 lines) converted (all 29 done, including global.cpp)
-- [x] Converted code compiles clean with `make compile`
-- [x] 100% DOL byte match maintained throughout
-- [x] Per-system conversion tracking updated in progress.md
+- [x] devkitPPC toolchain builds a valid GC DOL
+- [x] decomp-toolkit project config working
+- [x] Symbol map parser extracts 39,169 symbols
+- [x] Skeleton generator + byte injection pipeline
+- [x] Build system produces DOL (via byte injection, NOT real decomp)
+- [x] Compiler flags tuned (47% byte-exact match rate on simple functions)
+- [x] CI pipeline for build verification
 
-**Completed 2026-03-27.** All 1,214 asm stubs converted via parallel worktree blitz.
-global.cpp (230K lines, 1,970 functions) was the final boss.
+### Milestone 2: SCAFFOLDING — DONE
 
-### Milestone 3: CORE SYSTEMS — DONE
+**Goal:** Create empty C++ source files for every class/function so the project compiles
+on x86. These are empty shells — the function bodies do nothing.
 
-**Goal:** Memory allocator, main game loop, asset loading pipeline, and rendering init
-all decompiled and matching.
-
-**Gate Criteria:**
-- [x] EAHeap / memory management decompiled (eaheap.cpp — small funcs done, large allocators in ea_stubs.cpp)
-- [x] FastAllocPool decompiled (fastallocpool.cpp — all 8 methods with real logic)
-- [x] Main game loop decompiled (esimsapp.cpp — full init/update/render cycle)
-- [x] .arc archive loader decompiled (assets_resources.cpp — file access + ArcFileInfo)
-- [x] ENgcRenderer initialization decompiled (renderer.cpp — Init/InitVideo/BeginFrame)
-- [x] DolphinSDK wrapper functions decompiled (sdk_wrappers.cpp + global_chunk_2.cpp — OS/DVD/PAD/GX/AI)
-- [x] basic_string and STL containers decompiled (stl_containers.cpp, containers_math.cpp)
-- [x] 20%+ of total functions matching (50%+ — 18,539 functions)
-- [x] All core system docs written (memory-management.md, game-loop.md, asset-loading.md, renderer.md, sdk-wrappers.md)
-
-### Milestone 4: GAMEPLAY SYSTEMS — DONE
-
-**Goal:** All Sims 2 gameplay logic decompiled.
+**What this actually means:** 1,214 files with empty function bodies were created.
+They compile on x86 but contain NO game logic. The "portable C++" is a scaffold
+for future decomp work, not completed decomp work.
 
 **Gate Criteria:**
-- [x] ESim class hierarchy decompiled (sim_classes.cpp, xl_batch_4.cpp)
-- [x] cXObject system decompiled (cxobjectimpl.cpp — 306 methods, 146 fields)
-- [x] ISimsMultiTileObjectModel decompiled (small_classes_g_n.cpp + cXMTObjectImpl in sim_classes.cpp)
-- [x] CAS (Create-A-Sim) system decompiled (sim_classes.cpp — CasGenetics, CasSimDescriptionS2C, CASTarget)
-- [x] InteractorModule / WallManipulator decompiled (bigfish_batch_4.cpp — 299 functions, 8 inner classes)
-- [x] BBI::InventoryItems decompiled (effects_skin_neighborhood.cpp — full item/container system)
-- [x] GoalUnlock system decompiled (effects_skin_neighborhood.cpp — bitfield goals + WantFearManager)
-- [x] 50%+ of total functions matching (50%+ — 18,539 functions)
+- [x] 1,214 source files with empty function bodies
+- [x] 643 class struct layouts documented from assembly analysis
+- [x] Files compile on x86 (empty bodies)
+- [x] Pseudocode comments describing what functions should do
 
-### Milestone 5: PRESENTATION & POLISH — DONE
+### Milestone 3: ACTUAL DECOMP — IN PROGRESS (the real work starts here)
 
-**Goal:** UI (APT), audio, camera, visual effects, skin compositor, and save system all decompiled.
+**Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
+This is the core decomp work. We are at the very beginning.
 
-**Gate Criteria:**
-- [x] Full APT UI engine decompiled (apt_classes.cpp, ui_system.cpp, bigfish_batch_4.cpp — 30+ interpreter methods)
-- [x] AmbientScorePlayer / audio system decompiled (audio_save_camera.cpp — AmbientScore, cGZSnd, ENgcAudio)
-- [x] ESimsCam camera system decompiled (audio_save_camera.cpp, bigfish_batch_1.cpp — 9-state director)
-- [x] FrameEffects (bloom, motion blur, DOF) decompiled (effects_system_sweep.cpp, effects_skin_neighborhood.cpp)
-- [x] SkinCompositor decompiled (effects_skin_neighborhood.cpp — bone transforms, clothing layers)
-- [x] SimsMemCardWrap save system decompiled (audio_save_camera.cpp — CARD library integration)
-- [x] 90%+ of total functions matching (100% — 18,539/18,539 functions, 4,644,364 byte DOL match)
+**Current Status:**
+- ~5 trivial functions hand-matched in `src/matched/` (simple getters/setters, ~44 bytes)
+- ~18,534 functions remaining (99.97% of the work)
+- Compiler flag sweep shows 47% of functions CAN potentially match with GCC
+- The other 53% need inline asm hints or tricks due to GCC vs SN Systems differences
 
-### Milestone 6: FULL MATCH — IN PROGRESS
-
-**Goal:** 100% matching decomp. Every function verified. Clean, documented, contributor-ready codebase.
+**IMPORTANT: The DOL "matches" via byte injection. Real decomp progress is measured by
+how many functions have hand-written C++ that compiles to matching bytes WITHOUT injection.**
 
 **Gate Criteria:**
-- [x] 100% of functions matching byte-for-byte (18,539/18,539, 100% DOL match)
-- [x] All remaining library code (SN runtime, DolphinSDK) stubbed or decompiled
-- [x] Full CI pipeline verifying matching on every commit (.github/workflows/build.yml)
-- [x] Complete contributor documentation (CONTRIBUTING.md + 5 system docs)
-- [ ] Community-ready GitHub release (tagged release)
+- [ ] 1,000 functions hand-matched (currently ~5)
+- [ ] 5,000 functions hand-matched
+- [ ] 10,000 functions hand-matched
+- [ ] 15,000 functions hand-matched
+- [ ] 18,539 functions hand-matched — TRUE 100% decomp
 
-**Remaining:** Tag a v1.0 release once CI is confirmed green.
+**Approach:** Agent-parallelized matching — see strategy below.
 
-### Milestone 7: PC PORT & MODS — IN PROGRESS
+**Priority Order:**
+1. 8-byte getter/setter functions (~500+ functions, trivially matchable)
+2. 12-20 byte simple functions (~1,000+ functions)
+3. 32-100 byte functions with documented pseudocode
+4. 100-500 byte medium functions
+5. 500+ byte complex functions (need deep RE work)
 
-**Goal:** Platform abstraction layer, PC rendering backend, mod loading. The dream.
+### Milestone 4: PC PORT — NOT STARTED (requires Milestone 3)
 
-**Gate Criteria:**
-- [ ] Platform abstraction layer (GC graphics → OpenGL/Vulkan)
-- [ ] PC input system (keyboard/mouse/controller)
-- [ ] Widescreen and high-res support
-- [ ] Mod loading system (custom assets, scripts)
-- [ ] Online multiplayer framework
-- [ ] 60+ FPS on modern hardware
+**Goal:** Once functions have real logic (not empty stubs), build a PC port.
 
-**Status:** x86 CMake build system set up, first compile achieved (23 errors, 86 warnings
-as of 2026-03-27). Platform abstraction headers in progress. types.h updated for 64-bit.
+**Current Prototype:** An OpenGL tech demo exists in `src/platform/pc/` that loads
+game textures and renders a custom menu. This is NOT a real port — the game code
+doesn't run because all function bodies are empty. A real PC port requires actual
+decompiled game logic.
 
-**Lanes:** Platform Abstraction > PC Renderer > Input & Resolution > Mod System > Online
-
-### Icebox (Future)
-Online multiplayer (no splitscreen), custom neighborhoods, new NPCs, Steam Workshop integration, mobile port, VR support, cross-platform multiplayer
+### Icebox (Future — requires completed decomp)
+PC port, mod system, online multiplayer, widescreen, Steam Workshop
 
 ## Build Info (from disc)
 
