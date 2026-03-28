@@ -86,7 +86,30 @@ The EA/GC texture pipeline:
 
 ---
 
-## SESSION E: First Playable (after C+D)
+## SESSION F: APT Flash UI Engine (enables real menus)
+
+The APT system is EA's custom Flash/ActionScript player. Each flash is a BIGF
+container with these sub-files:
+- `.apt` — main APT bytecode (ActionScript-like)
+- `.const` — constant pool (strings, IDs)
+- `.geo` — "PCGL geometry" — pre-compiled vector vertex data
+- `.tgq` — embedded textures (TXFL format)
+
+The BIGF container uses LE size, BE count. Prefix of 2 bytes before "BIGF".
+
+Key files to implement:
+- [ ] BIGF container parser
+- [ ] APT data parser (display list, character definitions)
+- [ ] APT const parser (string table, action bytecodes)
+- [ ] APT geo renderer (feed vertex data to OpenGL)
+- [ ] APT texture loader (reuse our TXFL decoder)
+- [ ] Basic ActionScript interpreter (button handling, state transitions)
+
+Priority flash files: s2c_main_menu, s2c_root, s2c_pause_game
+
+---
+
+## SESSION E: First Playable (after C+D+F)
 
 - [ ] Get past loading screen
 - [ ] Main menu renders with real textures
