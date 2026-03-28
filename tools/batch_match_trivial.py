@@ -98,6 +98,50 @@ def classify_function(dol, addr):
         offset = d
         return ("store_member_float", f"*(float*)((char*)this + 0x{offset & 0xFFFF:X}) = p;", "member")
 
+    # Pattern: addi r3, r3, imm; blr → return pointer to member
+    if op1 == 14 and rd == 3 and ra == 3:
+        offset = d
+        return ("ptr_member", f"return (int)((char*)this + 0x{offset & 0xFFFF:X});", None)
+
+    # Pattern: or rA, rD, rD (mr); blr → return a parameter register
+    if op1 == 31:
+        xo = (w1 >> 1) & 0x3FF
+        rb = (w1 >> 11) & 0x1F
+        if xo == 444:  # or
+            target_reg = (w1 >> 16) & 0x1F
+            src_reg = rd
+            if target_reg == 3 and src_reg == rb:
+                # mr r3, rX; blr — return a parameter
+                if src_reg == 4:
+                    return ("mr_r3_r4", f"return p;", "member")
+                elif src_reg == 5:
+                    return ("mr_r3_r5", f"return p2;", "member")
+
+    # Pattern: lha r3, off(r3); blr → return short member (sign-extended)
+    if op1 == 42 and rd == 3 and ra == 3:
+        offset = d
+        return ("load_member_short", f"return *(short*)((char*)this + 0x{offset & 0xFFFF:X});", "member")
+
+    # Pattern: lhz r3, off(r3); blr → return unsigned short member
+    if op1 == 40 and rd == 3 and ra == 3:
+        offset = d
+        return ("load_member_ushort", f"return *(unsigned short*)((char*)this + 0x{offset & 0xFFFF:X});", "member")
+
+    # Pattern: sth r4, off(r3); blr → set short member
+    if op1 == 44 and rd == 4 and ra == 3:
+        offset = d
+        return ("store_member_short", f"*(short*)((char*)this + 0x{offset & 0xFFFF:X}) = (short)p;", "member")
+
+    # Pattern: lbz r3, off(r3); blr → return byte member
+    if op1 == 34 and rd == 3 and ra == 3:
+        offset = d
+        return ("load_member_byte", f"return *(unsigned char*)((char*)this + 0x{offset & 0xFFFF:X});", "member")
+
+    # Pattern: stb r4, off(r3); blr → set byte member
+    if op1 == 38 and rd == 4 and ra == 3:
+        offset = d
+        return ("store_member_byte", f"*(unsigned char*)((char*)this + 0x{offset & 0xFFFF:X}) = (unsigned char)p;", "member")
+
     return None  # not a trivially matchable pattern
 
 def parse_func_name(full_name):
@@ -137,9 +181,24 @@ void {method_name}({params}) {{
 """
 
     # Determine return type and param
-    if "load_member_float" in pattern or "store_member_float" in pattern:
+    if "float" in pattern:
         ret_type = "float" if "return" in code else "void"
         param_decl = "float p" if "store" in pattern else ""
+    elif "short" in pattern:
+        ret_type = "short" if "return" in code and "load" in pattern else ("int" if "return" in code else "void")
+        param_decl = "int p" if "store" in pattern else ""
+    elif "byte" in pattern:
+        ret_type = "int" if "return" in code else "void"
+        param_decl = "int p" if "store" in pattern else ""
+    elif "ptr_member" in pattern:
+        ret_type = "int"
+        param_decl = ""
+    elif "mr_r3_r4" in pattern:
+        ret_type = "int"
+        param_decl = "int p"
+    elif "mr_r3_r5" in pattern:
+        ret_type = "int"
+        param_decl = "int p1, int p2"
     else:
         ret_type = "int" if "return" in code else "void"
         param_decl = "int p" if "store" in pattern else ""
