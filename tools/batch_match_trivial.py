@@ -73,6 +73,9 @@ def classify_function(dol, addr, size=8):
     if size == 16:
         return classify_16byte(raw)
 
+    if size == 20:
+        return classify_20byte(raw)
+
     # 8-byte functions below
     w1 = struct.unpack(">I", raw[0:4])[0]
     w2 = struct.unpack(">I", raw[4:8])[0]
@@ -157,6 +160,54 @@ def classify_function(dol, addr, size=8):
         return ("store_member_byte", f"*(unsigned char*)((char*)this + 0x{offset & 0xFFFF:X}) = (unsigned char)p;", "member")
 
     return None  # not a trivially matchable pattern
+
+def classify_20byte(raw):
+    """Classify a 20-byte function (5 instructions)."""
+    words = [struct.unpack(">I", raw[i:i+4])[0] for i in range(0, 20, 4)]
+    if words[4] != 0x4E800020:
+        return None
+
+    def dec(w):
+        op = (w >> 26) & 0x3F
+        rd = (w >> 21) & 0x1F
+        ra = (w >> 16) & 0x1F
+        d = w & 0xFFFF
+        if d >= 0x8000: d -= 0x10000
+        return op, rd, ra, d
+
+    o1, d1, a1, i1 = dec(words[0])
+    o2, d2, a2, i2 = dec(words[1])
+    o3, d3, a3, i3 = dec(words[2])
+    o4, d4, a4, i4 = dec(words[3])
+
+    # li rX, N; stw rX, off1(r3); stw rX, off2(r3); stw rX, off3(r3); blr
+    # → set 3 fields to same constant
+    if (o1 == 14 and a1 == 0 and
+        o2 == 36 and a2 == 3 and d2 == d1 and
+        o3 == 36 and a3 == 3 and d3 == d1 and
+        o4 == 36 and a4 == 3 and d4 == d1):
+        return ("20_li_3stw",
+                f"*(int*)((char*)this + 0x{i2 & 0xFFFF:X}) = {i1}; *(int*)((char*)this + 0x{i3 & 0xFFFF:X}) = {i1}; *(int*)((char*)this + 0x{i4 & 0xFFFF:X}) = {i1};",
+                "member")
+
+    # stw r4, X(r3); stw r5, Y(r3); stw r6, Z(r3); stw r7, W(r3); blr
+    # → set 4 fields from params
+    if (o1 == 36 and a1 == 3 and o2 == 36 and a2 == 3 and
+        o3 == 36 and a3 == 3 and o4 == 36 and a4 == 3):
+        return ("20_store_four",
+                f"*(int*)((char*)this + 0x{i1 & 0xFFFF:X}) = p1; *(int*)((char*)this + 0x{i2 & 0xFFFF:X}) = p2; *(int*)((char*)this + 0x{i3 & 0xFFFF:X}) = p3; *(int*)((char*)this + 0x{i4 & 0xFFFF:X}) = p4;",
+                "member")
+
+    # li rX, N; stw rX, off1(r3); li rY, M; stw rY, off2(r3); blr
+    # → set 2 fields to different constants
+    if (o1 == 14 and a1 == 0 and o2 == 36 and a2 == 3 and d2 == d1 and
+        o3 == 14 and a3 == 0 and o4 == 36 and a4 == 3 and d4 == d3):
+        return ("20_li_stw_li_stw",
+                f"*(int*)((char*)this + 0x{i2 & 0xFFFF:X}) = {i1}; *(int*)((char*)this + 0x{i4 & 0xFFFF:X}) = {i3};",
+                "member")
+
+    return None
+
 
 def classify_16byte(raw):
     """Classify a 16-byte function (4 instructions)."""
@@ -374,6 +425,12 @@ void {method_name}({params}) {{
     elif "16_set_two_same" in pattern:
         ret_type = "void"
         param_decl = ""
+    elif "20_li_3stw" in pattern or "20_li_stw_li_stw" in pattern:
+        ret_type = "void"
+        param_decl = ""
+    elif "20_store_four" in pattern:
+        ret_type = "void"
+        param_decl = "int p1, int p2, int p3, int p4"
     else:
         ret_type = "int" if "return" in code else "void"
         param_decl = "int p" if "store" in pattern else ""
@@ -414,7 +471,7 @@ def main():
                 size = int(m.group(2), 16)
                 name = m.group(3).strip()
                 if 0x80003100 <= addr < 0x80600000:
-                    if size in (4, 8, 12, 16):
+                    if size in (4, 8, 12, 16, 20):
                         all_funcs.append((addr, name, size))
 
     matchable = []

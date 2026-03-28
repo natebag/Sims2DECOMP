@@ -48,7 +48,8 @@ COMPILED_BYTES=$($OBJDUMP -s -j .text "$OBJ" 2>/dev/null | awk '/Contents of sec
 
 # Step 3: Extract DOL bytes at the given address
 echo "Extracting DOL bytes at $ADDR ($SIZE bytes)..."
-DOL_BYTES=$(python3 -c "
+PYTHON="/c/Users/SCICO/AppData/Local/Python/bin/python.exe"
+DOL_BYTES=$($PYTHON -c "
 import struct
 with open('$DOL', 'rb') as f:
     dol = f.read()
