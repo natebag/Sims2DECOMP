@@ -137,18 +137,19 @@ def get_unmatched_functions(max_size=64):
 # AI API calls
 # ============================================================================
 
-SYSTEM_PROMPT = """You are a GameCube (PowerPC) decompilation expert. Your job is to write C++ that compiles to byte-identical PPC output using devkitPPC GCC.
+SYSTEM_PROMPT = """You are a GameCube (PowerPC) decompilation expert. Your job is to write C++ that compiles to byte-identical PPC output using the SN Systems ProDG compiler (GCC 2.95.3).
 
-COMPILER: powerpc-eabi-g++ with flags: -mcpu=750 -meabi -mhard-float -O2 -fno-schedule-insns -fno-schedule-insns2 -fno-inline -fno-exceptions -fno-rtti -fno-builtin
+COMPILER: SN Systems ProDG cc1plus.exe — GCC 2.95.3 SN BUILD v1.76 for Nintendo GameCube
+This is the ORIGINAL compiler that built the game. It produces matching output naturally.
 
-RULES:
-1. Output ONLY the C++ code, no explanations
-2. Include the class declaration if it's a member function
-3. Use exact field offsets with pointer arithmetic: *(int*)((char*)this + 0xOFFSET)
-4. The function must compile standalone (include all needed declarations)
-5. Add a comment: // 0xADDRESS (SIZE bytes) before the function
-6. For r13-relative accesses (SDA), use a static variable
-7. If you need to force a specific register, use: register int __rX __asm__("rX")
+CRITICAL C++ RULES (GCC 2.95 / C++98):
+1. NO // comments that start with hex like // 0x... (use /* */ instead or put comments after code)
+2. NO modern C++ (no auto, no range-for, no nullptr — use NULL)
+3. Output ONLY the C++ code, no explanations or markdown
+4. Include the class declaration if it's a member function
+5. Use exact field offsets with pointer arithmetic: *(int*)((char*)this + 0xOFFSET)
+6. The function must compile standalone (include all needed declarations)
+7. Do NOT use #include — the compiler has no include path configured
 
 PPC CONVENTIONS:
 - r3 = this pointer (for member functions) or first param
@@ -161,20 +162,10 @@ COMMON PATTERNS:
 - lwz r3, off(r3); blr  →  return *(int*)((char*)this + off);
 - stw r4, off(r3); blr  →  *(int*)((char*)this + off) = param;
 - li r3, N; blr          →  return N;
-- stwu r1, -N(r1) ... addi r1, r1, N; blr  →  function with stack frame
+- li r0, N; stw r0, off(r3); blr  →  *(int*)((char*)this + off) = N;
+- stwu r1, -N(r1) ... blr  →  function with stack frame
 - rlwinm r3,r3,N,M,K; blr  →  bit extraction: return (field >> shift) & mask;
-
-GCC vs SN SYSTEMS WORKAROUNDS (CRITICAL):
-
-1. Register r0: SN uses r0 as scratch, GCC uses r9. If the original uses r0:
-   register int __r0 __asm__("r0") = value;
-   __asm__ __volatile__("" : "+r"(__r0));
-   *(int*)((char*)this + offset) = __r0;
-
-2. lha vs lhz: Use 'short' (signed) for lha, 'unsigned short' for lhz.
-
-3. rlwinm bit extraction: return (*(int/short/char*)ptr >> shift) & mask;
-   The shift and mask come from the rlwinm encoding.
+- lha = signed short load, lhz = unsigned short load, lbz = unsigned char load
 """
 
 def call_anthropic(api_key, prompt, model="claude-sonnet-4-20250514"):

@@ -43,7 +43,7 @@ if [ -f "$SN_CC1PLUS" ]; then
     # Use SN Systems compiler (the real one)
     # GCC 2.95 can be picky — strip // comments starting with 0x (confuses old preprocessor)
     CLEAN_SRC="build/verify/${BASENAME}_clean.cpp"
-    sed 's|^//.*||' "$SRC" > "$CLEAN_SRC"
+    sed 's|//.*||; s|/\*.*\*/||' "$SRC" > "$CLEAN_SRC"
     echo "Compiling $SRC with SN Systems ProDG..."
     "$SN_CC1PLUS" "$CLEAN_SRC" -o "$ASM" -quiet -O2 2>&1
     if [ $? -ne 0 ]; then
