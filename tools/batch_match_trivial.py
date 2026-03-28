@@ -64,6 +64,15 @@ def classify_function(dol, addr, size=8):
     if size == 12:
         return classify_12byte(raw)
 
+    if size == 4:
+        w1 = struct.unpack(">I", raw[0:4])[0]
+        if w1 == 0x4E800020:  # blr — empty function
+            return ("empty_blr", "", None)
+        return None
+
+    if size == 16:
+        return classify_16byte(raw)
+
     # 8-byte functions below
     w1 = struct.unpack(">I", raw[0:4])[0]
     w2 = struct.unpack(">I", raw[4:8])[0]
@@ -149,6 +158,57 @@ def classify_function(dol, addr, size=8):
 
     return None  # not a trivially matchable pattern
 
+def classify_16byte(raw):
+    """Classify a 16-byte function (4 instructions)."""
+    words = [struct.unpack(">I", raw[i:i+4])[0] for i in range(0, 16, 4)]
+    w1, w2, w3, w4 = words
+
+    if w4 != 0x4E800020:  # must end with blr
+        return None
+
+    def dec(w):
+        op = (w >> 26) & 0x3F
+        rd = (w >> 21) & 0x1F
+        ra = (w >> 16) & 0x1F
+        d = w & 0xFFFF
+        if d >= 0x8000: d -= 0x10000
+        return op, rd, ra, d
+
+    o1, d1, a1, i1 = dec(w1)
+    o2, d2, a2, i2 = dec(w2)
+    o3, d3, a3, i3 = dec(w3)
+
+    # stwu r1, -N(r1); stw rX, off(r1); addi r1, r1, N; blr — trivial frame setup that does nothing
+    if o1 == 37 and d1 == 1 and a1 == 1 and o2 == 36 and a2 == 1 and o3 == 14 and d3 == 1 and a3 == 1:
+        return ("16_empty_frame", "", None)
+
+    # lwz r3, X(r3); lwz r3, Y(r3); lwz r3, Z(r3); blr — triple dereference
+    if o1 == 32 and d1 == 3 and a1 == 3 and o2 == 32 and d2 == 3 and a2 == 3 and o3 == 32 and d3 == 3 and a3 == 3:
+        return ("16_triple_deref",
+                f"return *(int*)((char*)(*(int*)((char*)(*(int*)((char*)this + 0x{i1 & 0xFFFF:X})) + 0x{i2 & 0xFFFF:X})) + 0x{i3 & 0xFFFF:X});",
+                None)
+
+    # stw r4, X(r3); stw r5, Y(r3); stw r6, Z(r3); blr — store three fields
+    if o1 == 36 and a1 == 3 and o2 == 36 and a2 == 3 and o3 == 36 and a3 == 3:
+        return ("16_store_three",
+                f"*(int*)((char*)this + 0x{i1 & 0xFFFF:X}) = p1; *(int*)((char*)this + 0x{i2 & 0xFFFF:X}) = p2; *(int*)((char*)this + 0x{i3 & 0xFFFF:X}) = p3;",
+                "member")
+
+    # li rX, imm; stw rX, off(r3); li r3, N; blr — set field to const, return const
+    if o1 == 14 and a1 == 0 and o2 == 36 and a2 == 3 and d2 == d1 and o3 == 14 and a3 == 0 and d3 == 3:
+        return ("16_setfield_retconst",
+                f"*(int*)((char*)this + 0x{i2 & 0xFFFF:X}) = {i1}; return {i3};",
+                "member")
+
+    # li rX, N; stw rX, off1(r3); stw rX, off2(r3); blr — set two fields to same constant
+    if o1 == 14 and a1 == 0 and o2 == 36 and a2 == 3 and d2 == d1 and o3 == 36 and a3 == 3 and d3 == d1:
+        return ("16_set_two_same",
+                f"*(int*)((char*)this + 0x{i2 & 0xFFFF:X}) = {i1}; *(int*)((char*)this + 0x{i3 & 0xFFFF:X}) = {i1};",
+                "member")
+
+    return None
+
+
 def classify_12byte(raw):
     """Classify a 12-byte function (3 instructions)."""
     w1 = struct.unpack(">I", raw[0:4])[0]
@@ -229,6 +289,29 @@ def generate_cpp(addr, func_name, pattern, code):
     """Generate a standalone .cpp file for one function."""
     class_name, method_name, params = parse_func_name(func_name)
 
+    # Empty functions (blr only or empty frame)
+    if pattern in ("empty_blr", "16_empty_frame"):
+        if not class_name:
+            return f"""// 0x{addr:08X} ({8 if pattern == "empty_blr" else 16} bytes)
+void {method_name}({params}) {{
+}}
+"""
+        class_parts = class_name.split("::")
+        class_decl = f"class {class_parts[0]} {{\npublic:\n"
+        if len(class_parts) > 1:
+            class_decl += f"    class {class_parts[1]} {{\n    public:\n"
+            class_decl += f"        void {method_name}({params});\n"
+            class_decl += f"    }};\n"
+        else:
+            class_decl += f"    void {method_name}({params});\n"
+        class_decl += f"}};\n"
+        full_class = "::".join(class_parts)
+        return f"""// 0x{addr:08X} ({8 if pattern == "empty_blr" else 16} bytes)
+{class_decl}
+void {full_class}::{method_name}({params}) {{
+}}
+"""
+
     if not class_name:
         # Free function
         if "return" in code:
@@ -279,6 +362,18 @@ void {method_name}({params}) {{
     elif "12_double_deref" in pattern or "12_deref" in pattern:
         ret_type = "float" if "float" in pattern else "int"
         param_decl = ""
+    elif "16_triple_deref" in pattern:
+        ret_type = "int"
+        param_decl = ""
+    elif "16_store_three" in pattern:
+        ret_type = "void"
+        param_decl = "int p1, int p2, int p3"
+    elif "16_setfield_retconst" in pattern:
+        ret_type = "int"
+        param_decl = ""
+    elif "16_set_two_same" in pattern:
+        ret_type = "void"
+        param_decl = ""
     else:
         ret_type = "int" if "return" in code else "void"
         param_decl = "int p" if "store" in pattern else ""
@@ -310,8 +405,7 @@ def main():
     verify = "--verify" in sys.argv
 
     dol = read_dol()
-    funcs8 = []
-    funcs12 = []
+    all_funcs = []
     with open(MAP_PATH, "r", errors="replace") as f:
         for line in f:
             m = re.match(r'([0-9A-Fa-f]{8})\s+([0-9A-Fa-f]{8})\s+\d+\s+(.*)', line)
@@ -320,13 +414,13 @@ def main():
                 size = int(m.group(2), 16)
                 name = m.group(3).strip()
                 if 0x80003100 <= addr < 0x80600000:
-                    if size == 8: funcs8.append((addr, name, 8))
-                    elif size == 12: funcs12.append((addr, name, 12))
+                    if size in (4, 8, 12, 16):
+                        all_funcs.append((addr, name, size))
 
     matchable = []
     skipped = 0
 
-    for addr, name, size in funcs8 + funcs12:
+    for addr, name, size in all_funcs:
         result = classify_function(dol, addr, size)
         if result:
             pattern, code, _ = result
