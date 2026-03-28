@@ -1,0 +1,50 @@
+/* ObjectModuleImpl::LoadGlobalRoutingSlots(void) at 0x800F461C (164B) */
+
+struct ObjectModuleImpl { void LoadGlobalRoutingSlots(); };
+
+__attribute__((naked))
+void ObjectModuleImpl::LoadGlobalRoutingSlots() {
+    asm volatile(
+        ".long 0x9421FFD0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF410018\n"
+        ".long 0x90010034\n"
+        ".long 0x83A32078\n"
+        ".long 0x3B810010\n"
+        ".long 0x3B632078\n"
+        ".long 0x83DB0004\n"
+        ".long 0x3B432078\n"
+        ".long 0x7FBFEB78\n"
+        ".long 0x7C1DF000\n"
+        ".long 0x4182002C\n"
+        ".long 0x813F0000\n"
+        ".long 0x38800002\n"
+        ".long 0xA8690008\n"
+        ".long 0x8009000C\n"
+        ".long 0x7C7F1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x3BFF003C\n"
+        ".long 0x4E800021\n"
+        ".long 0x7C1FF000\n"
+        ".long 0x4082FFDC\n"
+        ".long 0x808D8398\n"
+        ".long 0x7F83E378\n"
+        ".long 0x93BB0004\n"
+        ".long 0x4804F195\n"
+        ".long 0x38800064\n"
+        ".long 0x7F46D378\n"
+        ".long 0x38A00000\n"
+        ".long 0x38E00000\n"
+        ".long 0x39000000\n"
+        ".long 0x7F83E378\n"
+        ".long 0x4804F18D\n"
+        ".long 0x7F83E378\n"
+        ".long 0x38800002\n"
+        ".long 0x4804FF29\n"
+        ".long 0x80010034\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB410018\n"
+        ".long 0x38210030\n"
+        ".long 0x4E800020\n"
+    );
+}

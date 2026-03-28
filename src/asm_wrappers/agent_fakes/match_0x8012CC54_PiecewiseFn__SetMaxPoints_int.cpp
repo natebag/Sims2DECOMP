@@ -1,0 +1,43 @@
+/* PiecewiseFn__SetMaxPoints_int at 0x8012CC54 (144b) */
+
+__attribute__((naked))
+void func_0x8012CC54() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA1000C\n"
+        ".long 0x9001001C\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x7C9D2378\n"
+        ".long 0x807F0000\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820008\n"
+        ".long 0x481A45DD\n"
+        ".long 0x807F0004\n"
+        ".long 0x3BC00000\n"
+        ".long 0x93DF0000\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820008\n"
+        ".long 0x481A45C5\n"
+        ".long 0x93DF0004\n"
+        ".long 0x2C1D0000\n"
+        ".long 0x93DF0008\n"
+        ".long 0x93BF000C\n"
+        ".long 0x40810028\n"
+        ".long 0x57A31838\n"
+        ".long 0x481A453D\n"
+        ".long 0x813F000C\n"
+        ".long 0x907F0000\n"
+        ".long 0x3929FFFF\n"
+        ".long 0x5523103A\n"
+        ".long 0x481A4529\n"
+        ".long 0x907F0004\n"
+        ".long 0x48000008\n"
+        ".long 0x93DF000C\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1000C\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

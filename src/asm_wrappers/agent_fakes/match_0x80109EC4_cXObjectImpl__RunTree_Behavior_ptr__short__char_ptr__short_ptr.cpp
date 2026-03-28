@@ -1,0 +1,43 @@
+/* cXObjectImpl__RunTree_Behavior_ptr__short__char_ptr__short_ptr at 0x80109EC4 (144b) */
+
+__attribute__((naked))
+void func_0x80109EC4() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF810008\n"
+        ".long 0x9001001C\n"
+        ".long 0x7C9F2378\n"
+        ".long 0x7C7D1B78\n"
+        ".long 0x813F0000\n"
+        ".long 0x7CC43378\n"
+        ".long 0x7CBE2B78\n"
+        ".long 0x7CFC3B78\n"
+        ".long 0xA8690048\n"
+        ".long 0x8009004C\n"
+        ".long 0x7C7F1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x7C631B79\n"
+        ".long 0x4082000C\n"
+        ".long 0x38600000\n"
+        ".long 0x48000034\n"
+        ".long 0x813D0000\n"
+        ".long 0x7C661B78\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0x7FC5F378\n"
+        ".long 0x81690000\n"
+        ".long 0x7F87E378\n"
+        ".long 0x812B0018\n"
+        ".long 0xA86900A0\n"
+        ".long 0x800900A4\n"
+        ".long 0x7C6B1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB810008\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

@@ -1,0 +1,43 @@
+/* cXPersonImpl__SetSecondPlayerInSocialMode_bool at 0x8012B834 (144b) */
+
+__attribute__((naked))
+void func_0x8012B834() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF810008\n"
+        ".long 0x9001001C\n"
+        ".long 0x3D208047\n"
+        ".long 0x7C7D1B78\n"
+        ".long 0x39295DCC\n"
+        ".long 0x7C9C2378\n"
+        ".long 0x3BC900BC\n"
+        ".long 0x3BE00000\n"
+        ".long 0x813E0000\n"
+        ".long 0x801D0004\n"
+        ".long 0x3BDE0004\n"
+        ".long 0x7C090000\n"
+        ".long 0x40820034\n"
+        ".long 0x480DFDE5\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0x38A00000\n"
+        ".long 0x480DFD29\n"
+        ".long 0x7C6B1B79\n"
+        ".long 0x4182001C\n"
+        ".long 0x812B005C\n"
+        ".long 0xA8690080\n"
+        ".long 0x80090084\n"
+        ".long 0x7C6B1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x3BFF0001\n"
+        ".long 0x281F0001\n"
+        ".long 0x4081FFB4\n"
+        ".long 0x939D0548\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB810008\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

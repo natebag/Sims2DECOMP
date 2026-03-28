@@ -1,0 +1,51 @@
+/* IFFResMap::GetNode2(unsigned int, StackString<64> &, void (*)(void *, int)) at 0x800BD5FC (168B) */
+
+struct IFFResMap { void GetNode2(); };
+
+__attribute__((naked))
+void IFFResMap::GetNode2() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF810008\n"
+        ".long 0x9001001C\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x7CBC2B78\n"
+        ".long 0x7CDD3378\n"
+        ".long 0x38A00000\n"
+        ".long 0x4BFFF865\n"
+        ".long 0x801E0004\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x7C1F0000\n"
+        ".long 0x40820010\n"
+        ".long 0x4800005C\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x48000058\n"
+        ".long 0x2C1D0000\n"
+        ".long 0x41820008\n"
+        ".long 0x93BF0014\n"
+        ".long 0x83DF0000\n"
+        ".long 0x801F0004\n"
+        ".long 0x7C1E0000\n"
+        ".long 0x41820038\n"
+        ".long 0x387E0010\n"
+        ".long 0x7F84E378\n"
+        ".long 0x4BFE91D1\n"
+        ".long 0x2C030000\n"
+        ".long 0x40820014\n"
+        ".long 0xA87E0008\n"
+        ".long 0x4BFFF695\n"
+        ".long 0x2C030000\n"
+        ".long 0x4182FFBC\n"
+        ".long 0x801F0004\n"
+        ".long 0x3BDE0058\n"
+        ".long 0x7C1E0000\n"
+        ".long 0x4082FFD0\n"
+        ".long 0x38600000\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB810008\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

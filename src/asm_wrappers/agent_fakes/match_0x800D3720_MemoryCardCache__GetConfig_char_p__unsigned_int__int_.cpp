@@ -1,0 +1,51 @@
+/* MemoryCardCache::GetConfig(char *, unsigned int, int) at 0x800D3720 (168B) */
+
+struct MemoryCardCache { void GetConfig(); };
+
+__attribute__((naked))
+void MemoryCardCache::GetConfig() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF810008\n"
+        ".long 0x9001001C\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x7C9C2378\n"
+        ".long 0x801F000C\n"
+        ".long 0x7CBD2B78\n"
+        ".long 0x7CDE3378\n"
+        ".long 0x2C000000\n"
+        ".long 0x40820054\n"
+        ".long 0x801F0000\n"
+        ".long 0x2C000000\n"
+        ".long 0x4082002C\n"
+        ".long 0x481FC7A9\n"
+        ".long 0x38802000\n"
+        ".long 0x38A00040\n"
+        ".long 0x38C00000\n"
+        ".long 0x38E00000\n"
+        ".long 0x481FD405\n"
+        ".long 0x2C030000\n"
+        ".long 0x907F0000\n"
+        ".long 0x38600002\n"
+        ".long 0x41820038\n"
+        ".long 0x7FC4F378\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x4BFFFAD1\n"
+        ".long 0x2C030000\n"
+        ".long 0x4182000C\n"
+        ".long 0x38600001\n"
+        ".long 0x4800001C\n"
+        ".long 0x809F0000\n"
+        ".long 0x7F83E378\n"
+        ".long 0x7FA5EB78\n"
+        ".long 0x4CC63182\n"
+        ".long 0x4816FCA9\n"
+        ".long 0x38600000\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB810008\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

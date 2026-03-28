@@ -1,0 +1,40 @@
+/* PassiveInfluenceSystem__SetSkillNameID_cXObject_ptr__AnimRef_ptr at 0x8011513C (132b) */
+
+__attribute__((naked))
+void func_0x8011513C() {
+    asm volatile(
+        ".long 0x9421FFE0\n"
+        ".long 0x81230004\n"
+        ".long 0x80090000\n"
+        ".long 0x7D2A4B78\n"
+        ".long 0x48000010\n"
+        ".long 0x91610018\n"
+        ".long 0x800B0000\n"
+        ".long 0x91610010\n"
+        ".long 0x90010008\n"
+        ".long 0x81610008\n"
+        ".long 0x38000001\n"
+        ".long 0x91410010\n"
+        ".long 0x7F8B5000\n"
+        ".long 0x409E0008\n"
+        ".long 0x38000000\n"
+        ".long 0x2C000000\n"
+        ".long 0x41820014\n"
+        ".long 0x812B0008\n"
+        ".long 0x80090004\n"
+        ".long 0x7C002000\n"
+        ".long 0x4082FFC4\n"
+        ".long 0x7C000026\n"
+        ".long 0x5400FFFE\n"
+        ".long 0x91410010\n"
+        ".long 0x2C000000\n"
+        ".long 0x40820014\n"
+        ".long 0x812B0008\n"
+        ".long 0x38600001\n"
+        ".long 0x90A9001C\n"
+        ".long 0x48000008\n"
+        ".long 0x38600000\n"
+        ".long 0x38210020\n"
+        ".long 0x4E800020\n"
+    );
+}

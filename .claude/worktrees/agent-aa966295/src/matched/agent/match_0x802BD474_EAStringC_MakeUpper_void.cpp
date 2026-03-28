@@ -1,0 +1,42 @@
+/* EAStringC::MakeUpper(void) - 140 bytes at 0x802BD474 */
+
+__attribute__((naked))
+void func_0x802BD474() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFC10008\n"
+        ".long 0x90010014\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x38A00000\n"
+        ".long 0x813E0000\n"
+        ".long 0x38E00001\n"
+        ".long 0xA3E90002\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0x7FE6FB78\n"
+        ".long 0x7FE8FB78\n"
+        ".long 0x480011A9\n"
+        ".long 0x813E0000\n"
+        ".long 0x2C1F0000\n"
+        ".long 0x39490008\n"
+        ".long 0x41820034\n"
+        ".long 0x7FE903A6\n"
+        ".long 0x3D208040\n"
+        ".long 0x3909FC59\n"
+        ".long 0x880A0000\n"
+        ".long 0x7C0B0774\n"
+        ".long 0x7D2B40AE\n"
+        ".long 0x71200002\n"
+        ".long 0x41820008\n"
+        ".long 0x396BFFE0\n"
+        ".long 0x996A0000\n"
+        ".long 0x394A0001\n"
+        ".long 0x4200FFE0\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBC10008\n"
+        ".long 0x38210010\n"
+        "blr\n"
+    );
+}

@@ -1,0 +1,40 @@
+/* AptValue::toString(char *) const - 132 bytes at 0x802B0838 */
+
+__attribute__((naked))
+void func_0x802B0838() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFC10010\n"
+        ".long 0x9001001C\n"
+        ".long 0x3D608044\n"
+        ".long 0x7C9E2378\n"
+        ".long 0xA12BE6B4\n"
+        ".long 0x380BE6B4\n"
+        ".long 0x38810008\n"
+        ".long 0x90010008\n"
+        ".long 0x39290001\n"
+        ".long 0xB12BE6B4\n"
+        ".long 0x48000055\n"
+        ".long 0x80810008\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x38840008\n"
+        ".long 0x4BF93069\n"
+        ".long 0x80810008\n"
+        ".long 0xA1240000\n"
+        ".long 0x3929FFFF\n"
+        ".long 0x5520043E\n"
+        ".long 0xB1240000\n"
+        ".long 0x2C000000\n"
+        ".long 0x40820014\n"
+        ".long 0xA0A40004\n"
+        ".long 0x806DA614\n"
+        ".long 0x38A50009\n"
+        ".long 0x480050E9\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBC10010\n"
+        ".long 0x38210018\n"
+        "blr\n"
+    );
+}

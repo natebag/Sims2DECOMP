@@ -1,0 +1,53 @@
+/* NghResFile::WriteToFile(char *) at 0x800D6FF4 (176B) */
+
+struct NghResFile { void WriteToFile(); };
+
+__attribute__((naked))
+void NghResFile::WriteToFile() {
+    asm volatile(
+        ".long 0x9421FED0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA10124\n"
+        ".long 0x90010134\n"
+        ".long 0x3BA10008\n"
+        ".long 0x7C9E2378\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x38A00104\n"
+        ".long 0x389D0008\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x4BFCF591\n"
+        ".long 0x7FC4F378\n"
+        ".long 0x7FA5EB78\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x48001929\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x4BFCF6E5\n"
+        ".long 0x3C80803E\n"
+        ".long 0x3884AB7C\n"
+        ".long 0x482004A9\n"
+        ".long 0x7C7E1B79\n"
+        ".long 0x4082000C\n"
+        ".long 0x3860FFD6\n"
+        ".long 0x48000040\n"
+        ".long 0x38810118\n"
+        ".long 0x38A1011C\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x4BFFF041\n"
+        ".long 0x8081011C\n"
+        ".long 0x7FC6F378\n"
+        ".long 0x80610118\n"
+        ".long 0x38A00001\n"
+        ".long 0x48200531\n"
+        ".long 0x481F8FC9\n"
+        ".long 0x80810118\n"
+        ".long 0x481F9CF9\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x482004AD\n"
+        ".long 0x38600000\n"
+        ".long 0x80010134\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA10124\n"
+        ".long 0x38210130\n"
+        ".long 0x4E800020\n"
+    );
+}

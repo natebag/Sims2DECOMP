@@ -1,0 +1,50 @@
+/* __static_initialization_and_destruction_0_neighbor(void) at 0x800CC5D4 (164B) */
+
+void __static_initialization_and_destruction_0_neighbor();
+
+__attribute__((naked))
+void __static_initialization_and_destruction_0_neighbor() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x90010014\n"
+        ".long 0x38000000\n"
+        ".long 0x6000FFFF\n"
+        ".long 0x7C040000\n"
+        ".long 0x4082007C\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820024\n"
+        ".long 0x38000000\n"
+        ".long 0x3D208048\n"
+        ".long 0x3969627C\n"
+        ".long 0x9009627C\n"
+        ".long 0x394B0008\n"
+        ".long 0x900B0004\n"
+        ".long 0x900A0004\n"
+        ".long 0x48000054\n"
+        ".long 0x3D208048\n"
+        ".long 0x3969627C\n"
+        ".long 0x8129627C\n"
+        ".long 0x800B0004\n"
+        ".long 0x7C090000\n"
+        ".long 0x41820010\n"
+        ".long 0x39290008\n"
+        ".long 0x7C090000\n"
+        ".long 0x4082FFF8\n"
+        ".long 0x806B0000\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820024\n"
+        ".long 0x800B000C\n"
+        ".long 0x7C030050\n"
+        ".long 0x54040038\n"
+        ".long 0x28040080\n"
+        ".long 0x4081000C\n"
+        ".long 0x48204BC5\n"
+        ".long 0x48000008\n"
+        ".long 0x482CF7FD\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x38210010\n"
+        ".long 0x4E800020\n"
+    );
+}

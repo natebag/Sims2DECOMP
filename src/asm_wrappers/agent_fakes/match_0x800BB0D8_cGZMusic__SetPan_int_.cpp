@@ -1,0 +1,52 @@
+/* cGZMusic::SetPan(int) at 0x800BB0D8 (172B) */
+
+struct cGZMusic { void SetPan(); };
+
+__attribute__((naked))
+void cGZMusic::SetPan() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA1000C\n"
+        ".long 0x9001001C\n"
+        ".long 0x812DA06C\n"
+        ".long 0x90830018\n"
+        ".long 0x83E9040C\n"
+        ".long 0x7C1F1800\n"
+        ".long 0x40820074\n"
+        ".long 0x80090410\n"
+        ".long 0x2C000000\n"
+        ".long 0x40820068\n"
+        ".long 0x801F0020\n"
+        ".long 0x2C000000\n"
+        ".long 0x4082005C\n"
+        ".long 0x83AD983C\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x83DD0000\n"
+        ".long 0xA81E0060\n"
+        ".long 0x3BDE0060\n"
+        ".long 0x7FBD0214\n"
+        ".long 0x480000C9\n"
+        ".long 0x801E0004\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x83AD983C\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x83DD0000\n"
+        ".long 0xA81E0070\n"
+        ".long 0x3BDE0070\n"
+        ".long 0x7FBD0214\n"
+        ".long 0x480000DD\n"
+        ".long 0x801E0004\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x38600001\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1000C\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

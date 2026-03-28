@@ -1,0 +1,53 @@
+/* Interaction::GetName(void) const at 0x800C18B0 (176B) */
+
+struct Interaction { void GetName(); };
+
+__attribute__((naked))
+void Interaction::GetName() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA1000C\n"
+        ".long 0x9001001C\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x3BBE0034\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x4BFE2F8D\n"
+        ".long 0x2C030000\n"
+        ".long 0x40820068\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x4BFFFF51\n"
+        ".long 0x7C7F1B79\n"
+        ".long 0x41820058\n"
+        ".long 0x813F0000\n"
+        ".long 0xA86900C8\n"
+        ".long 0x800900CC\n"
+        ".long 0x7C7F1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820014\n"
+        ".long 0x3C80803E\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x38849F54\n"
+        ".long 0x4BFE054D\n"
+        ".long 0x813F0000\n"
+        ".long 0xA86901A0\n"
+        ".long 0x800901A4\n"
+        ".long 0x7C7F1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x7C641B78\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x4BFE068D\n"
+        ".long 0x801E003C\n"
+        ".long 0x387E0034\n"
+        ".long 0x5400066E\n"
+        ".long 0x901E003C\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1000C\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

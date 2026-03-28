@@ -1,0 +1,52 @@
+/* HouseStats::GetUpkeepScore(void) at 0x800BC7B8 (172B) */
+
+struct HouseStats { void GetUpkeepScore(); };
+
+__attribute__((naked))
+void HouseStats::GetUpkeepScore() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x81630024\n"
+        ".long 0x2C0B0000\n"
+        ".long 0x4082000C\n"
+        ".long 0x38600000\n"
+        ".long 0x48000090\n"
+        ".long 0x80030020\n"
+        ".long 0x3CE04330\n"
+        ".long 0x7D284B78\n"
+        ".long 0x7C005850\n"
+        ".long 0x6D668000\n"
+        ".long 0x6C008000\n"
+        ".long 0x3D60803E\n"
+        ".long 0x9001000C\n"
+        ".long 0x3D40803E\n"
+        ".long 0xC98B9E10\n"
+        ".long 0x90E10008\n"
+        ".long 0xC16A9E18\n"
+        ".long 0xC9A10008\n"
+        ".long 0x90C1000C\n"
+        ".long 0xFDAD6028\n"
+        ".long 0x90E10008\n"
+        ".long 0xFDA06818\n"
+        ".long 0xC8010008\n"
+        ".long 0xFC006028\n"
+        ".long 0xFC000018\n"
+        ".long 0xED8D0024\n"
+        ".long 0xFC0C5800\n"
+        ".long 0x40800008\n"
+        ".long 0xFD805890\n"
+        ".long 0x3D20803E\n"
+        ".long 0xC0099E1C\n"
+        ".long 0xFC0C0000\n"
+        ".long 0x40810008\n"
+        ".long 0xFD800090\n"
+        ".long 0x3D20803E\n"
+        ".long 0xC0099E20\n"
+        ".long 0xEC0C0032\n"
+        ".long 0xFDA0001E\n"
+        ".long 0xD9A10008\n"
+        ".long 0x8061000C\n"
+        ".long 0x38210010\n"
+        ".long 0x4E800020\n"
+    );
+}

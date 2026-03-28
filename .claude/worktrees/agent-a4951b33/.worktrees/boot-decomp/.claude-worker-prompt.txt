@@ -1,0 +1,50 @@
+﻿You are working on the Sims 2 GameCube matching decompilation project.
+
+## Current State (Milestone 1: FOUNDATION - IN PROGRESS)
+- devkitPPC (GCC 15.2.0) is at F:\coding\Decompiles\Tools\devkitPro\devkitPPC
+- decomp-toolkit (dtk 1.8.3) is at F:\coding\Decompiles\Tools\dtk-windows-x86_64.exe
+- Ghidra 12.0.4 is at F:\coding\Decompiles\Tools\ghidra_12.0.4_PUBLIC
+- Python 3.14.3 is available
+- The DOL is at extracted/sys/main.dol (SHA1: d15b7be1396544a15728f25f732db63a7cfcc877)
+- The ELF with debug info is at extracted/files/u2_ngc_release_dvd.elf
+- The CORRECT map file is extracted/files/u2_ngc_release_dvd.map (DVD build, matches DOL)
+  (NOT u2_ngc_release.map which is a different larger build)
+- 23,068 symbols extracted into config/symbols.txt (18,547 functions)
+- config/symbol_names.txt maps sanitized dtk names back to demangled C++ names
+- Makefile is set up with devkitPPC compile flags
+- tools/check_func.py can compile and compare individual functions
+- Original compiler was SN Systems ProDG (NOT CodeWarrior/Metrowerks)
+- Game built on cm3-build22-NGC, September 12, 2005
+
+## Key Rules
+- Read CLAUDE.md for full project conventions
+- Use EXACT symbol names from the map file
+- Every decompiled function must byte-match the original DOL
+- SN Systems compiled - GCC may not produce identical output for all functions
+- Document your work as you go
+
+## Working In a Worktree
+- You are in an isolated git worktree branch
+- Make commits to your branch as you complete work
+- The main session will merge your branch when you are done
+- Go full speed - you have full permissions
+## YOUR TASK: Decompile the Boot Sequence
+
+You are decompiling the GameCube boot sequence. These are small assembly/C functions in the .init section.
+
+### Functions to decompile (in order):
+1. __start (0x80003100, SN Systems crt0) - sets up stack, r2, r13, calls init functions
+2. __init_hardware (0x80003468, size 0x24) - hardware init from DolphinSDK
+3. __flush_cache (0x8000348C, size 0x34) - cache flush from DolphinSDK
+4. __init_vm and __premain are at 0x80003464 (size 0, likely labels/aliases)
+
+### How to work:
+1. Disassemble from the original ELF to see the actual instructions:
+   F:\coding\Decompiles\Tools\devkitPro\devkitPPC\bin\powerpc-eabi-objdump.exe -d -M gekko --start-address=0x80003100 --stop-address=0x800034C0 extracted/files/u2_ngc_release_dvd.elf
+2. Write matching assembly in src/boot/crt0.s (for __start) and src/boot/ppc_eabi_init.s (for SDK functions)
+3. Compile with: F:\coding\Decompiles\Tools\devkitPro\devkitPPC\bin\powerpc-eabi-as.exe -mcpu=750 -meabi
+4. Compare disassembly of your .o against the original
+5. Document the boot flow in docs/systems/boot-sequence.md
+
+Write assembly (.s files), not C - these are handwritten startup routines.
+Commit your work when each function matches.

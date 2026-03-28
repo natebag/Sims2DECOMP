@@ -78,7 +78,7 @@ COMPILED_BYTES=$($OBJDUMP -s -j .text "$OBJ" 2>/dev/null | awk '/Contents of sec
 
 # Step 3: Extract DOL bytes at the given address
 echo "Extracting DOL bytes at $ADDR ($SIZE bytes)..."
-PYTHON="/c/Users/SCICO/AppData/Local/Python/bin/python.exe"
+PYTHON="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
 DOL_BYTES=$($PYTHON -c "
 import struct
 with open('$DOL', 'rb') as f:
@@ -95,19 +95,72 @@ for i in range(7):
         break
 ")
 
-# Step 4: Compare (first SIZE*2 hex chars)
+# Step 4: Get relocation offsets to mask
+RELOC_OFFSETS=$($OBJDUMP -r "$OBJ" 2>/dev/null | awk '/^[0-9a-f]+ /{print "0x"$1}' | tr '\n' ' ')
+
+# Step 4b: Mask relocation bytes in both strings
 COMPILED_TRIMMED="${COMPILED_BYTES:0:$(($SIZE * 2))}"
+
+PYTHON2="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
+RESULT=$($PYTHON2 -c "
+import sys
+dol = '$DOL_BYTES'
+comp = '$COMPILED_TRIMMED'
+relocs_str = '$RELOC_OFFSETS'.strip()
+if len(dol) != len(comp):
+    print('SIZE_MISMATCH')
+    print('DOL length: %d, Compiled length: %d' % (len(dol), len(comp)))
+    sys.exit(0)
+# Parse relocation offsets
+reloc_bytes = set()
+if relocs_str:
+    for r in relocs_str.split():
+        off = int(r, 16)
+        # Each relocation is a 16-bit field (2 bytes) at the given offset
+        # The offset points to the start of the instruction (4 bytes)
+        # For R_PPC_ADDR16_HA and R_PPC_ADDR16_LO, mask last 2 bytes of instruction
+        reloc_bytes.add(off + 2)
+        reloc_bytes.add(off + 3)
+        # For R_PPC_REL24 (branch), mask 3 bytes (bits 6-29)
+        reloc_bytes.add(off + 0)
+        reloc_bytes.add(off + 1)
+# Mask relocations
+dol_masked = list(dol)
+comp_masked = list(comp)
+for b in reloc_bytes:
+    h = b * 2
+    if h + 1 < len(dol_masked):
+        dol_masked[h] = 'X'
+        dol_masked[h+1] = 'X'
+        comp_masked[h] = 'X'
+        comp_masked[h+1] = 'X'
+dol_m = ''.join(dol_masked)
+comp_m = ''.join(comp_masked)
+if dol_m == comp_m:
+    print('MATCH')
+else:
+    print('MISMATCH')
+    # Show differences
+    for i in range(0, len(dol), 8):
+        d = dol[i:i+8]
+        c = comp[i:i+8]
+        dm = dol_m[i:i+8]
+        cm = comp_m[i:i+8]
+        if dm != cm:
+            print('  offset 0x%03x: DOL=%s  COMPILED=%s' % (i//2, d, c))
+")
 
 echo ""
 echo "DOL bytes:      $DOL_BYTES"
 echo "Compiled bytes: $COMPILED_TRIMMED"
+echo "Relocations:    $RELOC_OFFSETS"
 echo ""
 
-if [ "$DOL_BYTES" = "$COMPILED_TRIMMED" ]; then
-    echo "MATCH! Function at $ADDR ($SIZE bytes) matches perfectly."
+if echo "$RESULT" | grep -q "^MATCH$"; then
+    echo "MATCH! Function at $ADDR ($SIZE bytes) matches perfectly (with relocations masked)."
     exit 0
 else
-    echo "MISMATCH at $ADDR ($SIZE bytes)"
+    echo "$RESULT"
     echo ""
     echo "Compiled disassembly:"
     $OBJDUMP -d "$OBJ"

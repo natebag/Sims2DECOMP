@@ -1,0 +1,40 @@
+/* ObjFnTableQuickData__Load_unsigned_int__short at 0x80110064 (132b) */
+
+__attribute__((naked))
+void func_0x80110064() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF810008\n"
+        ".long 0x9001001C\n"
+        ".long 0x816DABFC\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x7C9D2378\n"
+        ".long 0x7CBC2B78\n"
+        ".long 0x812B0000\n"
+        ".long 0xA8690038\n"
+        ".long 0x8009003C\n"
+        ".long 0x7C6B1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x7C641B78\n"
+        ".long 0x7F85E378\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x48000041\n"
+        ".long 0x7C7F1B79\n"
+        ".long 0x40820020\n"
+        ".long 0x3BDE0004\n"
+        ".long 0x7FA4EB78\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x4804BB29\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x5784043E\n"
+        ".long 0x4804BB25\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB810008\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

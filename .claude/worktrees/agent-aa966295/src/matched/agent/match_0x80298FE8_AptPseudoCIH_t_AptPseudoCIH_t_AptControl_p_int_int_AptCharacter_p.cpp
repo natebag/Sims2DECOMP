@@ -1,0 +1,42 @@
+/* AptPseudoCIH_t::AptPseudoCIH_t(AptControl *, int, int, AptCharacter *) - 140 bytes at 0x80298FE8 */
+
+__attribute__((naked))
+void func_0x80298FE8() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF810008\n"
+        ".long 0x9001001C\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x7C9E2378\n"
+        ".long 0x7CBD2B78\n"
+        ".long 0x7CFC3B78\n"
+        ".long 0x90DF0010\n"
+        ".long 0x2C1E0000\n"
+        ".long 0x93DF0000\n"
+        ".long 0x41820034\n"
+        ".long 0x801E0000\n"
+        ".long 0x2C000003\n"
+        ".long 0x40820028\n"
+        ".long 0x806DA614\n"
+        ".long 0x3880001C\n"
+        ".long 0x4801C81D\n"
+        ".long 0x7FC4F378\n"
+        ".long 0x7FA5EB78\n"
+        ".long 0x7F86E378\n"
+        ".long 0x4BFFFF29\n"
+        ".long 0x907F0004\n"
+        ".long 0x4800000C\n"
+        ".long 0x38000000\n"
+        ".long 0x901F0004\n"
+        ".long 0x38000000\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x901F000C\n"
+        ".long 0x901F0008\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB810008\n"
+        ".long 0x38210018\n"
+        "blr\n"
+    );
+}

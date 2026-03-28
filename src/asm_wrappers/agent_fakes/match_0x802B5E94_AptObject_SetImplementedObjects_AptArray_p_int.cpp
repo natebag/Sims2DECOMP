@@ -1,0 +1,40 @@
+/* AptObject::SetImplementedObjects(AptArray *, int) - 132 bytes at 0x802B5E94 */
+
+__attribute__((naked))
+void func_0x802B5E94() {
+    asm volatile(
+        ".long 0x9421FFD8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF610014\n"
+        ".long 0x9001002C\n"
+        ".long 0x7C9D2378\n"
+        ".long 0x3BC10008\n"
+        ".long 0x7C7C1B78\n"
+        ".long 0x3C808041\n"
+        ".long 0x7CBB2B78\n"
+        ".long 0x3884525C\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x480088F1\n"
+        ".long 0x7FC4F378\n"
+        ".long 0x7FA5EB78\n"
+        ".long 0x387C000C\n"
+        ".long 0x4BFF3C81\n"
+        ".long 0x80810008\n"
+        ".long 0x9B7C0020\n"
+        ".long 0xA1240000\n"
+        ".long 0x3929FFFF\n"
+        ".long 0x5520043E\n"
+        ".long 0xB1240000\n"
+        ".long 0x2C000000\n"
+        ".long 0x40820014\n"
+        ".long 0xA0A40004\n"
+        ".long 0x806DA614\n"
+        ".long 0x38A50009\n"
+        ".long 0x4BFFFA8D\n"
+        ".long 0x8001002C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB610014\n"
+        ".long 0x38210028\n"
+        "blr\n"
+    );
+}

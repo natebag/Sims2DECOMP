@@ -1,0 +1,43 @@
+/* __static_initialization_and_destruction_0 - 144 bytes at 0x80281C8C */
+
+__attribute__((naked))
+void func_0x80281C8C() {
+    asm volatile(
+        ".long 0x9421FFF8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x9001000C\n"
+        ".long 0x38000000\n"
+        ".long 0x6000FFFF\n"
+        ".long 0x7C040000\n"
+        ".long 0x40820068\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820050\n"
+        ".long 0x3D60804A\n"
+        ".long 0x38000000\n"
+        ".long 0x392BC160\n"
+        ".long 0x900BC160\n"
+        ".long 0x3949000C\n"
+        ".long 0x39090024\n"
+        ".long 0x900A0008\n"
+        ".long 0x39690018\n"
+        ".long 0x90080008\n"
+        ".long 0x900B0008\n"
+        ".long 0x90090024\n"
+        ".long 0x90090004\n"
+        ".long 0x90090008\n"
+        ".long 0x9009000C\n"
+        ".long 0x900A0004\n"
+        ".long 0x90090018\n"
+        ".long 0x900B0004\n"
+        ".long 0x90080004\n"
+        ".long 0x48000014\n"
+        ".long 0x3C60804A\n"
+        ".long 0x38800002\n"
+        ".long 0x3863C160\n"
+        ".long 0x4BFFFECD\n"
+        ".long 0x8001000C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x38210008\n"
+        "blr\n"
+    );
+}

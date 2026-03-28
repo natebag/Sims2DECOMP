@@ -1,0 +1,40 @@
+/* AptSharedPtrDelete(AptFile *) - 132 bytes at 0x802A1010 */
+
+__attribute__((naked))
+void func_0x802A1010() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x93E1000C\n"
+        ".long 0x90010014\n"
+        ".long 0x7C7F1B79\n"
+        ".long 0x4182005C\n"
+        ".long 0x806DA628\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0x4BFFD445\n"
+        ".long 0x813F0008\n"
+        ".long 0x3929FFFD\n"
+        ".long 0x28090002\n"
+        ".long 0x41810028\n"
+        ".long 0x807F0010\n"
+        ".long 0x809F000C\n"
+        ".long 0x38630008\n"
+        ".long 0x4BFE176D\n"
+        ".long 0x3D20804A\n"
+        ".long 0x807F0014\n"
+        ".long 0x8009C084\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x387F0004\n"
+        ".long 0x38800002\n"
+        ".long 0x4BFCB6B9\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x38800018\n"
+        ".long 0x4800077D\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x83E1000C\n"
+        ".long 0x38210010\n"
+        "blr\n"
+    );
+}

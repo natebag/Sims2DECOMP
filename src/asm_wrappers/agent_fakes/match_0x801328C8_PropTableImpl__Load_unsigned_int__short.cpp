@@ -1,0 +1,41 @@
+/* PropTableImpl__Load_unsigned_int__short at 0x801328C8 (136b) */
+
+__attribute__((naked))
+void func_0x801328C8() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFC10008\n"
+        ".long 0x90010014\n"
+        ".long 0x816DABFC\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x7CBF2B78\n"
+        ".long 0x812B0000\n"
+        ".long 0xA8690038\n"
+        ".long 0x8009003C\n"
+        ".long 0x7C6B1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x81230008\n"
+        ".long 0x38800000\n"
+        ".long 0x80690008\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820008\n"
+        ".long 0x8083FFFC\n"
+        ".long 0x54841838\n"
+        ".long 0x7FE5FB78\n"
+        ".long 0x7C832214\n"
+        ".long 0x4827925D\n"
+        ".long 0x7C631B79\n"
+        ".long 0x4082000C\n"
+        ".long 0x3860FFFF\n"
+        ".long 0x4800000C\n"
+        ".long 0x907E0004\n"
+        ".long 0x38600000\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBC10008\n"
+        ".long 0x38210010\n"
+        ".long 0x4E800020\n"
+    );
+}

@@ -1,0 +1,53 @@
+/* IFFResFile2::GetID(Memory::HandleNode *, short *) at 0x800BF18C (176B) */
+
+struct IFFResFile2 { void GetID(); };
+
+__attribute__((naked))
+void IFFResFile2::GetID() {
+    asm volatile(
+        ".long 0x9421FFE0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA10014\n"
+        ".long 0x90010024\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x7C9E2378\n"
+        ".long 0x813F000C\n"
+        ".long 0x7CBD2B78\n"
+        ".long 0xA8690060\n"
+        ".long 0x80090064\n"
+        ".long 0x7C7F1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x2C030000\n"
+        ".long 0x40820014\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x3880FFCF\n"
+        ".long 0x4807645D\n"
+        ".long 0x48000010\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x38800000\n"
+        ".long 0x4807644D\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x4807643D\n"
+        ".long 0x2C030000\n"
+        ".long 0x40820038\n"
+        ".long 0x807F0138\n"
+        ".long 0x7FC4F378\n"
+        ".long 0x38A10008\n"
+        ".long 0x38C00000\n"
+        ".long 0x4BFFE4A1\n"
+        ".long 0x7C631B79\n"
+        ".long 0x41820010\n"
+        ".long 0xA0030006\n"
+        ".long 0xB01D0000\n"
+        ".long 0x48000010\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x3880FF9E\n"
+        ".long 0x48076409\n"
+        ".long 0x80010024\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA10014\n"
+        ".long 0x38210020\n"
+        ".long 0x4E800020\n"
+    );
+}

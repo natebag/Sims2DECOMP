@@ -1,0 +1,53 @@
+/* cXObjectImpl::CalcDistance(cXObject *) at 0x800E041C (176B) */
+
+struct cXObjectImpl { void CalcDistance(); };
+
+__attribute__((naked))
+void cXObjectImpl::CalcDistance() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA1000C\n"
+        ".long 0x9001001C\n"
+        ".long 0x7C7D1B78\n"
+        ".long 0x7C9F2379\n"
+        ".long 0x41820020\n"
+        ".long 0x813F0004\n"
+        ".long 0xA8690520\n"
+        ".long 0x80090524\n"
+        ".long 0x7C7F1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x48000008\n"
+        ".long 0x38600000\n"
+        ".long 0x3880001D\n"
+        ".long 0x38630028\n"
+        ".long 0x48003BE1\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x3880001D\n"
+        ".long 0x387D0028\n"
+        ".long 0x48003BD1\n"
+        ".long 0xA93E0000\n"
+        ".long 0xA8030000\n"
+        ".long 0x7C090000\n"
+        ".long 0x41820018\n"
+        ".long 0x809D0004\n"
+        ".long 0x7FE5FB78\n"
+        ".long 0x807D0058\n"
+        ".long 0x48050E15\n"
+        ".long 0x48000024\n"
+        ".long 0x807D0004\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0x81230004\n"
+        ".long 0xA8090020\n"
+        ".long 0x81290024\n"
+        ".long 0x7C630214\n"
+        ".long 0x7D2803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1000C\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

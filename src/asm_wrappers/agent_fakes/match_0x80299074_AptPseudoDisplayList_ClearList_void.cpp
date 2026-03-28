@@ -1,0 +1,42 @@
+/* AptPseudoDisplayList::ClearList(void) - 140 bytes at 0x80299074 */
+
+__attribute__((naked))
+void func_0x80299074() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA1000C\n"
+        ".long 0x9001001C\n"
+        ".long 0x81230000\n"
+        ".long 0x83E90008\n"
+        ".long 0x2C1F0000\n"
+        ".long 0x4182005C\n"
+        ".long 0x83BF0008\n"
+        ".long 0x2C1F0000\n"
+        ".long 0x41820048\n"
+        ".long 0x813F0004\n"
+        ".long 0x3BC00000\n"
+        ".long 0x93DF0000\n"
+        ".long 0x93DF0008\n"
+        ".long 0x2C090000\n"
+        ".long 0x93DF000C\n"
+        ".long 0x41820020\n"
+        ".long 0x7D234B78\n"
+        ".long 0x93C90000\n"
+        ".long 0x93C90004\n"
+        ".long 0x3880001C\n"
+        ".long 0x93C90008\n"
+        ".long 0x4BFFA7F1\n"
+        ".long 0x93DF0004\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x38800014\n"
+        ".long 0x4BFFA811\n"
+        ".long 0x7FBFEB79\n"
+        ".long 0x4082FFAC\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1000C\n"
+        ".long 0x38210018\n"
+        "blr\n"
+    );
+}

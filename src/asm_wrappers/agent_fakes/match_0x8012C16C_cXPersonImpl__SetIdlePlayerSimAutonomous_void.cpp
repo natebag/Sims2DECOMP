@@ -1,0 +1,41 @@
+/* cXPersonImpl__SetIdlePlayerSimAutonomous_void at 0x8012C16C (136b) */
+
+__attribute__((naked))
+void func_0x8012C16C() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFC10008\n"
+        ".long 0x90010014\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x480DF4D5\n"
+        ".long 0x3D208047\n"
+        ".long 0x817E0004\n"
+        ".long 0x39295DCC\n"
+        ".long 0x7C6A1B78\n"
+        ".long 0x800900BC\n"
+        ".long 0x38600000\n"
+        ".long 0x7C0B0000\n"
+        ".long 0x40820018\n"
+        ".long 0x7D435378\n"
+        ".long 0x38800000\n"
+        ".long 0x38A00000\n"
+        ".long 0x480DF3F5\n"
+        ".long 0x48000020\n"
+        ".long 0x800900C0\n"
+        ".long 0x7C0B0000\n"
+        ".long 0x40820014\n"
+        ".long 0x7D435378\n"
+        ".long 0x38800001\n"
+        ".long 0x38A00000\n"
+        ".long 0x480DF3D5\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820008\n"
+        ".long 0x480D9DD9\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBC10008\n"
+        ".long 0x38210010\n"
+        ".long 0x4E800020\n"
+    );
+}

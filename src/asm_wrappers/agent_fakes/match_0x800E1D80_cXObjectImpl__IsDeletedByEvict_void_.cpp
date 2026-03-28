@@ -1,0 +1,53 @@
+/* cXObjectImpl::IsDeletedByEvict(void) at 0x800E1D80 (176B) */
+
+struct cXObjectImpl { void IsDeletedByEvict(); };
+
+__attribute__((naked))
+void cXObjectImpl::IsDeletedByEvict() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x93E1000C\n"
+        ".long 0x90010014\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x807F0004\n"
+        ".long 0x81230004\n"
+        ".long 0xA8090318\n"
+        ".long 0x8129031C\n"
+        ".long 0x7C630214\n"
+        ".long 0x7D2803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x2C030002\n"
+        ".long 0x38600001\n"
+        ".long 0x41820064\n"
+        ".long 0x807F0004\n"
+        ".long 0x81230004\n"
+        ".long 0xA80903F8\n"
+        ".long 0x812903FC\n"
+        ".long 0x7C630214\n"
+        ".long 0x7D2803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x2C030000\n"
+        ".long 0x4182000C\n"
+        ".long 0x38600000\n"
+        ".long 0x48000038\n"
+        ".long 0x3BFF0028\n"
+        ".long 0x3880002B\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x4800224D\n"
+        ".long 0xA0030000\n"
+        ".long 0x70090008\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x3880002B\n"
+        ".long 0x48002239\n"
+        ".long 0xA0030000\n"
+        ".long 0x70090010\n"
+        ".long 0x7C600026\n"
+        ".long 0x54631FFE\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x83E1000C\n"
+        ".long 0x38210010\n"
+        ".long 0x4E800020\n"
+    );
+}

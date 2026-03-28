@@ -1,0 +1,42 @@
+/* cXPersonImpl__TryTestInteractingWith_StackElem_ptr__XPrimParam_ptr at 0x80126640 (140b) */
+
+__attribute__((naked))
+void func_0x80126640() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA1000C\n"
+        ".long 0x9001001C\n"
+        ".long 0x39230420\n"
+        ".long 0x83E30420\n"
+        ".long 0x80090004\n"
+        ".long 0xABA40004\n"
+        ".long 0x7C1F0000\n"
+        ".long 0x4182004C\n"
+        ".long 0x7D3E4B78\n"
+        ".long 0x813F0000\n"
+        ".long 0x81490004\n"
+        ".long 0x816A0004\n"
+        ".long 0xA86B0328\n"
+        ".long 0x800B032C\n"
+        ".long 0x7C6A1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x7C03E800\n"
+        ".long 0x40820010\n"
+        ".long 0x38600000\n"
+        ".long 0x38800001\n"
+        ".long 0x4800001C\n"
+        ".long 0x801E0004\n"
+        ".long 0x3BFF000C\n"
+        ".long 0x7C1F0000\n"
+        ".long 0x4082FFC0\n"
+        ".long 0x38600000\n"
+        ".long 0x38800000\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1000C\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

@@ -1,0 +1,42 @@
+/* AptString::~AptString(void) - 140 bytes at 0x802AC344 */
+
+__attribute__((naked))
+void func_0x802AC344() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFC10008\n"
+        ".long 0x90010014\n"
+        ".long 0x3D208041\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x39290800\n"
+        ".long 0x817F000C\n"
+        ".long 0x913F0008\n"
+        ".long 0x7C9E2378\n"
+        ".long 0xA12B0000\n"
+        ".long 0x3929FFFF\n"
+        ".long 0x5520043E\n"
+        ".long 0xB12B0000\n"
+        ".long 0x2C000000\n"
+        ".long 0x40820018\n"
+        ".long 0xA0AB0004\n"
+        ".long 0x7D645B78\n"
+        ".long 0x806DA614\n"
+        ".long 0x38A50009\n"
+        ".long 0x480095F9\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x38800000\n"
+        ".long 0x480083D1\n"
+        ".long 0x73C00001\n"
+        ".long 0x41820014\n"
+        ".long 0x806DA614\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0x38A00014\n"
+        ".long 0x480095D5\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBC10008\n"
+        ".long 0x38210010\n"
+        "blr\n"
+    );
+}

@@ -1,0 +1,41 @@
+/* SpacePartition__FindInterfacePoint_ASTNode_ptr__ASTNode_ptr at 0x80138B98 (136b) */
+
+__attribute__((naked))
+void func_0x80138B98() {
+    asm volatile(
+        ".long 0x9421FFD8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFC10020\n"
+        ".long 0x9001002C\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x7C832378\n"
+        ".long 0x7CA42B78\n"
+        ".long 0x7CC53378\n"
+        ".long 0x38C10010\n"
+        ".long 0x4BFFFF01\n"
+        ".long 0x81410014\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x8121001C\n"
+        ".long 0x80010018\n"
+        ".long 0x81010010\n"
+        ".long 0x7D295214\n"
+        ".long 0x552B0FFE\n"
+        ".long 0x7C004214\n"
+        ".long 0x7D295A14\n"
+        ".long 0x540A0FFE\n"
+        ".long 0x7D290E70\n"
+        ".long 0x7C005214\n"
+        ".long 0x91210008\n"
+        ".long 0x7C000E70\n"
+        ".long 0x9001000C\n"
+        ".long 0x81210008\n"
+        ".long 0x8141000C\n"
+        ".long 0x913E0000\n"
+        ".long 0x915E0004\n"
+        ".long 0x8001002C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBC10020\n"
+        ".long 0x38210028\n"
+        ".long 0x4E800020\n"
+    );
+}

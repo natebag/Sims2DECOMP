@@ -1,0 +1,42 @@
+/* cXPersonImpl__GetAspirationStatus_void at 0x801257A8 (140b) */
+
+__attribute__((naked))
+void func_0x801257A8() {
+    asm volatile(
+        ".long 0x9421FFF8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x9001000C\n"
+        ".long 0x81630004\n"
+        ".long 0x812B0004\n"
+        ".long 0xA8690088\n"
+        ".long 0x8009008C\n"
+        ".long 0x7C6B1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x3D20803E\n"
+        ".long 0xC009CD60\n"
+        ".long 0xFC010000\n"
+        ".long 0x4C620382\n"
+        ".long 0x4083000C\n"
+        ".long 0x38600000\n"
+        ".long 0x4800003C\n"
+        ".long 0x3D20803E\n"
+        ".long 0xC009CD64\n"
+        ".long 0xFC010000\n"
+        ".long 0x4C620382\n"
+        ".long 0x41830024\n"
+        ".long 0x3D20803E\n"
+        ".long 0x38600002\n"
+        ".long 0xC009CD68\n"
+        ".long 0xFC010000\n"
+        ".long 0x4C620382\n"
+        ".long 0x41830010\n"
+        ".long 0x38600003\n"
+        ".long 0x48000008\n"
+        ".long 0x38600001\n"
+        ".long 0x8001000C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x38210008\n"
+        ".long 0x4E800020\n"
+    );
+}

@@ -1,0 +1,52 @@
+/* ObjectModuleImpl::CleanupPeople(cXObject *) at 0x800F8214 (172B) */
+
+struct ObjectModuleImpl { void CleanupPeople(); };
+
+__attribute__((naked))
+void ObjectModuleImpl::CleanupPeople() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x7D800026\n"
+        ".long 0xBFA1000C\n"
+        ".long 0x9001001C\n"
+        ".long 0x91810008\n"
+        ".long 0x39232058\n"
+        ".long 0x83E32058\n"
+        ".long 0x80090004\n"
+        ".long 0x7C9E2378\n"
+        ".long 0x7C1F0000\n"
+        ".long 0x41820064\n"
+        ".long 0x7D3D4B78\n"
+        ".long 0x2E1E0000\n"
+        ".long 0x801F0000\n"
+        ".long 0x7C0B0378\n"
+        ".long 0x2C000000\n"
+        ".long 0x41820018\n"
+        ".long 0x812B0004\n"
+        ".long 0x80090000\n"
+        ".long 0x7C00F000\n"
+        ".long 0x4082000C\n"
+        ".long 0x48000028\n"
+        ".long 0x41920024\n"
+        ".long 0x806B0004\n"
+        ".long 0x7FC4F378\n"
+        ".long 0x81230004\n"
+        ".long 0xA8090050\n"
+        ".long 0x81290054\n"
+        ".long 0x7C630214\n"
+        ".long 0x7D2803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x801D0004\n"
+        ".long 0x3BFF0004\n"
+        ".long 0x7C1F0000\n"
+        ".long 0x4082FFAC\n"
+        ".long 0x8001001C\n"
+        ".long 0x81810008\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1000C\n"
+        ".long 0x7D808120\n"
+        ".long 0x38210018\n"
+        ".long 0x4E800020\n"
+    );
+}

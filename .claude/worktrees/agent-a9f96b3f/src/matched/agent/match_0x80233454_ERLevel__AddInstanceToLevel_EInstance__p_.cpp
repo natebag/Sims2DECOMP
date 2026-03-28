@@ -1,0 +1,123 @@
+/* ERLevel::AddInstanceToLevel(EInstance *) - 232 bytes */
+
+__attribute__((naked))
+void func_0x80233454() {
+    asm volatile(
+        ".long 0x9421FFF0
+"
+        ".long 0x7C0802A6
+"
+        ".long 0xBFC10008
+"
+        ".long 0x90010014
+"
+        ".long 0x7C9F2378
+"
+        ".long 0x7C7E1B78
+"
+        ".long 0x4BFFFEF9
+"
+        ".long 0x93DF0004
+"
+        ".long 0x7FC3F378
+"
+        ".long 0x7FE4FB78
+"
+        ".long 0x480003A9
+"
+        ".long 0x801F005C
+"
+        ".long 0x74090004
+"
+        ".long 0x4182001C
+"
+        ".long 0x3C7E0003
+"
+        ".long 0x7FE4FB78
+"
+        ".long 0x3863A2A4
+"
+        ".long 0x48099171
+"
+        ".long 0x907F0078
+"
+        ".long 0x48000048
+"
+        ".long 0x74090001
+"
+        ".long 0x40820040
+"
+        ".long 0x801F0010
+"
+        ".long 0x2C000000
+"
+        ".long 0x41820014
+"
+        ".long 0x7FC3F378
+"
+        ".long 0x7FE4FB78
+"
+        ".long 0x4800016D
+"
+        ".long 0x48000024
+"
+        ".long 0x3D7E0003
+"
+        ".long 0x800BC2B8
+"
+        ".long 0x394BA2B8
+"
+        ".long 0x5400103A
+"
+        ".long 0x7FEA012E
+"
+        ".long 0x812BC2B8
+"
+        ".long 0x39290001
+"
+        ".long 0x912BC2B8
+"
+        ".long 0x801F005C
+"
+        ".long 0x70090100
+"
+        ".long 0x41820038
+"
+        ".long 0x813F0000
+"
+        ".long 0xA86900B0
+"
+        ".long 0x800900B4
+"
+        ".long 0x7C7F1A14
+"
+        ".long 0x7C0803A6
+"
+        ".long 0x4E800021
+"
+        ".long 0x7C641B78
+"
+        ".long 0x7FE5FB78
+"
+        ".long 0x3C7E0003
+"
+        ".long 0x38C00001
+"
+        ".long 0x3863A274
+"
+        ".long 0x4809A8B9
+"
+        ".long 0x907F0034
+"
+        ".long 0x80010014
+"
+        ".long 0x7C0803A6
+"
+        ".long 0xBBC10008
+"
+        ".long 0x38210010
+"
+        "blr
+"
+    );
+}

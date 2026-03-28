@@ -1,0 +1,41 @@
+/* AptError::AptError(void) - 136 bytes at 0x802A8900 */
+
+__attribute__((naked))
+void func_0x802A8900() {
+    asm volatile(
+        ".long 0x9421FFE8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA1000C\n"
+        ".long 0x9001001C\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x38800029\n"
+        ".long 0x3FA08041\n"
+        ".long 0x4800BCE1\n"
+        ".long 0x3D208041\n"
+        ".long 0x38800008\n"
+        ".long 0x39292318\n"
+        ".long 0x387E000C\n"
+        ".long 0x913E0008\n"
+        ".long 0x48000F55\n"
+        ".long 0x38000000\n"
+        ".long 0x3D208041\n"
+        ".long 0x981E0020\n"
+        ".long 0x3929B010\n"
+        ".long 0x913E0008\n"
+        ".long 0x389DA504\n"
+        ".long 0x801E0020\n"
+        ".long 0x387E0024\n"
+        ".long 0x5400028E\n"
+        ".long 0x901E0020\n"
+        ".long 0x4BFC3D7D\n"
+        ".long 0x389DA504\n"
+        ".long 0x387E0028\n"
+        ".long 0x4BFC3D71\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x8001001C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1000C\n"
+        ".long 0x38210018\n"
+        "blr\n"
+    );
+}

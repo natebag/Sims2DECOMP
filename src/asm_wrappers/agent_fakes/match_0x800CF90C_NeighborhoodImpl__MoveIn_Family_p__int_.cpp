@@ -1,0 +1,50 @@
+/* NeighborhoodImpl::MoveIn(Family *, int) at 0x800CF90C (164B) */
+
+struct NeighborhoodImpl { void MoveIn(); };
+
+__attribute__((naked))
+void NeighborhoodImpl::MoveIn() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFC10008\n"
+        ".long 0x90010014\n"
+        ".long 0x7CBF2B78\n"
+        ".long 0x7C6B1B78\n"
+        ".long 0x381FFFFF\n"
+        ".long 0x7C9E2378\n"
+        ".long 0x2800000F\n"
+        ".long 0x41810068\n"
+        ".long 0x812B0000\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0xA8690128\n"
+        ".long 0x8009012C\n"
+        ".long 0x7C6B1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x2C030000\n"
+        ".long 0x40820044\n"
+        ".long 0x813E0000\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0x800900B4\n"
+        ".long 0xA86900B0\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x7C7E1A14\n"
+        ".long 0x4E800021\n"
+        ".long 0x813E0000\n"
+        ".long 0x38800001\n"
+        ".long 0xA8690120\n"
+        ".long 0x80090124\n"
+        ".long 0x7C7E1A14\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x38600000\n"
+        ".long 0x48000008\n"
+        ".long 0x3860FFFF\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBC10008\n"
+        ".long 0x38210010\n"
+        ".long 0x4E800020\n"
+    );
+}

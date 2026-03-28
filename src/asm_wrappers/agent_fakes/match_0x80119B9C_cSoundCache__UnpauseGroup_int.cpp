@@ -1,0 +1,40 @@
+/* cSoundCache__UnpauseGroup_int at 0x80119B9C (132b) */
+
+__attribute__((naked))
+void func_0x80119B9C() {
+    asm volatile(
+        ".long 0x9421FFE0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x7D800026\n"
+        ".long 0xBF810010\n"
+        ".long 0x90010024\n"
+        ".long 0x9181000C\n"
+        ".long 0x7C9C2378\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x2E1CFFFF\n"
+        ".long 0x3BE00000\n"
+        ".long 0x3BA00040\n"
+        ".long 0x7C7FF02E\n"
+        ".long 0x2C030000\n"
+        ".long 0x41820028\n"
+        ".long 0x4192001C\n"
+        ".long 0x80030000\n"
+        ".long 0x2C000000\n"
+        ".long 0x41820018\n"
+        ".long 0x4BFFF25D\n"
+        ".long 0x7C03E000\n"
+        ".long 0x4082000C\n"
+        ".long 0x7C7FF02E\n"
+        ".long 0x4BFFE085\n"
+        ".long 0x3BFF0004\n"
+        ".long 0x37BDFFFF\n"
+        ".long 0x4082FFC8\n"
+        ".long 0x80010024\n"
+        ".long 0x8181000C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB810010\n"
+        ".long 0x7D808120\n"
+        ".long 0x38210020\n"
+        ".long 0x4E800020\n"
+    );
+}

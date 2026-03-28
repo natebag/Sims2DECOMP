@@ -1,0 +1,43 @@
+/* cHitMan__DuckMapMaxPri_void at 0x80117418 (144b) */
+
+__attribute__((naked))
+void func_0x80117418() {
+    asm volatile(
+        ".long 0x9421FFD0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x93E1002C\n"
+        ".long 0x90010034\n"
+        ".long 0x38630040\n"
+        ".long 0x3BE00000\n"
+        ".long 0x80030004\n"
+        ".long 0x90010008\n"
+        ".long 0x81230004\n"
+        ".long 0x80090008\n"
+        ".long 0x90010010\n"
+        ".long 0x4800002C\n"
+        ".long 0x80090014\n"
+        ".long 0x7C1F0000\n"
+        ".long 0x40800008\n"
+        ".long 0x7C1F0378\n"
+        ".long 0x7D234B78\n"
+        ".long 0x91210020\n"
+        ".long 0x48286169\n"
+        ".long 0x80010020\n"
+        ".long 0x90610010\n"
+        ".long 0x90010018\n"
+        ".long 0x81210010\n"
+        ".long 0x39600001\n"
+        ".long 0x80010008\n"
+        ".long 0x7C090000\n"
+        ".long 0x40820008\n"
+        ".long 0x39600000\n"
+        ".long 0x2C0B0000\n"
+        ".long 0x4082FFBC\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x80010034\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x83E1002C\n"
+        ".long 0x38210030\n"
+        ".long 0x4E800020\n"
+    );
+}

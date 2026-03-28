@@ -1,0 +1,52 @@
+/* cGZMusic::FadeVolume(int, int, unsigned int) at 0x800BB024 (172B) */
+
+struct cGZMusic { void FadeVolume(); };
+
+__attribute__((naked))
+void cGZMusic::FadeVolume() {
+    asm volatile(
+        ".long 0x9421FFE0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBF810010\n"
+        ".long 0x90010024\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x3BA00000\n"
+        ".long 0x93BE0020\n"
+        ".long 0x7CBF2B78\n"
+        ".long 0x7CDC3378\n"
+        ".long 0x4BFFFEB1\n"
+        ".long 0x2C1F0000\n"
+        ".long 0x4080000C\n"
+        ".long 0x93BE0014\n"
+        ".long 0x4800001C\n"
+        ".long 0x2C1F0400\n"
+        ".long 0x40810010\n"
+        ".long 0x38000400\n"
+        ".long 0x901E0014\n"
+        ".long 0x48000008\n"
+        ".long 0x93FE0014\n"
+        ".long 0x3C004330\n"
+        ".long 0x9381000C\n"
+        ".long 0x3D20803E\n"
+        ".long 0xC9A99D48\n"
+        ".long 0x3D40803E\n"
+        ".long 0x90010008\n"
+        ".long 0x7D695B78\n"
+        ".long 0xC16A9D50\n"
+        ".long 0x38600001\n"
+        ".long 0xC8010008\n"
+        ".long 0xFC006828\n"
+        ".long 0xFC000018\n"
+        ".long 0xEC005824\n"
+        ".long 0xFDA00090\n"
+        ".long 0xFD80681E\n"
+        ".long 0xD9810008\n"
+        ".long 0x8121000C\n"
+        ".long 0x913E0020\n"
+        ".long 0x80010024\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBB810010\n"
+        ".long 0x38210020\n"
+        ".long 0x4E800020\n"
+    );
+}

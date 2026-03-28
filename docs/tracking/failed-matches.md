@@ -26,6 +26,11 @@ where the compiler schedules branches differently.
 
 Functions that failed for unclear reasons — need manual investigation.
 
+- `0x80014028` `AwarenessManager::GetPlayerObject(int)`
+  Best C++ attempt came very close but did not match the original branch ordering. Current mismatch points:
+  original wants `slwi` before the `addi 0x5DCC`, an explicit `li r3,0`, and `beqlr cr1`; generated code kept the same logic but scheduled those pieces differently.
+  Restored the file to its raw-byte body instead of landing a wrong C++ version.
+
 ---
 
 Last updated: 2026-03-28
