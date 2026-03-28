@@ -1,6 +1,9 @@
 // 0x800D3CC8 (8 bytes) — li 3, 0; blr
 // NghResFile::GetByName(int, StringBuffer &, void (*)(void *, int))
 
+class NghResFile;
+class StringBuffer;
+
 class NghResFile {
 public:
     void GetByName(int, StringBuffer &, void (*)(void *, int));

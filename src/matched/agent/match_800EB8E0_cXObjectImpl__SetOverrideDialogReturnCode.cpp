@@ -1,5 +1,8 @@
-// 0x800EB8E0 (8 bytes) — sth 4, -31828(13); blr
+// 0x800EB8E0 (8 bytes) ï¿½ sth 4, -31828(13); blr
 // cXObjectImpl::SetOverrideDialogReturnCode(TreeReturnCode)
+
+class cXObject;
+typedef int TreeReturnCode;
 
 class cXObjectImpl {
 public:

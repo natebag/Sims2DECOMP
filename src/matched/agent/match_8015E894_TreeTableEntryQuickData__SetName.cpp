@@ -1,4 +1,6 @@
 // 0x8015E894 (4 bytes)
+class BString;
+
 class BString2;
 
 class TreeTableEntryQuickData {

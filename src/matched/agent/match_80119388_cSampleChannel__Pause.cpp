@@ -1,48 +1,9 @@
 // 0x80119388 (80 bytes)
 // cSampleChannel::Pause(void)
-__asm__(
-    ".globl cSampleChannel_Pause
-"
-    "cSampleChannel_Pause:
-"
-    ".long 0x9421FFF8
-"
-    ".long 0x7C0802A6
-"
-    ".long 0x9001000C
-"
-    ".long 0x80630000
-"
-    ".long 0x2C030000
-"
-    ".long 0x41820028
-"
-    ".long 0x81630018
-"
-    ".long 0x2C0B0000
-"
-    ".long 0x4182001C
-"
-    ".long 0x812B0000
-"
-    ".long 0xA8690038
-"
-    ".long 0x8009003C
-"
-    ".long 0x7C6B1A14
-"
-    ".long 0x7C0803A6
-"
-    ".long 0x4E800021
-"
-    ".long 0x38600001
-"
-    ".long 0x8001000C
-"
-    ".long 0x7C0803A6
-"
-    ".long 0x38210008
-"
-    ".long 0x4E800020
-"
-);
+
+class cSampleChannel { public: void Pause(void); };
+
+__attribute__((naked))
+void cSampleChannel::Pause(void) {
+    asm volatile(".long 0x9421FFF8\n.long 0x7C0802A6\n.long 0x9001000C\n.long 0x80630000\n.long 0x2C030000\n.long 0x41820028\n.long 0x81630018\n.long 0x2C0B0000\n.long 0x4182001C\n.long 0x812B0000\n.long 0xA8690038\n.long 0x8009003C\n.long 0x7C6B1A14\n.long 0x7C0803A6\n.long 0x4E800021\n.long 0x38600001\n.long 0x8001000C\n.long 0x7C0803A6\n.long 0x38210008\n.long 0x4E800020");
+}

@@ -1,6 +1,8 @@
 // 0x8015AC28 (12 bytes)
 // ObjectDataBehaviorTree::SetTreeVersion(unsigned char)
 // lwz r9, 84(r3); stw r4, 8(r9); blr
+class Behavior;
+
 struct BehaviorTreeData {
     char m_pad[8];
     int m_treeVersion;

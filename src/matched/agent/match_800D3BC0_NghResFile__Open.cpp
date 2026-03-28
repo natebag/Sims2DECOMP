@@ -1,6 +1,9 @@
 // 0x800D3BC0 (8 bytes) — li 3, 0; blr
 // NghResFile::Open(StringBuffer &)
 
+class NghResFile;
+class StringBuffer;
+
 class NghResFile {
 public:
     void Open(StringBuffer &);

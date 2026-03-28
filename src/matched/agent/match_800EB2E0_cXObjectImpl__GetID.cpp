@@ -1,6 +1,8 @@
 // 0x800EB2E0 (8 bytes) — lha 3, 100(3); blr
 // cXObjectImpl::GetID(void)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void GetID(void);

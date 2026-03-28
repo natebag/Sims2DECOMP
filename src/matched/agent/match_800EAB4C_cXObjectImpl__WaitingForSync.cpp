@@ -1,6 +1,8 @@
 // 0x800EAB4C (8 bytes) — lwz 3, 228(3); blr
 // cXObjectImpl::WaitingForSync(void)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void WaitingForSync(void);

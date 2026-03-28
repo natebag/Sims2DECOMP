@@ -1,3 +1,5 @@
+struct EVec3 { float x, y, z; };
+
 class EVec3; // Forward declaration
 
 class ESimsCam {

@@ -1,6 +1,8 @@
 // 0x8005634C (8 bytes) — stw 4, 808(3); blr
 // ISimInstance::SetXOb(cXObject *)
 
+class cXObject;
+
 class ISimInstance {
 public:
     void SetXOb(cXObject *);

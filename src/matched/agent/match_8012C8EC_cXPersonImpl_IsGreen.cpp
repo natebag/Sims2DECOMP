@@ -1,6 +1,8 @@
 // 0x8012C8EC (12 bytes)
 // cXPersonImpl::IsGreen(void)
 // lhz r3, 156(r3); rlwinm r3, r3, 31, 31, 31; blr
+class cXPerson;
+
 class cXPersonImpl {
 public:
     char m_pad[156];

@@ -1,4 +1,7 @@
 // 0x800D3D68 (4 bytes)
+class NghResFile;
+namespace Memory { class HandleNode; }
+
 namespace Memory {
 class HandleNode;
 }

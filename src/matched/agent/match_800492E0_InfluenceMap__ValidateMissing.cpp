@@ -1,6 +1,8 @@
 // 0x800492E0 (8 bytes) — li 3, 1; blr
 // InfluenceMap::ValidateMissing(cXObject *)
 
+class cXObject;
+
 class InfluenceMap {
 public:
     void ValidateMissing(cXObject *);

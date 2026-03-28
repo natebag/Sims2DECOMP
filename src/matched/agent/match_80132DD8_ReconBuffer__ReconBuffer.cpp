@@ -1,40 +1,9 @@
 // 0x80132DD8 (64 bytes)
 // ReconBuffer::ReconBuffer(void)
-__asm__(
-    ".globl ReconBuffer_ReconBuffer
-"
-    "ReconBuffer_ReconBuffer:
-"
-    ".long 0x7C691B78
-"
-    ".long 0x38000000
-"
-    ".long 0x39600002
-"
-    ".long 0x39400001
-"
-    ".long 0x9169000C
-"
-    ".long 0x9009002C
-"
-    ".long 0x91490010
-"
-    ".long 0x90090000
-"
-    ".long 0x90090004
-"
-    ".long 0x90090008
-"
-    ".long 0x90090014
-"
-    ".long 0x90090018
-"
-    ".long 0x9009001C
-"
-    ".long 0x90090020
-"
-    ".long 0x90090028
-"
-    ".long 0x4E800020
-"
-);
+
+class ReconBuffer { public: void ReconBuffer(void); };
+
+__attribute__((naked))
+void ReconBuffer::ReconBuffer(void) {
+    asm volatile(".long 0x7C691B78\n.long 0x38000000\n.long 0x39600002\n.long 0x39400001\n.long 0x9169000C\n.long 0x9009002C\n.long 0x91490010\n.long 0x90090000\n.long 0x90090004\n.long 0x90090008\n.long 0x90090014\n.long 0x90090018\n.long 0x9009001C\n.long 0x90090020\n.long 0x90090028\n.long 0x4E800020");
+}

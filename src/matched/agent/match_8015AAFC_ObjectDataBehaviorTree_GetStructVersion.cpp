@@ -1,6 +1,8 @@
 // 0x8015AAFC (12 bytes)
 // ObjectDataBehaviorTree::GetStructVersion(void) const
 // lwz r9, 84(r3); lha r3, 0(r9); blr
+class Behavior;
+
 struct BehaviorTreeData {
     short m_structVersion;
 };

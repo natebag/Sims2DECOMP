@@ -1,6 +1,8 @@
 // 0x800EB10C (8 bytes) — lwz 3, 88(3); blr
 // cXObjectImpl::GetModule(void)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void GetModule(void);

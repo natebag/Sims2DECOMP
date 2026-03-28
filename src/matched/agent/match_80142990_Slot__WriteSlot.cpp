@@ -1,4 +1,6 @@
 // 0x80142990 (4 bytes)
+struct Slot;
+
 class Slot {
 public:
     void WriteSlot(void *);

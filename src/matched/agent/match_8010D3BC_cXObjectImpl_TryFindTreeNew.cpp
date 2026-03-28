@@ -1,6 +1,8 @@
 // 0x8010D3BC (12 bytes)
 // cXObjectImpl::TryFindTreeNew(StackElem *, FindTreeNewParam *)
 // li r3, 0; li r4, 0; blr
+class cXObject;
+
 class StackElem;
 class FindTreeNewParam;
 class cXObjectImpl {

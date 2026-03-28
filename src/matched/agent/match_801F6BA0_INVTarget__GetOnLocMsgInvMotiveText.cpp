@@ -1,50 +1,9 @@
 // 0x801F6BA0 (84 bytes)
 // INVTarget::GetOnLocMsgInvMotiveText(unsigned wchar_t *)
-__asm__(
-    ".globl INVTarget_GetOnLocMsgInvMotiveText
-"
-    "INVTarget_GetOnLocMsgInvMotiveText:
-"
-    ".long 0x9421FFF8
-"
-    ".long 0x7C0802A6
-"
-    ".long 0x9001000C
-"
-    ".long 0x7C691B78
-"
-    ".long 0x7C842379
-"
-    ".long 0x41820030
-"
-    ".long 0x38000000
-"
-    ".long 0x394900D8
-"
-    ".long 0xB0040000
-"
-    ".long 0x396D8FE4
-"
-    ".long 0x7C852378
-"
-    ".long 0x80090084
-"
-    ".long 0x5400103A
-"
-    ".long 0x7D2B002E
-"
-    ".long 0x5529103A
-"
-    ".long 0x7C8A482E
-"
-    ".long 0x4BFFED29
-"
-    ".long 0x8001000C
-"
-    ".long 0x7C0803A6
-"
-    ".long 0x38210008
-"
-    ".long 0x4E800020
-"
-);
+
+class INVTarget { public: void GetOnLocMsgInvMotiveText(unsigned wchar_t *); };
+
+__attribute__((naked))
+void INVTarget::GetOnLocMsgInvMotiveText(unsigned wchar_t *) {
+    asm volatile(".long 0x9421FFF8\n.long 0x7C0802A6\n.long 0x9001000C\n.long 0x7C691B78\n.long 0x7C842379\n.long 0x41820030\n.long 0x38000000\n.long 0x394900D8\n.long 0xB0040000\n.long 0x396D8FE4\n.long 0x7C852378\n.long 0x80090084\n.long 0x5400103A\n.long 0x7D2B002E\n.long 0x5529103A\n.long 0x7C8A482E\n.long 0x4BFFED29\n.long 0x8001000C\n.long 0x7C0803A6\n.long 0x38210008\n.long 0x4E800020");
+}

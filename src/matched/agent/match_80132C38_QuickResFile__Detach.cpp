@@ -1,4 +1,6 @@
 // 0x80132C38 (4 bytes)
+namespace Memory { class HandleNode; }
+
 namespace Memory {
 class HandleNode;
 }

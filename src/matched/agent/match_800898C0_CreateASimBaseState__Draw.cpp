@@ -1,4 +1,6 @@
 // 0x800898C0 (4 bytes)
+class ERC;
+
 class CreateASimBaseState {
 public:
     void Draw(void* ERC);

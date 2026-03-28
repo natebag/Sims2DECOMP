@@ -1,6 +1,8 @@
 // 0x8015AB94 (12 bytes)
 // ObjectDataBehaviorTree::SetNumParams(unsigned char)
 // lwz r9, 84(r3); stb r4, 5(r9); blr
+class Behavior;
+
 struct BehaviorTreeData {
     char m_pad[5];
     unsigned char m_numParams;

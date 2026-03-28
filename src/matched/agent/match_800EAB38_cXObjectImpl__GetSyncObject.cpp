@@ -1,6 +1,8 @@
 // 0x800EAB38 (8 bytes) — lwz 3, 220(3); blr
 // cXObjectImpl::GetSyncObject(void)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void GetSyncObject(void);

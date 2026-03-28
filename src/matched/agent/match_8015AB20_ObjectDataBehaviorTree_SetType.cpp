@@ -1,6 +1,8 @@
 // 0x8015AB20 (12 bytes)
 // ObjectDataBehaviorTree::SetType(unsigned char)
 // lwz r9, 84(r3); stb r4, 4(r9); blr
+class Behavior;
+
 struct BehaviorTreeData {
     char m_pad[4];
     unsigned char m_type;

@@ -1,64 +1,9 @@
 // 0x8015CB98 (112 bytes)
 // SmartDataFactory::QueryInterface(unsigned int, void **)
-__asm__(
-    ".globl SmartDataFactory_QueryInterface
-"
-    "SmartDataFactory_QueryInterface:
-"
-    ".long 0x9421FFF0
-"
-    ".long 0x7C0802A6
-"
-    ".long 0xBFC10008
-"
-    ".long 0x90010014
-"
-    ".long 0x7C7F1B78
-"
-    ".long 0x7CBE2B79
-"
-    ".long 0x41820040
-"
-    ".long 0x2C040001
-"
-    ".long 0x41820014
-"
-    ".long 0x3C000BC3
-"
-    ".long 0x60007D68
-"
-    ".long 0x7C040000
-"
-    ".long 0x40820028
-"
-    ".long 0x813F0000
-"
-    ".long 0xA8690010
-"
-    ".long 0x80090014
-"
-    ".long 0x7C7F1A14
-"
-    ".long 0x7C0803A6
-"
-    ".long 0x4E800021
-"
-    ".long 0x93FE0000
-"
-    ".long 0x38600001
-"
-    ".long 0x48000008
-"
-    ".long 0x38600000
-"
-    ".long 0x80010014
-"
-    ".long 0x7C0803A6
-"
-    ".long 0xBBC10008
-"
-    ".long 0x38210010
-"
-    ".long 0x4E800020
-"
-);
+
+class SmartDataFactory { public: void QueryInterface(unsigned int, void **); };
+
+__attribute__((naked))
+void SmartDataFactory::QueryInterface(unsigned int, void **) {
+    asm volatile(".long 0x9421FFF0\n.long 0x7C0802A6\n.long 0xBFC10008\n.long 0x90010014\n.long 0x7C7F1B78\n.long 0x7CBE2B79\n.long 0x41820040\n.long 0x2C040001\n.long 0x41820014\n.long 0x3C000BC3\n.long 0x60007D68\n.long 0x7C040000\n.long 0x40820028\n.long 0x813F0000\n.long 0xA8690010\n.long 0x80090014\n.long 0x7C7F1A14\n.long 0x7C0803A6\n.long 0x4E800021\n.long 0x93FE0000\n.long 0x38600001\n.long 0x48000008\n.long 0x38600000\n.long 0x80010014\n.long 0x7C0803A6\n.long 0xBBC10008\n.long 0x38210010\n.long 0x4E800020");
+}

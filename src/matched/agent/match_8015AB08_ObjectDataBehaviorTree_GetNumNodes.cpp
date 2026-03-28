@@ -1,6 +1,8 @@
 // 0x8015AB08 (12 bytes)
 // ObjectDataBehaviorTree::GetNumNodes(void) const
 // lwz r9, 84(r3); lha r3, 2(r9); blr
+class Behavior;
+
 struct BehaviorTreeData {
     short m_structVersion;
     short m_numNodes;

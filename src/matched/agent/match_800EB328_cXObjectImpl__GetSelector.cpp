@@ -1,6 +1,8 @@
 // 0x800EB328 (8 bytes) — lwz 3, 140(3); blr
 // cXObjectImpl::GetSelector(void)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void GetSelector(void);

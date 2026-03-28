@@ -1,6 +1,9 @@
 // 0x800D3BB8 (8 bytes) — li 3, 0; blr
 // NghResFile::Delete(StringBuffer &)
 
+class NghResFile;
+class StringBuffer;
+
 class NghResFile {
 public:
     void Delete(StringBuffer &);

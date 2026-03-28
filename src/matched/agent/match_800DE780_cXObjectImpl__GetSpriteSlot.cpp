@@ -1,6 +1,9 @@
 // 0x800DE780 (8 bytes) — lwz 3, 176(3); blr
 // cXObjectImpl::GetSpriteSlot(void)
 
+class cXObject;
+struct Slot;
+
 class cXObjectImpl {
 public:
     void GetSpriteSlot(void);

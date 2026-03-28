@@ -1,6 +1,8 @@
 // 0x80238368 (12 bytes) - ERLevel::GetNumVisibleInstances(void)
 // addis r3, r3, 3; lwz r3, -7476(r3); blr  =>  return m_numVisibleInstances; (offset 0x2E2CC)
 
+class ERLevel;
+
 struct ERLevel_GNVI {
     char pad[0x2E2CC];
     int m_numVisibleInstances;

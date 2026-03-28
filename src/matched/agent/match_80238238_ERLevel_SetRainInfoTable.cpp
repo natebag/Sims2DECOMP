@@ -1,6 +1,8 @@
 // 0x80238238 (12 bytes) - ERLevel::SetRainInfoTable(levelraininfo *)
 // addis r3, r3, 3; stw r4, -7080(r3); blr  =>  m_rainInfoTable = val; (offset 0x2E458)
 
+class ERLevel;
+
 struct ERLevel_SRIT {
     char pad[0x2E458];
     void* m_rainInfoTable;

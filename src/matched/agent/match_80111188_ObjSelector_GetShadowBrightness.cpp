@@ -1,6 +1,8 @@
 // 0x80111188 (12 bytes)
 // ObjSelector::GetShadowBrightness(void)
 // lwz r9, 56(r3); lha r3, 158(r9); blr
+class ObjSelector;
+
 struct ObjSelectorData {
     char m_pad[158];
     short m_shadowBrightness;

@@ -1,6 +1,8 @@
 // 0x800EB2FC (8 bytes) — addi 3, 3, 104; blr
 // cXObjectImpl::GetLocation(void)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void GetLocation(void);

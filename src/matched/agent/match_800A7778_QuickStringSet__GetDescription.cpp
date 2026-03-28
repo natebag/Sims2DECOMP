@@ -1,6 +1,8 @@
 // 0x800A7778 (8 bytes) — li 3, 0; blr
 // QuickStringSet::GetDescription(int, char)
 
+class StringSet;
+
 class QuickStringSet {
 public:
     void GetDescription(int, char);

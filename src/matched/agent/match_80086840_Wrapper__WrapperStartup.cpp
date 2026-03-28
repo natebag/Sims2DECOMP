@@ -1,6 +1,8 @@
 // 0x80086840 (8 bytes) — stw 4, 136(3); blr
 // Wrapper::WrapperStartup(UIObjectBase *)
 
+class UIObjectBase;
+
 class Wrapper {
 public:
     void WrapperStartup(UIObjectBase *);

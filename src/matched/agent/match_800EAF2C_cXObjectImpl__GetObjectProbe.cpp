@@ -1,6 +1,8 @@
 // 0x800EAF2C (8 bytes) — li 3, 0; blr
 // cXObjectImpl::GetObjectProbe(void)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void GetObjectProbe(void);

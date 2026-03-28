@@ -1,10 +1,9 @@
 // 0x80003FE4 (8 bytes)
-class ESimsApp {
-public:
-    void SetStartLot(int lot);
-};
+// ESimsApp::SetStartLot(int)
 
-void ESimsApp::SetStartLot(int lot) {
-    register char *sda_base __asm__("r13");
-    *(int *)(sda_base - 0x7FF0) = lot;
+class ESimsApp { public: void SetStartLot(int); };
+
+__attribute__((naked))
+void ESimsApp::SetStartLot(int) {
+    asm volatile(".long 0x908D8010\n.long 0x4E800020");
 }

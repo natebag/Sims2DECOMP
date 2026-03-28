@@ -1,6 +1,8 @@
 // 0x800EAA3C (8 bytes) — lwz 3, 12(3); blr
 // cXObjectImpl::GetNumAttr(void)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void GetNumAttr(void);

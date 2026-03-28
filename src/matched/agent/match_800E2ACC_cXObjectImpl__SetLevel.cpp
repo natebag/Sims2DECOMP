@@ -1,6 +1,8 @@
 // 0x800E2ACC (8 bytes) — stw 4, 128(3); blr
 // cXObjectImpl::SetLevel(int)
 
+class cXObject;
+
 class cXObjectImpl {
 public:
     void SetLevel(int);

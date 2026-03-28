@@ -2,6 +2,8 @@
 // cXPersonImpl::ReconType(void)
 // lis r3, 0x5045; ori r3, r3, 0x5253; blr
 // Returns FourCC 'PERS' (0x50455253)
+class cXPerson;
+
 class cXPersonImpl {
 public:
     unsigned int ReconType();

@@ -1,6 +1,8 @@
 // 0x80159C0C (12 bytes)
 // ObjectDataBehaviorConstants::CountValues(void) const
 // lhz r3, 4(r3); rlwinm r3, r3, 0, 17, 31; blr
+class Behavior;
+
 class ObjectDataBehaviorConstants {
 public:
     int m_pad0;

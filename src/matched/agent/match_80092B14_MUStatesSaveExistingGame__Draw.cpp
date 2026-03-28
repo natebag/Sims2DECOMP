@@ -1,4 +1,6 @@
 // 0x80092B14 (4 bytes)
+class ERC;
+
 class MUStatesSaveExistingGame {
 public:
     void Draw(void* ERC);
