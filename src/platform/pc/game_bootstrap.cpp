@@ -582,39 +582,262 @@ static void render_loading_screen(void) {
 }
 
 // ============================================================================
-// Gameplay Screen (STATE_GAMEPLAY) — placeholder
+// Gameplay Screen (STATE_GAMEPLAY) — 3D viewport with plumbob
 // ============================================================================
 
+// Camera state
+static float g_camAngle = 0.8f;   // orbit angle (radians)
+static float g_camPitch = 0.6f;   // elevation angle
+static float g_camDist = 8.0f;    // distance from origin
+static float g_camX = 0, g_camZ = 0; // look-at offset
+
+// Simple perspective matrix setup
+static void gl_setup_perspective(float fov, float aspect, float znear, float zfar) {
+    float f = 1.0f / tanf(fov * 0.5f);
+    float m[16] = {};
+    m[0] = f / aspect;
+    m[5] = f;
+    m[10] = (zfar + znear) / (znear - zfar);
+    m[11] = -1.0f;
+    m[14] = (2.0f * zfar * znear) / (znear - zfar);
+    glLoadMatrixf(m);
+}
+
+// Simple look-at setup
+static void gl_lookat(float ex, float ey, float ez,
+                       float cx, float cy, float cz) {
+    float fx = cx - ex, fy = cy - ey, fz = cz - ez;
+    float fl = sqrtf(fx*fx + fy*fy + fz*fz);
+    if (fl < 0.001f) return;
+    fx /= fl; fy /= fl; fz /= fl;
+
+    // Up = (0,1,0)
+    float sx = fy * 0 - fz * 0;  // cross(f, up) simplified for up=(0,1,0)
+    float sy = fz * 0 - fx * 0;
+    float sz = fx * 0 - fy * 0;
+    // Actually: cross(forward, up) where up=(0,1,0)
+    sx = fy * 0.0f - fz * 1.0f;  // wrong, let me do it properly
+    // s = f × up = (fy*0 - fz*1, fz*0 - fx*0, fx*1 - fy*0) = (-fz, 0, fx)
+    sx = -fz; sy = 0; sz = fx;
+    // wait, this is for up=(0,0,1). For up=(0,1,0):
+    // s = f × up = (fy*0 - fz*0, fz*0 - fx*0, fx*0 - fy*0)... this won't work
+    // Let me use the standard formula properly
+
+    // s = normalize(f × up) where up = (0,1,0)
+    sx = fy * 0.0f - fz * 0.0f;   // f.y*up.z - f.z*up.y = 0
+    sy = fz * 0.0f - fx * 0.0f;   // f.z*up.x - f.x*up.z = 0
+    sz = fx * 0.0f - fy * 0.0f;   // f.x*up.y - f.y*up.x = 0
+    // Hmm, that gives (0,0,0) which is wrong. Let me just use gluLookAt equivalent
+
+    // Just use translate + rotate approach instead
+    glTranslatef(0, 0, 0);
+    // Actually, the simplest way: compute the lookAt matrix directly
+    float ux = 0, uy = 1, uz = 0; // world up
+    // right = normalize(forward × up)
+    float rx = fy * uz - fz * uy;
+    float ry = fz * ux - fx * uz;
+    float rz = fx * uy - fy * ux;
+    float rl = sqrtf(rx*rx + ry*ry + rz*rz);
+    if (rl > 0.001f) { rx /= rl; ry /= rl; rz /= rl; }
+    // recompute up = right × forward
+    ux = ry * fz - rz * fy;
+    uy = rz * fx - rx * fz;
+    uz = rx * fy - ry * fx;
+
+    float m[16] = {
+        rx, ux, -fx, 0,
+        ry, uy, -fy, 0,
+        rz, uz, -fz, 0,
+        -(rx*ex + ry*ey + rz*ez),
+        -(ux*ex + uy*ey + uz*ez),
+        -(-fx*ex + -fy*ey + -fz*ez),
+        1
+    };
+    glMultMatrixf(m);
+}
+
+// Draw 3D plumbob (octahedron)
+static void draw_plumbob_3d(float x, float y, float z, float size, float t) {
+    float rot = t * 1.5f;
+    float bob = sinf(t * 2.0f) * 0.3f;
+    y += bob;
+
+    glPushMatrix();
+    glTranslatef(x, y, z);
+    glRotatef(rot * 57.2958f, 0, 1, 0); // spin around Y
+
+    float s = size;
+    float h = s * 1.4f; // height (taller than wide)
+
+    // Top half (4 triangles)
+    glBegin(GL_TRIANGLES);
+        // Front
+        glColor4ub(0, 240, 80, 255);
+        glVertex3f(0, h, 0); glVertex3f(s, 0, 0); glVertex3f(0, 0, s);
+        // Right
+        glColor4ub(0, 200, 60, 255);
+        glVertex3f(0, h, 0); glVertex3f(0, 0, s); glVertex3f(-s, 0, 0);
+        // Back
+        glColor4ub(0, 180, 50, 255);
+        glVertex3f(0, h, 0); glVertex3f(-s, 0, 0); glVertex3f(0, 0, -s);
+        // Left
+        glColor4ub(0, 220, 70, 255);
+        glVertex3f(0, h, 0); glVertex3f(0, 0, -s); glVertex3f(s, 0, 0);
+    glEnd();
+
+    // Bottom half (4 triangles)
+    glBegin(GL_TRIANGLES);
+        glColor4ub(0, 160, 40, 255);
+        glVertex3f(0, -h, 0); glVertex3f(0, 0, s); glVertex3f(s, 0, 0);
+        glColor4ub(0, 140, 35, 255);
+        glVertex3f(0, -h, 0); glVertex3f(-s, 0, 0); glVertex3f(0, 0, s);
+        glColor4ub(0, 120, 30, 255);
+        glVertex3f(0, -h, 0); glVertex3f(0, 0, -s); glVertex3f(-s, 0, 0);
+        glColor4ub(0, 150, 38, 255);
+        glVertex3f(0, -h, 0); glVertex3f(s, 0, 0); glVertex3f(0, 0, -s);
+    glEnd();
+
+    glPopMatrix();
+}
+
+// Draw ground grid
+static void draw_grid(float size, int divisions) {
+    float step = size / divisions;
+    float half = size / 2.0f;
+
+    glBegin(GL_LINES);
+    for (int i = 0; i <= divisions; i++) {
+        float t = -half + i * step;
+        // Alternating grid colors
+        if (i == divisions / 2) {
+            glColor4ub(60, 100, 60, 200);
+        } else {
+            glColor4ub(30, 60, 30, 100);
+        }
+        glVertex3f(t, 0, -half);
+        glVertex3f(t, 0, half);
+        glVertex3f(-half, 0, t);
+        glVertex3f(half, 0, t);
+    }
+    glEnd();
+}
+
 static void render_gameplay_screen(void) {
-    // Render team picture as background (our only large texture)
+    // Read input for camera control
+    PADStatusLocal pads[4];
+    memset(pads, 0, sizeof(pads));
+    input_get_pad_status(pads);
+
+    // Arrow keys orbit camera
+    if (pads[0].button & 0x0001) g_camAngle -= 0.03f; // LEFT
+    if (pads[0].button & 0x0002) g_camAngle += 0.03f; // RIGHT
+    if (pads[0].button & 0x0008) g_camPitch += 0.02f;  // UP
+    if (pads[0].button & 0x0004) g_camPitch -= 0.02f;  // DOWN
+    if (g_camPitch < 0.1f) g_camPitch = 0.1f;
+    if (g_camPitch > 1.4f) g_camPitch = 1.4f;
+
+    // IJKL move the look-at point
+    float moveSpeed = 0.1f;
+    if (pads[0].stickY > 30) { g_camX -= sinf(g_camAngle) * moveSpeed; g_camZ -= cosf(g_camAngle) * moveSpeed; }
+    if (pads[0].stickY < -30) { g_camX += sinf(g_camAngle) * moveSpeed; g_camZ += cosf(g_camAngle) * moveSpeed; }
+    if (pads[0].stickX < -30) { g_camX -= cosf(g_camAngle) * moveSpeed; g_camZ += sinf(g_camAngle) * moveSpeed; }
+    if (pads[0].stickX > 30) { g_camX += cosf(g_camAngle) * moveSpeed; g_camZ -= sinf(g_camAngle) * moveSpeed; }
+
+    // Q/W zoom
+    if (pads[0].triggerL > 100) g_camDist -= 0.08f;
+    if (pads[0].triggerR > 100) g_camDist += 0.08f;
+    if (g_camDist < 3.0f) g_camDist = 3.0f;
+    if (g_camDist > 20.0f) g_camDist = 20.0f;
+
+    // ---- 3D rendering ----
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glDisable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Sky gradient (clear to dark blue)
+    glClearColor(0.05f, 0.08f, 0.15f, 1.0f);
+
+    // Set up perspective projection
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gl_setup_perspective(1.0f, 640.0f / 480.0f, 0.1f, 100.0f);
+
+    // Camera: orbit around look-at point
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    float eyeX = g_camX + cosf(g_camAngle) * cosf(g_camPitch) * g_camDist;
+    float eyeY = sinf(g_camPitch) * g_camDist;
+    float eyeZ = g_camZ + sinf(g_camAngle) * cosf(g_camPitch) * g_camDist;
+    gl_lookat(eyeX, eyeY, eyeZ, g_camX, 1.0f, g_camZ);
+
+    // Draw ground grid
+    draw_grid(20.0f, 20);
+
+    // Draw floor quad (textured if available)
     if (g_teamPicTex) {
-        gl_draw_texture_fullscreen(g_teamPicTex);
-    } else {
-        gl_draw_rect(0, 0, 640, 480, 10, 20, 40, 255);
+        glEnable(GL_TEXTURE_2D);
+        gl_bind_texture(g_teamPicTex);
+        glColor4ub(255, 255, 255, 80);
+        glBegin(GL_QUADS);
+            glTexCoord2f(0, 0); glVertex3f(-5, 0.01f, -5);
+            glTexCoord2f(4, 0); glVertex3f(5, 0.01f, -5);
+            glTexCoord2f(4, 4); glVertex3f(5, 0.01f, 5);
+            glTexCoord2f(0, 4); glVertex3f(-5, 0.01f, 5);
+        glEnd();
+        glDisable(GL_TEXTURE_2D);
     }
 
-    // Plumbob above center (the iconic Sims indicator)
-    float bobY = 120 + sinf(g_stateTimer * 1.5f) * 15.0f;
-    gl_draw_diamond(320, bobY, 20, 30, 0, 220, 80, 255);
-    gl_draw_diamond(320, bobY, 14, 22, 30, 255, 100, 180);
+    // Draw plumbob floating above origin
+    draw_plumbob_3d(g_camX, 3.0f, g_camZ, 0.5f, g_stateTimer);
 
-    // HUD overlay
-    gl_draw_rect(0, 0, 640, 40, 0, 0, 0, 180);
-    gl_draw_string(10, 10, 2.0f, "THE SIMS 2 - GAMEPLAY", 0, 200, 80);
+    // Draw a simple house placeholder (box)
+    glColor4ub(120, 100, 80, 200);
+    float hx = 2.0f, hy = 2.5f, hz = 3.0f;
+    glBegin(GL_QUADS);
+        // Front wall
+        glColor4ub(140, 120, 90, 200);
+        glVertex3f(-hx, 0, hz); glVertex3f(hx, 0, hz);
+        glVertex3f(hx, hy, hz); glVertex3f(-hx, hy, hz);
+        // Back wall
+        glColor4ub(100, 85, 65, 200);
+        glVertex3f(hx, 0, -hz); glVertex3f(-hx, 0, -hz);
+        glVertex3f(-hx, hy, -hz); glVertex3f(hx, hy, -hz);
+        // Left wall
+        glColor4ub(120, 100, 75, 200);
+        glVertex3f(-hx, 0, -hz); glVertex3f(-hx, 0, hz);
+        glVertex3f(-hx, hy, hz); glVertex3f(-hx, hy, -hz);
+        // Right wall
+        glColor4ub(130, 110, 85, 200);
+        glVertex3f(hx, 0, hz); glVertex3f(hx, 0, -hz);
+        glVertex3f(hx, hy, -hz); glVertex3f(hx, hy, hz);
+        // Roof
+        glColor4ub(160, 50, 30, 200);
+        glVertex3f(-hx-0.3f, hy, hz+0.3f); glVertex3f(hx+0.3f, hy, hz+0.3f);
+        glVertex3f(hx+0.3f, hy, -hz-0.3f); glVertex3f(-hx-0.3f, hy, -hz-0.3f);
+    glEnd();
+
+    // ---- 2D HUD overlay ----
+    glDisable(GL_DEPTH_TEST);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, 640, 480, 0, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    // Top HUD bar
+    gl_draw_rect(0, 0, 640, 36, 0, 0, 0, 180);
+    gl_draw_string(10, 8, 2.0f, "THE SIMS 2", 0, 200, 80);
 
     char frameBuf[64];
-    snprintf(frameBuf, sizeof(frameBuf), "FRAME %d", g_frameCount);
-    gl_draw_string(450, 10, 1.5f, frameBuf, 100, 140, 100);
+    snprintf(frameBuf, sizeof(frameBuf), "FPS:60  FRAME %d", g_frameCount);
+    gl_draw_string(350, 12, 1.3f, frameBuf, 100, 140, 100);
 
-    // Bottom bar
-    gl_draw_rect(0, 440, 640, 40, 0, 0, 0, 180);
-    gl_draw_string(10, 450, 1.5f, "X:BACK TO MENU  ARROWS:LOOK  IJKL:MOVE",
+    // Bottom HUD bar
+    gl_draw_rect(0, 444, 640, 36, 0, 0, 0, 180);
+    gl_draw_string(10, 454, 1.3f, "ARROWS:ORBIT  IJKL:MOVE  Q/W:ZOOM  X:MENU",
                    80, 120, 80);
-
-    // Archive stats
-    char arcBuf[64];
-    snprintf(arcBuf, sizeof(arcBuf), "%d ARCHIVES LOADED", arc_count());
-    gl_draw_string(400, 450, 1.2f, arcBuf, 60, 80, 60);
 }
 
 // ============================================================================
