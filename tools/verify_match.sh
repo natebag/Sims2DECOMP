@@ -38,6 +38,16 @@ BASENAME="$(basename "$SRC" .cpp)"
 OBJ="build/verify/${BASENAME}.o"
 ASM="build/verify/${BASENAME}.s"
 
+# Step 0: Reject fake matches (inline asm byte injection is NOT decomp)
+if grep -q '__attribute__((naked))' "$SRC" 2>/dev/null; then
+    echo "REJECTED: Contains __attribute__((naked)) — not real C++ decomp."
+    exit 1
+fi
+if grep -q '\.long 0x' "$SRC" 2>/dev/null; then
+    echo "REJECTED: Contains .long byte injection — not real C++ decomp."
+    exit 1
+fi
+
 # Step 1: Compile
 if [ -f "$SN_CC1PLUS" ]; then
     # Use SN Systems compiler (the real one)
