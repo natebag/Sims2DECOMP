@@ -33,3 +33,8 @@ Thumbs.db
 # Don't commit the full symbols JSON (generated from map parser)
 # Users regenerate from their own disc
 tools/symbols.json
+
+# API keys — NEVER commit
+*.key
+keys.txt
+Key/
