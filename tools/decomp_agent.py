@@ -162,6 +162,19 @@ COMMON PATTERNS:
 - stw r4, off(r3); blr  →  *(int*)((char*)this + off) = param;
 - li r3, N; blr          →  return N;
 - stwu r1, -N(r1) ... addi r1, r1, N; blr  →  function with stack frame
+- rlwinm r3,r3,N,M,K; blr  →  bit extraction: return (field >> shift) & mask;
+
+GCC vs SN SYSTEMS WORKAROUNDS (CRITICAL):
+
+1. Register r0: SN uses r0 as scratch, GCC uses r9. If the original uses r0:
+   register int __r0 __asm__("r0") = value;
+   __asm__ __volatile__("" : "+r"(__r0));
+   *(int*)((char*)this + offset) = __r0;
+
+2. lha vs lhz: Use 'short' (signed) for lha, 'unsigned short' for lhz.
+
+3. rlwinm bit extraction: return (*(int/short/char*)ptr >> shift) & mask;
+   The shift and mask come from the rlwinm encoding.
 """
 
 def call_anthropic(api_key, prompt, model="claude-sonnet-4-20250514"):
