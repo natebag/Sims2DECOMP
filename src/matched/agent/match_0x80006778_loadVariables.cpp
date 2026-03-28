@@ -1,9 +1,7 @@
-/* loadVariables(char *) at 0x80006778 (40B) */
+extern char gVarFilePath[];
 
-extern char g_loadVarsTarget[];
+void LoadVarsImpl(char* path);
 
-void loadVariablesImpl(void*);
-
-void loadVariables(char* url) {
-    loadVariablesImpl(g_loadVarsTarget);
+void loadVariables(char* name) {
+    LoadVarsImpl(gVarFilePath);
 }

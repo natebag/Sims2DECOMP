@@ -1,11 +1,11 @@
 class ITBTarget {
 public:
     char _pad[0x98];
-    int m_showBalloon;
+    int m_isActive;
 
-    void ShowIntroThoughtBalloon();
+    void ShowIntroThoughtBalloon(void);
 };
 
-void ITBTarget::ShowIntroThoughtBalloon() {
-    m_showBalloon = 1;
+void ITBTarget::ShowIntroThoughtBalloon(void) {
+    m_isActive = 1;
 }

@@ -1,7 +1,5 @@
-/* AptAuxPCEorGL_TimerStartFrame(void) at 0x800098D8 (32B) */
+void TimerStartFrameImpl();
 
-void TimerStartFrame(void);
-
-void AptAuxPCEorGL_TimerStartFrame(void) {
-    TimerStartFrame();
+void AptAuxPCEorGL_TimerStartFrame() {
+    TimerStartFrameImpl();
 }

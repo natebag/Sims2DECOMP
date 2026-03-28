@@ -7,5 +7,5 @@ public:
 };
 
 int HUDTarget::IsHUDVisible(void) const {
-    return !(m_hideState ^ 2);
+    return m_hideState == 2;
 }

@@ -1,7 +1,5 @@
-/* ProfileHook(void) at 0x80005438 (16B) */
+extern int gProfileCount;
 
-extern int g_profileCount;
-
-void ProfileHook(void) {
-    g_profileCount = g_profileCount + 1;
+void ProfileHook() {
+    gProfileCount = gProfileCount + 1;
 }

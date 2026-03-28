@@ -1,17 +1,15 @@
-/* ECheats::ECheats(void) at 0x8001ECAC (72B) */
-
-void* memset(void*, int, unsigned int);
+void MemSet(void* dst, int val, int size);
+void ECheatsReset(void* self);
 
 struct ECheats {
-    char pad_00[0x104];
-    int m_field104;
+    char pad[0x104];
+    int m_f104;
 
     ECheats();
-    void EmptyLookupList(void);
 };
 
 ECheats::ECheats() {
-    memset(this, 0, 256);
-    EmptyLookupList();
-    m_field104 = 0;
+    MemSet(this, 0, 256);
+    ECheatsReset(this);
+    m_f104 = 0;
 }

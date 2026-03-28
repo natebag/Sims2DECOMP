@@ -1,9 +1,7 @@
-/* loadVariablesNULL(void) at 0x800067A0 (40B) */
+extern char gNullVarFilePath[];
 
-extern char g_loadVarsNullTarget[];
+void LoadVarsImpl(char* path);
 
-void loadVariablesNullImpl(void*);
-
-void loadVariablesNULL(void) {
-    loadVariablesNullImpl(g_loadVarsNullTarget);
+void loadVariablesNULL() {
+    LoadVarsImpl(gNullVarFilePath);
 }

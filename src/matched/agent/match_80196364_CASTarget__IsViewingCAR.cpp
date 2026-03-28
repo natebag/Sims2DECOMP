@@ -7,5 +7,5 @@ public:
 };
 
 int CASTarget::IsViewingCAR(void) {
-    return !(m_viewMode ^ 3);
+    return m_viewMode == 3;
 }

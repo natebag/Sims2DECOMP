@@ -205,3 +205,45 @@ mid-function fragments.
 - Inline copies of cXPersonImpl accessors are scattered throughout AmbientSoundPlayer.obj
 - Leaf functions found between blr pairs were the primary matching strategy
 - 82 new verified matches added (99 total in range, up from 17)
+
+### EVec3 Struct Copy Patterns
+
+Functions where the SN compiler generates a specific stack-temp pattern for
+EVec3 struct copies: `stfs f0, 8(r9); stfs f0, 4(r9); stfs f0, 8(r1)` followed
+by `lwz` back from stack. Our SN compiler v3.93 produces different register
+allocations (r10 vs r9 for temp ptr) and different store orderings.
+
+- `0x80230F8C` `ELightGrid::LightData::Clear(void)` — 112 bytes, zero vec init
+- `0x80226A58` `WallPainter::RestoreFromHoldPos(EVec3 &)` — 116 bytes
+- `0x802093AC` `Interactor::ResetInputState(void)` — 68 bytes
+
+### Extended Static Init (non-standard pattern)
+
+- `0x8022F694` `__static_initialization_and_destruction_0` (EIStaticSubModel) — 140 bytes, has extra EVec3 init after RegisterType call, different lis/addi scheduling
+
+## Agent Range 0x80180000-0x801A0000 - Failed Attempts
+
+### Register allocation / operand order mismatches (SN compiler quirk):
+- `80199E5C` CASSelectionTarget::ConvertGridIdxToOptionIdx(unsigned int) - `add` operand order: DOL has `add r3, r4, r3` vs compiled `add r3, r3, r4`
+- `80180308` UIScreenManager::PopQueue(int) - `bgtlr` vs `bgt+offset`, `add` operand order swap
+
+### Switch statement code generation differences:
+- `8018A6BC` LoadGameTarget::ZeroInputCallback(void) - binary search vs linear compare ordering
+- `80194E4C` CASTarget::GotoInitialScreen(void) - switch on view mode
+
+### Missing crclr instruction:
+- `8019011C` RepTitleSupport::GetRepTitleLevel(int) - DOL has `crclr 4*cr1+eq` before `bl` which SN compiler doesn't emit
+- `80190224` RepTitleSupport::GetRepTableRawTitle(int) - same crclr issue
+- `8019025C` RepTitleSupport::GetRepTableRawFriendTitle(int) - same crclr issue
+- `80190294` RepTitleSupport::GetRepTableRawEnemyTitle(int) - same crclr issue
+
+### Global address split (lis+addi) vs single relocation:
+- `80193F2C` CASTarget::UnloadLastScreen(void) - global address loaded with 2 instructions in DOL vs 1 in compiled
+
+### Loop/branch structure differences:
+- `80181C58` UIUpdateTable::ContainsEntry(CBFunctor0 &) - branch target for loop differs
+- `80185758` ActionQueueHUD::CatchUpPendingActions(void) - goto-based flow restructured by compiler
+
+### Constructor/destructor store ordering:
+- `80182F40` ActionMenu::MenuItem::MenuItem(void) - stores reordered by compiler
+- `801812AC` UIButtonImages::~UIButtonImages(void) - vtable offset off by 4 due to virtual keyword

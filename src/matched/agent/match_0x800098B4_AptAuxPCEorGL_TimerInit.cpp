@@ -1,9 +1,7 @@
-/* AptAuxPCEorGL_TimerInit(void) at 0x800098B4 (36B) */
+extern int gTimerObject;
 
-extern int* g_timerObj;
+void TimerInitImpl(void* timer);
 
-void TimerInit(int*);
-
-void AptAuxPCEorGL_TimerInit(void) {
-    TimerInit(g_timerObj);
+void AptAuxPCEorGL_TimerInit() {
+    TimerInitImpl((void*)gTimerObject);
 }

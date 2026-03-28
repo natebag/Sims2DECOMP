@@ -1,4 +1,4 @@
-class HUDTarget {
+class SomeHUDData {
 public:
     char _pad[0x190];
     int m_playerNum;
@@ -7,11 +7,11 @@ public:
 class LoadGameTarget {
 public:
     char _pad[0x118];
-    HUDTarget* m_hudTarget;
+    SomeHUDData* m_hudData;
 
     int GetPlayerNum(void);
 };
 
 int LoadGameTarget::GetPlayerNum(void) {
-    return m_hudTarget->m_playerNum;
+    return m_hudData->m_playerNum;
 }

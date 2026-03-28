@@ -1,13 +1,7 @@
-/* ESimsApp::SetupForMovie(void) at 0x80005CAC (40B) */
+extern char gAppData2[];
 
-extern char g_simsApp[];
+void SetupForMovieImpl(char* app);
 
-void SetupForMovieImpl(void*);
-
-struct ESimsApp {
-    void SetupForMovie(void);
-};
-
-void ESimsApp::SetupForMovie(void) {
-    SetupForMovieImpl(g_simsApp);
+void ESimsApp_SetupForMovie() {
+    SetupForMovieImpl(gAppData2);
 }

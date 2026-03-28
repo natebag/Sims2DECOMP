@@ -1,9 +1,7 @@
-/* AptViewer::Shutdown(void) at 0x800105B4 (36B) */
+void AptViewer_UnLoad(void* self);
+void closeFunc();
 
-void SaveInputHistory(void);
-void closeFunc(void);
-
-void AptViewer_Shutdown(void) {
-    SaveInputHistory();
+void AptViewer_Shutdown(void* self) {
+    AptViewer_UnLoad(self);
     closeFunc();
 }

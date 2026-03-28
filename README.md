@@ -8,8 +8,8 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 | Metric | Value |
 |--------|-------|
-| **Functions matched** | **~5,600 / 20,508 (27.3%)** |
-| Functions remaining | ~14,900 |
+| **Functions matched** | **~5,700 / 20,508 (27.8%)** |
+| Functions remaining | ~14,800 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Toolchain | devkitPPC (GCC) + decomp-toolkit |

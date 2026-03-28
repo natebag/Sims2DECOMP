@@ -73,21 +73,23 @@ for future decomp work, not completed decomp work.
 **Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
 This is the core decomp work. We are at the very beginning.
 
-**Current Status:**
-- ~5 trivial functions hand-matched in `src/matched/` (simple getters/setters, ~44 bytes)
-- ~18,534 functions remaining (99.97% of the work)
-- Compiler flag sweep shows 47% of functions CAN potentially match with GCC
-- The other 53% need inline asm hints or tricks due to GCC vs SN Systems differences
+**Current Status (2026-03-28):**
+- ~5,700 functions matched with real C++ (27.8%)
+- ~14,800 functions remaining
+- SN Systems ProDG compiler (the ORIGINAL compiler) found and working
+- cc1plus.exe (GCC 2.95.3 SN BUILD v1.76) produces matching output natively
+- Agent army (Claude CLIs + Codex) grinding through function tiers
+- verify_match.sh auto-rejects inline asm fakes
 
 **IMPORTANT: The DOL "matches" via byte injection. Real decomp progress is measured by
 how many functions have hand-written C++ that compiles to matching bytes WITHOUT injection.**
 
 **Gate Criteria:**
-- [ ] 1,000 functions hand-matched (currently ~5)
-- [ ] 5,000 functions hand-matched
+- [x] 1,000 functions hand-matched
+- [x] 5,000 functions hand-matched
 - [ ] 10,000 functions hand-matched
 - [ ] 15,000 functions hand-matched
-- [ ] 18,539 functions hand-matched — TRUE 100% decomp
+- [ ] 20,508 functions hand-matched — TRUE 100% decomp
 
 **Approach:** Agent-parallelized matching — see strategy below.
 

@@ -1,12 +1,16 @@
 /* SplitWallBottomLeft(TileWalls &, CTilePt &) at 0x80028F58 (76B) */
 
-struct CTilePt;
-
 struct TileWalls {
-    int HasWallNotFence(int) const;
+    int HasWallNotFence(int segment);
 };
 
-int SplitWallBottomLeft(TileWalls& tw, CTilePt&) {
-    tw.HasWallNotFence(8);
-    return tw.HasWallNotFence(1) != 0;
+struct CTilePt;
+
+int SplitWallBottomLeft(TileWalls *tw, CTilePt *pt) {
+    tw->HasWallNotFence(8);
+    int result = tw->HasWallNotFence(1);
+    if (result != 0) {
+        return 1;
+    }
+    return 0;
 }

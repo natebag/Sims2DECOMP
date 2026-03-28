@@ -1,18 +1,18 @@
 class MODTarget {
 public:
-    void DisplayFastForward();
+    void DisplayFastForward(void);
 };
 
 class H2DTarget {
 public:
     char _pad[0x88];
-    MODTarget *m_modTarget;
+    MODTarget *m_modTargets[2];
 
-    void DisplayFastForward();
+    void DisplayFastForward(void);
 };
 
-void H2DTarget::DisplayFastForward() {
-    if (m_modTarget != 0) {
-        m_modTarget->DisplayFastForward();
+void H2DTarget::DisplayFastForward(void) {
+    if (m_modTargets[0] != 0) {
+        m_modTargets[0]->DisplayFastForward();
     }
 }

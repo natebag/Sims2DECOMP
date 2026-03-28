@@ -1,16 +1,16 @@
 struct ELightGrid {
-    char pad0[16];
-    int m_field10;
-    int m_field14;
-    int m_field18;
-    int m_field1C;
+    char pad0[0x10];
+    int m_portalRoomIdxA;
+    int m_portalRoomIdxB;
+    int m_pointRoomIdxA;
+    int m_pointRoomIdxB;
 
-    void EvaluateLamps(void);
-    void EvaluateAmbientAndDirectionalLights(int, int);
+    void EvaluatePointLights(int, int);
     void EvaluatePortalLights(int, int);
+    void EvaluateLamps(void);
 };
 
 void ELightGrid::EvaluateLamps(void) {
-    EvaluateAmbientAndDirectionalLights(m_field18, m_field1C);
-    EvaluatePortalLights(m_field10, m_field14);
+    EvaluatePointLights(m_pointRoomIdxA, m_pointRoomIdxB);
+    EvaluatePortalLights(m_portalRoomIdxA, m_portalRoomIdxB);
 }

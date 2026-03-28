@@ -1,18 +1,18 @@
 class MODTarget {
 public:
-    void DisplayPaused();
+    void DisplayPaused(void);
 };
 
 class H2DTarget {
 public:
     char _pad[0x88];
-    MODTarget *m_modTarget;
+    MODTarget *m_modTargets[2];
 
-    void DisplayPaused();
+    void DisplayPaused(void);
 };
 
-void H2DTarget::DisplayPaused() {
-    if (m_modTarget != 0) {
-        m_modTarget->DisplayPaused();
+void H2DTarget::DisplayPaused(void) {
+    if (m_modTargets[0] != 0) {
+        m_modTargets[0]->DisplayPaused();
     }
 }

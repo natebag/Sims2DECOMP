@@ -1,16 +1,14 @@
 class ActionQueueHUD {
-public:
-    char _data[0x31C];
 };
 
 class HUDTarget {
 public:
     char _pad[0x108];
-    ActionQueueHUD m_actionQueueHUD[4];
+    char m_actionQueues[4 * 0x31C];
 
-    ActionQueueHUD* GetActionQueueHUD(int index);
+    ActionQueueHUD* GetActionQueueHUD(int player);
 };
 
-ActionQueueHUD* HUDTarget::GetActionQueueHUD(int index) {
-    return &m_actionQueueHUD[index];
+ActionQueueHUD* HUDTarget::GetActionQueueHUD(int player) {
+    return (ActionQueueHUD*)&m_actionQueues[player * 0x31C];
 }

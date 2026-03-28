@@ -1,13 +1,13 @@
 class EyeToyClient {
 public:
-    int IsSessionEyeToyDisconnected();
+    static int IsSessionEyeToyDisconnected(void);
 };
 
-class E2ETarget : public EyeToyClient {
+class E2ETarget {
 public:
-    int IsEyeToyPluggedIn();
+    int IsEyeToyPluggedIn(void);
 };
 
-int E2ETarget::IsEyeToyPluggedIn() {
-    return IsSessionEyeToyDisconnected() ^ 1;
+int E2ETarget::IsEyeToyPluggedIn(void) {
+    return EyeToyClient::IsSessionEyeToyDisconnected() ^ 1;
 }

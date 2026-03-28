@@ -1,11 +1,5 @@
-/* AptViewer::NewSetMessageHandler(UIObjectBase *) at 0x80011DCC (36B) */
+void SetMsgHandlerImpl(void* obj);
 
-void SetMessageHandler(void*);
-
-struct AptViewer {
-    void NewSetMessageHandler(void* obj);
-};
-
-void AptViewer::NewSetMessageHandler(void* obj) {
-    SetMessageHandler(obj);
+void AptViewer_NewSetMessageHandler(void* self, void* obj) {
+    SetMsgHandlerImpl(obj);
 }

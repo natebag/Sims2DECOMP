@@ -2,32 +2,45 @@
 
 ## HONEST STATUS
 
-**Functions actually decompiled (hand-written C++ that compiles to matching bytes): ~5 / 18,539 (0.03%)**
+**Functions actually decompiled (hand-written C++ that compiles to matching bytes): ~5,700 / 20,508 (27.8%)**
 
-The DOL "matches" via byte injection — the original bytes are copied into the build.
-This is NOT real decomp progress. Real progress = functions rewritten in C++ that
-the compiler produces matching output for.
+Real progress = functions with hand-written C++ that the SN Systems compiler
+produces byte-identical output for. Verified by verify_match.sh.
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total functions | 18,539 |
-| **Functions ACTUALLY decompiled** | **~5 (~0.03%)** |
-| Functions byte-injected (original bytes copied) | 18,534 (99.97%) |
-| Total symbols (map) | 36,913 |
-| Empty C++ scaffolding files | 5,039 |
+| Total code functions | 20,508 |
+| **Functions ACTUALLY decompiled** | **~5,700 (27.8%)** |
+| Functions remaining | ~14,800 |
+| Original compiler | SN Systems ProDG GCC 2.95.3 (found & working) |
+| Total symbols (map) | 39,169 |
+| Translation units (original .cpp files) | 519 |
 | Class struct layouts documented | 643 |
-| Compiler flag match rate (GCC vs SN) | 47% of simple functions |
+| Anti-cheat guard | verify_match.sh rejects inline asm fakes |
 
 ## Milestone Status
 
 | # | Milestone | Status | Notes |
 |---|-----------|--------|-------|
-| 1 | Infrastructure | **DONE** | Build system, dtk, symbols, CI |
+| 1 | Infrastructure | **DONE** | Build system, dtk, symbols, CI, SN compiler |
 | 2 | Scaffolding | **DONE** | Empty C++ shells, struct layouts |
-| 3 | Actual Decomp | **IN PROGRESS** | ~5/18,539 functions — the real work |
+| 3 | Actual Decomp | **IN PROGRESS** | ~5,700/20,508 (27.8%) |
 | 4 | PC Port | **BLOCKED** | Needs actual decomp first |
+
+## Progress by Function Size
+
+| Tier | Matched | Total | % |
+|------|---------|-------|---|
+| 0-8B | 2,017 | 2,166 | 93.1% |
+| 9-16B | 577 | 1,035 | 55.7% |
+| 17-32B | 381 | 1,373 | 27.7% |
+| 33-64B | 624 | 3,583 | 17.4% |
+| 65-128B | 310 | 4,725 | 6.6% |
+| 129-256B | 42 | 3,105 | 1.4% |
+| 257-512B | 18 | 2,273 | 0.8% |
+| 513B+ | 65 | 2,243 | 2.9% |
 
 ## DOL Section Match (2026-03-24)
 

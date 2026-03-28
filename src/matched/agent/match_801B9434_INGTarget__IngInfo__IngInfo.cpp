@@ -1,14 +1,12 @@
 class INGTarget {
 public:
     struct IngInfo {
-        int m_field4;
-        int m_field0;
+        void *m_ptr1;
+        void *m_ptr2;
 
         IngInfo();
     };
 };
 
-INGTarget::IngInfo::IngInfo() {
-    m_field4 = 0;
-    m_field0 = 0;
+INGTarget::IngInfo::IngInfo() : m_ptr2(0), m_ptr1(0) {
 }

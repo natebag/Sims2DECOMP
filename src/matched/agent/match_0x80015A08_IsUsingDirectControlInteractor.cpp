@@ -1,7 +1,5 @@
-/* {anonymous}::IsUsingDirectControlInteractor(int) at 0x80015A08 (36B) */
+int IsUsingSpecifiedInteractor(int player, int type);
 
-int IsUsingSpecifiedInteractor(int, int);
-
-static int IsUsingDirectControlInteractor(int param) {
-    return IsUsingSpecifiedInteractor(param, 0);
+int IsUsingDirectControlInteractor(int player) {
+    return IsUsingSpecifiedInteractor(player, 0);
 }

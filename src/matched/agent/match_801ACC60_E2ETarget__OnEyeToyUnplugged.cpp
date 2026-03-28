@@ -1,9 +1,9 @@
 class E2ETarget {
 public:
-    void SpawnNoEyeToyDialogBox();
-    void OnEyeToyUnplugged();
+    void SpawnNoEyeToyDialogBox(void);
+    void OnEyeToyUnplugged(void);
 };
 
-void E2ETarget::OnEyeToyUnplugged() {
+void E2ETarget::OnEyeToyUnplugged(void) {
     SpawnNoEyeToyDialogBox();
 }

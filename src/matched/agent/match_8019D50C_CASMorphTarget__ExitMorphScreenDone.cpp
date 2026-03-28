@@ -1,11 +1,11 @@
 class CASMorphTarget {
 public:
     char _pad[0x1C0];
-    int m_morphScreenActive;
+    int m_exitDone;
 
     void ExitMorphScreenDone(void);
 };
 
 void CASMorphTarget::ExitMorphScreenDone(void) {
-    m_morphScreenActive = 0;
+    m_exitDone = 0;
 }

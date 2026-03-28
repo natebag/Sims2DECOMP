@@ -7,5 +7,5 @@ public:
 };
 
 int HUDTarget::HideInProgress(void) const {
-    return !(m_hideState ^ 1);
+    return m_hideState == 1;
 }
