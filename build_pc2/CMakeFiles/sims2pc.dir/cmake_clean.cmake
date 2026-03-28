@@ -97,6 +97,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.o.d"
   "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o"
   "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o.d"
+  "CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o"
+  "CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o.d"
   "CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o"
   "CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o.d"
   "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o"

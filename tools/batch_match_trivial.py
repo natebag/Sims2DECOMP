@@ -54,12 +54,17 @@ def parse_map():
                     funcs.append((addr, name))
     return funcs
 
-def classify_function(dol, addr):
-    """Classify an 8-byte function and return (pattern, C++ code, class_name) or None."""
+def classify_function(dol, addr, size=8):
+    """Classify a trivial function and return (pattern, C++ code, class_name) or None."""
     foff = vaddr_to_offset(dol, addr)
     if foff is None:
         return None
-    raw = dol[foff:foff+8]
+    raw = dol[foff:foff+size]
+
+    if size == 12:
+        return classify_12byte(raw)
+
+    # 8-byte functions below
     w1 = struct.unpack(">I", raw[0:4])[0]
     w2 = struct.unpack(">I", raw[4:8])[0]
 
@@ -144,6 +149,66 @@ def classify_function(dol, addr):
 
     return None  # not a trivially matchable pattern
 
+def classify_12byte(raw):
+    """Classify a 12-byte function (3 instructions)."""
+    w1 = struct.unpack(">I", raw[0:4])[0]
+    w2 = struct.unpack(">I", raw[4:8])[0]
+    w3 = struct.unpack(">I", raw[8:12])[0]
+
+    if w3 != 0x4E800020:  # must end with blr
+        return None
+
+    o1 = (w1 >> 26) & 0x3F
+    d1 = (w1 >> 21) & 0x1F
+    a1 = (w1 >> 16) & 0x1F
+    imm1 = w1 & 0xFFFF
+    if imm1 >= 0x8000: imm1 -= 0x10000
+
+    o2 = (w2 >> 26) & 0x3F
+    d2 = (w2 >> 21) & 0x1F
+    a2 = (w2 >> 16) & 0x1F
+    imm2 = w2 & 0xFFFF
+    if imm2 >= 0x8000: imm2 -= 0x10000
+
+    # li rX, imm; stw rX, off(r3); blr → this->field = constant
+    if o1 == 14 and a1 == 0 and o2 == 36 and a2 == 3 and d2 == d1:
+        return ("12_li_stw", f"*(int*)((char*)this + 0x{imm2 & 0xFFFF:X}) = {imm1};", "member")
+
+    # li r0, imm; stb r0, off(r3); blr → this->byte_field = constant
+    if o1 == 14 and a1 == 0 and d1 == 0 and o2 == 38 and a2 == 3 and d2 == 0:
+        return ("12_li_stb", f"*(unsigned char*)((char*)this + 0x{imm2 & 0xFFFF:X}) = {imm1};", "member")
+
+    # lwz r3, off(r3); lwz r3, off2(r3); blr → double dereference
+    if o1 == 32 and d1 == 3 and a1 == 3 and o2 == 32 and d2 == 3 and a2 == 3:
+        return ("12_double_deref", f"return *(int*)((char*)(*(int*)((char*)this + 0x{imm1 & 0xFFFF:X})) + 0x{imm2 & 0xFFFF:X});", None)
+
+    # stw r4, off(r3); stw r5, off2(r3); blr → set two fields
+    if o1 == 36 and d1 == 4 and a1 == 3 and o2 == 36 and d2 == 5 and a2 == 3:
+        return ("12_store_two", f"*(int*)((char*)this + 0x{imm1 & 0xFFFF:X}) = p1; *(int*)((char*)this + 0x{imm2 & 0xFFFF:X}) = p2;", "member")
+
+    # stw r4, off(r3); li r3, N; blr → set field, return constant
+    if o1 == 36 and d1 == 4 and a1 == 3 and o2 == 14 and a2 == 0 and d2 == 3:
+        return ("12_store_retconst", f"*(int*)((char*)this + 0x{imm1 & 0xFFFF:X}) = p; return {imm2};", "member")
+
+    # stfs f1, off(r3); stfs f2, off2(r3); blr → set two float fields
+    if o1 == 52 and d1 == 1 and a1 == 3 and o2 == 52 and d2 == 2 and a2 == 3:
+        return ("12_store_two_float", f"*(float*)((char*)this + 0x{imm1 & 0xFFFF:X}) = p1; *(float*)((char*)this + 0x{imm2 & 0xFFFF:X}) = p2;", "member")
+
+    # lwz rX, off(r3); lwz r3, off2(rX); blr — dereference through intermediate
+    if o1 == 32 and a1 == 3 and d1 != 3 and o2 == 32 and d2 == 3 and a2 == d1:
+        return ("12_deref_field", f"return *(int*)((char*)(*(int*)((char*)this + 0x{imm1 & 0xFFFF:X})) + 0x{imm2 & 0xFFFF:X});", None)
+
+    # lwz rX, off(r3); lfs f1, off2(rX); blr — load float through pointer
+    if o1 == 32 and a1 == 3 and o2 == 48 and d2 == 1 and a2 == d1:
+        return ("12_deref_float", f"return *(float*)((char*)(*(int*)((char*)this + 0x{imm1 & 0xFFFF:X})) + 0x{imm2 & 0xFFFF:X});", None)
+
+    # lwz rX, off(r3); addi r3, rX, imm; blr — return pointer to sub-struct
+    if o1 == 32 and a1 == 3 and o2 == 14 and d2 == 3 and a2 == d1:
+        return ("12_deref_ptr", f"return (int)((char*)(*(int*)((char*)this + 0x{imm1 & 0xFFFF:X})) + 0x{imm2 & 0xFFFF:X});", None)
+
+    return None
+
+
 def parse_func_name(full_name):
     """Parse 'ClassName::MethodName(params)' into components."""
     # Remove trailing const
@@ -199,6 +264,21 @@ void {method_name}({params}) {{
     elif "mr_r3_r5" in pattern:
         ret_type = "int"
         param_decl = "int p1, int p2"
+    elif "store_two_float" in pattern:
+        ret_type = "void"
+        param_decl = "float p1, float p2"
+    elif "store_two" in pattern:
+        ret_type = "void"
+        param_decl = "int p1, int p2"
+    elif "store_retconst" in pattern or "12_store_retconst" in pattern:
+        ret_type = "int"
+        param_decl = "int p"
+    elif "12_li_st" in pattern:
+        ret_type = "void"
+        param_decl = ""
+    elif "12_double_deref" in pattern or "12_deref" in pattern:
+        ret_type = "float" if "float" in pattern else "int"
+        param_decl = ""
     else:
         ret_type = "int" if "return" in code else "void"
         param_decl = "int p" if "store" in pattern else ""
@@ -230,27 +310,40 @@ def main():
     verify = "--verify" in sys.argv
 
     dol = read_dol()
-    funcs = parse_map()
+    funcs8 = []
+    funcs12 = []
+    with open(MAP_PATH, "r", errors="replace") as f:
+        for line in f:
+            m = re.match(r'([0-9A-Fa-f]{8})\s+([0-9A-Fa-f]{8})\s+\d+\s+(.*)', line)
+            if m:
+                addr = int(m.group(1), 16)
+                size = int(m.group(2), 16)
+                name = m.group(3).strip()
+                if 0x80003100 <= addr < 0x80600000:
+                    if size == 8: funcs8.append((addr, name, 8))
+                    elif size == 12: funcs12.append((addr, name, 12))
 
     matchable = []
     skipped = 0
 
-    for addr, name in funcs:
-        result = classify_function(dol, addr)
+    for addr, name, size in funcs8 + funcs12:
+        result = classify_function(dol, addr, size)
         if result:
             pattern, code, _ = result
-            matchable.append((addr, name, pattern, code))
+            matchable.append((addr, name, pattern, code, size))
         else:
             skipped += 1
 
     print(f"Matchable: {len(matchable)} | Skipped: {skipped}")
 
     if dry_run:
-        for addr, name, pattern, code in matchable[:20]:
-            print(f"  0x{addr:08X} [{pattern:25s}] {name}")
+        for item in matchable[:30]:
+            addr, name, pattern, code = item[0], item[1], item[2], item[3]
+            sz = item[4] if len(item) > 4 else 8
+            print(f"  0x{addr:08X} ({sz:2d}B) [{pattern:25s}] {name}")
             print(f"    -> {code}")
-        if len(matchable) > 20:
-            print(f"  ... and {len(matchable) - 20} more")
+        if len(matchable) > 30:
+            print(f"  ... and {len(matchable) - 30} more")
         return
 
     if generate:
@@ -259,7 +352,9 @@ def main():
         verified = 0
         failed = 0
 
-        for addr, name, pattern, code in matchable:
+        for item in matchable:
+            addr, name, pattern, code = item[0], item[1], item[2], item[3]
+            size = item[4] if len(item) > 4 else 8
             cpp_code = generate_cpp(addr, name, pattern, code)
             if cpp_code is None:
                 continue
@@ -273,7 +368,7 @@ def main():
 
             if verify:
                 result = subprocess.run(
-                    [BASH_EXE, VERIFY_SCRIPT, filename, f"0x{addr:08X}", "8"],
+                    [BASH_EXE, VERIFY_SCRIPT, filename, f"0x{addr:08X}", str(size)],
                     capture_output=True, text=True, timeout=30
                 )
                 if result.returncode == 0:

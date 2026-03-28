@@ -58,6 +58,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/f/coding/Decompiles/Sims 2/src/decomp_cpp/xl_batch_4.cpp" "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_4.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_4.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/arc_reader.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/audio_bridge.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o.d"
+  "/f/coding/Decompiles/Sims 2/src/platform/pc/bigf_reader.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/clib_wrappers.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/ea_texture.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o.d"
   "/f/coding/Decompiles/Sims 2/src/platform/pc/game_bootstrap.cpp" "CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o" "gcc" "CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o.d"

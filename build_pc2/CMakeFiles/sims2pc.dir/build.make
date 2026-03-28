@@ -772,10 +772,24 @@ CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.s"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/f/coding/Decompiles/Sims 2/src/platform/pc/audio_bridge.cpp" -o CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.s
 
+CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o: CMakeFiles/sims2pc.dir/flags.make
+CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/bigf_reader.cpp
+CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o"
+	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/bigf_reader.cpp"
+
+CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.i"
+	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/f/coding/Decompiles/Sims 2/src/platform/pc/bigf_reader.cpp" > CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.i
+
+CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.s"
+	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/f/coding/Decompiles/Sims 2/src/platform/pc/bigf_reader.cpp" -o CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.s
+
 CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/c_linkage_stubs.c
 CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o"
 	/opt/devkitpro/msys2/usr/bin/cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/c_linkage_stubs.c"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.i: cmake_force
@@ -789,7 +803,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/clib_wrappers.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -fpermissive -Wno-builtin-declaration-mismatch -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/clib_wrappers.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.i: cmake_force
@@ -803,7 +817,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/ea_texture.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/ea_texture.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.i: cmake_force
@@ -817,7 +831,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/game_bootstrap.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/game_bootstrap.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.i: cmake_force
@@ -831,7 +845,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/game_bootstrap.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/gc_texture_decode.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/gc_texture_decode.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.i: cmake_force
@@ -845,7 +859,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gc_texture_decode.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/gl_renderer.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/gl_renderer.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.i: cmake_force
@@ -859,7 +873,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gl_renderer.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_gl_impl.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_gl_impl.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.i: cmake_force
@@ -873,7 +887,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gx_gl_impl.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_state_bridge.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_state_bridge.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.i: cmake_force
@@ -887,7 +901,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gx_state_bridge.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_stubs.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_stubs.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.i: cmake_force
@@ -901,7 +915,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gx_stubs.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_texture_bridge.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_texture_bridge.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.i: cmake_force
@@ -915,7 +929,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gx_texture_bridge.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/gx_vertex_bridge.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/gx_vertex_bridge.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.i: cmake_force
@@ -929,7 +943,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/gx_vertex_bridge.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/input_bridge.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/input_bridge.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.i: cmake_force
@@ -943,7 +957,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/input_bridge.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/missing_stubs.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -fpermissive -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/missing_stubs.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.i: cmake_force
@@ -957,7 +971,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/missing_stubs.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/os_stubs.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/os_stubs.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.i: cmake_force
@@ -971,7 +985,7 @@ CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.s: cmake_force
 CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o: CMakeFiles/sims2pc.dir/flags.make
 CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o: /f/coding/Decompiles/Sims\ 2/src/platform/pc/tpl_parser.cpp
 CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o: CMakeFiles/sims2pc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o"
 	/opt/devkitpro/msys2/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o -MF CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o.d -o CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o -c "/f/coding/Decompiles/Sims 2/src/platform/pc/tpl_parser.cpp"
 
 CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.i: cmake_force
@@ -1034,6 +1048,7 @@ sims2pc_OBJECTS = \
 "CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_4.cpp.o" \
 "CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.o" \
 "CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o" \
+"CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o" \
 "CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o" \
 "CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o" \
 "CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o" \
@@ -1103,6 +1118,7 @@ sims2pc.exe: CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_3.cpp.o
 sims2pc.exe: CMakeFiles/sims2pc.dir/src/decomp_cpp/xl_batch_4.cpp.o
 sims2pc.exe: CMakeFiles/sims2pc.dir/src/platform/pc/arc_reader.cpp.o
 sims2pc.exe: CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.o
+sims2pc.exe: CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o
 sims2pc.exe: CMakeFiles/sims2pc.dir/src/platform/pc/c_linkage_stubs.c.o
 sims2pc.exe: CMakeFiles/sims2pc.dir/src/platform/pc/clib_wrappers.cpp.o
 sims2pc.exe: CMakeFiles/sims2pc.dir/src/platform/pc/ea_texture.cpp.o
@@ -1120,7 +1136,7 @@ sims2pc.exe: CMakeFiles/sims2pc.dir/src/platform/pc/os_stubs.cpp.o
 sims2pc.exe: CMakeFiles/sims2pc.dir/src/platform/pc/tpl_parser.cpp.o
 sims2pc.exe: CMakeFiles/sims2pc.dir/build.make
 sims2pc.exe: CMakeFiles/sims2pc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_66) "Linking CXX executable sims2pc.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_67) "Linking CXX executable sims2pc.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sims2pc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1305,6 +1305,30 @@ src/platform/pc/audio_bridge.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/audio_bridge.cpp.s
 .PHONY : src/platform/pc/audio_bridge.cpp.s
 
+src/platform/pc/bigf_reader.o: src/platform/pc/bigf_reader.cpp.o
+.PHONY : src/platform/pc/bigf_reader.o
+
+# target to build an object file
+src/platform/pc/bigf_reader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.o
+.PHONY : src/platform/pc/bigf_reader.cpp.o
+
+src/platform/pc/bigf_reader.i: src/platform/pc/bigf_reader.cpp.i
+.PHONY : src/platform/pc/bigf_reader.i
+
+# target to preprocess a source file
+src/platform/pc/bigf_reader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.i
+.PHONY : src/platform/pc/bigf_reader.cpp.i
+
+src/platform/pc/bigf_reader.s: src/platform/pc/bigf_reader.cpp.s
+.PHONY : src/platform/pc/bigf_reader.s
+
+# target to generate assembly for a file
+src/platform/pc/bigf_reader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sims2pc.dir/build.make CMakeFiles/sims2pc.dir/src/platform/pc/bigf_reader.cpp.s
+.PHONY : src/platform/pc/bigf_reader.cpp.s
+
 src/platform/pc/c_linkage_stubs.o: src/platform/pc/c_linkage_stubs.c.o
 .PHONY : src/platform/pc/c_linkage_stubs.o
 
@@ -1845,6 +1869,9 @@ help:
 	@echo "... src/platform/pc/audio_bridge.o"
 	@echo "... src/platform/pc/audio_bridge.i"
 	@echo "... src/platform/pc/audio_bridge.s"
+	@echo "... src/platform/pc/bigf_reader.o"
+	@echo "... src/platform/pc/bigf_reader.i"
+	@echo "... src/platform/pc/bigf_reader.s"
 	@echo "... src/platform/pc/c_linkage_stubs.o"
 	@echo "... src/platform/pc/c_linkage_stubs.i"
 	@echo "... src/platform/pc/c_linkage_stubs.s"
