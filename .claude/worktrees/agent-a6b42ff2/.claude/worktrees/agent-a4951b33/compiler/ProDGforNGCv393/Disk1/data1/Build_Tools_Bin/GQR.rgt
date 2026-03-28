@@ -1,0 +1,9 @@
+Graphics Quantization Registers
+GQR0=%8<x,gqr0,>  LD_SCALE=%2!<2d24:6,gqr0,> LD_TYPE=%6!<s16:3,gqr0,float;?;?;?;UINT8;UINT16;INT8;INT16>    ST_SCALE=%2!<2d8:6,gqr0,> ST_TYPE=%6!<s0:3,gqr0,float;?;?;?;UINT8;UINT16;INT8;INT16>
+GQR1=%8<x,gqr1,>  LD_SCALE=%2!<2d24:6,gqr1,> LD_TYPE=%6!<s16:3,gqr1,float;?;?;?;UINT8;UINT16;INT8;INT16>    ST_SCALE=%2!<2d8:6,gqr1,> ST_TYPE=%6!<s0:3,gqr1,float;?;?;?;UINT8;UINT16;INT8;INT16>
+GQR2=%8<x,gqr2,>  LD_SCALE=%2!<2d24:6,gqr2,> LD_TYPE=%6!<s16:3,gqr2,float;?;?;?;UINT8;UINT16;INT8;INT16>    ST_SCALE=%2!<2d8:6,gqr2,> ST_TYPE=%6!<s0:3,gqr2,float;?;?;?;UINT8;UINT16;INT8;INT16>
+GQR3=%8<x,gqr3,>  LD_SCALE=%2!<2d24:6,gqr3,> LD_TYPE=%6!<s16:3,gqr3,float;?;?;?;UINT8;UINT16;INT8;INT16>    ST_SCALE=%2!<2d8:6,gqr3,> ST_TYPE=%6!<s0:3,gqr3,float;?;?;?;UINT8;UINT16;INT8;INT16>
+GQR4=%8<x,gqr4,>  LD_SCALE=%2!<2d24:6,gqr4,> LD_TYPE=%6!<s16:3,gqr4,float;?;?;?;UINT8;UINT16;INT8;INT16>    ST_SCALE=%2!<2d8:6,gqr4,> ST_TYPE=%6!<s0:3,gqr4,float;?;?;?;UINT8;UINT16;INT8;INT16>
+GQR5=%8<x,gqr5,>  LD_SCALE=%2!<2d24:6,gqr5,> LD_TYPE=%6!<s16:3,gqr5,float;?;?;?;UINT8;UINT16;INT8;INT16>    ST_SCALE=%2!<2d8:6,gqr5,> ST_TYPE=%6!<s0:3,gqr5,float;?;?;?;UINT8;UINT16;INT8;INT16>
+GQR6=%8<x,gqr6,>  LD_SCALE=%2!<2d24:6,gqr6,> LD_TYPE=%6!<s16:3,gqr6,float;?;?;?;UINT8;UINT16;INT8;INT16>    ST_SCALE=%2!<2d8:6,gqr6,> ST_TYPE=%6!<s0:3,gqr6,float;?;?;?;UINT8;UINT16;INT8;INT16>
+GQR7=%8<x,gqr7,>  LD_SCALE=%2!<2d24:6,gqr7,> LD_TYPE=%6!<s16:3,gqr7,float;?;?;?;UINT8;UINT16;INT8;INT16>    ST_SCALE=%2!<2d8:6,gqr7,> ST_TYPE=%6!<s0:3,gqr7,float;?;?;?;UINT8;UINT16;INT8;INT16>

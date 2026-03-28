@@ -1,0 +1,39 @@
+[Enigma Virtual Box]
+signature=2E 65 6E 69 67 6D 61 31
+ep_only=false
+
+[SuperDAT]
+signature=E8 D6 87 00 00 E9 16 FE FF FF
+ep_only = true
+
+[InstallShield AFW]
+signature=55 8B EC 6A FF 68 18 33 41 00 68 80 BA 40 00 64 A1 00 00 00 00 50 64 89 25 00 00 00 00 83 EC 58 53 56 57 89 65 E8 FF 15 E8 31 41 00 33 D2 8A D4 89 15 5C 63 41 00 8B C8 81 E1 FF 00 00 00 89 0D 58 63 41 00 C1 E1 08 03 CA 89 0D 54 63 41 00 C1 E8 10 A3 50 63 41 00 33 F6 56 E8 E0 00 00 00 59 85 C0 75 08
+ep_only=true
+
+[InstallShield Stub 2003]
+signature=55 8B EC 6A FF 68 C8 3B 42 00 68 ?? B8 41 00 64 A1 00 00 00 00 50 64 89 25 00 00 00 00 83 EC 58 53 56 57 89 65 E8 FF 15 C0 31 42 00 33 D2 8A D4 89 15 ?? EB 42 00 8B C8 81 E1 FF 00 00 00 89 0D ?? EB 42 00 C1 E1 08 03 CA 89 0D ?? EB 42 00 C1 E8 10 A3 ?? EB 42 00 6A 01 E8 C0 1C 00 00 59 85 C0 75 08 6A
+ep_only=true
+
+[InstallShield Custom - additional]
+signature=55 8B EC 83 EC 44 56 FF 15 ?? ?? 41 00 8B F0 85 F6 75 08 6A FF FF 15 ?? ?? 41 00 8A 06 57 8B 3D ?? ?? 41 00 3C 22 75 1B 56 FF D7 8B F0 8A 06 3C 22 74 04 84 C0 75 F1 80 3E 22 75 15 56 FF D7 8B
+ep_only=true
+
+[InstallShield 3.x Custom - additional]
+signature=64 A1 00 00 00 00 55 8B EC 6A FF 68 00 A0 40 00 68 34 76 40 00 50 64 89 25 00 00 00 00 83 EC 60 53 56 57 89 65 E8 FF 15 8C E3 40 00 A3 70 B1 40 00 33 C0 A0 71 B1 40 00 A3 7C B1 40 00 A1 70 B1
+ep_only=true
+
+[InstallShield 2000 - additional]
+signature=55 8B EC 6A FF 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? 64 A1 ?? ?? ?? ?? 50 64 89 25 ?? ?? ?? ?? 83 C4 ?? 53 56 57
+ep_only=true
+
+[InstallShield Archive] // Hint = $FILE_START]
+signature=2A AB 79 D8
+ep_only=true
+
+[InstallShield Cabinet Archive] // Hint = $FILE_START]
+signature=49 53 63
+ep_only=true
+
+[Compiled InstallSHIELD Installation Script] // Hint = $FILE_START]
+signature=B8 C9 0C 00
+ep_only=true

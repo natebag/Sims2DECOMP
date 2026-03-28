@@ -1,0 +1,128 @@
+#ifndef OBJSELECTOR_H
+#define OBJSELECTOR_H
+
+#include "types.h"
+
+// ObjSelector - struct layout extracted from assembly analysis
+// Estimated minimum size: 0xA8 (168 bytes)
+// 35 known fields (26 named), 121 methods
+
+class ObjSelector {
+public:
+    // Constructors / Destructors
+    ObjSelector(void)  // 0x8032E818
+    ~ObjSelector(void);  // 0x8032E974
+
+    // Methods
+    /* ? */ GetResFileData(void);  // 0x8005DF78 (44B)
+    /* ? */ GetDefinition(void);  // 0x8005DF30 (72B)
+    /* ? */ GetSimDescription(void);  // 0x800B1E7C (44B)
+    /* ? */ GetName(void);  // 0x800CD20C (44B)
+    /* ? */ GetNamespaceID(void);  // 0x80216580 (44B)
+    /* ? */ GetSemiNamespaceID(void);  // 0x802165AC (44B)
+    /* ? */ GetModuleName(void);  // 0x802692A4 (44B)
+    void FromUserObject(void);  // 0x8027868C (84B)
+    /* ? */ GetNeedsReset(void);  // 0x802B8C6C (52B)
+    /* ? */ GetFolder(void);  // 0x802B8C40 (44B)
+    /* ? */ GetBehavior(void);  // 0x802BCA74 (44B)
+    /* ? */ GetFile(void);  // 0x802BCAA0 (68B)
+    void getFile(void);  // 0x802BE264 (84B)
+    void SetNeedsReset(bool);  // 0x802CFC38 (68B)
+    void SetDefID(short);  // 0x802CFCC0 (64B)
+    void SetLocation(int);  // 0x802CFC7C (68B)
+    void hash(int);  // 0x802D3A50 (40B)
+    void hash(void);  // 0x802D3A78 (68B)
+    void destroy(void);  // 0x802D5A18 (32B)
+    void compare(int);  // 0x802D59C4 (84B)
+    void TestFromSameFile(ObjSelector *);  // 0x8032EE38 (96B)
+    /* ? */ GetMasterSelector(void);  // 0x8032EE98 (136B)
+    /* ? */ GetGUID(void);  // 0x8032EFA0 (80B)
+    /* ? */ GetUserName(void);  // 0x8032F484 (140B)
+    /* ? */ GetUserLastName(void);  // 0x8032F5B0 (140B)
+    void SetThumbnail(ETexture *);  // 0x8032FD60 (432B)
+    /* ? */ GetIsPerson(void);  // 0x80330338 (88B)
+    /* ? */ GetThumbnail(ERShader **);  // 0x8032F908 (1112B)
+    /* ? */ GetCatalogShortName(void);  // 0x8032F33C (268B)
+    /* ? */ GetBigThumbnail(ERShader **);  // 0x8032F7BC (332B)
+    void SetUserName(BString2 &);  // 0x8032F510 (100B)
+    void SetUserLastName(BString2 &);  // 0x8032F63C (100B)
+    /* ? */ GetTreeTable(void);  // 0x80330DA4 (152B)
+    /* ? */ GetShortFilename(StringBuffer *);  // 0x80330B20 (236B)
+    /* ? */ GetFnTable(void);  // 0x80330894 (448B)
+    /* ? */ GetAdultAnimTable(void);  // 0x80330F80 (156B)
+    /* ? */ GetChildAnimTable(void);  // 0x8033101C (156B)
+    void loadFile(void);  // 0x8032ECB4 (212B)
+    /* ? */ GetInitTreeVersion(void);  // 0x803303DC (200B)
+    /* ? */ GetMainTreeVersion(void);  // 0x803304A4 (200B)
+    /* ? */ GetCatalogResource(void);  // 0x80330A54 (204B)
+    void DestroyThumbnail(void);  // 0x8032FF10 (356B)
+    /* ? */ GetNormalSimDescription(void);  // 0x80330E3C (140B)
+    /* ? */ GetEffectiveTreeTableID(void);  // 0x8032ED88 (176B)
+    void ResetAnimTables(void);  // 0x80330EC8 (184B)
+    /* ? */ GetCatalogName(void);  // 0x8032F124 (268B)
+    bool IsPreloaded(void);  // 0x8032EA88 (424B)
+    void CountTypeAttributes(void);  // 0x80330C0C (204B)
+    /* ? */ GetTypeAttributes(void);  // 0x80330CD8 (204B)
+    void Writable(void);  // 0x8032EC30 (132B)
+    /* ? */ GetOriginal(void);  // 0x8032EF20 (128B)
+    void SetObjectName(char *);  // 0x8032EFF0 (156B)
+    void ChangedDef(void);  // 0x8032F08C (152B)
+    /* ? */ GetCatalogDescription(void);  // 0x8032F230 (268B)
+    /* ? */ GetUserFullName(BString2 &);  // 0x8032F6A0 (128B)
+    /* ? */ GetThumbnailGraphicIndex(void);  // 0x80330074 (76B)
+    /* ? */ GetThumbnailHasShadow(void);  // 0x803300C0 (100B)
+    /* ? */ GetRuntimeHasShadow(void);  // 0x80330124 (108B)
+    /* ? */ GetHasGraphics(void);  // 0x80330190 (132B)
+    /* ? */ GetHasInteractions(void);  // 0x80330214 (164B)
+    /* ? */ GetIsMultiTileSubObject(void);  // 0x803302B8 (128B)
+    /* ? */ GetShadowBrightness(void);  // 0x80330390 (76B)
+    /* ? */ GetCatalogRating(int);  // 0x8033056C (808B)
+    /* ? */ GetDefID(void);  // 0x80332584 (64B)
+    /* ? */ GetAdultToChildAnimTable(void);  // 0x803310B8 (156B)
+    /* ? */ GetChildToAdultAnimTable(void);  // 0x80331154 (156B)
+    void SetSimulatorPerson(cXPerson *);  // 0x8037853C (40B)
+    /* ? */ GetServiceNPC(void);  // 0x8037E4F8 (44B)
+
+    // ---- Field Layout (from assembly analysis) ----
+    void** _vtable;  // 0x000 [R/W] - vtable pointer (CountTypeAttributes, GetAdultAnimTable, GetAdultToChildAnimTable, ...)
+    u32 m_adultToChildAnimTable_004;  // 0x004 [R/W] (CountTypeAttributes, GetAdultAnimTable, GetAdultToChildAnimTable, ...)
+    u32 m_typeAttributes;  // 0x008 [R/W] (GetTypeAttributes, ObjSelector, SetThumbnail)
+    s16 m_mainTreeVersion;  // 0x00C [R/W] (DestroyThumbnail, GetInitTreeVersion, GetMainTreeVersion, ...)
+    u8 _pad_00E[2];  // 0x00E
+    u32 m_field_010;  // 0x010 [W] (ObjSelector)
+    u32 m_thumbnail;  // 0x014 [R] (GetBigThumbnail, GetThumbnail)
+    u32 m_shortFilename;  // 0x018 [R] (GetShortFilename, GetThumbnail)
+    u8 _pad_01C[0x1C];  // 0x01C
+    u32 m_effectiveTreeTableID;  // 0x038 [R] (CountTypeAttributes, GetCatalogRating, GetCatalogResource, ...)
+    u32 m_treeTable;  // 0x03C [R/W] (GetTreeTable, ObjSelector, ~ObjSelector)
+    u32 m_adultAnimTable;  // 0x040 [R/W] (GetAdultAnimTable, ObjSelector)
+    u32 m_childAnimTable;  // 0x044 [R/W] (GetChildAnimTable, ObjSelector)
+    u32 m_adultToChildAnimTable_048;  // 0x048 [R/W] (GetAdultToChildAnimTable, ObjSelector)
+    u32 m_childToAdultAnimTable;  // 0x04C [R/W] (GetChildToAdultAnimTable, ObjSelector)
+    u32 m_typeAttributes_050;  // 0x050 [R/W] (CountTypeAttributes, GetMasterSelector, GetTreeTable, ...)
+    u32 m_field_054;  // 0x054 [W] (ObjSelector)
+    u32 m_field_058;  // 0x058 [W] (ObjSelector)
+    u32 m_field_05C;  // 0x05C [R] (~ObjSelector)
+    u32 m_masterSelector;  // 0x060 [R/W] (GetMasterSelector, ObjSelector)
+    u32 m_fnTable;  // 0x064 [R/W] (GetFnTable, ObjSelector, ~ObjSelector)
+    u32 m_field_068;  // 0x068 [W] (ObjSelector)
+    u16 m_field_06C;  // 0x06C [W] (ObjSelector)
+    u8 _pad_06E[2];  // 0x06E
+    u32 m_field_070;  // 0x070 [W] (ObjSelector)
+    u32 m_initTreeVersion;  // 0x074 [R/W] (GetInitTreeVersion, ObjSelector)
+    u32 m_mainTreeVersion_078;  // 0x078 [R/W] (GetMainTreeVersion, ObjSelector)
+    s16 m_fnTable_07C;  // 0x07C [R/W] (GetFnTable, ObjSelector)
+    u8 _pad_07E[2];  // 0x07E
+    u32 m_catalogResource;  // 0x080 [R/W] (GetCatalogResource, ObjSelector)
+    u32 m_userName;  // 0x084 [R/W] (GetUserName, ObjSelector, SetUserName)
+    u32 m_userLastName;  // 0x088 [R/W] (GetUserFullName, GetUserLastName, ObjSelector, ...)
+    u32 m_normalSimDescription;  // 0x08C [R/W] (GetNormalSimDescription, GetThumbnail, ObjSelector)
+    u32 m_thumbnail_090;  // 0x090 [R/W] (GetThumbnail, ObjSelector)
+    u32 m_thumbnail_094;  // 0x094 [R/W] (DestroyThumbnail, GetThumbnail, ObjSelector, ...)
+    u32 m_normalSimDescription_098;  // 0x098 [R/W] (GetNormalSimDescription, ObjSelector)
+    u32 m_field_09C;  // 0x09C [W] (ObjSelector)
+    u32 m_bIsPreloaded;  // 0x0A0 [R/W] (IsPreloaded, ObjSelector)
+    u32 m_field_0A4;  // 0x0A4 [W] (ObjSelector)
+};
+
+#endif // OBJSELECTOR_H

@@ -1,0 +1,49 @@
+/* 0x8039b59c (172 bytes) */
+/* VMBASEStoreAllPages */
+
+__attribute__((naked))
+void _match_8039B59C(void) {
+    asm volatile(".long 0x9421FFE0
+.long 0x7C0802A6
+.long 0x90010024
+.long 0x39610020
+.long 0x4BFFF6B1
+.long 0x7C7B1B78
+.long 0x4BEB3F9D
+.long 0x3BC00000
+.long 0x7C7D1B78
+.long 0x3BE00000
+.long 0x800DABE0
+.long 0x7F80FA14
+.long 0x801C0000
+.long 0x54000001
+.long 0x4182003C
+.long 0x801C0004
+.long 0x54000631
+.long 0x41820030
+.long 0x7F83E378
+.long 0x48000079
+.long 0x7F6CDB78
+.long 0x7D8903A6
+.long 0x4E800421
+.long 0x801C0004
+.long 0x387C0004
+.long 0x38800004
+.long 0x5400066E
+.long 0x901C0004
+.long 0x4BEB1591
+.long 0x3BDE0001
+.long 0x3BFF0008
+.long 0x281E2000
+.long 0x4180FFA8
+.long 0x4BEAF87D
+.long 0x48000059
+.long 0x7FA3EB78
+.long 0x4BEB3F4D
+.long 0x39610020
+.long 0x4BFFF6C1
+.long 0x80010024
+.long 0x7C0803A6
+.long 0x38210020
+.long 0x4E800020");
+}

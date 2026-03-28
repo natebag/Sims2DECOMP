@@ -1,0 +1,23 @@
+# Sims 2 GameCube (G4ZE69) - SN Systems ProDG compiled
+# DVD release build from cm3-build22-NGC, 2005-09-12
+
+name: main
+object: extracted/sys/main.dol
+hash: d15b7be1396544a15728f25f732db63a7cfcc877
+
+symbols: config/symbols.txt
+splits: config/splits.txt
+
+# SN Systems compiler — NOT CodeWarrior
+# Do NOT set mw_comment_version
+
+# We have a complete symbol map from the disc
+symbols_known: true
+fill_gaps: false
+
+detect_objects: true
+detect_strings: true
+write_asm: true
+
+quick_analysis: false
+export_all: true

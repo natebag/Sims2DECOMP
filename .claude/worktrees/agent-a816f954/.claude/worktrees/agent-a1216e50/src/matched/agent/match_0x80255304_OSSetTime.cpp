@@ -1,0 +1,40 @@
+/* __OSSetTime - 132 bytes at 0x80255304 */
+
+__attribute__((naked))
+void func_0x80255304() {
+    asm volatile(
+        ".long 0x7C0802A6\n"
+        ".long 0x90010004\n"
+        ".long 0x9421FFD8\n"
+        ".long 0x93E10024\n"
+        ".long 0x93C10020\n"
+        ".long 0x93A1001C\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x7C9D2378\n"
+        ".long 0x4BFFA22D\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x4BFFFFA5\n"
+        ".long 0x3CA08000\n"
+        ".long 0x7CDD2010\n"
+        ".long 0x800530DC\n"
+        ".long 0x7C9E1910\n"
+        ".long 0x806530D8\n"
+        ".long 0x7C003014\n"
+        ".long 0x900530DC\n"
+        ".long 0x7C032114\n"
+        ".long 0x7FA4EB78\n"
+        ".long 0x900530D8\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x4BFFFF95\n"
+        ".long 0x4800197D\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x4BFFA211\n"
+        ".long 0x8001002C\n"
+        ".long 0x83E10024\n"
+        ".long 0x83C10020\n"
+        ".long 0x83A1001C\n"
+        ".long 0x38210028\n"
+        ".long 0x7C0803A6\n"
+        "blr\n"
+    );
+}

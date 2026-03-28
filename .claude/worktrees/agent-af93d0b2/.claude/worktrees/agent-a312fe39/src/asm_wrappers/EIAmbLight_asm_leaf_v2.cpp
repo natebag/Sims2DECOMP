@@ -1,0 +1,62 @@
+#include "types.h"
+#include "stub_classes.h"
+// Inline asm leaf matches for EIAmbLight (stub_classes.h)
+// 1 functions, 192 bytes
+
+// 0x80226B98 (192 bytes)
+// EIAmbLight::CalcLightOnPoint(EVec3 &, EVec3 &)
+__attribute__((noreturn))
+void EIAmbLight::CalcLightOnPoint(EVec3 &, EVec3 &) {
+    __asm__ __volatile__(
+        "stwu	1,-40(1)\n"
+        "mflr	0\n"
+        "stmw	29,28(1)\n"
+        "stw	0,44(1)\n"
+        "lis	9,-32704\n"
+        "addi	30,1,8\n"
+        "lfs	0,-7092(9)\n"
+        "mr	29,5\n"
+        "mr	31,3\n"
+        "stfs	0,8(30)\n"
+        "stfs	0,4(30)\n"
+        "stfs	0,8(1)\n"
+        "lwz	0,8(1)\n"
+        "lwz	9,4(30)\n"
+        "lwz	11,8(30)\n"
+        "stw	0,0(29)\n"
+        "stw	9,4(29)\n"
+        "stw	11,8(29)\n"
+        "lwz	9,0(31)\n"
+        "lha	3,376(9)\n"
+        "lwz	0,380(9)\n"
+        "add	3,31,3\n"
+        "mtlr	0\n"
+        "blrl\n"
+        "cmpwi	3,0\n"
+        "beq	.L_80226C44\n"
+        "addi	9,31,144\n"
+        "lfs	13,140(31)\n"
+        "lfs	0,8(9)\n"
+        "lfs	12,4(9)\n"
+        "lfs	11,144(31)\n"
+        "fmuls	0,0,13\n"
+        "fmuls	12,12,13\n"
+        "stfs	0,16(1)\n"
+        "fmuls	11,11,13\n"
+        "stfs	12,12(1)\n"
+        "stfs	11,8(1)\n"
+        "lwz	11,8(1)\n"
+        "lwz	0,8(30)\n"
+        "lwz	9,4(30)\n"
+        "stw	0,8(29)\n"
+        "stw	11,0(29)\n"
+        "stw	9,4(29)\n"
+        ".L_80226C44:\n"
+        "lwz	0,44(1)\n"
+        "mtlr	0\n"
+        "lmw	29,28(1)\n"
+        "addi	1,1,40\n"
+        "blr\n"
+    );
+}
+

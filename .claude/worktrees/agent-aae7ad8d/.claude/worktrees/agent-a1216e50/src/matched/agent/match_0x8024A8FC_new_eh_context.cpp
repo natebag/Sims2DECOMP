@@ -1,0 +1,41 @@
+/* new_eh_context - 136 bytes at 0x8024A8FC */
+
+__attribute__((naked))
+void func_0x8024A8FC() {
+    asm volatile(
+        ".long 0x9421FFF0\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x93E1000C\n"
+        ".long 0x90010014\n"
+        ".long 0x3FE08050\n"
+        ".long 0x801FEBC8\n"
+        ".long 0x2C000000\n"
+        ".long 0x4082001C\n"
+        ".long 0x3CA08040\n"
+        ".long 0x38600000\n"
+        ".long 0x38A503B8\n"
+        ".long 0x38800000\n"
+        ".long 0x4CC63182\n"
+        ".long 0x48003691\n"
+        ".long 0x801FEBC8\n"
+        ".long 0x38600018\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x4E800021\n"
+        ".long 0x7C7F1B79\n"
+        ".long 0x40820008\n"
+        ".long 0x4BFFFF45\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x38800000\n"
+        ".long 0x38A00018\n"
+        ".long 0x4CC63182\n"
+        ".long 0x4BFF8C85\n"
+        ".long 0x381F0010\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x901F0004\n"
+        ".long 0x80010014\n"
+        ".long 0x7C0803A6\n"
+        ".long 0x83E1000C\n"
+        ".long 0x38210010\n"
+        "blr\n"
+    );
+}

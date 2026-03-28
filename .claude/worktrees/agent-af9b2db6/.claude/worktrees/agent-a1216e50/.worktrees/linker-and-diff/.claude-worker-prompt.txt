@@ -1,0 +1,63 @@
+﻿You are working on the Sims 2 GameCube matching decompilation project.
+
+## Current State (Milestone 1: FOUNDATION - IN PROGRESS)
+- devkitPPC (GCC 15.2.0) is at F:\coding\Decompiles\Tools\devkitPro\devkitPPC
+- decomp-toolkit (dtk 1.8.3) is at F:\coding\Decompiles\Tools\dtk-windows-x86_64.exe
+- Ghidra 12.0.4 is at F:\coding\Decompiles\Tools\ghidra_12.0.4_PUBLIC
+- Python 3.14.3 is available
+- The DOL is at extracted/sys/main.dol (SHA1: d15b7be1396544a15728f25f732db63a7cfcc877)
+- The ELF with debug info is at extracted/files/u2_ngc_release_dvd.elf
+- The CORRECT map file is extracted/files/u2_ngc_release_dvd.map (DVD build, matches DOL)
+  (NOT u2_ngc_release.map which is a different larger build)
+- 23,068 symbols extracted into config/symbols.txt (18,547 functions)
+- config/symbol_names.txt maps sanitized dtk names back to demangled C++ names
+- Makefile is set up with devkitPPC compile flags
+- tools/check_func.py can compile and compare individual functions
+- Original compiler was SN Systems ProDG (NOT CodeWarrior/Metrowerks)
+- Game built on cm3-build22-NGC, September 12, 2005
+
+## Key Rules
+- Read CLAUDE.md for full project conventions
+- Use EXACT symbol names from the map file
+- Every decompiled function must byte-match the original DOL
+- SN Systems compiled - GCC may not produce identical output for all functions
+- Document your work as you go
+
+## Working In a Worktree
+- You are in an isolated git worktree branch
+- Make commits to your branch as you complete work
+- The main session will merge your branch when you are done
+- Go full speed - you have full permissions
+## YOUR TASK: Create Linker Script and Verify Matching Pipeline
+
+Set up the end-to-end pipeline: compile -> link -> DOL -> diff against original.
+
+### Steps:
+1. Create config/ldscript.lcf - a PowerPC linker script that places sections at the correct addresses:
+   - .init at 0x80003100
+   - .text at 0x800034C0
+   - .ctors at 0x803CA900
+   - .dtors at 0x803CABA0
+   - .rodata at 0x803CAD20
+   - .data at 0x804235E0
+   - .bss at 0x8046E1E0
+   - .sdata at 0x804FD920
+   - .sbss at 0x804FF6C0
+   - .sdata2 at 0x80500600
+   Entry point: 0x80003100
+
+2. Test linking with a minimal stub:
+   - Write a tiny .s file with just a blr instruction
+   - Link it with the script
+   - Verify the output ELF has correct section addresses
+
+3. Test dtk dol diff:
+   - Link your stub into an ELF
+   - Run: F:\coding\Decompiles\Tools\dtk-windows-x86_64.exe dol diff config/sims2_gc.yml your_elf
+   - Verify dtk can compare functions
+
+4. Update the Makefile to use the linker script and add a working diff target
+
+5. Document the build process in docs/systems/build-system.md
+
+Commit your work as you complete each step.

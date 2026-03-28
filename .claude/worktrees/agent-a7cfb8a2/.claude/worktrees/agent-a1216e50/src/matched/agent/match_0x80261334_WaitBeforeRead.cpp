@@ -1,0 +1,42 @@
+/* WaitBeforeRead - 140 bytes at 0x80261334 */
+
+__attribute__((naked))
+void func_0x80261334() {
+    asm volatile(
+        ".long 0x7C0802A6\n"
+        ".long 0x3D20804A\n"
+        ".long 0x90010004\n"
+        ".long 0x38000001\n"
+        ".long 0x9421FFD0\n"
+        ".long 0x93E1002C\n"
+        ".long 0x3BE9BDC8\n"
+        ".long 0x3920FFFF\n"
+        ".long 0x93C10028\n"
+        ".long 0x3BC70000\n"
+        ".long 0x93A10024\n"
+        ".long 0x3BA80000\n"
+        ".long 0x901F0000\n"
+        ".long 0x38000000\n"
+        ".long 0x907F0004\n"
+        ".long 0x387F0040\n"
+        ".long 0x909F0008\n"
+        ".long 0x90BF000C\n"
+        ".long 0x90DF0010\n"
+        ".long 0x913F0014\n"
+        ".long 0x900DA504\n"
+        ".long 0x4BFEAB31\n"
+        ".long 0x3C608026\n"
+        ".long 0x38E30F40\n"
+        ".long 0x38DD0000\n"
+        ".long 0x38BE0000\n"
+        ".long 0x387F0040\n"
+        ".long 0x4BFEAD79\n"
+        ".long 0x80010034\n"
+        ".long 0x83E1002C\n"
+        ".long 0x83C10028\n"
+        ".long 0x83A10024\n"
+        ".long 0x38210030\n"
+        ".long 0x7C0803A6\n"
+        "blr\n"
+    );
+}

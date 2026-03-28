@@ -1,0 +1,41 @@
+/* _puts_r - 136 bytes at 0x80242738 */
+
+__attribute__((naked))
+void func_0x80242738() {
+    asm volatile(
+        ".long 0x9421FFC8\n"
+        ".long 0x7C0802A6\n"
+        ".long 0xBFA1002C\n"
+        ".long 0x9001003C\n"
+        ".long 0x7C9D2378\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x48001211\n"
+        ".long 0x7C671B78\n"
+        ".long 0x3D208040\n"
+        ".long 0x807E0008\n"
+        ".long 0x3929FD5C\n"
+        ".long 0x39070001\n"
+        ".long 0x38000001\n"
+        ".long 0x39610018\n"
+        ".long 0x39400002\n"
+        ".long 0x93A10018\n"
+        ".long 0x38810008\n"
+        ".long 0x91210020\n"
+        ".long 0x90010024\n"
+        ".long 0x91010010\n"
+        ".long 0x91610008\n"
+        ".long 0x9141000C\n"
+        ".long 0x90E1001C\n"
+        ".long 0x480050AD\n"
+        ".long 0x2C030000\n"
+        ".long 0x3860000A\n"
+        ".long 0x41820008\n"
+        ".long 0x3860FFFF\n"
+        ".long 0x8001003C\n"
+        ".long 0x7C0803A6\n"
+        ".long 0xBBA1002C\n"
+        ".long 0x38210038\n"
+        "blr\n"
+    );
+}

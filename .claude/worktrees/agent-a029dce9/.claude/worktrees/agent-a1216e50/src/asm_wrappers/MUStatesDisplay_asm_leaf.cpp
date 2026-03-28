@@ -1,0 +1,57 @@
+#include "types.h"
+#include "stub_classes.h"
+// Inline asm leaf matches for MUStatesDisplay (stub_classes.h)
+// 2 functions, 136 bytes
+
+// 0x8009320C (68 bytes)
+// MUStatesDisplay::Update(float)
+__attribute__((noreturn))
+void MUStatesDisplay::Update(float) {
+    __asm__ __volatile__(
+        "stwu	1,-8(1)\n"
+        "mflr	0\n"
+        "stw	0,12(1)\n"
+        "lwz	9,8(3)\n"
+        "lwz	11,152(9)\n"
+        "cmpwi	11,0\n"
+        "beq	.L_80093240\n"
+        "lwz	9,128(11)\n"
+        "lha	3,40(9)\n"
+        "lwz	0,44(9)\n"
+        "add	3,11,3\n"
+        "mtlr	0\n"
+        "blrl\n"
+        ".L_80093240:\n"
+        "lwz	0,12(1)\n"
+        "mtlr	0\n"
+        "addi	1,1,8\n"
+        "blr\n"
+    );
+}
+
+// 0x80093250 (68 bytes)
+// MUStatesDisplay::Draw(ERC *)
+__attribute__((noreturn))
+void MUStatesDisplay::Draw(ERC *) {
+    __asm__ __volatile__(
+        "stwu	1,-8(1)\n"
+        "mflr	0\n"
+        "stw	0,12(1)\n"
+        "lwz	9,8(3)\n"
+        "lwz	11,152(9)\n"
+        "cmpwi	11,0\n"
+        "beq	.L_80093284\n"
+        "lwz	9,128(11)\n"
+        "lha	3,48(9)\n"
+        "lwz	0,52(9)\n"
+        "add	3,11,3\n"
+        "mtlr	0\n"
+        "blrl\n"
+        ".L_80093284:\n"
+        "lwz	0,12(1)\n"
+        "mtlr	0\n"
+        "addi	1,1,8\n"
+        "blr\n"
+    );
+}
+

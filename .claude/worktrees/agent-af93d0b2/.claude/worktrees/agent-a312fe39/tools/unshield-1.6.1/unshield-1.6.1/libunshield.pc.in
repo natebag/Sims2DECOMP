@@ -1,0 +1,10 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=@CMAKE_INSTALL_FULL_BINDIR@
+libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+
+Name: libunshield
+Description: Library to extract CAB files from InstallShield installers
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lunshield
+Cflags: -I${includedir}

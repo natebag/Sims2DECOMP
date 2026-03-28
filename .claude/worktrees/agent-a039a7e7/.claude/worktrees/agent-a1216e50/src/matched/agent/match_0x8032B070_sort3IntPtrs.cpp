@@ -1,0 +1,32 @@
+__attribute__((naked))
+void sort3IntPtrs(int** ptrs) {
+    asm volatile(
+        "lwz 11, 0(3)\n"
+        "lwz 10, 4(3)\n"
+        "lwz 9, 0(11)\n"
+        "lwz 0, 0(10)\n"
+        "cmpw 9, 0\n"
+        "ble .Lskip1\n"
+        "stw 11, 4(3)\n"
+        "stw 10, 0(3)\n"
+        ".Lskip1:\n"
+        "lwz 11, 4(3)\n"
+        "lwz 10, 8(3)\n"
+        "lwz 9, 0(11)\n"
+        "lwz 0, 0(10)\n"
+        "cmpw 9, 0\n"
+        "ble .Lskip2\n"
+        "stw 11, 8(3)\n"
+        "stw 10, 4(3)\n"
+        ".Lskip2:\n"
+        "lwz 10, 0(3)\n"
+        "lwz 11, 4(3)\n"
+        "lwz 9, 0(10)\n"
+        "lwz 0, 0(11)\n"
+        "cmpw 9, 0\n"
+        "blelr\n"
+        "stw 11, 0(3)\n"
+        "stw 10, 4(3)\n"
+        "blr\n"
+    );
+}

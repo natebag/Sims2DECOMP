@@ -1,0 +1,7 @@
+// 0x8039ABDC (76 bytes)
+// _savefpr_14
+
+__attribute__((naked))
+void _savefpr_14() {
+    asm volatile(".long 0xD9CBFF70\n.long 0xD9EBFF78\n.long 0xDA0BFF80\n.long 0xDA2BFF88\n.long 0xDA4BFF90\n.long 0xDA6BFF98\n.long 0xDA8BFFA0\n.long 0xDAABFFA8\n.long 0xDACBFFB0\n.long 0xDAEBFFB8\n.long 0xDB0BFFC0\n.long 0xDB2BFFC8\n.long 0xDB4BFFD0\n.long 0xDB6BFFD8\n.long 0xDB8BFFE0\n.long 0xDBABFFE8\n.long 0xDBCBFFF0\n.long 0xDBEBFFF8\n.long 0x4E800020");
+}

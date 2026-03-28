@@ -1,21 +1,16 @@
 /* __static_initialization_and_destruction_0 - 0x8013FC1C - 84 bytes */
 
-struct FloatConstants {
-    FloatConstants(void);
-};
+void FloatConstants_ctor(void*);
+void __atexit_func(void*, int);
 
-void __cxa_atexit(void (*)(void*), void*, void*);
-extern FloatConstants gFloatConstants;
-extern void* __dso_handle;
-
-void FloatConstants_dtor_wrapper(void*);
+extern char gFloatConstants[];
 
 void __static_initialization_and_destruction_0(int __initialize_p, unsigned int __priority) {
     if (__priority == 0x0000FFFF) {
-        if (__initialize_p) {
-            gFloatConstants.FloatConstants::FloatConstants();
+        if (__initialize_p != 0) {
+            FloatConstants_ctor(gFloatConstants);
         } else {
-            __cxa_atexit(FloatConstants_dtor_wrapper, &gFloatConstants, &__dso_handle);
+            __atexit_func(gFloatConstants, 2);
         }
     }
 }

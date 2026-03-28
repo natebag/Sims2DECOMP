@@ -1,0 +1,103 @@
+/* EGEVert::operator=(EGEVert &) - 192 bytes at 0x8039E338 */
+
+__attribute__((naked))
+void func_0x8039E338() {
+    asm volatile(
+        ".long 0xC1A40000
+"
+        ".long 0x38000004
+"
+        ".long 0x7C0903A6
+"
+        ".long 0x39630010
+"
+        ".long 0xD1A30000
+"
+        ".long 0x39240010
+"
+        ".long 0xC0040004
+"
+        ".long 0xD0030004
+"
+        ".long 0xC1A40008
+"
+        ".long 0xD1A30008
+"
+        ".long 0xC004000C
+"
+        ".long 0xD003000C
+"
+        ".long 0x80090000
+"
+        ".long 0x39290004
+"
+        ".long 0x900B0000
+"
+        ".long 0x396B0004
+"
+        ".long 0x4200FFF0
+"
+        ".long 0xC0040020
+"
+        ".long 0x39240020
+"
+        ".long 0x39630020
+"
+        ".long 0x38000004
+"
+        ".long 0xD0030020
+"
+        ".long 0x7C0903A6
+"
+        ".long 0x38E40040
+"
+        ".long 0x39430030
+"
+        ".long 0xC1A90004
+"
+        ".long 0x38840030
+"
+        ".long 0x39030040
+"
+        ".long 0xD1AB0004
+"
+        ".long 0xC0090008
+"
+        ".long 0xD00B0008
+"
+        ".long 0xC1A9000C
+"
+        ".long 0xD1AB000C
+"
+        ".long 0x80040000
+"
+        ".long 0x38840004
+"
+        ".long 0x900A0000
+"
+        ".long 0x394A0004
+"
+        ".long 0x4200FFF0
+"
+        ".long 0x38000004
+"
+        ".long 0x7D0B4378
+"
+        ".long 0x7C0903A6
+"
+        ".long 0x7CE93B78
+"
+        ".long 0x80090000
+"
+        ".long 0x39290004
+"
+        ".long 0x900B0000
+"
+        ".long 0x396B0004
+"
+        ".long 0x4200FFF0
+"
+        "blr
+"
+    );
+}

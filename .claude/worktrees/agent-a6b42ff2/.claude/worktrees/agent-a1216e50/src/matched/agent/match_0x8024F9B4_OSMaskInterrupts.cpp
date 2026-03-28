@@ -1,0 +1,41 @@
+/* __OSMaskInterrupts - 136 bytes at 0x8024F9B4 */
+
+__attribute__((naked))
+void func_0x8024F9B4() {
+    asm volatile(
+        ".long 0x7C0802A6\n"
+        ".long 0x90010004\n"
+        ".long 0x9421FFE0\n"
+        ".long 0x93E1001C\n"
+        ".long 0x93C10018\n"
+        ".long 0x93A10014\n"
+        ".long 0x7C7F1B78\n"
+        ".long 0x4BFFFB81\n"
+        ".long 0x3C808000\n"
+        ".long 0x83A400C4\n"
+        ".long 0x7C7E1B78\n"
+        ".long 0x80A400C8\n"
+        ".long 0x7FA02B78\n"
+        ".long 0x7FE30078\n"
+        ".long 0x7FFFEB78\n"
+        ".long 0x93E400C4\n"
+        ".long 0x7FFF2B78\n"
+        ".long 0x48000004\n"
+        ".long 0x48000004\n"
+        ".long 0x4800000C\n"
+        ".long 0x7FE4FB78\n"
+        ".long 0x4BFFFC39\n"
+        ".long 0x28030000\n"
+        ".long 0x4082FFF4\n"
+        ".long 0x7FC3F378\n"
+        ".long 0x4BFFFB61\n"
+        ".long 0x7FA3EB78\n"
+        ".long 0x80010024\n"
+        ".long 0x83E1001C\n"
+        ".long 0x83C10018\n"
+        ".long 0x83A10014\n"
+        ".long 0x38210020\n"
+        ".long 0x7C0803A6\n"
+        "blr\n"
+    );
+}

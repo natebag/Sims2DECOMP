@@ -1,0 +1,39 @@
+[General]
+Type=STRINGTABLESPECIFIC
+Version=1.00.000
+Language=0011
+
+[Data]
+TITLE_MAIN=ProDG for Nintendo GameCube
+TITLE_CAPTIONBAR=ProDG for Nintendo GameCube Setup
+COMPANY_NAME=SN Systems
+PRODUCT_NAME=ProDG for Nintendo GameCube
+PRODUCT_KEY=ngcdbg.exe
+PRODUCT_VERSION=3.9.3
+FOLDER_NAME=ProDG for Nintendo GameCube
+SN_COMPONENT_PRODG=SN製デバッガ、任天堂ゲームキューブ用ツールおよびユーティリティ
+SN_COMPONENT_VSI=SNビルドツールズとProDGデバッガをVisual Studioに統合します。
+SN_ERROR_NO_MSDEV=Microsoft Visual Studio 6.0が見つかりません。VSIはインストールされません。\nインストールを続けますか？
+SN_ERROR_NO_DOLPHIN_SDK=任天堂ゲームキューブ用ProDGをインストールする前に、まずドルフィンSDKをインストールしてください
+SN_ERROR_NO_REGKEY=レジストリキーが見つかりません
+SN_ERROR_CONTACT_SUPPORT=support@snsys.comまでご連絡ください
+SN_MSG_DISPLAY_README=重要なSDK情報の表示
+SN_MSG_FOUND_INI_FILE=SN.INIファイルがすでに存在しています
+SN_MSG_SELECT_FROM_OPTIONS=次のオプションからお選びください：
+SN_MSG_OVERWRITE=既存ファイルに上書きする
+SN_MSG_DONT_MODIFY=既存ファイルを変更しない
+SN_MSG_SAVE_CHANGES=SN.NGCに変更を保存
+SN_ERROR_NO_AUTOEXEC=Autoexec.batをロードできません
+SN_ERROR_NO_CONFIG=Config.sysをロードできません
+SN_ERROR_WILL_EXIT=エラー：５秒でセットアップは終了します
+SN_ERROR_REG_CREATE=登録事項入力の作成に失敗しました。アドミン権限をお持ちかどうか確認の上、もう一度セットアップしてください。
+SN_ERROR_REG_SET_DEFAULT=デフォルト登録ルートがセットできません
+SN_MSG_GETTING_STARTED=ユーザ・ガイド
+SN_MSG_PRODG_DEBUGGER=ProDG Debugger for NGC
+SN_MSG_PRODG_TM=ProDG Target Manager for NGC
+SN_ERROR_NO_MSDEV_UNINST=Microsoft Visual Studio 6.0が見つかりません。VSIが完全に削除されていないかもしれません。\nアンインストールを続けますか？
+SN_MSG_DOCUMENTATION=Documentation
+SN_MSG_PUG_BT=Power User Guide - Build Tools
+SN_MSG_PUG_DBG=Power User Guide - Debugger
+SN_MSG_UG_TM=User Guide - Target Manager
+

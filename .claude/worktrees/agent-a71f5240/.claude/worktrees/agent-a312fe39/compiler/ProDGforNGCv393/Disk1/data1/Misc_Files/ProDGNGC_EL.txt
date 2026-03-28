@@ -1,0 +1,95 @@
+SN SYSTEMS SOFTWARE EVALUATION LICENSE: ProDG for Nintendo(r) GameCube
+
+1.	INTERPRETATION AND DEFINITIONS
+
+1.1	In this beta evaluation license ("License"): "GNU Software" is the software licensed by the Free Software Foundation Inc to SN Systems and referred to in clause 3.2; "Implementation Date" is the date on which the Licensee installs the Software on its computer system; "Intellectual Property Rights" is all intellectual property rights including without limitation all rights in patents, copyright, design rights, service marks, logos, trade secrets, database rights, trademarks (whether registered or unregistered) and all applications for the same, anywhere in the world; "Licensee" is the licensee of this License; "Nintendo(r)" is Nintendo Co. Ltd., a Japanese Corporation whose place of business is 60 Fukuine Kamitakamatsu-cho, Higashiyama-ku, Kyoto, Japan and its affiliates and subsidiaries; "Nintendo(r) GameCube" is the new generation home video game system developed by Nintendo(r) and marketed under that name; "Nintendo(r) Technology" is the information relating to the hardware and software forming Nintendo(r) GameCube provided by Nintendo(r) to SN Systems to enable SN Systems to develop the Software; "PC" is the Licensee's host personal computer; "Request Order" is the request completed by the Licensee and sent as an offer by the Licensee to SN Systems to enter into this License; "SN Systems" is SN Systems Limited, a private limited company registered in England and Wales (no. 02436957) whose registered office is at Redcliff Quay, 120 Redcliff Street, Bristol, BS1 6HU; and "Software" is the suite of software development tools known as "ProDG for Nintendo(r) GameCube" together with any related user documentation which may be published by SN Systems on the SN Systems' web-site or provided to the Licensee from time to time.
+
+1.2	Terms used in this License shall, where appropriate, be construed in accordance with their common usage in the UK computer industry.
+
+1.3	In the event of any inconsistency between this License and the Request Order, the provisions set out in this License shall apply.
+
+2.	GRANTING AND DURATION OF LICENSE
+
+2.1	THE LICENSEE MAY ONLY ENTER INTO AND CONTINUE TO BENEFIT FROM THIS LICENSE FOR THE TERM SET OUT IN CLAUSE 2.4 IF IT HAS THE REQUISITE PRIOR WRITTEN AUTHORISATION FROM NINTENDO(r). BREACH OF THIS TERM BY THE LICENSEE WILL RESULT IN THE AUTOMATIC TERMINATION OF THIS LICENSE.
+
+2.2	On receipt of a Request Order by the Licensee, SN Systems shall (in its entire discretion) deliver the Software in CD ROM format to the premises designated by the Licensee on the Request Order.
+
+2.3	By installing the Software on its PC, the Licensee has demonstrated its acceptance of the terms and conditions of this License. 
+
+2.4	In consideration of the rights and obligations set out below SN Systems grants to the Licensee on the following terms for the purposes of evaluating the Software on compatible hardware only a royalty free, non-transferable and non-exclusive 30 day license to use the Intellectual Property Rights in the Software in object code form and the right to use the user documentation supplied with the Software commencing on the Implementation Date. 
+
+2.5	The Licensee may extend this License for one further period of 30 days after the initial 30 day period outlined in clause 2.4 above expires, provided that the Licensee has sought the prior permission of SN Systems and has completed and sent a Purchase Order for a standard user license in respect of the Software to SN Systems. SN Systems may grant such an extension at its entire discretion.
+
+2.6	The Licensee may only enter into one evaluation License in respect of the Software.  
+
+2.7	The medium upon which the Software is provided remains the property of SN Systems.  
+
+2.8	Risk in the Software medium passes to the Licensee on delivery.
+
+3.	OWNERSHIP AND COPYRIGHT
+
+3.1	This License is not a sale of the original software or any copy.  The Licensee acknowledges that SN Systems and its suppliers (where applicable) remain the owners of the Intellectual Property Rights in the Software and the Licensee does not acquire any such rights by installing or using the Software.
+
+3.2	SN Systems gives no warranty as to the ownership by Nintendo(r) of the Intellectual Property Rights in the Nintendo(r) Technology to the Licensee nor in respect of the ownership of the Intellectual Property Rights in any other third party software which may be incorporated into the Software.
+
+3.3	SN Systems is licensed to use the GNU Software pursuant to a license entered into with the Free Software Foundation, Inc under the terms of the GNU General Public License, a copy of which (file COPYING) is supplied with the Software.  A machine-readable copy of the source code in respect of the part of the Software formed by use of the GNU Software is available on request from SN Systems provided that the Licensee pays SN Systems' cost of distributing the source code.  SN Systems gives no warranty as to the ownership of the GNU Software to the Licensee.  The Licensee hereby agrees to comply with and be subject to all terms contained in the GNU General Public License as if the Licensee were SN Systems insofar as such obligations relate to the Software.
+
+4.	COPIES AND MODIFICATIONS
+
+4.1	This License is personal to the Licensee.  The Licensee may not use, copy, modify, decompile, reverse engineer disassemble, transfer, rent, lease, sub-contract, or transfer the rights in the Software or any copy, modification or merged portion thereof in whole or in part, except as expressly permitted by Sections 50 (A) and 50 (B) of the Copyright, Designs and Patents Act 1988 or where expressly provided for in this License.
+
+4.2	The Licensee may not remove or interfere with any proprietary notices or labels on, in or relating to the Software.
+
+5.	USE OF THE LICENSED SOFTWARE AND AUDITING RIGHTS
+
+SN Systems may audit the use of the Software by the Licensee to ensure that the terms and conditions of this License are being complied with on the giving of reasonable advance written notice including but not limited to requiring the production of proof of authorisation from Nintendo(r) as referred to in clause 2.1 of this License.  This right will not be exercisable more than is reasonably necessary.  The Licensee hereby grants to SN Systems all necessary access to any premises used by or under the Licensee's control.  If an audit reveals that the Licensee has not complied with the terms of this License, then without prejudice to any other rights SN Systems may have, SN Systems shall be immediately entitled and the Licensee shall pay SN Systems the license fee (charged at SN Systems' current rates as posted on the SN Systems' web-site from time to time) that should have been paid by the Licensee plus the reasonable costs of audit.
+
+6.	TERMINATION
+
+6.1	This License may be terminated by SN Systems in its absolute discretion immediately without notice for any reason.  This License shall terminate automatically if the Licensee enters into a standard user license with SN Systems in respect of the Software or the Licensee is in breach of the term contained in clause 2.1 of this License.
+
+6.2	Termination for whatever reason shall be without prejudice to any rights of either party under this License which may have accrued up to the date of termination. 
+
+6.3	Upon termination (for whatever reason) (save where the Licensee enters into a standard user license in respect of the Software) the Licensee shall immediately:
+
+6.3.1	cease use of the Software and shall delete or destroy all copies of the Software in the Licensee's possession or control including without limitation erasure of the Software from the storage media of any computer; and
+
+6.3.2	return by pre-recorded post the CD ROM and user documentation supplied by SN Systems to the Licensee under this License.
+
+6.4	The following terms shall survive termination of this License: 3.2, 7.1, 7.2, 7.3, 7.4, 8, 10.1, 10.2, 10.4 and 10.6.
+
+7.	LIMITATION AND EXCLUSION OF LIABILITY
+
+7.1	The Software, CD ROM and user documentation are free and therefore provided "as is".  All representations, conditions, warranties whether expressed or implied (by statute or otherwise) are excluded to the fullest extent permitted by law. In particular, but without limitation, SN Systems excludes any representation, condition or warranty:  (a) that the Software, CD ROM or the user documentation will meet the Licensee's requirements; (b) that the operation of the Software supplied will be uninterrupted or virus or error free; or (c) regarding the use or the results of the use of the Software, the CD ROM or the user documentation in terms of its correctness, accuracy, reliability or (where applicable) compatibility with any hardware or operating system.
+
+7.2	The Licensee shall load and use the Software at the Licensee's own risk.  SN Systems shall not (subject to the terms contained in clause 7.3) in any circumstances (including if SN Systems has been negligent) be liable in connection with this License or its subject matter or any products produced by third parties and supplied with the Software (including, without limitation, the CD ROM) for: (a) any direct or consequential loss or damage at all (whether arising in the ordinary course of business or otherwise); or (b) any loss of business, data, capital, profit, or goodwill; or (c) for any special, indirect, consequential, incidental or punitive damages howsoever caused including without limitation any damages arising as a result of connections to any other computer systems or consoles whether arising in tort, contract, statutory duty or otherwise even if SN Systems was previously advised of the possibility of such damages.
+
+7.3	Nothing in this License will apply so as to limit or exclude any liability SN Systems may have to the Licensee resulting from death or personal injury caused by the negligence of SN Systems or any fraud or fraudulent misrepresentation made to the Licensee by SN Systems.
+
+8.	INDEMNITY
+
+The Licensee hereby agrees to fully and effectively indemnify and keep SN Systems fully and effectively indemnified against any claims by any third parties, losses or expenses (including legal costs) SN Systems incurs in connection with any claim made against it arising out of a breach by the Licensee of this License (whether arising under contract, tort or otherwise) including but not limited to any claim brought by Nintendo(r) for breach of the term contained in clause 2.1 of this License.
+
+9.	SUPPORT SERVICES
+
+SN Systems may provide support services from time to time in respect of the Software but reserves the express right in its absolute discretion to interrupt, withdraw, suspend, modify or terminate the provision of such services in such manner and at such time as it sees fit and offer the services for such support fee it considers appropriate.  
+
+10.	GENERAL
+
+10.1	This License shall be governed by the laws of England and Wales and subject to the exclusive jurisdiction of the Courts of England and Wales.  If any provision of this License is void or unenforceable under English Law, such a provision is, to the extent of such invalidity, deemed to be omitted and the remainder of this License unaffected.  The jurisdiction agreement in this clause is made for the benefit of SN Systems only, and SN Systems reserves the right to apply for injunctive relief in the court of any jurisdiction to protect any intellectual property right of, or claim by SN Systems.
+
+10.2	This License (and any documents referred to in it) sets out the entire agreement and understanding between SN Systems and the Licensee in connection with its subject matter save in respect of fraudulent misrepresentations.
+
+10.3	Failure by either party to exercise or enforce any rights, or the giving of any forbearance, delay or indulgence, will not be construed as a waiver of its rights under this License or otherwise.  Any express waiver of any breach of this License shall not be deemed to be a waiver of any subsequent breach.
+
+10.4	Save as provided in this clause, neither party to this License will disclose to any third party or use any of the other's confidential information unless that confidential information was publicly known (other than by breach of this License) at the time of disclosure.  For the purposes of this clause, confidential information includes, without limitation, any information contained in the Software, the user documentation or any trade secrets or know-how of SN Systems or the Licensee as applicable.  This provision shall not apply: 
+
+10.4.1	where disclosure is required by law or by any regulatory authority; or
+
+10.4.2	to any confidential information required by Nintendo(r) from SN Systems in the event of a breach by the Licensee of the term contained in clause 2.1 of this License. 
+
+10.5	SN Systems may, at its sole discretion, change any terms of this License by posting a new version of the License on SN Systems' web-site.  Such new terms will take effect thirty (30) days after posting on SN Systems' web-site.  The Licensee's use of the SN Systems' web-site after such changes are posted will constitute the Licensee's acceptance of the new License terms.  If the Licensee does not agree to the new terms it may terminate this License on notice to SN Systems. 
+
+10.6	Nintendo(r) may enforce the term contained in clause 2.1 of this License in accordance with and subject to any relevant provisions contained in: (a) this License; and (b)	the Contracts (rights of Third Parties) Act 1999 ("the 1999 Act"). SN Systems may rescind this License or vary it in such a way as to extinguish Nintendo(r)'s rights under the 1999 Act.  Except as provided in this clause 10.6, a person who is not a party to this License shall have no rights under the 1999 Act to enforce any term of it.  This clause 10.6 does not affect any right or remedy of any person which exists or is available otherwise than pursuant to the 1999 Act.
+
+10.7	Nothing in this License or contained on the SN Systems' web-site shall constitute an offer by SN Systems to provide the Software or user documentation to any person.

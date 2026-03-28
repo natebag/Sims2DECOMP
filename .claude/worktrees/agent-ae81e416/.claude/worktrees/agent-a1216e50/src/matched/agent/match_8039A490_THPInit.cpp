@@ -1,0 +1,46 @@
+/* 0x8039a490 (160 bytes) */
+/* THPInit */
+
+__attribute__((naked))
+void _match_8039A490(void) {
+    asm volatile(".long 0x7C0802A6
+.long 0x3C808050
+.long 0x90010004
+.long 0x9421FFF0
+.long 0x93E1000C
+.long 0x3BE4B0A0
+.long 0x806D9D88
+.long 0x4BEB17B1
+.long 0x3C80E000
+.long 0x909F0100
+.long 0x38842000
+.long 0x909F0104
+.long 0x38840800
+.long 0x909F0108
+.long 0x3C80E000
+.long 0x909F010C
+.long 0x38842800
+.long 0x909F0110
+.long 0x38840A00
+.long 0x909F0114
+.long 0x38600004
+.long 0x64630004
+.long 0x7C72E3A6
+.long 0x38600005
+.long 0x64630005
+.long 0x7C73E3A6
+.long 0x38600006
+.long 0x64630006
+.long 0x7C74E3A6
+.long 0x38600007
+.long 0x64630007
+.long 0x7C75E3A6
+.long 0x38000001
+.long 0x900DABD4
+.long 0x38600001
+.long 0x80010014
+.long 0x83E1000C
+.long 0x38210010
+.long 0x7C0803A6
+.long 0x4E800020");
+}

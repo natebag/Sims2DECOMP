@@ -1,0 +1,42 @@
+/* ShowMessage - 140 bytes at 0x80260820 */
+
+__attribute__((naked))
+void func_0x80260820() {
+    asm volatile(
+        ".long 0x7C0802A6\n"
+        ".long 0x90010004\n"
+        ".long 0x9421FFE8\n"
+        ".long 0x806DB7D8\n"
+        ".long 0x800DB7DC\n"
+        ".long 0x90610014\n"
+        ".long 0x90010010\n"
+        ".long 0x48003E25\n"
+        ".long 0x28030000\n"
+        ".long 0x40820024\n"
+        ".long 0x4810FA25\n"
+        ".long 0x5460043E\n"
+        ".long 0x28000001\n"
+        ".long 0x4082000C\n"
+        ".long 0x80AD93C8\n"
+        ".long 0x48000024\n"
+        ".long 0x80AD93CC\n"
+        ".long 0x4800001C\n"
+        ".long 0x4BFF23F1\n"
+        ".long 0x3C808040\n"
+        ".long 0x546315BA\n"
+        ".long 0x38040448\n"
+        ".long 0x7C601A14\n"
+        ".long 0x80A30000\n"
+        ".long 0x80C10014\n"
+        ".long 0x38810008\n"
+        ".long 0x80010010\n"
+        ".long 0x3861000C\n"
+        ".long 0x90C10008\n"
+        ".long 0x9001000C\n"
+        ".long 0x4810EE69\n"
+        ".long 0x8001001C\n"
+        ".long 0x38210018\n"
+        ".long 0x7C0803A6\n"
+        "blr\n"
+    );
+}

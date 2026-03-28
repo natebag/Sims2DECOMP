@@ -1,0 +1,62 @@
+﻿You are working on the Sims 2 GameCube matching decompilation project.
+
+## Current State (Milestone 1: FOUNDATION - IN PROGRESS)
+- devkitPPC (GCC 15.2.0) is at F:\coding\Decompiles\Tools\devkitPro\devkitPPC
+- decomp-toolkit (dtk 1.8.3) is at F:\coding\Decompiles\Tools\dtk-windows-x86_64.exe
+- Ghidra 12.0.4 is at F:\coding\Decompiles\Tools\ghidra_12.0.4_PUBLIC
+- Python 3.14.3 is available
+- The DOL is at extracted/sys/main.dol (SHA1: d15b7be1396544a15728f25f732db63a7cfcc877)
+- The ELF with debug info is at extracted/files/u2_ngc_release_dvd.elf
+- The CORRECT map file is extracted/files/u2_ngc_release_dvd.map (DVD build, matches DOL)
+  (NOT u2_ngc_release.map which is a different larger build)
+- 23,068 symbols extracted into config/symbols.txt (18,547 functions)
+- config/symbol_names.txt maps sanitized dtk names back to demangled C++ names
+- Makefile is set up with devkitPPC compile flags
+- tools/check_func.py can compile and compare individual functions
+- Original compiler was SN Systems ProDG (NOT CodeWarrior/Metrowerks)
+- Game built on cm3-build22-NGC, September 12, 2005
+
+## Key Rules
+- Read CLAUDE.md for full project conventions
+- Use EXACT symbol names from the map file
+- Every decompiled function must byte-match the original DOL
+- SN Systems compiled - GCC may not produce identical output for all functions
+- Document your work as you go
+
+## Working In a Worktree
+- You are in an isolated git worktree branch
+- Make commits to your branch as you complete work
+- The main session will merge your branch when you are done
+- Go full speed - you have full permissions
+## YOUR TASK: Write Ghidra Symbol Import Script
+
+Create a Ghidra script that imports all 23,068 symbols from the DVD map file into a Ghidra project.
+
+### Steps:
+1. Write tools/symbol_importer.py - a Ghidra Python script (Jython) that:
+   - Parses extracted/files/u2_ngc_release_dvd.map (SN Systems format)
+   - For each symbol: creates a function or label at the correct address
+   - Sets the symbol name to the demangled name from the map
+   - Handles namespaces (e.g., ESimsApp::Init creates namespace ESimsApp)
+   - Marks .text symbols as functions, .data/.rodata as data labels
+   - Prints progress as it runs
+
+2. The SN Systems map format has 4 indentation levels:
+   - Level 0 (1 space after align): Section header
+   - Level 1 (9 spaces): Input section
+   - Level 2 (17 spaces): Object file path
+   - Level 3 (25 spaces): Symbol name
+   Pattern: ^([0-9a-fA-F]{8}) ([0-9a-fA-F]{8})\s+(\d+)(\s+)(\S.*)
+   Level = (len(group4) - 1) // 8
+   Align values are HEX not decimal
+
+3. Write a README section or doc explaining how to use the script:
+   - Open Ghidra, import main.dol or the ELF
+   - Run the script via Script Manager
+   - What to expect (takes a few minutes for 23K symbols)
+
+4. Also write tools/ghidra_structs.py - a starter script that defines key structs:
+   - Basic struct templates for ESim, ESimsApp, cXObject (just name + size placeholder)
+   - These can be refined later as we decompile
+
+Commit your work when the import script is complete and documented.

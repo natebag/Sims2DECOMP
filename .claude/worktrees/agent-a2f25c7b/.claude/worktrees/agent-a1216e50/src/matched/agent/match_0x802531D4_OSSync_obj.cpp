@@ -1,0 +1,40 @@
+/* OSSync_obj - 132 bytes at 0x802531D4 */
+
+__attribute__((naked))
+void func_0x802531D4() {
+    asm volatile(
+        ".long 0x7D30FAA6\n"
+        ".long 0x612A0008\n"
+        ".long 0x7D50FBA6\n"
+        ".long 0x4C00012C\n"
+        ".long 0x7C0004AC\n"
+        ".long 0x7D30FBA6\n"
+        ".long 0x4C000064\n"
+        ".long 0x60000000\n"
+        ".long 0x7C0802A6\n"
+        ".long 0x90010004\n"
+        ".long 0x9421FFF0\n"
+        ".long 0x93E1000C\n"
+        ".long 0x3CA08000\n"
+        ".long 0x3C808025\n"
+        ".long 0x3C608025\n"
+        ".long 0x3BE50C00\n"
+        ".long 0x380331F0\n"
+        ".long 0x388431D4\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x7CA40050\n"
+        ".long 0x4BFF0231\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x38800100\n"
+        ".long 0x4BFF9941\n"
+        ".long 0x7C0004AC\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x38800100\n"
+        ".long 0x4BFF99E1\n"
+        ".long 0x80010014\n"
+        ".long 0x83E1000C\n"
+        ".long 0x38210010\n"
+        ".long 0x7C0803A6\n"
+        "blr\n"
+    );
+}

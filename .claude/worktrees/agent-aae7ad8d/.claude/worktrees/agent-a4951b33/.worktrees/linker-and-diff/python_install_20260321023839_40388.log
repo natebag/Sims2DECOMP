@@ -1,0 +1,56 @@
+>> Writing logs to F:\coding\Decompiles\Sims 2\.worktrees\linker-and-diff\python_install_20260321023839_40388.log
+>> Python installation manager 26.0
+Copyright (c) Python Software Foundation. All Rights Reserved.
+
+>  Python install manager was successfully updated to 26.0.
+
+This update adds global shortcuts for installed scripts such as pip.exe.
+Use py install --refresh to update all shortcuts.
+This will be needed after installing new scripts, as it is not run automatically.
+
+BEGIN install_command.execute: []
+>  ********************************************************************************
+Reading installs from F:\coding\Decompiles\Sims 2\.worktrees\linker-and-diff\Python
+Found 0 installs
+Calculating default install
+Filtering installs by tag = 3
+tag '3' matched 0 installs
+default_platform '-64' matched 0 installs
+Reusing unfiltered list
+Reading installs from F:\coding\Decompiles\Sims 2\.worktrees\linker-and-diff\Python
+Found 0 installs
+Reading unmanaged installs
+!  Failed to read unmanaged installs: expected str, bytes or os.PathLike object, not NoneType
+TRACEBACK:
+Traceback (most recent call last):
+  File "manage\pathutils.py", line 19, in __init__
+AttributeError: 'NoneType' object has no attribute '__fspath__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "manage\installs.py", line 101, in get_installs
+  File "manage\installs.py", line 51, in _get_unmanaged_installs
+  File "manage\pep514utils.py", line 414, in get_unmanaged_installs
+  File "manage\pep514utils.py", line 381, in _get_store_installs
+  File "manage\pathutils.py", line 21, in __init__
+  File "<frozen os>", line 869, in fsdecode
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+>  To see all available commands, run 'py help'
+>  ********************************************************************************
+END install_command.execute
+!! INTERNAL ERROR: NoInstallsError: No runtimes are installed. Try running "py install default" first.
+TRACEBACK:
+Traceback (most recent call last):
+  File "manage\__init__.py", line 50, in main
+  File "manage\commands.py", line 859, in execute
+  File "manage\install_command.py", line 774, in execute
+  File "manage\scriptutils.py", line 225, in find_install_from_script
+  File "manage\scriptutils.py", line 205, in _read_script
+  File "manage\scriptutils.py", line 140, in _parse_shebang
+  File "manage\scriptutils.py", line 93, in _find_shebang_command
+  File "manage\commands.py", line 668, in get_install_to_run
+  File "manage\installs.py", line 321, in get_install_to_run
+manage.exceptions.NoInstallsError: No runtimes are installed. Try running "py install default" first.
+

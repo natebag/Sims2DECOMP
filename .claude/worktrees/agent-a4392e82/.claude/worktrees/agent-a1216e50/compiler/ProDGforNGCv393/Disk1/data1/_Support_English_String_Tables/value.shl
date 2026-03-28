@@ -1,0 +1,39 @@
+[General]
+Type=STRINGTABLESPECIFIC
+Version=1.00.000
+Language=0009
+
+[Data]
+TITLE_MAIN=ProDG for Nintendo GameCube
+TITLE_CAPTIONBAR=ProDG for Nintendo GameCube Setup
+COMPANY_NAME=SN Systems
+PRODUCT_NAME=ProDG for Nintendo GameCube
+PRODUCT_KEY=ngcdbg.exe
+PRODUCT_VERSION=3.9.3
+FOLDER_NAME=ProDG for Nintendo GameCube
+SN_COMPONENT_PRODG=Debugger, build tools and utilities for Nintendo GameCube
+SN_COMPONENT_VSI=Integrates build tools and the debugger into Visual Studio
+SN_ERROR_NO_MSDEV=Microsoft Visual Studio 6.0 not found, VSI will not be installed.\nContinue installation?
+SN_ERROR_NO_DOLPHIN_SDK=You must install the Dolphin SDK before installing ProDG for Nintendo GameCube
+SN_ERROR_NO_REGKEY=Can't find registry key:
+SN_ERROR_CONTACT_SUPPORT=Contact support@snsys.com
+SN_MSG_DISPLAY_README=Display important SDK information
+SN_MSG_FOUND_INI_FILE=Setup has found an existing SN.INI file
+SN_MSG_SELECT_FROM_OPTIONS=Select from the following options:
+SN_MSG_OVERWRITE=Overwrite the existing file
+SN_MSG_DONT_MODIFY=Do not modify existing file
+SN_MSG_SAVE_CHANGES=Save the changes to SN.NGC
+SN_ERROR_NO_AUTOEXEC=Unable to load Autoexec.bat
+SN_ERROR_NO_CONFIG=Unable to load Config.sys
+SN_ERROR_WILL_EXIT=ERROR: Setup will exit in 5 seconds...
+SN_ERROR_REG_CREATE=Registry entry creation has failed. Make sure you have Administrator privileges then run setup again.
+SN_ERROR_REG_SET_DEFAULT=Unable to set default registry root.
+SN_MSG_GETTING_STARTED=ProDG User Guide
+SN_MSG_PRODG_DEBUGGER=ProDG Debugger for NGC
+SN_MSG_PRODG_TM=ProDG Target Manager for NGC
+SN_ERROR_NO_MSDEV_UNINST=Microsoft Visual Studio 6.0 not found, VSI may not be removed completely.\nContinue uninstalling?
+SN_MSG_DOCUMENTATION=Documentation
+SN_MSG_PUG_BT=Power User Guide - Build Tools
+SN_MSG_PUG_DBG=Power User Guide - Debugger
+SN_MSG_UG_TM=User Guide - Target Manager
+

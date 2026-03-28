@@ -1,0 +1,136 @@
+#ifndef DLGWRAPPER_H
+#define DLGWRAPPER_H
+
+#include "types.h"
+
+// DlgWrapper - struct layout extracted from assembly analysis
+// Estimated minimum size: 0x698C (27020 bytes)
+// 44 known fields (11 named), 134 methods
+
+class DlgWrapper {
+public:
+    // Constructors / Destructors
+    DlgWrapper(bool)  // 0x80188D7C
+    ~DlgWrapper(void);  // 0x80188E30
+
+    // Methods
+    void Startup(void);  // 0x801851FC (532B)
+    void SetDialogPos(EVec2 &);  // 0x80188FE4 (60B)
+    void SetDialogSize(EVec2 &);  // 0x801890F4 (88B)
+    void SetButtonContext(char *);  // 0x80189B08 (64B)
+    void Shutdown(void);  // 0x80185410 (108B)
+    void DialogPaneHide(void);  // 0x80185884 (240B)
+    void Reset(void);  // 0x8018547C (80B)
+    void DialogPaneShow(void);  // 0x801857A8 (220B)
+    void Update(void);  // 0x801854CC (528B)
+    bool IsDialogUp(void);  // 0x80188EDC (60B)
+    void Draw(ERC *);  // 0x801856DC (204B)
+    void SetVariable(char *, char *);  // 0x80185974 (312B)
+    /* ? */ GetDialogPane(void);  // 0x80188EB0 (44B)
+    /* ? */ GetVariable(char *);  // 0x80185AAC (848B)
+    /* ? */ GetDialogWidth(void);  // 0x80189270 (44B)
+    /* ? */ GetDialogHeight(void);  // 0x8018929C (44B)
+    /* ? */ GetDialogPosX(void);  // 0x8018909C (44B)
+    /* ? */ GetDialogPosY(void);  // 0x801890C8 (44B)
+    /* ? */ GetTitleWidth(void);  // 0x80189350 (128B)
+    /* ? */ GetFont(void);  // 0x80188E84 (44B)
+    void DialogAccepted(void);  // 0x80188F18 (68B)
+    void DialogDeclined(void);  // 0x80188F5C (68B)
+    void DialogAlt1(void);  // 0x80188FA0 (68B)
+    void SetDialogPosX(float);  // 0x80189020 (40B)
+    void SetDialogPosY(float);  // 0x80189048 (40B)
+    /* ? */ GetDialogPos(void);  // 0x80189070 (44B)
+    void SetDialogSizeX(float);  // 0x8018914C (80B)
+    void SetDialogSizeY(float);  // 0x8018919C (80B)
+    /* ? */ GetDialogSize(void);  // 0x801891EC (44B)
+    /* ? */ GetDialogSizeX(void);  // 0x80189218 (44B)
+    /* ? */ GetDialogSizeY(void);  // 0x80189244 (44B)
+    /* ? */ GetDialogPadSizeX(void);  // 0x801892C8 (68B)
+    /* ? */ GetDialogPadSizeY(void);  // 0x8018930C (68B)
+    void SetTitleText(unsigned wchar_t *);  // 0x801893D0 (64B)
+    void SetTitleFontSize(float);  // 0x80189410 (72B)
+    void SetBodyText(unsigned wchar_t *);  // 0x80189458 (64B)
+    void SetBodyFont(ERFont *);  // 0x80189498 (64B)
+    void SetBodyFontSize(float);  // 0x801894D8 (72B)
+    void SetBodyPos(EVec2 &);  // 0x80189520 (80B)
+    void SetBodyPosX(float);  // 0x80189570 (72B)
+    void SetBodyPosY(float);  // 0x801895B8 (72B)
+    void SetAcceptText(unsigned wchar_t *);  // 0x80189600 (64B)
+    void SetAcceptFont(ERFont *);  // 0x80189640 (64B)
+    void SetAcceptFontSize(float);  // 0x80189680 (72B)
+    void SetAcceptPos(EVec2 &);  // 0x801896C8 (64B)
+    void SetAcceptPosX(float);  // 0x80189708 (72B)
+    void SetAcceptPosY(float);  // 0x80189750 (72B)
+    void SetDeclineText(unsigned wchar_t *);  // 0x80189798 (64B)
+    void SetDeclineFont(ERFont *);  // 0x801897D8 (64B)
+    void SetDeclineFontSize(float);  // 0x80189818 (72B)
+    void SetDeclinePos(EVec2 &);  // 0x80189860 (64B)
+    void SetDeclinePosX(float);  // 0x801898A0 (72B)
+    void SetDeclinePosY(float);  // 0x801898E8 (72B)
+    void SetAlt1Text(unsigned wchar_t *);  // 0x80189930 (64B)
+    void SetAlt1Font(ERFont *);  // 0x80189970 (64B)
+    void SetAlt1FontSize(float);  // 0x801899B0 (72B)
+    void SetAlt1Pos(EVec2 &);  // 0x801899F8 (64B)
+    void SetAlt1PosX(float);  // 0x80189A38 (72B)
+    void SetAlt1PosY(float);  // 0x80189A80 (72B)
+    void SetBodyPadSize(EVec2 &);  // 0x80189AC8 (64B)
+    void AddAcceptButton(unsigned wchar_t *);  // 0x80189B48 (72B)
+    void AddDeclineButton(unsigned wchar_t *);  // 0x80189B90 (72B)
+    void AddAlt1Button(unsigned wchar_t *);  // 0x80189BD8 (72B)
+    bool IsAptDrawable(void);  // 0x80189C20 (44B)
+    void SetPlayer(int);  // 0x80189C4C (60B)
+
+    // ---- Field Layout (from assembly analysis) ----
+    f32 m_variable;  // 0x000 [R/W] (DlgWrapper, GetVariable, Startup)
+    u8 m_variable_001;  // 0x001 [W] (GetVariable)
+    u8 _pad_002[2];  // 0x002
+    u32 m_field_004;  // 0x004 [R/W] (DlgWrapper, Startup)
+    u32 m_field_008;  // 0x008 [W] (DlgWrapper, Startup)
+    f32 m_field_00C;  // 0x00C [W] (DlgWrapper, Startup)
+    f32 m_field_010;  // 0x010 [W] (DlgWrapper, Startup)
+    f32 m_field_014;  // 0x014 [W] (DlgWrapper, Startup)
+    f32 m_field_018;  // 0x018 [W] (DlgWrapper, Startup)
+    f32 m_variable_01C;  // 0x01C [R/W] (SetVariable, Startup)
+    u32 m_field_020;  // 0x020 [W] (Startup)
+    u32 m_field_024;  // 0x024 [W] (Startup)
+    u32 m_field_028;  // 0x028 [W] (DlgWrapper)
+    u32 m_field_02C;  // 0x02C [W] (Startup)
+    u32 m_bodyFont;  // 0x030 [W] (SetAcceptFont, SetAlt1Font, SetBodyFont, ...)
+    f32 m_titleFontSize;  // 0x034 [R/W] (SetBodyFontSize, SetTitleFontSize, Startup, ...)
+    u32 m_field_038;  // 0x038 [W] (DlgWrapper, Startup)
+    u32 m_field_03C;  // 0x03C [W] (Startup)
+    u32 m_field_040;  // 0x040 [R] (Update)
+    u32 m_field_044;  // 0x044 [R] (Update)
+    u32 m_field_048;  // 0x048 [R/W] (DlgWrapper, Update)
+    u8 _pad_04C[0xC];  // 0x04C
+    u32 m_field_058;  // 0x058 [W] (DlgWrapper)
+    u32 m_field_05C;  // 0x05C [W] (Startup)
+    u32 m_field_060;  // 0x060 [R/W] (Startup)
+    u32 m_field_064;  // 0x064 [R/W] (Startup)
+    u32 m_field_068;  // 0x068 [W] (DlgWrapper)
+    u8 _pad_06C[0xC];  // 0x06C
+    u32 m_field_078;  // 0x078 [W] (DlgWrapper)
+    u8 _pad_07C[4];  // 0x07C
+    u32 m_field_080;  // 0x080 [W] (DlgWrapper, ~DlgWrapper)
+    u32 m_field_084;  // 0x084 [W] (DlgWrapper)
+    u32 m_field_088;  // 0x088 [W] (DlgWrapper)
+    u32 m_field_08C;  // 0x08C [R/W] (DlgWrapper, ~DlgWrapper)
+    u8 _pad_090[0xC];  // 0x090
+    u32 m_field_09C;  // 0x09C [W] (DlgWrapper)
+    u32 m_field_0A0;  // 0x0A0 [R/W] (DlgWrapper, Draw)
+    u32 m_field_0A4;  // 0x0A4 [R/W] (DlgWrapper, Startup)
+    u32 m_field_0A8;  // 0x0A8 [R/W] (DlgWrapper, Shutdown, Startup)
+    u32 m_variable_0AC;  // 0x0AC [R/W] (DialogPaneHide, DialogPaneShow, DlgWrapper, ...)
+    u32 m_field_0B0;  // 0x0B0 [R/W] (DlgWrapper, Shutdown, Startup)
+    u32 m_variable_0B4;  // 0x0B4 [R/W] (DialogPaneHide, DialogPaneShow, DlgWrapper, ...)
+    u32 m_field_0B8;  // 0x0B8 [R/W] (DialogPaneHide, DialogPaneShow, DlgWrapper, ...)
+    f32 m_variable_0BC;  // 0x0BC [R/W] (DlgWrapper, GetVariable, Startup)
+    f32 m_variable_0C0;  // 0x0C0 [R/W] (DlgWrapper, GetVariable)
+    f32 m_variable_0C4;  // 0x0C4 [R/W] (DlgWrapper, GetVariable, SetDialogSize, ...)
+    f32 m_variable_0C8;  // 0x0C8 [R/W] (DlgWrapper, GetVariable, SetDialogSize)
+    u32 m_field_0CC;  // 0x0CC [R/W] (DlgWrapper, Startup, Update)
+    u8 _pad_0D0[0x68B8];  // 0x0D0
+    f32 m_field_6988;  // 0x6988 [R] (Startup)
+};
+
+#endif // DLGWRAPPER_H

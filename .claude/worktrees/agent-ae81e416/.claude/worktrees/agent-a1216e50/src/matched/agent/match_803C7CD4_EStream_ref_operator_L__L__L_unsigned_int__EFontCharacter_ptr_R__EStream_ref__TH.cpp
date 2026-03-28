@@ -1,0 +1,61 @@
+/* 0x803c7cd4 (220 bytes) */
+/* EStream & operator<<<unsigned int, EFontCharacter *>(EStream &, THashTable<unsigned int, EFontCharacter *> &) */
+
+__attribute__((naked))
+void _match_803C7CD4(void) {
+    asm volatile(".long 0x9421FFE0
+.long 0x7C0802A6
+.long 0xBFC10018
+.long 0x90010024
+.long 0x7C7F1B78
+.long 0x7C9E2378
+.long 0x813F0018
+.long 0x38810008
+.long 0x38A00004
+.long 0x801E000C
+.long 0xA8690038
+.long 0x8129003C
+.long 0x7C7F1A14
+.long 0x90010008
+.long 0x7D2803A6
+.long 0x4E800021
+.long 0x7FC3F378
+.long 0x4BF011F5
+.long 0x813F0018
+.long 0x3881000C
+.long 0x9061000C
+.long 0x38A00004
+.long 0xA8690038
+.long 0x8009003C
+.long 0x7C7F1A14
+.long 0x7C0803A6
+.long 0x4E800021
+.long 0x83DE0000
+.long 0x4800003C
+.long 0x813F0018
+.long 0x38810010
+.long 0x38A00004
+.long 0x801E000C
+.long 0xA8690038
+.long 0x8129003C
+.long 0x7C7F1A14
+.long 0x90010010
+.long 0x7D2803A6
+.long 0x4E800021
+.long 0x809E0010
+.long 0x7FE3FB78
+.long 0x4BF9B749
+.long 0x83DE0004
+.long 0x38000001
+.long 0x2C1E0000
+.long 0x40820008
+.long 0x38000000
+.long 0x2C000000
+.long 0x4082FFB4
+.long 0x7FE3FB78
+.long 0x80010024
+.long 0x7C0803A6
+.long 0xBBC10018
+.long 0x38210020
+.long 0x4E800020");
+}

@@ -1,0 +1,42 @@
+/* DBRead - 140 bytes at 0x80267B00 */
+
+__attribute__((naked))
+void func_0x80267B00() {
+    asm volatile(
+        ".long 0x7C0802A6\n"
+        ".long 0x90010004\n"
+        ".long 0x9421FFE0\n"
+        ".long 0x93E1001C\n"
+        ".long 0x93C10018\n"
+        ".long 0x3BC40000\n"
+        ".long 0x93A10014\n"
+        ".long 0x3BA30000\n"
+        ".long 0x4BFE7A31\n"
+        ".long 0x800DA5F8\n"
+        ".long 0x3BE30000\n"
+        ".long 0x540003DF\n"
+        ".long 0x4182000C\n"
+        ".long 0x38601000\n"
+        ".long 0x48000008\n"
+        ".long 0x38600000\n"
+        ".long 0x3C630002\n"
+        ".long 0x381E0003\n"
+        ".long 0x389D0000\n"
+        ".long 0x5405003A\n"
+        ".long 0x3863E000\n"
+        ".long 0x480004F5\n"
+        ".long 0x38000000\n"
+        ".long 0x900DA5FC\n"
+        ".long 0x7FE3FB78\n"
+        ".long 0x980DA604\n"
+        ".long 0x4BFE7A11\n"
+        ".long 0x80010024\n"
+        ".long 0x38600000\n"
+        ".long 0x83E1001C\n"
+        ".long 0x83C10018\n"
+        ".long 0x83A10014\n"
+        ".long 0x38210020\n"
+        ".long 0x7C0803A6\n"
+        "blr\n"
+    );
+}

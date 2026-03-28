@@ -1,0 +1,40 @@
+# Game disc / ROM files (user must provide their own)
+extracted/
+ISO/
+*.ciso
+*.iso
+*.gcm
+
+# Build output
+build/
+*.dol
+*.elf
+*.o
+*.a
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Ghidra project (too large for git)
+*.gpr
+*.rep/
+
+# Don't commit the full symbols JSON (generated from map parser)
+# Users regenerate from their own disc
+tools/symbols.json
+
+# API keys — NEVER commit
+*.key
+keys.txt
+Key/
