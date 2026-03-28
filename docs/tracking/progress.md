@@ -22,7 +22,7 @@
 | 4 | Gameplay Systems | **DONE** | 2026-03-27 |
 | 5 | Presentation & Polish | **DONE** | 2026-03-27 |
 | 6 | Full Match (CI, docs, release) | **IN PROGRESS** — CI + docs done, need release tag | — |
-| 7 | PC Port & Mods | **IN PROGRESS** | — |
+| 7 | PC Port & Mods | **IN PROGRESS** — game state machine, textures, menus working | — |
 
 ## DOL Section Match (2026-03-24)
 
@@ -122,3 +122,17 @@ achieved via byte injection; the portable C++ enables the PC port.
 - Chunk 4: Functions 1483-1970 (CARD, GX graphics, VM, THP decoder, STL templates, serialization) → `global_chunk_4.cpp` (1,934 lines)
 - Total: 1,970 functions cataloged, 12,970 lines of portable C++
 - **100% OF ALL ASM STUBS NOW HAVE PORTABLE C++ EQUIVALENTS**
+
+### 2026-03-27: PC Port — Game State Machine + Texture Pipeline
+- PC game state machine: BOOT → LOGO → MAIN_MENU → LOADING → GAMEPLAY
+- Real game textures rendering via OpenGL:
+  - maxis_logo_black_clean (256x256 C8_32)
+  - team_picture (512x512 CMPR/S3TC)
+  - ui_start_screen (256x256 CMPR)
+  - ui_logo256_english_light (256x256 C8_32)
+- Arc reader fully fixed: textures.arc 207→11,443 entries, models.arc 931→3,631
+- EA texture auto-detect: variable-length prefix detection (1-8 bytes)
+- GC texture decode: C8_32 (indexed) and CMPR (S3TC) formats working
+- Interactive menus with input handling (keyboard→PAD mapping)
+- operator_new_wrapper/delete_wrapper fixed (enables decomp code on PC)
+- Vector font system for on-screen text rendering
