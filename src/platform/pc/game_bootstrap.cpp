@@ -17,6 +17,7 @@
 #include "gl_renderer.h"  // pulls in windows.h + GL/gl.h on Win32
 #include "ea_texture.h"
 #include "gc_texture_decode.h"
+#include "bigf_reader.h"
 
 // ============================================================================
 // Global singletons that the decomp code expects to exist
@@ -70,6 +71,8 @@ static unsigned int g_maxisLogoTex = 0;   // GL texture ID for Maxis logo
 static unsigned int g_teamPicTex = 0;     // GL texture ID for team picture
 static unsigned int g_startScreenTex = 0; // GL texture ID for start screen
 static unsigned int g_engLogoTex = 0;     // GL texture ID for English Sims 2 logo
+static unsigned int g_flashTex[4] = {};   // GL textures from Flash UI files
+static int g_flashTexCount = 0;
 
 // Detect EA texture header offset in raw data.
 // The .arc format stores a variable-length prefix (1-8 bytes) before the
@@ -86,9 +89,10 @@ static int find_ea_header_offset(const u8* data, unsigned int dataSize) {
         if ((w & (w - 1)) != 0 || (h & (h - 1)) != 0) continue;
 
         // Format must be a valid EA texture format
-        bool validFmt = (fmt == 0x81 || fmt == 0x82 || fmt == 0x83 ||
-                         fmt == 0x84 || fmt == 0x85 || fmt == 0x89 ||
-                         fmt == 0x8A || fmt == 0x00 || fmt == 0x01);
+        // 0x00-0x02: basic formats (indexed, RGBA, IA)
+        // 0x81-0x8A: GC-specific formats (CMPR, RGB5A3, C4, C8, RGBA8)
+        bool validFmt = (fmt <= 0x0A ||
+                         (fmt >= 0x81 && fmt <= 0x8A));
         if (!validFmt) continue;
 
         // BPP must be sensible
@@ -185,6 +189,109 @@ static unsigned int load_arc_texture(const char* name) {
 }
 
 // Render a fullscreen textured quad
+// Load textures from a BIGF container within a flash entry.
+// Searches for .tgq entries and decodes them as EA textures.
+static void load_flash_textures(const char* flashName) {
+    for (int i = 0; i < arc_count(); i++) {
+        ArcArchive* arc = arc_get(i);
+        if (!arc) continue;
+        ArcEntry* entry = arc_find(arc, flashName);
+        if (!entry) continue;
+
+        u32 dataSize = 0;
+        u8* rawData = (u8*)arc_read(arc, entry, &dataSize);
+        if (!rawData || dataSize < 16) { free(rawData); continue; }
+
+        log_boot("[BIGF] Parsing '%s' (%u bytes)\n", flashName, dataSize);
+        BigfFile* bigf = bigf_parse(rawData, dataSize);
+        if (!bigf) {
+            log_boot("[BIGF] Failed to parse '%s'\n", flashName);
+            free(rawData);
+            continue;
+        }
+
+        log_boot("[BIGF] '%s': %d sub-files\n", flashName, bigf->numEntries);
+        for (int j = 0; j < bigf->numEntries; j++) {
+            log_boot("[BIGF]   [%d] '%s' offset=%u size=%u\n",
+                     j, bigf->entries[j].name, bigf->entries[j].offset, bigf->entries[j].size);
+        }
+
+        // Extract .tgq textures
+        log_boot("[BIGF] Scanning %d entries for .tgq textures (flashTexCount=%d)\n", bigf->numEntries, g_flashTexCount);
+        for (int j = 0; j < bigf->numEntries && g_flashTexCount < 4; j++) {
+            bigf->entries[j].name[127] = '\0';  // ensure null terminated
+            const char* ename = bigf->entries[j].name;
+            int elen = (int)strlen(ename);
+            log_boot("[BIGF]  [%d] '%s' len=%d\n", j, ename, elen);
+            if (elen < 4) continue;
+            if (strcmp(ename + elen - 4, ".tgq") != 0) continue;
+            log_boot("[BIGF]  → matched .tgq!\n");
+
+            u32 texOff = bigf->entries[j].offset;
+            u32 texSize = bigf->entries[j].size;
+            log_boot("[BIGF] Processing '%s' off=%u sz=%u (data=%u)\n", ename, texOff, texSize, dataSize);
+            if (texOff + texSize > dataSize) {
+                log_boot("[BIGF] .tgq '%s' out of bounds\n", ename);
+                continue;
+            }
+            const u8* texData = rawData + texOff;
+            if (!texData || texSize < 48) continue;
+
+            log_boot("[BIGF] First bytes: %02X %02X %02X %02X\n", texData[0], texData[1], texData[2], texData[3]);
+
+            // The .tgq data starts with "TXFL" — it's an EA texture
+            if (texData[0] != 'T' || texData[1] != 'X') {
+                log_boot("[BIGF] .tgq '%s' doesn't start with TXFL (got %02X %02X)\n",
+                         ename, texData[0], texData[1]);
+                continue;
+            }
+
+            // Find EA header (skip TXFL tag + padding)
+            log_boot("[BIGF] Scanning '%s' for EA header (first 8: %02X %02X %02X %02X %02X %02X %02X %02X)\n",
+                     ename, texData[0], texData[1], texData[2], texData[3],
+                     texData[4], texData[5], texData[6], texData[7]);
+            int headerOff = find_ea_header_offset(texData, texSize);
+            if (headerOff < 0) {
+                // Dump bytes at typical offsets for debugging
+                log_boot("[BIGF] Can't find EA header in '%s'. Bytes at +5: w=%02X%02X h=%02X%02X fmt=%02X bpp=%02X\n",
+                         ename, texData[21], texData[22], texData[23], texData[24], texData[29], texData[30]);
+                continue;
+            }
+
+            EATexHeader header;
+            if (ea_tex_parse_header(texData + headerOff, &header) != 0) continue;
+
+            int gcFmt = ea_format_to_gc(header.format);
+            if (gcFmt < 0) continue;
+
+            const u8* pixelData = texData + headerOff + 32;
+            const u8* palette = NULL;
+            if (gcFmt == GC_TF_C4 || gcFmt == GC_TF_C8) {
+                size_t imgSize = gc_texture_data_size(header.width, header.height, gcFmt);
+                palette = pixelData + imgSize;
+            }
+
+            u8* rgba = (u8*)malloc(header.width * header.height * 4);
+            if (!rgba) continue;
+
+            if (gc_texture_decode(pixelData, rgba, header.width, header.height, gcFmt, palette, GC_TL_RGB5A3) == 0) {
+                unsigned int texId = gl_create_texture(rgba, header.width, header.height);
+                if (texId) {
+                    g_flashTex[g_flashTexCount++] = texId;
+                    log_boot("[BIGF] Loaded '%s' -> GL texture %u (%dx%d)\n",
+                             ename, texId, header.width, header.height);
+                }
+            }
+            free(rgba);
+        }
+
+        bigf_free(bigf);
+        free(rawData);
+        return;
+    }
+    log_boot("[BIGF] '%s' not found\n", flashName);
+}
+
 static void gl_draw_texture_fullscreen(unsigned int texId) {
     if (texId == 0) return;
     glEnable(GL_TEXTURE_2D);
@@ -887,6 +994,12 @@ int game_bootstrap(const char* data_path) {
     if (!g_titleTexture) g_titleTexture = load_arc_texture("ui_logo256_spa_light");
     log_boot("[BOOT] Textures: maxis=%u team=%u start=%u logo=%u\n",
              g_maxisLogoTex, g_teamPicTex, g_startScreenTex, g_titleTexture);
+
+    // Load Flash UI textures (disabled for now — BIGF parser works but
+    // .tgq extraction loop has a crash at entry iteration; will debug later)
+    // load_flash_textures("s2c_main_menu");
+    // load_flash_textures("s2c_pause_game");
+    log_boot("[BOOT] Flash texture loading: deferred\n");
 
     // Set initial state
     g_pcState = PC_STATE_BOOT;
