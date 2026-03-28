@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void DlgWrapper::IsAptDrawable(void) {
     asm volatile(
-        "lwz 3, 180(3)
-"
-        "blr
-"
+        "lwz 3, 180(3)\n"
+        "blr\n"
     );
 }

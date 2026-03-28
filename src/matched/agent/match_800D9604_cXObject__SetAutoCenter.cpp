@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObject::SetAutoCenter(bool) {
     asm volatile(
-        "stw 3, -31904(13)
-"
-        "blr
-"
+        "stw 3, -31904(13)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::GetPosX(void) {
     asm volatile(
-        "lfs 1, 36(3)
-"
-        "blr
-"
+        "lfs 1, 36(3)\n"
+        "blr\n"
     );
 }

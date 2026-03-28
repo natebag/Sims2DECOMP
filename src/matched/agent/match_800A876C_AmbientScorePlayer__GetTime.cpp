@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void AmbientScorePlayer::GetTime(void) {
     asm volatile(
-        "lfs 1, 52(3)
-"
-        "blr
-"
+        "lfs 1, 52(3)\n"
+        "blr\n"
     );
 }

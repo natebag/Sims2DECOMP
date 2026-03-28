@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void FamilyImpl::GetHouseValue(void) {
     asm volatile(
-        "lwz 3, 24(3)
-"
-        "blr
-"
+        "lwz 3, 24(3)\n"
+        "blr\n"
     );
 }

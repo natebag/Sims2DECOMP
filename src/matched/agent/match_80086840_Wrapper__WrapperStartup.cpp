@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Wrapper::WrapperStartup(UIObjectBase *) {
     asm volatile(
-        "stw 4, 136(3)
-"
-        "blr
-"
+        "stw 4, 136(3)\n"
+        "blr\n"
     );
 }

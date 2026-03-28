@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SimImageMaker::SetSkinShader(EShader *) {
     asm volatile(
-        "stw 4, 140(3)
-"
-        "blr
-"
+        "stw 4, 140(3)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void DlgWrapper::GetDialogPos(void) {
     asm volatile(
-        "addi 3, 3, 188
-"
-        "blr
-"
+        "addi 3, 3, 188\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void CUnlockDisplayObject::SetModelID(unsigned int) {
     asm volatile(
-        "stw 4, 44(3)
-"
-        "blr
-"
+        "stw 4, 44(3)\n"
+        "blr\n"
     );
 }

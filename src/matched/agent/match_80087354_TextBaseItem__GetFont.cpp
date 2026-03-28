@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::GetFont(void) const {
     asm volatile(
-        "lwz 3, 80(3)
-"
-        "blr
-"
+        "lwz 3, 80(3)\n"
+        "blr\n"
     );
 }

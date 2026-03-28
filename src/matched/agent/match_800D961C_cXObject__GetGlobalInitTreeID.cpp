@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObject::GetGlobalInitTreeID(void) {
     asm volatile(
-        "li 3, 271
-"
-        "blr
-"
+        "li 3, 271\n"
+        "blr\n"
     );
 }

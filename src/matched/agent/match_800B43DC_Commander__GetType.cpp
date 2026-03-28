@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Commander::GetType(void) {
     asm volatile(
-        "lwz 3, 4(3)
-"
-        "blr
-"
+        "lwz 3, 4(3)\n"
+        "blr\n"
     );
 }

@@ -4,9 +4,7 @@
 __attribute__((naked))
 void GetNumNghSubSections(NghLayout *) {
     asm volatile(
-        "lwz 3, 12(3)
-"
-        "blr
-"
+        "lwz 3, 12(3)\n"
+        "blr\n"
     );
 }

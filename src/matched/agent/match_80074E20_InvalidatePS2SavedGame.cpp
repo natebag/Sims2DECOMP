@@ -4,9 +4,7 @@
 __attribute__((naked))
 void InvalidatePS2SavedGame(int) {
     asm volatile(
-        "li 3, 1
-"
-        "blr
-"
+        "li 3, 1\n"
+        "blr\n"
     );
 }

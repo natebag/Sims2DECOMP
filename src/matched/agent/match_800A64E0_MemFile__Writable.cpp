@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void MemFile::Writable(void) {
     asm volatile(
-        "lwz 3, 268(3)
-"
-        "blr
-"
+        "lwz 3, 268(3)\n"
+        "blr\n"
     );
 }

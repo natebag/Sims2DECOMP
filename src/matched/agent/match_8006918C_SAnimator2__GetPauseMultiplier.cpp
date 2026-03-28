@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetPauseMultiplier(void) {
     asm volatile(
-        "lfs 1, 260(3)
-"
-        "blr
-"
+        "lfs 1, 260(3)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void StateMachine::GetTimeInState(void) const {
     asm volatile(
-        "lfs 1, 80(3)
-"
-        "blr
-"
+        "lfs 1, 80(3)\n"
+        "blr\n"
     );
 }

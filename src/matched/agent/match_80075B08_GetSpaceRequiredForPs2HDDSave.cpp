@@ -4,9 +4,7 @@
 __attribute__((naked))
 void GetSpaceRequiredForPs2HDDSave(void) {
     asm volatile(
-        "li 3, 0
-"
-        "blr
-"
+        "li 3, 0\n"
+        "blr\n"
     );
 }

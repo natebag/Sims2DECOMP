@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void WrapperPaneBase::SetAlpha(float) {
     asm volatile(
-        "stfs 1, 48(3)
-"
-        "blr
-"
+        "stfs 1, 48(3)\n"
+        "blr\n"
     );
 }

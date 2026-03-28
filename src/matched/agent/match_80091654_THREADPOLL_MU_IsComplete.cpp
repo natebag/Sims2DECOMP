@@ -4,9 +4,7 @@
 __attribute__((naked))
 void THREADPOLL_MU_IsComplete(void) {
     asm volatile(
-        "lwz 3, -24652(13)
-"
-        "blr
-"
+        "lwz 3, -24652(13)\n"
+        "blr\n"
     );
 }

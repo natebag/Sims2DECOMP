@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::GetID(void) const {
     asm volatile(
-        "lwz 3, 56(3)
-"
-        "blr
-"
+        "lwz 3, 56(3)\n"
+        "blr\n"
     );
 }

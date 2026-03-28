@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void StateMachine::GetFrameDeltaTime(void) const {
     asm volatile(
-        "lfs 1, 40(3)
-"
-        "blr
-"
+        "lfs 1, 40(3)\n"
+        "blr\n"
     );
 }

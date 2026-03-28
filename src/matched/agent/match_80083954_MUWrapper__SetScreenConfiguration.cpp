@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void MUWrapper::SetScreenConfiguration(MUWrapper::eMUScreenConfiguration) {
     asm volatile(
-        "stw 4, 172(3)
-"
-        "blr
-"
+        "stw 4, 172(3)\n"
+        "blr\n"
     );
 }

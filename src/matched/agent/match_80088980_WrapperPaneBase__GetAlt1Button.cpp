@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void WrapperPaneBase::GetAlt1Button(void) {
     asm volatile(
-        "lwz 3, 72(3)
-"
-        "blr
-"
+        "lwz 3, 72(3)\n"
+        "blr\n"
     );
 }

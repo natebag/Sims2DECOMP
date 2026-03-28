@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::GetDisplaySizeX(void) {
     asm volatile(
-        "lfs 1, 44(3)
-"
-        "blr
-"
+        "lfs 1, 44(3)\n"
+        "blr\n"
     );
 }

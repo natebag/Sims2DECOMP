@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetAwareOfObject(void) {
     asm volatile(
-        "lwz 3, 1596(3)
-"
-        "blr
-"
+        "lwz 3, 1596(3)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetFollowMode(void) {
     asm volatile(
-        "lwz 3, 24(3)
-"
-        "blr
-"
+        "lwz 3, 24(3)\n"
+        "blr\n"
     );
 }

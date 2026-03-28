@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void EyeToyClient::SetUnplugCallback(void (*)(int)) {
     asm volatile(
-        "stw 3, -32528(13)
-"
-        "blr
-"
+        "stw 3, -32528(13)\n"
+        "blr\n"
     );
 }

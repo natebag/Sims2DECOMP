@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::GetPos(void) {
     asm volatile(
-        "addi 3, 3, 36
-"
-        "blr
-"
+        "addi 3, 3, 36\n"
+        "blr\n"
     );
 }

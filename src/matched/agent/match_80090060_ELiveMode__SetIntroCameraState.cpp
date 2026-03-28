@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ELiveMode::SetIntroCameraState(IntroCameraStartState) {
     asm volatile(
-        "stw 4, 12(3)
-"
-        "blr
-"
+        "stw 4, 12(3)\n"
+        "blr\n"
     );
 }

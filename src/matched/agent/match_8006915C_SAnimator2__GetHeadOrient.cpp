@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetHeadOrient(void) {
     asm volatile(
-        "addi 3, 3, 384
-"
-        "blr
-"
+        "addi 3, 3, 384\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::GetColor(void) {
     asm volatile(
-        "lwz 3, 68(3)
-"
-        "blr
-"
+        "lwz 3, 68(3)\n"
+        "blr\n"
     );
 }

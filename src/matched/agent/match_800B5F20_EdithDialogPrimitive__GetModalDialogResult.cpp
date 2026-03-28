@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void EdithDialogPrimitive::GetModalDialogResult(void) const {
     asm volatile(
-        "lwz 3, 136(3)
-"
-        "blr
-"
+        "lwz 3, 136(3)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void CUnlockDisplayObject::IsSimple(void) {
     asm volatile(
-        "lwz 3, 128(3)
-"
-        "blr
-"
+        "lwz 3, 128(3)\n"
+        "blr\n"
     );
 }

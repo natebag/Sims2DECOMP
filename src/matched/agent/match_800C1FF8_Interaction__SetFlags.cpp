@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::SetFlags(int) {
     asm volatile(
-        "stw 4, 60(3)
-"
-        "blr
-"
+        "stw 4, 60(3)\n"
+        "blr\n"
     );
 }

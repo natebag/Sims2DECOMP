@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::GetStackObject(void) const {
     asm volatile(
-        "lwz 3, 12(3)
-"
-        "blr
-"
+        "lwz 3, 12(3)\n"
+        "blr\n"
     );
 }

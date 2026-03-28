@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void NghResFile::SetStoreChecksum(bool) {
     asm volatile(
-        "stw 4, 396(3)
-"
-        "blr
-"
+        "stw 4, 396(3)\n"
+        "blr\n"
     );
 }

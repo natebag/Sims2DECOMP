@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void EyeToyClient::MacroBlockDummyAllocator(unsigned int, unsigned int) {
     asm volatile(
-        "lwz 3, -32540(13)
-"
-        "blr
-"
+        "lwz 3, -32540(13)\n"
+        "blr\n"
     );
 }

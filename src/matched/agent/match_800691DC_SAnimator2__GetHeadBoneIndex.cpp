@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetHeadBoneIndex(void) {
     asm volatile(
-        "lwz 3, 1552(3)
-"
-        "blr
-"
+        "lwz 3, 1552(3)\n"
+        "blr\n"
     );
 }

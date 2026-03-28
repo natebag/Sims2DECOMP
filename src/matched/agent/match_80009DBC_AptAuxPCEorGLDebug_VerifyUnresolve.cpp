@@ -4,9 +4,7 @@
 __attribute__((naked))
 void AptAuxPCEorGLDebug_VerifyUnresolve(bool) {
     asm volatile(
-        "stw 3, -32736(13)
-"
-        "blr
-"
+        "stw 3, -32736(13)\n"
+        "blr\n"
     );
 }

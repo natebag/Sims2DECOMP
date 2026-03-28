@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::SetShadowSize(float) {
     asm volatile(
-        "stfs 1, 76(3)
-"
-        "blr
-"
+        "stfs 1, 76(3)\n"
+        "blr\n"
     );
 }

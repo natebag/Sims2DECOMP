@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void EGlobal::ListenForController(void) {
     asm volatile(
-        "lwz 3, 1144(3)
-"
-        "blr
-"
+        "lwz 3, 1144(3)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void WrapperPaneBase::GetAcceptButton(void) {
     asm volatile(
-        "lwz 3, 64(3)
-"
-        "blr
-"
+        "lwz 3, 64(3)\n"
+        "blr\n"
     );
 }

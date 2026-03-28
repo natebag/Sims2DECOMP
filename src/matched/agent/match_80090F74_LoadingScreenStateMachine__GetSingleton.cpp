@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void LoadingScreenStateMachine::GetSingleton(void) {
     asm volatile(
-        "lwz 3, -32160(13)
-"
-        "blr
-"
+        "lwz 3, -32160(13)\n"
+        "blr\n"
     );
 }

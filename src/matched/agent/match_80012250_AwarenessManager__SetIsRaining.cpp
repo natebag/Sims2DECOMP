@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void AwarenessManager::SetIsRaining(bool) {
     asm volatile(
-        "stw 3, -32696(13)
-"
-        "blr
-"
+        "stw 3, -32696(13)\n"
+        "blr\n"
     );
 }

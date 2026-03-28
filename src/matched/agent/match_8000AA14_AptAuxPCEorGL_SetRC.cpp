@@ -4,9 +4,7 @@
 __attribute__((naked))
 void AptAuxPCEorGL_SetRC(ERC *) {
     asm volatile(
-        "stw 3, -25160(13)
-"
-        "blr
-"
+        "stw 3, -25160(13)\n"
+        "blr\n"
     );
 }

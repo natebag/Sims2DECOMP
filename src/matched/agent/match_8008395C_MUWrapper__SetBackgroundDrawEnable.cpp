@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void MUWrapper::SetBackgroundDrawEnable(bool) {
     asm volatile(
-        "stw 4, 200(3)
-"
-        "blr
-"
+        "stw 4, 200(3)\n"
+        "blr\n"
     );
 }

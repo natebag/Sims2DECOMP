@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::SetPelvisBoneIndex(int) {
     asm volatile(
-        "stw 4, 1556(3)
-"
-        "blr
-"
+        "stw 4, 1556(3)\n"
+        "blr\n"
     );
 }

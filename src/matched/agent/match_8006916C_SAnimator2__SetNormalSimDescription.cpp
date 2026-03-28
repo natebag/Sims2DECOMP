@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::SetNormalSimDescription(CasSimDescriptionS2C *) {
     asm volatile(
-        "stw 4, 1540(3)
-"
-        "blr
-"
+        "stw 4, 1540(3)\n"
+        "blr\n"
     );
 }

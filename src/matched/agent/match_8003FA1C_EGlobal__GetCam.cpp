@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void EGlobal::GetCam(void) {
     asm volatile(
-        "lwz 3, 208(3)
-"
-        "blr
-"
+        "lwz 3, 208(3)\n"
+        "blr\n"
     );
 }

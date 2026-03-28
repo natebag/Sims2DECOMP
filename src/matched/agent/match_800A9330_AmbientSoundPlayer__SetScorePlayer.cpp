@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void AmbientSoundPlayer::SetScorePlayer(AmbientScorePlayer *) {
     asm volatile(
-        "stw 4, 0(3)
-"
-        "blr
-"
+        "stw 4, 0(3)\n"
+        "blr\n"
     );
 }

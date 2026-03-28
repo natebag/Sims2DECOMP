@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::SetShadowAlpha(float) {
     asm volatile(
-        "stfs 1, 72(3)
-"
-        "blr
-"
+        "stfs 1, 72(3)\n"
+        "blr\n"
     );
 }

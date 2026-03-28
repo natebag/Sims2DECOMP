@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void CareersImpl::GetSuit(Job &, bool) {
     asm volatile(
-        "lwz 3, 104(4)
-"
-        "blr
-"
+        "lwz 3, 104(4)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void StateMachine::IsPausedUpdate(void) {
     asm volatile(
-        "lwz 3, 36(3)
-"
-        "blr
-"
+        "lwz 3, 36(3)\n"
+        "blr\n"
     );
 }

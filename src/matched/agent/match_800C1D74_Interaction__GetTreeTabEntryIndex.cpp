@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::GetTreeTabEntryIndex(void) const {
     asm volatile(
-        "lwz 3, 20(3)
-"
-        "blr
-"
+        "lwz 3, 20(3)\n"
+        "blr\n"
     );
 }

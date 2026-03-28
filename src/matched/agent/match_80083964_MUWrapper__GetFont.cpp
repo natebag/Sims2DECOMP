@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void MUWrapper::GetFont(void) {
     asm volatile(
-        "lwz 3, 164(3)
-"
-        "blr
-"
+        "lwz 3, 164(3)\n"
+        "blr\n"
     );
 }

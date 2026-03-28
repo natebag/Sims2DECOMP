@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::GetShadowSize(void) {
     asm volatile(
-        "lfs 1, 76(3)
-"
-        "blr
-"
+        "lfs 1, 76(3)\n"
+        "blr\n"
     );
 }

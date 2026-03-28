@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Neighbor::GetRelations(void) const {
     asm volatile(
-        "lwz 3, 16(3)
-"
-        "blr
-"
+        "lwz 3, 16(3)\n"
+        "blr\n"
     );
 }

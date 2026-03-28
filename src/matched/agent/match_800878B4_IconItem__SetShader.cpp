@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void IconItem::SetShader(ERShader *) {
     asm volatile(
-        "stw 4, 48(3)
-"
-        "blr
-"
+        "stw 4, 48(3)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetAnimState(void) {
     asm volatile(
-        "lwz 3, 44(3)
-"
-        "blr
-"
+        "lwz 3, 44(3)\n"
+        "blr\n"
     );
 }

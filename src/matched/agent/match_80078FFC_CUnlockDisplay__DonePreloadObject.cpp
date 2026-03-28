@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void CUnlockDisplay::DonePreloadObject(void) {
     asm volatile(
-        "lwz 3, 1104(3)
-"
-        "blr
-"
+        "lwz 3, 1104(3)\n"
+        "blr\n"
     );
 }

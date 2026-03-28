@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ELiveMode::SetGoingToNeighborhoodMode(bool) {
     asm volatile(
-        "stw 4, 36(3)
-"
-        "blr
-"
+        "stw 4, 36(3)\n"
+        "blr\n"
     );
 }

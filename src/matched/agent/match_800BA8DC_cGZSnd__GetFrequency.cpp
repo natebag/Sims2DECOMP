@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cGZSnd::GetFrequency(void) {
     asm volatile(
-        "li 3, 22050
-"
-        "blr
-"
+        "li 3, 22050\n"
+        "blr\n"
     );
 }

@@ -4,9 +4,7 @@
 __attribute__((naked))
 void SetSRandSeed(unsigned int) {
     asm volatile(
-        "stw 3, -24584(13)
-"
-        "blr
-"
+        "stw 3, -24584(13)\n"
+        "blr\n"
     );
 }

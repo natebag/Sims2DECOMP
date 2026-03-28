@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void BBI::InventoryItem::GetItemColorIndex(void) const {
     asm volatile(
-        "lbz 3, 2(3)
-"
-        "blr
-"
+        "lbz 3, 2(3)\n"
+        "blr\n"
     );
 }

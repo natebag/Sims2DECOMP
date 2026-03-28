@@ -4,9 +4,7 @@
 __attribute__((naked))
 void Timer_GetTicks(void) {
     asm volatile(
-        "lwz 3, -24900(13)
-"
-        "blr
-"
+        "lwz 3, -24900(13)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::SetPosY(float) {
     asm volatile(
-        "stfs 1, 40(3)
-"
-        "blr
-"
+        "stfs 1, 40(3)\n"
+        "blr\n"
     );
 }

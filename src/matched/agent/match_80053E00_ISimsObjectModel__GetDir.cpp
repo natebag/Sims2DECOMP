@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ISimsObjectModel::GetDir(void) {
     asm volatile(
-        "addi 3, 3, 1040
-"
-        "blr
-"
+        "addi 3, 3, 1040\n"
+        "blr\n"
     );
 }

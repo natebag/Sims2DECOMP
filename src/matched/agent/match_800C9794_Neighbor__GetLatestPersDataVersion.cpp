@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Neighbor::GetLatestPersDataVersion(void) {
     asm volatile(
-        "li 3, 8
-"
-        "blr
-"
+        "li 3, 8\n"
+        "blr\n"
     );
 }

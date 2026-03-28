@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::GetPriority(void) const {
     asm volatile(
-        "lwz 3, 40(3)
-"
-        "blr
-"
+        "lwz 3, 40(3)\n"
+        "blr\n"
     );
 }

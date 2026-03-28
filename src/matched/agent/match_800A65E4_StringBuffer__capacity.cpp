@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void StringBuffer::capacity(void) const {
     asm volatile(
-        "lwz 3, 4(3)
-"
-        "blr
-"
+        "lwz 3, 4(3)\n"
+        "blr\n"
     );
 }

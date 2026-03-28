@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ObjectFolderImpl::GetObjectsDatabase(void) {
     asm volatile(
-        "lwz 3, 1680(3)
-"
-        "blr
-"
+        "lwz 3, 1680(3)\n"
+        "blr\n"
     );
 }

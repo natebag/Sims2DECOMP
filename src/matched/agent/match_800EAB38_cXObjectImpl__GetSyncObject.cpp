@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObjectImpl::GetSyncObject(void) {
     asm volatile(
-        "lwz 3, 220(3)
-"
-        "blr
-"
+        "lwz 3, 220(3)\n"
+        "blr\n"
     );
 }

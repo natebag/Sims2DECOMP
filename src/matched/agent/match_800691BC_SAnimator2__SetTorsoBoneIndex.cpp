@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::SetTorsoBoneIndex(int) {
     asm volatile(
-        "stw 4, 1560(3)
-"
-        "blr
-"
+        "stw 4, 1560(3)\n"
+        "blr\n"
     );
 }

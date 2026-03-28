@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::SetRightHandBoneIndex(int) {
     asm volatile(
-        "stw 4, 1548(3)
-"
-        "blr
-"
+        "stw 4, 1548(3)\n"
+        "blr\n"
     );
 }

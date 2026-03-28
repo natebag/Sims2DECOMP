@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObjectImpl::SetOverrideDialogReturnCode(TreeReturnCode) {
     asm volatile(
-        "sth 4, -31828(13)
-"
-        "blr
-"
+        "sth 4, -31828(13)\n"
+        "blr\n"
     );
 }

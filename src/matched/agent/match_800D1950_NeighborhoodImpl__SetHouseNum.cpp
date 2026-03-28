@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void NeighborhoodImpl::SetHouseNum(int) {
     asm volatile(
-        "stw 4, 112(3)
-"
-        "blr
-"
+        "stw 4, 112(3)\n"
+        "blr\n"
     );
 }

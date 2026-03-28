@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void GlobalConstantsClient::GetID(void) {
     asm volatile(
-        "lha 3, 4(3)
-"
-        "blr
-"
+        "lha 3, 4(3)\n"
+        "blr\n"
     );
 }

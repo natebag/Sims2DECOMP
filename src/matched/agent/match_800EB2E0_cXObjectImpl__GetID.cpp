@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObjectImpl::GetID(void) {
     asm volatile(
-        "lha 3, 100(3)
-"
-        "blr
-"
+        "lha 3, 100(3)\n"
+        "blr\n"
     );
 }

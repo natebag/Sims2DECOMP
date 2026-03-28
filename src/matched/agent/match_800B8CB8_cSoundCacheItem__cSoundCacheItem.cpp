@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cSoundCacheItem::cSoundCacheItem(unsigned int) {
     asm volatile(
-        "stw 4, 0(3)
-"
-        "blr
-"
+        "stw 4, 0(3)\n"
+        "blr\n"
     );
 }

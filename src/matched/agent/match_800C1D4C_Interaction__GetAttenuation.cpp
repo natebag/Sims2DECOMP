@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::GetAttenuation(void) const {
     asm volatile(
-        "lfs 1, 48(3)
-"
-        "blr
-"
+        "lfs 1, 48(3)\n"
+        "blr\n"
     );
 }

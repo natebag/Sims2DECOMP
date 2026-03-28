@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cGZMusic::GetPan(void) {
     asm volatile(
-        "li 3, 512
-"
-        "blr
-"
+        "li 3, 512\n"
+        "blr\n"
     );
 }

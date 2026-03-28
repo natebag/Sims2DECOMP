@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::GetFontSize(void) const {
     asm volatile(
-        "lfs 1, 84(3)
-"
-        "blr
-"
+        "lfs 1, 84(3)\n"
+        "blr\n"
     );
 }

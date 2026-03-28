@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObject::GetPersonWidth(void) {
     asm volatile(
-        "lwz 3, -31916(13)
-"
-        "blr
-"
+        "lwz 3, -31916(13)\n"
+        "blr\n"
     );
 }

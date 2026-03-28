@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void DialogPaneBase::GetTitleTextItem(void) {
     asm volatile(
-        "lwz 3, 96(3)
-"
-        "blr
-"
+        "lwz 3, 96(3)\n"
+        "blr\n"
     );
 }

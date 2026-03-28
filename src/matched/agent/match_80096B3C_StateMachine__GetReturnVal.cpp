@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void StateMachine::GetReturnVal(void) const {
     asm volatile(
-        "lwz 3, 144(3)
-"
-        "blr
-"
+        "lwz 3, 144(3)\n"
+        "blr\n"
     );
 }

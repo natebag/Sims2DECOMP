@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void GlobalConstantsClient::GetFileID(void) {
     asm volatile(
-        "lwz 3, -31848(13)
-"
-        "blr
-"
+        "lwz 3, -31848(13)\n"
+        "blr\n"
     );
 }

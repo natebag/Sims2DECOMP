@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void FamilyImpl::SetCreationOrder(int) {
     asm volatile(
-        "stw 4, 16(3)
-"
-        "blr
-"
+        "stw 4, 16(3)\n"
+        "blr\n"
     );
 }

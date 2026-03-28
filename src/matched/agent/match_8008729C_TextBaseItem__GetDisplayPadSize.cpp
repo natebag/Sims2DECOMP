@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void TextBaseItem::GetDisplayPadSize(void) {
     asm volatile(
-        "addi 3, 3, 52
-"
-        "blr
-"
+        "addi 3, 3, 52\n"
+        "blr\n"
     );
 }

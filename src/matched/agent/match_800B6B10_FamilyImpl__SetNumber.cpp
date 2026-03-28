@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void FamilyImpl::SetNumber(int) {
     asm volatile(
-        "stw 4, 8(3)
-"
-        "blr
-"
+        "stw 4, 8(3)\n"
+        "blr\n"
     );
 }

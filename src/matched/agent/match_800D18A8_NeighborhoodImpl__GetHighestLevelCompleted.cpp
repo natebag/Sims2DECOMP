@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void NeighborhoodImpl::GetHighestLevelCompleted(void) {
     asm volatile(
-        "lha 3, 132(3)
-"
-        "blr
-"
+        "lha 3, 132(3)\n"
+        "blr\n"
     );
 }

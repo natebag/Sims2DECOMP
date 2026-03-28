@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::GetTreeID(void) const {
     asm volatile(
-        "lha 3, 44(3)
-"
-        "blr
-"
+        "lha 3, 44(3)\n"
+        "blr\n"
     );
 }

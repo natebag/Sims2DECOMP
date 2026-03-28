@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void EIFloor::GetNumRoomID(void) {
     asm volatile(
-        "lhz 3, 130(3)
-"
-        "blr
-"
+        "lhz 3, 130(3)\n"
+        "blr\n"
     );
 }

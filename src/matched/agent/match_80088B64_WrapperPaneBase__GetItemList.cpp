@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void WrapperPaneBase::GetItemList(void) {
     asm volatile(
-        "addi 3, 3, 8
-"
-        "blr
-"
+        "addi 3, 3, 8\n"
+        "blr\n"
     );
 }

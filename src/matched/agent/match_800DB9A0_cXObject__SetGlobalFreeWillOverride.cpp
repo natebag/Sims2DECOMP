@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObject::SetGlobalFreeWillOverride(bool) {
     asm volatile(
-        "stw 3, -31908(13)
-"
-        "blr
-"
+        "stw 3, -31908(13)\n"
+        "blr\n"
     );
 }

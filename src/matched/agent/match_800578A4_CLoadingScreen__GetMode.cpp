@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void CLoadingScreen::GetMode(void) const {
     asm volatile(
-        "lwz 3, 852(3)
-"
-        "blr
-"
+        "lwz 3, 852(3)\n"
+        "blr\n"
     );
 }

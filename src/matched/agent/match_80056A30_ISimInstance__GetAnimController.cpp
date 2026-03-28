@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ISimInstance::GetAnimController(void) {
     asm volatile(
-        "addi 3, 3, 820
-"
-        "blr
-"
+        "addi 3, 3, 820\n"
+        "blr\n"
     );
 }

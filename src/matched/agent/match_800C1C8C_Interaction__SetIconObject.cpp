@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::SetIconObject(cXObject *) {
     asm volatile(
-        "stw 4, 16(3)
-"
-        "blr
-"
+        "stw 4, 16(3)\n"
+        "blr\n"
     );
 }

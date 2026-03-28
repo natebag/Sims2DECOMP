@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObject::GetFreeWill(void) {
     asm volatile(
-        "lwz 3, -31912(13)
-"
-        "blr
-"
+        "lwz 3, -31912(13)\n"
+        "blr\n"
     );
 }

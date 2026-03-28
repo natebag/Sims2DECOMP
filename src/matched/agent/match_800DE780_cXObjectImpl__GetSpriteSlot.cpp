@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObjectImpl::GetSpriteSlot(void) {
     asm volatile(
-        "lwz 3, 176(3)
-"
-        "blr
-"
+        "lwz 3, 176(3)\n"
+        "blr\n"
     );
 }

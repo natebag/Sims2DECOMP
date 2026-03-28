@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void DlgWrapper::GetDialogSizeX(void) const {
     asm volatile(
-        "lfs 1, 196(3)
-"
-        "blr
-"
+        "lfs 1, 196(3)\n"
+        "blr\n"
     );
 }

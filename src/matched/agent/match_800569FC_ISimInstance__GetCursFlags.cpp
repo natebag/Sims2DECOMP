@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ISimInstance::GetCursFlags(void) {
     asm volatile(
-        "lwz 3, 812(3)
-"
-        "blr
-"
+        "lwz 3, 812(3)\n"
+        "blr\n"
     );
 }

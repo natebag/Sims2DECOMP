@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void DlgWrapper::GetDialogPosY(void) const {
     asm volatile(
-        "lfs 1, 192(3)
-"
-        "blr
-"
+        "lfs 1, 192(3)\n"
+        "blr\n"
     );
 }

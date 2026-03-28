@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void NghResFile::ValidFile(void) {
     asm volatile(
-        "li 3, 1
-"
-        "blr
-"
+        "li 3, 1\n"
+        "blr\n"
     );
 }

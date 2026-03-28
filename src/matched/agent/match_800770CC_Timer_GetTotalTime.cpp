@@ -4,9 +4,7 @@
 __attribute__((naked))
 void Timer_GetTotalTime(void) {
     asm volatile(
-        "lfs 1, -24908(13)
-"
-        "blr
-"
+        "lfs 1, -24908(13)\n"
+        "blr\n"
     );
 }

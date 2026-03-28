@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ISimsObjectModel::GetRot(void) {
     asm volatile(
-        "lfs 1, 1008(3)
-"
-        "blr
-"
+        "lfs 1, 1008(3)\n"
+        "blr\n"
     );
 }

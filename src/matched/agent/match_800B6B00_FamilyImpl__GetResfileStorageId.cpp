@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void FamilyImpl::GetResfileStorageId(short) {
     asm volatile(
-        "mr 3, 4
-"
-        "blr
-"
+        "mr 3, 4\n"
+        "blr\n"
     );
 }

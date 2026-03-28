@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::SetCameraZoomRatio(float) {
     asm volatile(
-        "stfs 1, 184(3)
-"
-        "blr
-"
+        "stfs 1, 184(3)\n"
+        "blr\n"
     );
 }

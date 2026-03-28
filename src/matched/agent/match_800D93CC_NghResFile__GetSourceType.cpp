@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void NghResFile::GetSourceType(void) const {
     asm volatile(
-        "lwz 3, 32(3)
-"
-        "blr
-"
+        "lwz 3, 32(3)\n"
+        "blr\n"
     );
 }

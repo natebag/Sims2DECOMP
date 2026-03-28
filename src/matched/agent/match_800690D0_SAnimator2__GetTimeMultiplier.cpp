@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetTimeMultiplier(void) {
     asm volatile(
-        "lfs 1, 252(3)
-"
-        "blr
-"
+        "lfs 1, 252(3)\n"
+        "blr\n"
     );
 }

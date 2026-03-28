@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void CUnlockDisplay::SetViewZoomFactor(float) {
     asm volatile(
-        "stfs 1, 1176(3)
-"
-        "blr
-"
+        "stfs 1, 1176(3)\n"
+        "blr\n"
     );
 }

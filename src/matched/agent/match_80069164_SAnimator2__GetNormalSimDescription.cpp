@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetNormalSimDescription(void) const {
     asm volatile(
-        "lwz 3, 1540(3)
-"
-        "blr
-"
+        "lwz 3, 1540(3)\n"
+        "blr\n"
     );
 }

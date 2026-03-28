@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void InfluenceMap::ValidateMissing(cXObject *) {
     asm volatile(
-        "li 3, 1
-"
-        "blr
-"
+        "li 3, 1\n"
+        "blr\n"
     );
 }

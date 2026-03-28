@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void WrapperPaneBase::SetState(WrapperPaneBase::PaneState) {
     asm volatile(
-        "stw 4, 52(3)
-"
-        "blr
-"
+        "stw 4, 52(3)\n"
+        "blr\n"
     );
 }

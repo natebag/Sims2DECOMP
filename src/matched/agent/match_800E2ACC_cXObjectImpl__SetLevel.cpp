@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObjectImpl::SetLevel(int) {
     asm volatile(
-        "stw 4, 128(3)
-"
-        "blr
-"
+        "stw 4, 128(3)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::SetIdleInitialized(bool) {
     asm volatile(
-        "stw 4, 288(3)
-"
-        "blr
-"
+        "stw 4, 288(3)\n"
+        "blr\n"
     );
 }

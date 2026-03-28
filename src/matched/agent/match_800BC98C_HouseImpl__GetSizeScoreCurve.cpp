@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void HouseImpl::GetSizeScoreCurve(void) {
     asm volatile(
-        "lwz 3, 28(3)
-"
-        "blr
-"
+        "lwz 3, 28(3)\n"
+        "blr\n"
     );
 }

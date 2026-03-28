@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ObjectModuleImpl::GetFolder(void) {
     asm volatile(
-        "lwz 3, -21508(13)
-"
-        "blr
-"
+        "lwz 3, -21508(13)\n"
+        "blr\n"
     );
 }

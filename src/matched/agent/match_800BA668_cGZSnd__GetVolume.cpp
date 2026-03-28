@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cGZSnd::GetVolume(void) {
     asm volatile(
-        "lwz 3, 32(3)
-"
-        "blr
-"
+        "lwz 3, 32(3)\n"
+        "blr\n"
     );
 }

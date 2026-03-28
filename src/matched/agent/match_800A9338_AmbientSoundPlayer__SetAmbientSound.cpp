@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void AmbientSoundPlayer::SetAmbientSound(ERAmbientSound *) {
     asm volatile(
-        "stw 4, 4(3)
-"
-        "blr
-"
+        "stw 4, 4(3)\n"
+        "blr\n"
     );
 }

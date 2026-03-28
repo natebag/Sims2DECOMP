@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::StartParticleEffectFromEdithPrimitive(unsigned int, unsigned int) {
     asm volatile(
-        "li 3, 0
-"
-        "blr
-"
+        "li 3, 0\n"
+        "blr\n"
     );
 }

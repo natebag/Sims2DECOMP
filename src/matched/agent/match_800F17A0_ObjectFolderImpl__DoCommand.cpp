@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ObjectFolderImpl::DoCommand(short, int) {
     asm volatile(
-        "li 3, 1
-"
-        "blr
-"
+        "li 3, 1\n"
+        "blr\n"
     );
 }

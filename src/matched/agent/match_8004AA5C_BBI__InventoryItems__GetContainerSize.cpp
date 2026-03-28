@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void BBI::InventoryItems::GetContainerSize(void) const {
     asm volatile(
-        "li 3, 36
-"
-        "blr
-"
+        "li 3, 36\n"
+        "blr\n"
     );
 }

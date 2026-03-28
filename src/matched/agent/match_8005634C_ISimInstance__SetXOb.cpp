@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ISimInstance::SetXOb(cXObject *) {
     asm volatile(
-        "stw 4, 808(3)
-"
-        "blr
-"
+        "stw 4, 808(3)\n"
+        "blr\n"
     );
 }

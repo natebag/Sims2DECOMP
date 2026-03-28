@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObjectImpl::GetLocation(void) {
     asm volatile(
-        "addi 3, 3, 104
-"
-        "blr
-"
+        "addi 3, 3, 104\n"
+        "blr\n"
     );
 }

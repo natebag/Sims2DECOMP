@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void DialogPaneBase::GetBodyTextItem(void) {
     asm volatile(
-        "lwz 3, 100(3)
-"
-        "blr
-"
+        "lwz 3, 100(3)\n"
+        "blr\n"
     );
 }

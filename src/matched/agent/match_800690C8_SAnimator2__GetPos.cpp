@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void SAnimator2::GetPos(void) {
     asm volatile(
-        "addi 3, 3, 28
-"
-        "blr
-"
+        "addi 3, 3, 28\n"
+        "blr\n"
     );
 }

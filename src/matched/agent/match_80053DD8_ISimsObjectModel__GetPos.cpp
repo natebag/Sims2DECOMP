@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ISimsObjectModel::GetPos(void) {
     asm volatile(
-        "addi 3, 3, 1028
-"
-        "blr
-"
+        "addi 3, 3, 1028\n"
+        "blr\n"
     );
 }

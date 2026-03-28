@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ObjectFolderImpl::GetBehaviorFinder(void) {
     asm volatile(
-        "addi 3, 3, 4
-"
-        "blr
-"
+        "addi 3, 3, 4\n"
+        "blr\n"
     );
 }

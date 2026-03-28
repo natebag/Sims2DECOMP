@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ELiveMode::InTransportMode(void) {
     asm volatile(
-        "lwz 3, 40(3)
-"
-        "blr
-"
+        "lwz 3, 40(3)\n"
+        "blr\n"
     );
 }

@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void QuickStringSet::GetDataSourceType(void) const {
     asm volatile(
-        "li 3, 1
-"
-        "blr
-"
+        "li 3, 1\n"
+        "blr\n"
     );
 }

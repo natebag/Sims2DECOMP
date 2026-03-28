@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void ISimsObjectModel::GetShadow(void) {
     asm volatile(
-        "lwz 3, 1100(3)
-"
-        "blr
-"
+        "lwz 3, 1100(3)\n"
+        "blr\n"
     );
 }

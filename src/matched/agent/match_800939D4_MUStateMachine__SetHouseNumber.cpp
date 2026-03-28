@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void MUStateMachine::SetHouseNumber(int) {
     asm volatile(
-        "stw 3, -21360(13)
-"
-        "blr
-"
+        "stw 3, -21360(13)\n"
+        "blr\n"
     );
 }

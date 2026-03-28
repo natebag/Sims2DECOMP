@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void Interaction::GetStackVars(void) {
     asm volatile(
-        "addi 3, 3, 24
-"
-        "blr
-"
+        "addi 3, 3, 24\n"
+        "blr\n"
     );
 }

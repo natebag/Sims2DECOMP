@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void HouseStats::GetNumBathrooms(void) {
     asm volatile(
-        "lwz 3, 12(3)
-"
-        "blr
-"
+        "lwz 3, 12(3)\n"
+        "blr\n"
     );
 }

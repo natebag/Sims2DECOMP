@@ -9,9 +9,7 @@ public:
 __attribute__((naked))
 void cXObject::SetAutoReset(bool) {
     asm volatile(
-        "stw 3, -31900(13)
-"
-        "blr
-"
+        "stw 3, -31900(13)\n"
+        "blr\n"
     );
 }
