@@ -1,9 +1,18 @@
-// 0x80030520 (64 bytes)
-// EIWallPart::SafeDelete(void)
+/* EIWallPart::SafeDelete(void) - 0x80030520 (64 bytes) */
 
-class EIWallPart { public: void SafeDelete(void); };
+struct EIWallPart {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual ~EIWallPart();
+    static void SafeDelete(EIWallPart *p);
+};
 
-__attribute__((naked))
-void EIWallPart::SafeDelete(void) {
-    asm volatile(".long 0x9421FFF8\n.long 0x7C0802A6\n.long 0x9001000C\n.long 0x7C6B1B79\n.long 0x41820020\n.long 0x812B0000\n.long 0x38800003\n.long 0xA8690030\n.long 0x80090034\n.long 0x7C6B1A14\n.long 0x7C0803A6\n.long 0x4E800021\n.long 0x8001000C\n.long 0x7C0803A6\n.long 0x38210008\n.long 0x4E800020");
+void EIWallPart::SafeDelete(EIWallPart *p)
+{
+    if (p) {
+        delete p;
+    }
 }
