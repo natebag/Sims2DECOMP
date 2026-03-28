@@ -1,0 +1,2 @@
+extern void *_wrap_EDatasetManager__DelRef_unsigned_int__EResourceManager__DelRefMode();
+void *EDatasetManager__DelRef_unsigned_int__EResourceManager__DelRefMode() { return _wrap_EDatasetManager__DelRef_unsigned_int__EResourceManager__DelRefMode(); }

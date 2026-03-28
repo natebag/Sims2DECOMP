@@ -1,0 +1,2 @@
+extern void *_wrap_EQuickdataManager__AddRef_unsigned_int__EFile_ptr__int();
+void *EQuickdataManager__AddRef_unsigned_int__EFile_ptr__int() { return _wrap_EQuickdataManager__AddRef_unsigned_int__EFile_ptr__int(); }

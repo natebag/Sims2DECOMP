@@ -1,0 +1,2 @@
+void VertexDataDeinitialization();
+void VertexDataDeinitialization() { }

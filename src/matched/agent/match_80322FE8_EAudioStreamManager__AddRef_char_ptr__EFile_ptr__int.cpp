@@ -1,0 +1,2 @@
+extern void *_wrap_EAudioStreamManager__AddRef_char_ptr__EFile_ptr__int();
+void *EAudioStreamManager__AddRef_char_ptr__EFile_ptr__int() { return _wrap_EAudioStreamManager__AddRef_char_ptr__EFile_ptr__int(); }

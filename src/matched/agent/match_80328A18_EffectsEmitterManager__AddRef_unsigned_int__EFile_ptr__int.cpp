@@ -1,0 +1,2 @@
+extern void *_wrap_EffectsEmitterManager__AddRef_unsigned_int__EFile_ptr__int();
+void *EffectsEmitterManager__AddRef_unsigned_int__EFile_ptr__int() { return _wrap_EffectsEmitterManager__AddRef_unsigned_int__EFile_ptr__int(); }

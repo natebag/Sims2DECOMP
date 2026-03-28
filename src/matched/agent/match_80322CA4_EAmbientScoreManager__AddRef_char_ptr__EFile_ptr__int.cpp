@@ -1,0 +1,2 @@
+extern void *_wrap_EAmbientScoreManager__AddRef_char_ptr__EFile_ptr__int();
+void *EAmbientScoreManager__AddRef_char_ptr__EFile_ptr__int() { return _wrap_EAmbientScoreManager__AddRef_char_ptr__EFile_ptr__int(); }

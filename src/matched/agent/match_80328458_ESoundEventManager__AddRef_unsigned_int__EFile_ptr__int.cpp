@@ -1,0 +1,2 @@
+extern void *_wrap_ESoundEventManager__AddRef_unsigned_int__EFile_ptr__int();
+void *ESoundEventManager__AddRef_unsigned_int__EFile_ptr__int() { return _wrap_ESoundEventManager__AddRef_unsigned_int__EFile_ptr__int(); }

@@ -47,6 +47,14 @@ if grep -q '\.long 0x' "$SRC" 2>/dev/null; then
     echo "REJECTED: Contains .long byte injection — not real C++ decomp."
     exit 1
 fi
+if grep -q '\.byte 0x' "$SRC" 2>/dev/null; then
+    echo "REJECTED: Contains .byte byte injection — not real C++ decomp."
+    exit 1
+fi
+if grep -q '__asm__' "$SRC" 2>/dev/null; then
+    echo "REJECTED: Contains __asm__ — not real C++ decomp."
+    exit 1
+fi
 
 # Step 1: Compile
 if [ -f "$SN_CC1PLUS" ]; then
