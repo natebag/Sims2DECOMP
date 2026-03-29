@@ -7,10 +7,19 @@ ISO/
 
 # Build output
 build/
+build_pc/
+build_pc2/
 *.dol
 *.elf
 *.o
 *.a
+
+# Temp/scratch files
+candidates*.txt
+matched_addrs_temp.txt
+
+# Worktree snapshots
+.worktrees/
 
 # Python
 __pycache__/
