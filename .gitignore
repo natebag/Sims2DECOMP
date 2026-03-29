@@ -48,5 +48,10 @@ tools/symbols.json
 keys.txt
 Key/
 
+# Third-party tools (UniExtract, installers)
+compiler/UniExtract/
+compiler/maybe/
+compiler/ProDGforNGCv393.exe
+
 # Claude Code
 .claude/
