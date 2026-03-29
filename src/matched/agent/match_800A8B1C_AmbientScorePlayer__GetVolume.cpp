@@ -1,12 +1,2 @@
-// 0x800A8B1C (8 bytes)
-class AmbientScorePlayer {
-public:
-    char pad[20];
-    int m_volume;
-
-    int GetVolume(void);
-};
-
-int AmbientScorePlayer::GetVolume(void) {
-    return m_volume;
-}
+struct ASP { char p[0x14]; int m_vol; int GetVolume(); };
+int ASP::GetVolume() { return m_vol; }

@@ -1,12 +1,2 @@
-// 0x800961B4 (8 bytes)
-class StateMachine {
-public:
-    char pad[80];
-    float m_timeInState;
-
-    float GetTimeInState(void) const;
-};
-
-float StateMachine::GetTimeInState(void) const {
-    return m_timeInState;
-}
+struct SM { char p[0x50]; float m_time; float GetTimeInState() const; };
+float SM::GetTimeInState() const { return m_time; }

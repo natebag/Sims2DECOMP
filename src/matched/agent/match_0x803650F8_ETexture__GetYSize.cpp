@@ -1,5 +1,5 @@
 struct ETexture {
-    char _pad[0x12];
+    char _p[0x12];
     unsigned short m_ySize;
     unsigned short GetYSize();
 };

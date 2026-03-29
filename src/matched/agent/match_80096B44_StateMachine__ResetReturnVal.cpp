@@ -1,12 +1,2 @@
-// 0x80096B44 (12 bytes)
-class StateMachine {
-public:
-    char pad[144];
-    int m_returnVal;
-
-    void ResetReturnVal(void);
-};
-
-void StateMachine::ResetReturnVal(void) {
-    m_returnVal = 0;
-}
+struct SM { char p[0x90]; int m_ret; void ResetReturnVal(); };
+void SM::ResetReturnVal() { m_ret = 0; }

@@ -1,12 +1,2 @@
-// 0x80096B3C (8 bytes)
-class StateMachine {
-public:
-    char pad[144];
-    int m_returnVal;
-
-    int GetReturnVal(void) const;
-};
-
-int StateMachine::GetReturnVal(void) const {
-    return m_returnVal;
-}
+struct SM { char p[0x90]; int m_ret; int GetReturnVal() const; };
+int SM::GetReturnVal() const { return m_ret; }

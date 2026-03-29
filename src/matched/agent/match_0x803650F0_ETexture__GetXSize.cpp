@@ -1,5 +1,5 @@
 struct ETexture {
-    char _pad[0x10];
+    char _p[0x10];
     unsigned short m_xSize;
     unsigned short GetXSize();
 };

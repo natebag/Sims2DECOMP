@@ -1,5 +1,5 @@
 struct ETexture {
-    char _pad[0x1a];
+    char _p[0x1a];
     unsigned char m_bitsPerImagePixel;
     unsigned char GetBitsPerImagePixel();
 };

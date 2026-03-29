@@ -1,12 +1,2 @@
-// 0x80096B34 (8 bytes)
-class StateMachine {
-public:
-    char pad[40];
-    float m_frameDeltaTime;
-
-    float GetFrameDeltaTime(void) const;
-};
-
-float StateMachine::GetFrameDeltaTime(void) const {
-    return m_frameDeltaTime;
-}
+struct SM { char p[0x28]; float m_dt; float GetFrameDeltaTime() const; };
+float SM::GetFrameDeltaTime() const { return m_dt; }

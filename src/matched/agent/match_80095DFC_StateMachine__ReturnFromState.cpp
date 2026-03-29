@@ -1,14 +1,2 @@
-// 0x80095DFC (16 bytes)
-class StateMachine {
-public:
-    char pad[136];
-    int m_returnPending;
-    int m_returnStateId;
-
-    void ReturnFromState(int stateId);
-};
-
-void StateMachine::ReturnFromState(int stateId) {
-    m_returnStateId = stateId;
-    m_returnPending = 1;
-}
+struct SM { char p[0x88]; int m_returning; int m_result; void ReturnFromState(int v); };
+void SM::ReturnFromState(int v) { m_result = v; m_returning = 1; }

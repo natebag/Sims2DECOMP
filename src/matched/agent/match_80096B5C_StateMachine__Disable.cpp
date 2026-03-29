@@ -1,12 +1,2 @@
-// 0x80096B5C (12 bytes)
-class StateMachine {
-public:
-    char pad[148];
-    int m_enabled;
-
-    void Disable(void);
-};
-
-void StateMachine::Disable(void) {
-    m_enabled = 0;
-}
+struct SM { char p[0x94]; int m_en; void Disable(); };
+void SM::Disable() { m_en = 0; }

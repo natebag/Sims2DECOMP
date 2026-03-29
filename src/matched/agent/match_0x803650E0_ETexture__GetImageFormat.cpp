@@ -1,5 +1,5 @@
 struct ETexture {
-    char _pad[0x18];
+    char _p[0x18];
     unsigned char m_imageFormat;
     unsigned char GetImageFormat();
 };

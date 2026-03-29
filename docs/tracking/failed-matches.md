@@ -33,6 +33,10 @@ especially around:
 - `0x802E0E90` `EMemoryReadStream::EMemoryReadStream(void *)` — store order of zero-init fields reversed
 - `0x802E0EC4` `EMemoryBufferWriteStream::EMemoryBufferWriteStream(void *)` — same store order issue
 - `0x802CD9B8` `ERedBlackTree::ERedBlackTree(void)` — store order of init fields differs
+- `0x80364F64` `ETexture::ETexture(void)` (96 bytes) — store scheduling of 14 field
+  initializations in leaf constructor. SN compiler schedules stores in a different order
+  than the DOL (e.g., stb before sth before stw grouping differs). All registers and
+  values are correct, only the store sequence differs. Tried 6+ source orderings.
 
 ### extsb Injection Differences
 
@@ -49,13 +53,32 @@ especially around:
 
 - `0x80024940` `TimeIsInRange(int, int, int)` — Uses r0 temp + mr r3,r0 in DOL
   but compiler puts result directly in r3
+- `0x80145CFC` `EdithResFile::Open(StringBuffer&)` — source shape mismatch after 3 tries;
+  closest attempts either compiled to `cmpwi r3,0` instead of `mr. r3,r3`, or staged the
+  return value through `r0` before the epilogue
+- `0x800A4A84` `AltToWorld(float&)` — wrapper logic is clear (`AltToIso` then multiply by a
+  loaded float constant), but SN v3.93 keeps forcing a saved `r30`/spill-back shape instead of
+  the tighter DOL wrapper after 3 source-shape attempts
 
 ### Loop Optimization Differences
 
 - `0x8004AFA8` `BBI::InventoryItems::GetNewItemIndex(void) const` — DOL uses
   lwzx with slwi index, compiler optimizes to lwzu (load with update)
+- `0x800371FC` `RemapWallpaperId(unsigned int)` — helper wants absolute global load/table walk
+  shape; straightforward C++ compiled into SDA/r13-style global access instead
+- `0x80037218` `RemapFloorId(unsigned int)` — same absolute-vs-SDA global access mismatch as
+  `RemapWallpaperId`
+- `0x800A7FD4` `wcsstr` — one straightforward source-level attempt matched the high-level call
+  pattern (`wcslen`/`wcschr`/`wcsncmp`) but compiled to a different control-flow layout and size
 
 (Agents: add entries here as you find them)
+
+- `0x80132C60` `QuickResFile::GetString(StringBuffer &, short, short)` (188 bytes)
+  DOL generates `mr r9, r3` to copy strings pointer to r9 before null check, then uses
+  `lwz r0, -4(r9)` for count and `lwzx r4, r9, r3` for indexed access. Our SN compiler
+  (v3.93) consistently optimizes away the copy, using r3 directly. Result is 184 bytes
+  (46 insns) vs DOL's 188 bytes (47 insns). Tried 6+ variations including separate
+  locals, casts, inline helpers, different optimization levels (-O1, -O2, -Os).
 
 - `0x8035227C` `InteractorModule::DirectInteractor::CameraDirectorPermitsDirectControl`
   Return/signature cleanup fixed the first compile issue, but the verified C++ body still diverged from SN codegen shape. Left as unmatched after exhausting the worker's attempt budget.
@@ -79,6 +102,33 @@ handles some of these, but complex call patterns still fail.
 
 Functions with complex control flow (multiple if/else chains, early returns)
 where the compiler schedules branches differently.
+
+## Interaction TU (interaction.obj) — 0x800C1040-0x800C2008 (2026-03-29)
+
+### Matched (4 new):
+- `0x800C171C` Interaction::~Interaction(void) — 100 bytes
+- `0x800C11D0` Interaction::Interaction(Interaction &) — 92 bytes (copy ctor)
+- `0x800C1068` Interaction::operator=(Interaction &) — 216 bytes
+- `0x800C17A4` Interaction::SetLocalVars(short *, int) — 136 bytes
+
+### Failed — Instruction scheduling (float literal + vtable load ordering):
+- `0x800C1140` Interaction::Interaction(void) — 144 bytes — DOL loads float literal addr (lis r9) before saving this (mr r30, r3), SN compiler does the reverse. Also m_localVarsCount store reordered near m_localVars.
+- `0x800C122C` Interaction::Interaction(cXPerson*, cXObject*, int) — 204 bytes — Same scheduling
+- `0x800C1574` Interaction::Interaction(cXPerson*, cXObject*, int, int) — 424 bytes — Same + virtual dispatch
+- `0x800C12F8` Interaction::Interaction(cXPerson*, cXPerson*) — 636 bytes — Same + virtual dispatch
+
+### Failed — Branch direction (beq vs bne):
+- `0x800C182C` Interaction::GetEntry(void) const — 112 bytes — DOL uses beq (forward to return 0), SN compiler bne (forward to vtable code). Code body matches otherwise.
+
+### Failed — Virtual dispatch vtable offset mismatch:
+- `0x800C18B0` Interaction::GetName(void) const — 176 bytes
+- `0x800C199C` Interaction::SetName(int, int) — 204 bytes — Uses cSimulatorImpl via r13-relative global
+
+### Failed — Complex serialization:
+- `0x800C1A68` Interaction::DoStream(ReconBuffer*, int) — 524 bytes
+
+### Failed — Static guard + virtual dispatch:
+- `0x800C1CBC` Interaction::GetCTilePt(void) const — 100 bytes
 
 ## Unknown Failures
 
@@ -261,3 +311,30 @@ allocations (r10 vs r9 for temp ptr) and different store orderings.
 ### Constructor/destructor store ordering:
 - `80182F40` ActionMenu::MenuItem::MenuItem(void) - stores reordered by compiler
 - `801812AC` UIButtonImages::~UIButtonImages(void) - vtable offset off by 4 due to virtual keyword
+
+### SocialModeInteractor scheduling/register issues:
+- `0x8021F164` SocialModeInteractor::~SocialModeInteractor - andi. interleaved between lis/addi in DOL, SN puts it after stw
+- `0x8021F548` SocialModeInteractor::ChooseAction - DOL duplicates tail (sth+blr) in both branches, SN merges; beq vs bne branch sense flips depending on approach; r0 vs r4 register choice
+
+## QuickDataSoundInfo::QuickDataSoundInfo(void) — 0x80145874 (140 bytes)
+- **Issue:** Argument setup scheduling for StringBuffer_ctor call
+- **Details:** DOL schedules args as (r4, r5, r3) before bl; SN v3.93 generates (r3, r4, r5). Same 3 instructions, just reordered. Rest of 140-byte function matches perfectly.
+- **Attempts:** 6
+- **Likely fix:** Different SN compiler version or TU compilation
+
+## QuickDataSoundInfo::LoadFromDataID — 0x801456E0 (180 bytes)
+- **Issue:** Complex virtual dispatch + SDA global access
+- **Attempts:** 0 (skipped)
+
+## MotiveCurveSet::LoadFromFile — 0x800C2D90 (264 bytes)
+- **Issue:** Complex virtual function dispatch through StringSet vtable
+- **Details:** Function uses 3 virtual calls through StringSet* at vtable offsets 112/116 (entry 14), 128/132 (entry 16), 232/236 (entry 29). Requires exact vtable layout definition for StringSet class with ~30+ virtual functions at precise positions. Also uses StringSet::CreateInstance/DestroyInstance static helpers.
+- **Attempts:** 0 direct attempts (blocked by vtable layout dependency)
+- **Likely fix:** Need complete StringSet vtable definition from Ghidra analysis or TU compilation
+
+## EResource::EResource(void) - 0x80311DC8 (48 bytes)
+- **Issue:** Register allocation mismatch - DOL uses r11 for `this`, r9 for vtable; SN compiler generates r9 for `this`, r11 for vtable
+- **DOL pattern:** `or r11,r3,r3; li r0,1; sth r0,12(r11); lis r9,vtable_hi; ...`
+- **Compiled pattern:** `lis r11,vtable_hi; mr r9,r3; addi r11,r11,vtable_lo; li r0,1; ...`
+- **Attempts:** 3 (plain struct, base class struct, free function) - all produce r9<->r11 swap
+- **Likely cause:** Different register allocation due to unknown compiler flag or surrounding code context
