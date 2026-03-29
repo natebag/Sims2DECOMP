@@ -8,6 +8,8 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class REffectsEmitter {
 public:
     REffectsEmitter(void);
@@ -18,6 +20,12 @@ public:
     void Load(EFile *);
     void Refresh(EFile *);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x8036A7B4 (80 bytes)
@@ -318,5 +326,42 @@ void REffectsEmitter::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo REffectsEmitter_typeInfo;
+
+// 0x8036AC30 (12 bytes)
+const TypeInfo* REffectsEmitter::GetTypeInfo() const {
+    return &REffectsEmitter_typeInfo;
+}
+
+// 0x8036AC3C (12 bytes)
+const char* REffectsEmitter::GetTypeName() const {
+    return *(const char**)((char*)&REffectsEmitter_typeInfo + 0x0C);
+}
+
+// 0x8036AC48 (12 bytes)
+u32 REffectsEmitter::GetTypeKey() const {
+    return *(u32*)((char*)&REffectsEmitter_typeInfo + 0x10);
+}
+
+// 0x8036AC54 (12 bytes)
+u16 REffectsEmitter::GetTypeVersion() const {
+    return *(u16*)((char*)&REffectsEmitter_typeInfo + 0x14);
+}
+
+// 0x8036AC60 (12 bytes)
+const TypeInfo* REffectsEmitter::GetTypeInfoStatic() {
+    return &REffectsEmitter_typeInfo;
+}
+
+// 0x8036AC6C (12 bytes)
+u16 REffectsEmitter::GetReadVersion() {
+    return *(u16*)((char*)&REffectsEmitter_typeInfo + 0x16);
 }
 

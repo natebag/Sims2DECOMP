@@ -8,12 +8,20 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class ERSoundEvent {
 public:
     ERSoundEvent(void);
     ~ERSoundEvent(void);
     void Load(EFile *);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x803699BC (68 bytes)
@@ -344,5 +352,42 @@ void ERSoundEvent::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo ERSoundEvent_typeInfo;
+
+// 0x80369F30 (12 bytes)
+const TypeInfo* ERSoundEvent::GetTypeInfo() const {
+    return &ERSoundEvent_typeInfo;
+}
+
+// 0x80369F3C (12 bytes)
+const char* ERSoundEvent::GetTypeName() const {
+    return *(const char**)((char*)&ERSoundEvent_typeInfo + 0x0C);
+}
+
+// 0x80369F48 (12 bytes)
+u32 ERSoundEvent::GetTypeKey() const {
+    return *(u32*)((char*)&ERSoundEvent_typeInfo + 0x10);
+}
+
+// 0x80369F54 (12 bytes)
+u16 ERSoundEvent::GetTypeVersion() const {
+    return *(u16*)((char*)&ERSoundEvent_typeInfo + 0x14);
+}
+
+// 0x80369F60 (12 bytes)
+const TypeInfo* ERSoundEvent::GetTypeInfoStatic() {
+    return &ERSoundEvent_typeInfo;
+}
+
+// 0x80369F6C (12 bytes)
+u16 ERSoundEvent::GetReadVersion() {
+    return *(u16*)((char*)&ERSoundEvent_typeInfo + 0x16);
 }
 

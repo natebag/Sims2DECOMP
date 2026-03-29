@@ -8,6 +8,8 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class ERCharacter {
 public:
     ERCharacter(void);
@@ -15,6 +17,12 @@ public:
     void Load(EFile &);
     void FindNode(char *);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x803686E8 (68 bytes)
@@ -345,5 +353,42 @@ void ERCharacter::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo ERCharacter_typeInfo;
+
+// 0x80368C44 (12 bytes)
+const TypeInfo* ERCharacter::GetTypeInfo() const {
+    return &ERCharacter_typeInfo;
+}
+
+// 0x80368C50 (12 bytes)
+const char* ERCharacter::GetTypeName() const {
+    return *(const char**)((char*)&ERCharacter_typeInfo + 0x0C);
+}
+
+// 0x80368C5C (12 bytes)
+u32 ERCharacter::GetTypeKey() const {
+    return *(u32*)((char*)&ERCharacter_typeInfo + 0x10);
+}
+
+// 0x80368C68 (12 bytes)
+u16 ERCharacter::GetTypeVersion() const {
+    return *(u16*)((char*)&ERCharacter_typeInfo + 0x14);
+}
+
+// 0x80368C74 (12 bytes)
+const TypeInfo* ERCharacter::GetTypeInfoStatic() {
+    return &ERCharacter_typeInfo;
+}
+
+// 0x80368C80 (12 bytes)
+u16 ERCharacter::GetReadVersion() {
+    return *(u16*)((char*)&ERCharacter_typeInfo + 0x16);
 }
 

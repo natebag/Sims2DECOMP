@@ -9,6 +9,8 @@
 class EInstance;
 class EStream;
 
+struct TypeInfo;
+
 class EILight {
 public:
     EILight(void);
@@ -18,6 +20,12 @@ public:
     void GetScaledIntensity(void);
     void TestOverlap(EInstance *);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80227984 (168 bytes)
@@ -451,5 +459,42 @@ void EILight::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EILight_typeInfo;
+
+// 0x80228008 (12 bytes)
+const TypeInfo* EILight::GetTypeInfo() const {
+    return &EILight_typeInfo;
+}
+
+// 0x80228014 (12 bytes)
+const char* EILight::GetTypeName() const {
+    return *(const char**)((char*)&EILight_typeInfo + 0x0C);
+}
+
+// 0x80228020 (12 bytes)
+u32 EILight::GetTypeKey() const {
+    return *(u32*)((char*)&EILight_typeInfo + 0x10);
+}
+
+// 0x8022802C (12 bytes)
+u16 EILight::GetTypeVersion() const {
+    return *(u16*)((char*)&EILight_typeInfo + 0x14);
+}
+
+// 0x80228038 (12 bytes)
+const TypeInfo* EILight::GetTypeInfoStatic() {
+    return &EILight_typeInfo;
+}
+
+// 0x80228044 (12 bytes)
+u16 EILight::GetReadVersion() {
+    return *(u16*)((char*)&EILight_typeInfo + 0x16);
 }
 

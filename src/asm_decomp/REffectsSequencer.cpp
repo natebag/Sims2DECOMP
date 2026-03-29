@@ -8,11 +8,19 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class REffectsSequencer {
 public:
     ~REffectsSequencer(void);
     void Load(EFile *);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x8036AEAC (92 bytes)
@@ -131,5 +139,42 @@ void REffectsSequencer::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo REffectsSequencer_typeInfo;
+
+// 0x8036B160 (12 bytes)
+const TypeInfo* REffectsSequencer::GetTypeInfo() const {
+    return &REffectsSequencer_typeInfo;
+}
+
+// 0x8036B16C (12 bytes)
+const char* REffectsSequencer::GetTypeName() const {
+    return *(const char**)((char*)&REffectsSequencer_typeInfo + 0x0C);
+}
+
+// 0x8036B178 (12 bytes)
+u32 REffectsSequencer::GetTypeKey() const {
+    return *(u32*)((char*)&REffectsSequencer_typeInfo + 0x10);
+}
+
+// 0x8036B184 (12 bytes)
+u16 REffectsSequencer::GetTypeVersion() const {
+    return *(u16*)((char*)&REffectsSequencer_typeInfo + 0x14);
+}
+
+// 0x8036B190 (12 bytes)
+const TypeInfo* REffectsSequencer::GetTypeInfoStatic() {
+    return &REffectsSequencer_typeInfo;
+}
+
+// 0x8036B19C (12 bytes)
+u16 REffectsSequencer::GetReadVersion() {
+    return *(u16*)((char*)&REffectsSequencer_typeInfo + 0x16);
 }
 

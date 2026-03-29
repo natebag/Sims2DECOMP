@@ -8,6 +8,8 @@
 
 class EVec3;
 
+struct TypeInfo;
+
 class EIAmbLight {
 public:
     void CalcLightOnPoint(EVec3 &, EVec3 &);
@@ -15,6 +17,12 @@ public:
     void Setup(void);
     void New(void);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80226B98 (192 bytes)
@@ -240,5 +248,42 @@ void EIAmbLight::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EIAmbLight_typeInfo;
+
+// 0x80226F1C (12 bytes)
+const TypeInfo* EIAmbLight::GetTypeInfo() const {
+    return &EIAmbLight_typeInfo;
+}
+
+// 0x80226F28 (12 bytes)
+const char* EIAmbLight::GetTypeName() const {
+    return *(const char**)((char*)&EIAmbLight_typeInfo + 0x0C);
+}
+
+// 0x80226F34 (12 bytes)
+u32 EIAmbLight::GetTypeKey() const {
+    return *(u32*)((char*)&EIAmbLight_typeInfo + 0x10);
+}
+
+// 0x80226F40 (12 bytes)
+u16 EIAmbLight::GetTypeVersion() const {
+    return *(u16*)((char*)&EIAmbLight_typeInfo + 0x14);
+}
+
+// 0x80226F4C (12 bytes)
+const TypeInfo* EIAmbLight::GetTypeInfoStatic() {
+    return &EIAmbLight_typeInfo;
+}
+
+// 0x80226F58 (12 bytes)
+u16 EIAmbLight::GetReadVersion() {
+    return *(u16*)((char*)&EIAmbLight_typeInfo + 0x16);
 }
 

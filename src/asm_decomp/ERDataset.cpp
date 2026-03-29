@@ -8,6 +8,8 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class ERDataset {
 public:
     ERDataset(void);
@@ -18,6 +20,12 @@ public:
     void TryIncrementSubResources(void);
     void Load(EFile *, unsigned int);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80368E40 (80 bytes)
@@ -716,5 +724,42 @@ void ERDataset::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo ERDataset_typeInfo;
+
+// 0x80369834 (12 bytes)
+const TypeInfo* ERDataset::GetTypeInfo() const {
+    return &ERDataset_typeInfo;
+}
+
+// 0x80369840 (12 bytes)
+const char* ERDataset::GetTypeName() const {
+    return *(const char**)((char*)&ERDataset_typeInfo + 0x0C);
+}
+
+// 0x8036984C (12 bytes)
+u32 ERDataset::GetTypeKey() const {
+    return *(u32*)((char*)&ERDataset_typeInfo + 0x10);
+}
+
+// 0x80369858 (12 bytes)
+u16 ERDataset::GetTypeVersion() const {
+    return *(u16*)((char*)&ERDataset_typeInfo + 0x14);
+}
+
+// 0x80369864 (12 bytes)
+const TypeInfo* ERDataset::GetTypeInfoStatic() {
+    return &ERDataset_typeInfo;
+}
+
+// 0x80369870 (12 bytes)
+u16 ERDataset::GetReadVersion() {
+    return *(u16*)((char*)&ERDataset_typeInfo + 0x16);
 }
 

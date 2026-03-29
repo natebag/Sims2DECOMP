@@ -8,6 +8,8 @@
 
 class EStream;
 
+struct TypeInfo;
+
 class EISpotLight {
 public:
     EISpotLight(void);
@@ -15,6 +17,12 @@ public:
     void Read(EStream &);
     void Setup(void);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x8022B1E0 (216 bytes)
@@ -416,5 +424,42 @@ void EISpotLight::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EISpotLight_typeInfo;
+
+// 0x8022B818 (12 bytes)
+const TypeInfo* EISpotLight::GetTypeInfo() const {
+    return &EISpotLight_typeInfo;
+}
+
+// 0x8022B824 (12 bytes)
+const char* EISpotLight::GetTypeName() const {
+    return *(const char**)((char*)&EISpotLight_typeInfo + 0x0C);
+}
+
+// 0x8022B830 (12 bytes)
+u32 EISpotLight::GetTypeKey() const {
+    return *(u32*)((char*)&EISpotLight_typeInfo + 0x10);
+}
+
+// 0x8022B83C (12 bytes)
+u16 EISpotLight::GetTypeVersion() const {
+    return *(u16*)((char*)&EISpotLight_typeInfo + 0x14);
+}
+
+// 0x8022B848 (12 bytes)
+const TypeInfo* EISpotLight::GetTypeInfoStatic() {
+    return &EISpotLight_typeInfo;
+}
+
+// 0x8022B854 (12 bytes)
+u16 EISpotLight::GetReadVersion() {
+    return *(u16*)((char*)&EISpotLight_typeInfo + 0x16);
 }
 

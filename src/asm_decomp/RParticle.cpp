@@ -8,6 +8,8 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class RParticle {
 public:
     RParticle(void);
@@ -20,6 +22,12 @@ public:
     void Load(EFile *, unsigned int);
     void Refresh(EFile *);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x8036B2E8 (100 bytes)
@@ -1067,5 +1075,42 @@ void RParticle::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo RParticle_typeInfo;
+
+// 0x8036C1E8 (12 bytes)
+const TypeInfo* RParticle::GetTypeInfo() const {
+    return &RParticle_typeInfo;
+}
+
+// 0x8036C1F4 (12 bytes)
+const char* RParticle::GetTypeName() const {
+    return *(const char**)((char*)&RParticle_typeInfo + 0x0C);
+}
+
+// 0x8036C200 (12 bytes)
+u32 RParticle::GetTypeKey() const {
+    return *(u32*)((char*)&RParticle_typeInfo + 0x10);
+}
+
+// 0x8036C20C (12 bytes)
+u16 RParticle::GetTypeVersion() const {
+    return *(u16*)((char*)&RParticle_typeInfo + 0x14);
+}
+
+// 0x8036C218 (12 bytes)
+const TypeInfo* RParticle::GetTypeInfoStatic() {
+    return &RParticle_typeInfo;
+}
+
+// 0x8036C224 (12 bytes)
+u16 RParticle::GetReadVersion() {
+    return *(u16*)((char*)&RParticle_typeInfo + 0x16);
 }
 

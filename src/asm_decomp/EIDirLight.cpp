@@ -9,6 +9,8 @@
 class EStream;
 class EVec3;
 
+struct TypeInfo;
+
 class EIDirLight {
 public:
     EIDirLight(void);
@@ -16,6 +18,12 @@ public:
     void LightingParameters(EVec3 &, float &, EVec3 &, EVec3 &);
     void Setup(void);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x802270AC (92 bytes)
@@ -216,5 +224,42 @@ void EIDirLight::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EIDirLight_typeInfo;
+
+// 0x80227418 (12 bytes)
+const TypeInfo* EIDirLight::GetTypeInfo() const {
+    return &EIDirLight_typeInfo;
+}
+
+// 0x80227424 (12 bytes)
+const char* EIDirLight::GetTypeName() const {
+    return *(const char**)((char*)&EIDirLight_typeInfo + 0x0C);
+}
+
+// 0x80227430 (12 bytes)
+u32 EIDirLight::GetTypeKey() const {
+    return *(u32*)((char*)&EIDirLight_typeInfo + 0x10);
+}
+
+// 0x8022743C (12 bytes)
+u16 EIDirLight::GetTypeVersion() const {
+    return *(u16*)((char*)&EIDirLight_typeInfo + 0x14);
+}
+
+// 0x80227448 (12 bytes)
+const TypeInfo* EIDirLight::GetTypeInfoStatic() {
+    return &EIDirLight_typeInfo;
+}
+
+// 0x80227454 (12 bytes)
+u16 EIDirLight::GetReadVersion() {
+    return *(u16*)((char*)&EIDirLight_typeInfo + 0x16);
 }
 

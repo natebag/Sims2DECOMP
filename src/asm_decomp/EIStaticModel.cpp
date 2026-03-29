@@ -15,6 +15,8 @@ class ERC;
 class ERTexture;
 class EStream;
 
+struct TypeInfo;
+
 class EIStaticModel {
 public:
     EIStaticModel(void);
@@ -48,6 +50,12 @@ public:
     void DrawImmediateGhosted(ERC *, EAnimController *);
     void RegisterType(unsigned short);
     void GetAnchorPos(EMat4 &, int);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x8022B9A0 (176 bytes)
@@ -2905,5 +2913,42 @@ void EIStaticModel::GetAnchorPos(EMat4 &, int) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EIStaticModel_typeInfo;
+
+// 0x8022E070 (12 bytes)
+const TypeInfo* EIStaticModel::GetTypeInfo() const {
+    return &EIStaticModel_typeInfo;
+}
+
+// 0x8022E07C (12 bytes)
+const char* EIStaticModel::GetTypeName() const {
+    return *(const char**)((char*)&EIStaticModel_typeInfo + 0x0C);
+}
+
+// 0x8022E088 (12 bytes)
+u32 EIStaticModel::GetTypeKey() const {
+    return *(u32*)((char*)&EIStaticModel_typeInfo + 0x10);
+}
+
+// 0x8022E094 (12 bytes)
+u16 EIStaticModel::GetTypeVersion() const {
+    return *(u16*)((char*)&EIStaticModel_typeInfo + 0x14);
+}
+
+// 0x8022E0A0 (12 bytes)
+const TypeInfo* EIStaticModel::GetTypeInfoStatic() {
+    return &EIStaticModel_typeInfo;
+}
+
+// 0x8022E0AC (12 bytes)
+u16 EIStaticModel::GetReadVersion() {
+    return *(u16*)((char*)&EIStaticModel_typeInfo + 0x16);
 }
 

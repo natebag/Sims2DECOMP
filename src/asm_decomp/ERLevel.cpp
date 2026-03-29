@@ -22,6 +22,8 @@ class LevelLightingEntry;
 
 struct EVec3 {};
 
+struct TypeInfo;
+
 class ERLevel {
 public:
     ERLevel(void);
@@ -87,6 +89,12 @@ public:
     void UpdateFloorLighting(void);
     void GetLightsAtLocation(EVec3 &, int, ELights &);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80231348 (952 bytes)
@@ -6932,5 +6940,42 @@ void ERLevel::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo ERLevel_typeInfo;
+
+// 0x802380F4 (12 bytes)
+const TypeInfo* ERLevel::GetTypeInfo() const {
+    return &ERLevel_typeInfo;
+}
+
+// 0x80238100 (12 bytes)
+const char* ERLevel::GetTypeName() const {
+    return *(const char**)((char*)&ERLevel_typeInfo + 0x0C);
+}
+
+// 0x8023810C (12 bytes)
+u32 ERLevel::GetTypeKey() const {
+    return *(u32*)((char*)&ERLevel_typeInfo + 0x10);
+}
+
+// 0x80238118 (12 bytes)
+u16 ERLevel::GetTypeVersion() const {
+    return *(u16*)((char*)&ERLevel_typeInfo + 0x14);
+}
+
+// 0x80238124 (12 bytes)
+const TypeInfo* ERLevel::GetTypeInfoStatic() {
+    return &ERLevel_typeInfo;
+}
+
+// 0x80238130 (12 bytes)
+u16 ERLevel::GetReadVersion() {
+    return *(u16*)((char*)&ERLevel_typeInfo + 0x16);
 }
 

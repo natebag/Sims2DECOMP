@@ -12,6 +12,20 @@ class ELights;
 class EStream;
 class EVec3;
 
+struct TypeInfo;
+
+class EStorable {
+public:
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
+};
+
+struct TypeInfo;
+
 class EInstance {
 public:
     ~EInstance(void);
@@ -30,6 +44,12 @@ public:
     void ResetLocation(void);
     void GetLocationId(short &, short &);
     void GetOtherSide(short &, short &);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80228370 (88 bytes)
@@ -1052,138 +1072,62 @@ void EInstance::SetInstAlpha(float) {
     );
     __builtin_unreachable();
 }
+// TypeInfo getter implementations
 
-// 0x802293E8 (84 bytes)
-// EInstance::RegisterType(unsigned short)
-__attribute__((noreturn))
-void EInstance::RegisterType(unsigned short) {
-    __asm__ __volatile__(
-        "stwu	1,-8(1)\n"
-        "mflr	0\n"
-        "stw	0,12(1)\n"
-        "mr	7,3\n"
-        "lis	4,-32733\n"
-        "lis	3,-32688\n"
-        "lis	5,-32733\n"
-        "lis	6,-32733\n"
-        "lis	8,-32704\n"
-        "lis	9,-32688\n"
-        "addi	3,3,-18528\n"
-        "addi	4,4,-27916\n"
-        "addi	5,5,-27876\n"
-        "addi	6,6,-27844\n"
-        "addi	8,8,-6344\n"
-        "addi	9,9,-13320\n"
-        ".long 0x480ac4a5  /* bl ETypeInfo::Register(EStorable *(*)(void), void (*)(void *), void (*)(void *), unsigned short, char *, ETypeInfo *) */\n"
-        "lwz	0,12(1)\n"
-        "mtlr	0\n"
-        "addi	1,1,8\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
+struct TypeInfo;
+extern TypeInfo EInstance_typeInfo;
+
+// 0x802293A0 (12 bytes)
+const TypeInfo* EInstance::GetTypeInfo() const {
+    return &EInstance_typeInfo;
 }
 
-// 0x802294AC (124 bytes)
-// EInstance::ResetLocation(void)
-__attribute__((noreturn))
-void EInstance::ResetLocation(void) {
-    __asm__ __volatile__(
-        "stwu	1,-24(1)\n"
-        "mflr	0\n"
-        "stw	31,20(1)\n"
-        "stw	0,28(1)\n"
-        "mr	31,3\n"
-        "lwz	0,28(31)\n"
-        "cmpwi	0,0\n"
-        "beq	.L_802294E8\n"
-        "lwz	3,40(31)\n"
-        "li	4,1\n"
-        "addi	5,1,8\n"
-        "addi	6,1,10\n"
-        "mtlr	0\n"
-        "blrl\n"
-        "b	.L_802294F0\n"
-        ".L_802294E8:\n"
-        "sth	0,8(1)\n"
-        "sth	0,10(1)\n"
-        ".L_802294F0:\n"
-        "lwz	0,32(31)\n"
-        "cmpwi	0,0\n"
-        "beq	.L_80229514\n"
-        "lwz	3,36(31)\n"
-        "li	4,1\n"
-        "addi	5,1,8\n"
-        "addi	6,1,10\n"
-        "mtlr	0\n"
-        "blrl\n"
-        ".L_80229514:\n"
-        "lwz	0,28(1)\n"
-        "mtlr	0\n"
-        "lwz	31,20(1)\n"
-        "addi	1,1,24\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
+// 0x802293AC (12 bytes)
+const char* EInstance::GetTypeName() const {
+    return *(const char**)((char*)&EInstance_typeInfo + 0x0C);
 }
 
-// 0x80229528 (76 bytes)
-// EInstance::GetLocationId(short &, short &)
-__attribute__((noreturn))
-void EInstance::GetLocationId(short &, short &) {
-    __asm__ __volatile__(
-        "stwu	1,-8(1)\n"
-        "mflr	0\n"
-        "stw	0,12(1)\n"
-        "lwz	0,28(3)\n"
-        "mr	6,5\n"
-        "cmpwi	0,0\n"
-        "beq	.L_8022955C\n"
-        "mr	5,4\n"
-        "lwz	3,40(3)\n"
-        "li	4,0\n"
-        "mtlr	0\n"
-        "blrl\n"
-        "b	.L_80229564\n"
-        ".L_8022955C:\n"
-        "sth	0,0(6)\n"
-        "sth	0,0(4)\n"
-        ".L_80229564:\n"
-        "lwz	0,12(1)\n"
-        "mtlr	0\n"
-        "addi	1,1,8\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
+// 0x802293B8 (12 bytes)
+u32 EInstance::GetTypeKey() const {
+    return *(u32*)((char*)&EInstance_typeInfo + 0x10);
 }
 
-// 0x80229574 (80 bytes)
-// EInstance::GetOtherSide(short &, short &)
-__attribute__((noreturn))
-void EInstance::GetOtherSide(short &, short &) {
-    __asm__ __volatile__(
-        "stwu	1,-8(1)\n"
-        "mflr	0\n"
-        "stw	0,12(1)\n"
-        "lwz	0,32(3)\n"
-        "mr	6,5\n"
-        "cmpwi	0,0\n"
-        "beq	.L_802295A8\n"
-        "mr	5,4\n"
-        "lwz	3,36(3)\n"
-        "li	4,0\n"
-        "mtlr	0\n"
-        "blrl\n"
-        "b	.L_802295B4\n"
-        ".L_802295A8:\n"
-        "li	0,-1\n"
-        "sth	0,0(6)\n"
-        "sth	0,0(4)\n"
-        ".L_802295B4:\n"
-        "lwz	0,12(1)\n"
-        "mtlr	0\n"
-        "addi	1,1,8\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
+// 0x802293C4 (12 bytes)
+u16 EInstance::GetTypeVersion() const {
+    return *(u16*)((char*)&EInstance_typeInfo + 0x14);
+}
+
+// 0x802293D0 (12 bytes)
+const TypeInfo* EInstance::GetTypeInfoStatic() {
+    return &EInstance_typeInfo;
+}
+
+// 0x802293DC (12 bytes)
+u16 EInstance::GetReadVersion() {
+    return *(u16*)((char*)&EInstance_typeInfo + 0x16);
+}
+
+
+struct TypeInfo;
+extern TypeInfo EStorable_typeInfo;
+
+// 0x803C1420 (12 bytes)
+const TypeInfo* EStorable::GetTypeInfo() const {
+    return &EStorable_typeInfo;
+}
+
+// 0x803C142C (12 bytes)
+const char* EStorable::GetTypeName() const {
+    return *(const char**)((char*)&EStorable_typeInfo + 0x0C);
+}
+
+// 0x803C1438 (12 bytes)
+u32 EStorable::GetTypeKey() const {
+    return *(u32*)((char*)&EStorable_typeInfo + 0x10);
+}
+
+// 0x803C1444 (12 bytes)
+u16 EStorable::GetTypeVersion() const {
+    return *(u16*)((char*)&EStorable_typeInfo + 0x14);
 }
 

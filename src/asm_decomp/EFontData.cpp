@@ -9,6 +9,40 @@
 class EFile;
 class EStream;
 
+struct TypeInfo;
+
+class EFontCharacter {
+public:
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
+};
+
+class EFontPage {
+public:
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
+};
+
+class EFontSize {
+public:
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
+};
+
+struct TypeInfo;
+
 class EFontData {
 public:
     EFontData(void);
@@ -18,6 +52,12 @@ public:
     void Read(EStream &);
     void Load(EFile &);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80364024 (116 bytes)
@@ -447,5 +487,144 @@ void EFontData::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EFontCharacter_typeInfo;
+
+// 0x80364718 (12 bytes)
+const TypeInfo* EFontCharacter::GetTypeInfo() const {
+    return &EFontCharacter_typeInfo;
+}
+
+// 0x80364724 (12 bytes)
+const char* EFontCharacter::GetTypeName() const {
+    return *(const char**)((char*)&EFontCharacter_typeInfo + 0x0C);
+}
+
+// 0x80364730 (12 bytes)
+u32 EFontCharacter::GetTypeKey() const {
+    return *(u32*)((char*)&EFontCharacter_typeInfo + 0x10);
+}
+
+// 0x8036473C (12 bytes)
+u16 EFontCharacter::GetTypeVersion() const {
+    return *(u16*)((char*)&EFontCharacter_typeInfo + 0x14);
+}
+
+// 0x80364748 (12 bytes)
+const TypeInfo* EFontCharacter::GetTypeInfoStatic() {
+    return &EFontCharacter_typeInfo;
+}
+
+// 0x80364754 (12 bytes)
+u16 EFontCharacter::GetReadVersion() {
+    return *(u16*)((char*)&EFontCharacter_typeInfo + 0x16);
+}
+
+
+struct TypeInfo;
+extern TypeInfo EFontPage_typeInfo;
+
+// 0x8036486C (12 bytes)
+const TypeInfo* EFontPage::GetTypeInfo() const {
+    return &EFontPage_typeInfo;
+}
+
+// 0x80364878 (12 bytes)
+const char* EFontPage::GetTypeName() const {
+    return *(const char**)((char*)&EFontPage_typeInfo + 0x0C);
+}
+
+// 0x80364884 (12 bytes)
+u32 EFontPage::GetTypeKey() const {
+    return *(u32*)((char*)&EFontPage_typeInfo + 0x10);
+}
+
+// 0x80364890 (12 bytes)
+u16 EFontPage::GetTypeVersion() const {
+    return *(u16*)((char*)&EFontPage_typeInfo + 0x14);
+}
+
+// 0x8036489C (12 bytes)
+const TypeInfo* EFontPage::GetTypeInfoStatic() {
+    return &EFontPage_typeInfo;
+}
+
+// 0x803648A8 (12 bytes)
+u16 EFontPage::GetReadVersion() {
+    return *(u16*)((char*)&EFontPage_typeInfo + 0x16);
+}
+
+
+struct TypeInfo;
+extern TypeInfo EFontSize_typeInfo;
+
+// 0x803649D4 (12 bytes)
+const TypeInfo* EFontSize::GetTypeInfo() const {
+    return &EFontSize_typeInfo;
+}
+
+// 0x803649E0 (12 bytes)
+const char* EFontSize::GetTypeName() const {
+    return *(const char**)((char*)&EFontSize_typeInfo + 0x0C);
+}
+
+// 0x803649EC (12 bytes)
+u32 EFontSize::GetTypeKey() const {
+    return *(u32*)((char*)&EFontSize_typeInfo + 0x10);
+}
+
+// 0x803649F8 (12 bytes)
+u16 EFontSize::GetTypeVersion() const {
+    return *(u16*)((char*)&EFontSize_typeInfo + 0x14);
+}
+
+// 0x80364A04 (12 bytes)
+const TypeInfo* EFontSize::GetTypeInfoStatic() {
+    return &EFontSize_typeInfo;
+}
+
+// 0x80364A10 (12 bytes)
+u16 EFontSize::GetReadVersion() {
+    return *(u16*)((char*)&EFontSize_typeInfo + 0x16);
+}
+
+
+struct TypeInfo;
+extern TypeInfo EFontData_typeInfo;
+
+// 0x80364B3C (12 bytes)
+const TypeInfo* EFontData::GetTypeInfo() const {
+    return &EFontData_typeInfo;
+}
+
+// 0x80364B48 (12 bytes)
+const char* EFontData::GetTypeName() const {
+    return *(const char**)((char*)&EFontData_typeInfo + 0x0C);
+}
+
+// 0x80364B54 (12 bytes)
+u32 EFontData::GetTypeKey() const {
+    return *(u32*)((char*)&EFontData_typeInfo + 0x10);
+}
+
+// 0x80364B60 (12 bytes)
+u16 EFontData::GetTypeVersion() const {
+    return *(u16*)((char*)&EFontData_typeInfo + 0x14);
+}
+
+// 0x80364B6C (12 bytes)
+const TypeInfo* EFontData::GetTypeInfoStatic() {
+    return &EFontData_typeInfo;
+}
+
+// 0x80364B78 (12 bytes)
+u16 EFontData::GetReadVersion() {
+    return *(u16*)((char*)&EFontData_typeInfo + 0x16);
 }
 

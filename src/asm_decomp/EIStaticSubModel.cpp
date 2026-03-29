@@ -12,6 +12,8 @@ class EOrderTableData;
 class ERC;
 class EStream;
 
+struct TypeInfo;
+
 class EIStaticSubModel {
 public:
     EIStaticSubModel(void);
@@ -32,6 +34,12 @@ public:
     void HasModifiableColor(void);
     void RebuildShaders(void);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x8022E360 (152 bytes)
@@ -1387,5 +1395,42 @@ void EIStaticSubModel::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EIStaticSubModel_typeInfo;
+
+// 0x8022F7D8 (12 bytes)
+const TypeInfo* EIStaticSubModel::GetTypeInfo() const {
+    return &EIStaticSubModel_typeInfo;
+}
+
+// 0x8022F7E4 (12 bytes)
+const char* EIStaticSubModel::GetTypeName() const {
+    return *(const char**)((char*)&EIStaticSubModel_typeInfo + 0x0C);
+}
+
+// 0x8022F7F0 (12 bytes)
+u32 EIStaticSubModel::GetTypeKey() const {
+    return *(u32*)((char*)&EIStaticSubModel_typeInfo + 0x10);
+}
+
+// 0x8022F7FC (12 bytes)
+u16 EIStaticSubModel::GetTypeVersion() const {
+    return *(u16*)((char*)&EIStaticSubModel_typeInfo + 0x14);
+}
+
+// 0x8022F808 (12 bytes)
+const TypeInfo* EIStaticSubModel::GetTypeInfoStatic() {
+    return &EIStaticSubModel_typeInfo;
+}
+
+// 0x8022F814 (12 bytes)
+u16 EIStaticSubModel::GetReadVersion() {
+    return *(u16*)((char*)&EIStaticSubModel_typeInfo + 0x16);
 }
 

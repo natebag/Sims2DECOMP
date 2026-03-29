@@ -9,6 +9,8 @@
 class EStream;
 class EVec3;
 
+struct TypeInfo;
+
 class EIPortalPointLight {
 public:
     EIPortalPointLight(void);
@@ -19,6 +21,12 @@ public:
     void Update(void);
     void IsEnabled(void);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x8022A740 (168 bytes)
@@ -628,5 +636,42 @@ void EIPortalPointLight::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EIPortalPointLight_typeInfo;
+
+// 0x8022B038 (12 bytes)
+const TypeInfo* EIPortalPointLight::GetTypeInfo() const {
+    return &EIPortalPointLight_typeInfo;
+}
+
+// 0x8022B044 (12 bytes)
+const char* EIPortalPointLight::GetTypeName() const {
+    return *(const char**)((char*)&EIPortalPointLight_typeInfo + 0x0C);
+}
+
+// 0x8022B050 (12 bytes)
+u32 EIPortalPointLight::GetTypeKey() const {
+    return *(u32*)((char*)&EIPortalPointLight_typeInfo + 0x10);
+}
+
+// 0x8022B05C (12 bytes)
+u16 EIPortalPointLight::GetTypeVersion() const {
+    return *(u16*)((char*)&EIPortalPointLight_typeInfo + 0x14);
+}
+
+// 0x8022B068 (12 bytes)
+const TypeInfo* EIPortalPointLight::GetTypeInfoStatic() {
+    return &EIPortalPointLight_typeInfo;
+}
+
+// 0x8022B074 (12 bytes)
+u16 EIPortalPointLight::GetReadVersion() {
+    return *(u16*)((char*)&EIPortalPointLight_typeInfo + 0x16);
 }
 

@@ -9,6 +9,8 @@
 class EHouse;
 class ELevelDrawData;
 
+struct TypeInfo;
+
 class EIFloor {
 public:
     void DoLightingCalculation(void);
@@ -22,6 +24,12 @@ public:
     void IsRoomInFloor(unsigned short);
     void RegisterType(unsigned short);
     ~EIFloor(void);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80046614 (1160 bytes)
@@ -1239,5 +1247,42 @@ EIFloor::~EIFloor(void) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EIFloor_typeInfo;
+
+// 0x800483F8 (12 bytes)
+const TypeInfo* EIFloor::GetTypeInfo() const {
+    return &EIFloor_typeInfo;
+}
+
+// 0x80048404 (12 bytes)
+const char* EIFloor::GetTypeName() const {
+    return *(const char**)((char*)&EIFloor_typeInfo + 0x0C);
+}
+
+// 0x80048410 (12 bytes)
+u32 EIFloor::GetTypeKey() const {
+    return *(u32*)((char*)&EIFloor_typeInfo + 0x10);
+}
+
+// 0x8004841C (12 bytes)
+u16 EIFloor::GetTypeVersion() const {
+    return *(u16*)((char*)&EIFloor_typeInfo + 0x14);
+}
+
+// 0x80048428 (12 bytes)
+const TypeInfo* EIFloor::GetTypeInfoStatic() {
+    return &EIFloor_typeInfo;
+}
+
+// 0x80048434 (12 bytes)
+u16 EIFloor::GetReadVersion() {
+    return *(u16*)((char*)&EIFloor_typeInfo + 0x16);
 }
 

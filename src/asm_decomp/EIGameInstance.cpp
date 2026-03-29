@@ -6,9 +6,17 @@
 // Each function has its original C++ signature with the body as inline PPC asm.
 // These can be incrementally replaced with real C++ as decompilation progresses.
 
+struct TypeInfo;
+
 class EIGameInstance {
 public:
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80227844 (84 bytes)
@@ -39,5 +47,42 @@ void EIGameInstance::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EIGameInstance_typeInfo;
+
+// 0x802277FC (12 bytes)
+const TypeInfo* EIGameInstance::GetTypeInfo() const {
+    return &EIGameInstance_typeInfo;
+}
+
+// 0x80227808 (12 bytes)
+const char* EIGameInstance::GetTypeName() const {
+    return *(const char**)((char*)&EIGameInstance_typeInfo + 0x0C);
+}
+
+// 0x80227814 (12 bytes)
+u32 EIGameInstance::GetTypeKey() const {
+    return *(u32*)((char*)&EIGameInstance_typeInfo + 0x10);
+}
+
+// 0x80227820 (12 bytes)
+u16 EIGameInstance::GetTypeVersion() const {
+    return *(u16*)((char*)&EIGameInstance_typeInfo + 0x14);
+}
+
+// 0x8022782C (12 bytes)
+const TypeInfo* EIGameInstance::GetTypeInfoStatic() {
+    return &EIGameInstance_typeInfo;
+}
+
+// 0x80227838 (12 bytes)
+u16 EIGameInstance::GetReadVersion() {
+    return *(u16*)((char*)&EIGameInstance_typeInfo + 0x16);
 }
 

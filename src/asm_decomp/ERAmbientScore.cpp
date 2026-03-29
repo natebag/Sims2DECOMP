@@ -8,12 +8,20 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class ERAmbientScore {
 public:
     ERAmbientScore(void);
     ~ERAmbientScore(void);
     void Load(EFile *, unsigned int);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80366D50 (112 bytes)
@@ -308,5 +316,42 @@ void ERAmbientScore::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo ERAmbientScore_typeInfo;
+
+// 0x80367224 (12 bytes)
+const TypeInfo* ERAmbientScore::GetTypeInfo() const {
+    return &ERAmbientScore_typeInfo;
+}
+
+// 0x80367230 (12 bytes)
+const char* ERAmbientScore::GetTypeName() const {
+    return *(const char**)((char*)&ERAmbientScore_typeInfo + 0x0C);
+}
+
+// 0x8036723C (12 bytes)
+u32 ERAmbientScore::GetTypeKey() const {
+    return *(u32*)((char*)&ERAmbientScore_typeInfo + 0x10);
+}
+
+// 0x80367248 (12 bytes)
+u16 ERAmbientScore::GetTypeVersion() const {
+    return *(u16*)((char*)&ERAmbientScore_typeInfo + 0x14);
+}
+
+// 0x80367254 (12 bytes)
+const TypeInfo* ERAmbientScore::GetTypeInfoStatic() {
+    return &ERAmbientScore_typeInfo;
+}
+
+// 0x80367260 (12 bytes)
+u16 ERAmbientScore::GetReadVersion() {
+    return *(u16*)((char*)&ERAmbientScore_typeInfo + 0x16);
 }
 

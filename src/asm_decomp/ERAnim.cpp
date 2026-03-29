@@ -8,6 +8,20 @@
 
 class EFile;
 
+struct TypeInfo;
+
+class EAnimNodeDataPos {
+public:
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
+};
+
+struct TypeInfo;
+
 class ERAnim {
 public:
     ERAnim(void);
@@ -15,6 +29,12 @@ public:
     void Load(EFile *);
     void OldLoad(EFile *);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x803673AC (320 bytes)
@@ -571,5 +591,66 @@ void ERAnim::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo ERAnim_typeInfo;
+
+// 0x8036808C (12 bytes)
+const TypeInfo* ERAnim::GetTypeInfo() const {
+    return &ERAnim_typeInfo;
+}
+
+// 0x80368098 (12 bytes)
+const char* ERAnim::GetTypeName() const {
+    return *(const char**)((char*)&ERAnim_typeInfo + 0x0C);
+}
+
+// 0x803680A4 (12 bytes)
+u32 ERAnim::GetTypeKey() const {
+    return *(u32*)((char*)&ERAnim_typeInfo + 0x10);
+}
+
+// 0x803680B0 (12 bytes)
+u16 ERAnim::GetTypeVersion() const {
+    return *(u16*)((char*)&ERAnim_typeInfo + 0x14);
+}
+
+// 0x803680BC (12 bytes)
+const TypeInfo* ERAnim::GetTypeInfoStatic() {
+    return &ERAnim_typeInfo;
+}
+
+// 0x803680C8 (12 bytes)
+u16 ERAnim::GetReadVersion() {
+    return *(u16*)((char*)&ERAnim_typeInfo + 0x16);
+}
+
+
+struct TypeInfo;
+extern TypeInfo EAnimNodeDataPos_typeInfo;
+
+// 0x803C9800 (12 bytes)
+const TypeInfo* EAnimNodeDataPos::GetTypeInfo() const {
+    return &EAnimNodeDataPos_typeInfo;
+}
+
+// 0x803C980C (12 bytes)
+const char* EAnimNodeDataPos::GetTypeName() const {
+    return *(const char**)((char*)&EAnimNodeDataPos_typeInfo + 0x0C);
+}
+
+// 0x803C9818 (12 bytes)
+u32 EAnimNodeDataPos::GetTypeKey() const {
+    return *(u32*)((char*)&EAnimNodeDataPos_typeInfo + 0x10);
+}
+
+// 0x803C9824 (12 bytes)
+u16 EAnimNodeDataPos::GetTypeVersion() const {
+    return *(u16*)((char*)&EAnimNodeDataPos_typeInfo + 0x14);
 }
 

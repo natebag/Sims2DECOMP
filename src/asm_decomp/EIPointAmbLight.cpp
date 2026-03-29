@@ -8,6 +8,8 @@
 
 class EStream;
 
+struct TypeInfo;
+
 class EIPointAmbLight {
 public:
     EIPointAmbLight(void);
@@ -15,6 +17,12 @@ public:
     void Read(EStream &);
     void Setup(void);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80229810 (152 bytes)
@@ -284,5 +292,42 @@ void EIPointAmbLight::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo EIPointAmbLight_typeInfo;
+
+// 0x80229C44 (12 bytes)
+const TypeInfo* EIPointAmbLight::GetTypeInfo() const {
+    return &EIPointAmbLight_typeInfo;
+}
+
+// 0x80229C50 (12 bytes)
+const char* EIPointAmbLight::GetTypeName() const {
+    return *(const char**)((char*)&EIPointAmbLight_typeInfo + 0x0C);
+}
+
+// 0x80229C5C (12 bytes)
+u32 EIPointAmbLight::GetTypeKey() const {
+    return *(u32*)((char*)&EIPointAmbLight_typeInfo + 0x10);
+}
+
+// 0x80229C68 (12 bytes)
+u16 EIPointAmbLight::GetTypeVersion() const {
+    return *(u16*)((char*)&EIPointAmbLight_typeInfo + 0x14);
+}
+
+// 0x80229C74 (12 bytes)
+const TypeInfo* EIPointAmbLight::GetTypeInfoStatic() {
+    return &EIPointAmbLight_typeInfo;
+}
+
+// 0x80229C80 (12 bytes)
+u16 EIPointAmbLight::GetReadVersion() {
+    return *(u16*)((char*)&EIPointAmbLight_typeInfo + 0x16);
 }
 

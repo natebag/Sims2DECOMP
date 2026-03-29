@@ -8,6 +8,8 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class ERBinary {
 public:
     ERBinary(void);
@@ -15,6 +17,12 @@ public:
     void Deallocate(void);
     void Load(EFile *, unsigned int);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x80368278 (72 bytes)
@@ -193,5 +201,42 @@ void ERBinary::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo ERBinary_typeInfo;
+
+// 0x80368550 (12 bytes)
+const TypeInfo* ERBinary::GetTypeInfo() const {
+    return &ERBinary_typeInfo;
+}
+
+// 0x8036855C (12 bytes)
+const char* ERBinary::GetTypeName() const {
+    return *(const char**)((char*)&ERBinary_typeInfo + 0x0C);
+}
+
+// 0x80368568 (12 bytes)
+u32 ERBinary::GetTypeKey() const {
+    return *(u32*)((char*)&ERBinary_typeInfo + 0x10);
+}
+
+// 0x80368574 (12 bytes)
+u16 ERBinary::GetTypeVersion() const {
+    return *(u16*)((char*)&ERBinary_typeInfo + 0x14);
+}
+
+// 0x80368580 (12 bytes)
+const TypeInfo* ERBinary::GetTypeInfoStatic() {
+    return &ERBinary_typeInfo;
+}
+
+// 0x8036858C (12 bytes)
+u16 ERBinary::GetReadVersion() {
+    return *(u16*)((char*)&ERBinary_typeInfo + 0x16);
 }
 

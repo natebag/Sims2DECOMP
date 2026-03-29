@@ -8,12 +8,20 @@
 
 class EFile;
 
+struct TypeInfo;
+
 class ERSoundTrackData {
 public:
     ERSoundTrackData(void);
     ~ERSoundTrackData(void);
     void Load(EFile *);
     void RegisterType(unsigned short);
+    const TypeInfo* GetTypeInfo() const;
+    const char* GetTypeName() const;
+    u32 GetTypeKey() const;
+    u16 GetTypeVersion() const;
+    static const TypeInfo* GetTypeInfoStatic();
+    static u16 GetReadVersion();
 };
 
 // 0x8036A144 (80 bytes)
@@ -312,5 +320,42 @@ void ERSoundTrackData::RegisterType(unsigned short) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+
+
+// TypeInfo getter implementations
+
+struct TypeInfo;
+extern TypeInfo ERSoundTrackData_typeInfo;
+
+// 0x8036A608 (12 bytes)
+const TypeInfo* ERSoundTrackData::GetTypeInfo() const {
+    return &ERSoundTrackData_typeInfo;
+}
+
+// 0x8036A614 (12 bytes)
+const char* ERSoundTrackData::GetTypeName() const {
+    return *(const char**)((char*)&ERSoundTrackData_typeInfo + 0x0C);
+}
+
+// 0x8036A620 (12 bytes)
+u32 ERSoundTrackData::GetTypeKey() const {
+    return *(u32*)((char*)&ERSoundTrackData_typeInfo + 0x10);
+}
+
+// 0x8036A62C (12 bytes)
+u16 ERSoundTrackData::GetTypeVersion() const {
+    return *(u16*)((char*)&ERSoundTrackData_typeInfo + 0x14);
+}
+
+// 0x8036A638 (12 bytes)
+const TypeInfo* ERSoundTrackData::GetTypeInfoStatic() {
+    return &ERSoundTrackData_typeInfo;
+}
+
+// 0x8036A644 (12 bytes)
+u16 ERSoundTrackData::GetReadVersion() {
+    return *(u16*)((char*)&ERSoundTrackData_typeInfo + 0x16);
 }
 
