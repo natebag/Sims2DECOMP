@@ -1,8 +1,0 @@
-// 0x802BB8DC (8 bytes)
-class AptValueNoGC {
-public:
-    void RegisterReferences(void);
-};
-
-void AptValueNoGC::RegisterReferences(void) {
-}

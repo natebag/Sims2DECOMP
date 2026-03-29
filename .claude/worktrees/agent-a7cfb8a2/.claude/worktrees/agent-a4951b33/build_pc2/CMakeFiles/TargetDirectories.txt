@@ -1,3 +1,0 @@
-/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/sims2pc.dir
-/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/edit_cache.dir
-/f/coding/Decompiles/Sims 2/build_pc2/CMakeFiles/rebuild_cache.dir

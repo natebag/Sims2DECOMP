@@ -38,3 +38,6 @@ tools/symbols.json
 *.key
 keys.txt
 Key/
+
+# Claude Code
+.claude/
