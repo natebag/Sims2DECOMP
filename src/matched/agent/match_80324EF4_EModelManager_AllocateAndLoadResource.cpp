@@ -1,42 +1,31 @@
-// EModelManager::AllocateAndLoadResource - 0x80324EF4 (88 bytes)
-// TU: e_modelman
-// Pattern B: Uses EResourceManager::Alloc, size 384 bytes
-// Special: Load function is LoadModel, not Load
+// 0x80324EF4 (88 bytes)
+typedef unsigned int uint;
+typedef unsigned long ulong;
 
-#include "types.h"
+struct EFile;
+struct EResourceManager {
+    char _pad[0xD20];
+    void *Alloc(ulong size, uint group);
+};
+extern EResourceManager _modelman;
 
-class EFile;
-class EResourceManager;
-class ERModel;
-
-// External functions
-extern EResourceManager* gResMgr_model;  // at 0x805EBC2C
-void* EResourceManager_Alloc(EResourceManager* mgr, unsigned long size, unsigned int group);
-void ERModel_ctor(ERModel* self);
-void ERModel_LoadModel(ERModel* self, EFile* file);
-
-class ERModel {
-public:
-    u32 m_vtable;      // 0x00
-    u32 m_resourceId;  // 0x08
-    // ... other fields (384 bytes total)
+struct ERModel {
+    char _pad[384];
+    ERModel(void);
+    void LoadModel(EFile *file);
 };
 
-class EModelManager {
-public:
-    void* AllocateAndLoadResource(EFile* file, unsigned int typeId, unsigned int resourceId);
+inline void *operator new(uint, void *p) { return p; }
+
+struct EModelManager {
+    ERModel *AllocateAndLoadResource(EFile *file, uint id1, uint id2);
 };
 
-void* EModelManager::AllocateAndLoadResource(EFile* file, unsigned int typeId, unsigned int resourceId) {
-    EResourceManager* mgr = (EResourceManager*)0x805EBC2C;
-    
-    // Allocate 384 bytes, group 8
-    void* mem = EResourceManager_Alloc(mgr, 384, 8);
-    ERModel* obj = (ERModel*)mem;
-    
-    ERModel_ctor(obj);
-    obj->m_resourceId = resourceId;
-    ERModel_LoadModel(obj, file);
-    
-    return obj;
+ERModel *EModelManager::AllocateAndLoadResource(EFile *file, uint id1, uint id2)
+{
+    void *ptr = _modelman.Alloc(384, 8);
+    ERModel *res = new(ptr) ERModel;
+    *(uint *)((char *)res + 8) = id2;
+    res->LoadModel(file);
+    return res;
 }

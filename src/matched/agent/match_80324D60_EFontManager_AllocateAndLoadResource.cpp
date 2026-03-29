@@ -1,15 +1,13 @@
-// 0x80323224 (108 bytes)
+// 0x80324D60 (112 bytes)
 typedef unsigned int uint;
-typedef unsigned long ulong;
 
 struct EFile;
 struct EStream;
 
-struct EResourceManager {
-    char _pad[0xD20];
-    void *Alloc(ulong size, uint group);
+struct EAHeap {
+    void *MallocAligned(uint size, uint align, uint flags1, int flags2);
 };
-extern EResourceManager _characterman;
+EAHeap *MainHeap(void);
 
 struct EResource {
     virtual ~EResource(void);
@@ -26,22 +24,23 @@ struct EResource {
     virtual void DelRefSubResources(void);
 };
 
-struct ERCharacter : EResource {
-    char _pad[52 - sizeof(void*)];
-    ERCharacter(void);
+struct ERFont : EResource {
+    char _pad[108 - sizeof(void*)];
+    ERFont(void);
     virtual void Load(EFile &file);
 };
 
 inline void *operator new(uint, void *p) { return p; }
 
-struct ECharacterManager {
-    ERCharacter *AllocateAndLoadResource(EFile *file, uint id1, uint id2);
+struct EFontManager {
+    ERFont *AllocateAndLoadResource(EFile *file, uint id1, uint id2);
 };
 
-ERCharacter *ECharacterManager::AllocateAndLoadResource(EFile *file, uint id1, uint id2)
+ERFont *EFontManager::AllocateAndLoadResource(EFile *file, uint id1, uint id2)
 {
-    void *ptr = _characterman.Alloc(52, 8);
-    ERCharacter *res = new(ptr) ERCharacter;
+    EAHeap *heap = MainHeap();
+    void *mem = heap->MallocAligned(108, 16, 0, 0);
+    ERFont *res = new(mem) ERFont;
     *(uint *)((char *)res + 8) = id2;
     res->Load(*file);
     return res;

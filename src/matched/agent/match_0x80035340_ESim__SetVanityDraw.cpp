@@ -10,6 +10,6 @@ struct ESim {
 };
 
 void ESim::SetVanityDraw(bool draw, unsigned int color) {
-    m_vanityColor = color;
     m_vanityDraw = draw;
+    m_vanityColor = color;
 }

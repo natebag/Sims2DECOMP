@@ -18,7 +18,9 @@ public:
 };
 
 char* TreeTableEntryQuickData_GN::GetName() const {
-    BString2_GN* name = m_entry->m_name;
-    if (!name) return 0;
-    return name->m_str;
+    ITreeTableEntry_GN* entry = m_entry;
+    char* res = 0;
+    BString2_GN* name = entry->m_name;
+    if (name) res = name->m_str;
+    return res;
 }

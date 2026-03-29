@@ -14,7 +14,9 @@ public:
 };
 
 int TreeTableEntryQuickData_GATV::GetAvailableToVisitors() const {
-    if (m_entry->m_flags & 1)
-        return 1;
-    return 0;
+    ITreeTableEntry_GATV* entry = m_entry;
+    int res = 0;
+    int flags = entry->m_flags;
+    if (flags & 1) res = 1;
+    return res;
 }

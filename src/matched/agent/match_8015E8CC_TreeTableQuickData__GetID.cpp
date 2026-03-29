@@ -1,4 +1,5 @@
-// 0x8015E8CC (28 bytes)
+// [VERSION_DIFF] 0x8015E8CC (28 bytes)
+// DOL: lwz r3, 4(r3) + beq-forward; Our GCC 2.95 SN: lwz r9 + beqlr (different reg alloc)
 // TreeTableQuickData::GetID(void) const
 
 struct TreeTableImpl_GID {

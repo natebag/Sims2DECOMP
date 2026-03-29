@@ -1,42 +1,48 @@
-// EShaderManager::AllocateAndLoadResource - 0x803281FC (108 bytes)
-// TU: e_shaderman
-// Pattern B: Uses EResourceManager::Alloc, size 108 bytes
-// Special: Uses vtable call for Load
+// 0x803281FC (108 bytes)
+typedef unsigned int uint;
+typedef unsigned long ulong;
 
-#include "types.h"
+struct EFile;
+struct EStream;
 
-class EFile;
-class EResourceManager;
-class ERShader;
+struct EResourceManager {
+    char _pad[0xD20];
+    void *Alloc(ulong size, uint group);
+};
+extern EResourceManager _shaderman;
 
-extern EResourceManager* gResMgr_shader;  // at 0x805EBB7C
-void* EResourceManager_Alloc(EResourceManager* mgr, unsigned long size, unsigned int group);
-void ERShader_ctor(ERShader* self);
-
-// ERShader layout
-class ERShader {
-public:
-    u32* m_vtable;     // 0x00
-    u32 m_resourceId;  // 0x08
-    // Load method at vtable offset (likely +72 based on lha 72(9))
+struct EResource {
+    virtual ~EResource(void);
+    virtual void DelRef(void);
+    virtual void AddRef(void);
+    virtual void Refresh(void);
+    virtual void SafeDelete(void);
+    virtual void Write(EStream &s);
+    virtual void Read(EStream &s);
+    virtual bool IsSafeToDelete(void);
+    virtual void Load(EFile &file);
+    virtual void Refresh(EFile *file);
+    virtual void Init(void);
+    virtual void DelRefSubResources(void);
 };
 
-class EShaderManager {
-public:
-    void* AllocateAndLoadResource(EFile* file, unsigned int typeId, unsigned int resourceId);
+struct ERShader : EResource {
+    char _pad[108 - sizeof(void*)];
+    ERShader(void);
+    virtual void Load(EFile &file);
 };
 
-void* EShaderManager::AllocateAndLoadResource(EFile* file, unsigned int typeId, unsigned int resourceId) {
-    EResourceManager* mgr = (EResourceManager*)0x805EBB7C;
-    void* mem = EResourceManager_Alloc(mgr, 108, 8);
-    ERShader* obj = (ERShader*)mem;
-    ERShader_ctor(obj);
-    obj->m_resourceId = resourceId;
-    
-    // Vtable call for Load - offset 72 in vtable (lha 72(9))
-    typedef void (*LoadFunc)(ERShader*, EFile*);
-    LoadFunc load = (LoadFunc)obj->m_vtable[18];  // 72/4 = 18
-    load(obj, file);
-    
-    return obj;
+inline void *operator new(uint, void *p) { return p; }
+
+struct EShaderManager {
+    ERShader *AllocateAndLoadResource(EFile *file, uint id1, uint id2);
+};
+
+ERShader *EShaderManager::AllocateAndLoadResource(EFile *file, uint id1, uint id2)
+{
+    void *ptr = _shaderman.Alloc(108, 8);
+    ERShader *res = new(ptr) ERShader;
+    *(uint *)((char *)res + 8) = id2;
+    res->Load(*file);
+    return res;
 }

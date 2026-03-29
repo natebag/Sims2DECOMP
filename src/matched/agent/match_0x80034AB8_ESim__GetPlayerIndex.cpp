@@ -20,8 +20,12 @@ int ESim_GetPlayerIndex::GetPlayerIndex(void) {
     void *ref = m_playerRef;
     int r = -1;
     void *p0 = g_playerGlobals.player0;
+    if (ref == p0) {
+        return 0;
+    }
     void *p1 = g_playerGlobals.player1;
-    if (ref == p0) return 0;
-    if (ref != p1) return r;
-    return 1;
+    if (ref == p1) {
+        r = 1;
+    }
+    return r;
 }

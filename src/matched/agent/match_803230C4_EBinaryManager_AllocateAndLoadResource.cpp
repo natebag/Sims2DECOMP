@@ -1,16 +1,30 @@
-// EBinaryManager::AllocateAndLoadResource - 0x803230C4 (92 bytes)
-// TU: e_binaryman
-// Pattern B: Uses EResourceManager::Alloc, size ~48 bytes
+// 0x803230C4 (92 bytes)
+typedef unsigned int uint;
 
-extern void* EResourceManager_Alloc(void* mgr, unsigned long size, unsigned int group);
-extern void ERBinary_ctor(void* self);
-extern void ERBinary_Load(void* self, void* file);
+struct EFile;
+struct EAHeap {
+    void *Malloc(uint size, int flags);
+};
+EAHeap *MainHeap(void);
 
-void* EBinaryManager_AllocateAndLoadResource(void* this_ptr, void* file, unsigned int typeId, unsigned int resourceId) {
-    void* mgr = (void*)0x805E94EC;  // From lis/addi
-    void* mem = EResourceManager_Alloc(mgr, 48, 8);
-    ERBinary_ctor(mem);
-    ((unsigned int*)mem)[2] = resourceId;  // offset 8
-    ERBinary_Load(mem, file);
-    return mem;
+struct ERBinary {
+    char _pad[28];
+    ERBinary(void);
+    void Load(EFile *file, uint flags);
+};
+
+inline void *operator new(uint, void *p) { return p; }
+
+struct EBinaryManager {
+    ERBinary *AllocateAndLoadResource(EFile *file, uint id1, uint id2);
+};
+
+ERBinary *EBinaryManager::AllocateAndLoadResource(EFile *file, uint id1, uint id2)
+{
+    EAHeap *heap = MainHeap();
+    void *mem = heap->Malloc(28, 0);
+    ERBinary *res = new(mem) ERBinary;
+    *(uint *)((char *)res + 8) = id2;
+    res->Load(file, id1);
+    return res;
 }

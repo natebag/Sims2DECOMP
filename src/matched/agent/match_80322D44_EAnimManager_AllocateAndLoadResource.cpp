@@ -4,14 +4,13 @@ typedef unsigned long ulong;
 
 struct EFile;
 struct EResourceManager {
+    char _pad[0xD20];
     void *Alloc(ulong size, uint group);
 };
-extern EResourceManager g_animResMgr;
+extern EResourceManager _animman;
 
 struct ERAnim {
-    void *m_vtable;
-    uint m_field_004;
-    uint m_field_008;
+    char _pad[160];
     ERAnim(void);
     void Load(EFile *file);
 };
@@ -24,9 +23,9 @@ struct EAnimManager {
 
 ERAnim *EAnimManager::AllocateAndLoadResource(EFile *file, uint id1, uint id2)
 {
-    void *mem = g_animResMgr.Alloc(160, 8);
-    ERAnim *res = new(mem) ERAnim;
-    res->m_field_008 = id2;
+    void *ptr = _animman.Alloc(160, 8);
+    ERAnim *res = new(ptr) ERAnim;
+    *(uint *)((char *)res + 8) = id2;
     res->Load(file);
     return res;
 }

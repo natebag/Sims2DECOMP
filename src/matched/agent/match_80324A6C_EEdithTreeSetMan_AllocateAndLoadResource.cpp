@@ -1,35 +1,30 @@
-// EEdithTreeSetMan::AllocateAndLoadResource - 0x80324A6C (92 bytes)
-// TU: e_edithtreesetman
-// Pattern B: Uses EResourceManager::Alloc, size ~40 bytes
+// 0x80324A6C (92 bytes)
+typedef unsigned int uint;
 
-#include "types.h"
+struct EFile;
+struct EAHeap {
+    void *Malloc(uint size, int flags);
+};
+EAHeap *MainHeap(void);
 
-class EFile;
-class EResourceManager;
-class EREdithTreeSet;
-
-extern EResourceManager* gResMgr_edith;  // at 0x805EB5B4
-void* EResourceManager_Alloc(EResourceManager* mgr, unsigned long size, unsigned int group);
-void EREdithTreeSet_ctor(EREdithTreeSet* self);
-void EREdithTreeSet_Load(EREdithTreeSet* self, EFile* file);
-
-class EREdithTreeSet {
-public:
-    u32 m_vtable;
-    u32 m_resourceId;
+struct EREdithTreeSet {
+    char _pad[32];
+    EREdithTreeSet(void);
+    void Load(EFile *file, uint flags);
 };
 
-class EEdithTreeSetMan {
-public:
-    void* AllocateAndLoadResource(EFile* file, unsigned int typeId, unsigned int resourceId);
+inline void *operator new(uint, void *p) { return p; }
+
+struct EEdithTreeSetMan {
+    EREdithTreeSet *AllocateAndLoadResource(EFile *file, uint id1, uint id2);
 };
 
-void* EEdithTreeSetMan::AllocateAndLoadResource(EFile* file, unsigned int typeId, unsigned int resourceId) {
-    EResourceManager* mgr = (EResourceManager*)0x805EB5B4;
-    void* mem = EResourceManager_Alloc(mgr, 40, 8);
-    EREdithTreeSet* obj = (EREdithTreeSet*)mem;
-    EREdithTreeSet_ctor(obj);
-    obj->m_resourceId = resourceId;
-    EREdithTreeSet_Load(obj, file);
-    return obj;
+EREdithTreeSet *EEdithTreeSetMan::AllocateAndLoadResource(EFile *file, uint id1, uint id2)
+{
+    EAHeap *heap = MainHeap();
+    void *mem = heap->Malloc(32, 0);
+    EREdithTreeSet *res = new(mem) EREdithTreeSet;
+    *(uint *)((char *)res + 8) = id2;
+    res->Load(file, id1);
+    return res;
 }
