@@ -1,3 +1,4 @@
-// 0x80007430 (8 bytes)
-void setBackgroundColour(unsigned int) {
+// 0x80007430 (4 bytes)
+// setBackgroundColour(unsigned int)
+void setBackgroundColour(unsigned int color) {
 }

@@ -1,4 +1,5 @@
 // 0x80042920 (8 bytes)
-int GetUIStatusText(void) {
+// GetUIStatusText(void)
+char* GetUIStatusText() {
     return 0;
 }

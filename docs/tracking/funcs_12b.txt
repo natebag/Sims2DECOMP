@@ -1,0 +1,259 @@
+e_instance|0x802293A0|EInstance::GetTypeInfo(void) const
+e_instance|0x802293AC|EInstance::GetTypeName(void) const
+e_instance|0x802293B8|EInstance::GetTypeKey(void) const
+e_instance|0x802293C4|EInstance::GetTypeVersion(void) const
+e_instance|0x802293D0|EInstance::GetTypeInfoStatic(void)
+e_instance|0x802293DC|EInstance::GetReadVersion(void)
+e_instance|0x803C1420|EStorable::GetTypeInfo(void) const
+e_instance|0x803C142C|EStorable::GetTypeName(void) const
+e_instance|0x803C1438|EStorable::GetTypeKey(void) const
+e_instance|0x803C1444|EStorable::GetTypeVersion(void) const
+e_ilight|0x80228008|EILight::GetTypeInfo(void) const
+e_ilight|0x80228014|EILight::GetTypeName(void) const
+e_ilight|0x80228020|EILight::GetTypeKey(void) const
+e_ilight|0x8022802C|EILight::GetTypeVersion(void) const
+e_ilight|0x80228038|EILight::GetTypeInfoStatic(void)
+e_ilight|0x80228044|EILight::GetReadVersion(void)
+e_ilight|0x802281A8|EILight::GetFalloffEnd(void)
+e_idirlight|0x80227418|EIDirLight::GetTypeInfo(void) const
+e_idirlight|0x80227424|EIDirLight::GetTypeName(void) const
+e_idirlight|0x80227430|EIDirLight::GetTypeKey(void) const
+e_idirlight|0x8022743C|EIDirLight::GetTypeVersion(void) const
+e_idirlight|0x80227448|EIDirLight::GetTypeInfoStatic(void)
+e_idirlight|0x80227454|EIDirLight::GetReadVersion(void)
+e_igameinstance|0x802277FC|EIGameInstance::GetTypeInfo(void) const
+e_igameinstance|0x80227808|EIGameInstance::GetTypeName(void) const
+e_igameinstance|0x80227814|EIGameInstance::GetTypeKey(void) const
+e_igameinstance|0x80227820|EIGameInstance::GetTypeVersion(void) const
+e_igameinstance|0x8022782C|EIGameInstance::GetTypeInfoStatic(void)
+e_igameinstance|0x80227838|EIGameInstance::GetReadVersion(void)
+e_graphics|0x802F2204|EGraphics::GetFarZVal(void)
+e_graphics|0x802F2210|EGraphics::GetNearZVal(void)
+e_graphics|0x802F222C|EGraphics::GetScreenAspect(void)
+reffects_sequencer|0x8036B160|REffectsSequencer::GetTypeInfo(void) const
+reffects_sequencer|0x8036B16C|REffectsSequencer::GetTypeName(void) const
+reffects_sequencer|0x8036B178|REffectsSequencer::GetTypeKey(void) const
+reffects_sequencer|0x8036B184|REffectsSequencer::GetTypeVersion(void) const
+reffects_sequencer|0x8036B190|REffectsSequencer::GetTypeInfoStatic(void)
+reffects_sequencer|0x8036B19C|REffectsSequencer::GetReadVersion(void)
+e_ipointlight|0x8022A560|EIPointLight::GetTypeInfo(void) const
+e_ipointlight|0x8022A56C|EIPointLight::GetTypeName(void) const
+e_ipointlight|0x8022A578|EIPointLight::GetTypeKey(void) const
+e_ipointlight|0x8022A584|EIPointLight::GetTypeVersion(void) const
+e_ipointlight|0x8022A590|EIPointLight::GetTypeInfoStatic(void)
+e_ipointlight|0x8022A59C|EIPointLight::GetReadVersion(void)
+e_iamblight|0x80226F1C|EIAmbLight::GetTypeInfo(void) const
+e_iamblight|0x80226F28|EIAmbLight::GetTypeName(void) const
+e_iamblight|0x80226F34|EIAmbLight::GetTypeKey(void) const
+e_iamblight|0x80226F40|EIAmbLight::GetTypeVersion(void) const
+e_iamblight|0x80226F4C|EIAmbLight::GetTypeInfoStatic(void)
+e_iamblight|0x80226F58|EIAmbLight::GetReadVersion(void)
+e_ipointamblight|0x80229C44|EIPointAmbLight::GetTypeInfo(void) const
+e_ipointamblight|0x80229C50|EIPointAmbLight::GetTypeName(void) const
+e_ipointamblight|0x80229C5C|EIPointAmbLight::GetTypeKey(void) const
+e_ipointamblight|0x80229C68|EIPointAmbLight::GetTypeVersion(void) const
+e_ipointamblight|0x80229C74|EIPointAmbLight::GetTypeInfoStatic(void)
+e_ipointamblight|0x80229C80|EIPointAmbLight::GetReadVersion(void)
+e_ispotlight|0x8022B818|EISpotLight::GetTypeInfo(void) const
+e_ispotlight|0x8022B824|EISpotLight::GetTypeName(void) const
+e_ispotlight|0x8022B830|EISpotLight::GetTypeKey(void) const
+e_ispotlight|0x8022B83C|EISpotLight::GetTypeVersion(void) const
+e_ispotlight|0x8022B848|EISpotLight::GetTypeInfoStatic(void)
+e_ispotlight|0x8022B854|EISpotLight::GetReadVersion(void)
+e_iportalpointlight|0x8022B038|EIPortalPointLight::GetTypeInfo(void) const
+e_iportalpointlight|0x8022B044|EIPortalPointLight::GetTypeName(void) const
+e_iportalpointlight|0x8022B050|EIPortalPointLight::GetTypeKey(void) const
+e_iportalpointlight|0x8022B05C|EIPortalPointLight::GetTypeVersion(void) const
+e_iportalpointlight|0x8022B068|EIPortalPointLight::GetTypeInfoStatic(void)
+e_iportalpointlight|0x8022B074|EIPortalPointLight::GetReadVersion(void)
+e_rbinary|0x80368550|ERBinary::GetTypeInfo(void) const
+e_rbinary|0x8036855C|ERBinary::GetTypeName(void) const
+e_rbinary|0x80368568|ERBinary::GetTypeKey(void) const
+e_rbinary|0x80368574|ERBinary::GetTypeVersion(void) const
+e_rbinary|0x80368580|ERBinary::GetTypeInfoStatic(void)
+e_rbinary|0x8036858C|ERBinary::GetReadVersion(void)
+reffects_emitter|0x8036AC30|REffectsEmitter::GetTypeInfo(void) const
+reffects_emitter|0x8036AC3C|REffectsEmitter::GetTypeName(void) const
+reffects_emitter|0x8036AC48|REffectsEmitter::GetTypeKey(void) const
+reffects_emitter|0x8036AC54|REffectsEmitter::GetTypeVersion(void) const
+reffects_emitter|0x8036AC60|REffectsEmitter::GetTypeInfoStatic(void)
+reffects_emitter|0x8036AC6C|REffectsEmitter::GetReadVersion(void)
+e_rsoundtrackdata|0x8036A608|ERSoundTrackData::GetTypeInfo(void) const
+e_rsoundtrackdata|0x8036A614|ERSoundTrackData::GetTypeName(void) const
+e_rsoundtrackdata|0x8036A620|ERSoundTrackData::GetTypeKey(void) const
+e_rsoundtrackdata|0x8036A62C|ERSoundTrackData::GetTypeVersion(void) const
+e_rsoundtrackdata|0x8036A638|ERSoundTrackData::GetTypeInfoStatic(void)
+e_rsoundtrackdata|0x8036A644|ERSoundTrackData::GetReadVersion(void)
+e_ctrl|0x8030589C|EController::IsStable(void)
+e_istaticsubmodel|0x8022F7D8|EIStaticSubModel::GetTypeInfo(void) const
+e_istaticsubmodel|0x8022F7E4|EIStaticSubModel::GetTypeName(void) const
+e_istaticsubmodel|0x8022F7F0|EIStaticSubModel::GetTypeKey(void) const
+e_istaticsubmodel|0x8022F7FC|EIStaticSubModel::GetTypeVersion(void) const
+e_istaticsubmodel|0x8022F808|EIStaticSubModel::GetTypeInfoStatic(void)
+e_istaticsubmodel|0x8022F814|EIStaticSubModel::GetReadVersion(void)
+behaviorconstants|0x80159D88|ObjectDataBehaviorConstants::IsTuning(void) const
+e_rsoundevent|0x80369F30|ERSoundEvent::GetTypeInfo(void) const
+e_rsoundevent|0x80369F3C|ERSoundEvent::GetTypeName(void) const
+e_rsoundevent|0x80369F48|ERSoundEvent::GetTypeKey(void) const
+e_rsoundevent|0x80369F54|ERSoundEvent::GetTypeVersion(void) const
+e_rsoundevent|0x80369F60|ERSoundEvent::GetTypeInfoStatic(void)
+e_rsoundevent|0x80369F6C|ERSoundEvent::GetReadVersion(void)
+uihdtv|0x8017BEF4|UIHDTV::GetScreenHeight(void)
+uihdtv|0x8017BF00|UIHDTV::GetScreenWidth(void)
+e_rcharacter|0x80368C44|ERCharacter::GetTypeInfo(void) const
+e_rcharacter|0x80368C50|ERCharacter::GetTypeName(void) const
+e_rcharacter|0x80368C5C|ERCharacter::GetTypeKey(void) const
+e_rcharacter|0x80368C68|ERCharacter::GetTypeVersion(void) const
+e_rcharacter|0x80368C74|ERCharacter::GetTypeInfoStatic(void)
+e_rcharacter|0x80368C80|ERCharacter::GetReadVersion(void)
+rparticle|0x8036C1E8|RParticle::GetTypeInfo(void) const
+rparticle|0x8036C1F4|RParticle::GetTypeName(void) const
+rparticle|0x8036C200|RParticle::GetTypeKey(void) const
+rparticle|0x8036C20C|RParticle::GetTypeVersion(void) const
+rparticle|0x8036C218|RParticle::GetTypeInfoStatic(void)
+rparticle|0x8036C224|RParticle::GetReadVersion(void)
+iobject|0x80053CE0|ISimsObjectModel::GetTypeInfo(void) const
+iobject|0x80053CEC|ISimsObjectModel::GetTypeName(void) const
+iobject|0x80053CF8|ISimsObjectModel::GetTypeKey(void) const
+iobject|0x80053D04|ISimsObjectModel::GetTypeVersion(void) const
+iobject|0x80053D10|ISimsObjectModel::GetTypeInfoStatic(void)
+iobject|0x80053D1C|ISimsObjectModel::GetReadVersion(void)
+iobject|0x80053F58|ISimsWallObjectModel::GetTypeInfo(void) const
+iobject|0x80053F64|ISimsWallObjectModel::GetTypeName(void) const
+iobject|0x80053F70|ISimsWallObjectModel::GetTypeKey(void) const
+iobject|0x80053F7C|ISimsWallObjectModel::GetTypeVersion(void) const
+iobject|0x80053F88|ISimsWallObjectModel::GetTypeInfoStatic(void)
+iobject|0x80053F94|ISimsWallObjectModel::GetReadVersion(void)
+iobject|0x800540EC|ISimsMultiTileObjectModel::GetTypeInfo(void) const
+iobject|0x800540F8|ISimsMultiTileObjectModel::GetTypeName(void) const
+iobject|0x80054104|ISimsMultiTileObjectModel::GetTypeKey(void) const
+iobject|0x80054110|ISimsMultiTileObjectModel::GetTypeVersion(void) const
+iobject|0x8005411C|ISimsMultiTileObjectModel::GetTypeInfoStatic(void)
+iobject|0x80054128|ISimsMultiTileObjectModel::GetReadVersion(void)
+iobject|0x80054280|ISimsCounterTopObject::GetTypeInfo(void) const
+iobject|0x8005428C|ISimsCounterTopObject::GetTypeName(void) const
+iobject|0x80054298|ISimsCounterTopObject::GetTypeKey(void) const
+iobject|0x800542A4|ISimsCounterTopObject::GetTypeVersion(void) const
+iobject|0x800542B0|ISimsCounterTopObject::GetTypeInfoStatic(void)
+iobject|0x800542BC|ISimsCounterTopObject::GetReadVersion(void)
+iobject|0x80054414|IShrubObject::GetTypeInfo(void) const
+iobject|0x80054420|IShrubObject::GetTypeName(void) const
+iobject|0x8005442C|IShrubObject::GetTypeKey(void) const
+iobject|0x80054438|IShrubObject::GetTypeVersion(void) const
+iobject|0x80054444|IShrubObject::GetTypeInfoStatic(void)
+iobject|0x80054450|IShrubObject::GetReadVersion(void)
+e_rdataset|0x80369834|ERDataset::GetTypeInfo(void) const
+e_rdataset|0x80369840|ERDataset::GetTypeName(void) const
+e_rdataset|0x8036984C|ERDataset::GetTypeKey(void) const
+e_rdataset|0x80369858|ERDataset::GetTypeVersion(void) const
+e_rdataset|0x80369864|ERDataset::GetTypeInfoStatic(void)
+e_rdataset|0x80369870|ERDataset::GetReadVersion(void)
+e_rlevel|0x802380F4|ERLevel::GetTypeInfo(void) const
+e_rlevel|0x80238100|ERLevel::GetTypeName(void) const
+e_rlevel|0x8023810C|ERLevel::GetTypeKey(void) const
+e_rlevel|0x80238118|ERLevel::GetTypeVersion(void) const
+e_rlevel|0x80238124|ERLevel::GetTypeInfoStatic(void)
+e_rlevel|0x80238130|ERLevel::GetReadVersion(void)
+nghresfile|0x800D26E0|GetTotalSaveGameSize(void)
+nghresfile|0x800D26EC|GetTotalNumberOfSaveGameSections(void)
+eyetoymanager|0x80328F44|EyeToyManager::ConvertHandleToInstancePtr(int)
+e_fontdata|0x80364718|EFontCharacter::GetTypeInfo(void) const
+e_fontdata|0x80364724|EFontCharacter::GetTypeName(void) const
+e_fontdata|0x80364730|EFontCharacter::GetTypeKey(void) const
+e_fontdata|0x8036473C|EFontCharacter::GetTypeVersion(void) const
+e_fontdata|0x80364748|EFontCharacter::GetTypeInfoStatic(void)
+e_fontdata|0x80364754|EFontCharacter::GetReadVersion(void)
+e_fontdata|0x8036486C|EFontPage::GetTypeInfo(void) const
+e_fontdata|0x80364878|EFontPage::GetTypeName(void) const
+e_fontdata|0x80364884|EFontPage::GetTypeKey(void) const
+e_fontdata|0x80364890|EFontPage::GetTypeVersion(void) const
+e_fontdata|0x8036489C|EFontPage::GetTypeInfoStatic(void)
+e_fontdata|0x803648A8|EFontPage::GetReadVersion(void)
+e_fontdata|0x803649D4|EFontSize::GetTypeInfo(void) const
+e_fontdata|0x803649E0|EFontSize::GetTypeName(void) const
+e_fontdata|0x803649EC|EFontSize::GetTypeKey(void) const
+e_fontdata|0x803649F8|EFontSize::GetTypeVersion(void) const
+e_fontdata|0x80364A04|EFontSize::GetTypeInfoStatic(void)
+e_fontdata|0x80364A10|EFontSize::GetReadVersion(void)
+e_fontdata|0x80364B3C|EFontData::GetTypeInfo(void) const
+e_fontdata|0x80364B48|EFontData::GetTypeName(void) const
+e_fontdata|0x80364B54|EFontData::GetTypeKey(void) const
+e_fontdata|0x80364B60|EFontData::GetTypeVersion(void) const
+e_fontdata|0x80364B6C|EFontData::GetTypeInfoStatic(void)
+e_fontdata|0x80364B78|EFontData::GetReadVersion(void)
+e_rambientscore|0x80367224|ERAmbientScore::GetTypeInfo(void) const
+e_rambientscore|0x80367230|ERAmbientScore::GetTypeName(void) const
+e_rambientscore|0x8036723C|ERAmbientScore::GetTypeKey(void) const
+e_rambientscore|0x80367248|ERAmbientScore::GetTypeVersion(void) const
+e_rambientscore|0x80367254|ERAmbientScore::GetTypeInfoStatic(void)
+e_rambientscore|0x80367260|ERAmbientScore::GetReadVersion(void)
+e_istaticmodel|0x8022E070|EIStaticModel::GetTypeInfo(void) const
+e_istaticmodel|0x8022E07C|EIStaticModel::GetTypeName(void) const
+e_istaticmodel|0x8022E088|EIStaticModel::GetTypeKey(void) const
+e_istaticmodel|0x8022E094|EIStaticModel::GetTypeVersion(void) const
+e_istaticmodel|0x8022E0A0|EIStaticModel::GetTypeInfoStatic(void)
+e_istaticmodel|0x8022E0AC|EIStaticModel::GetReadVersion(void)
+player|0x800595AC|Player::GetInteractorColor(void)
+treesim|0x8014924C|TreeSim::SetTooLongInPrimTime(bool, float)
+treesim|0x80149260|TreeSim::SetTooLongInTickTime(bool, float)
+ifloor|0x800483F8|EIFloor::GetTypeInfo(void) const
+ifloor|0x80048404|EIFloor::GetTypeName(void) const
+ifloor|0x80048410|EIFloor::GetTypeKey(void) const
+ifloor|0x8004841C|EIFloor::GetTypeVersion(void) const
+ifloor|0x80048428|EIFloor::GetTypeInfoStatic(void)
+ifloor|0x80048434|EIFloor::GetReadVersion(void)
+flags|0x8026BA94|AptPartialGarbageCollection(void)
+flags|0x802769BC|AptActionInterpreter::_FunctionAptActionReturn(AptActionInterpreter *, AptActionInterpreter::LocalContextT *)
+flags|0x802B4294|AptValue::GetAllowDelayedDeletion(void)
+flags|0x802B47A4|AptValue::GetMaxRefCountHit(void) const
+flags|0x802B47D0|AptValue::getRefCount(void) const
+flags|0x802B47DC|AptValue::getVtblIndex(void) const
+flags|0x802B47E8|AptValue::getGCMark(void) const
+flags|0x802B47F4|AptValue::getGCRoot(void) const
+flags|0x802B4800|AptValue::getIsDefined(void) const
+flags|0x802B48F4|AptValue::IsReleaseAtEnd(void) const
+flags|0x802B63AC|AptObject::getHasClass(void) const
+flags|0x802B63D8|AptObject::getInMainInst(void) const
+mustates|0x8009165C|THREADPOLL_MU_Start(void)
+mustates|0x80091668|THREADPOLL_MU_End(void)
+mustates|0x800939C8|MUStateMachine::ClearResult(void)
+siminteractor|0x8021CEE4|FadeSquare::StartFade(void)
+siminteractor|0x8021ECB0|InteractorModule::SimInteractor::ReturnPlumbobToSim(PlumbBob *, EVec3 &)
+siminteractor|0x8021F0AC|InteractorModule::SimInteractor::SetupCutToSim(void)
+directinteractor|0x802057BC|InteractorModule::DirectInteractor::GetSelectionRadius(void)
+directinteractor|0x80206120|InteractorModule::DirectInteractor::ExitDirectControl(void)
+e_ranim|0x8036808C|ERAnim::GetTypeInfo(void) const
+e_ranim|0x80368098|ERAnim::GetTypeName(void) const
+e_ranim|0x803680A4|ERAnim::GetTypeKey(void) const
+e_ranim|0x803680B0|ERAnim::GetTypeVersion(void) const
+e_ranim|0x803680BC|ERAnim::GetTypeInfoStatic(void)
+e_ranim|0x803680C8|ERAnim::GetReadVersion(void)
+e_ranim|0x803C9800|EAnimNodeDataPos::GetTypeInfo(void) const
+e_ranim|0x803C980C|EAnimNodeDataPos::GetTypeName(void) const
+e_ranim|0x803C9818|EAnimNodeDataPos::GetTypeKey(void) const
+e_ranim|0x803C9824|EAnimNodeDataPos::GetTypeVersion(void) const
+targets_s2c|0x801B0750|FAMTarget::UpdateText(void)
+targets_s2c|0x801C3C84|MDITarget::ShowModelessDialog(void)
+targets_s2c|0x801C3C90|MDITarget::HideModelessDialog(void)
+targets_s2c|0x801C59E8|MMUTarget::OnCreditsClose(void)
+targets_s2c|0x801C9AE4|MODTarget::ShowMood(void)
+targets_s2c|0x801C9AF0|MODTarget::HideMood(void)
+targets_s2c|0x801CBB58|MOTTarget::ShowMotives(void)
+targets_s2c|0x801CC2A0|MOTTarget::SelectedPersonChanged(cXPerson *)
+targets_s2c|0x801CFA60|O2TTarget::OnCancelDialog(void)
+targets_s2c|0x801D6DE0|PCTTarget::buy_fail_dialog_selection_callback(int)
+targets_s2c|0x801D8750|PCTTarget::ZeroInputCallback(void)
+targets_s2c|0x801D875C|PCTTarget::DialogClosedCallback(void)
+targets_s2c|0x801DCE78|R2LTarget::onSummaryDialogZeroInputCallback(void)
+targets_s2c|0x801DCE84|R2LTarget::onSummaryDialogDialogClosedCallback(void)
+aptstring|0x8000D8DC|GetPixelXSize(void)
+e_ngcrenderer|0x80349F30|ENgcRenderer::ProcessFrameEffects(float, float, float, float, EVec3 &, EVec3 &)
+objectsim|0x8010EE64|GetJobHUDName(short)
+bitarray|0x8009BC14|BitMatrix64::operator[](int)
+bitarray|0x8009BC20|BitMatrix64::operator[](int) const
+e_linkfix|0x80351E14|LinkFix(void)
+e_ngcaram|0x8036C510|AramRequestCallback(unsigned long)
+e_ngcaram|0x8036C744|AramRequestCallback2(unsigned long)
+skilllookup|0x80142944|GetLegacyPersonSkillTable(void)
+skilllookup|0x80142950|GetLegacyGlobalSkillTable(void)
+skilllookup|0x8014295C|GetMiscSkillTable(void)

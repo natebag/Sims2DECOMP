@@ -1,3 +1,4 @@
-// 0x8000742C (8 bytes)
-void freeSound(void *) {
+// 0x8000742C (4 bytes)
+// freeSound(void *)
+void freeSound(void* a) {
 }

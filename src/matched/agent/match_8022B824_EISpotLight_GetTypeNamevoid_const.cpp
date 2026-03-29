@@ -1,0 +1,13 @@
+// 0x8022B824 (12 bytes) - EISpotLight::GetTypeName(void) const
+// lis r9,upper; lwz r3,lower(r9); blr - return word from global
+
+struct TI_8022B824 { int data[4]; };
+extern TI_8022B824 g_8022B824;
+
+struct C_8022B824 {
+    int fn() const;
+};
+
+int C_8022B824::fn() const {
+    return g_8022B824.data[3];
+}

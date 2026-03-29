@@ -1,3 +1,4 @@
-// 0x80007428 (8 bytes)
-void startSound(void *, char *) {
+// 0x80007428 (4 bytes)
+// startSound(void *, char *)
+void startSound(void* a, char* b) {
 }

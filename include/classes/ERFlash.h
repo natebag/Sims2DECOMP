@@ -33,8 +33,10 @@ public:
     // ---- Field Layout (from assembly analysis) ----
     void** _vtable;  // 0x000 [W] - vtable pointer (ERFlash, ~ERFlash)
     u8 _pad_004[0xC];  // 0x004
-    u32 m_field_010;  // 0x010 [R/W] (Load)
-    u32 m_field_014;  // 0x014 [R/W] (Deallocate, ERFlash, Load)
+    // m_010 is a bitfield: upper 24 bits store the revision shifted left 8
+    unsigned m_010_hi24: 24;  // 0x010 bits[31:8] - revision value (rlwimi in Load)
+    unsigned m_010_lo8: 8;    // 0x010 bits[7:0] - preserved low byte
+    struct FlashBigFile *m_pFlashBigFile;  // 0x014 [R/W] (Deallocate, Load, GetFlashBigData)
 };
 
 #endif // ERFLASH_H

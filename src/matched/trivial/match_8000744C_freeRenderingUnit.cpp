@@ -1,3 +1,4 @@
-// 0x8000744C (8 bytes)
-void freeRenderingUnit(void *) {
+// 0x8000744C (4 bytes)
+// freeRenderingUnit(void *)
+void freeRenderingUnit(void* a) {
 }

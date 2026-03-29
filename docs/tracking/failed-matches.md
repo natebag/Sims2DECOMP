@@ -35,8 +35,31 @@ especially around:
 - `0x802CD9B8` `ERedBlackTree::ERedBlackTree(void)` — store order of init fields differs
 - `0x80364F64` `ETexture::ETexture(void)` (96 bytes) — store scheduling of 14 field
   initializations in leaf constructor. SN compiler schedules stores in a different order
-  than the DOL (e.g., stb before sth before stw grouping differs). All registers and
-  values are correct, only the store sequence differs. Tried 6+ source orderings.
+  than the DOL. After 25+ source orderings and flag combinations:
+  - **Root cause:** DOL's SN BUILD v1.76 uses FIFO/source-order as the tiebreaker for
+    equal-priority stores. Our SN BUILD v3.93 uses LIFO/register-pressure (last-computed
+    register r10 gets priority over r0 stores).
+  - **Best attempt:** Source order `m_ySize=64; m_xSize=64; m_imageFormat=1; m_bitsPerImagePixel=32;
+    m_word1C=0; m_sentinel=0x900DBEEF; m_word00=0; m_word04=0; m_word08=0; m_paletteFormat=0;
+    m_bitsPerPaletteEntry=0; m_paletteSize=0; m_word16=0;` matches the first 3 stores
+    after vtable (xSize, imageFormat, bpp) but diverges at store 4 (DOL: word1C, ours: sentinel).
+  - **Key discovery:** Swapping ySize before xSize in source forces the scheduler to store
+    xSize(0x10) before imageFormat(0x18) because r6 becomes "last use" for xSize in the
+    scheduler's liveness analysis. This is the `m_ySize=64; m_xSize=64` trick.
+  - **Unresolvable:** Cannot force word1C(r0) before sentinel(r10) because r10 is last
+    computed (ori instruction) in the preamble, and our scheduler always stores
+    last-computed registers first (LIFO). Tried: all source orderings, -fregmove,
+    -fsched-interblock, -fno-schedule-insns2, -mcpu variants, static member approach.
+
+- `0x80311DC8` `EResource::EResource(void)` (48 bytes) — leaf constructor, 5 field stores.
+  DOL: `or r11,r3,r3` (this=r11), r0 reused for numRefs=1 then size=0x80, r10 shared for
+  flags=0 and manager=0. Store order: numRefs→vtable→flags→size→manager.
+  Compiled: `mr r9,r3` (this=r9), separate registers for each constant (r0=1, r10=128,
+  r8=0 both zero stores). Store order: numRefs→vtable→size→manager→flags.
+  The v3.93 scheduler front-loads all constants (4 `li` instructions before any stores)
+  while DOL interleaves loads and stores. Tried 6+ source orderings, named zero variables,
+  vt local, self pointer — compiler always produces same 4-constant front-loaded pattern.
+  Root cause: same FIFO vs LIFO scheduler difference as ETexture ctor.
 
 ### extsb Injection Differences
 
@@ -72,6 +95,21 @@ especially around:
   pattern (`wcslen`/`wcschr`/`wcsncmp`) but compiled to a different control-flow layout and size
 
 (Agents: add entries here as you find them)
+
+## Complex Functions with Multiple Interacting Issues
+
+- `0x8031373C` `FlashBigFile::LoadFiles(EFile *)` (524 bytes)
+  Virtual dispatch via EFile (vtable at offset 40 of EFile object, GCC 2.95 lha+add+blrl
+  pattern for this-adjusted virtual calls), BIG file parsing, EResourceManager alloc/copy,
+  loop with IsTexture + CreateTexture calls. 10+ callee-saves. Extremely complex virtual
+  call mechanism requires full EFile vtable layout to reproduce correctly. Skip until EFile
+  class is fully reverse-engineered.
+
+- `0x80313A38` `FlashBigFile::CreateTexture(int)` (444 bytes)
+  Reads texture header from BIG data (little-endian), performs 32-bit and 16-bit byte-swap
+  via rlwinm chains, calls ERTexture::ERTexture(), GetFlashName(), BIG_locateentry,
+  Sprintf for filename, ERTexture::Load(), allocates TextureEntry (12 bytes). 7 callee-saves,
+  complex bit manipulation. Requires full ERTexture and texture header struct definitions.
 
 - `0x80132C60` `QuickResFile::GetString(StringBuffer &, short, short)` (188 bytes)
   DOL generates `mr r9, r3` to copy strings pointer to r9 before null check, then uses
@@ -139,11 +177,37 @@ Functions that failed for unclear reasons — need manual investigation.
   original wants `slwi` before the `addi 0x5DCC`, an explicit `li r3,0`, and `beqlr cr1`; generated code kept the same logic but scheduled those pieces differently.
   Restored the file to its raw-byte body instead of landing a wrong C++ version.
 
+### EEngine::RetraceUpdate — 0x802E2D5C (220 bytes)
+- **Issue:** Register allocation — DOL generates 3 extra `fmr` (float move) instructions in
+  the max-of-4 computation. DOL pre-copies each intermediate result before the compare:
+  `fmr f11, f0` before `fcmpu f13, f0` (max1), `fmr f13, f0` before `fcmpu f12, f0` (max2),
+  `fmr f10, f13` before `fcmpu f11, f13` (merge). Our compiler eliminates these initial copies.
+- **DOL max pattern:** `lfs f0=h1; lfs f13=h0; fmr f11=f0; fcmpu f13,f0; ble; fmr f11=f13`
+- **Compiled max pattern:** `lfs f0=h1; lfs f13=h0; fcmpu f0,f13; ble; fmr f13=f0` (no pre-copy)
+- **Attempts:** 6+ (frsp fix, static const, goto splits, arg order, named intermediates)
+- **Root cause:** v1.76 register allocator pre-copies intermediates; v3.93 eliminates them
+
 ---
 
-Last updated: 2026-03-28
-Total matched: 5,544 / 20,508 (27.0%)
-Total remaining: ~14,964
+Last updated: 2026-03-29
+Total matched: 4,662 / 16,211 (28.8%) — now tracking 439 TUs (lib TUs included)
+Total remaining: ~11,549
+
+### [VERSION_DIFF] beqlr vs forward-branch+separate-return (2026-03-29)
+Our SN ProDG v3.93 generates `beqlr` (conditional return) for null-check patterns,
+while the DOL uses a forward branch past the non-null code + separate `li r3,0; blr` block.
+- `TreeTableQuickData::GetID(void) const` - 0x8015E8CC (28B) - treetablequickdata TU
+- `TreeTableQuickData::GetPrefixCheckTreeID(void) const` - 0x8015E92C (28B) - treetablequickdata TU
+- `TreeTableEntryQuickData::GetName(void) const` - 0x8015DC9C (28B) - treetablequickdata TU
+- Likely affects many null-check getter functions across TUs
+
+### [VERSION_DIFF] lwz load batching (2026-03-29)
+SN v3.93 interleaves lwz/stw pairs; DOL batches loads before stores for same ops.
+- `InteractorModule::Interactor::SetExtents(EVec2&)` - 0x802092D8 (20B) - interactor TU
+
+### [COMPLEX] ISimInstance::HasInteractions(int) - 0x80056628 (272B)
+Last function blocking isiminstance TU from 100%. Virtual dispatch chain + SDA globals
++ array indexing + multiple conditional paths. Too complex for quick matching.
 
 ## Agent Range 801E0000-801FFFFF (2026-03-28)
 
@@ -313,8 +377,8 @@ allocations (r10 vs r9 for temp ptr) and different store orderings.
 - `801812AC` UIButtonImages::~UIButtonImages(void) - vtable offset off by 4 due to virtual keyword
 
 ### SocialModeInteractor scheduling/register issues:
-- `0x8021F164` SocialModeInteractor::~SocialModeInteractor - andi. interleaved between lis/addi in DOL, SN puts it after stw
-- `0x8021F548` SocialModeInteractor::ChooseAction - DOL duplicates tail (sth+blr) in both branches, SN merges; beq vs bne branch sense flips depending on approach; r0 vs r4 register choice
+- `0x8021F164` SocialModeInteractor::~SocialModeInteractor - andi. interleaved between lis/addi in DOL, SN puts it after stw. Vtable at +0x5C requires exact class hierarchy.
+- `0x8021F548` SocialModeInteractor::ChooseAction - **MATCHED 2026-03-29** using `if (!action)` branch direction + `int id = action->m_id` to force lwz over lhz
 
 ## QuickDataSoundInfo::QuickDataSoundInfo(void) — 0x80145874 (140 bytes)
 - **Issue:** Argument setup scheduling for StringBuffer_ctor call
@@ -333,8 +397,18 @@ allocations (r10 vs r9 for temp ptr) and different store orderings.
 - **Likely fix:** Need complete StringSet vtable definition from Ghidra analysis or TU compilation
 
 ## EResource::EResource(void) - 0x80311DC8 (48 bytes)
-- **Issue:** Register allocation mismatch - DOL uses r11 for `this`, r9 for vtable; SN compiler generates r9 for `this`, r11 for vtable
-- **DOL pattern:** `or r11,r3,r3; li r0,1; sth r0,12(r11); lis r9,vtable_hi; ...`
-- **Compiled pattern:** `lis r11,vtable_hi; mr r9,r3; addi r11,r11,vtable_lo; li r0,1; ...`
-- **Attempts:** 3 (plain struct, base class struct, free function) - all produce r9<->r11 swap
-- **Likely cause:** Different register allocation due to unknown compiler flag or surrounding code context
+- **Issue:** Register allocation mismatch - DOL uses r11 for `this`, r9 for vtable; SN compiler generates r9 for `this`, r11 for vtable. Also DOL reuses r0 for both 1 and 128 (interleaved store-then-reload), SN compiler pre-loads all constants before any stores.
+- **DOL pattern:** `or r11,r3,r3; li r0,1; sth r0,12(r11); lis r9,vtable_hi; li r10,0; addi r9,...; li r0,128; stw r9,...; sth r10,...; stw r0,...; stw r10,...`
+- **Compiled pattern:** `lis r11,vtable_hi; mr r9,r3; addi r11,...; li r0,1; li r10,0; li r8,128; li r7,0; sth...; stw...; sth...; stw...; stw...`
+- **Attempts:** 14 (plain struct body, initializer list, virtual functions, base class, struct reorder, register hints, -ffixed-r9, different optimization flags, -fno-schedule-insns combos, two-vtable globals, local vtable variable, reuse-of-r0 patterns)
+- **With -fno-schedule-insns -fno-schedule-insns2:** Gets correct interleaved store pattern with r0 reuse, but uses r3 directly (no or r11,r3,r3 copy) and la pseudo vs addi — still MISMATCH
+- **With -ffixed-r9:** Gets r11=this/r10=vtable but still 5 live registers; DOL uses 4 via r0 reuse
+- **Likely cause:** SN BUILD v1.76 register allocator differs from EA's build; interleaved stores only possible with different allocator version. The DOL's `or r11,r3,r3` move to r11 (instead of r9) cannot be reproduced.
+
+## EEngine::FrameComplete — 0x802E31FC (60 bytes)
+- **Issue:** Register allocation mismatch — DOL uses r11 for `_pSched` (outer ENgcScheduler pointer) and r9 for vtable; SN v3.93 consistently generates r9 for `_pSched` and r11 for vtable.
+- **DOL pattern:** `lwz r11, _pSched; addi r4, r3, 52; lwz r9, 0x338(r11); lha r3, 0x38(r9); lwz r0, 0x3c(r9); add r3, r11, r3; mtlr r0; blrl`
+- **Compiled pattern:** `lwz r9, _pSched; addi r4, r3, 52; lwz r11, 0x338(r9); addi r9, r9, 0x338; lha r3, 0x38(r11); lwz r0, 0x3c(r11); add r3, r9, r3; mtlr r0; blrl`
+- **Class layout:** ENgcScheduler inherits EThread (0x338 bytes) then ESchedulerBase (7 virtual functions, no virtual dtor)
+- **Attempts:** 3 (sub-object via struct member, MI with EThread primary, ESchedulerBase* pointer type)
+- **Likely cause:** GCC 2.95 register allocator puts SDA-loaded pointer in r9; DOL was compiled with a version that prefers r11 for multi-inheritance secondary base dispatch. Cannot reproduce with source changes alone.

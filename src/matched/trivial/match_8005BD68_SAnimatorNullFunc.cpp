@@ -1,3 +1,4 @@
-// 0x8005BD68 (8 bytes)
+// 0x8005BD68 (4 bytes)
+// SAnimatorNullFunc(...)
 void SAnimatorNullFunc(...) {
 }
