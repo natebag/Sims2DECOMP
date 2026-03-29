@@ -63,7 +63,7 @@ if [ -f "$SN_CC1PLUS" ]; then
     CLEAN_SRC="build/verify/${BASENAME}_clean.cpp"
     sed 's|//.*||; s|/\*.*\*/||' "$SRC" > "$CLEAN_SRC"
     echo "Compiling $SRC with SN Systems ProDG..."
-    "$SN_CC1PLUS" "$CLEAN_SRC" -o "$ASM" -quiet -O2 2>&1
+    "$SN_CC1PLUS" "$CLEAN_SRC" -o "$ASM" -quiet -O2 -fno-elide-constructors 2>&1
     if [ $? -ne 0 ]; then
         echo "COMPILE FAILED"
         exit 1
