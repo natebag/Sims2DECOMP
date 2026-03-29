@@ -166,7 +166,7 @@ where the compiler schedules branches differently.
 - `0x800C1A68` Interaction::DoStream(ReconBuffer*, int) — 524 bytes
 
 ### Failed — Static guard + virtual dispatch:
-- `0x800C1CBC` Interaction::GetCTilePt(void) const — 100 bytes
+- `0x800C1CBC` Interaction::GetCTilePt(void) const — 100 bytes — Virtual descriptor chain at vtable+856/860 is straightforward; remaining mismatch is SN SDA/static-local emission for the cached `CTilePt` and init guard (`r13-24452` / `r13-24448`).
 
 ## Unknown Failures
 

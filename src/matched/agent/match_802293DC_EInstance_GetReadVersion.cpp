@@ -1,9 +1,12 @@
-// 0x802293DC (12 bytes) - EInstance::GetReadVersion(void)
-// lis r9,upper; lhz r3,lower(r9); blr
+/* EInstance::GetReadVersion(void) - 0x802293DC (12 bytes) */
+// TU: e_instance
 
-struct ETypeInfo_GRV { int data[6]; short extra; };
-extern ETypeInfo_GRV EInstance_typeInfo_rv;
+extern unsigned int EInstance_readVersion;
 
-unsigned short EInstance_GetReadVersion() {
-    return EInstance_typeInfo_rv.extra;
+struct EInstance {
+    static unsigned int GetReadVersion();
+};
+
+unsigned int EInstance::GetReadVersion() {
+    return EInstance_readVersion;
 }

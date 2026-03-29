@@ -1,9 +1,14 @@
-// 0x802293D0 (12 bytes) - EInstance::GetTypeInfoStatic(void)
-// Same pattern as GetTypeInfo: lis r3,upper; addi r3,r3,lower; blr
+/* EInstance::GetTypeInfoStatic(void) - 0x802293D0 (12 bytes) */
+// TU: e_instance
 
-struct ETypeInfo_GTIS { int data[4]; };
-extern ETypeInfo_GTIS EInstance_typeInfo_static;
+struct TypeInfo;
 
-ETypeInfo_GTIS* EInstance_GetTypeInfoStatic() {
-    return &EInstance_typeInfo_static;
+extern TypeInfo EInstance_typeInfo;
+
+struct EInstance {
+    static const TypeInfo* GetTypeInfoStatic();
+};
+
+const TypeInfo* EInstance::GetTypeInfoStatic() {
+    return &EInstance_typeInfo;
 }

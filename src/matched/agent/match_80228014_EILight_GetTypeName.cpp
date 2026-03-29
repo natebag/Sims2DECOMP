@@ -1,15 +1,12 @@
-// match_80228014_EILight_GetTypeName.cpp
-// Address: 0x80228014 | Size: 12 bytes
-// Symbol: EILight::GetTypeName(void) const
-// Pattern B: lis r9 + lwz r3 → return word from global (offset +12, index 3)
+/* EILight::GetTypeName(void) const - 0x80228014 (12 bytes) */
+// TU: e_ilight
 
-struct ETypeInfo_EILight_GTN { int data[4]; };
-extern ETypeInfo_EILight_GTN lbl_EILight_TypeInfo_Name;
+extern char EILight_typeInfo_name;
 
-struct EILight_GTN {
-    int GetTypeName() const;
+struct EILight {
+    const char* GetTypeName() const;
 };
 
-int EILight_GTN::GetTypeName() const {
-    return lbl_EILight_TypeInfo_Name.data[3];
+const char* EILight::GetTypeName() const {
+    return &EILight_typeInfo_name;
 }

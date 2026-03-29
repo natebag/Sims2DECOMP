@@ -353,10 +353,12 @@ namespace InteractorModule {
     class SocialModeInteractor {
     public:
         SocialModeInteractor(void);
+        ~SocialModeInteractor(void);
         void OnStart(int *);
         void OnStop(void);
         void Update(float);
         void SetupInteractionMenu(cXObject *, InteractionList &);
+        int ChooseAction(Interaction *);
     };
 } // namespace InteractorModule
 
@@ -31715,6 +31717,12 @@ void InteractorModule::SimInteractor::ChooseAction(Interaction *) {
     __builtin_unreachable();
 }
 
+// 0x8021F164 (52 bytes)
+// InteractorModule::SocialModeInteractor::~SocialModeInteractor(void)
+InteractorModule::SocialModeInteractor::~SocialModeInteractor(void) {
+    // vtable at offset +0x5C, stores base class vtable then conditional delete
+}
+
 // 0x8021F118 (76 bytes)
 // InteractorModule::SocialModeInteractor::SocialModeInteractor(void)
 __attribute__((noreturn))
@@ -31949,6 +31957,18 @@ void InteractorModule::SocialModeInteractor::SetupInteractionMenu(cXObject *, In
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+// 0x8021F548 (44 bytes)
+// InteractorModule::SocialModeInteractor::ChooseAction(Interaction *)
+int InteractorModule::SocialModeInteractor::ChooseAction(Interaction *action) {
+    if (!action) {
+        *(short*)((char*)this + 0x60) = -2;  // m_chosenActionID at offset 0x60
+        return 1;
+    }
+    int id = *(int*)((char*)action + 0x14);  // m_id at offset 0x14 in Interaction
+    *(short*)((char*)this + 0x60) = id;
+    return 1;
 }
 
 // 0x8021F598 (176 bytes)

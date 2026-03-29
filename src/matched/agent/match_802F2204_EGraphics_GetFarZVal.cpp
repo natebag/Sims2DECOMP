@@ -1,9 +1,12 @@
-// 0x802F2204 (12 bytes) - EGraphics::GetFarZVal(void)
-// lis r9,upper; lfs f1,lower(r9); blr
+/* EGraphics::GetFarZVal(void) - 0x802F2204 (12 bytes) */
+// TU: e_graphics
 
-struct FloatData_FZ { float val; int extra[2]; };
-extern FloatData_FZ EGraphics_farZVal;
+extern float EGraphics_s_farZ;
 
-float EGraphics_GetFarZVal() {
-    return EGraphics_farZVal.val;
+struct EGraphics {
+    static float GetFarZVal();
+};
+
+float EGraphics::GetFarZVal() {
+    return EGraphics_s_farZ;
 }

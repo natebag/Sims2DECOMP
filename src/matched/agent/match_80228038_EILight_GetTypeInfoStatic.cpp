@@ -1,11 +1,14 @@
-// match_80228038_EILight_GetTypeInfoStatic.cpp
-// Address: 0x80228038 | Size: 12 bytes
-// Symbol: EILight::GetTypeInfoStatic(void)
-// Pattern A: lis r3 + addi r3 → return address of global struct (free function, not method)
+/* EILight::GetTypeInfoStatic(void) - 0x80228038 (12 bytes) */
+// TU: e_ilight
 
-struct ETypeInfo_EILight_GTIS { int data[4]; };
-extern ETypeInfo_EILight_GTIS lbl_EILight_TypeInfoStatic;
+struct TypeInfo;
 
-ETypeInfo_EILight_GTIS* EILight_GetTypeInfoStatic() {
-    return &lbl_EILight_TypeInfoStatic;
+extern TypeInfo EILight_typeInfo;
+
+struct EILight {
+    static const TypeInfo* GetTypeInfoStatic();
+};
+
+const TypeInfo* EILight::GetTypeInfoStatic() {
+    return &EILight_typeInfo;
 }

@@ -1,29 +1,32 @@
+// 0x803287F0 (84 bytes)
 typedef unsigned int uint;
 
 struct EFile;
-struct EAHeap;
-struct EAHeap *MainHeap(void);
-void *EAHeap_Malloc(struct EAHeap *heap, uint size, int align);
+struct EAHeap {
+    void *Malloc(uint size, int flags);
+};
+EAHeap *MainHeap(void);
 
 struct REffectsAttachment {
     void *m_vtable;
-    uint m_field4;
-    uint m_flags;
+    uint m_field_004;
+    uint m_field_008;
+    REffectsAttachment(void);
+    void Load(EFile *file);
 };
 
-void *REffectsAttachment_ctor(void *p);
-void REffectsAttachment_Load(struct REffectsAttachment *r, EFile *file, int flags);
+inline void *operator new(uint, void *p) { return p; }
 
 struct EffectsAttachmentManager {
-    REffectsAttachment *AllocateAndLoadResource(EFile *file, uint id, uint flags);
+    REffectsAttachment *AllocateAndLoadResource(EFile *file, uint id1, uint id2);
 };
 
-REffectsAttachment *EffectsAttachmentManager::AllocateAndLoadResource(EFile *file, uint id, uint flags)
+REffectsAttachment *EffectsAttachmentManager::AllocateAndLoadResource(EFile *file, uint id1, uint id2)
 {
     EAHeap *heap = MainHeap();
-    void *mem = EAHeap_Malloc(heap, 36, 0);
-    REffectsAttachment *res = (REffectsAttachment *)REffectsAttachment_ctor(mem);
-    res->m_flags = flags;
-    REffectsAttachment_Load(res, file, 0);
+    void *mem = heap->Malloc(36, 0);
+    REffectsAttachment *res = new(mem) REffectsAttachment;
+    res->m_field_008 = id2;
+    res->Load(file);
     return res;
 }

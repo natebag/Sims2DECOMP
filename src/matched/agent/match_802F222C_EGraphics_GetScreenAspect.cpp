@@ -1,9 +1,12 @@
-// 0x802F222C (12 bytes) - EGraphics::GetScreenAspect(void)
-// lis r9,upper; lfs f1,lower(r9); blr
+/* EGraphics::GetScreenAspect(void) - 0x802F222C (12 bytes) */
+// TU: e_graphics
 
-struct FloatData_SA { float val; int extra[2]; };
-extern FloatData_SA EGraphics_screenAspect;
+extern float EGraphics_s_screenAspect;
 
-float EGraphics_GetScreenAspect() {
-    return EGraphics_screenAspect.val;
+struct EGraphics {
+    static float GetScreenAspect();
+};
+
+float EGraphics::GetScreenAspect() {
+    return EGraphics_s_screenAspect;
 }
