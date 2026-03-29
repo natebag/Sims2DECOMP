@@ -1,8 +1,8 @@
-/* 36-byte wrapper at 0x80119D48: dereferences self and calls */
+/* 36-byte wrapper at 0x80119D48: dereferences second arg and calls */
 
-struct W_80119D48 { void *ptr; };
-extern void target_80119D48(void*);
+struct Ptr_80119D48 { void *ptr; };
+extern void target_80119D48(void*, void*);
 
-void sub_80119D48(W_80119D48 *self) {
-    target_80119D48(self->ptr);
+void sub_80119D48(void *a, Ptr_80119D48 *b) {
+    target_80119D48(a, b->ptr);
 }
