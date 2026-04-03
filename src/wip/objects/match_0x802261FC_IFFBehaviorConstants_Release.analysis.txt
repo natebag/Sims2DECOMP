@@ -1,0 +1,73 @@
+ANALYSIS: IFFBehaviorConstants::Release(void)
+Address: 0x802261FC | Size: 92 bytes | Type: void method (reference counting release)
+
+DISASSEMBLY BREAKDOWN:
+---------------------
+Line 1-2:    Create 8-byte stack frame, save LR
+Line 3:      mr r11, r3         | Copy this pointer to r11
+Line 4-5:    Load r9 from offset 96 of this
+             addi r3, r9, -1    | Decrement reference count
+Line 6:      stw r3, 96(r11)    | Store decremented count back to offset +96
+Line 7:      cmpwi r3, 0        | Compare count with 0
+Line 8:      bne skip_delete    | If not zero, skip deletion
+Line 9-10:   cmpwi r11, 0       | Check if this pointer is null
+             beq skip_vfunc     | If null, skip virtual function call
+Line 11-15:  Load virtual function from vtable
+             Virtual call at offset 112 (0x70) in vtable
+             The call operates on this pointer in r11
+Line 16:     Skip the virtual call if needed
+Line 17-19:  Load LR, restore stack, return
+
+WHAT THIS DOES (C++ pseudocode):
+---------------------------------
+void IFFBehaviorConstants::Release() {
+    // Decrement reference count at offset 96
+    int refCount = this->m_refCount;  // offset 96
+    refCount--;
+    this->m_refCount = refCount;
+    
+    // If reference count reaches zero, delete object
+    if (refCount == 0 && this != nullptr) {
+        // Call virtual destructor or cleanup function at vtable offset 112 (0x70)
+        // This is equivalent to: virtual_method_at_offset_112(this);
+        this->m_vtable[0x70/sizeof(void*)]();
+    }
+}
+
+KEY OBSERVATIONS:
+-----------------
+1. Reference counting pattern: decrement count, delete if zero
+2. m_refCount stored at offset +96 from this
+3. Null pointer check before virtual call (defensive programming)
+4. Virtual function at vtable offset 0x70 (112 bytes / 14 pointers * 8 bytes = entry 14)
+5. Short-circuit logic: skip delete if count > 0
+
+EXTERNAL CALLS:
+---------------
+- Virtual call at m_vtable[14] (offset 0x70 in vtable)
+  Likely: virtual destructor or Release() of parent interface
+
+STRUCT LAYOUT (INFERRED):
+-------------------------
+struct IFFBehaviorConstants {
+    // offset 0x00: void* m_vtable
+    // ...various member fields...
+    // offset 0x60 (96): int m_refCount  [reference count]
+};
+
+// Vtable layout (inferred):
+struct IFFBehaviorConstants_vtable {
+    // ... other virtual methods ...
+    // offset 0x70 (14*8): void (*dtor_or_release)(IFFBehaviorConstants*)
+};
+
+PATTERN NAME:
+--------------
+This is a classic "AddRef/Release" pattern from COM and similar reference-counted systems.
+
+NOTES FOR REAL C++ IMPLEMENTATION:
+-----------------------------------
+- The reference counting logic should be straightforward
+- The virtual call at offset 0x70 is tricky: GCC must generate the same vtable layout
+- Need to match the exact offset calculations for vtable access
+- The null check order and conditions must match exactly

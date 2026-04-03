@@ -1,13 +1,12 @@
 /* IFFBehaviorConstants::AddRef(void) - 0x8015A614 - 20 bytes */
 
-class IFFBehaviorConstants {
-public:
-    char _pad[0x60];
+struct IFFBehaviorConstants {
+    char _pad[96];
     int m_refCount;
 
-    int AddRef(void);
+    int AddRef();
 };
 
-int IFFBehaviorConstants::AddRef(void) {
+int IFFBehaviorConstants::AddRef() {
     return ++m_refCount;
 }

@@ -1,0 +1,118 @@
+## ResourceBehaviorTree::Release(void) Analysis
+Address: 0x8015B2A8 (from DVD build)
+Size: 48 bytes
+Release version (cm3-build25) address: 0x8022722c (estimated)
+Pseudocode source: src/asm_decomp/ResourceBehaviorTree.cpp (lines 499-530)
+
+### Function Signature
+```cpp
+void Release(void);
+```
+
+### Parameter Handling
+- r3: this pointer (ResourceBehaviorTree)
+
+### Stack Frame
+- Minimal frame: stwu 1, -8(1)
+- Save LR at offset 12(1)
+
+### Assembly Flow
+
+1. **Load and decrement reference count**
+   - mr 11, 3 (save this to r11)
+   - lwz 9, 100(11) (load refCount from this[100])
+   - addi 3, 9, -1 (decrement: r3 = refCount - 1)
+   - stw 3, 100(11) (store decremented count back)
+   - cmpwi 3, 0 (check if now zero)
+   - bne .L_8015B2C8 (if not zero, skip delete)
+
+2. **Conditional deletion (if refCount reaches zero)**
+   - cmpwi 11, 0 (check if this is null)
+   - beq .L_8015B2C4 (if null, skip virtual call)
+
+   If not null:
+   - lwz 9, 0(11) (load vtable)
+   - li 4, 3 (param: destruction flag = 3)
+   - lha 3, 96(9) (load vtable offset)
+   - lwz 0, 100(9) (load function pointer)
+   - add 3, 11, 3 (calculate virtual address)
+   - mtlr 0
+   - blrl (call virtual destructor)
+
+   If null:
+   - li 3, 0 (set r3 = 0)
+
+3. **Return**
+   - lwz 0, 12(1) (restore LR)
+   - mtlr 0
+   - addi 1, 1, 8 (clean up stack)
+   - blr (return)
+
+### Return Value
+- **Implicit return only** — no meaningful return value
+- Side effect: deletes object if refCount reaches zero
+
+### Data Flow
+```
+Release()
+  ├─ Load refCount from this[100]
+  ├─ Decrement: refCount = refCount - 1
+  ├─ Store back to this[100]
+  ├─ If refCount == 0:
+  │   ├─ Call virtual destructor with flag=3
+  │   └─ Object is deleted
+  └─ Return
+```
+
+### Reference Counting Pattern
+This is a standard COM-style reference counting implementation:
+1. Each Release() decrements the counter
+2. When counter reaches 0, the object is deleted
+3. A virtual destructor is called with a specific flag (3)
+4. The flag likely distinguishes between "complete destruction" and "partial cleanup"
+
+### Struct Layout (inferred)
+```
+ResourceBehaviorTree {
+  void *vtable;           // offset 0
+  // ...
+  // (other fields)
+  // ...
+  int refCount;           // offset 100
+};
+
+Vtable structure {
+  // ...
+  offset 96: destructor offset
+  offset 100: destructor function pointer
+};
+```
+
+### Destruction Flag
+The flag value of 3 passed to the destructor has special meaning:
+- Possibly: (1 = deconstruct, 2 = delete memory)
+- 3 = (1 | 2) = both operations
+- Different flag combinations might be used for different deletion scenarios
+
+### Related Functions
+- AddRef() — increments refCount (not present in this read)
+- Virtual destructor (offset 96 in vtable)
+- Reference counted resource management system
+
+### C++ Pattern Hints
+- COM-style IUnknown pattern
+- Virtual method dispatch for destruction
+- Reference counter at fixed offset (100)
+- Flag-based destruction variants
+- Typically paired with AddRef() at opposite offset
+
+### Performance Notes
+- Minimal overhead for non-zero case (just one decrement, one compare, one branch)
+- Conditional virtual call only happens when refCount == 0
+- Most Release() calls are fast paths (no actual deletion)
+
+### Comparison with Similar Functions
+This is semantically identical to:
+- IFFBehaviorConstants::Release (analyzed earlier)
+- ObjFnTableQuickData::Release
+Pattern is consistent across reference-counted resource classes.

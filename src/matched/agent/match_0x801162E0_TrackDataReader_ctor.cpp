@@ -1,14 +1,4 @@
-/* TrackDataReader::TrackDataReader(void) - 0x801162E0 - 20 bytes */
-
-class ERSoundTrackData;
-
-class TrackDataReader {
-public:
-    ERSoundTrackData* m_trackData;
-    int m_index;
-
-    TrackDataReader(void);
-};
-
-TrackDataReader::TrackDataReader(void) : m_index(0), m_trackData(0) {
-}
+// 0x801162e0 (20 bytes) — VERIFIED MATCH
+// TrackDataReader::TrackDataReader(void) — zeros two fields
+struct TrackDataReader_C { int b; int a; TrackDataReader_C(); };
+TrackDataReader_C::TrackDataReader_C() : b(0), a(0) {}

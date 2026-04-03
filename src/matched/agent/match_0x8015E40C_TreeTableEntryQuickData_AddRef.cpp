@@ -1,13 +1,12 @@
 /* TreeTableEntryQuickData::AddRef(void) - 0x8015E40C - 20 bytes */
 
-class TreeTableEntryQuickData {
-public:
-    char _pad[0x18];
+struct TreeTableEntryQuickData {
+    char _pad[24];
     int m_refCount;
 
-    int AddRef(void);
+    int AddRef();
 };
 
-int TreeTableEntryQuickData::AddRef(void) {
+int TreeTableEntryQuickData::AddRef() {
     return ++m_refCount;
 }

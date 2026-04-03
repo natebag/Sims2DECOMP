@@ -1,13 +1,12 @@
 /* TTabScratchEntry::AddRef(void) - 0x80149840 - 20 bytes */
 
-class TTabScratchEntry {
-public:
-    char _pad[0x118];
+struct TTabScratchEntry {
+    char _pad[280];
     int m_refCount;
 
-    int AddRef(void);
+    int AddRef();
 };
 
-int TTabScratchEntry::AddRef(void) {
+int TTabScratchEntry::AddRef() {
     return ++m_refCount;
 }

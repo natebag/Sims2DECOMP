@@ -1,13 +1,12 @@
 /* ObjectDataObjDefinition::AddRef(void) - 0x8015C778 - 20 bytes */
 
-class ObjectDataObjDefinition {
-public:
-    char _pad[0x14];
+struct ObjectDataObjDefinition {
+    char _pad[20];
     int m_refCount;
 
-    int AddRef(void);
+    int AddRef();
 };
 
-int ObjectDataObjDefinition::AddRef(void) {
+int ObjectDataObjDefinition::AddRef() {
     return ++m_refCount;
 }

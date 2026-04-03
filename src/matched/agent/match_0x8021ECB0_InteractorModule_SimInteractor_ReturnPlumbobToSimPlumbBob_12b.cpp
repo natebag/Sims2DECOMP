@@ -1,0 +1,2 @@
+extern int gv_InteractorModule_SimInteractor_ReturnPlumbobToSimPlumbBob;
+void sf_InteractorModule_SimInteractor_ReturnPlumbobToSimPlumbBob() { gv_InteractorModule_SimInteractor_ReturnPlumbobToSimPlumbBob = 0; }

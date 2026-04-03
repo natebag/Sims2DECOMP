@@ -55,3 +55,11 @@ compiler/ProDGforNGCv393.exe
 
 # Claude Code
 .claude/
+
+# AgentOrch
+.agentorch/
+
+# Temp scripts
+extract_*.py
+extract_*.sh
+tus.txt

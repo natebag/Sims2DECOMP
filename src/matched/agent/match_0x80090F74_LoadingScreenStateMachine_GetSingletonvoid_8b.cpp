@@ -1,0 +1,2 @@
+extern int gv_LoadingScreenStateMachine_GetSingletonvoid;
+int gf_LoadingScreenStateMachine_GetSingletonvoid() { return gv_LoadingScreenStateMachine_GetSingletonvoid; }

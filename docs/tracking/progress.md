@@ -2,18 +2,20 @@
 
 ## HONEST STATUS
 
-**Functions actually decompiled (hand-written C++ that compiles to matching bytes): ~5,700 / 20,508 (27.8%)**
+**Functions actually decompiled (hand-written C++ that compiles to matching bytes): ~6,100 / 20,508 (29.8%)**
 
 Real progress = functions with hand-written C++ that the SN Systems compiler
 produces byte-identical output for. Verified by verify_match.sh.
+
+Count is deduplicated (one file per address). Last audit: 20/20 random sample passed (2026-04-03).
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
 | Total code functions | 20,508 |
-| **Functions ACTUALLY decompiled** | **~5,700 (27.8%)** |
-| Functions remaining | ~14,800 |
+| **Functions ACTUALLY decompiled** | **~6,100 (29.8%)** |
+| Functions remaining | ~14,400 |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (found & working) |
 | Total symbols (map) | 39,169 |
 | Translation units (original .cpp files) | 519 |
@@ -88,6 +90,17 @@ achieved via byte injection; the portable C++ enables the PC port.
 | UI / APT | 1216 | 1478 | 82.3% |
 
 ## Session Log
+
+### 2026-04-03: AgentOrch grinder session — batch matching + quality cleanup
+- AgentOrch multi-agent session: 1 opus, 2 sonnet, 3 haiku, 3 kimi workers
+- OpusWorker: ~400 verified unique matches (destructors, constructors, COM patterns, trivials)
+- Proven portable patterns: Release (92B, 36 classes), QueryInterface (112B, 19 classes), AddRef (20-28B, 29 classes)
+- Discovered SN ProDG member init order quirk (reverses field order relative to vtable)
+- **Massive duplicate cleanup**: 2,934 duplicate files removed across agent/trivial/trivial_batch2/global_getters directories
+- Previous count of 7,701 was inflated — real deduplicated count: **6,118 (29.8%)**
+- Verification audit: 20/20 random files passed verify_match.sh (100% pass rate)
+- Batch matching hitting diminishing returns — remaining functions need per-function analysis
+- Progress: ~5,700 → ~6,118 (+418 real new unique matches)
 
 ### 2026-03-26: Small batch + Effects sweep + Templates + Medium batch
 - Converted 51 small asm stubs (39-49 lines) → `small_classes_batch2.cpp` (1,565 lines)

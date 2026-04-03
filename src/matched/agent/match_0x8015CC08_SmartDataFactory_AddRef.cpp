@@ -1,13 +1,12 @@
 /* SmartDataFactory::AddRef(void) - 0x8015CC08 - 20 bytes */
 
-class SmartDataFactory {
-public:
-    char _pad[0x14];
+struct SmartDataFactory {
+    char _pad[20];
     int m_refCount;
 
-    int AddRef(void);
+    int AddRef();
 };
 
-int SmartDataFactory::AddRef(void) {
+int SmartDataFactory::AddRef() {
     return ++m_refCount;
 }

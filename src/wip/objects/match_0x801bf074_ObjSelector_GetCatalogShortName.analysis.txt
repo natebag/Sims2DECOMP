@@ -1,0 +1,171 @@
+## ObjSelector::GetCatalogShortName(void) Analysis
+Address: 0x80110980 (from DVD build)
+Size: 92 bytes
+Release version (cm3-build25) address: 0x801bf074 (estimated)
+Pseudocode source: src/asm_decomp/ObjSelector.cpp (lines 404-433)
+
+### Function Signature
+```cpp
+void GetCatalogShortName(void);
+```
+
+### Parameter Handling
+- r3: this pointer (ObjSelector)
+- r4: return value buffer (implied from assembly usage)
+
+### Stack Frame
+- stwu 1, -16(1)
+- Save r30, r31
+- Save LR at offset 20(1)
+
+### Assembly Flow
+
+1. **Save parameters and get master selector**
+   - mr 30, 3 (save this to r30)
+   - mr 3, 4 (move param to r3 for call)
+   - .long 0x4bfffe81 (call ObjSelector::GetMasterSelector())
+   - [Returns master selector in r3]
+
+2. **Get catalog resource**
+   - .long 0x48000ac9 (call ObjSelector::GetCatalogResource())
+   - [Returns catalog resource in r3]
+
+3. **Virtual method call on resource**
+   - mr 4, 3 (move resource to r4)
+   - lwz 9, 0(4) (load vtable from resource[0])
+   - mr 3, 30 (restore this pointer)
+   - lha 0, 40(9) (load signed halfword from vtable[40])
+   - lwz 9, 44(9) (load function pointer from vtable[44])
+   - add 4, 4, 0 (calculate virtual address)
+   - mtlr 9 (set up function pointer)
+   - crclr 4*cr1+eq (clear floating point condition)
+   - blrl (call virtual method)
+
+4. **Return**
+   - mr 3, 30 (restore this to r3)
+   - lwz 0, 20(1) (restore LR)
+   - mtlr 0
+   - lmw 30, 8(1) (restore registers)
+   - addi 1, 1, 16 (clean up stack)
+   - blr (return)
+
+### Data Flow
+```
+GetCatalogShortName()
+  ├─ Get master selector (r3 = this)
+  ├─ Get catalog resource from master
+  ├─ Load vtable from resource[0]
+  ├─ Virtual call at vtable+40 (offset 40 in vtable)
+  │   Parameters: r3=this, r4=resource
+  └─ Return this
+```
+
+### Vtable Offsets (vs GetCatalogDescription)
+| Method | Offset Field | Function Ptr Field |
+|--------|-------------|-------------------|
+| GetCatalogDescription | 32 | 36 |
+| **GetCatalogShortName** | **40** | **44** |
+
+The offset difference (40-32=8, 44-36=8) suggests these
+are consecutive method table entries in the same resource.
+
+### Implementation Pattern
+**Identical to GetCatalogDescription, only vtable offsets differ**
+
+This suggests:
+1. Both are getter methods for catalog properties
+2. Both dispatch to virtual methods on the same resource object
+3. Method table is organized with fixed offsets between entries
+4. Possible 8-byte entries in vtable method table
+
+### Method Dispatch Strategy
+```
+vtable[32] = description offset
+vtable[36] = description function ptr
+vtable[40] = short name offset
+vtable[44] = short name function ptr
+vtable[48] = potentially next method...
+```
+
+The pattern suggests a method dispatch table where each method
+gets two entries: an offset and a function pointer.
+
+### Return Value
+Like GetCatalogDescription, returns 'this' (r3 = 30),
+supporting method chaining.
+
+### Class Relationships
+```
+ObjSelector {
+  ? masterSelectorPtr;
+};
+
+CatalogResource {
+  void *vtable;           // offset 0
+  // vtable entries:
+  // [32] = description offset
+  // [36] = description function
+  // [40] = short name offset
+  // [44] = short name function
+  // ... possibly more method entries
+};
+```
+
+### Condition Flag Notes
+Both GetCatalogDescription and GetCatalogShortName
+use `crclr 4*cr1+eq`, suggesting the catalog resource
+methods check floating-point exception conditions.
+
+### Related Functions
+- ObjSelector::GetMasterSelector() — get primary selector
+- ObjSelector::GetCatalogResource() — get catalog metadata
+- ObjSelector::GetCatalogDescription() — similar getter, different offset
+- Virtual methods at vtable+40/44 — actual short name accessor
+
+### Usage Pattern
+Both methods follow the fluent API pattern:
+```cpp
+selector.GetCatalogDescription();  // get desc, return this
+selector.GetCatalogShortName();    // get short name, return this
+// Can chain calls
+selector.GetCatalogDescription().GetCatalogShortName();
+```
+
+### C++ Implementation Hints
+```cpp
+void GetCatalogShortName() {
+  ObjSelector *master = GetMasterSelector();
+  CatalogResource *resource = GetCatalogResource();
+
+  // Virtual call pattern
+  int vtable_offset = resource->vtable->methodTable[40/sizeof(int)];
+  void (*fn)(...) = (void (*)(...))resource->vtable->methodTable[44/sizeof(int)];
+  fn(this, (char *)resource + vtable_offset);
+
+  return this;
+}
+```
+
+### Compiler Notes
+The use of `lha` (load halfword arithmetic) for offset suggests
+offsets are signed 16-bit values, allowing for both positive
+and negative object member access patterns.
+
+The `crclr` instruction is unusual in game code and suggests
+the virtual method implementations use floating-point operations
+and want to avoid FP exceptions affecting the caller.
+
+### Optimization Opportunity
+Both methods have identical patterns. Could be:
+- Inlined by compiler
+- Macro-generated
+- Template instantiation
+- Or manually written with same structure
+
+### Test Pattern
+To verify these methods:
+1. Ensure GetMasterSelector returns valid pointer
+2. Ensure GetCatalogResource returns valid pointer
+3. Ensure resource->vtable exists at offset 0
+4. Ensure methods at offsets 40/44 work correctly
+5. Verify return value is 'this'

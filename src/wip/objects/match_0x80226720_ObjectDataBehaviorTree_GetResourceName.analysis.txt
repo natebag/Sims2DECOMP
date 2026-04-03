@@ -1,0 +1,126 @@
+## ObjectDataBehaviorTree::GetResourceName(StringBuffer &) const Analysis
+Address: 0x8015AAA8 (from DVD build)
+Size: 56 bytes
+Release version (cm3-build25) address: 0x80226720 (estimated)
+Pseudocode source: src/asm_decomp/ObjectDataBehaviorTree.cpp (lines 120-149)
+
+### Function Signature
+```cpp
+bool GetResourceName(StringBuffer &output) const;
+```
+
+### Parameter Handling
+- r3: this pointer (const ObjectDataBehaviorTree)
+- r4: StringBuffer & (output reference, where name is copied)
+
+### Stack Frame
+- stwu 1, -16(1)
+- Save r30, r31
+- Save LR at offset 20(1)
+
+### Assembly Flow
+
+1. **Calculate string buffer offset**
+   - addi 31, 3, 12 (r31 = this + 12, points to embedded StringBuffer)
+   - mr 30, 4 (r30 = output StringBuffer reference)
+
+2. **Check if internal string is empty**
+   - mr 3, 31 (pass internal string to length check)
+   - .long 0x4bf4bb51 (call StringBuffer::length(void) const)
+   - cmpwi 3, 0 (check if length == 0)
+   - beq .L_8015AABC (branch if empty → return false)
+
+3. **Non-empty path: copy string to output**
+   - mr 3, 30 (dest = output StringBuffer)
+   - mr 4, 31 (src = internal StringBuffer at this[12])
+   - .long 0x4bf4bcb9 (call StringBuffer::copy(StringBuffer &))
+   - li 3, 1 (return r3 = 1 (true))
+   - b .L_8015AAC0 (jump to epilogue)
+
+4. **Empty path: return false**
+   - li 3, 0 (return r3 = 0 (false))
+
+5. **Epilogue**
+   - lwz 0, 20(1) (restore LR)
+   - mtlr 0
+   - lmw 30, 8(1) (restore r30, r31)
+   - addi 1, 1, 16 (clean up stack)
+   - blr (return)
+
+### Return Value
+**Return as int (r3)**
+- Success (string copied): r3 = 1 (true)
+- Error (empty string): r3 = 0 (false)
+
+### Data Flow
+```
+GetResourceName(output)
+  ├─ Load embedded StringBuffer from this[12]
+  ├─ Check length of embedded string
+  ├─ If length > 0:
+  │   ├─ Copy embedded string to output
+  │   └─ Return 1 (success)
+  └─ If length == 0:
+      └─ Return 0 (failure)
+```
+
+### Struct Layout (inferred)
+```
+ObjectDataBehaviorTree {
+  // offset 0-11: other fields
+  StringBuffer resourceName;   // offset 12 (embedded)
+  // offset 12+sizeof(StringBuffer): remaining fields
+};
+
+StringBuffer {
+  // Internal string storage (size varies)
+  // Member functions: length(), copy()
+};
+```
+
+### String Buffer Operations
+1. **length()** — returns number of characters in string
+2. **copy(StringBuffer &)** — copies this string to another StringBuffer
+
+The pattern suggests StringBuffer is a reference type or handle
+(not a raw char array).
+
+### Key Insight
+This function:
+1. Accesses an embedded StringBuffer at a fixed offset (12)
+2. Checks if it has content (length > 0)
+3. If yes, copies it to the output parameter
+4. Returns boolean success/failure
+
+The embedded StringBuffer pattern suggests ObjectDataBehaviorTree
+owns/manages the resource name internally.
+
+### Related Functions
+- StringBuffer::length() const — get string length
+- StringBuffer::copy(StringBuffer &) — copy string data
+- Other getters likely follow same embedded-field pattern
+
+### C++ Pattern Hints
+- Simple wrapper around embedded member
+- Resource name stored at fixed offset
+- Defensive check (empty string = error)
+- Copy semantics (output by reference)
+- Boolean return for success/failure
+
+### Performance Notes
+- Two function calls (length check, then copy)
+- Length check allows early exit for empty strings
+- No exception handling — return boolean for errors
+- Fast path: just two virtual calls, no complex logic
+
+### Optimization Opportunity
+Could be inlined by compiler if StringBuffer methods are small.
+The function is very simple and data-driven.
+
+### Comparison Pattern
+Similar to other getters in resource system:
+- Check validity (length > 0)
+- Copy/return data (StringBuffer::copy)
+- Return boolean success flag
+
+This is a typical safe getter pattern in EA code.

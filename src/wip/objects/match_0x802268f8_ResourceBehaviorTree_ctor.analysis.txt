@@ -1,0 +1,127 @@
+## ResourceBehaviorTree::ResourceBehaviorTree(void) Analysis
+Address: 0x8015AC80 (from DVD build)
+Size: 60 bytes
+Release version (cm3-build25) address: 0x802268f8 (estimated)
+Pseudocode source: src/asm_decomp/ResourceBehaviorTree.cpp (lines 25-49)
+
+### Function Signature
+```cpp
+ResourceBehaviorTree::ResourceBehaviorTree(void);
+```
+
+### Constructor Role
+This is a derived class constructor for ResourceBehaviorTree,
+which inherits from ObjectDataBehaviorTree (called in step 1).
+
+### Parameter Handling
+- r3: this pointer (ResourceBehaviorTree, also used for base class)
+
+### Stack Frame
+- stwu 1, -16(1)
+- Save r30, r31
+- Save LR at offset 20(1)
+
+### Assembly Flow
+
+1. **Call base class constructor**
+   - mr 30, 3 (save this to r30)
+   - .long 0x4bfffc9d (call ObjectDataBehaviorTree::ObjectDataBehaviorTree())
+   - [Base class initializes inherited fields]
+
+2. **Load and set ResourceBehaviorTree vtable**
+   - lis 9, -32698 (upper 16 bits of vtable address)
+   - li 0, 0 (clear r0 for zeroing fields)
+   - addi 9, 9, 22600 (add lower 16 bits)
+   - Resulting vtable address: 0x801fbe78
+   - stw 9, 0(30) (store vtable at this[0])
+
+3. **Zero initialize member fields**
+   - stw 0, 96(30) (clear field at this[96])
+   - stw 0, 100(30) (clear field at this[100])
+
+4. **Return**
+   - mr 3, 30 (return this)
+   - lwz 0, 20(1) (restore LR)
+   - mtlr 0
+   - lmw 30, 8(1) (restore r30, r31)
+   - addi 1, 1, 16 (clean up stack)
+   - blr (return)
+
+### Data Flow
+```
+ResourceBehaviorTree()
+  ├─ Call ObjectDataBehaviorTree() [base class init]
+  ├─ Set vtable = 0x801fbe78
+  ├─ Zero this[96] (likely refCount or resource pointer)
+  └─ Zero this[100] (likely status/flags)
+```
+
+### Class Hierarchy
+```
+ObjectDataBehaviorTree (base)
+  │
+  └── ResourceBehaviorTree (derived)
+```
+
+The base class constructor is called first (standard C++ pattern),
+then ResourceBehaviorTree-specific initialization happens.
+
+### Struct Layout (inferred)
+```
+ResourceBehaviorTree : public ObjectDataBehaviorTree {
+  void *vtable;           // offset 0 (overrides base vtable)
+  // inherited fields from ObjectDataBehaviorTree...
+  // offset 0-88: inherited fields
+
+  // New fields in ResourceBehaviorTree:
+  ? field96;              // offset 96 (zeroed in ctor)
+  int field100;           // offset 100 (zeroed in ctor)
+};
+```
+
+### Vtable Address
+- **0x801fbe78** (calculated from lis -32698 + addi 22600)
+- This is the ResourceBehaviorTree vtable
+- Different from parent class vtable due to virtual method overrides
+
+### Fields Zeroed
+1. **Offset 96:** Likely a resource pointer or SCID
+2. **Offset 100:** Likely a refCount (matches Release() at same offset)
+
+Both fields are explicitly zeroed, suggesting:
+- Resource not loaded yet (will be loaded later)
+- RefCount starts at 0 (must be incremented before use)
+
+### Constructor Pattern
+This follows the standard C++ pattern:
+1. Call base class constructor (initializes inherited state)
+2. Set derived class vtable (enables virtual dispatch)
+3. Initialize derived class members to safe defaults
+4. Return this for chaining
+
+### Related Functions
+- ObjectDataBehaviorTree::ObjectDataBehaviorTree() — base class ctor
+- ~ResourceBehaviorTree() — destructor (if it exists)
+- ResourceBehaviorTree::Release() — uses offset 100
+
+### C++ Pattern Hints
+- Derived class constructor following C++ ABI
+- Vtable override for polymorphic behavior
+- Zero initialization of member fields
+- Simple, non-throwing constructor
+
+### Performance Notes
+- Very small constructor (60 bytes)
+- Minimal work: just base class call + vtable setup + field zeroing
+- No virtual calls after construction
+- Inlining candidate
+
+### Comparison Pattern
+Similar to other constructors in the codebase:
+1. Save this pointer
+2. Call base class constructor
+3. Set derived vtable
+4. Initialize new fields
+5. Return this
+
+This is idiomatic EA C++ code.

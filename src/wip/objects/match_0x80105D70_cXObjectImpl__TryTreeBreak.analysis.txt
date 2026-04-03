@@ -1,0 +1,91 @@
+## cXObjectImpl::TryTreeBreak(StackElem *, XPrimParam *) Analysis
+Address: 0x80105D70
+Size: 56 bytes (from DVD build)
+Release version (cm3-build25) address: 0x801b17e0
+Pseudocode source: src/asm_decomp/cXObjectImpl.cpp (lines 25156-25189)
+
+### Function Signature
+```cpp
+long long TryTreeBreak(StackElem *elem, XPrimParam *param);
+```
+
+### Stack Frame
+- Minimal frame: stwu 1,-16(1)
+- Save LR at offset 20(1)
+- No other registers saved
+
+### Parameter Handling
+- r3: this pointer
+- r4: StackElem *elem
+- r5: XPrimParam *param
+
+### Assembly Flow
+1. **Extract parameters from XPrimParam**
+   - mr 9, 5 (move param to r9)
+   - lha 5, 0(9) (load signed halfword at offset 0 from param)
+   - lha 4, 2(9) (load signed halfword at offset 2 from param)
+   - li 6, 0 (clear r6)
+   - li 7, 0 (clear r7)
+
+2. **Call InterpValue helper**
+   - addi 8, 1, 8 (pass stack location for output)
+   - .long 0x48004d11 (call cXObjectImpl::InterpValue)
+   - This extracts interpreted values from param into r3, r4
+
+3. **Check InterpValue result**
+   - cmpwi 3, -1 (check if r3 == -1)
+   - bne .L_80105DB4 (branch if not -1)
+   - cmpwi 4, -1 (check if r4 == -1)
+   - bne .L_80105DB4 (branch if not -1)
+
+4. **Branch taken if both results are -1 (error case)**
+   - li 3, -1 (return r3 = -1)
+   - li 4, -1 (return r4 = -1)
+   - b .L_80105DC4 (jump to epilogue)
+
+5. **Branch not taken if results are valid**
+   - li 0, 0 (clear r0)
+   - li 3, 0 (return r3 = 0, success code)
+   - sth 0, 8(1) (store halfword to stack)
+   - li 4, 1 (return r4 = 1, signal)
+
+6. **Return**
+   - lwz 0, 20(1) (restore LR)
+   - mtlr 0 (move to LR)
+   - addi 1, 1, 16 (clean up stack)
+   - blr (return)
+
+### Return Value Pattern
+**Return as long long (r3:r4 pair)**
+- Success: r3 = 0, r4 = 1
+- Error: r3 = -1, r4 = -1
+- The return values indicate both success/failure AND a signal flag
+
+### Data Dependencies
+- Depends on InterpValue() helper function
+- Parameter layout suggests XPrimParam has at least 4 bytes of data
+- Likely layout: [int at offset 0-1 (hword), int at offset 2-3 (hword), ...]
+
+### Key Insight
+This function is a behavior tree primitive that:
+1. Extracts parameter values from XPrimParam via InterpValue (interpretation system)
+2. Returns different results based on whether InterpValue succeeded
+3. If InterpValue returns -1, -1 (error), propagates that error
+4. Otherwise returns 0, 1 (success with signal)
+
+The "TreeBreak" semantics suggest this breaks from a behavior tree loop,
+with InterpValue handling condition interpretation.
+
+### Struct Layout (inferred)
+```
+XPrimParam {
+  short param0;     // offset 0
+  short param1;     // offset 2
+  // ... additional fields
+};
+```
+
+### C++ Pattern Hints
+- Typical behavior tree primitive signature: returns error code in pair
+- InterpValue is a critical helper for all behavior primitives
+- The conditional interpretation pattern is common across similar Try* functions

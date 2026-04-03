@@ -1,13 +1,12 @@
 /* TreeTableAdScratch::AddRef(void) - 0x80149760 - 20 bytes */
 
-class TreeTableAdScratch {
-public:
-    char _pad[0x0C];
+struct TreeTableAdScratch {
+    char _pad[12];
     int m_refCount;
 
-    int AddRef(void);
+    int AddRef();
 };
 
-int TreeTableAdScratch::AddRef(void) {
+int TreeTableAdScratch::AddRef() {
     return ++m_refCount;
 }

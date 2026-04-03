@@ -1,0 +1,2 @@
+extern int gv_InteractorModule_InteractorManager_GetInputManagervoid;
+int gf_InteractorModule_InteractorManager_GetInputManagervoid() { return gv_InteractorModule_InteractorManager_GetInputManagervoid; }

@@ -1,0 +1,60 @@
+ANALYSIS: QuickDataBehaviorConstants::QuickDataBehaviorConstants(void)
+Address: 0x8022636C | Size: 68 bytes | Type: void constructor
+
+DISASSEMBLY BREAKDOWN:
+---------------------
+Line 1:  stwu 1,-16(1)      | Create stack frame (16 bytes)
+Line 2:  mflr 0             | Save return address to r0
+Line 3:  stmw 30,8(1)       | Save registers r30-r31 to stack
+Line 4:  stw 0,20(1)        | Store return address to stack[20]
+Line 5:  mr 30,3            | Copy r3 (this pointer) to r30
+Line 6:  .long 0x4bfff2e1   | **CALL**: ObjectDataBehaviorConstants::ObjectDataBehaviorConstants(void)
+         |                    | Branch with link to base class constructor
+Line 7-9: Load SDA address   | lis r9,-32698; addi r9,r9,22224 → compute address in small data area
+         |                    | This is likely a vtable or function pointer table
+Line 10: stw 0,28(30)       | Clear field at offset +28 from this (field initialization)
+Line 11: stw 9,0(30)        | Store computed address to offset +0 (likely vtable pointer)
+Line 12: mr 3,30            | Move this pointer back to r3 (for return/implicit this)
+Lines 13-16: Epilogue       | Restore registers and return
+
+WHAT THIS DOES (C++ pseudocode):
+---------------------------------
+QuickDataBehaviorConstants::QuickDataBehaviorConstants() {
+    // Call base class constructor (ObjectDataBehaviorConstants::ObjectDataBehaviorConstants)
+    ObjectDataBehaviorConstants::ObjectDataBehaviorConstants();
+    
+    // Set vtable pointer (offset 0) to address in small data area
+    this->m_vtable = (void*)&QuickDataBehaviorConstants_vtable_data;
+    
+    // Initialize field at offset 28 to zero (likely a member variable)
+    *(int*)((char*)this + 28) = 0;  // or possibly: this->m_someField = 0;
+}
+
+KEY OBSERVATIONS:
+-----------------
+1. Base class constructor is called at the start (standard C++ behavior)
+2. SDA address is loaded (lis -32698; addi 22224) — this computes to a global symbol
+   - Format: (high_bits << 16) + low_bits = address in .sdata section
+3. Vtable or function pointer at offset +0
+4. Member field at offset +28 is zero-initialized
+5. No parameters, simple initialization
+
+EXTERNAL CALLS:
+---------------
+- 0x4bfff2e1 → ObjectDataBehaviorConstants::ObjectDataBehaviorConstants(void)
+  Relative branch, points to base class constructor
+
+STRUCT LAYOUT (INFERRED):
+-------------------------
+struct QuickDataBehaviorConstants : public ObjectDataBehaviorConstants {
+    // offset 0x00: void* m_vtable          [initialized to SDA address]
+    // ...fields from base class...
+    // offset 0x1C (28): int m_someField    [initialized to 0]
+};
+
+NOTES FOR REAL C++ IMPLEMENTATION:
+-----------------------------------
+- This is a simple constructor that chains to base class
+- GCC should naturally generate similar code
+- Ensure proper vtable setup happens
+- Watch for register allocation differences between GCC and SN Systems

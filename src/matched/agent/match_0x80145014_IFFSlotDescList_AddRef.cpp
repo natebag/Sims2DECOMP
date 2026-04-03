@@ -1,13 +1,12 @@
 /* IFFSlotDescList::AddRef(void) - 0x80145014 - 20 bytes */
 
-class IFFSlotDescList {
-public:
-    char _pad[0x64];
+struct IFFSlotDescList {
+    char _pad[100];
     int m_refCount;
 
-    int AddRef(void);
+    int AddRef();
 };
 
-int IFFSlotDescList::AddRef(void) {
+int IFFSlotDescList::AddRef() {
     return ++m_refCount;
 }

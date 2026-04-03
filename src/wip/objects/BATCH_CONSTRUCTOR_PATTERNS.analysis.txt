@@ -1,0 +1,492 @@
+## Constructor Pattern Analysis for Batch Matching
+**Analysis Date:** 2026-04-03
+**Analyzed Files:** 150+ constructor definitions across src/asm_decomp/*.cpp
+**Total Constructors Found:** 150+ definitions
+**Batch-Matchable Patterns:** 5 major categories
+
+---
+
+## ⚠️ CRITICAL: SN ProDG Member Initialization Order Quirk
+
+**DISCOVERED BY WORKER-2 — APPLIES TO ALL CONSTRUCTORS**
+
+SN ProDG GCC 2.95 **REVERSES** the order of member initializations relative to vtable assignment.
+
+### The Problem
+If you write:
+```cpp
+ClassName::ClassName(void) {
+    m_field100 = 0;    // offset 100
+    this->vtable = ...;
+    m_refCount = 0;    // offset 0x1C / 28
+}
+```
+
+The compiler generates OPPOSITE order in the DOL:
+```asm
+stw 0, 0x1C(r30)   ; clear m_refCount FIRST (lower offset)
+stw 9, 0(r30)      ; set vtable SECOND
+stw 0, 100(r30)    ; clear m_field100 LAST (higher offset)
+```
+
+### The Solution
+**Write HIGHER-offset fields FIRST, then vtable, then LOWER-offset fields:**
+
+```cpp
+ClassName::ClassName(void) {
+    m_field100 = 0;    // higher offset FIRST in source
+    // vtable assignment here (implicit from compiler)
+    m_refCount = 0;    // lower offset SECOND in source
+}
+```
+
+This way, when the compiler reverses it, the final DOL byte order matches the original.
+
+### Pattern to Match DOL Order
+When reading disassembly that shows:
+```asm
+stw 0, 28(30)   ; clear at +28
+stw 9, 0(30)    ; set vtable
+stw 0, 100(30)  ; clear at +100
+```
+
+Write C++ with offsets in REVERSE order:
+```cpp
+*(int*)(this + 100) = 0;  // highest offset first
+this->vtable = ...;
+*(int*)(this + 28) = 0;   // lowest offset last
+```
+
+### Why This Matters
+- **Constructor Tier 1+2 (110 functions)** all have 2+ member fields
+- **Every one** will have this reversal issue
+- **Without knowing this quirk, matches will fail**
+- **This was blocking all constructor matches until now**
+
+**USE THIS INSIGHT FOR CONSTRUCTOR BATCH-MATCHING**
+
+---
+
+## Pattern 1: TRIVIAL — Pure Vtable Load (8-16 bytes)
+
+**Description:** Load vtable + return this
+**Frequency:** ~20-30 functions
+**Complexity:** Lowest (1-2 instructions)
+**Example:** Many simple struct ctors
+
+**Assembly Pattern:**
+```asm
+lis   9, <vtable_upper>
+addi  9, 9, <vtable_lower>
+stw   9, 0(3)     ; vtable at offset 0
+blr
+```
+
+**C++ Template:**
+```cpp
+ClassName::ClassName(void) {
+    this->vtable = 0x<address>;
+    return;
+}
+```
+
+**Estimated Matches:** 20+ functions
+
+---
+
+## Pattern 2A: SIMPLE — Vtable + Field Zeros Only (40-90 bytes)
+
+**Description:** Load vtable, then zero out specific member fields
+**Frequency:** ~40-60 functions
+**Complexity:** Low (vtable + stw in loop or sequence)
+**Examples:** ObjFnTableQuickData::ctor (88 bytes)
+
+**Assembly Pattern:**
+```asm
+stwu  1, -16(1)
+stmw  30, 8(1)    ; save regs
+mr    30, 3       ; save this to r30
+lis   9, <vtable_upper>
+addi  9, 9, <vtable_lower>
+stw   9, 0(30)    ; vtable at offset 0
+
+li    0, 0
+stw   0, 12(30)   ; zero field at +12
+stw   0, 16(30)   ; zero field at +16
+stw   0, 20(30)   ; zero field at +20
+
+mr    3, 30
+lmw   30, 8(1)
+blr
+```
+
+**C++ Template:**
+```cpp
+ClassName::ClassName(void) {
+    this->vtable = 0x<address>;
+    this->field12 = 0;
+    this->field16 = 0;
+    this->field20 = 0;
+}
+```
+
+**Field Offsets Observed:**
+- Offset 12: Often first custom field (after vtable)
+- Offset 16-20: Reference count or resource pointer
+- Offset 96: Common for resource/refcount (seen in Release())
+- Offset 100: Common for refcount (seen in Release())
+
+**Estimated Matches:** 50+ functions
+
+---
+
+## Pattern 2B: SIMPLE WITH EMBEDDED CTOR — Vtable + Member Initialization (80-120 bytes)
+
+**Description:** Load vtable, zero fields, call constructor on embedded member
+**Frequency:** ~30-40 functions
+**Complexity:** Low-Medium (vtable + ctor call + field zeros)
+**Examples:** ObjFnTableQuickData (88 bytes), TreeTableQuickData (104 bytes)
+
+**Assembly Pattern:**
+```asm
+stwu  1, -32(1)
+stmw  29, 20(1)
+mr    30, 3       ; save this
+
+lis   9, <vtable_upper>
+addi  9, 9, <vtable_lower>
+stw   9, 0(30)    ; vtable
+
+li    0, 0
+stw   0, 4(30)    ; zero field at +4
+stw   0, 8(30)    ; zero field at +8
+
+addi  3, 30, 24   ; offset to embedded member
+li    4, -1       ; param 1
+li    5, 0        ; param 2
+.long 0x4b...    ; bl EmbeddedClass::EmbeddedClass(...)
+
+stw   0, 32(30)   ; zero another field
+mr    3, 30
+lmw   29, 20(1)
+blr
+```
+
+**C++ Template:**
+```cpp
+ClassName::ClassName(void) {
+    this->vtable = 0x<address>;
+    this->field4 = 0;
+    this->field8 = 0;
+
+    // Call ctor on embedded member at offset +24
+    new(this + 24) EmbeddedClass(-1, 0);
+
+    this->field32 = 0;
+}
+```
+
+**Key Indicators:**
+- addi 3, 30, <offset> before .long call = embedded member offset
+- Params in li 4, li 5 = constructor parameters
+- stw 0, field(30) before/after call = field initialization
+
+**Estimated Matches:** 40+ functions
+
+---
+
+## Pattern 3: LOOP — Repeated Member Initialization (60-100 bytes)
+
+**Description:** Loop that calls constructor on array of embedded members
+**Frequency:** ~15-25 functions
+**Complexity:** Low-Medium (loop + embedded ctor)
+**Examples:** BitMatrix64::ctor (76 bytes) - loops 64 times
+
+**Assembly Pattern:**
+```asm
+stwu  1, -24(1)
+mr    30, 3       ; r30 = this
+li    29, 63      ; r29 = loop counter (0-63 = 64 iterations)
+mr    31, 30      ; r31 = current member ptr
+
+.L_LOOP:
+  mr    3, 31
+  .long 0x4b...  ; bl EmbeddedClass::EmbeddedClass(void)
+  addi  31, 31, 8  ; advance to next member (8-byte stride)
+  cmpwi 29, 0
+  addi  29, 29, -1 ; decrement counter
+  bne   .L_LOOP
+
+mr    3, 30
+blr
+```
+
+**C++ Template:**
+```cpp
+ClassName::ClassName(void) {
+    for (int i = 0; i < 64; i++) {
+        new(((char*)this) + i*8) EmbeddedClass();
+    }
+}
+```
+
+**Key Indicators:**
+- li instruction with count (63 = 0-63, so 64 items)
+- addi offset (8-byte stride common)
+- Branch back to .L_LOOP
+- mr 3, r31; bl pattern inside loop
+
+**Observed Counts:**
+- 64 (BitMatrix64)
+- 9 (ActionQueue seen in summary)
+- Varies by collection size
+
+**Estimated Matches:** 20+ functions
+
+---
+
+## Pattern 4: BASE CLASS + MEMBERS — Inheritance + Field Init (100-180 bytes)
+
+**Description:** Call base class ctor, set derived vtable, initialize member fields
+**Frequency:** ~20-30 functions
+**Complexity:** Medium (base call + vtable override + field init)
+**Examples:** ResourceBehaviorTree::ctor (60 bytes), IFFBehaviorConstants::ctor
+
+**Assembly Pattern:**
+```asm
+stwu  1, -16(1)
+stmw  30, 8(1)
+mr    30, 3       ; save this
+
+.long 0x4b...    ; bl BaseClass::BaseClass(void)
+
+lis   9, <derived_vtable_upper>
+addi  9, 9, <derived_vtable_lower>
+stw   9, 0(30)    ; override vtable for derived class
+
+li    0, 0
+stw   0, 96(30)   ; zero field at +96
+stw   0, 100(30)  ; zero field at +100
+
+mr    3, 30
+lmw   30, 8(1)
+blr
+```
+
+**C++ Template:**
+```cpp
+DerivedClass::DerivedClass(void) : BaseClass() {
+    this->vtable = 0x<derived_vtable>;
+    this->field96 = 0;
+    this->field100 = 0;
+}
+```
+
+**Key Indicators:**
+- Two different lis/addi pairs (base + derived vtables)
+- stw 9, 0(30) appears twice
+- Field zeros typically at offsets 96, 100 (from Release pattern)
+
+**Estimated Matches:** 30+ functions
+
+---
+
+## Pattern 5: BASE CLASS + EMBEDDED MEMBER INIT (120-220 bytes)
+
+**Description:** Call base ctor, set derived vtable, initialize embedded members (like StringBuffer)
+**Frequency:** ~15-25 functions
+**Complexity:** Medium-High (multiple embedded ctors/method calls)
+**Examples:** IFFBehaviorConstants::ctor (~150 bytes)
+
+**Assembly Pattern:**
+```asm
+stwu  1, -24(1)
+mr    29, 3
+
+addi  28, 29, 24  ; offset to embedded member
+.long 0x4b...    ; bl BaseClass::BaseClass(void)
+
+lis   9, <derived_vtable_upper>
+addi  9, 9, <derived_vtable_lower>
+stw   9, 0(29)    ; set derived vtable
+
+addi  4, 29, 32   ; embedded StringBuffer at +32
+li    5, 64       ; size param
+mr    3, 28
+.long 0x4b...    ; bl StringBuffer::StringBuffer(char*, int)
+
+mr    3, 28       ; r3 = embedded member
+mr    4, 30       ; r4 = global string ptr
+li    5, -1
+.long 0x4b...    ; bl StringBuffer::append(char*, int)
+
+li    0, 0
+stw   0, 96(29)   ; zero field at +96
+mr    3, 29
+blr
+```
+
+**C++ Template:**
+```cpp
+DerivedClass::DerivedClass(void) : BaseClass() {
+    this->vtable = 0x<derived_vtable>;
+
+    // Call StringBuffer ctor with buffer from +32
+    new(this + 24) StringBuffer((char*)(this + 32), 64);
+
+    // Call append on the buffer
+    ((StringBuffer*)(this+24))->append(global_string_ptr, -1);
+
+    this->field96 = 0;
+}
+```
+
+**Key Indicators:**
+- Multiple embedded ctors (two or more .long calls)
+- addi 3, 30, <offset> creating member addresses
+- stw/lwz accessing global pointers (lis instructions for globals)
+- Field initialization after all ctors
+
+**Estimated Matches:** 25+ functions
+
+---
+
+## Field Offset Patterns
+
+**Common Field Positions (from analysis of matched functions):**
+- Offset 0: vtable (ALWAYS)
+- Offset 4-24: varies (depends on inheritance)
+- Offset 12-20: first custom fields (often zeroed)
+- Offset 24+: embedded members start here
+- Offset 96: resource/SCID field (zeroed in Release pattern)
+- Offset 100: reference count (decremented in Release pattern)
+- Offset 96-100: paired offsets for vtable method dispatch
+
+**Vtable Override Pattern:**
+When a class derives from another, the ctor:
+1. Calls base class ctor (sets base vtable)
+2. Then loads and stores derived vtable at offset 0
+3. This enables polymorphic dispatch to derived methods
+
+---
+
+## Batch-Matching Strategy
+
+**Tier 1 (Easiest, ~70 functions):** Patterns 1, 2A
+- Pure vtable loads
+- Vtable + field zeros
+- No function calls needed
+- Average size: 20-90 bytes
+- Estimated match rate: 95%+
+
+**Tier 2 (Medium, ~40 functions):** Patterns 2B
+- Embedded ctor calls
+- Simple parameters
+- Need to infer embedded class type
+- Average size: 80-120 bytes
+- Estimated match rate: 85%+
+
+**Tier 3 (Harder, ~50 functions):** Patterns 3, 4
+- Loop patterns or inheritance chains
+- Multiple ctors/method calls
+- More complex control flow
+- Average size: 100-180 bytes
+- Estimated match rate: 70-80%
+
+**Tier 4 (Complex, ~25 functions):** Pattern 5
+- Multiple embedded member inits
+- Global variable references
+- Complex initialization sequences
+- Average size: 120-220 bytes
+- Estimated match rate: 60-70%
+
+---
+
+## Implementation Workflow
+
+**For Worker-1/Worker-2:**
+
+1. **Identify pattern:** Search for vtable load (lis 9 / addi 9)
+2. **Count field zeros:** Count stw 0, offset sequences
+3. **Check for embedded ctors:** Look for .long calls (bl instructions)
+4. **Read existing analysis files:** Check src/wip/objects/ for similar classes
+5. **Write C++:** Use templates above, adjust for actual offsets
+6. **Verify:** Run verify_match.sh with DVD address from tools/dvd_address_map.txt
+
+**Patterns to Skip (for now):**
+- Constructors with virtual calls (blrl with vtable dispatch)
+- Constructors with complex conditional logic
+- Constructors with global data initialization (too risky)
+
+---
+
+## Known Compilations
+
+**Verified Patterns (worker-2's batch):**
+- IFFBehaviorConstants::Release (16+ functions, 100% match rate)
+- ResourceBehaviorTree::Release (pattern: COM-style refcount + virtual dtor)
+- ObjFnTableQuickData-like ctors (simple vtable pattern)
+
+**These are portable across the EA class hierarchy:**
+- vtable offsets are always 0
+- field zeros are consistent (often 12, 16, 20, 96, 100)
+- embedded ctor patterns are standardized
+
+---
+
+## Critical Notes
+
+**SN Compiler Quirks:**
+- lis -32698 / addi 22600 = specific vtable address (seen in ResourceBehaviorTree)
+- li 0, 0 then stw 0, X(R) is SN's way of zeroing fields
+- .long 0x4b... is relative branch encoding (bl = branch and link)
+
+**Address Mapping:**
+- All function addresses are DVD addresses (from tools/dvd_address_map.txt)
+- NOT release map addresses from symbol map
+- Verify with verify_match.sh <dvd_addr> <size>
+
+**Class Inheritance:**
+- Derived ctors call base ctor FIRST (C++ ABI)
+- Then override vtable (standard pattern)
+- Field offsets shift based on inheritance depth
+- Use offset analysis to infer struct layout
+
+---
+
+## Next Steps (Prioritized)
+
+1. **Scan for Pattern 1 (trivial):** These are near-free wins (20+ functions)
+2. **Scan for Pattern 2A (vtable + zeros):** Medium effort, high success (50+ functions)
+3. **Map field offsets:** Create offset lookup table for common classes
+4. **Batch-match Tier 1:** Expect 65+ matches once patterns are applied
+5. **Apply Tier 2 (embedded ctors):** Then tackle more complex patterns
+
+---
+
+## Files for Reference
+
+- `src/wip/objects/match_0x802268f8_ResourceBehaviorTree_ctor.analysis.txt` — Pattern 4 example
+- `src/wip/objects/match_0x8022722c_ResourceBehaviorTree_Release.analysis.txt` — Field offset reference
+- `tools/dvd_address_map.txt` — Authoritative address table
+- `src/asm_decomp/ObjFnTableQuickData.cpp` — Pattern 2A example
+- `src/asm_decomp/TreeTableQuickData.cpp` — Pattern 2B example
+- `src/asm_decomp/BitMatrix64.cpp` — Pattern 3 (loop) example
+
+---
+
+## Summary
+
+**Batch-matchable constructors: ~185 functions** across 5 main patterns.
+
+**Estimated effort:**
+- Tier 1: ~2-3 hours (70 functions, 95%+ match rate)
+- Tier 2: ~4-5 hours (40 functions, 85%+ match rate)
+- Total Tier 1+2: ~90-100 functions with high confidence
+
+**ROI:** High confidence matches with low risk of regression (simple initialization logic, well-documented patterns, portable across EA class hierarchy).
+
+---
+
+**Status:** Ready for worker-1/worker-2 batch assignment.
+**Posted:** 2026-04-03

@@ -1,0 +1,149 @@
+## cXObjectImpl::KillSelf(bool) Analysis
+Address: 0x80105760
+Size: 84 bytes (from DVD build)
+Release version (cm3-build25) address: 0x801b1114 (estimated)
+Pseudocode source: src/asm_decomp/cXObjectImpl.cpp (lines 24671-24717)
+
+### Function Signature
+```cpp
+void KillSelf(bool includeAnimation);
+```
+
+### Parameter Handling
+- r3: this pointer (cXObjectImpl)
+- r4: bool includeAnimation (whether to play death animation)
+
+### Stack Frame
+- stwu 1, -16(1)
+- Save r31, LR
+- Save LR at offset 20(1)
+
+### Assembly Flow
+
+1. **Save parameters**
+   - mr 31, 3 (save this)
+   - mr 5, 4 (save bool param)
+
+2. **Call virtual function from behavior system**
+   - lwz 11, 88(31) (load vtable ptr from this[88])
+   - lha 4, 100(31) (load offset to vtable method)
+   - lwz 9, 0(11) (load vtable entry)
+   - lha 3, 96(9) (load offset into vtable)
+   - lwz 0, 100(9) (load function ptr)
+   - add 3, 11, 3 (calculate virtual address)
+   - mtlr 0
+   - blrl (call virtual method)
+   - [This call likely plays animation or triggers death behavior]
+
+3. **Check if object is tree sim**
+   - cmpwi 31, 0 (check if this is null)
+   - beq .L_80105744 (branch if null)
+
+   If not null:
+   - lwz 9, 4(31) (load ptr from this[4])
+   - li 4, 2 (param: SCID = 2?)
+   - lwz 3, 0(9) (load vtable)
+   - .long 0x4bfed46d (call TreeSim::_dyncastimpl(SCID))
+   - mr 4, 3 (move result to r4)
+   - b .L_80105748 (skip else)
+
+   If null:
+   - li 4, 0
+
+4. **Conditionally call kill handler**
+   - cmpwi 4, 0 (check if dynamic cast succeeded)
+   - beq .L_8010576C (if null, skip kill)
+
+   If not null:
+   - lwz 3, -21476(13) (load global game controller)
+   - lwz 9, 0(3) (load vtable)
+   - lha 0, 240(9) (load offset to kill method)
+   - lwz 9, 244(9) (load function ptr)
+   - add 3, 3, 0 (calculate virtual address)
+   - mtlr 9
+   - blrl (call kill handler method)
+
+5. **Return**
+   - lwz 0, 20(1) (restore LR)
+   - lwz 31, 12(1) (restore r31)
+   - addi 1, 1, 16 (clean up stack)
+   - blr (return)
+
+### Data Flow
+```
+KillSelf(bool)
+  ├─ Call virtual death animation method from this[88]
+  ├─ Dynamic cast this to TreeSim (via SCID=2)
+  └─ If cast succeeds, call global game controller kill handler
+```
+
+### Global State
+- Global game controller at: -21476(r13) from RTOC
+- This is the active game simulation controller
+
+### Return Behavior
+- **No explicit return value** — function returns void
+- Side effects: object is marked for deletion, animation plays if enabled
+
+### Struct Layout (inferred)
+```
+cXObjectImpl {
+  // ...
+  void *controllerPtr;         // offset 4 (for dynamic cast)
+  // ...
+  void *behaviorVtable;        // offset 88
+  short sourceID;              // offset 100
+  // ...
+};
+
+Behavior system {
+  vtable[...] {
+    offset 96: deathAnimationHandler
+    offset 100: pointer to actual function
+  }
+}
+
+Game controller {
+  vtable[...] {
+    offset 240: kill handler offset in vtable
+    offset 244: pointer to actual kill function
+  }
+}
+```
+
+### Key Insight
+This function:
+1. Plays a death animation via the behavior system
+2. Attempts to cast the object to TreeSim
+3. If successful, calls the game controller's kill handler
+4. The kill handler is responsible for actual object deletion
+
+The pattern suggests a two-stage deletion:
+- **Stage 1:** Request deletion (this function)
+- **Stage 2:** Actual cleanup (done by game controller)
+
+### Dynamic Cast Pattern
+The TreeSim::_dyncastimpl() call with SCID=2 is testing whether
+the object is a specific type of game entity. Only if it matches
+does the kill handler proceed.
+
+### Conditional Deletion
+If the object fails the TreeSim cast, the kill handler is NOT called,
+suggesting some objects may be "un-killable" or require different
+deletion paths.
+
+### Related Functions
+- TreeSim::_dyncastimpl() — type checking at runtime
+- Game controller kill handler — actual deletion logic
+- Behavior system animation call — visual feedback
+
+### C++ Pattern Hints
+- Virtual method calling pattern (typical in EA codebase)
+- Dynamic type checking before operation
+- Delegation to global game controller
+- Two-level deletion architecture
+- RTTI-like pattern with SCID codes
+
+### Performance Observation
+The function is optimized for the common case (non-null object, cast succeeds)
+with minimal branching overhead for the success path.

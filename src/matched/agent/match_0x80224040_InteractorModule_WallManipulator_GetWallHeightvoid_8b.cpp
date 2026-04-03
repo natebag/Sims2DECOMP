@@ -1,0 +1,2 @@
+extern float gv_InteractorModule_WallManipulator_GetWallHeightvoid;
+float ff_InteractorModule_WallManipulator_GetWallHeightvoid() { return gv_InteractorModule_WallManipulator_GetWallHeightvoid; }

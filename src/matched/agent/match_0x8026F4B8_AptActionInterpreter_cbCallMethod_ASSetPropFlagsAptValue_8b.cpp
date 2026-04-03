@@ -1,0 +1,2 @@
+extern int gv_AptActionInterpreter_cbCallMethod_ASSetPropFlagsAptValue;
+int gf_AptActionInterpreter_cbCallMethod_ASSetPropFlagsAptValue() { return gv_AptActionInterpreter_cbCallMethod_ASSetPropFlagsAptValue; }

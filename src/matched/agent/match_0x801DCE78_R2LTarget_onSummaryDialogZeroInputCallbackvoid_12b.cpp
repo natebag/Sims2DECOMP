@@ -1,0 +1,2 @@
+extern int gv_R2LTarget_onSummaryDialogZeroInputCallbackvoid;
+void sf_R2LTarget_onSummaryDialogZeroInputCallbackvoid() { gv_R2LTarget_onSummaryDialogZeroInputCallbackvoid = 0; }

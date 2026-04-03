@@ -1,0 +1,91 @@
+## cXObjectImpl::TryGbaCommunication(StackElem *, XPrimParam *) Analysis
+Address: 0x80106568
+Size: 48 bytes (from DVD build)
+Release version (cm3-build25) address: 0x801b2054
+Pseudocode source: src/asm_decomp/cXObjectImpl.cpp (lines 25756-25782)
+
+### Function Signature
+```cpp
+long long TryGbaCommunication(StackElem *elem, XPrimParam *param);
+```
+
+### Stack Frame
+- Minimal frame: stwu 1,-8(1)
+- Save LR at offset 12(1)
+- No other data needed on stack
+
+### Parameter Handling
+- r3: this pointer
+- r4: StackElem *elem (not directly used, passed through call)
+- r5: XPrimParam *param (not used in this variant)
+
+### Assembly Flow
+1. **Check cached EyeToy hardware state**
+   - lis 9, -32697 (load high bits of global address)
+   - lwz 0, 23664(9) (load cached hardware presence flag)
+   - cmpwi 0, 0 (check if cached state exists)
+   - bne .L_80106598 (branch if cached value is non-zero)
+
+2. **Query EyeToy hardware if not cached**
+   - .long 0x4bf32a2d (call EyeToyClient::IsEyeToyHardwarePresent())
+   - cmpwi 3, 0 (check return value)
+   - li 3, 0 (prepare default return 0)
+   - li 4, 1 (prepare signal flag 1)
+   - bne .L_801065A0 (branch if hardware is present)
+   - [If hardware not present, continue to set r3=0, r4=0]
+
+3. **Cached or failed path**
+   - li 3, 0 (r3 = 0, no communication)
+   - li 4, 0 (r4 = 0, no signal)
+
+4. **Return**
+   - lwz 0, 12(1) (restore LR)
+   - mtlr 0
+   - addi 1, 1, 8 (clean up stack)
+   - blr (return)
+
+### Return Value Pattern
+**Return as long long (r3:r4 pair)**
+- Hardware present: r3 = 0, r4 = 1
+- Hardware absent: r3 = 0, r4 = 0
+- r3 is always 0 (no actual data returned)
+- r4 is the signal flag (1 = hardware present, 0 = absent)
+
+### Global State
+- Global variable at address: lis -32697 + 23664 (calculated offset)
+- This global caches the EyeToy hardware presence check
+- Once checked, subsequent calls use cached value
+
+### Data Dependencies
+- Depends on EyeToyClient::IsEyeToyHardwarePresent() external function
+- Uses a global cache to avoid repeated hardware queries
+
+### Key Insight
+This is a behavior tree primitive that:
+1. Checks if GameBoy Advance communication hardware (EyeToy) is available
+2. Caches the hardware check result globally
+3. Returns signal flag based on hardware availability
+4. Subsequent calls use cached value (optimization)
+
+The "GbaCommunication" semantics suggest this enables behavior tree branches
+when GBA hardware is present (for cross-device gameplay features).
+
+### Optimization Pattern
+```
+if (cached_result == 0) {
+    bool has_hardware = IsEyeToyHardwarePresent();
+    cache_result(has_hardware ? 1 : 0);
+}
+return (r3=0, r4=cached_result);
+```
+
+### C++ Pattern Hints
+- Typical behavior tree primitive: returns (status, signal) pair
+- Caching pattern: check once, reuse result
+- No parameters used from XPrimParam
+- External hardware query is the only side effect
+- Pattern matches: "check once" pattern for device availability
+
+### Related Functions
+- EyeToyClient::IsEyeToyHardwarePresent() — external hardware query
+- Global cache location — likely in EAHeap data segment

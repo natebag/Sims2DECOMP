@@ -1,0 +1,69 @@
+ANALYSIS: QuickDataBehaviorConstants::~QuickDataBehaviorConstants(void)
+Address: 0x802263B0 | Size: 80 bytes | Type: void destructor
+
+DISASSEMBLY BREAKDOWN:
+---------------------
+Line 1-4:    Stack setup, save r30-r31, save LR
+Line 5-9:    Load SDA address for vtable (lis -32698; addi 22224)
+             Set vtable to this computed address
+Line 10:     li r4, 0      | Load 0 into r4 (second parameter)
+Line 11:     .long 0x4bfff3b9 | **CALL**: ObjectDataBehaviorConstants::~ObjectDataBehaviorConstants(void)
+             |                 Branch to base class destructor, passing r4=0
+Line 12-15:  andi. 0,30,1  | Test if r30 (likely flags) & 1 (check least significant bit)
+             beq skip      | If zero, skip deletion
+Line 16-17:  mr r3,31      | Move this pointer to r3
+             .long 0x4bfff69d | **CALL**: QuickDataBehaviorConstants::operator delete(void *)
+             |               Conditional delete if bit was set
+Line 18-20:  Epilogue, restore and return
+
+WHAT THIS DOES (C++ pseudocode):
+---------------------------------
+QuickDataBehaviorConstants::~QuickDataBehaviorConstants(void) {
+    // Set vtable to destructor vtable variant (base class cleanup path)
+    this->m_vtable = &QuickDataBehaviorConstants_dtor_vtable;
+    
+    // Call base class destructor (with flag r4=0)
+    ObjectDataBehaviorConstants::~ObjectDataBehaviorConstants();
+    
+    // If destruction_flags & 1 (check if we should delete the object)
+    if (destruction_flags & 1) {
+        QuickDataBehaviorConstants::operator delete(this);  // Free memory
+    }
+}
+
+KEY OBSERVATIONS:
+-----------------
+1. Standard destructor pattern: set vtable, call base destructor, conditional delete
+2. r30 holds destruction flags (likely)
+3. r31 holds this pointer (likely)
+4. Base class destructor is called with r4=0 (likely "don't delete" flag)
+5. Conditional delete based on bitwise AND with 1
+
+EXTERNAL CALLS:
+---------------
+- 0x4bfff3b9 → ObjectDataBehaviorConstants::~ObjectDataBehaviorConstants(void)
+- 0x4bfff69d → QuickDataBehaviorConstants::operator delete(void *)
+
+STRUCT LAYOUT (INFERRED):
+-------------------------
+struct QuickDataBehaviorConstants : public ObjectDataBehaviorConstants {
+    // offset 0x00: void* m_vtable [set to dtor variant]
+    // ...fields from base class...
+};
+
+DESTRUCTOR SIGNATURE (INFERRED):
+--------------------------------
+// C++ calls: object_ptr->~QuickDataBehaviorConstants()
+// 
+// In C++, destructors can have an implicit "destruction mode" flag:
+// - rvirt = 0: normal destructor, don't delete
+// - rvirt = 1: complete object destructor, delete memory
+//
+// The disassembly suggests a two-in-one destructor pattern
+
+NOTES FOR REAL C++ IMPLEMENTATION:
+-----------------------------------
+- This follows a common pattern for destructors with dual paths
+- GCC may generate different register allocation
+- The conditional delete logic must match exactly
+- Watch for how GCC handles conditional branches around delete calls

@@ -1,0 +1,119 @@
+## cXObjectImpl::TryKillSounds(StackElem *, KillSoundsParam *) Analysis
+Address: 0x80109BEC
+Size: 44 bytes (from DVD build)
+Release version (cm3-build25) address: 0x80109BEC (estimated)
+Pseudocode source: src/asm_decomp/cXObjectImpl.cpp (lines 29820-29845)
+
+### Function Signature
+```cpp
+long long TryKillSounds(StackElem *elem, KillSoundsParam *param);
+```
+
+### Parameter Handling
+- r3: this pointer (cXObjectImpl)
+- r4: StackElem *elem (contains source ID at offset 100)
+- r5: KillSoundsParam *param (contains ID field at offset 0)
+
+### Stack Frame
+- Minimal frame: stwu 1, -8(1)
+- Save LR at offset 12(1)
+- No local data needed
+
+### Assembly Flow
+1. **Load param ID and check for override**
+   - lha 0, 0(5) (load signed halfword from param[0])
+   - cmpwi 0, 0 (compare with zero)
+   - beq .L_80109C0C (branch if zero — use default)
+
+2. **Override path: use param ID**
+   - lha 4, 4(4) (load param ID from elem[4])
+   - b .L_80109C10 (skip default path)
+
+3. **Default path: use this object's ID**
+   - lha 4, 100(3) (load ID from this[100])
+
+4. **Call sound system**
+   - lwz 3, -21492(13) (load global sound player ptr)
+   - .long 0x4bfadf0d (call cSoundPlayer::QuietBySourceID(int))
+
+5. **Return success**
+   - li 3, 0 (r3 = 0)
+   - li 4, 1 (r4 = 1, signal flag)
+
+6. **Epilogue**
+   - lwz 0, 12(1) (restore LR)
+   - mtlr 0
+   - addi 1, 1, 8 (clean up stack)
+   - blr (return)
+
+### Data Flow
+```
+param[0] (ID override flag)
+  ├─ If != 0: use param ID from elem[4]
+  └─ If == 0: use default from this[100]
+        ↓
+       call cSoundPlayer::QuietBySourceID(id)
+        ↓
+       return (r3=0, r4=1) [success]
+```
+
+### Return Value
+**Return as long long (r3:r4 pair)**
+- Always: r3 = 0 (no data), r4 = 1 (signal/success)
+
+### Struct Layout (inferred)
+```
+KillSoundsParam {
+  short idOverride;    // offset 0 (0 = use default, !0 = override)
+  // ... possibly more fields
+};
+
+StackElem (relevant fields) {
+  // ... unknown fields
+  short soundID;       // offset 4
+  // ...
+  short sourceID;      // offset 100 (default for this object)
+};
+
+cXObjectImpl (relevant fields) {
+  // ...
+  short defaultSourceID; // offset 100
+};
+```
+
+### Key Insight
+This behavior tree primitive:
+1. Optionally overrides sound source ID based on param
+2. Calls the sound system to quiet/stop sounds from that source
+3. Always returns success (0, 1)
+
+The pattern suggests "quiet" means "fade out" or "stop" existing sounds,
+leaving room for new ones or silence.
+
+### Global State
+- Global cSoundPlayer instance at: -21492(r13) from RTOC
+- This is the active sound player singleton
+
+### Implementation Notes
+- Very short function (44 bytes) — ideal for OpusWorker matching
+- Uses sign-extended halfword loads (lha) — typical for signed IDs
+- Parameter override allows either:
+  - Use elem's param-specified ID
+  - Use object's default source ID
+- No error handling — always succeeds
+
+### Related Functions
+- cSoundPlayer::QuietBySourceID(int) — sound system call
+- TryPlaySound() — inverse operation (starts sounds)
+- Audio system behavior tree primitives
+
+### C++ Pattern Hints
+- Simple wrapper around sound player API
+- Parameter override pattern (check flag, branch on result)
+- Minimal setup before external call
+- Standard return pair pattern for behavior primitives
+
+### Optimization Observation
+The conditional branch at the top allows the function to efficiently
+choose between two ID sources, minimizing instruction overhead.
+The actual work is delegated to the sound system singleton.

@@ -1,0 +1,2 @@
+extern int gv_VIGetCurrentFrameBuff_VIGetCurrentFrameBufferer;
+int gf_VIGetCurrentFrameBuff_VIGetCurrentFrameBufferer() { return gv_VIGetCurrentFrameBuff_VIGetCurrentFrameBufferer; }

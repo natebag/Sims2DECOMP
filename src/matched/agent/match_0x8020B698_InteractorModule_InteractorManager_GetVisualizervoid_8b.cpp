@@ -1,0 +1,2 @@
+extern int gv_InteractorModule_InteractorManager_GetVisualizervoid;
+int gf_InteractorModule_InteractorManager_GetVisualizervoid() { return gv_InteractorModule_InteractorManager_GetVisualizervoid; }

@@ -4,17 +4,18 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**~27% decompiled.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
+**~30% decompiled.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
 
 | Metric | Value |
 |--------|-------|
-| **Functions matched** | **~5,700 / 20,508 (27.8%)** |
-| Functions remaining | ~14,800 |
+| **Functions matched** | **~6,100 / 20,508 (29.8%)** |
+| Functions remaining | ~14,400 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
-| Toolchain | devkitPPC (GCC) + decomp-toolkit |
+| Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
+| Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit |
 
-**How matching works:** Every matched function has C++ source code that, when compiled with devkitPPC, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
+**How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
 
 ## What's Done
 
@@ -60,13 +61,13 @@ make diff
 
 ### Compiler Note
 
-The original game was compiled with **SN Systems ProDG** for GameCube — a proprietary compiler, not CodeWarrior. We use devkitPPC (GCC) with flags tuned to match:
+The original game was compiled with **SN Systems ProDG** for GameCube (GCC 2.95.3, SN BUILD v1.76). We recovered the original compiler and use it directly for verification:
 
 ```
--mcpu=750 -O2 -fno-schedule-insns -fno-schedule-insns2 -fno-inline
+cc1plus.exe -quiet -O2 -fno-elide-constructors -msdata=eabi -G 8
 ```
 
-Some functions need inline asm or register-binding tricks to match due to compiler differences.
+This eliminates most compiler mismatch issues since we're using the exact compiler EA used. devkitPPC is available as a fallback for functions where the SN compiler has known scheduling differences (`[VERSION_DIFF]`).
 
 ## Contributing
 

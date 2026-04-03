@@ -1,0 +1,2 @@
+extern float gv_InteractorModule_WallPainter_GetPaperToolHeightvoid;
+float ff_InteractorModule_WallPainter_GetPaperToolHeightvoid() { return gv_InteractorModule_WallPainter_GetPaperToolHeightvoid; }

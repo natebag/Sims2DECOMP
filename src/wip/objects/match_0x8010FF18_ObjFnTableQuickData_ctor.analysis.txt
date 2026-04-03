@@ -1,0 +1,57 @@
+## ObjFnTableQuickData::ObjFnTableQuickData(void) Analysis
+Address: 0x8010FF18
+Size: 88 bytes
+Pseudocode source: src/asm_decomp/ObjFnTableQuickData.cpp (lines 29-58)
+
+### Stack Frame
+- Save r30 (mr 30,3 to save this pointer)
+- Normal prologue (stwu, mflr, stmw, stw)
+
+### Operations (in order)
+1. **Load vtable address (lis/addi)**
+   - lis 9, -32698 (upper immediate)
+   - addi 9, 9, 8216 (add lower immediate)
+   - Resulting address: 0x801fbab8
+   - Store to m_vtable (offset 0): stw 9, 0(30)
+
+2. **Initialize ObjectDataID member (offset 4)**
+   - addi 3, 30, 4 (pass pointer to m_dataID)
+   - li 4, -1 (param 1: namespaceID = -1)
+   - li 5, 0 (param 2: resourceID = 0)
+   - .long 0x4804bbb1 (call ObjectDataID::ObjectDataID(unsigned int, unsigned short))
+
+   **Note:** ObjectDataID appears to be embedded at offset 4, likely 8 bytes in size
+   (offset 4-11 includes the ObjectDataID, leaving space for next field at 12)
+
+3. **Zero out remaining fields**
+   - li 0, 0
+   - stw 0, 16(30)  (m_fnDataArray = nullptr, offset 16)
+   - stw 0, 20(30)  (m_refCount = 0, offset 20)
+   - stw 0, 12(30)  (m_fnData = nullptr, offset 12)
+
+### Struct Layout (inferred)
+```
+ObjFnTableQuickData {
+  void *m_vtable;           // offset 0
+  ObjectDataID m_dataID;    // offset 4-11 (8 bytes)
+  void *m_fnData;           // offset 12
+  void *m_fnDataArray;      // offset 16
+  int m_refCount;           // offset 20
+};
+```
+
+### C++ Pattern
+This is a simple constructor that:
+1. Sets the vtable pointer to 0x801fbab8
+2. Constructs an embedded ObjectDataID with namespace=-1, resource=0
+3. Zero-initializes remaining data members
+
+The inline assembly calls ObjectDataID's constructor via a .long directive, which means
+the real C++ version needs to properly invoke ObjectDataID's constructor (likely via
+placement new or direct constructor call).
+
+### Key Details
+- r30 is used to hold 'this' pointer
+- Parameter order: r3=this, r4=param1, r5=param2 (standard PPC ABI)
+- The .long bl directive at 0x4804bbb1 is a relative branch-and-link
+- Vtable value (0x801fbab8) is consistent across all functions using this class

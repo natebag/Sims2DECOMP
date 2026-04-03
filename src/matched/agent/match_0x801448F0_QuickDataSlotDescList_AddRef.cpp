@@ -1,13 +1,12 @@
 /* QuickDataSlotDescList::AddRef(void) - 0x801448F0 - 20 bytes */
 
-class QuickDataSlotDescList {
-public:
-    char _pad[0x5C];
+struct QuickDataSlotDescList {
+    char _pad[92];
     int m_refCount;
 
-    int AddRef(void);
+    int AddRef();
 };
 
-int QuickDataSlotDescList::AddRef(void) {
+int QuickDataSlotDescList::AddRef() {
     return ++m_refCount;
 }

@@ -1,0 +1,113 @@
+## cXObjectImpl::InventoryCommandParam_GetCount(InventoryCommandParam &) Analysis
+Address: 0x80106A28
+Size: 100 bytes (from DVD build)
+Release version (cm3-build25) address: 0x801b2514
+Pseudocode source: src/asm_decomp/cXObjectImpl.cpp (lines 26126-26159)
+
+### Function Signature
+```cpp
+long long InventoryCommandParam_GetCount(InventoryCommandParam &param);
+```
+
+### Parameter Handling
+- r3: this pointer (not used)
+- r4: InventoryCommandParam & (reference to param structure)
+
+### Stack Frame
+- stwu 1, -16(1)
+- Save LR at offset 20(1)
+- Local work area: offsets 8, 10, 12
+
+### Assembly Flow
+1. **Load count field components from param**
+   - lhz 11, 6(4) (load unsigned halfword at param[6] → r11)
+   - li 9, 0 (clear r9)
+   - lbz 0, 5(4) (load unsigned byte at param[5] → r0)
+   - li 6, 0 (clear r6)
+   - sth 9, 12(1) (store 0 to stack[12])
+   - extsh 5, 11 (sign-extend param[6] to r5)
+   - clrlwi 4, 0, 24 (clear upper 24 bits of param[5] → r4)
+   - stb 0, 8(1) (store param[5] byte to stack[8])
+   - sth 11, 10(1) (store param[6] to stack[10])
+   - li 7, 0 (clear r7)
+   - addi 8, 1, 12 (pass stack work area)
+   - .long 0x48004045 (call cXObjectImpl::InterpValue)
+
+2. **Check InterpValue result**
+   - cmpwi 3, -1 (check if r3 == -1)
+   - bne .L_80106A78 (branch if not error)
+   - cmpwi 4, -1 (check if r4 == -1)
+   - li 3, 0 (prepare default return 0)
+   - beq .L_80106A7C (branch if both are -1, return 0)
+
+3. **Success path (InterpValue returned valid result)**
+   - lha 3, 12(1) (load signed halfword from stack[12])
+   - [This is the interpreted count value]
+
+4. **Return**
+   - lwz 0, 20(1) (restore LR)
+   - mtlr 0
+   - addi 1, 1, 16 (clean up stack)
+   - blr (return)
+
+### Struct Layout (inferred from operations)
+```
+InventoryCommandParam {
+  unsigned short field0;      // offset 0
+  unsigned short field2;      // offset 2
+  unsigned char field4;       // offset 4
+  unsigned char field5;       // offset 5
+  unsigned short field6;      // offset 6
+  // ... additional fields
+};
+```
+
+### Return Value
+**Return as int (r3 only)**
+- Success: r3 = interpreted count value (from InterpValue at stack[12])
+- Error: r3 = 0 (InterpValue returned -1, -1)
+
+### Data Flow
+1. **Input:** InventoryCommandParam with count fields at offsets 5, 6
+2. **Extraction:** Load byte at [5] and hword at [6]
+3. **Interpretation:** Call InterpValue with these fields
+4. **Output:** Return interpreted count or 0 on error
+
+### Key Differences from GetGuid
+| Aspect | GetGuid | GetCount |
+|--------|---------|----------|
+| Fields used | [0], [2], [4] | [5], [6] |
+| Flags check | bit 7 of [4] | no explicit flag check |
+| Field types | hword, hword | byte, hword |
+| Pattern | Same InterpValue call | Same InterpValue call |
+
+### Key Insight
+Like GetGuid, this is an interpreter-based parameter getter that:
+1. Extracts count components from param fields
+2. Runs them through InterpValue for expression evaluation
+3. Returns 0 on error, interpreted value on success
+
+The count value is dynamically evaluated, not static.
+
+### Call Pattern
+```cpp
+lbz(param[5]) → r4 (low byte)
+extsh(param[6]) → r5 (sign-extend)
+li(r6=0, r7=0, r9=0)
+stb(param[5], stack[8])
+sth(param[6], stack[10])
+sth(0, stack[12])
+InterpValue(r3=this, r4, r5, r6, r7, stack[12])
+```
+
+### Related Functions
+- cXObjectImpl::InterpValue() — expression evaluator
+- cXObjectImpl::InventoryCommandParam_GetGuid() — similar GUID getter
+- Common pattern across behavior tree parameter system
+
+### C++ Pattern Hints
+- Expression-based parameter system
+- Multiple fields per param structure
+- Stack-based work area for interpreter results
+- Field layout suggests parameter ID + modifier structure
+- Could use union or bit fields for flexible interpretation
