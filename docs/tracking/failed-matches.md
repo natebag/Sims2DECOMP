@@ -412,3 +412,27 @@ allocations (r10 vs r9 for temp ptr) and different store orderings.
 - **Class layout:** ENgcScheduler inherits EThread (0x338 bytes) then ESchedulerBase (7 virtual functions, no virtual dtor)
 - **Attempts:** 3 (sub-object via struct member, MI with EThread primary, ESchedulerBase* pointer type)
 - **Likely cause:** GCC 2.95 register allocator puts SDA-loaded pointer in r9; DOL was compiled with a version that prefers r11 for multi-inheritance secondary base dispatch. Cannot reproduce with source changes alone.
+
+
+## EMovieMan::AllocateAndLoadResource — 0x80325058 (188 bytes)
+- **Issue:** Virtual dispatch vs direct calls, stack layout mismatch
+- **DOL size:** 376 bytes (contains multiple functions or different layout)
+- **Compiled size:** 92 bytes (single function)
+- **Stack difference:** DOL uses -32(r1), SN v3.93 generates -24(r1)
+- **Call pattern:** DOL uses virtual dispatch via vtable (`blrl`), compiled uses direct calls
+- **Register allocation:** DOL uses r28/r29/r30, SN uses different allocation
+- **Attempts:** Inline ERMovie struct, placement new, various calling conventions
+- **Likely cause:** SN ProDG v3.93 generates different calling convention for EResourceManager_Alloc and ERMovie constructor
+- **Verdict:** NON_MATCHING — requires inline assembly or different compiler version
+
+## TreeTableQuickData::Load — 0x8015E028 (96 bytes)
+- **Issue:** Stack/register allocation mismatch between SN v3.93 and EA's build
+- **Stack size:** DOL uses -24(r1), SN v3.93 generates -32(r1)
+- **Register allocation:** DOL uses r28/r30/r31, SN uses r29/r30
+- **Call offset:** DOL ObjectDataID ctor call at 0x18, SN at 0x20
+- **Frame layout:** DOL `stmw r28,8(r1)`, SN `stmw r29,20(r1)`
+- **Attempted fixes:**
+  1. Inline ObjectDataID constructor — caused function placement at start
+  2. Forward declaration only — changed call to `bl` but stack layout still differs
+- **Root cause:** SN ProDG v3.93 register allocator and stack frame layout differ from EA's SN BUILD v1.76. Cannot force matching callee-saved register selection or stack frame size from C++ source.
+- **Verdict:** NON_MATCHING — requires inline assembly or different compiler version

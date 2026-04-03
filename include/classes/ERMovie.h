@@ -23,7 +23,7 @@ public:
     // ---- Field Layout (from assembly analysis) ----
     void** _vtable;  // 0x000 [R/W] - vtable pointer (ERMovie, ~ERMovie)
     u8 _pad_004[4];  // 0x004
-    u32 m_field_008;  // 0x008 [R] (ERMovie)
+    u32 m_resourceId;  // 0x008 [R] (ERMovie) - was m_field_008
     u8 _pad_00C[8];  // 0x00C
     u32 m_field_014;  // 0x014 [W] (ERMovie)
     u32 m_field_018;  // 0x018 [W] (ERMovie)
