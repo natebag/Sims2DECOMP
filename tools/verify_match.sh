@@ -67,7 +67,7 @@ if [ -f "$SN_CC1PLUS" ]; then
     if [ -n "$EXTRA_FLAGS" ]; then
         SN_FLAGS="-quiet -O2 $EXTRA_FLAGS -msdata=eabi -G 8"
     else
-        SN_FLAGS="-quiet -O2 -fno-elide-constructors -msdata=eabi -G 8"
+        SN_FLAGS="-quiet -O2 -fno-elide-constructors -fno-schedule-insns2 -msdata=eabi -G 8"
     fi
     echo "Compiling $SRC with SN Systems ProDG..."
     "$SN_CC1PLUS" "$CLEAN_SRC" -o "$ASM" $SN_FLAGS 2>&1
