@@ -62,8 +62,15 @@ if [ -f "$SN_CC1PLUS" ]; then
     # GCC 2.95 can be picky — strip // comments starting with 0x (confuses old preprocessor)
     CLEAN_SRC="build/verify/${BASENAME}_clean.cpp"
     sed 's|//.*||; s|/\*.*\*/||' "$SRC" > "$CLEAN_SRC"
+    # Check for per-file flag overrides via // FLAGS: comment
+    EXTRA_FLAGS=$(grep '// FLAGS:' "$SRC" 2>/dev/null | head -1 | sed 's|.*// FLAGS: *||')
+    if [ -n "$EXTRA_FLAGS" ]; then
+        SN_FLAGS="-quiet -O2 $EXTRA_FLAGS -msdata=eabi -G 8"
+    else
+        SN_FLAGS="-quiet -O2 -fno-elide-constructors -msdata=eabi -G 8"
+    fi
     echo "Compiling $SRC with SN Systems ProDG..."
-    "$SN_CC1PLUS" "$CLEAN_SRC" -o "$ASM" -quiet -O2 -fno-elide-constructors -msdata=eabi -G 8 2>&1
+    "$SN_CC1PLUS" "$CLEAN_SRC" -o "$ASM" $SN_FLAGS 2>&1
     if [ $? -ne 0 ]; then
         echo "COMPILE FAILED"
         exit 1
