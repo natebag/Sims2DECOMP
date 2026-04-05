@@ -5,12 +5,12 @@ struct GameData {
 
 int GameData__SetBuildBuyPlayer(GameData* self, int player) {
     int old = self->m_buildBuyPlayer;
-    if (player <= 1) {
-        if (player >= -1) {
-            self->m_buildBuyPlayer = player;
-            return old;
-        }
+    int newval;
+    if (player <= 1 && player >= -1) {
+        newval = player;
+    } else {
+        newval = -1;
     }
-    self->m_buildBuyPlayer = -1;
+    self->m_buildBuyPlayer = newval;
     return old;
 }
