@@ -1,4 +1,4 @@
-// VERSION_DIFF: 1-instruction scheduling swap (lis+addi interleaving)
+// FLAGS: -fno-elide-constructors
 typedef unsigned char u8;
 
 extern u8* g_sdaQueueMgr3;

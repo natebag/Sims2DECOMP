@@ -1,4 +1,4 @@
-// FLAGS: -fno-schedule-insns -fno-schedule-insns2
+// FLAGS: -fno-elide-constructors
 typedef unsigned char u8;
 
 extern char g_infoReadyFmt[16];

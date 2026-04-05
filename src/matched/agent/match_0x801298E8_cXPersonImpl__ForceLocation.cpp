@@ -1,4 +1,4 @@
-// VERSION_DIFF: instruction ordering differs (lha/lwz swap)
+// FLAGS: -fno-elide-constructors
 // C++ logic is correct - struct layout verified
 // 0x801298E8 (76 bytes)
 /* cXPersonImpl::ForceLocation(void) */
