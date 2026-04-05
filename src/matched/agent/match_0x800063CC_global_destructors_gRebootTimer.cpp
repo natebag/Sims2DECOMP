@@ -1,4 +1,10 @@
-void static_init_reboot(int, unsigned int);
+// global_destructors keyed to gRebootTimer
+// Address: 0x800063CC | Size: 44 bytes
+// FLAGS: -fno-elide-constructors
+
+// Internal cleanup function at 0x800062FC
+extern void cleanup_func(int a, unsigned short b);
+
 void global_destructors_gRebootTimer() {
-    static_init_reboot(0, 0xFFFF);
+    cleanup_func(0, 0xFFFF);
 }
