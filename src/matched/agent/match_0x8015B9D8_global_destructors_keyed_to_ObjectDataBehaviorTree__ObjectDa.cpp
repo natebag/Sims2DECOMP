@@ -1,0 +1,2 @@
+void init_global_destructors_keyed_to_ObjectDataBehaviorTree__ObjectDa(int, unsigned int);
+void global_destructors_keyed_to_ObjectDataBehaviorTree__ObjectDa() { init_global_destructors_keyed_to_ObjectDataBehaviorTree__ObjectDa(0, 0xFFFF); }

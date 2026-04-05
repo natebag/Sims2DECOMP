@@ -1,0 +1,2 @@
+void init_global_destructors_keyed_to_BGCall_LoadDefaultNeighborhood_v(int, unsigned int);
+void global_destructors_keyed_to_BGCall_LoadDefaultNeighborhood_v() { init_global_destructors_keyed_to_BGCall_LoadDefaultNeighborhood_v(0, 0xFFFF); }

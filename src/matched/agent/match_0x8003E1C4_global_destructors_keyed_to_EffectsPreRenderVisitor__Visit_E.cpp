@@ -1,0 +1,2 @@
+void init_global_destructors_keyed_to_EffectsPreRenderVisitor__Visit_E(int, unsigned int);
+void global_destructors_keyed_to_EffectsPreRenderVisitor__Visit_E() { init_global_destructors_keyed_to_EffectsPreRenderVisitor__Visit_E(0, 0xFFFF); }

@@ -1,0 +1,2 @@
+void init_global_destructors_keyed_to_basic_string_ref__delete_ptr_voi(int, unsigned int);
+void global_destructors_keyed_to_basic_string_ref__delete_ptr_voi() { init_global_destructors_keyed_to_basic_string_ref__delete_ptr_voi(0, 0xFFFF); }

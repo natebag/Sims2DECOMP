@@ -111,6 +111,172 @@ def classify(addr, size, raw):
     if n == 2 and words[1] == 0x4E800020 and words[0] == 0x7C832378:
         return "ret_param2", f"void *{name_safe}(void *a, void *b) {{ return b; }}\n"
 
+    # Pattern: setter + li r3, 0; blr (12B setter returning 0)
+    if n == 3 and words[2] == 0x4E800020 and words[1] == 0x38600000:
+        op0, rd0, ra0, off0, _ = decode_insn(words[0])
+        store_ops = {36: "int", 44: "short", 38: "unsigned char"}
+        if ra0 == 3 and rd0 == 4 and op0 in store_ops:
+            rtype = store_ops[op0]
+            struct_pad = f"char pad[0x{off0 & 0xFFFF:02X}];" if off0 > 0 else ""
+            return "setter_ret0", (
+                f"struct SS_{addr:08X} {{ {struct_pad} {rtype} m_val; }};\n"
+                f"int {name_safe}(SS_{addr:08X} *self, {rtype} val) {{ self->m_val = val; return 0; }}\n"
+            )
+
+    # Pattern: two-field setter (stw+stw+blr, 12B)
+    if n == 3 and words[2] == 0x4E800020:
+        op0, rd0, ra0, off0, _ = decode_insn(words[0])
+        op1, rd1, ra1, off1, _ = decode_insn(words[1])
+        if op0 == 36 and op1 == 36 and ra0 == 3 and ra1 == 3:
+            return "two_store", (
+                f"struct TS_{addr:08X} {{ char pad1[0x{min(off0,off1) & 0xFFFF:02X}]; int m_a; "
+                f"char pad2[0x{abs(off1-off0)-4:02X}]; int m_b; }};\n"
+                f"void {name_safe}(TS_{addr:08X} *self, int a, int b) {{ "
+                f"self->{'m_a' if off0 < off1 else 'm_b'} = {'a' if rd0 == 4 else 'b'}; "
+                f"self->{'m_b' if off0 < off1 else 'm_a'} = {'b' if rd1 == 5 else 'a'}; }}\n"
+            ) if rd0 in (4,5) and rd1 in (4,5) and off0 != off1 else ("unknown", None)
+
+    # Pattern: SDA global getter (lwz r3, off(r13); blr — 8B)
+    if n == 2 and words[1] == 0x4E800020:
+        op, rd, ra, off, _ = decode_insn(words[0])
+        if rd == 3 and ra == 13 and op == 32:  # lwz r3, sda(r13)
+            return "sda_getter", (
+                f"extern int g_{addr:08X};\n"
+                f"int {name_safe}(void) {{ return g_{addr:08X}; }}\n"
+            )
+        if rd == 3 and ra == 13 and op == 42:  # lha r3, sda(r13)
+            return "sda_getter_s", (
+                f"extern short g_{addr:08X};\n"
+                f"short {name_safe}(void) {{ return g_{addr:08X}; }}\n"
+            )
+
+    # Pattern: SDA global setter (stw r3, off(r13); blr — 8B)
+    if n == 2 and words[1] == 0x4E800020:
+        op, rd, ra, off, _ = decode_insn(words[0])
+        if ra == 13 and op == 36 and rd == 3:  # stw r3, sda(r13)
+            return "sda_setter", (
+                f"extern int g_{addr:08X};\n"
+                f"void {name_safe}(int val) {{ g_{addr:08X} = val; }}\n"
+            )
+
+    # Pattern: lfs f1, off(r3); blr (8B float getter)
+    if n == 2 and words[1] == 0x4E800020:
+        op, rd, ra, off, _ = decode_insn(words[0])
+        if op == 48 and rd == 1 and ra == 3:  # lfs f1, off(r3)
+            struct_pad = f"char pad[0x{off & 0xFFFF:02X}];" if off > 0 else ""
+            return "float_getter", (
+                f"struct SF_{addr:08X} {{ {struct_pad} float m_val; }};\n"
+                f"float {name_safe}(SF_{addr:08X} *self) {{ return self->m_val; }}\n"
+            )
+
+    # Pattern: stfs f1, off(r3); blr (8B float setter)
+    if n == 2 and words[1] == 0x4E800020:
+        op, rd, ra, off, _ = decode_insn(words[0])
+        if op == 52 and rd == 1 and ra == 3:  # stfs f1, off(r3)
+            struct_pad = f"char pad[0x{off & 0xFFFF:02X}];" if off > 0 else ""
+            return "float_setter", (
+                f"struct SF_{addr:08X} {{ {struct_pad} float m_val; }};\n"
+                f"void {name_safe}(SF_{addr:08X} *self, float val) {{ self->m_val = val; }}\n"
+            )
+
+    # Pattern: tail call — bl target; (no blr needed, 4B but encoded differently)
+    # Actually: b target (not bl) = unconditional branch = tail call (opcode 18, AA=0, LK=0)
+    if n == 1 and (words[0] & 0xFC000003) == 0x48000000:
+        return "tail_call", (
+            f"extern int tail_{addr:08X}(void);\n"
+            f"int {name_safe}(void) {{ return tail_{addr:08X}(); }}\n"
+        )
+
+    # ========== PROLOGUE-BASED PATTERNS (stwu functions) ==========
+
+    def is_prologue(w):
+        return (w >> 16) == 0x9421  # stwu r1, -N(r1)
+
+    def is_mflr(w):
+        return w == 0x7C0802A6
+
+    def is_stw_lr(w, frame):
+        op, rd, ra, d, _ = decode_insn(w)
+        return op == 36 and rd == 0 and ra == 1 and d == frame + 4
+
+    def is_epilogue_lwz_lr(w, frame):
+        op, rd, ra, d, _ = decode_insn(w)
+        return op == 32 and rd == 0 and ra == 1 and d == frame + 4
+
+    def is_mtlr(w):
+        return w == 0x7C0803A6
+
+    def is_addi_sp(w, frame):
+        op, rd, ra, d, _ = decode_insn(w)
+        return op == 14 and rd == 1 and ra == 1 and d == frame
+
+    def is_blr(w):
+        return w == 0x4E800020
+
+    def is_bl(w):
+        return (w & 0xFC000003) == 0x48000001
+
+    def is_mr(w):
+        """Check for or rD, rS, rS (move register). Returns (dst, src) or None."""
+        op = (w >> 26) & 0x3F
+        if op != 31: return None
+        xo = (w >> 1) & 0x3FF
+        if xo != 444: return None
+        rs = (w >> 21) & 0x1F
+        ra = (w >> 16) & 0x1F
+        rb = (w >> 11) & 0x1F
+        if rs == rb:
+            return (ra, rs)
+        return None
+
+    if n >= 5 and is_prologue(words[0]):
+        d = words[0] & 0xFFFF
+        if d >= 0x8000: d -= 0x10000  # sign-extend
+        frame = -d  # positive frame size (e.g., stwu r1,-8(r1) → frame=8)
+
+        # Identify prologue end and epilogue start
+        # Minimal prologue: stwu + mflr + stw_lr (3 insns)
+        # Minimal epilogue: lwz_lr + mtlr + addi_sp + blr (4 insns)
+        if (is_mflr(words[1]) and is_stw_lr(words[2], frame) and
+            is_blr(words[-1]) and is_addi_sp(words[-2], frame) and
+            is_mtlr(words[-3]) and is_epilogue_lwz_lr(words[-4], frame)):
+
+            body = words[3:-4]
+
+            # Simple wrapper: just one bl call (body = [bl])
+            if len(body) == 1 and is_bl(body[0]):
+                return "wrapper_bl", (
+                    f"extern int wrap_{addr:08X}(void);\n"
+                    f"int {name_safe}(void) {{ return wrap_{addr:08X}(); }}\n"
+                )
+
+            # Wrapper passing params through: mr rN, r3 + bl (body has param shuffle + bl)
+            if len(body) == 2 and is_bl(body[1]):
+                mr = is_mr(body[0])
+                if mr and mr[1] == 3:  # mr rN, r3 (save this)
+                    return "wrapper_save_this", (
+                        f"extern int wrap_{addr:08X}(void *);\n"
+                        f"int {name_safe}(void *self) {{ return wrap_{addr:08X}(self); }}\n"
+                    )
+                # li r4, N + bl (add a constant param)
+                op_b, rd_b, ra_b, imm_b, _ = decode_insn(body[0])
+                if op_b == 14 and ra_b == 0:  # li rN, imm
+                    return "wrapper_add_param", (
+                        f"extern int wrap_{addr:08X}(void *, int);\n"
+                        f"int {name_safe}(void *self) {{ return wrap_{addr:08X}(self, {imm_b}); }}\n"
+                    )
+
+            # Wrapper with param swap: mr r5,r4; mr r4,r3; lis+addi r3; bl
+            # or: mr rN,r3; bl; use result
+            if len(body) == 3 and is_bl(body[2]):
+                mr0 = is_mr(body[0])
+                mr1 = is_mr(body[1])
+                if mr0 and mr1:
+                    return "wrapper_param_swap", (
+                        f"extern int wrap_{addr:08X}(int, int, int);\n"
+                        f"int {name_safe}(int a, int b) {{ return wrap_{addr:08X}(a, b, 0); }}\n"
+                    )
+
     return "unknown", None
 
 

@@ -1,0 +1,2 @@
+void init_global_destructors_keyed_to_ESimsDataManager__pCurrentManage(int, unsigned int);
+void global_destructors_keyed_to_ESimsDataManager__pCurrentManage() { init_global_destructors_keyed_to_ESimsDataManager__pCurrentManage(0, 0xFFFF); }

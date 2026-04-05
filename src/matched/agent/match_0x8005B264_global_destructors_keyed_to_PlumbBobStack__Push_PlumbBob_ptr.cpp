@@ -1,0 +1,2 @@
+void init_global_destructors_keyed_to_PlumbBobStack__Push_PlumbBob_ptr(int, unsigned int);
+void global_destructors_keyed_to_PlumbBobStack__Push_PlumbBob_ptr() { init_global_destructors_keyed_to_PlumbBobStack__Push_PlumbBob_ptr(0, 0xFFFF); }

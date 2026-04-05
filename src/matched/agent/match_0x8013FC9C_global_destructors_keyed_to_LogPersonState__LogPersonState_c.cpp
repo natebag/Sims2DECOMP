@@ -1,0 +1,2 @@
+void init_global_destructors_keyed_to_LogPersonState__LogPersonState_c(int, unsigned int);
+void global_destructors_keyed_to_LogPersonState__LogPersonState_c() { init_global_destructors_keyed_to_LogPersonState__LogPersonState_c(0, 0xFFFF); }

@@ -1,0 +1,2 @@
+void init_global_destructors_keyed_to_EVec3Decomp__Init_EBitArray_ptr_(int, unsigned int);
+void global_destructors_keyed_to_EVec3Decomp__Init_EBitArray_ptr_() { init_global_destructors_keyed_to_EVec3Decomp__Init_EBitArray_ptr_(0, 0xFFFF); }
