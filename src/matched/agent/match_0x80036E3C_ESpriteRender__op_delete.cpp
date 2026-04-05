@@ -1,9 +1,7 @@
-/* ESpriteRender__op_delete at 0x80036E3C (52B) */
+void *OD_GetHeap(void);
+void OD_Free(void *, void *);
 
-extern void *getDelHeap_80036E3C(void);
-extern void heapDel_80036E3C(void *, void *);
-
-void ESpriteRender__op_delete(void *ptr) {
-    void *heap = getDelHeap_80036E3C();
-    heapDel_80036E3C(heap, ptr);
+void ESpriteRender_op_delete(void *ptr) {
+    void *heap = OD_GetHeap();
+    OD_Free(heap, ptr);
 }
