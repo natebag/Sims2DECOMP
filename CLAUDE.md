@@ -73,13 +73,16 @@ for future decomp work, not completed decomp work.
 **Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
 This is the core decomp work. We are at the very beginning.
 
-**Current Status (2026-03-28):**
-- ~5,700 functions matched with real C++ (27.8%)
-- ~14,800 functions remaining
-- SN Systems ProDG compiler (the ORIGINAL compiler) found and working
-- cc1plus.exe (GCC 2.95.3 SN BUILD v1.76) produces matching output natively
-- Agent army (Claude CLIs + Codex) grinding through function tiers
-- verify_match.sh auto-rejects inline asm fakes
+**Current Status (2026-04-05):**
+- 6,771 functions matched with real C++ (33.0%)
+- ~13,737 functions remaining
+- SN Systems ProDG compiler confirmed correct (all 4 versions produce identical code)
+- cc1plus.exe flags: `-O2 -fno-elide-constructors -fno-schedule-insns2 -msdata=eabi -G 8`
+- Some functions need scheduling ENABLED (use `// FLAGS: -fno-elide-constructors` per-file override)
+- Pre-commit hook auto-verifies matches, auto-moves VERSION_DIFF to src/wip/version_diff/
+- Auto-matcher tool (tools/goldmine_matcher.py) handles trivial patterns automatically
+- 7+ class headers in include/ for proper struct layouts
+- Template blast approach: find one match → mass-apply across family (10x productivity)
 
 **IMPORTANT: The DOL "matches" via byte injection. Real decomp progress is measured by
 how many functions have hand-written C++ that compiles to matching bytes WITHOUT injection.**
@@ -93,12 +96,13 @@ how many functions have hand-written C++ that compiles to matching bytes WITHOUT
 
 **Approach:** Agent-parallelized matching — see strategy below.
 
-**Priority Order:**
-1. 8-byte getter/setter functions (~500+ functions, trivially matchable)
-2. 12-20 byte simple functions (~1,000+ functions)
-3. 32-100 byte functions with documented pseudocode
-4. 100-500 byte medium functions
-5. 500+ byte complex functions (need deep RE work)
+**Priority Order (updated 2026-04-05):**
+1. ~~8-byte getter/setter functions~~ — DONE (all <=64B in asm_decomp cleared)
+2. Goldmine 8-64B functions NOT in asm_decomp — 2,384 remaining (need per-function analysis)
+3. 65-128B template families — exhausted for template blast, per-function work remains
+4. 65-128B VERSION_DIFF retry — 40+ files in src/wip/version_diff/ awaiting creative C++ fixes
+5. 128-512B functions — confirmed hard, needs TU compilation or deep RE
+6. 512+ byte complex functions (need deep RE work)
 
 ### Milestone 4: PC PORT — NOT STARTED (requires Milestone 3)
 
