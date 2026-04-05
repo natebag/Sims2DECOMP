@@ -2,7 +2,7 @@
 
 ## HONEST STATUS
 
-**Functions actually decompiled (hand-written C++ that compiles to matching bytes): ~6,100 / 20,508 (29.8%)**
+**Functions actually decompiled (hand-written C++ that compiles to matching bytes): ~6,255 / 20,508 (30.5%)**
 
 Real progress = functions with hand-written C++ that the SN Systems compiler
 produces byte-identical output for. Verified by verify_match.sh.
@@ -14,8 +14,8 @@ Count is deduplicated (one file per address). Last audit: 20/20 random sample pa
 | Metric | Value |
 |--------|-------|
 | Total code functions | 20,508 |
-| **Functions ACTUALLY decompiled** | **~6,100 (29.8%)** |
-| Functions remaining | ~14,400 |
+| **Functions ACTUALLY decompiled** | **~6,255 (30.5%)** |
+| Functions remaining | ~14,253 |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (found & working) |
 | Total symbols (map) | 39,169 |
 | Translation units (original .cpp files) | 519 |
@@ -28,7 +28,7 @@ Count is deduplicated (one file per address). Last audit: 20/20 random sample pa
 |---|-----------|--------|-------|
 | 1 | Infrastructure | **DONE** | Build system, dtk, symbols, CI, SN compiler |
 | 2 | Scaffolding | **DONE** | Empty C++ shells, struct layouts |
-| 3 | Actual Decomp | **IN PROGRESS** | ~5,700/20,508 (27.8%) |
+| 3 | Actual Decomp | **IN PROGRESS** | ~6,255/20,508 (30.5%) |
 | 4 | PC Port | **BLOCKED** | Needs actual decomp first |
 
 ## Progress by Function Size
@@ -90,6 +90,25 @@ achieved via byte injection; the portable C++ enables the PC port.
 | UI / APT | 1216 | 1478 | 82.3% |
 
 ## Session Log
+
+### 2026-04-05: AgentOrch v3.93 pattern grinder + goldmine discovery
+- **Before session:** 6,161 verified matches (30.0%)
+- **After session:** 6,255 verified matches (30.5%)
+- **Net new:** +94 matches
+- **Goldmine discovery:** 3,074 "dark" functions found not in asm_decomp
+- **~80 trivial 4B/8B matches** from goldmine (SonnetWorker auto-generator)
+- **15 InteractorModule 65-128B matches** (SonnetWorker2)
+- **8 cXObjectImpl 65-128B at 53% rate** (OpusWorker with `lwz r11` filter)
+- **5 EBitArray constructors** (KimiGuy)
+- **3 AptActionInterpreter + ObjectFolderImpl** (SonnetWorker)
+- **6 pre-commit hook blocked** (fake/mismatched files rejected)
+- **12 duplicates cleaned up** during session
+- **500+ functions triaged as VERSION_DIFF** (need v1.76 compiler)
+- **Key finding:** <=64B in asm_decomp now 100% cleared
+- **65-128B match rate:** ~5% (Kimi) to 53% (Opus with r11 filter)
+- **Bottleneck identified:** v1.76 compiler needed for remaining ~14,253 functions
+- **Pre-commit hook installed:** Catches bad files automatically before commit
+- **Tools built:** classify_functions.py, count_matched.py, find_missing_functions.py, scan_v393_pattern.py, count_new_matches.py
 
 ### 2026-04-03: AgentOrch grinder session — batch matching + quality cleanup
 - AgentOrch multi-agent session: 1 opus, 2 sonnet, 3 haiku, 3 kimi workers
