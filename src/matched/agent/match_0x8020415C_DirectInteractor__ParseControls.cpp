@@ -1,6 +1,5 @@
-/* InteractorModule::DirectInteractor::ParseControls(void) at 0x8020415C (112B) */
-/* [VERSION_DIFF] v3.93 emits cror+bsolr where DOL uses bgelr cr0 */
-/* C++ logic is correct — will match with v1.76 compiler */
+/* [VERSION_DIFF] bgelr cr0 vs cror+bsolr for float >= conditional return */
+/* Not fixed by -fno-schedule-insns2. May need different float comparison idiom. */
 
 extern float gControlDeadZone[];
 
