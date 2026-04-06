@@ -85,3 +85,32 @@ int GoalUnlock::GetFirstUnlockVar(int type) {
             return 0;
     }
 }
+
+// 0x800B86D8 (132 bytes)
+// GoalUnlock::GetObjectIndexFromGuid(int)
+struct GuidEntry {
+    int guid;
+    int pad;
+};
+
+extern GuidEntry g_GuidTable[];
+
+int GoalUnlock::GetObjectIndexFromGuid(int guid) {
+    for (short i = 0; i < (short)m_vtable->GetUnlockTotal(5); i++) {
+        if (g_GuidTable[i].guid == guid) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// 0x800B8A6C (184 bytes)
+// GoalUnlock::IsRecentlyUnlocked(IGoalUnlock::UnlockType, short)
+int GoalUnlock::IsRecentlyUnlocked(int type, short var) {
+    if (var < 0 || var >= (short)m_vtable->GetUnlockTotal(type)) {
+        return 0;
+    }
+    short wordIdx = (var + 1) >> 4;
+    short bitIdx = (var + 1) & 0xF;
+    return (m_data[wordIdx] >> bitIdx) & 1;
+}
