@@ -1212,6 +1212,111 @@ def classify(addr, size, raw):
                     f"}}\n"
                 )
 
+    # =========================================================================
+    # SESSION 2026-04-06 DISCOVERIES — New classifiers from grinder session
+    # =========================================================================
+
+    # Pattern: Triple-call forwarder (60B)
+    # stwu r1,-16(r1); mflr r0; stmw r30,8(r1); stw r0,20(r1);
+    # mr r30,r3; bl f1; mr r3,r30; bl f2; mr r3,r30; bl f3; epilogue
+    if size == 60 and n == 15:
+        if (words[0] == 0x9421FFF0 and  # stwu r1, -16(r1)
+            words[1] == 0x7C0802A6 and  # mflr r0
+            words[2] == 0xBFC10008 and  # stmw r30, 8(r1)
+            words[3] == 0x90010014 and  # stw r0, 20(r1)
+            (words[4] & 0xFFFF0000) == 0x7C7E0000 and  # mr r30, r3 (or r30,r3,r3)
+            (words[5] >> 26) == 18 and  # bl f1
+            words[6] == 0x7FC3F378 and  # mr r3, r30
+            (words[7] >> 26) == 18 and  # bl f2
+            words[8] == 0x7FC3F378 and  # mr r3, r30
+            (words[9] >> 26) == 18 and  # bl f3
+            words[10] == 0x80010014 and  # lwz r0, 20(r1)
+            words[14] == 0x4E800020):   # blr
+            return "triple_call_60B", (
+                f"// FLAGS: -fno-elide-constructors\n"
+                f"void f1_{addr:08X}(void*);\n"
+                f"void f2_{addr:08X}(void*);\n"
+                f"void f3_{addr:08X}(void*);\n\n"
+                f"void {name_safe}(void* self) {{\n"
+                f"    f1_{addr:08X}(self);\n"
+                f"    f2_{addr:08X}(self);\n"
+                f"    f3_{addr:08X}(self);\n"
+                f"}}\n"
+            )
+
+    # Pattern: Conditional-delete destructor (64B)
+    # stwu; mflr; stmw r30; stw LR; mr r31,r3; mr r30,r4;
+    # bl cleanup; andi. r9,r30,1; beq skip; mr r3,r31; bl delete; epilogue
+    if size == 64 and n == 16:
+        if (words[0] == 0x9421FFF0 and  # stwu r1, -16(r1)
+            words[1] == 0x7C0802A6 and  # mflr r0
+            words[2] == 0xBFC10008 and  # stmw r30, 8(r1)
+            words[3] == 0x90010014 and  # stw r0, 20(r1)
+            (words[4] & 0xFFE00000) == 0x7C7F0000 and  # mr r31, r3
+            (words[5] & 0xFFE00000) == 0x7C9E0000 and  # mr r30, r4
+            (words[6] >> 26) == 18 and  # bl cleanup
+            words[7] == 0x73C00001 and  # andi. r0, r30, 1
+            (words[8] >> 26) == 16 and  # beq skip
+            words[9] == 0x7FE3FB78 and  # mr r3, r31
+            (words[10] >> 26) == 18):   # bl delete
+            return "cond_delete_dtor_64B", (
+                f"// FLAGS: -fno-elide-constructors\n"
+                f"void cleanup_{addr:08X}(void*);\n"
+                f"void delete_{addr:08X}(void*);\n\n"
+                f"void {name_safe}(void* self, int mode) {{\n"
+                f"    cleanup_{addr:08X}(self);\n"
+                f"    if (mode & 1) {{\n"
+                f"        delete_{addr:08X}(self);\n"
+                f"    }}\n"
+                f"}}\n"
+            )
+
+    # Pattern: Dual-call with sub-offset (60B)
+    # stwu; mflr; stmw r30; stw LR; mr r30,r3;
+    # bl f1; addi r3,r30,N; bl f2; mr r3,r30; bl f3; epilogue
+    if size == 60 and n == 15:
+        if (words[0] == 0x9421FFF0 and
+            words[2] == 0xBFC10008 and
+            (words[4] & 0xFFFF0000) == 0x7C7E0000 and  # mr r30, r3
+            (words[5] >> 26) == 18 and  # bl f1
+            (words[6] >> 26) == 14 and (words[6] >> 16 & 0x1F) == 30 and  # addi r3, r30, N
+            (words[7] >> 26) == 18 and  # bl f2
+            words[8] == 0x7FC3F378 and  # mr r3, r30
+            (words[9] >> 26) == 18):    # bl f3
+            sub_off = words[6] & 0xFFFF
+            if sub_off >= 0x8000: sub_off -= 0x10000
+            return "dual_call_sub_60B", (
+                f"// FLAGS: -fno-elide-constructors\n"
+                f"void f1_{addr:08X}(void*);\n"
+                f"void f2_{addr:08X}(void*);\n"
+                f"void f3_{addr:08X}(void*);\n\n"
+                f"void {name_safe}(char* self) {{\n"
+                f"    f1_{addr:08X}(self);\n"
+                f"    f2_{addr:08X}(self + {sub_off});\n"
+                f"    f3_{addr:08X}(self);\n"
+                f"}}\n"
+            )
+
+    # Pattern: Simple forwarder with field byte load (48B)
+    # stwu; mflr; stw LR; mr rX,r4; mr rY,r5; lbz r4,off(rX); li r5,0; bl func; epilogue
+    if size == 48 and n == 12:
+        if (words[0] == 0x9421FFF8 and  # stwu r1, -8(r1)
+            words[1] == 0x7C0802A6 and  # mflr r0
+            words[2] == 0x9001000C and  # stw r0, 12(r1)
+            (words[7] >> 26) == 18 and  # bl target
+            words[11] == 0x4E800020):   # blr
+            # Check for param shuffle + byte load + bl pattern
+            op3, rd3, ra3, _, rb3 = decode_insn(words[3])
+            op4, rd4, ra4, _, rb4 = decode_insn(words[4])
+            op5, rd5, ra5, off5, _ = decode_insn(words[5])
+            if op3 == 31 and op4 == 31 and op5 == 34:  # mr, mr, lbz
+                return "byte_fwd_48B", (
+                    f"void target_{addr:08X}(void*, int, int, void*, void*);\n\n"
+                    f"void {name_safe}(void* self, char* obj, void* p3) {{\n"
+                    f"    target_{addr:08X}(self, *(unsigned char*)(obj + {off5 & 0xFFFF}), 0, p3, obj);\n"
+                    f"}}\n"
+                )
+
     return "unknown", None
 
 
