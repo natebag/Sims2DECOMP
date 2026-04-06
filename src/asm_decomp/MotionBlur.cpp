@@ -6,71 +6,112 @@
 // Each function has its original C++ signature with the body as inline PPC asm.
 // These can be incrementally replaced with real C++ as decompilation progresses.
 
+class FrameEffect;
+
+struct MotionBlurSettings {
+    f32 field_0;
+    f32 field_4;
+    f32 field_8;
+};
+
 class MotionBlur {
 public:
     void UpdateTargetParameters(float);
+    void EffectStateChanged(FrameEffect::EffectState);
+    void SetTargetSettings(MotionBlurSettings& settings);
+    
+    // Fields
+    f32 m_fadeInTime;        // 0x00
+    f32 m_fadeOutTime;       // 0x04
+    u8 _pad_008[4];          // 0x08
+    u32 m_state;             // 0x0C
+    u8 _pad_010[4];          // 0x10
+    f32 field_14;            // 0x14
+    f32 field_18;            // 0x18
+    u32 field_1C;            // 0x1C
+    f32 field_20;            // 0x20
+    f32 field_24;            // 0x24
+    u32 field_28;            // 0x28
+    f32 m_targetParameters[3]; // 0x2C - 0x34
 };
+
+// 0x8035728C (52 bytes)
+// MotionBlur::EffectStateChanged(FrameEffect::EffectState)
+void MotionBlur::EffectStateChanged(FrameEffect::EffectState state) {
+    if (state == 2 || state == 8) {
+        m_targetParameters[0] = field_20;
+        m_targetParameters[1] = field_24;
+        m_targetParameters[2] = *(f32*)&field_28;  // copying as float
+    }
+}
+
+// 0x8035768C (32 bytes)
+// MotionBlur::SetTargetSettings(MotionBlurSettings&)
+void MotionBlur::SetTargetSettings(MotionBlurSettings& settings) {
+    field_14 = settings.field_0;
+    field_18 = settings.field_4;
+    field_1C = *(u32*)&settings.field_8;  // copying as int
+}
 
 // 0x803571C0 (204 bytes)
 // MotionBlur::UpdateTargetParameters(float)
 __attribute__((noreturn))
 void MotionBlur::UpdateTargetParameters(float) {
     __asm__ __volatile__(
-        "stwu	1,-24(1)\n"
-        "mflr	0\n"
-        "stfd	31,16(1)\n"
-        "stmw	30,8(1)\n"
-        "stw	0,28(1)\n"
-        "mr	31,3\n"
-        "fmr	31,1\n"
-        "lwz	0,12(31)\n"
-        "cmpwi	0,2\n"
-        "bne	.L_80357228\n"
-        "lis	30,-32702\n"
-        "lfs	2,20(31)\n"
-        "lfs	3,10972(30)\n"
-        "fmr	5,31\n"
-        "lfs	4,0(31)\n"
-        "lfs	1,44(31)\n"
+        "stwu\t1,-24(1)\n"
+        "mflr\t0\n"
+        "stfd\t31,16(1)\n"
+        "stmw\t30,8(1)\n"
+        "stw\t0,28(1)\n"
+        "mr\t31,3\n"
+        "fmr\t31,1\n"
+        "lwz\t0,12(31)\n"
+        "cmpwi\t0,2\n"
+        "bne\t.L_80357228\n"
+        "lis\t30,-32702\n"
+        "lfs\t2,20(31)\n"
+        "lfs\t3,10972(30)\n"
+        "fmr\t5,31\n"
+        "lfs\t4,0(31)\n"
+        "lfs\t1,44(31)\n"
         ".long 0x4807054d  /* bl float {anonymous}::InterpolateLinear<float>(float, float, float, float, float) */\n"
-        "stfs	1,32(31)\n"
-        "fmr	5,31\n"
-        "lfs	3,10972(30)\n"
-        "lfs	1,48(31)\n"
-        "lfs	2,24(31)\n"
-        "lfs	4,0(31)\n"
+        "stfs\t1,32(31)\n"
+        "fmr\t5,31\n"
+        "lfs\t3,10972(30)\n"
+        "lfs\t1,48(31)\n"
+        "lfs\t2,24(31)\n"
+        "lfs\t4,0(31)\n"
         ".long 0x48070531  /* bl float {anonymous}::InterpolateLinear<float>(float, float, float, float, float) */\n"
-        "lwz	0,28(31)\n"
-        "b	.L_8035726C\n"
+        "lwz\t0,28(31)\n"
+        "b\t.L_8035726C\n"
         ".L_80357228:\n"
-        "cmpwi	0,8\n"
-        "bne	.L_80357274\n"
-        "lis	30,-32702\n"
-        "lfs	4,4(31)\n"
-        "lfs	2,10972(30)\n"
-        "fmr	5,31\n"
-        "lfs	1,44(31)\n"
-        "fmr	3,2\n"
+        "cmpwi\t0,8\n"
+        "bne\t.L_80357274\n"
+        "lis\t30,-32702\n"
+        "lfs\t4,4(31)\n"
+        "lfs\t2,10972(30)\n"
+        "fmr\t5,31\n"
+        "lfs\t1,44(31)\n"
+        "fmr\t3,2\n"
         ".long 0x48070505  /* bl float {anonymous}::InterpolateLinear<float>(float, float, float, float, float) */\n"
-        "stfs	1,32(31)\n"
-        "fmr	5,31\n"
-        "lfs	2,10972(30)\n"
-        "lfs	1,48(31)\n"
-        "lfs	4,4(31)\n"
-        "fmr	3,2\n"
+        "stfs\t1,32(31)\n"
+        "fmr\t5,31\n"
+        "lfs\t2,10972(30)\n"
+        "lfs\t1,48(31)\n"
+        "lfs\t4,4(31)\n"
+        "fmr\t3,2\n"
         ".long 0x480704e9  /* bl float {anonymous}::InterpolateLinear<float>(float, float, float, float, float) */\n"
-        "li	0,0\n"
+        "li\t0,0\n"
         ".L_8035726C:\n"
-        "stfs	1,36(31)\n"
-        "stw	0,40(31)\n"
+        "stfs\t1,36(31)\n"
+        "stw\t0,40(31)\n"
         ".L_80357274:\n"
-        "lwz	0,28(1)\n"
-        "mtlr	0\n"
-        "lmw	30,8(1)\n"
-        "lfd	31,16(1)\n"
-        "addi	1,1,24\n"
+        "lwz\t0,28(1)\n"
+        "mtlr\t0\n"
+        "lmw\t30,8(1)\n"
+        "lfd\t31,16(1)\n"
+        "addi\t1,1,24\n"
         "blr\n"
     );
     __builtin_unreachable();
 }
-
