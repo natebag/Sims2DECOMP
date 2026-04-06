@@ -73,16 +73,18 @@ for future decomp work, not completed decomp work.
 **Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
 This is the core decomp work. We are at the very beginning.
 
-**Current Status (2026-04-05):**
-- 6,771 functions matched with real C++ (33.0%)
-- ~13,737 functions remaining
+**Current Status (2026-04-06):**
+- 8,678 functions matched with real C++ (42.3%)
+- ~11,830 functions remaining
+- ALL asm_decomp functions matched — remaining work is DOL-only extraction
 - SN Systems ProDG compiler confirmed correct (all 4 versions produce identical code)
-- cc1plus.exe flags: `-O2 -fno-elide-constructors -fno-schedule-insns2 -msdata=eabi -G 8`
-- Some functions need scheduling ENABLED (use `// FLAGS: -fno-elide-constructors` per-file override)
+- 4-state flag matrix per function: {default, -fno-schedule-insns, -fno-schedule-insns2, both}
+- Per-file override: `// FLAGS: -fno-schedule-insns` (or any combo) as first line
 - Pre-commit hook auto-verifies matches, auto-moves VERSION_DIFF to src/wip/version_diff/
-- Auto-matcher tool (tools/goldmine_matcher.py) handles trivial patterns automatically
-- 7+ class headers in include/ for proper struct layouts
-- Template blast approach: find one match → mass-apply across family (10x productivity)
+- Auto-matcher v4 (tools/goldmine_matcher.py): 16 classifiers, 4-flag matrix, DOL scan
+- Template family detector: 136 families with 1,040 functions (100% blast hit rate)
+- Key techniques: SDA `extern char g[4]`, sign bit `>>31`, equality subfic+adde, xori flip
+- Template blast approach: find one match → mass-apply across family (100% hit rate proven)
 
 **IMPORTANT: The DOL "matches" via byte injection. Real decomp progress is measured by
 how many functions have hand-written C++ that compiles to matching bytes WITHOUT injection.**
@@ -96,13 +98,14 @@ how many functions have hand-written C++ that compiles to matching bytes WITHOUT
 
 **Approach:** Agent-parallelized matching — see strategy below.
 
-**Priority Order (updated 2026-04-05):**
-1. ~~8-byte getter/setter functions~~ — DONE (all <=64B in asm_decomp cleared)
-2. Goldmine 8-64B functions NOT in asm_decomp — 2,384 remaining (need per-function analysis)
-3. 65-128B template families — exhausted for template blast, per-function work remains
-4. 65-128B VERSION_DIFF retry — 40+ files in src/wip/version_diff/ awaiting creative C++ fixes
-5. 128-512B functions — confirmed hard, needs TU compilation or deep RE
-6. 512+ byte complex functions (need deep RE work)
+**Priority Order (updated 2026-04-06):**
+1. ~~All asm_decomp functions~~ — DONE (100% matched)
+2. Template family blast — 136 families, 1,040 functions, ~100% hit rate (HIGHEST PRIORITY)
+3. TArray template methods — Init done, Deallocate/Construct/Copy need cracking
+4. Auto-matcher classifier expansion — andi., rlwinm, lbz/stb, loop patterns
+5. 65-128B DOL scan — 3,578 unmatched, need template family grouping
+6. VERSION_DIFF recovery — ~60 files, most unfixable (register allocation)
+7. 128-512B functions — confirmed hard, needs TU compilation or deep RE
 
 ### Milestone 4: PC PORT — NOT STARTED (requires Milestone 3)
 
