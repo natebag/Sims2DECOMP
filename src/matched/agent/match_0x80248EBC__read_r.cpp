@@ -1,5 +1,4 @@
 /* _read_r at 0x80248EBC (88B) */
-// FLAGS: -fno-elide-constructors
 
 extern int g_errno__read_r;
 extern int sys_read(int fd, void *buf, int count);

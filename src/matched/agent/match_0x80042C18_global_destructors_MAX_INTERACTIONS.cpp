@@ -1,6 +1,5 @@
 // global_destructors keyed to MAX_INTERACTIONS
 // Address: 0x80042C18 | Size: 44 bytes
-// FLAGS: -fno-elide-constructors
 
 extern void cleanup_MAX_INTERACTIONS(int a, unsigned short b);
 

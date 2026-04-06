@@ -1,5 +1,4 @@
 /* _open_r at 0x80248E60 (92B) */
-// FLAGS: -fno-elide-constructors
 
 extern int g_errno_open;
 extern int sys_open(char *, int, int, ...);

@@ -1,6 +1,5 @@
 // GameData::LoadCreateASim(int, int)
 // Address: 0x8003B878 | Size: 40 bytes
-// FLAGS: -fno-elide-constructors
 
 struct GameData;
 

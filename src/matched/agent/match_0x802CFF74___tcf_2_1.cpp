@@ -1,6 +1,5 @@
-/* __tcf_2_1 at 0x802CFF74 (44B) — auto-matched [load_addr_param_44B] */
+/* __tcf_2_1 at 0x802CFF74 (44B) ï¿½ auto-matched [load_addr_param_44B] */
 
-// FLAGS: -fno-elide-constructors
 extern int g_obj_802CFF74[];
 extern int func_802CFF74(int, int);
 

@@ -1,6 +1,5 @@
-/* ENgcScheduler__Flush_void at 0x8034D9B8 (40B) — auto-matched [load_addr_call_40B] */
+/* ENgcScheduler__Flush_void at 0x8034D9B8 (40B) ï¿½ auto-matched [load_addr_call_40B] */
 
-// FLAGS: -fno-elide-constructors
 extern int g_obj_8034D9B8[];
 extern void func_8034D9B8(void *);
 

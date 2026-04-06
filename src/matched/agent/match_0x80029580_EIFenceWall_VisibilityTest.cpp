@@ -1,6 +1,5 @@
 // EIFenceWall::VisibilityTest(E3DWindow &)
 // Address: 0x80029580 | Size: 44 bytes
-// FLAGS: -fno-elide-constructors
 
 struct E3DWindow;
 

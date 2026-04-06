@@ -1,6 +1,5 @@
 // EHouse::SetWallState(EWallUpDownStateType)
 // Address: 0x80023BAC | Size: 52 bytes
-// FLAGS: -fno-elide-constructors
 
 enum EWallUpDownStateType { /* ... */ };
 

@@ -1,5 +1,4 @@
 /* _fstat_r at 0x80248DB0 (88B) */
-// FLAGS: -fno-elide-constructors
 
 extern int g_errno_fstat;
 extern int sys_fstat(int, void *, ...);

@@ -1,5 +1,4 @@
 /* ERLevel::operator delete(void *) at 0x802381E8 (44B) */
-// FLAGS: -fno-elide-constructors
 
 extern char g_heap44del[256];
 extern void heapFree44(void *, void *);

@@ -1,6 +1,5 @@
 // GameData::UseConfigOptions(void)
 // Address: 0x8003D880 | Size: 40 bytes
-// FLAGS: -fno-elide-constructors
 
 struct GameData;
 extern GameData g_gameData;  // SDA global

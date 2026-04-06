@@ -1,5 +1,4 @@
 /* calloc at 0x802D12F4 (84B) */
-// FLAGS: -fno-elide-constructors
 
 extern void *getHeap2(void);
 extern void *heapMalloc(void *, int, int);

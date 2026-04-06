@@ -1,5 +1,4 @@
 /* ERModel__op_delete_void_ptr at 0x8031B398 (44B) */
-// FLAGS: -fno-elide-constructors
 
 extern char g_h44d_8031B398[256];
 extern void hf44_8031B398(void *, void *);

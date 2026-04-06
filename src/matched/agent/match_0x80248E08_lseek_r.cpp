@@ -1,5 +1,4 @@
 /* _lseek_r at 0x80248E08 (88B) */
-// FLAGS: -fno-elide-constructors
 
 extern int g_errno;
 extern int sys_lseek(int, int, int);

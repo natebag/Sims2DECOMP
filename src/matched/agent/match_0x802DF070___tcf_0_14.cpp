@@ -1,6 +1,5 @@
-/* __tcf_0_14 at 0x802DF070 (44B) — auto-matched [load_addr_param_44B] */
+/* __tcf_0_14 at 0x802DF070 (44B) ï¿½ auto-matched [load_addr_param_44B] */
 
-// FLAGS: -fno-elide-constructors
 extern int g_obj_802DF070[];
 extern int func_802DF070(int, int);
 

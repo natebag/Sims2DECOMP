@@ -1,5 +1,4 @@
 /* disable_IRQ(void) at 0x8034EA78 (72B) */
-// FLAGS: -fno-elide-constructors
 
 extern int g_irqCount;
 extern int g_irqState;

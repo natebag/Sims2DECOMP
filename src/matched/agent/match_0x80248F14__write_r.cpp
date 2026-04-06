@@ -1,5 +1,4 @@
 /* _write_r at 0x80248F14 (88B) */
-// FLAGS: -fno-elide-constructors
 
 extern int g_errno__write_r;
 extern int sys_write(int fd, void *buf, int count);

@@ -1,5 +1,4 @@
 /* ERAnim__op_delete_void_ptr at 0x80368180 (44B) */
-// FLAGS: -fno-elide-constructors
 
 extern char g_h44d_80368180[256];
 extern void hf44_80368180(void *, void *);

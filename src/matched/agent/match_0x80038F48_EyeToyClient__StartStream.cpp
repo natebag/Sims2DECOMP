@@ -1,5 +1,4 @@
 /* EyeToyClient::StartStream(void) at 0x80038F48 (52B) */
-// FLAGS: -fno-elide-constructors
 
 extern int g_eyetoySession;
 extern int eyetoyStreamStart(int);

@@ -1,5 +1,4 @@
 /* PopReadedBuffer2(void) at 0x803374BC (52B) */
-// FLAGS: -fno-elide-constructors
 
 extern char g_q_0x803374BC[64];
 extern int recv_0x803374BC(void *, int *, int);

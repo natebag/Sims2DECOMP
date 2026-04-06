@@ -1,5 +1,4 @@
 /* ENgcShader__op_delete_void_ptr at 0x8034DFD8 (44B) */
-// FLAGS: -fno-elide-constructors
 
 extern char g_h44d_8034DFD8[256];
 extern void hf44_8034DFD8(void *, void *);

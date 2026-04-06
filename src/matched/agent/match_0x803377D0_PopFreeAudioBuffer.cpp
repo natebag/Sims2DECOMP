@@ -1,5 +1,4 @@
 /* PopFreeAudioBuffer(void) at 0x803377D0 (52B) */
-// FLAGS: -fno-elide-constructors
 
 extern char g_q_0x803377D0[64];
 extern int recv_0x803377D0(void *, int *, int);
