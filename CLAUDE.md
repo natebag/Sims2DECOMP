@@ -74,17 +74,18 @@ for future decomp work, not completed decomp work.
 This is the core decomp work. We are at the very beginning.
 
 **Current Status (2026-04-06):**
-- 8,678 functions matched with real C++ (42.3%)
-- ~11,830 functions remaining
+- ~9,045 functions matched with real C++ (~44.1%)
+- ~11,463 functions remaining
 - ALL asm_decomp functions matched — remaining work is DOL-only extraction
 - SN Systems ProDG compiler confirmed correct (all 4 versions produce identical code)
-- 4-state flag matrix per function: {default, -fno-schedule-insns, -fno-schedule-insns2, both}
+- 5-state flag matrix per function: {default, -fno-schedule-insns, -fno-schedule-insns2, both, -fno-elide-constructors-only}
 - Per-file override: `// FLAGS: -fno-schedule-insns` (or any combo) as first line
 - Pre-commit hook auto-verifies matches, auto-moves VERSION_DIFF to src/wip/version_diff/
 - Auto-matcher v4 (tools/goldmine_matcher.py): 16 classifiers, 4-flag matrix, DOL scan
 - Template family detector: 136 families with 1,040 functions (100% blast hit rate)
-- Key techniques: SDA `extern char g[4]`, sign bit `>>31`, equality subfic+adde, xori flip
-- Template blast approach: find one match → mass-apply across family (100% hit rate proven)
+- **BLRL BREAKTHROUGH (2026-04-06):** Virtual dispatch (blrl/bctrl) solved — declare C++ classes with virtual methods in vtable order, compiler generates correct blrl natively
+- TU compilation workflow proven: tu_match.py --combine for TU-level matching
+- Key techniques: SDA `extern char g[4]`, sign bit `>>31`, equality subfic+adde, xori flip, virtual class declarations for blrl, `short` types for extsh, magic division constants
 
 **IMPORTANT: The DOL "matches" via byte injection. Real decomp progress is measured by
 how many functions have hand-written C++ that compiles to matching bytes WITHOUT injection.**

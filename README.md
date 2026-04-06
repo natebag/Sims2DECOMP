@@ -4,12 +4,12 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**~42% decompiled.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
+**~44% decompiled.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
 
 | Metric | Value |
 |--------|-------|
-| **Functions matched** | **~8,678 / 20,508 (42.3%)** |
-| Functions remaining | ~11,830 |
+| **Functions matched** | **~9,045 / 20,508 (44.1%)** |
+| Functions remaining | ~11,463 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
@@ -24,16 +24,19 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 - **Struct layouts** — 643 classes with documented field offsets from assembly analysis
 - **Trivial functions** — ~1,650 matched via automated batch script (getters, setters, empty functions)
 - **Auto-matcher** — ~4,500 matched via goldmine_matcher.py (16 classifiers, 4-state flag matrix, DOL scanning)
-- **AI agent matches** — ~2,500+ matched via parallel Claude Code + Kimi agents (template family blasting, pattern discovery)
+- **AI agent matches** — ~2,900+ matched via parallel Claude Code + Kimi agents (template family blasting, pattern discovery, TU compilation, blrl breakthrough)
+- **blrl virtual dispatch SOLVED** — proper C++ virtual class declarations generate correct `blrl` codegen, unlocking thousands of previously-blocked functions
+- **TU compilation workflow** — `tu_match.py --combine` compiles whole translation units for SDA and register allocation context
 - **Verification tools** — `verify_match.sh` for end-to-end compile-and-compare
-- **4-state compiler flag matrix** — per-function flag overrides (`-fno-schedule-insns`, `-fno-schedule-insns2`, `-fno-elide-constructors`)
+- **5-state compiler flag matrix** — per-function flag overrides (`-fno-schedule-insns`, `-fno-schedule-insns2`, `-fno-elide-constructors`)
 
 ## What's Not Done
 
-- **~11,830 functions** still need matching (the other 58%)
-- **VERSION_DIFF functions** — functions with `mflr`-first prologues, leaf register allocation differences, and virtual dispatch (`blrl`) have codegen mismatches that no flag combination fixes
-- **Complex functions** — large functions (200B+) with control flow, vtable dispatch, floating-point math
-- **TU-inlined functions** — template methods (TArray::Construct, Copy, SetSize) that are inner labels within translation units, not standalone functions
+- **~11,463 functions** still need matching (the other 56%)
+- **VERSION_DIFF functions** — functions with `mflr`-first prologues, leaf register allocation differences, and branch layout mismatches
+- **~~Virtual dispatch (blrl)~~** — **SOLVED!** Proper C++ virtual class declarations generate correct blrl. Remaining challenge is surrounding game logic per-function
+- **Complex functions** — large functions (200B+) with control flow, floating-point math, GX rendering
+- **Class hierarchy reconstruction** — needed to fully exploit the blrl technique across all TUs
 - **PC port** — a prototype exists but is blocked until real decomp progress is further along
 
 ## Building
