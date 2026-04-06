@@ -1,96 +1,117 @@
 # Next Attack Plan — Session Starting Point
 
-**Last session:** 2026-04-05 — 6,771 / 20,508 matched (33.0%)
-**Remaining:** 13,737 functions
+**Last session:** 2026-04-06 — 8,678 / 20,508 matched (42.3%)
+**Remaining:** ~11,830 functions
 
 ## Quick Context for New Session
 
-The compiler is confirmed correct (all ProDG versions produce identical code). The toolchain works. What blocks remaining functions is per-function C++ accuracy — getting the exact variable declarations, cast patterns, and expression structure right so the register allocator matches.
+The auto-matcher cleared all 4-64B trivial functions. This session focused on DOL-only functions at 20-96B sizes using parallel agent workers. Key discovery: `stwu`-first prologue + `bl` calls = reliable match pattern. `mflr`-first prologue = VERSION_DIFF everywhere.
 
 ### What's Already Done (DON'T REPEAT)
-- All <=64B functions in asm_decomp — 100% cleared
-- All 4-8B goldmine functions — auto-matcher cleared them
-- All template families at 40-56B (dtors, factories, operators, wrappers, forwarding)
-- All 65-128B asm_decomp systems scanned for template families
-- Compiler flag investigation — `-fno-schedule-insns2` is the only useful addition
-- All 4 ProDG versions (v3.5, v3.7, v3.81, v3.93) produce identical code
+- All <=64B trivial functions — auto-matcher cleared them
+- ALL asm_decomp functions at ANY size — 100% cleared
+- All 4-8B goldmine functions — auto-matcher cleared
+- Template families at 40-56B (dtors, factories, operators, wrappers)
+- 40B: 37 matches (26 OpusWorker + 11 SonnetWorker) — all stwu-first exhausted
+- 44B: 10 matches — remaining are all mflr-first VERSION_DIFF
+- 48B: 69 matches (35 SonnetWorker2 + 17 OpusWorker + 17 OpusWorker) — ENgcTexture, PCTTarget, EMat4, null-field families
+- 52B: 17 matches (SonnetWorker) — null-check-forward 8-member, save-call-store 5-member
+- 56B: 21 matches (3 ESimsCam + 18 OpusWorker stb+nonsda family)
+- 60B: Hard — SDA globals, virtual dispatch, complex control flow
+- 64B: Confirmed mostly VERSION_DIFF
+- 68-96B: Confirmed dead — all leaf/mflr/blrl = VERSION_DIFF
+- Non-leaf constructors: 5 matched at 60-80B, leaf ctors = VERSION_DIFF
+- TArray methods (Construct/Copy/SetSize/operator=): TU-inlined, unmatchable standalone
+- Compiler flag investigation complete — 4-state matrix discovered
+- VERSION_DIFF files tested with all flag combos — most are register allocation (unfixable)
+- Reviewer audit: 75 bad files cleaned, proper header format enforced
 
-### Key Compiler Flags
-- Default: `-O2 -fno-elide-constructors -fno-schedule-insns2 -msdata=eabi -G 8`
-- Some functions need scheduling ENABLED: add `// FLAGS: -fno-elide-constructors` as first line
-- verify_match.sh reads `// FLAGS:` from each file to override defaults
+### Key Compiler Flags (4-state matrix)
+- **State 1 (default):** `-O2 -fno-elide-constructors -fno-schedule-insns2 -msdata=eabi -G 8`
+- **State 2 (scheduling enabled):** add `// FLAGS: -fno-elide-constructors` as first line
+- **State 3 (insns1 disabled):** add `// FLAGS: -fno-schedule-insns` as first line
+- **State 4 (both disabled):** add `// FLAGS: -fno-schedule-insns -fno-schedule-insns2` as first line
 
----
-
-## Attack Vector 1: Goldmine Per-Function Analysis (2,384 functions, HIGH PRIORITY)
-
-**What:** 2,384 functions at 8-64B from missing_functions_report.txt that the auto-matcher couldn't handle. These have conditional branches, if/else patterns, loops — too complex for auto-generation but still small enough to match manually.
-
-**How:**
-1. Run `tools/goldmine_matcher.py` first — it handles trivial patterns automatically
-2. For remaining "unknown" functions, extract with `tools/extract_function.py 0xADDR SIZE`
-3. Study the disassembly, write C++, verify with `tools/verify_match.sh`
-4. Try BOTH scheduling flag states on each function
-5. Functions WITH `bl` calls match better than leaf functions
-
-**Team allocation:** Best for Claude workers (Opus/Sonnet) who can analyze complex patterns. Kimi workers hit VERSION_DIFF too often on non-trivial functions.
-
-**Expected yield:** ~20-30% match rate = 500-700 new matches
-
----
-
-## Attack Vector 2: Extend Auto-Matcher Patterns (MEDIUM PRIORITY)
-
-**What:** The auto-matcher handles 16 patterns. More can be added:
-- Simple if/else: `cmpwi r3,0; beq .L1; [action]; .L1: blr`
-- Conditional return: `lwz r3,off(r3); cmpwi r3,0; bnelr; li r3,0; blr`
-- Loop with counter: `mtctr rN; .loop: [body]; bdnz .loop; blr`
-- Two-call chain: `bl func1; mr r4,r3; bl func2; blr`
-
-**How:** Extend `tools/goldmine_matcher.py` with these patterns, re-run against unknowns.
-
-**Expected yield:** 50-100 new matches per pattern added
+### Key Matching Rules (discovered this session)
+- **stwu-first prologue = matchable** — functions starting with `stwu r1, -X(r1)`
+- **mflr-first prologue = VERSION_DIFF** — functions starting with `mflr r0` before `stwu`
+- **bl calls = high match rate** — functions that call other functions match reliably
+- **blrl = VERSION_DIFF** — virtual dispatch through register = unfixable instruction reorder
+- **Leaf functions = mostly VERSION_DIFF** — register allocation differs for leaf functions
+- **Non-leaf constructors = matchable** — vtable store + bl to base class init
+- **Leaf constructors = VERSION_DIFF** — `mr r9,r3` codegen not replicated
+- **SDA globals:** `extern char varname[4]` forces r13-relative with -G 8
+- **Non-SDA globals:** `extern int varname[4]` forces lis+lwz
+- **Proper header required:** `// 0xADDRESS FuncName (SIZEb)` — files without get deleted
 
 ---
 
-## Attack Vector 3: VERSION_DIFF Recovery (40+ files, MEDIUM PRIORITY)
+## Attack Vector 1: Second Pass on Productive Sizes (HIGHEST PRIORITY)
 
-**What:** 40+ files in `src/wip/version_diff/` with correct C++ logic but wrong codegen. Some may match with:
-- Different C++ expression structure (reorder operations)
-- Different variable declarations (local vs inline)
-- Different cast chains
-- Per-file flag toggle
+**What:** 48B, 52B, 56B still have hundreds of unmatched functions. First pass got ~107 matches. Second/third passes can find more sub-families.
 
-**How:** For each file, try 3-4 C++ variants and both flag states. Systematic experimentation.
+**Remaining pools:**
+- 48B: ~95 remaining (69 matched of 164)
+- 52B: ~196 remaining (17 matched of 213)
+- 56B: ~208 remaining (21 matched of 229)
 
-**Expected yield:** ~25% recovery = 10 matches
+**How:** Same workflow — extract, filter for stwu-first + bl, group by pattern, crack one per family, blast.
 
----
-
-## Attack Vector 4: 65-128B Per-Function Deep RE (3,275 functions, LOWER PRIORITY)
-
-**What:** 3,275 unmatched 65-128B functions in asm_decomp. Template families exhausted. Remaining functions need:
-- Correct struct layouts (use headers in include/)
-- r11 vtable pattern filter (53% match rate on r11, ~0% on r3)
-- Per-function register pressure matching
-- Creative C++ restructuring
-
-**How:** OpusWorker proved 53% match rate by filtering for r11 vtable pattern. Apply same filter systematically across all remaining functions.
-
-**Expected yield:** ~15-20% match rate on r11 candidates = 200-400 new matches
+**Expected yield:** 30-60 more per size if new sub-families found
 
 ---
 
-## Attack Vector 5: 128B+ Tier (5,061 functions, FUTURE)
+## Attack Vector 2: Non-Leaf Constructor Sweep (HIGH PRIORITY)
 
-**What:** 5,061 unmatched functions at 128-512B. Confirmed hard — 0 matches from direct attempts.
+**What:** Constructors with bl calls (calling base class constructors or init methods) match reliably at any size. Only 5 matched so far.
 
-**How:** Needs either:
-- TU-based compilation approach (compile multiple functions together)
-- Deep per-function RE with full class layout understanding
-- Community help (decomp.me scratches, contributor PRs)
+**How:** Grep map for `ClassName::ClassName` symbols, filter for sizes 40-200B, extract and check for bl + stwu-first.
 
-**Expected yield:** Unknown — this is the hard frontier
+**Expected yield:** 20-50 matches
+
+---
+
+## Attack Vector 3: 60B Functions (MEDIUM — largest pool, hard)
+
+**What:** 241 unmatched — the single biggest pool. But Kmiworker2 found them hard (SDA globals, virtual dispatch, complex control flow).
+
+**How:** Highly selective filtering — only attempt stwu-first + bl-only (no blrl). May yield few matches.
+
+**Expected yield:** 5-20 matches (low hit rate expected)
+
+---
+
+## Attack Vector 4: Recover Deleted Files (MEDIUM)
+
+**What:** KimiWorker recovered 11 of 75 deleted files. There may be more recoverable from the git diff.
+
+**How:** `git show HEAD~3:PATH` for files deleted by reviewer, add proper headers, re-verify.
+
+**Expected yield:** 5-15 more recoveries
+
+---
+
+## Attack Vector 5: Extend Auto-Matcher (LOWER PRIORITY)
+
+**What:** goldmine_matcher.py handles 4-64B. Extend classifiers for 48-64B complex patterns found this session (null-check-forward, save-call-store, stb+nonsda).
+
+**How:** Add new pattern classifiers, run against DOL.
+
+**Expected yield:** 10-30 per new classifier
+
+---
+
+## What's Blocked (Don't Attempt)
+
+| Pattern | Why Blocked |
+|---------|-------------|
+| mflr-first prologue | VERSION_DIFF — no flag fixes this |
+| Leaf functions (any size) | Register allocation VERSION_DIFF |
+| blrl (virtual dispatch) | Instruction reordering VERSION_DIFF |
+| Leaf constructors | `mr r9,r3` codegen not replicated |
+| TArray::Construct/Copy/SetSize | TU-inlined (inner labels, not standalone) |
+| 64B functions | Confirmed mostly VERSION_DIFF |
+| 68-96B functions | Confirmed dead (all leaf/mflr/blrl) |
 
 ---
 
@@ -98,24 +119,24 @@ The compiler is confirmed correct (all ProDG versions produce identical code). T
 
 | Worker Type | Best For | Avoid |
 |-------------|----------|-------|
-| Opus (Claude) | Complex per-function analysis, auto-matcher development, pattern discovery | Simple repetitive tasks |
-| Sonnet (Claude) | Template blasting, medium complexity matching, systematic sweeps | Very complex single functions |
-| Kimi | Headers/struct RE, tooling, documentation, triage scans | Direct matching on 65B+ functions (VERSION_DIFF hit rate too high) |
-| Reviewer | Audit before commits, dedup monitoring, info board management | Matching work |
-| Researcher | Online searches, community outreach, doc lookup | Code writing |
+| Opus (Claude) | Sub-family cracking, complex per-function analysis, technique discovery | Simple repetitive tasks |
+| Sonnet (Claude) | Family blasting, pattern scanning, high-volume matching | Very complex single functions |
+| Kimi | Symbol lookup, recon, pattern decoding, file recovery | Direct matching on hard functions |
+| Reviewer | Audit, dedup, header format enforcement, quality gate | Matching work |
 
 ## Pre-Session Checklist
 
-1. Run `tools/goldmine_matcher.py` — auto-match any new trivial functions
-2. Check `git status` — ensure clean starting state
-3. Check `find src/matched/ -name "*.cpp" | wc -l` — verify count matches expected
-4. Review `src/wip/version_diff/` — any new ideas for recovery?
-5. Deploy workers on Attack Vector 1 first (highest ROI)
+1. Check `find src/matched/ -name "*.cpp" | wc -l` — should be ~8,678
+2. Run `git status` — make sure working tree is clean
+3. Deploy workers on Attack Vector 1 (second pass on 48B/52B/56B)
+4. Enforce proper header format: `// 0xADDRESS FuncName (SIZEb)`
+5. Run reviewer audit after each batch of matches
 
 ## Infrastructure Reminders
 
 - Pre-commit hook auto-verifies and auto-moves VERSION_DIFF
-- `// FLAGS: -fno-elide-constructors` overrides default flags per-file
+- `// FLAGS:` header overrides default flags per-file (4 states)
 - Dedup check before EVERY file: `find src/matched/ -name "*ADDRESS*"`
-- All workers MUST message MainGuy when done (standing order on info board)
 - VERSION_DIFF files go to `src/wip/version_diff/` — NEVER delete work
+- **GIT LOCK ISSUE:** Worker agents spawn `git status` that creates lock files. `rm -f .git/index.lock` before commits
+- missing_functions_report.txt is in the **PROJECT ROOT** (not docs/tracking/)
