@@ -185,6 +185,254 @@ def classify(addr, size, raw):
             f"int {name_safe}(void) {{ return tail_{addr:08X}(); }}\n"
         )
 
+    # ========== CONDITIONAL BRANCH PATTERNS ==========
+
+    # Helpers for generic cmpwi detection
+    def is_cmpwi_0(w):
+        """Check for cmpwi cr0, rN, 0. Returns rN or None."""
+        if (w & 0xFFE0FFFF) == 0x2C000000:  # cmpwi cr0, rN, 0
+            return (w >> 16) & 0x1F
+        return None
+
+    BNELR = 0x4C820020
+    BEQLR = 0x4D820020
+    BLR = 0x4E800020
+
+    # Pattern: cmpwi r3,0; bnelr/beqlr; li r3,N; blr (16B conditional return)
+    if n == 4 and words[3] == BLR:
+        if words[0] == 0x2C030000:  # cmpwi r3, 0
+            op2, rd2, ra2, imm2, _ = decode_insn(words[2])
+            if op2 == 14 and rd2 == 3 and ra2 == 0:  # li r3, N
+                if words[1] == BNELR:
+                    return "cond_ret_16B", (
+                        f"int {name_safe}(int param) {{\n"
+                        f"    if (param) return param;\n"
+                        f"    return {imm2};\n"
+                        f"}}\n"
+                    )
+                if words[1] == BEQLR:
+                    return "cond_ret_beq_16B", (
+                        f"int {name_safe}(int param) {{\n"
+                        f"    if (!param) return 0;\n"
+                        f"    return {imm2};\n"
+                        f"}}\n"
+                    )
+
+    # Pattern: or. r3,r3,r3 (mr. r3,r3); beqlr; stw r3,off(r13); blr (16B SDA conditional store)
+    if n == 4 and words[0] == 0x7C631B79 and words[1] == BEQLR and words[3] == BLR:
+        op2, rd2, ra2, off2, _ = decode_insn(words[2])
+        if op2 == 36 and rd2 == 3 and ra2 == 13:  # stw r3, off(r13) — SDA store
+            return "cond_sda_store_16B", (
+                f"extern int g_{addr:08X};\n"
+                f"void {name_safe}(int val) {{\n"
+                f"    if (!val) return;\n"
+                f"    g_{addr:08X} = val;\n"
+                f"}}\n"
+            )
+
+    # Pattern: lwz r3,off(r3); cmpwi r3,0; bnelr/beqlr; li r3,N; blr (20B field conditional)
+    if n == 5 and words[4] == BLR:
+        op0, rd0, ra0, off0, _ = decode_insn(words[0])
+        if op0 == 32 and rd0 == 3 and ra0 == 3:  # lwz r3, off(r3)
+            if words[1] == 0x2C030000:  # cmpwi r3, 0
+                op3, rd3, ra3, imm3, _ = decode_insn(words[3])
+                if op3 == 14 and rd3 == 3 and ra3 == 0:  # li r3, N
+                    struct_pad = f"char pad[0x{off0 & 0xFFFF:02X}];" if off0 > 0 else ""
+                    if words[2] == BNELR:
+                        return "cond_field_ret_20B", (
+                            f"struct S_{addr:08X} {{ {struct_pad} int m_val; }};\n"
+                            f"int {name_safe}(S_{addr:08X}* self) {{\n"
+                            f"    int x = self->m_val;\n"
+                            f"    if (x) return x;\n"
+                            f"    return {imm3};\n"
+                            f"}}\n"
+                        )
+                    if words[2] == BEQLR:
+                        return "cond_field_beq_20B", (
+                            f"struct S_{addr:08X} {{ {struct_pad} int m_val; }};\n"
+                            f"int {name_safe}(S_{addr:08X}* self) {{\n"
+                            f"    if (!self->m_val) return 0;\n"
+                            f"    return {imm3};\n"
+                            f"}}\n"
+                        )
+
+    # Pattern: cmpwi r3,0; beq/bne +12; li r3,X; blr; li r3,Y; blr (24B if/else)
+    if n == 6 and words[0] == 0x2C030000:  # cmpwi r3, 0
+        is_beq = (words[1] & 0xFFFF0003) == 0x41820000
+        is_bne = (words[1] & 0xFFFF0003) == 0x40820000
+        if is_beq or is_bne:
+            bd = words[1] & 0xFFFC
+            if bd >= 0x8000: bd -= 0x10000
+            if bd == 12 and words[3] == BLR and words[5] == BLR:
+                op2, rd2, ra2, imm2, _ = decode_insn(words[2])
+                op4, rd4, ra4, imm4, _ = decode_insn(words[4])
+                if (op2 == 14 and rd2 == 3 and ra2 == 0 and
+                    op4 == 14 and rd4 == 3 and ra4 == 0):
+                    if is_beq:
+                        return "if_else_24B", (
+                            f"int {name_safe}(int param) {{\n"
+                            f"    if (param) return {imm2};\n"
+                            f"    return {imm4};\n"
+                            f"}}\n"
+                        )
+                    else:
+                        return "if_else_bne_24B", (
+                            f"int {name_safe}(int param) {{\n"
+                            f"    if (!param) return {imm2};\n"
+                            f"    return {imm4};\n"
+                            f"}}\n"
+                        )
+
+    # Pattern: SDA flag clear (24B) — lwz rX,off(r13); cmpwi rX,0; beqlr; li rY,val; stw rY,off(r13); blr
+    # Stores back to same SDA base — ~18 functions (huge template family)
+    if n == 6 and words[5] == BLR:
+        op0, rd0, ra0, off0, _ = decode_insn(words[0])
+        cmp_reg = is_cmpwi_0(words[1])
+        if op0 == 32 and cmp_reg is not None and cmp_reg == rd0 and words[2] == BEQLR:
+            op3, rd3, ra3, imm3, _ = decode_insn(words[3])
+            op4, rd4, ra4, off4, _ = decode_insn(words[4])
+            if (op3 == 14 and ra3 == 0 and  # li rY, val
+                op4 == 36 and rd4 == rd3 and ra4 == ra0):  # stw rY, off2(rBase) — SAME base as lwz
+                off0u = off0 & 0xFFFF
+                off4u = off4 & 0xFFFF
+                if ra0 == 13:  # SDA flag clear
+                    return "sda_flag_clear_24B", (
+                        f"extern int g_{addr:08X};\n"
+                        f"void {name_safe}(void) {{\n"
+                        f"    if (!g_{addr:08X}) return;\n"
+                        f"    g_{addr:08X} = {imm3};\n"
+                        f"}}\n"
+                    )
+                elif ra0 == 3:  # this->field check + store to different field of same object
+                    pad1 = f"char pad1[0x{min(off0u,off4u):02X}];" if min(off0u,off4u) > 0 else ""
+                    if off0u != off4u:
+                        return "null_check_self_store_24B", (
+                            f"struct S_{addr:08X} {{ {pad1} int m_check; char gap[0x{abs(off4u-off0u)-4:02X}]; int m_field; }};\n"
+                            f"void {name_safe}(S_{addr:08X} *self) {{\n"
+                            f"    if (!self->m_check) return;\n"
+                            f"    self->m_field = {imm3};\n"
+                            f"}}\n"
+                        )
+
+    # Pattern: null-check + store to deref'd pointer (24B)
+    # lwz rN,off(rM); cmpwi rN,0; beqlr; li rD,val; stw rD,off2(rN); blr
+    if n == 6 and words[5] == BLR:
+        op0, rd0, ra0, off0, _ = decode_insn(words[0])
+        cmp_reg = is_cmpwi_0(words[1])
+        if op0 == 32 and cmp_reg is not None and cmp_reg == rd0 and words[2] == BEQLR:
+            op3, rd3, ra3, imm3, _ = decode_insn(words[3])
+            op4, rd4, ra4, off4, _ = decode_insn(words[4])
+            if (op3 == 14 and ra3 == 0 and  # li rD, val
+                op4 == 36 and rd4 == rd3 and ra4 == rd0 and ra4 != ra0):  # stw rD, off2(rN) — deref pointer
+                off0u = off0 & 0xFFFF
+                off4u = off4 & 0xFFFF
+                if ra0 == 3:  # this->m_ptr
+                    return "null_check_store_24B", (
+                        f"struct Inner_{addr:08X} {{ char pad[0x{off4u:02X}]; int m_field; }};\n"
+                        f"struct S_{addr:08X} {{ char pad[0x{off0u:02X}]; Inner_{addr:08X} *m_ptr; }};\n"
+                        f"void {name_safe}(S_{addr:08X} *self) {{\n"
+                        f"    Inner_{addr:08X} *p = self->m_ptr;\n"
+                        f"    if (!p) return;\n"
+                        f"    p->m_field = {imm3};\n"
+                        f"}}\n"
+                    )
+                elif ra0 == 13:  # SDA global pointer
+                    return "null_check_sda_store_24B", (
+                        f"struct Target_{addr:08X} {{ char pad[0x{off4u:02X}]; int m_field; }};\n"
+                        f"extern Target_{addr:08X} *g_ptr_{addr:08X};\n"
+                        f"void {name_safe}(void) {{\n"
+                        f"    Target_{addr:08X} *p = g_ptr_{addr:08X};\n"
+                        f"    if (!p) return;\n"
+                        f"    p->m_field = {imm3};\n"
+                        f"}}\n"
+                    )
+
+    # Pattern: null-check + deref return (24B) — multiple instruction orderings
+    # Variant A: lwz rN,off(rM); cmpwi rN,0; li r3,DEFAULT; beqlr; lwz r3,off2(rN); blr
+    # Variant B: lwz rN,off(rM); li r3,DEFAULT; cmpwi rN,0; beqlr; lwz r3,off2(rN); blr
+    # Variant C: lwz rN,off(rM); cmpwi rN,0; beqlr; lwz rD,off2(rN); stw rD,off3(rN); blr  (field copy)
+    if n == 6 and words[5] == BLR:
+        op0, rd0, ra0, off0, _ = decode_insn(words[0])
+        if op0 == 32:  # first insn is lwz
+            # Check variant A: lwz, cmpwi, li r3 VAL, beqlr, lwz r3, blr
+            cmp1 = is_cmpwi_0(words[1])
+            if cmp1 is not None and cmp1 == rd0 and words[3] == BEQLR:
+                op2, rd2, ra2, imm2, _ = decode_insn(words[2])
+                if op2 == 14 and rd2 == 3 and ra2 == 0:  # li r3, DEFAULT
+                    op4, rd4, ra4, off4, _ = decode_insn(words[4])
+                    if op4 == 32 and rd4 == 3 and ra4 == rd0:  # lwz r3, off2(rN)
+                        off0u = off0 & 0xFFFF
+                        off4u = off4 & 0xFFFF
+                        if ra0 == 3:
+                            return "null_deref_ret_24B", (
+                                f"struct Inner_{addr:08X} {{ char pad[0x{off4u:02X}]; int m_val; }};\n"
+                                f"struct S_{addr:08X} {{ char pad[0x{off0u:02X}]; Inner_{addr:08X} *m_ptr; }};\n"
+                                f"int {name_safe}(S_{addr:08X} *self) {{\n"
+                                f"    Inner_{addr:08X} *p = self->m_ptr;\n"
+                                f"    if (!p) return {imm2};\n"
+                                f"    return p->m_val;\n"
+                                f"}}\n"
+                            )
+                        elif ra0 == 13:
+                            return "null_deref_sda_ret_24B", (
+                                f"struct Inner_{addr:08X} {{ char pad[0x{off4u:02X}]; int m_val; }};\n"
+                                f"extern Inner_{addr:08X} *g_ptr_{addr:08X};\n"
+                                f"int {name_safe}(void) {{\n"
+                                f"    Inner_{addr:08X} *p = g_ptr_{addr:08X};\n"
+                                f"    if (!p) return {imm2};\n"
+                                f"    return p->m_val;\n"
+                                f"}}\n"
+                            )
+            # Check variant B: lwz, li r3 VAL, cmpwi, beqlr, lwz r3, blr
+            cmp2 = is_cmpwi_0(words[2])
+            if cmp2 is not None and cmp2 == rd0 and words[3] == BEQLR:
+                op1, rd1, ra1, imm1, _ = decode_insn(words[1])
+                if op1 == 14 and rd1 == 3 and ra1 == 0:  # li r3, DEFAULT
+                    op4, rd4, ra4, off4, _ = decode_insn(words[4])
+                    if op4 == 32 and rd4 == 3 and ra4 == rd0:  # lwz r3, off2(rN)
+                        off0u = off0 & 0xFFFF
+                        off4u = off4 & 0xFFFF
+                        if ra0 == 3:
+                            return "null_deref_ret_24B", (
+                                f"struct Inner_{addr:08X} {{ char pad[0x{off4u:02X}]; int m_val; }};\n"
+                                f"struct S_{addr:08X} {{ char pad[0x{off0u:02X}]; Inner_{addr:08X} *m_ptr; }};\n"
+                                f"int {name_safe}(S_{addr:08X} *self) {{\n"
+                                f"    Inner_{addr:08X} *p = self->m_ptr;\n"
+                                f"    if (!p) return {imm1};\n"
+                                f"    return p->m_val;\n"
+                                f"}}\n"
+                            )
+                        elif ra0 == 13:
+                            return "null_deref_sda_ret_24B", (
+                                f"struct Inner_{addr:08X} {{ char pad[0x{off4u:02X}]; int m_val; }};\n"
+                                f"extern Inner_{addr:08X} *g_ptr_{addr:08X};\n"
+                                f"int {name_safe}(void) {{\n"
+                                f"    Inner_{addr:08X} *p = g_ptr_{addr:08X};\n"
+                                f"    if (!p) return {imm1};\n"
+                                f"    return p->m_val;\n"
+                                f"}}\n"
+                            )
+            # Variant C: lwz rN, cmpwi rN, beqlr, lwz rD, stw rD, blr (field copy)
+            cmp1c = is_cmpwi_0(words[1])
+            if cmp1c is not None and cmp1c == rd0 and words[2] == BEQLR:
+                op3, rd3, ra3, off3, _ = decode_insn(words[3])
+                op4, rd4, ra4, off4, _ = decode_insn(words[4])
+                if (op3 == 32 and ra3 == rd0 and  # lwz rD, off2(rN)
+                    op4 == 36 and rd4 == rd3 and ra4 == rd0):  # stw rD, off3(rN)
+                    off0u = off0 & 0xFFFF
+                    off3u = off3 & 0xFFFF
+                    off4u = off4 & 0xFFFF
+                    if ra0 == 3:
+                        return "null_field_copy_24B", (
+                            f"struct Inner_{addr:08X} {{ char p1[0x{min(off3u,off4u):02X}]; int m_src; char p2[0x{abs(off4u-off3u)-4:02X}]; int m_dst; }};\n"
+                            f"struct S_{addr:08X} {{ char pad[0x{off0u:02X}]; Inner_{addr:08X} *m_ptr; }};\n"
+                            f"void {name_safe}(S_{addr:08X} *self) {{\n"
+                            f"    Inner_{addr:08X} *p = self->m_ptr;\n"
+                            f"    if (!p) return;\n"
+                            f"    p->m_dst = p->m_src;\n"
+                            f"}}\n"
+                        )
+
     # ========== PROLOGUE-BASED PATTERNS (stwu functions) ==========
 
     def is_prologue(w):
@@ -269,6 +517,43 @@ def classify(addr, size, raw):
                         f"int {name_safe}(void *self{pass_decls}) {{ return wrap_{addr:08X}(self{pass_args}, {imm_b}); }}\n"
                     )
 
+            # lwz rN,off(r13) + bl — load SDA global as param and call
+            if len(body) == 2 and is_bl(body[1]):
+                op_b, rd_b, ra_b, off_b, _ = decode_insn(body[0])
+                if op_b == 32 and ra_b == 13 and 3 <= rd_b <= 10:  # lwz rN, off(r13)
+                    if rd_b == 3:
+                        return "sda_load_call", (
+                            f"extern char g_{addr:08X}[4];\n"
+                            f"extern int wrap_{addr:08X}(int);\n"
+                            f"int {name_safe}(void) {{ return wrap_{addr:08X}(*(int*)g_{addr:08X}); }}\n"
+                        )
+                    else:
+                        n_pass = rd_b - 3  # params r3..rN-1 pass through
+                        pass_decls = ", ".join(f"int a{i}" for i in range(n_pass))
+                        pass_args = ", ".join(f"a{i}" for i in range(n_pass))
+                        ext_args = ", ".join(["int"] * (rd_b - 2))
+                        return "sda_extra_param_call", (
+                            f"extern char g_{addr:08X}[4];\n"
+                            f"extern int wrap_{addr:08X}({ext_args});\n"
+                            f"int {name_safe}({pass_decls}) {{ return wrap_{addr:08X}({pass_args}, *(int*)g_{addr:08X}); }}\n"
+                        )
+
+            # lwz rN,off(r3) + bl where rN != r3 — load field as extra param
+            if len(body) == 2 and is_bl(body[1]):
+                op_b, rd_b, ra_b, off_b, _ = decode_insn(body[0])
+                if op_b == 32 and ra_b == 3 and rd_b != 3 and 4 <= rd_b <= 10:
+                    off_u = off_b & 0xFFFF
+                    n_pass = rd_b - 4  # params r4..rN-1 pass through
+                    pass_decls = "".join(f", int a{i}" for i in range(n_pass))
+                    pass_args = "".join(f", a{i}" for i in range(n_pass))
+                    ext_params = ", ".join(["void *"] + ["int"] * (rd_b - 3))
+                    struct_pad = f"char pad[0x{off_u:02X}];" if off_b > 0 else ""
+                    return "field_extra_param_call", (
+                        f"struct S_{addr:08X} {{ {struct_pad} int m_val; }};\n"
+                        f"extern int wrap_{addr:08X}({ext_params});\n"
+                        f"int {name_safe}(S_{addr:08X} *self{pass_decls}) {{ return wrap_{addr:08X}(self{pass_args}, self->m_val); }}\n"
+                    )
+
             # addi r3,r3,OFF + bl — adjust this pointer and forward
             if len(body) == 2 and is_bl(body[1]):
                 op_b = (body[0] >> 26) & 0x3F
@@ -301,6 +586,16 @@ def classify(addr, size, raw):
                         f"extern void call_{addr:08X}(void *);\n"
                         f"int {name_safe}(void *self) {{ call_{addr:08X}(self); return {imm_b}; }}\n"
                     )
+
+            # Two-call chain: bl + bl (return func2(func1(self)))
+            if len(body) == 2 and is_bl(body[0]) and is_bl(body[1]):
+                return "two_call_chain", (
+                    f"extern int inner1_{addr:08X}(void*);\n"
+                    f"extern int inner2_{addr:08X}(int);\n"
+                    f"int {name_safe}(void *self) {{\n"
+                    f"    return inner2_{addr:08X}(inner1_{addr:08X}(self));\n"
+                    f"}}\n"
+                )
 
             # Wrapper with param swap: mr r5,r4; mr r4,r3; lis+addi r3; bl
             # or: mr rN,r3; bl; use result
@@ -373,6 +668,143 @@ def classify(addr, size, raw):
                             f"extern int tgt_{addr:08X}({tgt_params});\n"
                             f"int {name_safe}({', '.join(wrapper_p)}) {{ return tgt_{addr:08X}({', '.join(call_args)}); }}\n"
                         )
+
+            # Two-call chain with mr: bl + mr rN,r3 + bl
+            if len(body) == 3 and is_bl(body[0]) and is_bl(body[2]):
+                mr_pair = is_mr(body[1])
+                if mr_pair and mr_pair[1] == 3:  # mr rN, r3 (save func1 result)
+                    dst = mr_pair[0]
+                    if dst == 4:
+                        # mr r4,r3: func2 gets (func1_result, func1_result)
+                        return "two_call_mr_chain", (
+                            f"extern int inner1_{addr:08X}(void*);\n"
+                            f"extern int inner2_{addr:08X}(int, int);\n"
+                            f"int {name_safe}(void *self) {{\n"
+                            f"    int x = inner1_{addr:08X}(self);\n"
+                            f"    return inner2_{addr:08X}(x, x);\n"
+                            f"}}\n"
+                        )
+                    elif 5 <= dst <= 10:
+                        # mr rN,r3: result goes to higher param register
+                        n_args = dst - 3 + 1
+                        tgt_params = ", ".join(["int"] * n_args)
+                        call_args = ["x"] + ["0"] * (dst - 4) + ["x"]
+                        return "two_call_mr_chain", (
+                            f"extern int inner1_{addr:08X}(void*);\n"
+                            f"extern int inner2_{addr:08X}({tgt_params});\n"
+                            f"int {name_safe}(void *self) {{\n"
+                            f"    int x = inner1_{addr:08X}(self);\n"
+                            f"    return inner2_{addr:08X}({', '.join(call_args)});\n"
+                            f"}}\n"
+                        )
+
+            # ========== NEW BODY PATTERNS (round 2) ==========
+
+            # body=3: li rN,val + bl + bl (constant param → two-call chain)
+            if len(body) == 3 and is_bl(body[1]) and is_bl(body[2]):
+                op_b0, rd_b0, ra_b0, imm_b0, _ = decode_insn(body[0])
+                if op_b0 == 14 and ra_b0 == 0 and rd_b0 == 3:  # li r3, val
+                    return "li_two_call_chain", (
+                        f"extern int inner1_{addr:08X}(int);\n"
+                        f"extern int inner2_{addr:08X}(int);\n"
+                        f"int {name_safe}(void) {{\n"
+                        f"    return inner2_{addr:08X}(inner1_{addr:08X}({imm_b0}));\n"
+                        f"}}\n"
+                    )
+
+            # body=3: addi r3,r13,off + li rN,val + bl (SDA addr + param + call)
+            if len(body) == 3 and is_bl(body[2]):
+                op_b0 = (body[0] >> 26) & 0x3F
+                rd_b0 = (body[0] >> 21) & 0x1F
+                ra_b0 = (body[0] >> 16) & 0x1F
+                op_b1 = (body[1] >> 26) & 0x3F
+                ra_b1 = (body[1] >> 16) & 0x1F
+                if op_b0 == 14 and rd_b0 == 3 and ra_b0 == 13:  # addi r3, r13, off (SDA)
+                    if op_b1 == 14 and ra_b1 == 0:  # li rN, val
+                        li_rd1 = (body[1] >> 21) & 0x1F
+                        li_val1 = body[1] & 0xFFFF
+                        if li_val1 >= 0x8000: li_val1 -= 0x10000
+                        if li_rd1 == 4:
+                            return "sda_addr_param_call", (
+                                f"extern char g_{addr:08X}[4];\n"
+                                f"extern int func_{addr:08X}(void *, int);\n"
+                                f"int {name_safe}(void) {{\n"
+                                f"    return func_{addr:08X}(g_{addr:08X}, {li_val1});\n"
+                                f"}}\n"
+                            )
+
+            # body=3: mr r4,r3 + lwz r3,off(r4) + bl (deref with self pass-through)
+            if len(body) == 3 and is_bl(body[2]):
+                mr_b0 = is_mr(body[0])
+                if mr_b0 and mr_b0[1] == 3 and mr_b0[0] == 4:  # mr r4, r3
+                    op_b1, rd_b1, ra_b1, off_b1, _ = decode_insn(body[1])
+                    if op_b1 == 32 and rd_b1 == 3 and ra_b1 == 4:  # lwz r3, off(r4)
+                        off_u = off_b1 & 0xFFFF
+                        struct_pad = f"char pad[0x{off_u:02X}];" if off_b1 > 0 else ""
+                        return "deref_self_call", (
+                            f"struct S_{addr:08X} {{ {struct_pad} void *m_inner; }};\n"
+                            f"extern int func_{addr:08X}(void *, S_{addr:08X} *);\n"
+                            f"int {name_safe}(S_{addr:08X} *self) {{\n"
+                            f"    return func_{addr:08X}(self->m_inner, self);\n"
+                            f"}}\n"
+                        )
+
+            # body=4: mr r0,r3 + mr r3,r4 + mr r4,r0 + bl (param swap via r0)
+            if len(body) == 4 and is_bl(body[3]):
+                mr_b0 = is_mr(body[0])
+                mr_b1 = is_mr(body[1])
+                mr_b2 = is_mr(body[2])
+                if (mr_b0 and mr_b1 and mr_b2 and
+                    mr_b0[1] == 3 and mr_b0[0] == 0 and  # mr r0, r3
+                    mr_b1[1] == 4 and mr_b1[0] == 3 and  # mr r3, r4
+                    mr_b2[1] == 0 and mr_b2[0] == 4):    # mr r4, r0
+                    return "param_swap_call", (
+                        f"extern int func_{addr:08X}(int, int);\n"
+                        f"int {name_safe}(int a, int b) {{\n"
+                        f"    return func_{addr:08X}(b, a);\n"
+                        f"}}\n"
+                    )
+
+            # body=4: li rA,val1 + li rB,val2 + ori rC,rD,mask + bl (generalized global ctor/dtor)
+            if len(body) == 4 and is_bl(body[3]):
+                op_b0 = (body[0] >> 26) & 0x3F
+                ra_b0 = (body[0] >> 16) & 0x1F
+                op_b1 = (body[1] >> 26) & 0x3F
+                ra_b1 = (body[1] >> 16) & 0x1F
+                op_b2 = (body[2] >> 26) & 0x3F
+                if op_b0 == 14 and ra_b0 == 0 and op_b1 == 14 and ra_b1 == 0 and op_b2 == 24:
+                    # li + li + ori + bl — setup params with ori for large unsigned values
+                    rd_b0 = (body[0] >> 21) & 0x1F
+                    val_b0 = body[0] & 0xFFFF
+                    if val_b0 >= 0x8000: val_b0 -= 0x10000
+                    rd_b1 = (body[1] >> 21) & 0x1F
+                    val_b1 = body[1] & 0xFFFF
+                    if val_b1 >= 0x8000: val_b1 -= 0x10000
+                    ori_ra = (body[2] >> 16) & 0x1F
+                    ori_rs = (body[2] >> 21) & 0x1F
+                    ori_mask = body[2] & 0xFFFF
+                    if ori_rs == rd_b0 and ori_ra == rd_b0:  # ori extends first li
+                        combined = (val_b0 & 0xFFFF) | ori_mask  # NOT sign-extended for ori
+                        if rd_b0 == 4 and rd_b1 == 3:
+                            return "global_init_44B", (
+                                f"// FLAGS: -fno-elide-constructors\n"
+                                f"extern void cleanup_{addr:08X}(int a, unsigned int b);\n"
+                                f"\n"
+                                f"void global_init_{addr:08X}(void) {{\n"
+                                f"    cleanup_{addr:08X}({val_b1}, {combined}u);\n"
+                                f"}}\n"
+                            )
+                    elif ori_rs == rd_b1 and ori_ra == rd_b1:  # ori extends second li
+                        combined = (val_b1 & 0xFFFF) | ori_mask
+                        if rd_b1 == 4 and rd_b0 == 3:
+                            return "global_init_44B", (
+                                f"// FLAGS: -fno-elide-constructors\n"
+                                f"extern void cleanup_{addr:08X}(int a, unsigned int b);\n"
+                                f"\n"
+                                f"void global_init_{addr:08X}(void) {{\n"
+                                f"    cleanup_{addr:08X}({val_b0}, {combined}u);\n"
+                                f"}}\n"
+                            )
 
     # ========== PHASE 2: 40-56B TEMPLATE PATTERNS ==========
 
@@ -488,6 +920,71 @@ def classify(addr, size, raw):
                 f"void op_delete_{addr:08X}(void *ptr) {{\n"
                 f"    void *heap = getDelHeap_{addr:08X}();\n"
                 f"    heapDel_{addr:08X}(heap, ptr);\n"
+                f"}}\n"
+            )
+
+    # --- Pattern: 52B field-load-call-store (frame16 r30) ---
+    # body: mr rN,r3 + lwz r3,off(rN) + bl + stw r3,off2(rN) where rN is r30 or r31
+    body = check_frame16_r30(words)
+    if body is not None and len(body) == 4:
+        mr0 = is_mr(body[0])
+        if mr0 and mr0[1] == 3 and mr0[0] in (30, 31):
+            save_reg = mr0[0]
+            op1, rd1, ra1, off1, _ = decode_insn(body[1])
+            op3, rd3, ra3, off3, _ = decode_insn(body[3])
+            if (op1 == 32 and rd1 == 3 and ra1 == save_reg and  # lwz r3, off(rN)
+                is_bl(body[2]) and
+                op3 == 36 and rd3 == 3 and ra3 == save_reg):  # stw r3, off2(rN)
+                off_in = off1 if off1 >= 0 else off1 + 0x10000
+                off_out = off3 if off3 >= 0 else off3 + 0x10000
+                if off_in == off_out:
+                    pad = f"char pad[0x{off_in:02X}];" if off_in > 0 else ""
+                    return "field_call_store_52B", (
+                        f"struct S_{addr:08X} {{ {pad} int m_val; }};\n"
+                        f"extern int call_{addr:08X}(int);\n"
+                        f"void {name_safe}(S_{addr:08X} *self) {{\n"
+                        f"    self->m_val = call_{addr:08X}(self->m_val);\n"
+                        f"}}\n"
+                    )
+                else:
+                    min_off = min(off_in, off_out)
+                    max_off = max(off_in, off_out)
+                    pad1 = f"char pad1[0x{min_off:02X}];" if min_off > 0 else ""
+                    gap = max_off - min_off - 4
+                    pad2 = f" char pad2[0x{gap:02X}];" if gap > 0 else ""
+                    if off_in < off_out:
+                        return "field_call_store_52B", (
+                            f"struct S_{addr:08X} {{ {pad1} int m_in;{pad2} int m_out; }};\n"
+                            f"extern int call_{addr:08X}(int);\n"
+                            f"void {name_safe}(S_{addr:08X} *self) {{\n"
+                            f"    self->m_out = call_{addr:08X}(self->m_in);\n"
+                            f"}}\n"
+                        )
+                    else:
+                        return "field_call_store_52B", (
+                            f"struct S_{addr:08X} {{ {pad1} int m_out;{pad2} int m_in; }};\n"
+                            f"extern int call_{addr:08X}(int);\n"
+                            f"void {name_safe}(S_{addr:08X} *self) {{\n"
+                            f"    self->m_out = call_{addr:08X}(self->m_in);\n"
+                            f"}}\n"
+                        )
+
+    # --- Pattern: 52B two-call-self (frame16 r30) ---
+    # body: mr rN,r3 + bl + mr r3,rN + bl — call two funcs with same self
+    body = check_frame16_r30(words)
+    if body is not None and len(body) == 4:
+        mr0 = is_mr(body[0])
+        mr2 = is_mr(body[2])
+        if (mr0 and mr0[1] == 3 and mr0[0] in (30, 31) and
+            is_bl(body[1]) and
+            mr2 and mr2[0] == 3 and mr2[1] == mr0[0] and
+            is_bl(body[3])):
+            return "two_call_self_52B", (
+                f"extern void call1_{addr:08X}(void*);\n"
+                f"extern int call2_{addr:08X}(void*);\n"
+                f"int {name_safe}(void *self) {{\n"
+                f"    call1_{addr:08X}(self);\n"
+                f"    return call2_{addr:08X}(self);\n"
                 f"}}\n"
             )
 
@@ -741,8 +1238,13 @@ def main():
 
     stats = {"matched": 0, "failed": 0, "retry_matched": 0, "unknown": 0}
 
-    # Flag variants for retry: if default flags fail, try with scheduling enabled
-    ALT_FLAGS = "// FLAGS: -fno-elide-constructors"
+    # 4-state flag matrix: try all scheduling flag combinations
+    FLAG_STATES = [
+        "",                                                   # state 1: default (verify_match.sh adds -fno-schedule-insns2)
+        "// FLAGS: -fno-elide-constructors\n",                # state 2: scheduling enabled (no -fno-schedule-insns2)
+        "// FLAGS: -fno-schedule-insns\n",                    # state 3: -fno-schedule-insns (insns1 disabled)
+        "// FLAGS: -fno-schedule-insns -fno-schedule-insns2\n", # state 4: both disabled
+    ]
 
     for addr, size, name in functions:
         raw = dol_read(addr, size)
@@ -775,37 +1277,27 @@ def main():
             output = result.stdout + result.stderr
             return "MATCH" in output and "MISMATCH" not in output
 
-        # First try: as-is
-        if try_verify(cpp, filepath):
-            stats["matched"] += 1
-            if stats["matched"] % 20 == 0:
-                print(f"  ... {stats['matched']} matches so far")
-            continue
+        # Strip any existing FLAGS from cpp for clean retry
+        base_cpp = cpp
+        for fs in FLAG_STATES:
+            base_cpp = base_cpp.replace(fs, "")
 
-        # Second try: if no FLAGS comment yet, add scheduling-enabled flags
-        if ALT_FLAGS not in cpp:
-            alt_cpp = ALT_FLAGS + "\n" + cpp
-            if try_verify(alt_cpp, filepath):
+        found = False
+        for flag in FLAG_STATES:
+            test_cpp = flag + base_cpp
+            if try_verify(test_cpp, filepath):
                 stats["matched"] += 1
-                stats["retry_matched"] += 1
+                if flag:
+                    stats["retry_matched"] += 1
                 if stats["matched"] % 20 == 0:
                     print(f"  ... {stats['matched']} matches so far")
-                continue
+                found = True
+                break
 
-        # Third try: if FLAGS was in cpp, try without it (use defaults)
-        if ALT_FLAGS in cpp:
-            no_flag_cpp = cpp.replace(ALT_FLAGS + "\n", "")
-            if try_verify(no_flag_cpp, filepath):
-                stats["matched"] += 1
-                stats["retry_matched"] += 1
-                if stats["matched"] % 20 == 0:
-                    print(f"  ... {stats['matched']} matches so far")
-                continue
-
-        # All attempts failed
-        stats["failed"] += 1
-        if os.path.exists(filepath):
-            os.remove(filepath)
+        if not found:
+            stats["failed"] += 1
+            if os.path.exists(filepath):
+                os.remove(filepath)
 
     print(f"\n=== RESULTS ===")
     print(f"Patterns found:")
