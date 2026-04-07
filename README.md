@@ -4,18 +4,21 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**~44% decompiled.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
+**~45% decompiled (file count) / ~42-44% truly verified.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
 
 | Metric | Value |
 |--------|-------|
-| **Functions matched** | **~9,045 / 20,508 (44.1%)** |
-| Functions remaining | ~11,463 |
+| **Files in `src/matched/`** | **9,321 / 20,508 (45.4%)** |
+| **Verified-clean estimate** | **~8,400-8,900 (~42-44%)** — full audit pending |
+| Functions remaining | ~11,200 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit |
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
+
+**Honest count caveat:** A 2026-04-07 audit discovered a workflow gap where files could land in `src/matched/` without ever passing `verify_match.sh` (a tool bug + no pre-commit gate). Spot-checks of one bulk-add commit showed a 30% orphan rate. The "files in src/matched/" number above is the file count; the "verified-clean estimate" is what we believe will survive a full audit. The verify tool has been fixed (commit `6062cc25`) and a bulk verifier (`tools/audit_matched_dir.py`) has been authored to identify remaining orphans in a future cleanup pass.
 
 ## What's Done
 
@@ -24,19 +27,27 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 - **Struct layouts** — 643 classes with documented field offsets from assembly analysis
 - **Trivial functions** — ~1,650 matched via automated batch script (getters, setters, empty functions)
 - **Auto-matcher** — ~4,500 matched via goldmine_matcher.py (16 classifiers, 4-state flag matrix, DOL scanning)
-- **AI agent matches** — ~2,900+ matched via parallel Claude Code + Kimi agents (template family blasting, pattern discovery, TU compilation, blrl breakthrough)
+- **AI agent matches** — ~3,000+ matched via parallel Claude Code + Kimi agents (template family blasting, pattern discovery, TU compilation, blrl breakthrough)
+- **CBMemberTranslator family COMPLETE** — all **334/334 thunks** matched via the SN ProDG PMF ABI crack (single-day breakthrough, 2026-04-07). Five non-obvious keys: DVD-not-release map, free function thunk, local var CSE, 0-arg unified PMF type, `-fno-schedule-insns` alone.
+- **SDA externals technique** — globals wrapped in a `>= 8 byte` struct force the compiler to emit `lis/lfs` (or `lis/lwz`) absolute addressing instead of `@sda21`, matching the DOL pattern. Unblocks any function where DOL uses absolute addressing for globals.
 - **blrl virtual dispatch SOLVED** — proper C++ virtual class declarations generate correct `blrl` codegen, unlocking thousands of previously-blocked functions
 - **TU compilation workflow** — `tu_match.py --combine` compiles whole translation units for SDA and register allocation context
-- **Verification tools** — `verify_match.sh` for end-to-end compile-and-compare
+- **Verification tools** — `verify_match.sh` for end-to-end compile-and-compare. **R_PPC_REL14/REL24 relocation handling fix** (2026-04-07) eliminated a long-standing false-positive vector.
+- **Bulk audit infrastructure** — `tools/audit_matched_dir.py` (orphan detection) and `tools/audit_pmf_safety.py` (per-relocation opcode preservation check)
 - **5-state compiler flag matrix** — per-function flag overrides (`-fno-schedule-insns`, `-fno-schedule-insns2`, `-fno-elide-constructors`)
+- **DVD vs release map gotcha confirmed** — the shipped DOL is from `cm3-build22`; address lookups MUST use `u2_ngc_release_dvd.map`. The release map (`cm3-build25`) has different addresses and will produce false leads.
 
 ## What's Not Done
 
-- **~11,463 functions** still need matching (the other 56%)
-- **VERSION_DIFF functions** — functions with `mflr`-first prologues, leaf register allocation differences, and branch layout mismatches
-- **~~Virtual dispatch (blrl)~~** — **SOLVED!** Proper C++ virtual class declarations generate correct blrl. Remaining challenge is surrounding game logic per-function
-- **Complex functions** — large functions (200B+) with control flow, floating-point math, GX rendering
-- **Class hierarchy reconstruction** — needed to fully exploit the blrl technique across all TUs
+- **~11,200 functions** still need matching (the other ~55%)
+- **`[no source]` functions (~1,926)** — exist in the DOL but have no asm_decomp counterpart, so the TU sweep workflow can't extract them. Require direct DOL extraction (`extract_function.py`) and manual RE. This is the next-phase productivity track.
+- **Inline-asm-stub functions (~10,913 with source)** — many `src/asm_decomp/` files contain functions with `__asm__` placeholders rather than real C++. Each one needs the inline-asm replaced with hand-written matching C++.
+- **Instruction scheduling / register allocation differences** — affects an estimated 100-200 functions; the same logic compiles to different GPR choices or instruction order than the DOL. Deep compiler heuristic, hard to fix without per-function tuning.
+- **Float register allocation (f0-f13)** — variable declaration order trick doesn't work for floats. ~unknown count.
+- **Multi-blrl vtable aliasing** — 2+ virtual calls in one function still problematic; the compiler re-loads the vtable.
+- **Orphan cleanup** — estimated 200-800 stale "matched" files don't actually match (committed via the bypass vectors discovered 2026-04-07). Bulk audit + cleanup pending.
+- **`count_matched.py` validation** — currently counts files, not verified matches. Needs to integrate `audit_matched_dir.py` so the project's reported progress matches reality.
+- **Pre-commit verification gate** — patch in flight to reject `src/matched/` commits whose files don't pass the (now-fixed) `verify_match.sh`.
 - **PC port** — a prototype exists but is blocked until real decomp progress is further along
 
 ## Building
