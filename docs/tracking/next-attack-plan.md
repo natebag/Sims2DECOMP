@@ -1,213 +1,241 @@
 # Next Attack Plan — Session Starting Point
 
-**Last session:** 2026-04-06 — ~9,045 / 20,508 matched (~44.1%)
-**Session yield:** +164 verified matches (template blasting + TU compilation + blrl breakthrough)
-**Remaining:** ~11,463 functions
+**Last session:** 2026-04-06/07 — ~9,192 / 20,508 matched (~44.8%)
+**Session yield:** ~300 verified matches, 52 commits, 8 new techniques
+**Remaining:** ~11,316 functions
 
 ## Quick Context for New Session
 
-MASSIVE session: three phases. Phase 1 cleared template families (TArray, Recon*, static_init = 112 matches). Phase 2 pivoted to TU compilation (21 matches, proved workflow). Phase 3 discovered blrl virtual dispatch solution (31+ matches, unlocks thousands more).
+EPIC session. 3 waves of techniques unlocked functions across the entire codebase:
+- **Wave 1:** Template family blasting (TArray, Recon*, static_init)
+- **Wave 2:** TU compilation + blrl breakthrough
+- **Wave 3:** Variable declaration order + sub-object pointer techniques
 
-### THE BREAKTHROUGH: blrl Virtual Dispatch SOLVED
+The remaining ~11,000 functions are NOT hopeless. Every session we discover new techniques that unlock chunks of previously-blocked functions. Keep iterating.
 
-**The #1 blocker (60-90% of remaining functions) has a solution.**
+---
 
-The SN compiler generates correct `blrl` virtual dispatch natively when you use proper C++ virtual class declarations. We were doing it wrong — using manual function pointers instead of actual virtual methods.
+## 🔑 PROVEN TECHNIQUES (all verified this session)
 
-**The technique:**
-1. Find `lha rX, OFFSET(r9)` near blrl → entry = `(OFFSET - 8) / 8`
-2. Declare class with N+1 virtual methods:
+### 1. blrl Virtual Dispatch (UNLOCKS HUNDREDS)
+Declare proper C++ class with virtual methods in vtable order:
 ```cpp
 struct Base {
     virtual void V0();  // entry 0 (offsets 8/12)
     virtual void V1();  // entry 1 (offsets 16/20)
-    // ... up to entry needed
+    // ... declare up to entry needed
 };
+void func(Base* self) { self->V1(); }  // correct blrl codegen
 ```
-3. Call normally: `self->VN()` → compiler generates correct blrl
-4. Use `// FLAGS: -fno-elide-constructors`
+**Identifying vtable entry:** Find `lha rX, OFFSET(r9)` near blrl → entry = `(OFFSET - 8) / 8`
 
 **SN vtable-at-end layout:**
+- +0: type_info ptr
+- +8: entry0 this-adj (lha)
+- +12: entry0 func ptr
+- +16: entry1 this-adj
+- +20: entry1 func ptr
+
+Use `// FLAGS: -fno-elide-constructors`
+
+### 2. Explicit retptr for Struct-Return (FIXES r30/r31 SWAP)
+```cpp
+// OLD (broken)
+struct Foo func(int key);
+
+// NEW (matches)
+void* func(int* retptr, int key);
 ```
-+0: type_info ptr (4B)
-+4: padding (4B)
-+8: entry0_this_adj (2B via lha, sign-extended)
-+10: padding (2B)
-+12: entry0_func_ptr (4B)
-+16: entry1_this_adj
-+20: entry1_func_ptr
-...
+Applies to functions returning strings, structs, or complex objects with register allocation issues.
+
+### 3. -fno-schedule-insns (STORE ORDERING FIX)
+Add `// FLAGS: -fno-schedule-insns` as first line to disable scheduling pass 1. Fixes store-ordering VERSION_DIFF.
+
+### 4. short Types Force extsh (SIGN EXTENSION)
+When DOL uses `extsh` for loop counters or return values, declare those variables as `short` instead of `int`. GoalUnlock::GetUnlockTotal proven.
+
+### 5. Anti-CSE with Separate Externs (PREVENT COMMON SUBEXPRESSION)
+When DOL re-loads a global each call instead of caching, use DIFFERENT extern names for same-base globals to prevent compiler CSE.
+
+### 6. Varargs `...` Generates crclr (BREAKTHROUGH)
+When DOL has `crclr 4*cr1+eq` before a `bl` call:
+```cpp
+extern "C" void func(void*, ...);  // The ... forces crclr!
+```
+Proven on CDirtyXml::getFirstAttribute/getNextAttribute, INVTarget::SetPriceCheatString.
+
+### 7. Sub-Object Pointer (FORCES INTERMEDIATE REGISTER) ⭐
+When DOL uses r9 intermediate for field accesses:
+```cpp
+SubObj* sub = &self->subObj;  // Forces r9 = &self->subObj
+sub->method();
+```
+Proven on TextItem/MenuItem/ButtonItem/TextBaseItem::Startup, ISimsObjectModel::AnimStart*.
+
+### 8. Variable Declaration Order Controls Registers ⭐⭐⭐ GAME-CHANGER
+**GCC 2.95 assigns callee-saved registers in DECLARATION ORDER:**
+- First declared local → r31
+- Second declared local → r30
+- Third declared local → r29
+
+When a function fails on r29↔r30 swap, REORDER your local variable declarations to match the DOL's register usage. Proven on ActionQueue::ctor.
+
+**Limitation:** Works for int/pointer locals (r29-r31). Does NOT work for float registers (f0-f13).
+
+---
+
+## 🎯 PRIORITY TARGETS FOR NEXT SESSION
+
+### Priority 1: THE BIG UNLOCK — CBMemberTranslator (335 functions!)
+**Still blocked on PMF (pointer-to-member-function) ABI.**
+
+The SN GCC 2.95 member function pointer layout:
+- +0: this-adjustment (short)
+- +2: vtable offset (short, -1 = non-virtual)
+- +4: field_4 (int)
+- +8: object pointer (int)
+
+Two-stage this-adjustment: (1) from vtable entry via lha, (2) from functor delta. Multi-inheritance support.
+
+**Research needed:**
+- Find original EA CBFunctor template source (Rich Hickey 1994 is the basis)
+- Reverse-engineer the exact PMF byte layout from DOL thunks
+- Test template patterns that make GCC 2.95 generate the matching dispatch
+
+**If cracked:** 335 functions match in one blast. Biggest single unlock available.
+
+### Priority 2: Mass Near-Miss Retry with Variable Declaration Order
+Every function that failed with register allocation (r29↔r30 swap) is now a CANDIDATE. Systematically retry:
+1. Read src/wip/version_diff/ files with reg alloc notes
+2. Identify which vars the DOL puts in r29/r30/r31
+3. Reorder C++ declarations to match
+4. Re-verify
+
+Expected yield: 50-200 more matches.
+
+### Priority 3: Productive TU Sweeps (Untapped Pools)
+
+| TU | Matched | Remaining | Rate |
+|----|---------|-----------|------|
+| **person** | 71/216 | 145 | 32% |
+| **object** | 115+/238 | ~120 | 48% |
+| **iobject** | 90+/189 | ~95 | 47% |
+| **wrapper** | 170+/257 | ~85 | 66% |
+| **eroom** | 57/149 | 92 | 38% |
+| **e_rlevel** | 53/135 | 82 | 39% |
+| **nghresfile** | 54/133 | 79 | 40% |
+| **e_instance** | 67/97 | 30 | 69% |
+| **dirtyxml** | 50+/67 | ~15 | 75% |
+
+Apply ALL 8 techniques systematically to each TU.
+
+### Priority 4: Animation/Math System Deep RE
+- **e_animcontroller** (7+/103, ~95 remaining) — apply subobj ptr + var order
+- **sanimator2** (10+/159, ~150 remaining) — lots of leaf functions but some non-leaf
+- **e_mat4** (44+/83, ~38 remaining) — matrix operations
+- **e_graphics** (57+/93, ~35 remaining) — graphics helpers
+
+### Priority 5: 5 TUs at 100% — Maintain These
+Already fully decompiled:
+- caslistener (12/12)
+- quickresfile (37/37)
+- isiminstance (49/49)
+- socialmodeinteractor (21/21)
+- cameramanager (8/8)
+
+Don't let any regressions slip in.
+
+---
+
+## 🚧 KNOWN SYSTEMIC BLOCKERS (avoid wasting time)
+
+| Blocker | Affects | Workaround |
+|---------|---------|------------|
+| Multi-blrl vtable aliasing | 2+ virtual calls in one function | None known — compiler re-loads vtable |
+| Leaf function register allocation | All leaf functions | Try variable declaration order (sometimes works) |
+| Float register allocation (f0/f13) | Float-heavy functions | None known |
+| Load-store interleaving | Leaf setters | -fno-schedule-insns helps some |
+| Branch layout ordering | Error paths | None known |
+| Hardcoded DATA addresses (lis+addi) | Global data pointers | Compiler generates lis+ori instead |
+| bdnz delay loops | Hardware cache flushes | None known — unmatchable without inline asm |
+| PMF ABI mismatch | CBMemberTranslator (335) | Research needed |
+| SDA addressing differences | Functions using r13-relative | `extern char g[4]` for SDA globals |
+
+---
+
+## 🧑‍🤝‍🧑 TEAM DEPLOYMENT STRATEGY
+
+### Agent Roles (proven effective)
+
+| Agent | Role | Strengths |
+|-------|------|-----------|
+| **OpusWorker** | Deep RE + technique discovery | Complex analysis, finding new techniques |
+| **SonnetWorker** | TU matching, cross-TU sweeps | Fast iteration, good pattern recognition |
+| **SonnetWorker2** | TU matching, blast specialist | Template family blasting |
+| **KimiGuy** | TU scouting, target hunting | Fast recon, finding productive TUs |
+| **KimiWorker** | Triage, quick verification | Leaf vs non-leaf checks |
+| **Kmiworker2** | Backup grinder | VERSION_DIFF retests |
+| **Researcher** | Deep research, docs | Class hierarchies, ABI analysis |
+| **TUScout** | Full TU scans | Mass enumeration, ranking |
+| **Reviewer** | Quality gate | Audit, verify, cleanup |
+
+### Rules That Work
+1. **Always have 10+ tasks queued** — workers should NEVER be idle waiting for tasks
+2. **Kimi scouts → Claude crackers** — let Kimi find targets, Claude matches them
+3. **Commit every 3-8 matches** — keep the git history flowing
+4. **Verify before save** — mandatory, no exceptions
+5. **Mass broadcasts for breakthroughs** — everyone applies new techniques immediately
+6. **Proactive check-ins** — check agent status BEFORE they message you idle
+
+### Task Format That Works
+```
+[TECHNIQUE] TU_name — X/Y matched, Z to crack (description)
+Brief task description with specific targets and expected patterns.
+`python tools/tu_match.py --combine TU_NAME`
+Edit TU file directly. Verify before saving. Header format required.
 ```
 
-**Proven on:** GoalUnlock::DoStream, ESim::RefreshSkin, 14x ENgcTexture virtual trampolines, 6x SimsMemCardWrap CardSys interface, GameData::GetSelectedPlayerFamily
+---
 
-**Limitation:** Works reliably for single-blrl functions. Multi-blrl (2+ virtual calls in one function) may have scheduling issues with interleaved vtable setup.
+## 📋 PRE-SESSION CHECKLIST
 
-### What's Already Done (DON'T REPEAT)
+1. `find src/matched/ -name "*.cpp" | wc -l` — should be ~9,192+
+2. `git status` — verify clean working tree
+3. `git pull` — make sure you have latest
+4. Regenerate `missing_functions_report.txt` (likely stale)
+5. Deploy TUScout on full TU scan (background)
+6. Deploy Researcher on CBMemberTranslator PMF research
+7. Post initial wave of 10+ tasks to the board
+8. Enforce verify-before-write workflow
+9. Use `tu_match.py --combine` for ALL TU work
+10. Reviewer always on rolling audit
 
-**Individual matching (exhausted):**
-- All <=64B trivial functions — auto-matcher cleared
-- ALL asm_decomp functions at ANY size — 100% cleared
-- All template families: TArray (127/165), Recon* (33/33), static_init (16/16), AptValue (11)
-- 40B: 59 matches — OpusWorker verified "exhausted" claim was WRONG, found 38 more
-- 44B: 15 matches
-- 48B: 69 matches — pool tapped out
-- 52B: 18 matches
-- 56B: 21 matches
-- 60B: 2 matches (13% hit rate)
-- STL templates: 92/92 already matched
-- All Recon* templates exhausted (Save/Load/Stream/PtrVector)
+## 🏗️ INFRASTRUCTURE REMINDERS
 
-**TU compilation (proven but slow):**
-- caslistener: 12/12 (validated workflow)
-- catalogresource: 8/10 (+5 this session)
-- movieplayer: 13/15 (+3)
-- careers: 12/23 (+4)
-- simhead: 7/11 (+2)
-- skincompositor: 5/14 (+1 fix)
-- e_ngctexture: 20/23 (+15 via blrl)
-- goalunlock: 5/14 (+2 via blrl)
-- simsmemcardwrap: 15/35 (+6 via blrl CardSys)
-- actionqueuehud: 6/32 (+1)
-- frameeffects: 7/26 (+2)
-- esim: 53/84 (+1 via blrl)
-- wallmanipulator: 22/58 (+1)
+- Pre-commit hook auto-verifies and auto-moves VERSION_DIFF to `src/wip/version_diff/`
+- `// FLAGS: XXX` header overrides default flags per-file
+- Dedup check before EVERY file: `find src/matched/ -name "*ADDRESS*"`
+- **GIT LOCK:** Workers spawn `git status` — `rm -f .git/index.lock` before commits
+- **HEADER FORMAT:** `// 0xADDRESS FuncName (SIZEb)` — mandatory first line
+- missing_functions_report.txt in **PROJECT ROOT**
+- goldmine_matcher.py extended with 4 classifiers from session
 
-**Confirmed dead ends:**
-- Leaf functions (any size) — register allocation VERSION_DIFF
-- mflr-first prologue — VERSION_DIFF
-- blrl with 2+ virtual calls — scheduling VERSION_DIFF (sometimes)
-- Hardcoded DATA addresses (lis+addi) — compiler generates lis+ori
-- Register shuffling (or rX,rY,rY) — compiler optimizes away
-- 152B-236B template families — SDA + data addresses
-- -fno-elide-constructors outside Recon* — narrow fix
-- Branch layout (error path inline vs end) — systemic compiler difference
-- Load grouping (lwz;lwz;stw;stw vs lwz;stw;lwz;stw) — scheduling difference
+## 📊 SESSION METRICS TO TRACK
 
-### All Discovered Techniques
-
-| Technique | What It Does | Where It Works |
-|-----------|-------------|----------------|
-| Template family blast | Match 1 → blast all instantiations | TArray, Recon*, static_init (100% rate) |
-| blrl virtual dispatch | Declare C++ virtual class → correct blrl | Single-blrl functions (proven) |
-| TU compilation (--combine) | Compile whole TU for context | SDA globals, some register allocation |
-| SDA extern | `extern char g[4]` → r13-relative | All SDA globals |
-| -fno-elide-constructors | Prevents RVO | Recon* stack struct patterns |
-| -fno-schedule-insns | Disables insn scheduling pass 1 | Store ordering VERSION_DIFF |
-| `short` return/loop types | Forces `extsh` sign extension | GoalUnlock, counter loops |
-| Magic division constants | 0xCCCCCCCD for /20, 0x2AAAAAAB for %24 | Careers arithmetic |
-| Local variable for callee-save | `char* obj = g_obj` forces r30 save | static_init family |
-| NonVirtualBase wrapper | `struct NVB { char data[N]; }` for vtable offset | Vtable-at-end constructors |
-| Verify before write | verify_match.sh BEFORE saving | ALL matches (71% failure without) |
+- Starting file count: ______
+- Target: +300-500 matches
+- Commits: aim for 30+
+- New techniques: document anything discovered
+- TUs hitting 100%: celebrate each one
 
 ---
 
-## Attack Vector 1: blrl Single-Function Sweep (HIGHEST PRIORITY)
+## 🚀 WHAT'S NEXT AFTER THIS SESSION
 
-**What:** 118 single-blrl candidates identified across all TUs. Each needs individual RE but the virtual dispatch technique is proven.
+If we crack CBMemberTranslator (335 functions), we jump from 44.8% to ~46.4% in one shot.
+If multi-blrl vtable hoisting gets solved, another 5-10% unlock.
+Without new technique discoveries, expect 2-3% per session from grinding.
 
-**Best targets (interface pattern = multiple functions same class):**
-- SimsMemCardWrap CardSys (6 matched, more possible)
-- Any TU with Manager/System/Service patterns
+**Goal for next session:** Hit 46% (9,400+ matches). Focus on CBMemberTranslator research and mass near-miss retries with variable declaration order.
 
-**How:** For each TU, identify single-blrl functions, declare virtual class, crack.
-
-**Expected yield:** 30-60 matches across all TUs
-
----
-
-## Attack Vector 2: TU-by-TU Deep RE (MEDIUM — the long game)
-
-**What:** Pick TUs with high existing match rates. Replace asm stubs with real C++. TU context helps with SDA and some register allocation.
-
-**Best TU targets (most unmatched, some matches for context):**
-- wallmanipulator: 22/58 (36 remaining)
-- actionmenu: 14/34 (20 remaining)
-- actionqueuehud: 6/32 (26 remaining)
-- cascostumes: 5/34 (29 remaining)
-- casgenetics: 7/29 (22 remaining)
-- simsmemcardwrap: 15/35 (20 remaining)
-
-**How:** TU-by-TU, function-by-function. Start with smallest stwu+bl functions.
-
-**Expected yield:** 2-6 per TU for quick functions, more with deep RE
-
----
-
-## Attack Vector 3: Class Hierarchy Reconstruction (HIGH — enables blrl at scale)
-
-**What:** Build vtable maps for major classes. Once we know the vtable layout, ALL virtual dispatch in that class becomes matchable.
-
-**How:**
-1. Parse vtable addresses from DOL
-2. Map virtual function names to vtable entries
-3. Declare class hierarchies in TU files
-4. All blrl functions using that class become matchable
-
-**Priority classes:** ESim, GoalUnlock, CardSys, ActionQueue, CAS system
-
-**Expected yield:** 50-200 per major class fully reconstructed
-
----
-
-## Attack Vector 4: Auto-matcher Expansion (LOWER)
-
-**What:** Add new classifiers to goldmine_matcher.py for patterns discovered this session.
-
-**New classifiers to add:**
-- blrl single-dispatch (with virtual class template)
-- ReconSave/Load pattern
-- static_init pattern
-- Magic division constants
-- CardSys interface pattern
-
-**Expected yield:** 10-30 per new classifier
-
----
-
-## What's Blocked (Don't Attempt)
-
-| Pattern | Why Blocked |
-|---------|-------------|
-| Leaf functions (any size) | Register allocation VERSION_DIFF |
-| mflr-first prologue | VERSION_DIFF |
-| Multi-blrl (2+ virtual calls) | Scheduling VERSION_DIFF (sometimes) |
-| Hardcoded DATA addresses (lis+addi) | Compiler generates lis+ori |
-| Branch layout differences | Error path inline vs at end |
-| Load grouping (lwz;lwz vs lwz;stw) | Scheduling difference |
-| Complex rendering (GX API) | 288B-2168B, needs deep RE |
-| bdnz delay loops | Unmatchable without inline asm |
-
----
-
-## Team Deployment Guide
-
-| Worker Type | Best For | Avoid |
-|-------------|----------|-------|
-| Opus (Claude) | blrl class reconstruction, deep per-function analysis, technique discovery | Simple leaf triage |
-| Sonnet (Claude) | TU-level matching, blrl application, template blasting | Very complex single functions |
-| Kimi | Quick leaf/non-leaf triage, symbol lookup, vtable recon | Complex blrl class reconstruction |
-| Researcher (Kimi) | Vtable mapping, class hierarchy analysis, TU scanning | Code writing |
-| Reviewer | Audit, dedup, cleanup, quality gate | Matching work |
-
-## Pre-Session Checklist
-
-1. Check `find src/matched/ -name "*.cpp" | wc -l` — should be ~9,045+
-2. Run `git status` — make sure working tree is clean
-3. Regenerate missing_functions_report.txt (stale from this session)
-4. Deploy Researcher on class hierarchy reconstruction (Attack Vector 3)
-5. Deploy Opus/Sonnet on blrl single-function sweep (Attack Vector 1)
-6. Deploy Kimi on TU triage (which TUs have single-blrl candidates?)
-7. Enforce verify-before-write workflow
-8. Use tu_match.py --combine for ALL TU work
-
-## Infrastructure Reminders
-
-- Pre-commit hook auto-verifies and auto-moves VERSION_DIFF
-- `// FLAGS:` header overrides default flags per-file (5 states)
-- Dedup check before EVERY file
-- VERSION_DIFF files go to `src/wip/version_diff/`
-- **GIT LOCK ISSUE:** Worker agents create lock files. `rm -f .git/index.lock` before commits
-- **VERIFY BEFORE WRITE:** mandatory (71% failure without)
-- **blrl technique:** declare virtual class → call self->VN() → correct codegen
-- missing_functions_report.txt in **PROJECT ROOT** — may need regeneration
+The road to 100% is clear. Every session compounds the techniques. Keep grinding.
