@@ -120,52 +120,111 @@ for i in range(7):
         break
 ")
 
-# Step 4: Get relocation offsets to mask
-RELOC_OFFSETS=$($OBJDUMP -r "$OBJ" 2>/dev/null | awk '/^[0-9a-f]+ /{print "0x"$1}' | tr '\n' ' ')
+# Step 4: Get relocations with type and target (offset, type, target)
+# Format: "offset|type|target" (pipe-separated, one per line)
+RELOC_DATA=$($OBJDUMP -r "$OBJ" 2>/dev/null | awk '/^[0-9a-f]+ /{print $1"|"$2"|"$3}')
 
-# Step 4b: Mask relocation bytes in both strings
+# Step 4b: Compare with relocation-aware logic
 COMPILED_TRIMMED="${COMPILED_BYTES:0:$(($SIZE * 2))}"
 
 PYTHON2="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
 RESULT=$($PYTHON2 -c "
-import sys
+import sys, re
 dol = '$DOL_BYTES'
 comp = '$COMPILED_TRIMMED'
-relocs_str = '$RELOC_OFFSETS'.strip()
+reloc_lines = '''$RELOC_DATA'''.strip().split('\n')
 if len(dol) != len(comp):
     print('SIZE_MISMATCH')
     print('DOL length: %d, Compiled length: %d' % (len(dol), len(comp)))
     sys.exit(0)
-# Parse relocation offsets
-reloc_bytes = set()
-if relocs_str:
-    for r in relocs_str.split():
-        off = int(r, 16)
-        # Each relocation is a 16-bit field (2 bytes) at the given offset
-        # The offset points to the start of the instruction (4 bytes)
-        # For R_PPC_ADDR16_HA and R_PPC_ADDR16_LO, mask last 2 bytes of instruction
-        reloc_bytes.add(off + 2)
-        reloc_bytes.add(off + 3)
-        # For R_PPC_REL24 (branch), mask 3 bytes (bits 6-29)
-        reloc_bytes.add(off + 0)
-        reloc_bytes.add(off + 1)
-# Mask relocations
-dol_masked = list(dol)
-comp_masked = list(comp)
-for b in reloc_bytes:
-    h = b * 2
-    if h + 1 < len(dol_masked):
-        dol_masked[h] = 'X'
-        dol_masked[h+1] = 'X'
-        comp_masked[h] = 'X'
-        comp_masked[h+1] = 'X'
-dol_m = ''.join(dol_masked)
-comp_m = ''.join(comp_masked)
+
+# Parse relocations: list of (offset, type, target_str)
+relocs = []
+for line in reloc_lines:
+    if not line.strip() or '|' not in line: continue
+    parts = line.split('|')
+    if len(parts) < 3: continue
+    off = int(parts[0], 16)
+    rtype = parts[1].strip()
+    target = parts[2].strip()
+    relocs.append((off, rtype, target))
+
+def hex_to_bytes(h):
+    return bytes(int(h[i:i+2], 16) for i in range(0, len(h), 2))
+def bytes_to_hex(b):
+    return ''.join('%02x' % x for x in b)
+
+dol_b = list(hex_to_bytes(dol))
+comp_b = list(hex_to_bytes(comp))
+
+# For each relocation, decide:
+# 1. LOCAL branch (.text+OFFSET): substitute expected displacement into compiled, then compare bytes normally
+# 2. EXTERNAL symbol: mask the relevant bits in BOTH (we cannot resolve)
+mask = [False] * len(dol_b)
+
+for off, rtype, target in relocs:
+    is_local = target.startswith('.text')
+    # PPC ELF relocation offsets:
+    #   REL14, REL24, EMB_SDA21: offset = instruction start (4 bytes)
+    #   ADDR16_HA, ADDR16_LO:    offset = the 16-bit field (instruction + 2)
+    if is_local and rtype in ('R_PPC_REL14', 'R_PPC_REL24'):
+        # LOCAL branch: substitute the expected displacement and compare normally
+        m = re.match(r'\.text\+0x([0-9a-fA-F]+)', target)
+        if not m: continue
+        tgt_off = int(m.group(1), 16)
+        disp = tgt_off - off  # post-link PC-relative displacement
+        instr = (comp_b[off]<<24)|(comp_b[off+1]<<16)|(comp_b[off+2]<<8)|comp_b[off+3]
+        if rtype == 'R_PPC_REL14':
+            new = (instr & 0xFFFF0003) | (disp & 0xFFFC)
+        else:  # R_PPC_REL24
+            new = (instr & 0xFC000003) | (disp & 0x03FFFFFC)
+        comp_b[off]   = (new>>24) & 0xFF
+        comp_b[off+1] = (new>>16) & 0xFF
+        comp_b[off+2] = (new>>8) & 0xFF
+        comp_b[off+3] = new & 0xFF
+    elif rtype in ('R_PPC_ADDR16_HA', 'R_PPC_ADDR16_LO'):
+        # External 16-bit immediate field: mask the 2 bytes at the relocation offset
+        mask[off]   = True
+        mask[off+1] = True
+    elif rtype == 'R_PPC_EMB_SDA21':
+        # 21-bit SDA load/store: mask the entire 4-byte instruction
+        # (lower 21 bits hold the rA/D field which the linker patches)
+        # The opcode (top 6 bits) stays the same, but to keep things simple,
+        # mask all 4 bytes — false positives on opcode are unlikely.
+        mask[off]   = True
+        mask[off+1] = True
+        mask[off+2] = True
+        mask[off+3] = True
+    elif rtype == 'R_PPC_REL24':
+        # External 24-bit branch (bl <extern>): mask all 4 bytes
+        mask[off]   = True
+        mask[off+1] = True
+        mask[off+2] = True
+        mask[off+3] = True
+    elif rtype == 'R_PPC_REL14':
+        # External 14-bit branch (rare): mask 16-bit displacement field at instr+2
+        mask[off+2] = True
+        mask[off+3] = True
+    else:
+        # Unknown relocation type — be safe and mask 4 bytes
+        mask[off]   = True
+        mask[off+1] = True
+        mask[off+2] = True
+        mask[off+3] = True
+
+# Apply mask
+for i in range(len(dol_b)):
+    if mask[i]:
+        dol_b[i] = 0xCC
+        comp_b[i] = 0xCC
+
+dol_m = bytes_to_hex(bytes(dol_b))
+comp_m = bytes_to_hex(bytes(comp_b))
+
 if dol_m == comp_m:
     print('MATCH')
 else:
     print('MISMATCH')
-    # Show differences
     for i in range(0, len(dol), 8):
         d = dol[i:i+8]
         c = comp[i:i+8]
@@ -178,7 +237,8 @@ else:
 echo ""
 echo "DOL bytes:      $DOL_BYTES"
 echo "Compiled bytes: $COMPILED_TRIMMED"
-echo "Relocations:    $RELOC_OFFSETS"
+echo "Relocations:"
+echo "$RELOC_DATA" | sed 's/^/  /'
 echo ""
 
 if echo "$RESULT" | grep -q "^MATCH$"; then
