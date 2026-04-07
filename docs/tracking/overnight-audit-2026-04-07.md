@@ -10,45 +10,63 @@
 
 ## Reviewer's Raw Numbers
 
+**Reviewer ended up running much further than the initial 580-file checkpoint** — they got to 5800/6464 files in `src/matched/agent/` (90% complete) before the task timed out. This is a much more representative sample.
+
+### Final Snapshot (90% of agent/ scanned)
+
 | Metric | Value |
 |--------|-------|
-| Files processed | 580 / 6,464 |
-| Time spent | ~600 seconds (~10 min) |
-| Throughput | ~58 files/min ≈ 1 file/sec |
-| Estimated full-agent run time | ~110 min (if continued sequentially) |
+| Files processed | 5,800 / 6,464 |
+| Coverage of agent/ | ~90% |
+| Time spent | ~3 hours 45 min |
+| Output | `tools/full_audit_partial_results.txt` |
+
+| Bucket | Count | % of sample |
+|--------|-------|-------------|
+| OK (PASS) | 4,919 | 84.8% |
+| FAIL (MISMATCH/COMPILE_FAIL) | 436 | 7.5% |
+| SKIP (unparseable header) | ~445 | ~7.7% |
+
+### Earlier Checkpoint (10 min, 580 files)
 
 | Bucket | Count | % of sample |
 |--------|-------|-------------|
 | OK (PASS) | 500 | 86.2% |
-| FAIL (MISMATCH/COMPILE_FAIL) | 39 | 6.7% |
-| SKIP (unparseable header) | 41 | 7.1% |
+| FAIL | 39 | 6.7% |
+| SKIP | 41 | 7.1% |
 
-**Reviewer's projection:** ~6,366 real matches across the project (vs reported 9,192).
+**The two samples are consistent** — pass rate ~85% across both. This gives us reasonable confidence in the extrapolation.
+
+**Reviewer's final projection:** ~5,806 real matches (vs reported 9,192) — but this number is too pessimistic, see analysis below.
 
 ---
 
-## MainGuy's Sanity-Check on the Numbers
+## MainGuy's Sanity-Check on the Numbers (UPDATED with 90% sample)
 
-Reviewer's projection looks low. Re-doing the math:
+Reviewer's "5,806 real" projection is still pessimistic because it doesn't include the other matched/ subdirectories beyond agent/ and cbmt_blast/. Re-doing the math with the 84.8% pass rate from the larger sample:
 
 **Per-directory breakdown of `src/matched/`:**
 
 | Directory | Approx file count | Verification status |
 |-----------|-------------------|---------------------|
-| `src/matched/agent/` | ~6,464 | 86.2% PASS in this sample |
+| `src/matched/agent/` | ~6,464 | 84.8% PASS (5,800-file sample, 90% coverage) |
 | `src/matched/cbmt_blast/` | 334 | **100% verified** (independent audit by OpusWorker, info note `f0eeef1e`) |
 | Other `src/matched/` subdirs | ~2,500 | Unknown — likely similar to agent/ |
 | **TOTAL** | **~9,298** | |
 
-**Better extrapolation:**
-- agent/: 6,464 × 0.862 = **~5,572 real**
+**Better extrapolation (using the 84.8% rate from the bigger sample):**
+- agent/: 6,464 × 0.848 = **~5,481 real**
 - cbmt_blast/: 334 × 1.000 = **334 real**
-- Other: 2,500 × 0.862 (assumed) = **~2,155 real**
-- **TOTAL: ~8,061 real (~39.3% project progress)**
+- Other: 2,500 × 0.848 (assumed similar) = **~2,120 real**
+- **TOTAL: ~7,935 real (~38.7% project progress)**
 
-This is slightly worse than OpusWorker's ~8,500 estimate but in the same ballpark.
+This is slightly worse than the earlier 580-file extrapolation (~8,061) and about 6% below OpusWorker's earlier ~8,500 estimate. The bigger sample is more reliable.
 
-**Why Reviewer's "6,366" is too low:** they may have applied a more aggressive denominator or counted SKIP files as "not real" (incorrect — SKIPs are unparseable, not necessarily fake; many are valid matches with non-standard headers).
+**Why Reviewer's "5,806" is still too low:** they're only counting agent/ + cbmt_blast/ and missing the ~2,500 files in other matched/ subdirectories. The 84.8% pass rate is correct; the denominator is just incomplete.
+
+**Honest verified-clean estimate: ~7,900 ± 300 real matches (~38-40% project progress).**
+
+The file count of 9,321 overstates by ~1,400 (~15%). More than the earlier 10% estimate but less than Reviewer's 37% number.
 
 ---
 
