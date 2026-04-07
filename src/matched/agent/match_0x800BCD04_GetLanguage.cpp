@@ -1,5 +1,7 @@
-/* GetLanguage(short) at 0x800BCD04 (8B) */
+// 0x800BCD04 GetLanguage (8 bytes)
+// DOL: srawi r3,r3,8 ; blr
+// Returns input >> 8 (signed arithmetic shift)
 
-short GetLanguage(short value) {
-    return value >> 8;
+extern "C" int GetLanguage(int x) {
+    return x >> 8;
 }
