@@ -257,3 +257,9 @@ The release map contains 39,169 named symbols across these major systems:
 - **Emulator:** Dolphin (testing + debugging)
 - **Build:** Python + Make/CMake
 - **Platform:** Windows 11
+
+## Hooks
+
+After cloning, run `bash tools/install-hooks.sh` to install the pre-commit
+hook that verifies match files before commit. Without it, fake matches can
+slip through. Set `SKIP_VERIFY=1 git commit ...` for emergency bypass.

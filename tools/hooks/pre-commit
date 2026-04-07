@@ -1,0 +1,166 @@
+#!/bin/bash
+# Pre-commit hook: verify new match files actually match the DOL.
+#
+# Outcomes per file:
+#   MATCH                -> allowed through
+#   MISMATCH/SIZE_MISMATCH -> auto-moved to src/wip/version_diff/ (preserves work)
+#   COMPILE_FAIL         -> BLOCKED (broken source contaminates the build)
+#   HEADER_UNPARSEABLE   -> BLOCKED (forces canonical header format)
+#   FAKE (asm/byte inj.) -> BLOCKED entirely
+#
+# File filter: src/matched/**/*.cpp ONLY. Files in src/wip/, src/asm_decomp/,
+# src/asm_wrappers/, etc. are not verified by this hook.
+#
+# Emergency bypass: SKIP_VERIFY=1 git commit ...
+#   (logged loudly to stderr; do not use casually)
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+# ---------------------------------------------------------------------------
+# Emergency bypass
+# ---------------------------------------------------------------------------
+if [ "${SKIP_VERIFY:-}" = "1" ]; then
+    echo -e "${RED}[pre-commit] WARNING: SKIP_VERIFY=1 -- match-file verification BYPASSED${NC}" >&2
+    echo -e "${RED}[pre-commit] This bypass is logged. Do not use without justification.${NC}" >&2
+    exit 0
+fi
+
+BLOCKED=0
+CHECKED=0
+MOVED=0
+
+# Get staged new/modified .cpp files in src/matched/ only.
+# (Excludes src/wip/, src/asm_decomp/, src/asm_wrappers/, etc.)
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '^src/matched/.*\.cpp$' || true)
+
+if [ -z "$FILES" ]; then
+    exit 0
+fi
+
+echo -e "${YELLOW}[pre-commit] Checking match files...${NC}"
+
+mkdir -p src/wip/version_diff
+
+# ---------------------------------------------------------------------------
+# Helper: parse addr + size from a match file's first 5 lines.
+# Recognises:
+#   // 0x8003FB0C EGlobal::HouseNameText (112B)
+#   // 0x8003FB0C EGlobal::HouseNameText (112b)
+#   // 0x8003FB0C ... 112 bytes
+#   // Address: 0x80159D88 | Size: 12 bytes
+#   /* Func at 0x... (12B) */
+# Sets globals ADDR and SIZE; empty if not found.
+# ---------------------------------------------------------------------------
+parse_header() {
+    local file="$1"
+    ADDR=""
+    SIZE=""
+    local head_text
+    head_text=$(head -5 "$file")
+
+    # Find first 0xXXXXXXXX (8 hex digits)
+    ADDR=$(echo "$head_text" | grep -oE '0x[0-9A-Fa-f]{8}' | head -1)
+
+    # Try several size formats:
+    # "(12B)", "(12b)" -> bare bytes form
+    SIZE=$(echo "$head_text" | grep -oE '\(([0-9]+)[Bb]\)' | head -1 | grep -oE '[0-9]+')
+    if [ -z "$SIZE" ]; then
+        # "12 bytes" / "12 Bytes"
+        SIZE=$(echo "$head_text" | grep -oE '[0-9]+ [Bb]ytes' | head -1 | grep -oE '[0-9]+')
+    fi
+    if [ -z "$SIZE" ]; then
+        # "Size: 12" or "Size:12"
+        SIZE=$(echo "$head_text" | grep -oE 'Size:[[:space:]]*[0-9]+' | head -1 | grep -oE '[0-9]+')
+    fi
+    if [ -z "$SIZE" ]; then
+        # "(12 bytes)" or "(12 B)" -- size+space+B
+        SIZE=$(echo "$head_text" | grep -oE '\(([0-9]+)[[:space:]]*[Bb]' | head -1 | grep -oE '[0-9]+')
+    fi
+}
+
+for f in $FILES; do
+    # Check for inline asm / byte injection (FAKE -- block entirely)
+    if grep -qE 'asm\(|__asm__|__attribute__\(\(naked\)\)|\.byte |\.long 0x' "$f" 2>/dev/null; then
+        echo -e "${RED}BLOCKED (FAKE): $f contains inline asm or byte injection${NC}"
+        BLOCKED=$((BLOCKED + 1))
+        continue
+    fi
+
+    # Check for NON_MATCHING / NOT MATCHED markers in header
+    if head -5 "$f" | grep -qiE 'NON.MATCHING|NOT MATCHED'; then
+        echo -e "${RED}BLOCKED: $f is marked as non-matching${NC}"
+        BLOCKED=$((BLOCKED + 1))
+        continue
+    fi
+
+    parse_header "$f"
+
+    if [ -z "$ADDR" ] || [ -z "$SIZE" ]; then
+        echo -e "${RED}BLOCKED (HEADER): $f -- can't parse addr/size from first 5 lines${NC}"
+        echo -e "${RED}    Required: an 0xADDRESS and a size on one of the first 5 lines.${NC}"
+        echo -e "${RED}    Examples accepted:${NC}"
+        echo -e "${RED}      // 0x8012953C cXPersonImpl::IsSelected (16B)${NC}"
+        echo -e "${RED}      // Address: 0x80159D88 | Size: 12 bytes${NC}"
+        BLOCKED=$((BLOCKED + 1))
+        continue
+    fi
+
+    # Run verify_match.sh
+    if [ ! -f "tools/verify_match.sh" ]; then
+        # No verify tool -- can't enforce, allow through (legacy behavior)
+        CHECKED=$((CHECKED + 1))
+        continue
+    fi
+
+    VERIFY_OUT=$(bash tools/verify_match.sh "$f" "$ADDR" "$SIZE" 2>&1)
+    VERIFY_RC=$?
+
+    # Success
+    if [ $VERIFY_RC -eq 0 ] && echo "$VERIFY_OUT" | grep -q "^MATCH! Function"; then
+        CHECKED=$((CHECKED + 1))
+        continue
+    fi
+
+    # Compile failure -- BLOCK (broken source)
+    if echo "$VERIFY_OUT" | grep -qE 'COMPILE FAILED|undeclared|: In function|invalid use|parse error|stray'; then
+        echo -e "${RED}BLOCKED (COMPILE_FAIL): $f does not compile with SN ProDG${NC}"
+        echo "$VERIFY_OUT" | grep -E 'undeclared|: In function|invalid use|parse error|COMPILE FAILED|stray' | head -5 | sed 's/^/    /'
+        BLOCKED=$((BLOCKED + 1))
+        continue
+    fi
+
+    # MISMATCH or SIZE_MISMATCH: move to wip/version_diff/ (preserve work)
+    if echo "$VERIFY_OUT" | grep -qE 'MISMATCH|SIZE_MISMATCH'; then
+        BASENAME=$(basename "$f")
+        DEST="src/wip/version_diff/$BASENAME"
+        cp "$f" "$DEST"
+        git reset HEAD "$f" >/dev/null 2>&1 || true
+        git rm --cached "$f" >/dev/null 2>&1 || true
+        git add "$DEST" >/dev/null 2>&1
+        echo -e "${CYAN}MOVED: $f -> $DEST (VERSION_DIFF -- preserved for later)${NC}"
+        MOVED=$((MOVED + 1))
+        continue
+    fi
+
+    # Unknown verify outcome -- block to be safe
+    echo -e "${RED}BLOCKED (UNKNOWN): $f verify_match.sh exited $VERIFY_RC with no clear status${NC}"
+    echo "$VERIFY_OUT" | tail -5 | sed 's/^/    /'
+    BLOCKED=$((BLOCKED + 1))
+done
+
+echo -e "${GREEN}[pre-commit] Checked $CHECKED match files${NC}"
+if [ $MOVED -gt 0 ]; then
+    echo -e "${CYAN}[pre-commit] Moved $MOVED VERSION_DIFF file(s) to src/wip/version_diff/${NC}"
+fi
+
+if [ $BLOCKED -gt 0 ]; then
+    echo -e "${RED}[pre-commit] BLOCKED $BLOCKED file(s)${NC}"
+    echo -e "${RED}[pre-commit] Fix the files above, or set SKIP_VERIFY=1 to bypass (logged)${NC}"
+    exit 1
+fi
+
+exit 0
