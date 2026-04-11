@@ -166,8 +166,20 @@ comp_b = list(hex_to_bytes(comp))
 # 2. EXTERNAL symbol: mask the relevant bits in BOTH (we cannot resolve)
 mask = [False] * len(dol_b)
 
+def _mask(i):
+    # Bounds-checked mask assignment. Out-of-range relocation offsets
+    # (edge cases like relocs from linkonce sections or offsets past the
+    # function tail) are silently skipped — they can't affect the function's
+    # .text bytes anyway. Paired with -j .text on objdump -r for primary fix.
+    if 0 <= i < len(mask):
+        mask[i] = True
+
 for off, rtype, target in relocs:
     is_local = target.startswith('.text')
+    # Also skip any relocation whose offset is clearly beyond the .text slice
+    # we're comparing — nothing to mask.
+    if off >= len(mask):
+        continue
     # PPC ELF relocation offsets:
     #   REL14, REL24, EMB_SDA21: offset = instruction start (4 bytes)
     #   ADDR16_HA, ADDR16_LO:    offset = the 16-bit field (instruction + 2)
@@ -188,33 +200,33 @@ for off, rtype, target in relocs:
         comp_b[off+3] = new & 0xFF
     elif rtype in ('R_PPC_ADDR16_HA', 'R_PPC_ADDR16_LO'):
         # External 16-bit immediate field: mask the 2 bytes at the relocation offset
-        mask[off]   = True
-        mask[off+1] = True
+        _mask(off)
+        _mask(off+1)
     elif rtype == 'R_PPC_EMB_SDA21':
         # 21-bit SDA load/store: mask the entire 4-byte instruction
         # (lower 21 bits hold the rA/D field which the linker patches)
         # The opcode (top 6 bits) stays the same, but to keep things simple,
         # mask all 4 bytes — false positives on opcode are unlikely.
-        mask[off]   = True
-        mask[off+1] = True
-        mask[off+2] = True
-        mask[off+3] = True
+        _mask(off)
+        _mask(off+1)
+        _mask(off+2)
+        _mask(off+3)
     elif rtype == 'R_PPC_REL24':
         # External 24-bit branch (bl <extern>): mask all 4 bytes
-        mask[off]   = True
-        mask[off+1] = True
-        mask[off+2] = True
-        mask[off+3] = True
+        _mask(off)
+        _mask(off+1)
+        _mask(off+2)
+        _mask(off+3)
     elif rtype == 'R_PPC_REL14':
         # External 14-bit branch (rare): mask 16-bit displacement field at instr+2
-        mask[off+2] = True
-        mask[off+3] = True
+        _mask(off+2)
+        _mask(off+3)
     else:
         # Unknown relocation type — be safe and mask 4 bytes
-        mask[off]   = True
-        mask[off+1] = True
-        mask[off+2] = True
-        mask[off+3] = True
+        _mask(off)
+        _mask(off+1)
+        _mask(off+2)
+        _mask(off+3)
 
 # Apply mask
 for i in range(len(dol_b)):
