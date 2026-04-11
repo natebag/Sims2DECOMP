@@ -1,4 +1,13 @@
-// 0x803135ac (20 bytes) — VERIFIED MATCH
-// FlashBigFile::FlashBigFile(void) — zeros two fields
-struct FlashBigFile_C { int b; int a; FlashBigFile_C(); };
-FlashBigFile_C::FlashBigFile_C() : b(0), a(0) {}
+// 0x803135AC FlashBigFile::FlashBigFile (20b)
+
+struct FlashBigFile {
+    int f0;
+    int f4;
+    FlashBigFile();
+};
+
+FlashBigFile::FlashBigFile() {
+    FlashBigFile* p = this;
+    p->f0 = 0;
+    p->f4 = 0;
+}
