@@ -250,7 +250,7 @@ If it cracks even one, **the matcher bot is validated** and we continue building
 12. **NEW: Matcher-bot before manual grinding on walls** — any wall that was parked in session 1 goes to the bot first. Manual only if bot returns NEAR_MATCH.
 13. **NEW: Specific-paths `git add` always** — no `git add -A`. One commit = one logical change.
 14. **NEW: Verify SIZE against DVD map before every commit** — two fakes in session 1 were caused by wrong header sizes. `grep -w <funcname> extracted/files/u2_ngc_release_dvd.map`.
-15. **NEW: Use tools/git_safe_commit.sh during fleet contention — handles stale-lock retry automatically**
+15. **NEW: Use tools/git_safe_stage_and_commit.sh -m "msg" <paths> during fleet contention** — atomic stage+commit that can't be scooped up by concurrent workers' commits. Falls back to tools/git_safe_commit.sh only when you have nothing to stage.
 
 ---
 
