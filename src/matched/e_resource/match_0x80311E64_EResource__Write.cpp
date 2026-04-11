@@ -1,3 +1,4 @@
+// FLAGS: -fno-schedule-insns -fno-elide-constructors
 struct EStream;
 struct EString {
     int m_data;
