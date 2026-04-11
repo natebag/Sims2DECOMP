@@ -390,15 +390,71 @@ def m11_barrier_mutator(lines: list[str]) -> list[tuple[str, list[str]]]:
     return variants
 
 
+def m12_stmt_swap_mutator(lines: list[str]) -> list[tuple[str, list[str]]]:
+    """Adjacent-swap permutations of consecutive store-like statements
+    inside a function body.
+
+    Analogous to M10 but for body statements (not local variable decls).
+    Used when the source has two stores in the wrong order relative to
+    the DOL — no amount of compiler-barrier preserves-source-order will
+    fix that, only swapping the source lines will.
+
+    Strategy: find every maximal run of 2+ consecutive store-like lines
+    inside a function body, then for each pair (i, i+1) inside that run
+    produce one swap variant. Caps at 10 total swap candidates per
+    function to bound variant explosion.
+    """
+    store_idxs: list[int] = [i for i, raw in enumerate(lines) if _is_store_line(raw)]
+    if len(store_idxs) < 2:
+        return []
+
+    # Find maximal runs of consecutive (index-wise) store lines.
+    runs: list[list[int]] = []
+    current: list[int] = [store_idxs[0]]
+    for idx in store_idxs[1:]:
+        if idx == current[-1] + 1:
+            current.append(idx)
+        else:
+            if len(current) >= 2:
+                runs.append(current)
+            current = [idx]
+    if len(current) >= 2:
+        runs.append(current)
+    if not runs:
+        return []
+
+    # Only swap within runs that are inside a function body (use the same
+    # backwards-scan helper M10 uses — avoids swapping lines inside a
+    # struct/class body or at top-level).
+    variants: list[tuple[str, list[str]]] = []
+    for run in runs:
+        if not _decl_block_is_in_function_body(lines, run[0]):
+            continue
+        for k in range(len(run) - 1):
+            a = run[k]
+            b = run[k + 1]
+            new_lines = list(lines)
+            new_lines[a], new_lines[b] = new_lines[b], new_lines[a]
+            # Label includes file-line index so several runs distinguish.
+            variants.append((f"T12_swap@{a}", new_lines))
+            if len(variants) >= 10:
+                return variants
+    return variants
+
+
 def build_text_variants(lines: list[str]) -> list[tuple[str, list[str]]]:
     """Produce the ordered list of text mutations to try, NOT including identity.
-    Ordering: M11 (compiler-barrier) first, then M10 (decl-swap).
-    A5 data showed the NEAR_MATCH targets with the highest scores (ETexture,
-    EThread, audiostreamman) all look like store-ordering walls, so M11
-    gets first crack.
+    Order: M11 single/double barrier → M12 statement swap → M10 decl swap.
+    Priority based on cracks per target class:
+      - M11 has 2/2 proven cracks (movieman indirectly via flag combo,
+        EThread via double-barrier)
+      - M12 is brand new and targets the "source is in wrong order" wall
+        (audiostreamman class)
+      - M10 is the fallback for reg-alloc walls driven by local-decl order
     """
     out: list[tuple[str, list[str]]] = []
     out.extend(m11_barrier_mutator(lines))
+    out.extend(m12_stmt_swap_mutator(lines))
     out.extend(m10_var_swap_mutator(lines))
     return out
 
