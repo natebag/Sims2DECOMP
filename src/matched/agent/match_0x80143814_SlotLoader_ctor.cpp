@@ -1,15 +1,13 @@
-/* SlotLoader::SlotLoader(unsigned int) - 0x80143814 - 20 bytes */
-/* mr r9, r3; li r0, 0; stw r4, 0(r9); sth r0, 4(r9); blr */
+// 0x80143814 SlotLoader::SlotLoader (20b)
 
-class SlotLoader {
-public:
-    unsigned int m_resourceId;
-    unsigned short m_field4;
-
-    SlotLoader(unsigned int id);
+struct SlotLoader {
+    int f0;
+    short f4;
+    SlotLoader(int p2);
 };
 
-SlotLoader::SlotLoader(unsigned int id) {
-    m_resourceId = id;
-    m_field4 = 0;
+SlotLoader::SlotLoader(int p2) {
+    SlotLoader* p = this;
+    p->f0 = p2;
+    p->f4 = 0;
 }

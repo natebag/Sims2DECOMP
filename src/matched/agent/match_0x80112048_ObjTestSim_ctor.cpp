@@ -1,16 +1,19 @@
-/* ObjTestSim::ObjTestSim(cXPerson *) - 0x80112048 - 24 bytes */
+// 0x80112048 ObjTestSim::ObjTestSim (24b)
 
-class cXPerson;
-
-class ObjTestSim {
-public:
-    cXPerson* m_person;
-    int m_field4;
-    char _pad[0x10];
-    int m_field18;
-
-    ObjTestSim(cXPerson *);
+struct ObjTestSim {
+    int f0;
+    int f4;
+    int f8;
+    int f12;
+    int f16;
+    int f20;
+    int f24;
+    ObjTestSim(int p2);
 };
 
-ObjTestSim::ObjTestSim(cXPerson *person) : m_person(person), m_field18(0), m_field4(0) {
+ObjTestSim::ObjTestSim(int p2) {
+    ObjTestSim* p = this;
+    p->f0 = p2;
+    p->f4 = 0;
+    p->f24 = 0;
 }
