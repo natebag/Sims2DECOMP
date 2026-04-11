@@ -1,7 +1,9 @@
+// 0x800B8474 GoalUnlock::~GoalUnlock (52b)
 // FLAGS: -fno-schedule-insns
+
 extern int VT[];
 void del_fn(void *);
-void d_ENgcClockMan_ENgcClockMan(char *self, int __in_chrg) {
+void d_GoalUnlock_GoalUnlock(char *self, int __in_chrg) {
     *(int **)self = VT;
     if (__in_chrg & 1) {
         del_fn(self);

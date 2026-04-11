@@ -1,7 +1,9 @@
+// 0x800AAB08 AnimTableImpl::~AnimTableImpl (52b)
 // FLAGS: -fno-schedule-insns
+
 extern int VT[];
 void del_fn(void *);
-void d_ENgcClockMan_ENgcClockMan(char *self, int __in_chrg) {
+void d_AnimTableImpl_AnimTableImpl(char *self, int __in_chrg) {
     *(int **)self = VT;
     if (__in_chrg & 1) {
         del_fn(self);
