@@ -1,3 +1,4 @@
+// FLAGS: -fno-elide-constructors
 typedef void (*VoidMethodFn)(void *);
 
 struct VtableEntry_OS {
