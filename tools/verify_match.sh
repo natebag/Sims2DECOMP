@@ -39,20 +39,42 @@ OBJ="build/verify/${BASENAME}.o"
 ASM="build/verify/${BASENAME}.s"
 
 # Step 0: Reject fake matches (inline asm byte injection is NOT decomp)
+# Mirrors tools/hooks/pre-commit. Keep both in sync.
 if grep -q '__attribute__((naked))' "$SRC" 2>/dev/null; then
-    echo "REJECTED: Contains __attribute__((naked)) — not real C++ decomp."
+    echo "REJECTED: $SRC contains __attribute__((naked)) — not real C++ decomp."
     exit 1
 fi
 if grep -q '\.long 0x' "$SRC" 2>/dev/null; then
-    echo "REJECTED: Contains .long byte injection — not real C++ decomp."
+    echo "REJECTED: $SRC contains .long byte injection — not real C++ decomp."
     exit 1
 fi
 if grep -q '\.byte 0x' "$SRC" 2>/dev/null; then
-    echo "REJECTED: Contains .byte byte injection — not real C++ decomp."
+    echo "REJECTED: $SRC contains .byte byte injection — not real C++ decomp."
     exit 1
 fi
 if grep -q '__asm__' "$SRC" 2>/dev/null; then
-    echo "REJECTED: Contains __asm__ — not real C++ decomp."
+    echo "REJECTED: $SRC contains __asm__ — not real C++ decomp."
+    exit 1
+fi
+# register T name asm("rN") — register-binding cheat (Family B fakes,
+# audit info note a733a05b). Forces a specific register without natural
+# C++ pressure; the resulting "match" is bogus.
+if grep -qE 'register[[:space:]]+[a-zA-Z_*&][a-zA-Z_0-9*&[:space:]]*[[:space:]]asm[[:space:]]*\(' "$SRC" 2>/dev/null; then
+    echo "REJECTED: $SRC contains register-binding asm(\"rN\") — forced register pinning is not real C++ decomp."
+    exit 1
+fi
+# __builtin_unreachable — strong cheat tell. Used by gen_ctor_matches.py
+# to suppress the compiler-generated function body so the inline asm is
+# the only thing emitted. No legitimate decomp needs it at function scope.
+if grep -q '__builtin_unreachable' "$SRC" 2>/dev/null; then
+    echo "REJECTED: $SRC contains __builtin_unreachable — used to mask byte-injection cheats."
+    exit 1
+fi
+# __attribute__((noreturn)) — paired with the unreachable trick above.
+# Real EA constructors return normally; this attribute is only ever applied
+# to suppress a compiler-generated body for byte injection.
+if grep -qE '__attribute__[[:space:]]*\(\([[:space:]]*noreturn[[:space:]]*\)\)' "$SRC" 2>/dev/null; then
+    echo "REJECTED: $SRC contains __attribute__((noreturn)) — paired with __builtin_unreachable to hide byte injection."
     exit 1
 fi
 

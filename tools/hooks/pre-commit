@@ -90,6 +90,21 @@ for f in $FILES; do
         continue
     fi
 
+    # __builtin_unreachable + __attribute__((noreturn)) — Family A cheat tell
+    # from gen_ctor_matches.py (deleted, but block regenerated copies). The
+    # noreturn attribute suppresses the compiler-generated function body so
+    # an inline-asm block is the only thing emitted. Audit note a733a05b.
+    if grep -q '__builtin_unreachable' "$f" 2>/dev/null; then
+        echo -e "${RED}BLOCKED (FAKE): $f contains __builtin_unreachable -- used to mask byte injection${NC}"
+        BLOCKED=$((BLOCKED + 1))
+        continue
+    fi
+    if grep -qE '__attribute__[[:space:]]*\(\([[:space:]]*noreturn[[:space:]]*\)\)' "$f" 2>/dev/null; then
+        echo -e "${RED}BLOCKED (FAKE): $f contains __attribute__((noreturn)) -- paired with byte injection${NC}"
+        BLOCKED=$((BLOCKED + 1))
+        continue
+    fi
+
     # Check for non-empty inline asm: find all asm(...) and asm volatile(...) forms,
     # then filter out lines where the first character inside the parens is "" (empty
     # string = compiler memory/ordering barrier, emits zero instructions, ALLOWED).
