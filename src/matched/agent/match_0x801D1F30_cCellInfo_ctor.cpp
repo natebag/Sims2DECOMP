@@ -1,4 +1,4 @@
-// 0x801D1F30 cCellInfo::cCellInfo (36b)
+// 0x801D1F30 PCTTarget::cCellInfo::cCellInfo (36b)
 
 struct cCellInfo {
     int f0;
