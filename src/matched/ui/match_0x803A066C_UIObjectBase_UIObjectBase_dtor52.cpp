@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x803A066C (52B)
 extern int VT[];
 void del_fn(void *);
 void d_UIObjectBase_UIObjectBase(char *self, int __in_chrg) {

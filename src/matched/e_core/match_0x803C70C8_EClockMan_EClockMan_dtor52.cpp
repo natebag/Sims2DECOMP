@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x803C70C8 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_EClockMan_EClockMan(char *self, int __in_chrg) {

@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x802B4770 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_AptValue_AptValue(char *self, int __in_chrg) {

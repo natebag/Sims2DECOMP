@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x801812AC (52B)
 extern int VT[];
 void del_fn(void *);
 void d_UIButtonImages_UIButtonImages(char *self, int __in_chrg) {

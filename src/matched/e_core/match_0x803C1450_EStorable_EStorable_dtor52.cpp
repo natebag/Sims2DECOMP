@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x803C1450 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_EStorable_EStorable(char *self, int __in_chrg) {

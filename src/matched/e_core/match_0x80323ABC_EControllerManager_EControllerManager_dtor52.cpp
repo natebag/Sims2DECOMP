@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x80323ABC (52B)
 extern int VT[];
 void del_fn(void *);
 void d_EControllerManager_EControllerManager(char *self, int __in_chrg) {

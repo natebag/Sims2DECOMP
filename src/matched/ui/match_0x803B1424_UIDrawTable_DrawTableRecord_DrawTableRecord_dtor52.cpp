@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x803B1424 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_UIDrawTable_DrawTableRecord_DrawTableRecord(char *self, int __in_chrg) {

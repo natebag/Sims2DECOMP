@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x802D5864 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_ESyncObject_ESyncObject(char *self, int __in_chrg) {

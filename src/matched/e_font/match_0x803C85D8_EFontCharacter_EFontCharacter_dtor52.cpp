@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x803C85D8 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_EFontCharacter_EFontCharacter(char *self, int __in_chrg) {

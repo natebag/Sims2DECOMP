@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x8032FE9C (52B)
 extern int VT[];
 void del_fn(void *);
 void d_ENgcMemoryCard_ENgcMemoryCard(char *self, int __in_chrg) {

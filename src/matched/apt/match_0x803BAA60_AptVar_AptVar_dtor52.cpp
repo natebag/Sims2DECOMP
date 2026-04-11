@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x803BAA60 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_AptVar_AptVar(char *self, int __in_chrg) {

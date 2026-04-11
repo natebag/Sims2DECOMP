@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x8030FCA4 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_EResourceLoader_EResourceLoader(char *self, int __in_chrg) {

@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x8039E4C8 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_Effects_EffectsVisitor_EffectsVisitor(char *self, int __in_chrg) {

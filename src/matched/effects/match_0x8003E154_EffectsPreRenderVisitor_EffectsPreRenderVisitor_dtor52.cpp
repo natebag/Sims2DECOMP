@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x8003E154 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_EffectsPreRenderVisitor_EffectsPreRenderVisitor(char *self, int __in_chrg) {

@@ -1,4 +1,5 @@
 // FLAGS: -fno-schedule-insns
+// 0x803C3304 (52B)
 extern int VT[];
 void del_fn(void *);
 void d_EMemoryReadStream_EMemoryReadStream(char *self, int __in_chrg) {
