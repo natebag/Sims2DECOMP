@@ -251,6 +251,7 @@ If it cracks even one, **the matcher bot is validated** and we continue building
 13. **NEW: Specific-paths `git add` always** — no `git add -A`. One commit = one logical change.
 14. **NEW: Verify SIZE against DVD map before every commit** — two fakes in session 1 were caused by wrong header sizes. `grep -w <funcname> extracted/files/u2_ngc_release_dvd.map`.
 15. **NEW: Use tools/git_safe_stage_and_commit.sh -m "msg" <paths> during fleet contention** — atomic stage+commit that can't be scooped up by concurrent workers' commits. Falls back to tools/git_safe_commit.sh only when you have nothing to stage.
+16. **NEW: Before picking a rework target from src/wip/fake_matches/, ALWAYS call `bash tools/rework_next.sh --count N`** — dedups live against git ls-files src/matched/, guarantees no duplicate cracks. Supports `--pattern vtable|zero|param|complex` and `--min-size/--max-size` filters for matching a worker's strength. Stale shard manifests have burned entire batches (KimiWorker 0/14 net) — don't trust manifest files, use this tool.
 
 ---
 
