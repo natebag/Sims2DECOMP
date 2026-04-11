@@ -1,3 +1,4 @@
+// FLAGS: -fno-elide-constructors
 class ObjectFolder {
 public:
     virtual ~ObjectFolder();
