@@ -4,16 +4,18 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**40.5% decompiled and verified** (post-integrity audit, 2026-04-11). Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
+**42.78% decompiled and verified** (post Session 2 wrap, 2026-04-11). Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **8,301 / 20,508 (40.5%)** |
-| Functions remaining | ~12,207 |
+| **Verified matches** | **8,773 / 20,508 (42.78%)** |
+| Functions remaining | ~11,735 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit |
+
+**Session 2 (2026-04-11):** +541 legitimate matches delivered. First session with a validated compiler-search automation loop — `tools/matcher_bot.py` runs a mutation space of 11 flag variants × M10/M11/M12 text mutators, scored via reloc-aware DOL diff, early-exits on first MATCH. 4-way parallel shard blast over 940 parked near-misses hit 44.6% runnable hit-rate. Two new ctor-family patterns discovered (Pattern Z: pure-zero-field ctors, 22 matches; Pattern W: 56B state-machine ctors, 26 matches). Integrity audit purged 215 byte-injection fakes and hardened `verify_match.sh` against every pattern the old cheat generator used.
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
 

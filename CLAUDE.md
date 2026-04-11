@@ -73,14 +73,24 @@ for future decomp work, not completed decomp work.
 **Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
 This is the core decomp work. We are at the very beginning.
 
-**Current Status (2026-04-11 — post integrity audit):**
-- **8,232 functions verified matched** with real C++ (**40.1%**)
-- 12,276 functions remaining
-- Pre-integrity-audit count was 8,447; 215 functions were identified as
-  byte-injection/register-asm fakes on 2026-04-11 and relocated to
-  src/wip/fake_matches/ (audit info note a733a05b). True decomp count
-  is 8,232. The cheating generator (tools/gen_ctor_matches.py) was deleted
-  and verify_match.sh + pre-commit hardened against the patterns it used.
+**Current Status (2026-04-11 — post Session 2 wrap):**
+- **8,773 functions verified matched** with real C++ (**42.78%**)
+- 11,735 functions remaining (of 20,508)
+- **Session 2 delta: +541 legitimate matches** — started at 8,232 post-integrity-audit,
+  added via matcher-bot bulk blast (+192), rework family blasts (+~80 across
+  Pattern A / Pattern Z / Pattern W / misc), A5 parked-wall closures (+3 bot-cracks),
+  and infrastructure hardening. First session with a validated compiler-search
+  automation loop (see tools/matcher_bot.py, tools/matcher_bot_bulk.py, tools/matcher_bot_shard.py).
+- Session 1 ended at 8,516 pre-audit; integrity audit on 2026-04-11 purged
+  215 byte-injection/register-asm fakes (audit info note a733a05b) giving
+  the 8,232 post-audit baseline. The cheating generator (tools/gen_ctor_matches.py)
+  was deleted and verify_match.sh + pre-commit hardened against every pattern
+  it used (register-asm bindings, naked+noreturn+unreachable, .long/.byte
+  literals, __asm__ prefix).
+- Known accounting debt: ~953 of the 8,773 files are duplicate-address aliases
+  from case-sensitive path collisions and cross-worker race commits. Unique-
+  address count is 7,820 (38.13%). Session 3 should dedupe these before
+  the next metric publish.
 - Full exhaustive audit completed: every file in src/matched/ compile-verified
 - 848 orphan files cleaned up (relocated to wip/version_diff/)
 - ALL asm_decomp functions matched — remaining work is DOL-only extraction
