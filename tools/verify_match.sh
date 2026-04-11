@@ -122,7 +122,11 @@ for i in range(7):
 
 # Step 4: Get relocations with type and target (offset, type, target)
 # Format: "offset|type|target" (pipe-separated, one per line)
-RELOC_DATA=$($OBJDUMP -r "$OBJ" 2>/dev/null | awk '/^[0-9a-f]+ /{print $1"|"$2"|"$3}')
+# IMPORTANT: use -j .text so we only see .text relocations, not ones from
+# linkonce vtable/dtor sections — those can have offsets beyond the function
+# size and cause the Python mask array to IndexError. (Previously caused
+# spurious failures on virtual classes, e.g. QuickResFile ctor 60B.)
+RELOC_DATA=$($OBJDUMP -r -j .text "$OBJ" 2>/dev/null | awk '/^[0-9a-f]+ /{print $1"|"$2"|"$3}')
 
 # Step 4b: Compare with relocation-aware logic
 COMPILED_TRIMMED="${COMPILED_BYTES:0:$(($SIZE * 2))}"
