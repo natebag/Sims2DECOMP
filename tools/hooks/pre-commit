@@ -83,9 +83,27 @@ parse_header() {
 }
 
 for f in $FILES; do
-    # Check for inline asm / byte injection (FAKE -- block entirely)
-    if grep -qE 'asm\(|__asm__|__attribute__\(\(naked\)\)|\.byte |\.long 0x' "$f" 2>/dev/null; then
-        echo -e "${RED}BLOCKED (FAKE): $f contains inline asm or byte injection${NC}"
+    # Check for byte injection / naked functions / GCC-style __asm__ (FAKE -- block)
+    if grep -qE '__asm__|__attribute__\(\(naked\)\)|\.byte |\.long 0x' "$f" 2>/dev/null; then
+        echo -e "${RED}BLOCKED (FAKE): $f contains byte injection or naked function${NC}"
+        BLOCKED=$((BLOCKED + 1))
+        continue
+    fi
+
+    # Check for non-empty inline asm: find all asm(...) and asm volatile(...) forms,
+    # then filter out lines where the first character inside the parens is "" (empty
+    # string = compiler memory/ordering barrier, emits zero instructions, ALLOWED).
+    # This catches real inline asm like asm("mr r3,r4"), asm volatile("li r0,1"),
+    # AND register bindings like register int x asm("r31"), while permitting
+    # asm volatile("" ::: "memory") and asm("") barrier forms.
+    # Word-boundary (^|[^a-zA-Z0-9_]) required so test_bad_asm (4b) in a comment
+    # or identifier doesn't spuriously match.
+    if grep -nE '(^|[^a-zA-Z0-9_])asm[[:space:]]*(volatile[[:space:]]*)?\(' "$f" 2>/dev/null | \
+       grep -vE '(^|[^a-zA-Z0-9_])asm[[:space:]]*(volatile[[:space:]]*)?\([[:space:]]*""' > /dev/null; then
+        echo -e "${RED}BLOCKED (FAKE): $f contains non-empty inline asm${NC}"
+        echo -e "${RED}    Only empty compiler barriers are allowed, e.g.:${NC}"
+        echo -e "${RED}        asm volatile(\"\" ::: \"memory\");${NC}"
+        echo -e "${RED}    Any asm with instructions inside the string is forbidden.${NC}"
         BLOCKED=$((BLOCKED + 1))
         continue
     fi
