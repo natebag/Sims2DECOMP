@@ -1,12 +1,14 @@
 /* IShrubObject::GetTypeKey(void) const - 0x8005442C (12 bytes) */
 // TU: iobject
 
-extern unsigned int IShrubObject_typeInfo_key;
+typedef struct TypeInfo TypeInfo;
+
+extern TypeInfo IShrubObject_typeInfo;
 
 struct IShrubObject {
-    unsigned int GetTypeKey() const;
+    const char* GetTypeKey() const;
 };
 
-unsigned int IShrubObject::GetTypeKey() const {
-    return IShrubObject_typeInfo_key;
+const char* IShrubObject::GetTypeKey() const {
+    return *(const char**)((char*)&IShrubObject_typeInfo + 16);
 }

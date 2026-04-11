@@ -1,16 +1,20 @@
-// CUnlockDisplay::SetupForSocial(void *)
+// CUnlockDisplay::SetupForSocial(void)
 // Address: 0x80077DD4 | Size: 40 bytes
-// FLAGS: -fno-elide-constructors
+// DOL:
+//   stwu r1,-8(r1); mflr r0; stw r0,12(r1)
+//   li r0,3; stw r0,1100(r3)
+//   bl CUnlockDisplay::makeObjects
+//   epilogue
 
 struct CUnlockDisplay {
     char pad[0x44C];
-    int field_44C;
+    int field_44C;  // offset 1100
+
+    void SetupForSocial();
+    void makeObjects();
 };
 
-extern "C" void CUnlockDisplay_InitSocial(CUnlockDisplay* self, void* ptr);
-
-void CUnlockDisplay__SetupForSocial(void *ptr) {
-    CUnlockDisplay *thisPtr = (CUnlockDisplay *)ptr;
-    thisPtr->field_44C = 3;
-    CUnlockDisplay_InitSocial(thisPtr, ptr);
+void CUnlockDisplay::SetupForSocial() {
+    field_44C = 3;
+    makeObjects();
 }

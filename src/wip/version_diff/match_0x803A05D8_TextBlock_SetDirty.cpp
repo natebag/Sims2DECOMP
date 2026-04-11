@@ -1,6 +1,7 @@
 // TextBlock::SetDirty(void)
 // Address: 0x803A05D8 | Size: 16 bytes
-// Pattern: ORs 0x1000 (using oris) into field at offset 56
+// DOL: lwz r0,56(r3); oris r0,r0,0x1000; stw r0,56(r3); blr
+// oris is upper-halfword OR, so the constant in C is 0x10000000
 
 struct TextBlock {
     char pad[56];
@@ -8,6 +9,5 @@ struct TextBlock {
 };
 
 extern "C" void TextBlock_SetDirty(TextBlock* this_) {
-    // Use 1 << 12 to generate oris instruction
-    this_->m_flags |= (1 << 12);
+    this_->m_flags |= 0x10000000u;
 }

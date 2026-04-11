@@ -73,9 +73,11 @@ for future decomp work, not completed decomp work.
 **Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
 This is the core decomp work. We are at the very beginning.
 
-**Current Status (2026-04-06):**
-- ~9,045 functions matched with real C++ (~44.1%)
-- ~11,463 functions remaining
+**Current Status (2026-04-10 — post full audit):**
+- **8,447 functions verified matched** with real C++ (**41.2%**)
+- 12,061 functions remaining
+- Full exhaustive audit completed: every file in src/matched/ compile-verified
+- 848 orphan files cleaned up (relocated to wip/version_diff/)
 - ALL asm_decomp functions matched — remaining work is DOL-only extraction
 - SN Systems ProDG compiler confirmed correct (all 4 versions produce identical code)
 - 5-state flag matrix per function: {default, -fno-schedule-insns, -fno-schedule-insns2, both, -fno-elide-constructors-only}
@@ -105,7 +107,7 @@ how many functions have hand-written C++ that compiles to matching bytes WITHOUT
 3. TArray template methods — Init done, Deallocate/Construct/Copy need cracking
 4. Auto-matcher classifier expansion — andi., rlwinm, lbz/stb, loop patterns
 5. 65-128B DOL scan — 3,578 unmatched, need template family grouping
-6. VERSION_DIFF recovery — ~60 files, most unfixable (register allocation)
+6. VERSION_DIFF recovery — ~948 files in wip/version_diff/, most are instruction scheduling diffs
 7. 128-512B functions — confirmed hard, needs TU compilation or deep RE
 
 ### Milestone 4: PC PORT — NOT STARTED (requires Milestone 3)

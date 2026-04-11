@@ -1,5 +1,6 @@
 class ESimsCam;
 
+// FLAGS: -fno-schedule-insns
 // External functions
 extern "C" void sub_80019A04(ESimsCam*);
 extern "C" void sub_802E46A0(ESimsCam*, void*);

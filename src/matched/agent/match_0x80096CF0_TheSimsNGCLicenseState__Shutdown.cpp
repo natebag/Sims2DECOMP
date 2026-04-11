@@ -1,3 +1,5 @@
+// 0x80096CF0 TheSimsNGCLicenseState::Shutdown (64b)
+
 struct EResource {
     void DelRef();
 };
@@ -12,6 +14,6 @@ struct TheSimsNGCLicenseState {
 void TheSimsNGCLicenseState::Shutdown() {
     if (m_resource != 0) {
         m_resource->DelRef();
+        m_resource = 0;
     }
-    m_resource = 0;
 }

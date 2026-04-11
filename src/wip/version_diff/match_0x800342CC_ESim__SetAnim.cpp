@@ -1,4 +1,5 @@
 // 0x800342CC (76 bytes)
+// FLAGS: -fno-schedule-insns
 /* ESim::SetAnim(char *) */
 // [VERSION_DIFF] At offset 0x18-0x1c, DOL has li r4,1 then mr r3,r30;
 // SN ProDG v3.93 emits mr r3,r30 then li r4,1. All other bytes match.

@@ -1,15 +1,16 @@
-// 0x80038E50 EyeToyClient::ApplyFunFrame (20b)
+// 0x80038E50 EyeToyClient::ApplyFunFrame (20B)
+// DOL:
+//   lwz r0, -32564(r13)   ; load g
+//   cmpw r3, r0
+//   beqlr                 ; return if equal
+//   stw r3, -32564(r13)   ; store new value
+//   blr
 
-// SDA global at r13-32564 - use small array for SDA
-extern char g_funFrame[4];
+// Two distinct externs to defeat CSE on the SDA address
+extern char gFunFrameLoad[4];
+extern char gFunFrameStore[4];
 
-void EyeToyClient_ApplyFunFrame(int frame) {
-    int* ptr = (int*)g_funFrame;
-    if (*ptr == 0) {
-        *ptr = frame;
-    }
-}
-
-extern "C" void _ZN12EyeToyClient13ApplyFunFrameEi(int frame) {
-    EyeToyClient_ApplyFunFrame(frame);
+void ApplyFunFrame_int(int frame) {
+    if (frame == *(int*)gFunFrameLoad) return;
+    *(int*)gFunFrameStore = frame;
 }

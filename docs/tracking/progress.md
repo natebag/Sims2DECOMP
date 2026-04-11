@@ -2,20 +2,22 @@
 
 ## HONEST STATUS
 
-**Functions actually decompiled (hand-written C++ that compiles to matching bytes): ~6,255 / 20,508 (30.5%)**
+**Functions actually decompiled (hand-written C++ that compiles to matching bytes): 8,447 / 20,508 (41.2%)**
 
 Real progress = functions with hand-written C++ that the SN Systems compiler
 produces byte-identical output for. Verified by verify_match.sh.
 
-Count is deduplicated (one file per address). Last audit: 20/20 random sample passed (2026-04-03).
+Last audit: **Full exhaustive audit (2026-04-10)** — every file in src/matched/
+verified via 4-way parallel compile-and-compare. 8,447 of 9,321 files PASS.
+848 failures relocated to src/wip/version_diff/. 20 garbage temp files deleted.
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
 | Total code functions | 20,508 |
-| **Functions ACTUALLY decompiled** | **~6,255 (30.5%)** |
-| Functions remaining | ~14,253 |
+| **Functions ACTUALLY decompiled** | **8,447 (41.2%)** |
+| Functions remaining | 12,061 |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (found & working) |
 | Total symbols (map) | 39,169 |
 | Translation units (original .cpp files) | 519 |
@@ -28,7 +30,7 @@ Count is deduplicated (one file per address). Last audit: 20/20 random sample pa
 |---|-----------|--------|-------|
 | 1 | Infrastructure | **DONE** | Build system, dtk, symbols, CI, SN compiler |
 | 2 | Scaffolding | **DONE** | Empty C++ shells, struct layouts |
-| 3 | Actual Decomp | **IN PROGRESS** | ~6,255/20,508 (30.5%) |
+| 3 | Actual Decomp | **IN PROGRESS** | 8,447/20,508 (41.2%) |
 | 4 | PC Port | **BLOCKED** | Needs actual decomp first |
 
 ## Progress by Function Size
@@ -90,6 +92,20 @@ achieved via byte injection; the portable C++ enables the PC port.
 | UI / APT | 1216 | 1478 | 82.3% |
 
 ## Session Log
+
+### 2026-04-10: FULL EXHAUSTIVE AUDIT — definitive verified count established
+- **Audit-only session** — no matching work, pure verification
+- **Method:** 4-way parallel compile-and-compare via batch_audit.py + verify_match.sh
+- **All 9,321 files in src/matched/ audited exhaustively** (not sampled)
+- **Primary audit:** 7,938 PASS, 631 MISMATCH, 149 SIZE_MISMATCH, 63 OTHER, 540 SKIP
+- **Secondary audit (SKIP recovery):** 509 additional PASS from trivial functions with inferred sizes
+- **Total verified PASS: 8,447** → 41.2% of 20,508
+- **Previous reported: 9,192 (44.8%)** → 745 files inflated (8.1%)
+- **Cleanup:** 848 failures relocated to src/wip/version_diff/, 20 garbage _clean.cpp files deleted
+- **Directory breakdown:** agent/ 84.8%, cbmt_blast/ 100%, global_getters/ 65.3%
+- **Tooling review:** verify_match.sh PASS count is trustworthy; set -e bug only affects failure categorization
+- **Key insight:** Inflation came from pre-hook era when files could be committed without verification
+- **Workflow gap closed:** pre-commit hook (80f3ec9d) prevents future orphans
 
 ### 2026-04-05: AgentOrch v3.93 pattern grinder + goldmine discovery
 - **Before session:** 6,161 verified matches (30.0%)

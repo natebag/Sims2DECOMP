@@ -1,23 +1,21 @@
 // 0x80045588 EFloorShdTblNode::CleanUp (72b)
 
-class ENodeList;
-class EResource;
+struct ENodeList {};  // Embedded at offset 4
 
 struct EFloorShdTblNode {
-    EResource* m_resource;
-    char pad[4];
-    ENodeList* m_list;
+    void* m_resource;      // offset 0
+    ENodeList m_list;      // offset 4 (embedded, not pointer)
     
     void CleanUp();
 };
 
 extern "C" void ENodeList_RemoveAll(ENodeList* list);
-extern "C" void EResource_DelRef(EResource* res);
+extern "C" void EResource_DelRef(void* res);
 
 void EFloorShdTblNode::CleanUp() {
-    m_list->RemoveAll();
+    ENodeList_RemoveAll(&m_list);
     if (m_resource) {
-        m_resource->DelRef();
+        EResource_DelRef(m_resource);
         m_resource = 0;
     }
 }

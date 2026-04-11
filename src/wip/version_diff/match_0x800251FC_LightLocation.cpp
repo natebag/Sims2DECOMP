@@ -1,4 +1,6 @@
-// VERSION_DIFF: mr r4,r3 copy before stores — scheduling order
+// FLAGS: -fno-schedule-insns
+// FLAGS: -fno-schedule-insns
+// 0x800251FC LightLocation (20b)
 typedef unsigned char u8;
 typedef unsigned short u16;
 

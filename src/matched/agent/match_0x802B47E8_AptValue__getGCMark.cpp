@@ -1,7 +1,3 @@
 // 0x802B47E8 AptValue::getGCMark (12b)
-
-struct AptValue { unsigned int flags; };
-
-int AptValue_getGCMark(AptValue* self) {
-    return (self->flags >> 30) & 1;
-}
+struct AV_getGCMark { unsigned int flags; };
+int AV_getGCMark_func(AV_getGCMark* self) { return (self->flags >> 30) & 1; }

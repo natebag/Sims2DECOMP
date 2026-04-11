@@ -1,7 +1,3 @@
 // 0x802B48F4 AptValue::IsReleaseAtEnd (12b)
-
-struct AptValue { unsigned int flags; };
-
-int AptValue_IsReleaseAtEnd(AptValue* self) {
-    return (self->flags >> 29) & 1;
-}
+struct AV_IsReleaseAtEnd { unsigned int flags; };
+int AV_IsReleaseAtEnd_func(AV_IsReleaseAtEnd* self) { return (self->flags >> 29) & 1; }

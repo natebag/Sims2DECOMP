@@ -1,8 +1,7 @@
-// MATCH: 0x800BCD04 GetLanguage (8 bytes)
-// Raw: 7C 63 46 70 4E 80 00 20
-// sraiw r3, r3, 8 (shift right algebraic immediate word)
+// 0x800BCD04 GetLanguage (8B)
+// DOL: srawi r3,r3,8 ; blr
+// Returns input >> 8 (signed arithmetic shift)
 
-extern "C" short GetLanguage() {
-    // Return from SDA global
-    return 0;  // Simplified - actual value from r13
+extern "C" int GetLanguage(int x) {
+    return x >> 8;
 }

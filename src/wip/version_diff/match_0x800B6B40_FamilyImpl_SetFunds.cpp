@@ -1,17 +1,34 @@
-// MATCH: 0x800B6B40 FamilyImpl::SetFunds (40 bytes)
-// Raw: 3C 00 00 0F 60 00 42 3F 7C 04 00 00 41 81 00 0C 90 83 00 14 4E 80 00 20 90 03 00 14 4E 80 00 20 80 63 00 18 4E 80 00 20
+// 0x800B6B40 FamilyImpl::SetFunds (40B - includes adjacent getter)
+// DOL:
+//   lis r0,15; ori r0,r0,16959   ; r0 = 999999
+//   cmpw r4, r0
+//   bgt fwd                       ; if funds > max, fwd
+//   stw r4, 20(r3)                ; INLINE: m_funds = funds
+//   blr
+// fwd:
+//   stw r0, 20(r3)                ; m_funds = max
+//   blr
+//   lwz r3, 24(r3)                ; getter at +32
+//   blr
 
 struct FamilyImpl {
-    int funds;      // offset 0x14
-    int fundsCopy;  // offset 0x18
+    char pad[20];
+    int m_funds;     // offset 0x14
+    int m_unknown;   // offset 0x18
+
+    void SetFunds(int funds);
+    int GetSomething();
 };
 
-extern "C" int FamilyImpl_SetFunds(FamilyImpl* this_, int funds) {
-    const int MAX_FUNDS = 999999;
-    if (funds < MAX_FUNDS) {
-        this_->funds = funds;
-        return funds;
+void FamilyImpl::SetFunds(int funds) {
+    int max = 999999;
+    if (funds > max) {
+        m_funds = max;
+        return;
     }
-    this_->funds = MAX_FUNDS;
-    return MAX_FUNDS;
+    m_funds = funds;
+}
+
+int FamilyImpl::GetSomething() {
+    return m_unknown;
 }

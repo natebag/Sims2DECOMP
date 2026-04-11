@@ -1,19 +1,22 @@
-// InteractorModule::Interactor::SetExtents - 0x802092D8 (20 bytes)
+// 0x802092D8 InteractorModule::Interactor::SetExtents (20 bytes)
+// DOL:
+//   lwz r0, 4(r4)
+//   lwz r9, 0(r4)
+//   stw r0, 84(r3)
+//   stw r9, 80(r3)
+//   blr
 
-struct InteractorInfo {
-    float x, y;
-    float extentX, extentY;
-};
+struct Pair { int a; int b; };
 
 struct Interactor {
     char pad[80];
-    float m_extentX;     // 80
-    float m_extentY;     // 84
-
-    void SetExtents(InteractorInfo *info);
+    Pair m_p;
+    void SetExtents(Pair* p);
 };
 
-void Interactor::SetExtents(InteractorInfo *info) {
-    m_extentX = info->extentX;
-    m_extentY = info->extentY;
+void Interactor::SetExtents(Pair* p) {
+    int b = *(int*)((char*)p + 4);
+    int a = *(int*)((char*)p + 0);
+    *(int*)((char*)this + 84) = b;
+    *(int*)((char*)this + 80) = a;
 }

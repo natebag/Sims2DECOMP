@@ -1,5 +1,6 @@
 // __init_hardware - Nintendo SDK hardware initialization
 // 36 bytes, 3 bl calls
+// FLAGS: -fno-schedule-insns
 
 extern "C" void __OSPSInit();
 extern "C" void __OSCacheInit();

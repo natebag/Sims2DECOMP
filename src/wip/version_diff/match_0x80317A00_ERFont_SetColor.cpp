@@ -1,6 +1,17 @@
+// FLAGS: -fno-elide-constructors
 // ERFont::SetColor(EVec4 &)
 // Address: 0x80317A00 | Size: 40 bytes
-// FLAGS: -fno-elide-constructors
+// DOL:
+//   lfs f13, 0(r4)
+//   addi r9, r3, 88        ; r9 = &m_color
+//   stfs f13, 88(r3)       ; first store via direct offset
+//   lfs f0, 4(r4)
+//   stfs f0, 4(r9)         ; subsequent stores via r9
+//   lfs f13, 8(r4)
+//   stfs f13, 8(r9)
+//   lfs f0, 12(r4)
+//   stfs f0, 12(r9)
+//   blr
 
 struct EVec4 {
     float x, y, z, w;
@@ -9,14 +20,14 @@ struct EVec4 {
 struct ERFont {
     char pad[0x58];
     EVec4 m_color;
-    
+
     void SetColor(EVec4& color);
 };
 
 void ERFont::SetColor(EVec4& color) {
-    register float* dest = &m_color.x;
-    *dest++ = color.x;
-    *dest++ = color.y;
-    *dest++ = color.z;
-    *dest = color.w;
+    m_color.x = color.x;
+    EVec4* dst = &m_color;
+    dst->y = color.y;
+    dst->z = color.z;
+    dst->w = color.w;
 }

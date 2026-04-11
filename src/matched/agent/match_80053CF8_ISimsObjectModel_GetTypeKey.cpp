@@ -1,12 +1,14 @@
 /* ISimsObjectModel::GetTypeKey(void) const - 0x80053CF8 (12 bytes) */
 // TU: iobject
 
-extern unsigned int ISimsObjectModel_typeInfo_key;
+typedef struct TypeInfo TypeInfo;
+
+extern TypeInfo ISimsObjectModel_typeInfo;
 
 struct ISimsObjectModel {
-    unsigned int GetTypeKey() const;
+    const char* GetTypeKey() const;
 };
 
-unsigned int ISimsObjectModel::GetTypeKey() const {
-    return ISimsObjectModel_typeInfo_key;
+const char* ISimsObjectModel::GetTypeKey() const {
+    return *(const char**)((char*)&ISimsObjectModel_typeInfo + 16);
 }
