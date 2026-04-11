@@ -319,34 +319,74 @@ def m11_barrier_mutator(lines: list[str]) -> list[tuple[str, list[str]]]:
     """Inject `asm volatile("" ::: "memory");` between consecutive stores.
 
     Finds adjacent `lhs = rhs;` lines (not decls, not control-flow) and
-    produces one variant per single-insertion-point. Empty-string asm is
-    whitelisted by the pre-commit hook at .git/hooks/pre-commit:93-105.
+    produces:
+      - Single-barrier variants: one per insertion point (capped at 8)
+      - Double-barrier variants: all C(N, 2) unordered pairs of insertion
+        points, capped at 15 (A3 pivot — single barriers left EThread
+        and audiostreamman 2 chunks off; multi-barrier closes the tail).
+
+    Empty-string asm is whitelisted by the pre-commit hook at
+    .git/hooks/pre-commit:93-105.
     """
     store_idxs: list[int] = [i for i, raw in enumerate(lines) if _is_store_line(raw)]
     # Insertion points are gaps between consecutive store lines where they
     # are also consecutive in the source (i and i+1 both stores).
-    insert_points: list[tuple[int, str]] = []
+    insert_points: list[int] = []
     for j, idx in enumerate(store_idxs[:-1]):
         nxt = store_idxs[j + 1]
         if nxt == idx + 1:
-            insert_points.append((idx + 1, lines[idx].lstrip(" \t").rstrip()[:20]))
-    # De-duplicate adjacent insertion points if we have too many.
-    # Cap to 8 to control variant explosion.
-    insert_points = insert_points[:8]
+            insert_points.append(idx + 1)
+    # Cap single-barrier insertion points to 8 to keep single-barrier
+    # budget bounded.
+    single_points = insert_points[:8]
 
-    variants: list[tuple[str, list[str]]] = []
-    for k, (insert_at, _label_hint) in enumerate(insert_points):
-        indent_src = lines[insert_at] if insert_at < len(lines) else ""
+    # SN ProDG cc1plus 2.95 rejects the `:::` shorthand. The spaced
+    # form `: : : "memory"` parses identically at the AST level and
+    # is accepted. Still an empty-string asm (zero instructions) so
+    # it passes the pre-commit whitelist.
+    def _make_barrier(line_at: int) -> str:
+        indent_src = lines[line_at] if line_at < len(lines) else ""
         m = re.match(r"^([ \t]+)", indent_src)
         indent = m.group(1) if m else "    "
-        # SN ProDG cc1plus 2.95 rejects the `:::` shorthand. The spaced
-        # form `: : : "memory"` parses identically at the AST level and
-        # is accepted. Still an empty-string asm (zero instructions) so
-        # it passes the pre-commit whitelist.
-        barrier = f'{indent}asm volatile("" : : : "memory");\n'
-        new_lines = lines[:insert_at] + [barrier] + lines[insert_at:]
-        label = f"T11_barrier{k}"
-        variants.append((label, new_lines))
+        return f'{indent}asm volatile("" : : : "memory");\n'
+
+    def _insert_barriers(sorted_positions: list[int]) -> list[str]:
+        """Insert barriers at each position. Positions MUST be sorted
+        ascending; we walk from the back so earlier indices stay valid."""
+        out = list(lines)
+        for pos in sorted(sorted_positions, reverse=True):
+            barrier = _make_barrier(pos)
+            out = out[:pos] + [barrier] + out[pos:]
+        return out
+
+    variants: list[tuple[str, list[str]]] = []
+
+    # Single-barrier variants (A2 behavior).
+    for k, pos in enumerate(single_points):
+        new_lines = _insert_barriers([pos])
+        variants.append((f"T11_barrier{k}", new_lines))
+
+    # Double-barrier variants (A3 addition).
+    # Use the full insert_points list (up to 8 => C(8,2)=28, we cap at 15).
+    # Prefer pairs that span different regions of the function (skip pairs
+    # where both positions are back-to-back — those degrade into slightly
+    # stronger single barriers and rarely change codegen usefully).
+    double_pairs: list[tuple[int, int]] = []
+    n_pts = min(len(insert_points), 8)
+    for a in range(n_pts):
+        for b in range(a + 1, n_pts):
+            # Skip pairs that are immediately adjacent in store order
+            # (the typical "barrier right after barrier" case produces the
+            # same codegen as a single barrier at that position).
+            if b - a == 1 and insert_points[b] - insert_points[a] <= 2:
+                continue
+            double_pairs.append((insert_points[a], insert_points[b]))
+    double_pairs = double_pairs[:15]
+
+    for k, (p1, p2) in enumerate(double_pairs):
+        new_lines = _insert_barriers([p1, p2])
+        variants.append((f"T11_barrier2x{k}", new_lines))
+
     return variants
 
 
@@ -558,7 +598,7 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--size", type=int, help="Function size in bytes.")
     ap.add_argument("--symbol", type=str, default=None, help="Function symbol (for reports).")
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT_DIR)
-    ap.add_argument("--budget", type=int, default=60, help="Max compile attempts (default 60).")
+    ap.add_argument("--budget", type=int, default=100, help="Max compile attempts (default 100).")
     ap.add_argument("--no-text", action="store_true",
                     help="A1 mode — disable M10/M11 text mutators.")
     ap.add_argument("--verbose", action="store_true")
