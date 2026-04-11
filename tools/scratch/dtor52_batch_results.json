@@ -1,0 +1,102 @@
+[
+  {
+    "file": "match_0x80016010_SimsCameraParameters_SimsCameraParameters_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x8003E154_EffectsPreRenderVisitor_EffectsPreRenderVisitor_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x8004A090_BBI_InventoryItem_InventoryItem_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80056220_IBaseSimInstance_IBaseSimInstance_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x8007CD9C_CTGFile_CTGFile_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093C14_MUStatesProcessRequests_MUStatesProcessRequests_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093C8C_MUStatesFormat_MUStatesFormat_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093D04_MUStatesSlotSelectSave_MUStatesSlotSelectSave_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093D7C_MUStatesSlotSelectSaveNoSkip_MUStatesSlotSelectSaveNoSkip_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093DF4_MUStatesLoadGame_MUStatesLoadGame_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093E6C_MUStatesLoadHouse_MUStatesLoadHouse_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093EE4_MUStatesAutoSaveNew_MUStatesAutoSaveNew_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093F6C_MUStatesSaveNewGame_MUStatesSaveNewGame_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x80093FE4_MUStatesAutoSaveExisting_MUStatesAutoSaveExisting_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x8009405C_MUStatesSaveExistingGame_MUStatesSaveExistingGame_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x800940D4_MUStatesTransitionAutoSaveExisting_MUStatesTransitionAutoSaveExisting_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x8009414C_MUStatesTransitionSaveExistingGame_MUStatesTransitionSaveExistingGame_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x800941C4_MUStatesLoadConfig_MUStatesLoadConfig_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x8009423C_MUStatesDisplay_MUStatesDisplay_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  },
+  {
+    "file": "match_0x8009AE18_TheSimsNGCLicenseState_TheSimsNGCLicenseState_dtor52.cpp",
+    "status": "PARSE_ERROR",
+    "reason": "Could not parse header"
+  }
+]
