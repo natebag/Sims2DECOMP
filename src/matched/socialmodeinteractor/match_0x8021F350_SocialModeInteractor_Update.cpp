@@ -1,3 +1,4 @@
+// FLAGS: -fno-peephole
 typedef void *(*VtableFn)(void *);
 
 struct EGlobalArray {
