@@ -1,4 +1,4 @@
-// 0x801B941C TabInfo::TabInfo (24b)
+// 0x801B941C INGTarget::TabInfo::TabInfo (24b)
 
 struct TabInfo {
     int f0;
