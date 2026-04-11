@@ -4,19 +4,53 @@
 # Uses the ORIGINAL SN Systems ProDG compiler (cc1plus.exe + NgcAs.exe)
 # that built The Sims 2 GameCube. Falls back to devkitPPC GCC if SN not found.
 #
-# Usage: ./tools/verify_match.sh <source.cpp> <address_hex> <size_decimal>
+# Usage: ./tools/verify_match.sh [--outdir DIR] <source.cpp> <address_hex> <size_decimal>
 # Example: ./tools/verify_match.sh src/matched/test.cpp 0x800044C0 8
+#          ./tools/verify_match.sh --outdir build/verify/run_42 src/matched/test.cpp 0x800044C0 8
+#
+# --outdir DIR  Directory for temp build artifacts (.o, .s, _clean.cpp).
+#               Default: build/verify  (kept for backwards compatibility)
+#               Pass a unique dir per concurrent invocation to avoid collisions
+#               when running multiple verify_match.sh in parallel (matcher_bot
+#               variants share label-based filenames otherwise).
 #
 # Returns exit code 0 if function bytes match, 1 if mismatch.
 
 set -e
 
-SRC="$1"
-ADDR="$2"
-SIZE="$3"
+# --- arg parsing ---------------------------------------------------------
+OUTDIR="build/verify"
+POSITIONAL=()
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --outdir)
+            if [ -z "${2:-}" ]; then
+                echo "ERROR: --outdir requires a directory argument" >&2
+                exit 1
+            fi
+            OUTDIR="$2"
+            shift 2
+            ;;
+        --outdir=*)
+            OUTDIR="${1#--outdir=}"
+            shift
+            ;;
+        --)
+            shift
+            while [ $# -gt 0 ]; do POSITIONAL+=("$1"); shift; done
+            ;;
+        *)
+            POSITIONAL+=("$1")
+            shift
+            ;;
+    esac
+done
+SRC="${POSITIONAL[0]:-}"
+ADDR="${POSITIONAL[1]:-}"
+SIZE="${POSITIONAL[2]:-}"
 
 if [ -z "$SRC" ] || [ -z "$ADDR" ] || [ -z "$SIZE" ]; then
-    echo "Usage: $0 <source.cpp> <hex_address> <size>"
+    echo "Usage: $0 [--outdir DIR] <source.cpp> <hex_address> <size>"
     echo "Example: $0 src/matched/test.cpp 0x800044C0 8"
     exit 1
 fi
@@ -33,10 +67,10 @@ SN_CC1PLUS="$SN_BIN/cc1plus.exe"
 SN_AS="$SN_BIN/NgcAs.exe"
 
 # Output paths
-mkdir -p build/verify
+mkdir -p "$OUTDIR"
 BASENAME="$(basename "$SRC" .cpp)"
-OBJ="build/verify/${BASENAME}.o"
-ASM="build/verify/${BASENAME}.s"
+OBJ="$OUTDIR/${BASENAME}.o"
+ASM="$OUTDIR/${BASENAME}.s"
 
 # Step 0: Reject fake matches (inline asm byte injection is NOT decomp)
 # Mirrors tools/hooks/pre-commit. Keep both in sync.
@@ -82,7 +116,7 @@ fi
 if [ -f "$SN_CC1PLUS" ]; then
     # Use SN Systems compiler (the real one)
     # GCC 2.95 can be picky — strip // comments starting with 0x (confuses old preprocessor)
-    CLEAN_SRC="build/verify/${BASENAME}_clean.cpp"
+    CLEAN_SRC="$OUTDIR/${BASENAME}_clean.cpp"
     sed 's|//.*||; s|/\*.*\*/||' "$SRC" > "$CLEAN_SRC"
     # Check for per-file flag overrides via // FLAGS: comment
     EXTRA_FLAGS=$(grep '// FLAGS:' "$SRC" 2>/dev/null | head -1 | sed 's|.*// FLAGS: *||')

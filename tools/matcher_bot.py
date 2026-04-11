@@ -461,15 +461,25 @@ def build_text_variants(lines: list[str]) -> list[tuple[str, list[str]]]:
 
 # ---------- verify_match.sh wrapper ----------
 
-def run_verify(source_path: Path, addr: int, size: int) -> tuple[int, str]:
-    """Invoke verify_match.sh. Returns (exit_code, stdout+stderr)."""
+def run_verify(source_path: Path, addr: int, size: int, outdir: Path | None = None) -> tuple[int, str]:
+    """Invoke verify_match.sh. Returns (exit_code, stdout+stderr).
+
+    When `outdir` is provided, passes --outdir to verify_match.sh so that the
+    .o / .s / _clean.cpp temp files are written into a unique per-target
+    directory. Required when multiple matcher_bot processes run concurrently
+    (variant labels collide in the default build/verify dir otherwise).
+    """
     cmd = [
         BASH,
         _to_bash_path(VERIFY_SCRIPT),
+    ]
+    if outdir is not None:
+        cmd.extend(["--outdir", _to_bash_path(outdir)])
+    cmd.extend([
         _to_bash_path(source_path),
         f"0x{addr:08X}",
         str(size),
-    ]
+    ])
     try:
         proc = subprocess.run(
             cmd,
@@ -584,7 +594,10 @@ def run_candidates(
         variant_lines = rewrite_flags(text_lines, flag_str)
         variant_src.write_text("".join(variant_lines), encoding="utf-8")
 
-        exit_code, output = run_verify(variant_src, addr, size)
+        # Pass work_dir as --outdir so verify_match.sh's intermediates land in
+        # the per-target unique directory. Prevents cross-process collisions
+        # when multiple matcher_bot runs hit the same variant label.
+        exit_code, output = run_verify(variant_src, addr, size, outdir=work_dir)
         matched, score, mismatch_chunks, compile_failed = score_verify_output(
             exit_code, output, size
         )
