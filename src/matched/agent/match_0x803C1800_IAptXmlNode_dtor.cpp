@@ -1,0 +1,11 @@
+// 0x803C1800 IAptXmlNode::~IAptXmlNode (52b)
+// FLAGS: -fno-elide-constructors
+
+extern int VT[];
+void del_fn(void *);
+void d_IAptXmlNode_IAptXmlNode(char *self, int __in_chrg) {
+    *(int **)self = VT;
+    if (__in_chrg & 1) {
+        del_fn(self);
+    }
+}
