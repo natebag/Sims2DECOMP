@@ -1,3 +1,4 @@
+// FLAGS: -fno-elide-constructors
 void *EGrowPool_Alloc(void *pool, unsigned int size, int align);
 extern char ETextureManager_instance[];
 

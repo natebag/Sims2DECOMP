@@ -1,3 +1,4 @@
+// FLAGS: -fno-elide-constructors
 void EGrowPool_Free(void *pool, void *ptr);
 
 struct ETexture {
