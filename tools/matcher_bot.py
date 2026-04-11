@@ -208,9 +208,11 @@ def score_verify_output(exit_code: int, output: str, size: int) -> tuple[bool, f
         - MATCH:          score = 1.0
         - COMPILE FAILED: score = 0.0, compile_failed=True
         - SIZE_MISMATCH:  score = 0.0
-        - MISMATCH:       score = max(0, 1 - (mismatch_chunks * 8) / size)
-                          where mismatch_chunks counts 8-byte windows that
+        - MISMATCH:       score = max(0, 1 - (mismatch_chunks * 4) / size)
+                          where mismatch_chunks counts 4-byte words that
                           differ in the reloc-masked comparison
+                          (verify_match.sh prints one line per 4-byte word:
+                          `offset 0x00c: DOL=b00b000c  COMPILED=b003000c`)
     This is a rough proxy — the true diff is done in byte space inside
     verify_match.sh — but it's monotone-enough to rank variants.
     """
@@ -221,9 +223,15 @@ def score_verify_output(exit_code: int, output: str, size: int) -> tuple[bool, f
     if SIZE_MISMATCH_RE.search(output):
         return False, 0.0, 0, False
     chunks = len(MISMATCH_OFFSET_RE.findall(output))
+    if chunks == 0 and exit_code != 0:
+        # No MATCH marker, no mismatch offsets, but nonzero exit.
+        # verify_match.sh uses `set -e`, so if cc1plus/NgcAs crashes it
+        # bails out before printing "COMPILE FAILED". Treat as compile
+        # failure rather than falsely crediting score=1.0 for zero chunks.
+        return False, 0.0, 0, True
     if size <= 0:
         return False, 0.0, chunks, False
-    bytes_wrong = min(size, chunks * 8)
+    bytes_wrong = min(size, chunks * 4)
     score = max(0.0, 1.0 - bytes_wrong / size)
     return False, score, chunks, False
 
