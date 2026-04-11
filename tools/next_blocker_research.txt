@@ -1,0 +1,176 @@
+# Next Systemic Blocker Research (Post-PMF/SDA)
+# Generated: 2026-04-07
+
+## EXECUTIVE SUMMARY
+
+After CRACKING the two major blockers (PMF ABI and SDA Externals), the next
+systemic issue affecting the most functions is:
+
+**INSTRUCTION SCHEDULING & REGISTER ALLOCATION DIFFERENCES**
+
+This affects ~100-200 functions across multiple TUs, particularly those with:
+- Complex control flow (multiple branches)
+- Multiple function calls
+- Mixed global variable access patterns
+
+---
+
+## CRACKED BLOCKERS (Resolved)
+
+### 1. PMF ABI (CBMemberTranslator) - CRACKED
+- **Impact:** 335 functions
+- **Fix:** Static thunk with local var + `-fno-schedule-insns`
+- **Status:** OpusWorker blasting through them
+
+### 2. SDA Externals - CRACKED  
+- **Impact:** ~26 functions
+- **Fix:** Wrap globals in struct >= 8 bytes
+- **Status:** KimiGuy/KimiWorker applying
+
+---
+
+## NEXT BLOCKER: Instruction Scheduling & Register Allocation
+
+### Affected Functions (Sample)
+
+| TU | Function | Size | Issue |
+|----|----------|------|-------|
+| global | HouseNameText | 112B | Reg alloc + scheduling |
+| global | HouseNameCapsText | 112B | Reg alloc + scheduling |
+| global | GetHUDUIString | 112B | Reg alloc + scheduling |
+| global | GetPDAString | 112B | Reg alloc + scheduling |
+| global | GetNotificationString | 112B | Reg alloc + scheduling |
+| global | GetMemCardString | 112B | Reg alloc + scheduling |
+| global | EndSaveGame | 48B | Reg alloc |
+
+### Pattern Analysis
+
+DOL bytes show these functions:
+1. Use `lis r9, XXXX; lwz r3, YYYY(r9)` (absolute addressing)
+2. ALSO use `lwz r0, ZZZZ(r13)` (@sda21 addressing)
+3. Have multiple `bl` calls to external functions
+4. Have conditional branches (`beq`, `bne`)
+
+When compiled with SN ProDG v3.93:
+- Register allocation differs (different GPRs chosen)
+- Instruction scheduling differs (instruction order)
+- Same logic, different binary representation
+
+### Root Cause
+
+The SN ProDG compiler's:
+- Register allocator chooses different GPRs than original
+- Instruction scheduler orders instructions differently
+- This is a **heuristic difference**, not a flag issue
+
+Flags tried (that don't fix it):
+- `-fno-schedule-insns` (helps PMF, not these)
+- `-O2` (already using)
+- `-G 8` (SDA threshold, already correct)
+
+### Why This Is Hard
+
+Unlike PMF/SDA where we could force specific codegen patterns,
+instruction scheduling is deeply baked into the compiler's optimization
+pipeline. We cannot force specific register choices or instruction
+ordering through standard flags.
+
+---
+
+## POTENTIAL MITIGATIONS
+
+### Option 1: Inline Assembly (Heavy-handed)
+Wrap the entire function body in `__asm__` blocks.
+- Pro: Exact byte match
+- Con: Not real decompilation
+- Con: Platform-specific
+
+### Option 2: Accept Near-Misses (Pragmatic)
+For functions where only register allocation differs:
+- Accept `mr r3, r4` vs `mr r4, r3` patterns
+- Functionally equivalent, different encoding
+- Would need objdiff tolerance
+
+### Option 3: Per-Function Tuning (Tedious)
+- Try different C++ constructs to influence regalloc
+- Use `register` keyword (deprecated, but may work)
+- Add dummy operations to force spill/fill patterns
+- Very time-consuming per function
+
+### Option 4: Compiler Research (Long-term)
+- Find undocumented SN ProDG flags
+- Try older/newer ProDG versions
+- Contact SN/INTERRUPT support (if possible)
+
+---
+
+## ESTIMATED IMPACT
+
+| Blocker | Functions Affected | Fix Complexity |
+|---------|-------------------|----------------|
+| PMF ABI | 335 | SOLVED |
+| SDA Externals | 26 | SOLVED |
+| Instruction Scheduling | ~100-200 | HIGH |
+| Float Register Alloc | ~50-100 | MEDIUM |
+| [No Source] | ~1,926 | VERY HIGH |
+
+---
+
+## RECOMMENDATION
+
+**Immediate:**
+1. Finish PMF blast (OpusWorker)
+2. Finish SDA fixes (KimiGuy/KimiWorker)
+3. Survey remaining MISMATCH functions for patterns
+
+**Short-term:**
+1. Target TUs with simpler functions (wrapper, person)
+2. Document which functions have scheduling issues
+3. Try Option 3 (per-function tuning) on 2-3 samples
+
+**Medium-term:**
+1. Research SN ProDG undocumented flags
+2. Consider Option 2 (accept near-misses) for 95%+ matches
+3. Focus effort on [no source] functions via DOL extraction
+
+---
+
+## OPEN QUESTIONS
+
+1. Are there any `-f` flags that control PPC register allocation?
+2. Does `-O1` or `-O0` produce closer matches (at cost of other issues)?
+3. Can we use `__attribute__((noinline))` to force specific codegen?
+4. Is there a pattern to WHICH functions get affected (size, complexity)?
+
+---
+
+## RESEARCH METHODOLOGY
+
+To validate this blocker:
+1. Pick 5 MISMATCH functions from global TU
+2. Extract DOL bytes with `extract_function.py`
+3. Disassemble both DOL and compiled versions
+4. Compare instruction sequences
+5. Identify if differences are purely regalloc/scheduling
+6. Document findings
+
+---
+
+## CONCLUSION
+
+The "low-hanging fruit" (PMF, SDA) is nearly picked. The next phase
+requires either:
+1. Accepting near-miss tolerance in verification
+2. Heavy per-function tuning
+3. Major effort on [no source] functions
+
+Project completion estimate:
+- Current: 7,540 / 18,539 = 40.6%
+- PMF+SDA fixes: +350 = 42.5%
+- Remaining MISMATCH: +100-150 = 43.5%
+- [No source] block: +1,500 (best case) = 51.5%
+
+The path to 100% matched remains long. Focus should shift to:
+1. High-impact [no source] TUs (sanimator2, person, object)
+2. Pattern-based automated decompilation
+3. Community contribution for the long tail

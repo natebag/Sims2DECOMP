@@ -1,0 +1,100 @@
+# SDA Blocker Target List
+# Generated: 2026-04-07
+# Updated: 2026-04-07 with KimiGuy verification findings
+# 
+# These functions are MISMATCH (have source but don't match DOL)
+# Many likely blocked by SDA externals - DOL uses lis/lfs absolute addressing
+# but compiler generates @sda21 (r13-relative) addressing
+#
+# Fix: Wrap globals in struct >= 8 bytes to force above -G 8 threshold
+# Reference: KimiGuy's SDA fix in info channel (note 9f7a2624)
+
+## VERIFIED SDA-BLOCKED (Being Fixed):
+
+### e_graphics (3 functions - FIXED by KimiGuy)
+# lis r9, 0x8042; lfs f1, -0xF6C(r9) pattern
+0x802F2204  12B  EGraphics::GetFarZVal                    [FIXED]
+0x802F2210  12B  EGraphics::GetNearZVal                   [FIXED]
+0x802F222C  12B  EGraphics::GetScreenAspect               [FIXED]
+
+### e_graphics (1 additional - NOT SDA, different issue)
+0x802F1F9C  24B  EGraphics::GetFrameBufferTextureCoordinate [REJECTED - struct return]
+
+### iobject (23 type-info getters - KimiWorker fixing)
+# Pattern: lis r9, XXXX; lwz r3, YYYY(r9) for type info strings
+0x80053CEC  12B  ISimsObjectModel::GetTypeName            [PENDING]
+0x80053CF8  12B  ISimsObjectModel::GetTypeKey             [PENDING]
+0x80053D04  12B  ISimsObjectModel::GetTypeVersion         [PENDING]
+0x80053D1C  12B  ISimsObjectModel::GetReadVersion         [PENDING]
+0x80053F64  12B  ISimsWallObjectModel::GetTypeName        [PENDING]
+0x80053F70  12B  ISimsWallObjectModel::GetTypeKey         [PENDING]
+0x80053F7C  12B  ISimsWallObjectModel::GetTypeVersion     [PENDING]
+0x80053F94  12B  ISimsWallObjectModel::GetReadVersion     [PENDING]
+0x800540F8  12B  ISimsMultiTileObjectModel::GetTypeName   [PENDING]
+0x80054104  12B  ISimsMultiTileObjectModel::GetTypeKey    [PENDING]
+0x80054110  12B  ISimsMultiTileObjectModel::GetTypeVersion [PENDING]
+0x80054128  12B  ISimsMultiTileObjectModel::GetReadVersion [PENDING]
+0x8005428C  12B  ISimsCounterTopObject::GetTypeName       [PENDING]
+0x80054298  12B  ISimsCounterTopObject::GetTypeKey        [PENDING]
+0x800542A4  12B  ISimsCounterTopObject::GetTypeVersion    [PENDING]
+0x800542BC  12B  ISimsCounterTopObject::GetReadVersion    [PENDING]
+0x80054420  12B  IShrubObject::GetTypeName                [PENDING]
+0x8005442C  12B  IShrubObject::GetTypeKey                 [PENDING]
+0x80054438  12B  IShrubObject::GetTypeVersion             [PENDING]
+0x80054450  12B  IShrubObject::GetReadVersion             [PENDING]
+
+## REJECTED (NOT SDA - Different Blockers):
+
+### global TU (6 functions) - REJECTED
+# These have complex bl chains, register allocation / scheduling issues
+0x8003FB0C  112B  EGlobal::HouseNameText                  [REJECTED - reg alloc/scheduling]
+0x8003FB7C  112B  EGlobal::HouseNameCapsText              [REJECTED - reg alloc/scheduling]
+0x8003FCC4  112B  EGlobal::GetHUDUIString                 [REJECTED - reg alloc/scheduling]
+0x8003FD4C  112B  EGlobal::GetNotificationString          [REJECTED - reg alloc/scheduling]
+0x8003FDC8  112B  EGlobal::GetPDAString                   [REJECTED - reg alloc/scheduling]
+0x800402BC  112B  EGlobal::GetMemCardString               [REJECTED - reg alloc/scheduling]
+0x80041B6C  48B   EGlobal::EndSaveGame                    [REJECTED - reg alloc/scheduling]
+
+### wrapper TU (2 functions) - REJECTED
+0x80084A4C  64B   IconItem::ReleaseShader                 [REJECTED - member function]
+0x80085678  64B   WrapperPaneBase::ReleaseBackgroundShader [REJECTED - member function]
+
+### iobject TU (3 additional) - REJECTED
+0x8004DFD4  84B   ISimsObjectModel::KillAllAnimTracks     [REJECTED - object ptr load]
+0x800544D0  60B   ISimsObjectModel::UpdateModel           [REJECTED - not SDA]
+0x8039F614  20B   TArray<EILight*,TArrayDefaultAllocator>::Init [REJECTED - not SDA]
+
+### strset TU (2 functions) - REJECTED
+# These are inline asm stubs - need proper decompilation, not SDA fix
+0x800A76AC  80B   QuickStringSet::GetString               [REJECTED - inline asm stub]
+0x800A7C28  56B   QuickStringSet::GetDataID               [REJECTED - inline asm stub]
+
+### simulator TU (3 functions) - REJECTED
+# These are inline asm stubs - need proper decompilation
+0x80140D28  72B   cSimulatorImpl::ComputeTimeOfDay        [REJECTED - inline asm stub]
+0x80140D70  88B   cSimulatorImpl::HourTimeOfDayLastChanged [REJECTED - inline asm stub]
+0x80140DC8  88B   cSimulatorImpl::HourTimeOfDayNextChanges [REJECTED - inline asm stub]
+
+### statemachine TU (5 functions) - UNVERIFIED
+# Check these for SDA globals
+0x8018B3F0  184B  StateMachine::CanTransitionFrom         [UNVERIFIED]
+# 4 additional MISMATCH functions pending verification
+
+## CORRECTED TOTALS (Post-KimiGuy Verification):
+# Verified SDA-blocked: ~26 functions
+#   - e_graphics: 3 (done)
+#   - iobject: 23 (pending)
+# Rejected false positives: ~21 functions
+
+## LESSON LEARNED:
+# The SDA-mismatch fingerprint (lis r9 + lwz/lfs absolute) is RARE.
+# Most small mismatches are due to:
+#   1. Register allocation differences
+#   2. Instruction scheduling differences  
+#   3. Inline asm stubs needing C++ rewrite
+#   4. Member function prologue/epilogue differences
+
+## NEXT STEPS:
+1. Complete iobject 23 type-info getters (KimiWorker)
+2. Verify statemachine TU 5 functions
+3. Archive this list once iobject complete

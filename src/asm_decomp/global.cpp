@@ -18630,28 +18630,25 @@ void RenderPostProcessEffects(int, ERC *) {
 
 // 0x800916B4 (68 bytes)
 // THREADCALL_MU_SaveNewGame(void)
-__attribute__((noreturn))
+// FLAGS: -fno-elide-constructors
+
+// Forward declarations
+void THREADPOLL_MU_Start(void);
+
+// Global object accessed via SDA
+struct MUStateWrapper {
+    void* vtable;
+    // Virtual method at entry 8 (offset 64 in vtable)
+    virtual void StartThread(void* param);
+};
+
+extern MUStateWrapper* g_muWrapper;  // SDA at -22756
+
 void THREADCALL_MU_SaveNewGame(void) {
-    __asm__ __volatile__(
-        "stwu	1,-8(1)\n"
-        "mflr	0\n"
-        "stw	0,12(1)\n"
-        ".long 0x4bffff9d  /* bl THREADPOLL_MU_Start(void) */\n"
-        "lwz	11,-22756(13)\n"
-        "lis	4,-32759\n"
-        "addi	4,4,5748\n"
-        "lwz	9,0(11)\n"
-        "lha	3,64(9)\n"
-        "lwz	0,68(9)\n"
-        "add	3,11,3\n"
-        "mtlr	0\n"
-        "blrl\n"
-        "lwz	0,12(1)\n"
-        "mtlr	0\n"
-        "addi	1,1,8\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
+    THREADPOLL_MU_Start();
+    
+    // Call virtual method on global wrapper
+    g_muWrapper->StartThread((void*)0x80091674);  // Function pointer parameter
 }
 
 // 0x80098010 (72 bytes)

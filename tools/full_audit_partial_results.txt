@@ -1,0 +1,38 @@
+# Full Audit Partial Results (5800/6464 files - 90% complete)
+# Date: 2026-04-07
+# Task: brywtptnm (lost at 90% due to heartbeat timeout)
+
+## PROGRESS
+Files audited: 5800 / 6464 (89.7%)
+Status: Background task lost (heartbeat expired)
+
+## RAW RESULTS
+OK: 4919
+FAIL: 436
+Errors: 0 (implied)
+
+## STATISTICS
+Success rate: 84.8%
+Fail rate: 7.5%
+
+## EXTRAPOLATED TOTALS (for all 6464 files)
+Estimated real matches: ~5,475
+Estimated failures: ~485
+
+## COMPARISON TO REPORTED COUNT
+Reported: 9,192
+Estimated real: ~5,475
+Inflation: ~41%
+
+## TOP FAILURE CATEGORIES (observed pattern)
+1. MISMATCH - byte-level differences
+2. SIZE_MISMATCH - compiled size differs from DOL
+3. Header parsing issues
+
+## NOTES
+- Audit used fixed random seed (42), so files were sampled not sequential
+- Results represent random sample of src/matched/agent/ (excluding cbmt_blast)
+- cbmt_blast/ contains 331 additional verified matches (not in this audit)
+
+## FINAL ESTIMATE INCLUDING CBMT_BLAST
+Total estimated real matches: ~5,806 (5,475 + 331)

@@ -1,5 +1,4 @@
-// ISimInstance::StartBurp(int)
-// Address: 0x80056340 | Size: 4 bytes
+// 0x80056340 ISimInstance::StartBurp (4b)
 // Pure virtual override stub - just blr
 
 class ISimInstance {

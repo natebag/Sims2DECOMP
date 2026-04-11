@@ -1,0 +1,3623 @@
+{
+  "total_files": 8461,
+  "unique_addresses": 7557,
+  "duplicate_count": 904,
+  "duplicates": {
+    "8000FC68": [
+      "src\\matched\\agent\\match_0x8000FC68_func_8000FC68.cpp",
+      "src\\matched\\agent\\match_8000FC68_AptParagraph__GetParagraphHeight.cpp"
+    ],
+    "8000FC70": [
+      "src\\matched\\agent\\match_0x8000FC70_func_8000FC70.cpp",
+      "src\\matched\\agent\\match_8000FC70_AptParagraph__GetPrintWidth.cpp"
+    ],
+    "8001ADA0": [
+      "src\\matched\\agent\\match_0x8001ADA0_func_8001ADA0.cpp",
+      "src\\matched\\agent\\match_8001ADA0_ESimsCam__GetControllerFilterId.cpp"
+    ],
+    "8001CAF8": [
+      "src\\matched\\agent\\match_0x8001CAF8_func_8001CAF8.cpp",
+      "src\\matched\\agent\\match_8001CAF8_CameraDirector__GetFrameEffectsManager.cpp"
+    ],
+    "8001EA74": [
+      "src\\matched\\agent\\match_0x8001EA74_func_8001EA74.cpp",
+      "src\\matched\\agent\\match_8001EA74_ESimsCam__GetZoom.cpp"
+    ],
+    "8001EA7C": [
+      "src\\matched\\agent\\match_0x8001EA7C_func_8001EA7C.cpp",
+      "src\\matched\\agent\\match_8001EA7C_ESimsCam__GetTilt.cpp"
+    ],
+    "8001EA8C": [
+      "src\\matched\\agent\\match_0x8001EA8C_func_8001EA8C.cpp",
+      "src\\matched\\agent\\match_8001EA8C_ESimsCam__GetbMoved.cpp"
+    ],
+    "8001EA94": [
+      "src\\matched\\agent\\match_0x8001EA94_func_8001EA94.cpp",
+      "src\\matched\\agent\\match_8001EA94_ESimsCam__GetRotAng.cpp"
+    ],
+    "8001EA9C": [
+      "src\\matched\\agent\\match_0x8001EA9C_func_8001EA9C.cpp",
+      "src\\matched\\agent\\match_8001EA9C_ESimsCam__GetMode.cpp"
+    ],
+    "8001EAA4": [
+      "src\\matched\\agent\\match_0x8001EAA4_func_8001EAA4.cpp",
+      "src\\matched\\agent\\match_8001EAA4_ESimsCam__GetPlayerId.cpp"
+    ],
+    "8001EAAC": [
+      "src\\matched\\agent\\match_0x8001EAAC_func_8001EAAC.cpp",
+      "src\\matched\\agent\\match_8001EAAC_ESimsCam__ForceFullScreen.cpp"
+    ],
+    "8001EAB4": [
+      "src\\matched\\agent\\match_0x8001EAB4_func_8001EAB4.cpp",
+      "src\\matched\\agent\\match_8001EAB4_ESimsCam__IsForceFullScreen.cpp"
+    ],
+    "8001EABC": [
+      "src\\matched\\agent\\match_0x8001EABC_func_8001EABC.cpp",
+      "src\\matched\\agent\\match_8001EABC_ESimsCam__SetCenterNew.cpp"
+    ],
+    "8001EAC4": [
+      "src\\matched\\agent\\match_0x8001EAC4_func_8001EAC4.cpp",
+      "src\\matched\\agent\\match_8001EAC4_ESimsCam__GetRoomId.cpp"
+    ],
+    "8001EACC": [
+      "src\\matched\\agent\\match_0x8001EACC_func_8001EACC.cpp",
+      "src\\matched\\agent\\match_8001EACC_ESimsCam__GetRoomWallsOpaque.cpp"
+    ],
+    "8001EAD4": [
+      "src\\matched\\agent\\match_0x8001EAD4_func_8001EAD4.cpp",
+      "src\\matched\\agent\\match_8001EAD4_ESimsCam__SetInterpSocial.cpp"
+    ],
+    "8001EADC": [
+      "src\\matched\\agent\\match_0x8001EADC_func_8001EADC.cpp",
+      "src\\matched\\agent\\match_8001EADC_ESimsCam__SetInterpLotIntro.cpp"
+    ],
+    "800226A0": [
+      "src\\matched\\agent\\match_0x800226A0_func_800226A0.cpp",
+      "src\\matched\\agent\\match_800226A0_EDummyFile__Tell.cpp"
+    ],
+    "800226A8": [
+      "src\\matched\\agent\\match_0x800226A8_func_800226A8.cpp",
+      "src\\matched\\agent\\match_800226A8_EDummyFile__Flush.cpp"
+    ],
+    "800226B0": [
+      "src\\matched\\agent\\match_0x800226B0_func_800226B0.cpp",
+      "src\\matched\\agent\\match_800226B0_EDummyFile__GetLastError.cpp"
+    ],
+    "800226B8": [
+      "src\\matched\\agent\\match_0x800226B8_func_800226B8.cpp",
+      "src\\matched\\agent\\match_800226B8_EDummyFile__GetSystemHandle.cpp"
+    ],
+    "8002B99C": [
+      "src\\matched\\agent\\match_0x8002B99C_func_8002B99C.cpp",
+      "src\\matched\\agent\\match_8002B99C_EIWallPart__GetAdjacentRoom.cpp"
+    ],
+    "80030654": [
+      "src\\matched\\agent\\match_0x80030654_func_80030654.cpp",
+      "src\\matched\\agent\\match_80030654_EIWallPart__SetForceFadeOff.cpp"
+    ],
+    "80030898": [
+      "src\\matched\\agent\\match_0x80030898_func_80030898.cpp",
+      "src\\matched\\agent\\match_80030898_EIFenceWall__IsOpaque.cpp"
+    ],
+    "8003530C": [
+      "src\\matched\\agent\\match_0x8003530C_func_8003530C.cpp",
+      "src\\matched\\agent\\match_8003530C_ESim__GetShadow.cpp"
+    ],
+    "80035314": [
+      "src\\matched\\agent\\match_0x80035314_func_80035314.cpp",
+      "src\\matched\\agent\\match_80035314_ESim__GetPerson.cpp"
+    ],
+    "80035330": [
+      "src\\matched\\agent\\match_0x80035330_func_80035330.cpp",
+      "src\\matched\\agent\\match_80035330_ESim__GetSimHead.cpp"
+    ],
+    "80035338": [
+      "src\\matched\\agent\\match_0x80035338_func_80035338.cpp",
+      "src\\matched\\agent\\match_80035338_ESim__GetSimModel.cpp"
+    ],
+    "8003535C": [
+      "src\\matched\\agent\\match_0x8003535C_func_8003535C.cpp",
+      "src\\matched\\agent\\match_8003535C_ESim__GetPlumbBobState.cpp"
+    ],
+    "8003536C": [
+      "src\\matched\\agent\\match_0x8003536C_func_8003536C.cpp",
+      "src\\matched\\agent\\match_8003536C_ESim__GetIsModelLoaded.cpp"
+    ],
+    "80035374": [
+      "src\\matched\\agent\\match_0x80035374_func_80035374.cpp",
+      "src\\matched\\agent\\match_80035374_ESim__GetIsChangingOutfit.cpp"
+    ],
+    "80036E70": [
+      "src\\matched\\agent\\match_0x80036E70_func_80036E70.cpp",
+      "src\\matched\\agent\\match_80036E70_ESpriteRender__GetObject.cpp"
+    ],
+    "80036E78": [
+      "src\\matched\\agent\\match_0x80036E78_func_80036E78.cpp",
+      "src\\matched\\agent\\match_80036E78_ESpriteRender__GetMarked.cpp"
+    ],
+    "80036E80": [
+      "src\\matched\\agent\\match_0x80036E80_func_80036E80.cpp",
+      "src\\matched\\agent\\match_80036E80_ESpriteRender__GetMarkedAsNew.cpp"
+    ],
+    "80038CD8": [
+      "src\\matched\\agent\\match_0x80038CD8_func_80038CD8.cpp",
+      "src\\matched\\agent\\match_80038CD8_EyeToyClient__GetFunframeCount.cpp"
+    ],
+    "80038CE0": [
+      "src\\matched\\agent\\match_0x80038CE0_func_80038CE0.cpp",
+      "src\\matched\\agent\\match_80038CE0_EyeToyClient__GetFilterCount.cpp"
+    ],
+    "80038CE8": [
+      "src\\matched\\agent\\match_0x80038CE8_func_80038CE8.cpp",
+      "src\\matched\\agent\\match_80038CE8_EyeToyClient__GetTargetSlotCount.cpp"
+    ],
+    "8003DDA0": [
+      "src\\matched\\agent\\match_0x8003DDA0_func_8003DDA0.cpp",
+      "src\\matched\\agent\\match_8003DDA0_GameData__GetBuildBuyPlayer.cpp"
+    ],
+    "8003E188": [
+      "src\\matched\\agent\\match_0x8003E188_func_8003E188.cpp",
+      "src\\matched\\agent\\match_8003E188_EffectsPreRenderVisitor__Visit_Effect.cpp"
+    ],
+    "8003E190": [
+      "src\\matched\\agent\\match_0x8003E190_func_8003E190.cpp",
+      "src\\matched\\agent\\match_8003E190_EffectsPreRenderVisitor__Visit_Seq.cpp"
+    ],
+    "8003FA14": [
+      "src\\matched\\agent\\match_0x8003FA14_func_8003FA14.cpp",
+      "src\\matched\\agent\\match_8003FA14_EGlobal__SetCam.cpp"
+    ],
+    "80047194": [
+      "src\\matched\\agent\\match_0x80047194_func_80047194.cpp",
+      "src\\matched\\agent\\match_80047194_operator_shl_EStream_ref__EIFloor_ptr.cpp"
+    ],
+    "80048494": [
+      "src\\matched\\agent\\match_0x80048494_func_80048494.cpp",
+      "src\\matched\\agent\\match_80048494_EIFloor__CreateCopy_void__const.cpp"
+    ],
+    "8004C460": [
+      "src\\matched\\agent\\match_0x8004C460_func_8004C460.cpp",
+      "src\\matched\\agent\\match_8004C460_operator_shl_EStream_ref__ISimsObjectModel_ptr.cpp"
+    ],
+    "800510D0": [
+      "src\\matched\\agent\\match_0x800510D0_func_800510D0.cpp",
+      "src\\matched\\agent\\match_800510D0_operator_shl_EStream_ref__ISimsWallObjectModel_ptr.cpp"
+    ],
+    "800519EC": [
+      "src\\matched\\agent\\match_0x800519EC_func_800519EC.cpp",
+      "src\\matched\\agent\\match_800519EC_operator_shl_EStream_ref__ISimsMultiTileObjectModel_ptr.cpp"
+    ],
+    "8005200C": [
+      "src\\matched\\agent\\match_0x8005200C_func_8005200C.cpp",
+      "src\\matched\\agent\\match_8005200C_operator_shl_EStream_ref__ISimsCounterTopObject_ptr.cpp"
+    ],
+    "80052544": [
+      "src\\matched\\agent\\match_0x80052544_func_80052544.cpp",
+      "src\\matched\\agent\\match_80052544_operator_shl_EStream_ref__IShrubObject_ptr.cpp"
+    ],
+    "80053D7C": [
+      "src\\matched\\agent\\match_0x80053D7C_func_80053D7C.cpp",
+      "src\\matched\\agent\\match_80053D7C_ISimsObjectModel__CreateCopy_void__const.cpp"
+    ],
+    "80053FF4": [
+      "src\\matched\\agent\\match_0x80053FF4_func_80053FF4.cpp",
+      "src\\matched\\agent\\match_80053FF4_ISimsWallObjectModel__CreateCopy_void__const.cpp"
+    ],
+    "80054188": [
+      "src\\matched\\agent\\match_0x80054188_func_80054188.cpp",
+      "src\\matched\\agent\\match_80054188_ISimsMultiTileObjectModel__CreateCopy_void__const.cpp"
+    ],
+    "8005431C": [
+      "src\\matched\\agent\\match_0x8005431C_func_8005431C.cpp",
+      "src\\matched\\agent\\match_8005431C_ISimsCounterTopObject__CreateCopy_void__const.cpp"
+    ],
+    "800544B0": [
+      "src\\matched\\agent\\match_0x800544B0_func_800544B0.cpp",
+      "src\\matched\\agent\\match_800544B0_IShrubObject__CreateCopy_void__const.cpp"
+    ],
+    "80056254": [
+      "src\\matched\\agent\\match_0x80056254_func_80056254.cpp",
+      "src\\matched\\agent\\match_80056254_operator_shl_EStream_ref__ISimInstance_ptr.cpp"
+    ],
+    "800562F4": [
+      "src\\matched\\agent\\match_0x800562F4_func_800562F4.cpp",
+      "src\\matched\\agent\\match_800562F4_ISimInstance__SetPlacementError.cpp"
+    ],
+    "80056344": [
+      "src\\matched\\agent\\match_0x80056344_func_80056344.cpp",
+      "src\\matched\\agent\\match_80056344_ISimInstance__GetShadow.cpp"
+    ],
+    "8005634C": [
+      "src\\matched\\agent\\match_0x8005634C_func_8005634C.cpp",
+      "src\\matched\\agent\\match_8005634C_ISimInstance__SetXOb.cpp"
+    ],
+    "80056354": [
+      "src\\matched\\agent\\match_0x80056354_func_80056354.cpp",
+      "src\\matched\\agent\\match_80056354_ISimInstance__GetXOb.cpp"
+    ],
+    "80056948": [
+      "src\\matched\\agent\\match_0x80056948_func_80056948.cpp",
+      "src\\matched\\agent\\match_80056948_ISimInstance__CreateCopy_void__const.cpp"
+    ],
+    "800569F4": [
+      "src\\matched\\agent\\match_0x800569F4_func_800569F4.cpp",
+      "src\\matched\\agent\\match_800569F4_ISimInstance__SetCursFlags.cpp"
+    ],
+    "800569FC": [
+      "src\\matched\\agent\\match_0x800569FC_func_800569FC.cpp",
+      "src\\matched\\agent\\match_800569FC_ISimInstance__GetCursFlags.cpp"
+    ],
+    "8006559C": [
+      "src\\matched\\agent\\match_0x8006559C_func_8006559C.cpp",
+      "src\\matched\\agent\\match_8006559C_SAnimator2__StartParticleEffectFromEdithPrimitive.cpp"
+    ],
+    "80066470": [
+      "src\\matched\\agent\\match_0x80066470_func_80066470.cpp",
+      "src\\matched\\agent\\match_80066470_SAnimator2__footstepEvent.cpp"
+    ],
+    "800676E4": [
+      "src\\matched\\agent\\match_0x800676E4_func_800676E4.cpp",
+      "src\\matched\\agent\\match_800676E4_SAnimator2__removeCostume.cpp"
+    ],
+    "800689F4": [
+      "src\\matched\\agent\\match_0x800689F4_func_800689F4.cpp",
+      "src\\matched\\agent\\match_800689F4_SAnimator2__SetIdleInitialized.cpp"
+    ],
+    "80068A40": [
+      "src\\matched\\agent\\match_0x80068A40_func_80068A40.cpp",
+      "src\\matched\\agent\\match_80068A40_SAnimator2__GetAwareOfObject.cpp"
+    ],
+    "8006908C": [
+      "src\\matched\\agent\\match_0x8006908C_func_8006908C.cpp",
+      "src\\matched\\agent\\match_8006908C_SAnimator2__operator_delete.cpp"
+    ],
+    "800690C0": [
+      "src\\matched\\agent\\match_0x800690C0_func_800690C0.cpp",
+      "src\\matched\\agent\\match_800690C0_SAnimator2__GetRealDir.cpp"
+    ],
+    "800690D0": [
+      "src\\matched\\agent\\match_0x800690D0_func_800690D0.cpp",
+      "src\\matched\\agent\\match_800690D0_SAnimator2__GetTimeMultiplier.cpp"
+    ],
+    "800690D8": [
+      "src\\matched\\agent\\match_0x800690D8_func_800690D8.cpp",
+      "src\\matched\\agent\\match_800690D8_SAnimator2__GetPerson.cpp"
+    ],
+    "800690E0": [
+      "src\\matched\\agent\\match_0x800690E0_func_800690E0.cpp",
+      "src\\matched\\agent\\match_800690E0_SAnimator2__GetSim.cpp"
+    ],
+    "800690E8": [
+      "src\\matched\\agent\\match_0x800690E8_func_800690E8.cpp",
+      "src\\matched\\agent\\match_800690E8_SAnimator2__GetAnimState.cpp"
+    ],
+    "800690F0": [
+      "src\\matched\\agent\\match_0x800690F0_func_800690F0.cpp",
+      "src\\matched\\agent\\match_800690F0_SAnimator2__GetFollowMode.cpp"
+    ],
+    "80069104": [
+      "src\\matched\\agent\\match_0x80069104_func_80069104.cpp",
+      "src\\matched\\agent\\match_80069104_SAnimator2__SetDesiredAnimState.cpp"
+    ],
+    "80069164": [
+      "src\\matched\\agent\\match_0x80069164_func_80069164.cpp",
+      "src\\matched\\agent\\match_80069164_SAnimator2__GetNormalSimDescription.cpp"
+    ],
+    "8006916C": [
+      "src\\matched\\agent\\match_0x8006916C_func_8006916C.cpp",
+      "src\\matched\\agent\\match_8006916C_SAnimator2__SetNormalSimDescription.cpp"
+    ],
+    "8006918C": [
+      "src\\matched\\agent\\match_0x8006918C_func_8006918C.cpp",
+      "src\\matched\\agent\\match_8006918C_SAnimator2__GetPauseMultiplier.cpp"
+    ],
+    "800691A4": [
+      "src\\matched\\agent\\match_0x800691A4_func_800691A4.cpp",
+      "src\\matched\\agent\\match_800691A4_SAnimator2__SetRightHandBoneIndex.cpp"
+    ],
+    "800691AC": [
+      "src\\matched\\agent\\match_0x800691AC_func_800691AC.cpp",
+      "src\\matched\\agent\\match_800691AC_SAnimator2__SetHeadBoneIndex.cpp"
+    ],
+    "800691B4": [
+      "src\\matched\\agent\\match_0x800691B4_func_800691B4.cpp",
+      "src\\matched\\agent\\match_800691B4_SAnimator2__SetPelvisBoneIndex.cpp"
+    ],
+    "800691BC": [
+      "src\\matched\\agent\\match_0x800691BC_func_800691BC.cpp",
+      "src\\matched\\agent\\match_800691BC_SAnimator2__SetTorsoBoneIndex.cpp"
+    ],
+    "800691D4": [
+      "src\\matched\\agent\\match_0x800691D4_func_800691D4.cpp",
+      "src\\matched\\agent\\match_800691D4_SAnimator2__GetRightHandBoneIndex.cpp"
+    ],
+    "800691DC": [
+      "src\\matched\\agent\\match_0x800691DC_func_800691DC.cpp",
+      "src\\matched\\agent\\match_800691DC_SAnimator2__GetHeadBoneIndex.cpp"
+    ],
+    "800691E4": [
+      "src\\matched\\agent\\match_0x800691E4_func_800691E4.cpp",
+      "src\\matched\\agent\\match_800691E4_SAnimator2__GetPelvisBoneIndex.cpp"
+    ],
+    "800691EC": [
+      "src\\matched\\agent\\match_0x800691EC_func_800691EC.cpp",
+      "src\\matched\\agent\\match_800691EC_SAnimator2__GetTorsoBoneIndex.cpp"
+    ],
+    "80069220": [
+      "src\\matched\\agent\\match_0x80069220_func_80069220.cpp",
+      "src\\matched\\agent\\match_80069220_SAnimator2__GetLastCostume.cpp"
+    ],
+    "80069228": [
+      "src\\matched\\agent\\match_0x80069228_func_80069228.cpp",
+      "src\\matched\\agent\\match_80069228_SAnimator2__SetLastCostume.cpp"
+    ],
+    "8006E7B4": [
+      "src\\matched\\agent\\match_0x8006E7B4_func_8006E7B4.cpp",
+      "src\\matched\\agent\\match_8006E7B4_ESims3DHead__operator_delete.cpp"
+    ],
+    "8006E7E8": [
+      "src\\matched\\agent\\match_0x8006E7E8_func_8006E7E8.cpp",
+      "src\\matched\\agent\\match_8006E7E8_global_constructors_ESims3DHead_yfov.cpp"
+    ],
+    "8006E964": [
+      "src\\matched\\agent\\match_0x8006E964_func_8006E964.cpp",
+      "src\\matched\\agent\\match_8006E964_SimImageMaker__Init.cpp"
+    ],
+    "8006EBCC": [
+      "src\\matched\\agent\\match_0x8006EBCC_func_8006EBCC.cpp",
+      "src\\matched\\agent\\match_8006EBCC_SimImageMaker__SetGender.cpp"
+    ],
+    "8006EBD4": [
+      "src\\matched\\agent\\match_0x8006EBD4_func_8006EBD4.cpp",
+      "src\\matched\\agent\\match_8006EBD4_SimImageMaker__SetSkinShader.cpp"
+    ],
+    "800714C4": [
+      "src\\matched\\agent\\match_0x800714C4_func_800714C4.cpp",
+      "src\\matched\\agent\\match_800714C4_SimModel__VerifyRequiredModels.cpp"
+    ],
+    "80074E20": [
+      "src\\matched\\agent\\match_0x80074E20_func_80074E20.cpp",
+      "src\\matched\\agent\\match_80074E20_InvalidatePS2SavedGame.cpp"
+    ],
+    "80075B08": [
+      "src\\matched\\agent\\match_0x80075B08_func_80075B08.cpp",
+      "src\\matched\\agent\\match_80075B08_GetSpaceRequiredForPs2HDDSave.cpp"
+    ],
+    "8007604C": [
+      "src\\matched\\agent\\match_0x8007604C_SkinCompositor_FinalizeSkinTexture.cpp",
+      "src\\matched\\agent\\match_8007604C_SkinCompositor__FinalizeSkinTexture.cpp"
+    ],
+    "800770D4": [
+      "src\\matched\\agent\\match_0x800770D4_func_800770D4.cpp",
+      "src\\matched\\agent\\match_800770D4_Timer_GetTicks.cpp"
+    ],
+    "800770DC": [
+      "src\\matched\\agent\\match_0x800770DC_func_800770DC.cpp",
+      "src\\matched\\agent\\match_800770DC_Timer_GetTotalTicks.cpp"
+    ],
+    "80078FDC": [
+      "src\\matched\\agent\\match_0x80078FDC_func_80078FDC.cpp",
+      "src\\matched\\agent\\match_80078FDC_CUnlockDisplay__IsDone.cpp"
+    ],
+    "80078FFC": [
+      "src\\matched\\agent\\match_0x80078FFC_func_80078FFC.cpp",
+      "src\\matched\\agent\\match_80078FFC_CUnlockDisplay__DonePreloadObject.cpp"
+    ],
+    "800799C4": [
+      "src\\matched\\agent\\match_0x800799C4_func_800799C4.cpp",
+      "src\\matched\\agent\\match_800799C4_CUnlockDisplayObject__GetUnlockObj.cpp"
+    ],
+    "80079A54": [
+      "src\\matched\\agent\\match_0x80079A54_func_80079A54.cpp",
+      "src\\matched\\agent\\match_80079A54_CUnlockDisplayObject__GetStatePtr.cpp"
+    ],
+    "80079A5C": [
+      "src\\matched\\agent\\match_0x80079A5C_func_80079A5C.cpp",
+      "src\\matched\\agent\\match_80079A5C_CUnlockDisplayObject__SetFocusIdx.cpp"
+    ],
+    "80079B80": [
+      "src\\matched\\agent\\match_0x80079B80_func_80079B80.cpp",
+      "src\\matched\\agent\\match_80079B80_CUnlockDisplayObject__SetSomething.cpp"
+    ],
+    "80079B88": [
+      "src\\matched\\agent\\match_0x80079B88_func_80079B88.cpp",
+      "src\\matched\\agent\\match_80079B88_CUnlockDisplayObject__SetField6C.cpp"
+    ],
+    "80079C18": [
+      "src\\matched\\agent\\match_0x80079C18_func_80079C18.cpp",
+      "src\\matched\\agent\\match_80079C18_CUnlockDisplayObject__GetField74.cpp"
+    ],
+    "80079C2C": [
+      "src\\matched\\agent\\match_0x80079C2C_func_80079C2C.cpp",
+      "src\\matched\\agent\\match_80079C2C_CUnlockDisplayObject__GetField78.cpp"
+    ],
+    "80079C34": [
+      "src\\matched\\agent\\match_0x80079C34_func_80079C34.cpp",
+      "src\\matched\\agent\\match_80079C34_CUnlockDisplayObject__GetFloat28.cpp"
+    ],
+    "80079C60": [
+      "src\\matched\\agent\\match_0x80079C60_func_80079C60.cpp",
+      "src\\matched\\agent\\match_80079C60_CUnlockDisplayObject__GetField7C.cpp"
+    ],
+    "80079C68": [
+      "src\\matched\\agent\\match_0x80079C68_func_80079C68.cpp",
+      "src\\matched\\agent\\match_80079C68_CUnlockDisplayObject__GetField04.cpp"
+    ],
+    "80079F84": [
+      "src\\matched\\agent\\match_0x80079F84_func_80079F84.cpp",
+      "src\\matched\\agent\\match_80079F84_CUnlockDisplayObject__ReturnOne.cpp"
+    ],
+    "8007CEE8": [
+      "src\\matched\\agent\\match_0x8007CEE8_func_8007CEE8.cpp",
+      "src\\matched\\agent\\match_8007CEE8_CTGFileImpl__IsWritable.cpp"
+    ],
+    "8007CF28": [
+      "src\\matched\\agent\\match_0x8007CF28_func_8007CF28.cpp",
+      "src\\matched\\agent\\match_8007CF28_CTGFileImpl__Write.cpp"
+    ],
+    "8007CFBC": [
+      "src\\matched\\agent\\match_0x8007CFBC_func_8007CFBC.cpp",
+      "src\\matched\\agent\\match_8007CFBC_CTGFileImpl__SetSize.cpp"
+    ],
+    "8007CFC4": [
+      "src\\matched\\agent\\match_0x8007CFC4_func_8007CFC4.cpp",
+      "src\\matched\\agent\\match_8007CFC4_CTGFileImpl__Flush.cpp"
+    ],
+    "8007CFCC": [
+      "src\\matched\\agent\\match_0x8007CFCC_func_8007CFCC.cpp",
+      "src\\matched\\agent\\match_8007CFCC_CTGFileImpl__FlushCache.cpp"
+    ],
+    "8007D37C": [
+      "src\\matched\\agent\\match_0x8007D37C_func_8007D37C.cpp",
+      "src\\matched\\agent\\match_8007D37C_CTGFileManager__Init.cpp"
+    ],
+    "8007D4C4": [
+      "src\\matched\\agent\\match_0x8007D4C4_func_8007D4C4.cpp",
+      "src\\matched\\agent\\match_8007D4C4_CTGFileManager__CreateFile.cpp"
+    ],
+    "8007D4CC": [
+      "src\\matched\\agent\\match_0x8007D4CC_func_8007D4CC.cpp",
+      "src\\matched\\agent\\match_8007D4CC_CTGFileManager__DeleteFile.cpp"
+    ],
+    "8007D4D4": [
+      "src\\matched\\agent\\match_0x8007D4D4_func_8007D4D4.cpp",
+      "src\\matched\\agent\\match_8007D4D4_CTGFileManager__MoveFile.cpp"
+    ],
+    "8007D4DC": [
+      "src\\matched\\agent\\match_0x8007D4DC_func_8007D4DC.cpp",
+      "src\\matched\\agent\\match_8007D4DC_CTGFileManager__CopyFile.cpp"
+    ],
+    "8007E5E0": [
+      "src\\matched\\agent\\match_0x8007E5E0_func_8007E5E0.cpp",
+      "src\\matched\\agent\\match_8007E5E0_DlgWrapper__GetFont.cpp"
+    ],
+    "8007E5E8": [
+      "src\\matched\\agent\\match_0x8007E5E8_func_8007E5E8.cpp",
+      "src\\matched\\agent\\match_8007E5E8_DlgWrapper__GetDialogPane.cpp"
+    ],
+    "8007E67C": [
+      "src\\matched\\agent\\match_0x8007E67C_func_8007E67C.cpp",
+      "src\\matched\\agent\\match_8007E67C_DlgWrapper__GetDialogPosX.cpp"
+    ],
+    "8007E684": [
+      "src\\matched\\agent\\match_0x8007E684_func_8007E684.cpp",
+      "src\\matched\\agent\\match_8007E684_DlgWrapper__GetDialogPosY.cpp"
+    ],
+    "8007E760": [
+      "src\\matched\\agent\\match_0x8007E760_func_8007E760.cpp",
+      "src\\matched\\agent\\match_8007E760_DlgWrapper__GetDialogSizeX.cpp"
+    ],
+    "8007E768": [
+      "src\\matched\\agent\\match_0x8007E768_func_8007E768.cpp",
+      "src\\matched\\agent\\match_8007E768_DlgWrapper__GetDialogSizeY.cpp"
+    ],
+    "8007E770": [
+      "src\\matched\\agent\\match_0x8007E770_func_8007E770.cpp",
+      "src\\matched\\agent\\match_8007E770_DlgWrapper__GetDialogWidth.cpp"
+    ],
+    "8007E778": [
+      "src\\matched\\agent\\match_0x8007E778_func_8007E778.cpp",
+      "src\\matched\\agent\\match_8007E778_DlgWrapper__GetDialogHeight.cpp"
+    ],
+    "8007F06C": [
+      "src\\matched\\agent\\match_0x8007F06C_func_8007F06C.cpp",
+      "src\\matched\\agent\\match_8007F06C_DlgWrapper__IsAptDrawable.cpp"
+    ],
+    "80083954": [
+      "src\\matched\\agent\\match_0x80083954_func_80083954.cpp",
+      "src\\matched\\agent\\match_80083954_MUWrapper__SetScreenConfiguration.cpp"
+    ],
+    "8008395C": [
+      "src\\matched\\agent\\match_0x8008395C_func_8008395C.cpp",
+      "src\\matched\\agent\\match_8008395C_MUWrapper__SetBackgroundDrawEnable.cpp"
+    ],
+    "80083964": [
+      "src\\matched\\agent\\match_0x80083964_func_80083964.cpp",
+      "src\\matched\\agent\\match_80083964_MUWrapper__GetFont.cpp"
+    ],
+    "80086840": [
+      "src\\matched\\agent\\match_0x80086840_func_80086840.cpp",
+      "src\\matched\\agent\\match_80086840_Wrapper__WrapperStartup.cpp"
+    ],
+    "80087198": [
+      "src\\matched\\agent\\match_0x80087198_func_80087198.cpp",
+      "src\\matched\\agent\\match_80087198_TextBaseItem__GetColor.cpp"
+    ],
+    "800871B8": [
+      "src\\matched\\agent\\match_0x800871B8_func_800871B8.cpp",
+      "src\\matched\\agent\\match_800871B8_TextBaseItem__SetShadowAlpha.cpp"
+    ],
+    "800871C0": [
+      "src\\matched\\agent\\match_0x800871C0_func_800871C0.cpp",
+      "src\\matched\\agent\\match_800871C0_TextBaseItem__GetShadowAlpha.cpp"
+    ],
+    "800871C8": [
+      "src\\matched\\agent\\match_0x800871C8_func_800871C8.cpp",
+      "src\\matched\\agent\\match_800871C8_TextBaseItem__SetShadowSize.cpp"
+    ],
+    "800871D0": [
+      "src\\matched\\agent\\match_0x800871D0_func_800871D0.cpp",
+      "src\\matched\\agent\\match_800871D0_TextBaseItem__GetShadowSize.cpp"
+    ],
+    "800871F4": [
+      "src\\matched\\agent\\match_0x800871F4_func_800871F4.cpp",
+      "src\\matched\\agent\\match_800871F4_TextBaseItem__SetPosX.cpp"
+    ],
+    "800871FC": [
+      "src\\matched\\agent\\match_0x800871FC_func_800871FC.cpp",
+      "src\\matched\\agent\\match_800871FC_TextBaseItem__GetPosX.cpp"
+    ],
+    "80087204": [
+      "src\\matched\\agent\\match_0x80087204_func_80087204.cpp",
+      "src\\matched\\agent\\match_80087204_TextBaseItem__SetPosY.cpp"
+    ],
+    "8008720C": [
+      "src\\matched\\agent\\match_0x8008720C_func_8008720C.cpp",
+      "src\\matched\\agent\\match_8008720C_TextBaseItem__GetPosY.cpp"
+    ],
+    "80087254": [
+      "src\\matched\\agent\\match_0x80087254_func_80087254.cpp",
+      "src\\matched\\agent\\match_80087254_TextBaseItem__GetDisplaySizeX.cpp"
+    ],
+    "8008725C": [
+      "src\\matched\\agent\\match_0x8008725C_func_8008725C.cpp",
+      "src\\matched\\agent\\match_8008725C_TextBaseItem__GetDisplaySizeY.cpp"
+    ],
+    "800872A4": [
+      "src\\matched\\agent\\match_0x800872A4_func_800872A4.cpp",
+      "src\\matched\\agent\\match_800872A4_TextBaseItem__GetDisplayPadSizeX.cpp"
+    ],
+    "800872AC": [
+      "src\\matched\\agent\\match_0x800872AC_func_800872AC.cpp",
+      "src\\matched\\agent\\match_800872AC_TextBaseItem__GetDisplayPadSizeY.cpp"
+    ],
+    "8008730C": [
+      "src\\matched\\agent\\match_0x8008730C_func_8008730C.cpp",
+      "src\\matched\\agent\\match_8008730C_TextBaseItem__GetText.cpp"
+    ],
+    "80087354": [
+      "src\\matched\\agent\\match_0x80087354_func_80087354.cpp",
+      "src\\matched\\agent\\match_80087354_TextBaseItem__GetFont.cpp"
+    ],
+    "8008739C": [
+      "src\\matched\\agent\\match_0x8008739C_func_8008739C.cpp",
+      "src\\matched\\agent\\match_8008739C_TextBaseItem__GetFontSize.cpp"
+    ],
+    "800873A4": [
+      "src\\matched\\agent\\match_0x800873A4_func_800873A4.cpp",
+      "src\\matched\\agent\\match_800873A4_TextBaseItem__GetStyle.cpp"
+    ],
+    "800878A4": [
+      "src\\matched\\agent\\match_0x800878A4_func_800878A4.cpp",
+      "src\\matched\\agent\\match_800878A4_IconItem__SetAlpha.cpp"
+    ],
+    "800878AC": [
+      "src\\matched\\agent\\match_0x800878AC_func_800878AC.cpp",
+      "src\\matched\\agent\\match_800878AC_IconItem__GetAlpha.cpp"
+    ],
+    "800878B4": [
+      "src\\matched\\agent\\match_0x800878B4_func_800878B4.cpp",
+      "src\\matched\\agent\\match_800878B4_IconItem__SetShader.cpp"
+    ],
+    "800878BC": [
+      "src\\matched\\agent\\match_0x800878BC_func_800878BC.cpp",
+      "src\\matched\\agent\\match_800878BC_IconItem__GetShader.cpp"
+    ],
+    "80087A5C": [
+      "src\\matched\\agent\\match_0x80087A5C_func_80087A5C.cpp",
+      "src\\matched\\agent\\match_80087A5C_WrapperPaneBase__GetPaneId.cpp"
+    ],
+    "80087AD4": [
+      "src\\matched\\agent\\match_0x80087AD4_func_80087AD4.cpp",
+      "src\\matched\\agent\\match_80087AD4_WrapperPaneBase__SetAlpha.cpp"
+    ],
+    "80087ADC": [
+      "src\\matched\\agent\\match_0x80087ADC_func_80087ADC.cpp",
+      "src\\matched\\agent\\match_80087ADC_WrapperPaneBase__GetAlpha.cpp"
+    ],
+    "80087AE4": [
+      "src\\matched\\agent\\match_0x80087AE4_func_80087AE4.cpp",
+      "src\\matched\\agent\\match_80087AE4_WrapperPaneBase__SetState.cpp"
+    ],
+    "80087B1C": [
+      "src\\matched\\agent\\match_0x80087B1C_func_80087B1C.cpp",
+      "src\\matched\\agent\\match_80087B1C_WrapperPaneBase__GetState.cpp"
+    ],
+    "80090038": [
+      "src\\matched\\agent\\match_0x80090038_func_80090038.cpp",
+      "src\\matched\\agent\\match_80090038_ELiveMode__InTransportMode.cpp"
+    ],
+    "80090060": [
+      "src\\matched\\agent\\match_0x80090060_func_80090060.cpp",
+      "src\\matched\\agent\\match_80090060_ELiveMode__SetIntroCameraState.cpp"
+    ],
+    "80090068": [
+      "src\\matched\\agent\\match_0x80090068_func_80090068.cpp",
+      "src\\matched\\agent\\match_80090068_ELiveMode__GetIntroCameraState.cpp"
+    ],
+    "80090088": [
+      "src\\matched\\agent\\match_0x80090088_func_80090088.cpp",
+      "src\\matched\\agent\\match_80090088_ELiveMode__SetGoingToNeighborhoodMode.cpp"
+    ],
+    "80090090": [
+      "src\\matched\\agent\\match_0x80090090_func_80090090.cpp",
+      "src\\matched\\agent\\match_80090090_ELiveMode__SetInitialized.cpp"
+    ],
+    "80090098": [
+      "src\\matched\\agent\\match_0x80090098_func_80090098.cpp",
+      "src\\matched\\agent\\match_80090098_ELiveMode__IsInitialized.cpp"
+    ],
+    "800900A0": [
+      "src\\matched\\agent\\match_0x800900A0_func_800900A0.cpp",
+      "src\\matched\\agent\\match_800900A0_ELiveMode__SetDontDraw.cpp"
+    ],
+    "80090E04": [
+      "src\\matched\\agent\\match_0x80090E04_func_80090E04.cpp",
+      "src\\matched\\agent\\match_80090E04_LoadingScreenStateMachine__GetLoadingScreen.cpp"
+    ],
+    "80090E18": [
+      "src\\matched\\agent\\match_0x80090E18_func_80090E18.cpp",
+      "src\\matched\\agent\\match_80090E18_LoadingScreenStateMachine__IsLoadComplete.cpp"
+    ],
+    "80093BD4": [
+      "src\\matched\\agent\\match_0x80093BD4_func_80093BD4.cpp",
+      "src\\matched\\agent\\match_80093BD4_MUStateMachine__GetMUWrapper.cpp"
+    ],
+    "800961B4": [
+      "src\\matched\\agent\\match_0x800961B4_func_800961B4.cpp",
+      "src\\matched\\agent\\match_800961B4_StateMachine__GetTimeInState.cpp"
+    ],
+    "80096B24": [
+      "src\\matched\\agent\\match_0x80096B24_func_80096B24.cpp",
+      "src\\matched\\agent\\match_80096B24_StateMachine__GetMachineId.cpp"
+    ],
+    "80096B2C": [
+      "src\\matched\\agent\\match_0x80096B2C_func_80096B2C.cpp",
+      "src\\matched\\agent\\match_80096B2C_StateMachine__GetManager.cpp"
+    ],
+    "80096B34": [
+      "src\\matched\\agent\\match_0x80096B34_func_80096B34.cpp",
+      "src\\matched\\agent\\match_80096B34_StateMachine__GetFrameDeltaTime.cpp"
+    ],
+    "80096B3C": [
+      "src\\matched\\agent\\match_0x80096B3C_func_80096B3C.cpp",
+      "src\\matched\\agent\\match_80096B3C_StateMachine__GetReturnVal.cpp"
+    ],
+    "80096B80": [
+      "src\\matched\\agent\\match_0x80096B80_func_80096B80.cpp",
+      "src\\matched\\agent\\match_80096B80_StateMachine__IsEnabled.cpp"
+    ],
+    "80096B88": [
+      "src\\matched\\agent\\match_0x80096B88_func_80096B88.cpp",
+      "src\\matched\\agent\\match_80096B88_StateMachine__IsPausedUpdate.cpp"
+    ],
+    "800A0754": [
+      "src\\matched\\agent\\match_0x800A0754_func_800A0754.cpp",
+      "src\\matched\\agent\\match_800A0754_basic_string_ref2__eos.cpp"
+    ],
+    "800A0C70": [
+      "src\\matched\\agent\\match_0x800A0C70_func_800A0C70.cpp",
+      "src\\matched\\agent\\match_800A0C70_BString2__eos.cpp"
+    ],
+    "800A64E0": [
+      "src\\matched\\agent\\match_0x800A64E0_func_800A64E0.cpp",
+      "src\\matched\\agent\\match_800A64E0_MemFile__Writable.cpp"
+    ],
+    "800A64E8": [
+      "src\\matched\\agent\\match_0x800A64E8_func_800A64E8.cpp",
+      "src\\matched\\agent\\match_800A64E8_GetSRandSeed.cpp"
+    ],
+    "800A64F0": [
+      "src\\matched\\agent\\match_0x800A64F0_func_800A64F0.cpp",
+      "src\\matched\\agent\\match_800A64F0_SetSRandSeed.cpp"
+    ],
+    "800A65E4": [
+      "src\\matched\\agent\\match_0x800A65E4_func_800A65E4.cpp",
+      "src\\matched\\agent\\match_800A65E4_StringBuffer__capacity.cpp"
+    ],
+    "800A6718": [
+      "src\\matched\\agent\\match_0x800A6718_func_800A6718.cpp",
+      "src\\matched\\agent\\match_800A6718_StringBuffer__c_str.cpp"
+    ],
+    "800A6720": [
+      "src\\matched\\agent\\match_0x800A6720_func_800A6720.cpp",
+      "src\\matched\\agent\\match_800A6720_StringBuffer__buffer.cpp"
+    ],
+    "800A6D1C": [
+      "src\\matched\\agent\\match_0x800A6D1C_func_800A6D1C.cpp",
+      "src\\matched\\agent\\match_800A6D1C_StringBuffer2__capacity.cpp"
+    ],
+    "800A6E68": [
+      "src\\matched\\agent\\match_0x800A6E68_func_800A6E68.cpp",
+      "src\\matched\\agent\\match_800A6E68_StringBuffer2__c_str.cpp"
+    ],
+    "800A6E70": [
+      "src\\matched\\agent\\match_0x800A6E70_func_800A6E70.cpp",
+      "src\\matched\\agent\\match_800A6E70_StringBuffer2__buffer.cpp"
+    ],
+    "800A7778": [
+      "src\\matched\\agent\\match_0x800A7778_func_800A7778.cpp",
+      "src\\matched\\agent\\match_800A7778_QuickStringSet__GetDescription.cpp"
+    ],
+    "800A7BF0": [
+      "src\\matched\\agent\\match_0x800A7BF0_func_800A7BF0.cpp",
+      "src\\matched\\agent\\match_800A7BF0_QuickStringSet__Save_iResFile_short.cpp"
+    ],
+    "800A7BF8": [
+      "src\\matched\\agent\\match_0x800A7BF8_func_800A7BF8.cpp",
+      "src\\matched\\agent\\match_800A7BF8_QuickStringSet__LoadDef.cpp"
+    ],
+    "800A7C00": [
+      "src\\matched\\agent\\match_0x800A7C00_func_800A7C00.cpp",
+      "src\\matched\\agent\\match_800A7C00_QuickStringSet__Save_void.cpp"
+    ],
+    "800A7CA4": [
+      "src\\matched\\agent\\match_0x800A7CA4_func_800A7CA4.cpp",
+      "src\\matched\\agent\\match_800A7CA4_QuickStringSet__LoadFromIndex.cpp"
+    ],
+    "800A7CAC": [
+      "src\\matched\\agent\\match_0x800A7CAC_func_800A7CAC.cpp",
+      "src\\matched\\agent\\match_800A7CAC_QuickStringSet__SaveDataByID.cpp"
+    ],
+    "800A7CB4": [
+      "src\\matched\\agent\\match_0x800A7CB4_func_800A7CB4.cpp",
+      "src\\matched\\agent\\match_800A7CB4_QuickStringSet__GetResourceName.cpp"
+    ],
+    "800A7CBC": [
+      "src\\matched\\agent\\match_0x800A7CBC_func_800A7CBC.cpp",
+      "src\\matched\\agent\\match_800A7CBC_QuickStringSet__SetResourceName.cpp"
+    ],
+    "800A7CC4": [
+      "src\\matched\\agent\\match_0x800A7CC4_func_800A7CC4.cpp",
+      "src\\matched\\agent\\match_800A7CC4_QuickStringSet__GetDataSourceType.cpp"
+    ],
+    "800A7CCC": [
+      "src\\matched\\agent\\match_0x800A7CCC_func_800A7CCC.cpp",
+      "src\\matched\\agent\\match_800A7CCC_QuickStringSet__LoadOnlyNameAndIDFromIndex.cpp"
+    ],
+    "800A8764": [
+      "src\\matched\\agent\\match_0x800A8764_func_800A8764.cpp",
+      "src\\matched\\agent\\match_800A8764_AmbientScorePlayer__SetTime.cpp"
+    ],
+    "800A876C": [
+      "src\\matched\\agent\\match_0x800A876C_func_800A876C.cpp",
+      "src\\matched\\agent\\match_800A876C_AmbientScorePlayer__GetTime.cpp"
+    ],
+    "800A8B1C": [
+      "src\\matched\\agent\\match_0x800A8B1C_func_800A8B1C.cpp",
+      "src\\matched\\agent\\match_800A8B1C_AmbientScorePlayer__GetVolume.cpp"
+    ],
+    "800A8B24": [
+      "src\\matched\\agent\\match_0x800A8B24_func_800A8B24.cpp",
+      "src\\matched\\agent\\match_800A8B24_AmbientScorePlayer__GetAmbientScore.cpp"
+    ],
+    "800A8B2C": [
+      "src\\matched\\agent\\match_0x800A8B2C_func_800A8B2C.cpp",
+      "src\\matched\\agent\\match_800A8B2C_AmbientScorePlayer__GetNumPlaying.cpp"
+    ],
+    "800A9330": [
+      "src\\matched\\agent\\match_0x800A9330_func_800A9330.cpp",
+      "src\\matched\\agent\\match_800A9330_AmbientSoundPlayer__SetScorePlayer.cpp"
+    ],
+    "800A9338": [
+      "src\\matched\\agent\\match_0x800A9338_func_800A9338.cpp",
+      "src\\matched\\agent\\match_800A9338_AmbientSoundPlayer__SetAmbientSound.cpp"
+    ],
+    "800AA9B4": [
+      "src\\matched\\agent\\match_0x800AA9B4_func_800AA9B4.cpp",
+      "src\\matched\\agent\\match_800AA9B4_AmbientSoundPlayer__GetAmbientSound.cpp"
+    ],
+    "800AAC2C": [
+      "src\\matched\\agent\\match_0x800AAC2C_func_800AAC2C.cpp",
+      "src\\matched\\agent\\match_800AAC2C_AnimTableImpl__GetEntryName.cpp"
+    ],
+    "800AB558": [
+      "src\\matched\\agent\\match_0x800AB558_func_800AB558.cpp",
+      "src\\matched\\agent\\match_800AB558_Behavior__GetGlobNamespaceID.cpp"
+    ],
+    "800AD118": [
+      "src\\matched\\agent\\match_0x800AD118_func_800AD118.cpp",
+      "src\\matched\\agent\\match_800AD118_Behavior__GetOwner.cpp"
+    ],
+    "800AD120": [
+      "src\\matched\\agent\\match_0x800AD120_func_800AD120.cpp",
+      "src\\matched\\agent\\match_800AD120_Behavior__GetLanguage.cpp"
+    ],
+    "800B42B4": [
+      "src\\matched\\agent\\match_0x800B42B4_func_800B42B4.cpp",
+      "src\\matched\\agent\\match_800B42B4_Commander__DoCommand.cpp"
+    ],
+    "800B43DC": [
+      "src\\matched\\agent\\match_0x800B43DC_func_800B43DC.cpp",
+      "src\\matched\\agent\\match_800B43DC_Commander__GetType.cpp"
+    ],
+    "800B43E4": [
+      "src\\matched\\agent\\match_0x800B43E4_func_800B43E4.cpp",
+      "src\\matched\\agent\\match_800B43E4_Commander__GetNext.cpp"
+    ],
+    "800B4DE8": [
+      "src\\matched\\agent\\match_0x800B4DE8_func_800B4DE8.cpp",
+      "src\\matched\\agent\\match_800B4DE8_CTilePt__SetLevel.cpp"
+    ],
+    "800B5F20": [
+      "src\\matched\\agent\\match_0x800B5F20_func_800B5F20.cpp",
+      "src\\matched\\agent\\match_800B5F20_EdithDialogPrimitive__GetModalDialogResult.cpp"
+    ],
+    "800B6810": [
+      "src\\matched\\agent\\match_0x800B6810_func_800B6810.cpp",
+      "src\\matched\\agent\\match_800B6810_FamilyImpl__MyDoCommand.cpp"
+    ],
+    "800B6B00": [
+      "src\\matched\\agent\\match_0x800B6B00_func_800B6B00.cpp",
+      "src\\matched\\agent\\match_800B6B00_FamilyImpl__GetResfileStorageId.cpp"
+    ],
+    "800B6B08": [
+      "src\\matched\\agent\\match_0x800B6B08_func_800B6B08.cpp",
+      "src\\matched\\agent\\match_800B6B08_FamilyImpl__GetNumber.cpp"
+    ],
+    "800B6B10": [
+      "src\\matched\\agent\\match_0x800B6B10_func_800B6B10.cpp",
+      "src\\matched\\agent\\match_800B6B10_FamilyImpl__SetNumber.cpp"
+    ],
+    "800B6B18": [
+      "src\\matched\\agent\\match_0x800B6B18_func_800B6B18.cpp",
+      "src\\matched\\agent\\match_800B6B18_FamilyImpl__GetHouseNumber.cpp"
+    ],
+    "800B6B20": [
+      "src\\matched\\agent\\match_0x800B6B20_func_800B6B20.cpp",
+      "src\\matched\\agent\\match_800B6B20_FamilyImpl__SetHouseNumber.cpp"
+    ],
+    "800B6B28": [
+      "src\\matched\\agent\\match_0x800B6B28_func_800B6B28.cpp",
+      "src\\matched\\agent\\match_800B6B28_FamilyImpl__GetCreationOrder.cpp"
+    ],
+    "800B6B30": [
+      "src\\matched\\agent\\match_0x800B6B30_func_800B6B30.cpp",
+      "src\\matched\\agent\\match_800B6B30_FamilyImpl__SetCreationOrder.cpp"
+    ],
+    "800B6B38": [
+      "src\\matched\\agent\\match_0x800B6B38_func_800B6B38.cpp",
+      "src\\matched\\agent\\match_800B6B38_FamilyImpl__GetFunds.cpp"
+    ],
+    "800B6B60": [
+      "src\\matched\\agent\\match_0x800B6B60_func_800B6B60.cpp",
+      "src\\matched\\agent\\match_800B6B60_FamilyImpl__GetHouseValue.cpp"
+    ],
+    "800B6B68": [
+      "src\\matched\\agent\\match_0x800B6B68_func_800B6B68.cpp",
+      "src\\matched\\agent\\match_800B6B68_FamilyImpl__SetHouseValue.cpp"
+    ],
+    "800B6C88": [
+      "src\\matched\\agent\\match_0x800B6C88_func_800B6C88.cpp",
+      "src\\matched\\agent\\match_800B6C88_FamilyImpl__GetInventory.cpp"
+    ],
+    "800B6C90": [
+      "src\\matched\\agent\\match_0x800B6C90_func_800B6C90.cpp",
+      "src\\matched\\agent\\match_800B6C90_FamilyImpl__GetGoalAndUnlockData.cpp"
+    ],
+    "800B6C98": [
+      "src\\matched\\agent\\match_0x800B6C98_func_800B6C98.cpp",
+      "src\\matched\\agent\\match_800B6C98_FamilyImpl__GetStatValue.cpp"
+    ],
+    "800B6CA0": [
+      "src\\matched\\agent\\match_0x800B6CA0_func_800B6CA0.cpp",
+      "src\\matched\\agent\\match_800B6CA0_FamilyImpl__GetStatRef.cpp"
+    ],
+    "800B70FC": [
+      "src\\matched\\agent\\match_0x800B70FC_func_800B70FC.cpp",
+      "src\\matched\\agent\\match_800B70FC_FloatConstantsQuickData__SaveDataByID.cpp"
+    ],
+    "800B7174": [
+      "src\\matched\\agent\\match_0x800B7174_func_800B7174.cpp",
+      "src\\matched\\agent\\match_800B7174_FloatConstantsQuickData__GetDataSourceType.cpp"
+    ],
+    "800B71EC": [
+      "src\\matched\\agent\\match_0x800B71EC_func_800B71EC.cpp",
+      "src\\matched\\agent\\match_800B71EC_FloatConstantsQuickData__LoadFromIndex.cpp"
+    ],
+    "800B71F4": [
+      "src\\matched\\agent\\match_0x800B71F4_func_800B71F4.cpp",
+      "src\\matched\\agent\\match_800B71F4_FloatConstantsQuickData__GetResourceName.cpp"
+    ],
+    "800B71FC": [
+      "src\\matched\\agent\\match_0x800B71FC_func_800B71FC.cpp",
+      "src\\matched\\agent\\match_800B71FC_FloatConstantsQuickData__SetResourceName.cpp"
+    ],
+    "800B7204": [
+      "src\\matched\\agent\\match_0x800B7204_func_800B7204.cpp",
+      "src\\matched\\agent\\match_800B7204_FloatConstantsQuickData__LoadOnlyNameAndIDFromIndex.cpp"
+    ],
+    "800B8CB8": [
+      "src\\matched\\agent\\match_0x800B8CB8_func_800B8CB8.cpp",
+      "src\\matched\\agent\\match_800B8CB8_cSoundCacheItem__cSoundCacheItem.cpp"
+    ],
+    "800BA090": [
+      "src\\matched\\agent\\match_0x800BA090_func_800BA090.cpp",
+      "src\\matched\\agent\\match_800BA090_cGZSnd__Init.cpp"
+    ],
+    "800BA658": [
+      "src\\matched\\agent\\match_0x800BA658_func_800BA658.cpp",
+      "src\\matched\\agent\\match_800BA658_cGZSnd__Load.cpp"
+    ],
+    "800BA660": [
+      "src\\matched\\agent\\match_0x800BA660_func_800BA660.cpp",
+      "src\\matched\\agent\\match_800BA660_cGZSnd__Unload.cpp"
+    ],
+    "800BA668": [
+      "src\\matched\\agent\\match_0x800BA668_func_800BA668.cpp",
+      "src\\matched\\agent\\match_800BA668_cGZSnd__GetVolume.cpp"
+    ],
+    "800BA81C": [
+      "src\\matched\\agent\\match_0x800BA81C_func_800BA81C.cpp",
+      "src\\matched\\agent\\match_800BA81C_cGZSnd__GetPan.cpp"
+    ],
+    "800BA8DC": [
+      "src\\matched\\agent\\match_0x800BA8DC_func_800BA8DC.cpp",
+      "src\\matched\\agent\\match_800BA8DC_cGZSnd__GetFrequency.cpp"
+    ],
+    "800BA8E4": [
+      "src\\matched\\agent\\match_0x800BA8E4_func_800BA8E4.cpp",
+      "src\\matched\\agent\\match_800BA8E4_cGZSnd__SetFrequency.cpp"
+    ],
+    "800BA8EC": [
+      "src\\matched\\agent\\match_0x800BA8EC_func_800BA8EC.cpp",
+      "src\\matched\\agent\\match_800BA8EC_cGZSnd__SetPosition.cpp"
+    ],
+    "800BABF8": [
+      "src\\matched\\agent\\match_0x800BABF8_func_800BABF8.cpp",
+      "src\\matched\\agent\\match_800BABF8_cGZMusic__Init.cpp"
+    ],
+    "800BADA4": [
+      "src\\matched\\agent\\match_0x800BADA4_func_800BADA4.cpp",
+      "src\\matched\\agent\\match_800BADA4_cGZMusic__IsPlaying.cpp"
+    ],
+    "800BAEAC": [
+      "src\\matched\\agent\\match_0x800BAEAC_func_800BAEAC.cpp",
+      "src\\matched\\agent\\match_800BAEAC_cGZMusic__Load.cpp"
+    ],
+    "800BAEB4": [
+      "src\\matched\\agent\\match_0x800BAEB4_func_800BAEB4.cpp",
+      "src\\matched\\agent\\match_800BAEB4_cGZMusic__Unload.cpp"
+    ],
+    "800BAEBC": [
+      "src\\matched\\agent\\match_0x800BAEBC_func_800BAEBC.cpp",
+      "src\\matched\\agent\\match_800BAEBC_cGZMusic__GetVolume.cpp"
+    ],
+    "800BB0D0": [
+      "src\\matched\\agent\\match_0x800BB0D0_func_800BB0D0.cpp",
+      "src\\matched\\agent\\match_800BB0D0_cGZMusic__GetPan.cpp"
+    ],
+    "800BB184": [
+      "src\\matched\\agent\\match_0x800BB184_func_800BB184.cpp",
+      "src\\matched\\agent\\match_800BB184_cGZMusic__GetFrequency.cpp"
+    ],
+    "800BB18C": [
+      "src\\matched\\agent\\match_0x800BB18C_func_800BB18C.cpp",
+      "src\\matched\\agent\\match_800BB18C_cGZMusic__SetFrequency.cpp"
+    ],
+    "800BB194": [
+      "src\\matched\\agent\\match_0x800BB194_func_800BB194.cpp",
+      "src\\matched\\agent\\match_800BB194_cGZMusic__SetPosition.cpp"
+    ],
+    "800BC454": [
+      "src\\matched\\agent\\match_0x800BC454_func_800BC454.cpp",
+      "src\\matched\\agent\\match_800BC454_HouseStats__GetSquareFeet.cpp"
+    ],
+    "800BC95C": [
+      "src\\matched\\agent\\match_0x800BC95C_func_800BC95C.cpp",
+      "src\\matched\\agent\\match_800BC95C_HouseStats__GetNumBedrooms.cpp"
+    ],
+    "800BC964": [
+      "src\\matched\\agent\\match_0x800BC964_func_800BC964.cpp",
+      "src\\matched\\agent\\match_800BC964_HouseStats__GetNumBathrooms.cpp"
+    ],
+    "800BC96C": [
+      "src\\matched\\agent\\match_0x800BC96C_func_800BC96C.cpp",
+      "src\\matched\\agent\\match_800BC96C_HouseStats__GetNumLevels.cpp"
+    ],
+    "800BC974": [
+      "src\\matched\\agent\\match_0x800BC974_func_800BC974.cpp",
+      "src\\matched\\agent\\match_800BC974_HouseStats__GetLotSize.cpp"
+    ],
+    "800BC97C": [
+      "src\\matched\\agent\\match_0x800BC97C_func_800BC97C.cpp",
+      "src\\matched\\agent\\match_800BC97C_HouseStats__GetObjectCount.cpp"
+    ],
+    "800BC984": [
+      "src\\matched\\agent\\match_0x800BC984_func_800BC984.cpp",
+      "src\\matched\\agent\\match_800BC984_HouseImpl__GetFamily.cpp"
+    ],
+    "800BC98C": [
+      "src\\matched\\agent\\match_0x800BC98C_func_800BC98C.cpp",
+      "src\\matched\\agent\\match_800BC98C_HouseImpl__GetSizeScoreCurve.cpp"
+    ],
+    "800BC994": [
+      "src\\matched\\agent\\match_0x800BC994_func_800BC994.cpp",
+      "src\\matched\\agent\\match_800BC994_HouseImpl__GetFurnishingsScoreCurve.cpp"
+    ],
+    "800BEA00": [
+      "src\\matched\\agent\\match_0x800BEA00_func_800BEA00.cpp",
+      "src\\matched\\agent\\match_800BEA00_IFFResFile2__Writable.cpp"
+    ],
+    "800C1C74": [
+      "src\\matched\\agent\\match_0x800C1C74_func_800C1C74.cpp",
+      "src\\matched\\agent\\match_800C1C74_Interaction__GetStackObject.cpp"
+    ],
+    "800C1C7C": [
+      "src\\matched\\agent\\match_0x800C1C7C_func_800C1C7C.cpp",
+      "src\\matched\\agent\\match_800C1C7C_Interaction__GetPerson.cpp"
+    ],
+    "800C1C84": [
+      "src\\matched\\agent\\match_0x800C1C84_func_800C1C84.cpp",
+      "src\\matched\\agent\\match_800C1C84_Interaction__GetIconObject.cpp"
+    ],
+    "800C1C8C": [
+      "src\\matched\\agent\\match_0x800C1C8C_func_800C1C8C.cpp",
+      "src\\matched\\agent\\match_800C1C8C_Interaction__SetIconObject.cpp"
+    ],
+    "800C1D44": [
+      "src\\matched\\agent\\match_0x800C1D44_func_800C1D44.cpp",
+      "src\\matched\\agent\\match_800C1D44_Interaction__GetType.cpp"
+    ],
+    "800C1D4C": [
+      "src\\matched\\agent\\match_0x800C1D4C_func_800C1D4C.cpp",
+      "src\\matched\\agent\\match_800C1D4C_Interaction__GetAttenuation.cpp"
+    ],
+    "800C1D54": [
+      "src\\matched\\agent\\match_0x800C1D54_func_800C1D54.cpp",
+      "src\\matched\\agent\\match_800C1D54_Interaction__GetTreeID.cpp"
+    ],
+    "800C1D64": [
+      "src\\matched\\agent\\match_0x800C1D64_func_800C1D64.cpp",
+      "src\\matched\\agent\\match_800C1D64_Interaction__GetLocalVars.cpp"
+    ],
+    "800C1D6C": [
+      "src\\matched\\agent\\match_0x800C1D6C_func_800C1D6C.cpp",
+      "src\\matched\\agent\\match_800C1D6C_Interaction__GetLocalVarsCount.cpp"
+    ],
+    "800C1D74": [
+      "src\\matched\\agent\\match_0x800C1D74_func_800C1D74.cpp",
+      "src\\matched\\agent\\match_800C1D74_Interaction__GetTreeTabEntryIndex.cpp"
+    ],
+    "800C1D7C": [
+      "src\\matched\\agent\\match_0x800C1D7C_func_800C1D7C.cpp",
+      "src\\matched\\agent\\match_800C1D7C_Interaction__GetPriority.cpp"
+    ],
+    "800C1D84": [
+      "src\\matched\\agent\\match_0x800C1D84_func_800C1D84.cpp",
+      "src\\matched\\agent\\match_800C1D84_Interaction__SetPriority.cpp"
+    ],
+    "800C1DA4": [
+      "src\\matched\\agent\\match_0x800C1DA4_func_800C1DA4.cpp",
+      "src\\matched\\agent\\match_800C1DA4_Interaction__GetID.cpp"
+    ],
+    "800C1DAC": [
+      "src\\matched\\agent\\match_0x800C1DAC_func_800C1DAC.cpp",
+      "src\\matched\\agent\\match_800C1DAC_Interaction__SetID.cpp"
+    ],
+    "800C1FF0": [
+      "src\\matched\\agent\\match_0x800C1FF0_func_800C1FF0.cpp",
+      "src\\matched\\agent\\match_800C1FF0_Interaction__GetFlags.cpp"
+    ],
+    "800C1FF8": [
+      "src\\matched\\agent\\match_0x800C1FF8_func_800C1FF8.cpp",
+      "src\\matched\\agent\\match_800C1FF8_Interaction__SetFlags.cpp"
+    ],
+    "800C2000": [
+      "src\\matched\\agent\\match_0x800C2000_func_800C2000.cpp",
+      "src\\matched\\agent\\match_800C2000_Interaction__SetShader.cpp"
+    ],
+    "800C2D5C": [
+      "src\\matched\\agent\\match_0x800C2D5C_func_800C2D5C.cpp",
+      "src\\matched\\agent\\match_800C2D5C_global_ctor_redAspMotiveDecayMult.cpp"
+    ],
+    "800C8860": [
+      "src\\matched\\agent\\match_0x800C8860_func_800C8860.cpp",
+      "src\\matched\\agent\\match_800C8860_NamespaceSelector__GetTreeSetResource.cpp"
+    ],
+    "800C90B4": [
+      "src\\matched\\agent\\match_0x800C90B4_func_800C90B4.cpp",
+      "src\\matched\\agent\\match_800C90B4_Neighbor__GetRelations.cpp"
+    ],
+    "800C9794": [
+      "src\\matched\\agent\\match_0x800C9794_func_800C9794.cpp",
+      "src\\matched\\agent\\match_800C9794_Neighbor__GetLatestPersDataVersion.cpp"
+    ],
+    "800C9A8C": [
+      "src\\matched\\agent\\match_0x800C9A8C_func_800C9A8C.cpp",
+      "src\\matched\\agent\\match_800C9A8C_Neighbor__GetGUID.cpp"
+    ],
+    "800C9A94": [
+      "src\\matched\\agent\\match_0x800C9A94_func_800C9A94.cpp",
+      "src\\matched\\agent\\match_800C9A94_Neighbor__SetGUID.cpp"
+    ],
+    "800CA978": [
+      "src\\matched\\agent\\match_0x800CA978_func_800CA978.cpp",
+      "src\\matched\\agent\\match_800CA978_Neighbor__ResetInterests.cpp"
+    ],
+    "800CC678": [
+      "src\\matched\\agent\\match_0x800CC678_func_800CC678.cpp",
+      "src\\matched\\agent\\match_800CC678_global_ctor_Interests.cpp"
+    ],
+    "800CC6A4": [
+      "src\\matched\\agent\\match_0x800CC6A4_func_800CC6A4.cpp",
+      "src\\matched\\agent\\match_800CC6A4_global_dtor_Interests.cpp"
+    ],
+    "800CC6D0": [
+      "src\\matched\\agent\\match_0x800CC6D0_func_800CC6D0.cpp",
+      "src\\matched\\agent\\match_800CC6D0_Neighborhood__CreateInstance.cpp"
+    ],
+    "800CDD38": [
+      "src\\matched\\agent\\match_0x800CDD38_func_800CDD38.cpp",
+      "src\\matched\\agent\\match_800CDD38_NeighborhoodImpl__GetHouseNumberForLevel.cpp"
+    ],
+    "800D1294": [
+      "src\\matched\\agent\\match_0x800D1294_func_800D1294.cpp",
+      "src\\matched\\agent\\match_800D1294_NeighborhoodImpl__GetHouseNumber.cpp"
+    ],
+    "800D1884": [
+      "src\\matched\\agent\\match_0x800D1884_func_800D1884.cpp",
+      "src\\matched\\agent\\match_800D1884_NeighborhoodImpl__GetNeighborhoodName.cpp"
+    ],
+    "800D18A8": [
+      "src\\matched\\agent\\match_0x800D18A8_func_800D18A8.cpp",
+      "src\\matched\\agent\\match_800D18A8_NeighborhoodImpl__GetHighestLevelCompleted.cpp"
+    ],
+    "800D1950": [
+      "src\\matched\\agent\\match_0x800D1950_func_800D1950.cpp",
+      "src\\matched\\agent\\match_800D1950_NeighborhoodImpl__SetHouseNum.cpp"
+    ],
+    "800D19AC": [
+      "src\\matched\\agent\\match_0x800D19AC_func_800D19AC.cpp",
+      "src\\matched\\agent\\match_800D19AC_global_ctor_Neighborhood.cpp"
+    ],
+    "800D19D8": [
+      "src\\matched\\agent\\match_0x800D19D8_func_800D19D8.cpp",
+      "src\\matched\\agent\\match_800D19D8_global_dtor_Neighborhood.cpp"
+    ],
+    "800D26F8": [
+      "src\\matched\\agent\\match_0x800D26F8_func_800D26F8.cpp",
+      "src\\matched\\agent\\match_800D26F8_GetNumNghSubSections.cpp"
+    ],
+    "800D2FBC": [
+      "src\\matched\\agent\\match_0x800D2FBC_func_800D2FBC.cpp",
+      "src\\matched\\agent\\match_800D2FBC_MemoryCardCache__LoadCacheFromMemoryCard.cpp"
+    ],
+    "800D3B94": [
+      "src\\matched\\agent\\match_0x800D3B94_func_800D3B94.cpp",
+      "src\\matched\\agent\\match_800D3B94_NghResFile__Create.cpp"
+    ],
+    "800D3BB8": [
+      "src\\matched\\agent\\match_0x800D3BB8_func_800D3BB8.cpp",
+      "src\\matched\\agent\\match_800D3BB8_NghResFile__Delete.cpp"
+    ],
+    "800D3BC0": [
+      "src\\matched\\agent\\match_0x800D3BC0_func_800D3BC0.cpp",
+      "src\\matched\\agent\\match_800D3BC0_NghResFile__Open.cpp"
+    ],
+    "800D3BC8": [
+      "src\\matched\\agent\\match_0x800D3BC8_func_800D3BC8.cpp",
+      "src\\matched\\agent\\match_800D3BC8_NghResFile__CloseForReopen.cpp"
+    ],
+    "800D3BD0": [
+      "src\\matched\\agent\\match_0x800D3BD0_func_800D3BD0.cpp",
+      "src\\matched\\agent\\match_800D3BD0_NghResFile__Reopen.cpp"
+    ],
+    "800D3BD8": [
+      "src\\matched\\agent\\match_0x800D3BD8_func_800D3BD8.cpp",
+      "src\\matched\\agent\\match_800D3BD8_NghResFile__Close.cpp"
+    ],
+    "800D3BE4": [
+      "src\\matched\\agent\\match_0x800D3BE4_func_800D3BE4.cpp",
+      "src\\matched\\agent\\match_800D3BE4_NghResFile__Writable.cpp"
+    ],
+    "800D3C18": [
+      "src\\matched\\agent\\match_0x800D3C18_func_800D3C18.cpp",
+      "src\\matched\\agent\\match_800D3C18_NghResFile__ValidFile.cpp"
+    ],
+    "800D3C20": [
+      "src\\matched\\agent\\match_0x800D3C20_func_800D3C20.cpp",
+      "src\\matched\\agent\\match_800D3C20_NghResFile__CountTypes.cpp"
+    ],
+    "800D3C28": [
+      "src\\matched\\agent\\match_0x800D3C28_func_800D3C28.cpp",
+      "src\\matched\\agent\\match_800D3C28_NghResFile__GetIndType.cpp"
+    ],
+    "800D3CC8": [
+      "src\\matched\\agent\\match_0x800D3CC8_func_800D3CC8.cpp",
+      "src\\matched\\agent\\match_800D3CC8_NghResFile__GetByName.cpp"
+    ],
+    "800D3D40": [
+      "src\\matched\\agent\\match_0x800D3D40_func_800D3D40.cpp",
+      "src\\matched\\agent\\match_800D3D40_NghResFile__GetResType.cpp"
+    ],
+    "800D3D60": [
+      "src\\matched\\agent\\match_0x800D3D60_func_800D3D60.cpp",
+      "src\\matched\\agent\\match_800D3D60_NghResFile__FindUniqueID.cpp"
+    ],
+    "800D3D70": [
+      "src\\matched\\agent\\match_0x800D3D70_func_800D3D70.cpp",
+      "src\\matched\\agent\\match_800D3D70_NghResFile__IsLittleEndian.cpp"
+    ],
+    "800D8EE0": [
+      "src\\matched\\agent\\match_0x800D8EE0_func_800D8EE0.cpp",
+      "src\\matched\\agent\\match_800D8EE0_NghResFile__SetStoreChecksum.cpp"
+    ],
+    "800D8EE8": [
+      "src\\matched\\agent\\match_0x800D8EE8_func_800D8EE8.cpp",
+      "src\\matched\\agent\\match_800D8EE8_NghResFile__GetStoreChecksum.cpp"
+    ],
+    "800D93CC": [
+      "src\\matched\\agent\\match_0x800D93CC_func_800D93CC.cpp",
+      "src\\matched\\agent\\match_800D93CC_NghResFile__GetSourceType.cpp"
+    ],
+    "800D93D4": [
+      "src\\matched\\agent\\match_0x800D93D4_func_800D93D4.cpp",
+      "src\\matched\\agent\\match_800D93D4_global_ctor_nghSectionLayout.cpp"
+    ],
+    "800D9400": [
+      "src\\matched\\agent\\match_0x800D9400_func_800D9400.cpp",
+      "src\\matched\\agent\\match_800D9400_global_dtor_nghSectionLayout.cpp"
+    ],
+    "800D95EC": [
+      "src\\matched\\agent\\match_0x800D95EC_func_800D95EC.cpp",
+      "src\\matched\\agent\\match_800D95EC_cXObject__GetPersonWidth.cpp"
+    ],
+    "800D95F4": [
+      "src\\matched\\agent\\match_0x800D95F4_func_800D95F4.cpp",
+      "src\\matched\\agent\\match_800D95F4_cXObject__GetFreeWill.cpp"
+    ],
+    "800D95FC": [
+      "src\\matched\\agent\\match_0x800D95FC_func_800D95FC.cpp",
+      "src\\matched\\agent\\match_800D95FC_cXObject__GetAutoCenter.cpp"
+    ],
+    "800D9604": [
+      "src\\matched\\agent\\match_0x800D9604_func_800D9604.cpp",
+      "src\\matched\\agent\\match_800D9604_cXObject__SetAutoCenter.cpp"
+    ],
+    "800D960C": [
+      "src\\matched\\agent\\match_0x800D960C_func_800D960C.cpp",
+      "src\\matched\\agent\\match_800D960C_cXObject__GetAutoReset.cpp"
+    ],
+    "800D9614": [
+      "src\\matched\\agent\\match_0x800D9614_func_800D9614.cpp",
+      "src\\matched\\agent\\match_800D9614_cXObject__SetAutoReset.cpp"
+    ],
+    "800D961C": [
+      "src\\matched\\agent\\match_0x800D961C_func_800D961C.cpp",
+      "src\\matched\\agent\\match_800D961C_cXObject__GetGlobalInitTreeID.cpp"
+    ],
+    "800D9624": [
+      "src\\matched\\agent\\match_0x800D9624_func_800D9624.cpp",
+      "src\\matched\\agent\\match_800D9624_cXObject__GetGlobalMainTreeID.cpp"
+    ],
+    "800DB9A0": [
+      "src\\matched\\agent\\match_0x800DB9A0_func_800DB9A0.cpp",
+      "src\\matched\\agent\\match_800DB9A0_cXObject__SetGlobalFreeWillOverride.cpp"
+    ],
+    "800DCD4C": [
+      "src\\matched\\agent\\match_0x800DCD4C_func_800DCD4C.cpp",
+      "src\\matched\\agent\\match_800DCD4C_cXObjectImpl__GetNextObjectSibling.cpp"
+    ],
+    "800DE780": [
+      "src\\matched\\agent\\match_0x800DE780_func_800DE780.cpp",
+      "src\\matched\\agent\\match_800DE780_cXObjectImpl__GetSpriteSlot.cpp"
+    ],
+    "800E1784": [
+      "src\\matched\\agent\\match_0x800E1784_func_800E1784.cpp",
+      "src\\matched\\agent\\match_800E1784_cXObjectImpl__IsBeingDraggedAround.cpp"
+    ],
+    "800E2AC4": [
+      "src\\matched\\agent\\match_0x800E2AC4_func_800E2AC4.cpp",
+      "src\\matched\\agent\\match_800E2AC4_cXObjectImpl__GetLevel.cpp"
+    ],
+    "800E2ACC": [
+      "src\\matched\\agent\\match_0x800E2ACC_func_800E2ACC.cpp",
+      "src\\matched\\agent\\match_800E2ACC_cXObjectImpl__SetLevel.cpp"
+    ],
+    "800E325C": [
+      "src\\matched\\agent\\match_0x800E325C_func_800E325C.cpp",
+      "src\\matched\\agent\\match_800E325C_cXObjectImpl__ContainsData.cpp"
+    ],
+    "800EAA3C": [
+      "src\\matched\\agent\\match_0x800EAA3C_func_800EAA3C.cpp",
+      "src\\matched\\agent\\match_800EAA3C_cXObjectImpl__GetNumAttr.cpp"
+    ],
+    "800EAB38": [
+      "src\\matched\\agent\\match_0x800EAB38_func_800EAB38.cpp",
+      "src\\matched\\agent\\match_800EAB38_cXObjectImpl__GetSyncObject.cpp"
+    ],
+    "800EAB4C": [
+      "src\\matched\\agent\\match_0x800EAB4C_func_800EAB4C.cpp",
+      "src\\matched\\agent\\match_800EAB4C_cXObjectImpl__WaitingForSync.cpp"
+    ],
+    "800EABC4": [
+      "src\\matched\\agent\\match_0x800EABC4_func_800EABC4.cpp",
+      "src\\matched\\agent\\match_800EABC4_cXObjectImpl__GetFreeWill.cpp"
+    ],
+    "800EABCC": [
+      "src\\matched\\agent\\match_0x800EABCC_func_800EABCC.cpp",
+      "src\\matched\\agent\\match_800EABCC_cXObjectImpl__GetAutoCenter.cpp"
+    ],
+    "800EABD4": [
+      "src\\matched\\agent\\match_0x800EABD4_func_800EABD4.cpp",
+      "src\\matched\\agent\\match_800EABD4_cXObjectImpl__SetAutoCenter.cpp"
+    ],
+    "800EABDC": [
+      "src\\matched\\agent\\match_0x800EABDC_func_800EABDC.cpp",
+      "src\\matched\\agent\\match_800EABDC_cXObjectImpl__GetAutoReset.cpp"
+    ],
+    "800EABE4": [
+      "src\\matched\\agent\\match_0x800EABE4_func_800EABE4.cpp",
+      "src\\matched\\agent\\match_800EABE4_cXObjectImpl__SetAutoReset.cpp"
+    ],
+    "800EAC64": [
+      "src\\matched\\agent\\match_0x800EAC64_func_800EAC64.cpp",
+      "src\\matched\\agent\\match_800EAC64_cXObjectImpl__GetFnTable.cpp"
+    ],
+    "800EAEE8": [
+      "src\\matched\\agent\\match_0x800EAEE8_func_800EAEE8.cpp",
+      "src\\matched\\agent\\match_800EAEE8_cXObjectImpl__SetData.cpp"
+    ],
+    "800EAF2C": [
+      "src\\matched\\agent\\match_0x800EAF2C_func_800EAF2C.cpp",
+      "src\\matched\\agent\\match_800EAF2C_cXObjectImpl__GetObjectProbe.cpp"
+    ],
+    "800EB10C": [
+      "src\\matched\\agent\\match_0x800EB10C_func_800EB10C.cpp",
+      "src\\matched\\agent\\match_800EB10C_cXObjectImpl__GetModule.cpp"
+    ],
+    "800EB114": [
+      "src\\matched\\agent\\match_0x800EB114_func_800EB114.cpp",
+      "src\\matched\\agent\\match_800EB114_cXObjectImpl__GetAdultAnimTable.cpp"
+    ],
+    "800EB138": [
+      "src\\matched\\agent\\match_0x800EB138_func_800EB138.cpp",
+      "src\\matched\\agent\\match_800EB138_cXObjectImpl__GetChildAnimTable.cpp"
+    ],
+    "800EB2CC": [
+      "src\\matched\\agent\\match_0x800EB2CC_func_800EB2CC.cpp",
+      "src\\matched\\agent\\match_800EB2CC_cXObjectImpl__GetDef.cpp"
+    ],
+    "800EB2E0": [
+      "src\\matched\\agent\\match_0x800EB2E0_func_800EB2E0.cpp",
+      "src\\matched\\agent\\match_800EB2E0_cXObjectImpl__GetID.cpp"
+    ],
+    "800EB304": [
+      "src\\matched\\agent\\match_0x800EB304_func_800EB304.cpp",
+      "src\\matched\\agent\\match_800EB304_cXObjectImpl__GetTreeTab.cpp"
+    ],
+    "800EB328": [
+      "src\\matched\\agent\\match_0x800EB328_func_800EB328.cpp",
+      "src\\matched\\agent\\match_800EB328_cXObjectImpl__GetSelector.cpp"
+    ],
+    "800EB330": [
+      "src\\matched\\agent\\match_0x800EB330_func_800EB330.cpp",
+      "src\\matched\\agent\\match_800EB330_cXObjectImpl__GetSelector_const.cpp"
+    ],
+    "800EB3EC": [
+      "src\\matched\\agent\\match_0x800EB3EC_func_800EB3EC.cpp",
+      "src\\matched\\agent\\match_800EB3EC_cXObjectImpl__GetRelMatrix.cpp"
+    ],
+    "800EB844": [
+      "src\\matched\\agent\\match_0x800EB844_func_800EB844.cpp",
+      "src\\matched\\agent\\match_800EB844_cXObjectImpl__GetNextImpl.cpp"
+    ],
+    "800EB8E8": [
+      "src\\matched\\agent\\match_0x800EB8E8_func_800EB8E8.cpp",
+      "src\\matched\\agent\\match_800EB8E8_global_constructors_keyed_to_cXObjectImpl__sXDirTable.cpp"
+    ],
+    "800EB914": [
+      "src\\matched\\agent\\match_0x800EB914_func_800EB914.cpp",
+      "src\\matched\\agent\\match_800EB914_global_destructors_keyed_to_cXObjectImpl__sXDirTable.cpp"
+    ],
+    "800EBF94": [
+      "src\\matched\\agent\\match_0x800EBF94_func_800EBF94.cpp",
+      "src\\matched\\agent\\match_800EBF94_ObjectFolder__CreateInstance.cpp"
+    ],
+    "800EC07C": [
+      "src\\matched\\agent\\match_0x800EC07C_func_800EC07C.cpp",
+      "src\\matched\\agent\\match_800EC07C_GlobalConstantsClient__GetFileID.cpp"
+    ],
+    "800EC084": [
+      "src\\matched\\agent\\match_0x800EC084_func_800EC084.cpp",
+      "src\\matched\\agent\\match_800EC084_GlobalConstantsClient__GetID.cpp"
+    ],
+    "800F17A0": [
+      "src\\matched\\agent\\match_0x800F17A0_func_800F17A0.cpp",
+      "src\\matched\\agent\\match_800F17A0_ObjectFolderImpl__DoCommand.cpp"
+    ],
+    "800F2074": [
+      "src\\matched\\agent\\match_0x800F2074_func_800F2074.cpp",
+      "src\\matched\\agent\\match_800F2074_ObjectFolderImpl__IsNamespaceWriteable.cpp"
+    ],
+    "800F207C": [
+      "src\\matched\\agent\\match_0x800F207C_func_800F207C.cpp",
+      "src\\matched\\agent\\match_800F207C_ObjectFolderImpl__IsBehaviorWriteable.cpp"
+    ],
+    "800F29C4": [
+      "src\\matched\\agent\\match_0x800F29C4_func_800F29C4.cpp",
+      "src\\matched\\agent\\match_800F29C4_ObjectFolderImpl__GetPath.cpp"
+    ],
+    "800F29F0": [
+      "src\\matched\\agent\\match_0x800F29F0_func_800F29F0.cpp",
+      "src\\matched\\agent\\match_800F29F0_ObjectFolderImpl__GetObjectsDatabase.cpp"
+    ],
+    "800F2C54": [
+      "src\\matched\\agent\\match_0x800F2C54_func_800F2C54.cpp",
+      "src\\matched\\agent\\match_800F2C54_ObjectModule__CreateInstance.cpp"
+    ],
+    "800F945C": [
+      "src\\matched\\agent\\match_0x800F945C_func_800F945C.cpp",
+      "src\\matched\\agent\\match_800F945C_ObjectModuleImpl__GetSelectedPerson.cpp"
+    ],
+    "800F9928": [
+      "src\\matched\\agent\\match_0x800F9928_func_800F9928.cpp",
+      "src\\matched\\agent\\match_800F9928_ObjectModuleImpl__GetFolder.cpp"
+    ],
+    "800F9980": [
+      "src\\matched\\agent\\match_0x800F9980_func_800F9980.cpp",
+      "src\\matched\\agent\\match_800F9980_ObjectModuleImpl__GetSim.cpp"
+    ],
+    "800F9A34": [
+      "src\\matched\\agent\\match_0x800F9A34_func_800F9A34.cpp",
+      "src\\matched\\agent\\match_800F9A34___tcf_0_4.cpp"
+    ],
+    "800F9F20": [
+      "src\\matched\\agent\\match_0x800F9F20_func_800F9F20.cpp",
+      "src\\matched\\agent\\match_800F9F20_cXObjectImpl__HandleBreakpoint.cpp"
+    ],
+    "80123724": [
+      "src\\matched\\agent\\match_0x80123724_func_80123724.cpp",
+      "src\\matched\\agent\\match_80123724_return_0_a.cpp"
+    ],
+    "80126050": [
+      "src\\matched\\agent\\match_0x80126050_func_80126050.cpp",
+      "src\\matched\\agent\\match_80126050_return_1_a.cpp"
+    ],
+    "80126064": [
+      "src\\matched\\agent\\match_0x80126064_func_80126064.cpp",
+      "src\\matched\\agent\\match_80126064_return_0_b.cpp"
+    ],
+    "80126398": [
+      "src\\matched\\agent\\match_0x80126398_func_80126398.cpp",
+      "src\\matched\\agent\\match_80126398_return_0_c.cpp"
+    ],
+    "801270F8": [
+      "src\\matched\\agent\\match_0x801270F8_func_801270F8.cpp",
+      "src\\matched\\agent\\match_801270F8_return_1_b.cpp"
+    ],
+    "8012710C": [
+      "src\\matched\\agent\\match_0x8012710C_func_8012710C.cpp",
+      "src\\matched\\agent\\match_8012710C_return_0_d.cpp"
+    ],
+    "80129ECC": [
+      "src\\matched\\agent\\match_0x80129ECC_cXPersonImpl_SetCurrentAction.cpp",
+      "src\\matched\\agent\\match_0x80129ECC_cXPersonImpl__SetCurrentAction.cpp"
+    ],
+    "8012B5E0": [
+      "src\\matched\\agent\\match_0x8012B5E0_func_8012B5E0.cpp",
+      "src\\matched\\agent\\match_8012B5E0_return_0_e.cpp"
+    ],
+    "8012B77C": [
+      "src\\matched\\agent\\match_0x8012B77C_func_8012B77C.cpp",
+      "src\\matched\\agent\\match_8012B77C_return_0_f.cpp"
+    ],
+    "8012B82C": [
+      "src\\matched\\agent\\match_0x8012B82C_func_8012B82C.cpp",
+      "src\\matched\\agent\\match_8012B82C_cXPersonImpl_SetMember1348.cpp"
+    ],
+    "8012B8C4": [
+      "src\\matched\\agent\\match_0x8012B8C4_func_8012B8C4.cpp",
+      "src\\matched\\agent\\match_8012B8C4_cXPersonImpl_SetMember1356.cpp"
+    ],
+    "8012C724": [
+      "src\\matched\\agent\\match_0x8012C724_func_8012C724.cpp",
+      "src\\matched\\agent\\match_8012C724_li_1.cpp"
+    ],
+    "8012C780": [
+      "src\\matched\\agent\\match_0x8012C780_func_8012C780.cpp",
+      "src\\matched\\agent\\match_8012C780_cXPersonImpl_GetShort8.cpp"
+    ],
+    "8012C7EC": [
+      "src\\matched\\agent\\match_0x8012C7EC_func_8012C7EC.cpp",
+      "src\\matched\\agent\\match_8012C7EC_cXPersonImpl_GetMember1012.cpp"
+    ],
+    "8012C8B8": [
+      "src\\matched\\agent\\match_0x8012C8B8_func_8012C8B8.cpp",
+      "src\\matched\\agent\\match_8012C8B8_return_0_g.cpp"
+    ],
+    "8012C978": [
+      "src\\matched\\agent\\match_0x8012C978_func_8012C978.cpp",
+      "src\\matched\\agent\\match_8012C978_cXPersonImpl_GetFlags.cpp"
+    ],
+    "8012C988": [
+      "src\\matched\\agent\\match_0x8012C988_func_8012C988.cpp",
+      "src\\matched\\agent\\match_8012C988_cXPersonImpl_GetMember1032.cpp"
+    ],
+    "8012C990": [
+      "src\\matched\\agent\\match_0x8012C990_func_8012C990.cpp",
+      "src\\matched\\agent\\match_8012C990_cXPersonImpl_GetMember1072.cpp"
+    ],
+    "8012C998": [
+      "src\\matched\\agent\\match_0x8012C998_func_8012C998.cpp",
+      "src\\matched\\agent\\match_8012C998_cXPersonImpl_GetMember1076.cpp"
+    ],
+    "8012C9A0": [
+      "src\\matched\\agent\\match_0x8012C9A0_func_8012C9A0.cpp",
+      "src\\matched\\agent\\match_8012C9A0_cXPersonImpl_SetMember1076.cpp"
+    ],
+    "8012C9A8": [
+      "src\\matched\\agent\\match_0x8012C9A8_func_8012C9A8.cpp",
+      "src\\matched\\agent\\match_8012C9A8_cXPersonImpl_GetMember1080.cpp"
+    ],
+    "8012C9B0": [
+      "src\\matched\\agent\\match_0x8012C9B0_func_8012C9B0.cpp",
+      "src\\matched\\agent\\match_8012C9B0_cXPersonImpl_SetMember1080.cpp"
+    ],
+    "8012C9B8": [
+      "src\\matched\\agent\\match_0x8012C9B8_func_8012C9B8.cpp",
+      "src\\matched\\agent\\match_8012C9B8_cXPersonImpl_GetMember1088.cpp"
+    ],
+    "8012C9C0": [
+      "src\\matched\\agent\\match_0x8012C9C0_func_8012C9C0.cpp",
+      "src\\matched\\agent\\match_8012C9C0_cXPersonImpl_GetMember1084.cpp"
+    ],
+    "8012C9C8": [
+      "src\\matched\\agent\\match_0x8012C9C8_func_8012C9C8.cpp",
+      "src\\matched\\agent\\match_8012C9C8_cXPersonImpl_GetMember1092.cpp"
+    ],
+    "8012C9D0": [
+      "src\\matched\\agent\\match_0x8012C9D0_func_8012C9D0.cpp",
+      "src\\matched\\agent\\match_8012C9D0_cXPersonImpl_GetMember1096.cpp"
+    ],
+    "8012C9F8": [
+      "src\\matched\\agent\\match_0x8012C9F8_func_8012C9F8.cpp",
+      "src\\matched\\agent\\match_8012C9F8_cXPersonImpl_SetMember1328.cpp"
+    ],
+    "8012CA00": [
+      "src\\matched\\agent\\match_0x8012CA00_func_8012CA00.cpp",
+      "src\\matched\\agent\\match_8012CA00_cXPersonImpl_GetMember1336.cpp"
+    ],
+    "8012CA08": [
+      "src\\matched\\agent\\match_0x8012CA08_func_8012CA08.cpp",
+      "src\\matched\\agent\\match_8012CA08_cXPersonImpl_SetMember1336.cpp"
+    ],
+    "8012CA10": [
+      "src\\matched\\agent\\match_0x8012CA10_func_8012CA10.cpp",
+      "src\\matched\\agent\\match_8012CA10_cXPersonImpl_GetMember1340.cpp"
+    ],
+    "8012CA18": [
+      "src\\matched\\agent\\match_0x8012CA18_func_8012CA18.cpp",
+      "src\\matched\\agent\\match_8012CA18_cXPersonImpl_SetMember1340.cpp"
+    ],
+    "8012CA3C": [
+      "src\\matched\\agent\\match_0x8012CA3C_func_8012CA3C.cpp",
+      "src\\matched\\agent\\match_8012CA3C_return_0_h.cpp"
+    ],
+    "8012CA44": [
+      "src\\matched\\agent\\match_0x8012CA44_func_8012CA44.cpp",
+      "src\\matched\\agent\\match_8012CA44_cXPersonImpl_GetMember1352.cpp"
+    ],
+    "8012CA4C": [
+      "src\\matched\\agent\\match_0x8012CA4C_func_8012CA4C.cpp",
+      "src\\matched\\agent\\match_8012CA4C_cXPersonImpl_GetMember1348.cpp"
+    ],
+    "8012CA54": [
+      "src\\matched\\agent\\match_0x8012CA54_func_8012CA54.cpp",
+      "src\\matched\\agent\\match_8012CA54_cXPersonImpl_GetMember1356.cpp"
+    ],
+    "8012D158": [
+      "src\\matched\\agent\\match_0x8012D158_func_8012D158.cpp",
+      "src\\matched\\agent\\match_8012D158_return_0_i.cpp"
+    ],
+    "8012D16C": [
+      "src\\matched\\agent\\match_0x8012D16C_func_8012D16C.cpp",
+      "src\\matched\\agent\\match_8012D16C_return_0_j.cpp"
+    ],
+    "8012D1C4": [
+      "src\\matched\\agent\\match_0x8012D1C4_func_8012D1C4.cpp",
+      "src\\matched\\agent\\match_8012D1C4_cXPersonImpl_GetMember3424.cpp"
+    ],
+    "8012D1CC": [
+      "src\\matched\\agent\\match_0x8012D1CC_func_8012D1CC.cpp",
+      "src\\matched\\agent\\match_8012D1CC_cXPersonImpl_SetMember3424.cpp"
+    ],
+    "80132970": [
+      "src\\matched\\agent\\match_0x80132970_func_80132970.cpp",
+      "src\\matched\\agent\\match_80132970_return_0_k.cpp"
+    ],
+    "801329AC": [
+      "src\\matched\\agent\\match_0x801329AC_func_801329AC.cpp",
+      "src\\matched\\agent\\match_801329AC_return_0_l.cpp"
+    ],
+    "80132A54": [
+      "src\\matched\\agent\\match_0x80132A54_func_80132A54.cpp",
+      "src\\matched\\agent\\match_80132A54_return_neg95_a.cpp"
+    ],
+    "80132A5C": [
+      "src\\matched\\agent\\match_0x80132A5C_func_80132A5C.cpp",
+      "src\\matched\\agent\\match_80132A5C_return_neg95_b.cpp"
+    ],
+    "80132AA4": [
+      "src\\matched\\agent\\match_0x80132AA4_func_80132AA4.cpp",
+      "src\\matched\\agent\\match_80132AA4_return_0_m.cpp"
+    ],
+    "80132AAC": [
+      "src\\matched\\agent\\match_0x80132AAC_func_80132AAC.cpp",
+      "src\\matched\\agent\\match_80132AAC_return_0_n.cpp"
+    ],
+    "80132AB4": [
+      "src\\matched\\agent\\match_0x80132AB4_func_80132AB4.cpp",
+      "src\\matched\\agent\\match_80132AB4_return_0_o.cpp"
+    ],
+    "80132AC0": [
+      "src\\matched\\agent\\match_0x80132AC0_func_80132AC0.cpp",
+      "src\\matched\\agent\\match_80132AC0_return_0_p.cpp"
+    ],
+    "80132B80": [
+      "src\\matched\\agent\\match_0x80132B80_func_80132B80.cpp",
+      "src\\matched\\agent\\match_80132B80_return_0_q.cpp"
+    ],
+    "80132B88": [
+      "src\\matched\\agent\\match_0x80132B88_func_80132B88.cpp",
+      "src\\matched\\agent\\match_80132B88_return_0_r.cpp"
+    ],
+    "80132B90": [
+      "src\\matched\\agent\\match_0x80132B90_func_80132B90.cpp",
+      "src\\matched\\agent\\match_80132B90_return_0_s.cpp"
+    ],
+    "80132B98": [
+      "src\\matched\\agent\\match_0x80132B98_func_80132B98.cpp",
+      "src\\matched\\agent\\match_80132B98_return_0_t.cpp"
+    ],
+    "80132BA0": [
+      "src\\matched\\agent\\match_0x80132BA0_func_80132BA0.cpp",
+      "src\\matched\\agent\\match_80132BA0_return_0_u.cpp"
+    ],
+    "80132BA8": [
+      "src\\matched\\agent\\match_0x80132BA8_func_80132BA8.cpp",
+      "src\\matched\\agent\\match_80132BA8_return_0_v.cpp"
+    ],
+    "80132BB0": [
+      "src\\matched\\agent\\match_0x80132BB0_func_80132BB0.cpp",
+      "src\\matched\\agent\\match_80132BB0_return_0_w.cpp"
+    ],
+    "80132BB8": [
+      "src\\matched\\agent\\match_0x80132BB8_func_80132BB8.cpp",
+      "src\\matched\\agent\\match_80132BB8_return_0_x.cpp"
+    ],
+    "80132BE4": [
+      "src\\matched\\agent\\match_0x80132BE4_func_80132BE4.cpp",
+      "src\\matched\\agent\\match_80132BE4_return_0_y.cpp"
+    ],
+    "80132C04": [
+      "src\\matched\\agent\\match_0x80132C04_func_80132C04.cpp",
+      "src\\matched\\agent\\match_80132C04_return_0_z.cpp"
+    ],
+    "80132C30": [
+      "src\\matched\\agent\\match_0x80132C30_func_80132C30.cpp",
+      "src\\matched\\agent\\match_80132C30_return_0_aa.cpp"
+    ],
+    "80132C40": [
+      "src\\matched\\agent\\match_0x80132C40_func_80132C40.cpp",
+      "src\\matched\\agent\\match_80132C40_return_0_ab.cpp"
+    ],
+    "80134B18": [
+      "src\\matched\\agent\\match_0x80134B18_func_80134B18.cpp",
+      "src\\matched\\agent\\match_80134B18_return_1_c.cpp"
+    ],
+    "80135504": [
+      "src\\matched\\agent\\match_0x80135504_func_80135504.cpp",
+      "src\\matched\\agent\\match_80135504_return_0_ac.cpp"
+    ],
+    "80135624": [
+      "src\\matched\\agent\\match_0x80135624_func_80135624.cpp",
+      "src\\matched\\agent\\match_80135624_cBoxX_GetMember4.cpp"
+    ],
+    "8013562C": [
+      "src\\matched\\agent\\match_0x8013562C_func_8013562C.cpp",
+      "src\\matched\\agent\\match_8013562C_cBoxX_SetMember4.cpp"
+    ],
+    "801358B0": [
+      "src\\matched\\agent\\match_0x801358B0_func_801358B0.cpp",
+      "src\\matched\\agent\\match_801358B0_return_0_ad.cpp"
+    ],
+    "801358B8": [
+      "src\\matched\\agent\\match_0x801358B8_func_801358B8.cpp",
+      "src\\matched\\agent\\match_801358B8_cBoxX_GetMember8.cpp"
+    ],
+    "801358C0": [
+      "src\\matched\\agent\\match_0x801358C0_func_801358C0.cpp",
+      "src\\matched\\agent\\match_801358C0_cBoxX_SetMember8.cpp"
+    ],
+    "801386D4": [
+      "src\\matched\\agent\\match_0x801386D4_func_801386D4.cpp",
+      "src\\matched\\agent\\match_801386D4_RbTree_GetMember148.cpp"
+    ],
+    "80138A34": [
+      "src\\matched\\agent\\match_0x80138A34_func_80138A34.cpp",
+      "src\\matched\\agent\\match_80138A34_return_neg1_a.cpp"
+    ],
+    "80138D10": [
+      "src\\matched\\agent\\match_0x80138D10_func_80138D10.cpp",
+      "src\\matched\\agent\\match_80138D10_return_neg1_b.cpp"
+    ],
+    "80138E5C": [
+      "src\\matched\\agent\\match_0x80138E5C_func_80138E5C.cpp",
+      "src\\matched\\agent\\match_80138E5C_return_0_ae.cpp"
+    ],
+    "80139C0C": [
+      "src\\matched\\agent\\match_0x80139C0C_func_80139C0C.cpp",
+      "src\\matched\\agent\\match_80139C0C_return_1_d.cpp"
+    ],
+    "80139C58": [
+      "src\\matched\\agent\\match_0x80139C58_func_80139C58.cpp",
+      "src\\matched\\agent\\match_80139C58_return_0_af.cpp"
+    ],
+    "80147450": [
+      "src\\matched\\agent\\match_0x80147450_func_80147450.cpp",
+      "src\\matched\\agent\\match_80147450_TreeStack__Initialize.cpp"
+    ],
+    "801487CC": [
+      "src\\matched\\agent\\match_0x801487CC_func_801487CC.cpp",
+      "src\\matched\\agent\\match_801487CC_TreeSimImpl__GetNthElem.cpp"
+    ],
+    "8014922C": [
+      "src\\matched\\agent\\match_0x8014922C_func_8014922C.cpp",
+      "src\\matched\\agent\\match_8014922C_TreeSim__GetMaxIterations.cpp"
+    ],
+    "80149234": [
+      "src\\matched\\agent\\match_0x80149234_func_80149234.cpp",
+      "src\\matched\\agent\\match_80149234_TreeSim__SetMaxIterations.cpp"
+    ],
+    "8014923C": [
+      "src\\matched\\agent\\match_0x8014923C_func_8014923C.cpp",
+      "src\\matched\\agent\\match_8014923C_TreeSim__IsBreakForPrimTimeOn.cpp"
+    ],
+    "8014926C": [
+      "src\\matched\\agent\\match_0x8014926C_func_8014926C.cpp",
+      "src\\matched\\agent\\match_8014926C_TreeSim__TraceOnPrimTimeBreak.cpp"
+    ],
+    "80149274": [
+      "src\\matched\\agent\\match_0x80149274_func_80149274.cpp",
+      "src\\matched\\agent\\match_80149274_TreeSim__SetTraceOnPrimTimeBreak.cpp"
+    ],
+    "8014927C": [
+      "src\\matched\\agent\\match_0x8014927C_func_8014927C.cpp",
+      "src\\matched\\agent\\match_8014927C_TreeSim__BreakOnCallTreeStringFailure.cpp"
+    ],
+    "80149284": [
+      "src\\matched\\agent\\match_0x80149284_func_80149284.cpp",
+      "src\\matched\\agent\\match_80149284_TreeSim__SetBreakOnCallTreeStringFailure.cpp"
+    ],
+    "8014928C": [
+      "src\\matched\\agent\\match_0x8014928C_func_8014928C.cpp",
+      "src\\matched\\agent\\match_8014928C_TreeSim__IsExecutingInMainSim.cpp"
+    ],
+    "801523A4": [
+      "src\\matched\\agent\\match_0x801523A4_func_801523A4.cpp",
+      "src\\matched\\agent\\match_801523A4_XObjLang__GetMaxConstants.cpp"
+    ],
+    "801527F4": [
+      "src\\matched\\agent\\match_0x801527F4_func_801527F4.cpp",
+      "src\\matched\\agent\\match_801527F4_XObjLang__dtor.cpp"
+    ],
+    "8015BA04": [
+      "src\\matched\\agent\\match_0x8015BA04_func_8015BA04.cpp",
+      "src\\matched\\agent\\match_8015BA04_tcf_0.cpp"
+    ],
+    "8015BA2C": [
+      "src\\matched\\agent\\match_0x8015BA2C_func_8015BA2C.cpp",
+      "src\\matched\\agent\\match_8015BA2C_ObjectDataFactoryQuickData_StringSet__operator.cpp"
+    ],
+    "8015BA4C": [
+      "src\\matched\\agent\\match_0x8015BA4C_func_8015BA4C.cpp",
+      "src\\matched\\agent\\match_8015BA4C_ObjectDataFactoryIFF_StringSet_op.cpp"
+    ],
+    "8015BA54": [
+      "src\\matched\\agent\\match_0x8015BA54_func_8015BA54.cpp",
+      "src\\matched\\agent\\match_8015BA54_ObjectDataFactoryDatabaseStringSet__operator.cpp"
+    ],
+    "8015BA5C": [
+      "src\\matched\\agent\\match_0x8015BA5C_func_8015BA5C.cpp",
+      "src\\matched\\agent\\match_8015BA5C_ObjectDataFactoryQuickData_ObjFnTable__operator.cpp"
+    ],
+    "8015BA7C": [
+      "src\\matched\\agent\\match_0x8015BA7C_func_8015BA7C.cpp",
+      "src\\matched\\agent\\match_8015BA7C_ObjectDataFactoryIFFObjFnTable__operator.cpp"
+    ],
+    "8015BA84": [
+      "src\\matched\\agent\\match_0x8015BA84_func_8015BA84.cpp",
+      "src\\matched\\agent\\match_8015BA84_ObjectDataFactoryDatabaseObjFnTable__operator.cpp"
+    ],
+    "8015BA8C": [
+      "src\\matched\\agent\\match_0x8015BA8C_func_8015BA8C.cpp",
+      "src\\matched\\agent\\match_8015BA8C_ObjectDataFactoryQuickData_FloatConstants__operator.cpp"
+    ],
+    "8015BAAC": [
+      "src\\matched\\agent\\match_0x8015BAAC_func_8015BAAC.cpp",
+      "src\\matched\\agent\\match_8015BAAC_ObjectDataFactoryIFFFloatConstants__operator.cpp"
+    ],
+    "8015BAB4": [
+      "src\\matched\\agent\\match_0x8015BAB4_func_8015BAB4.cpp",
+      "src\\matched\\agent\\match_8015BAB4_ObjectDataFactoryDatabaseFloatConstants__operator.cpp"
+    ],
+    "8015BABC": [
+      "src\\matched\\agent\\match_0x8015BABC_func_8015BABC.cpp",
+      "src\\matched\\agent\\match_8015BABC_ObjectDataFactoryQuickData_ITreeTable__operator.cpp"
+    ],
+    "8015BAE4": [
+      "src\\matched\\agent\\match_0x8015BAE4_func_8015BAE4.cpp",
+      "src\\matched\\agent\\match_8015BAE4_ObjectDataFactoryIFFITreeTable__operator.cpp"
+    ],
+    "8015BAEC": [
+      "src\\matched\\agent\\match_0x8015BAEC_func_8015BAEC.cpp",
+      "src\\matched\\agent\\match_8015BAEC_ObjectDataFactoryDatabaseITreeTable__operator.cpp"
+    ],
+    "8015BBE8": [
+      "src\\matched\\agent\\match_0x8015BBE8_func_8015BBE8.cpp",
+      "src\\matched\\agent\\match_8015BBE8_ObjectDataID__SetNamespaceID.cpp"
+    ],
+    "8015BBF0": [
+      "src\\matched\\agent\\match_0x8015BBF0_func_8015BBF0.cpp",
+      "src\\matched\\agent\\match_8015BBF0_ObjectDataID__SetResourceID.cpp"
+    ],
+    "8015D874": [
+      "src\\matched\\agent\\match_0x8015D874_func_8015D874.cpp",
+      "src\\matched\\agent\\match_8015D874_tcf_0_treetablequickdata.cpp"
+    ],
+    "8015E294": [
+      "src\\matched\\agent\\match_0x8015E294_func_8015E294.cpp",
+      "src\\matched\\agent\\match_8015E294_TreeTableQuickData__CreateInstance.cpp"
+    ],
+    "8015E78C": [
+      "src\\matched\\agent\\match_0x8015E78C_func_8015E78C.cpp",
+      "src\\matched\\agent\\match_8015E78C_TreeTableEntryQuickData__GetAttenuationValue.cpp"
+    ],
+    "80183248": [
+      "src\\matched\\agent\\match_0x80183248_func_80183248.cpp",
+      "src\\matched\\agent\\match_80183248_ActionMenu__MenuItem__GetNext.cpp"
+    ],
+    "80183250": [
+      "src\\matched\\agent\\match_0x80183250_func_80183250.cpp",
+      "src\\matched\\agent\\match_80183250_ActionMenu__MenuItem__GetNextConst.cpp"
+    ],
+    "80183258": [
+      "src\\matched\\agent\\match_0x80183258_func_80183258.cpp",
+      "src\\matched\\agent\\match_80183258_ActionMenu__MenuItem__GetSubMenu.cpp"
+    ],
+    "801833D8": [
+      "src\\matched\\agent\\match_0x801833D8_func_801833D8.cpp",
+      "src\\matched\\agent\\match_801833D8_ActionMenu__IsObjectInMenu.cpp"
+    ],
+    "801858DC": [
+      "src\\matched\\agent\\match_0x801858DC_func_801858DC.cpp",
+      "src\\matched\\agent\\match_801858DC_CUCS2ToUTF8.cpp"
+    ],
+    "8018AAE8": [
+      "src\\matched\\agent\\match_0x8018AAE8_func_8018AAE8.cpp",
+      "src\\matched\\agent\\match_8018AAE8_LoadGameTarget__GetResult.cpp"
+    ],
+    "8018CCC4": [
+      "src\\matched\\agent\\match_0x8018CCC4_func_8018CCC4.cpp",
+      "src\\matched\\agent\\match_8018CCC4_LoadGameTarget__GetDevice.cpp"
+    ],
+    "8018CCF4": [
+      "src\\matched\\agent\\match_0x8018CCF4_func_8018CCF4.cpp",
+      "src\\matched\\agent\\match_8018CCF4_LoadGameTarget__GetSaveGameID.cpp"
+    ],
+    "8018DDE4": [
+      "src\\matched\\agent\\match_0x8018DDE4_func_8018DDE4.cpp",
+      "src\\matched\\agent\\match_8018DDE4_SaveGameTarget__Hide.cpp"
+    ],
+    "8018DE08": [
+      "src\\matched\\agent\\match_0x8018DE08_func_8018DE08.cpp",
+      "src\\matched\\agent\\match_8018DE08_SaveGameTarget__GetResult.cpp"
+    ],
+    "8018FF8C": [
+      "src\\matched\\agent\\match_0x8018FF8C_func_8018FF8C.cpp",
+      "src\\matched\\agent\\match_8018FF8C_SaveGameTarget__GetDevice.cpp"
+    ],
+    "8018FFBC": [
+      "src\\matched\\agent\\match_0x8018FFBC_func_8018FFBC.cpp",
+      "src\\matched\\agent\\match_8018FFBC_SaveGameTarget__GetSaveGameID.cpp"
+    ],
+    "80194EBC": [
+      "src\\matched\\agent\\match_0x80194EBC_func_80194EBC.cpp",
+      "src\\matched\\agent\\match_80194EBC_CASTarget__SetHandleInput.cpp"
+    ],
+    "80194F8C": [
+      "src\\matched\\agent\\match_0x80194F8C_func_80194F8C.cpp",
+      "src\\matched\\agent\\match_80194F8C_CASTarget__GotoBase.cpp"
+    ],
+    "8019F7A0": [
+      "src\\matched\\agent\\match_0x8019F7A0_func_8019F7A0.cpp",
+      "src\\matched\\agent\\match_8019F7A0_CASTattooTarget__SetVariable.cpp"
+    ],
+    "801A07F8": [
+      "src\\matched\\agent\\match_0x801A07F8_func_801A07F8.cpp",
+      "src\\matched\\agent\\match_801A07F8_CASTarget__IsShuttingdown.cpp"
+    ],
+    "801A0800": [
+      "src\\matched\\agent\\match_0x801A0800_func_801A0800.cpp",
+      "src\\matched\\agent\\match_801A0800_CASTarget__GetPrevUIFocus.cpp"
+    ],
+    "801A0808": [
+      "src\\matched\\agent\\match_0x801A0808_func_801A0808.cpp",
+      "src\\matched\\agent\\match_801A0808_CASTarget__GetCurPartUIFocus.cpp"
+    ],
+    "801A0810": [
+      "src\\matched\\agent\\match_0x801A0810_func_801A0810.cpp",
+      "src\\matched\\agent\\match_801A0810_CASTarget__GetCurrentSimNumber.cpp"
+    ],
+    "801A08A8": [
+      "src\\matched\\agent\\match_0x801A08A8_func_801A08A8.cpp",
+      "src\\matched\\agent\\match_801A08A8_CASTarget__GetGeneticsTarget.cpp"
+    ],
+    "801A08B0": [
+      "src\\matched\\agent\\match_0x801A08B0_func_801A08B0.cpp",
+      "src\\matched\\agent\\match_801A08B0_CASTarget__GetNPCEditor.cpp"
+    ],
+    "801A08B8": [
+      "src\\matched\\agent\\match_0x801A08B8_func_801A08B8.cpp",
+      "src\\matched\\agent\\match_801A08B8_CASGeneticsTarget__GetCasGenetics.cpp"
+    ],
+    "801A0934": [
+      "src\\matched\\agent\\match_0x801A0934_func_801A0934.cpp",
+      "src\\matched\\agent\\match_801A0934_CASRoommateTarget__GetSelectedSlot.cpp"
+    ],
+    "801A093C": [
+      "src\\matched\\agent\\match_0x801A093C_func_801A093C.cpp",
+      "src\\matched\\agent\\match_801A093C_global_constructors_CASTarget.cpp"
+    ],
+    "801A23BC": [
+      "src\\matched\\agent\\match_0x801A23BC_func_801A23BC.cpp",
+      "src\\matched\\agent\\match_801A23BC_ACTTarget__IsActionQueueActive.cpp"
+    ],
+    "801A2B34": [
+      "src\\matched\\agent\\match_0x801A2B34_func_801A2B34.cpp",
+      "src\\matched\\agent\\match_801A2B34_ACTTarget__IsActionQueueAvailable.cpp"
+    ],
+    "801A3E94": [
+      "src\\matched\\agent\\match_0x801A3E94_func_801A3E94.cpp",
+      "src\\matched\\agent\\match_801A3E94_BBHTarget__IsBuildBuyHUDActive.cpp"
+    ],
+    "801A7674": [
+      "src\\matched\\agent\\match_0x801A7674_func_801A7674.cpp",
+      "src\\matched\\agent\\match_801A7674_CSMTarget__IsCSIMActive.cpp"
+    ],
+    "801ACC60": [
+      "src\\matched\\agent\\match_0x801ACC60_func_801ACC60.cpp",
+      "src\\matched\\agent\\match_801ACC60_E2ETarget__OnEyeToyUnplugged.cpp"
+    ],
+    "801AD544": [
+      "src\\matched\\agent\\match_0x801AD544_func_801AD544.cpp",
+      "src\\matched\\agent\\match_801AD544_E2ETarget__SaveFrame.cpp"
+    ],
+    "801B4458": [
+      "src\\matched\\agent\\match_0x801B4458_func_801B4458.cpp",
+      "src\\matched\\agent\\match_801B4458_FCMTarget__IsFireCodeMeterActive.cpp"
+    ],
+    "801B5A04": [
+      "src\\matched\\agent\\match_0x801B5A04_func_801B5A04.cpp",
+      "src\\matched\\agent\\match_801B5A04_G2DTarget__IsG2DActive.cpp"
+    ],
+    "801B5A0C": [
+      "src\\matched\\agent\\match_0x801B5A0C_func_801B5A0C.cpp",
+      "src\\matched\\agent\\match_801B5A0C_G2DTarget__IsG2DSpawned.cpp"
+    ],
+    "801B8A38": [
+      "src\\matched\\agent\\match_0x801B8A38_func_801B8A38.cpp",
+      "src\\matched\\agent\\match_801B8A38_H2DTarget__GetPausePlayer.cpp"
+    ],
+    "801BD8F4": [
+      "src\\matched\\agent\\match_0x801BD8F4_func_801BD8F4.cpp",
+      "src\\matched\\agent\\match_801BD8F4_ITBTarget__IsIntroThoughtBalloonActive.cpp"
+    ],
+    "801BDA50": [
+      "src\\matched\\agent\\match_0x801BDA50_func_801BDA50.cpp",
+      "src\\matched\\agent\\match_801BDA50_ITBTarget__GetUserReadTime.cpp"
+    ],
+    "801E19BC": [
+      "src\\matched\\agent\\match_0x801E19BC_func_801E19BC.cpp",
+      "src\\matched\\agent\\match_801E19BC_SKLTarget__IsSkillsActive.cpp"
+    ],
+    "801E19C4": [
+      "src\\matched\\agent\\match_0x801E19C4_func_801E19C4.cpp",
+      "src\\matched\\agent\\match_801E19C4_SKLTarget__SetTextButtonPressed.cpp"
+    ],
+    "801E38F8": [
+      "src\\matched\\agent\\match_0x801E38F8_func_801E38F8.cpp",
+      "src\\matched\\agent\\match_801E38F8_WAFTarget__IsWantsAndFearsActive.cpp"
+    ],
+    "801E4F24": [
+      "src\\matched\\agent\\match_0x801E4F24_func_801E4F24.cpp",
+      "src\\matched\\agent\\match_801E4F24_WAFTarget__SetTextButtonPressed.cpp"
+    ],
+    "801E7078": [
+      "src\\matched\\agent\\match_0x801E7078_func_801E7078.cpp",
+      "src\\matched\\agent\\match_801E7078_MMUTarget__GetCurrentMainScreenChoice.cpp"
+    ],
+    "801E7080": [
+      "src\\matched\\agent\\match_0x801E7080_func_801E7080.cpp",
+      "src\\matched\\agent\\match_801E7080_MMUTarget__GetCurrentGameplayChoice.cpp"
+    ],
+    "801E7088": [
+      "src\\matched\\agent\\match_0x801E7088_func_801E7088.cpp",
+      "src\\matched\\agent\\match_801E7088_E2ETarget__GetTopLevelState.cpp"
+    ],
+    "801E7090": [
+      "src\\matched\\agent\\match_0x801E7090_func_801E7090.cpp",
+      "src\\matched\\agent\\match_801E7090_M2MTarget__GetPlayerNum.cpp"
+    ],
+    "801ECCB8": [
+      "src\\matched\\agent\\match_0x801ECCB8_func_801ECCB8.cpp",
+      "src\\matched\\agent\\match_801ECCB8_IsObjectLockedByGUID.cpp"
+    ],
+    "801EF4B8": [
+      "src\\matched\\agent\\match_0x801EF4B8_func_801EF4B8.cpp",
+      "src\\matched\\agent\\match_801EF4B8_INVTarget__Update.cpp"
+    ],
+    "801EF4DC": [
+      "src\\matched\\agent\\match_0x801EF4DC_func_801EF4DC.cpp",
+      "src\\matched\\agent\\match_801EF4DC_INVTarget__Draw.cpp"
+    ],
+    "801F0D00": [
+      "src\\matched\\agent\\match_0x801F0D00_INVTarget_ClearAllCheatStrings.cpp",
+      "src\\matched\\agent\\match_801F0D00_INVTarget__ClearAllCheatStrings.cpp"
+    ],
+    "801F119C": [
+      "src\\matched\\agent\\match_0x801F119C_INVTarget_ClearAllObjRelatedCheatStrings.cpp",
+      "src\\matched\\agent\\match_801F119C_INVTarget__ClearAllObjRelatedCheatStrings.cpp"
+    ],
+    "801F15FC": [
+      "src\\matched\\agent\\match_0x801F15FC_func_801F15FC.cpp",
+      "src\\matched\\agent\\match_801F15FC_INVTarget__PlaceModeCallback.cpp"
+    ],
+    "801F1974": [
+      "src\\matched\\agent\\match_0x801F1974_func_801F1974.cpp",
+      "src\\matched\\agent\\match_801F1974_INVTarget__WallManipulatorCallback.cpp"
+    ],
+    "801F1B6C": [
+      "src\\matched\\agent\\match_0x801F1B6C_func_801F1B6C.cpp",
+      "src\\matched\\agent\\match_801F1B6C_INVTarget__WallPainterCallback.cpp"
+    ],
+    "801F1B94": [
+      "src\\matched\\agent\\match_0x801F1B94_func_801F1B94.cpp",
+      "src\\matched\\agent\\match_801F1B94_INVTarget__FloorModeCallback.cpp"
+    ],
+    "801F1DDC": [
+      "src\\matched\\agent\\match_0x801F1DDC_func_801F1DDC.cpp",
+      "src\\matched\\agent\\match_801F1DDC_INVTarget__GrabModeCallback.cpp"
+    ],
+    "801F7660": [
+      "src\\matched\\agent\\match_0x801F7660_func_801F7660.cpp",
+      "src\\matched\\agent\\match_801F7660_INVTarget__ExitWallPaperingMode.cpp"
+    ],
+    "801F7684": [
+      "src\\matched\\agent\\match_0x801F7684_func_801F7684.cpp",
+      "src\\matched\\agent\\match_801F7684_INVTarget__ExitWallBuildingMode.cpp"
+    ],
+    "801F8E8C": [
+      "src\\matched\\agent\\match_0x801F8E8C_func_801F8E8C.cpp",
+      "src\\matched\\agent\\match_801F8E8C_INTTarget__IsInterestMeterActive.cpp"
+    ],
+    "80203E04": [
+      "src\\matched\\agent\\match_0x80203E04_func_80203E04.cpp",
+      "src\\matched\\agent\\match_80203e04_DirectInteractor_OnCreate.cpp"
+    ],
+    "80203E38": [
+      "src\\matched\\agent\\match_0x80203E38_func_80203E38.cpp",
+      "src\\matched\\agent\\match_80203e38_DirectInteractor_OnDestroy.cpp"
+    ],
+    "8020AAE8": [
+      "src\\matched\\agent\\match_0x8020AAE8_func_8020AAE8.cpp",
+      "src\\matched\\agent\\match_8020AAE8_InteractorInputManager_GetControllerFilterId.cpp"
+    ],
+    "802136CC": [
+      "src\\matched\\agent\\match_0x802136CC_func_802136CC.cpp",
+      "src\\matched\\agent\\match_802136cc_GetInteractorResourceSet.cpp"
+    ],
+    "8021900C": [
+      "src\\matched\\agent\\match_0x8021900C_func_8021900C.cpp",
+      "src\\matched\\agent\\match_8021900c_ObjectManipulator_OnCreate.cpp"
+    ],
+    "80219040": [
+      "src\\matched\\agent\\match_0x80219040_func_80219040.cpp",
+      "src\\matched\\agent\\match_80219040_ObjectManipulator_OnDestroy.cpp"
+    ],
+    "8021D3F4": [
+      "src\\matched\\agent\\match_0x8021D3F4_func_8021D3F4.cpp",
+      "src\\matched\\agent\\match_8021d3f4_SimInteractor_OnCreate.cpp"
+    ],
+    "8021D428": [
+      "src\\matched\\agent\\match_0x8021D428_func_8021D428.cpp",
+      "src\\matched\\agent\\match_8021d428_SimInteractor_OnDestroy.cpp"
+    ],
+    "8021F1D4": [
+      "src\\matched\\agent\\match_0x8021F1D4_func_8021F1D4.cpp",
+      "src\\matched\\agent\\match_8021f1d4_SocialModeInteractor_OnDestroy.cpp"
+    ],
+    "8021F808": [
+      "src\\matched\\agent\\match_0x8021F808_func_8021F808.cpp",
+      "src\\matched\\agent\\match_8021f808_WallManipulator_OnDestroy.cpp"
+    ],
+    "80226DCC": [
+      "src\\matched\\agent\\match_0x80226DCC_func_80226DCC.cpp",
+      "src\\matched\\agent\\match_80226DCC_static_init_EIAmbLight.cpp"
+    ],
+    "802272FC": [
+      "src\\matched\\agent\\match_0x802272FC_func_802272FC.cpp",
+      "src\\matched\\agent\\match_802272FC_static_init_EIDirLight.cpp"
+    ],
+    "802276E0": [
+      "src\\matched\\agent\\match_0x802276E0_func_802276E0.cpp",
+      "src\\matched\\agent\\match_802276E0_static_init_EIGameInstance.cpp"
+    ],
+    "80227EEC": [
+      "src\\matched\\agent\\match_0x80227EEC_func_80227EEC.cpp",
+      "src\\matched\\agent\\match_80227EEC_static_init_EILight.cpp"
+    ],
+    "80229B28": [
+      "src\\matched\\agent\\match_0x80229B28_func_80229B28.cpp",
+      "src\\matched\\agent\\match_80229B28_static_init_EIPointAmbLight.cpp"
+    ],
+    "8022A444": [
+      "src\\matched\\agent\\match_0x8022A444_func_8022A444.cpp",
+      "src\\matched\\agent\\match_8022A444_static_init_EIPointLight.cpp"
+    ],
+    "8022AF1C": [
+      "src\\matched\\agent\\match_0x8022AF1C_func_8022AF1C.cpp",
+      "src\\matched\\agent\\match_8022AF1C_static_init_EIPortalPointLight.cpp"
+    ],
+    "8022B6FC": [
+      "src\\matched\\agent\\match_0x8022B6FC_func_8022B6FC.cpp",
+      "src\\matched\\agent\\match_8022B6FC_static_init_EISpotLight.cpp"
+    ],
+    "8022DF48": [
+      "src\\matched\\agent\\match_0x8022DF48_func_8022DF48.cpp",
+      "src\\matched\\agent\\match_8022DF48_static_init_EIStaticModel.cpp"
+    ],
+    "80281D1C": [
+      "src\\matched\\agent\\match_0x80281D1C_func_80281D1C.cpp",
+      "src\\matched\\agent\\match_80281D1C_AptValueGC__IsGarbageCollected_void__const.cpp"
+    ],
+    "80281D24": [
+      "src\\matched\\agent\\match_0x80281D24_func_80281D24.cpp",
+      "src\\matched\\agent\\match_80281D24_AptValueNoGC__IsGarbageCollected_void__const.cpp"
+    ],
+    "80287DD0": [
+      "src\\matched\\agent\\match_0x80287DD0_func_80287DD0.cpp",
+      "src\\matched\\agent\\match_80287DD0_AptValueGC__IsGarbageCollected_void__const.cpp"
+    ],
+    "80289398": [
+      "src\\matched\\agent\\match_0x80289398_func_80289398.cpp",
+      "src\\matched\\agent\\match_80289398_AptCharacterInst__sMethod_gotoAndStop_AptValue_ptr__int_.cpp"
+    ],
+    "802893BC": [
+      "src\\matched\\agent\\match_0x802893BC_func_802893BC.cpp",
+      "src\\matched\\agent\\match_802893BC_AptCharacterInst__sMethod_gotoAndPlay_AptValue_ptr__int_.cpp"
+    ],
+    "8028F9AC": [
+      "src\\matched\\agent\\match_0x8028F9AC_func_8028F9AC.cpp",
+      "src\\matched\\agent\\match_8028F9AC_AptValueGC__IsGarbageCollected_void__const_3.cpp"
+    ],
+    "802938B8": [
+      "src\\matched\\agent\\match_0x802938B8_func_802938B8.cpp",
+      "src\\matched\\agent\\match_802938B8_AptValueGC__IsGarbageCollected_void__const_4.cpp"
+    ],
+    "80296888": [
+      "src\\matched\\agent\\match_0x80296888_func_80296888.cpp",
+      "src\\matched\\agent\\match_80296888_AptDate__sMethod_UTC_AptValue_ptr__int_.cpp"
+    ],
+    "80298BC0": [
+      "src\\matched\\agent\\match_0x80298BC0_func_80298BC0.cpp",
+      "src\\matched\\agent\\match_80298BC0_AptValueGC__IsGarbageCollected_void__const_5.cpp"
+    ],
+    "8029E1F0": [
+      "src\\matched\\agent\\match_0x8029E1F0_func_8029E1F0.cpp",
+      "src\\matched\\agent\\match_8029E1F0_AptAnimationPoolData__validateBIL_void_.cpp"
+    ],
+    "802A17F0": [
+      "src\\matched\\agent\\match_0x802A17F0_func_802A17F0.cpp",
+      "src\\matched\\agent\\match_802A17F0_AptFile__GetMainCharacter_void__const.cpp"
+    ],
+    "802A864C": [
+      "src\\matched\\agent\\match_0x802A864C_func_802A864C.cpp",
+      "src\\matched\\agent\\match_802A864C_AptStage__sMethod_addListener_AptValue_ptr__int_.cpp"
+    ],
+    "802A8654": [
+      "src\\matched\\agent\\match_0x802A8654_func_802A8654.cpp",
+      "src\\matched\\agent\\match_802A8654_AptStage__sMethod_removeListener_AptValue_ptr__int_.cpp"
+    ],
+    "802A865C": [
+      "src\\matched\\agent\\match_0x802A865C_func_802A865C.cpp",
+      "src\\matched\\agent\\match_802A865C_AptValueGC__IsGarbageCollected_void__const_6.cpp"
+    ],
+    "802A9880": [
+      "src\\matched\\agent\\match_0x802A9880_func_802A9880.cpp",
+      "src\\matched\\agent\\match_802A9880_AptAnimationPoolData__GetActionPool_void_3.cpp"
+    ],
+    "802ABB50": [
+      "src\\matched\\agent\\match_0x802ABB50_func_802ABB50.cpp",
+      "src\\matched\\agent\\match_802ABB50_AptSound__sMethod_stop_AptValue_ptr__int_.cpp"
+    ],
+    "802ABDC4": [
+      "src\\matched\\agent\\match_0x802ABDC4_func_802ABDC4.cpp",
+      "src\\matched\\agent\\match_802ABDC4_AptValueGC__IsGarbageCollected_void__const_7.cpp"
+    ],
+    "802AD0D4": [
+      "src\\matched\\agent\\match_0x802AD0D4_func_802AD0D4.cpp",
+      "src\\matched\\agent\\match_802AD0D4_AptString__sMethod_lastIndexOf_AptValue_ptr__int_.cpp"
+    ],
+    "802AEC34": [
+      "src\\matched\\agent\\match_0x802AEC34_func_802AEC34.cpp",
+      "src\\matched\\agent\\match_802AEC34_AptValueGC__IsGarbageCollected_void__const_8.cpp"
+    ],
+    "802AEC3C": [
+      "src\\matched\\agent\\match_0x802AEC3C_func_802AEC3C.cpp",
+      "src\\matched\\agent\\match_802AEC3C_AptValueNoGC__IsGarbageCollected_void__const_2.cpp"
+    ],
+    "802AED04": [
+      "src\\matched\\agent\\match_0x802AED04_func_802AED04.cpp",
+      "src\\matched\\agent\\match_802AED04_AptString__SetNext_AptString_ptr_.cpp"
+    ],
+    "802AED0C": [
+      "src\\matched\\agent\\match_0x802AED0C_func_802AED0C.cpp",
+      "src\\matched\\agent\\match_802AED0C_AptString__GetNext_void__const.cpp"
+    ],
+    "802AFC0C": [
+      "src\\matched\\agent\\match_0x802AFC0C_func_802AFC0C.cpp",
+      "src\\matched\\agent\\match_802AFC0C_AptValueGC__IsGarbageCollected_void__const_9.cpp"
+    ],
+    "802B0E44": [
+      "src\\matched\\agent\\match_0x802B0E44_func_802B0E44.cpp",
+      "src\\matched\\agent\\match_802B0E44_constructorObject.cpp"
+    ],
+    "802B4178": [
+      "src\\matched\\agent\\match_0x802B4178_func_802B4178.cpp",
+      "src\\matched\\agent\\match_802B4178_AptValueWithHash_ContainsNativeHashVirtual.cpp"
+    ],
+    "802B4248": [
+      "src\\matched\\agent\\match_0x802B4248_func_802B4248.cpp",
+      "src\\matched\\agent\\match_802B4248_AptValue_GetNativeHashVirtual.cpp"
+    ],
+    "802B4250": [
+      "src\\matched\\agent\\match_0x802B4250_func_802B4250.cpp",
+      "src\\matched\\agent\\match_802B4250_AptValue_ContainsNativeHashVirtual.cpp"
+    ],
+    "802B4258": [
+      "src\\matched\\agent\\match_0x802B4258_func_802B4258.cpp",
+      "src\\matched\\agent\\match_802B4258_AptValue_getHasClass.cpp"
+    ],
+    "802B4264": [
+      "src\\matched\\agent\\match_0x802B4264_func_802B4264.cpp",
+      "src\\matched\\agent\\match_802B4264_AptValue_objectMemberLookup.cpp"
+    ],
+    "802B426C": [
+      "src\\matched\\agent\\match_0x802B426C_func_802B426C.cpp",
+      "src\\matched\\agent\\match_802B426C_AptValue_objectMemberSet.cpp"
+    ],
+    "802B42E8": [
+      "src\\matched\\agent\\match_0x802B42E8_func_802B42E8.cpp",
+      "src\\matched\\agent\\match_802B42E8_AptValueGC_IsGarbageCollected.cpp"
+    ],
+    "802B42F0": [
+      "src\\matched\\agent\\match_0x802B42F0_func_802B42F0.cpp",
+      "src\\matched\\agent\\match_802B42F0_AptValueNoGC_IsGarbageCollected.cpp"
+    ],
+    "802B4DDC": [
+      "src\\matched\\agent\\match_0x802B4DDC_func_802B4DDC.cpp",
+      "src\\matched\\agent\\match_802B4DDC_AptValueFactory_CreateString.cpp"
+    ],
+    "802B5124": [
+      "src\\matched\\agent\\match_0x802B5124_func_802B5124.cpp",
+      "src\\matched\\agent\\match_802B5124_AptValueFactory_CreateUndefined.cpp"
+    ],
+    "802B5C24": [
+      "src\\matched\\agent\\match_0x802B5C24_func_802B5C24.cpp",
+      "src\\matched\\agent\\match_802B5C24_AptValueGC_IsGarbageCollected_2.cpp"
+    ],
+    "802B5E54": [
+      "src\\matched\\agent\\match_0x802B5E54_func_802B5E54.cpp",
+      "src\\matched\\agent\\match_802B5E54_AptObject_RegisterReferences.cpp"
+    ],
+    "802B5E74": [
+      "src\\matched\\agent\\match_0x802B5E74_func_802B5E74.cpp",
+      "src\\matched\\agent\\match_802B5E74_AptObject_DestroyGCPointers.cpp"
+    ],
+    "802B6100": [
+      "src\\matched\\agent\\match_0x802B6100_func_802B6100.cpp",
+      "src\\matched\\agent\\match_802B6100_AptValueGC_IsGarbageCollected_3.cpp"
+    ],
+    "802B6218": [
+      "src\\matched\\agent\\match_0x802B6218_func_802B6218.cpp",
+      "src\\matched\\agent\\match_802B6218_AptPrototype_GetSuperConstructor.cpp"
+    ],
+    "802B78B0": [
+      "src\\matched\\agent\\match_0x802B78B0_func_802B78B0.cpp",
+      "src\\matched\\agent\\match_802B78B0_AptValueGC_IsGarbageCollected_4.cpp"
+    ],
+    "802B87FC": [
+      "src\\matched\\agent\\match_0x802B87FC_func_802B87FC.cpp",
+      "src\\matched\\agent\\match_802B87FC_AptValueGC_IsGarbageCollected_5.cpp"
+    ],
+    "802B9180": [
+      "src\\matched\\agent\\match_0x802B9180_func_802B9180.cpp",
+      "src\\matched\\agent\\match_802B9180_AptScriptFunctionByteCodeBlock_GetName.cpp"
+    ],
+    "802B9188": [
+      "src\\matched\\agent\\match_0x802B9188_func_802B9188.cpp",
+      "src\\matched\\agent\\match_802B9188_AptScriptFunctionByteCodeBlock_GetNumArguments.cpp"
+    ],
+    "802B9190": [
+      "src\\matched\\agent\\match_0x802B9190_func_802B9190.cpp",
+      "src\\matched\\agent\\match_802B9190_AptScriptFunctionByteCodeBlock_GetByteCodeBase.cpp"
+    ],
+    "802B9198": [
+      "src\\matched\\agent\\match_0x802B9198_func_802B9198.cpp",
+      "src\\matched\\agent\\match_802B9198_AptScriptFunctionByteCodeBlock_GetByteCodeSize.cpp"
+    ],
+    "802B91BC": [
+      "src\\matched\\agent\\match_0x802B91BC_func_802B91BC.cpp",
+      "src\\matched\\agent\\match_802B91BC_AptScriptFunctionByteCodeBlock_Duplicate.cpp"
+    ],
+    "802BA21C": [
+      "src\\matched\\agent\\match_0x802BA21C_func_802BA21C.cpp",
+      "src\\matched\\agent\\match_802BA21C_AptValueGC_IsGarbageCollected_6.cpp"
+    ],
+    "802BB338": [
+      "src\\matched\\agent\\match_0x802BB338_func_802BB338.cpp",
+      "src\\matched\\agent\\match_802BB338_AptXmlNode_sMethod_appendChild.cpp"
+    ],
+    "802BB340": [
+      "src\\matched\\agent\\match_0x802BB340_func_802BB340.cpp",
+      "src\\matched\\agent\\match_802BB340_AptXmlNode_sMethod_cloneNode.cpp"
+    ],
+    "802BB4D4": [
+      "src\\matched\\agent\\match_0x802BB4D4_func_802BB4D4.cpp",
+      "src\\matched\\agent\\match_802BB4D4_AptXmlNode_sMethod_insertBefore.cpp"
+    ],
+    "802BB4DC": [
+      "src\\matched\\agent\\match_0x802BB4DC_func_802BB4DC.cpp",
+      "src\\matched\\agent\\match_802BB4DC_AptXmlNode_sMethod_removeNode.cpp"
+    ],
+    "802BB634": [
+      "src\\matched\\agent\\match_0x802BB634_func_802BB634.cpp",
+      "src\\matched\\agent\\match_802BB634_AptValueGC_IsGarbageCollected_7.cpp"
+    ],
+    "802BB8D4": [
+      "src\\matched\\agent\\match_0x802BB8D4_func_802BB8D4.cpp",
+      "src\\matched\\agent\\match_802BB8D4_AptValueNoGC_IsGarbageCollected_3.cpp"
+    ],
+    "802BBAD8": [
+      "src\\matched\\agent\\match_0x802BBAD8_func_802BBAD8.cpp",
+      "src\\matched\\agent\\match_802BBAD8_AptBoolean_GetBool.cpp"
+    ],
+    "802BBB84": [
+      "src\\matched\\agent\\match_0x802BBB84_func_802BBB84.cpp",
+      "src\\matched\\agent\\match_802BBB84_AptValueNoGC_IsGarbageCollected_2.cpp"
+    ],
+    "802BBD94": [
+      "src\\matched\\agent\\match_0x802BBD94_func_802BBD94.cpp",
+      "src\\matched\\agent\\match_802BBD94_AptFloat_GetFloat.cpp"
+    ],
+    "802BBE40": [
+      "src\\matched\\agent\\match_0x802BBE40_func_802BBE40.cpp",
+      "src\\matched\\agent\\match_802BBE40_AptValueNoGC_IsGarbageCollected_4.cpp"
+    ],
+    "802BC044": [
+      "src\\matched\\agent\\match_0x802BC044_func_802BC044.cpp",
+      "src\\matched\\agent\\match_802BC044_AptInteger_GetInt.cpp"
+    ],
+    "802BCC90": [
+      "src\\matched\\agent\\match_0x802BCC90_func_802BCC90.cpp",
+      "src\\matched\\agent\\match_802BCC90_EAStringC_FindOneOf.cpp"
+    ],
+    "802BCC98": [
+      "src\\matched\\agent\\match_0x802BCC98_func_802BCC98.cpp",
+      "src\\matched\\agent\\match_802BCC98_EAStringC_ReverseFind.cpp"
+    ],
+    "802BCE38": [
+      "src\\matched\\agent\\match_0x802BCE38_func_802BCE38.cpp",
+      "src\\matched\\agent\\match_802BCE38_EAStringC_Insert_charptr.cpp"
+    ],
+    "802BCE40": [
+      "src\\matched\\agent\\match_0x802BCE40_func_802BCE40.cpp",
+      "src\\matched\\agent\\match_802BCE40_EAStringC_Insert_char.cpp"
+    ],
+    "802C4A88": [
+      "src\\matched\\agent\\match_0x802C4A88_func_802C4A88.cpp",
+      "src\\matched\\agent\\match_802C4A88_AptCBI_PreDestroy.cpp"
+    ],
+    "802C4F7C": [
+      "src\\matched\\agent\\match_0x802C4F7C_func_802C4F7C.cpp",
+      "src\\matched\\agent\\match_802C4F7C_AptValueGC_IsGarbageCollected_8.cpp"
+    ],
+    "802C59D8": [
+      "src\\matched\\agent\\match_0x802C59D8_func_802C59D8.cpp",
+      "src\\matched\\agent\\match_802C59D8_operator_stream_EBoundTreeNode.cpp"
+    ],
+    "802C5CC4": [
+      "src\\matched\\agent\\match_0x802C5CC4_func_802C5CC4.cpp",
+      "src\\matched\\agent\\match_802C5CC4_EBoundTreeNode_Construct.cpp"
+    ],
+    "802C5DD0": [
+      "src\\matched\\agent\\match_0x802C5DD0_func_802C5DD0.cpp",
+      "src\\matched\\agent\\match_802C5DD0_EBoundTreeNode_CreateCopy.cpp"
+    ],
+    "802C60FC": [
+      "src\\matched\\agent\\match_0x802C60FC_func_802C60FC.cpp",
+      "src\\matched\\agent\\match_802C60FC_EFile_SetErrorSimulation.cpp"
+    ],
+    "802C6904": [
+      "src\\matched\\agent\\match_0x802C6904_func_802C6904.cpp",
+      "src\\matched\\agent\\match_802C6904_EFile_Allocate.cpp"
+    ],
+    "802C690C": [
+      "src\\matched\\agent\\match_0x802C690C_func_802C690C.cpp",
+      "src\\matched\\agent\\match_802C690C_EFile_GetIOMode.cpp"
+    ],
+    "802C6914": [
+      "src\\matched\\agent\\match_0x802C6914_func_802C6914.cpp",
+      "src\\matched\\agent\\match_802C6914_EFile_GetAccessMode.cpp"
+    ],
+    "802C691C": [
+      "src\\matched\\agent\\match_0x802C691C_func_802C691C.cpp",
+      "src\\matched\\agent\\match_802C691C_EFile_GetDeviceType.cpp"
+    ],
+    "802C692C": [
+      "src\\matched\\agent\\match_0x802C692C_func_802C692C.cpp",
+      "src\\matched\\agent\\match_802C692C_EFile_GetPath.cpp"
+    ],
+    "802C6934": [
+      "src\\matched\\agent\\match_0x802C6934_func_802C6934.cpp",
+      "src\\matched\\agent\\match_802C6934_EFile_GetName.cpp"
+    ],
+    "802C6944": [
+      "src\\matched\\agent\\match_0x802C6944_func_802C6944.cpp",
+      "src\\matched\\agent\\match_802C6944_EFile_GetLength.cpp"
+    ],
+    "802C694C": [
+      "src\\matched\\agent\\match_0x802C694C_func_802C694C.cpp",
+      "src\\matched\\agent\\match_802C694C_EFile_SetDevice.cpp"
+    ],
+    "802C6954": [
+      "src\\matched\\agent\\match_0x802C6954_func_802C6954.cpp",
+      "src\\matched\\agent\\match_802C6954_EFile_SetAccess.cpp"
+    ],
+    "802C695C": [
+      "src\\matched\\agent\\match_0x802C695C_func_802C695C.cpp",
+      "src\\matched\\agent\\match_802C695C_EFile_SetMode.cpp"
+    ],
+    "802C6A48": [
+      "src\\matched\\agent\\match_0x802C6A48_func_802C6A48.cpp",
+      "src\\matched\\agent\\match_802C6A48_EFileSystem_ManagedShutdown.cpp"
+    ],
+    "802C6C74": [
+      "src\\matched\\agent\\match_0x802C6C74_func_802C6C74.cpp",
+      "src\\matched\\agent\\match_802C6C74_EFileSystem_FileCreator_GetCreatorCB.cpp"
+    ],
+    "802C70AC": [
+      "src\\matched\\agent\\match_0x802C70AC_func_802C70AC.cpp",
+      "src\\matched\\agent\\match_802C70AC_EFileSystem_InitHDDFileSystem.cpp"
+    ],
+    "802C70B4": [
+      "src\\matched\\agent\\match_0x802C70B4_func_802C70B4.cpp",
+      "src\\matched\\agent\\match_802C70B4_EFileSystem_InitHDD.cpp"
+    ],
+    "802C70D0": [
+      "src\\matched\\agent\\match_0x802C70D0_func_802C70D0.cpp",
+      "src\\matched\\agent\\match_802C70D0_EFileSystem_HDDStatus.cpp"
+    ],
+    "802C70EC": [
+      "src\\matched\\agent\\match_0x802C70EC_func_802C70EC.cpp",
+      "src\\matched\\agent\\match_802C70EC_EFileSystem_HDDTmpStatus.cpp"
+    ],
+    "802C7108": [
+      "src\\matched\\agent\\match_0x802C7108_func_802C7108.cpp",
+      "src\\matched\\agent\\match_802C7108_EFileSystem_HDDSaveStatus.cpp"
+    ],
+    "802C7110": [
+      "src\\matched\\agent\\match_0x802C7110_func_802C7110.cpp",
+      "src\\matched\\agent\\match_802C7110_EFileSystem_HDDIsUnformatted.cpp"
+    ],
+    "802C7118": [
+      "src\\matched\\agent\\match_0x802C7118_func_802C7118.cpp",
+      "src\\matched\\agent\\match_802C7118_EFileSystem_GetDefaultType.cpp"
+    ],
+    "802C7604": [
+      "src\\matched\\agent\\match_0x802C7604_func_802C7604.cpp",
+      "src\\matched\\agent\\match_802C7604_EFixedString_GetLength.cpp"
+    ],
+    "802CC450": [
+      "src\\matched\\agent\\match_0x802CC450_func_802CC450.cpp",
+      "src\\matched\\agent\\match_802CC450_ENDummy_SetName.cpp"
+    ],
+    "802CC474": [
+      "src\\matched\\agent\\match_0x802CC474_func_802CC474.cpp",
+      "src\\matched\\agent\\match_802CC474_ENDummy_SetID.cpp"
+    ],
+    "802CC4B4": [
+      "src\\matched\\agent\\match_0x802CC4B4_func_802CC4B4.cpp",
+      "src\\matched\\agent\\match_802CC4B4_ENDummy_GetID.cpp"
+    ],
+    "802CC4BC": [
+      "src\\matched\\agent\\match_0x802CC4BC_func_802CC4BC.cpp",
+      "src\\matched\\agent\\match_802CC4BC_ENDummy_GetKeys.cpp"
+    ],
+    "802CF95C": [
+      "src\\matched\\agent\\match_0x802CF95C_func_802CF95C.cpp",
+      "src\\matched\\agent\\match_802CF95C_ERTQuantize_GetPaletteSize.cpp"
+    ],
+    "802CF964": [
+      "src\\matched\\agent\\match_0x802CF964_func_802CF964.cpp",
+      "src\\matched\\agent\\match_802CF964_ERTQuantize_GetFullPaletteSize.cpp"
+    ],
+    "802D09D4": [
+      "src\\matched\\agent\\match_0x802D09D4_func_802D09D4.cpp",
+      "src\\matched\\agent\\match_802D09D4_EAHeap_GetCurrentCheckPoint.cpp"
+    ],
+    "802D0FA0": [
+      "src\\matched\\agent\\match_0x802D0FA0_func_802D0FA0.cpp",
+      "src\\matched\\agent\\match_802D0FA0_EAHeap_ValidatePools.cpp"
+    ],
+    "802D10C4": [
+      "src\\matched\\agent\\match_0x802D10C4_func_802D10C4.cpp",
+      "src\\matched\\agent\\match_802D10C4_FPHeap_ValidatePools.cpp"
+    ],
+    "802D1138": [
+      "src\\matched\\agent\\match_0x802D1138_func_802D1138.cpp",
+      "src\\matched\\agent\\match_802D1138_DefaultFree.cpp"
+    ],
+    "802D1220": [
+      "src\\matched\\agent\\match_0x802D1220_func_802D1220.cpp",
+      "src\\matched\\agent\\match_802D1220_builtin_delete.cpp"
+    ],
+    "802D1254": [
+      "src\\matched\\agent\\match_0x802D1254_func_802D1254.cpp",
+      "src\\matched\\agent\\match_802D1254_builtin_vec_delete.cpp"
+    ],
+    "802D12C0": [
+      "src\\matched\\agent\\match_0x802D12C0_func_802D12C0.cpp",
+      "src\\matched\\agent\\match_802D12C0_free.cpp"
+    ],
+    "802D21F8": [
+      "src\\matched\\agent\\match_0x802D21F8_func_802D21F8.cpp",
+      "src\\matched\\agent\\match_802D21F8_EStream_GetFile.cpp"
+    ],
+    "802D283C": [
+      "src\\matched\\agent\\match_0x802D283C_func_802D283C.cpp",
+      "src\\matched\\agent\\match_802D283C_EStream_IsStreamingStructure.cpp"
+    ],
+    "802D2C24": [
+      "src\\matched\\agent\\match_0x802D2C24_func_802D2C24.cpp",
+      "src\\matched\\agent\\match_802D2C24_EString_GetLength.cpp"
+    ],
+    "802D3EB4": [
+      "src\\matched\\agent\\match_0x802D3EB4_func_802D3EB4.cpp",
+      "src\\matched\\agent\\match_802D3EB4_EString_ReleaseBuffer.cpp"
+    ],
+    "802D4780": [
+      "src\\matched\\agent\\match_0x802D4780_func_802D4780.cpp",
+      "src\\matched\\agent\\match_802D4780_EString2_GetLength.cpp"
+    ],
+    "802D7220": [
+      "src\\matched\\agent\\match_0x802D7220_func_802D7220.cpp",
+      "src\\matched\\agent\\match_802D7220_FastAllocPool_GetAlignment.cpp"
+    ],
+    "802D7228": [
+      "src\\matched\\agent\\match_0x802D7228_func_802D7228.cpp",
+      "src\\matched\\agent\\match_802D7228_FastAllocPool_GetPoolStart.cpp"
+    ],
+    "802D7240": [
+      "src\\matched\\agent\\match_0x802D7240_func_802D7240.cpp",
+      "src\\matched\\agent\\match_802D7240_FastAllocPool_GetBlockSize.cpp"
+    ],
+    "802D7248": [
+      "src\\matched\\agent\\match_0x802D7248_func_802D7248.cpp",
+      "src\\matched\\agent\\match_802D7248_FastAllocPool_GetPoolBlocks.cpp"
+    ],
+    "802D7854": [
+      "src\\matched\\agent\\match_0x802D7854_func_802D7854.cpp",
+      "src\\matched\\agent\\match_802D7854_ESemaphore_GetObject.cpp"
+    ],
+    "802D79F8": [
+      "src\\matched\\agent\\match_0x802D79F8_func_802D79F8.cpp",
+      "src\\matched\\agent\\match_802D79F8_ESemaphore_GetCurrentCount.cpp"
+    ],
+    "802D7A00": [
+      "src\\matched\\agent\\match_0x802D7A00_func_802D7A00.cpp",
+      "src\\matched\\agent\\match_802D7A00_ESemaphore_GetMaxCount.cpp"
+    ],
+    "802D7B20": [
+      "src\\matched\\agent\\match_0x802D7B20_func_802D7B20.cpp",
+      "src\\matched\\agent\\match_802D7B20_ESleep_tCallback.cpp"
+    ],
+    "802D8018": [
+      "src\\matched\\agent\\match_0x802D8018_func_802D8018.cpp",
+      "src\\matched\\agent\\match_802D8018_ENgcSNFile_Write.cpp"
+    ],
+    "802D8080": [
+      "src\\matched\\agent\\match_0x802D8080_func_802D8080.cpp",
+      "src\\matched\\agent\\match_802D8080_ENgcSNFile_Tell.cpp"
+    ],
+    "802D8088": [
+      "src\\matched\\agent\\match_0x802D8088_func_802D8088.cpp",
+      "src\\matched\\agent\\match_802D8088_ENgcSNFile_Flush.cpp"
+    ],
+    "802D8090": [
+      "src\\matched\\agent\\match_0x802D8090_func_802D8090.cpp",
+      "src\\matched\\agent\\match_802D8090_ENgcSNFile_GetLastError.cpp"
+    ],
+    "802D8098": [
+      "src\\matched\\agent\\match_0x802D8098_func_802D8098.cpp",
+      "src\\matched\\agent\\match_802D8098_ENgcSNFile_GetSystemHandle.cpp"
+    ],
+    "802D8464": [
+      "src\\matched\\agent\\match_0x802D8464_func_802D8464.cpp",
+      "src\\matched\\agent\\match_802D8464_EThread_Start.cpp"
+    ],
+    "802D84B4": [
+      "src\\matched\\agent\\match_0x802D84B4_func_802D84B4.cpp",
+      "src\\matched\\agent\\match_802D84B4_EThread_SetPriority.cpp"
+    ],
+    "802D84D8": [
+      "src\\matched\\agent\\match_0x802D84D8_func_802D84D8.cpp",
+      "src\\matched\\agent\\match_802D84D8_EThread_GetPriority.cpp"
+    ],
+    "802D858C": [
+      "src\\matched\\agent\\match_0x802D858C_func_802D858C.cpp",
+      "src\\matched\\agent\\match_802D858C_EThread_GetStack.cpp"
+    ],
+    "802D8594": [
+      "src\\matched\\agent\\match_0x802D8594_func_802D8594.cpp",
+      "src\\matched\\agent\\match_802D8594_EThread_GetStackSize.cpp"
+    ],
+    "802D867C": [
+      "src\\matched\\agent\\match_0x802D867C_func_802D867C.cpp",
+      "src\\matched\\agent\\match_802D867C_EThread_SetThreadName.cpp"
+    ],
+    "802D8684": [
+      "src\\matched\\agent\\match_0x802D8684_func_802D8684.cpp",
+      "src\\matched\\agent\\match_802D8684_EThread_GetThreadName.cpp"
+    ],
+    "802D87E4": [
+      "src\\matched\\agent\\match_0x802D87E4_func_802D87E4.cpp",
+      "src\\matched\\agent\\match_802D87E4_PPMMutexGetLockCount.cpp"
+    ],
+    "802D8FA8": [
+      "src\\matched\\agent\\match_0x802D8FA8_func_802D8FA8.cpp",
+      "src\\matched\\agent\\match_802D8FA8_GeneralAllocator_GetPageSize.cpp"
+    ],
+    "802D93A8": [
+      "src\\matched\\agent\\match_0x802D93A8_func_802D93A8.cpp",
+      "src\\matched\\agent\\match_802D93A8_GeneralAllocator_ChunkMatchesLowHigh.cpp"
+    ],
+    "802DA51C": [
+      "src\\matched\\agent\\match_0x802DA51C_func_802DA51C.cpp",
+      "src\\matched\\agent\\match_802DA51C_GeneralAllocator_AssertionFailureDefault.cpp"
+    ],
+    "802DEC2C": [
+      "src\\matched\\agent\\match_0x802DEC2C_func_802DEC2C.cpp",
+      "src\\matched\\agent\\match_802DEC2C_AtoF.cpp"
+    ],
+    "802DEC50": [
+      "src\\matched\\agent\\match_0x802DEC50_func_802DEC50.cpp",
+      "src\\matched\\agent\\match_802DEC50_AtoI.cpp"
+    ],
+    "802E076C": [
+      "src\\matched\\agent\\match_0x802E076C_func_802E076C.cpp",
+      "src\\matched\\agent\\match_802E076C_EBitArray__GetSize.cpp"
+    ],
+    "802E07A0": [
+      "src\\matched\\agent\\match_0x802E07A0_func_802E07A0.cpp",
+      "src\\matched\\agent\\match_802E07A0_EBitArray_Add_bool.cpp"
+    ],
+    "802E0878": [
+      "src\\matched\\agent\\match_0x802E0878_func_802E0878.cpp",
+      "src\\matched\\agent\\match_802E0878_EBitArray_Clear.cpp"
+    ],
+    "802E089C": [
+      "src\\matched\\agent\\match_0x802E089C_func_802E089C.cpp",
+      "src\\matched\\agent\\match_802E089C_EBitArray_ClearAll.cpp"
+    ],
+    "802E08C0": [
+      "src\\matched\\agent\\match_0x802E08C0_func_802E08C0.cpp",
+      "src\\matched\\agent\\match_802E08C0_EBitArray_operator_index_const.cpp"
+    ],
+    "802E0914": [
+      "src\\matched\\agent\\match_0x802E0914_func_802E0914.cpp",
+      "src\\matched\\agent\\match_802E0914_EBitArray__GetBuffer.cpp"
+    ],
+    "802E0EB4": [
+      "src\\matched\\agent\\match_0x802E0EB4_func_802E0EB4.cpp",
+      "src\\matched\\agent\\match_802E0EB4_EMemoryReadStream__GetPos.cpp"
+    ],
+    "802E0EBC": [
+      "src\\matched\\agent\\match_0x802E0EBC_func_802E0EBC.cpp",
+      "src\\matched\\agent\\match_802E0EBC_EMemoryReadStream__Write.cpp"
+    ],
+    "802E0EE8": [
+      "src\\matched\\agent\\match_0x802E0EE8_func_802E0EE8.cpp",
+      "src\\matched\\agent\\match_802E0EE8_EMemoryBufferWriteStream__GetPos.cpp"
+    ],
+    "802E0EF0": [
+      "src\\matched\\agent\\match_0x802E0EF0_func_802E0EF0.cpp",
+      "src\\matched\\agent\\match_802E0EF0_EMemoryBufferWriteStream__Read.cpp"
+    ],
+    "802E0EF8": [
+      "src\\matched\\agent\\match_0x802E0EF8_func_802E0EF8.cpp",
+      "src\\matched\\agent\\match_802E0EF8_EMemoryWriteStream__GetPos.cpp"
+    ],
+    "802E0F00": [
+      "src\\matched\\agent\\match_0x802E0F00_func_802E0F00.cpp",
+      "src\\matched\\agent\\match_802E0F00_EMemoryWriteStream__Read.cpp"
+    ],
+    "802E17F8": [
+      "src\\matched\\agent\\match_0x802E17F8_func_802E17F8.cpp",
+      "src\\matched\\agent\\match_802E17F8_EThread__GetStackUsage.cpp"
+    ],
+    "802E1B78": [
+      "src\\matched\\agent\\match_0x802E1B78_func_802E1B78.cpp",
+      "src\\matched\\agent\\match_802E1B78_ENgcFile__Write.cpp"
+    ],
+    "802E1BDC": [
+      "src\\matched\\agent\\match_0x802E1BDC_func_802E1BDC.cpp",
+      "src\\matched\\agent\\match_802E1BDC_ENgcFile__Tell.cpp"
+    ],
+    "802E1BE4": [
+      "src\\matched\\agent\\match_0x802E1BE4_func_802E1BE4.cpp",
+      "src\\matched\\agent\\match_802E1BE4_ENgcFile__Flush.cpp"
+    ],
+    "802E1BEC": [
+      "src\\matched\\agent\\match_0x802E1BEC_func_802E1BEC.cpp",
+      "src\\matched\\agent\\match_802E1BEC_ENgcFile__GetLastError.cpp"
+    ],
+    "802E2104": [
+      "src\\matched\\agent\\match_0x802E2104_func_802E2104.cpp",
+      "src\\matched\\agent\\match_802E2104_BackgroundImpl_IsCallingThread.cpp"
+    ],
+    "802E28F0": [
+      "src\\matched\\agent\\match_0x802E28F0_func_802E28F0.cpp",
+      "src\\matched\\agent\\match_802E28F0_EApp__GetMovieHeap.cpp"
+    ],
+    "802E2934": [
+      "src\\matched\\agent\\match_0x802E2934_func_802E2934.cpp",
+      "src\\matched\\agent\\match_802E2934_EApp__GetPrefetchBlockSize.cpp"
+    ],
+    "802E293C": [
+      "src\\matched\\agent\\match_0x802E293C_func_802E293C.cpp",
+      "src\\matched\\agent\\match_802E293C_EApp__GetScratchBuffSize.cpp"
+    ],
+    "802E2944": [
+      "src\\matched\\agent\\match_0x802E2944_func_802E2944.cpp",
+      "src\\matched\\agent\\match_802E2944_EApp__GetEventTableSize.cpp"
+    ],
+    "802E2954": [
+      "src\\matched\\agent\\match_0x802E2954_func_802E2954.cpp",
+      "src\\matched\\agent\\match_802E2954_EApp__GetGameState.cpp"
+    ],
+    "802E295C": [
+      "src\\matched\\agent\\match_0x802E295C_func_802E295C.cpp",
+      "src\\matched\\agent\\match_802E295C_EApp__SetGameState.cpp"
+    ],
+    "802E2964": [
+      "src\\matched\\agent\\match_0x802E2964_func_802E2964.cpp",
+      "src\\matched\\agent\\match_802E2964_EApp__GetMenuOwner.cpp"
+    ],
+    "802E296C": [
+      "src\\matched\\agent\\match_0x802E296C_func_802E296C.cpp",
+      "src\\matched\\agent\\match_802E296C_EApp__SetMenuOwner.cpp"
+    ],
+    "802E38B8": [
+      "src\\matched\\agent\\match_0x802E38B8_func_802E38B8.cpp",
+      "src\\matched\\agent\\match_802E38B8_EEngine__EnableFrameRatePredictiveSmoothing.cpp"
+    ],
+    "802E38C4": [
+      "src\\matched\\agent\\match_0x802E38C4_func_802E38C4.cpp",
+      "src\\matched\\agent\\match_802E38C4_EEngine__SetCurrentLevel.cpp"
+    ],
+    "802E38CC": [
+      "src\\matched\\agent\\match_0x802E38CC_func_802E38CC.cpp",
+      "src\\matched\\agent\\match_802E38CC_EEngine__GetCurrentLevel.cpp"
+    ],
+    "802E38D4": [
+      "src\\matched\\agent\\match_0x802E38D4_func_802E38D4.cpp",
+      "src\\matched\\agent\\match_802E38D4_EEngine__SetResetAllowed.cpp"
+    ],
+    "802E38DC": [
+      "src\\matched\\agent\\match_0x802E38DC_func_802E38DC.cpp",
+      "src\\matched\\agent\\match_802E38DC_EEngine__CanReset.cpp"
+    ],
+    "802E38E8": [
+      "src\\matched\\agent\\match_0x802E38E8_func_802E38E8.cpp",
+      "src\\matched\\agent\\match_802E38E8_EEngine__ManagedStartup.cpp"
+    ],
+    "802E38F0": [
+      "src\\matched\\agent\\match_0x802E38F0_func_802E38F0.cpp",
+      "src\\matched\\agent\\match_802E38F0_global_constructors_keyed_to__evenodd.cpp"
+    ],
+    "802E3A34": [
+      "src\\matched\\agent\\match_0x802E3A34_func_802E3A34.cpp",
+      "src\\matched\\agent\\match_802E3A34_InitHeap.cpp"
+    ],
+    "802E3A3C": [
+      "src\\matched\\agent\\match_0x802E3A3C_func_802E3A3C.cpp",
+      "src\\matched\\agent\\match_802E3A3C_RegisterExitFunction.cpp"
+    ],
+    "802F21B0": [
+      "src\\matched\\agent\\match_0x802F21B0_func_802F21B0.cpp",
+      "src\\matched\\agent\\match_802F21B0_EGraphics__FrameBufferClearFlag.cpp"
+    ],
+    "802F21B8": [
+      "src\\matched\\agent\\match_0x802F21B8_func_802F21B8.cpp",
+      "src\\matched\\agent\\match_802F21B8_EGraphics__FrameBufferClearRequestFlag.cpp"
+    ],
+    "802F21C4": [
+      "src\\matched\\agent\\match_0x802F21C4_func_802F21C4.cpp",
+      "src\\matched\\agent\\match_802F21C4_EGraphics__GetFrameBufferTexture.cpp"
+    ],
+    "802F21CC": [
+      "src\\matched\\agent\\match_0x802F21CC_func_802F21CC.cpp",
+      "src\\matched\\agent\\match_802F21CC_EGraphics__GetDepthBufferTexture.cpp"
+    ],
+    "802F21D4": [
+      "src\\matched\\agent\\match_0x802F21D4_func_802F21D4.cpp",
+      "src\\matched\\agent\\match_802F21D4_EGraphics__NeedFlushToDestroy_EDL.cpp"
+    ],
+    "802F21DC": [
+      "src\\matched\\agent\\match_0x802F21DC_func_802F21DC.cpp",
+      "src\\matched\\agent\\match_802F21DC_EGraphics__NeedFlushToDestroy_ETexture.cpp"
+    ],
+    "802F21E4": [
+      "src\\matched\\agent\\match_0x802F21E4_func_802F21E4.cpp",
+      "src\\matched\\agent\\match_802F21E4_EGraphics__NeedFlushToDestroy_ERenderSurface.cpp"
+    ],
+    "802F21EC": [
+      "src\\matched\\agent\\match_0x802F21EC_func_802F21EC.cpp",
+      "src\\matched\\agent\\match_802F21EC_EGraphics__NeedFlushToDestroy_EMovie.cpp"
+    ],
+    "802F21F4": [
+      "src\\matched\\agent\\match_0x802F21F4_func_802F21F4.cpp",
+      "src\\matched\\agent\\match_802F21F4_EGraphics__GetLargestAvailableTextureMemoryBlock.cpp"
+    ],
+    "802F21FC": [
+      "src\\matched\\agent\\match_0x802F21FC_func_802F21FC.cpp",
+      "src\\matched\\agent\\match_802F21FC_EGraphics__NeedFlushToDestroy_EShader.cpp"
+    ],
+    "802F221C": [
+      "src\\matched\\agent\\match_0x802F221C_func_802F221C.cpp",
+      "src\\matched\\agent\\match_802F221C_EGraphics__GetCoordinateSystem.cpp"
+    ],
+    "802F2224": [
+      "src\\matched\\agent\\match_0x802F2224_func_802F2224.cpp",
+      "src\\matched\\agent\\match_802F2224_EGraphics__SetCoordinateSystem.cpp"
+    ],
+    "802F2238": [
+      "src\\matched\\agent\\match_0x802F2238_func_802F2238.cpp",
+      "src\\matched\\agent\\match_802F2238_EGraphics__GetScreenXSize.cpp"
+    ],
+    "802F2240": [
+      "src\\matched\\agent\\match_0x802F2240_func_802F2240.cpp",
+      "src\\matched\\agent\\match_802F2240_EGraphics__GetScreenYSize.cpp"
+    ],
+    "802F22C8": [
+      "src\\matched\\agent\\match_0x802F22C8_func_802F22C8.cpp",
+      "src\\matched\\agent\\match_802F22C8_EGraphics__GetActualScreenXSize.cpp"
+    ],
+    "802F22D0": [
+      "src\\matched\\agent\\match_0x802F22D0_func_802F22D0.cpp",
+      "src\\matched\\agent\\match_802F22D0_EGraphics__GetActualScreenYSize.cpp"
+    ],
+    "802F22D8": [
+      "src\\matched\\agent\\match_0x802F22D8_func_802F22D8.cpp",
+      "src\\matched\\agent\\match_802F22D8_EGraphics__SetScreenXOffset.cpp"
+    ],
+    "802F22E0": [
+      "src\\matched\\agent\\match_0x802F22E0_func_802F22E0.cpp",
+      "src\\matched\\agent\\match_802F22E0_EGraphics__SetScreenYOffset.cpp"
+    ],
+    "802F22E8": [
+      "src\\matched\\agent\\match_0x802F22E8_func_802F22E8.cpp",
+      "src\\matched\\agent\\match_802F22E8_EGraphics__GetScreenXOffset.cpp"
+    ],
+    "802F22F0": [
+      "src\\matched\\agent\\match_0x802F22F0_func_802F22F0.cpp",
+      "src\\matched\\agent\\match_802F22F0_EGraphics__GetScreenYOffset.cpp"
+    ],
+    "802F22F8": [
+      "src\\matched\\agent\\match_0x802F22F8_func_802F22F8.cpp",
+      "src\\matched\\agent\\match_802F22F8_EGraphics__GetMaxTextureXSize.cpp"
+    ],
+    "802F2300": [
+      "src\\matched\\agent\\match_0x802F2300_func_802F2300.cpp",
+      "src\\matched\\agent\\match_802F2300_EGraphics__GetMaxTextureYSize.cpp"
+    ],
+    "802F2320": [
+      "src\\matched\\agent\\match_0x802F2320_func_802F2320.cpp",
+      "src\\matched\\agent\\match_802F2320_EGraphics__EnableWireframe.cpp"
+    ],
+    "802F2340": [
+      "src\\matched\\agent\\match_0x802F2340_func_802F2340.cpp",
+      "src\\matched\\agent\\match_802F2340_EGraphics__IsFirstPassRenderOnly.cpp"
+    ],
+    "802F2348": [
+      "src\\matched\\agent\\match_0x802F2348_func_802F2348.cpp",
+      "src\\matched\\agent\\match_802F2348_EGraphics__SetEnableFrameEffects.cpp"
+    ],
+    "802F2350": [
+      "src\\matched\\agent\\match_0x802F2350_func_802F2350.cpp",
+      "src\\matched\\agent\\match_802F2350_EGraphics__IsEnableFrameEffects.cpp"
+    ],
+    "802F2358": [
+      "src\\matched\\agent\\match_0x802F2358_func_802F2358.cpp",
+      "src\\matched\\agent\\match_802F2358_EGraphics__IsInsideBeginEnd.cpp"
+    ],
+    "802F2360": [
+      "src\\matched\\agent\\match_0x802F2360_func_802F2360.cpp",
+      "src\\matched\\agent\\match_802F2360_EGraphics__ManagedStartup.cpp"
+    ],
+    "802F249C": [
+      "src\\matched\\agent\\match_0x802F249C_func_802F249C.cpp",
+      "src\\matched\\agent\\match_802F249C_EMirrorPortal__SetNumCorners.cpp"
+    ],
+    "802F706C": [
+      "src\\matched\\agent\\match_0x802F706C_func_802F706C.cpp",
+      "src\\matched\\agent\\match_802F706C_ERC__ParticleListBegin.cpp"
+    ],
+    "802F9B0C": [
+      "src\\matched\\agent\\match_0x802F9B0C_func_802F9B0C.cpp",
+      "src\\matched\\agent\\match_802F9B0C_ERC__AllocVertexData.cpp"
+    ],
+    "802FAAEC": [
+      "src\\matched\\agent\\match_0x802FAAEC_func_802FAAEC.cpp",
+      "src\\matched\\agent\\match_802FAAEC_EShader__GetSurfaceProperties.cpp"
+    ],
+    "802FAB74": [
+      "src\\matched\\agent\\match_0x802FAB74_func_802FAB74.cpp",
+      "src\\matched\\agent\\match_802FAB74_EShader__GetShaderUpdate.cpp"
+    ],
+    "802FAE20": [
+      "src\\matched\\agent\\match_0x802FAE20_func_802FAE20.cpp",
+      "src\\matched\\agent\\match_802FAE20_ESubModel__GetCompositeShaderFlags.cpp"
+    ],
+    "80300AE8": [
+      "src\\matched\\agent\\match_0x80300AE8_func_80300AE8.cpp",
+      "src\\matched\\agent\\match_80300AE8_EWindow__GetCurrentWindow.cpp"
+    ],
+    "80300AF0": [
+      "src\\matched\\agent\\match_0x80300AF0_func_80300AF0.cpp",
+      "src\\matched\\agent\\match_80300AF0_EWindow__GetCurrent3DWindow.cpp"
+    ],
+    "80300B04": [
+      "src\\matched\\agent\\match_0x80300B04_func_80300B04.cpp",
+      "src\\matched\\agent\\match_80300B04_EWindow__Cast3DWindow2.cpp"
+    ],
+    "80302CE0": [
+      "src\\matched\\agent\\match_0x80302CE0_func_80302CE0.cpp",
+      "src\\matched\\agent\\match_80302CE0_ParticleProcessType3.cpp"
+    ],
+    "80304294": [
+      "src\\matched\\agent\\match_0x80304294_func_80304294.cpp",
+      "src\\matched\\agent\\match_80304294_EController__OverrideStatus.cpp"
+    ],
+    "80304434": [
+      "src\\matched\\agent\\match_0x80304434_func_80304434.cpp",
+      "src\\matched\\agent\\match_80304434_EController__HasVibration.cpp"
+    ],
+    "80304D10": [
+      "src\\matched\\agent\\match_0x80304D10_func_80304D10.cpp",
+      "src\\matched\\agent\\match_80304D10_EController__IsControlFake.cpp"
+    ],
+    "80304D18": [
+      "src\\matched\\agent\\match_0x80304D18_func_80304D18.cpp",
+      "src\\matched\\agent\\match_80304D18_EController__SetControlFake.cpp"
+    ],
+    "80304D20": [
+      "src\\matched\\agent\\match_0x80304D20_func_80304D20.cpp",
+      "src\\matched\\agent\\match_80304D20_EController__SetFakeButtons.cpp"
+    ],
+    "8030588C": [
+      "src\\matched\\agent\\match_0x8030588C_func_8030588C.cpp",
+      "src\\matched\\agent\\match_8030588C_EController__GetId.cpp"
+    ],
+    "80305894": [
+      "src\\matched\\agent\\match_0x80305894_func_80305894.cpp",
+      "src\\matched\\agent\\match_80305894_EController__GetStatus.cpp"
+    ],
+    "80307CBC": [
+      "src\\matched\\agent\\match_0x80307CBC_func_80307CBC.cpp",
+      "src\\matched\\agent\\match_80307CBC_EVibrate__IsOn.cpp"
+    ],
+    "8030833C": [
+      "src\\matched\\agent\\match_0x8030833C_func_8030833C.cpp",
+      "src\\matched\\agent\\match_8030833C_EVibrate__UpdateVibration.cpp"
+    ],
+    "8030F3BC": [
+      "src\\matched\\agent\\match_0x8030F3BC_func_8030F3BC.cpp",
+      "src\\matched\\agent\\match_8030F3BC_BSplineVolume__GetID.cpp"
+    ],
+    "8030FC5C": [
+      "src\\matched\\agent\\match_0x8030FC5C_func_8030FC5C.cpp",
+      "src\\matched\\agent\\match_8030FC5C_EREdithTreeSet__GetNumTrees.cpp"
+    ],
+    "80311C88": [
+      "src\\matched\\agent\\match_0x80311C88_func_80311C88.cpp",
+      "src\\matched\\agent\\match_80311C88_EResourceLoaderImpl__EnableReloads_bool.cpp"
+    ],
+    "80311CC8": [
+      "src\\matched\\agent\\match_0x80311CC8_func_80311CC8.cpp",
+      "src\\matched\\agent\\match_80311CC8_EResourceLoaderImpl__AreLoadsPaused_void.cpp"
+    ],
+    "80311CD0": [
+      "src\\matched\\agent\\match_0x80311CD0_func_80311CD0.cpp",
+      "src\\matched\\agent\\match_80311CD0_global_constructors_gResourceLoadedThreadID.cpp"
+    ],
+    "80311CFC": [
+      "src\\matched\\agent\\match_0x80311CFC_func_80311CFC.cpp",
+      "src\\matched\\agent\\match_80311CFC_global_destructors_gResourceLoadedThreadID.cpp"
+    ],
+    "80311D28": [
+      "src\\matched\\agent\\match_0x80311D28_func_80311D28.cpp",
+      "src\\matched\\agent\\match_80311D28_op_shl_EStream_ref__EResource_ptr.cpp"
+    ],
+    "80311FD8": [
+      "src\\matched\\agent\\match_0x80311FD8_func_80311FD8.cpp",
+      "src\\matched\\agent\\match_80311FD8_EResource__Detach_void.cpp"
+    ],
+    "803120E0": [
+      "src\\matched\\agent\\match_0x803120E0_func_803120E0.cpp",
+      "src\\matched\\agent\\match_803120E0_EResource__New_void.cpp"
+    ],
+    "80312134": [
+      "src\\matched\\agent\\match_0x80312134_func_80312134.cpp",
+      "src\\matched\\agent\\match_80312134_EResource__Destruct_EResource_ptr.cpp"
+    ],
+    "8031226C": [
+      "src\\matched\\agent\\match_0x8031226C_func_8031226C.cpp",
+      "src\\matched\\agent\\match_8031226C_EResource__IsSafeToDelete_void.cpp"
+    ],
+    "80312274": [
+      "src\\matched\\agent\\match_0x80312274_func_80312274.cpp",
+      "src\\matched\\agent\\match_80312274_EResource__GetResId_void__const.cpp"
+    ],
+    "8031227C": [
+      "src\\matched\\agent\\match_0x8031227C_func_8031227C.cpp",
+      "src\\matched\\agent\\match_8031227C_EResource__SetResId_unsigned_int.cpp"
+    ],
+    "80312284": [
+      "src\\matched\\agent\\match_0x80312284_func_80312284.cpp",
+      "src\\matched\\agent\\match_80312284_EResource__GetNumRefs_void.cpp"
+    ],
+    "803122BC": [
+      "src\\matched\\agent\\match_0x803122BC_func_803122BC.cpp",
+      "src\\matched\\agent\\match_803122BC_EResource__GetCheckPoint_void.cpp"
+    ],
+    "80312348": [
+      "src\\matched\\agent\\match_0x80312348_func_80312348.cpp",
+      "src\\matched\\agent\\match_80312348_EResource__TryIncrementSubResources_void.cpp"
+    ],
+    "80312354": [
+      "src\\matched\\agent\\match_0x80312354_func_80312354.cpp",
+      "src\\matched\\agent\\match_80312354_global_constructors_operator_shl_EStream_EResource.cpp"
+    ],
+    "80312F58": [
+      "src\\matched\\agent\\match_0x80312F58_func_80312F58.cpp",
+      "src\\matched\\agent\\match_80312F58_global_constructors_EResPrefetch_ctor.cpp"
+    ],
+    "80312F84": [
+      "src\\matched\\agent\\match_0x80312F84_func_80312F84.cpp",
+      "src\\matched\\agent\\match_80312F84_global_destructors_EResPrefetch_ctor.cpp"
+    ],
+    "803131A8": [
+      "src\\matched\\agent\\match_0x803131A8_func_803131A8.cpp",
+      "src\\matched\\agent\\match_803131A8_EResPrefetchFile__Write_void_ptr__unsigned_int.cpp"
+    ],
+    "803131B0": [
+      "src\\matched\\agent\\match_0x803131B0_func_803131B0.cpp",
+      "src\\matched\\agent\\match_803131B0_EResPrefetchFile__Flush_void.cpp"
+    ],
+    "803131B8": [
+      "src\\matched\\agent\\match_0x803131B8_func_803131B8.cpp",
+      "src\\matched\\agent\\match_803131B8_EResPrefetchFile__GetLastError_void__const.cpp"
+    ],
+    "803131C0": [
+      "src\\matched\\agent\\match_0x803131C0_func_803131C0.cpp",
+      "src\\matched\\agent\\match_803131C0_EResPrefetchFile__GetSystemHandle_void__const.cpp"
+    ],
+    "803131C8": [
+      "src\\matched\\agent\\match_0x803131C8_func_803131C8.cpp",
+      "src\\matched\\agent\\match_803131C8_EResPrefetchFile__Tell_void__const.cpp"
+    ],
+    "80313338": [
+      "src\\matched\\agent\\match_0x80313338_func_80313338.cpp",
+      "src\\matched\\agent\\match_80313338_EResPrefetchFile__GetResMan_void.cpp"
+    ],
+    "80313340": [
+      "src\\matched\\agent\\match_0x80313340_func_80313340.cpp",
+      "src\\matched\\agent\\match_80313340_op_shl_EStream_ref__ERFlash_ptr.cpp"
+    ],
+    "80313BF4": [
+      "src\\matched\\agent\\match_0x80313BF4_func_80313BF4.cpp",
+      "src\\matched\\agent\\match_80313BF4___static_init_ERFlash.cpp"
+    ],
+    "80313CB8": [
+      "src\\matched\\agent\\match_0x80313CB8_func_80313CB8.cpp",
+      "src\\matched\\agent\\match_80313CB8_ERFlash__Destruct_ERFlash_ptr.cpp"
+    ],
+    "80313E10": [
+      "src\\matched\\agent\\match_0x80313E10_func_80313E10.cpp",
+      "src\\matched\\agent\\match_80313E10_ERFlash__operator_delete.cpp"
+    ],
+    "80313E3C": [
+      "src\\matched\\agent\\match_0x80313E3C_func_80313E3C.cpp",
+      "src\\matched\\agent\\match_80313E3C_global_constructors_operator_shl_EStream_ERFlash.cpp"
+    ],
+    "80313E68": [
+      "src\\matched\\agent\\match_0x80313E68_func_80313E68.cpp",
+      "src\\matched\\agent\\match_80313E68_op_shl_EStream_ERFont_ptr.cpp"
+    ],
+    "803177E4": [
+      "src\\matched\\agent\\match_0x803177E4_func_803177E4.cpp",
+      "src\\matched\\agent\\match_803177E4_ERFont__Destruct_ERFont_ptr.cpp"
+    ],
+    "80317980": [
+      "src\\matched\\agent\\match_0x80317980_func_80317980.cpp",
+      "src\\matched\\agent\\match_80317980_ERFont__GetYSize_void.cpp"
+    ],
+    "80317988": [
+      "src\\matched\\agent\\match_0x80317988_func_80317988.cpp",
+      "src\\matched\\agent\\match_80317988_ERFont__GetAspect_void.cpp"
+    ],
+    "80317ADC": [
+      "src\\matched\\agent\\match_0x80317ADC_func_80317ADC.cpp",
+      "src\\matched\\agent\\match_80317ADC_global_constructors_operator_shl_EStream_ERFont.cpp"
+    ],
+    "80317D4C": [
+      "src\\matched\\agent\\match_0x80317D4C_func_80317D4C.cpp",
+      "src\\matched\\agent\\match_80317D4C_op_shl_EStream_ERModel_ptr.cpp"
+    ],
+    "80318B00": [
+      "src\\matched\\agent\\match_0x80318B00_func_80318B00.cpp",
+      "src\\matched\\agent\\match_80318B00_ERModel__GetLatticeCount_void.cpp"
+    ],
+    "80318B08": [
+      "src\\matched\\agent\\match_0x80318B08_func_80318B08.cpp",
+      "src\\matched\\agent\\match_80318B08_ERModel__GetDummyCount_void.cpp"
+    ],
+    "80318B10": [
+      "src\\matched\\agent\\match_0x80318B10_func_80318B10.cpp",
+      "src\\matched\\agent\\match_80318B10_ERModel__GetCameraCount_void.cpp"
+    ],
+    "8031A628": [
+      "src\\matched\\agent\\match_0x8031A628_func_8031A628.cpp",
+      "src\\matched\\agent\\match_8031A628_ERModel__GetNumMorphBases_void.cpp"
+    ],
+    "8031B240": [
+      "src\\matched\\agent\\match_0x8031B240_func_8031B240.cpp",
+      "src\\matched\\agent\\match_8031B240_ERModel__Destruct_ERModel_ptr.cpp"
+    ],
+    "8031B428": [
+      "src\\matched\\agent\\match_0x8031B428_func_8031B428.cpp",
+      "src\\matched\\agent\\match_8031B428_ERModel__IsHierarchical_void.cpp"
+    ],
+    "8031B430": [
+      "src\\matched\\agent\\match_0x8031B430_func_8031B430.cpp",
+      "src\\matched\\agent\\match_8031B430_ERModel__IsWeldable_void.cpp"
+    ],
+    "8031B438": [
+      "src\\matched\\agent\\match_0x8031B438_func_8031B438.cpp",
+      "src\\matched\\agent\\match_8031B438_ERModel__IsMorphTarget_void.cpp"
+    ],
+    "8031B440": [
+      "src\\matched\\agent\\match_0x8031B440_func_8031B440.cpp",
+      "src\\matched\\agent\\match_8031B440_ERModel__IsLattice_void.cpp"
+    ],
+    "8031B448": [
+      "src\\matched\\agent\\match_0x8031B448_func_8031B448.cpp",
+      "src\\matched\\agent\\match_8031B448_ERModel__AreMatsInDLs_void.cpp"
+    ],
+    "8031B450": [
+      "src\\matched\\agent\\match_0x8031B450_func_8031B450.cpp",
+      "src\\matched\\agent\\match_8031B450_ERModel__DontFrontPlaneFade_void.cpp"
+    ],
+    "8031B458": [
+      "src\\matched\\agent\\match_0x8031B458_func_8031B458.cpp",
+      "src\\matched\\agent\\match_8031B458_ERModel__DontInterestFade_void.cpp"
+    ],
+    "8031B460": [
+      "src\\matched\\agent\\match_0x8031B460_func_8031B460.cpp",
+      "src\\matched\\agent\\match_8031B460_ERModel__DontCull_void.cpp"
+    ],
+    "8031B468": [
+      "src\\matched\\agent\\match_0x8031B468_func_8031B468.cpp",
+      "src\\matched\\agent\\match_8031B468_ERModel__IsWall_void.cpp"
+    ],
+    "8031B470": [
+      "src\\matched\\agent\\match_0x8031B470_func_8031B470.cpp",
+      "src\\matched\\agent\\match_8031B470_ERModel__GetAttachmentColor_void.cpp"
+    ],
+    "8031B484": [
+      "src\\matched\\agent\\match_0x8031B484_func_8031B484.cpp",
+      "src\\matched\\agent\\match_8031B484_ERModel__GetNumAttachmentVerts_void.cpp"
+    ],
+    "8031B48C": [
+      "src\\matched\\agent\\match_0x8031B48C_func_8031B48C.cpp",
+      "src\\matched\\agent\\match_8031B48C_ERModel__GetNumLightPos_void.cpp"
+    ],
+    "8031B49C": [
+      "src\\matched\\agent\\match_0x8031B49C_func_8031B49C.cpp",
+      "src\\matched\\agent\\match_8031B49C_global_constructors_CalcShadowBounds.cpp"
+    ],
+    "8031C62C": [
+      "src\\matched\\agent\\match_0x8031C62C_func_8031C62C.cpp",
+      "src\\matched\\agent\\match_8031C62C_ERQuickdata__GetImage_void__const.cpp"
+    ],
+    "8031C634": [
+      "src\\matched\\agent\\match_0x8031C634_func_8031C634.cpp",
+      "src\\matched\\agent\\match_8031C634_ERQuickdata__GetImageSize_void__const.cpp"
+    ],
+    "8031C63C": [
+      "src\\matched\\agent\\match_0x8031C63C_func_8031C63C.cpp",
+      "src\\matched\\agent\\match_8031C63C_op_shl_EStream_ERShader_ptr.cpp"
+    ],
+    "8032084C": [
+      "src\\matched\\agent\\match_0x8032084C_func_8032084C.cpp",
+      "src\\matched\\agent\\match_8032084C_ERShader__GetCurrentGraphicsState_void.cpp"
+    ],
+    "8032171C": [
+      "src\\matched\\agent\\match_0x8032171C_func_8032171C.cpp",
+      "src\\matched\\agent\\match_8032171C_ArcCopier__IsTerminatingCopy_void.cpp"
+    ],
+    "80321DA4": [
+      "src\\matched\\agent\\match_0x80321DA4_func_80321DA4.cpp",
+      "src\\matched\\agent\\match_80321DA4_ArcFileInfo__GetName_void.cpp"
+    ],
+    "80321DAC": [
+      "src\\matched\\agent\\match_0x80321DAC_func_80321DAC.cpp",
+      "src\\matched\\agent\\match_80321DAC_ArcFileInfo__GetSourceLen_void.cpp"
+    ],
+    "80321DB4": [
+      "src\\matched\\agent\\match_0x80321DB4_func_80321DB4.cpp",
+      "src\\matched\\agent\\match_80321DB4_ArcFileInfo__GetCopiedSize_void.cpp"
+    ],
+    "80322CC4": [
+      "src\\matched\\agent\\match_0x80322CC4_func_80322CC4.cpp",
+      "src\\matched\\agent\\match_80322CC4_EAmbientScoreManager__CanCache_EResource_ptr.cpp"
+    ],
+    "80322E48": [
+      "src\\matched\\agent\\match_0x80322E48_func_80322E48.cpp",
+      "src\\matched\\agent\\match_80322E48_EAnimManager__CanCache_EResource_ptr.cpp"
+    ],
+    "8032333C": [
+      "src\\matched\\agent\\match_0x8032333C_func_8032333C.cpp",
+      "src\\matched\\agent\\match_8032333C_ECharacterManager__CanCache_EResource_ptr.cpp"
+    ],
+    "80323AF0": [
+      "src\\matched\\agent\\match_0x80323AF0_func_80323AF0.cpp",
+      "src\\matched\\agent\\match_80323AF0_EControllerManager__GetControllerCount_void.cpp"
+    ],
+    "8032471C": [
+      "src\\matched\\agent\\match_0x8032471C_func_8032471C.cpp",
+      "src\\matched\\agent\\match_8032471C_EDatasetManager__GetLoadProgress_void__const.cpp"
+    ],
+    "80324780": [
+      "src\\matched\\agent\\match_0x80324780_func_80324780.cpp",
+      "src\\matched\\agent\\match_80324780_EDatasetManager__SetLoadProgress_float.cpp"
+    ],
+    "80324848": [
+      "src\\matched\\agent\\match_0x80324848_func_80324848.cpp",
+      "src\\matched\\agent\\match_80324848_EDatasetManager__SetLoadingEnabled_bool.cpp"
+    ],
+    "80324850": [
+      "src\\matched\\agent\\match_0x80324850_func_80324850.cpp",
+      "src\\matched\\agent\\match_80324850_EDatasetManager__GetLoadingEnabled_void.cpp"
+    ],
+    "8032494C": [
+      "src\\matched\\agent\\match_0x8032494C_func_8032494C.cpp",
+      "src\\matched\\agent\\match_8032494C_EDatasetManager__CanCache_EResource_ptr.cpp"
+    ],
+    "80324B74": [
+      "src\\matched\\agent\\match_0x80324B74_func_80324B74.cpp",
+      "src\\matched\\agent\\match_80324B74_EEdithTreeSetMan__CanCache_EResource_ptr.cpp"
+    ],
+    "80324D00": [
+      "src\\matched\\agent\\match_0x80324D00_func_80324D00.cpp",
+      "src\\matched\\agent\\match_80324D00_EFlashManager__CanCache_EResource_ptr.cpp"
+    ],
+    "80324FF8": [
+      "src\\matched\\agent\\match_0x80324FF8_func_80324FF8.cpp",
+      "src\\matched\\agent\\match_80324FF8_EModelManager__CanCache_EResource_ptr.cpp"
+    ],
+    "8032520C": [
+      "src\\matched\\agent\\match_0x8032520C_func_8032520C.cpp",
+      "src\\matched\\agent\\match_8032520C_EMovieMan__SetMovieId_unsigned_int.cpp"
+    ],
+    "80325580": [
+      "src\\matched\\agent\\match_0x80325580_func_80325580.cpp",
+      "src\\matched\\agent\\match_80325580_EQuickdataManager__CanCache_EResource_ptr.cpp"
+    ],
+    "80325588": [
+      "src\\matched\\agent\\match_0x80325588_func_80325588.cpp",
+      "src\\matched\\agent\\match_80325588_EQuickdataManager__GetCurrentLanguage_void__const.cpp"
+    ],
+    "80326BE4": [
+      "src\\matched\\agent\\match_0x80326BE4_func_80326BE4.cpp",
+      "src\\matched\\agent\\match_80326BE4_EResourceManager__AddResource.cpp"
+    ],
+    "80326CF8": [
+      "src\\matched\\agent\\match_0x80326CF8_func_80326CF8.cpp",
+      "src\\matched\\agent\\match_80326CF8_EResourceManager__AddRef.cpp"
+    ],
+    "80326DB4": [
+      "src\\matched\\agent\\match_0x80326DB4_func_80326DB4.cpp",
+      "src\\matched\\agent\\match_80326DB4_EResourceManager__AddRefAsync.cpp"
+    ],
+    "803276FC": [
+      "src\\matched\\agent\\match_0x803276FC_func_803276FC.cpp",
+      "src\\matched\\agent\\match_803276FC_EResourceManager__GetOverriddenFile_unsigned_int__unsigned_int_ref.cpp"
+    ],
+    "80327E30": [
+      "src\\matched\\agent\\match_0x80327E30_func_80327E30.cpp",
+      "src\\matched\\agent\\match_80327E30_EResourceMap__GetSize_void.cpp"
+    ],
+    "80327EAC": [
+      "src\\matched\\agent\\match_0x80327EAC_func_80327EAC.cpp",
+      "src\\matched\\agent\\match_80327EAC_EResourceMap__GetNumEntries_void.cpp"
+    ],
+    "80327EB4": [
+      "src\\matched\\agent\\match_0x80327EB4_func_80327EB4.cpp",
+      "src\\matched\\agent\\match_80327EB4_EResourceMap__GetMaxEntries_void.cpp"
+    ],
+    "80327EBC": [
+      "src\\matched\\agent\\match_0x80327EBC_func_80327EBC.cpp",
+      "src\\matched\\agent\\match_80327EBC_EResourceMap__GetMaxLoaded_void.cpp"
+    ],
+    "80327EC4": [
+      "src\\matched\\agent\\match_0x80327EC4_func_80327EC4.cpp",
+      "src\\matched\\agent\\match_80327EC4_EResourceMap__GetMaxUsed_void.cpp"
+    ],
+    "80327ECC": [
+      "src\\matched\\agent\\match_0x80327ECC_func_80327ECC.cpp",
+      "src\\matched\\agent\\match_80327ECC_EResourceManager__IsInitialized_void.cpp"
+    ],
+    "80327ED4": [
+      "src\\matched\\agent\\match_0x80327ED4_func_80327ED4.cpp",
+      "src\\matched\\agent\\match_80327ED4_EResourceManager__CanCache_void.cpp"
+    ],
+    "80328314": [
+      "src\\matched\\agent\\match_0x80328314_func_80328314.cpp",
+      "src\\matched\\agent\\match_80328314_EShaderManager__CanCache_EResource_ptr.cpp"
+    ],
+    "80328458": [
+      "src\\matched\\agent\\match_0x80328458_func_80328458.cpp",
+      "src\\matched\\agent\\match_80328458_ESoundEventManager__AddRef_unsigned_int__EFile_ptr__int.cpp"
+    ],
+    "80328498": [
+      "src\\matched\\agent\\match_0x80328498_func_80328498.cpp",
+      "src\\matched\\agent\\match_80328498_ESoundEventManager__CanCache_EResource_ptr.cpp"
+    ],
+    "803285F8": [
+      "src\\matched\\agent\\match_0x803285F8_func_803285F8.cpp",
+      "src\\matched\\agent\\match_803285F8_ESoundTrackDataManager__CanCache_EResource_ptr.cpp"
+    ],
+    "803286E4": [
+      "src\\matched\\agent\\match_0x803286E4_static_init_803286E4.cpp",
+      "src\\matched\\agent\\match_0x803286e4_static_init_texman.cpp"
+    ],
+    "80328790": [
+      "src\\matched\\agent\\match_0x80328790_func_80328790.cpp",
+      "src\\matched\\agent\\match_80328790_ETextureManager__CanCache_EResource_ptr.cpp"
+    ],
+    "80328844": [
+      "src\\matched\\agent\\match_0x80328844_func_80328844.cpp",
+      "src\\matched\\agent\\match_80328844_EffectsAttachmentManager__GetRow_int.cpp"
+    ],
+    "803288F8": [
+      "src\\matched\\agent\\match_0x803288F8_func_803288F8.cpp",
+      "src\\matched\\agent\\match_803288F8_EffectsAttachmentManager__CanCache_EResource_ptr.cpp"
+    ],
+    "80328CD4": [
+      "src\\matched\\agent\\match_0x80328CD4_func_80328CD4.cpp",
+      "src\\matched\\agent\\match_80328CD4_EyeToyManager__IsPhysicallyConnected_int.cpp"
+    ],
+    "80328CDC": [
+      "src\\matched\\agent\\match_0x80328CDC_func_80328CDC.cpp",
+      "src\\matched\\agent\\match_80328CDC_EyeToyManager__GetPhysicalConnectionCount_void.cpp"
+    ],
+    "803293F0": [
+      "src\\matched\\agent\\match_0x803293F0_func_803293F0.cpp",
+      "src\\matched\\agent\\match_803293F0_FreeResourceManager__GetUnreferencedResourceCount_void.cpp"
+    ],
+    "8032A290": [
+      "src\\matched\\agent\\match_0x8032A290_func_8032A290.cpp",
+      "src\\matched\\agent\\match_8032A290_ImageProcessingManager__LinkTexture_unsigned_int__unsigned_int.cpp"
+    ],
+    "8032B714": [
+      "src\\matched\\agent\\match_0x8032B714_func_8032B714.cpp",
+      "src\\matched\\agent\\match_8032B714_ParticleManager__CanCache_EResource_ptr.cpp"
+    ],
+    "8032BEDC": [
+      "src\\matched\\agent\\match_0x8032BEDC_func_8032BEDC.cpp",
+      "src\\matched\\agent\\match_8032BEDC_ENgcAudio__GetIndexFromVoice_EVoice_ptr.cpp"
+    ],
+    "8032BEE4": [
+      "src\\matched\\agent\\match_0x8032BEE4_func_8032BEE4.cpp",
+      "src\\matched\\agent\\match_8032BEE4_ENgcAudio__GetVoiceFromIndex_unsigned_char.cpp"
+    ],
+    "8032C468": [
+      "src\\matched\\agent\\match_0x8032C468_func_8032C468.cpp",
+      "src\\matched\\agent\\match_8032C468_ENgcAudio__GetMusicVolume_void.cpp"
+    ],
+    "8032C534": [
+      "src\\matched\\agent\\match_0x8032C534_func_8032C534.cpp",
+      "src\\matched\\agent\\match_8032C534_ENgcAudio__GetMusicPan_void.cpp"
+    ],
+    "8032CB0C": [
+      "src\\matched\\agent\\match_0x8032CB0C_func_8032CB0C.cpp",
+      "src\\matched\\agent\\match_8032CB0C_ENgcAudio__IsPausedDueToDiscError_void.cpp"
+    ],
+    "8032CB14": [
+      "src\\matched\\agent\\match_0x8032CB14_func_8032CB14.cpp",
+      "src\\matched\\agent\\match_8032CB14_ENgcAudio__SetDiscErrorCallback_void__p__bool.cpp"
+    ],
+    "8032D98C": [
+      "src\\matched\\agent\\match_0x8032D98C_func_8032D98C.cpp",
+      "src\\matched\\agent\\match_8032D98C_EAudioSampleManager__CanCache_EResource_ptr.cpp"
+    ],
+    "8032E884": [
+      "src\\matched\\agent\\match_0x8032E884_func_8032E884.cpp",
+      "src\\matched\\agent\\match_8032E884_ENgcEngine__IsResetting_void.cpp"
+    ],
+    "803301BC": [
+      "src\\matched\\agent\\match_0x803301BC_func_803301BC.cpp",
+      "src\\matched\\agent\\match_803301BC_ENgcMemoryCard__UnInitMemoryCard_void.cpp"
+    ],
+    "80330D70": [
+      "src\\matched\\agent\\match_0x80330D70_func_80330D70.cpp",
+      "src\\matched\\agent\\match_80330D70_ENgcMemoryCard__OpenForIO_char_ptr__unsigned_int.cpp"
+    ],
+    "80330D78": [
+      "src\\matched\\agent\\match_0x80330D78_func_80330D78.cpp",
+      "src\\matched\\agent\\match_80330D78_ENgcMemoryCard__CloseForIO_char_ptr__unsigned_int.cpp"
+    ],
+    "803332E0": [
+      "src\\matched\\agent\\match_0x803332E0_func_803332E0.cpp",
+      "src\\matched\\agent\\match_803332E0_ENgcMemoryCard__UnFormatCardS_unsigned_int.cpp"
+    ],
+    "803332E8": [
+      "src\\matched\\agent\\match_0x803332E8_func_803332E8.cpp",
+      "src\\matched\\agent\\match_803332E8_ENgcMemoryCard__LoadDataA_char_ptr__unsigned_int__unsigned_int__void_ptr__EMC_Operation_ptr.cpp"
+    ],
+    "803332F0": [
+      "src\\matched\\agent\\match_0x803332F0_func_803332F0.cpp",
+      "src\\matched\\agent\\match_803332F0_ENgcMemoryCard__SaveDataA_char_ptr__unsigned_int__unsigned_int__void_ptr__EMC_Operation_ptr.cpp"
+    ],
+    "803332F8": [
+      "src\\matched\\agent\\match_0x803332F8_func_803332F8.cpp",
+      "src\\matched\\agent\\match_803332F8_ENgcMemoryCard__DeleteDataA_char_ptr__unsigned_int__unsigned_int__EMC_Operation_ptr.cpp"
+    ],
+    "80333300": [
+      "src\\matched\\agent\\match_0x80333300_func_80333300.cpp",
+      "src\\matched\\agent\\match_80333300_ENgcMemoryCard__FormatCardA_unsigned_int__EMC_Operation_ptr.cpp"
+    ],
+    "80333308": [
+      "src\\matched\\agent\\match_0x80333308_func_80333308.cpp",
+      "src\\matched\\agent\\match_80333308_ENgcMemoryCard__UnFormatCardA_unsigned_int__EMC_Operation_ptr.cpp"
+    ],
+    "80333310": [
+      "src\\matched\\agent\\match_0x80333310_func_80333310.cpp",
+      "src\\matched\\agent\\match_80333310_ENgcMemoryCard__UpdateOperation_EMC_Operation__bool_ref.cpp"
+    ],
+    "80334888": [
+      "src\\matched\\agent\\match_0x80334888_func_80334888.cpp",
+      "src\\matched\\agent\\match_80334888_ENgcMemoryCard__GetFileListA_unsigned_int__char_ptr__unsigned_int__char__p__31__EMC_Operation_ptr.cpp"
+    ],
+    "80338324": [
+      "src\\matched\\agent\\match_0x80338324_func_80338324.cpp",
+      "src\\matched\\agent\\match_80338324_ERSampledata__GetSampleHeader_void__const.cpp"
+    ],
+    "8033832C": [
+      "src\\matched\\agent\\match_0x8033832C_func_8033832C.cpp",
+      "src\\matched\\agent\\match_8033832C_ERSampledata__GetSampleHeader2_void__const.cpp"
+    ],
+    "8034DB54": [
+      "src\\matched\\agent\\match_0x8034DB54_func_8034DB54.cpp",
+      "src\\matched\\agent\\match_8034DB54_static_init_ENgcScheduler.cpp"
+    ],
+    "8036486C": [
+      "src\\matched\\agent\\match_0x8036486C_EFontPage__GetTypeInfo.cpp",
+      "src\\matched\\global_getters\\match_8036486C_EFontPage_GetTypeInfovoid_const.cpp"
+    ],
+    "8036C8D0": [
+      "src\\matched\\agent\\match_0x8036C8D0_func_8036C8D0.cpp",
+      "src\\matched\\agent\\match_8036C8D0_static_init_ENgcAram_m_dataMutex.cpp"
+    ],
+    "803A0250": [
+      "src\\matched\\agent\\match_0x803A0250_StateMachineState_DrawTopmost.cpp",
+      "src\\matched\\agent\\match_803A0250_StateMachineState__DrawTopmost.cpp"
+    ],
+    "803A02C8": [
+      "src\\matched\\agent\\match_0x803A02C8_StateMachineState_Draw.cpp",
+      "src\\matched\\agent\\match_803A02C8_StateMachineState__Draw.cpp"
+    ],
+    "803A04F8": [
+      "src\\matched\\agent\\match_0x803A04F8_SimpleReconObject_OptionsRecon_DoStream.cpp",
+      "src\\matched\\agent\\match_0x803A04F8_Wrapper_803A04F8.cpp"
+    ],
+    "803A051C": [
+      "src\\matched\\agent\\match_0x803A051C_SimpleReconObject_OptionsRecon_GetType.cpp",
+      "src\\matched\\agent\\match_0x803A051C_SimpleReconObject_OptionsRecon__GetType.cpp"
+    ],
+    "803A06B0": [
+      "src\\matched\\agent\\match_0x803A06B0_UIObjectBase_Draw.cpp",
+      "src\\matched\\agent\\match_803A06B0_UIObjectBase__Draw.cpp"
+    ],
+    "803A07BC": [
+      "src\\matched\\agent\\match_0x803A07BC_PaneItem_Reset.cpp",
+      "src\\matched\\agent\\match_803A07BC_PaneItem__Reset.cpp"
+    ],
+    "803A07E0": [
+      "src\\matched\\agent\\match_0x803A07E0_PaneItem_GetPos.cpp",
+      "src\\matched\\agent\\match_0x803A07E0_PaneItem__GetPos.cpp"
+    ],
+    "803A07E8": [
+      "src\\matched\\agent\\match_0x803A07E8_PaneItem_SetPosX.cpp",
+      "src\\matched\\agent\\match_0x803A07E8_PaneItem__SetPosX.cpp"
+    ],
+    "803A07F0": [
+      "src\\matched\\agent\\match_0x803A07F0_PaneItem_GetPosX.cpp",
+      "src\\matched\\agent\\match_0x803A07F0_PaneItem__GetPosX.cpp"
+    ],
+    "803A07F8": [
+      "src\\matched\\agent\\match_0x803A07F8_PaneItem_SetPosY.cpp",
+      "src\\matched\\agent\\match_0x803A07F8_PaneItem__SetPosY.cpp"
+    ],
+    "803A0800": [
+      "src\\matched\\agent\\match_0x803A0800_PaneItem_GetPosY.cpp",
+      "src\\matched\\agent\\match_0x803A0800_PaneItem__GetPosY.cpp"
+    ],
+    "803A0974": [
+      "src\\matched\\agent\\match_0x803A0974_PaneItem_Draw.cpp",
+      "src\\matched\\agent\\match_803A0974_PaneItem__Draw.cpp"
+    ],
+    "803B05D8": [
+      "src\\matched\\agent\\match_0x803B05D8_SimpleReconObject_CasCostumes_DoStream.cpp",
+      "src\\matched\\agent\\match_0x803B05D8_Wrapper_803B05D8.cpp"
+    ],
+    "803B05FC": [
+      "src\\matched\\agent\\match_0x803B05FC_SimpleReconObject_CasCostumes_GetType.cpp",
+      "src\\matched\\agent\\match_0x803B05FC_SimpleReconObject_GetType.cpp"
+    ],
+    "803B0A94": [
+      "src\\matched\\agent\\match_0x803B0A94_SimpleReconObject_CasGenetics_DoStream.cpp",
+      "src\\matched\\agent\\match_0x803B0A94_Wrapper_803B0A94.cpp"
+    ],
+    "803B0AB8": [
+      "src\\matched\\agent\\match_0x803B0AB8_SimpleReconObject_CasGenetics_GetType.cpp",
+      "src\\matched\\agent\\match_0x803B0AB8_SimpleReconObject_CasGenetics__GetType.cpp"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+# Audit Batch Results - All Night Scan
+# Date: 2026-04-07
+
+## BATCH 1 (500 files)
+Total: 500
+OK: 431 (86.2%)
+FAIL: 37 (7.4%)
+Errors: 0
+
+First 10 failures:
+- match_0x800968A0_StateMachineManager__DrawTopmostMachine.cpp
+- match_0x803B967C_InteractorModule_WallPainter_WallPainterParams_WallPainterParams_dtor52.cpp
+- match_0x801D9944_PRGTarget__GetNPCsHelped.cpp
+- match_0x801812AC_UIButtonImages_UIButtonImages_dtor52.cpp
+- match_0x80243D94_itoa.cpp
+- match_0x80328CE4_EyeToyManager__GetPhysicalConnectionCount.cpp
+- match_0x803C1800_IAptXmlNode_IAptXmlNode_dtor52.cpp
+- match_0x802A8744_dtor3_802A8744.cpp
+- match_0x803A0F20_StartScreenStartState_StartScreenStartState_dtor52.cpp
+- match_0x800EAC00_cXObjectImpl__RequiresWallAdjacency.cpp
+

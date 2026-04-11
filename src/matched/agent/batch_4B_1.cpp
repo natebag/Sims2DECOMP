@@ -1,4 +1,4 @@
-// MATCH: 0x80006B74 debugSetScreenGrabPending (4 bytes)
+// 0x80006B74 debugSetScreenGrabPending (4b)
 extern "C" void debugSetScreenGrabPending(char*) {}
 
 // MATCH: 0x80006B78 debugAddSavedInput (4 bytes)

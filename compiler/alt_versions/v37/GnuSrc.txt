@@ -1,0 +1,9 @@
+SN Systems is licensed to use the GNU Software pursuant to a license entered into with Free Software Foundation, Inc under the terms of the GNU General Public License, a copy of which can be found at www.gnu.ai.mit.edu/copyleft/gpl.html. A machine-readable copy of the source code in respect of the part of the Software formed by use of the GNU Software is available on request from SN Systems provided that the End User:
+
+a) pays SN Systems' costs of distributing the source code
+b) provides SN Systems with a shipping address
+c) provides SN Systems with a list of executable file names and sizes as proof of download
+
+SN Systems gives no warranty as to the ownership of the GNU Software to the End User.  The End User hereby agrees to comply with and be subject to all terms contained in the GNU General Public License as if the End User were SN Systems in so far as such obligations relate to the Software.
+
+Note: The GNU software supplied by SN Systems is not the original. It has either been ported or ported and modified.

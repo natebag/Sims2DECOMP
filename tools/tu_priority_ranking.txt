@@ -1,0 +1,233 @@
+# TU Priority Ranking for Maximum Match Potential
+# Generated: 2026-04-07
+# Analysis of 10 candidate TUs
+
+## Executive Summary
+
+| Rank | TU | Matched/Total | Match% | <50B | 50-100B | 100-200B | 200B+ | Est. Potential |
+|------|-----|---------------|--------|------|---------|----------|-------|----------------|
+| 1 | wrapper | 166/257 | 64.6% | 20 | 24 | 14 | 23 | ~44 matches |
+| 2 | person | 72/216 | 33.3% | 9 | 21 | 39 | 72 | ~30 matches |
+| 3 | sanimator2 | 40/229 | 17.5% | 1 | 22 | 39 | 127 | ~23 matches |
+| 4 | object | 117/238 | 49.2% | 4 | 17 | 26 | 73 | ~21 matches |
+| 5 | e_rlevel | 55/135 | 40.7% | 10 | 5 | 27 | 37 | ~15 matches |
+| 6 | e_graphics | 56/93 | 60.2% | 1 | 14 | 15 | 3 | ~15 matches |
+| 7 | e_mat4 | 41/83 | 49.4% | 0 | 14 | 16 | 12 | ~14 matches |
+| 8 | iobject | 90/189 | 47.6% | 5 | 9 | 17 | 45 | ~14 matches |
+| 9 | e_animcontroller | 7/103 | 6.8% | 3 | 8 | 20 | 65 | ~11 matches |
+| 10 | eroom | 58/149 | 38.9% | 2 | 8 | 26 | 51 | ~10 matches |
+
+---
+
+## TIER 1: HIGH POTENTIAL (30+ matches realistic)
+
+### #1 - WRAPPER (166/257 matched, 64.6%)
+**The clear winner.** UI wrapper system with established blast patterns.
+
+**Key Findings:**
+- 81 functions with no source (all unmatched)
+- Size distribution favors small functions: 20 <50B, 24 50-100B
+- Match rate already excellent at 64.6%
+
+**Blast Families Identified:**
+- ✅ Text setters: SetAcceptText, SetDeclineText, SetAlt1Text (60B each) - ALREADY MATCHED
+- ✅ Font/Size/Pos setters for Button, Menu, Text items (40-72B)
+- 🎯 REMAINING: GetItemPos, GetItemSize families (56B each)
+- 🎯 REMAINING: Item property getters (36-56B)
+
+**Recommended Strategy:**
+1. Crack PaneItem::GetSize/GetSizeX/GetSizeY (68B each) - 4 matches
+2. Blast Item::Startup/Draw/SetText patterns to remaining 80+ items
+3. Target: 30+ new matches in one session
+
+---
+
+### #2 - PERSON (72/216 matched, 33.3%)
+**Massive untapped potential.** Core Sim character system.
+
+**Key Findings:**
+- 141 functions with no source (highest raw count)
+- Many small getters/setters: 9 <50B, 21 50-100B
+- Large functions dominate: 72 functions >200B
+
+**Matchable Patterns:**
+- Leaf getters: IsSleeping, IsDog, IsCat, IsPet, IsChild, IsMale, etc.
+- Simple setters: SetInvisible, SetIsAlien, SetChangingOutfitMode
+- Motive accessors: GetMotive, GetMotiveRef, SetMotive (already matched pattern)
+- Recording functions: StartRecording, StopRecording, ClearRecording (4B each)
+
+**Blockers:**
+- ActionQueue, cXPersonImpl have complex constructors (6000B+)
+- Many routing/pathfinding functions are large and complex
+
+**Recommended Strategy:**
+1. Target all Is* boolean getters (28-128B range)
+2. Target Set*/Get* pairs for flags and simple fields
+3. Focus on ~30 leaf functions first
+
+---
+
+## TIER 2: MEDIUM POTENTIAL (15-25 matches realistic)
+
+### #3 - SANIMATOR2 (40/229 matched, 17.5%)
+**High volume, medium complexity.** Character animation state machine.
+
+**Key Findings:**
+- 189 functions with no source (largest pool)
+- Heavily weighted toward large functions: 127 >200B
+- Only 1 function <50B (mostly matched already)
+
+**Matchable Patterns:**
+- Simple getters: GetRealDir, GetPos, GetTimeMultiplier, GetPerson, GetSim
+- State accessors: GetAnimState, GetFollowMode, GetPortalMode
+- Bone index accessors: SetBoneIndex, GetBoneIndex family
+- Boolean flags: IsFollowing, IsInterruptable, IsRouting
+
+**Blockers:**
+- Most animation handling is complex (300-3000B)
+- State machine logic has many branches
+
+**Recommended Strategy:**
+1. Focus on 20-30 simple accessor functions (8-24B)
+2. Ignore large animation handlers for now
+3. Target: 15-20 matches from accessors
+
+---
+
+### #4 - OBJECT (117/238 matched, 49.2%)
+**Solid foundation, diminishing returns.** Base object system.
+
+**Key Findings:**
+- 120 functions with no source
+- Good match rate at 49.2% (already well-mined)
+- Most small functions already matched
+
+**Remaining Opportunities:**
+- Hierarchy getters: HierGetParent, HierGetChild, HierGetSlot
+- EdithVariableSet operations (complex)
+- STL vector operations (byte_key_map, etc.)
+
+**Blockers:**
+- Well-mined already - easy wins taken
+- Remaining functions are mostly large or STL internals
+
+---
+
+### #5 - E_RLEVEL (55/135 matched, 40.7%)
+**Level management system.** Render level operations.
+
+**Key Findings:**
+- 79 functions with no source
+- Good distribution: 10 <50B, 5 50-100B
+
+**Matchable Patterns:**
+- Simple getters: GetSunLight, GetRoomCount, IsRoomAt
+- State setters: SetRainBlend, SetWallFadeState
+- ID map operations: AddInstanceToIdMap, RemoveInstanceFromIdMap
+
+---
+
+### #6 - E_GRAPHICS (56/93 matched, 60.2%)
+**High match rate but blocked.** Graphics system.
+
+**Key Findings:**
+- Only 33 functions with no source (smallest pool)
+- Already at 60.2% match rate
+
+**Blockers:**
+- SDA (Small Data Area) globals blocking matches:
+  - GetFarZVal, GetNearZVal, GetScreenAspect (all 12B, load from SDA)
+  - GetFrameBufferTextureCoordinate (24B, SDA load)
+- These require SDA layout knowledge to match
+
+**Remaining Opportunities:**
+- Simple getters/setters for screen dimensions
+- Enable* flag functions
+
+---
+
+### #7 - E_MAT4 (41/83 matched, 49.4%)
+**Matrix operations.** Math library.
+
+**Key Findings:**
+- 42 functions with no source
+- No functions <50B (all matrix ops have some complexity)
+- 14 functions in 50-100B range
+
+**Blast Family:**
+- GetScaleX, GetScaleY, GetScaleZ (48B each, similar pattern)
+- Already matched: GetScaleX - can blast to Y/Z
+
+**Remaining Opportunities:**
+- GetColumn/SetColumn variants
+- RotateX/Y/Z family (108B each - may match with flags)
+
+---
+
+## TIER 3: LOW POTENTIAL (<15 matches realistic)
+
+### #8 - IOBJECT (90/189 matched, 47.6%)
+**Well-mined.** Object model interface.
+
+**Key Findings:**
+- 76 functions with no source
+- AnimStart family already matched
+- Many type info getters mismatched (VERSION_DIFF)
+
+**Blockers:**
+- Type info functions use SDA externals
+- Most model operations are complex
+
+---
+
+### #9 - E_ANIMCONTROLLER (7/103 matched, 6.8%)
+**Complex system, low match rate.** Animation controller.
+
+**Key Findings:**
+- 96 functions with no source
+- Very low match rate (6.8%)
+- Most functions >200B (65 of them)
+
+**Blockers:**
+- Complex animation blending and track management
+- Large functions dominate
+
+---
+
+### #10 - EROOM (58/149 matched, 38.9%)
+**Room/wall rendering.** Architectural system.
+
+**Key Findings:**
+- 87 functions with no source
+- Wall rendering and room management
+- Many large functions (51 >200B)
+
+**Blockers:**
+- Complex wall splitting and rendering logic
+- Mostly unique functions
+
+---
+
+## RECOMMENDATIONS
+
+### For 30+ matches in one session:
+1. **WRAPPER TU** - PaneItem/GetItem families (44 potential)
+2. **PERSON TU** - Boolean Is* getters and simple setters (30 potential)
+
+### For establishing new blast patterns:
+1. **E_MAT4** - Scale/Rotate families (for math library pattern)
+2. **SANIMATOR2** - Bone index and state accessors (for animation pattern)
+
+### Avoid for now:
+1. **E_ANIMCONTROLLER** - Too complex, low match rate
+2. **EROOM** - Mostly unique large functions
+
+---
+
+## Notes on Estimation Methodology
+
+- **<50B**: Likely leaf functions (no bl instructions) - easiest to match
+- **50-100B**: Simple stwu+bl patterns - moderate difficulty
+- **100-200B**: Multiple calls or loops - harder but possible
+- **200B+**: Complex logic - unlikely to match without source
+- **Est. Potential**: Sum of <50B + 50-100B, realistic 50-70% success rate

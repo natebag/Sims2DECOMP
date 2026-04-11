@@ -1,0 +1,69 @@
+=== TU Viability Reconnaissance Report ===
+Generated: 2026-04-07
+
+PURPOSE: Identify which TUs have actionable source files vs [no source] dominance
+
+SUMMARY:
+TU sweep workflow approaching ceiling. Most TUs have 50-70% [no source] functions.
+Direct DOL extraction needed for remaining ~11,000 unmatched functions.
+
+--- RECON RESULTS ---
+
+e_rlevel (53/135 matched, 39%):
+  - Testable with source: 56 functions
+  - [no source]: 79 functions (59%)
+  - MISMATCH: 1 (0x8039F30C - likely actionable)
+  - Verdict: MODERATELY VIABLE - ~1 actionable mismatch
+
+nghresfile (54/133 matched, 41%):
+  - Testable with source: 54 functions
+  - [no source]: 79 functions (59%)
+  - MISMATCH: 0
+  - Verdict: NOT VIABLE - 100% match rate for testable, rest is no source
+
+eroom (58/149 matched, 39%):
+  - Testable with source: 62 functions  
+  - [no source]: 87 functions (58%)
+  - MISMATCH: 4
+  - Verdict: MODERATELY VIABLE - 4 actionable mismatches
+
+e_mat4 (41/83 matched, 49%):
+  - Testable with source: 42 functions
+  - [no source]: 41 functions (49%)
+  - MISMATCH: 0 (1 compile error - no declaration)
+  - Verdict: NOT VIABLE - 100% match rate for testable
+
+e_graphics (56/93 matched, 60%):
+  - Testable with source: 64 functions
+  - [no source]: 29 functions (31%)
+  - MISMATCH: 4 (all SDA externals - 0x802F1F9C, 0x802F2204, 0x802F2210, 0x802F222C)
+  - Verdict: HIGHLY VIABLE - 4 actionable SDA-based mismatches
+
+--- STRATEGIC RECOMMENDATIONS ---
+
+1. PMF ABI (335 functions) - HIGHEST PRIORITY
+   - One crack = 335 matches
+   - Currently blocked on struct layout
+   
+2. SDA Externals pattern - HIGH PRIORITY
+   - e_graphics has 4 SDA float getters
+   - iobject has 23 type-info getters blocked on SDA
+   - Crack one SDA pattern → blast to all
+
+3. VIABLE TU SWEEPS (limited remaining):
+   - e_graphics: 4 SDA mismatches (use SDA technique)
+   - eroom: 4 mismatches
+   - e_rlevel: 1 mismatch
+
+4. PIVOT TO DIRECT DOL EXTRACTION:
+   - Most TUs now 50-70% [no source]
+   - ~11,000 functions need extract_function.py + manual RE
+   - 10-50x slower but necessary for next 5,000 matches
+
+--- CONCLUSION ---
+The TU sweep workflow has reached its natural ceiling. Remaining actionable work:
+- PMF ABI crack (335 functions)
+- SDA externals pattern (23+ functions in iobject, 4 in e_graphics)
+- ~9 mismatches across e_rlevel/eroom/e_graphics
+- Everything else requires direct DOL extraction
+

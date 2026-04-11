@@ -1,5 +1,4 @@
-// ISimInstance::CreateShadow(void)
-// Address: 0x80056328 | Size: 4 bytes
+// 0x80056328 ISimInstance::CreateShadow (4b)
 // Pure virtual override stub - just blr
 
 class ISimInstance {

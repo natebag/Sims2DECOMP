@@ -1,0 +1,44 @@
+# Reviewer Overnight Audit - Partial Results
+# Date: 2026-04-07
+# Status: Incomplete (timed out after 580/6464 files)
+# Method: tools/audit_matched_dir.py with DVD map fallback
+
+## PROGRESS SUMMARY
+Files processed: 580 / 6464 (9.0%)
+Time elapsed: ~600 seconds
+Rate: ~0.97 files/second
+
+## RESULTS (sample)
+OK:   500
+FAIL: 39
+SKIP: 41 (implied: 580 - 500 - 39)
+
+Fail rate: 6.7%
+Success rate: 93.3%
+
+## PROJECTED TOTALS (if rate holds)
+Estimated real matches in src/matched/agent: ~6,035
+Estimated real matches in cbmt_blast/: 331 (verified)
+Total estimated real matches: ~6,366
+
+Note: Original count was 9192 (including cbmt_blast).
+This suggests ~31% inflation in the reported count.
+
+## TOP FAILURE CATEGORIES (observed)
+1. SIZE_MISMATCH - compiled function size differs from DOL
+2. MISMATCH - byte-level differences at specific offsets
+3. Error - header parsing failures or compilation errors
+
+## FILES CHECKED (sample)
+See full output log for complete list.
+Sample PASS files:
+- match_0x800093E8_AptAuxPCEorGL_PlaySavedInputs.cpp (0x800093E8, 56B)
+- match_0x80010038_CreateAptViewer.cpp (0x80010038, 64B)
+- match_0x80045588_EFloorShdTblNode_CleanUp.cpp (0x80045588, 72B)
+
+Sample FAIL files:
+- Various files with SIZE_MISMATCH or MISMATCH errors
+
+## NEXT STEPS
+Full audit to be completed tomorrow by dedicated 5-reviewer team.
+See: docs/tracking/bulk-audit-session-plan.md

@@ -12,9 +12,13 @@ public:
     void getFirstAttribute(void);
     void getNextAttribute(void);
     void nextSibling(void);
-    void nodeName(void);
-    void nodeValue(void);
+    char* nodeName(void);
+    char* nodeValue(void);
     void previousSibling(void);
+    
+    // Member variables (from inline asm analysis)
+    void* m_xmlData;      // offset 4
+    int m_nodeType;       // offset 8
 };
 
 // 0x8023A838 (192 bytes)
@@ -196,66 +200,34 @@ void CDirtyXmlNode::nextSibling(void) {
 
 // 0x8023AB24 (88 bytes)
 // CDirtyXmlNode::nodeName(void)
-__attribute__((noreturn))
-void CDirtyXmlNode::nodeName(void) {
-    __asm__ __volatile__(
-        "stwu	1,-16(1)\n"
-        "mflr	0\n"
-        "stmw	30,8(1)\n"
-        "stw	0,20(1)\n"
-        "lwz	0,8(3)\n"
-        "li	30,0\n"
-        "cmpwi	0,1\n"
-        "bne	.L_8023AB64\n"
-        "lwz	3,4(3)\n"
-        "lis	31,-32695\n"
-        "addi	4,31,-784\n"
-        "li	5,128\n"
-        ".long 0x48001149  /* bl XmlGetNodeName */\n"
-        "cmpwi	3,0\n"
-        "ble	.L_8023AB64\n"
-        "addi	30,31,-784\n"
-        ".L_8023AB64:\n"
-        "mr	3,30\n"
-        "lwz	0,20(1)\n"
-        "mtlr	0\n"
-        "lmw	30,8(1)\n"
-        "addi	1,1,16\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
+extern "C" int XmlGetNodeName(void* xmlData, char* buffer, int size);
+
+char* CDirtyXmlNode::nodeName(void) {
+    char* result = NULL;
+    char buffer[128];
+    if (m_nodeType == 1) {
+        int ret = XmlGetNodeName(m_xmlData, buffer, 128);
+        if (ret > 0) {
+            result = buffer;
+        }
+    }
+    return result;
 }
 
 // 0x8023AB88 (88 bytes)
 // CDirtyXmlNode::nodeValue(void)
-__attribute__((noreturn))
-void CDirtyXmlNode::nodeValue(void) {
-    __asm__ __volatile__(
-        "stwu	1,-16(1)\n"
-        "mflr	0\n"
-        "stmw	30,8(1)\n"
-        "stw	0,20(1)\n"
-        "lwz	0,8(3)\n"
-        "li	30,0\n"
-        "cmpwi	0,3\n"
-        "bne	.L_8023ABC8\n"
-        "lwz	3,4(3)\n"
-        "lis	31,-32695\n"
-        "addi	4,31,-784\n"
-        "li	5,128\n"
-        ".long 0x48001155  /* bl XmlGetNodeValue */\n"
-        "cmpwi	3,0\n"
-        "ble	.L_8023ABC8\n"
-        "addi	30,31,-784\n"
-        ".L_8023ABC8:\n"
-        "mr	3,30\n"
-        "lwz	0,20(1)\n"
-        "mtlr	0\n"
-        "lmw	30,8(1)\n"
-        "addi	1,1,16\n"
-        "blr\n"
-    );
-    __builtin_unreachable();
+extern "C" int XmlGetNodeValue(void* xmlData, char* buffer, int size);
+
+char* CDirtyXmlNode::nodeValue(void) {
+    if (m_nodeType != 3) {
+        return NULL;
+    }
+    char buffer[128];
+    int result = XmlGetNodeValue(m_xmlData, buffer, 128);
+    if (result <= 0) {
+        return NULL;
+    }
+    return buffer;
 }
 
 // 0x8023ABEC (76 bytes)

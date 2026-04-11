@@ -1,5 +1,5 @@
+// 0x80161A00 CasGenetics::FemaleInnerLayerTorsoLocked (32b)
 // FLAGS: -msdata=eabi -G 8
-// 0x80161A00 (32B)
 // CasGenetics::FemaleInnerLayerTorsoLocked(signed char)
 
 struct CasGenetics;

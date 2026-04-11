@@ -1,5 +1,4 @@
-// ISimInstance::SetObjOrient(void)
-// Address: 0x80056324 | Size: 4 bytes
+// 0x80056324 ISimInstance::SetObjOrient (4b)
 // Pure virtual override stub - just blr
 
 class ISimInstance {

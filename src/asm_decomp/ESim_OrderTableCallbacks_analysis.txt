@@ -1,0 +1,28 @@
+ESim OrderTableCallbacks Analysis
+==================================
+
+Functions:
+1. PropOrderTableCallback (212B, 0x80032B84) - 3 blrl
+2. SimOrderTableCallback (272B, 0x80032C58) - 1 blrl + 2 direct calls
+3. CensorOrderTableCallback (204B, 0x80032D68) - 4 blrl
+4. ServiceNpcOrderTableCallback (200B, 0x80032F34) - 3 blrl
+5. SkillMeterOrderTableCallback (156B, 0x8003317C) - 1 blrl
+
+Shared Pattern:
+1. Get ESim* from EOrderTableData at offset 36 (lwz r31, 36(r4))
+2. Get ERC* from ELevelDrawData at offset 152 (lwz rX, 152(r3))
+3. Check sim->field_1320 (render enabled flag)
+4. Multiple virtual calls via blrl
+5. Zero ERC fields at offsets 168, 172, 180 (and sometimes 184)
+
+Key Struct Offsets:
+- ELevelDrawData: ERC* at offset 152
+- EOrderTableData: sim pointer at offset 36
+- ESim: instance at offset 112, field_976 at offset 976, field_1320 at offset 1320
+- ERC: fields 168, 172, 180 at end
+
+Virtual Call Patterns:
+- CensorOrderTableCallback uses vtable entries around 600, 392, 216, 600
+- Each blrl is preceded by: lha r3, offset(r9); lwz r0, offset+4(r9); add r3, rX, r3; mtlr r0; blrl
+
+Status: Analysis complete, implementation in progress

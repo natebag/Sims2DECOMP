@@ -172,13 +172,47 @@ namespace InteractorModule {
 } // namespace InteractorModule
 
 namespace InteractorModule {
+    struct InteractorInfo {
+        float x, y;
+        float extentX, extentY;
+    };
+    
     class Interactor {
     public:
+        Interactor(void);
         void OnCommandReleased(int);
         void OnCommandUpdate(int, float);
         void ResetInputState(void);
         void GetSelectionRadius(void);
         void Moved(void);
+        void GetInteractorInfo(InteractorInfo *info);
+        void SetExtents(InteractorInfo *info);
+        
+        // Member variables (based on assembly analysis)
+        int m_playerId;      // 0
+        int m_field4;        // 4
+        float m_posX;        // 8
+        float m_posY;        // 12
+        float m_posZ;        // 16
+        float m_snappedX;    // 20
+        float m_snappedY;    // 24
+        float m_snappedZ;    // 28
+        float m_field32;     // 32
+        float m_field36;     // 36
+        float m_field40;     // 40
+        int m_field44;       // 44
+        int m_field48;       // 48
+        float m_field52;     // 52
+        float m_field56;     // 56
+        float m_field60;     // 60
+        float m_field64;     // 64
+        int m_field68;       // 68
+        int m_field72;       // 72
+        int m_field76;       // 76
+        float m_extentX;     // 80
+        float m_extentY;     // 84
+        float m_field88;     // 88
+        // vtable at 92
     };
 } // namespace InteractorModule
 
@@ -11644,6 +11678,57 @@ InteractorModule::GrabManipulator::GrabManipulator(void) {
         "blr\n"
     );
     __builtin_unreachable();
+}
+
+// 0x802091BC (196 bytes)
+// InteractorModule::Interactor::Interactor(void)
+extern float g_kZero;  // SDA constant at -12728
+
+InteractorModule::Interactor::Interactor(void) {
+    // vtable set at offset 92 by compiler
+    m_playerId = 0;
+    m_field4 = 0;
+    // Position initialized to 0.0f
+    m_posX = 0.0f;
+    m_posY = 0.0f;
+    m_posZ = 0.0f;
+    // Snapped position initialized to 0.0f
+    m_snappedX = 0.0f;
+    m_snappedY = 0.0f;
+    m_snappedZ = 0.0f;
+    // Fields at 32, 36, 40
+    m_field32 = 0.0f;
+    m_field36 = 0.0f;
+    m_field40 = 0.0f;
+    m_field44 = 0;
+    m_field48 = 0;
+    // Fields at 52, 56, 60, 64, 68, 72, 76
+    m_field52 = 0.0f;
+    m_field56 = 0.0f;
+    m_field60 = 0.0f;
+    m_field64 = 0.0f;
+    m_field68 = 0;
+    m_field72 = 0;
+    // Extents at 80, 84, 88
+    m_extentX = 0.0f;
+    m_extentY = 0.0f;
+    m_field88 = 0.0f;
+}
+
+// 0x802092B4 (36 bytes)
+// InteractorModule::Interactor::GetInteractorInfo(InteractorModule::InteractorInfo *)
+void InteractorModule::Interactor::GetInteractorInfo(InteractorInfo *info) {
+    info->x = m_posX;
+    info->y = m_posY;
+    info->extentX = m_extentX;
+    info->extentY = m_extentY;
+}
+
+// 0x802092D8 (20 bytes)
+// InteractorModule::Interactor::SetExtents(InteractorModule::InteractorInfo *)
+void InteractorModule::Interactor::SetExtents(InteractorInfo *info) {
+    m_extentX = info->extentX;
+    m_extentY = info->extentY;
 }
 
 // 0x802092EC (104 bytes)

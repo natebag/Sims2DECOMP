@@ -1,4 +1,5 @@
-/* Batch of trivial 4B functions (blr only) */
+// 0x800067D4 getRealTimeClock (4b)
+// Multiple 4B trivial functions batch file
 
 // 0x800067D4 (4B) - getRealTimeClock
 void getRealTimeClock(void* a, bool b) {}

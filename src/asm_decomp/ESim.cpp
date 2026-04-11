@@ -3709,6 +3709,16 @@ void ESim::Update(void) {
 
 // 0x800341E8 (228 bytes)
 // ESim::VisibilityTest(E3DWindow &)
+//
+// Logic:
+// 1. If HasQueuedOperation() returns true, return 0 (not visible)
+// 2. Check field at offset 836 (820+16) - if 0, use simple bounds test
+// 3. Otherwise, get anim controller via vtable entry 34, calc tight bounds, test
+//
+// NOTES: This function has a single blrl at entry 34. Needs proper virtual class.
+// The blrl sequence: lha r3,272(r8) / lwz r0,276(r8) / add / mtlr / blrl
+//
+// For now, keeping asm stub - needs ESim class hierarchy from Researcher
 __attribute__((noreturn))
 void ESim::VisibilityTest(E3DWindow &) {
     __asm__ __volatile__(

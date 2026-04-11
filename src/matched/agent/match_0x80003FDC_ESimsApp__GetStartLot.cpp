@@ -1,4 +1,4 @@
-/* ESimsApp::GetStartLot(void) at 0x80003FDC (8B) */
+// 0x80003FDC ESimsApp::GetStartLot (8b)
 
 extern int g_startLot;
 

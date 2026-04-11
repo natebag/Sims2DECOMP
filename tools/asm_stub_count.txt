@@ -1,0 +1,86 @@
+# Inline ASM Stub Category Analysis
+# Generated: 2026-04-07
+#
+# CONTEXT: MainGuy asked to count functions in [inline asm stub] category.
+# 
+# KEY FINDING: The term "stub" is misleading. All src/asm_decomp/*.cpp files
+# contain inline assembly - they ARE the decompilation source files, not
+# placeholders waiting to be written.
+#
+# These files contain:
+#   - C++ class/function declarations (headers/forward decls)
+#   - Function bodies as __asm__ __volatile__ blocks with raw PPC instructions
+#   - Full DOL byte fidelity extracted during initial decomposition
+#
+# The work is to convert __asm__ blocks to equivalent C++ that compiles
+# to match DOL bytes.
+
+## PROJECT-WIDE FUNCTION COUNTS
+
+| Category | Count | Notes |
+|----------|-------|-------|
+| Total functions in symbols.txt | 18,539 | All DOL functions |
+| Functions with source (asm_decomp) | 10,913 | Have .cpp files |
+| [No source] functions | ~7,626 | No .cpp file exists |
+| Matched functions | 7,540 | Source compiles to match DOL |
+| Missing functions | 2,296 | In missing_functions_report.txt |
+
+## BREAKDOWN OF MISSING 2,296 FUNCTIONS
+
+### Category A: MISMATCH with Source (~370)
+- Have src/asm_decomp/*.cpp file
+- File contains inline assembly
+- Assembly compiles but doesn't match DOL bytes
+- Fixable via TU sweep workflow (edit C++ to match)
+
+### Category B: [No Source] (~1,926)
+- No corresponding src/asm_decomp/*.cpp file
+- Need extract_function.py to get DOL bytes
+- Need to write C++ from scratch
+- 10-50x slower per function than Category A
+
+## TOP TUs BY [NO SOURCE] COUNT (Direct DOL Extraction Targets)
+
+| TU | [No Source] | Priority |
+|----|-------------|----------|
+| sanimator2 | ~180 | Animation system |
+| person | ~134 | Core Sim system |
+| object | ~121 | Core object system |
+| e_animcontroller | ~96 | Animation controller |
+| wrapper | ~85 | UI wrapper |
+| e_rlevel | ~79 | Room level |
+| iobject | ~76 | Object interfaces |
+
+## WORKFLOW IMPLICATIONS
+
+### Current TU Sweep Workflow (efficient)
+- Target: Category A (MISMATCH with source)
+- Time per function: ~10 minutes
+- Remaining targets: ~370 functions
+- Realistic per session: 5-30 matches
+
+### Direct DOL Extraction Workflow (slower)
+- Target: Category B ([no source])
+- Time per function: ~1-2 hours
+- Total targets: ~1,926 functions  
+- Requires: extract_function.py + manual RE + C++ writing
+
+## SUMMARY
+
+The "inline asm stub" category includes essentially ALL 10,913 functions
+with source files. The distinction is:
+
+1. MISMATCH (370): Source exists, doesn't match, needs fixing
+2. [No source] (1,926): No source exists, needs creation
+
+The PMF blast (335 functions) and SDA fixes (~26 functions) target specific
+patterns within the MISMATCH category.
+
+After those are done, the path to 100% matched is:
+1. ~370 MISMATCH functions via TU sweep (fix existing)
+2. ~1,926 [no source] functions via DOL extraction (create new)
+
+Total remaining effort estimate:
+- Category A: ~60 worker-hours (370 × 10 min)
+- Category B: ~2,900 worker-hours (1,926 × 1.5 hours)
+- Total: ~2,960 hours at current pace

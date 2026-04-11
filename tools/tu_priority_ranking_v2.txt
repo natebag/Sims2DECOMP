@@ -1,0 +1,162 @@
+# TU Priority Ranking v2 - Corrected Methodology
+# Generated: 2026-04-07
+# 
+# CRITICAL CORRECTION: Original ranking counted [no source] functions as "potential"
+# This was WRONG - [no source] functions require DOL extraction from scratch
+# v2 ranking counts ONLY MISMATCH functions with existing source files
+#
+# Key insight from KimiGuy/KimiWorker:
+# - object TU: 117/117 testable MATCH, 121 [no source] = 0 realistic via sweep
+# - sanimator2: Most large functions [no source], only 4 tiny MISMATCH
+
+## Summary Rankings (v2 - Crackable via TU Sweep Workflow)
+
+| Rank | TU | Matched | Mismatch | Mismatch+Source | No Source | Match% | Est. Potential |
+|------|-----|---------|----------|-----------------|-----------|--------|----------------|
+| 1 | wrapper | 166 | 5 | 5 | 85 | 97% | 5 matches |
+| 2 | iobject | 90 | 23 | 23 | 76 | 80% | 15-20 matches |
+| 3 | person | 77 | 5 | 5 | 134 | 94% | 5 matches |
+| 4 | e_rlevel | 55 | 1 | 1 | 79 | 98% | 1 match |
+| 5 | object | 117 | 0 | 0 | 121 | 100% | 0 matches |
+| 6 | e_animcontroller | 7 | 0 | 0 | 96 | 100% | 0 matches |
+| 7 | sanimator2 | ~40 | ~5 | ~4 | ~180 | ~18% | 0-2 matches |
+
+## Detailed Analysis
+
+### #1 - WRAPPER (166 matched, 5 MISMATCH with source)
+**Status:** Still the best target
+- 5 MISMATCH functions all have source files
+- All are small (<100B) and crackable
+- Pattern: PaneItem getters, WrapperPaneBase state checks
+- **Realistic: 5 matches in one session**
+
+**MISMATCH functions with source:**
+- PaneItem::GetSize (68B) - compile error, needs fix
+- PaneItem::GetSizeX (68B) - compile error, needs fix
+- PaneItem::GetSizeY (68B) - compile error, needs fix
+- PaneItem::~PaneItem (84B) - compile error, needs fix
+- WrapperPaneBase::IsDrawEnabled (12B) - instruction swap
+- WrapperPaneBase::IsStateRunning (16B) - field offset
+- WrapperPaneBase::IsStateAccepted (20B) - field offset
+
+---
+
+### #2 - IOBJECT (90 matched, 23 MISMATCH with source)
+**Status:** NOW the #2 target (was #8 in v1)
+- 23 MISMATCH functions - all have source!
+- Many are small type-info getters (12B)
+- Blocked by SDA externals in type system
+
+**Pattern:** ISimsObjectModel type info getters
+- GetTypeName, GetTypeKey, GetTypeVersion, GetReadVersion
+- All 12B, all MISMATCH due to SDA loads
+
+**Realistic: 15-20 matches if SDA issue solved**
+
+---
+
+### #3 - PERSON (77 matched, 5 MISMATCH with source)
+**Status:** Good but limited
+- 5 MISMATCH with source
+- 134 [no source] - the bulk is locked
+
+**MISMATCH functions:**
+- ActionQueue::ActionQueue (96B) - instruction scheduling
+- cXPersonImpl::AttachToHUD (116B) - inline ASM
+- cXPersonImpl::SetCurrentAction (68B) - struct layout
+- cXPersonImpl::SetNeighborID (64B) - needs verification
+- Plus 1 error
+
+**Realistic: 5 matches**
+
+---
+
+### #4 - E_RLEVEL (55 matched, 1 MISMATCH with source)
+**Status:** Minimal sweep potential
+- Only 1 MISMATCH with source
+- 79 [no source] functions
+
+---
+
+### #5 - OBJECT (117 matched, 0 MISMATCH)
+**Status:** FULLY MINED via sweep workflow
+- 117/117 testable functions MATCH
+- 121 [no source] - need DOL extraction
+- **0 realistic matches via TU sweep**
+
+---
+
+### #6 - E_ANIMCONTROLLER (7 matched, 0 MISMATCH)
+**Status:** NOT SWEEPABLE
+- 7/7 testable MATCH
+- 96 [no source] - all large animation functions
+- **0 realistic matches via TU sweep**
+
+---
+
+### #7 - SANIMATOR2 (~40 matched, ~4 MISMATCH with source)
+**Status:** MINIMAL sweep potential
+- Complex animation system
+- Only ~4 MISMATCH with source, all tiny (20-40B)
+- 180+ [no source] functions
+- **0-2 realistic matches via TU sweep**
+
+---
+
+## [NO SOURCE] Heavy TUs (Direct DOL Extraction Targets)
+
+These TUs have the most locked potential requiring extract_function.py:
+
+| TU | [No Source] Count | Total | % Locked |
+|-----|-------------------|-------|----------|
+| sanimator2 | ~180 | ~229 | 79% |
+| person | 134 | 216 | 62% |
+| object | 121 | 238 | 51% |
+| e_animcontroller | 96 | 103 | 93% |
+| wrapper | 85 | 257 | 33% |
+| e_rlevel | 79 | 135 | 59% |
+| iobject | 76 | 189 | 40% |
+
+---
+
+## Recommended Workflow Pivot
+
+### Phase 1: Finish TU Sweeps (Low hanging fruit)
+1. wrapper - 5 matches remaining
+2. iobject - 23 matches if SDA solved
+3. person - 5 matches remaining
+
+### Phase 2: Direct DOL Extraction (High effort)
+Target [no source] heavy TUs:
+- **object** (121 no source) - core object system
+- **person** (134 no source) - core Sim system
+- **sanimator2** (180 no source) - animation system
+
+These require:
+1. extract_function.py to get DOL bytes
+2. Manual disassembly
+3. Write C++ from scratch
+4. Much slower per-function (~1-2 hours each vs 10 mins for sweep)
+
+---
+
+## Methodology Lesson
+
+**Original ranking (v1) flaw:**
+- Counted [no source] as "potential"
+- These are NOT crackable via TU sweep workflow
+- They require DOL extraction + manual reverse engineering
+
+**v2 ranking correction:**
+- Counts ONLY MISMATCH functions with source
+- These can be fixed via source file edits
+- Realistic for TU sweep workflow
+
+**Critical insight:**
+When tu_match.py shows "[no source]", it means:
+1. No corresponding file in src/asm_decomp/
+2. Cannot compile/test without creating source
+3. Need to use extract_function.py first
+4. Then write C++ matching DOL bytes
+
+This is 10-50x slower than fixing existing MISMATCH files.
