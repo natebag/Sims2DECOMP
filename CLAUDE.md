@@ -73,9 +73,14 @@ for future decomp work, not completed decomp work.
 **Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
 This is the core decomp work. We are at the very beginning.
 
-**Current Status (2026-04-10 — post full audit):**
-- **8,447 functions verified matched** with real C++ (**41.2%**)
-- 12,061 functions remaining
+**Current Status (2026-04-11 — post integrity audit):**
+- **8,232 functions verified matched** with real C++ (**40.1%**)
+- 12,276 functions remaining
+- Pre-integrity-audit count was 8,447; 215 functions were identified as
+  byte-injection/register-asm fakes on 2026-04-11 and relocated to
+  src/wip/fake_matches/ (audit info note a733a05b). True decomp count
+  is 8,232. The cheating generator (tools/gen_ctor_matches.py) was deleted
+  and verify_match.sh + pre-commit hardened against the patterns it used.
 - Full exhaustive audit completed: every file in src/matched/ compile-verified
 - 848 orphan files cleaned up (relocated to wip/version_diff/)
 - ALL asm_decomp functions matched — remaining work is DOL-only extraction

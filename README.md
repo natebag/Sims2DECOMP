@@ -4,12 +4,12 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**41.5% decompiled and verified.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
+**40.5% decompiled and verified** (post-integrity audit, 2026-04-11). Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **8,516 / 20,508 (41.5%)** |
-| Functions remaining | ~11,992 |
+| **Verified matches** | **8,301 / 20,508 (40.5%)** |
+| Functions remaining | ~12,207 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
