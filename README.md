@@ -4,21 +4,18 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**~45% decompiled (file count) / ~42-44% truly verified.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
+**41.5% decompiled and verified.** Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
 
 | Metric | Value |
 |--------|-------|
-| **Files in `src/matched/`** | **9,321 / 20,508 (45.4%)** |
-| **Verified-clean estimate** | **~8,400-8,900 (~42-44%)** — full audit pending |
-| Functions remaining | ~11,200 |
+| **Verified matches** | **8,516 / 20,508 (41.5%)** |
+| Functions remaining | ~11,992 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit |
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
-
-**Honest count caveat:** A 2026-04-07 audit discovered a workflow gap where files could land in `src/matched/` without ever passing `verify_match.sh` (a tool bug + no pre-commit gate). Spot-checks of one bulk-add commit showed a 30% orphan rate. The "files in src/matched/" number above is the file count; the "verified-clean estimate" is what we believe will survive a full audit. The verify tool has been fixed (commit `6062cc25`) and a bulk verifier (`tools/audit_matched_dir.py`) has been authored to identify remaining orphans in a future cleanup pass.
 
 ## What's Done
 
@@ -29,25 +26,26 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 - **Auto-matcher** — ~4,500 matched via goldmine_matcher.py (16 classifiers, 4-state flag matrix, DOL scanning)
 - **AI agent matches** — ~3,000+ matched via parallel Claude Code + Kimi agents (template family blasting, pattern discovery, TU compilation, blrl breakthrough)
 - **CBMemberTranslator family COMPLETE** — all **334/334 thunks** matched via the SN ProDG PMF ABI crack (single-day breakthrough, 2026-04-07). Five non-obvious keys: DVD-not-release map, free function thunk, local var CSE, 0-arg unified PMF type, `-fno-schedule-insns` alone.
+- **Tier 0 AllocateAndLoadResource blast** — 8/10 resource manager TUs hit 100% via three C++ template families (Direct 1-arg Load, Direct 2-arg Load, Virtual Load(EFile&)) with `-fno-schedule-insns`. Closed `e_animman`, `e_characterman`, `e_flashman`, `e_modelman`, `e_shaderman`, `e_soundeventman`, `e_textureman`, `particleman`.
+- **dtor52 pattern blast** — standard 52B destructors (vtable store + conditional delete) unlock at 100% hit rate with `-fno-schedule-insns` alone. Closes scheduling diffs in common-tail stores.
 - **SDA externals technique** — globals wrapped in a `>= 8 byte` struct force the compiler to emit `lis/lfs` (or `lis/lwz`) absolute addressing instead of `@sda21`, matching the DOL pattern. Unblocks any function where DOL uses absolute addressing for globals.
 - **blrl virtual dispatch SOLVED** — proper C++ virtual class declarations generate correct `blrl` codegen, unlocking thousands of previously-blocked functions
 - **TU compilation workflow** — `tu_match.py --combine` compiles whole translation units for SDA and register allocation context
-- **Verification tools** — `verify_match.sh` for end-to-end compile-and-compare. **R_PPC_REL14/REL24 relocation handling fix** (2026-04-07) eliminated a long-standing false-positive vector.
-- **Bulk audit infrastructure** — `tools/audit_matched_dir.py` (orphan detection) and `tools/audit_pmf_safety.py` (per-relocation opcode preservation check)
-- **5-state compiler flag matrix** — per-function flag overrides (`-fno-schedule-insns`, `-fno-schedule-insns2`, `-fno-elide-constructors`)
+- **Verification tools** — `verify_match.sh` for end-to-end compile-and-compare. Handles R_PPC_REL14/REL24 relocations and filters `-j .text` section relocs to avoid vtable linkonce-section false positives on virtual-method classes.
+- **9-technique compiler flag toolbox** — per-function flag overrides for the common wall classes: `-fno-schedule-insns` (SDA load ordering + dtor scheduling), `-fno-schedule-insns2` (post-alloc scheduling), `-fno-elide-constructors` (virtual class emission / schedule2 re-enable), `-fno-peephole` (reg-alloc walls / tight basic-block reorderings), full virtual class declarations (natural `blrl` emission), raw ptr arithmetic for ID fields, SDA extern struct wrap, address-based near-miss grep.
+- **Pre-commit verification gate** — every `src/matched/` commit is auto-verified against the DOL; fakes and broken matches are blocked before they land.
 - **DVD vs release map gotcha confirmed** — the shipped DOL is from `cm3-build22`; address lookups MUST use `u2_ngc_release_dvd.map`. The release map (`cm3-build25`) has different addresses and will produce false leads.
 
 ## What's Not Done
 
-- **~11,200 functions** still need matching (the other ~55%)
-- **`[no source]` functions (~1,926)** — exist in the DOL but have no asm_decomp counterpart, so the TU sweep workflow can't extract them. Require direct DOL extraction (`extract_function.py`) and manual RE. This is the next-phase productivity track.
+- **~11,992 functions** still need matching (the other ~58%)
+- **`[no source]` functions (~1,926)** — exist in the DOL but have no asm_decomp counterpart, so the TU sweep workflow can't extract them. Require direct DOL extraction (`extract_function.py`) and manual RE.
 - **Inline-asm-stub functions (~10,913 with source)** — many `src/asm_decomp/` files contain functions with `__asm__` placeholders rather than real C++. Each one needs the inline-asm replaced with hand-written matching C++.
-- **Instruction scheduling / register allocation differences** — affects an estimated 100-200 functions; the same logic compiles to different GPR choices or instruction order than the DOL. Deep compiler heuristic, hard to fix without per-function tuning.
-- **Float register allocation (f0-f13)** — variable declaration order trick doesn't work for floats. ~unknown count.
+- **Register-allocation walls** — certain functions hit SN ProDG v1.76 vs v3.93 graph-coloring tie-breaker diffs (DOL reuses scratch registers, current compiler allocates fresh). No flag combo currently cracks these; needs source-level restructuring or future flag research.
+- **Store-combining walls** — compiler merges adjacent same-value stores the DOL kept separate (e.g. two `sth 64` → one `stw`). Needs a separating volatile barrier or different class layout.
+- **CSE elimination walls** — compiler eliminates `mr rN, rM` register copies the DOL uses. Needs CSE-breaking idioms like `noinline` wrapper calls.
 - **Multi-blrl vtable aliasing** — 2+ virtual calls in one function still problematic; the compiler re-loads the vtable.
-- **Orphan cleanup** — estimated 200-800 stale "matched" files don't actually match (committed via the bypass vectors discovered 2026-04-07). Bulk audit + cleanup pending.
-- **`count_matched.py` validation** — currently counts files, not verified matches. Needs to integrate `audit_matched_dir.py` so the project's reported progress matches reality.
-- **Pre-commit verification gate** — patch in flight to reject `src/matched/` commits whose files don't pass the (now-fixed) `verify_match.sh`.
+- **Float register allocation (f0-f13)** — variable declaration order trick doesn't work for floats.
 - **PC port** — a prototype exists but is blocked until real decomp progress is further along
 
 ## Building
