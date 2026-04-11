@@ -1,4 +1,4 @@
-// 0x801B9434 IngInfo::IngInfo (20b)
+// 0x801B9434 INGTarget::IngInfo::IngInfo (20b)
 
 struct IngInfo {
     int f0;
