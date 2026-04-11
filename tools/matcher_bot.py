@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""matcher_bot.py — Phase A1: compiler-aware flag-space search.
+"""matcher_bot.py — Phase A1/A2: compiler-aware flag + source search.
 
-Spec: docs/tracking/next-attack-plan-20260412.md (Track A Phase A1).
+Spec: docs/tracking/next-attack-plan-20260412.md (Track A Phase A1 + A2).
 
-Given a C++ source + DOL address/size, exhaustively try a fixed set of
-SN ProDG flag combinations and pick the best match. Uses tools/verify_match.sh
-as the correctness oracle — whatever it says is MATCH/MISMATCH is final.
+Given a C++ source + DOL address/size, try combinations of:
+  - flag-space variants (M0..M10 — see FLAG_VARIANTS)
+  - text-level mutators (M10 decl-order swap, M11 compiler-barrier inject)
+...and pick the first that byte-matches the DOL. Uses tools/verify_match.sh
+as the correctness oracle.
 
 Exit codes:
     0 = MATCH (prints winner path + flags line, also copies to out dir)
@@ -16,10 +18,12 @@ Usage:
     python tools/matcher_bot.py --wip src/wip/version_diff/match_0xADDR_name.cpp
     python tools/matcher_bot.py --src path.cpp --addr 0x80322EA8 --size 172
     python tools/matcher_bot.py --wip file.cpp --addr 0x... --size ...    # overrides
+    python tools/matcher_bot.py --wip file.cpp --budget 60 --no-text
 
 Options:
     --out-dir DIR        Where to dump variants + report (default: build/matcher_bot)
-    --keep-baseline      Also test the source unchanged (no flag rewrite)
+    --budget N           Max compile attempts per target (default 60)
+    --no-text            Disable M10/M11 text mutators — flag-space only (A1 mode)
     --verbose            Print per-variant compile log tails
 """
 
@@ -171,6 +175,194 @@ def rewrite_flags(lines: list[str], new_flags: str) -> list[str]:
     return out
 
 
+# ---------- Phase A2 text mutators ----------
+#
+# Each mutator takes the full source line-list and returns a list of
+# (label, mutated-lines) pairs. Identity is handled separately; these only
+# produce *new* variants. An empty list means "no useful mutations here".
+
+# Match a local variable declaration:
+#   indent Type name ;
+#   indent Type name = expr;
+#   indent Type * name ;
+# Captures the indent so adjacent-swap can keep indentation.
+# Deliberately conservative — skips control-flow lines, operator lines, etc.
+DECL_RE = re.compile(
+    r"^(?P<indent>[ \t]+)"
+    r"(?P<type>(?:const\s+)?(?:unsigned\s+|signed\s+)?[A-Za-z_][A-Za-z0-9_:]*\s*\*?\s*\*?)"
+    r"\s+(?P<name>[A-Za-z_][A-Za-z0-9_]*)"
+    r"(?:\s*=\s*[^;{}]*)?"
+    r"\s*;\s*$"
+)
+
+# Match a store-like statement (assignment to a deref / member / array).
+# Purposefully looser than DECL_RE — covers:
+#   *p = x;
+#   p->field = x;
+#   p->f = obj->f2;
+#   this->x = y;
+#   arr[0] = v;
+#   *(T*)p = q;
+# Rejects local-decl lines (they'd look like a store but have a type name).
+STORE_RE = re.compile(
+    r"^(?P<indent>[ \t]+)"
+    r"(?:\*|&)?"
+    r"(?P<lhs>[^=;{}]+?)"      # everything up to = (non-greedy)
+    r"\s*=\s*"
+    r"(?P<rhs>[^;{}]+?)"
+    r"\s*;\s*$"
+)
+
+# Control-flow / scope tokens that disqualify a line from being a "store" for
+# barrier purposes (we don't want to inject between `if` and its body).
+_SCOPE_TOKENS = ("if", "else", "for", "while", "do", "return", "switch",
+                 "case", "break", "continue", "goto", "throw")
+
+
+def _is_store_line(line: str) -> bool:
+    stripped = line.lstrip()
+    if not stripped or stripped.startswith("//") or stripped.startswith("/*"):
+        return False
+    for tok in _SCOPE_TOKENS:
+        if stripped == tok or stripped.startswith(tok + " ") or stripped.startswith(tok + "("):
+            return False
+    m = STORE_RE.match(line)
+    if not m:
+        return False
+    # Disqualify if it looks like a local variable declaration (covered by M10).
+    if DECL_RE.match(line):
+        return False
+    return True
+
+
+_FUNC_OPEN_RE = re.compile(r"\)\s*(?:const\s*)?(?:noexcept\s*)?\{")
+_STRUCT_OPEN_RE = re.compile(r"\b(struct|class|union)\b[^;]*\{")
+
+
+def _decl_block_is_in_function_body(lines: list[str], block_start: int) -> bool:
+    """Scan backwards from block_start to the nearest `{` line, and classify
+    it as function body vs struct/class body. Returns True only for function
+    bodies. This prevents M10 from reordering struct field declarations (which
+    would be a structural ABI change, not a local scheduling tweak).
+    """
+    depth = 0
+    for i in range(block_start - 1, -1, -1):
+        line = lines[i]
+        # Count nesting: every `}` we see on the way up, we need one more
+        # matching `{` to get back to our enclosing scope.
+        depth += line.count("}")
+        opens_on_line = line.count("{")
+        if opens_on_line:
+            depth -= opens_on_line
+            if depth < 0:
+                # Found the enclosing `{`. Classify by what's on that line
+                # (or, if the `{` is alone, the previous nonblank line).
+                check_idx = i
+                if _FUNC_OPEN_RE.search(line):
+                    return True
+                if _STRUCT_OPEN_RE.search(line):
+                    return False
+                # `{` on its own line — look one line up for the signature.
+                j = i - 1
+                while j >= 0 and not lines[j].strip():
+                    j -= 1
+                if j >= 0:
+                    prev = lines[j]
+                    if _FUNC_OPEN_RE.search(prev) or prev.rstrip().endswith(")"):
+                        return True
+                    if _STRUCT_OPEN_RE.search(prev):
+                        return False
+                # Unknown — err on the safe side and reject.
+                return False
+    return False
+
+
+def m10_var_swap_mutator(lines: list[str]) -> list[tuple[str, list[str]]]:
+    """Adjacent-swap permutations of consecutive local variable declarations.
+
+    Finds the first block of 2+ consecutive declaration lines inside a
+    function body (NOT a struct/class declaration) and produces one variant
+    per adjacent swap within that block.
+    """
+    block_start: Optional[int] = None
+    block_end: Optional[int] = None
+    run_start: Optional[int] = None
+    for i, raw in enumerate(lines):
+        if DECL_RE.match(raw):
+            if run_start is None:
+                run_start = i
+        else:
+            if run_start is not None and i - run_start >= 2:
+                if _decl_block_is_in_function_body(lines, run_start):
+                    block_start, block_end = run_start, i
+                    break
+            run_start = None
+    if block_start is None and run_start is not None and len(lines) - run_start >= 2:
+        if _decl_block_is_in_function_body(lines, run_start):
+            block_start, block_end = run_start, len(lines)
+    if block_start is None or block_end is None:
+        return []
+
+    variants: list[tuple[str, list[str]]] = []
+    block_len = block_end - block_start
+    # At most 6 adjacent-swaps so we don't blow the budget on long decl blocks.
+    for k in range(min(block_len - 1, 6)):
+        i = block_start + k
+        new_lines = list(lines)
+        new_lines[i], new_lines[i + 1] = new_lines[i + 1], new_lines[i]
+        label = f"T10_swap{k}"
+        variants.append((label, new_lines))
+    return variants
+
+
+def m11_barrier_mutator(lines: list[str]) -> list[tuple[str, list[str]]]:
+    """Inject `asm volatile("" ::: "memory");` between consecutive stores.
+
+    Finds adjacent `lhs = rhs;` lines (not decls, not control-flow) and
+    produces one variant per single-insertion-point. Empty-string asm is
+    whitelisted by the pre-commit hook at .git/hooks/pre-commit:93-105.
+    """
+    store_idxs: list[int] = [i for i, raw in enumerate(lines) if _is_store_line(raw)]
+    # Insertion points are gaps between consecutive store lines where they
+    # are also consecutive in the source (i and i+1 both stores).
+    insert_points: list[tuple[int, str]] = []
+    for j, idx in enumerate(store_idxs[:-1]):
+        nxt = store_idxs[j + 1]
+        if nxt == idx + 1:
+            insert_points.append((idx + 1, lines[idx].lstrip(" \t").rstrip()[:20]))
+    # De-duplicate adjacent insertion points if we have too many.
+    # Cap to 8 to control variant explosion.
+    insert_points = insert_points[:8]
+
+    variants: list[tuple[str, list[str]]] = []
+    for k, (insert_at, _label_hint) in enumerate(insert_points):
+        indent_src = lines[insert_at] if insert_at < len(lines) else ""
+        m = re.match(r"^([ \t]+)", indent_src)
+        indent = m.group(1) if m else "    "
+        # SN ProDG cc1plus 2.95 rejects the `:::` shorthand. The spaced
+        # form `: : : "memory"` parses identically at the AST level and
+        # is accepted. Still an empty-string asm (zero instructions) so
+        # it passes the pre-commit whitelist.
+        barrier = f'{indent}asm volatile("" : : : "memory");\n'
+        new_lines = lines[:insert_at] + [barrier] + lines[insert_at:]
+        label = f"T11_barrier{k}"
+        variants.append((label, new_lines))
+    return variants
+
+
+def build_text_variants(lines: list[str]) -> list[tuple[str, list[str]]]:
+    """Produce the ordered list of text mutations to try, NOT including identity.
+    Ordering: M11 (compiler-barrier) first, then M10 (decl-swap).
+    A5 data showed the NEAR_MATCH targets with the highest scores (ETexture,
+    EThread, audiostreamman) all look like store-ordering walls, so M11
+    gets first crack.
+    """
+    out: list[tuple[str, list[str]]] = []
+    out.extend(m11_barrier_mutator(lines))
+    out.extend(m10_var_swap_mutator(lines))
+    return out
+
+
 # ---------- verify_match.sh wrapper ----------
 
 def run_verify(source_path: Path, addr: int, size: int) -> tuple[int, str]:
@@ -238,8 +430,51 @@ def score_verify_output(exit_code: int, output: str, size: int) -> tuple[bool, f
 
 # ---------- main drive loop ----------
 
-def run_all_variants(
+# Compact flag set used when attaching flags to a text-mutated variant.
+# Keeps budget manageable: 5 flags × text_variant is tight enough to fit
+# many text variants into a 60-compile budget.
+COMPACT_FLAGS: list[tuple[str, str]] = [
+    ("M0_default",          ""),
+    ("M1_no_schedule_insns", "-fno-schedule-insns"),
+    ("M3_no_elide_ctors",    "-fno-elide-constructors"),
+    ("M7_M3_M4",             "-fno-elide-constructors -fno-peephole"),
+    ("M8_M1_M3_M4",          "-fno-schedule-insns -fno-elide-constructors -fno-peephole"),
+]
+
+
+def build_candidates(
     source_lines: list[str],
+    budget: int,
+    enable_text: bool,
+) -> list[tuple[str, str, list[str]]]:
+    """Produce an ordered list of (combined_label, flag_string, mutated_lines)
+    candidates, capped at `budget`. Order = priority:
+        1. identity text × all 11 flag variants (A1 baseline)
+        2. each text mutation × compact flag set (M11 first, then M10)
+    """
+    candidates: list[tuple[str, str, list[str]]] = []
+
+    # Phase A1 baseline — identity text, full flag space.
+    for flag_label, flag_str in FLAG_VARIANTS:
+        candidates.append((f"T0_identity__{flag_label}", flag_str, source_lines))
+        if len(candidates) >= budget:
+            return candidates
+
+    if not enable_text:
+        return candidates
+
+    # Phase A2 — text mutations × compact flag set.
+    text_variants = build_text_variants(source_lines)
+    for text_label, text_lines in text_variants:
+        for flag_label, flag_str in COMPACT_FLAGS:
+            candidates.append((f"{text_label}__{flag_label}", flag_str, text_lines))
+            if len(candidates) >= budget:
+                return candidates
+    return candidates
+
+
+def run_candidates(
+    candidates: list[tuple[str, str, list[str]]],
     addr: int,
     size: int,
     work_dir: Path,
@@ -248,9 +483,9 @@ def run_all_variants(
     work_dir.mkdir(parents=True, exist_ok=True)
     results: list[VariantResult] = []
 
-    for label, flags in FLAG_VARIANTS:
-        variant_src = work_dir / f"{label}.cpp"
-        variant_lines = rewrite_flags(source_lines, flags)
+    for combined_label, flag_str, text_lines in candidates:
+        variant_src = work_dir / f"{combined_label}.cpp"
+        variant_lines = rewrite_flags(text_lines, flag_str)
         variant_src.write_text("".join(variant_lines), encoding="utf-8")
 
         exit_code, output = run_verify(variant_src, addr, size)
@@ -259,8 +494,8 @@ def run_all_variants(
         )
 
         result = VariantResult(
-            label=label,
-            flags=flags or "(default)",
+            label=combined_label,
+            flags=flag_str or "(default)",
             source_path=variant_src,
             match=matched,
             score=score,
@@ -272,12 +507,11 @@ def run_all_variants(
         results.append(result)
 
         status = "MATCH" if matched else ("COMPILE_FAIL" if compile_failed else f"{score*100:5.1f}%")
-        print(f"  [{label:22s}] {status:>12s}  flags={flags or '(default)'}")
+        print(f"  [{combined_label:38s}] {status:>12s}  flags={flag_str or '(default)'}")
         if verbose and not matched:
             tail = "\n".join(output.strip().splitlines()[-8:])
             print("    " + tail.replace("\n", "\n    "))
         if matched:
-            # Early-exit on first match — Phase A1 is exhaustive-but-early-stop.
             return results
     return results
 
@@ -299,17 +533,17 @@ def save_top_variants(
 
     report = out_dir / "report.txt"
     lines = [
-        f"matcher_bot Phase A1 report",
+        f"matcher_bot report",
         f"  addr:   0x{addr:08X}",
         f"  size:   {size}",
         f"  symbol: {symbol or '(unknown)'}",
         f"  variants tried: {len(results)}",
         "",
-        f"{'rank':4s} {'label':22s} {'score':>8s} {'chunks':>8s} {'flags'}",
+        f"{'rank':4s} {'label':38s} {'score':>8s} {'chunks':>8s} {'flags'}",
     ]
     for rank, r in enumerate(ranked, 1):
         marker = "MATCH" if r.match else ("FAIL" if r.compile_failed else f"{r.score*100:5.1f}%")
-        lines.append(f"{rank:<4d} {r.label:22s} {marker:>8s} {r.mismatch_chunks:>8d} {r.flags}")
+        lines.append(f"{rank:<4d} {r.label:38s} {marker:>8s} {r.mismatch_chunks:>8d} {r.flags}")
     report.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print()
     print(f"Top-3 variants + report written to {out_dir}")
@@ -317,13 +551,16 @@ def save_top_variants(
 
 
 def parse_args() -> argparse.Namespace:
-    ap = argparse.ArgumentParser(description="Phase A1 flag-space matcher bot.")
+    ap = argparse.ArgumentParser(description="Compiler-aware matcher bot (A1+A2).")
     ap.add_argument("--wip", type=Path, help="Path to a src/wip/... cpp to attack.")
     ap.add_argument("--src", type=Path, help="Explicit source cpp path (alias of --wip).")
     ap.add_argument("--addr", type=lambda s: int(s, 0), help="DOL virtual address (hex).")
     ap.add_argument("--size", type=int, help="Function size in bytes.")
     ap.add_argument("--symbol", type=str, default=None, help="Function symbol (for reports).")
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT_DIR)
+    ap.add_argument("--budget", type=int, default=60, help="Max compile attempts (default 60).")
+    ap.add_argument("--no-text", action="store_true",
+                    help="A1 mode — disable M10/M11 text mutators.")
     ap.add_argument("--verbose", action="store_true")
     return ap.parse_args()
 
@@ -333,7 +570,7 @@ def main() -> int:
 
     source_path: Optional[Path] = args.wip or args.src
     if source_path is None:
-        print("error: --wip or --src is required for Phase A1", file=sys.stderr)
+        print("error: --wip or --src is required", file=sys.stderr)
         return 1
     if not source_path.is_file():
         print(f"error: source not found: {source_path}", file=sys.stderr)
@@ -362,16 +599,19 @@ def main() -> int:
         shutil.rmtree(work_dir)
     work_dir.mkdir(parents=True)
 
-    print(f"matcher_bot Phase A1")
+    candidates = build_candidates(lines, args.budget, enable_text=not args.no_text)
+
+    print(f"matcher_bot")
     print(f"  source: {source_path}")
     print(f"  addr:   0x{addr:08X}")
     print(f"  size:   {size}")
     print(f"  symbol: {symbol}")
-    print(f"  variants: {len(FLAG_VARIANTS)}")
+    print(f"  text mutators: {'OFF' if args.no_text else 'ON (M10 decl-swap, M11 barrier)'}")
+    print(f"  budget: {args.budget} (planned: {len(candidates)})")
     print(f"  work:   {work_dir}")
     print()
 
-    results = run_all_variants(lines, addr, size, work_dir, verbose=args.verbose)
+    results = run_candidates(candidates, addr, size, work_dir, verbose=args.verbose)
 
     winner = next((r for r in results if r.match), None)
     if winner is not None:
