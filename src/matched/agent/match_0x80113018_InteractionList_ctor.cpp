@@ -1,4 +1,13 @@
-// 0x80113018 (20 bytes) — VERIFIED MATCH
-// InteractionList::InteractionList(void) — zeros two fields
-struct InteractionList_C { int b; int a; InteractionList_C(); };
-InteractionList_C::InteractionList_C() : b(0), a(0) {}
+// 0x80113018 InteractionList::InteractionList (20b)
+
+struct InteractionList {
+    int f0;
+    int f4;
+    InteractionList();
+};
+
+InteractionList::InteractionList() {
+    InteractionList* p = this;
+    p->f0 = 0;
+    p->f4 = 0;
+}

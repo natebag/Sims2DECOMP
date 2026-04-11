@@ -1,4 +1,13 @@
-// 0x8023122c (20 bytes) — VERIFIED MATCH
-// EOrderTableEntry::EOrderTableEntry(void) — zeros two fields
-struct EOrderTableEntry_C { int b; int a; EOrderTableEntry_C(); };
-EOrderTableEntry_C::EOrderTableEntry_C() : b(0), a(0) {}
+// 0x8023122C EOrderTableEntry::EOrderTableEntry (20b)
+
+struct EOrderTableEntry {
+    int f0;
+    int f4;
+    EOrderTableEntry();
+};
+
+EOrderTableEntry::EOrderTableEntry() {
+    EOrderTableEntry* p = this;
+    p->f0 = 0;
+    p->f4 = 0;
+}
