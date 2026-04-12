@@ -1,12 +1,17 @@
-/* ERBinary::GetTypeName(void) const - 0x8036855C (12 bytes) */
+// 0x8036855C ERBinary::GetTypeName (12b)
 // TU: e_rbinary
 
-extern char ERBinary_typeInfo_name;
+struct TypeInfo {
+    char pad[0x0C];
+    const char* m_name;
+};
+
+extern TypeInfo ERBinary_typeInfo;
 
 struct ERBinary {
     const char* GetTypeName() const;
 };
 
 const char* ERBinary::GetTypeName() const {
-    return &ERBinary_typeInfo_name;
+    return ERBinary_typeInfo.m_name;
 }

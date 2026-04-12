@@ -1,12 +1,17 @@
-/* EIStaticSubModel::GetTypeName(void) const - 0x8022F7E4 (12 bytes) */
+// 0x8022F7E4 EIStaticSubModel::GetTypeName (12b)
 // TU: e_istaticsubmodel
 
-extern char EIStaticSubModel_typeInfo_name;
+struct TypeInfo {
+    char pad[0x0C];
+    const char* m_name;
+};
+
+extern TypeInfo EIStaticSubModel_typeInfo;
 
 struct EIStaticSubModel {
     const char* GetTypeName() const;
 };
 
 const char* EIStaticSubModel::GetTypeName() const {
-    return &EIStaticSubModel_typeInfo_name;
+    return EIStaticSubModel_typeInfo.m_name;
 }

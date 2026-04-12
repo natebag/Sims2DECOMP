@@ -1,12 +1,17 @@
-/* ERCharacter::GetTypeName(void) const - 0x80368C50 (12 bytes) */
+// 0x80368C50 ERCharacter::GetTypeName (12b)
 // TU: e_rcharacter
 
-extern char ERCharacter_typeInfo_name;
+struct TypeInfo {
+    char pad[0x0C];
+    const char* m_name;
+};
+
+extern TypeInfo ERCharacter_typeInfo;
 
 struct ERCharacter {
     const char* GetTypeName() const;
 };
 
 const char* ERCharacter::GetTypeName() const {
-    return &ERCharacter_typeInfo_name;
+    return ERCharacter_typeInfo.m_name;
 }

@@ -1,12 +1,17 @@
-/* ERSoundEvent::GetTypeName(void) const - 0x80369F3C (12 bytes) */
+// 0x80369F3C ERSoundEvent::GetTypeName (12b)
 // TU: e_rsoundevent
 
-extern char ERSoundEvent_typeInfo_name;
+struct TypeInfo {
+    char pad[0x0C];
+    const char* m_name;
+};
+
+extern TypeInfo ERSoundEvent_typeInfo;
 
 struct ERSoundEvent {
     const char* GetTypeName() const;
 };
 
 const char* ERSoundEvent::GetTypeName() const {
-    return &ERSoundEvent_typeInfo_name;
+    return ERSoundEvent_typeInfo.m_name;
 }

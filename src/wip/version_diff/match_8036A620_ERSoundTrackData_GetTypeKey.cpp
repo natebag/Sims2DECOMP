@@ -1,12 +1,17 @@
-/* ERSoundTrackData::GetTypeKey(void) const - 0x8036A620 (12 bytes) */
+// 0x8036A620 ERSoundTrackData::GetTypeKey (12b)
 // TU: e_rsoundtrackdata
 
-extern unsigned int ERSoundTrackData_typeInfo_key;
+struct TypeInfo {
+    char pad[0x10];
+    unsigned int m_key;
+};
+
+extern TypeInfo ERSoundTrackData_typeInfo;
 
 struct ERSoundTrackData {
     unsigned int GetTypeKey() const;
 };
 
 unsigned int ERSoundTrackData::GetTypeKey() const {
-    return ERSoundTrackData_typeInfo_key;
+    return ERSoundTrackData_typeInfo.m_key;
 }

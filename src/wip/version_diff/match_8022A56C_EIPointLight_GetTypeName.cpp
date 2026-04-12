@@ -1,12 +1,17 @@
-/* EIPointLight::GetTypeName(void) const - 0x8022A56C (12 bytes) */
+// 0x8022A56C EIPointLight::GetTypeName (12b)
 // TU: e_ipointlight
 
-extern char EIPointLight_typeInfo_name;
+struct TypeInfo {
+    char pad[0x0C];
+    const char* m_name;
+};
+
+extern TypeInfo EIPointLight_typeInfo;
 
 struct EIPointLight {
     const char* GetTypeName() const;
 };
 
 const char* EIPointLight::GetTypeName() const {
-    return &EIPointLight_typeInfo_name;
+    return EIPointLight_typeInfo.m_name;
 }

@@ -1,12 +1,17 @@
-/* ERSoundTrackData::GetTypeName(void) const - 0x8036A614 (12 bytes) */
+// 0x8036A614 ERSoundTrackData::GetTypeName (12b)
 // TU: e_rsoundtrackdata
 
-extern char ERSoundTrackData_typeInfo_name;
+struct TypeInfo {
+    char pad[0x0C];
+    const char* m_name;
+};
+
+extern TypeInfo ERSoundTrackData_typeInfo;
 
 struct ERSoundTrackData {
     const char* GetTypeName() const;
 };
 
 const char* ERSoundTrackData::GetTypeName() const {
-    return &ERSoundTrackData_typeInfo_name;
+    return ERSoundTrackData_typeInfo.m_name;
 }

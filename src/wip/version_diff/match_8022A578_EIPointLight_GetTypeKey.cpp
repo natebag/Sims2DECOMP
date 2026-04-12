@@ -1,12 +1,17 @@
-/* EIPointLight::GetTypeKey(void) const - 0x8022A578 (12 bytes) */
+// 0x8022A578 EIPointLight::GetTypeKey (12b)
 // TU: e_ipointlight
 
-extern unsigned int EIPointLight_typeInfo_key;
+struct TypeInfo {
+    char pad[0x10];
+    unsigned int m_key;
+};
+
+extern TypeInfo EIPointLight_typeInfo;
 
 struct EIPointLight {
     unsigned int GetTypeKey() const;
 };
 
 unsigned int EIPointLight::GetTypeKey() const {
-    return EIPointLight_typeInfo_key;
+    return EIPointLight_typeInfo.m_key;
 }

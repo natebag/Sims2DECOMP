@@ -1,12 +1,17 @@
-/* ERBinary::GetTypeKey(void) const - 0x80368568 (12 bytes) */
+// 0x80368568 ERBinary::GetTypeKey (12b)
 // TU: e_rbinary
 
-extern unsigned int ERBinary_typeInfo_key;
+struct TypeInfo {
+    char pad[0x10];
+    unsigned int m_key;
+};
+
+extern TypeInfo ERBinary_typeInfo;
 
 struct ERBinary {
     unsigned int GetTypeKey() const;
 };
 
 unsigned int ERBinary::GetTypeKey() const {
-    return ERBinary_typeInfo_key;
+    return ERBinary_typeInfo.m_key;
 }

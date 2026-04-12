@@ -1,12 +1,17 @@
-/* EIDirLight::GetTypeName(void) const - 0x80227424 (12 bytes) */
+// 0x80227424 EIDirLight::GetTypeName (12b)
 // TU: e_idirlight
 
-extern char EIDirLight_typeInfo_name;
+struct TypeInfo {
+    char pad[0x0C];
+    const char* m_name;
+};
+
+extern TypeInfo EIDirLight_typeInfo;
 
 struct EIDirLight {
     const char* GetTypeName() const;
 };
 
 const char* EIDirLight::GetTypeName() const {
-    return &EIDirLight_typeInfo_name;
+    return EIDirLight_typeInfo.m_name;
 }

@@ -1,12 +1,17 @@
-/* EIStaticSubModel::GetTypeKey(void) const - 0x8022F7F0 (12 bytes) */
+// 0x8022F7F0 EIStaticSubModel::GetTypeKey (12b)
 // TU: e_istaticsubmodel
 
-extern unsigned int EIStaticSubModel_typeInfo_key;
+struct TypeInfo {
+    char pad[0x10];
+    unsigned int m_key;
+};
+
+extern TypeInfo EIStaticSubModel_typeInfo;
 
 struct EIStaticSubModel {
     unsigned int GetTypeKey() const;
 };
 
 unsigned int EIStaticSubModel::GetTypeKey() const {
-    return EIStaticSubModel_typeInfo_key;
+    return EIStaticSubModel_typeInfo.m_key;
 }

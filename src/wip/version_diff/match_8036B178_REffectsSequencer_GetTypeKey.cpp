@@ -1,12 +1,17 @@
-/* REffectsSequencer::GetTypeKey(void) const - 0x8036B178 (12 bytes) */
+// 0x8036B178 REffectsSequencer::GetTypeKey (12b)
 // TU: reffects_sequencer
 
-extern unsigned int REffectsSequencer_typeInfo_key;
+struct TypeInfo {
+    char pad[0x10];
+    unsigned int m_key;
+};
+
+extern TypeInfo REffectsSequencer_typeInfo;
 
 struct REffectsSequencer {
     unsigned int GetTypeKey() const;
 };
 
 unsigned int REffectsSequencer::GetTypeKey() const {
-    return REffectsSequencer_typeInfo_key;
+    return REffectsSequencer_typeInfo.m_key;
 }

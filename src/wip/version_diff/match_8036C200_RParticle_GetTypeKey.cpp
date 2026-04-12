@@ -1,12 +1,17 @@
-/* RParticle::GetTypeKey(void) const - 0x8036C200 (12 bytes) */
+// 0x8036C200 RParticle::GetTypeKey (12b)
 // TU: rparticle
 
-extern unsigned int RParticle_typeInfo_key;
+struct TypeInfo {
+    char pad[0x10];
+    unsigned int m_key;
+};
+
+extern TypeInfo RParticle_typeInfo;
 
 struct RParticle {
     unsigned int GetTypeKey() const;
 };
 
 unsigned int RParticle::GetTypeKey() const {
-    return RParticle_typeInfo_key;
+    return RParticle_typeInfo.m_key;
 }

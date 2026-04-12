@@ -1,12 +1,17 @@
-/* REffectsSequencer::GetTypeName(void) const - 0x8036B16C (12 bytes) */
+// 0x8036B16C REffectsSequencer::GetTypeName (12b)
 // TU: reffects_sequencer
 
-extern char REffectsSequencer_typeInfo_name;
+struct TypeInfo {
+    char pad[0x0C];
+    const char* m_name;
+};
+
+extern TypeInfo REffectsSequencer_typeInfo;
 
 struct REffectsSequencer {
     const char* GetTypeName() const;
 };
 
 const char* REffectsSequencer::GetTypeName() const {
-    return &REffectsSequencer_typeInfo_name;
+    return REffectsSequencer_typeInfo.m_name;
 }
