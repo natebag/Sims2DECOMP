@@ -9,7 +9,8 @@ struct ObjectList {
 };
 
 ObjectList::ObjectList(void) {
-    field_0 = 0;
-    field_4 = 0;
-    field_8 = 0;
+    ObjectList* p = this;
+    *(volatile int*)&p->field_0 = 0;
+    *(volatile int*)&p->field_4 = 0;
+    *(volatile int*)&p->field_8 = 0;
 }
