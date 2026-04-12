@@ -1,6 +1,7 @@
 {
-  "total_files": 7820,
-  "unique_addresses": 7820,
+  "total_files": 8206,
+  "unique_addresses": 8206,
   "duplicate_count": 0,
-  "duplicates": {}
+  "files_deleted": 18,
+  "dedup_run": true
 }

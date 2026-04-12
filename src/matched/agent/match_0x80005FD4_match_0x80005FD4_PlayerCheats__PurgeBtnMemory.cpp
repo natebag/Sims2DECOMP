@@ -1,4 +1,3 @@
-// 0x80005FD4 match_0x80005FD4_PlayerCheats__PurgeBtnMemory (40b)
 // FLAGS: -fno-elide-constructors
 // PlayerCheats::PurgeBtnMemory(void) — 40B @ 0x80005FD4
 
