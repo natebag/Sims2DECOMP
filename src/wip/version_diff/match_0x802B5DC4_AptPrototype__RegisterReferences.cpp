@@ -16,7 +16,8 @@ struct AptPrototype_RegisterRefs {
 
 void AptPrototype_RegisterRefs::RegisterReferences(void) const {
     AptPrototype_Register((void*)this);
-    if (m_field20 != 0) {
+    void* field20 = m_field20;
+    if (field20 != 0) {
         g_registerFunc((void*)this, "prototype");
     }
 }
