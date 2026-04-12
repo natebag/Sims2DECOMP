@@ -1,11 +1,11 @@
 // 0x8036AC6C (12 bytes)
 class REffectsEmitter {
 public:
-    short GetReadVersion() const;
+    unsigned short GetReadVersion() const;
 };
 
-extern char gREffectsEmitterData[];
+extern unsigned short gREffectsEmitterData[];
 
-short REffectsEmitter::GetReadVersion() const {
-    return *(short*)(gREffectsEmitterData + 0);
+unsigned short REffectsEmitter::GetReadVersion() const {
+    return gREffectsEmitterData[1];
 }

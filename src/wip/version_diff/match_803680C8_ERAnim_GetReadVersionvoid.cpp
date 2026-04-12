@@ -1,11 +1,11 @@
 // 0x803680C8 (12 bytes)
 class ERAnim {
 public:
-    short GetReadVersion() const;
+    unsigned short GetReadVersion() const;
 };
 
-extern char gERAnimData[];
+extern unsigned short gERAnimData[];
 
-short ERAnim::GetReadVersion() const {
-    return *(short*)(gERAnimData + 0);
+unsigned short ERAnim::GetReadVersion() const {
+    return gERAnimData[1];
 }

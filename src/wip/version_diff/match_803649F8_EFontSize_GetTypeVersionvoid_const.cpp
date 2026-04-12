@@ -1,11 +1,11 @@
 // 0x803649F8 (12 bytes)
 class EFontSize {
 public:
-    short GetTypeVersion() const;
+    unsigned short GetTypeVersion() const;
 };
 
-extern char gEFontSizeData[];
+extern unsigned short gEFontSizeData[];
 
-short EFontSize::GetTypeVersion() const {
-    return *(short*)(gEFontSizeData + 0);
+unsigned short EFontSize::GetTypeVersion() const {
+    return gEFontSizeData[0];
 }

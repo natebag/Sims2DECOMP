@@ -1,11 +1,11 @@
 // 0x80369870 (12 bytes)
 class ERDataset {
 public:
-    short GetReadVersion() const;
+    unsigned short GetReadVersion() const;
 };
 
-extern char gERDatasetData[];
+extern unsigned short gERDatasetData[];
 
-short ERDataset::GetReadVersion() const {
-    return *(short*)(gERDatasetData + 0);
+unsigned short ERDataset::GetReadVersion() const {
+    return gERDatasetData[1];
 }

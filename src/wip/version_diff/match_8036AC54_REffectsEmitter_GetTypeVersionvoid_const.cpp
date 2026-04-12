@@ -1,11 +1,11 @@
 // 0x8036AC54 (12 bytes)
 class REffectsEmitter {
 public:
-    short GetTypeVersion() const;
+    unsigned short GetTypeVersion() const;
 };
 
-extern char gREffectsEmitterData[];
+extern unsigned short gREffectsEmitterData[];
 
-short REffectsEmitter::GetTypeVersion() const {
-    return *(short*)(gREffectsEmitterData + 0);
+unsigned short REffectsEmitter::GetTypeVersion() const {
+    return gREffectsEmitterData[0];
 }

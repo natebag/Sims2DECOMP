@@ -1,12 +1,11 @@
-/* ERCharacter::GetReadVersion(void) - 0x80368C80 (12 bytes) */
-// TU: e_rcharacter
-
-extern unsigned int ERCharacter_readVersion;
-
-struct ERCharacter {
-    static unsigned int GetReadVersion();
+// 0x80368C80 (12 bytes)
+class ERCharacter {
+public:
+    unsigned short GetReadVersion() const;
 };
 
-unsigned int ERCharacter::GetReadVersion() {
-    return ERCharacter_readVersion;
+extern unsigned short ERCharacter_readVersion[];
+
+unsigned short ERCharacter::GetReadVersion() const {
+    return ERCharacter_readVersion[0];
 }

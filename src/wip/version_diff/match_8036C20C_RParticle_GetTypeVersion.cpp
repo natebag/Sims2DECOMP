@@ -1,12 +1,11 @@
-/* RParticle::GetTypeVersion(void) const - 0x8036C20C (12 bytes) */
-// TU: rparticle
-
-extern unsigned int RParticle_typeInfo_version;
-
-struct RParticle {
-    unsigned int GetTypeVersion() const;
+// 0x8036C20C (12 bytes)
+class RParticle {
+public:
+    unsigned short GetTypeVersion() const;
 };
 
-unsigned int RParticle::GetTypeVersion() const {
-    return RParticle_typeInfo_version;
+extern unsigned short RParticle_typeInfo_version[];
+
+unsigned short RParticle::GetTypeVersion() const {
+    return RParticle_typeInfo_version[0];
 }

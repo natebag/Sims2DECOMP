@@ -1,12 +1,11 @@
-/* ERBinary::GetReadVersion(void) - 0x8036858C (12 bytes) */
-// TU: e_rbinary
-
-extern unsigned int ERBinary_readVersion;
-
-struct ERBinary {
-    static unsigned int GetReadVersion();
+// 0x8036858C (12 bytes)
+class ERBinary {
+public:
+    unsigned short GetReadVersion() const;
 };
 
-unsigned int ERBinary::GetReadVersion() {
-    return ERBinary_readVersion;
+extern unsigned short ERBinary_readVersion[];
+
+unsigned short ERBinary::GetReadVersion() const {
+    return ERBinary_readVersion[0];
 }

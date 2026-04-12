@@ -1,7 +1,11 @@
-// EStorable::GetTypeVersion - 0x803C1444 (12 bytes)
-// TU: e_instance
+// 0x803C1444 (12 bytes)
+class EStorable {
+public:
+    unsigned short GetTypeVersion() const;
+};
 
-unsigned int EStorable_GetTypeVersion(void* self) {
-    extern unsigned int EStorable_s_typeInfo_version;
-    return EStorable_s_typeInfo_version;
+extern unsigned short EStorable_s_typeInfo_version[];
+
+unsigned short EStorable::GetTypeVersion() const {
+    return EStorable_s_typeInfo_version[0];
 }

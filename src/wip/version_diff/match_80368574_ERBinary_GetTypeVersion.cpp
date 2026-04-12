@@ -1,12 +1,11 @@
-/* ERBinary::GetTypeVersion(void) const - 0x80368574 (12 bytes) */
-// TU: e_rbinary
-
-extern unsigned int ERBinary_typeInfo_version;
-
-struct ERBinary {
-    unsigned int GetTypeVersion() const;
+// 0x80368574 (12 bytes)
+class ERBinary {
+public:
+    unsigned short GetTypeVersion() const;
 };
 
-unsigned int ERBinary::GetTypeVersion() const {
-    return ERBinary_typeInfo_version;
+extern unsigned short ERBinary_typeInfo_version[];
+
+unsigned short ERBinary::GetTypeVersion() const {
+    return ERBinary_typeInfo_version[0];
 }

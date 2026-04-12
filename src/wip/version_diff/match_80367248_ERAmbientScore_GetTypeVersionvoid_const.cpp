@@ -1,11 +1,11 @@
 // 0x80367248 (12 bytes)
 class ERAmbientScore {
 public:
-    short GetTypeVersion() const;
+    unsigned short GetTypeVersion() const;
 };
 
-extern char gERAmbientScoreData[];
+extern unsigned short gERAmbientScoreData[];
 
-short ERAmbientScore::GetTypeVersion() const {
-    return *(short*)(gERAmbientScoreData + 0);
+unsigned short ERAmbientScore::GetTypeVersion() const {
+    return gERAmbientScoreData[0];
 }

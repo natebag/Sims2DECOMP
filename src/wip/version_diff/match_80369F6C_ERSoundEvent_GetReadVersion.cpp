@@ -1,12 +1,11 @@
-/* ERSoundEvent::GetReadVersion(void) - 0x80369F6C (12 bytes) */
-// TU: e_rsoundevent
-
-extern unsigned int ERSoundEvent_readVersion;
-
-struct ERSoundEvent {
-    static unsigned int GetReadVersion();
+// 0x80369F6C (12 bytes)
+class ERSoundEvent {
+public:
+    unsigned short GetReadVersion() const;
 };
 
-unsigned int ERSoundEvent::GetReadVersion() {
-    return ERSoundEvent_readVersion;
+extern unsigned short ERSoundEvent_readVersion[];
+
+unsigned short ERSoundEvent::GetReadVersion() const {
+    return ERSoundEvent_readVersion[0];
 }

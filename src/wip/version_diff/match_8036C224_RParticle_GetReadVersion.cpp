@@ -1,12 +1,11 @@
-/* RParticle::GetReadVersion(void) - 0x8036C224 (12 bytes) */
-// TU: rparticle
-
-extern unsigned int RParticle_readVersion;
-
-struct RParticle {
-    static unsigned int GetReadVersion();
+// 0x8036C224 (12 bytes)
+class RParticle {
+public:
+    unsigned short GetReadVersion() const;
 };
 
-unsigned int RParticle::GetReadVersion() {
-    return RParticle_readVersion;
+extern unsigned short RParticle_readVersion[];
+
+unsigned short RParticle::GetReadVersion() const {
+    return RParticle_readVersion[0];
 }

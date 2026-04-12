@@ -1,11 +1,11 @@
 // 0x803C9824 (12 bytes)
 class EAnimNodeDataPos {
 public:
-    short GetTypeVersion() const;
+    unsigned short GetTypeVersion() const;
 };
 
-extern char gEAnimNodeDataPosData[];
+extern unsigned short gEAnimNodeDataPosData[];
 
-short EAnimNodeDataPos::GetTypeVersion() const {
-    return *(short*)(gEAnimNodeDataPosData + 0);
+unsigned short EAnimNodeDataPos::GetTypeVersion() const {
+    return gEAnimNodeDataPosData[0];
 }
