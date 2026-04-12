@@ -1,0 +1,10 @@
+// 0x801752CC CasTweakTool_CasTweakTool_dtor52 (52b)
+// FLAGS: -fno-schedule-insns
+extern int VT[];
+void del_fn(void *);
+void d_CasTweakTool_CasTweakTool(char *self, int __in_chrg) {
+    *(int **)(self + 272) = VT;
+    if (__in_chrg & 1) {
+        del_fn(self);
+    }
+}
