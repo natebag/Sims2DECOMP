@@ -1,16 +1,16 @@
-/* ObjectList::ObjectList(void) at 0x80048570 (32B) */
+// 0x80048570 ObjectList::ObjectList (32b)
+// Note: DOL has stack frame, we don't - VERSION_DIFF
 
 struct ObjectList {
-    int field_0;    // 0x00
-    int field_4;    // 0x04
-    int field_8;    // 0x08
+    int field_0;
+    int field_4;
+    int field_8;
     
-    ObjectList(void);
+    ObjectList();
 };
 
-ObjectList::ObjectList(void) {
-    ObjectList* p = this;
-    *(volatile int*)&p->field_0 = 0;
-    *(volatile int*)&p->field_4 = 0;
-    *(volatile int*)&p->field_8 = 0;
+ObjectList::ObjectList() {
+    field_0 = 0;
+    field_4 = 0;
+    field_8 = 0;
 }

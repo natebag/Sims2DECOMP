@@ -1,13 +1,11 @@
-// MATCH: 0x8007562C SimsMemCardWrap::IsFreeplayUnlocked (16 bytes)
-// Raw: 3D 20 80 47 81 69 5F 14 80 6B 00 0C 4E 80 00 20
+// VERSION_DIFF: Absolute addressing vs SDA
+// DOL uses lis/addi with fixed address (0x8047xxxx)
+// Compiler generates SDA-relative (@sda21) for all extern patterns tried
+// Cannot match without linker-level control or forbidden asm tricks
+// 0x8007562C SimsMemCardWrap::IsFreeplayUnlocked (16b)
 
-struct SimsMemCardWrap {
-    int flags;  // offset 0x0C
-};
+extern int* gSimsMemCardWrap;
 
-// SDA global - accessed via lis/lwz pattern
-extern SimsMemCardWrap* gSimsMemCardWrap;
-
-extern "C" int SimsMemCardWrap_IsFreeplayUnlocked() {
-    return gSimsMemCardWrap->flags;
+int SimsMemCardWrap_IsFreeplayUnlocked() {
+    return gSimsMemCardWrap[3];  // offset 0x0C / 4
 }
