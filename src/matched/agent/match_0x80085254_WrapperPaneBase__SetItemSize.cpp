@@ -1,17 +1,13 @@
-// FLAGS: -fno-elide-constructors
-void *WPB_GetItem(void *, int, int);
-
-struct VtSlot_SetItemSize { char pad[0x68]; short m_delta; char _p[2]; void (*m_fn)(void *, void *); };
-struct ItemSub_SetItemSize { char pad[0x1C]; VtSlot_SetItemSize *m_vt; };
-
-struct WPB_SetItemSize {
-    void SetItemSize(int type, int idx, void *vec);
-};
-
-void WPB_SetItemSize::SetItemSize(int type, int idx, void *vec) {
-    ItemSub_SetItemSize *item = (ItemSub_SetItemSize *)WPB_GetItem(this, type, idx);
-    VtSlot_SetItemSize *vt = item->m_vt;
-    short delta = vt->m_delta;
-    void (*fn)(void *, void *) = vt->m_fn;
-    fn((char *)item + delta, vec);
+// 0x80085254 WrapperPaneBase::SetItemSize(ItemType, int, EVec2&) (72B)
+// FLAGS: -fno-schedule-insns
+struct WrapperItem; void* WrapperPaneBase_GetItem(void* self, int type, int index);
+struct VT { char pad[0x68]; short adj; short p; void (*fn)(void*, void*); };
+struct WI { char pad[0x1C]; VT* vt; };
+struct WrapperPaneBase { void SetItemSize(int type, int index, void* pos); };
+void WrapperPaneBase::SetItemSize(int type, int index, void* pos) {
+    WI* item = (WI*)WrapperPaneBase_GetItem(this, type, index);
+    VT* vt = item->vt;
+    short adj = vt->adj;
+    void (*fn)(void*, void*) = vt->fn;
+    fn((char*)item + adj, pos);
 }

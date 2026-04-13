@@ -1,17 +1,20 @@
-// FLAGS: -fno-elide-constructors
-void *WPB_GetItem(void *, int, int);
+// FLAGS: -fno-schedule-insns
+// 0x8008517C WrapperPaneBase::SetItemPos(ItemType, int, EVec2&) (72B)
 
-struct VtSlot_SetItemPos { char pad[0x38]; short m_delta; char _p[2]; void (*m_fn)(void *, void *); };
-struct ItemSub_SetItemPos { char pad[0x1C]; VtSlot_SetItemPos *m_vt; };
+struct WrapperItem;
+void* WrapperPaneBase_GetItem(void* self, int type, int index);
 
-struct WPB_SetItemPos {
-    void SetItemPos(int type, int idx, void *vec);
+struct VT { char pad[0x38]; short adj; short p; void (*fn)(void*, void*); };
+struct WI { char pad[0x1C]; VT* vt; };
+
+struct WrapperPaneBase {
+    void SetItemPos(int type, int index, void* pos);
 };
 
-void WPB_SetItemPos::SetItemPos(int type, int idx, void *vec) {
-    ItemSub_SetItemPos *item = (ItemSub_SetItemPos *)WPB_GetItem(this, type, idx);
-    VtSlot_SetItemPos *vt = item->m_vt;
-    short delta = vt->m_delta;
-    void (*fn)(void *, void *) = vt->m_fn;
-    fn((char *)item + delta, vec);
+void WrapperPaneBase::SetItemPos(int type, int index, void* pos) {
+    WI* item = (WI*)WrapperPaneBase_GetItem(this, type, index);
+    VT* vt = item->vt;
+    short adj = vt->adj;
+    void (*fn)(void*, void*) = vt->fn;
+    fn((char*)item + adj, pos);
 }
