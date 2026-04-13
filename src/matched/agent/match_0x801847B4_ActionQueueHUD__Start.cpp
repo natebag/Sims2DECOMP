@@ -1,15 +1,17 @@
-// 0x801847B4 ActionQueueHUD::Start (16b)
+// 0x801847B4 ActionQueueHUD::Start(HUDTarget*) (16B)
 // FLAGS: -fno-schedule-insns
-typedef unsigned int uint;
-typedef unsigned char uchar;
+class HUDTarget;
 
-struct HUDTarget;
-struct ActionQueueHUD {
-    char _pad[0x318];
-    uchar m_active;
+class ActionQueueHUD {
+public:
+    HUDTarget* m_hudTarget;
+    char _pad[0x314];
+    unsigned char m_started;
+
+    void Start(HUDTarget* target);
 };
 
-void ActionQueueHUD__Start(ActionQueueHUD *self, HUDTarget *target) {
-    *(HUDTarget **)self = target;
-    self->m_active = 1;
+void ActionQueueHUD::Start(HUDTarget* target) {
+    m_started = 1;
+    m_hudTarget = target;
 }

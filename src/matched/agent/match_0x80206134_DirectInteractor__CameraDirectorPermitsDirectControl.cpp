@@ -1,5 +1,5 @@
+// 0x80206134 DirectInteractor::CameraDirectorPermitsDirectControl (76B)
 // FLAGS: -fno-schedule-insns
-// 0x80206134 DirectInteractor__CameraDirectorPermitsDirectControl (76B)
 int IsCameraDirectorInControl(int);
 
 struct DI_CDPDC {
@@ -10,8 +10,9 @@ struct DI_CDPDC {
 };
 
 int DI_CDPDC::CameraDirectorPermitsDirectControl(void) {
+    int cd = m_cameraDirector;
     int result = 1;
-    if (m_cameraDirector == 0) {
+    if (cd == 0) {
         result = 0;
     } else if (IsCameraDirectorInControl(m_interactorIndex) != 0) {
         result = 0;
