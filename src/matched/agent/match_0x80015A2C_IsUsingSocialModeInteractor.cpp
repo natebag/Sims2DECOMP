@@ -1,5 +1,7 @@
-int IsUsingSpecifiedInteractor(int player, int type);
+// 0x80015A2C IsUsingSocialModeInteractor (36B)
 
-int IsUsingSocialModeInteractor(int player) {
-    return IsUsingSpecifiedInteractor(player, 7);
+int IsUsingSpecifiedInteractor(int, int);
+
+int IsUsingSocialModeInteractor(int playerIndex) {
+    return IsUsingSpecifiedInteractor(playerIndex, 7);
 }
