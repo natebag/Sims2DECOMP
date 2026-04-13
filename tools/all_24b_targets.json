@@ -1,0 +1,263 @@
+{
+  "total_24b_in_map": 117,
+  "matched_count": 6185,
+  "unmatched_count": 50,
+  "groups": {
+    "InteractorModule": [
+      {
+        "addr": "0x80204f0c",
+        "symbol": "InteractorModule::DirectInteractor::StartCancelTimer(void)"
+      },
+      {
+        "addr": "0x80204f24",
+        "symbol": "InteractorModule::DirectInteractor::ClearCancelTimer(void)"
+      },
+      {
+        "addr": "0x8021e890",
+        "symbol": "InteractorModule::SimInteractor::ResetSnapTimer(void)"
+      },
+      {
+        "addr": "0x80223f70",
+        "symbol": "InteractorModule::WallManipulator::IsAnchored(void)"
+      },
+      {
+        "addr": "0x80224048",
+        "symbol": "InteractorModule::WallManipulator::GetAffectedWallHeight(void)"
+      },
+      {
+        "addr": "0x80226948",
+        "symbol": "InteractorModule::WallPainter::IsAnchored(void)"
+      }
+    ],
+    "CUnlockDisplay": [
+      {
+        "addr": "0x80077fa8",
+        "symbol": "CUnlockDisplay::SetDisplayBoxLeft(float)"
+      },
+      {
+        "addr": "0x80077fc0",
+        "symbol": "CUnlockDisplay::SetDisplayBoxTop(float)"
+      },
+      {
+        "addr": "0x80077fd8",
+        "symbol": "CUnlockDisplay::SetDisplayBoxRight(float)"
+      },
+      {
+        "addr": "0x80077ff0",
+        "symbol": "CUnlockDisplay::SetDisplayBoxBottom(float)"
+      }
+    ],
+    "EyeToyClient": [
+      {
+        "addr": "0x8003919c",
+        "symbol": "EyeToyClient::GetRepShaderGUID(int)"
+      },
+      {
+        "addr": "0x8003932c",
+        "symbol": "EyeToyClient::GetSaturation(void)"
+      },
+      {
+        "addr": "0x80039434",
+        "symbol": "EyeToyClient::GetBrightness(void)"
+      },
+      {
+        "addr": "0x80039480",
+        "symbol": "EyeToyClient::Debug::GetTierRepShaderCount(int)"
+      }
+    ],
+    "EInstance": [
+      {
+        "addr": "0x80229690",
+        "symbol": "EInstance::GetVelocity(EVec3 &)"
+      },
+      {
+        "addr": "0x802296a8",
+        "symbol": "EInstance::GetPos(EVec3 &)"
+      },
+      {
+        "addr": "0x80229704",
+        "symbol": "EInstance::IsShadow(void)"
+      }
+    ],
+    "RoutingSlot": [
+      {
+        "addr": "0x801454ec",
+        "symbol": "RoutingSlot::IsAnyRotationAllowed(void) const"
+      },
+      {
+        "addr": "0x80145548",
+        "symbol": "RoutingSlot::GetIgnoreRooms(void) const"
+      },
+      {
+        "addr": "0x801455c0",
+        "symbol": "RoutingSlot::SnapsToDirection(void) const"
+      }
+    ],
+    "TileWalls": [
+      {
+        "addr": "0x80146998",
+        "symbol": "TileWalls::HasWall(TileWallsSegment) const"
+      },
+      {
+        "addr": "0x801469b0",
+        "symbol": "TileWalls::HasWall(void) const"
+      },
+      {
+        "addr": "0x80146a9c",
+        "symbol": "TileWalls::HasDiagonal(void) const"
+      }
+    ],
+    "EGlobal": [
+      {
+        "addr": "0x8003f9fc",
+        "symbol": "EGlobal::GetWin(void)"
+      },
+      {
+        "addr": "0x80042320",
+        "symbol": "EGlobal::InLevelState(void)"
+      }
+    ],
+    "HUDTarget": [
+      {
+        "addr": "0x80189a60",
+        "symbol": "HUDTarget::GetHUDMode(void) const"
+      },
+      {
+        "addr": "0x80189ab0",
+        "symbol": "HUDTarget::IsPlayerHUDVisible(int) const"
+      }
+    ],
+    "ObjectModuleImpl": [
+      {
+        "addr": "0x800f8c54",
+        "symbol": "ObjectModuleImpl::GetTutorialObject(void)"
+      },
+      {
+        "addr": "0x800f95d8",
+        "symbol": "ObjectModuleImpl::GetIdleStatus(int)"
+      }
+    ],
+    "SpriteSlot": [
+      {
+        "addr": "0x801430bc",
+        "symbol": "SpriteSlot::AlternateWithSprite(int, int)"
+      },
+      {
+        "addr": "0x801453b4",
+        "symbol": "SpriteSlot::IsActive(void) const"
+      }
+    ],
+    "cXObjectImpl": [
+      {
+        "addr": "0x800eaa68",
+        "symbol": "cXObjectImpl::GetMiscFlag(cXObject::MiscFlag)"
+      },
+      {
+        "addr": "0x800eb218",
+        "symbol": "cXObjectImpl::CountObjectSlots(void)"
+      }
+    ],
+    "ActionMenu": [
+      {
+        "addr": "0x80183120",
+        "symbol": "ActionMenu::MenuItem::GetNthItem(int)"
+      }
+    ],
+    "BitArray64": [
+      {
+        "addr": "0x8009b768",
+        "symbol": "BitArray64::operator=(BitArray64 &)"
+      }
+    ],
+    "CDirtyXmlNode": [
+      {
+        "addr": "0x8023aa94",
+        "symbol": "CDirtyXmlNode::hasChildNodes(void)"
+      }
+    ],
+    "ChangeHouseLoadHouse": [
+      {
+        "addr": "0x8009018c",
+        "symbol": "ChangeHouseLoadHouse::DatasetPendingAddRefAsync(void)"
+      }
+    ],
+    "ELiveMode": [
+      {
+        "addr": "0x80090070",
+        "symbol": "ELiveMode::IsRunningIntroCamera(void)"
+      }
+    ],
+    "ERLevel": [
+      {
+        "addr": "0x802331f8",
+        "symbol": "ERLevel::IsInstanceListKindaFull(void)"
+      }
+    ],
+    "EResourceManager": [
+      {
+        "addr": "0x803c6f88",
+        "symbol": "EResourceManager::ResourceIndexRecord::CheckPos(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)"
+      }
+    ],
+    "FadeSquare": [
+      {
+        "addr": "0x8021cef0",
+        "symbol": "FadeSquare::StopDraw(void)"
+      }
+    ],
+    "InteractionHelper": [
+      {
+        "addr": "0x80190df4",
+        "symbol": "InteractionHelper::GetNext(IHRecord *)"
+      }
+    ],
+    "LiveModeInitState": [
+      {
+        "addr": "0x8008ff18",
+        "symbol": "LiveModeInitState::DatasetPendingAddRefAsync(void)"
+      }
+    ],
+    "LoadingScreenStateMachine": [
+      {
+        "addr": "0x80090bb8",
+        "symbol": "LoadingScreenStateMachine::IsReadyToLoad(void)"
+      }
+    ],
+    "M2MTarget": [
+      {
+        "addr": "0x801c1144",
+        "symbol": "M2MTarget::GetMemCardPort(void)"
+      }
+    ],
+    "MUStatesSaveNewGame": [
+      {
+        "addr": "0x800922dc",
+        "symbol": "MUStatesSaveNewGame::Reset(void)"
+      }
+    ],
+    "ObjDefinition": [
+      {
+        "addr": "0x800d9430",
+        "symbol": "ObjDefinition::GetMultiTileOffsets(int *, int *) const"
+      }
+    ],
+    "R2LTarget": [
+      {
+        "addr": "0x801dcde8",
+        "symbol": "R2LTarget::ScrollLeftEnabled(void)"
+      }
+    ],
+    "UIHDTV": [
+      {
+        "addr": "0x8017bf2c",
+        "symbol": "UIHDTV::IsFoundNumberNegative(char *, int)"
+      }
+    ],
+    "XRoute": [
+      {
+        "addr": "0x80152f5c",
+        "symbol": "XRoute::HasCurrentGoal(void)"
+      }
+    ]
+  }
+}

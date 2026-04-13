@@ -1,6 +1,5 @@
-// MATCH: 0x80089A14 EGameStateMan::EGameStateMan (40 bytes)
-// Store order: offset 8, offset 4, offset 12, offset 0, offset 16
-// Values: 0, 0, 1, 0, 0
+// FLAGS: -fno-schedule-insns -fno-elide-constructors
+// 0x80089A14 EGameStateMan::EGameStateMan (40B)
 
 struct EGameStateMan {
     int field_0;
@@ -8,14 +7,16 @@ struct EGameStateMan {
     int field_8;
     int field_c;
     int field_10;
+
+    EGameStateMan();
 };
 
-extern "C" void EGameStateMan_ctor(EGameStateMan* this_) {
-    // Need exact store order to match
-    int* base = (int*)this_;
-    base[2] = 0;   // offset 8
-    base[1] = 0;   // offset 4
-    base[3] = 1;   // offset 12 (0xc)
-    base[0] = 0;   // offset 0
-    base[4] = 0;   // offset 16
+EGameStateMan::EGameStateMan() {
+    int* p = (int*)this;
+    int* q = p + 1;
+    q[1] = 0;
+    q[0] = 0;
+    q[2] = 1;
+    p[0] = 0;
+    p[4] = 0;
 }

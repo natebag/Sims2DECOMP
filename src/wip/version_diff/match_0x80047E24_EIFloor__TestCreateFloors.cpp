@@ -3,6 +3,7 @@ extern int TestCreateFloors_impl(EIFloor* self);
 
 int EIFloor__TestCreateFloors(EIFloor* self) {
     int result = TestCreateFloors_impl(self);
-    if (result) return 1;
-    return 0;
+    int r = 0;
+    if (result) r = 1;
+    return r;
 }
