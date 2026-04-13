@@ -42,7 +42,7 @@ DEVKIT_LD  = f"{DEVKITPPC}/bin/powerpc-eabi-ld.exe"
 DEVKIT_NM  = f"{DEVKITPPC}/bin/powerpc-eabi-nm.exe"
 CXXFILT    = f"{DEVKITPPC}/bin/powerpc-eabi-c++filt.exe"
 OBJDUMP    = f"{DEVKITPPC}/bin/powerpc-eabi-objdump.exe"
-MATCH_DIRS = ["src/matched/agent", "src/matched/trivial"]
+MATCH_DIRS = ["src/matched/agent", "src/matched/trivial"] + [os.path.join("src/matched", d) for d in os.listdir("src/matched") if os.path.isdir(os.path.join("src/matched", d))]
 BUILD_DIR  = "build/tu_match"
 
 # SN compiler flags — -msdata=eabi + -G 8 are the SDA fix

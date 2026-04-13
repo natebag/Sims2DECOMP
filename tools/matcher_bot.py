@@ -459,6 +459,567 @@ def build_text_variants(lines: list[str]) -> list[tuple[str, list[str]]]:
     return out
 
 
+# ---------- Phase A3 permuter mutators (M13-M20) ----------
+#
+# These are stochastic mutators for the hill-climbing permuter mode.
+# Each takes source lines and returns a SINGLE mutated variant (random site).
+# Unlike M10-M12 which enumerate all variants upfront, these pick one random
+# applicable site per invocation — the search loop calls them repeatedly.
+
+import random
+
+# Regex for local variable type keywords we can swap
+_LOCAL_TYPE_RE = re.compile(
+    r"^(?P<indent>[ \t]+)"
+    r"(?P<qual>(?:const\s+)?(?:static\s+)?)"
+    r"(?P<type>(?:unsigned\s+|signed\s+)?(?:int|short|char|long))"
+    r"(?P<rest>\s+[A-Za-z_][A-Za-z0-9_]*(?:\s*=\s*[^;{}]*)?\s*;\s*)$"
+)
+
+_TYPE_SWAPS = {
+    "int": ["short", "unsigned int", "long"],
+    "short": ["int", "unsigned short", "char"],
+    "char": ["int", "short", "unsigned char"],
+    "long": ["int", "unsigned long"],
+    "unsigned int": ["int", "unsigned short", "unsigned long"],
+    "unsigned short": ["short", "unsigned int", "int"],
+    "unsigned char": ["char", "unsigned int", "int"],
+    "unsigned long": ["long", "unsigned int"],
+    "signed int": ["int", "unsigned int", "short"],
+    "signed short": ["short", "unsigned short"],
+    "signed char": ["char", "unsigned char"],
+}
+
+
+def m13_type_width_swap(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Swap the type of a random local variable (int↔short↔char↔unsigned)."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        m = _LOCAL_TYPE_RE.match(raw)
+        if m and _decl_block_is_in_function_body(lines, i):
+            candidates.append((i, m))
+    if not candidates:
+        return None
+    idx, m = random.choice(candidates)
+    old_type = m.group("type")
+    # Normalize for lookup
+    normalized = old_type.strip()
+    swaps = _TYPE_SWAPS.get(normalized)
+    if not swaps:
+        return None
+    new_type = random.choice(swaps)
+    new_line = f"{m.group('indent')}{m.group('qual')}{new_type}{m.group('rest')}"
+    if not new_line.endswith("\n"):
+        new_line += "\n"
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T13_type_{normalized}_to_{new_type.replace(' ', '_')}@{idx}", out)
+
+
+# Regex for expressions we can wrap in a cast
+_EXPR_IN_ASSIGN_RE = re.compile(
+    r"^(?P<indent>[ \t]+)(?P<lhs>[^=;{}]+?)\s*=\s*(?P<rhs>[^;{}]+?)\s*;\s*$"
+)
+_CAST_TYPES = ["(int)", "(short)", "(unsigned int)", "(unsigned short)", "(char)", "(unsigned char)"]
+
+
+def m14_cast_insertion(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Wrap the RHS of a random assignment in a type cast."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        m = _EXPR_IN_ASSIGN_RE.match(raw)
+        if m and not raw.lstrip().startswith("//") and not DECL_RE.match(raw):
+            # Skip if RHS already starts with a cast
+            rhs = m.group("rhs").strip()
+            if not rhs.startswith("("):
+                candidates.append((i, m))
+    if not candidates:
+        return None
+    idx, m = random.choice(candidates)
+    cast = random.choice(_CAST_TYPES)
+    rhs = m.group("rhs").strip()
+    new_line = f"{m.group('indent')}{m.group('lhs')} = {cast}({rhs});\n"
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T14_cast_{cast[1:-1].replace(' ', '_')}@{idx}", out)
+
+
+# Comparison operators we can invert
+_CMP_PATTERNS = [
+    (re.compile(r"(\S+)\s*>=\s*(\S+)"), r"!(\1 < \2)", "ge_to_notlt"),
+    (re.compile(r"(\S+)\s*<=\s*(\S+)"), r"!(\1 > \2)", "le_to_notgt"),
+    (re.compile(r"(\S+)\s*>\s*(\S+)"),  r"!(\1 <= \2)", "gt_to_notle"),
+    (re.compile(r"(\S+)\s*<\s*(\S+)"),  r"!(\1 >= \2)", "lt_to_notge"),
+    (re.compile(r"(\S+)\s*==\s*0\b"),   r"!\1", "eq0_to_not"),
+    (re.compile(r"(\S+)\s*!=\s*0\b"),   r"!!\1", "ne0_to_notnot"),
+]
+
+
+def m15_comparison_inversion(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Invert a comparison: x >= y → !(x < y), x == 0 → !x, etc."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        stripped = raw.lstrip()
+        if stripped.startswith("//") or stripped.startswith("/*"):
+            continue
+        for pat, repl, label in _CMP_PATTERNS:
+            if pat.search(raw):
+                candidates.append((i, pat, repl, label))
+    if not candidates:
+        return None
+    idx, pat, repl, label = random.choice(candidates)
+    new_line = pat.sub(repl, lines[idx], count=1)
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T15_cmp_{label}@{idx}", out)
+
+
+# Match simple early-return patterns: if (cond) return val; return default;
+_EARLY_RETURN_RE = re.compile(
+    r"^(?P<indent>[ \t]+)if\s*\((?P<cond>[^)]+)\)\s*return\s+(?P<val>[^;]+);\s*$"
+)
+_DEFAULT_RETURN_RE = re.compile(
+    r"^(?P<indent>[ \t]+)return\s+(?P<default>[^;]+);\s*$"
+)
+
+
+def m16_preset_return(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Transform `if(c) return v; return 0;` → `r=0; if(c) r=v; return r;`"""
+    candidates = []
+    for i in range(len(lines) - 1):
+        m_if = _EARLY_RETURN_RE.match(lines[i])
+        m_ret = _DEFAULT_RETURN_RE.match(lines[i + 1])
+        if m_if and m_ret:
+            candidates.append((i, m_if, m_ret))
+    if not candidates:
+        return None
+    idx, m_if, m_ret = random.choice(candidates)
+    indent = m_if.group("indent")
+    cond = m_if.group("cond")
+    val = m_if.group("val")
+    default = m_ret.group("default")
+    # Generate pre-set pattern
+    var_name = "_preset_r"
+    new_lines = [
+        f"{indent}int {var_name} = {default};\n",
+        f"{indent}if ({cond}) {var_name} = {val};\n",
+        f"{indent}return {var_name};\n",
+    ]
+    out = list(lines)
+    out[idx:idx + 2] = new_lines
+    return (f"T16_preset_return@{idx}", out)
+
+
+# Commutative operators
+_COMMUTATIVE_RE = re.compile(
+    r"(?P<a>[A-Za-z_][A-Za-z0-9_>.*\[\]]*)"
+    r"\s*(?P<op>[+|&^*])\s*"
+    r"(?P<b>[A-Za-z_][A-Za-z0-9_>.*\[\]]*)"
+)
+
+
+def m17_operand_swap(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Swap operands of a commutative binary op: a + b → b + a."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        stripped = raw.lstrip()
+        if stripped.startswith("//") or stripped.startswith("/*"):
+            continue
+        # Find commutative ops in assignments
+        matches = list(_COMMUTATIVE_RE.finditer(raw))
+        for m in matches:
+            if m.group("a").strip() != m.group("b").strip():
+                candidates.append((i, m))
+    if not candidates:
+        return None
+    idx, m = random.choice(candidates)
+    old = m.group(0)
+    swapped = f"{m.group('b')} {m.group('op')} {m.group('a')}"
+    new_line = lines[idx][:m.start()] + swapped + lines[idx][m.end():]
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T17_commute_{m.group('op')}@{idx}", out)
+
+
+# Expression split: a = b + c; → a = b; a += c;
+_SPLIT_ASSIGN_RE = re.compile(
+    r"^(?P<indent>[ \t]+)(?P<lhs>[A-Za-z_][A-Za-z0-9_>.*\[\]]*)"
+    r"\s*=\s*"
+    r"(?P<first>[A-Za-z_][A-Za-z0-9_>.*\[\]]*)"
+    r"\s*(?P<op>[+\-|&^])\s*"
+    r"(?P<second>[A-Za-z_][A-Za-z0-9_>.*\[\]]*)"
+    r"\s*;\s*$"
+)
+
+
+def m18_expression_split(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Split `a = b + c;` into `a = b; a += c;`."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        m = _SPLIT_ASSIGN_RE.match(raw)
+        if m and not raw.lstrip().startswith("//"):
+            candidates.append((i, m))
+    if not candidates:
+        return None
+    idx, m = random.choice(candidates)
+    indent = m.group("indent")
+    lhs = m.group("lhs")
+    first = m.group("first")
+    op = m.group("op")
+    second = m.group("second")
+    new_lines = [
+        f"{indent}{lhs} = {first};\n",
+        f"{indent}{lhs} {op}= {second};\n",
+    ]
+    out = list(lines)
+    out[idx:idx + 1] = new_lines
+    return (f"T18_split_{op}@{idx}", out)
+
+
+# Negate condition: if(x) → if(!(!x)), DeMorgan on && / ||
+_IF_COND_RE = re.compile(r"^(?P<pre>[ \t]+if\s*\()(?P<cond>[^)]+)(?P<post>\).*)$")
+
+
+def m19_negate_condition(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Double-negate a condition or apply DeMorgan."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        m = _IF_COND_RE.match(raw)
+        if m:
+            candidates.append((i, m))
+    if not candidates:
+        return None
+    idx, m = random.choice(candidates)
+    cond = m.group("cond").strip()
+    # Try DeMorgan if && or || present
+    if "&&" in cond:
+        # !(a && b) → (!a || !b) — but we want equivalent, so double negate
+        new_cond = f"!(!({cond}))"
+        label = "double_negate"
+    elif "||" in cond:
+        new_cond = f"!(!({cond}))"
+        label = "double_negate"
+    elif cond.startswith("!"):
+        # Remove double negation if present
+        inner = cond[1:].strip()
+        if inner.startswith("(") and inner.endswith(")"):
+            inner = inner[1:-1]
+        new_cond = inner
+        label = "remove_negate"
+    else:
+        new_cond = f"!(!({cond}))"
+        label = "double_negate"
+    new_line = f"{m.group('pre')}{new_cond}{m.group('post')}"
+    if not new_line.endswith("\n"):
+        new_line += "\n"
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T19_{label}@{idx}", out)
+
+
+# Struct deref swap: a.field → (&a)->field and vice versa
+_DOT_ACCESS_RE = re.compile(r"([A-Za-z_][A-Za-z0-9_]*)\s*\.\s*([A-Za-z_][A-Za-z0-9_]*)")
+_ARROW_ACCESS_RE = re.compile(r"([A-Za-z_][A-Za-z0-9_]*)\s*->\s*([A-Za-z_][A-Za-z0-9_]*)")
+
+
+def m20_struct_deref_swap(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Swap a.field → (&a)->field or p->field → (*p).field."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        stripped = raw.lstrip()
+        if stripped.startswith("//") or stripped.startswith("/*"):
+            continue
+        for m in _DOT_ACCESS_RE.finditer(raw):
+            candidates.append((i, m, "dot_to_arrow"))
+        for m in _ARROW_ACCESS_RE.finditer(raw):
+            candidates.append((i, m, "arrow_to_dot"))
+    if not candidates:
+        return None
+    idx, m, direction = random.choice(candidates)
+    old = m.group(0)
+    if direction == "dot_to_arrow":
+        new = f"(&{m.group(1)})->{m.group(2)}"
+    else:
+        new = f"(*{m.group(1)}).{m.group(2)}"
+    new_line = lines[idx][:m.start()] + new + lines[idx][m.end():]
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T20_{direction}@{idx}", out)
+
+
+# All stochastic mutators for the permuter
+PERMUTER_MUTATORS = [
+    m13_type_width_swap,
+    m14_cast_insertion,
+    m15_comparison_inversion,
+    m16_preset_return,
+    m17_operand_swap,
+    m18_expression_split,
+    m19_negate_condition,
+    m20_struct_deref_swap,
+]
+
+
+# ---------- Hill-climbing permuter search ----------
+
+def pick_random_mutation(
+    lines: list[str],
+) -> Optional[tuple[str, list[str]]]:
+    """Pick a random mutator, apply it to a random site. Returns (label, mutated_lines)
+    or None if no mutator found an applicable site."""
+    # Shuffle mutators to avoid bias
+    order = list(range(len(PERMUTER_MUTATORS)))
+    random.shuffle(order)
+    for idx in order:
+        result = PERMUTER_MUTATORS[idx](lines)
+        if result is not None:
+            return result
+    return None
+
+
+def run_permuter(
+    source_lines: list[str],
+    addr: int,
+    size: int,
+    work_dir: Path,
+    budget: int = 200,
+    max_chain: int = 20,
+    verbose: bool = False,
+) -> list[VariantResult]:
+    """Hill-climbing search with stochastic mutations.
+
+    1. Score baseline with each flag variant
+    2. Pick best-scoring flag as the base
+    3. Repeatedly apply random mutations, keep improvements
+    4. 60% chance to reset to best-known on failure, 40% keep exploring
+    5. Stop on MATCH or budget exhaustion
+    """
+    work_dir.mkdir(parents=True, exist_ok=True)
+    results: list[VariantResult] = []
+    best_score = 0.0
+    best_lines = source_lines
+    best_flags = ""
+    best_label = "baseline"
+    chain_depth = 0
+    attempt = 0
+
+    # Phase 1: Try all flag variants on original source (same as A1)
+    print("  Phase 1: Flag sweep on baseline source...")
+    for flag_label, flag_str in FLAG_VARIANTS:
+        attempt += 1
+        variant_src = work_dir / f"p1_{flag_label}.cpp"
+        variant_lines = rewrite_flags(source_lines, flag_str)
+        variant_src.write_text("".join(variant_lines), encoding="utf-8")
+
+        exit_code, output = run_verify(variant_src, addr, size, outdir=work_dir)
+        matched, score, mismatch_chunks, compile_failed = score_verify_output(
+            exit_code, output, size
+        )
+        result = VariantResult(
+            label=f"p1_{flag_label}", flags=flag_str or "(default)",
+            source_path=variant_src, match=matched, score=score,
+            mismatch_chunks=mismatch_chunks, compile_failed=compile_failed,
+            verify_stdout=output, verify_exit=exit_code,
+        )
+        results.append(result)
+
+        status = "MATCH" if matched else ("FAIL" if compile_failed else f"{score*100:5.1f}%")
+        print(f"    [{attempt:3d}/{budget}] {flag_label:30s} {status}")
+
+        if matched:
+            return results
+        if score > best_score:
+            best_score = score
+            best_lines = source_lines  # original source, not flag-rewritten
+            best_flags = flag_str
+            best_label = flag_label
+
+    if attempt >= budget:
+        return results
+
+    print(f"  Phase 2: Hill-climbing from best={best_label} (score={best_score*100:.1f}%)...")
+    current_lines = best_lines
+    current_flags = best_flags
+    current_score = best_score
+
+    while attempt < budget:
+        attempt += 1
+
+        # Pick a random mutation
+        mutation = pick_random_mutation(current_lines)
+        if mutation is None:
+            # No applicable mutations — try a different flag combo
+            flag_label, flag_str = random.choice(FLAG_VARIANTS)
+            mutation = (f"flag_{flag_label}", current_lines)
+            current_flags = flag_str
+
+        mut_label, mut_lines = mutation
+
+        # Occasionally randomize flags too (20% chance)
+        if random.random() < 0.2:
+            flag_label, flag_str = random.choice(FLAG_VARIANTS)
+            current_flags = flag_str
+
+        # Sanitize label for Windows filenames (no *|<>?:" etc.)
+        safe_label = re.sub(r'[<>:"/\\|?*]', '_', mut_label[:40])
+        variant_src = work_dir / f"p2_{attempt:04d}_{safe_label}.cpp"
+        variant_lines = rewrite_flags(mut_lines, current_flags)
+        variant_src.write_text("".join(variant_lines), encoding="utf-8")
+
+        exit_code, output = run_verify(variant_src, addr, size, outdir=work_dir)
+        matched, score, mismatch_chunks, compile_failed = score_verify_output(
+            exit_code, output, size
+        )
+        result = VariantResult(
+            label=f"p2_{mut_label}", flags=current_flags or "(default)",
+            source_path=variant_src, match=matched, score=score,
+            mismatch_chunks=mismatch_chunks, compile_failed=compile_failed,
+            verify_stdout=output, verify_exit=exit_code,
+        )
+        results.append(result)
+
+        if verbose or matched or score > best_score:
+            status = "MATCH" if matched else ("FAIL" if compile_failed else f"{score*100:5.1f}%")
+            improvement = ""
+            if score > best_score and not matched:
+                improvement = f" (+{(score - best_score)*100:.1f}%)"
+            print(f"    [{attempt:3d}/{budget}] {mut_label[:35]:35s} {status}{improvement}")
+
+        if matched:
+            print(f"\n  MATCH at attempt {attempt}! Mutation chain: {mut_label}")
+            return results
+
+        if score > best_score:
+            # Improvement — keep this as new baseline
+            best_score = score
+            best_lines = mut_lines
+            best_flags = current_flags
+            best_label = mut_label
+            current_lines = mut_lines
+            chain_depth += 1
+            if chain_depth >= max_chain:
+                # Chain too long — reset to best
+                current_lines = best_lines
+                chain_depth = 0
+        elif score >= current_score:
+            # Same or similar — keep exploring from here (chain continues)
+            current_lines = mut_lines
+            chain_depth += 1
+            if chain_depth >= max_chain:
+                current_lines = best_lines
+                chain_depth = 0
+        else:
+            # Worse — probabilistic reset
+            if random.random() < 0.6:
+                current_lines = best_lines
+                current_flags = best_flags
+                chain_depth = 0
+            else:
+                # Keep exploring (40% chance)
+                current_lines = mut_lines
+                chain_depth += 1
+
+    print(f"  Budget exhausted. Best score: {best_score*100:.1f}% ({best_label})")
+    return results
+
+
+# ---------- Batch mode ----------
+
+def run_batch(
+    batch_dir: Path,
+    out_dir: Path,
+    budget: int,
+    permute: bool,
+    enable_text: bool,
+    verbose: bool,
+) -> int:
+    """Run permuter/matcher across all .cpp files in batch_dir."""
+    cpp_files = sorted(batch_dir.glob("*.cpp"))
+    if not cpp_files:
+        print(f"No .cpp files found in {batch_dir}")
+        return 1
+
+    results_dir = out_dir / "batch_results"
+    results_dir.mkdir(parents=True, exist_ok=True)
+
+    matches = []
+    near_matches = []
+    stuck = []
+
+    print(f"Batch mode: {len(cpp_files)} files in {batch_dir}")
+    print(f"  budget per file: {budget}")
+    print(f"  mode: {'permuter (hill-climbing)' if permute else 'exhaustive'}")
+    print()
+
+    for i, cpp_file in enumerate(cpp_files, 1):
+        lines = read_source(cpp_file)
+        addr, size = parse_header_meta(lines)
+        if addr is None or size is None:
+            print(f"[{i:3d}/{len(cpp_files)}] SKIP {cpp_file.name} (no addr/size header)")
+            stuck.append((cpp_file.name, 0.0, "no header"))
+            continue
+
+        print(f"[{i:3d}/{len(cpp_files)}] {cpp_file.name} (0x{addr:08X}, {size}B)")
+
+        work_dir = results_dir / f"{cpp_file.stem}_0x{addr:08X}"
+        if work_dir.exists():
+            shutil.rmtree(work_dir)
+
+        if permute:
+            file_results = run_permuter(lines, addr, size, work_dir, budget, verbose=verbose)
+        else:
+            candidates = build_candidates(lines, budget, enable_text=enable_text)
+            file_results = run_candidates(candidates, addr, size, work_dir, verbose=verbose)
+
+        winner = next((r for r in file_results if r.match), None)
+        if winner:
+            matches.append((cpp_file.name, winner.label, winner.flags))
+            print(f"  => MATCH ({winner.label})\n")
+        else:
+            ranked = sorted(file_results, key=VariantResult.sort_key, reverse=True)
+            top = ranked[0] if ranked else None
+            top_score = top.score if top else 0.0
+            if top_score >= 0.8:
+                near_matches.append((cpp_file.name, top_score, top.label if top else ""))
+                print(f"  => NEAR ({top_score*100:.1f}%)\n")
+            else:
+                stuck.append((cpp_file.name, top_score, top.label if top else ""))
+                print(f"  => STUCK ({top_score*100:.1f}%)\n")
+
+            # Save top variants for near-matches
+            if top and file_results:
+                save_top_variants(file_results, work_dir, addr, size, cpp_file.stem)
+
+    # Print summary
+    print("\n" + "=" * 72)
+    print(f"BATCH SUMMARY: {len(cpp_files)} files processed")
+    print(f"  MATCH: {len(matches)}")
+    for name, label, flags in matches:
+        print(f"    {name} — {label} (flags: {flags})")
+    print(f"  NEAR (≥80%): {len(near_matches)}")
+    for name, score, label in near_matches:
+        print(f"    {name} — {score*100:.1f}% ({label})")
+    print(f"  STUCK (<80%): {len(stuck)}")
+    print("=" * 72)
+
+    # Write summary to file
+    summary_path = results_dir / "batch_summary.txt"
+    with open(summary_path, "w") as f:
+        f.write(f"Batch run: {len(cpp_files)} files, budget={budget}, permute={permute}\n\n")
+        f.write(f"MATCH ({len(matches)}):\n")
+        for name, label, flags in matches:
+            f.write(f"  {name} — {label} (flags: {flags})\n")
+        f.write(f"\nNEAR ({len(near_matches)}):\n")
+        for name, score, label in near_matches:
+            f.write(f"  {name} — {score*100:.1f}% ({label})\n")
+        f.write(f"\nSTUCK ({len(stuck)}):\n")
+        for name, score, label in stuck:
+            f.write(f"  {name} — {score*100:.1f}% ({label})\n")
+    print(f"\nSummary written to {summary_path}")
+
+    return 0 if matches else 2
+
+
 # ---------- verify_match.sh wrapper ----------
 
 def run_verify(source_path: Path, addr: int, size: int, outdir: Path | None = None) -> tuple[int, str]:
@@ -660,7 +1221,7 @@ def save_top_variants(
 
 
 def parse_args() -> argparse.Namespace:
-    ap = argparse.ArgumentParser(description="Compiler-aware matcher bot (A1+A2).")
+    ap = argparse.ArgumentParser(description="Compiler-aware matcher bot (A1+A2+permuter).")
     ap.add_argument("--wip", type=Path, help="Path to a src/wip/... cpp to attack.")
     ap.add_argument("--src", type=Path, help="Explicit source cpp path (alias of --wip).")
     ap.add_argument("--addr", type=lambda s: int(s, 0), help="DOL virtual address (hex).")
@@ -670,6 +1231,10 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--budget", type=int, default=100, help="Max compile attempts (default 100).")
     ap.add_argument("--no-text", action="store_true",
                     help="A1 mode — disable M10/M11 text mutators.")
+    ap.add_argument("--permute", action="store_true",
+                    help="Enable hill-climbing permuter with M13-M20 stochastic mutations.")
+    ap.add_argument("--batch-dir", type=Path, default=None,
+                    help="Run across all .cpp files in a directory (batch mode).")
     ap.add_argument("--verbose", action="store_true")
     return ap.parse_args()
 
@@ -677,15 +1242,31 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
 
+    if not VERIFY_SCRIPT.is_file():
+        print(f"error: verify script missing: {VERIFY_SCRIPT}", file=sys.stderr)
+        return 1
+
+    # Batch mode
+    if args.batch_dir is not None:
+        if not args.batch_dir.is_dir():
+            print(f"error: batch dir not found: {args.batch_dir}", file=sys.stderr)
+            return 1
+        return run_batch(
+            batch_dir=args.batch_dir,
+            out_dir=args.out_dir,
+            budget=args.budget,
+            permute=args.permute,
+            enable_text=not args.no_text,
+            verbose=args.verbose,
+        )
+
+    # Single-file mode
     source_path: Optional[Path] = args.wip or args.src
     if source_path is None:
         print("error: --wip or --src is required", file=sys.stderr)
         return 1
     if not source_path.is_file():
         print(f"error: source not found: {source_path}", file=sys.stderr)
-        return 1
-    if not VERIFY_SCRIPT.is_file():
-        print(f"error: verify script missing: {VERIFY_SCRIPT}", file=sys.stderr)
         return 1
 
     lines = read_source(source_path)
@@ -708,6 +1289,35 @@ def main() -> int:
         shutil.rmtree(work_dir)
     work_dir.mkdir(parents=True)
 
+    # Permuter mode (hill-climbing with M13-M20)
+    if args.permute:
+        print(f"matcher_bot v2 — PERMUTER MODE")
+        print(f"  source: {source_path}")
+        print(f"  addr:   0x{addr:08X}")
+        print(f"  size:   {size}")
+        print(f"  symbol: {symbol}")
+        print(f"  budget: {args.budget}")
+        print(f"  mutations: M0-M10 flags + M13-M20 stochastic")
+        print(f"  search: hill-climbing with scoring")
+        print(f"  work:   {work_dir}")
+        print()
+
+        results = run_permuter(lines, addr, size, work_dir, args.budget, verbose=args.verbose)
+
+        winner = next((r for r in results if r.match), None)
+        if winner is not None:
+            print()
+            print(f"MATCH found: {winner.label}")
+            print(f"  flags:  {winner.flags}")
+            print(f"  source: {winner.source_path}")
+            return 0
+
+        save_top_variants(results, work_dir, addr, size, symbol)
+        print()
+        print("No match found. See report.txt for best variants.")
+        return 2
+
+    # Classic exhaustive mode (A1+A2)
     candidates = build_candidates(lines, args.budget, enable_text=not args.no_text)
 
     print(f"matcher_bot")
