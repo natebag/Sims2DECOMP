@@ -1,3 +1,4 @@
+// 0x800C2E98 MotiveCurveSet::LoadFromStringSet (116b)
 // FLAGS: -fno-elide-constructors
 struct PiecewiseFn {
     void Reset(void);

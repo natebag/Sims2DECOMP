@@ -1,4 +1,4 @@
-/* Default2dArrayFree at 0x8003540C (52B) */
+// 0x8003540C _Default2dArrayFree (52b)
 
 extern void *getDelHeap_8003540C(void);
 extern void heapDel_8003540C(void *, void *);

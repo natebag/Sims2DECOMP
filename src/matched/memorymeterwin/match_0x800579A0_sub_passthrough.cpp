@@ -1,4 +1,4 @@
-/* 32-byte passthrough at 0x800579A0 */
+// 0x800579A0 EMemoryMeterWin::SetState (32b)
 
 extern void target_800579A0(void);
 
