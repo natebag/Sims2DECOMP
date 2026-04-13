@@ -18,11 +18,11 @@ public:
 };
 
 Commander::Commander() {
+    Commander* head = (Commander*)g_CommanderHead;
     m_vtable = Commander_vtable;
     m_field4 = 0;
-    void** head_ptr = (void**)&g_CommanderHead;
-    m_next = (Commander*)*head_ptr;
-    m_prev = (Commander*)*head_ptr;
-    *head_ptr = this;
+    m_next = head;
+    m_prev = head;
+    g_CommanderHead = this;
     g_CommanderCount++;
 }
