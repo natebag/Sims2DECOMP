@@ -73,36 +73,26 @@ for future decomp work, not completed decomp work.
 **Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
 This is the core decomp work. We are at the very beginning.
 
-**Current Status (2026-04-11 — post Session 2 wrap):**
-- **8,773 functions verified matched** with real C++ (**42.78%**)
-- 11,735 functions remaining (of 20,508)
-- **Session 2 delta: +541 legitimate matches** — started at 8,232 post-integrity-audit,
-  added via matcher-bot bulk blast (+192), rework family blasts (+~80 across
-  Pattern A / Pattern Z / Pattern W / misc), A5 parked-wall closures (+3 bot-cracks),
-  and infrastructure hardening. First session with a validated compiler-search
-  automation loop (see tools/matcher_bot.py, tools/matcher_bot_bulk.py, tools/matcher_bot_shard.py).
-- Session 1 ended at 8,516 pre-audit; integrity audit on 2026-04-11 purged
-  215 byte-injection/register-asm fakes (audit info note a733a05b) giving
-  the 8,232 post-audit baseline. The cheating generator (tools/gen_ctor_matches.py)
-  was deleted and verify_match.sh + pre-commit hardened against every pattern
-  it used (register-asm bindings, naked+noreturn+unreachable, .long/.byte
-  literals, __asm__ prefix).
-- Known accounting debt: ~953 of the 8,773 files are duplicate-address aliases
-  from case-sensitive path collisions and cross-worker race commits. Unique-
-  address count is 7,820 (38.13%). Session 3 should dedupe these before
-  the next metric publish.
+**Current Status (2026-04-13 — post Session 3):**
+- **8,250 functions verified matched** with real C++ (**40.2%**)
+- 12,258 functions remaining (of 20,508)
+- Session 3 delta: +430 unique matches (7,820 → 8,250). 953 duplicate aliases
+  consolidated, 1,209 stale files cleaned, 40% milestone crossed.
+- Session 2 delta: +541 matches. Matcher bot built, integrity audit purged 215 fakes.
 - Full exhaustive audit completed: every file in src/matched/ compile-verified
-- 848 orphan files cleaned up (relocated to wip/version_diff/)
 - ALL asm_decomp functions matched — remaining work is DOL-only extraction
 - SN Systems ProDG compiler confirmed correct (all 4 versions produce identical code)
 - 5-state flag matrix per function: {default, -fno-schedule-insns, -fno-schedule-insns2, both, -fno-elide-constructors-only}
 - Per-file override: `// FLAGS: -fno-schedule-insns` (or any combo) as first line
 - Pre-commit hook auto-verifies matches, auto-moves VERSION_DIFF to src/wip/version_diff/
 - Auto-matcher v4 (tools/goldmine_matcher.py): 16 classifiers, 4-flag matrix, DOL scan
-- Template family detector: 136 families with 1,040 functions (100% blast hit rate)
+- Template family detector: 136+ families with 1,040+ functions
 - **BLRL BREAKTHROUGH (2026-04-06):** Virtual dispatch (blrl/bctrl) solved — declare C++ classes with virtual methods in vtable order, compiler generates correct blrl natively
+- **SDA EXTERN BREAKTHROUGH (2026-04-12):** `extern char globalName[]` generates correct lis/addi relocations for SDA globals, unlocking 500+ previously-walled functions
+- **SCHEDULER INSIGHT (2026-04-12):** Default GCC scheduling REPRODUCES SN ordering for complex functions (>100B). `-fno-schedule-insns` should only be added if default makes things worse.
 - TU compilation workflow proven: tu_match.py --combine for TU-level matching
-- Key techniques: SDA `extern char g[4]`, sign bit `>>31`, equality subfic+adde, xori flip, virtual class declarations for blrl, `short` types for extsh, magic division constants
+- SDK exclusion zone: DolphinSDK functions at 0x8024-0x8039 are Metrowerks-compiled, cannot byte-match
+- Key techniques: SDA `extern char g[]`, sign bit `>>31`, equality subfic+adde, xori flip, virtual class declarations for blrl, `short` types for extsh, magic division constants, bitfield structs for rlwimi, unsigned <=N subfic/adde idiom, load-before-store via local variables
 
 **IMPORTANT: The DOL "matches" via byte injection. Real decomp progress is measured by
 how many functions have hand-written C++ that compiles to matching bytes WITHOUT injection.**

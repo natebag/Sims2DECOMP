@@ -4,18 +4,16 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**42.78% decompiled and verified** (post Session 2 wrap, 2026-04-11). Functions are being matched one at a time — hand-written C++ that compiles to byte-identical PPC output, verified against the original DOL.
+**40.2% decompiled and verified** — 8,250 / 20,508 functions byte-matched against the original DOL. Hand-written C++ compiled with the original SN Systems ProDG compiler produces identical bytes.
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **8,773 / 20,508 (42.78%)** |
-| Functions remaining | ~11,735 |
+| **Verified matches** | **8,250 / 20,508 (40.2%)** |
+| Functions remaining | ~12,258 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit |
-
-**Session 2 (2026-04-11):** +541 legitimate matches delivered. First session with a validated compiler-search automation loop — `tools/matcher_bot.py` runs a mutation space of 11 flag variants × M10/M11/M12 text mutators, scored via reloc-aware DOL diff, early-exits on first MATCH. 4-way parallel shard blast over 940 parked near-misses hit 44.6% runnable hit-rate. Two new ctor-family patterns discovered (Pattern Z: pure-zero-field ctors, 22 matches; Pattern W: 56B state-machine ctors, 26 matches). Integrity audit purged 215 byte-injection fakes and hardened `verify_match.sh` against every pattern the old cheat generator used.
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
 
@@ -40,14 +38,12 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## What's Not Done
 
-- **~11,992 functions** still need matching (the other ~58%)
-- **`[no source]` functions (~1,926)** — exist in the DOL but have no asm_decomp counterpart, so the TU sweep workflow can't extract them. Require direct DOL extraction (`extract_function.py`) and manual RE.
-- **Inline-asm-stub functions (~10,913 with source)** — many `src/asm_decomp/` files contain functions with `__asm__` placeholders rather than real C++. Each one needs the inline-asm replaced with hand-written matching C++.
-- **Register-allocation walls** — certain functions hit SN ProDG v1.76 vs v3.93 graph-coloring tie-breaker diffs (DOL reuses scratch registers, current compiler allocates fresh). No flag combo currently cracks these; needs source-level restructuring or future flag research.
-- **Store-combining walls** — compiler merges adjacent same-value stores the DOL kept separate (e.g. two `sth 64` → one `stw`). Needs a separating volatile barrier or different class layout.
-- **CSE elimination walls** — compiler eliminates `mr rN, rM` register copies the DOL uses. Needs CSE-breaking idioms like `noinline` wrapper calls.
-- **Multi-blrl vtable aliasing** — 2+ virtual calls in one function still problematic; the compiler re-loads the vtable.
-- **Float register allocation (f0-f13)** — variable declaration order trick doesn't work for floats.
+- **~12,258 functions** still need matching (~60%)
+- **SDK library functions** — DolphinSDK functions (address range 0x8024-0x8039) were compiled with Metrowerks CodeWarrior, not SN Systems — they cannot byte-match with our compiler
+- **Register-allocation walls** — DOL and compiler pick different scratch registers; no flag combo cracks these. Needs source-level restructuring.
+- **Store-combining walls** — compiler merges adjacent same-value stores the DOL kept separate. Needs volatile barriers or different class layout.
+- **r13-relative SDA2** — functions using `lwz rN, offset(r13)` addressing need `-msdata=eabi` flag investigation
+- **Complex arithmetic** — magic division constants, bitfield packing patterns
 - **PC port** — a prototype exists but is blocked until real decomp progress is further along
 
 ## Building
