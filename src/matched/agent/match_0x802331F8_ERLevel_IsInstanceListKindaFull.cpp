@@ -1,10 +1,10 @@
+// 0x802331F8 ERLevel::IsInstanceListKindaFull (24b)
 struct ERLevel {
-    char pad0[0x2C2B8];
-    int m_numInstances;
-
-    int IsInstanceListKindaFull(void);
+    char pad[0x2C2B8];
+    int m_instanceCount;
+    int IsInstanceListKindaFull();
 };
 
-int ERLevel::IsInstanceListKindaFull(void) {
-    return m_numInstances > 1663;
+int ERLevel::IsInstanceListKindaFull() {
+    return m_instanceCount > 1663;
 }
