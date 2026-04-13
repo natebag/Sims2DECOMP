@@ -1,3 +1,4 @@
+// 0x80058820 MoviePlayerEndgameMovieState::MoviePlayerEndgameMovieState (56b)
 // FLAGS: -fno-elide-constructors
 // 0x80058820 MoviePlayerEndgameMovieState::MoviePlayerEndgameMovieState (56b)
 

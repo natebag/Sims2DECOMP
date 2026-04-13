@@ -1,4 +1,4 @@
-/* 36-byte wrapper at 0x80058858: loads member at +8 and calls */
+// 0x80058858 MoviePlayerEndgameMovieState::SetFlowStateCurrent (36b)
 
 struct W_80058858 { char pad[8]; void *field; };
 extern void target_80058858(void*);
