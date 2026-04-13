@@ -15,7 +15,7 @@ void GameData::StageEnd(char *name1, char *name2, int flag) {
     if (flag != 0) {
         g_loadingFlag1 = 1;
         g_loadingFlag2 = 1;
+        LoadFinishing();
     }
-    LoadFinishing();
     StageOutputActualTimes(name2);
 }
