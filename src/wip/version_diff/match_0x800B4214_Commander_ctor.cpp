@@ -2,25 +2,27 @@
 // 0x800B4214 Commander::Commander(void) (60b)
 
 // SDA globals — small types for r13-relative addressing
-extern void* g_CommanderHead;      // At -32076(r13)
-extern int g_CommanderCount;       // At -32072(r13)
+extern void* g_CommanderHead;
+extern int g_CommanderCount;
 
 // VTable extern
 extern int Commander_vtable[];
 
-struct Commander {
+class Commander {
+public:
     Commander* m_next;
     int m_field4;
     Commander* m_prev;
     int* m_vtable;
+    Commander();
 };
 
-void Commander_ctor(Commander* this_) {
-    Commander* head = (Commander*)g_CommanderHead;
-    this_->m_vtable = Commander_vtable;
-    this_->m_field4 = 0;
-    this_->m_next = head;
-    this_->m_prev = 0;
-    g_CommanderHead = this_;
+Commander::Commander() {
+    m_vtable = Commander_vtable;
+    m_field4 = 0;
+    void** head_ptr = (void**)&g_CommanderHead;
+    m_next = (Commander*)*head_ptr;
+    m_prev = (Commander*)*head_ptr;
+    *head_ptr = this;
     g_CommanderCount++;
 }

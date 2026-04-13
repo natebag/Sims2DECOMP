@@ -153,13 +153,28 @@ else
     fi
 fi
 
+PYTHON="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
+PYTHON="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
+
 # Step 2: Extract compiled bytes from .text section
 echo "Extracting compiled bytes..."
-COMPILED_BYTES=$($OBJDUMP -s -j .text "$OBJ" 2>/dev/null | awk '/Contents of section .text/{found=1;next} found{print}' | awk '{for(i=2;i<=5;i++) printf "%s", $i; printf "\n"}' | tr -d ' \n')
+COMPILED_BYTES=$($OBJDUMP -s -j .text "$OBJ" 2>/dev/null | "$PYTHON" -c "
+import sys, re
+for line in sys.stdin:
+    line = line.strip()
+    if not line or line.startswith('Contents'): continue
+    parts = line.split()
+    hex_words = []
+    for p in parts[1:]:
+        if re.fullmatch(r'[0-9a-f]{8}', p):
+            hex_words.append(p)
+        else:
+            break
+    print(''.join(hex_words), end='')
+")
 
 # Step 3: Extract DOL bytes at the given address
 echo "Extracting DOL bytes at $ADDR ($SIZE bytes)..."
-PYTHON="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
 DOL_BYTES=$($PYTHON -c "
 import struct
 with open('$DOL', 'rb') as f:
