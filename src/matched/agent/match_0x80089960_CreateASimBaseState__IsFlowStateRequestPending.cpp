@@ -1,14 +1,14 @@
-struct TheSimsStateMachine {
-    int IsFlowStateRequestPending(void);
-};
+// 0x80089960 CreateASimBaseState::IsFlowStateRequestPending (36B)
+
+int TheSimsStateMachine_IsFlowStateRequestPending(void* sm);
 
 struct CreateASimBaseState {
     char pad[0x08];
-    TheSimsStateMachine *m_owner;
+    void* m_stateMachine;
 
-    int IsFlowStateRequestPending(void);
+    int IsFlowStateRequestPending();
 };
 
-int CreateASimBaseState::IsFlowStateRequestPending(void) {
-    return m_owner->IsFlowStateRequestPending();
+int CreateASimBaseState::IsFlowStateRequestPending() {
+    return TheSimsStateMachine_IsFlowStateRequestPending(m_stateMachine);
 }

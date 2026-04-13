@@ -1,7 +1,12 @@
-extern char gAppData2[];
+// 0x80005CAC ESimsApp::SetupForMovie (40B)
 
-void SetupForMovieImpl(char* app);
+extern char gInteractorModule[];
+void EGlobal_SetupScratchHeap(void* module);
 
-void ESimsApp_SetupForMovie() {
-    SetupForMovieImpl(gAppData2);
+struct ESimsApp {
+    void SetupForMovie();
+};
+
+void ESimsApp::SetupForMovie() {
+    EGlobal_SetupScratchHeap(gInteractorModule);
 }
