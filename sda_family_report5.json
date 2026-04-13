@@ -1,0 +1,570 @@
+{
+  "method_families": [
+    {
+      "method": "ctor",
+      "matched_count": 53,
+      "unmatched_count": 8,
+      "total_count": 61,
+      "matched_examples": [
+        "match_0x80058820_MoviePlayerEndgameMovieState_ctor.cpp",
+        "match_0x8006D2FC_ESims3DHead_ctor.cpp",
+        "match_0x8008FEDC_LiveModeInitState_ctor.cpp",
+        "match_0x800900A8_ChangeHouseDemolishHouse_ctor.cpp",
+        "match_0x800900E0_ChangeHouseSaveHouse_ctor.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80045520_EFloorShdTblNode_ctor.cpp",
+        "match_0x80089A14_EGameStateMan_ctor.cpp",
+        "match_0x800B0320_cSoundModeManager_ctor.cpp",
+        "match_0x800B4214_Commander_ctor.cpp",
+        "match_0x80119088_cSampleChannel_ctor.cpp"
+      ]
+    },
+    {
+      "method": "2",
+      "matched_count": 4,
+      "unmatched_count": 5,
+      "total_count": 9,
+      "matched_examples": [
+        "match_0x8022F9F4_thunk_ERCharacter_alloc_2.cpp",
+        "match_0x80249E14_thunk_CAS_func_2.cpp",
+        "match_0x8026AAC8_thunk_CasSimRenderer_func_2.cpp",
+        "match_0x80270768_thunk_AptActionInterp_func_2.cpp"
+      ],
+      "vd_examples": [
+        "match_0x800251FC_LightLocation_2.cpp",
+        "match_0x802091BC_InteractorModule_Interactor_Interactor_2.cpp",
+        "match_0x802092B4_InteractorModule_Interactor_GetInteractorInfo_2.cpp",
+        "match_8001621C_CameraMotionSystem_MoveCamera_2.cpp",
+        "match_800169E8_ESimsCam_SetFov_2.cpp"
+      ]
+    },
+    {
+      "method": "dtor",
+      "matched_count": 41,
+      "unmatched_count": 2,
+      "total_count": 43,
+      "matched_examples": [
+        "EMutex_dtor.cpp",
+        "match_0x80004398_ESimsApp_dtor.cpp",
+        "match_0x80022F70_ESimsDataManager__dtor.cpp",
+        "match_0x80034FBC_ESimShadow__dtor.cpp",
+        "match_0x8007CE20_CTGFileImpl_dtor.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80118E84_cSamplePatch_dtor.cpp",
+        "match_0x801190C4_cSampleChannel_dtor.cpp"
+      ]
+    },
+    {
+      "method": "Startup",
+      "matched_count": 4,
+      "unmatched_count": 2,
+      "total_count": 6,
+      "matched_examples": [
+        "match_0x8008480C_TextItem__Startup.cpp",
+        "match_0x80084864_MenuItem__Startup.cpp",
+        "match_0x800848BC_ButtonItem__Startup.cpp",
+        "match_0x800890AC_CreateASimBaseState__Startup.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80084464_TextBaseItem_Startup.cpp",
+        "match_0x800966A4_StateMachineManager__Startup.cpp"
+      ]
+    },
+    {
+      "method": "Neighbor",
+      "matched_count": 3,
+      "unmatched_count": 2,
+      "total_count": 5,
+      "matched_examples": [
+        "match_0x8039E694_ReconLoadObject_ReconStreamPtrVector_Neighbor.cpp",
+        "match_0x8039E72C_ReconSaveObject_ReconStreamPtrVector_Neighbor.cpp",
+        "ReconSaveObject_ReconStreamPtrVector_Neighbor.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8039E6F8_ReconLoadPtrVector_Neighbor.cpp",
+        "match_0x8039E798_ReconSavePtrVector_Neighbor.cpp"
+      ]
+    },
+    {
+      "method": "SlotDescriptor",
+      "matched_count": 2,
+      "unmatched_count": 2,
+      "total_count": 4,
+      "matched_examples": [
+        "match_0x803AD6B0_ReconLoadObject_ReconStreamVector_SlotDescriptor.cpp",
+        "match_0x803AD748_ReconSaveObject_ReconStreamVector_SlotDescriptor.cpp"
+      ],
+      "vd_examples": [
+        "match_0x803AD714_ReconLoadVector_SlotDescriptor.cpp",
+        "match_0x803AD7B4_ReconSaveVector_SlotDescriptor.cpp"
+      ]
+    },
+    {
+      "method": "BString",
+      "matched_count": 4,
+      "unmatched_count": 1,
+      "total_count": 5,
+      "matched_examples": [
+        "match_0x8009C114_operator_eq_BString_BString.cpp",
+        "match_0x8009C254_operator_neq_char_BString.cpp",
+        "match_0x8009C370_operator_lt_char_BString.cpp",
+        "match_0x8009C548_operator_lte_char_ptr_BString.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8009C304_operator_lt_BString_BString.cpp"
+      ]
+    },
+    {
+      "method": "sub",
+      "matched_count": 4,
+      "unmatched_count": 1,
+      "total_count": 5,
+      "matched_examples": [
+        "match_0x80175510_ThumbnailCompresser_Encode_sub.cpp",
+        "match_0x801756D0_ThumbnailCompresser_Decode_sub.cpp",
+        "match_0x80175878_node_alloc_S_chunk_alloc_sub.cpp",
+        "match_0x80175B10_static_init_sub.cpp"
+      ],
+      "vd_examples": [
+        "match_0x801104B4_ObjSelector_sub.cpp"
+      ]
+    },
+    {
+      "method": "call",
+      "matched_count": 2,
+      "unmatched_count": 1,
+      "total_count": 3,
+      "matched_examples": [
+        "match_0x8008CC90_nonsda_store_call.cpp",
+        "match_0x800937B8_nonsda_null_call.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80041B6C_nonsda_null_call.cpp"
+      ]
+    }
+  ],
+  "class_families": [
+    {
+      "class": "GoalUnlock",
+      "matched_count": 3,
+      "unmatched_count": 7,
+      "total_count": 10,
+      "matched_examples": [
+        "match_0x800B8438_GoalUnlock_ctor.cpp",
+        "match_0x800B8474_GoalUnlock_GoalUnlock_dtor52.cpp",
+        "match_0x800B8510_GoalUnlock__ClearGoalsAndUnlocks_void.cpp"
+      ],
+      "vd_examples": [
+        "0x800B853C_GoalUnlock_GetUnlockCount.cpp",
+        "0x800B875C_GoalUnlock_GetFirstUnlockVar.cpp",
+        "0x800B87CC_GoalUnlock_IsUnlocked.cpp",
+        "GoalUnlock.cpp",
+        "match_0x800B853C_GoalUnlock_GetUnlockCount.cpp"
+      ]
+    },
+    {
+      "class": "",
+      "matched_count": 60,
+      "unmatched_count": 6,
+      "total_count": 66,
+      "matched_examples": [
+        "match_0x80110A04___tcf_1_3.cpp",
+        "match_0x80110ADC___tcf_2.cpp",
+        "match_0x80112020___tcf_0_7.cpp",
+        "match_0x80119E28___tcf_0_8.cpp",
+        "match_0x8013E448___tcf_0_9.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80003468___init_hardware.cpp",
+        "match_0x80003468___init_hardware_2.cpp",
+        "match_0x80014FF8___static_initialization_and_destruction_0_5.cpp",
+        "match_0x800596E0___static_initialization_and_destruction_0_player.cpp",
+        "match_0x8023A72C__Parse.cpp"
+      ]
+    },
+    {
+      "class": "ESimsCam",
+      "matched_count": 4,
+      "unmatched_count": 4,
+      "total_count": 8,
+      "matched_examples": [
+        "match_0x800184A0_ESimsCam_CalcTranslationStiffness.cpp",
+        "match_0x800184D8_ESimsCam_CalcRotationStiffness.cpp",
+        "match_0x80018510_ESimsCam_CalcZoomStiffness.cpp",
+        "match_8001699C_ESimsCam_GetFov.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80016A1C_ESimsCam_ForceFullScreenViewport.cpp",
+        "match_0x80017070_ESimsCam_SetZoom.cpp",
+        "match_800169E8_ESimsCam_SetFov.cpp",
+        "match_80016FFC_ESimsCam_ApplyZoom.cpp"
+      ]
+    },
+    {
+      "class": "EEngine",
+      "matched_count": 4,
+      "unmatched_count": 4,
+      "total_count": 8,
+      "matched_examples": [
+        "match_0x802E37D4_EEngine__GetDMARingMemoryUseInfo.cpp",
+        "match_0x802E37F8_EEngine__GetTextureRingMemoryUseInfo.cpp",
+        "match_0x802E381C_EEngine__GetMatrixRingMemoryUseInfo.cpp",
+        "match_802E2E38_EEngine__GetMinRetraces.cpp"
+      ],
+      "vd_examples": [
+        "match_802E2D5C_EEngine__RetraceUpdate.cpp",
+        "match_802E31FC_EEngine__FrameComplete.cpp",
+        "match_802E3840_EEngine__GetMemoryUseSystemInfo.cpp",
+        "match_802E3868_EEngine__GetMemoryUseDmaInfo.cpp"
+      ]
+    },
+    {
+      "class": "ERModel",
+      "matched_count": 4,
+      "unmatched_count": 4,
+      "total_count": 8,
+      "matched_examples": [
+        "match_0x8031882C_ERModel__DeallocateScaleMatrix.cpp",
+        "match_0x8031A520_ERModel__SetLatticeWeight.cpp",
+        "match_0x8031B360_ERModel__op_new_unsigned_int.cpp",
+        "match_0x8031B398_ERModel__op_delete_void_ptr.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8031811C_ERModel__DelRefSubResources.cpp",
+        "match_0x80318950_ERModel__DrawGeometry.cpp",
+        "match_0x8031A3C4_ERModel__CleanMorphTargets.cpp",
+        "match_0x8031A7FC_ERModel__GetAttachmentID.cpp"
+      ]
+    },
+    {
+      "class": "EyeToyClient",
+      "matched_count": 7,
+      "unmatched_count": 3,
+      "total_count": 10,
+      "matched_examples": [
+        "ApplyFunFrame.cpp",
+        "match_0x80038E50_EyeToyClient__ApplyFunFrame.cpp",
+        "match_0x80038EEC_EyeToyClient__SaveSessionToSlot.cpp",
+        "match_0x80038F48_EyeToyClient__StartStream.cpp",
+        "match_0x80038F7C_EyeToyClient__StopStream.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80037930_EyeToyClient__FrameReadyCallback.cpp",
+        "match_0x80038FE0_EyeToyClient__IsSessionDisconnected.cpp",
+        "match_0x80039178_EyeToyClient_DoesRepSlotHaveEyetoyImage.cpp"
+      ]
+    },
+    {
+      "class": "EGlobal",
+      "matched_count": 6,
+      "unmatched_count": 2,
+      "total_count": 8,
+      "matched_examples": [
+        "match_0x8003FBFC_EGlobal__GetHouseLevelId.cpp",
+        "match_0x8003FC60_EGlobal__GetHouseGrassShaderId.cpp",
+        "match_0x800417B0_EGlobal__UnloadSelectorData_ObjSelector_ptr.cpp",
+        "match_0x8003FAFC_EGlobal__GetLiveModeMenuUIString.cpp",
+        "match_0x8003FB0C_EGlobal__HouseNameText.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8004079C_EGlobal_GetSelectedPerson.cpp",
+        "match_0x80041B6C_EGlobal__EndSaveGame.cpp"
+      ]
+    },
+    {
+      "class": "ERCharacter",
+      "matched_count": 5,
+      "unmatched_count": 2,
+      "total_count": 7,
+      "matched_examples": [
+        "match_0x803686E8_ERCharacter__ctor.cpp",
+        "match_0x80368D00_ERCharacter__op_new_unsigned_int.cpp",
+        "match_0x80368D38_ERCharacter__op_delete_void_ptr.cpp",
+        "match_0x80368C68_ERCharacter__GetTypeVersion.cpp",
+        "match_0x80368C80_ERCharacter__GetReadVersion.cpp"
+      ],
+      "vd_examples": [
+        "match_80368C50_ERCharacter_GetTypeName.cpp",
+        "match_80368C5C_ERCharacter_GetTypeKey.cpp"
+      ]
+    },
+    {
+      "class": "ERSoundEvent",
+      "matched_count": 5,
+      "unmatched_count": 2,
+      "total_count": 7,
+      "matched_examples": [
+        "match_0x803699BC_ERSoundEvent__ctor.cpp",
+        "match_0x80369FEC_ERSoundEvent__op_new_unsigned_int.cpp",
+        "match_0x8036A024_ERSoundEvent__op_delete_void_ptr.cpp",
+        "match_0x80369F54_ERSoundEvent__GetTypeVersion.cpp",
+        "match_0x80369F6C_ERSoundEvent__GetReadVersion.cpp"
+      ],
+      "vd_examples": [
+        "match_80369F3C_ERSoundEvent_GetTypeName.cpp",
+        "match_80369F48_ERSoundEvent_GetTypeKey.cpp"
+      ]
+    },
+    {
+      "class": "ERSoundTrackData",
+      "matched_count": 4,
+      "unmatched_count": 2,
+      "total_count": 6,
+      "matched_examples": [
+        "match_0x8036a62c_ERSoundTrackData_GetTypeVersion.cpp",
+        "match_0x8036a644_ERSoundTrackData_GetReadVersion.cpp",
+        "match_8036A62C_ERSoundTrackData_GetTypeVersion.cpp",
+        "match_8036A644_ERSoundTrackData_GetReadVersion.cpp"
+      ],
+      "vd_examples": [
+        "match_8036A614_ERSoundTrackData_GetTypeName.cpp",
+        "match_8036A620_ERSoundTrackData_GetTypeKey.cpp"
+      ]
+    },
+    {
+      "class": "REffectsSequencer",
+      "matched_count": 4,
+      "unmatched_count": 2,
+      "total_count": 6,
+      "matched_examples": [
+        "match_8036B184_REffectsSequencer_GetTypeVersion.cpp",
+        "match_8036B19C_REffectsSequencer_GetReadVersion.cpp",
+        "match_8036B184_REffectsSequencer_GetTypeVersion.cpp",
+        "match_8036B19C_REffectsSequencer_GetReadVersion.cpp"
+      ],
+      "vd_examples": [
+        "match_8036B16C_REffectsSequencer_GetTypeName.cpp",
+        "match_8036B178_REffectsSequencer_GetTypeKey.cpp"
+      ]
+    },
+    {
+      "class": "SimsMemCardWrap",
+      "matched_count": 3,
+      "unmatched_count": 2,
+      "total_count": 5,
+      "matched_examples": [
+        "match_0x800751B4_SimsMemCardWrap_HasSavedGame.cpp",
+        "match_0x800755DC_SimsMemCardWrap__PreservePrefs.cpp",
+        "match_0x80075678_SimsMemCardWrap__DeleteFile.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80075548_SimsMemCardWrap_LoadConfigFile.cpp",
+        "match_0x8007562C_SimsMemCardWrap_IsFreeplayUnlocked.cpp"
+      ]
+    },
+    {
+      "class": "ERBinary",
+      "matched_count": 2,
+      "unmatched_count": 2,
+      "total_count": 4,
+      "matched_examples": [
+        "match_0x80368574_ERBinary__GetTypeVersion.cpp",
+        "match_0x8036858C_ERBinary__GetReadVersion.cpp"
+      ],
+      "vd_examples": [
+        "match_8036855C_ERBinary_GetTypeName.cpp",
+        "match_80368568_ERBinary_GetTypeKey.cpp"
+      ]
+    },
+    {
+      "class": "ENgcRenderer",
+      "matched_count": 20,
+      "unmatched_count": 1,
+      "total_count": 21,
+      "matched_examples": [
+        "match_0x803451A4_ENgcRenderer__MipMapSetup_EDLEntry_ptr.cpp",
+        "match_0x8034548C_ENgcRenderer__TriIndexed_EDLEntry_ptr.cpp",
+        "match_0x803454A4_ENgcRenderer__SaveImageData_EDLEntry_ptr.cpp",
+        "match_0x803489A8_ENgcRenderer__ReadMetrics.cpp",
+        "match_0x8034A628_ENgcRenderer__TriFan_EDLEntry_ptr.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80345120_ENgcRenderer__Material.cpp"
+      ]
+    },
+    {
+      "class": "ISimsObjectModel",
+      "matched_count": 8,
+      "unmatched_count": 1,
+      "total_count": 9,
+      "matched_examples": [
+        "match_0x8004DF34_ISimsObjectModel_AnimStartImmediate.cpp",
+        "match_0x8004DF84_ISimsObjectModel_AnimStartBlendIn.cpp",
+        "match_0x8004E538_ISimsObjectModel__UpdateAnim_ObjAnimDef_ptr.cpp",
+        "match_0x8004ED24_ISimsObjectModel__StartBurp.cpp",
+        "match_0x80053D28_ISimsObjectModel__RegisterType.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8004DFD4_ISimsObjectModel_KillAllAnimTracks.cpp"
+      ]
+    },
+    {
+      "class": "EAnimController",
+      "matched_count": 5,
+      "unmatched_count": 1,
+      "total_count": 6,
+      "matched_examples": [
+        "match_0x802E7EF4_EAnimController__Init.cpp",
+        "match_0x802E94A8_EAnimController__GetAnimDistance.cpp",
+        "match_0x802EA28C_EAnimController_PrepareForCollision.cpp",
+        "match_0x802EB53C_EAnimController_CallbackICM.cpp",
+        "match_0x802ED7EC_EAnimController_SetTrackAnim.cpp"
+      ],
+      "vd_examples": [
+        "match_0x802EFD44_EAnimController__SetTrackSpeed.cpp"
+      ]
+    },
+    {
+      "class": "EIFloor",
+      "matched_count": 4,
+      "unmatched_count": 1,
+      "total_count": 5,
+      "matched_examples": [
+        "match_0x80048440_EIFloor__RegisterType.cpp",
+        "match_80048434_EIFloor_GetReadVersionvoid.cpp",
+        "match_800484B4_EIFloor__dtor.cpp",
+        "match_80048428_EIFloor_GetTypeInfoStaticvoid.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80047E24_EIFloor__TestCreateFloors.cpp"
+      ]
+    },
+    {
+      "class": "EResource",
+      "matched_count": 4,
+      "unmatched_count": 1,
+      "total_count": 5,
+      "matched_examples": [
+        "match_0x80311df8_EResource__dtor.cpp",
+        "match_0x80311eb8_EResource__Read.cpp",
+        "match_0x80311f14_EResource__Load.cpp",
+        "match_0x80311E64_EResource__Write.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80311DC8_EResource__EResource.cpp"
+      ]
+    },
+    {
+      "class": "ETexture",
+      "matched_count": 4,
+      "unmatched_count": 1,
+      "total_count": 5,
+      "matched_examples": [
+        "match_0x803650b4_ETexture__operator_delete.cpp",
+        "match_0x803651a8_ETexture__Test1.cpp",
+        "match_0x80364FC4_ETexture__dtor.cpp",
+        "match_0x8036507C_ETexture__operator_new.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80364F64_ETexture__ctor.cpp"
+      ]
+    },
+    {
+      "class": "SocialModeInteractor",
+      "matched_count": 3,
+      "unmatched_count": 1,
+      "total_count": 4,
+      "matched_examples": [
+        "match_0x8021F118_SocialModeInteractor__ctor.cpp",
+        "match_0x8021F164_SocialModeInteractor_dtor.cpp",
+        "match_0x8021F208_SocialModeInteractor_OnStart.cpp"
+      ],
+      "vd_examples": [
+        "match_8021f480_SocialModeInteractor_SetupInteractionMenu.cpp"
+      ]
+    },
+    {
+      "class": "nonsda_null",
+      "matched_count": 2,
+      "unmatched_count": 1,
+      "total_count": 3,
+      "matched_examples": [
+        "match_0x80014F78_nonsda_null_sda.cpp",
+        "match_0x800937B8_nonsda_null_call.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80041B6C_nonsda_null_call.cpp"
+      ]
+    },
+    {
+      "class": "CTGFileImpl",
+      "matched_count": 2,
+      "unmatched_count": 1,
+      "total_count": 3,
+      "matched_examples": [
+        "match_0x8007CE20_CTGFileImpl_dtor.cpp",
+        "match_8007CDD0_CTGFileImpl__CTGFileImpl.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8007CEF0_CTGFileImpl_Read.cpp"
+      ]
+    },
+    {
+      "class": "CASTarget",
+      "matched_count": 2,
+      "unmatched_count": 1,
+      "total_count": 3,
+      "matched_examples": [
+        "match_0x80194F08_CASTarget__GotoMainMenu.cpp",
+        "match_80194EC4_CASTarget__GotoGame.cpp"
+      ],
+      "vd_examples": [
+        "match_80195C40_CASTarget__ShowAllCFAOptions.cpp"
+      ]
+    },
+    {
+      "class": "AptXml",
+      "matched_count": 2,
+      "unmatched_count": 1,
+      "total_count": 3,
+      "matched_examples": [
+        "match_0x802B93D4_AptXml_dtor.cpp",
+        "match_0x802B9548_AptXml__ctor.cpp"
+      ],
+      "vd_examples": [
+        "match_0x802B9548_AptXml__ctor.cpp"
+      ]
+    },
+    {
+      "class": "ESubModelShader",
+      "matched_count": 2,
+      "unmatched_count": 1,
+      "total_count": 3,
+      "matched_examples": [
+        "match_0x802FBAA4_ESubModelShader__MorphDataAllocation_int__int.cpp",
+        "match_0x802FBACC_ESubModelShader__MorphDataDeallocation_void_ptr.cpp"
+      ],
+      "vd_examples": [
+        "match_0x802FBBC8_ESubModelShader__DelRefSubResources.cpp"
+      ]
+    },
+    {
+      "class": "WXFTarget",
+      "matched_count": 2,
+      "unmatched_count": 1,
+      "total_count": 3,
+      "matched_examples": [
+        "match_0x803133E0_WXFTarget__ctor.cpp",
+        "match_0x801E62EC_WXFTarget__UpdateMenuState.cpp"
+      ],
+      "vd_examples": [
+        "match_0x801E62EC_WXFTarget__UpdateMenuState.cpp"
+      ]
+    },
+    {
+      "class": "EFontPage",
+      "matched_count": 2,
+      "unmatched_count": 1,
+      "total_count": 3,
+      "matched_examples": [
+        "match_803648A8_EFontPage_GetReadVersionvoid.cpp",
+        "match_8036489C_EFontPage_GetTypeInfoStaticvoid.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80363A48_EFontPage__DeallocateShader.cpp"
+      ]
+    }
+  ]
+}

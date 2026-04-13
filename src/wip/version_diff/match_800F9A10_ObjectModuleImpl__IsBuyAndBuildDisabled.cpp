@@ -1,4 +1,5 @@
-/* ObjectModuleImpl::IsBuyAndBuildDisabled(void) - 36 bytes */
+// 0x800F9A10 ObjectModuleImpl::IsBuyAndBuildDisabled (36b)
+// FLAGS: -fno-schedule-insns
 
 class ObjectModuleImpl {
 public:

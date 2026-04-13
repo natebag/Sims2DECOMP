@@ -1,7 +1,7 @@
-/* [VERSION_DIFF] bgelr cr0 vs cror+bsolr for float >= conditional return */
-/* Not fixed by -fno-schedule-insns2. May need different float comparison idiom. */
+// 0x8020415C DirectInteractor::ParseControls (112b)
+// VERSION_DIFF: float comparison idiom
 
-extern float gControlDeadZone[];
+extern char gControlDeadZone[];
 
 struct DirectInteractor_PC {
     char _pad0[0x34];
@@ -18,14 +18,14 @@ struct DirectInteractor_PC {
 void DirectInteractor_PC::ParseControls(void) {
     m_leftActive = 0;
     m_rightActive = 0;
-    float threshold = gControlDeadZone[0];
-    if (__builtin_fabs(m_leftX) < threshold) {
-        if (__builtin_fabs(m_leftY) < threshold) {
+    float threshold = ((float*)gControlDeadZone)[0];
+    if (__builtin_fabsf(m_leftX) < threshold) {
+        if (__builtin_fabsf(m_leftY) < threshold) {
             m_leftActive = 1;
         }
     }
-    float threshold2 = gControlDeadZone[0];
-    if (__builtin_fabs(m_rightX) >= threshold2) return;
-    if (__builtin_fabs(m_rightY) >= threshold2) return;
+    float threshold2 = ((float*)gControlDeadZone)[0];
+    if (__builtin_fabsf(m_rightX) >= threshold2) return;
+    if (__builtin_fabsf(m_rightY) >= threshold2) return;
     m_rightActive = 1;
 }

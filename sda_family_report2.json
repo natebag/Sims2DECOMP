@@ -1,0 +1,256 @@
+{
+  "method_families": [
+    {
+      "type": "method",
+      "name": "ctor",
+      "matched": 119,
+      "unmatched": 8,
+      "total": 127,
+      "agent_examples": [
+        "EFontPage__ctor.cpp",
+        "match_0x8001ECAC_ECheats_ctor.cpp",
+        "match_0x80058820_MoviePlayerEndgameMovieState_ctor.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80045520_EFloorShdTblNode_ctor.cpp",
+        "match_0x80089A14_EGameStateMan_ctor.cpp",
+        "match_0x800B0320_cSoundModeManager_ctor.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "2",
+      "matched": 22,
+      "unmatched": 5,
+      "total": 27,
+      "agent_examples": [
+        "match_0x80027474_li_return_2.cpp",
+        "match_0x80045798_li_return_2.cpp",
+        "match_0x8004B250_li_return_2.cpp"
+      ],
+      "vd_examples": [
+        "match_0x800251FC_LightLocation_2.cpp",
+        "match_0x802091BC_InteractorModule_Interactor_Interactor_2.cpp",
+        "match_0x802092B4_InteractorModule_Interactor_GetInteractorInfo_2.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "dtor",
+      "matched": 125,
+      "unmatched": 2,
+      "total": 127,
+      "agent_examples": [
+        "EMutex_dtor.cpp",
+        "match_0x80004398_ESimsApp_dtor.cpp",
+        "match_0x80016080_CameraMotionSystem_dtor.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80118E84_cSamplePatch_dtor.cpp",
+        "match_0x801190C4_cSampleChannel_dtor.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "Startup",
+      "matched": 7,
+      "unmatched": 2,
+      "total": 9,
+      "agent_examples": [
+        "match_0x8008480C_TextItem__Startup.cpp",
+        "match_0x80084864_MenuItem__Startup.cpp",
+        "match_0x800848BC_ButtonItem__Startup.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80084464_TextBaseItem_Startup.cpp",
+        "match_0x800966A4_StateMachineManager__Startup.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "Neighbor",
+      "matched": 3,
+      "unmatched": 2,
+      "total": 5,
+      "agent_examples": [
+        "match_0x8039E694_ReconLoadObject_ReconStreamPtrVector_Neighbor.cpp",
+        "match_0x8039E72C_ReconSaveObject_ReconStreamPtrVector_Neighbor.cpp",
+        "ReconSaveObject_ReconStreamPtrVector_Neighbor.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8039E6F8_ReconLoadPtrVector_Neighbor.cpp",
+        "match_0x8039E798_ReconSavePtrVector_Neighbor.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "Reset",
+      "matched": 23,
+      "unmatched": 1,
+      "total": 24,
+      "agent_examples": [
+        "match_0x80020C0C_ECheats__Reset.cpp",
+        "match_0x800597E0_PlumbBobStack__Reset.cpp",
+        "match_0x8008CD78_ChangeHouseSaveHouse_Reset.cpp"
+      ],
+      "vd_examples": [
+        "match_80147A34_TreeSimImpl__Reset.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "Construct",
+      "matched": 15,
+      "unmatched": 1,
+      "total": 16,
+      "agent_examples": [
+        "match_0x80030688_EIFenceWall__Construct.cpp",
+        "match_0x8003506C_ESim__Construct.cpp",
+        "match_0x802140E0_TArray_int_Construct.cpp"
+      ],
+      "vd_examples": [
+        "match_0x800304D0_EIWallPart__Construct.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "Load",
+      "matched": 11,
+      "unmatched": 1,
+      "total": 12,
+      "agent_examples": [
+        "match_0x80010C14_AptViewer__Load.cpp",
+        "match_0x801456BC_cGZSnd_Load.cpp",
+        "match_0x80311f14_EResource__Load.cpp"
+      ],
+      "vd_examples": [
+        "match_8015E028_TreeTableQuickData__Load.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "BString",
+      "matched": 8,
+      "unmatched": 1,
+      "total": 9,
+      "agent_examples": [
+        "match_0x8009C114_operator_eq_BString_BString.cpp",
+        "match_0x8009C214_op_neq_charptr_BString.cpp",
+        "match_0x8009C254_operator_neq_char_BString.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8009C304_operator_lt_BString_BString.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "sub",
+      "matched": 8,
+      "unmatched": 1,
+      "total": 9,
+      "agent_examples": [
+        "match_0x801672FC_LoadHouse_sub.cpp",
+        "match_0x8016A4E8_DoPtrVectorStream_Neighbor_sub.cpp",
+        "match_0x80175510_ThumbnailCompresser_Encode_sub.cpp"
+      ],
+      "vd_examples": [
+        "match_0x801104B4_ObjSelector_sub.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "EResource",
+      "matched": 4,
+      "unmatched": 1,
+      "total": 5,
+      "agent_examples": [
+        "match_0x80311D48_operator_shr_EStream_EResource.cpp",
+        "match_0x80311D88_operator_shr_EFile_EResource.cpp",
+        "match_0x80312070_static_init_EResource.cpp"
+      ],
+      "vd_examples": [
+        "match_0x80311DC8_EResource__EResource.cpp"
+      ]
+    },
+    {
+      "type": "method",
+      "name": "Read",
+      "matched": 4,
+      "unmatched": 1,
+      "total": 5,
+      "agent_examples": [
+        "match_0x80311eb8_EResource__Read.cpp",
+        "match_80022684_EDummyFile__Read.cpp",
+        "match_802E0EF0_EMemoryBufferWriteStream__Read.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8007CEF0_CTGFileImpl_Read.cpp"
+      ]
+    }
+  ],
+  "class_families": [
+    {
+      "type": "class",
+      "name": "GoalUnlock",
+      "matched": 2,
+      "unmatched": 4,
+      "total": 6,
+      "agent_examples": [
+        "match_0x800B8438_GoalUnlock_ctor.cpp",
+        "match_0x800B8474_GoalUnlock_GoalUnlock_dtor52.cpp"
+      ],
+      "vd_examples": [
+        "0x800B853C_GoalUnlock_GetUnlockCount.cpp",
+        "0x800B875C_GoalUnlock_GetFirstUnlockVar.cpp",
+        "0x800B87CC_GoalUnlock_IsUnlocked.cpp"
+      ]
+    },
+    {
+      "type": "class",
+      "name": "EEngine",
+      "matched": 5,
+      "unmatched": 2,
+      "total": 7,
+      "agent_examples": [
+        "match_0x802E37D4_EEngine__GetDMARingMemoryUseInfo.cpp",
+        "match_0x802E37F8_EEngine__GetTextureRingMemoryUseInfo.cpp",
+        "match_0x802E381C_EEngine__GetMatrixRingMemoryUseInfo.cpp"
+      ],
+      "vd_examples": [
+        "match_802E3840_EEngine__GetMemoryUseSystemInfo.cpp",
+        "match_802E3868_EEngine__GetMemoryUseDmaInfo.cpp"
+      ]
+    },
+    {
+      "type": "class",
+      "name": "ERSoundTrackData",
+      "matched": 3,
+      "unmatched": 2,
+      "total": 5,
+      "agent_examples": [
+        "match_0x8036A554_ERSoundTrackData__New.cpp",
+        "match_0x8036a62c_ERSoundTrackData_GetTypeVersion.cpp",
+        "match_0x8036a644_ERSoundTrackData_GetReadVersion.cpp"
+      ],
+      "vd_examples": [
+        "match_8036A614_ERSoundTrackData_GetTypeName.cpp",
+        "match_8036A620_ERSoundTrackData_GetTypeKey.cpp"
+      ]
+    },
+    {
+      "type": "class",
+      "name": "",
+      "matched": 19,
+      "unmatched": 1,
+      "total": 20,
+      "agent_examples": [
+        "match_0x80003464___premain.cpp",
+        "match_0x8022F968_func_8022F968.cpp",
+        "match_0x8023A6D0__ParseLevel.cpp"
+      ],
+      "vd_examples": [
+        "match_0x8023A72C__Parse.cpp"
+      ]
+    }
+  ]
+}

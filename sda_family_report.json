@@ -1,0 +1,54 @@
+[
+  {
+    "method": "op_delete_void_ptr",
+    "matched_count": 18,
+    "version_diff_count": 0,
+    "examples": [
+      "match_0x802FAA7C_EShader__op_delete_void_ptr.cpp",
+      "match_0x8031B398_ERModel__op_delete_void_ptr.cpp",
+      "match_0x8031C600_ERQuickdata__op_delete_void_ptr.cpp",
+      "match_0x80320628_ERShader__op_delete_void_ptr.cpp",
+      "match_0x8032139C_ERTexture__op_delete_void_ptr.cpp"
+    ],
+    "total_potential": 18
+  },
+  {
+    "method": "static_initialization_and_destruction_0",
+    "matched_count": 17,
+    "version_diff_count": 0,
+    "examples": [
+      "match_0x8022F968_func_8022F968.cpp",
+      "match_0x80322C18_static_init_80322C18.cpp",
+      "match_0x80322D9C_static_init_80322D9C.cpp",
+      "match_0x80323120_static_init_80323120.cpp",
+      "match_0x80323290_static_init_80323290.cpp"
+    ],
+    "total_potential": 17
+  },
+  {
+    "method": "op_new_unsigned_int",
+    "matched_count": 17,
+    "version_diff_count": 0,
+    "examples": [
+      "match_0x8031B360_ERModel__op_new_unsigned_int.cpp",
+      "match_0x8031C5D0_ERQuickdata__op_new_unsigned_int.cpp",
+      "match_0x803205F0_ERShader__op_new_unsigned_int.cpp",
+      "match_0x80321364_ERTexture__op_new_unsigned_int.cpp",
+      "match_0x8034DFA0_ENgcShader__op_new_unsigned_int.cpp"
+    ],
+    "total_potential": 17
+  },
+  {
+    "method": "IsEmpty",
+    "matched_count": 12,
+    "version_diff_count": 0,
+    "examples": [
+      "match_0x8026C6A0_EAStringC__IsEmpty.cpp",
+      "match_0x80281FBC_EAStringC__IsEmpty.cpp",
+      "match_0x80287EF4_EAStringC__IsEmpty.cpp",
+      "match_0x8028FC5C_EAStringC__IsEmpty.cpp",
+      "match_0x80298E3C_EAStringC__IsEmpty.cpp"
+    ],
+    "total_potential": 12
+  }
+]

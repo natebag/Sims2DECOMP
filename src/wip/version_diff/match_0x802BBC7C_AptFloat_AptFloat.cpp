@@ -1,4 +1,7 @@
-extern int AptFloat_vtable[];
+// 0x802BBC7C AptFloat::AptFloat(float) (80b)
+// FLAGS: -fno-schedule-insns
+
+extern char AptFloat_vtable[];
 extern void AptValue_ctor(void *, int);
 
 struct AptFloat {
@@ -11,5 +14,5 @@ AptFloat::AptFloat(float val)
 {
     AptValue_ctor(this, 6);
     *(float*)((char*)this + 0x0C) = val;
-    *(int*)((char*)this + 0x08) = (int)AptFloat_vtable;
+    *(int**)((char*)this + 0x08) = (int*)AptFloat_vtable;
 }
