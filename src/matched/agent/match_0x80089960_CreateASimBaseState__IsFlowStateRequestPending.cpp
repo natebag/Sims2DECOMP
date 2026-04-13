@@ -1,14 +1,14 @@
-// 0x80089960 CreateASimBaseState::IsFlowStateRequestPending (36B)
-
-int TheSimsStateMachine_IsFlowStateRequestPending(void* sm);
+struct TheSimsStateMachine {
+    int IsFlowStateRequestPending(void);
+};
 
 struct CreateASimBaseState {
     char pad[0x08];
-    void* m_stateMachine;
+    TheSimsStateMachine *m_owner;
 
-    int IsFlowStateRequestPending();
+    int IsFlowStateRequestPending(void);
 };
 
-int CreateASimBaseState::IsFlowStateRequestPending() {
-    return TheSimsStateMachine_IsFlowStateRequestPending(m_stateMachine);
+int CreateASimBaseState::IsFlowStateRequestPending(void) {
+    return m_owner->IsFlowStateRequestPending();
 }
