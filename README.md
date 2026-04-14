@@ -4,16 +4,20 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**40.2% decompiled and verified** — 8,250 / 20,508 functions byte-matched against the original DOL. Hand-written C++ compiled with the original SN Systems ProDG compiler produces identical bytes.
+**🎉 50% OF MATCHABLE FUNCTIONS DECOMPILED 🎉**
+
+**41.5% decompiled and verified** — 8,502 / 20,508 functions byte-matched against the original DOL. Excluding the ~3,000 SDK functions that were compiled with a different compiler (Metrowerks, not SN Systems), **we've matched 50% of the decompilable codebase**.
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **8,250 / 20,508 (40.2%)** |
-| Functions remaining | ~12,258 |
+| **Verified matches** | **8,502 / 20,508 (41.5%)** |
+| **% of matchable** | **~50%** (of ~17,000 excluding SDK) |
+| Functions remaining | ~12,006 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit |
+| Matching techniques | 19 proven patterns |
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
 
@@ -32,17 +36,20 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 - **blrl virtual dispatch SOLVED** — proper C++ virtual class declarations generate correct `blrl` codegen, unlocking thousands of previously-blocked functions
 - **TU compilation workflow** — `tu_match.py --combine` compiles whole translation units for SDA and register allocation context
 - **Verification tools** — `verify_match.sh` for end-to-end compile-and-compare. Handles R_PPC_REL14/REL24 relocations and filters `-j .text` section relocs to avoid vtable linkonce-section false positives on virtual-method classes.
-- **9-technique compiler flag toolbox** — per-function flag overrides for the common wall classes: `-fno-schedule-insns` (SDA load ordering + dtor scheduling), `-fno-schedule-insns2` (post-alloc scheduling), `-fno-elide-constructors` (virtual class emission / schedule2 re-enable), `-fno-peephole` (reg-alloc walls / tight basic-block reorderings), full virtual class declarations (natural `blrl` emission), raw ptr arithmetic for ID fields, SDA extern struct wrap, address-based near-miss grep.
+- **19-technique library** — full matching toolbox covering SDA, virtual dispatch, scheduling, register allocation, comparison forms, pre-set returns, compound booleans, callback wrappers, and template instantiation. See `docs/tracking/techniques.md`.
+- **r11/r9 register allocation wall CRACKED** — removing `-fno-schedule-insns2` from default flags fixes GCC's volatile register preference, unlocking hundreds of member method patterns that were previously walled.
+- **Template family blasting** — WrapperPaneBase (19), TArray (27), EControllerManager (30), SafeDelete/DestroyInstance (12+), EdithVariableSet accessor (13+), DlgWrapper (5), INVTarget callback wrappers (10), cXObjectImpl/cXPersonImpl vtable dispatch (10+).
+- **Permuter v2** — `tools/matcher_bot.py` with 8 stochastic mutations + hill-climbing search + batch mode for automated source-level permutation against the DOL.
 - **Pre-commit verification gate** — every `src/matched/` commit is auto-verified against the DOL; fakes and broken matches are blocked before they land.
 - **DVD vs release map gotcha confirmed** — the shipped DOL is from `cm3-build22`; address lookups MUST use `u2_ngc_release_dvd.map`. The release map (`cm3-build25`) has different addresses and will produce false leads.
 
 ## What's Not Done
 
-- **~12,258 functions** still need matching (~60%)
-- **SDK library functions** — DolphinSDK functions (address range 0x8024-0x8039) were compiled with Metrowerks CodeWarrior, not SN Systems — they cannot byte-match with our compiler
-- **Register-allocation walls** — DOL and compiler pick different scratch registers; no flag combo cracks these. Needs source-level restructuring.
-- **Store-combining walls** — compiler merges adjacent same-value stores the DOL kept separate. Needs volatile barriers or different class layout.
-- **r13-relative SDA2** — functions using `lwz rN, offset(r13)` addressing need `-msdata=eabi` flag investigation
+- **~12,006 functions** still need matching (~58%)
+- **SDK library functions** — DolphinSDK functions (address range 0x8024-0x8039) were compiled with Metrowerks CodeWarrior, not SN Systems — they cannot byte-match with our compiler. Excluded from the matchable pool (~3,000 functions).
+- **LIFO vs FIFO store scheduling** — our GCC does LIFO store scheduling, original SN v1.76 does FIFO. Blocks most `ctor` functions. Requires compiler patch or TU compilation.
+- **FP register alternation** — DOL alternates f0/f13 in float struct copies, our compiler uses f0 only. Blocks most float-heavy Rendering/ENgcRenderer functions.
+- **InteractorModule struct layouts** — 86+ functions blocked on non-trivial member offsets requiring Ghidra-verified struct analysis.
 - **Complex arithmetic** — magic division constants, bitfield packing patterns
 - **PC port** — a prototype exists but is blocked until real decomp progress is further along
 

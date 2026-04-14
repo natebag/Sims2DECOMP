@@ -1,27 +1,6 @@
 {
-  "total_files": 8400,
-  "unique_addresses": 8395,
-  "duplicate_count": 5,
-  "duplicates": {
-    "80042320": [
-      "src\\matched\\agent\\match_0x80042320_EGlobal_InLevelState.cpp",
-      "src\\matched\\agent\\match_80042320_EGlobal__InLevelState.cpp"
-    ],
-    "800A88E0": [
-      "src\\matched\\agent\\match_0x800A88E0_AmbientScorePlayer__Start.cpp",
-      "src\\matched\\agent\\match_800A88E0_AmbientScorePlayer__Start_void.cpp"
-    ],
-    "800A891C": [
-      "src\\matched\\agent\\match_0x800A891C_AmbientScorePlayer__Stop.cpp",
-      "src\\matched\\agent\\match_800A891C_AmbientScorePlayer__Stop_void.cpp"
-    ],
-    "800EB218": [
-      "src\\matched\\agent\\match_0x800EB218_cXObjectImpl_CountObjectSlots.cpp",
-      "src\\matched\\agent\\match_800EB218_cXObjectImpl__CountObjectSlots.cpp"
-    ],
-    "80189AB0": [
-      "src\\matched\\agent\\match_0x80189AB0_HUDTarget_IsPlayerHUDVisible.cpp",
-      "src\\matched\\agent\\match_80189AB0_HUDTarget__IsPlayerHUDVisible.cpp"
-    ]
-  }
+  "total_files": 8502,
+  "unique_addresses": 8502,
+  "duplicate_count": 0,
+  "duplicates": {}
 }
