@@ -1,28 +1,20 @@
-// 0x80085434 WrapperPaneBase::GetItemPosX(ItemType, int) (56B)
-
-struct WrapperItem;
-void* WrapperPaneBase_GetItem(void* self, int type, int index);
-
-struct WrapperItemVtable {
-    char pad[0x50];
+// 0x80085434 WrapperPaneBase::GetItemPosX (56B)
+struct VTable {
+    char pad[80];
     short m_adj;
-    short pad1;
-    void* (*m_fn)(void*);
+    short m_pad;
+    int (*m_fn)(void*);
 };
-
-struct WrapperItem {
-    char pad[0x1C];
-    WrapperItemVtable* m_vtable;
+struct Item {
+    char pad[28];
+    VTable* m_vt;
 };
-
 struct WrapperPaneBase {
-    void* GetItemPosX(int type, int index);
+    Item* GetItem(int type, int idx);
+    int GetItemPosX(int type, int idx);
 };
-
-void* WrapperPaneBase::GetItemPosX(int type, int index) {
-    WrapperItem* item = (WrapperItem*)WrapperPaneBase_GetItem(this, type, index);
-    WrapperItemVtable* vt = item->m_vtable;
-    short adj = vt->m_adj;
-    void* (*fn)(void*) = vt->m_fn;
-    return fn((char*)item + adj);
+int WrapperPaneBase::GetItemPosX(int type, int idx) {
+    Item* item = GetItem(type, idx);
+    VTable* vt = item->m_vt;
+    return vt->m_fn((char*)item + vt->m_adj);
 }

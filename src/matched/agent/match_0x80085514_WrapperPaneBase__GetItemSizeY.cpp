@@ -1,28 +1,20 @@
-// 0x80085514 WrapperPaneBase::GetItemSizeY(ItemType, int) (56B)
-
-struct WrapperItem;
-void* WrapperPaneBase_GetItem(void* self, int type, int index);
-
-struct WrapperItemVtable {
-    char pad[0x90];
+// 0x80085514 WrapperPaneBase::GetItemSizeY (56B)
+struct VTable {
+    char pad[144];
     short m_adj;
-    short pad1;
-    void* (*m_fn)(void*);
+    short m_pad;
+    int (*m_fn)(void*);
 };
-
-struct WrapperItem {
-    char pad[0x1C];
-    WrapperItemVtable* m_vtable;
+struct Item {
+    char pad[28];
+    VTable* m_vt;
 };
-
 struct WrapperPaneBase {
-    void* GetItemSizeY(int type, int index);
+    Item* GetItem(int type, int idx);
+    int GetItemSizeY(int type, int idx);
 };
-
-void* WrapperPaneBase::GetItemSizeY(int type, int index) {
-    WrapperItem* item = (WrapperItem*)WrapperPaneBase_GetItem(this, type, index);
-    WrapperItemVtable* vt = item->m_vtable;
-    short adj = vt->m_adj;
-    void* (*fn)(void*) = vt->m_fn;
-    return fn((char*)item + adj);
+int WrapperPaneBase::GetItemSizeY(int type, int idx) {
+    Item* item = GetItem(type, idx);
+    VTable* vt = item->m_vt;
+    return vt->m_fn((char*)item + vt->m_adj);
 }

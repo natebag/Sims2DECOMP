@@ -1,7 +1,13 @@
-typedef unsigned char u8;
-u8* getItem(u8*, int, int);
-void setItemProp(u8*, u8*);
-void WrapperPaneBase_SetItemText(u8* self, int type, int idx, u8* text) {
-    u8* item = getItem(self, type, idx);
-    setItemProp(item, text);
+// 0x8008507C WrapperPaneBase::SetItemText(ItemType, int, unsigned wchar_t*) (52B)
+struct TextItem {};
+extern void SetTextHelper(TextItem* item, unsigned short* text);
+
+struct WrapperPaneBase {
+    TextItem* GetItem(int type, int idx);
+    void SetItemText(int type, int idx, unsigned short* text);
+};
+
+void WrapperPaneBase::SetItemText(int type, int idx, unsigned short* text) {
+    TextItem* item = GetItem(type, idx);
+    SetTextHelper(item, text);
 }

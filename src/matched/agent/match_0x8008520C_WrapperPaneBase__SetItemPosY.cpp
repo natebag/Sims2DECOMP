@@ -1,13 +1,21 @@
-// 0x8008520C WrapperPaneBase::SetItemPosY(ItemType, int, float) (72B)
-// FLAGS: -fno-schedule-insns
-struct WrapperItem; void* WrapperPaneBase_GetItem(void* self, int type, int index);
-struct VT { char pad[0x58]; short adj; short p; void (*fn)(void*, float); };
-struct WI { char pad[0x1C]; VT* vt; };
-struct WrapperPaneBase { void SetItemPosY(int type, int index, float val); };
-void WrapperPaneBase::SetItemPosY(int type, int index, float val) {
-    WI* item = (WI*)WrapperPaneBase_GetItem(this, type, index);
-    VT* vt = item->vt;
-    short adj = vt->adj;
-    void (*fn)(void*, float) = vt->fn;
-    fn((char*)item + adj, val);
+// 0x8008520C WrapperPaneBase::SetItemPosY (72B)
+struct EVec2;
+struct VTable {
+    char pad[88];
+    short m_adj;
+    short m_pad;
+    void (*m_fn)(void*, float);
+};
+struct Item {
+    char pad[28];
+    VTable* m_vt;
+};
+struct WrapperPaneBase {
+    Item* GetItem(int type, int idx);
+    void SetItemPosY(int type, int idx, float v);
+};
+void WrapperPaneBase::SetItemPosY(int type, int idx, float v) {
+    Item* item = GetItem(type, idx);
+    VTable* vt = item->m_vt;
+    vt->m_fn((char*)item + vt->m_adj, v);
 }

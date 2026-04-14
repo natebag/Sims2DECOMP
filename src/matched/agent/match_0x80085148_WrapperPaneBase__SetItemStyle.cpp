@@ -1,7 +1,13 @@
-typedef unsigned char u8;
-u8* getItem2(u8*, int, int);
-void setItemStyle(u8*, u8*);
-void WrapperPaneBase_SetItemStyle(u8* self, int type, int idx, u8* style) {
-    u8* item = getItem2(self, type, idx);
-    setItemStyle(item, style);
+// 0x80085148 WrapperPaneBase::SetItemStyle(ItemType, int, ItemStyle) (52B)
+struct Item {};
+extern void SetStyleHelper(Item* item, int style);
+
+struct WrapperPaneBase {
+    Item* GetItem(int type, int idx);
+    void SetItemStyle(int type, int idx, int style);
+};
+
+void WrapperPaneBase::SetItemStyle(int type, int idx, int style) {
+    Item* item = GetItem(type, idx);
+    SetStyleHelper(item, style);
 }
