@@ -1,5 +1,9 @@
-extern "C" void CasClothingUnlocks_SetGroupLock(void* self, unsigned int id, int lock, int notify);
-
-void CasClothingUnlocks_LockGroup(void* self, unsigned int id) {
-    CasClothingUnlocks_SetGroupLock(self, id, 1, 0);
+// 0x8015F1F4 CasClothingUnlocks::LockGroup(unsigned int) (40B)
+// Thunk: MarkGroup(group, true, false)
+struct CasClothingUnlocks {
+    void MarkGroup(unsigned int group, bool lock, bool flag);
+    void LockGroup(unsigned int group);
+};
+void CasClothingUnlocks::LockGroup(unsigned int group) {
+    MarkGroup(group, true, false);
 }
