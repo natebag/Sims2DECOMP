@@ -1,6 +1,47 @@
 {
-  "total_files": 8680,
-  "unique_addresses": 8680,
-  "duplicate_count": 0,
-  "duplicates": {}
+  "total_files": 8818,
+  "unique_addresses": 8808,
+  "duplicate_count": 10,
+  "duplicates": {
+    "801F15FC": [
+      "src\\matched\\agent\\match_0x801f15fc_INVTarget__PlaceModeCallback.cpp",
+      "src\\matched\\invtarget\\match_0x801F15FC_INVTarget__PlaceModeCallback.cpp"
+    ],
+    "801F1974": [
+      "src\\matched\\agent\\match_0x801f1974_INVTarget__WallManipulatorCallback.cpp",
+      "src\\matched\\invtarget\\match_0x801F1974_INVTarget__WallManipulatorCallback.cpp"
+    ],
+    "801F1B6C": [
+      "src\\matched\\agent\\match_0x801f1b6c_INVTarget__WallPainterCallback.cpp",
+      "src\\matched\\invtarget\\match_0x801F1B6C_INVTarget__WallPainterCallback.cpp"
+    ],
+    "801F1B94": [
+      "src\\matched\\agent\\match_0x801f1b94_INVTarget__FloorModeCallback.cpp",
+      "src\\matched\\invtarget\\match_0x801F1B94_INVTarget__FloorModeCallback.cpp"
+    ],
+    "801F1DDC": [
+      "src\\matched\\agent\\match_0x801f1ddc_INVTarget__GrabModeCallback.cpp",
+      "src\\matched\\invtarget\\match_0x801F1DDC_INVTarget__GrabModeCallback.cpp"
+    ],
+    "801F66B8": [
+      "src\\matched\\agent\\match_0x801f66b8_INVTarget__GetOnMsgInvBackExitReset.cpp",
+      "src\\matched\\targets_tsc3\\match_0x801F66B8_INVTarget__GetOnMsgInvBackExitReset.cpp"
+    ],
+    "801F67BC": [
+      "src\\matched\\agent\\match_0x801f67bc_INVTarget__GetOnMsgInvTabCount.cpp",
+      "src\\matched\\targets_tsc3\\match_0x801F67BC_INVTarget__GetOnMsgInvTabCount.cpp"
+    ],
+    "801F67F0": [
+      "src\\matched\\agent\\match_0x801f67f0_INVTarget__GetOnMsgInvInventoryCount.cpp",
+      "src\\matched\\targets_tsc3\\match_0x801F67F0_INVTarget__GetOnMsgInvInventoryCount.cpp"
+    ],
+    "80203E04": [
+      "src\\matched\\agent\\match_0x80203e04_InteractorModule_DirectInteractor__OnCreate.cpp",
+      "src\\matched\\directinteractor\\match_0x80203E04_InteractorModule_DirectInteractor__OnCreate.cpp"
+    ],
+    "80203E38": [
+      "src\\matched\\agent\\match_0x80203e38_InteractorModule_DirectInteractor__OnDestroy.cpp",
+      "src\\matched\\directinteractor\\match_0x80203E38_InteractorModule_DirectInteractor__OnDestroy.cpp"
+    ]
+  }
 }
