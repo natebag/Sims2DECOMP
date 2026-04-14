@@ -1,0 +1,1983 @@
+======================================================================
+FULL 257-512B TARGET SCAN — ALL SYSTEMS
+Total in map (SDK excluded): 1280
+Unmatched: 1268
+======================================================================
+
+[InteractorModule] — 53 functions
+  0x802046fc  (316B)  InteractorModule::DirectInteractor::InterpretFreeMoveInput(void)
+  0x80205a60  (280B)  InteractorModule::DirectInteractor::ExecuteObjectActionMenu(cXObject *)
+  0x8020707c  (508B)  InteractorModule::FloorPainter::UpdateStockChanges(int *, int)
+  0x80207278  (416B)  InteractorModule::FloorPainter::HandleActionCmdInPlaceMode(void)
+  0x80207ae0  (436B)  InteractorModule::FloorPainter::SetFloorTile(CTilePt *, FloorPattern, int *)
+  0x80207c94  (488B)  InteractorModule::FloorPainter::SetFloorTile(CTilePt &, FloorPattern, Room *, int *)
+  0x80208c74  (300B)  InteractorModule::FloorPainter::CheckDiagForRoomContainment(Room *, CTilePt &, TileWalls &, DiagonalSideSelector &, DiagonalSideSelector &)
+  0x802095e4  (276B)  InteractorModule::Debug_GetNameFromCommand(InteractorModule::InteractorInputManager::InteractorCommand)
+  0x8020a968  (260B)  InteractorModule::InteractorInputManager::InstanceData::OpenSession(int, InteractorModule::Interactor *, int, InteractorModule::InteractorInputManager::ButtonSemantic *, int, InteractorModule::InteractorInputManager::StickSemantic *, char *)
+  0x8020b020  (408B)  InteractorModule::InteractorManager::~InteractorManager(void)
+  0x8020cce0  (356B)  InteractorModule::InteractorResourceSet::RemoveModel(unsigned int)
+  0x8020e038  (356B)  InteractorModule::InteractorResourceSet::RemoveShader(unsigned int)
+  0x8020f3a0  (356B)  InteractorModule::InteractorResourceSet::RemoveTexture(unsigned int)
+  0x8020fd74  (384B)  InteractorModule::InteractorResourceSet::ClearSet(void)
+  0x802104a8  (396B)  InteractorModule::GetPersonPosition(EVec3 *, cXPerson *, bool, bool)
+  0x80210804  (376B)  InteractorModule::GetCameraRelativeStickAngle(EVec2 &, ESimsCam *, float *)
+  0x80211524  (316B)  InteractorModule::CanObjectBeDestroyed(cXObject *)
+  0x802121c4  (460B)  InteractorModule::FinalUserPlaceObject(cXObject *)
+  0x802124b4  (412B)  InteractorModule::SetDirection(int, cXObject *)
+  0x80212650  (376B)  InteractorModule::GetObjectInstancesList(cXObject *, TNodeList<ISimInstance *> &)
+  0x8021358c  (320B)  InteractorModule::EorGetAdjacentTile(TileWallsSegment &, int, DiagonalSideSelector &, CTilePt &, CTilePt &)
+  0x80213c60  (300B)  InteractorModule::CheckNewSimInSocialMode(unsigned int)
+  0x80213f98  (328B)  InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::FloorPainter &)
+  0x80215218  (476B)  InteractorModule::InteractorVisualizer::DrawWallpaperRoomPreview(InteractorModule::WallPainter &)
+  0x802153f4  (500B)  InteractorModule::InteractorVisualizer::DrawWallpaperPreviewOnAffectedWalls(InteractorModule::WallPainter &)
+  0x802155e8  (404B)  InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::WallManipulator &)
+  0x80216d64  (308B)  InteractorModule::InteractorVisualizer::Draw(InteractorModule::ObjectManipulator &)
+  0x80216f54  (476B)  InteractorModule::InteractorVisualizer::Draw(InteractorModule::SimInteractor &)
+  0x80217438  (280B)  InteractorModule::InteractorVisualizer::DrawSimpleResourceSet(InteractorModule::Interactor &, int, EVec3 &, float)
+  0x80217b30  (464B)  InteractorModule::InteractorVisualizer::DrawResource(InteractorModule::Interactor &, int, EVec3 &, EMat4 *)
+  0x80218c44  (416B)  InteractorModule::InteractorVisualizer::DestroyResourceSet(InteractorModule::Interactor &)
+  0x80219074  (380B)  InteractorModule::ObjectManipulator::OnStart(InteractorModule::Interactor::InteractorParams *)
+  0x80219ef8  (312B)  InteractorModule::ObjectManipulator::UpdateOverlapIntersection(InteractorModule::Interactor::OverlapData *)
+  0x8021a07c  (268B)  InteractorModule::GrabManipulator::OnStart(InteractorModule::Interactor::InteractorParams *)
+  0x8021a1fc  (332B)  InteractorModule::PlaceManipulator::StartPlacement(InteractorModule::PlaceManipulator::PlaceManipulatorParams *)
+  0x8021a620  (412B)  InteractorModule::GrabManipulator::TryRemoveCurrentObjectFromWorld(void)
+  0x8021a8d8  (276B)  InteractorModule::PlaceManipulator::TryPlacingCurrentObject(void)
+  0x8021ab88  (316B)  InteractorModule::PlacementObject::SetObjectColor(cXObject *, unsigned char)
+  0x8021acc4  (288B)  InteractorModule::PlacementObject::CreateNewPlacementObjectFromGuid(unsigned int, unsigned char)
+  0x8021ade4  (276B)  InteractorModule::PlacementObject::GrabExistingObjectInstanceFromId(short)
+  0x8021bca8  (268B)  InteractorModule::PlacementObject::AssignOffsetsToGridObject(cXMTObjectImpl *, cXObjectImpl *)
+  0x8021bee4  (392B)  InteractorModule::PlacementObject::Place(FTilePt &, InteractorModule::PlacementData &)
+  0x8021d250  (276B)  InteractorModule::SimInteractor::SimInteractor(void)
+  0x8021e72c  (356B)  InteractorModule::SimInteractor::TryCutToSim(void)
+  0x8021e8e8  (432B)  InteractorModule::SimInteractor::UpdateOverlapIntersection(InteractorModule::Interactor::OverlapData *)
+  0x8021f648  (372B)  InteractorModule::WallManipulator::~WallManipulator(void)
+  0x80220940  (444B)  InteractorModule::WallManipulator::CountWallsInRoomSelection(void)
+  0x80221de8  (400B)  InteractorModule::WallManipulator::SubmitLine(EVec3 &, EVec3 &, int &, bool, bool)
+  0x8022237c  (332B)  InteractorModule::WallManipulator::CanChangeTileAdd(CTilePt &, TileWallsSegment)
+  0x80223354  (384B)  InteractorModule::WallManipulator::AddWallAtTile(CTilePt &, TileWalls &, TileWallsSegment)
+  0x80224838  (396B)  InteractorModule::WallPainter::HandleFinalizeRequest(void)
+  0x8022544c  (328B)  InteractorModule::WallPainter::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float)
+  0x803c0e1c  (300B)  InteractorModule::WallManipulator::CallbackData::~CallbackData(void)
+
+[SAnimator2] — 41 functions
+  0x8005c23c  (512B)  SAnimator2::~SAnimator2(void)
+  0x8005c43c  (468B)  SAnimator2::Initialize(cXPerson *)
+  0x8005c610  (348B)  SAnimator2::InitStaticAnimationElements(void)
+  0x8005da24  (380B)  SAnimator2::SelectAlgorithmicIdle(AnimRef *&)
+  0x8005eab8  (444B)  SAnimator2::FollowOneStep(void)
+  0x8005ec74  (296B)  SAnimator2::EndFollow(void)
+  0x8005f5d0  (392B)  SAnimator2::AddProp(unsigned int, bool)
+  0x8005f958  (504B)  SAnimator2::endFollowDone(void)
+  0x8005fbd0  (492B)  SAnimator2::followSidestepUpdate(float &, float &, float)
+  0x8005ff80  (352B)  SAnimator2::endMoveAnimation(void)
+  0x800600e0  (428B)  SAnimator2::UpdatePortalMode(void)
+  0x80060928  (348B)  SAnimator2::rotateAnimation(float, float, float)
+  0x80060a84  (412B)  SAnimator2::sidestepAlongNode(float &)
+  0x80060ce0  (336B)  SAnimator2::getUseSpeed(float, float, float, float)
+  0x80061658  (356B)  SAnimator2::updateParticles(void)
+  0x80061804  (440B)  SAnimator2::handleMoodAnimations(void)
+  0x800619bc  (384B)  SAnimator2::playFootprint(char *)
+  0x800630dc  (344B)  SAnimator2::handleRunStopAnimation(void)
+  0x80064434  (260B)  SAnimator2::handleImpatientIdleAnimation(void)
+  0x80064750  (264B)  SAnimator2::LoadOptionalIdleAnim(void)
+  0x8006491c  (292B)  SAnimator2::UnloadOptionalIdleAnim(void)
+  0x80065668  (432B)  SAnimator2::processEvents(AnimRef &, int, int, bool, bool)
+  0x80065b68  (264B)  SAnimator2::PreloadEvents(AnimRef *)
+  0x80065ce4  (260B)  SAnimator2::_handleParticleEvent(REffectsAttachment *)
+  0x800660bc  (284B)  SAnimator2::cleanupParticles(TRedBlackTree<unsigned int, TRedBlackTree<unsigned int, EBoneParticle *> *> *)
+  0x8006622c  (288B)  SAnimator2::playRumble(RumbleDataElement *)
+  0x800667f0  (336B)  SAnimator2::isAnimationDone(void)
+  0x80066fc0  (288B)  SAnimator2::updateRenderModels(void)
+  0x80067288  (372B)  SAnimator2::setNewModel(char *, bool, bool)
+  0x800673fc  (420B)  SAnimator2::RestoreNonCostumeRelatedSimDescriptionItems(CasSimDescriptionS2C *, CasSimDescriptionS2C *, bool)
+  0x800675a0  (324B)  SAnimator2::GetCostumeName(SAnimator::OutfitS2C)
+  0x8006781c  (460B)  SAnimator2::DrawProps(ERC *, bool, EShader *)
+  0x800695b8  (264B)  SAnimator2::determineWalkRunStyle(float)
+  0x800696c0  (280B)  SAnimator2::StartDefaultIdle(void)
+  0x80069fbc  (488B)  SAnimator2::setRotationRateFromShuffleDir(int, float)
+  0x8006a508  (404B)  SAnimator2::getDesiredDir(void)
+  0x8006ad80  (424B)  SAnimator2::getWalkRunSkillID(AnimRef *&)
+  0x8006c148  (472B)  SAnimator2::startCarry(void)
+  0x8006c320  (368B)  SAnimator2::stopCarry(void)
+  0x8006c490  (468B)  SAnimator2::setAwarenessFollowEnd(void)
+  0x8006c6dc  (372B)  SAnimator2::exitAwarenessFollow(void)
+
+[cXObjectImpl] — 41 functions
+  0x800dac94  (296B)  cXObjectImpl::JustBorn(void)
+  0x800db5d0  (372B)  cXObjectImpl::SetHilite(int)
+  0x800db9a8  (368B)  cXObjectImpl::DayPassed(void)
+  0x800dbb18  (316B)  cXObjectImpl::UpdateAge(void)
+  0x800dcb78  (468B)  cXObjectImpl::GetPlacementSpec(PlacementSpec *)
+  0x800dcfb8  (348B)  cXObjectImpl::HierSetSite(HierarchySite *)
+  0x800dd15c  (268B)  cXObjectImpl::HierGetSite(HierarchySite *)
+  0x800dd5e4  (260B)  cXObjectImpl::ExtractContainedSims(void)
+  0x800de144  (508B)  cXObjectImpl::Pickup(void)
+  0x800dfa9c  (352B)  cXObjectImpl::Turn(int)
+  0x800dfee0  (416B)  cXObjectImpl::CalcShortDistanceIn16thsOfTiles(cXObject *)
+  0x800e1594  (496B)  cXObjectImpl::UpdateWallAdjacency(void)
+  0x800e184c  (396B)  cXObjectImpl::GetAgeInMinutes(void)
+  0x800e19d8  (284B)  cXObjectImpl::GetInteractionLeader(void)
+  0x800e1af4  (452B)  cXObjectImpl::UserCanPickup(void)
+  0x800e1e30  (452B)  cXObjectImpl::UserCanPlace(FTilePt &, int, cXObject *, int)
+  0x800e1ff4  (308B)  cXObjectImpl::UserPlace(FTilePt &, int, cXObject *, int)
+  0x800e2128  (308B)  cXObjectImpl::UserPickup(bool)
+  0x800e2364  (480B)  cXObjectImpl::ShouldAutoRotate(void)
+  0x800e2604  (324B)  cXObjectImpl::CanChooseAutonomously(void)
+  0x800e2b70  (452B)  cXObjectImpl::SyncObjectIsReady(signed char)
+  0x800e2e04  (272B)  cXObjectImpl::SyncObjectIsReady(void)
+  0x800ea6b0  (356B)  cXObjectImpl::SimObjectPlaced(ISimInstance *)
+  0x800eb940  (344B)  cXObjectImpl::GetDebugName(char *, int) const
+  0x800fa1f4  (288B)  cXObjectImpl::TryTestObjectType(StackElem *, XPrimParam *)
+  0x800ff1dc  (284B)  cXObjectImpl::TryTutorial(StackElem *, XPrimParam *)
+  0x80100f88  (392B)  cXObjectImpl::TryBudget(StackElem *, XPrimParam *)
+  0x80102840  (484B)  cXObjectImpl::TryCallFunctionalTree(StackElem *, XPrimParam *)
+  0x80104ec0  (364B)  cXObjectImpl::TransitionToNewHouse(short, short, short)
+  0x8010502c  (304B)  cXObjectImpl::RewriteDialogParamIndices(DialogParam &)
+  0x80105420  (284B)  cXObjectImpl::TryShowString(StackElem *, XPrimParam *)
+  0x8010553c  (432B)  cXObjectImpl::TryKillObject(StackElem *, XPrimParam *, short *)
+  0x80105780  (352B)  cXObjectImpl::TryIdle(StackElem *, XPrimParam *)
+  0x80105dd4  (384B)  cXObjectImpl::TryRandom(StackElem *, XPrimParam *)
+  0x801065b0  (488B)  cXObjectImpl::TryAnimateObject(StackElem *, XPrimParam *)
+  0x80107cdc  (452B)  cXObjectImpl::TryDistanceTo(StackElem *, XPrimParam *)
+  0x80108ec8  (384B)  cXObjectImpl::TryPassiveInfluence(StackElem *, XPrimParam *)
+  0x8010958c  (312B)  cXObjectImpl::TryAnimate(StackElem *, AnimateNewParam *)
+  0x80109c30  (448B)  cXObjectImpl::TryPlaySound(StackElem *, PlaySoundParam *)
+  0x8010d3c8  (484B)  cXObjectImpl::TryDrop(void)
+  0x8010ed00  (356B)  cXObjectImpl::TryHUDData(StackElem *, XPrimParam *)
+
+[vector] — 27 functions
+  0x803a2e7c  (380B)  vector<unsigned int, allocator<unsigned int> >::operator=(vector<unsigned int, allocator<unsigned int> > &)
+  0x803a50a0  (360B)  vector<PersDataPair, allocator<PersDataPair> >::reserve(unsigned int)
+  0x803a640c  (308B)  vector<short, allocator<short> >::reserve(unsigned int)
+  0x803a6640  (380B)  vector<short, allocator<short> >::operator=(vector<short, allocator<short> > &)
+  0x803a99b8  (396B)  vector<MotiveInc, allocator<MotiveInc> >::reserve(unsigned int)
+  0x803ae0bc  (308B)  vector<StackElem *, allocator<StackElem *> >::reserve(unsigned int)
+  0x803ae260  (372B)  vector<CTilePt, allocator<CTilePt> >::reserve(unsigned int)
+  0x803ae408  (412B)  vector<PenaltyRect, allocator<PenaltyRect> >::reserve(unsigned int)
+  0x803ae5a4  (308B)  vector<int, allocator<int> >::reserve(unsigned int)
+  0x803afb90  (308B)  vector<CasSimDescriptionS2C *, allocator<CasSimDescriptionS2C *> >::reserve(unsigned int)
+  0x803b0938  (308B)  vector<CasGenetics::Grandparent *, allocator<CasGenetics::Grandparent *> >::reserve(unsigned int)
+  0x803bcf58  (360B)  vector<InteractorModule::InvStock, allocator<InteractorModule::InvStock> >::reserve(unsigned int)
+  0x803bd3a8  (396B)  vector<pair<InteractorModule::InteractorInputManager::InteractorCommand, pair<bool, ECTRL_CMD> >, allocator<pair<InteractorModule::InteractorInputManager::InteractorCommand, pair<bool, ECTRL_CMD> > > >::reserve(unsigned int)
+  0x803bd534  (360B)  vector<InteractorModule::InteractorManager::ActiveInteractor, allocator<InteractorModule::InteractorManager::ActiveInteractor> >::reserve(unsigned int)
+  0x803bd9d4  (360B)  vector<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *>, allocator<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *> > >::reserve(unsigned int)
+  0x803bde70  (376B)  vector<InteractorModule::InteractorInfo, allocator<InteractorModule::InteractorInfo> >::reserve(unsigned int)
+  0x803be5e8  (380B)  vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >::operator=(vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> > &)
+  0x803bf16c  (360B)  vector<pair<unsigned int, ERModel *>, allocator<pair<unsigned int, ERModel *> > >::reserve(unsigned int)
+  0x803bf384  (360B)  vector<pair<unsigned int, ERShader *>, allocator<pair<unsigned int, ERShader *> > >::reserve(unsigned int)
+  0x803bf4ec  (360B)  vector<pair<unsigned int, ERTexture *>, allocator<pair<unsigned int, ERTexture *> > >::reserve(unsigned int)
+  0x803bf654  (376B)  vector<pair<InteractorModule::Interactor *, InteractorModule::InteractorResourceSet>, allocator<pair<InteractorModule::Interactor *, InteractorModule::InteractorResourceSet> > >::reserve(unsigned int)
+  0x803c0740  (388B)  vector<pair<short, InteractorModule::PlacementObject::ContainerInfo>, allocator<pair<short, InteractorModule::PlacementObject::ContainerInfo> > >::reserve(unsigned int)
+  0x803c092c  (360B)  vector<InteractorModule::FenceSellCount, allocator<InteractorModule::FenceSellCount> >::reserve(unsigned int)
+  0x803c0a94  (360B)  vector<InteractorModule::PatternSellCount, allocator<InteractorModule::PatternSellCount> >::reserve(unsigned int)
+  0x803c55dc  (308B)  vector<ERShader *, allocator<ERShader *> >::reserve(unsigned int)
+  0x803c6470  (396B)  vector<EResourceManager::ResourceIndexRecord, allocator<EResourceManager::ResourceIndexRecord> >::reserve(unsigned int)
+  0x803c9e74  (396B)  vector<ERDataset::ResourceInfo, allocator<ERDataset::ResourceInfo> >::reserve(unsigned int)
+
+[_Rb_tree] — 23 functions
+  0x803a1a38  (292B)  _Rb_tree<ResFile *, pair<ResFile *, FileRec>, _Select1st<pair<ResFile *, FileRec> >, less<ResFile *>, allocator<pair<ResFile *, FileRec> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<ResFile *, FileRec> &, _Rb_tree_node_base *)
+  0x803a1b5c  (280B)  _Rb_tree<ResFile *, pair<ResFile *, FileRec>, _Select1st<pair<ResFile *, FileRec> >, less<ResFile *>, allocator<pair<ResFile *, FileRec> > >::insert_unique(pair<ResFile *, FileRec> &)
+  0x803a2bfc  (276B)  _Rb_tree<ERSoundEvent *, pair<ERSoundEvent *, int>, _Select1st<pair<ERSoundEvent *, int> >, less<ERSoundEvent *>, allocator<pair<ERSoundEvent *, int> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<ERSoundEvent *, int> &, _Rb_tree_node_base *)
+  0x803a4c0c  (276B)  _Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<int, int> &, _Rb_tree_node_base *)
+  0x803a4d20  (280B)  _Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > >::insert_unique(pair<int, int> &)
+  0x803a753c  (292B)  _Rb_tree<unsigned int, pair<unsigned int, NamespaceSelector>, _Select1st<pair<unsigned int, NamespaceSelector> >, less<unsigned int>, allocator<pair<unsigned int, NamespaceSelector> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<unsigned int, NamespaceSelector> &, _Rb_tree_node_base *)
+  0x803a7660  (280B)  _Rb_tree<unsigned int, pair<unsigned int, NamespaceSelector>, _Select1st<pair<unsigned int, NamespaceSelector> >, less<unsigned int>, allocator<pair<unsigned int, NamespaceSelector> > >::insert_unique(pair<unsigned int, NamespaceSelector> &)
+  0x803a7c60  (272B)  _Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > >::operator=(_Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > > &)
+  0x803a8efc  (276B)  _Rb_tree<int, pair<int, cHitControlGroup *>, _Select1st<pair<int, cHitControlGroup *> >, less<int>, allocator<pair<int, cHitControlGroup *> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<int, cHitControlGroup *> &, _Rb_tree_node_base *)
+  0x803a9010  (280B)  _Rb_tree<int, pair<int, cHitControlGroup *>, _Select1st<pair<int, cHitControlGroup *> >, less<int>, allocator<pair<int, cHitControlGroup *> > >::insert_unique(pair<int, cHitControlGroup *> &)
+  0x803a9520  (276B)  _Rb_tree<cTrack *, pair<cTrack *, int>, _Select1st<pair<cTrack *, int> >, less<cTrack *>, allocator<pair<cTrack *, int> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<cTrack *, int> &, _Rb_tree_node_base *)
+  0x803a9634  (280B)  _Rb_tree<cTrack *, pair<cTrack *, int>, _Select1st<pair<cTrack *, int> >, less<cTrack *>, allocator<pair<cTrack *, int> > >::insert_unique(pair<cTrack *, int> &)
+  0x803ab4d0  (276B)  _Rb_tree<short, pair<short, bool>, _Select1st<pair<short, bool> >, less<short>, allocator<pair<short, bool> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<short, bool> &, _Rb_tree_node_base *)
+  0x803ab5e4  (280B)  _Rb_tree<short, pair<short, bool>, _Select1st<pair<short, bool> >, less<short>, allocator<pair<short, bool> > >::insert_unique(pair<short, bool> &)
+  0x803ac5a8  (276B)  _Rb_tree<unsigned short, pair<unsigned short, Room *>, _Select1st<pair<unsigned short, Room *> >, less<unsigned short>, allocator<pair<unsigned short, Room *> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<unsigned short, Room *> &, _Rb_tree_node_base *)
+  0x803ac6bc  (280B)  _Rb_tree<unsigned short, pair<unsigned short, Room *>, _Select1st<pair<unsigned short, Room *> >, less<unsigned short>, allocator<pair<unsigned short, Room *> > >::insert_unique(pair<unsigned short, Room *> &)
+  0x803ac7d4  (344B)  _Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select1st<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > >, less<CTilePt>, allocator<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<CTilePt, pair<DiagonalNode, DiagonalNode> > &, _Rb_tree_node_base *)
+  0x803ac92c  (276B)  _Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select1st<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > >, less<CTilePt>, allocator<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > > >::insert_unique(pair<CTilePt, pair<DiagonalNode, DiagonalNode> > &)
+  0x803ae9c0  (356B)  _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> &, _Rb_tree_node_base *)
+  0x803aeb24  (356B)  _Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::insert_unique(pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> &)
+  0x803b0b1c  (260B)  _Rb_tree<CasListener *, CasListener *, _Identity<CasListener *>, less<CasListener *>, allocator<CasListener *> >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, CasListener *&, _Rb_tree_node_base *)
+  0x803b0c20  (280B)  _Rb_tree<CasListener *, CasListener *, _Identity<CasListener *>, less<CasListener *>, allocator<CasListener *> >::insert_unique(CasListener *&)
+  0x803b5acc  (276B)  _Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, greater<int>, allocator<pair<int, int> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<int, int> &, _Rb_tree_node_base *)
+
+[TArray] — 21 functions
+  0x803c19ec  (300B)  TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::SetSize(int, int)
+  0x803c25e4  (292B)  TArray<int, TArrayDefaultAllocator>::SetSize(int, int)
+  0x803c28ec  (292B)  TArray<EString, TArrayDefaultAllocator>::SetSize(int, int)
+  0x803c2c84  (292B)  TArray<EString2, TArrayDefaultAllocator>::SetSize(int, int)
+  0x803c30a4  (292B)  TArray<unsigned char *, TArrayDefaultAllocator>::SetSize(int, int)
+  0x803c3a04  (288B)  TArray<ESMSStrip, TArrayERModelAllocator>::SetSize(int, int)
+  0x803c3c54  (288B)  TArray<ESubModelShader, TArrayERModelAllocator>::SetSize(int, int)
+  0x803c3dec  (292B)  TArray<unsigned int, TArrayDefaultAllocator>::SetSize(int, int)
+  0x803c49a0  (288B)  TArray<BSplineVolume, TArrayERModelAllocator>::SetSize(int, int)
+  0x803c4ca4  (288B)  TArray<ENDummy, TArrayERModelAllocator>::SetSize(int, int)
+  0x803c4fa8  (288B)  TArray<ENCamera, TArrayERModelAllocator>::SetSize(int, int)
+  0x803c51f4  (288B)  TArray<SimsLightInfo, TArrayERModelAllocator>::SetSize(int, int)
+  0x803c54bc  (288B)  TArray<ESubModel, TArrayERModelAllocator>::SetSize(int, int)
+  0x803c7f54  (292B)  TArray<EFontPage *, TArrayDefaultAllocator>::SetSize(int, int)
+  0x803c9304  (288B)  TArray<EAnimNodeDataPos, TArrayERAnimAllocator>::SetSize(int, int)
+  0x803c946c  (288B)  TArray<float, TArrayERAnimAllocator>::SetSize(int, int)
+  0x803c966c  (288B)  TArray<EAnimEvent, TArrayERAnimAllocator>::SetSize(int, int)
+  0x803c9b90  (452B)  TArray<ECharacterNode, TArrayERCharacterAllocator>::Copy(ECharacterNode *, ECharacterNode *, int)
+  0x803c9d54  (288B)  TArray<ECharacterNode, TArrayERCharacterAllocator>::SetSize(int, int)
+  0x803ca2b8  (288B)  TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>::SetSize(int, int)
+  0x803ca47c  (288B)  TArray<TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>, TArrayERSoundEventAllocator>::SetSize(int, int)
+
+[INVTarget] — 18 functions
+  0x801eefb4  (408B)  INVTarget::GetLocalizable(char *)
+  0x801ef364  (340B)  INVTarget::GetOnLocMsgInvObjectDescription(unsigned wchar_t *)
+  0x801f14ec  (272B)  INVTarget::PlaceModeCallbackImpl(InteractorModule::PlaceManipulator::CallbackData *)
+  0x801f1c4c  (400B)  INVTarget::GrabModeCallbackImpl(InteractorModule::GrabManipulator::CallbackData *)
+  0x801f1e04  (444B)  INVTarget::EnterPlaceAnyObjectModeUsingNewInteractorApi(ObjSelector *)
+  0x801f1fc0  (440B)  INVTarget::EnterGrabModeNewInteractorApi(void)
+  0x801f2178  (504B)  INVTarget::EnterPlaceModeUsingNewInteractorApi(ObjSelector *, unsigned char)
+  0x801f35d0  (440B)  INVTarget::AddFloorTileToShopItemsDB(FloorTile *, int)
+  0x801f3788  (440B)  INVTarget::AddWallPaperToShopItemsDB(WallTile *, int)
+  0x801f3940  (440B)  INVTarget::AddWallToShopItemsDB(FenceData *, int)
+  0x801f4584  (512B)  INVTarget::SetOnMsgInvPrepareObjectInfo(char *)
+  0x801f4798  (424B)  INVTarget::SetOnMsgInvItemSelected(char *)
+  0x801f5570  (260B)  INVTarget::ClearAllObjectInfoData(void)
+  0x801f570c  (404B)  INVTarget::GetMotiveText(ObjSelector *, unsigned wchar_t *)
+  0x801f5908  (396B)  INVTarget::GetMotiveText(BBI::InventoryItem *, unsigned wchar_t *)
+  0x801f6254  (324B)  INVTarget::InstallWallShaders(vector<InteractorModule::WallData, allocator<InteractorModule::WallData> > *, int)
+  0x801f6ca0  (488B)  INVTarget::GetSelectedShoppingItem(int, InteractorModule::ShoppingItem &, int &)
+  0x801f7550  (272B)  INVTarget::ExitFloorTilingMode(bool)
+
+[ISimsObjectModel] — 18 functions
+  0x8004c500  (324B)  ISimsObjectModel::ISimsObjectModel(void)
+  0x8004c644  (428B)  ISimsObjectModel::~ISimsObjectModel(void)
+  0x8004c7f0  (300B)  ISimsObjectModel::GetHeightOffset(void)
+  0x8004d598  (308B)  ISimsObjectModel::UpdateParticle(ObjAnimDef *)
+  0x8004d6cc  (468B)  ISimsObjectModel::SetupCharacter(void)
+  0x8004ddec  (328B)  ISimsObjectModel::UpdateHighlightAnim(void)
+  0x8004e028  (308B)  ISimsObjectModel::UpdateTracks(void)
+  0x8004e868  (492B)  ISimsObjectModel::SetWallForPortal(void)
+  0x8004ea54  (280B)  ISimsObjectModel::CreateShadow(void)
+  0x8004eb70  (264B)  ISimsObjectModel::CalcOrient(void)
+  0x80050288  (400B)  ISimsObjectModel::AnimateLights(void)
+  0x800504b8  (376B)  ISimsObjectModel::GetAnimDef(int, bool)
+  0x80050630  (440B)  ISimsObjectModel::processAnimEvents(ERAnim *, int, int, bool)
+  0x80050b00  (312B)  ISimsObjectModel::SetInitalObjectState(void)
+  0x80050d44  (368B)  ISimsObjectModel::SetObjOrient(void)
+  0x80050f14  (444B)  ISimsObjectModel::OrentSubObject(void)
+  0x8005455c  (424B)  ISimsObjectModel::StartNewAnimTrack(ObjAnimDef *, bool)
+  0x80054704  (476B)  ISimsObjectModel::ProcessPropertyEventTags(ObjAnimDef *, float)
+
+[NeighborhoodImpl] — 18 functions
+  0x800ccb84  (296B)  NeighborhoodImpl::~NeighborhoodImpl(void)
+  0x800cce18  (300B)  NeighborhoodImpl::Unload(void)
+  0x800cd808  (296B)  NeighborhoodImpl::UpdateFamilyNumbers(void)
+  0x800cdc2c  (268B)  NeighborhoodImpl::DoStream(ReconBuffer *, int)
+  0x800cdf30  (496B)  NeighborhoodImpl::AddNewNeighbor(ObjSelector *)
+  0x800ce120  (480B)  NeighborhoodImpl::LoadPersistentData(cXPerson *)
+  0x800ce408  (340B)  NeighborhoodImpl::SavePersistentData(cXPerson *)
+  0x800cf028  (420B)  NeighborhoodImpl::AddToFamily(Neighbor *, Family *)
+  0x800cf1cc  (340B)  NeighborhoodImpl::RemoveFromFamily(Neighbor *)
+  0x800cf408  (324B)  NeighborhoodImpl::RemovePlayerRoommate(void)
+  0x800cf5c4  (352B)  NeighborhoodImpl::DeleteCharacter(Neighbor *)
+  0x800cf7d0  (316B)  NeighborhoodImpl::GetFamilyNetWorth(Family *)
+  0x800d00ac  (332B)  NeighborhoodImpl::UpdateFamilyFriendsCount(Family *)
+  0x800d01f8  (268B)  NeighborhoodImpl::PrepareAndTestLot(StringBuffer &)
+  0x800d0640  (332B)  NeighborhoodImpl::GetHouseFileInfo(NghResFile *, int *, bool *, bool *, bool *)
+  0x800d1110  (388B)  NeighborhoodImpl::SaveHouse(NghResFile *)
+  0x800d146c  (324B)  NeighborhoodImpl::NotifyAllResidents(WantFear::Notification &, Neighbor *)
+  0x800d15b0  (268B)  NeighborhoodImpl::NotifyAllPersons(WantFear::Notification &, Neighbor *)
+
+[cXPersonImpl] — 18 functions
+  0x8011eb78  (260B)  cXPersonImpl::Reset(bool)
+  0x8011ef40  (300B)  cXPersonImpl::LoadMotiveEffects(void)
+  0x8011f460  (500B)  cXPersonImpl::TryGosubFoundAction(StackElem *)
+  0x80124698  (260B)  cXPersonImpl::TryRoomRouting(XRoute *)
+  0x801253e4  (364B)  cXPersonImpl::SimMotives(void)
+  0x80125550  (412B)  cXPersonImpl::CalcHappy(void)
+  0x80125834  (332B)  cXPersonImpl::SpawnAspirationBalloon(int)
+  0x80125980  (336B)  cXPersonImpl::RunImmediateAction(Interaction *)
+  0x80125e64  (388B)  cXPersonImpl::RemoveAction(int)
+  0x8012606c  (296B)  cXPersonImpl::CancelLastAction(void)
+  0x80126194  (284B)  cXPersonImpl::CancelAllActions(void)
+  0x801264c8  (376B)  cXPersonImpl::ShouldInterrupt(void)
+  0x80126a20  (324B)  cXPersonImpl::TryIdleForInput(StackElem *, XPrimParam *)
+  0x8012954c  (464B)  cXPersonImpl::IsSelectableByPlayer(int)
+  0x80129f10  (316B)  cXPersonImpl::UpdateCurrentAction(void)
+  0x8012b978  (424B)  cXPersonImpl::CheckSecondPlayerForFailedSocialModeEntry(void)
+  0x8012bdd8  (368B)  cXPersonImpl::GetSimSocialInterestAsMotiveValue(cXPerson *)
+  0x8012bf48  (324B)  cXPersonImpl::SetSimSocialIntrestFromMotiveValue(cXPerson *, float)
+
+[SaveGameTarget] — 16 functions
+  0x8018d478  (372B)  SaveGameTarget::~SaveGameTarget(void)
+  0x8018e0a8  (304B)  SaveGameTarget::SpawnCheckingDialog(void)
+  0x8018e1d8  (460B)  SaveGameTarget::SpawnCardCorruptDialog(void)
+  0x8018e3a4  (356B)  SaveGameTarget::SpawnWrongDeviceDialog(void)
+  0x8018e508  (468B)  SaveGameTarget::SpawnCardDamagedDialog(void)
+  0x8018e6dc  (356B)  SaveGameTarget::SpawnFormatDecideDialog(void)
+  0x8018e840  (348B)  SaveGameTarget::SpawnFormatConfirmDialog(void)
+  0x8018ea84  (348B)  SaveGameTarget::SpawnFormatCancelDialog(void)
+  0x8018ebe0  (348B)  SaveGameTarget::SpawnFormatFailDialog(void)
+  0x8018ed3c  (304B)  SaveGameTarget::SpawnFormatSuccessDialog(void)
+  0x8018f0d0  (420B)  SaveGameTarget::SpawnOverwriteDialog(void)
+  0x8018f274  (424B)  SaveGameTarget::SpawnSaveConfirmDialog(void)
+  0x8018f41c  (296B)  SaveGameTarget::SpawnSavingDialog(void)
+  0x8018f544  (284B)  SaveGameTarget::SpawnSaveSucceededDialog(void)
+  0x8018f660  (376B)  SaveGameTarget::SpawnSaveFailedDialog(void)
+  0x8018f7d8  (364B)  SaveGameTarget::SpawnMemCardRemovedDialog(void)
+
+[AwarenessManager] — 15 functions
+  0x80012494  (500B)  AwarenessManager::AwarenessAnimateHeadLeadsMotion(unsigned int, EACTrack *, EMat4 &, ERCharacter *, EACNodeState *)
+  0x80012688  (500B)  AwarenessManager::AwarenessAnimateTorsoLeadsMotion(unsigned int, EACTrack *, EMat4 &, ERCharacter *, EACNodeState *)
+  0x80012940  (308B)  AwarenessManager::handlePassiveInfluenceAnimation(unsigned int)
+  0x80012c4c  (336B)  AwarenessManager::IsTimeToCheckMemoryAwareness(unsigned int)
+  0x80012d9c  (436B)  AwarenessManager::CanSeePlayer(void)
+  0x8001303c  (392B)  AwarenessManager::StarMemoryAwarenessSprite(void)
+  0x80013228  (400B)  AwarenessManager::StartMemoryAwarenessAnimation(AwarenessManager::eAwarenessAction, int)
+  0x800133b8  (320B)  AwarenessManager::SetMemoryAwarenessActionToTry(cXObject *)
+  0x800137c0  (416B)  AwarenessManager::UpdateAwarenessAngle(unsigned int)
+  0x80013960  (332B)  AwarenessManager::MemoryAwarenessCheck(unsigned int)
+  0x80013ba4  (328B)  AwarenessManager::StartPassiveInfluenceAnimation(AnimRef *)
+  0x80014050  (440B)  AwarenessManager::GetDeltaAngleToTargetObject(cXObject *)
+  0x80014450  (356B)  AwarenessManager::getAwarenessSkillID(int, int, AnimRef *&)
+  0x800145b4  (360B)  AwarenessManager::shouldAutoCarry(void)
+  0x80014a3c  (308B)  AwarenessManager::endAutoCarry(void)
+
+[LoadGameTarget] — 14 functions
+  0x8018a200  (372B)  LoadGameTarget::~LoadGameTarget(void)
+  0x8018ad38  (348B)  LoadGameTarget::PerformLoad(void)
+  0x8018ae94  (304B)  LoadGameTarget::SpawnCheckingDialog(void)
+  0x8018b8c4  (376B)  LoadGameTarget::SpawnNoSaveDialog(void)
+  0x8018ba3c  (420B)  LoadGameTarget::SpawnLoadConfirmDialog(void)
+  0x8018bbe0  (296B)  LoadGameTarget::SpawnLoadingDialog(void)
+  0x8018bd08  (284B)  LoadGameTarget::SpawnLoadSucceededDialog(void)
+  0x8018c05c  (356B)  LoadGameTarget::SpawnMemCardRemovedDialog(void)
+  0x8018c1c0  (284B)  LoadGameTarget::SpawnSameCardDialog(void)
+  0x8018c2dc  (324B)  LoadGameTarget::SpawnFormatDecideDialog(void)
+  0x8018c420  (324B)  LoadGameTarget::SpawnFormatConfirmDialog(void)
+  0x8018c634  (324B)  LoadGameTarget::SpawnFormatCancelDialog(void)
+  0x8018c97c  (276B)  LoadGameTarget::SpawnFormatSuccessDialog(void)
+  0x8018ca90  (432B)  LoadGameTarget::BackgroundPerformLoad(void)
+
+[ObjectFolderImpl] — 14 functions
+  0x800ec684  (456B)  ObjectFolderImpl::ObjectFolderImpl(void)
+  0x800ecb6c  (460B)  ObjectFolderImpl::GetNextSelector(ObjSelector *)
+  0x800ee98c  (468B)  ObjectFolderImpl::ReconSelector(ObjSelector **, ReconBuffer *, bool, int)
+  0x800eeb60  (460B)  ObjectFolderImpl::GetSelectorByBehavior(Behavior *)
+  0x800eed2c  (368B)  ObjectFolderImpl::ReconBehavior(Behavior **, ReconBuffer *, int)
+  0x800eee9c  (492B)  ObjectFolderImpl::GetPersonGlobNamespaceID(void)
+  0x800efa48  (324B)  ObjectFolderImpl::RemoveSelector(ObjSelector *)
+  0x800efb8c  (300B)  ObjectFolderImpl::ForceDataPreload(ObjSelector *, bool)
+  0x800f0f34  (488B)  ObjectFolderImpl::DeleteSelectorAnimLists(void)
+  0x800f111c  (328B)  ObjectFolderImpl::UnloadData(ObjSelector *)
+  0x800f165c  (316B)  ObjectFolderImpl::GetAnimPreloadList(ChecksumList &)
+  0x800f1a8c  (268B)  ObjectFolderImpl::LoadResourceByIndex(unsigned int, short, ObjectDataInterface &, unsigned int, unsigned int)
+  0x800f1cb8  (276B)  ObjectFolderImpl::RemoveResourceByID(unsigned int, short, unsigned int)
+  0x800f1dcc  (284B)  ObjectFolderImpl::ChangeResourceID(unsigned int, short, short, unsigned int)
+
+[EGlobal] — 13 functions
+  0x80040168  (340B)  EGlobal::GetGoalsLegendRow(unsigned int)
+  0x80040414  (316B)  EGlobal::GetNghHouseName(BString2 &)
+  0x80040550  (372B)  EGlobal::ConvertUnicodeToShiftJIS(unsigned wchar_t *, unsigned wchar_t *, unsigned int)
+  0x800407dc  (508B)  EGlobal::SetSelectedPerson(int, cXPerson *)
+  0x80040ae0  (488B)  EGlobal::SelectNextInFamily(Family *, int, int)
+  0x80040cc8  (436B)  EGlobal::AdvanceSelectedPerson(int)
+  0x80040e7c  (492B)  EGlobal::SelectPrevInFamily(Family *, int, int)
+  0x80041068  (428B)  EGlobal::ReverseSelectedPerson(int)
+  0x8004121c  (316B)  EGlobal::GetCursorPosAsFtile(FTilePt &)
+  0x80041358  (260B)  EGlobal::DestroyInstance(IBaseSimInstance **)
+  0x80041538  (348B)  EGlobal::AllocPersonInstance(cXPerson *)
+  0x8004246c  (424B)  EGlobal::InitPlayerCheats(void)
+  0x80042614  (260B)  EGlobal::TryAutoMapPlayer(int)
+
+[ERLevel] — 13 functions
+  0x80231700  (404B)  ERLevel::~ERLevel(void)
+  0x80232bb0  (464B)  ERLevel::Refresh(EFile *)
+  0x80232e3c  (328B)  ERLevel::DestroyInstancesWithoutJustReadByLevelFlags(void)
+  0x80233094  (296B)  ERLevel::DeallocateSub(void)
+  0x8023362c  (420B)  ERLevel::AddWallInstanceToLevel(EInstance *)
+  0x80233a38  (268B)  ERLevel::FixInstances(void)
+  0x80233f10  (384B)  ERLevel::RemoveInstance(EInstance *)
+  0x80234090  (288B)  ERLevel::SetBounds(EInstance *, EBound3 &)
+  0x80234260  (264B)  ERLevel::CalcBounds(void)
+  0x80235da4  (368B)  ERLevel::ObjectShouldBeOccluded(EInstance *)
+  0x802367b8  (376B)  ERLevel::DrawOrderTable(void)
+  0x80236ca8  (480B)  ERLevel::SetRoomCount(int)
+  0x802377ac  (364B)  ERLevel::OutsideLightsUpdate(float, LevelLightingEntry &)
+
+[M2MTarget] — 13 functions
+  0x801bfee8  (440B)  M2MTarget::GetVariable(char *)
+  0x801c02ec  (376B)  M2MTarget::SetVariable(char *, char *)
+  0x801c0464  (320B)  M2MTarget::ReflowButtonSelection(void)
+  0x801c0d94  (308B)  M2MTarget::OnSaveLoadSucceed(void)
+  0x801c0ec8  (460B)  M2MTarget::OnSaveLoadFailed(void)
+  0x801c115c  (332B)  M2MTarget::SpawnNoSpaceDialog(void)
+  0x801c12a8  (324B)  M2MTarget::SpawnConfirmStartNewGameDialog(void)
+  0x801c13ec  (340B)  M2MTarget::SpawnContinueNoMemCardDialog(void)
+  0x801c16ac  (364B)  M2MTarget::SpawnSaveBeforeQuitGameDialog(void)
+  0x801c1818  (324B)  M2MTarget::SpawnNoSaveBeforeQuitDialog(void)
+  0x801c195c  (324B)  M2MTarget::SpawnStartNGCNoMemCardDialog(void)
+  0x801c1aa0  (328B)  M2MTarget::GetItemTextMemCardSelect(int, unsigned wchar_t *)
+  0x801c1f64  (416B)  M2MTarget::UpdateWidgetState(void)
+
+[MMUTarget] — 13 functions
+  0x801c5830  (432B)  MMUTarget::~MMUTarget(void)
+  0x801c5dd0  (432B)  MMUTarget::GetVariable(char *)
+  0x801c63c4  (268B)  MMUTarget::Update(void)
+  0x801c64d0  (372B)  MMUTarget::Draw(ERC *)
+  0x801c679c  (332B)  MMUTarget::UpdateNGHListItems(void)
+  0x801c68e8  (292B)  MMUTarget::UpdateLotListItems(void)
+  0x801c6a0c  (328B)  MMUTarget::GetNGHListItemName(char *)
+  0x801c6bfc  (404B)  MMUTarget::EnterLot(int)
+  0x801c7d80  (420B)  MMUTarget::UpdateMenuState(char *, char *)
+  0x801c7f24  (416B)  MMUTarget::GoUpMenuTree(char *, char *)
+  0x801c80c4  (284B)  MMUTarget::GetNumberOfControllers(void)
+  0x801c8228  (316B)  MMUTarget::IncrementChoice(char *, char *)
+  0x801c8420  (304B)  MMUTarget::DecrementChoice(char *, char *)
+
+[PCTTarget] — 13 functions
+  0x801d1f54  (288B)  PCTTarget::cCellInfo::Init(ObjSelector *, IGoalUnlock *)
+  0x801d21f4  (264B)  PCTTarget::cCellInfo::GetName(unsigned wchar_t *) const
+  0x801d4a2c  (368B)  PCTTarget::on_tab_changed(void)
+  0x801d4c54  (392B)  PCTTarget::on_tab_changed_objects(void)
+  0x801d4ddc  (428B)  PCTTarget::on_tab_changed_wall(void)
+  0x801d4fc8  (388B)  PCTTarget::on_tab_changed_wallpaper(void)
+  0x801d51a0  (464B)  PCTTarget::on_tab_changed_floor(void)
+  0x801d5d28  (272B)  PCTTarget::update_grid_shaders(void)
+  0x801d5e38  (288B)  PCTTarget::update_object_shader(void)
+  0x801d5f58  (484B)  PCTTarget::calc_motive_ratings(void)
+  0x801d6e68  (288B)  PCTTarget::sell_dialog_selection_callback(int)
+  0x801d6f88  (456B)  PCTTarget::enter_place_tombstone_mode(void)
+  0x801d84cc  (400B)  PCTTarget::FloorPainterCallback(InteractorModule::Interactor::CallbackData *)
+
+[SimModel] — 13 functions
+  0x80070580  (268B)  SimModel::SimModel(void)
+  0x80070b48  (380B)  SimModel::Clone(void)
+  0x80070cc4  (416B)  SimModel::SetAllModels(void)
+  0x80070e64  (336B)  SimModel::SetModelPart(eBodyPartS2C, unsigned int)
+  0x80071034  (296B)  SimModel::UpdateQueuedModelPart(eBodyPartS2C, bool, bool)
+  0x8007115c  (328B)  SimModel::ChangeModelPart(eBodyPartS2C, unsigned int, bool, bool)
+  0x80071620  (268B)  SimModel::ApplyAllLatticeMorphing(void)
+  0x8007240c  (456B)  SimModel::ApplySkinToModelPart(eBodyPartS2C)
+  0x80072eb8  (372B)  SimModel::LoadAllMorphTargets(void)
+  0x800733a4  (264B)  SimModel::UpdateMidLayerSleeve(bool, bool, bool, bool)
+  0x80073544  (340B)  SimModel::UpdateOuterLayerTorso(bool, bool, bool, bool)
+  0x800738f0  (476B)  SimModel::UpdateHair(bool, bool, bool)
+  0x80073c1c  (324B)  SimModel::UpdateArmAccessory(bool, bool, bool)
+
+[cXMTObjectImpl] — 12 functions
+  0x800c5bac  (312B)  cXMTObjectImpl::RemoveFromChain(void)
+  0x800c5f10  (308B)  cXMTObjectImpl::AssignOffsets(void)
+  0x800c6044  (416B)  cXMTObjectImpl::CanPlace(FTilePt &, int, cXObject *, int)
+  0x800c61e4  (512B)  cXMTObjectImpl::Place(FTilePt &, int, cXObject *, int)
+  0x800c64b8  (500B)  cXMTObjectImpl::UserCanPlace(FTilePt &, int, cXObject *, int)
+  0x800c66ac  (376B)  cXMTObjectImpl::UserPlace(FTilePt &, int, cXObject *, int)
+  0x800c68b8  (388B)  cXMTObjectImpl::UserPickup(bool)
+  0x800c6b10  (320B)  cXMTObjectImpl::Reset(bool)
+  0x800c6c5c  (336B)  cXMTObjectImpl::ReconStream(ReconBuffer *, int, bool)
+  0x800c7240  (292B)  cXMTObjectImpl::RemoveFromDynamic(void)
+  0x800c7690  (500B)  cXMTObjectImpl::MergeInPlace(void)
+  0x800c7884  (264B)  cXMTObjectImpl::GetAverageLocation(void) const
+
+[ESim] — 11 functions
+  0x800310ec  (476B)  ESim::~ESim(void)
+  0x80031360  (492B)  ESim::ReadModelFromCache(void)
+  0x80032c58  (272B)  ESim::SimOrderTableCallback(ELevelDrawData &, EOrderTableData *)
+  0x80032ffc  (384B)  ESim::DrawSimAndNpcCommonItems(ERC *)
+  0x80034090  (344B)  ESim::Update(void)
+  0x80034318  (332B)  ESim::UpdateShowerCurtain(void)
+  0x80034464  (352B)  ESim::UpdateSkinChange(void)
+  0x800349a8  (272B)  ESim::GetObCenter(void)
+  0x80034b14  (292B)  ESim::UpdateShadow(void)
+  0x80034c38  (428B)  ESim::UpdateGhostParticleEffect(void)
+  0x800351ac  (348B)  ESim::ESim(void)
+
+[FAMTarget] — 11 functions
+  0x801afb4c  (352B)  FAMTarget::~FAMTarget(void)
+  0x801afcd8  (480B)  FAMTarget::SetVariable(char *, char *)
+  0x801b05e0  (300B)  FAMTarget::GetVariable(char *)
+  0x801b07b0  (416B)  FAMTarget::UpdateOccupiedShaders(void)
+  0x801b0950  (456B)  FAMTarget::UpdateLotSelectShaders(void)
+  0x801b0b78  (340B)  FAMTarget::GetFamilyText(char *, unsigned wchar_t *)
+  0x801b13dc  (292B)  FAMTarget::OnUpKeyPressed(char *, char *)
+  0x801b1500  (320B)  FAMTarget::OnDownKeyPressed(char *, char *)
+  0x801b29f8  (264B)  FAMTarget::GoUpMenuTree(void)
+  0x801b2b00  (276B)  FAMTarget::GetNameForFamilyInLotSelect(char *, unsigned wchar_t *)
+  0x801b2cd4  (492B)  FAMTarget::UpdateFamilySelectShaders(void)
+
+[NghResFile] — 11 functions
+  0x800d3d7c  (496B)  NghResFile::Add(Memory::HandleNode *, int, short, StringBuffer &, bool)
+  0x800d4148  (272B)  NghResFile::init(void)
+  0x800d442c  (300B)  NghResFile::WriteList(char *, unsigned int, unsigned int *&, unsigned int *&, unsigned int *&, unsigned short *&, unsigned int &, unsigned int &)
+  0x800d4614  (464B)  NghResFile::FlushSection(unsigned int)
+  0x800d47e4  (380B)  NghResFile::ReadSection(unsigned int, unsigned int, bool &, EMC_OpStatus &)
+  0x800d4bbc  (320B)  NghResFile::ValidateSaveGame(char *, int, bool)
+  0x800d4cfc  (352B)  NghResFile::IsSaveGameValid(char *, int, bool &)
+  0x800d60a0  (356B)  NghResFile::WriteToMemoryBlock(void *&, unsigned int &)
+  0x800d786c  (452B)  NghResFile::WriteToMemoryCard(char *, unsigned char)
+  0x800d7a30  (492B)  NghResFile::HasCardChanged(int, bool &)
+  0x800d85e4  (260B)  NghResFile::ReadFromMemoryCard(char *, unsigned char)
+
+[UIReflow] — 11 functions
+  0x8017d320  (384B)  UIReflow::ResetSize(char *, int, int, int)
+  0x8017d4a0  (384B)  UIReflow::ResetPosition(char *, int, int, int)
+  0x8017d620  (316B)  UIReflow::ResetZ(char *, int, int)
+  0x8017d75c  (316B)  UIReflow::ResetVisibility(char *, bool, int)
+  0x8017d898  (332B)  UIReflow::ResetAlpha(char *, unsigned int, int)
+  0x8017d9e4  (288B)  UIReflow::ResetText(char *, char *, int)
+  0x8017db04  (424B)  UIReflow::ResetColorOverride(char *, unsigned int, int)
+  0x8017dcac  (316B)  UIReflow::ResetFontSizeOverride(char *, unsigned int, int)
+  0x8017dde8  (288B)  UIReflow::ResetSwfAnimation(char *, char *, int)
+  0x8017df08  (288B)  UIReflow::ResetSwfFileName(char *, char *, int)
+  0x8017e138  (480B)  UIReflow::OpenTweenBlock(char *, unsigned int, unsigned int, char *, int)
+
+[BString2] — 10 functions
+  0x800a0d54  (336B)  BString2::append_str(unsigned wchar_t *, unsigned int)
+  0x800a14c4  (292B)  BString2::find_str(unsigned wchar_t *, unsigned int, unsigned int) const
+  0x800a15e8  (332B)  BString2::rfind_str(unsigned wchar_t *, unsigned int, unsigned int) const
+  0x800a1814  (260B)  BString2::find_last_of_str(unsigned wchar_t *, unsigned int, unsigned int) const
+  0x800a2018  (312B)  BString2::operator+=(wchar_t)
+  0x800a227c  (364B)  BString2::append(wchar_t, unsigned int)
+  0x800a3194  (280B)  BString2::put_at(unsigned int, wchar_t)
+  0x800a33c8  (332B)  BString2::resize(unsigned int, wchar_t)
+  0x800a3918  (268B)  BString2::rfind(wchar_t, unsigned int) const
+  0x800a4198  (308B)  BString2::compare(wchar_t, unsigned int, unsigned int) const
+
+[CasSimDescriptionS2C] — 10 functions
+  0x801675b0  (320B)  CasSimDescriptionS2C::GetBodyPartIndex(eBodyPartS2C) const
+  0x801677f0  (268B)  CasSimDescriptionS2C::GetBodyPartTextureIndex(eBodyPartS2C) const
+  0x801679e4  (408B)  CasSimDescriptionS2C::GetBodyPartParam(eBodyPartS2C) const
+  0x80168408  (260B)  CasSimDescriptionS2C::AssertWithInfo(char *)
+  0x80169468  (272B)  CasSimDescriptionS2C::VerifyBodyPartNoTexture(CasSimPartsS2C &, eBodyPartS2C, signed char &, signed char, bool)
+  0x80169d30  (340B)  CasSimDescriptionS2C::SwitchMidLayerTorsoToFirstAvailableStyle(CasSimPartsS2C &, bool)
+  0x8016a09c  (272B)  CasSimDescriptionS2C::SwitchOuterLayerCollarToFirstAvailableStyle(CasSimPartsS2C &)
+  0x8016a24c  (272B)  CasSimDescriptionS2C::SwitchLowerBodyToFirstAvailableStyle(CasSimPartsS2C &)
+  0x8016a35c  (260B)  CasSimDescriptionS2C::SwitchHatToFirstAvailableStyle(CasSimPartsS2C &)
+  0x8016a6cc  (344B)  CasSimDescriptionS2C::GetCompositeTextureName(char *, eSimPartsMapLocation) const
+
+[ESimsCam] — 10 functions
+  0x800164d4  (456B)  ESimsCam::ESimsCam(int)
+  0x80016c34  (388B)  ESimsCam::FollowPlayerInteractor(int)
+  0x80016db8  (512B)  ESimsCam::Update(void)
+  0x800172e8  (424B)  ESimsCam::HandleZoom(void)
+  0x80017dc0  (300B)  ESimsCam::ResetPos(float)
+  0x80018e74  (368B)  ESimsCam::SetPosAndReset(EVec3 &, EVec3 &, EVec3 &)
+  0x80018fe4  (392B)  ESimsCam::SetPos(EVec3 &, EVec3 &, EVec3 &)
+  0x8001916c  (400B)  ESimsCam::ForcePosition(EVec3 &, EVec3 &, EVec3 &)
+  0x8001942c  (508B)  ESimsCam::ValidateCursorPosition(int, EVec3 *)
+  0x80019628  (324B)  ESimsCam::CalRoomId(EVec3 &)
+
+[IFFResFile2] — 10 functions
+  0x800be3a0  (260B)  IFFResFile2::WriteHeader(MemFile *, int)
+  0x800be8cc  (308B)  IFFResFile2::Update(void)
+  0x800bec08  (272B)  IFFResFile2::GetByIDAndLanguage(int, short, char, void (*)(void *, int))
+  0x800bed54  (272B)  IFFResFile2::GetByName(int, StringBuffer &, void (*)(void *, int))
+  0x800bee64  (264B)  IFFResFile2::GetByIndex(int, short, void (*)(void *, int))
+  0x800bf2c4  (272B)  IFFResFile2::FindUniqueName(int, StringBuffer &)
+  0x800bf744  (416B)  IFFResFile2::AddWithLanguage(Memory::HandleNode *, int, short, StringBuffer &, char, bool)
+  0x800bfb5c  (268B)  IFFResFile2::Remove(Memory::HandleNode *)
+  0x800bfc68  (364B)  IFFResFile2::SetInfo(Memory::HandleNode *, short, StringBuffer &, char)
+  0x800bfdd4  (408B)  IFFResFile2::LoadNode(IFFResNode *, void (*)(void *, int), int)
+
+[WrapperPaneBase] — 10 functions
+  0x80084ab4  (324B)  WrapperPaneBase::Shutdown(void)
+  0x800856b8  (296B)  WrapperPaneBase::DeleteItemList(void)
+  0x800857e0  (384B)  WrapperPaneBase::GetVariableButtonIndex(char *, char *)
+  0x80085960  (320B)  WrapperPaneBase::GetVariable(char *)
+  0x80085ebc  (308B)  WrapperPaneBase::ShowEnabledButtons(void)
+  0x80085ff0  (308B)  WrapperPaneBase::HideEnabledButtons(void)
+  0x80086124  (268B)  WrapperPaneBase::ShowButton(WrapperPaneBase::ButtonType)
+  0x80086230  (268B)  WrapperPaneBase::HideButton(WrapperPaneBase::ButtonType)
+  0x800878c4  (284B)  WrapperPaneBase::WrapperPaneBase(int, int)
+  0x80087b70  (340B)  WrapperPaneBase::AddItem(PaneItem *)
+
+[CASPersonalTarget] — 9 functions
+  0x8019dfc8  (348B)  CASPersonalTarget::~CASPersonalTarget(void)
+  0x8019e124  (408B)  CASPersonalTarget::SetVariable(char *, char *)
+  0x8019e300  (324B)  CASPersonalTarget::ConvertFromPersonalityTextToEnum(char *)
+  0x8019e444  (440B)  CASPersonalTarget::GetVariable(char *)
+  0x8019e5fc  (384B)  CASPersonalTarget::GetLocalizable(char *)
+  0x8019e9f4  (312B)  CASPersonalTarget::ParseDescriptionText(short, unsigned wchar_t *)
+  0x8019edd8  (376B)  CASPersonalTarget::SetVariableSubnav(UIScreenID, int, int)
+  0x8019ef50  (324B)  CASPersonalTarget::GetLocalizableSubnav(UIScreenID, int, unsigned wchar_t *)
+  0x8019f094  (328B)  CASPersonalTarget::CalcHighScoreAspShaderIds(void)
+
+[ObjectModuleImpl] — 9 functions
+  0x800f2cbc  (272B)  ObjectModuleImpl::ObjectModuleImpl(void)
+  0x800f48f8  (284B)  ObjectModuleImpl::GetObjectByGUID(int)
+  0x800f4ab0  (288B)  ObjectModuleImpl::ConstructObject(ObjSelector *, cXMTObject *)
+  0x800f6ab4  (404B)  ObjectModuleImpl::DoCommand(short, int)
+  0x800f6c48  (404B)  ObjectModuleImpl::PreviewAnimation(short, short, short, bool)
+  0x800f7c6c  (456B)  ObjectModuleImpl::DisableBuyAndBuild(cXObject *)
+  0x800f85d8  (288B)  ObjectModuleImpl::OffsetObjectMap(CTilePt &)
+  0x800f90e8  (424B)  ObjectModuleImpl::FillInObjectStats(RoomManager *, HouseStats &)
+  0x80140028  (284B)  ObjectModuleImpl::SetSimMemory(int, int, int, int)
+
+[ReconBuffer] — 9 functions
+  0x80132f4c  (444B)  ReconBuffer::ReconCmprInt(int *, Scheme *)
+  0x80133108  (444B)  ReconBuffer::ReconBits(int, int *)
+  0x801332d0  (352B)  ReconBuffer::Recon8(signed char *, int)
+  0x80133484  (400B)  ReconBuffer::Recon16(short *, int)
+  0x80133634  (428B)  ReconBuffer::Recon32(int *, int)
+  0x801337e0  (428B)  ReconBuffer::ReconFloat(float *, int)
+  0x8013398c  (268B)  ReconBuffer::ReconMark(void)
+  0x80133ae4  (356B)  ReconBuffer::ReconString(BString &)
+  0x80133ed0  (344B)  ReconBuffer::ReconString(StringBuffer &)
+
+[cBoxX] — 9 functions
+  0x800ad950  (456B)  cBoxX::Update(unsigned int)
+  0x800ae4bc  (492B)  cBoxX::GetInstanceSurroundVol(int, cTrack *, int &, int &, int &, int &)
+  0x800ae948  (404B)  cBoxX::ConvertSurroundToVolPan(int, int, int, int, int &, int &)
+  0x800af4b4  (264B)  cBoxX::SetAmbientScore(int)
+  0x800af61c  (272B)  cBoxX::FindSndobInstancePair(ERSoundEvent *, int)
+  0x800af7a4  (308B)  cBoxX::UpdateAllSndobVolPan(void)
+  0x800af8d8  (288B)  cBoxX::CheckForTooManySounds(void)
+  0x800af9f8  (264B)  cBoxX::KillSource(int)
+  0x800b015c  (452B)  cBoxX::GetListenerPosAndDir(ESimsCam *, EVec3 &, EVec3 &)
+
+[E2ETarget] — 8 functions
+  0x801aca58  (476B)  E2ETarget::E2ERenderCallback(ERC *, structDrawCBparams *)
+  0x801ad040  (448B)  E2ETarget::SetTopLevelState(char *, char *)
+  0x801ad200  (376B)  E2ETarget::OnTopLevelStateChange(char *, char *)
+  0x801ad704  (284B)  E2ETarget::OnXKeyPressed(char *, char *)
+  0x801ad8a0  (476B)  E2ETarget::OnRightKeyPressed(char *, char *)
+  0x801ada7c  (468B)  E2ETarget::OnLeftKeyPressed(char *, char *)
+  0x801ade54  (508B)  E2ETarget::GetText(char *)
+  0x801ae0c0  (292B)  E2ETarget::UpdateShaders(char *, char *)
+
+[EInstance] — 8 functions
+  0x80228468  (344B)  EInstance::Read(EStream &)
+  0x802285c0  (444B)  EInstance::Load(EFile &)
+  0x802288d8  (412B)  EInstance::ShadowDirAtPoint(EVec3 &, EVec3 &, int)
+  0x80228a74  (300B)  EInstance::CalcShadowLight(EVec3 &, short)
+  0x80228ba0  (276B)  EInstance::CalcShadowLightWeighted(EVec3 &, short)
+  0x80228cb4  (500B)  EInstance::ShadowDirAtPointWeighted(EVec3 &, EVec3 &, int)
+  0x80228f00  (380B)  EInstance::CalcLights(EVec3 &, ELights &, bool)
+  0x8022907c  (380B)  EInstance::CalcLights4(EVec3 &, ELights &, bool)
+
+[ERoomWall] — 8 functions
+  0x800293a0  (480B)  ERoomWall::GetWallMeterValue(int &)
+  0x80029654  (276B)  ERoomWall::CalShortDistToCam(int)
+  0x8002c5cc  (492B)  ERoomWall::ERoomWall(TileWallsSegment, DiagonalSideSelector, CTilePt &, bool)
+  0x8002d1f8  (272B)  ERoomWall::getRoomIdFromPoint(CTilePt &)
+  0x8002de70  (268B)  ERoomWall::GetWallPaperCost(int, unsigned short)
+  0x8002f84c  (488B)  ERoomWall::HasSegment(TileWallsSegment, CTilePt &, CTilePt &)
+  0x8002fa34  (440B)  ERoomWall::DeleteWallAtTile(CTilePt &)
+  0x8002fbec  (284B)  ERoomWall::RemoveWallsFromWorld(void)
+
+[GameData] — 8 functions
+  0x8003afd4  (296B)  GameData::GameData(void)
+  0x8003b638  (268B)  GameData::PrepareSimData(int, int)
+  0x8003b744  (308B)  GameData::ReplaceSimData(int, bool, int, int)
+  0x8003d344  (280B)  GameData::CopyrightDraw(ERC *)
+  0x8003d45c  (468B)  GameData::VersionInfoDraw(ERC *)
+  0x8003d8a8  (436B)  GameData::StageInitTiming(float *, int)
+  0x8003daa0  (328B)  GameData::StageEndFrame(char *, int, int)
+  0x8003dc3c  (356B)  GameData::GotoXamMode(int, int, int, int)
+
+[Neighbor] — 8 functions
+  0x800c9f10  (276B)  Neighbor::CalculateRelationshipLevel(int, int)
+  0x800ca0e8  (288B)  Neighbor::CountRelationshipsOfType(tRelationshipType)
+  0x800ca604  (340B)  Neighbor::LoadFromCharacter(ENeighborhoodCustomChar &)
+  0x800ca758  (460B)  Neighbor::SaveToCharacter(ENeighborhoodCustomChar &)
+  0x800cab20  (496B)  Neighbor::SpawnWantFearDialog(unsigned int) const
+  0x800cad10  (452B)  Neighbor::Notify(WantFear::Notification &, bool)
+  0x800cb32c  (356B)  Neighbor::AdvanceBookmark(unsigned int)
+  0x800cb4e8  (268B)  Neighbor::FindBookmarkToReplace(unsigned int, unsigned int)
+
+[global] — 8 functions
+  0x803a5284  (280B)  void __adjust_heap<FamilyImpl **, int, FamilyImpl *, bool (*)(Family *&, Family *&)>(FamilyImpl **, int, int, FamilyImpl *, bool (*)(Family *&, Family *&))
+  0x803a55f4  (340B)  void __introsort_loop<FamilyImpl **, FamilyImpl *, int, bool (*)(Family *&, Family *&)>(FamilyImpl **, FamilyImpl **, FamilyImpl * *, int, bool (*)(Family *&, Family *&))
+  0x803a5a04  (284B)  void __adjust_heap<int *, int, int, bool (*)(int &, int &)>(int *, int, int, int, bool (*)(int &, int &))
+  0x803a5d74  (340B)  void __introsort_loop<int *, int, int, bool (*)(int &, int &)>(int *, int *, int *, int, bool (*)(int &, int &))
+  0x803a6abc  (280B)  void __adjust_heap<ObjSelector **, int, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, int, int, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *))
+  0x803a6e24  (344B)  void __introsort_loop<ObjSelector **, ObjSelector *, int, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, ObjSelector **, ObjSelector * *, int, bool (*)(ObjSelector *, ObjSelector *))
+  0x803afcc4  (280B)  void __adjust_heap<CasSimDescriptionS2C **, int, CasSimDescriptionS2C *, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *)>(CasSimDescriptionS2C **, int, int, CasSimDescriptionS2C *, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *))
+  0x803b002c  (344B)  void __introsort_loop<CasSimDescriptionS2C **, CasSimDescriptionS2C *, int, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *)>(CasSimDescriptionS2C **, CasSimDescriptionS2C **, CasSimDescriptionS2C * *, int, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *))
+
+[BString] — 7 functions
+  0x8009cbb8  (304B)  BString::append_str(char *, unsigned int)
+  0x8009cce8  (484B)  BString::insert_str(unsigned int, char *, unsigned int)
+  0x8009d2e8  (288B)  BString::rfind_str(char *, unsigned int, unsigned int) const
+  0x8009dc14  (284B)  BString::operator+=(char)
+  0x8009de40  (328B)  BString::append(char, unsigned int)
+  0x8009e4e0  (424B)  BString::erase(unsigned int, unsigned int)
+  0x8009ed28  (304B)  BString::resize(unsigned int, char)
+
+[CASSelectionTarget] — 7 functions
+  0x801993dc  (452B)  CASSelectionTarget::~CASSelectionTarget(void)
+  0x80199974  (284B)  CASSelectionTarget::ClearRecentlyUnlockedBitFlag(int)
+  0x80199a90  (284B)  CASSelectionTarget::GetLocalizable(char *)
+  0x80199e9c  (344B)  CASSelectionTarget::InitScreen(void)
+  0x8019a4b0  (324B)  CASSelectionTarget::ClearTextures(unsigned int, unsigned int)
+  0x8019a6b4  (324B)  CASSelectionTarget::ConvertUiFocusToBodyPart(unsigned int, eBodyPartS2C *)
+  0x8019a854  (380B)  CASSelectionTarget::ConvertCurUIFocusToChangeEvent(int &)
+
+[CASTarget] — 7 functions
+  0x80192658  (468B)  CASTarget::SaveCASDataToNeighborhood(void)
+  0x80192acc  (388B)  CASTarget::StartupMediator(void)
+  0x80192c50  (360B)  CASTarget::ShutdownMediator(void)
+  0x80193174  (448B)  CASTarget::SetVariable(char *, char *)
+  0x80193b78  (504B)  CASTarget::Update(void)
+  0x80193d70  (444B)  CASTarget::Draw(ERC *)
+  0x801942b8  (368B)  CASTarget::SetVariableSubnav(char *)
+
+[CasSimPartsS2C] — 7 functions
+  0x8016a9fc  (332B)  CasSimPartsS2C::GetNumBodyModels(eBodyPartS2C) const
+  0x8016ab48  (460B)  CasSimPartsS2C::GetNumBodyTextures(eBodyPartS2C, unsigned int) const
+  0x8016b5e0  (392B)  CasSimPartsS2C::GetSkinTextureID(eSkinColorType, eBodyTypeS2C, eSimPartsMapLocation)
+  0x8016b768  (340B)  CasSimPartsS2C::GetSkinTexturesDatasetID(eSkinColorType, eBodyTypeS2C)
+  0x8016c8e8  (476B)  CasSimPartsS2C::IsGamecubeOnly(eBodyPartS2C, unsigned int) const
+  0x8016cac4  (472B)  CasSimPartsS2C::GetIconTextureId(eBodyPartS2C, unsigned int) const
+  0x8016d560  (464B)  CasSimPartsS2C::GetWeldableBodyPartConnections(eBodyPartS2C, unsigned int *, unsigned int)
+
+[EIStaticModel] — 7 functions
+  0x8022bbb4  (448B)  EIStaticModel::Setup(EInstance *, EAnimController *)
+  0x8022be8c  (364B)  EIStaticModel::SetOrient(EMat4 &)
+  0x8022bff8  (268B)  EIStaticModel::SlamOrient(EMat4 &, EMat4 &)
+  0x8022c49c  (432B)  EIStaticModel::BuildDigests(void)
+  0x8022c64c  (488B)  EIStaticModel::SetupBounds(void)
+  0x8022cc24  (504B)  EIStaticModel::DrawAsShadow(ELevelDrawData &)
+  0x8022daf0  (412B)  EIStaticModel::DrawImmediate(ERC *, EAnimController *)
+
+[RoomManager] — 7 functions
+  0x80135e6c  (424B)  RoomManager::~RoomManager(void)
+  0x801366f0  (272B)  RoomManager::GetNewRoom(unsigned short)
+  0x80136848  (484B)  RoomManager::OffsetWorld(CTilePt &)
+  0x80136a2c  (492B)  RoomManager::ProcessDegenerateTile(CTilePt &, unsigned short, Room::Sides)
+  0x80136db4  (312B)  RoomManager::ResolveDiagonal(CTilePt &, unsigned short *, unsigned short *, Room::Sides *, Room::Sides *)
+  0x801370d4  (352B)  RoomManager::ResetRoomManager(void)
+  0x80137318  (272B)  RoomManager::SetRoomIntensityColorScale(int, bool, int, float)
+
+[cHitMan] — 7 functions
+  0x801164e4  (364B)  cHitMan::ControlGroup(int)
+  0x80116650  (356B)  cHitMan::ClearControlGroups(void)
+  0x80116888  (268B)  cHitMan::cHitMan(void)
+  0x80116a14  (312B)  cHitMan::~cHitMan(void)
+  0x80116b4c  (436B)  cHitMan::Shutdown(void)
+  0x801172c4  (340B)  cHitMan::DuckMapSndobPri(cTrack *)
+  0x801174a8  (312B)  cHitMan::DuckMapRemoveAll(void)
+
+[Behavior] — 6 functions
+  0x800ab314  (396B)  Behavior::~Behavior(void)
+  0x800ab5bc  (504B)  Behavior::GetNodeRef(short, short, BehaviorNode **)
+  0x800ab7b4  (268B)  Behavior::IsNodeReachable(short, int)
+  0x800abb14  (308B)  Behavior::IsSingleExit(short, short)
+  0x800ac4a4  (260B)  Behavior::GetTreeName(short, StringBuffer &)
+  0x800ac650  (480B)  Behavior::Init(Language *, ObjSelector *)
+
+[CASGeneticsTarget] — 6 functions
+  0x80197958  (500B)  CASGeneticsTarget::SetVariable(char *, char *)
+  0x80197b4c  (312B)  CASGeneticsTarget::SetVariableSubnav(int, int)
+  0x80197f70  (368B)  CASGeneticsTarget::CreateParentTexture(unsigned int)
+  0x8019828c  (432B)  CASGeneticsTarget::BeginGenerate(void)
+  0x8019843c  (472B)  CASGeneticsTarget::HandleGenerateStageBG(void)
+  0x801989b8  (260B)  CASGeneticsTarget::Draw(ERC *)
+
+[CSPTarget] — 6 functions
+  0x801a8a74  (508B)  CSPTarget::~CSPTarget(void)
+  0x801a8c70  (344B)  CSPTarget::SetVariable(char *, char *)
+  0x801a991c  (328B)  CSPTarget::ChangeSelectedTab(CSPTarget::eTabs)
+  0x801aa0a0  (360B)  CSPTarget::InstallPromotionShaders(void)
+  0x801aa208  (388B)  CSPTarget::SetupSkills(cXPerson *)
+  0x801aa38c  (496B)  CSPTarget::SetupPersonality(cXPerson *)
+
+[CasScene] — 6 functions
+  0x80165250  (428B)  CasScene::~CasScene(void)
+  0x80165824  (364B)  CasScene::Draw(ERC *)
+  0x801659d4  (504B)  CasScene::DrawRoomClothing(ERC *, EMat4 &)
+  0x80165f04  (388B)  CasScene::SetLights(int)
+  0x80166478  (304B)  CasScene::InitCamera(unsigned int)
+  0x80166a9c  (276B)  CasScene::SetUpWindow(ERC *)
+
+[EIWallPart] — 6 functions
+  0x8002a2d4  (308B)  EIWallPart::SetOrient(EMat4 &)
+  0x8002b504  (392B)  EIWallPart::DrawShadow(ELevelDrawData &)
+  0x8002b9a4  (312B)  EIWallPart::GetPoint(CTilePt &)
+  0x8002badc  (472B)  EIWallPart::GetPoints(CTilePt &, CTilePt &)
+  0x8002c35c  (304B)  EIWallPart::SetWallState(EWallUpDownStateType, bool)
+  0x8002e938  (300B)  EIWallPart::DoFadeCollisonWallList(TrapezoidFade &, EVec3 &, TNodeList<EIWallPart *> &)
+
+[HUDTarget] — 6 functions
+  0x80187d10  (300B)  HUDTarget::ReadMoodBar(int, unsigned int)
+  0x80188348  (284B)  HUDTarget::ShouldHUDBeVisible(int) const
+  0x801885ac  (276B)  HUDTarget::UpdateClock(void)
+  0x80188e60  (272B)  HUDTarget::AddAction(int, Interaction *, BString2 &, unsigned int, ERShader *, unsigned int)
+  0x80189444  (360B)  HUDTarget::ApplyMotiveCurveArray(unsigned int, short)
+  0x801898e4  (260B)  HUDTarget::GotoCAS(unsigned short, unsigned short, int, int)
+
+[INTTarget] — 6 functions
+  0x801f8720  (436B)  INTTarget::~INTTarget(void)
+  0x801f88d4  (272B)  INTTarget::SetVariable(char *, char *)
+  0x801f8a7c  (324B)  INTTarget::GetLocalizable(char *)
+  0x801f8bc0  (472B)  INTTarget::Update(void)
+  0x801f8e94  (328B)  INTTarget::SetInteractionDisplayValues(unsigned int, unsigned int)
+  0x801f8fdc  (376B)  INTTarget::TriggerInteractionAnimation(unsigned int, unsigned int, unsigned int)
+
+[MODTarget] — 6 functions
+  0x801c9178  (376B)  MODTarget::~MODTarget(void)
+  0x801c92f0  (260B)  MODTarget::SetVariable(char *, char *)
+  0x801c94c0  (276B)  MODTarget::GetLocalizable(char *)
+  0x801c9afc  (392B)  MODTarget::UpdateMood(void)
+  0x801c9c8c  (448B)  MODTarget::SelectDpadArrow(MODTarget::eSidePanelId)
+  0x801ca44c  (508B)  MODTarget::SetMeterValue(float, bool)
+
+[RCPTarget] — 6 functions
+  0x801dd904  (408B)  RCPTarget::~RCPTarget(void)
+  0x801ddbd0  (444B)  RCPTarget::make_recipe_text(RCPTarget::Recipe *, BString2 &)
+  0x801de1e8  (324B)  RCPTarget::GetVariable(char *)
+  0x801de32c  (392B)  RCPTarget::GetLocalizable(char *)
+  0x801de538  (444B)  RCPTarget::init_recipes(void)
+  0x801decb4  (308B)  RCPTarget::get_proc_shaders(RCPTarget::Recipe &, unsigned int &, unsigned int &)
+
+[ACTTarget] — 5 functions
+  0x801a1c1c  (288B)  ACTTarget::SetVariable(char *, char *)
+  0x801a2204  (440B)  ACTTarget::UpdateActionQueue(void)
+  0x801a23c4  (500B)  ACTTarget::AddAction(int, Interaction *, BString2 &, unsigned int, ERShader *, unsigned int)
+  0x801a2e30  (360B)  ACTTarget::CancelCurrentObject(void)
+  0x801a2f98  (264B)  ACTTarget::UpdateCancelModeWidgets(void)
+
+[ActionQueueHUD] — 5 functions
+  0x8018486c  (388B)  ActionQueueHUD::Stop(void)
+  0x80184e8c  (340B)  ActionQueueHUD::RunIngame(void)
+  0x801851f8  (400B)  ActionQueueHUD::RemoveAction(Interaction *)
+  0x801853fc  (468B)  ActionQueueHUD::StartPendingOperation(void)
+  0x801855d0  (392B)  ActionQueueHUD::CompletePendingOperation(void)
+
+[CasSimRenderer] — 5 functions
+  0x8016ef38  (280B)  CasSimRenderer::~CasSimRenderer(void)
+  0x8016f174  (400B)  CasSimRenderer::Draw(ERC *)
+  0x8016f304  (388B)  CasSimRenderer::DrawShadow(ERC *)
+  0x8016f5a8  (376B)  CasSimRenderer::SetupSimCommon(void)
+  0x8016f90c  (276B)  CasSimRenderer::DrawFaceImage(ERC *)
+
+[INGTarget] — 5 functions
+  0x801ba500  (424B)  INGTarget::~INGTarget(void)
+  0x801bb6c0  (284B)  INGTarget::Update(void)
+  0x801bb7dc  (316B)  INGTarget::end_dialog(bool)
+  0x801bb918  (320B)  INGTarget::update_current_items(unsigned int)
+  0x801bbf6c  (424B)  INGTarget::create_edit_buffer(void)
+
+[WAFTarget] — 5 functions
+  0x801e2d10  (432B)  WAFTarget::~WAFTarget(void)
+  0x801e3160  (280B)  WAFTarget::GetLocalizable(char *)
+  0x801e3c9c  (452B)  WAFTarget::StartAnimation(int)
+  0x801e3e60  (336B)  WAFTarget::FinishSettingIcon(int)
+  0x801e4858  (280B)  WAFTarget::GlowEffectStart(void)
+
+[cTrack] — 5 functions
+  0x801175e0  (268B)  cTrack::cTrack(ERSoundEvent *)
+  0x801178ac  (436B)  cTrack::HandleTimerCallback(void)
+  0x80117a60  (444B)  cTrack::PlayPause(int, int, int, float)
+  0x80117efc  (376B)  cTrack::SetRegister(int, int)
+  0x80118c74  (352B)  cTrack::CalculateCurrentVolume(void)
+
+[cXPortalImpl] — 5 functions
+  0x8012e608  (440B)  cXPortalImpl::SetRouteScore(short, float)
+  0x8012fe1c  (444B)  cXPortalImpl::ApplyWallStyle(bool)
+  0x801302b0  (476B)  cXPortalImpl::Pickup(void)
+  0x80130824  (316B)  cXPortalImpl::FindAvailRouteID(ObjectModule *)
+  0x8013156c  (308B)  cXPortalImpl::ClearRouteScores(ObjectModule *, short)
+
+[ActionMenu] — 4 functions
+  0x80183928  (488B)  ActionMenu::UpdateIcon(void)
+  0x80183b10  (276B)  ActionMenu::FillInMenu(void)
+  0x80184208  (416B)  ActionMenu::AcceptMenu(void)
+  0x801843fc  (292B)  ActionMenu::TerminateMenu(void)
+
+[AptViewer] — 4 functions
+  0x80010394  (284B)  AptViewer::NewCallFunction(char *, char *, char *, int,...)
+  0x800104b0  (260B)  AptViewer::NewCallFunction2(char *, char *, char *, int, char **)
+  0x80010644  (308B)  AptViewer::UpdateAll(void)
+  0x80011a48  (260B)  AptViewer::PushAptButtonFilter(int, char *)
+
+[CRDTarget] — 4 functions
+  0x801a4848  (444B)  CRDTarget::~CRDTarget(void)
+  0x801a4ae4  (260B)  CRDTarget::GetVariable(char *)
+  0x801a4c70  (336B)  CRDTarget::Update(void)
+  0x801a4dc0  (300B)  CRDTarget::ShowCredits(void)
+
+[CameraDirector] — 4 functions
+  0x8001b078  (288B)  CameraDirector::InitSimsCamera(void)
+  0x8001b1fc  (336B)  CameraDirector::ReleaseCurrentCamera(void)
+  0x8001c540  (348B)  CameraDirector::ReleaseToGameCamera(void)
+  0x8001c69c  (404B)  CameraDirector::InterpToGameCamera(float, CamDirInterpType)
+
+[CasGenetics] — 4 functions
+  0x801604a8  (492B)  CasGenetics::BlendSimDescriptions(CasSimDescriptionS2C &, CasSimDescriptionS2C &, CasSimDescriptionS2C &, bool)
+  0x80160788  (280B)  CasGenetics::BlendBodyType(signed char, signed char)
+  0x80160e38  (268B)  CasGenetics::LoadGrandparentList(bool)
+  0x80160f44  (332B)  CasGenetics::SaveGrandparentList(void)
+
+[CasSimRendererDynamic] — 4 functions
+  0x8016fd00  (260B)  CasSimRendererDynamic::GetIndexes(eBodyPartS2C, unsigned char *, unsigned char *)
+  0x8016fe04  (260B)  CasSimRendererDynamic::GetIndexes(eTattooTextureTypeS2C, unsigned char *, unsigned char *)
+  0x80170704  (288B)  CasSimRendererDynamic::PlayPersonalityAnim(short)
+  0x80172b18  (264B)  CasSimRendererDynamic::HandleEventChangeFocus(CasEventChangeFocus &)
+
+[ChainResFile] — 4 functions
+  0x800b2b54  (296B)  ChainResFile::GetByIndex(int, short, void (*)(void *, int))
+  0x800b381c  (432B)  ChainResFile::AddProhibitedType(iResFile *, unsigned int)
+  0x800b39cc  (436B)  ChainResFile::AddExclusiveType(iResFile *, unsigned int)
+  0x800b3b80  (276B)  ChainResFile::TypeWritable(unsigned int)
+
+[EHouse] — 4 functions
+  0x80023a20  (396B)  EHouse::BuildHouse(void)
+  0x80024e04  (404B)  EHouse::ReCalcHouse(void)
+  0x80024f98  (372B)  EHouse::UpdateRoomLights(void)
+  0x80025264  (312B)  EHouse::InitRoomLighting(void)
+
+[ELightGrid] — 4 functions
+  0x8022ffe0  (460B)  ELightGrid::ConnectPortalLights(ELightGrid::RoomData *)
+  0x802301ac  (264B)  ELightGrid::RoomData::FindClosestLights(EVec3 &, int, int, ELightGrid::LightData *, ELightGrid::LightWeight *, int)
+  0x802302b4  (288B)  ELightGrid::EvaluatePointLights(int, int)
+  0x80230c2c  (508B)  ELightGrid::GetLightWeightsAtLocation(EVec3 &, int, ELightGrid::LightWeight *)
+
+[ERoom] — 4 functions
+  0x8002d778  (276B)  ERoom::ERoom(void)
+  0x8002dcf0  (384B)  ERoom::InitRoomLookupTab(void)
+  0x8002ff8c  (376B)  ERoom::DeleteWallAtTile(CTilePt &, TileWalls &, TileWallsSegment)
+  0x80030104  (456B)  ERoom::KillArchitecturalObject(CTilePt &, TileWallsSegment, int &, bool)
+
+[EdithVariableSet] — 4 functions
+  0x800e32ec  (264B)  EdithVariableSet::EdithVariableSet(EdithVariableSet &)
+  0x800e7a5c  (440B)  EdithVariableSet::ShrinkToExactSize(byte_key_map<72, short, allocator<short> > &)
+  0x800e7c14  (284B)  EdithVariableSet::ReconKeyBitSet(ReconBuffer *, byte_key_map<72, short, allocator<short> >::_Byte_key_map_iterator<short, _Nonconst_traits<short> >)
+  0x800e7f64  (264B)  EdithVariableSet::Reset(void)
+
+[FCMTarget] — 4 functions
+  0x801b3b68  (352B)  FCMTarget::~FCMTarget(void)
+  0x801b3cc8  (264B)  FCMTarget::SetVariable(char *, char *)
+  0x801b3ef0  (264B)  FCMTarget::Update(void)
+  0x801b3ff8  (448B)  FCMTarget::ShowFireCodeMeter(void)
+
+[FONTarget] — 4 functions
+  0x801ea07c  (484B)  FONTarget::~FONTarget(void)
+  0x801ea260  (308B)  FONTarget::SetupNames(IHRecord *, int)
+  0x801ea394  (376B)  FONTarget::GetVariable(char *)
+  0x801ea50c  (436B)  FONTarget::SetVariable(char *, char *)
+
+[FamilyImpl] — 4 functions
+  0x800b61cc  (260B)  FamilyImpl::RemoveFamilyFromLot(void)
+  0x800b6548  (264B)  FamilyImpl::DoStream(ReconBuffer *, int)
+  0x800b6650  (260B)  FamilyImpl::LoadByResID(iResFile *, short, int *)
+  0x800b6818  (444B)  FamilyImpl::AddMember(int)
+
+[MOTTarget] — 4 functions
+  0x801cb5a4  (364B)  MOTTarget::~MOTTarget(void)
+  0x801cb710  (280B)  MOTTarget::SetVariable(char *, char *)
+  0x801cbfc8  (464B)  MOTTarget::ReadMotiveBar(int)
+  0x801cc198  (264B)  MOTTarget::ResetRealMotiveValues(void)
+
+[MSGTarget] — 4 functions
+  0x801fa99c  (488B)  MSGTarget::~MSGTarget(void)
+  0x801fab84  (320B)  MSGTarget::SetupTitles(int)
+  0x801facc4  (368B)  MSGTarget::GetVariable(char *)
+  0x801fb11c  (276B)  MSGTarget::GetLocalizable(char *)
+
+[MorphUtilities] — 4 functions
+  0x80057ef4  (304B)  MorphUtilities::ApplyMorphHead(float)
+  0x80058024  (512B)  MorphUtilities::MorphLatticeOnHead(unsigned int, float, unsigned int)
+  0x80058224  (392B)  MorphUtilities::MorphLatticeOnBodyPart(unsigned int, float, unsigned int)
+  0x800584f8  (260B)  MorphUtilities::GetHeadLatticeIndexAndValue(float, float &, int &, float &, int &)
+
+[PassiveInfluenceMap] — 4 functions
+  0x80113740  (440B)  PassiveInfluenceMap::RemoveItemFromMap(PassiveInfluenceItem *)
+  0x80113944  (276B)  PassiveInfluenceMap::EmptyMap(void)
+  0x80113a8c  (476B)  PassiveInfluenceMap::CheckObjectInfluence(PassiveInfluenceTarget *)
+  0x80113c68  (320B)  PassiveInfluenceMap::ApplyInfluence(PassiveInfluenceObject *, PassiveInfluenceTarget *)
+
+[SeqResFile] — 4 functions
+  0x8013db68  (268B)  SeqResFile::CreateIResFile(iResFile *, StringBuffer &, int, int &, StackString<32> **)
+  0x8013dc74  (308B)  SeqResFile::OpenIResFile(iResFile *, StringBuffer &, int, bool &)
+  0x8013de7c  (396B)  SeqResFile::Create(StringBuffer &)
+  0x8013e0f4  (352B)  SeqResFile::Open(StringBuffer &)
+
+[SimImageMaker] — 4 functions
+  0x8006e814  (260B)  SimImageMaker::SimImageMaker(void)
+  0x8006ea14  (440B)  SimImageMaker::SetToDefaultValues(void)
+  0x8006f25c  (428B)  SimImageMaker::InitWindow(E3DWindow &, ERC *)
+  0x8006f408  (304B)  SimImageMaker::PoseSim(ERC *)
+
+[SpacePartition] — 4 functions
+  0x80138d18  (280B)  SpacePartition::GetIntersectingPartitionRect(IRect *)
+  0x80138f30  (320B)  SpacePartition::EstimateDistanceToGoal(int)
+  0x80139070  (480B)  SpacePartition::MeasureDistance(int, int, IPoint *)
+  0x803acc5c  (388B)  SpacePartition::~SpacePartition(void)
+
+[WantFear] — 4 functions
+  0x8014b4dc  (280B)  WantFear::Bookmark::SatisfiedBy(WantFear::Notification &) const
+  0x8014b5f4  (340B)  WantFear::Bookmark::IsValid(Neighbor *, bool) const
+  0x8014b748  (272B)  WantFear::Bookmark::IsCompleted(Neighbor *) const
+  0x8014bb4c  (288B)  WantFear::Bookmark::DoStream(ReconBuffer *, int)
+
+[WorldMap] — 4 functions
+  0x800998c8  (480B)  WorldMap::WorldMap(void)
+  0x80099aa8  (412B)  WorldMap::~WorldMap(void)
+  0x80099c44  (444B)  WorldMap::Reset(void)
+  0x8009a1d0  (360B)  WorldMap::Draw(ERC *)
+
+[anonymous] — 4 functions
+  0x800034c0  (280B)  {anonymous}::OverrideMotionBlurSettingsFromTokens(FrameEffectsMotionBlurDataElement *, EString *, int)
+  0x80003830  (360B)  {anonymous}::OverrideDOFSettingsFromTokens(FrameEffectsDepthOfFieldDataElement *, EString *, int)
+  0x80015a50  (408B)  {anonymous}::HandleEffectNote(ESimsCam *, EAnimNote &, anim::PropKind)
+  0x8005be08  (456B)  {anonymous}::HandleEffectNote(cXPerson *, EAnimNote &, anim::PropKind)
+
+[deque] — 4 functions
+  0x803a159c  (456B)  deque<StateMachineStatus *, allocator<StateMachineStatus *> >::_M_reallocate_map(unsigned int, bool)
+  0x803b31c4  (456B)  deque<int, allocator<int> >::_M_reallocate_map(unsigned int, bool)
+  0x803b5324  (456B)  deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_reallocate_map(unsigned int, bool)
+  0x803b57a8  (456B)  deque<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_reallocate_map(unsigned int, bool)
+
+[ActionQueue] — 3 functions
+  0x80119f60  (268B)  ActionQueue::AddActionToHUD(int)
+  0x8011a3f8  (320B)  ActionQueue::Insert(Interaction &, unsigned int)
+  0x8011a538  (428B)  ActionQueue::Remove(unsigned int)
+
+[CASMorphTarget] — 3 functions
+  0x8019cc34  (348B)  CASMorphTarget::~CASMorphTarget(void)
+  0x8019cd90  (380B)  CASMorphTarget::SetVariable(char *, char *)
+  0x8019d1f8  (436B)  CASMorphTarget::GetVariable(char *)
+
+[CASRoommateTarget] — 3 functions
+  0x801a0048  (376B)  CASRoommateTarget::~CASRoommateTarget(void)
+  0x801a0318  (280B)  CASRoommateTarget::GetLocalizableSubnav(int, unsigned wchar_t *)
+  0x801a0604  (416B)  CASRoommateTarget::Draw(ERC *)
+
+[CASTattooTarget] — 3 functions
+  0x8019f644  (348B)  CASTattooTarget::~CASTattooTarget(void)
+  0x8019f7c8  (272B)  CASTattooTarget::GetLocalizableSubnav(int, unsigned wchar_t *)
+  0x8019f8d8  (332B)  CASTattooTarget::RemoveClothesForTattoo(void)
+
+[CSMTarget] — 3 functions
+  0x801a6980  (436B)  CSMTarget::~CSMTarget(void)
+  0x801a6b34  (264B)  CSMTarget::SetVariable(char *, char *)
+  0x801a6cd4  (300B)  CSMTarget::GetLocalizable(char *)
+
+[CUnlockDisplayObject] — 3 functions
+  0x80079078  (312B)  CUnlockDisplayObject::CUnlockDisplayObject(void)
+  0x800791b0  (264B)  CUnlockDisplayObject::~CUnlockDisplayObject(void)
+  0x80079874  (300B)  CUnlockDisplayObject::Draw(ERC *)
+
+[CasCostumes] — 3 functions
+  0x8015f7fc  (332B)  CasCostumes::SaveCostumesList(void)
+  0x80160148  (336B)  CasCostumes::UpdateSimDescription(bool, char *, CasSimDescriptionS2C *)
+  0x80160298  (288B)  CasCostumes::UpdateSimDescription(bool, unsigned int, CasSimDescriptionS2C *)
+
+[DlgWrapper] — 3 functions
+  0x8007de30  (440B)  DlgWrapper::Update(void)
+  0x8007e274  (460B)  DlgWrapper::GetVariable(char *)
+  0x8007e440  (260B)  DlgWrapper::DlgWrapper(bool)
+
+[EBoneParticle] — 3 functions
+  0x80015074  (336B)  EBoneParticle::EBoneParticle(cXPerson *, AnimParticleData *, bool)
+  0x800151c4  (404B)  EBoneParticle::UpdateParticleLoad(void)
+  0x80015358  (428B)  EBoneParticle::~EBoneParticle(void)
+
+[ECheatDMI] — 3 functions
+  0x800214e0  (288B)  ECheatDMI::GetValue(char *)
+  0x80021600  (440B)  ECheatDMI::ButtonPress(EDebugMenuButton)
+  0x800217b8  (308B)  ECheatDMI::ButtonPress(EDebugMenuButton, float)
+
+[EILight] — 3 functions
+  0x80227a2c  (276B)  EILight::Write(EStream &)
+  0x80227b40  (284B)  EILight::Read(EStream &)
+  0x80227de0  (268B)  EILight::TestOverlap(EInstance *)
+
+[EIObjTileBoundRect] — 3 functions
+  0x80055b88  (260B)  EIObjTileBoundRect::AddTilePt(EVec2 &)
+  0x80055e64  (304B)  EIObjTileBoundRect::Overlap(EIObjTileBoundRect &) const
+  0x80056050  (464B)  EIObjTileBoundRect::MirrorYX(void)
+
+[EYETarget] — 3 functions
+  0x801e8844  (336B)  EYETarget::AddSetVar(SetVar *)
+  0x801e8994  (336B)  EYETarget::AddGetVar(GetVar *)
+  0x801e8f94  (420B)  EYETarget::RenderCallback(ERC *, structDrawCBparams *)
+
+[EyeToyClient] — 3 functions
+  0x80037714  (288B)  EyeToyClient::loadTexture(int, NghResFile::SaveRecord &)
+  0x80037b80  (416B)  EyeToyClient::CopyTextureToShader(ERShader *, ETexture *)
+  0x80038518  (284B)  EyeToyClient::Init(void)
+
+[FlashPiMenu] — 3 functions
+  0x80039de8  (300B)  FlashPiMenu::CreateMenuForGoHere(bool)
+  0x80039ff4  (272B)  FlashPiMenu::AddObjectInteractionsToMenu(cXObject *, bool)
+  0x8003aab0  (496B)  FlashPiMenu::ChooseAction(cXObject *, Interaction *, bool)
+
+[G2DTarget] — 3 functions
+  0x801b4be8  (436B)  G2DTarget::~G2DTarget(void)
+  0x801b4fac  (368B)  G2DTarget::GetLocalizable(char *)
+  0x801b690c  (340B)  G2DTarget::UnloadDialog(void)
+
+[HoodManager] — 3 functions
+  0x800430f4  (316B)  HoodManager::UnmarkFamilyForDeletion(int, Family *)
+  0x80043230  (344B)  HoodManager::EvictFamilyAndLiquidateAssets(int)
+  0x80043590  (284B)  HoodManager::RemoveAllObjects(int)
+
+[HouseImpl] — 3 functions
+  0x800bb4ac  (508B)  HouseImpl::Initialize(void)
+  0x800bbae8  (340B)  HouseImpl::ComputeAndStoreLotData(void)
+  0x800bc24c  (468B)  HouseImpl::GetHouseStats(HouseStats &)
+
+[ITBTarget] — 3 functions
+  0x801bd088  (368B)  ITBTarget::~ITBTarget(void)
+  0x801bd1f8  (308B)  ITBTarget::SetVariable(char *, char *)
+  0x801bd8fc  (340B)  ITBTarget::SpawnIntroThoughtBalloon(UIDialog *)
+
+[InfluenceMap] — 3 functions
+  0x80048d44  (356B)  InfluenceMap::AddObjectToMap(cXObject *)
+  0x80048ea8  (460B)  InfluenceMap::AddObjectEntry(cXObject *, ITreeTableEntry *)
+  0x80049074  (344B)  InfluenceMap::RemoveObjectFromMap(cXObject *)
+
+[KEYTarget] — 3 functions
+  0x801f9804  (348B)  KEYTarget::~KEYTarget(void)
+  0x801f9a1c  (428B)  KEYTarget::SetVariable(char *, char *)
+  0x801f9bc8  (384B)  KEYTarget::GetVariable(char *)
+
+[MDITarget] — 3 functions
+  0x801c35dc  (344B)  MDITarget::~MDITarget(void)
+  0x801c37e4  (308B)  MDITarget::GetVariable(char *)
+  0x801c3918  (268B)  MDITarget::GetLocalizable(char *)
+
+[MemFile] — 3 functions
+  0x800a5c88  (324B)  MemFile::WriteBlock(void *, int *)
+  0x800a605c  (280B)  MemFile::Open(StringBuffer &)
+  0x800a6308  (276B)  MemFile::Flush(void)
+
+[OptionsRecon] — 3 functions
+  0x80058bfc  (296B)  OptionsRecon::WriteOut(void)
+  0x80058d2c  (296B)  OptionsRecon::ReadIn(int)
+  0x803a0380  (344B)  OptionsRecon::operator=(OptionsRecon &)
+
+[PDATarget] — 3 functions
+  0x801fdc64  (512B)  PDATarget::SetVariable(char *, char *)
+  0x801fde64  (320B)  PDATarget::GetVariable(char *)
+  0x801fee80  (288B)  PDATarget::HandleButtonHelpMessage(int, int)
+
+[PRGTarget] — 3 functions
+  0x801d9098  (400B)  PRGTarget::~PRGTarget(void)
+  0x801d9604  (472B)  PRGTarget::GetTotalSkillPoints(void)
+  0x801d97dc  (360B)  PRGTarget::GetMaxedSkills(void)
+
+[PlumbBobOwner] — 3 functions
+  0x8005b89c  (300B)  PlumbBobOwner::GrabPlumbBob(int, PlumbBobOwner *)
+  0x8005b9c8  (460B)  PlumbBobOwner::PushAndGrabPlumbBobOwner(int, PlumbBobOwner *)
+  0x8005bb94  (468B)  PlumbBobOwner::PopPlumbBobOwner(int, PlumbBobOwner *)
+
+[RGTTarget] — 3 functions
+  0x80201dd8  (452B)  RGTTarget::~RGTTarget(void)
+  0x80201f9c  (328B)  RGTTarget::SetupNames(int)
+  0x802021a8  (464B)  RGTTarget::SetVariable(char *, char *)
+
+[RMDTarget] — 3 functions
+  0x801df648  (496B)  RMDTarget::~RMDTarget(void)
+  0x801df838  (348B)  RMDTarget::SetVariable(char *, char *)
+  0x801dffa4  (424B)  RMDTarget::UnloadDialog(void)
+
+[RainEffect] — 3 functions
+  0x8007a380  (400B)  RainEffect::UpdateParticleRainSplashLoad(void)
+  0x8007a510  (316B)  RainEffect::UpdateParticleRainLoad(void)
+  0x8007a64c  (288B)  RainEffect::~RainEffect(void)
+
+[ResourceBehaviorTree] — 3 functions
+  0x8015aca0  (328B)  ResourceBehaviorTree::LoadFromIndex(unsigned int, int)
+  0x8015ae1c  (296B)  ResourceBehaviorTree::LoadFromDataID(ObjectDataID &)
+  0x8015af44  (296B)  ResourceBehaviorTree::GetFromDataID(ObjectDataID &)
+
+[Room] — 3 functions
+  0x80137578  (372B)  Room::~Room(void)
+  0x80138420  (276B)  Room::IsOutside(void)
+  0x80138704  (328B)  Room::GetAmbientLightMultiplier(void)
+
+[SimLog] — 3 functions
+  0x8013f378  (348B)  SimLog::SimTickCompleted(cXPerson *)
+  0x8013fae8  (308B)  SimLog::EndLogging(void)
+  0x803ad1a8  (356B)  SimLog::~SimLog(void)
+
+[StateMachine] — 3 functions
+  0x80095b30  (472B)  StateMachine::Update(float)
+  0x80095f10  (368B)  StateMachine::AddState(StateMachineState *)
+  0x80096080  (308B)  StateMachine::DeleteAllStates(void)
+
+[TheSimsMaxisLogoState] — 3 functions
+  0x80097864  (292B)  TheSimsMaxisLogoState::Reset(void)
+  0x80097988  (364B)  TheSimsMaxisLogoState::Update(float)
+  0x80097af4  (260B)  TheSimsMaxisLogoState::Draw(ERC *)
+
+[TreeSimImpl] — 3 functions
+  0x80147258  (476B)  TreeSimImpl::~TreeSimImpl(void)
+  0x8014772c  (508B)  TreeSimImpl::TreeSimImpl(int)
+  0x80147aa0  (464B)  TreeSimImpl::Gosub(Behavior *, short *, short)
+
+[TreeTableEntryQuickData] — 3 functions
+  0x8015d8f8  (308B)  TreeTableEntryQuickData::TreeTableEntryQuickData(TreeTableEntry *)
+  0x8015da2c  (268B)  TreeTableEntryQuickData::~TreeTableEntryQuickData(void)
+  0x8015db38  (356B)  TreeTableEntryQuickData::GetAd(int) const
+
+[UI2D] — 3 functions
+  0x8017610c  (360B)  UI2D::AddEntry(char *, unsigned int, ERShader *, char *, int)
+  0x80176274  (324B)  UI2D::RemoveEntry(UI2D::UI2DRecord *)
+  0x80176658  (416B)  UI2D::GetShader(char *)
+
+[UI3D] — 3 functions
+  0x80176880  (360B)  UI3D::UI3D(void)
+  0x80176ab4  (436B)  UI3D::AddEntry(char *, unsigned int, unsigned int, unsigned int, int, char *)
+  0x80176c68  (260B)  UI3D::RemoveEntry(UI3D::UI3DRecord *)
+
+[UIDBTarget] — 3 functions
+  0x8017a1f4  (324B)  UIDBTarget::~UIDBTarget(void)
+  0x8017a338  (364B)  UIDBTarget::SetVariable(char *, char *)
+  0x8017a4a4  (424B)  UIDBTarget::GetVariable(char *)
+
+[UIQDTarget] — 3 functions
+  0x8017c384  (324B)  UIQDTarget::~UIQDTarget(void)
+  0x8017c72c  (512B)  UIQDTarget::GetQuickdataText(char *)
+  0x8017d10c  (296B)  UIQDTarget::UIQDRemoveEmbeddedControl(unsigned wchar_t *)
+
+[UIScreenManager] — 3 functions
+  0x8017f688  (432B)  UIScreenManager::~UIScreenManager(void)
+  0x8017fae4  (400B)  UIScreenManager::UnloadUIScreen(UIScreenID)
+  0x8017fd58  (268B)  UIScreenManager::SuspendScreenList(UIScreenID *)
+
+[WXFTarget] — 3 functions
+  0x801e5b14  (424B)  WXFTarget::~WXFTarget(void)
+  0x801e5cbc  (288B)  WXFTarget::SetVariable(char *, char *)
+  0x801e6194  (264B)  WXFTarget::GetVariable(char *)
+
+[Wrapper] — 3 functions
+  0x80086848  (316B)  Wrapper::WrapperShutdown(void)
+  0x80086994  (340B)  Wrapper::WrapperDraw(ERC *)
+  0x80086b1c  (360B)  Wrapper::AddPane(WrapperPaneBase *)
+
+[XRoute] — 3 functions
+  0x80152ddc  (384B)  XRoute::Construct(cXObject *, cXObject *, RoutingSlot *)
+  0x80153328  (416B)  XRoute::ShouldIgnore(cXObject *)
+  0x8015597c  (332B)  XRoute::BuildGoalList(void)
+
+[_Deque_base] — 3 functions
+  0x803b2f84  (260B)  _Deque_base<int, allocator<int> >::_M_initialize_map(unsigned int)
+  0x803b4f20  (260B)  _Deque_base<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_initialize_map(unsigned int)
+  0x803b55d0  (260B)  _Deque_base<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_initialize_map(unsigned int)
+
+[cSimulatorImpl] — 3 functions
+  0x80140324  (296B)  cSimulatorImpl::Init(void)
+  0x80140818  (268B)  cSimulatorImpl::DoCommand(short, int)
+  0x801413ec  (288B)  cSimulatorImpl::SetFunds(int, cSimulator::tFundsPlayerNumber)
+
+[AllocPoolManager] — 2 functions
+  0x803c1e84  (296B)  AllocPoolManager<ProtectedAllocPool>::InitAllocPools(unsigned int *)
+  0x803c2018  (296B)  AllocPoolManager<FastAllocPool>::InitAllocPools(unsigned int *)
+
+[AmbientScorePlayer] — 2 functions
+  0x800a85a4  (448B)  AmbientScorePlayer::UpdateListener(unsigned int, EVec3 &, EVec3 &)
+  0x800a8774  (364B)  AmbientScorePlayer::Load(char *)
+
+[AptFormat] — 2 functions
+  0x8000b1b0  (404B)  AptFormat::~AptFormat(void)
+  0x8000cd18  (476B)  AptFormat::CopyForward(AptFormat *)
+
+[BBHTarget] — 2 functions
+  0x801a3788  (388B)  BBHTarget::~BBHTarget(void)
+  0x801a3cc0  (368B)  BBHTarget::Update(void)
+
+[BBI] — 2 functions
+  0x8004a59c  (388B)  BBI::InventoryItems::DeleteItem(BBI::InventoryItem *)
+  0x8004addc  (312B)  BBI::InventoryItems::DoStreamRead(ReconBuffer *, int)
+
+[CASBodyTarget] — 2 functions
+  0x801968f4  (348B)  CASBodyTarget::~CASBodyTarget(void)
+  0x80196ab8  (496B)  CASBodyTarget::GetLocalizableSubnav(int, unsigned wchar_t *)
+
+[CUnlockDisplay] — 2 functions
+  0x80077c3c  (408B)  CUnlockDisplay::SetupForPromotion(cXPerson *, void *)
+  0x80077dfc  (428B)  CUnlockDisplay::Update(void)
+
+[CareersImpl] — 2 functions
+  0x800b17d0  (372B)  CareersImpl::GetOfferDialogText(unsigned wchar_t *, Career &, int, bool)
+  0x800b1944  (364B)  CareersImpl::GetBehCareerData(Career &, int, int, short *)
+
+[CasClothingUnlocks] — 2 functions
+  0x8015f21c  (372B)  CasClothingUnlocks::MarkGroup(unsigned int, bool, bool)
+  0x8015f390  (404B)  CasClothingUnlocks::PrintUnlocks(CasSimDescriptionS2C *) const
+
+[CasSimState] — 2 functions
+  0x801743fc  (464B)  CasSimState::GetNextAvailableHairStyle(signed char, bool, CasSimPartsS2C &)
+  0x8017486c  (280B)  CasSimState::HandleEventResetSim(CasEventResetSim &)
+
+[ECheats] — 2 functions
+  0x80020d10  (504B)  ECheats::EnableCheats(void)
+  0x80020f08  (476B)  ECheats::DisableCheats(void)
+
+[EFloorShdTblNode] — 2 functions
+  0x800455d0  (260B)  EFloorShdTblNode::InitTable(void)
+  0x80047eb8  (484B)  EFloorShdTblNode::PreviewTable(void)
+
+[EIPortalPointLight] — 2 functions
+  0x8022a9dc  (356B)  EIPortalPointLight::LightingParameters(EVec3 &, float &, EVec3 &, EVec3 &)
+  0x8022ab40  (272B)  EIPortalPointLight::Setup(void)
+
+[EISpotLight] — 2 functions
+  0x8022b2b8  (288B)  EISpotLight::Write(EStream &)
+  0x8022b3d8  (272B)  EISpotLight::Read(EStream &)
+
+[EIStaticSubModel] — 2 functions
+  0x8022e788  (292B)  EIStaticSubModel::BuildDigests(void)
+  0x8022e8d8  (276B)  EIStaticSubModel::DrawAsShadow(ELevelDrawData &)
+
+[EParticleEffect] — 2 functions
+  0x8004b8e0  (344B)  EParticleEffect::EParticleEffect(AttachmentNode &, EMat4 &)
+  0x8004bc6c  (320B)  EParticleEffect::~EParticleEffect(void)
+
+[EParticleObj] — 2 functions
+  0x8004c1f8  (344B)  EParticleObj::CreateEffects(EMat4 &, float, ObjAnimDef *)
+  0x8004c350  (272B)  EParticleObj::UpdateEffectPosAndAlphaFade(EAnimController &, float, EMat4 &, EVec3 *, float)
+
+[ESimsApp] — 2 functions
+  0x80005554  (412B)  ESimsApp::UpdateShaders(float)
+  0x80005ba4  (264B)  ESimsApp::Update(void)
+
+[ESpriteRender] — 2 functions
+  0x80035588  (320B)  ESpriteRender::DeleteShaders(void)
+  0x800356c8  (456B)  ESpriteRender::Update(void)
+
+[FileList] — 2 functions
+  0x800a5500  (392B)  FileList::AddRef(iResFile *)
+  0x800a5688  (276B)  FileList::ReleaseRef(iResFile *)
+
+[GoalUnlock] — 2 functions
+  0x800b859c  (316B)  GoalUnlock::SetupObjectUnlockInfo(void)
+  0x800b894c  (288B)  GoalUnlock::GrantObjectUnlocks(int)
+
+[HouseRecon] — 2 functions
+  0x800452e8  (260B)  HouseRecon::LoadHouseData(iResFile *)
+  0x800453ec  (308B)  HouseRecon::SaveHouseData(iResFile *, int)
+
+[HouseStats] — 2 functions
+  0x800bc45c  (352B)  HouseStats::GetSizeScore(void)
+  0x800bc5bc  (428B)  HouseStats::GetFurnishingsScore(void)
+
+[IFFBehavior] — 2 functions
+  0x800acd44  (288B)  IFFBehavior::GetTreeByIndex(int, short, ObjectDataBehaviorTree **)
+  0x800ace64  (332B)  IFFBehavior::GetTreeIDByName(char *)
+
+[IFFBehaviorTree] — 2 functions
+  0x8015b3e4  (268B)  IFFBehaviorTree::LoadFromIndex(unsigned int, int)
+  0x8015b650  (456B)  IFFBehaviorTree::SaveDataByID(ObjectDataID &)
+
+[IFFSlotDescList] — 2 functions
+  0x80144c20  (260B)  IFFSlotDescList::RemoveSlot(int)
+  0x80144df8  (264B)  IFFSlotDescList::LoadFromIndex(unsigned int, int)
+
+[InLevelBaseState] — 2 functions
+  0x8008b380  (280B)  InLevelBaseState::HandleExitToMainMenu(void)
+  0x8008b5b0  (328B)  InLevelBaseState::InLevelBaseState(int)
+
+[K2YTarget] — 2 functions
+  0x801be304  (348B)  K2YTarget::~K2YTarget(void)
+  0x801bed54  (492B)  K2YTarget::GetKeybits(int, int)
+
+[LiveModeChangeHouseStateMachine] — 2 functions
+  0x8008d91c  (412B)  LiveModeChangeHouseStateMachine::Startup(void)
+  0x8008ff30  (264B)  LiveModeChangeHouseStateMachine::LiveModeChangeHouseStateMachine(int, int)
+
+[LoadingScreenStateMachine] — 2 functions
+  0x800907cc  (308B)  LoadingScreenStateMachine::LoadingScreenStateMachine(int, int)
+  0x800909a4  (320B)  LoadingScreenStateMachine::Startup(void)
+
+[LogInteraction] — 2 functions
+  0x8013edd8  (324B)  LogInteraction::LogInteraction(LogPersonTracker *)
+  0x803ad30c  (372B)  LogInteraction::LogInteraction(LogInteraction &)
+
+[LogPersonTracker] — 2 functions
+  0x8013ead0  (336B)  LogPersonTracker::SetInteraction(cXPerson *, Interaction *)
+  0x8013ecbc  (276B)  LogPersonTracker::LogPersonTracker(cXPerson *)
+
+[MUStateMachine] — 2 functions
+  0x80093838  (288B)  MUStateMachine::MUWrapperStartup(void)
+  0x80093a30  (268B)  MUStateMachine::MUStateMachine(int, int)
+
+[MUWrapper] — 2 functions
+  0x8007f7bc  (316B)  MUWrapper::Shutdown(void)
+  0x80081880  (340B)  MUWrapper::HideDialog(void)
+
+[MemoryCardCache] — 2 functions
+  0x800d2ab4  (312B)  MemoryCardCache::Init(NghLayout *)
+  0x800d2e7c  (320B)  MemoryCardCache::CacheNghSection(NghLayout *, char *, unsigned int, unsigned int)
+
+[MotiveEffects] — 2 functions
+  0x800c2f34  (292B)  MotiveEffects::MotiveEffects(cXPerson *)
+  0x800c3058  (340B)  MotiveEffects::GetCurrentScore(void)
+
+[ObjSelector] — 2 functions
+  0x80110d44  (480B)  ObjSelector::GetThumbnail(ERShader **)
+  0x80111264  (328B)  ObjSelector::GetCatalogRating(int)
+
+[PAZBase] — 2 functions
+  0x801d0190  (392B)  PAZBase::~PAZBase(void)
+  0x801d0ed4  (364B)  PAZBase::on_user_set_selection_index(int)
+
+[PSETarget] — 2 functions
+  0x801ff574  (396B)  PSETarget::~PSETarget(void)
+  0x801ff838  (464B)  PSETarget::PushAptButtonFilters(void)
+
+[Path] — 2 functions
+  0x8013acac  (460B)  Path::InitAST(void)
+  0x803ae6d8  (328B)  Path::~Path(void)
+
+[PiecewiseFn] — 2 functions
+  0x8012cce4  (312B)  PiecewiseFn::AddPoint(PiecewisePt &)
+  0x8012ce1c  (332B)  PiecewiseFn::AddPointsFromText(char *)
+
+[PreGameFreeplayState] — 2 functions
+  0x80094eec  (304B)  PreGameFreeplayState::Startup(void)
+  0x8009508c  (480B)  PreGameFreeplayState::Update(float)
+
+[RELTarget] — 2 functions
+  0x80200a28  (436B)  RELTarget::GetVariable(char *)
+  0x80200bdc  (340B)  RELTarget::GetLocalizable(char *)
+
+[ReconBuilder] — 2 functions
+  0x8013426c  (360B)  ReconBuilder::Compact(ReconObject *, int)
+  0x801343d4  (324B)  ReconBuilder::Compact(ReconObject *, int, iResFile *, short)
+
+[RepTitleSupport] — 2 functions
+  0x8018ffe0  (316B)  RepTitleSupport::GetRepTitleRaw(int, RepTitleSupport::eRepTitleRaw)
+  0x801902cc  (408B)  RepTitleSupport::GetRepTitleTitle(int)
+
+[SKLTarget] — 2 functions
+  0x801e0dc8  (364B)  SKLTarget::~SKLTarget(void)
+  0x801e0f34  (280B)  SKLTarget::SetVariable(char *, char *)
+
+[SimsMemCardWrap] — 2 functions
+  0x80075394  (312B)  SimsMemCardWrap::CanBeUsed(int, bool &, int)
+  0x800758bc  (280B)  SimsMemCardWrap::SaveGame(int, bool, bool, int)
+
+[SkinCompositor] — 2 functions
+  0x80075cc8  (292B)  SkinCompositor::CreateSkinQuadrantPrecomposited(ERTexture *, unsigned int, bool)
+  0x80075e8c  (372B)  SkinCompositor::InitScratchpadTextures(unsigned short)
+
+[SmartDataFactory] — 2 functions
+  0x8015cc78  (340B)  SmartDataFactory::GetDataProvider(unsigned int, ObjectDataID &) const
+  0x8015cdcc  (328B)  SmartDataFactory::SetDataProvider(unsigned int, ObjectDataID &, ISmartDataFactory::tDataProvider)
+
+[TextBlock] — 2 functions
+  0x80083a14  (316B)  TextBlock::Set(unsigned wchar_t *, EVec2 &, EVec2 &, EVec4 *, ERFont *, float, bool, bool, bool)
+  0x80083b50  (308B)  TextBlock::Clear(void)
+
+[TheSimsSimsIntroMovieState] — 2 functions
+  0x80097bf8  (332B)  TheSimsSimsIntroMovieState::Startup(void)
+  0x80097d8c  (356B)  TheSimsSimsIntroMovieState::Update(float)
+
+[ThumbnailCompresser] — 2 functions
+  0x800d8f00  (464B)  ThumbnailCompresser::Encode(unsigned char *, int, unsigned char *, int)
+  0x800d90d0  (404B)  ThumbnailCompresser::Decode(unsigned char *, int, unsigned char *, int)
+
+[TileWalls] — 2 functions
+  0x80145ef0  (468B)  TileWalls::GenerateRotationLookups(void)
+  0x80146434  (284B)  TileWalls::CanAdd(TileWallsSegment) const
+
+[TreeStack] — 2 functions
+  0x80148d38  (400B)  TreeStack::AssignFrames(int)
+  0x80148ec8  (384B)  TreeStack::Push(StackElem *, short *)
+
+[TreeTableQuickData] — 2 functions
+  0x8015dd20  (268B)  TreeTableQuickData::~TreeTableQuickData(void)
+  0x8015de60  (440B)  TreeTableQuickData::LoadFromDataID(ObjectDataID &)
+
+[UIAUDIO] — 2 functions
+  0x801770c0  (280B)  UIAUDIO::UIAUDIO(void)
+  0x801777a0  (424B)  UIAUDIO::UpdateAudioLoad(int)
+
+[UIAnalog] — 2 functions
+  0x80180ed4  (324B)  UIAnalog::~UIAnalog(void)
+  0x80181018  (392B)  UIAnalog::GetVariable(char *)
+
+[WidgetScreenFormat] — 2 functions
+  0x801824d8  (508B)  WidgetScreenFormat::IterateTags(WidgetScreenFormat::IterationType)
+  0x80182e3c  (260B)  WidgetScreenFormat::IsPlayerSpecificTag(char *)
+
+[_c2DArray] — 2 functions
+  0x800d1a04  (276B)  _c2DArray::ReadFromDisk(iResFile *, int, short, void (*)(void *, int))
+  0x800d1ec4  (308B)  _c2DArray::SetSize(int, int)
+
+[cGZMusic] — 2 functions
+  0x800bac94  (272B)  cGZMusic::Play(void)
+  0x800baef8  (300B)  cGZMusic::setVolume(int)
+
+[cXObject] — 2 functions
+  0x800d9484  (360B)  cXObject::~cXObject(void)
+  0x800e28ac  (444B)  cXObject::GetWallBlockFlagsAtTile(CTilePt &, int)
+
+[cXPerson] — 2 functions
+  0x8011c65c  (288B)  cXPerson::~cXPerson(void)
+  0x8012c4d0  (436B)  cXPerson::cXPerson(int)
+
+[operator+] — 2 functions
+  0x800a42cc  (292B)  operator+(BString2 &, BString2 &)
+  0x800a43f0  (260B)  operator+(unsigned wchar_t *, BString2 &)
+
+[stack] — 2 functions
+  0x803b6168  (292B)  stack<MMUTarget::MMU_MENU_STATE, deque<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> > >::~stack(void)
+  0x803b6d54  (292B)  stack<FAMTarget::FAM_STATE, deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> > >::~stack(void)
+
+[AddFamilyToPool] — 1 functions
+  0x80042e44  (280B)  AddFamilyToPool(int, int)
+
+[AddPersDataPair] — 1 functions
+  0x800c90bc  (432B)  AddPersDataPair(vector<PersDataPair, allocator<PersDataPair> > &, PersDataPair &)
+
+[AptAuxPCEorGL_FinishAsyncLoads] — 1 functions
+  0x800096b8  (264B)  AptAuxPCEorGL_FinishAsyncLoads(void)
+
+[AptAuxPCEorGL_LoadAnimation] — 1 functions
+  0x80009594  (292B)  AptAuxPCEorGL_LoadAnimation(char *, AptSharedPtr<AptFile>)
+
+[AptShaderWord] — 1 functions
+  0x8000dddc  (404B)  AptShaderWord::InsertSpace(void)
+
+[AptWord] — 1 functions
+  0x8000d724  (264B)  AptWord::InsertSpace(void)
+
+[Bloom] — 1 functions
+  0x803c78e0  (308B)  Bloom::Bloom(void)
+
+[CASFashionTarget] — 1 functions
+  0x8019b254  (348B)  CASFashionTarget::~CASFashionTarget(void)
+
+[CASMiscTarget] — 1 functions
+  0x8019c054  (348B)  CASMiscTarget::~CASMiscTarget(void)
+
+[CLoadingScreen] — 1 functions
+  0x80056a64  (396B)  CLoadingScreen::CLoadingScreen(CLoadingScreen::eLoadingScreenMode)
+
+[CTilePt] — 1 functions
+  0x800b4ed8  (388B)  CTilePt::GetTileDirection(CTilePt &, CTilePt &)
+
+[CTilePt>] — 1 functions
+  0x803c0fa0  (300B)  CTilePt * find<CTilePt *, CTilePt>(CTilePt *, CTilePt *, CTilePt &)
+
+[CalculateFacerMatrix] — 1 functions
+  0x8022ef84  (288B)  CalculateFacerMatrix(EVec3 &, EVec3 &, EMat4 &, bool)
+
+[CameraMotionSystem] — 1 functions
+  0x80016258  (324B)  CameraMotionSystem::RubberBandInterpolate(EVec3 *, EVec3, float)
+
+[CasMediator] — 1 functions
+  0x80161d84  (484B)  CasMediator::RemoveListener(CasListener &)
+
+[CollisionMap] — 1 functions
+  0x80022050  (364B)  CollisionMap::IsMoveBlocked(int, int, bool, TileWallsSegment)
+
+[ColorStringForFlash(BString2 &, Interaction] — 1 functions
+  0x8003a180  (280B)  ColorStringForFlash(BString2 &, Interaction::tColor)
+
+[CreateASimBaseState] — 1 functions
+  0x80089798  (296B)  CreateASimBaseState::OnBackOut(void)
+
+[DialogPaneBase] — 1 functions
+  0x80088b6c  (312B)  DialogPaneBase::DialogPaneBase(int, int)
+
+[DlgReplaceButtonPrompts] — 1 functions
+  0x8007cb74  (452B)  DlgReplaceButtonPrompts(unsigned wchar_t *, BString2 &)
+
+[DrawIcon] — 1 functions
+  0x800842d8  (396B)  DrawIcon(ERC *, EVec2 &, EVec2 &, EVec4 &, ERShader *)
+
+[EACTrack] — 1 functions
+  0x803c33b4  (456B)  EACTrack::operator=(EACTrack &)
+
+[EIFloor] — 1 functions
+  0x80047318  (404B)  EIFloor::Draw(ELevelDrawData &)
+
+[EIObjectMan] — 1 functions
+  0x80054e14  (480B)  EIObjectMan::AddObject(cXObject *, ERLevel *)
+
+[EIPointLight] — 1 functions
+  0x8022a0e0  (408B)  EIPointLight::LightingParameters(EVec3 &, float &, EVec3 &, EVec3 &)
+
+[ELiveMode] — 1 functions
+  0x8008dd70  (440B)  ELiveMode::IsReadyForUpdate(void)
+
+[EMemoryMeterWin] — 1 functions
+  0x80057a1c  (504B)  EMemoryMeterWin::PollMemoryLevels(void)
+
+[ENgcController] — 1 functions
+  0x803c7274  (508B)  ENgcController::GetButtons(PADStatus &)
+
+[EORComputeZodiacSign] — 1 functions
+  0x800399e0  (272B)  EORComputeZodiacSign(short *)
+
+[ERAmbientSound] — 1 functions
+  0x803c88c0  (328B)  ERAmbientSound::ERAmbientSound(ERAmbientSound &)
+
+[EShaderDef] — 1 functions
+  0x803c360c  (368B)  EShaderDef::operator=(EShaderDef &)
+
+[ESimsDataManager] — 1 functions
+  0x8002302c  (288B)  ESimsDataManager::AllocateAndLoadResource(EFile *, unsigned int, unsigned int)
+
+[EdithDialogPrimitive] — 1 functions
+  0x800b55d0  (268B)  EdithDialogPrimitive::ResetDialogParameters(void)
+
+[EffectsPreRenderVisitor] — 1 functions
+  0x8003ded4  (308B)  EffectsPreRenderVisitor::Visit(Effects::FastParticleEmitter &)
+
+[Emitter] — 1 functions
+  0x802389dc  (300B)  Emitter::Draw(ELevelDrawData &)
+
+[EmitterGeom3dSubmitCB] — 1 functions
+  0x80239f50  (484B)  EmitterGeom3dSubmitCB(particle *, PVector4 *, float, float, PVector4 *, void *)
+
+[EmitterGeom3dTabSubmitCB] — 1 functions
+  0x8023a1f8  (508B)  EmitterGeom3dTabSubmitCB(particle *, PVector4 *, float, float, PVector4 *, void *)
+
+[EvalPoint] — 1 functions
+  0x8013ba9c  (388B)  EvalPoint(IPoint, IPoint, IPoint, IPoint *, float *)
+
+[EvaluateFloorLights] — 1 functions
+  0x800461e0  (280B)  EvaluateFloorLights(ELightGrid &, int, EVec3 &, EVec3 &)
+
+[FlowGotoTarget] — 1 functions
+  0x8017b02c  (324B)  FlowGotoTarget::~FlowGotoTarget(void)
+
+[GOLTarget] — 1 functions
+  0x801eb32c  (432B)  GOLTarget::~GOLTarget(void)
+
+[GatherRelationshipLevelValues] — 1 functions
+  0x800c8b14  (308B)  GatherRelationshipLevelValues(void)
+
+[GetCircleSegmentClosedIX] — 1 functions
+  0x80049a38  (376B)  GetCircleSegmentClosedIX(EVec2 &, float, EVec2 &, EVec2 &, EVec2 &, Intersection &, bool)
+
+[GetComeSeeMe] — 1 functions
+  0x800b3cf4  (344B)  GetComeSeeMe(cXObject *)
+
+[GetShaderForObject] — 1 functions
+  0x8003adc4  (500B)  GetShaderForObject(cXObject *, ERShader **)
+
+[GlobalSkillTables] — 1 functions
+  0x803ad4d4  (380B)  GlobalSkillTables::~GlobalSkillTables(void)
+
+[GuidIsOk] — 1 functions
+  0x80042c44  (360B)  GuidIsOk(int)
+
+[H2DTarget] — 1 functions
+  0x801b90cc  (280B)  H2DTarget::ShouldH2DBeVisible(int) const
+
+[HandleDepthOfFieldEvent] — 1 functions
+  0x80003de0  (508B)  HandleDepthOfFieldEvent(EAnimNote &, FrameEffectsManager *)
+
+[HandleMotionBlurEvent] — 1 functions
+  0x80003c40  (416B)  HandleMotionBlurEvent(EAnimNote &, FrameEffectsManager *)
+
+[HelpDialog] — 1 functions
+  0x801759e4  (300B)  HelpDialog::HelpDialog(void)
+
+[IFFBehaviorConstants] — 1 functions
+  0x8015a38c  (412B)  IFFBehaviorConstants::SaveDataByID(ObjectDataID &)
+
+[IFFResList] — 1 functions
+  0x803a49a4  (300B)  IFFResList::IFFResList(IFFResList &)
+
+[IFFResList>] — 1 functions
+  0x803a46fc  (444B)  void DoContainerStream<vector<IFFResList, allocator<IFFResList> >, IFFResList>(vector<IFFResList, allocator<IFFResList> > &, IFFResList *, ReconBuffer *, int)
+
+[IFFResMap] — 1 functions
+  0x800bd7ac  (444B)  IFFResMap::RemoveNode(IFFResNode *)
+
+[IFFResNode>] — 1 functions
+  0x803a3e80  (288B)  void DoContainerStream<vector<IFFResNode, allocator<IFFResNode> >, IFFResNode>(vector<IFFResNode, allocator<IFFResNode> > &, IFFResNode *, ReconBuffer *, int)
+
+[IRect] — 1 functions
+  0x800a5ae4  (420B)  IRect::Intersect(IRect *, IRect *)
+
+[ISimInstance] — 1 functions
+  0x80056628  (272B)  ISimInstance::HasInteractions(int)
+
+[IngredientManager] — 1 functions
+  0x8004b7c8  (280B)  IngredientManager::MixIngredients(short, short, short, short) const
+
+[Interaction] — 1 functions
+  0x800c1574  (424B)  Interaction::Interaction(cXPerson *, cXObject *, int, int)
+
+[Interests] — 1 functions
+  0x800c88c0  (408B)  Interests::SetInterests(short *)
+
+[InterpolateLinear<EVec3>] — 1 functions
+  0x803c77a4  (264B)  EVec3 {anonymous} InterpolateLinear<EVec3>(EVec3, EVec3, float, float, float)
+
+[InterpolateSkyLights] — 1 functions
+  0x80237350  (320B)  InterpolateSkyLights(float, SkyLights &, SkyLights &, SkyLights &)
+
+[InterpolateToGraySky] — 1 functions
+  0x802370d8  (416B)  InterpolateToGraySky(float, LevelLightingEntry &)
+
+[IsPlayableCharacter] — 1 functions
+  0x800ef3e0  (284B)  IsPlayableCharacter(int, int &)
+
+[LiveModeInitState] — 1 functions
+  0x8008bc28  (260B)  LiveModeInitState::Reset(void)
+
+[LoadThreadProc] — 1 functions
+  0x80009424  (368B)  LoadThreadProc(void *)
+
+[LoadingScreenFadeInState] — 1 functions
+  0x8009027c  (272B)  LoadingScreenFadeInState::Update(float)
+
+[LogInteractionSample] — 1 functions
+  0x8013e878  (416B)  LogInteractionSample::PrintHeader(void)
+
+[MUStatesAutoSaveExisting] — 1 functions
+  0x80092998  (368B)  MUStatesAutoSaveExisting::Update(float)
+
+[MUStatesAutoSaveNew] — 1 functions
+  0x8009217c  (352B)  MUStatesAutoSaveNew::Update(float)
+
+[MUStatesLoadHouse] — 1 functions
+  0x8009201c  (352B)  MUStatesLoadHouse::Update(float)
+
+[MUStatesProcessRequests] — 1 functions
+  0x80091464  (496B)  MUStatesProcessRequests::Update(float)
+
+[MUStatesTransitionAutoSaveExisting] — 1 functions
+  0x80092d54  (388B)  MUStatesTransitionAutoSaveExisting::Update(float)
+
+[MUStatesTransitionSaveExistingGame] — 1 functions
+  0x80092f5c  (444B)  MUStatesTransitionSaveExistingGame::Update(float)
+
+[MotiveCurveSet] — 1 functions
+  0x800c2d90  (264B)  MotiveCurveSet::LoadFromFile(unsigned int, short)
+
+[MotiveInc>] — 1 functions
+  0x803aaf40  (264B)  void DoContainerStream<vector<MotiveInc, allocator<MotiveInc> >, MotiveInc>(vector<MotiveInc, allocator<MotiveInc> > &, MotiveInc *, ReconBuffer *, int)
+
+[MoviePlayerEndgameMovieState] — 1 functions
+  0x800585fc  (288B)  MoviePlayerEndgameMovieState::Reset(void)
+
+[NamespaceSelector] — 1 functions
+  0x800c8030  (304B)  NamespaceSelector::FlushAllCaches(void)
+
+[NewControlParms] — 1 functions
+  0x8001e6dc  (412B)  NewControlParms::NewControlParms(void)
+
+[O2TTarget] — 1 functions
+  0x801cd3dc  (444B)  O2TTarget::~O2TTarget(void)
+
+[OPTTarget] — 1 functions
+  0x801fba98  (324B)  OPTTarget::~OPTTarget(void)
+
+[ObjectDataBehaviorConstants] — 1 functions
+  0x80159c84  (260B)  ObjectDataBehaviorConstants::SetValueCount(int)
+
+[ObjectDataObjDefinition] — 1 functions
+  0x8015c59c  (348B)  ObjectDataObjDefinition::SaveToIFFFile(unsigned int, short, StringBuffer &)
+
+[ObjectList] — 1 functions
+  0x80048590  (388B)  ObjectList::AddObject(cXObject *)
+
+[ObjectRecord>] — 1 functions
+  0x803aaa80  (264B)  void DoContainerStream<vector<ObjectRecord, allocator<ObjectRecord> >, ObjectRecord>(vector<ObjectRecord, allocator<ObjectRecord> > &, ObjectRecord *, ReconBuffer *, int)
+
+[ObjectSaveTypeTable2] — 1 functions
+  0x80022dc4  (320B)  ObjectSaveTypeTable2::DoStream(ReconBuffer *, int)
+
+[ParseOneString] — 1 functions
+  0x800fc604  (472B)  ParseOneString(BString2 &, BString2 &, int, int *, int *, int *)
+
+[PassiveInfluenceObject] — 1 functions
+  0x803a8b60  (336B)  PassiveInfluenceObject::~PassiveInfluenceObject(void)
+
+[PassiveInfluenceSystem] — 1 functions
+  0x8011416c  (472B)  PassiveInfluenceSystem::RemoveObjectFromMap(cXObject *)
+
+[PassiveInfluenceTarget] — 1 functions
+  0x803a8d6c  (376B)  PassiveInfluenceTarget::~PassiveInfluenceTarget(void)
+
+[Physics] — 1 functions
+  0x800593cc  (296B)  Physics::PhysicsGravitate(EVec3 &)
+
+[PlumbBob] — 1 functions
+  0x80059838  (412B)  PlumbBob::PlumbBob(void)
+
+[PlumbBobParms] — 1 functions
+  0x8005b00c  (416B)  PlumbBobParms::PlumbBobParms(void)
+
+[PreGameCreateAFamilyState] — 1 functions
+  0x80094ca0  (272B)  PreGameCreateAFamilyState::Update(float)
+
+[PreGameState] — 1 functions
+  0x800948d4  (272B)  PreGameState::InsertPlayer2Roommate(void)
+
+[QuickStringSet] — 1 functions
+  0x800a7a6c  (260B)  QuickStringSet::LoadRes(iResFile *, short)
+
+[R2LTarget] — 1 functions
+  0x801db534  (400B)  R2LTarget::GetVariable(char *)
+
+[RelMatrixImpl] — 1 functions
+  0x80134e14  (376B)  RelMatrixImpl::CreateNewArray(int)
+
+[SKNTarget] — 1 functions
+  0x80202b90  (452B)  SKNTarget::~SKNTarget(void)
+
+[SerializeUIGameData] — 1 functions
+  0x801905e8  (320B)  SerializeUIGameData::Save(NghResFile::SectionID, NghResFile::SaveRecord &)
+
+[SetLotBorders] — 1 functions
+  0x801517c0  (452B)  SetLotBorders(int, int, int, int)
+
+[SetVar_EYE_state] — 1 functions
+  0x801e948c  (352B)  SetVar_EYE_state::Handler(char *)
+
+[SetupCAS] — 1 functions
+  0x801c6fc4  (300B)  SetupCAS(void)
+
+[SplitPath] — 1 functions
+  0x800a579c  (280B)  SplitPath(StringBuffer &, StringBuffer &, StringBuffer &, StringBuffer &)
+
+[SplitWallHorizDiag] — 1 functions
+  0x80028ff0  (444B)  SplitWallHorizDiag(TileWalls &, CTilePt &)
+
+[SplitWallVertDiag] — 1 functions
+  0x800291ac  (436B)  SplitWallVertDiag(TileWalls &, CTilePt &)
+
+[SprSysSetState] — 1 functions
+  0x80238b38  (512B)  SprSysSetState(unsigned int, unsigned int)
+
+[StackElem] — 1 functions
+  0x801475a8  (264B)  StackElem::ReconStream(ReconBuffer *, int, BehaviorFinder *)
+
+[StartFire] — 1 functions
+  0x801fc5d4  (372B)  StartFire(void)
+
+[StartScreenStartState] — 1 functions
+  0x803a1328  (508B)  StartScreenStartState::Draw(ERC *)
+
+[StartScreenVars] — 1 functions
+  0x8009567c  (260B)  StartScreenVars::DrawPressStart(ERC *)
+
+[StaticGetShaderDimensions] — 1 functions
+  0x801ec158  (260B)  StaticGetShaderDimensions(ERShader *, unsigned int &, unsigned int &)
+
+[StringBuffer2] — 1 functions
+  0x800a6d58  (272B)  StringBuffer2::append(unsigned wchar_t *, int)
+
+[StringToHash] — 1 functions
+  0x800ebe5c  (312B)  StringToHash(char *)
+
+[SubstituteString] — 1 functions
+  0x8007b144  (504B)  SubstituteString(unsigned wchar_t *, unsigned wchar_t *, unsigned wchar_t *, BString2 &)
+
+[TTabScratchEntry] — 1 functions
+  0x8014951c  (420B)  TTabScratchEntry::CopyFrom(ITreeTableEntry *)
+
+[TheSimsEAMovieState] — 1 functions
+  0x800971c8  (288B)  TheSimsEAMovieState::Startup(void)
+
+[TheSimsEnterMainMenuState] — 1 functions
+  0x80098058  (292B)  TheSimsEnterMainMenuState::Startup(void)
+
+[TheSimsMainMenuState] — 1 functions
+  0x80098728  (272B)  TheSimsMainMenuState::Reset(void)
+
+[TheSimsNGCLicenseState] — 1 functions
+  0x80096b90  (352B)  TheSimsNGCLicenseState::Startup(void)
+
+[TheSimsStartScreenStateMachine] — 1 functions
+  0x80095970  (264B)  TheSimsStartScreenStateMachine::TheSimsStartScreenStateMachine(int, int)
+
+[TheSimsStateMachine] — 1 functions
+  0x8009acc4  (264B)  TheSimsStateMachine::TheSimsStateMachine(int, int)
+
+[Timer_StartFrame] — 1 functions
+  0x80076f3c  (392B)  Timer_StartFrame(void)
+
+[TryCatExtension(StackString] — 1 functions
+  0x8013d8d0  (312B)  TryCatExtension(StackString<260> &, SeqResFile::OpenSpec *)
+
+[UIAUDIOTarget] — 1 functions
+  0x8018078c  (324B)  UIAUDIOTarget::~UIAUDIOTarget(void)
+
+[UIButtonImages] — 1 functions
+  0x801816a0  (488B)  UIButtonImages::LocalizeXBoxImages(void)
+
+[UIDialog] — 1 functions
+  0x801e6f2c  (280B)  UIDialog::UIDialog(void)
+
+[UIHDTV] — 1 functions
+  0x8017bd54  (312B)  UIHDTV::GetPreceedingXMLTag(char *, int)
+
+[UnloadLevelGlobalData] — 1 functions
+  0x8008b8a8  (288B)  UnloadLevelGlobalData(void)
+
+[WantFearManager] — 1 functions
+  0x8014c1fc  (444B)  WantFearManager::PickNewRoot(Neighbor *, bool)
+
+[WorldToIso] — 1 functions
+  0x800a4c70  (268B)  WorldToIso(EVec3 &)
+
+[XRoute>] — 1 functions
+  0x803aa520  (424B)  void DoContainerStream<vector<XRoute, allocator<XRoute> >, XRoute>(vector<XRoute, allocator<XRoute> > &, XRoute *, ReconBuffer *, int)
+
+[_SecsToTime] — 1 functions
+  0x8023b0a0  (500B)  _SecsToTime(tm *, unsigned int)
+
+[_XmlAttribFind] — 1 functions
+  0x8023b544  (412B)  _XmlAttribFind(unsigned char *, unsigned char *)
+
+[_XmlAttribFindByIndex] — 1 functions
+  0x8023b6e0  (312B)  _XmlAttribFindByIndex(unsigned char *, int)
+
+[_XmlContentChar] — 1 functions
+  0x8023b364  (404B)  _XmlContentChar(unsigned char *, unsigned char *)
+
+[_loadFileSize] — 1 functions
+  0x80006404  (364B)  _loadFileSize(char *, int *)
+
+[basic_string] — 1 functions
+  0x803b16b0  (264B)  basic_string<char, char_traits<char>, allocator<char> >::reserve(unsigned int)
+
+[bindTexture] — 1 functions
+  0x800071f8  (360B)  bindTexture(void *, int, void *)
+
+[cAudioInfo] — 1 functions
+  0x800ab120  (428B)  cAudioInfo::OutdoorTileRatio(void)
+
+[cFixedWorldImpl] — 1 functions
+  0x8014cc0c  (440B)  cFixedWorldImpl::Load(iResFile *, int)
+
+[cGZSnd] — 1 functions
+  0x800ba96c  (444B)  cGZSnd::getLRVolume(int, float &, float &)
+
+[cSoundCache] — 1 functions
+  0x80119c20  (296B)  cSoundCache::GetTrackObject(ERSoundEvent *, bool)
+
+[cSoundModeManager] — 1 functions
+  0x800b1194  (392B)  cSoundModeManager::Update(void)
+
+[cSoundPlayer] — 1 functions
+  0x800b76a8  (364B)  cSoundPlayer::Update(void)
+
+[cXMTObject] — 1 functions
+  0x800c34b4  (464B)  cXMTObject::~cXMTObject(void)
+
+[cXPortal] — 1 functions
+  0x80131fe4  (508B)  cXPortal::DumpRouteScores(ObjectModule *, short)
+
+[collectResInfoForSel] — 1 functions
+  0x80022718  (468B)  collectResInfoForSel(ObjSelector *, vector<unsigned int, allocator<unsigned int> > &)
+
+[resolveSkillForPassiveInfluence] — 1 functions
+  0x8014215c  (272B)  resolveSkillForPassiveInfluence(cXObject *, StackElem *, AnimateNewParam *, AnimRef *&)
+
+[setExternVariable] — 1 functions
+  0x800065f4  (388B)  setExternVariable(char *, char *)
+
+[sum_attribute(int, RCPTarget] — 1 functions
+  0x801dda9c  (308B)  sum_attribute(int, RCPTarget::Recipe *)
+
+[void __adjust_heap] — 1 functions
+  0x803c65fc  (404B)  void __adjust_heap<EResourceManager::ResourceIndexRecord *, int, EResourceManager::ResourceIndexRecord, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, int, int, EResourceManager::ResourceIndexRecord, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &))
+
+[void __insertion_sort] — 1 functions
+  0x803c6d00  (272B)  void __insertion_sort<EResourceManager::ResourceIndexRecord *, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &))
+
+[void __introsort_loop] — 1 functions
+  0x803c6aec  (400B)  void __introsort_loop<EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord, int, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, int, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &))
+
+[void __partial_sort] — 1 functions
+  0x803c68c4  (312B)  void __partial_sort<EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &))

@@ -1,0 +1,7056 @@
+{
+  "total": 1280,
+  "unmatched": 1268,
+  "groups": {
+    "InteractorModule": [
+      {
+        "addr": "0x802046fc",
+        "size": 316,
+        "symbol": "InteractorModule::DirectInteractor::InterpretFreeMoveInput(void)"
+      },
+      {
+        "addr": "0x80205a60",
+        "size": 280,
+        "symbol": "InteractorModule::DirectInteractor::ExecuteObjectActionMenu(cXObject *)"
+      },
+      {
+        "addr": "0x8020707c",
+        "size": 508,
+        "symbol": "InteractorModule::FloorPainter::UpdateStockChanges(int *, int)"
+      },
+      {
+        "addr": "0x80207278",
+        "size": 416,
+        "symbol": "InteractorModule::FloorPainter::HandleActionCmdInPlaceMode(void)"
+      },
+      {
+        "addr": "0x80207ae0",
+        "size": 436,
+        "symbol": "InteractorModule::FloorPainter::SetFloorTile(CTilePt *, FloorPattern, int *)"
+      },
+      {
+        "addr": "0x80207c94",
+        "size": 488,
+        "symbol": "InteractorModule::FloorPainter::SetFloorTile(CTilePt &, FloorPattern, Room *, int *)"
+      },
+      {
+        "addr": "0x80208c74",
+        "size": 300,
+        "symbol": "InteractorModule::FloorPainter::CheckDiagForRoomContainment(Room *, CTilePt &, TileWalls &, DiagonalSideSelector &, DiagonalSideSelector &)"
+      },
+      {
+        "addr": "0x802095e4",
+        "size": 276,
+        "symbol": "InteractorModule::Debug_GetNameFromCommand(InteractorModule::InteractorInputManager::InteractorCommand)"
+      },
+      {
+        "addr": "0x8020a968",
+        "size": 260,
+        "symbol": "InteractorModule::InteractorInputManager::InstanceData::OpenSession(int, InteractorModule::Interactor *, int, InteractorModule::InteractorInputManager::ButtonSemantic *, int, InteractorModule::InteractorInputManager::StickSemantic *, char *)"
+      },
+      {
+        "addr": "0x8020b020",
+        "size": 408,
+        "symbol": "InteractorModule::InteractorManager::~InteractorManager(void)"
+      },
+      {
+        "addr": "0x8020cce0",
+        "size": 356,
+        "symbol": "InteractorModule::InteractorResourceSet::RemoveModel(unsigned int)"
+      },
+      {
+        "addr": "0x8020e038",
+        "size": 356,
+        "symbol": "InteractorModule::InteractorResourceSet::RemoveShader(unsigned int)"
+      },
+      {
+        "addr": "0x8020f3a0",
+        "size": 356,
+        "symbol": "InteractorModule::InteractorResourceSet::RemoveTexture(unsigned int)"
+      },
+      {
+        "addr": "0x8020fd74",
+        "size": 384,
+        "symbol": "InteractorModule::InteractorResourceSet::ClearSet(void)"
+      },
+      {
+        "addr": "0x802104a8",
+        "size": 396,
+        "symbol": "InteractorModule::GetPersonPosition(EVec3 *, cXPerson *, bool, bool)"
+      },
+      {
+        "addr": "0x80210804",
+        "size": 376,
+        "symbol": "InteractorModule::GetCameraRelativeStickAngle(EVec2 &, ESimsCam *, float *)"
+      },
+      {
+        "addr": "0x80211524",
+        "size": 316,
+        "symbol": "InteractorModule::CanObjectBeDestroyed(cXObject *)"
+      },
+      {
+        "addr": "0x802121c4",
+        "size": 460,
+        "symbol": "InteractorModule::FinalUserPlaceObject(cXObject *)"
+      },
+      {
+        "addr": "0x802124b4",
+        "size": 412,
+        "symbol": "InteractorModule::SetDirection(int, cXObject *)"
+      },
+      {
+        "addr": "0x80212650",
+        "size": 376,
+        "symbol": "InteractorModule::GetObjectInstancesList(cXObject *, TNodeList<ISimInstance *> &)"
+      },
+      {
+        "addr": "0x8021358c",
+        "size": 320,
+        "symbol": "InteractorModule::EorGetAdjacentTile(TileWallsSegment &, int, DiagonalSideSelector &, CTilePt &, CTilePt &)"
+      },
+      {
+        "addr": "0x80213c60",
+        "size": 300,
+        "symbol": "InteractorModule::CheckNewSimInSocialMode(unsigned int)"
+      },
+      {
+        "addr": "0x80213f98",
+        "size": 328,
+        "symbol": "InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::FloorPainter &)"
+      },
+      {
+        "addr": "0x80215218",
+        "size": 476,
+        "symbol": "InteractorModule::InteractorVisualizer::DrawWallpaperRoomPreview(InteractorModule::WallPainter &)"
+      },
+      {
+        "addr": "0x802153f4",
+        "size": 500,
+        "symbol": "InteractorModule::InteractorVisualizer::DrawWallpaperPreviewOnAffectedWalls(InteractorModule::WallPainter &)"
+      },
+      {
+        "addr": "0x802155e8",
+        "size": 404,
+        "symbol": "InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::WallManipulator &)"
+      },
+      {
+        "addr": "0x80216d64",
+        "size": 308,
+        "symbol": "InteractorModule::InteractorVisualizer::Draw(InteractorModule::ObjectManipulator &)"
+      },
+      {
+        "addr": "0x80216f54",
+        "size": 476,
+        "symbol": "InteractorModule::InteractorVisualizer::Draw(InteractorModule::SimInteractor &)"
+      },
+      {
+        "addr": "0x80217438",
+        "size": 280,
+        "symbol": "InteractorModule::InteractorVisualizer::DrawSimpleResourceSet(InteractorModule::Interactor &, int, EVec3 &, float)"
+      },
+      {
+        "addr": "0x80217b30",
+        "size": 464,
+        "symbol": "InteractorModule::InteractorVisualizer::DrawResource(InteractorModule::Interactor &, int, EVec3 &, EMat4 *)"
+      },
+      {
+        "addr": "0x80218c44",
+        "size": 416,
+        "symbol": "InteractorModule::InteractorVisualizer::DestroyResourceSet(InteractorModule::Interactor &)"
+      },
+      {
+        "addr": "0x80219074",
+        "size": 380,
+        "symbol": "InteractorModule::ObjectManipulator::OnStart(InteractorModule::Interactor::InteractorParams *)"
+      },
+      {
+        "addr": "0x80219ef8",
+        "size": 312,
+        "symbol": "InteractorModule::ObjectManipulator::UpdateOverlapIntersection(InteractorModule::Interactor::OverlapData *)"
+      },
+      {
+        "addr": "0x8021a07c",
+        "size": 268,
+        "symbol": "InteractorModule::GrabManipulator::OnStart(InteractorModule::Interactor::InteractorParams *)"
+      },
+      {
+        "addr": "0x8021a1fc",
+        "size": 332,
+        "symbol": "InteractorModule::PlaceManipulator::StartPlacement(InteractorModule::PlaceManipulator::PlaceManipulatorParams *)"
+      },
+      {
+        "addr": "0x8021a620",
+        "size": 412,
+        "symbol": "InteractorModule::GrabManipulator::TryRemoveCurrentObjectFromWorld(void)"
+      },
+      {
+        "addr": "0x8021a8d8",
+        "size": 276,
+        "symbol": "InteractorModule::PlaceManipulator::TryPlacingCurrentObject(void)"
+      },
+      {
+        "addr": "0x8021ab88",
+        "size": 316,
+        "symbol": "InteractorModule::PlacementObject::SetObjectColor(cXObject *, unsigned char)"
+      },
+      {
+        "addr": "0x8021acc4",
+        "size": 288,
+        "symbol": "InteractorModule::PlacementObject::CreateNewPlacementObjectFromGuid(unsigned int, unsigned char)"
+      },
+      {
+        "addr": "0x8021ade4",
+        "size": 276,
+        "symbol": "InteractorModule::PlacementObject::GrabExistingObjectInstanceFromId(short)"
+      },
+      {
+        "addr": "0x8021bca8",
+        "size": 268,
+        "symbol": "InteractorModule::PlacementObject::AssignOffsetsToGridObject(cXMTObjectImpl *, cXObjectImpl *)"
+      },
+      {
+        "addr": "0x8021bee4",
+        "size": 392,
+        "symbol": "InteractorModule::PlacementObject::Place(FTilePt &, InteractorModule::PlacementData &)"
+      },
+      {
+        "addr": "0x8021d250",
+        "size": 276,
+        "symbol": "InteractorModule::SimInteractor::SimInteractor(void)"
+      },
+      {
+        "addr": "0x8021e72c",
+        "size": 356,
+        "symbol": "InteractorModule::SimInteractor::TryCutToSim(void)"
+      },
+      {
+        "addr": "0x8021e8e8",
+        "size": 432,
+        "symbol": "InteractorModule::SimInteractor::UpdateOverlapIntersection(InteractorModule::Interactor::OverlapData *)"
+      },
+      {
+        "addr": "0x8021f648",
+        "size": 372,
+        "symbol": "InteractorModule::WallManipulator::~WallManipulator(void)"
+      },
+      {
+        "addr": "0x80220940",
+        "size": 444,
+        "symbol": "InteractorModule::WallManipulator::CountWallsInRoomSelection(void)"
+      },
+      {
+        "addr": "0x80221de8",
+        "size": 400,
+        "symbol": "InteractorModule::WallManipulator::SubmitLine(EVec3 &, EVec3 &, int &, bool, bool)"
+      },
+      {
+        "addr": "0x8022237c",
+        "size": 332,
+        "symbol": "InteractorModule::WallManipulator::CanChangeTileAdd(CTilePt &, TileWallsSegment)"
+      },
+      {
+        "addr": "0x80223354",
+        "size": 384,
+        "symbol": "InteractorModule::WallManipulator::AddWallAtTile(CTilePt &, TileWalls &, TileWallsSegment)"
+      },
+      {
+        "addr": "0x80224838",
+        "size": 396,
+        "symbol": "InteractorModule::WallPainter::HandleFinalizeRequest(void)"
+      },
+      {
+        "addr": "0x8022544c",
+        "size": 328,
+        "symbol": "InteractorModule::WallPainter::OnCommandPressed(InteractorModule::InteractorInputManager::InteractorCommand, float)"
+      },
+      {
+        "addr": "0x803c0e1c",
+        "size": 300,
+        "symbol": "InteractorModule::WallManipulator::CallbackData::~CallbackData(void)"
+      }
+    ],
+    "SAnimator2": [
+      {
+        "addr": "0x8005c23c",
+        "size": 512,
+        "symbol": "SAnimator2::~SAnimator2(void)"
+      },
+      {
+        "addr": "0x8005c43c",
+        "size": 468,
+        "symbol": "SAnimator2::Initialize(cXPerson *)"
+      },
+      {
+        "addr": "0x8005c610",
+        "size": 348,
+        "symbol": "SAnimator2::InitStaticAnimationElements(void)"
+      },
+      {
+        "addr": "0x8005da24",
+        "size": 380,
+        "symbol": "SAnimator2::SelectAlgorithmicIdle(AnimRef *&)"
+      },
+      {
+        "addr": "0x8005eab8",
+        "size": 444,
+        "symbol": "SAnimator2::FollowOneStep(void)"
+      },
+      {
+        "addr": "0x8005ec74",
+        "size": 296,
+        "symbol": "SAnimator2::EndFollow(void)"
+      },
+      {
+        "addr": "0x8005f5d0",
+        "size": 392,
+        "symbol": "SAnimator2::AddProp(unsigned int, bool)"
+      },
+      {
+        "addr": "0x8005f958",
+        "size": 504,
+        "symbol": "SAnimator2::endFollowDone(void)"
+      },
+      {
+        "addr": "0x8005fbd0",
+        "size": 492,
+        "symbol": "SAnimator2::followSidestepUpdate(float &, float &, float)"
+      },
+      {
+        "addr": "0x8005ff80",
+        "size": 352,
+        "symbol": "SAnimator2::endMoveAnimation(void)"
+      },
+      {
+        "addr": "0x800600e0",
+        "size": 428,
+        "symbol": "SAnimator2::UpdatePortalMode(void)"
+      },
+      {
+        "addr": "0x80060928",
+        "size": 348,
+        "symbol": "SAnimator2::rotateAnimation(float, float, float)"
+      },
+      {
+        "addr": "0x80060a84",
+        "size": 412,
+        "symbol": "SAnimator2::sidestepAlongNode(float &)"
+      },
+      {
+        "addr": "0x80060ce0",
+        "size": 336,
+        "symbol": "SAnimator2::getUseSpeed(float, float, float, float)"
+      },
+      {
+        "addr": "0x80061658",
+        "size": 356,
+        "symbol": "SAnimator2::updateParticles(void)"
+      },
+      {
+        "addr": "0x80061804",
+        "size": 440,
+        "symbol": "SAnimator2::handleMoodAnimations(void)"
+      },
+      {
+        "addr": "0x800619bc",
+        "size": 384,
+        "symbol": "SAnimator2::playFootprint(char *)"
+      },
+      {
+        "addr": "0x800630dc",
+        "size": 344,
+        "symbol": "SAnimator2::handleRunStopAnimation(void)"
+      },
+      {
+        "addr": "0x80064434",
+        "size": 260,
+        "symbol": "SAnimator2::handleImpatientIdleAnimation(void)"
+      },
+      {
+        "addr": "0x80064750",
+        "size": 264,
+        "symbol": "SAnimator2::LoadOptionalIdleAnim(void)"
+      },
+      {
+        "addr": "0x8006491c",
+        "size": 292,
+        "symbol": "SAnimator2::UnloadOptionalIdleAnim(void)"
+      },
+      {
+        "addr": "0x80065668",
+        "size": 432,
+        "symbol": "SAnimator2::processEvents(AnimRef &, int, int, bool, bool)"
+      },
+      {
+        "addr": "0x80065b68",
+        "size": 264,
+        "symbol": "SAnimator2::PreloadEvents(AnimRef *)"
+      },
+      {
+        "addr": "0x80065ce4",
+        "size": 260,
+        "symbol": "SAnimator2::_handleParticleEvent(REffectsAttachment *)"
+      },
+      {
+        "addr": "0x800660bc",
+        "size": 284,
+        "symbol": "SAnimator2::cleanupParticles(TRedBlackTree<unsigned int, TRedBlackTree<unsigned int, EBoneParticle *> *> *)"
+      },
+      {
+        "addr": "0x8006622c",
+        "size": 288,
+        "symbol": "SAnimator2::playRumble(RumbleDataElement *)"
+      },
+      {
+        "addr": "0x800667f0",
+        "size": 336,
+        "symbol": "SAnimator2::isAnimationDone(void)"
+      },
+      {
+        "addr": "0x80066fc0",
+        "size": 288,
+        "symbol": "SAnimator2::updateRenderModels(void)"
+      },
+      {
+        "addr": "0x80067288",
+        "size": 372,
+        "symbol": "SAnimator2::setNewModel(char *, bool, bool)"
+      },
+      {
+        "addr": "0x800673fc",
+        "size": 420,
+        "symbol": "SAnimator2::RestoreNonCostumeRelatedSimDescriptionItems(CasSimDescriptionS2C *, CasSimDescriptionS2C *, bool)"
+      },
+      {
+        "addr": "0x800675a0",
+        "size": 324,
+        "symbol": "SAnimator2::GetCostumeName(SAnimator::OutfitS2C)"
+      },
+      {
+        "addr": "0x8006781c",
+        "size": 460,
+        "symbol": "SAnimator2::DrawProps(ERC *, bool, EShader *)"
+      },
+      {
+        "addr": "0x800695b8",
+        "size": 264,
+        "symbol": "SAnimator2::determineWalkRunStyle(float)"
+      },
+      {
+        "addr": "0x800696c0",
+        "size": 280,
+        "symbol": "SAnimator2::StartDefaultIdle(void)"
+      },
+      {
+        "addr": "0x80069fbc",
+        "size": 488,
+        "symbol": "SAnimator2::setRotationRateFromShuffleDir(int, float)"
+      },
+      {
+        "addr": "0x8006a508",
+        "size": 404,
+        "symbol": "SAnimator2::getDesiredDir(void)"
+      },
+      {
+        "addr": "0x8006ad80",
+        "size": 424,
+        "symbol": "SAnimator2::getWalkRunSkillID(AnimRef *&)"
+      },
+      {
+        "addr": "0x8006c148",
+        "size": 472,
+        "symbol": "SAnimator2::startCarry(void)"
+      },
+      {
+        "addr": "0x8006c320",
+        "size": 368,
+        "symbol": "SAnimator2::stopCarry(void)"
+      },
+      {
+        "addr": "0x8006c490",
+        "size": 468,
+        "symbol": "SAnimator2::setAwarenessFollowEnd(void)"
+      },
+      {
+        "addr": "0x8006c6dc",
+        "size": 372,
+        "symbol": "SAnimator2::exitAwarenessFollow(void)"
+      }
+    ],
+    "cXObjectImpl": [
+      {
+        "addr": "0x800dac94",
+        "size": 296,
+        "symbol": "cXObjectImpl::JustBorn(void)"
+      },
+      {
+        "addr": "0x800db5d0",
+        "size": 372,
+        "symbol": "cXObjectImpl::SetHilite(int)"
+      },
+      {
+        "addr": "0x800db9a8",
+        "size": 368,
+        "symbol": "cXObjectImpl::DayPassed(void)"
+      },
+      {
+        "addr": "0x800dbb18",
+        "size": 316,
+        "symbol": "cXObjectImpl::UpdateAge(void)"
+      },
+      {
+        "addr": "0x800dcb78",
+        "size": 468,
+        "symbol": "cXObjectImpl::GetPlacementSpec(PlacementSpec *)"
+      },
+      {
+        "addr": "0x800dcfb8",
+        "size": 348,
+        "symbol": "cXObjectImpl::HierSetSite(HierarchySite *)"
+      },
+      {
+        "addr": "0x800dd15c",
+        "size": 268,
+        "symbol": "cXObjectImpl::HierGetSite(HierarchySite *)"
+      },
+      {
+        "addr": "0x800dd5e4",
+        "size": 260,
+        "symbol": "cXObjectImpl::ExtractContainedSims(void)"
+      },
+      {
+        "addr": "0x800de144",
+        "size": 508,
+        "symbol": "cXObjectImpl::Pickup(void)"
+      },
+      {
+        "addr": "0x800dfa9c",
+        "size": 352,
+        "symbol": "cXObjectImpl::Turn(int)"
+      },
+      {
+        "addr": "0x800dfee0",
+        "size": 416,
+        "symbol": "cXObjectImpl::CalcShortDistanceIn16thsOfTiles(cXObject *)"
+      },
+      {
+        "addr": "0x800e1594",
+        "size": 496,
+        "symbol": "cXObjectImpl::UpdateWallAdjacency(void)"
+      },
+      {
+        "addr": "0x800e184c",
+        "size": 396,
+        "symbol": "cXObjectImpl::GetAgeInMinutes(void)"
+      },
+      {
+        "addr": "0x800e19d8",
+        "size": 284,
+        "symbol": "cXObjectImpl::GetInteractionLeader(void)"
+      },
+      {
+        "addr": "0x800e1af4",
+        "size": 452,
+        "symbol": "cXObjectImpl::UserCanPickup(void)"
+      },
+      {
+        "addr": "0x800e1e30",
+        "size": 452,
+        "symbol": "cXObjectImpl::UserCanPlace(FTilePt &, int, cXObject *, int)"
+      },
+      {
+        "addr": "0x800e1ff4",
+        "size": 308,
+        "symbol": "cXObjectImpl::UserPlace(FTilePt &, int, cXObject *, int)"
+      },
+      {
+        "addr": "0x800e2128",
+        "size": 308,
+        "symbol": "cXObjectImpl::UserPickup(bool)"
+      },
+      {
+        "addr": "0x800e2364",
+        "size": 480,
+        "symbol": "cXObjectImpl::ShouldAutoRotate(void)"
+      },
+      {
+        "addr": "0x800e2604",
+        "size": 324,
+        "symbol": "cXObjectImpl::CanChooseAutonomously(void)"
+      },
+      {
+        "addr": "0x800e2b70",
+        "size": 452,
+        "symbol": "cXObjectImpl::SyncObjectIsReady(signed char)"
+      },
+      {
+        "addr": "0x800e2e04",
+        "size": 272,
+        "symbol": "cXObjectImpl::SyncObjectIsReady(void)"
+      },
+      {
+        "addr": "0x800ea6b0",
+        "size": 356,
+        "symbol": "cXObjectImpl::SimObjectPlaced(ISimInstance *)"
+      },
+      {
+        "addr": "0x800eb940",
+        "size": 344,
+        "symbol": "cXObjectImpl::GetDebugName(char *, int) const"
+      },
+      {
+        "addr": "0x800fa1f4",
+        "size": 288,
+        "symbol": "cXObjectImpl::TryTestObjectType(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x800ff1dc",
+        "size": 284,
+        "symbol": "cXObjectImpl::TryTutorial(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x80100f88",
+        "size": 392,
+        "symbol": "cXObjectImpl::TryBudget(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x80102840",
+        "size": 484,
+        "symbol": "cXObjectImpl::TryCallFunctionalTree(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x80104ec0",
+        "size": 364,
+        "symbol": "cXObjectImpl::TransitionToNewHouse(short, short, short)"
+      },
+      {
+        "addr": "0x8010502c",
+        "size": 304,
+        "symbol": "cXObjectImpl::RewriteDialogParamIndices(DialogParam &)"
+      },
+      {
+        "addr": "0x80105420",
+        "size": 284,
+        "symbol": "cXObjectImpl::TryShowString(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x8010553c",
+        "size": 432,
+        "symbol": "cXObjectImpl::TryKillObject(StackElem *, XPrimParam *, short *)"
+      },
+      {
+        "addr": "0x80105780",
+        "size": 352,
+        "symbol": "cXObjectImpl::TryIdle(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x80105dd4",
+        "size": 384,
+        "symbol": "cXObjectImpl::TryRandom(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x801065b0",
+        "size": 488,
+        "symbol": "cXObjectImpl::TryAnimateObject(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x80107cdc",
+        "size": 452,
+        "symbol": "cXObjectImpl::TryDistanceTo(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x80108ec8",
+        "size": 384,
+        "symbol": "cXObjectImpl::TryPassiveInfluence(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x8010958c",
+        "size": 312,
+        "symbol": "cXObjectImpl::TryAnimate(StackElem *, AnimateNewParam *)"
+      },
+      {
+        "addr": "0x80109c30",
+        "size": 448,
+        "symbol": "cXObjectImpl::TryPlaySound(StackElem *, PlaySoundParam *)"
+      },
+      {
+        "addr": "0x8010d3c8",
+        "size": 484,
+        "symbol": "cXObjectImpl::TryDrop(void)"
+      },
+      {
+        "addr": "0x8010ed00",
+        "size": 356,
+        "symbol": "cXObjectImpl::TryHUDData(StackElem *, XPrimParam *)"
+      }
+    ],
+    "vector": [
+      {
+        "addr": "0x803a2e7c",
+        "size": 380,
+        "symbol": "vector<unsigned int, allocator<unsigned int> >::operator=(vector<unsigned int, allocator<unsigned int> > &)"
+      },
+      {
+        "addr": "0x803a50a0",
+        "size": 360,
+        "symbol": "vector<PersDataPair, allocator<PersDataPair> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803a640c",
+        "size": 308,
+        "symbol": "vector<short, allocator<short> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803a6640",
+        "size": 380,
+        "symbol": "vector<short, allocator<short> >::operator=(vector<short, allocator<short> > &)"
+      },
+      {
+        "addr": "0x803a99b8",
+        "size": 396,
+        "symbol": "vector<MotiveInc, allocator<MotiveInc> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803ae0bc",
+        "size": 308,
+        "symbol": "vector<StackElem *, allocator<StackElem *> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803ae260",
+        "size": 372,
+        "symbol": "vector<CTilePt, allocator<CTilePt> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803ae408",
+        "size": 412,
+        "symbol": "vector<PenaltyRect, allocator<PenaltyRect> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803ae5a4",
+        "size": 308,
+        "symbol": "vector<int, allocator<int> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803afb90",
+        "size": 308,
+        "symbol": "vector<CasSimDescriptionS2C *, allocator<CasSimDescriptionS2C *> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803b0938",
+        "size": 308,
+        "symbol": "vector<CasGenetics::Grandparent *, allocator<CasGenetics::Grandparent *> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803bcf58",
+        "size": 360,
+        "symbol": "vector<InteractorModule::InvStock, allocator<InteractorModule::InvStock> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803bd3a8",
+        "size": 396,
+        "symbol": "vector<pair<InteractorModule::InteractorInputManager::InteractorCommand, pair<bool, ECTRL_CMD> >, allocator<pair<InteractorModule::InteractorInputManager::InteractorCommand, pair<bool, ECTRL_CMD> > > >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803bd534",
+        "size": 360,
+        "symbol": "vector<InteractorModule::InteractorManager::ActiveInteractor, allocator<InteractorModule::InteractorManager::ActiveInteractor> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803bd9d4",
+        "size": 360,
+        "symbol": "vector<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *>, allocator<pair<InteractorModule::InteractorType, InteractorModule::Interactor::InteractorParams *> > >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803bde70",
+        "size": 376,
+        "symbol": "vector<InteractorModule::InteractorInfo, allocator<InteractorModule::InteractorInfo> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803be5e8",
+        "size": 380,
+        "symbol": "vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> >::operator=(vector<InteractorModule::Interactor *, allocator<InteractorModule::Interactor *> > &)"
+      },
+      {
+        "addr": "0x803bf16c",
+        "size": 360,
+        "symbol": "vector<pair<unsigned int, ERModel *>, allocator<pair<unsigned int, ERModel *> > >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803bf384",
+        "size": 360,
+        "symbol": "vector<pair<unsigned int, ERShader *>, allocator<pair<unsigned int, ERShader *> > >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803bf4ec",
+        "size": 360,
+        "symbol": "vector<pair<unsigned int, ERTexture *>, allocator<pair<unsigned int, ERTexture *> > >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803bf654",
+        "size": 376,
+        "symbol": "vector<pair<InteractorModule::Interactor *, InteractorModule::InteractorResourceSet>, allocator<pair<InteractorModule::Interactor *, InteractorModule::InteractorResourceSet> > >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803c0740",
+        "size": 388,
+        "symbol": "vector<pair<short, InteractorModule::PlacementObject::ContainerInfo>, allocator<pair<short, InteractorModule::PlacementObject::ContainerInfo> > >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803c092c",
+        "size": 360,
+        "symbol": "vector<InteractorModule::FenceSellCount, allocator<InteractorModule::FenceSellCount> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803c0a94",
+        "size": 360,
+        "symbol": "vector<InteractorModule::PatternSellCount, allocator<InteractorModule::PatternSellCount> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803c55dc",
+        "size": 308,
+        "symbol": "vector<ERShader *, allocator<ERShader *> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803c6470",
+        "size": 396,
+        "symbol": "vector<EResourceManager::ResourceIndexRecord, allocator<EResourceManager::ResourceIndexRecord> >::reserve(unsigned int)"
+      },
+      {
+        "addr": "0x803c9e74",
+        "size": 396,
+        "symbol": "vector<ERDataset::ResourceInfo, allocator<ERDataset::ResourceInfo> >::reserve(unsigned int)"
+      }
+    ],
+    "_Rb_tree": [
+      {
+        "addr": "0x803a1a38",
+        "size": 292,
+        "symbol": "_Rb_tree<ResFile *, pair<ResFile *, FileRec>, _Select1st<pair<ResFile *, FileRec> >, less<ResFile *>, allocator<pair<ResFile *, FileRec> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<ResFile *, FileRec> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803a1b5c",
+        "size": 280,
+        "symbol": "_Rb_tree<ResFile *, pair<ResFile *, FileRec>, _Select1st<pair<ResFile *, FileRec> >, less<ResFile *>, allocator<pair<ResFile *, FileRec> > >::insert_unique(pair<ResFile *, FileRec> &)"
+      },
+      {
+        "addr": "0x803a2bfc",
+        "size": 276,
+        "symbol": "_Rb_tree<ERSoundEvent *, pair<ERSoundEvent *, int>, _Select1st<pair<ERSoundEvent *, int> >, less<ERSoundEvent *>, allocator<pair<ERSoundEvent *, int> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<ERSoundEvent *, int> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803a4c0c",
+        "size": 276,
+        "symbol": "_Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<int, int> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803a4d20",
+        "size": 280,
+        "symbol": "_Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > >::insert_unique(pair<int, int> &)"
+      },
+      {
+        "addr": "0x803a753c",
+        "size": 292,
+        "symbol": "_Rb_tree<unsigned int, pair<unsigned int, NamespaceSelector>, _Select1st<pair<unsigned int, NamespaceSelector> >, less<unsigned int>, allocator<pair<unsigned int, NamespaceSelector> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<unsigned int, NamespaceSelector> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803a7660",
+        "size": 280,
+        "symbol": "_Rb_tree<unsigned int, pair<unsigned int, NamespaceSelector>, _Select1st<pair<unsigned int, NamespaceSelector> >, less<unsigned int>, allocator<pair<unsigned int, NamespaceSelector> > >::insert_unique(pair<unsigned int, NamespaceSelector> &)"
+      },
+      {
+        "addr": "0x803a7c60",
+        "size": 272,
+        "symbol": "_Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > >::operator=(_Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, less<int>, allocator<pair<int, int> > > &)"
+      },
+      {
+        "addr": "0x803a8efc",
+        "size": 276,
+        "symbol": "_Rb_tree<int, pair<int, cHitControlGroup *>, _Select1st<pair<int, cHitControlGroup *> >, less<int>, allocator<pair<int, cHitControlGroup *> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<int, cHitControlGroup *> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803a9010",
+        "size": 280,
+        "symbol": "_Rb_tree<int, pair<int, cHitControlGroup *>, _Select1st<pair<int, cHitControlGroup *> >, less<int>, allocator<pair<int, cHitControlGroup *> > >::insert_unique(pair<int, cHitControlGroup *> &)"
+      },
+      {
+        "addr": "0x803a9520",
+        "size": 276,
+        "symbol": "_Rb_tree<cTrack *, pair<cTrack *, int>, _Select1st<pair<cTrack *, int> >, less<cTrack *>, allocator<pair<cTrack *, int> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<cTrack *, int> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803a9634",
+        "size": 280,
+        "symbol": "_Rb_tree<cTrack *, pair<cTrack *, int>, _Select1st<pair<cTrack *, int> >, less<cTrack *>, allocator<pair<cTrack *, int> > >::insert_unique(pair<cTrack *, int> &)"
+      },
+      {
+        "addr": "0x803ab4d0",
+        "size": 276,
+        "symbol": "_Rb_tree<short, pair<short, bool>, _Select1st<pair<short, bool> >, less<short>, allocator<pair<short, bool> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<short, bool> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803ab5e4",
+        "size": 280,
+        "symbol": "_Rb_tree<short, pair<short, bool>, _Select1st<pair<short, bool> >, less<short>, allocator<pair<short, bool> > >::insert_unique(pair<short, bool> &)"
+      },
+      {
+        "addr": "0x803ac5a8",
+        "size": 276,
+        "symbol": "_Rb_tree<unsigned short, pair<unsigned short, Room *>, _Select1st<pair<unsigned short, Room *> >, less<unsigned short>, allocator<pair<unsigned short, Room *> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<unsigned short, Room *> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803ac6bc",
+        "size": 280,
+        "symbol": "_Rb_tree<unsigned short, pair<unsigned short, Room *>, _Select1st<pair<unsigned short, Room *> >, less<unsigned short>, allocator<pair<unsigned short, Room *> > >::insert_unique(pair<unsigned short, Room *> &)"
+      },
+      {
+        "addr": "0x803ac7d4",
+        "size": 344,
+        "symbol": "_Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select1st<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > >, less<CTilePt>, allocator<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<CTilePt, pair<DiagonalNode, DiagonalNode> > &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803ac92c",
+        "size": 276,
+        "symbol": "_Rb_tree<CTilePt, pair<CTilePt, pair<DiagonalNode, DiagonalNode> >, _Select1st<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > >, less<CTilePt>, allocator<pair<CTilePt, pair<DiagonalNode, DiagonalNode> > > >::insert_unique(pair<CTilePt, pair<DiagonalNode, DiagonalNode> > &)"
+      },
+      {
+        "addr": "0x803ae9c0",
+        "size": 356,
+        "symbol": "_Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> &, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803aeb24",
+        "size": 356,
+        "symbol": "_Rb_tree<pair<unsigned int, ObjectDataID>, pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider>, _Select1st<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> >, less<pair<unsigned int, ObjectDataID> >, allocator<pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> > >::insert_unique(pair<pair<unsigned int, ObjectDataID>, ISmartDataFactory::tDataProvider> &)"
+      },
+      {
+        "addr": "0x803b0b1c",
+        "size": 260,
+        "symbol": "_Rb_tree<CasListener *, CasListener *, _Identity<CasListener *>, less<CasListener *>, allocator<CasListener *> >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, CasListener *&, _Rb_tree_node_base *)"
+      },
+      {
+        "addr": "0x803b0c20",
+        "size": 280,
+        "symbol": "_Rb_tree<CasListener *, CasListener *, _Identity<CasListener *>, less<CasListener *>, allocator<CasListener *> >::insert_unique(CasListener *&)"
+      },
+      {
+        "addr": "0x803b5acc",
+        "size": 276,
+        "symbol": "_Rb_tree<int, pair<int, int>, _Select1st<pair<int, int> >, greater<int>, allocator<pair<int, int> > >::_M_insert(_Rb_tree_node_base *, _Rb_tree_node_base *, pair<int, int> &, _Rb_tree_node_base *)"
+      }
+    ],
+    "TArray": [
+      {
+        "addr": "0x803c19ec",
+        "size": 300,
+        "symbol": "TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c25e4",
+        "size": 292,
+        "symbol": "TArray<int, TArrayDefaultAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c28ec",
+        "size": 292,
+        "symbol": "TArray<EString, TArrayDefaultAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c2c84",
+        "size": 292,
+        "symbol": "TArray<EString2, TArrayDefaultAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c30a4",
+        "size": 292,
+        "symbol": "TArray<unsigned char *, TArrayDefaultAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c3a04",
+        "size": 288,
+        "symbol": "TArray<ESMSStrip, TArrayERModelAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c3c54",
+        "size": 288,
+        "symbol": "TArray<ESubModelShader, TArrayERModelAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c3dec",
+        "size": 292,
+        "symbol": "TArray<unsigned int, TArrayDefaultAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c49a0",
+        "size": 288,
+        "symbol": "TArray<BSplineVolume, TArrayERModelAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c4ca4",
+        "size": 288,
+        "symbol": "TArray<ENDummy, TArrayERModelAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c4fa8",
+        "size": 288,
+        "symbol": "TArray<ENCamera, TArrayERModelAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c51f4",
+        "size": 288,
+        "symbol": "TArray<SimsLightInfo, TArrayERModelAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c54bc",
+        "size": 288,
+        "symbol": "TArray<ESubModel, TArrayERModelAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c7f54",
+        "size": 292,
+        "symbol": "TArray<EFontPage *, TArrayDefaultAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c9304",
+        "size": 288,
+        "symbol": "TArray<EAnimNodeDataPos, TArrayERAnimAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c946c",
+        "size": 288,
+        "symbol": "TArray<float, TArrayERAnimAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c966c",
+        "size": 288,
+        "symbol": "TArray<EAnimEvent, TArrayERAnimAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803c9b90",
+        "size": 452,
+        "symbol": "TArray<ECharacterNode, TArrayERCharacterAllocator>::Copy(ECharacterNode *, ECharacterNode *, int)"
+      },
+      {
+        "addr": "0x803c9d54",
+        "size": 288,
+        "symbol": "TArray<ECharacterNode, TArrayERCharacterAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803ca2b8",
+        "size": 288,
+        "symbol": "TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>::SetSize(int, int)"
+      },
+      {
+        "addr": "0x803ca47c",
+        "size": 288,
+        "symbol": "TArray<TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>, TArrayERSoundEventAllocator>::SetSize(int, int)"
+      }
+    ],
+    "INVTarget": [
+      {
+        "addr": "0x801eefb4",
+        "size": 408,
+        "symbol": "INVTarget::GetLocalizable(char *)"
+      },
+      {
+        "addr": "0x801ef364",
+        "size": 340,
+        "symbol": "INVTarget::GetOnLocMsgInvObjectDescription(unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x801f14ec",
+        "size": 272,
+        "symbol": "INVTarget::PlaceModeCallbackImpl(InteractorModule::PlaceManipulator::CallbackData *)"
+      },
+      {
+        "addr": "0x801f1c4c",
+        "size": 400,
+        "symbol": "INVTarget::GrabModeCallbackImpl(InteractorModule::GrabManipulator::CallbackData *)"
+      },
+      {
+        "addr": "0x801f1e04",
+        "size": 444,
+        "symbol": "INVTarget::EnterPlaceAnyObjectModeUsingNewInteractorApi(ObjSelector *)"
+      },
+      {
+        "addr": "0x801f1fc0",
+        "size": 440,
+        "symbol": "INVTarget::EnterGrabModeNewInteractorApi(void)"
+      },
+      {
+        "addr": "0x801f2178",
+        "size": 504,
+        "symbol": "INVTarget::EnterPlaceModeUsingNewInteractorApi(ObjSelector *, unsigned char)"
+      },
+      {
+        "addr": "0x801f35d0",
+        "size": 440,
+        "symbol": "INVTarget::AddFloorTileToShopItemsDB(FloorTile *, int)"
+      },
+      {
+        "addr": "0x801f3788",
+        "size": 440,
+        "symbol": "INVTarget::AddWallPaperToShopItemsDB(WallTile *, int)"
+      },
+      {
+        "addr": "0x801f3940",
+        "size": 440,
+        "symbol": "INVTarget::AddWallToShopItemsDB(FenceData *, int)"
+      },
+      {
+        "addr": "0x801f4584",
+        "size": 512,
+        "symbol": "INVTarget::SetOnMsgInvPrepareObjectInfo(char *)"
+      },
+      {
+        "addr": "0x801f4798",
+        "size": 424,
+        "symbol": "INVTarget::SetOnMsgInvItemSelected(char *)"
+      },
+      {
+        "addr": "0x801f5570",
+        "size": 260,
+        "symbol": "INVTarget::ClearAllObjectInfoData(void)"
+      },
+      {
+        "addr": "0x801f570c",
+        "size": 404,
+        "symbol": "INVTarget::GetMotiveText(ObjSelector *, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x801f5908",
+        "size": 396,
+        "symbol": "INVTarget::GetMotiveText(BBI::InventoryItem *, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x801f6254",
+        "size": 324,
+        "symbol": "INVTarget::InstallWallShaders(vector<InteractorModule::WallData, allocator<InteractorModule::WallData> > *, int)"
+      },
+      {
+        "addr": "0x801f6ca0",
+        "size": 488,
+        "symbol": "INVTarget::GetSelectedShoppingItem(int, InteractorModule::ShoppingItem &, int &)"
+      },
+      {
+        "addr": "0x801f7550",
+        "size": 272,
+        "symbol": "INVTarget::ExitFloorTilingMode(bool)"
+      }
+    ],
+    "ISimsObjectModel": [
+      {
+        "addr": "0x8004c500",
+        "size": 324,
+        "symbol": "ISimsObjectModel::ISimsObjectModel(void)"
+      },
+      {
+        "addr": "0x8004c644",
+        "size": 428,
+        "symbol": "ISimsObjectModel::~ISimsObjectModel(void)"
+      },
+      {
+        "addr": "0x8004c7f0",
+        "size": 300,
+        "symbol": "ISimsObjectModel::GetHeightOffset(void)"
+      },
+      {
+        "addr": "0x8004d598",
+        "size": 308,
+        "symbol": "ISimsObjectModel::UpdateParticle(ObjAnimDef *)"
+      },
+      {
+        "addr": "0x8004d6cc",
+        "size": 468,
+        "symbol": "ISimsObjectModel::SetupCharacter(void)"
+      },
+      {
+        "addr": "0x8004ddec",
+        "size": 328,
+        "symbol": "ISimsObjectModel::UpdateHighlightAnim(void)"
+      },
+      {
+        "addr": "0x8004e028",
+        "size": 308,
+        "symbol": "ISimsObjectModel::UpdateTracks(void)"
+      },
+      {
+        "addr": "0x8004e868",
+        "size": 492,
+        "symbol": "ISimsObjectModel::SetWallForPortal(void)"
+      },
+      {
+        "addr": "0x8004ea54",
+        "size": 280,
+        "symbol": "ISimsObjectModel::CreateShadow(void)"
+      },
+      {
+        "addr": "0x8004eb70",
+        "size": 264,
+        "symbol": "ISimsObjectModel::CalcOrient(void)"
+      },
+      {
+        "addr": "0x80050288",
+        "size": 400,
+        "symbol": "ISimsObjectModel::AnimateLights(void)"
+      },
+      {
+        "addr": "0x800504b8",
+        "size": 376,
+        "symbol": "ISimsObjectModel::GetAnimDef(int, bool)"
+      },
+      {
+        "addr": "0x80050630",
+        "size": 440,
+        "symbol": "ISimsObjectModel::processAnimEvents(ERAnim *, int, int, bool)"
+      },
+      {
+        "addr": "0x80050b00",
+        "size": 312,
+        "symbol": "ISimsObjectModel::SetInitalObjectState(void)"
+      },
+      {
+        "addr": "0x80050d44",
+        "size": 368,
+        "symbol": "ISimsObjectModel::SetObjOrient(void)"
+      },
+      {
+        "addr": "0x80050f14",
+        "size": 444,
+        "symbol": "ISimsObjectModel::OrentSubObject(void)"
+      },
+      {
+        "addr": "0x8005455c",
+        "size": 424,
+        "symbol": "ISimsObjectModel::StartNewAnimTrack(ObjAnimDef *, bool)"
+      },
+      {
+        "addr": "0x80054704",
+        "size": 476,
+        "symbol": "ISimsObjectModel::ProcessPropertyEventTags(ObjAnimDef *, float)"
+      }
+    ],
+    "NeighborhoodImpl": [
+      {
+        "addr": "0x800ccb84",
+        "size": 296,
+        "symbol": "NeighborhoodImpl::~NeighborhoodImpl(void)"
+      },
+      {
+        "addr": "0x800cce18",
+        "size": 300,
+        "symbol": "NeighborhoodImpl::Unload(void)"
+      },
+      {
+        "addr": "0x800cd808",
+        "size": 296,
+        "symbol": "NeighborhoodImpl::UpdateFamilyNumbers(void)"
+      },
+      {
+        "addr": "0x800cdc2c",
+        "size": 268,
+        "symbol": "NeighborhoodImpl::DoStream(ReconBuffer *, int)"
+      },
+      {
+        "addr": "0x800cdf30",
+        "size": 496,
+        "symbol": "NeighborhoodImpl::AddNewNeighbor(ObjSelector *)"
+      },
+      {
+        "addr": "0x800ce120",
+        "size": 480,
+        "symbol": "NeighborhoodImpl::LoadPersistentData(cXPerson *)"
+      },
+      {
+        "addr": "0x800ce408",
+        "size": 340,
+        "symbol": "NeighborhoodImpl::SavePersistentData(cXPerson *)"
+      },
+      {
+        "addr": "0x800cf028",
+        "size": 420,
+        "symbol": "NeighborhoodImpl::AddToFamily(Neighbor *, Family *)"
+      },
+      {
+        "addr": "0x800cf1cc",
+        "size": 340,
+        "symbol": "NeighborhoodImpl::RemoveFromFamily(Neighbor *)"
+      },
+      {
+        "addr": "0x800cf408",
+        "size": 324,
+        "symbol": "NeighborhoodImpl::RemovePlayerRoommate(void)"
+      },
+      {
+        "addr": "0x800cf5c4",
+        "size": 352,
+        "symbol": "NeighborhoodImpl::DeleteCharacter(Neighbor *)"
+      },
+      {
+        "addr": "0x800cf7d0",
+        "size": 316,
+        "symbol": "NeighborhoodImpl::GetFamilyNetWorth(Family *)"
+      },
+      {
+        "addr": "0x800d00ac",
+        "size": 332,
+        "symbol": "NeighborhoodImpl::UpdateFamilyFriendsCount(Family *)"
+      },
+      {
+        "addr": "0x800d01f8",
+        "size": 268,
+        "symbol": "NeighborhoodImpl::PrepareAndTestLot(StringBuffer &)"
+      },
+      {
+        "addr": "0x800d0640",
+        "size": 332,
+        "symbol": "NeighborhoodImpl::GetHouseFileInfo(NghResFile *, int *, bool *, bool *, bool *)"
+      },
+      {
+        "addr": "0x800d1110",
+        "size": 388,
+        "symbol": "NeighborhoodImpl::SaveHouse(NghResFile *)"
+      },
+      {
+        "addr": "0x800d146c",
+        "size": 324,
+        "symbol": "NeighborhoodImpl::NotifyAllResidents(WantFear::Notification &, Neighbor *)"
+      },
+      {
+        "addr": "0x800d15b0",
+        "size": 268,
+        "symbol": "NeighborhoodImpl::NotifyAllPersons(WantFear::Notification &, Neighbor *)"
+      }
+    ],
+    "cXPersonImpl": [
+      {
+        "addr": "0x8011eb78",
+        "size": 260,
+        "symbol": "cXPersonImpl::Reset(bool)"
+      },
+      {
+        "addr": "0x8011ef40",
+        "size": 300,
+        "symbol": "cXPersonImpl::LoadMotiveEffects(void)"
+      },
+      {
+        "addr": "0x8011f460",
+        "size": 500,
+        "symbol": "cXPersonImpl::TryGosubFoundAction(StackElem *)"
+      },
+      {
+        "addr": "0x80124698",
+        "size": 260,
+        "symbol": "cXPersonImpl::TryRoomRouting(XRoute *)"
+      },
+      {
+        "addr": "0x801253e4",
+        "size": 364,
+        "symbol": "cXPersonImpl::SimMotives(void)"
+      },
+      {
+        "addr": "0x80125550",
+        "size": 412,
+        "symbol": "cXPersonImpl::CalcHappy(void)"
+      },
+      {
+        "addr": "0x80125834",
+        "size": 332,
+        "symbol": "cXPersonImpl::SpawnAspirationBalloon(int)"
+      },
+      {
+        "addr": "0x80125980",
+        "size": 336,
+        "symbol": "cXPersonImpl::RunImmediateAction(Interaction *)"
+      },
+      {
+        "addr": "0x80125e64",
+        "size": 388,
+        "symbol": "cXPersonImpl::RemoveAction(int)"
+      },
+      {
+        "addr": "0x8012606c",
+        "size": 296,
+        "symbol": "cXPersonImpl::CancelLastAction(void)"
+      },
+      {
+        "addr": "0x80126194",
+        "size": 284,
+        "symbol": "cXPersonImpl::CancelAllActions(void)"
+      },
+      {
+        "addr": "0x801264c8",
+        "size": 376,
+        "symbol": "cXPersonImpl::ShouldInterrupt(void)"
+      },
+      {
+        "addr": "0x80126a20",
+        "size": 324,
+        "symbol": "cXPersonImpl::TryIdleForInput(StackElem *, XPrimParam *)"
+      },
+      {
+        "addr": "0x8012954c",
+        "size": 464,
+        "symbol": "cXPersonImpl::IsSelectableByPlayer(int)"
+      },
+      {
+        "addr": "0x80129f10",
+        "size": 316,
+        "symbol": "cXPersonImpl::UpdateCurrentAction(void)"
+      },
+      {
+        "addr": "0x8012b978",
+        "size": 424,
+        "symbol": "cXPersonImpl::CheckSecondPlayerForFailedSocialModeEntry(void)"
+      },
+      {
+        "addr": "0x8012bdd8",
+        "size": 368,
+        "symbol": "cXPersonImpl::GetSimSocialInterestAsMotiveValue(cXPerson *)"
+      },
+      {
+        "addr": "0x8012bf48",
+        "size": 324,
+        "symbol": "cXPersonImpl::SetSimSocialIntrestFromMotiveValue(cXPerson *, float)"
+      }
+    ],
+    "SaveGameTarget": [
+      {
+        "addr": "0x8018d478",
+        "size": 372,
+        "symbol": "SaveGameTarget::~SaveGameTarget(void)"
+      },
+      {
+        "addr": "0x8018e0a8",
+        "size": 304,
+        "symbol": "SaveGameTarget::SpawnCheckingDialog(void)"
+      },
+      {
+        "addr": "0x8018e1d8",
+        "size": 460,
+        "symbol": "SaveGameTarget::SpawnCardCorruptDialog(void)"
+      },
+      {
+        "addr": "0x8018e3a4",
+        "size": 356,
+        "symbol": "SaveGameTarget::SpawnWrongDeviceDialog(void)"
+      },
+      {
+        "addr": "0x8018e508",
+        "size": 468,
+        "symbol": "SaveGameTarget::SpawnCardDamagedDialog(void)"
+      },
+      {
+        "addr": "0x8018e6dc",
+        "size": 356,
+        "symbol": "SaveGameTarget::SpawnFormatDecideDialog(void)"
+      },
+      {
+        "addr": "0x8018e840",
+        "size": 348,
+        "symbol": "SaveGameTarget::SpawnFormatConfirmDialog(void)"
+      },
+      {
+        "addr": "0x8018ea84",
+        "size": 348,
+        "symbol": "SaveGameTarget::SpawnFormatCancelDialog(void)"
+      },
+      {
+        "addr": "0x8018ebe0",
+        "size": 348,
+        "symbol": "SaveGameTarget::SpawnFormatFailDialog(void)"
+      },
+      {
+        "addr": "0x8018ed3c",
+        "size": 304,
+        "symbol": "SaveGameTarget::SpawnFormatSuccessDialog(void)"
+      },
+      {
+        "addr": "0x8018f0d0",
+        "size": 420,
+        "symbol": "SaveGameTarget::SpawnOverwriteDialog(void)"
+      },
+      {
+        "addr": "0x8018f274",
+        "size": 424,
+        "symbol": "SaveGameTarget::SpawnSaveConfirmDialog(void)"
+      },
+      {
+        "addr": "0x8018f41c",
+        "size": 296,
+        "symbol": "SaveGameTarget::SpawnSavingDialog(void)"
+      },
+      {
+        "addr": "0x8018f544",
+        "size": 284,
+        "symbol": "SaveGameTarget::SpawnSaveSucceededDialog(void)"
+      },
+      {
+        "addr": "0x8018f660",
+        "size": 376,
+        "symbol": "SaveGameTarget::SpawnSaveFailedDialog(void)"
+      },
+      {
+        "addr": "0x8018f7d8",
+        "size": 364,
+        "symbol": "SaveGameTarget::SpawnMemCardRemovedDialog(void)"
+      }
+    ],
+    "AwarenessManager": [
+      {
+        "addr": "0x80012494",
+        "size": 500,
+        "symbol": "AwarenessManager::AwarenessAnimateHeadLeadsMotion(unsigned int, EACTrack *, EMat4 &, ERCharacter *, EACNodeState *)"
+      },
+      {
+        "addr": "0x80012688",
+        "size": 500,
+        "symbol": "AwarenessManager::AwarenessAnimateTorsoLeadsMotion(unsigned int, EACTrack *, EMat4 &, ERCharacter *, EACNodeState *)"
+      },
+      {
+        "addr": "0x80012940",
+        "size": 308,
+        "symbol": "AwarenessManager::handlePassiveInfluenceAnimation(unsigned int)"
+      },
+      {
+        "addr": "0x80012c4c",
+        "size": 336,
+        "symbol": "AwarenessManager::IsTimeToCheckMemoryAwareness(unsigned int)"
+      },
+      {
+        "addr": "0x80012d9c",
+        "size": 436,
+        "symbol": "AwarenessManager::CanSeePlayer(void)"
+      },
+      {
+        "addr": "0x8001303c",
+        "size": 392,
+        "symbol": "AwarenessManager::StarMemoryAwarenessSprite(void)"
+      },
+      {
+        "addr": "0x80013228",
+        "size": 400,
+        "symbol": "AwarenessManager::StartMemoryAwarenessAnimation(AwarenessManager::eAwarenessAction, int)"
+      },
+      {
+        "addr": "0x800133b8",
+        "size": 320,
+        "symbol": "AwarenessManager::SetMemoryAwarenessActionToTry(cXObject *)"
+      },
+      {
+        "addr": "0x800137c0",
+        "size": 416,
+        "symbol": "AwarenessManager::UpdateAwarenessAngle(unsigned int)"
+      },
+      {
+        "addr": "0x80013960",
+        "size": 332,
+        "symbol": "AwarenessManager::MemoryAwarenessCheck(unsigned int)"
+      },
+      {
+        "addr": "0x80013ba4",
+        "size": 328,
+        "symbol": "AwarenessManager::StartPassiveInfluenceAnimation(AnimRef *)"
+      },
+      {
+        "addr": "0x80014050",
+        "size": 440,
+        "symbol": "AwarenessManager::GetDeltaAngleToTargetObject(cXObject *)"
+      },
+      {
+        "addr": "0x80014450",
+        "size": 356,
+        "symbol": "AwarenessManager::getAwarenessSkillID(int, int, AnimRef *&)"
+      },
+      {
+        "addr": "0x800145b4",
+        "size": 360,
+        "symbol": "AwarenessManager::shouldAutoCarry(void)"
+      },
+      {
+        "addr": "0x80014a3c",
+        "size": 308,
+        "symbol": "AwarenessManager::endAutoCarry(void)"
+      }
+    ],
+    "LoadGameTarget": [
+      {
+        "addr": "0x8018a200",
+        "size": 372,
+        "symbol": "LoadGameTarget::~LoadGameTarget(void)"
+      },
+      {
+        "addr": "0x8018ad38",
+        "size": 348,
+        "symbol": "LoadGameTarget::PerformLoad(void)"
+      },
+      {
+        "addr": "0x8018ae94",
+        "size": 304,
+        "symbol": "LoadGameTarget::SpawnCheckingDialog(void)"
+      },
+      {
+        "addr": "0x8018b8c4",
+        "size": 376,
+        "symbol": "LoadGameTarget::SpawnNoSaveDialog(void)"
+      },
+      {
+        "addr": "0x8018ba3c",
+        "size": 420,
+        "symbol": "LoadGameTarget::SpawnLoadConfirmDialog(void)"
+      },
+      {
+        "addr": "0x8018bbe0",
+        "size": 296,
+        "symbol": "LoadGameTarget::SpawnLoadingDialog(void)"
+      },
+      {
+        "addr": "0x8018bd08",
+        "size": 284,
+        "symbol": "LoadGameTarget::SpawnLoadSucceededDialog(void)"
+      },
+      {
+        "addr": "0x8018c05c",
+        "size": 356,
+        "symbol": "LoadGameTarget::SpawnMemCardRemovedDialog(void)"
+      },
+      {
+        "addr": "0x8018c1c0",
+        "size": 284,
+        "symbol": "LoadGameTarget::SpawnSameCardDialog(void)"
+      },
+      {
+        "addr": "0x8018c2dc",
+        "size": 324,
+        "symbol": "LoadGameTarget::SpawnFormatDecideDialog(void)"
+      },
+      {
+        "addr": "0x8018c420",
+        "size": 324,
+        "symbol": "LoadGameTarget::SpawnFormatConfirmDialog(void)"
+      },
+      {
+        "addr": "0x8018c634",
+        "size": 324,
+        "symbol": "LoadGameTarget::SpawnFormatCancelDialog(void)"
+      },
+      {
+        "addr": "0x8018c97c",
+        "size": 276,
+        "symbol": "LoadGameTarget::SpawnFormatSuccessDialog(void)"
+      },
+      {
+        "addr": "0x8018ca90",
+        "size": 432,
+        "symbol": "LoadGameTarget::BackgroundPerformLoad(void)"
+      }
+    ],
+    "ObjectFolderImpl": [
+      {
+        "addr": "0x800ec684",
+        "size": 456,
+        "symbol": "ObjectFolderImpl::ObjectFolderImpl(void)"
+      },
+      {
+        "addr": "0x800ecb6c",
+        "size": 460,
+        "symbol": "ObjectFolderImpl::GetNextSelector(ObjSelector *)"
+      },
+      {
+        "addr": "0x800ee98c",
+        "size": 468,
+        "symbol": "ObjectFolderImpl::ReconSelector(ObjSelector **, ReconBuffer *, bool, int)"
+      },
+      {
+        "addr": "0x800eeb60",
+        "size": 460,
+        "symbol": "ObjectFolderImpl::GetSelectorByBehavior(Behavior *)"
+      },
+      {
+        "addr": "0x800eed2c",
+        "size": 368,
+        "symbol": "ObjectFolderImpl::ReconBehavior(Behavior **, ReconBuffer *, int)"
+      },
+      {
+        "addr": "0x800eee9c",
+        "size": 492,
+        "symbol": "ObjectFolderImpl::GetPersonGlobNamespaceID(void)"
+      },
+      {
+        "addr": "0x800efa48",
+        "size": 324,
+        "symbol": "ObjectFolderImpl::RemoveSelector(ObjSelector *)"
+      },
+      {
+        "addr": "0x800efb8c",
+        "size": 300,
+        "symbol": "ObjectFolderImpl::ForceDataPreload(ObjSelector *, bool)"
+      },
+      {
+        "addr": "0x800f0f34",
+        "size": 488,
+        "symbol": "ObjectFolderImpl::DeleteSelectorAnimLists(void)"
+      },
+      {
+        "addr": "0x800f111c",
+        "size": 328,
+        "symbol": "ObjectFolderImpl::UnloadData(ObjSelector *)"
+      },
+      {
+        "addr": "0x800f165c",
+        "size": 316,
+        "symbol": "ObjectFolderImpl::GetAnimPreloadList(ChecksumList &)"
+      },
+      {
+        "addr": "0x800f1a8c",
+        "size": 268,
+        "symbol": "ObjectFolderImpl::LoadResourceByIndex(unsigned int, short, ObjectDataInterface &, unsigned int, unsigned int)"
+      },
+      {
+        "addr": "0x800f1cb8",
+        "size": 276,
+        "symbol": "ObjectFolderImpl::RemoveResourceByID(unsigned int, short, unsigned int)"
+      },
+      {
+        "addr": "0x800f1dcc",
+        "size": 284,
+        "symbol": "ObjectFolderImpl::ChangeResourceID(unsigned int, short, short, unsigned int)"
+      }
+    ],
+    "EGlobal": [
+      {
+        "addr": "0x80040168",
+        "size": 340,
+        "symbol": "EGlobal::GetGoalsLegendRow(unsigned int)"
+      },
+      {
+        "addr": "0x80040414",
+        "size": 316,
+        "symbol": "EGlobal::GetNghHouseName(BString2 &)"
+      },
+      {
+        "addr": "0x80040550",
+        "size": 372,
+        "symbol": "EGlobal::ConvertUnicodeToShiftJIS(unsigned wchar_t *, unsigned wchar_t *, unsigned int)"
+      },
+      {
+        "addr": "0x800407dc",
+        "size": 508,
+        "symbol": "EGlobal::SetSelectedPerson(int, cXPerson *)"
+      },
+      {
+        "addr": "0x80040ae0",
+        "size": 488,
+        "symbol": "EGlobal::SelectNextInFamily(Family *, int, int)"
+      },
+      {
+        "addr": "0x80040cc8",
+        "size": 436,
+        "symbol": "EGlobal::AdvanceSelectedPerson(int)"
+      },
+      {
+        "addr": "0x80040e7c",
+        "size": 492,
+        "symbol": "EGlobal::SelectPrevInFamily(Family *, int, int)"
+      },
+      {
+        "addr": "0x80041068",
+        "size": 428,
+        "symbol": "EGlobal::ReverseSelectedPerson(int)"
+      },
+      {
+        "addr": "0x8004121c",
+        "size": 316,
+        "symbol": "EGlobal::GetCursorPosAsFtile(FTilePt &)"
+      },
+      {
+        "addr": "0x80041358",
+        "size": 260,
+        "symbol": "EGlobal::DestroyInstance(IBaseSimInstance **)"
+      },
+      {
+        "addr": "0x80041538",
+        "size": 348,
+        "symbol": "EGlobal::AllocPersonInstance(cXPerson *)"
+      },
+      {
+        "addr": "0x8004246c",
+        "size": 424,
+        "symbol": "EGlobal::InitPlayerCheats(void)"
+      },
+      {
+        "addr": "0x80042614",
+        "size": 260,
+        "symbol": "EGlobal::TryAutoMapPlayer(int)"
+      }
+    ],
+    "ERLevel": [
+      {
+        "addr": "0x80231700",
+        "size": 404,
+        "symbol": "ERLevel::~ERLevel(void)"
+      },
+      {
+        "addr": "0x80232bb0",
+        "size": 464,
+        "symbol": "ERLevel::Refresh(EFile *)"
+      },
+      {
+        "addr": "0x80232e3c",
+        "size": 328,
+        "symbol": "ERLevel::DestroyInstancesWithoutJustReadByLevelFlags(void)"
+      },
+      {
+        "addr": "0x80233094",
+        "size": 296,
+        "symbol": "ERLevel::DeallocateSub(void)"
+      },
+      {
+        "addr": "0x8023362c",
+        "size": 420,
+        "symbol": "ERLevel::AddWallInstanceToLevel(EInstance *)"
+      },
+      {
+        "addr": "0x80233a38",
+        "size": 268,
+        "symbol": "ERLevel::FixInstances(void)"
+      },
+      {
+        "addr": "0x80233f10",
+        "size": 384,
+        "symbol": "ERLevel::RemoveInstance(EInstance *)"
+      },
+      {
+        "addr": "0x80234090",
+        "size": 288,
+        "symbol": "ERLevel::SetBounds(EInstance *, EBound3 &)"
+      },
+      {
+        "addr": "0x80234260",
+        "size": 264,
+        "symbol": "ERLevel::CalcBounds(void)"
+      },
+      {
+        "addr": "0x80235da4",
+        "size": 368,
+        "symbol": "ERLevel::ObjectShouldBeOccluded(EInstance *)"
+      },
+      {
+        "addr": "0x802367b8",
+        "size": 376,
+        "symbol": "ERLevel::DrawOrderTable(void)"
+      },
+      {
+        "addr": "0x80236ca8",
+        "size": 480,
+        "symbol": "ERLevel::SetRoomCount(int)"
+      },
+      {
+        "addr": "0x802377ac",
+        "size": 364,
+        "symbol": "ERLevel::OutsideLightsUpdate(float, LevelLightingEntry &)"
+      }
+    ],
+    "M2MTarget": [
+      {
+        "addr": "0x801bfee8",
+        "size": 440,
+        "symbol": "M2MTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801c02ec",
+        "size": 376,
+        "symbol": "M2MTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801c0464",
+        "size": 320,
+        "symbol": "M2MTarget::ReflowButtonSelection(void)"
+      },
+      {
+        "addr": "0x801c0d94",
+        "size": 308,
+        "symbol": "M2MTarget::OnSaveLoadSucceed(void)"
+      },
+      {
+        "addr": "0x801c0ec8",
+        "size": 460,
+        "symbol": "M2MTarget::OnSaveLoadFailed(void)"
+      },
+      {
+        "addr": "0x801c115c",
+        "size": 332,
+        "symbol": "M2MTarget::SpawnNoSpaceDialog(void)"
+      },
+      {
+        "addr": "0x801c12a8",
+        "size": 324,
+        "symbol": "M2MTarget::SpawnConfirmStartNewGameDialog(void)"
+      },
+      {
+        "addr": "0x801c13ec",
+        "size": 340,
+        "symbol": "M2MTarget::SpawnContinueNoMemCardDialog(void)"
+      },
+      {
+        "addr": "0x801c16ac",
+        "size": 364,
+        "symbol": "M2MTarget::SpawnSaveBeforeQuitGameDialog(void)"
+      },
+      {
+        "addr": "0x801c1818",
+        "size": 324,
+        "symbol": "M2MTarget::SpawnNoSaveBeforeQuitDialog(void)"
+      },
+      {
+        "addr": "0x801c195c",
+        "size": 324,
+        "symbol": "M2MTarget::SpawnStartNGCNoMemCardDialog(void)"
+      },
+      {
+        "addr": "0x801c1aa0",
+        "size": 328,
+        "symbol": "M2MTarget::GetItemTextMemCardSelect(int, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x801c1f64",
+        "size": 416,
+        "symbol": "M2MTarget::UpdateWidgetState(void)"
+      }
+    ],
+    "MMUTarget": [
+      {
+        "addr": "0x801c5830",
+        "size": 432,
+        "symbol": "MMUTarget::~MMUTarget(void)"
+      },
+      {
+        "addr": "0x801c5dd0",
+        "size": 432,
+        "symbol": "MMUTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801c63c4",
+        "size": 268,
+        "symbol": "MMUTarget::Update(void)"
+      },
+      {
+        "addr": "0x801c64d0",
+        "size": 372,
+        "symbol": "MMUTarget::Draw(ERC *)"
+      },
+      {
+        "addr": "0x801c679c",
+        "size": 332,
+        "symbol": "MMUTarget::UpdateNGHListItems(void)"
+      },
+      {
+        "addr": "0x801c68e8",
+        "size": 292,
+        "symbol": "MMUTarget::UpdateLotListItems(void)"
+      },
+      {
+        "addr": "0x801c6a0c",
+        "size": 328,
+        "symbol": "MMUTarget::GetNGHListItemName(char *)"
+      },
+      {
+        "addr": "0x801c6bfc",
+        "size": 404,
+        "symbol": "MMUTarget::EnterLot(int)"
+      },
+      {
+        "addr": "0x801c7d80",
+        "size": 420,
+        "symbol": "MMUTarget::UpdateMenuState(char *, char *)"
+      },
+      {
+        "addr": "0x801c7f24",
+        "size": 416,
+        "symbol": "MMUTarget::GoUpMenuTree(char *, char *)"
+      },
+      {
+        "addr": "0x801c80c4",
+        "size": 284,
+        "symbol": "MMUTarget::GetNumberOfControllers(void)"
+      },
+      {
+        "addr": "0x801c8228",
+        "size": 316,
+        "symbol": "MMUTarget::IncrementChoice(char *, char *)"
+      },
+      {
+        "addr": "0x801c8420",
+        "size": 304,
+        "symbol": "MMUTarget::DecrementChoice(char *, char *)"
+      }
+    ],
+    "PCTTarget": [
+      {
+        "addr": "0x801d1f54",
+        "size": 288,
+        "symbol": "PCTTarget::cCellInfo::Init(ObjSelector *, IGoalUnlock *)"
+      },
+      {
+        "addr": "0x801d21f4",
+        "size": 264,
+        "symbol": "PCTTarget::cCellInfo::GetName(unsigned wchar_t *) const"
+      },
+      {
+        "addr": "0x801d4a2c",
+        "size": 368,
+        "symbol": "PCTTarget::on_tab_changed(void)"
+      },
+      {
+        "addr": "0x801d4c54",
+        "size": 392,
+        "symbol": "PCTTarget::on_tab_changed_objects(void)"
+      },
+      {
+        "addr": "0x801d4ddc",
+        "size": 428,
+        "symbol": "PCTTarget::on_tab_changed_wall(void)"
+      },
+      {
+        "addr": "0x801d4fc8",
+        "size": 388,
+        "symbol": "PCTTarget::on_tab_changed_wallpaper(void)"
+      },
+      {
+        "addr": "0x801d51a0",
+        "size": 464,
+        "symbol": "PCTTarget::on_tab_changed_floor(void)"
+      },
+      {
+        "addr": "0x801d5d28",
+        "size": 272,
+        "symbol": "PCTTarget::update_grid_shaders(void)"
+      },
+      {
+        "addr": "0x801d5e38",
+        "size": 288,
+        "symbol": "PCTTarget::update_object_shader(void)"
+      },
+      {
+        "addr": "0x801d5f58",
+        "size": 484,
+        "symbol": "PCTTarget::calc_motive_ratings(void)"
+      },
+      {
+        "addr": "0x801d6e68",
+        "size": 288,
+        "symbol": "PCTTarget::sell_dialog_selection_callback(int)"
+      },
+      {
+        "addr": "0x801d6f88",
+        "size": 456,
+        "symbol": "PCTTarget::enter_place_tombstone_mode(void)"
+      },
+      {
+        "addr": "0x801d84cc",
+        "size": 400,
+        "symbol": "PCTTarget::FloorPainterCallback(InteractorModule::Interactor::CallbackData *)"
+      }
+    ],
+    "SimModel": [
+      {
+        "addr": "0x80070580",
+        "size": 268,
+        "symbol": "SimModel::SimModel(void)"
+      },
+      {
+        "addr": "0x80070b48",
+        "size": 380,
+        "symbol": "SimModel::Clone(void)"
+      },
+      {
+        "addr": "0x80070cc4",
+        "size": 416,
+        "symbol": "SimModel::SetAllModels(void)"
+      },
+      {
+        "addr": "0x80070e64",
+        "size": 336,
+        "symbol": "SimModel::SetModelPart(eBodyPartS2C, unsigned int)"
+      },
+      {
+        "addr": "0x80071034",
+        "size": 296,
+        "symbol": "SimModel::UpdateQueuedModelPart(eBodyPartS2C, bool, bool)"
+      },
+      {
+        "addr": "0x8007115c",
+        "size": 328,
+        "symbol": "SimModel::ChangeModelPart(eBodyPartS2C, unsigned int, bool, bool)"
+      },
+      {
+        "addr": "0x80071620",
+        "size": 268,
+        "symbol": "SimModel::ApplyAllLatticeMorphing(void)"
+      },
+      {
+        "addr": "0x8007240c",
+        "size": 456,
+        "symbol": "SimModel::ApplySkinToModelPart(eBodyPartS2C)"
+      },
+      {
+        "addr": "0x80072eb8",
+        "size": 372,
+        "symbol": "SimModel::LoadAllMorphTargets(void)"
+      },
+      {
+        "addr": "0x800733a4",
+        "size": 264,
+        "symbol": "SimModel::UpdateMidLayerSleeve(bool, bool, bool, bool)"
+      },
+      {
+        "addr": "0x80073544",
+        "size": 340,
+        "symbol": "SimModel::UpdateOuterLayerTorso(bool, bool, bool, bool)"
+      },
+      {
+        "addr": "0x800738f0",
+        "size": 476,
+        "symbol": "SimModel::UpdateHair(bool, bool, bool)"
+      },
+      {
+        "addr": "0x80073c1c",
+        "size": 324,
+        "symbol": "SimModel::UpdateArmAccessory(bool, bool, bool)"
+      }
+    ],
+    "cXMTObjectImpl": [
+      {
+        "addr": "0x800c5bac",
+        "size": 312,
+        "symbol": "cXMTObjectImpl::RemoveFromChain(void)"
+      },
+      {
+        "addr": "0x800c5f10",
+        "size": 308,
+        "symbol": "cXMTObjectImpl::AssignOffsets(void)"
+      },
+      {
+        "addr": "0x800c6044",
+        "size": 416,
+        "symbol": "cXMTObjectImpl::CanPlace(FTilePt &, int, cXObject *, int)"
+      },
+      {
+        "addr": "0x800c61e4",
+        "size": 512,
+        "symbol": "cXMTObjectImpl::Place(FTilePt &, int, cXObject *, int)"
+      },
+      {
+        "addr": "0x800c64b8",
+        "size": 500,
+        "symbol": "cXMTObjectImpl::UserCanPlace(FTilePt &, int, cXObject *, int)"
+      },
+      {
+        "addr": "0x800c66ac",
+        "size": 376,
+        "symbol": "cXMTObjectImpl::UserPlace(FTilePt &, int, cXObject *, int)"
+      },
+      {
+        "addr": "0x800c68b8",
+        "size": 388,
+        "symbol": "cXMTObjectImpl::UserPickup(bool)"
+      },
+      {
+        "addr": "0x800c6b10",
+        "size": 320,
+        "symbol": "cXMTObjectImpl::Reset(bool)"
+      },
+      {
+        "addr": "0x800c6c5c",
+        "size": 336,
+        "symbol": "cXMTObjectImpl::ReconStream(ReconBuffer *, int, bool)"
+      },
+      {
+        "addr": "0x800c7240",
+        "size": 292,
+        "symbol": "cXMTObjectImpl::RemoveFromDynamic(void)"
+      },
+      {
+        "addr": "0x800c7690",
+        "size": 500,
+        "symbol": "cXMTObjectImpl::MergeInPlace(void)"
+      },
+      {
+        "addr": "0x800c7884",
+        "size": 264,
+        "symbol": "cXMTObjectImpl::GetAverageLocation(void) const"
+      }
+    ],
+    "ESim": [
+      {
+        "addr": "0x800310ec",
+        "size": 476,
+        "symbol": "ESim::~ESim(void)"
+      },
+      {
+        "addr": "0x80031360",
+        "size": 492,
+        "symbol": "ESim::ReadModelFromCache(void)"
+      },
+      {
+        "addr": "0x80032c58",
+        "size": 272,
+        "symbol": "ESim::SimOrderTableCallback(ELevelDrawData &, EOrderTableData *)"
+      },
+      {
+        "addr": "0x80032ffc",
+        "size": 384,
+        "symbol": "ESim::DrawSimAndNpcCommonItems(ERC *)"
+      },
+      {
+        "addr": "0x80034090",
+        "size": 344,
+        "symbol": "ESim::Update(void)"
+      },
+      {
+        "addr": "0x80034318",
+        "size": 332,
+        "symbol": "ESim::UpdateShowerCurtain(void)"
+      },
+      {
+        "addr": "0x80034464",
+        "size": 352,
+        "symbol": "ESim::UpdateSkinChange(void)"
+      },
+      {
+        "addr": "0x800349a8",
+        "size": 272,
+        "symbol": "ESim::GetObCenter(void)"
+      },
+      {
+        "addr": "0x80034b14",
+        "size": 292,
+        "symbol": "ESim::UpdateShadow(void)"
+      },
+      {
+        "addr": "0x80034c38",
+        "size": 428,
+        "symbol": "ESim::UpdateGhostParticleEffect(void)"
+      },
+      {
+        "addr": "0x800351ac",
+        "size": 348,
+        "symbol": "ESim::ESim(void)"
+      }
+    ],
+    "FAMTarget": [
+      {
+        "addr": "0x801afb4c",
+        "size": 352,
+        "symbol": "FAMTarget::~FAMTarget(void)"
+      },
+      {
+        "addr": "0x801afcd8",
+        "size": 480,
+        "symbol": "FAMTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801b05e0",
+        "size": 300,
+        "symbol": "FAMTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801b07b0",
+        "size": 416,
+        "symbol": "FAMTarget::UpdateOccupiedShaders(void)"
+      },
+      {
+        "addr": "0x801b0950",
+        "size": 456,
+        "symbol": "FAMTarget::UpdateLotSelectShaders(void)"
+      },
+      {
+        "addr": "0x801b0b78",
+        "size": 340,
+        "symbol": "FAMTarget::GetFamilyText(char *, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x801b13dc",
+        "size": 292,
+        "symbol": "FAMTarget::OnUpKeyPressed(char *, char *)"
+      },
+      {
+        "addr": "0x801b1500",
+        "size": 320,
+        "symbol": "FAMTarget::OnDownKeyPressed(char *, char *)"
+      },
+      {
+        "addr": "0x801b29f8",
+        "size": 264,
+        "symbol": "FAMTarget::GoUpMenuTree(void)"
+      },
+      {
+        "addr": "0x801b2b00",
+        "size": 276,
+        "symbol": "FAMTarget::GetNameForFamilyInLotSelect(char *, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x801b2cd4",
+        "size": 492,
+        "symbol": "FAMTarget::UpdateFamilySelectShaders(void)"
+      }
+    ],
+    "NghResFile": [
+      {
+        "addr": "0x800d3d7c",
+        "size": 496,
+        "symbol": "NghResFile::Add(Memory::HandleNode *, int, short, StringBuffer &, bool)"
+      },
+      {
+        "addr": "0x800d4148",
+        "size": 272,
+        "symbol": "NghResFile::init(void)"
+      },
+      {
+        "addr": "0x800d442c",
+        "size": 300,
+        "symbol": "NghResFile::WriteList(char *, unsigned int, unsigned int *&, unsigned int *&, unsigned int *&, unsigned short *&, unsigned int &, unsigned int &)"
+      },
+      {
+        "addr": "0x800d4614",
+        "size": 464,
+        "symbol": "NghResFile::FlushSection(unsigned int)"
+      },
+      {
+        "addr": "0x800d47e4",
+        "size": 380,
+        "symbol": "NghResFile::ReadSection(unsigned int, unsigned int, bool &, EMC_OpStatus &)"
+      },
+      {
+        "addr": "0x800d4bbc",
+        "size": 320,
+        "symbol": "NghResFile::ValidateSaveGame(char *, int, bool)"
+      },
+      {
+        "addr": "0x800d4cfc",
+        "size": 352,
+        "symbol": "NghResFile::IsSaveGameValid(char *, int, bool &)"
+      },
+      {
+        "addr": "0x800d60a0",
+        "size": 356,
+        "symbol": "NghResFile::WriteToMemoryBlock(void *&, unsigned int &)"
+      },
+      {
+        "addr": "0x800d786c",
+        "size": 452,
+        "symbol": "NghResFile::WriteToMemoryCard(char *, unsigned char)"
+      },
+      {
+        "addr": "0x800d7a30",
+        "size": 492,
+        "symbol": "NghResFile::HasCardChanged(int, bool &)"
+      },
+      {
+        "addr": "0x800d85e4",
+        "size": 260,
+        "symbol": "NghResFile::ReadFromMemoryCard(char *, unsigned char)"
+      }
+    ],
+    "UIReflow": [
+      {
+        "addr": "0x8017d320",
+        "size": 384,
+        "symbol": "UIReflow::ResetSize(char *, int, int, int)"
+      },
+      {
+        "addr": "0x8017d4a0",
+        "size": 384,
+        "symbol": "UIReflow::ResetPosition(char *, int, int, int)"
+      },
+      {
+        "addr": "0x8017d620",
+        "size": 316,
+        "symbol": "UIReflow::ResetZ(char *, int, int)"
+      },
+      {
+        "addr": "0x8017d75c",
+        "size": 316,
+        "symbol": "UIReflow::ResetVisibility(char *, bool, int)"
+      },
+      {
+        "addr": "0x8017d898",
+        "size": 332,
+        "symbol": "UIReflow::ResetAlpha(char *, unsigned int, int)"
+      },
+      {
+        "addr": "0x8017d9e4",
+        "size": 288,
+        "symbol": "UIReflow::ResetText(char *, char *, int)"
+      },
+      {
+        "addr": "0x8017db04",
+        "size": 424,
+        "symbol": "UIReflow::ResetColorOverride(char *, unsigned int, int)"
+      },
+      {
+        "addr": "0x8017dcac",
+        "size": 316,
+        "symbol": "UIReflow::ResetFontSizeOverride(char *, unsigned int, int)"
+      },
+      {
+        "addr": "0x8017dde8",
+        "size": 288,
+        "symbol": "UIReflow::ResetSwfAnimation(char *, char *, int)"
+      },
+      {
+        "addr": "0x8017df08",
+        "size": 288,
+        "symbol": "UIReflow::ResetSwfFileName(char *, char *, int)"
+      },
+      {
+        "addr": "0x8017e138",
+        "size": 480,
+        "symbol": "UIReflow::OpenTweenBlock(char *, unsigned int, unsigned int, char *, int)"
+      }
+    ],
+    "BString2": [
+      {
+        "addr": "0x800a0d54",
+        "size": 336,
+        "symbol": "BString2::append_str(unsigned wchar_t *, unsigned int)"
+      },
+      {
+        "addr": "0x800a14c4",
+        "size": 292,
+        "symbol": "BString2::find_str(unsigned wchar_t *, unsigned int, unsigned int) const"
+      },
+      {
+        "addr": "0x800a15e8",
+        "size": 332,
+        "symbol": "BString2::rfind_str(unsigned wchar_t *, unsigned int, unsigned int) const"
+      },
+      {
+        "addr": "0x800a1814",
+        "size": 260,
+        "symbol": "BString2::find_last_of_str(unsigned wchar_t *, unsigned int, unsigned int) const"
+      },
+      {
+        "addr": "0x800a2018",
+        "size": 312,
+        "symbol": "BString2::operator+=(wchar_t)"
+      },
+      {
+        "addr": "0x800a227c",
+        "size": 364,
+        "symbol": "BString2::append(wchar_t, unsigned int)"
+      },
+      {
+        "addr": "0x800a3194",
+        "size": 280,
+        "symbol": "BString2::put_at(unsigned int, wchar_t)"
+      },
+      {
+        "addr": "0x800a33c8",
+        "size": 332,
+        "symbol": "BString2::resize(unsigned int, wchar_t)"
+      },
+      {
+        "addr": "0x800a3918",
+        "size": 268,
+        "symbol": "BString2::rfind(wchar_t, unsigned int) const"
+      },
+      {
+        "addr": "0x800a4198",
+        "size": 308,
+        "symbol": "BString2::compare(wchar_t, unsigned int, unsigned int) const"
+      }
+    ],
+    "CasSimDescriptionS2C": [
+      {
+        "addr": "0x801675b0",
+        "size": 320,
+        "symbol": "CasSimDescriptionS2C::GetBodyPartIndex(eBodyPartS2C) const"
+      },
+      {
+        "addr": "0x801677f0",
+        "size": 268,
+        "symbol": "CasSimDescriptionS2C::GetBodyPartTextureIndex(eBodyPartS2C) const"
+      },
+      {
+        "addr": "0x801679e4",
+        "size": 408,
+        "symbol": "CasSimDescriptionS2C::GetBodyPartParam(eBodyPartS2C) const"
+      },
+      {
+        "addr": "0x80168408",
+        "size": 260,
+        "symbol": "CasSimDescriptionS2C::AssertWithInfo(char *)"
+      },
+      {
+        "addr": "0x80169468",
+        "size": 272,
+        "symbol": "CasSimDescriptionS2C::VerifyBodyPartNoTexture(CasSimPartsS2C &, eBodyPartS2C, signed char &, signed char, bool)"
+      },
+      {
+        "addr": "0x80169d30",
+        "size": 340,
+        "symbol": "CasSimDescriptionS2C::SwitchMidLayerTorsoToFirstAvailableStyle(CasSimPartsS2C &, bool)"
+      },
+      {
+        "addr": "0x8016a09c",
+        "size": 272,
+        "symbol": "CasSimDescriptionS2C::SwitchOuterLayerCollarToFirstAvailableStyle(CasSimPartsS2C &)"
+      },
+      {
+        "addr": "0x8016a24c",
+        "size": 272,
+        "symbol": "CasSimDescriptionS2C::SwitchLowerBodyToFirstAvailableStyle(CasSimPartsS2C &)"
+      },
+      {
+        "addr": "0x8016a35c",
+        "size": 260,
+        "symbol": "CasSimDescriptionS2C::SwitchHatToFirstAvailableStyle(CasSimPartsS2C &)"
+      },
+      {
+        "addr": "0x8016a6cc",
+        "size": 344,
+        "symbol": "CasSimDescriptionS2C::GetCompositeTextureName(char *, eSimPartsMapLocation) const"
+      }
+    ],
+    "ESimsCam": [
+      {
+        "addr": "0x800164d4",
+        "size": 456,
+        "symbol": "ESimsCam::ESimsCam(int)"
+      },
+      {
+        "addr": "0x80016c34",
+        "size": 388,
+        "symbol": "ESimsCam::FollowPlayerInteractor(int)"
+      },
+      {
+        "addr": "0x80016db8",
+        "size": 512,
+        "symbol": "ESimsCam::Update(void)"
+      },
+      {
+        "addr": "0x800172e8",
+        "size": 424,
+        "symbol": "ESimsCam::HandleZoom(void)"
+      },
+      {
+        "addr": "0x80017dc0",
+        "size": 300,
+        "symbol": "ESimsCam::ResetPos(float)"
+      },
+      {
+        "addr": "0x80018e74",
+        "size": 368,
+        "symbol": "ESimsCam::SetPosAndReset(EVec3 &, EVec3 &, EVec3 &)"
+      },
+      {
+        "addr": "0x80018fe4",
+        "size": 392,
+        "symbol": "ESimsCam::SetPos(EVec3 &, EVec3 &, EVec3 &)"
+      },
+      {
+        "addr": "0x8001916c",
+        "size": 400,
+        "symbol": "ESimsCam::ForcePosition(EVec3 &, EVec3 &, EVec3 &)"
+      },
+      {
+        "addr": "0x8001942c",
+        "size": 508,
+        "symbol": "ESimsCam::ValidateCursorPosition(int, EVec3 *)"
+      },
+      {
+        "addr": "0x80019628",
+        "size": 324,
+        "symbol": "ESimsCam::CalRoomId(EVec3 &)"
+      }
+    ],
+    "IFFResFile2": [
+      {
+        "addr": "0x800be3a0",
+        "size": 260,
+        "symbol": "IFFResFile2::WriteHeader(MemFile *, int)"
+      },
+      {
+        "addr": "0x800be8cc",
+        "size": 308,
+        "symbol": "IFFResFile2::Update(void)"
+      },
+      {
+        "addr": "0x800bec08",
+        "size": 272,
+        "symbol": "IFFResFile2::GetByIDAndLanguage(int, short, char, void (*)(void *, int))"
+      },
+      {
+        "addr": "0x800bed54",
+        "size": 272,
+        "symbol": "IFFResFile2::GetByName(int, StringBuffer &, void (*)(void *, int))"
+      },
+      {
+        "addr": "0x800bee64",
+        "size": 264,
+        "symbol": "IFFResFile2::GetByIndex(int, short, void (*)(void *, int))"
+      },
+      {
+        "addr": "0x800bf2c4",
+        "size": 272,
+        "symbol": "IFFResFile2::FindUniqueName(int, StringBuffer &)"
+      },
+      {
+        "addr": "0x800bf744",
+        "size": 416,
+        "symbol": "IFFResFile2::AddWithLanguage(Memory::HandleNode *, int, short, StringBuffer &, char, bool)"
+      },
+      {
+        "addr": "0x800bfb5c",
+        "size": 268,
+        "symbol": "IFFResFile2::Remove(Memory::HandleNode *)"
+      },
+      {
+        "addr": "0x800bfc68",
+        "size": 364,
+        "symbol": "IFFResFile2::SetInfo(Memory::HandleNode *, short, StringBuffer &, char)"
+      },
+      {
+        "addr": "0x800bfdd4",
+        "size": 408,
+        "symbol": "IFFResFile2::LoadNode(IFFResNode *, void (*)(void *, int), int)"
+      }
+    ],
+    "WrapperPaneBase": [
+      {
+        "addr": "0x80084ab4",
+        "size": 324,
+        "symbol": "WrapperPaneBase::Shutdown(void)"
+      },
+      {
+        "addr": "0x800856b8",
+        "size": 296,
+        "symbol": "WrapperPaneBase::DeleteItemList(void)"
+      },
+      {
+        "addr": "0x800857e0",
+        "size": 384,
+        "symbol": "WrapperPaneBase::GetVariableButtonIndex(char *, char *)"
+      },
+      {
+        "addr": "0x80085960",
+        "size": 320,
+        "symbol": "WrapperPaneBase::GetVariable(char *)"
+      },
+      {
+        "addr": "0x80085ebc",
+        "size": 308,
+        "symbol": "WrapperPaneBase::ShowEnabledButtons(void)"
+      },
+      {
+        "addr": "0x80085ff0",
+        "size": 308,
+        "symbol": "WrapperPaneBase::HideEnabledButtons(void)"
+      },
+      {
+        "addr": "0x80086124",
+        "size": 268,
+        "symbol": "WrapperPaneBase::ShowButton(WrapperPaneBase::ButtonType)"
+      },
+      {
+        "addr": "0x80086230",
+        "size": 268,
+        "symbol": "WrapperPaneBase::HideButton(WrapperPaneBase::ButtonType)"
+      },
+      {
+        "addr": "0x800878c4",
+        "size": 284,
+        "symbol": "WrapperPaneBase::WrapperPaneBase(int, int)"
+      },
+      {
+        "addr": "0x80087b70",
+        "size": 340,
+        "symbol": "WrapperPaneBase::AddItem(PaneItem *)"
+      }
+    ],
+    "CASPersonalTarget": [
+      {
+        "addr": "0x8019dfc8",
+        "size": 348,
+        "symbol": "CASPersonalTarget::~CASPersonalTarget(void)"
+      },
+      {
+        "addr": "0x8019e124",
+        "size": 408,
+        "symbol": "CASPersonalTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x8019e300",
+        "size": 324,
+        "symbol": "CASPersonalTarget::ConvertFromPersonalityTextToEnum(char *)"
+      },
+      {
+        "addr": "0x8019e444",
+        "size": 440,
+        "symbol": "CASPersonalTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x8019e5fc",
+        "size": 384,
+        "symbol": "CASPersonalTarget::GetLocalizable(char *)"
+      },
+      {
+        "addr": "0x8019e9f4",
+        "size": 312,
+        "symbol": "CASPersonalTarget::ParseDescriptionText(short, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x8019edd8",
+        "size": 376,
+        "symbol": "CASPersonalTarget::SetVariableSubnav(UIScreenID, int, int)"
+      },
+      {
+        "addr": "0x8019ef50",
+        "size": 324,
+        "symbol": "CASPersonalTarget::GetLocalizableSubnav(UIScreenID, int, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x8019f094",
+        "size": 328,
+        "symbol": "CASPersonalTarget::CalcHighScoreAspShaderIds(void)"
+      }
+    ],
+    "ObjectModuleImpl": [
+      {
+        "addr": "0x800f2cbc",
+        "size": 272,
+        "symbol": "ObjectModuleImpl::ObjectModuleImpl(void)"
+      },
+      {
+        "addr": "0x800f48f8",
+        "size": 284,
+        "symbol": "ObjectModuleImpl::GetObjectByGUID(int)"
+      },
+      {
+        "addr": "0x800f4ab0",
+        "size": 288,
+        "symbol": "ObjectModuleImpl::ConstructObject(ObjSelector *, cXMTObject *)"
+      },
+      {
+        "addr": "0x800f6ab4",
+        "size": 404,
+        "symbol": "ObjectModuleImpl::DoCommand(short, int)"
+      },
+      {
+        "addr": "0x800f6c48",
+        "size": 404,
+        "symbol": "ObjectModuleImpl::PreviewAnimation(short, short, short, bool)"
+      },
+      {
+        "addr": "0x800f7c6c",
+        "size": 456,
+        "symbol": "ObjectModuleImpl::DisableBuyAndBuild(cXObject *)"
+      },
+      {
+        "addr": "0x800f85d8",
+        "size": 288,
+        "symbol": "ObjectModuleImpl::OffsetObjectMap(CTilePt &)"
+      },
+      {
+        "addr": "0x800f90e8",
+        "size": 424,
+        "symbol": "ObjectModuleImpl::FillInObjectStats(RoomManager *, HouseStats &)"
+      },
+      {
+        "addr": "0x80140028",
+        "size": 284,
+        "symbol": "ObjectModuleImpl::SetSimMemory(int, int, int, int)"
+      }
+    ],
+    "ReconBuffer": [
+      {
+        "addr": "0x80132f4c",
+        "size": 444,
+        "symbol": "ReconBuffer::ReconCmprInt(int *, Scheme *)"
+      },
+      {
+        "addr": "0x80133108",
+        "size": 444,
+        "symbol": "ReconBuffer::ReconBits(int, int *)"
+      },
+      {
+        "addr": "0x801332d0",
+        "size": 352,
+        "symbol": "ReconBuffer::Recon8(signed char *, int)"
+      },
+      {
+        "addr": "0x80133484",
+        "size": 400,
+        "symbol": "ReconBuffer::Recon16(short *, int)"
+      },
+      {
+        "addr": "0x80133634",
+        "size": 428,
+        "symbol": "ReconBuffer::Recon32(int *, int)"
+      },
+      {
+        "addr": "0x801337e0",
+        "size": 428,
+        "symbol": "ReconBuffer::ReconFloat(float *, int)"
+      },
+      {
+        "addr": "0x8013398c",
+        "size": 268,
+        "symbol": "ReconBuffer::ReconMark(void)"
+      },
+      {
+        "addr": "0x80133ae4",
+        "size": 356,
+        "symbol": "ReconBuffer::ReconString(BString &)"
+      },
+      {
+        "addr": "0x80133ed0",
+        "size": 344,
+        "symbol": "ReconBuffer::ReconString(StringBuffer &)"
+      }
+    ],
+    "cBoxX": [
+      {
+        "addr": "0x800ad950",
+        "size": 456,
+        "symbol": "cBoxX::Update(unsigned int)"
+      },
+      {
+        "addr": "0x800ae4bc",
+        "size": 492,
+        "symbol": "cBoxX::GetInstanceSurroundVol(int, cTrack *, int &, int &, int &, int &)"
+      },
+      {
+        "addr": "0x800ae948",
+        "size": 404,
+        "symbol": "cBoxX::ConvertSurroundToVolPan(int, int, int, int, int &, int &)"
+      },
+      {
+        "addr": "0x800af4b4",
+        "size": 264,
+        "symbol": "cBoxX::SetAmbientScore(int)"
+      },
+      {
+        "addr": "0x800af61c",
+        "size": 272,
+        "symbol": "cBoxX::FindSndobInstancePair(ERSoundEvent *, int)"
+      },
+      {
+        "addr": "0x800af7a4",
+        "size": 308,
+        "symbol": "cBoxX::UpdateAllSndobVolPan(void)"
+      },
+      {
+        "addr": "0x800af8d8",
+        "size": 288,
+        "symbol": "cBoxX::CheckForTooManySounds(void)"
+      },
+      {
+        "addr": "0x800af9f8",
+        "size": 264,
+        "symbol": "cBoxX::KillSource(int)"
+      },
+      {
+        "addr": "0x800b015c",
+        "size": 452,
+        "symbol": "cBoxX::GetListenerPosAndDir(ESimsCam *, EVec3 &, EVec3 &)"
+      }
+    ],
+    "E2ETarget": [
+      {
+        "addr": "0x801aca58",
+        "size": 476,
+        "symbol": "E2ETarget::E2ERenderCallback(ERC *, structDrawCBparams *)"
+      },
+      {
+        "addr": "0x801ad040",
+        "size": 448,
+        "symbol": "E2ETarget::SetTopLevelState(char *, char *)"
+      },
+      {
+        "addr": "0x801ad200",
+        "size": 376,
+        "symbol": "E2ETarget::OnTopLevelStateChange(char *, char *)"
+      },
+      {
+        "addr": "0x801ad704",
+        "size": 284,
+        "symbol": "E2ETarget::OnXKeyPressed(char *, char *)"
+      },
+      {
+        "addr": "0x801ad8a0",
+        "size": 476,
+        "symbol": "E2ETarget::OnRightKeyPressed(char *, char *)"
+      },
+      {
+        "addr": "0x801ada7c",
+        "size": 468,
+        "symbol": "E2ETarget::OnLeftKeyPressed(char *, char *)"
+      },
+      {
+        "addr": "0x801ade54",
+        "size": 508,
+        "symbol": "E2ETarget::GetText(char *)"
+      },
+      {
+        "addr": "0x801ae0c0",
+        "size": 292,
+        "symbol": "E2ETarget::UpdateShaders(char *, char *)"
+      }
+    ],
+    "EInstance": [
+      {
+        "addr": "0x80228468",
+        "size": 344,
+        "symbol": "EInstance::Read(EStream &)"
+      },
+      {
+        "addr": "0x802285c0",
+        "size": 444,
+        "symbol": "EInstance::Load(EFile &)"
+      },
+      {
+        "addr": "0x802288d8",
+        "size": 412,
+        "symbol": "EInstance::ShadowDirAtPoint(EVec3 &, EVec3 &, int)"
+      },
+      {
+        "addr": "0x80228a74",
+        "size": 300,
+        "symbol": "EInstance::CalcShadowLight(EVec3 &, short)"
+      },
+      {
+        "addr": "0x80228ba0",
+        "size": 276,
+        "symbol": "EInstance::CalcShadowLightWeighted(EVec3 &, short)"
+      },
+      {
+        "addr": "0x80228cb4",
+        "size": 500,
+        "symbol": "EInstance::ShadowDirAtPointWeighted(EVec3 &, EVec3 &, int)"
+      },
+      {
+        "addr": "0x80228f00",
+        "size": 380,
+        "symbol": "EInstance::CalcLights(EVec3 &, ELights &, bool)"
+      },
+      {
+        "addr": "0x8022907c",
+        "size": 380,
+        "symbol": "EInstance::CalcLights4(EVec3 &, ELights &, bool)"
+      }
+    ],
+    "ERoomWall": [
+      {
+        "addr": "0x800293a0",
+        "size": 480,
+        "symbol": "ERoomWall::GetWallMeterValue(int &)"
+      },
+      {
+        "addr": "0x80029654",
+        "size": 276,
+        "symbol": "ERoomWall::CalShortDistToCam(int)"
+      },
+      {
+        "addr": "0x8002c5cc",
+        "size": 492,
+        "symbol": "ERoomWall::ERoomWall(TileWallsSegment, DiagonalSideSelector, CTilePt &, bool)"
+      },
+      {
+        "addr": "0x8002d1f8",
+        "size": 272,
+        "symbol": "ERoomWall::getRoomIdFromPoint(CTilePt &)"
+      },
+      {
+        "addr": "0x8002de70",
+        "size": 268,
+        "symbol": "ERoomWall::GetWallPaperCost(int, unsigned short)"
+      },
+      {
+        "addr": "0x8002f84c",
+        "size": 488,
+        "symbol": "ERoomWall::HasSegment(TileWallsSegment, CTilePt &, CTilePt &)"
+      },
+      {
+        "addr": "0x8002fa34",
+        "size": 440,
+        "symbol": "ERoomWall::DeleteWallAtTile(CTilePt &)"
+      },
+      {
+        "addr": "0x8002fbec",
+        "size": 284,
+        "symbol": "ERoomWall::RemoveWallsFromWorld(void)"
+      }
+    ],
+    "GameData": [
+      {
+        "addr": "0x8003afd4",
+        "size": 296,
+        "symbol": "GameData::GameData(void)"
+      },
+      {
+        "addr": "0x8003b638",
+        "size": 268,
+        "symbol": "GameData::PrepareSimData(int, int)"
+      },
+      {
+        "addr": "0x8003b744",
+        "size": 308,
+        "symbol": "GameData::ReplaceSimData(int, bool, int, int)"
+      },
+      {
+        "addr": "0x8003d344",
+        "size": 280,
+        "symbol": "GameData::CopyrightDraw(ERC *)"
+      },
+      {
+        "addr": "0x8003d45c",
+        "size": 468,
+        "symbol": "GameData::VersionInfoDraw(ERC *)"
+      },
+      {
+        "addr": "0x8003d8a8",
+        "size": 436,
+        "symbol": "GameData::StageInitTiming(float *, int)"
+      },
+      {
+        "addr": "0x8003daa0",
+        "size": 328,
+        "symbol": "GameData::StageEndFrame(char *, int, int)"
+      },
+      {
+        "addr": "0x8003dc3c",
+        "size": 356,
+        "symbol": "GameData::GotoXamMode(int, int, int, int)"
+      }
+    ],
+    "Neighbor": [
+      {
+        "addr": "0x800c9f10",
+        "size": 276,
+        "symbol": "Neighbor::CalculateRelationshipLevel(int, int)"
+      },
+      {
+        "addr": "0x800ca0e8",
+        "size": 288,
+        "symbol": "Neighbor::CountRelationshipsOfType(tRelationshipType)"
+      },
+      {
+        "addr": "0x800ca604",
+        "size": 340,
+        "symbol": "Neighbor::LoadFromCharacter(ENeighborhoodCustomChar &)"
+      },
+      {
+        "addr": "0x800ca758",
+        "size": 460,
+        "symbol": "Neighbor::SaveToCharacter(ENeighborhoodCustomChar &)"
+      },
+      {
+        "addr": "0x800cab20",
+        "size": 496,
+        "symbol": "Neighbor::SpawnWantFearDialog(unsigned int) const"
+      },
+      {
+        "addr": "0x800cad10",
+        "size": 452,
+        "symbol": "Neighbor::Notify(WantFear::Notification &, bool)"
+      },
+      {
+        "addr": "0x800cb32c",
+        "size": 356,
+        "symbol": "Neighbor::AdvanceBookmark(unsigned int)"
+      },
+      {
+        "addr": "0x800cb4e8",
+        "size": 268,
+        "symbol": "Neighbor::FindBookmarkToReplace(unsigned int, unsigned int)"
+      }
+    ],
+    "global": [
+      {
+        "addr": "0x803a5284",
+        "size": 280,
+        "symbol": "void __adjust_heap<FamilyImpl **, int, FamilyImpl *, bool (*)(Family *&, Family *&)>(FamilyImpl **, int, int, FamilyImpl *, bool (*)(Family *&, Family *&))"
+      },
+      {
+        "addr": "0x803a55f4",
+        "size": 340,
+        "symbol": "void __introsort_loop<FamilyImpl **, FamilyImpl *, int, bool (*)(Family *&, Family *&)>(FamilyImpl **, FamilyImpl **, FamilyImpl * *, int, bool (*)(Family *&, Family *&))"
+      },
+      {
+        "addr": "0x803a5a04",
+        "size": 284,
+        "symbol": "void __adjust_heap<int *, int, int, bool (*)(int &, int &)>(int *, int, int, int, bool (*)(int &, int &))"
+      },
+      {
+        "addr": "0x803a5d74",
+        "size": 340,
+        "symbol": "void __introsort_loop<int *, int, int, bool (*)(int &, int &)>(int *, int *, int *, int, bool (*)(int &, int &))"
+      },
+      {
+        "addr": "0x803a6abc",
+        "size": 280,
+        "symbol": "void __adjust_heap<ObjSelector **, int, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, int, int, ObjSelector *, bool (*)(ObjSelector *, ObjSelector *))"
+      },
+      {
+        "addr": "0x803a6e24",
+        "size": 344,
+        "symbol": "void __introsort_loop<ObjSelector **, ObjSelector *, int, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, ObjSelector **, ObjSelector * *, int, bool (*)(ObjSelector *, ObjSelector *))"
+      },
+      {
+        "addr": "0x803afcc4",
+        "size": 280,
+        "symbol": "void __adjust_heap<CasSimDescriptionS2C **, int, CasSimDescriptionS2C *, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *)>(CasSimDescriptionS2C **, int, int, CasSimDescriptionS2C *, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *))"
+      },
+      {
+        "addr": "0x803b002c",
+        "size": 344,
+        "symbol": "void __introsort_loop<CasSimDescriptionS2C **, CasSimDescriptionS2C *, int, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *)>(CasSimDescriptionS2C **, CasSimDescriptionS2C **, CasSimDescriptionS2C * *, int, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *))"
+      }
+    ],
+    "BString": [
+      {
+        "addr": "0x8009cbb8",
+        "size": 304,
+        "symbol": "BString::append_str(char *, unsigned int)"
+      },
+      {
+        "addr": "0x8009cce8",
+        "size": 484,
+        "symbol": "BString::insert_str(unsigned int, char *, unsigned int)"
+      },
+      {
+        "addr": "0x8009d2e8",
+        "size": 288,
+        "symbol": "BString::rfind_str(char *, unsigned int, unsigned int) const"
+      },
+      {
+        "addr": "0x8009dc14",
+        "size": 284,
+        "symbol": "BString::operator+=(char)"
+      },
+      {
+        "addr": "0x8009de40",
+        "size": 328,
+        "symbol": "BString::append(char, unsigned int)"
+      },
+      {
+        "addr": "0x8009e4e0",
+        "size": 424,
+        "symbol": "BString::erase(unsigned int, unsigned int)"
+      },
+      {
+        "addr": "0x8009ed28",
+        "size": 304,
+        "symbol": "BString::resize(unsigned int, char)"
+      }
+    ],
+    "CASSelectionTarget": [
+      {
+        "addr": "0x801993dc",
+        "size": 452,
+        "symbol": "CASSelectionTarget::~CASSelectionTarget(void)"
+      },
+      {
+        "addr": "0x80199974",
+        "size": 284,
+        "symbol": "CASSelectionTarget::ClearRecentlyUnlockedBitFlag(int)"
+      },
+      {
+        "addr": "0x80199a90",
+        "size": 284,
+        "symbol": "CASSelectionTarget::GetLocalizable(char *)"
+      },
+      {
+        "addr": "0x80199e9c",
+        "size": 344,
+        "symbol": "CASSelectionTarget::InitScreen(void)"
+      },
+      {
+        "addr": "0x8019a4b0",
+        "size": 324,
+        "symbol": "CASSelectionTarget::ClearTextures(unsigned int, unsigned int)"
+      },
+      {
+        "addr": "0x8019a6b4",
+        "size": 324,
+        "symbol": "CASSelectionTarget::ConvertUiFocusToBodyPart(unsigned int, eBodyPartS2C *)"
+      },
+      {
+        "addr": "0x8019a854",
+        "size": 380,
+        "symbol": "CASSelectionTarget::ConvertCurUIFocusToChangeEvent(int &)"
+      }
+    ],
+    "CASTarget": [
+      {
+        "addr": "0x80192658",
+        "size": 468,
+        "symbol": "CASTarget::SaveCASDataToNeighborhood(void)"
+      },
+      {
+        "addr": "0x80192acc",
+        "size": 388,
+        "symbol": "CASTarget::StartupMediator(void)"
+      },
+      {
+        "addr": "0x80192c50",
+        "size": 360,
+        "symbol": "CASTarget::ShutdownMediator(void)"
+      },
+      {
+        "addr": "0x80193174",
+        "size": 448,
+        "symbol": "CASTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x80193b78",
+        "size": 504,
+        "symbol": "CASTarget::Update(void)"
+      },
+      {
+        "addr": "0x80193d70",
+        "size": 444,
+        "symbol": "CASTarget::Draw(ERC *)"
+      },
+      {
+        "addr": "0x801942b8",
+        "size": 368,
+        "symbol": "CASTarget::SetVariableSubnav(char *)"
+      }
+    ],
+    "CasSimPartsS2C": [
+      {
+        "addr": "0x8016a9fc",
+        "size": 332,
+        "symbol": "CasSimPartsS2C::GetNumBodyModels(eBodyPartS2C) const"
+      },
+      {
+        "addr": "0x8016ab48",
+        "size": 460,
+        "symbol": "CasSimPartsS2C::GetNumBodyTextures(eBodyPartS2C, unsigned int) const"
+      },
+      {
+        "addr": "0x8016b5e0",
+        "size": 392,
+        "symbol": "CasSimPartsS2C::GetSkinTextureID(eSkinColorType, eBodyTypeS2C, eSimPartsMapLocation)"
+      },
+      {
+        "addr": "0x8016b768",
+        "size": 340,
+        "symbol": "CasSimPartsS2C::GetSkinTexturesDatasetID(eSkinColorType, eBodyTypeS2C)"
+      },
+      {
+        "addr": "0x8016c8e8",
+        "size": 476,
+        "symbol": "CasSimPartsS2C::IsGamecubeOnly(eBodyPartS2C, unsigned int) const"
+      },
+      {
+        "addr": "0x8016cac4",
+        "size": 472,
+        "symbol": "CasSimPartsS2C::GetIconTextureId(eBodyPartS2C, unsigned int) const"
+      },
+      {
+        "addr": "0x8016d560",
+        "size": 464,
+        "symbol": "CasSimPartsS2C::GetWeldableBodyPartConnections(eBodyPartS2C, unsigned int *, unsigned int)"
+      }
+    ],
+    "EIStaticModel": [
+      {
+        "addr": "0x8022bbb4",
+        "size": 448,
+        "symbol": "EIStaticModel::Setup(EInstance *, EAnimController *)"
+      },
+      {
+        "addr": "0x8022be8c",
+        "size": 364,
+        "symbol": "EIStaticModel::SetOrient(EMat4 &)"
+      },
+      {
+        "addr": "0x8022bff8",
+        "size": 268,
+        "symbol": "EIStaticModel::SlamOrient(EMat4 &, EMat4 &)"
+      },
+      {
+        "addr": "0x8022c49c",
+        "size": 432,
+        "symbol": "EIStaticModel::BuildDigests(void)"
+      },
+      {
+        "addr": "0x8022c64c",
+        "size": 488,
+        "symbol": "EIStaticModel::SetupBounds(void)"
+      },
+      {
+        "addr": "0x8022cc24",
+        "size": 504,
+        "symbol": "EIStaticModel::DrawAsShadow(ELevelDrawData &)"
+      },
+      {
+        "addr": "0x8022daf0",
+        "size": 412,
+        "symbol": "EIStaticModel::DrawImmediate(ERC *, EAnimController *)"
+      }
+    ],
+    "RoomManager": [
+      {
+        "addr": "0x80135e6c",
+        "size": 424,
+        "symbol": "RoomManager::~RoomManager(void)"
+      },
+      {
+        "addr": "0x801366f0",
+        "size": 272,
+        "symbol": "RoomManager::GetNewRoom(unsigned short)"
+      },
+      {
+        "addr": "0x80136848",
+        "size": 484,
+        "symbol": "RoomManager::OffsetWorld(CTilePt &)"
+      },
+      {
+        "addr": "0x80136a2c",
+        "size": 492,
+        "symbol": "RoomManager::ProcessDegenerateTile(CTilePt &, unsigned short, Room::Sides)"
+      },
+      {
+        "addr": "0x80136db4",
+        "size": 312,
+        "symbol": "RoomManager::ResolveDiagonal(CTilePt &, unsigned short *, unsigned short *, Room::Sides *, Room::Sides *)"
+      },
+      {
+        "addr": "0x801370d4",
+        "size": 352,
+        "symbol": "RoomManager::ResetRoomManager(void)"
+      },
+      {
+        "addr": "0x80137318",
+        "size": 272,
+        "symbol": "RoomManager::SetRoomIntensityColorScale(int, bool, int, float)"
+      }
+    ],
+    "cHitMan": [
+      {
+        "addr": "0x801164e4",
+        "size": 364,
+        "symbol": "cHitMan::ControlGroup(int)"
+      },
+      {
+        "addr": "0x80116650",
+        "size": 356,
+        "symbol": "cHitMan::ClearControlGroups(void)"
+      },
+      {
+        "addr": "0x80116888",
+        "size": 268,
+        "symbol": "cHitMan::cHitMan(void)"
+      },
+      {
+        "addr": "0x80116a14",
+        "size": 312,
+        "symbol": "cHitMan::~cHitMan(void)"
+      },
+      {
+        "addr": "0x80116b4c",
+        "size": 436,
+        "symbol": "cHitMan::Shutdown(void)"
+      },
+      {
+        "addr": "0x801172c4",
+        "size": 340,
+        "symbol": "cHitMan::DuckMapSndobPri(cTrack *)"
+      },
+      {
+        "addr": "0x801174a8",
+        "size": 312,
+        "symbol": "cHitMan::DuckMapRemoveAll(void)"
+      }
+    ],
+    "Behavior": [
+      {
+        "addr": "0x800ab314",
+        "size": 396,
+        "symbol": "Behavior::~Behavior(void)"
+      },
+      {
+        "addr": "0x800ab5bc",
+        "size": 504,
+        "symbol": "Behavior::GetNodeRef(short, short, BehaviorNode **)"
+      },
+      {
+        "addr": "0x800ab7b4",
+        "size": 268,
+        "symbol": "Behavior::IsNodeReachable(short, int)"
+      },
+      {
+        "addr": "0x800abb14",
+        "size": 308,
+        "symbol": "Behavior::IsSingleExit(short, short)"
+      },
+      {
+        "addr": "0x800ac4a4",
+        "size": 260,
+        "symbol": "Behavior::GetTreeName(short, StringBuffer &)"
+      },
+      {
+        "addr": "0x800ac650",
+        "size": 480,
+        "symbol": "Behavior::Init(Language *, ObjSelector *)"
+      }
+    ],
+    "CASGeneticsTarget": [
+      {
+        "addr": "0x80197958",
+        "size": 500,
+        "symbol": "CASGeneticsTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x80197b4c",
+        "size": 312,
+        "symbol": "CASGeneticsTarget::SetVariableSubnav(int, int)"
+      },
+      {
+        "addr": "0x80197f70",
+        "size": 368,
+        "symbol": "CASGeneticsTarget::CreateParentTexture(unsigned int)"
+      },
+      {
+        "addr": "0x8019828c",
+        "size": 432,
+        "symbol": "CASGeneticsTarget::BeginGenerate(void)"
+      },
+      {
+        "addr": "0x8019843c",
+        "size": 472,
+        "symbol": "CASGeneticsTarget::HandleGenerateStageBG(void)"
+      },
+      {
+        "addr": "0x801989b8",
+        "size": 260,
+        "symbol": "CASGeneticsTarget::Draw(ERC *)"
+      }
+    ],
+    "CSPTarget": [
+      {
+        "addr": "0x801a8a74",
+        "size": 508,
+        "symbol": "CSPTarget::~CSPTarget(void)"
+      },
+      {
+        "addr": "0x801a8c70",
+        "size": 344,
+        "symbol": "CSPTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801a991c",
+        "size": 328,
+        "symbol": "CSPTarget::ChangeSelectedTab(CSPTarget::eTabs)"
+      },
+      {
+        "addr": "0x801aa0a0",
+        "size": 360,
+        "symbol": "CSPTarget::InstallPromotionShaders(void)"
+      },
+      {
+        "addr": "0x801aa208",
+        "size": 388,
+        "symbol": "CSPTarget::SetupSkills(cXPerson *)"
+      },
+      {
+        "addr": "0x801aa38c",
+        "size": 496,
+        "symbol": "CSPTarget::SetupPersonality(cXPerson *)"
+      }
+    ],
+    "CasScene": [
+      {
+        "addr": "0x80165250",
+        "size": 428,
+        "symbol": "CasScene::~CasScene(void)"
+      },
+      {
+        "addr": "0x80165824",
+        "size": 364,
+        "symbol": "CasScene::Draw(ERC *)"
+      },
+      {
+        "addr": "0x801659d4",
+        "size": 504,
+        "symbol": "CasScene::DrawRoomClothing(ERC *, EMat4 &)"
+      },
+      {
+        "addr": "0x80165f04",
+        "size": 388,
+        "symbol": "CasScene::SetLights(int)"
+      },
+      {
+        "addr": "0x80166478",
+        "size": 304,
+        "symbol": "CasScene::InitCamera(unsigned int)"
+      },
+      {
+        "addr": "0x80166a9c",
+        "size": 276,
+        "symbol": "CasScene::SetUpWindow(ERC *)"
+      }
+    ],
+    "EIWallPart": [
+      {
+        "addr": "0x8002a2d4",
+        "size": 308,
+        "symbol": "EIWallPart::SetOrient(EMat4 &)"
+      },
+      {
+        "addr": "0x8002b504",
+        "size": 392,
+        "symbol": "EIWallPart::DrawShadow(ELevelDrawData &)"
+      },
+      {
+        "addr": "0x8002b9a4",
+        "size": 312,
+        "symbol": "EIWallPart::GetPoint(CTilePt &)"
+      },
+      {
+        "addr": "0x8002badc",
+        "size": 472,
+        "symbol": "EIWallPart::GetPoints(CTilePt &, CTilePt &)"
+      },
+      {
+        "addr": "0x8002c35c",
+        "size": 304,
+        "symbol": "EIWallPart::SetWallState(EWallUpDownStateType, bool)"
+      },
+      {
+        "addr": "0x8002e938",
+        "size": 300,
+        "symbol": "EIWallPart::DoFadeCollisonWallList(TrapezoidFade &, EVec3 &, TNodeList<EIWallPart *> &)"
+      }
+    ],
+    "HUDTarget": [
+      {
+        "addr": "0x80187d10",
+        "size": 300,
+        "symbol": "HUDTarget::ReadMoodBar(int, unsigned int)"
+      },
+      {
+        "addr": "0x80188348",
+        "size": 284,
+        "symbol": "HUDTarget::ShouldHUDBeVisible(int) const"
+      },
+      {
+        "addr": "0x801885ac",
+        "size": 276,
+        "symbol": "HUDTarget::UpdateClock(void)"
+      },
+      {
+        "addr": "0x80188e60",
+        "size": 272,
+        "symbol": "HUDTarget::AddAction(int, Interaction *, BString2 &, unsigned int, ERShader *, unsigned int)"
+      },
+      {
+        "addr": "0x80189444",
+        "size": 360,
+        "symbol": "HUDTarget::ApplyMotiveCurveArray(unsigned int, short)"
+      },
+      {
+        "addr": "0x801898e4",
+        "size": 260,
+        "symbol": "HUDTarget::GotoCAS(unsigned short, unsigned short, int, int)"
+      }
+    ],
+    "INTTarget": [
+      {
+        "addr": "0x801f8720",
+        "size": 436,
+        "symbol": "INTTarget::~INTTarget(void)"
+      },
+      {
+        "addr": "0x801f88d4",
+        "size": 272,
+        "symbol": "INTTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801f8a7c",
+        "size": 324,
+        "symbol": "INTTarget::GetLocalizable(char *)"
+      },
+      {
+        "addr": "0x801f8bc0",
+        "size": 472,
+        "symbol": "INTTarget::Update(void)"
+      },
+      {
+        "addr": "0x801f8e94",
+        "size": 328,
+        "symbol": "INTTarget::SetInteractionDisplayValues(unsigned int, unsigned int)"
+      },
+      {
+        "addr": "0x801f8fdc",
+        "size": 376,
+        "symbol": "INTTarget::TriggerInteractionAnimation(unsigned int, unsigned int, unsigned int)"
+      }
+    ],
+    "MODTarget": [
+      {
+        "addr": "0x801c9178",
+        "size": 376,
+        "symbol": "MODTarget::~MODTarget(void)"
+      },
+      {
+        "addr": "0x801c92f0",
+        "size": 260,
+        "symbol": "MODTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801c94c0",
+        "size": 276,
+        "symbol": "MODTarget::GetLocalizable(char *)"
+      },
+      {
+        "addr": "0x801c9afc",
+        "size": 392,
+        "symbol": "MODTarget::UpdateMood(void)"
+      },
+      {
+        "addr": "0x801c9c8c",
+        "size": 448,
+        "symbol": "MODTarget::SelectDpadArrow(MODTarget::eSidePanelId)"
+      },
+      {
+        "addr": "0x801ca44c",
+        "size": 508,
+        "symbol": "MODTarget::SetMeterValue(float, bool)"
+      }
+    ],
+    "RCPTarget": [
+      {
+        "addr": "0x801dd904",
+        "size": 408,
+        "symbol": "RCPTarget::~RCPTarget(void)"
+      },
+      {
+        "addr": "0x801ddbd0",
+        "size": 444,
+        "symbol": "RCPTarget::make_recipe_text(RCPTarget::Recipe *, BString2 &)"
+      },
+      {
+        "addr": "0x801de1e8",
+        "size": 324,
+        "symbol": "RCPTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801de32c",
+        "size": 392,
+        "symbol": "RCPTarget::GetLocalizable(char *)"
+      },
+      {
+        "addr": "0x801de538",
+        "size": 444,
+        "symbol": "RCPTarget::init_recipes(void)"
+      },
+      {
+        "addr": "0x801decb4",
+        "size": 308,
+        "symbol": "RCPTarget::get_proc_shaders(RCPTarget::Recipe &, unsigned int &, unsigned int &)"
+      }
+    ],
+    "ACTTarget": [
+      {
+        "addr": "0x801a1c1c",
+        "size": 288,
+        "symbol": "ACTTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801a2204",
+        "size": 440,
+        "symbol": "ACTTarget::UpdateActionQueue(void)"
+      },
+      {
+        "addr": "0x801a23c4",
+        "size": 500,
+        "symbol": "ACTTarget::AddAction(int, Interaction *, BString2 &, unsigned int, ERShader *, unsigned int)"
+      },
+      {
+        "addr": "0x801a2e30",
+        "size": 360,
+        "symbol": "ACTTarget::CancelCurrentObject(void)"
+      },
+      {
+        "addr": "0x801a2f98",
+        "size": 264,
+        "symbol": "ACTTarget::UpdateCancelModeWidgets(void)"
+      }
+    ],
+    "ActionQueueHUD": [
+      {
+        "addr": "0x8018486c",
+        "size": 388,
+        "symbol": "ActionQueueHUD::Stop(void)"
+      },
+      {
+        "addr": "0x80184e8c",
+        "size": 340,
+        "symbol": "ActionQueueHUD::RunIngame(void)"
+      },
+      {
+        "addr": "0x801851f8",
+        "size": 400,
+        "symbol": "ActionQueueHUD::RemoveAction(Interaction *)"
+      },
+      {
+        "addr": "0x801853fc",
+        "size": 468,
+        "symbol": "ActionQueueHUD::StartPendingOperation(void)"
+      },
+      {
+        "addr": "0x801855d0",
+        "size": 392,
+        "symbol": "ActionQueueHUD::CompletePendingOperation(void)"
+      }
+    ],
+    "CasSimRenderer": [
+      {
+        "addr": "0x8016ef38",
+        "size": 280,
+        "symbol": "CasSimRenderer::~CasSimRenderer(void)"
+      },
+      {
+        "addr": "0x8016f174",
+        "size": 400,
+        "symbol": "CasSimRenderer::Draw(ERC *)"
+      },
+      {
+        "addr": "0x8016f304",
+        "size": 388,
+        "symbol": "CasSimRenderer::DrawShadow(ERC *)"
+      },
+      {
+        "addr": "0x8016f5a8",
+        "size": 376,
+        "symbol": "CasSimRenderer::SetupSimCommon(void)"
+      },
+      {
+        "addr": "0x8016f90c",
+        "size": 276,
+        "symbol": "CasSimRenderer::DrawFaceImage(ERC *)"
+      }
+    ],
+    "INGTarget": [
+      {
+        "addr": "0x801ba500",
+        "size": 424,
+        "symbol": "INGTarget::~INGTarget(void)"
+      },
+      {
+        "addr": "0x801bb6c0",
+        "size": 284,
+        "symbol": "INGTarget::Update(void)"
+      },
+      {
+        "addr": "0x801bb7dc",
+        "size": 316,
+        "symbol": "INGTarget::end_dialog(bool)"
+      },
+      {
+        "addr": "0x801bb918",
+        "size": 320,
+        "symbol": "INGTarget::update_current_items(unsigned int)"
+      },
+      {
+        "addr": "0x801bbf6c",
+        "size": 424,
+        "symbol": "INGTarget::create_edit_buffer(void)"
+      }
+    ],
+    "WAFTarget": [
+      {
+        "addr": "0x801e2d10",
+        "size": 432,
+        "symbol": "WAFTarget::~WAFTarget(void)"
+      },
+      {
+        "addr": "0x801e3160",
+        "size": 280,
+        "symbol": "WAFTarget::GetLocalizable(char *)"
+      },
+      {
+        "addr": "0x801e3c9c",
+        "size": 452,
+        "symbol": "WAFTarget::StartAnimation(int)"
+      },
+      {
+        "addr": "0x801e3e60",
+        "size": 336,
+        "symbol": "WAFTarget::FinishSettingIcon(int)"
+      },
+      {
+        "addr": "0x801e4858",
+        "size": 280,
+        "symbol": "WAFTarget::GlowEffectStart(void)"
+      }
+    ],
+    "cTrack": [
+      {
+        "addr": "0x801175e0",
+        "size": 268,
+        "symbol": "cTrack::cTrack(ERSoundEvent *)"
+      },
+      {
+        "addr": "0x801178ac",
+        "size": 436,
+        "symbol": "cTrack::HandleTimerCallback(void)"
+      },
+      {
+        "addr": "0x80117a60",
+        "size": 444,
+        "symbol": "cTrack::PlayPause(int, int, int, float)"
+      },
+      {
+        "addr": "0x80117efc",
+        "size": 376,
+        "symbol": "cTrack::SetRegister(int, int)"
+      },
+      {
+        "addr": "0x80118c74",
+        "size": 352,
+        "symbol": "cTrack::CalculateCurrentVolume(void)"
+      }
+    ],
+    "cXPortalImpl": [
+      {
+        "addr": "0x8012e608",
+        "size": 440,
+        "symbol": "cXPortalImpl::SetRouteScore(short, float)"
+      },
+      {
+        "addr": "0x8012fe1c",
+        "size": 444,
+        "symbol": "cXPortalImpl::ApplyWallStyle(bool)"
+      },
+      {
+        "addr": "0x801302b0",
+        "size": 476,
+        "symbol": "cXPortalImpl::Pickup(void)"
+      },
+      {
+        "addr": "0x80130824",
+        "size": 316,
+        "symbol": "cXPortalImpl::FindAvailRouteID(ObjectModule *)"
+      },
+      {
+        "addr": "0x8013156c",
+        "size": 308,
+        "symbol": "cXPortalImpl::ClearRouteScores(ObjectModule *, short)"
+      }
+    ],
+    "ActionMenu": [
+      {
+        "addr": "0x80183928",
+        "size": 488,
+        "symbol": "ActionMenu::UpdateIcon(void)"
+      },
+      {
+        "addr": "0x80183b10",
+        "size": 276,
+        "symbol": "ActionMenu::FillInMenu(void)"
+      },
+      {
+        "addr": "0x80184208",
+        "size": 416,
+        "symbol": "ActionMenu::AcceptMenu(void)"
+      },
+      {
+        "addr": "0x801843fc",
+        "size": 292,
+        "symbol": "ActionMenu::TerminateMenu(void)"
+      }
+    ],
+    "AptViewer": [
+      {
+        "addr": "0x80010394",
+        "size": 284,
+        "symbol": "AptViewer::NewCallFunction(char *, char *, char *, int,...)"
+      },
+      {
+        "addr": "0x800104b0",
+        "size": 260,
+        "symbol": "AptViewer::NewCallFunction2(char *, char *, char *, int, char **)"
+      },
+      {
+        "addr": "0x80010644",
+        "size": 308,
+        "symbol": "AptViewer::UpdateAll(void)"
+      },
+      {
+        "addr": "0x80011a48",
+        "size": 260,
+        "symbol": "AptViewer::PushAptButtonFilter(int, char *)"
+      }
+    ],
+    "CRDTarget": [
+      {
+        "addr": "0x801a4848",
+        "size": 444,
+        "symbol": "CRDTarget::~CRDTarget(void)"
+      },
+      {
+        "addr": "0x801a4ae4",
+        "size": 260,
+        "symbol": "CRDTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801a4c70",
+        "size": 336,
+        "symbol": "CRDTarget::Update(void)"
+      },
+      {
+        "addr": "0x801a4dc0",
+        "size": 300,
+        "symbol": "CRDTarget::ShowCredits(void)"
+      }
+    ],
+    "CameraDirector": [
+      {
+        "addr": "0x8001b078",
+        "size": 288,
+        "symbol": "CameraDirector::InitSimsCamera(void)"
+      },
+      {
+        "addr": "0x8001b1fc",
+        "size": 336,
+        "symbol": "CameraDirector::ReleaseCurrentCamera(void)"
+      },
+      {
+        "addr": "0x8001c540",
+        "size": 348,
+        "symbol": "CameraDirector::ReleaseToGameCamera(void)"
+      },
+      {
+        "addr": "0x8001c69c",
+        "size": 404,
+        "symbol": "CameraDirector::InterpToGameCamera(float, CamDirInterpType)"
+      }
+    ],
+    "CasGenetics": [
+      {
+        "addr": "0x801604a8",
+        "size": 492,
+        "symbol": "CasGenetics::BlendSimDescriptions(CasSimDescriptionS2C &, CasSimDescriptionS2C &, CasSimDescriptionS2C &, bool)"
+      },
+      {
+        "addr": "0x80160788",
+        "size": 280,
+        "symbol": "CasGenetics::BlendBodyType(signed char, signed char)"
+      },
+      {
+        "addr": "0x80160e38",
+        "size": 268,
+        "symbol": "CasGenetics::LoadGrandparentList(bool)"
+      },
+      {
+        "addr": "0x80160f44",
+        "size": 332,
+        "symbol": "CasGenetics::SaveGrandparentList(void)"
+      }
+    ],
+    "CasSimRendererDynamic": [
+      {
+        "addr": "0x8016fd00",
+        "size": 260,
+        "symbol": "CasSimRendererDynamic::GetIndexes(eBodyPartS2C, unsigned char *, unsigned char *)"
+      },
+      {
+        "addr": "0x8016fe04",
+        "size": 260,
+        "symbol": "CasSimRendererDynamic::GetIndexes(eTattooTextureTypeS2C, unsigned char *, unsigned char *)"
+      },
+      {
+        "addr": "0x80170704",
+        "size": 288,
+        "symbol": "CasSimRendererDynamic::PlayPersonalityAnim(short)"
+      },
+      {
+        "addr": "0x80172b18",
+        "size": 264,
+        "symbol": "CasSimRendererDynamic::HandleEventChangeFocus(CasEventChangeFocus &)"
+      }
+    ],
+    "ChainResFile": [
+      {
+        "addr": "0x800b2b54",
+        "size": 296,
+        "symbol": "ChainResFile::GetByIndex(int, short, void (*)(void *, int))"
+      },
+      {
+        "addr": "0x800b381c",
+        "size": 432,
+        "symbol": "ChainResFile::AddProhibitedType(iResFile *, unsigned int)"
+      },
+      {
+        "addr": "0x800b39cc",
+        "size": 436,
+        "symbol": "ChainResFile::AddExclusiveType(iResFile *, unsigned int)"
+      },
+      {
+        "addr": "0x800b3b80",
+        "size": 276,
+        "symbol": "ChainResFile::TypeWritable(unsigned int)"
+      }
+    ],
+    "EHouse": [
+      {
+        "addr": "0x80023a20",
+        "size": 396,
+        "symbol": "EHouse::BuildHouse(void)"
+      },
+      {
+        "addr": "0x80024e04",
+        "size": 404,
+        "symbol": "EHouse::ReCalcHouse(void)"
+      },
+      {
+        "addr": "0x80024f98",
+        "size": 372,
+        "symbol": "EHouse::UpdateRoomLights(void)"
+      },
+      {
+        "addr": "0x80025264",
+        "size": 312,
+        "symbol": "EHouse::InitRoomLighting(void)"
+      }
+    ],
+    "ELightGrid": [
+      {
+        "addr": "0x8022ffe0",
+        "size": 460,
+        "symbol": "ELightGrid::ConnectPortalLights(ELightGrid::RoomData *)"
+      },
+      {
+        "addr": "0x802301ac",
+        "size": 264,
+        "symbol": "ELightGrid::RoomData::FindClosestLights(EVec3 &, int, int, ELightGrid::LightData *, ELightGrid::LightWeight *, int)"
+      },
+      {
+        "addr": "0x802302b4",
+        "size": 288,
+        "symbol": "ELightGrid::EvaluatePointLights(int, int)"
+      },
+      {
+        "addr": "0x80230c2c",
+        "size": 508,
+        "symbol": "ELightGrid::GetLightWeightsAtLocation(EVec3 &, int, ELightGrid::LightWeight *)"
+      }
+    ],
+    "ERoom": [
+      {
+        "addr": "0x8002d778",
+        "size": 276,
+        "symbol": "ERoom::ERoom(void)"
+      },
+      {
+        "addr": "0x8002dcf0",
+        "size": 384,
+        "symbol": "ERoom::InitRoomLookupTab(void)"
+      },
+      {
+        "addr": "0x8002ff8c",
+        "size": 376,
+        "symbol": "ERoom::DeleteWallAtTile(CTilePt &, TileWalls &, TileWallsSegment)"
+      },
+      {
+        "addr": "0x80030104",
+        "size": 456,
+        "symbol": "ERoom::KillArchitecturalObject(CTilePt &, TileWallsSegment, int &, bool)"
+      }
+    ],
+    "EdithVariableSet": [
+      {
+        "addr": "0x800e32ec",
+        "size": 264,
+        "symbol": "EdithVariableSet::EdithVariableSet(EdithVariableSet &)"
+      },
+      {
+        "addr": "0x800e7a5c",
+        "size": 440,
+        "symbol": "EdithVariableSet::ShrinkToExactSize(byte_key_map<72, short, allocator<short> > &)"
+      },
+      {
+        "addr": "0x800e7c14",
+        "size": 284,
+        "symbol": "EdithVariableSet::ReconKeyBitSet(ReconBuffer *, byte_key_map<72, short, allocator<short> >::_Byte_key_map_iterator<short, _Nonconst_traits<short> >)"
+      },
+      {
+        "addr": "0x800e7f64",
+        "size": 264,
+        "symbol": "EdithVariableSet::Reset(void)"
+      }
+    ],
+    "FCMTarget": [
+      {
+        "addr": "0x801b3b68",
+        "size": 352,
+        "symbol": "FCMTarget::~FCMTarget(void)"
+      },
+      {
+        "addr": "0x801b3cc8",
+        "size": 264,
+        "symbol": "FCMTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801b3ef0",
+        "size": 264,
+        "symbol": "FCMTarget::Update(void)"
+      },
+      {
+        "addr": "0x801b3ff8",
+        "size": 448,
+        "symbol": "FCMTarget::ShowFireCodeMeter(void)"
+      }
+    ],
+    "FONTarget": [
+      {
+        "addr": "0x801ea07c",
+        "size": 484,
+        "symbol": "FONTarget::~FONTarget(void)"
+      },
+      {
+        "addr": "0x801ea260",
+        "size": 308,
+        "symbol": "FONTarget::SetupNames(IHRecord *, int)"
+      },
+      {
+        "addr": "0x801ea394",
+        "size": 376,
+        "symbol": "FONTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801ea50c",
+        "size": 436,
+        "symbol": "FONTarget::SetVariable(char *, char *)"
+      }
+    ],
+    "FamilyImpl": [
+      {
+        "addr": "0x800b61cc",
+        "size": 260,
+        "symbol": "FamilyImpl::RemoveFamilyFromLot(void)"
+      },
+      {
+        "addr": "0x800b6548",
+        "size": 264,
+        "symbol": "FamilyImpl::DoStream(ReconBuffer *, int)"
+      },
+      {
+        "addr": "0x800b6650",
+        "size": 260,
+        "symbol": "FamilyImpl::LoadByResID(iResFile *, short, int *)"
+      },
+      {
+        "addr": "0x800b6818",
+        "size": 444,
+        "symbol": "FamilyImpl::AddMember(int)"
+      }
+    ],
+    "MOTTarget": [
+      {
+        "addr": "0x801cb5a4",
+        "size": 364,
+        "symbol": "MOTTarget::~MOTTarget(void)"
+      },
+      {
+        "addr": "0x801cb710",
+        "size": 280,
+        "symbol": "MOTTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801cbfc8",
+        "size": 464,
+        "symbol": "MOTTarget::ReadMotiveBar(int)"
+      },
+      {
+        "addr": "0x801cc198",
+        "size": 264,
+        "symbol": "MOTTarget::ResetRealMotiveValues(void)"
+      }
+    ],
+    "MSGTarget": [
+      {
+        "addr": "0x801fa99c",
+        "size": 488,
+        "symbol": "MSGTarget::~MSGTarget(void)"
+      },
+      {
+        "addr": "0x801fab84",
+        "size": 320,
+        "symbol": "MSGTarget::SetupTitles(int)"
+      },
+      {
+        "addr": "0x801facc4",
+        "size": 368,
+        "symbol": "MSGTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801fb11c",
+        "size": 276,
+        "symbol": "MSGTarget::GetLocalizable(char *)"
+      }
+    ],
+    "MorphUtilities": [
+      {
+        "addr": "0x80057ef4",
+        "size": 304,
+        "symbol": "MorphUtilities::ApplyMorphHead(float)"
+      },
+      {
+        "addr": "0x80058024",
+        "size": 512,
+        "symbol": "MorphUtilities::MorphLatticeOnHead(unsigned int, float, unsigned int)"
+      },
+      {
+        "addr": "0x80058224",
+        "size": 392,
+        "symbol": "MorphUtilities::MorphLatticeOnBodyPart(unsigned int, float, unsigned int)"
+      },
+      {
+        "addr": "0x800584f8",
+        "size": 260,
+        "symbol": "MorphUtilities::GetHeadLatticeIndexAndValue(float, float &, int &, float &, int &)"
+      }
+    ],
+    "PassiveInfluenceMap": [
+      {
+        "addr": "0x80113740",
+        "size": 440,
+        "symbol": "PassiveInfluenceMap::RemoveItemFromMap(PassiveInfluenceItem *)"
+      },
+      {
+        "addr": "0x80113944",
+        "size": 276,
+        "symbol": "PassiveInfluenceMap::EmptyMap(void)"
+      },
+      {
+        "addr": "0x80113a8c",
+        "size": 476,
+        "symbol": "PassiveInfluenceMap::CheckObjectInfluence(PassiveInfluenceTarget *)"
+      },
+      {
+        "addr": "0x80113c68",
+        "size": 320,
+        "symbol": "PassiveInfluenceMap::ApplyInfluence(PassiveInfluenceObject *, PassiveInfluenceTarget *)"
+      }
+    ],
+    "SeqResFile": [
+      {
+        "addr": "0x8013db68",
+        "size": 268,
+        "symbol": "SeqResFile::CreateIResFile(iResFile *, StringBuffer &, int, int &, StackString<32> **)"
+      },
+      {
+        "addr": "0x8013dc74",
+        "size": 308,
+        "symbol": "SeqResFile::OpenIResFile(iResFile *, StringBuffer &, int, bool &)"
+      },
+      {
+        "addr": "0x8013de7c",
+        "size": 396,
+        "symbol": "SeqResFile::Create(StringBuffer &)"
+      },
+      {
+        "addr": "0x8013e0f4",
+        "size": 352,
+        "symbol": "SeqResFile::Open(StringBuffer &)"
+      }
+    ],
+    "SimImageMaker": [
+      {
+        "addr": "0x8006e814",
+        "size": 260,
+        "symbol": "SimImageMaker::SimImageMaker(void)"
+      },
+      {
+        "addr": "0x8006ea14",
+        "size": 440,
+        "symbol": "SimImageMaker::SetToDefaultValues(void)"
+      },
+      {
+        "addr": "0x8006f25c",
+        "size": 428,
+        "symbol": "SimImageMaker::InitWindow(E3DWindow &, ERC *)"
+      },
+      {
+        "addr": "0x8006f408",
+        "size": 304,
+        "symbol": "SimImageMaker::PoseSim(ERC *)"
+      }
+    ],
+    "SpacePartition": [
+      {
+        "addr": "0x80138d18",
+        "size": 280,
+        "symbol": "SpacePartition::GetIntersectingPartitionRect(IRect *)"
+      },
+      {
+        "addr": "0x80138f30",
+        "size": 320,
+        "symbol": "SpacePartition::EstimateDistanceToGoal(int)"
+      },
+      {
+        "addr": "0x80139070",
+        "size": 480,
+        "symbol": "SpacePartition::MeasureDistance(int, int, IPoint *)"
+      },
+      {
+        "addr": "0x803acc5c",
+        "size": 388,
+        "symbol": "SpacePartition::~SpacePartition(void)"
+      }
+    ],
+    "WantFear": [
+      {
+        "addr": "0x8014b4dc",
+        "size": 280,
+        "symbol": "WantFear::Bookmark::SatisfiedBy(WantFear::Notification &) const"
+      },
+      {
+        "addr": "0x8014b5f4",
+        "size": 340,
+        "symbol": "WantFear::Bookmark::IsValid(Neighbor *, bool) const"
+      },
+      {
+        "addr": "0x8014b748",
+        "size": 272,
+        "symbol": "WantFear::Bookmark::IsCompleted(Neighbor *) const"
+      },
+      {
+        "addr": "0x8014bb4c",
+        "size": 288,
+        "symbol": "WantFear::Bookmark::DoStream(ReconBuffer *, int)"
+      }
+    ],
+    "WorldMap": [
+      {
+        "addr": "0x800998c8",
+        "size": 480,
+        "symbol": "WorldMap::WorldMap(void)"
+      },
+      {
+        "addr": "0x80099aa8",
+        "size": 412,
+        "symbol": "WorldMap::~WorldMap(void)"
+      },
+      {
+        "addr": "0x80099c44",
+        "size": 444,
+        "symbol": "WorldMap::Reset(void)"
+      },
+      {
+        "addr": "0x8009a1d0",
+        "size": 360,
+        "symbol": "WorldMap::Draw(ERC *)"
+      }
+    ],
+    "anonymous": [
+      {
+        "addr": "0x800034c0",
+        "size": 280,
+        "symbol": "{anonymous}::OverrideMotionBlurSettingsFromTokens(FrameEffectsMotionBlurDataElement *, EString *, int)"
+      },
+      {
+        "addr": "0x80003830",
+        "size": 360,
+        "symbol": "{anonymous}::OverrideDOFSettingsFromTokens(FrameEffectsDepthOfFieldDataElement *, EString *, int)"
+      },
+      {
+        "addr": "0x80015a50",
+        "size": 408,
+        "symbol": "{anonymous}::HandleEffectNote(ESimsCam *, EAnimNote &, anim::PropKind)"
+      },
+      {
+        "addr": "0x8005be08",
+        "size": 456,
+        "symbol": "{anonymous}::HandleEffectNote(cXPerson *, EAnimNote &, anim::PropKind)"
+      }
+    ],
+    "deque": [
+      {
+        "addr": "0x803a159c",
+        "size": 456,
+        "symbol": "deque<StateMachineStatus *, allocator<StateMachineStatus *> >::_M_reallocate_map(unsigned int, bool)"
+      },
+      {
+        "addr": "0x803b31c4",
+        "size": 456,
+        "symbol": "deque<int, allocator<int> >::_M_reallocate_map(unsigned int, bool)"
+      },
+      {
+        "addr": "0x803b5324",
+        "size": 456,
+        "symbol": "deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_reallocate_map(unsigned int, bool)"
+      },
+      {
+        "addr": "0x803b57a8",
+        "size": 456,
+        "symbol": "deque<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_reallocate_map(unsigned int, bool)"
+      }
+    ],
+    "ActionQueue": [
+      {
+        "addr": "0x80119f60",
+        "size": 268,
+        "symbol": "ActionQueue::AddActionToHUD(int)"
+      },
+      {
+        "addr": "0x8011a3f8",
+        "size": 320,
+        "symbol": "ActionQueue::Insert(Interaction &, unsigned int)"
+      },
+      {
+        "addr": "0x8011a538",
+        "size": 428,
+        "symbol": "ActionQueue::Remove(unsigned int)"
+      }
+    ],
+    "CASMorphTarget": [
+      {
+        "addr": "0x8019cc34",
+        "size": 348,
+        "symbol": "CASMorphTarget::~CASMorphTarget(void)"
+      },
+      {
+        "addr": "0x8019cd90",
+        "size": 380,
+        "symbol": "CASMorphTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x8019d1f8",
+        "size": 436,
+        "symbol": "CASMorphTarget::GetVariable(char *)"
+      }
+    ],
+    "CASRoommateTarget": [
+      {
+        "addr": "0x801a0048",
+        "size": 376,
+        "symbol": "CASRoommateTarget::~CASRoommateTarget(void)"
+      },
+      {
+        "addr": "0x801a0318",
+        "size": 280,
+        "symbol": "CASRoommateTarget::GetLocalizableSubnav(int, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x801a0604",
+        "size": 416,
+        "symbol": "CASRoommateTarget::Draw(ERC *)"
+      }
+    ],
+    "CASTattooTarget": [
+      {
+        "addr": "0x8019f644",
+        "size": 348,
+        "symbol": "CASTattooTarget::~CASTattooTarget(void)"
+      },
+      {
+        "addr": "0x8019f7c8",
+        "size": 272,
+        "symbol": "CASTattooTarget::GetLocalizableSubnav(int, unsigned wchar_t *)"
+      },
+      {
+        "addr": "0x8019f8d8",
+        "size": 332,
+        "symbol": "CASTattooTarget::RemoveClothesForTattoo(void)"
+      }
+    ],
+    "CSMTarget": [
+      {
+        "addr": "0x801a6980",
+        "size": 436,
+        "symbol": "CSMTarget::~CSMTarget(void)"
+      },
+      {
+        "addr": "0x801a6b34",
+        "size": 264,
+        "symbol": "CSMTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801a6cd4",
+        "size": 300,
+        "symbol": "CSMTarget::GetLocalizable(char *)"
+      }
+    ],
+    "CUnlockDisplayObject": [
+      {
+        "addr": "0x80079078",
+        "size": 312,
+        "symbol": "CUnlockDisplayObject::CUnlockDisplayObject(void)"
+      },
+      {
+        "addr": "0x800791b0",
+        "size": 264,
+        "symbol": "CUnlockDisplayObject::~CUnlockDisplayObject(void)"
+      },
+      {
+        "addr": "0x80079874",
+        "size": 300,
+        "symbol": "CUnlockDisplayObject::Draw(ERC *)"
+      }
+    ],
+    "CasCostumes": [
+      {
+        "addr": "0x8015f7fc",
+        "size": 332,
+        "symbol": "CasCostumes::SaveCostumesList(void)"
+      },
+      {
+        "addr": "0x80160148",
+        "size": 336,
+        "symbol": "CasCostumes::UpdateSimDescription(bool, char *, CasSimDescriptionS2C *)"
+      },
+      {
+        "addr": "0x80160298",
+        "size": 288,
+        "symbol": "CasCostumes::UpdateSimDescription(bool, unsigned int, CasSimDescriptionS2C *)"
+      }
+    ],
+    "DlgWrapper": [
+      {
+        "addr": "0x8007de30",
+        "size": 440,
+        "symbol": "DlgWrapper::Update(void)"
+      },
+      {
+        "addr": "0x8007e274",
+        "size": 460,
+        "symbol": "DlgWrapper::GetVariable(char *)"
+      },
+      {
+        "addr": "0x8007e440",
+        "size": 260,
+        "symbol": "DlgWrapper::DlgWrapper(bool)"
+      }
+    ],
+    "EBoneParticle": [
+      {
+        "addr": "0x80015074",
+        "size": 336,
+        "symbol": "EBoneParticle::EBoneParticle(cXPerson *, AnimParticleData *, bool)"
+      },
+      {
+        "addr": "0x800151c4",
+        "size": 404,
+        "symbol": "EBoneParticle::UpdateParticleLoad(void)"
+      },
+      {
+        "addr": "0x80015358",
+        "size": 428,
+        "symbol": "EBoneParticle::~EBoneParticle(void)"
+      }
+    ],
+    "ECheatDMI": [
+      {
+        "addr": "0x800214e0",
+        "size": 288,
+        "symbol": "ECheatDMI::GetValue(char *)"
+      },
+      {
+        "addr": "0x80021600",
+        "size": 440,
+        "symbol": "ECheatDMI::ButtonPress(EDebugMenuButton)"
+      },
+      {
+        "addr": "0x800217b8",
+        "size": 308,
+        "symbol": "ECheatDMI::ButtonPress(EDebugMenuButton, float)"
+      }
+    ],
+    "EILight": [
+      {
+        "addr": "0x80227a2c",
+        "size": 276,
+        "symbol": "EILight::Write(EStream &)"
+      },
+      {
+        "addr": "0x80227b40",
+        "size": 284,
+        "symbol": "EILight::Read(EStream &)"
+      },
+      {
+        "addr": "0x80227de0",
+        "size": 268,
+        "symbol": "EILight::TestOverlap(EInstance *)"
+      }
+    ],
+    "EIObjTileBoundRect": [
+      {
+        "addr": "0x80055b88",
+        "size": 260,
+        "symbol": "EIObjTileBoundRect::AddTilePt(EVec2 &)"
+      },
+      {
+        "addr": "0x80055e64",
+        "size": 304,
+        "symbol": "EIObjTileBoundRect::Overlap(EIObjTileBoundRect &) const"
+      },
+      {
+        "addr": "0x80056050",
+        "size": 464,
+        "symbol": "EIObjTileBoundRect::MirrorYX(void)"
+      }
+    ],
+    "EYETarget": [
+      {
+        "addr": "0x801e8844",
+        "size": 336,
+        "symbol": "EYETarget::AddSetVar(SetVar *)"
+      },
+      {
+        "addr": "0x801e8994",
+        "size": 336,
+        "symbol": "EYETarget::AddGetVar(GetVar *)"
+      },
+      {
+        "addr": "0x801e8f94",
+        "size": 420,
+        "symbol": "EYETarget::RenderCallback(ERC *, structDrawCBparams *)"
+      }
+    ],
+    "EyeToyClient": [
+      {
+        "addr": "0x80037714",
+        "size": 288,
+        "symbol": "EyeToyClient::loadTexture(int, NghResFile::SaveRecord &)"
+      },
+      {
+        "addr": "0x80037b80",
+        "size": 416,
+        "symbol": "EyeToyClient::CopyTextureToShader(ERShader *, ETexture *)"
+      },
+      {
+        "addr": "0x80038518",
+        "size": 284,
+        "symbol": "EyeToyClient::Init(void)"
+      }
+    ],
+    "FlashPiMenu": [
+      {
+        "addr": "0x80039de8",
+        "size": 300,
+        "symbol": "FlashPiMenu::CreateMenuForGoHere(bool)"
+      },
+      {
+        "addr": "0x80039ff4",
+        "size": 272,
+        "symbol": "FlashPiMenu::AddObjectInteractionsToMenu(cXObject *, bool)"
+      },
+      {
+        "addr": "0x8003aab0",
+        "size": 496,
+        "symbol": "FlashPiMenu::ChooseAction(cXObject *, Interaction *, bool)"
+      }
+    ],
+    "G2DTarget": [
+      {
+        "addr": "0x801b4be8",
+        "size": 436,
+        "symbol": "G2DTarget::~G2DTarget(void)"
+      },
+      {
+        "addr": "0x801b4fac",
+        "size": 368,
+        "symbol": "G2DTarget::GetLocalizable(char *)"
+      },
+      {
+        "addr": "0x801b690c",
+        "size": 340,
+        "symbol": "G2DTarget::UnloadDialog(void)"
+      }
+    ],
+    "HoodManager": [
+      {
+        "addr": "0x800430f4",
+        "size": 316,
+        "symbol": "HoodManager::UnmarkFamilyForDeletion(int, Family *)"
+      },
+      {
+        "addr": "0x80043230",
+        "size": 344,
+        "symbol": "HoodManager::EvictFamilyAndLiquidateAssets(int)"
+      },
+      {
+        "addr": "0x80043590",
+        "size": 284,
+        "symbol": "HoodManager::RemoveAllObjects(int)"
+      }
+    ],
+    "HouseImpl": [
+      {
+        "addr": "0x800bb4ac",
+        "size": 508,
+        "symbol": "HouseImpl::Initialize(void)"
+      },
+      {
+        "addr": "0x800bbae8",
+        "size": 340,
+        "symbol": "HouseImpl::ComputeAndStoreLotData(void)"
+      },
+      {
+        "addr": "0x800bc24c",
+        "size": 468,
+        "symbol": "HouseImpl::GetHouseStats(HouseStats &)"
+      }
+    ],
+    "ITBTarget": [
+      {
+        "addr": "0x801bd088",
+        "size": 368,
+        "symbol": "ITBTarget::~ITBTarget(void)"
+      },
+      {
+        "addr": "0x801bd1f8",
+        "size": 308,
+        "symbol": "ITBTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801bd8fc",
+        "size": 340,
+        "symbol": "ITBTarget::SpawnIntroThoughtBalloon(UIDialog *)"
+      }
+    ],
+    "InfluenceMap": [
+      {
+        "addr": "0x80048d44",
+        "size": 356,
+        "symbol": "InfluenceMap::AddObjectToMap(cXObject *)"
+      },
+      {
+        "addr": "0x80048ea8",
+        "size": 460,
+        "symbol": "InfluenceMap::AddObjectEntry(cXObject *, ITreeTableEntry *)"
+      },
+      {
+        "addr": "0x80049074",
+        "size": 344,
+        "symbol": "InfluenceMap::RemoveObjectFromMap(cXObject *)"
+      }
+    ],
+    "KEYTarget": [
+      {
+        "addr": "0x801f9804",
+        "size": 348,
+        "symbol": "KEYTarget::~KEYTarget(void)"
+      },
+      {
+        "addr": "0x801f9a1c",
+        "size": 428,
+        "symbol": "KEYTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801f9bc8",
+        "size": 384,
+        "symbol": "KEYTarget::GetVariable(char *)"
+      }
+    ],
+    "MDITarget": [
+      {
+        "addr": "0x801c35dc",
+        "size": 344,
+        "symbol": "MDITarget::~MDITarget(void)"
+      },
+      {
+        "addr": "0x801c37e4",
+        "size": 308,
+        "symbol": "MDITarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801c3918",
+        "size": 268,
+        "symbol": "MDITarget::GetLocalizable(char *)"
+      }
+    ],
+    "MemFile": [
+      {
+        "addr": "0x800a5c88",
+        "size": 324,
+        "symbol": "MemFile::WriteBlock(void *, int *)"
+      },
+      {
+        "addr": "0x800a605c",
+        "size": 280,
+        "symbol": "MemFile::Open(StringBuffer &)"
+      },
+      {
+        "addr": "0x800a6308",
+        "size": 276,
+        "symbol": "MemFile::Flush(void)"
+      }
+    ],
+    "OptionsRecon": [
+      {
+        "addr": "0x80058bfc",
+        "size": 296,
+        "symbol": "OptionsRecon::WriteOut(void)"
+      },
+      {
+        "addr": "0x80058d2c",
+        "size": 296,
+        "symbol": "OptionsRecon::ReadIn(int)"
+      },
+      {
+        "addr": "0x803a0380",
+        "size": 344,
+        "symbol": "OptionsRecon::operator=(OptionsRecon &)"
+      }
+    ],
+    "PDATarget": [
+      {
+        "addr": "0x801fdc64",
+        "size": 512,
+        "symbol": "PDATarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801fde64",
+        "size": 320,
+        "symbol": "PDATarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x801fee80",
+        "size": 288,
+        "symbol": "PDATarget::HandleButtonHelpMessage(int, int)"
+      }
+    ],
+    "PRGTarget": [
+      {
+        "addr": "0x801d9098",
+        "size": 400,
+        "symbol": "PRGTarget::~PRGTarget(void)"
+      },
+      {
+        "addr": "0x801d9604",
+        "size": 472,
+        "symbol": "PRGTarget::GetTotalSkillPoints(void)"
+      },
+      {
+        "addr": "0x801d97dc",
+        "size": 360,
+        "symbol": "PRGTarget::GetMaxedSkills(void)"
+      }
+    ],
+    "PlumbBobOwner": [
+      {
+        "addr": "0x8005b89c",
+        "size": 300,
+        "symbol": "PlumbBobOwner::GrabPlumbBob(int, PlumbBobOwner *)"
+      },
+      {
+        "addr": "0x8005b9c8",
+        "size": 460,
+        "symbol": "PlumbBobOwner::PushAndGrabPlumbBobOwner(int, PlumbBobOwner *)"
+      },
+      {
+        "addr": "0x8005bb94",
+        "size": 468,
+        "symbol": "PlumbBobOwner::PopPlumbBobOwner(int, PlumbBobOwner *)"
+      }
+    ],
+    "RGTTarget": [
+      {
+        "addr": "0x80201dd8",
+        "size": 452,
+        "symbol": "RGTTarget::~RGTTarget(void)"
+      },
+      {
+        "addr": "0x80201f9c",
+        "size": 328,
+        "symbol": "RGTTarget::SetupNames(int)"
+      },
+      {
+        "addr": "0x802021a8",
+        "size": 464,
+        "symbol": "RGTTarget::SetVariable(char *, char *)"
+      }
+    ],
+    "RMDTarget": [
+      {
+        "addr": "0x801df648",
+        "size": 496,
+        "symbol": "RMDTarget::~RMDTarget(void)"
+      },
+      {
+        "addr": "0x801df838",
+        "size": 348,
+        "symbol": "RMDTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801dffa4",
+        "size": 424,
+        "symbol": "RMDTarget::UnloadDialog(void)"
+      }
+    ],
+    "RainEffect": [
+      {
+        "addr": "0x8007a380",
+        "size": 400,
+        "symbol": "RainEffect::UpdateParticleRainSplashLoad(void)"
+      },
+      {
+        "addr": "0x8007a510",
+        "size": 316,
+        "symbol": "RainEffect::UpdateParticleRainLoad(void)"
+      },
+      {
+        "addr": "0x8007a64c",
+        "size": 288,
+        "symbol": "RainEffect::~RainEffect(void)"
+      }
+    ],
+    "ResourceBehaviorTree": [
+      {
+        "addr": "0x8015aca0",
+        "size": 328,
+        "symbol": "ResourceBehaviorTree::LoadFromIndex(unsigned int, int)"
+      },
+      {
+        "addr": "0x8015ae1c",
+        "size": 296,
+        "symbol": "ResourceBehaviorTree::LoadFromDataID(ObjectDataID &)"
+      },
+      {
+        "addr": "0x8015af44",
+        "size": 296,
+        "symbol": "ResourceBehaviorTree::GetFromDataID(ObjectDataID &)"
+      }
+    ],
+    "Room": [
+      {
+        "addr": "0x80137578",
+        "size": 372,
+        "symbol": "Room::~Room(void)"
+      },
+      {
+        "addr": "0x80138420",
+        "size": 276,
+        "symbol": "Room::IsOutside(void)"
+      },
+      {
+        "addr": "0x80138704",
+        "size": 328,
+        "symbol": "Room::GetAmbientLightMultiplier(void)"
+      }
+    ],
+    "SimLog": [
+      {
+        "addr": "0x8013f378",
+        "size": 348,
+        "symbol": "SimLog::SimTickCompleted(cXPerson *)"
+      },
+      {
+        "addr": "0x8013fae8",
+        "size": 308,
+        "symbol": "SimLog::EndLogging(void)"
+      },
+      {
+        "addr": "0x803ad1a8",
+        "size": 356,
+        "symbol": "SimLog::~SimLog(void)"
+      }
+    ],
+    "StateMachine": [
+      {
+        "addr": "0x80095b30",
+        "size": 472,
+        "symbol": "StateMachine::Update(float)"
+      },
+      {
+        "addr": "0x80095f10",
+        "size": 368,
+        "symbol": "StateMachine::AddState(StateMachineState *)"
+      },
+      {
+        "addr": "0x80096080",
+        "size": 308,
+        "symbol": "StateMachine::DeleteAllStates(void)"
+      }
+    ],
+    "TheSimsMaxisLogoState": [
+      {
+        "addr": "0x80097864",
+        "size": 292,
+        "symbol": "TheSimsMaxisLogoState::Reset(void)"
+      },
+      {
+        "addr": "0x80097988",
+        "size": 364,
+        "symbol": "TheSimsMaxisLogoState::Update(float)"
+      },
+      {
+        "addr": "0x80097af4",
+        "size": 260,
+        "symbol": "TheSimsMaxisLogoState::Draw(ERC *)"
+      }
+    ],
+    "TreeSimImpl": [
+      {
+        "addr": "0x80147258",
+        "size": 476,
+        "symbol": "TreeSimImpl::~TreeSimImpl(void)"
+      },
+      {
+        "addr": "0x8014772c",
+        "size": 508,
+        "symbol": "TreeSimImpl::TreeSimImpl(int)"
+      },
+      {
+        "addr": "0x80147aa0",
+        "size": 464,
+        "symbol": "TreeSimImpl::Gosub(Behavior *, short *, short)"
+      }
+    ],
+    "TreeTableEntryQuickData": [
+      {
+        "addr": "0x8015d8f8",
+        "size": 308,
+        "symbol": "TreeTableEntryQuickData::TreeTableEntryQuickData(TreeTableEntry *)"
+      },
+      {
+        "addr": "0x8015da2c",
+        "size": 268,
+        "symbol": "TreeTableEntryQuickData::~TreeTableEntryQuickData(void)"
+      },
+      {
+        "addr": "0x8015db38",
+        "size": 356,
+        "symbol": "TreeTableEntryQuickData::GetAd(int) const"
+      }
+    ],
+    "UI2D": [
+      {
+        "addr": "0x8017610c",
+        "size": 360,
+        "symbol": "UI2D::AddEntry(char *, unsigned int, ERShader *, char *, int)"
+      },
+      {
+        "addr": "0x80176274",
+        "size": 324,
+        "symbol": "UI2D::RemoveEntry(UI2D::UI2DRecord *)"
+      },
+      {
+        "addr": "0x80176658",
+        "size": 416,
+        "symbol": "UI2D::GetShader(char *)"
+      }
+    ],
+    "UI3D": [
+      {
+        "addr": "0x80176880",
+        "size": 360,
+        "symbol": "UI3D::UI3D(void)"
+      },
+      {
+        "addr": "0x80176ab4",
+        "size": 436,
+        "symbol": "UI3D::AddEntry(char *, unsigned int, unsigned int, unsigned int, int, char *)"
+      },
+      {
+        "addr": "0x80176c68",
+        "size": 260,
+        "symbol": "UI3D::RemoveEntry(UI3D::UI3DRecord *)"
+      }
+    ],
+    "UIDBTarget": [
+      {
+        "addr": "0x8017a1f4",
+        "size": 324,
+        "symbol": "UIDBTarget::~UIDBTarget(void)"
+      },
+      {
+        "addr": "0x8017a338",
+        "size": 364,
+        "symbol": "UIDBTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x8017a4a4",
+        "size": 424,
+        "symbol": "UIDBTarget::GetVariable(char *)"
+      }
+    ],
+    "UIQDTarget": [
+      {
+        "addr": "0x8017c384",
+        "size": 324,
+        "symbol": "UIQDTarget::~UIQDTarget(void)"
+      },
+      {
+        "addr": "0x8017c72c",
+        "size": 512,
+        "symbol": "UIQDTarget::GetQuickdataText(char *)"
+      },
+      {
+        "addr": "0x8017d10c",
+        "size": 296,
+        "symbol": "UIQDTarget::UIQDRemoveEmbeddedControl(unsigned wchar_t *)"
+      }
+    ],
+    "UIScreenManager": [
+      {
+        "addr": "0x8017f688",
+        "size": 432,
+        "symbol": "UIScreenManager::~UIScreenManager(void)"
+      },
+      {
+        "addr": "0x8017fae4",
+        "size": 400,
+        "symbol": "UIScreenManager::UnloadUIScreen(UIScreenID)"
+      },
+      {
+        "addr": "0x8017fd58",
+        "size": 268,
+        "symbol": "UIScreenManager::SuspendScreenList(UIScreenID *)"
+      }
+    ],
+    "WXFTarget": [
+      {
+        "addr": "0x801e5b14",
+        "size": 424,
+        "symbol": "WXFTarget::~WXFTarget(void)"
+      },
+      {
+        "addr": "0x801e5cbc",
+        "size": 288,
+        "symbol": "WXFTarget::SetVariable(char *, char *)"
+      },
+      {
+        "addr": "0x801e6194",
+        "size": 264,
+        "symbol": "WXFTarget::GetVariable(char *)"
+      }
+    ],
+    "Wrapper": [
+      {
+        "addr": "0x80086848",
+        "size": 316,
+        "symbol": "Wrapper::WrapperShutdown(void)"
+      },
+      {
+        "addr": "0x80086994",
+        "size": 340,
+        "symbol": "Wrapper::WrapperDraw(ERC *)"
+      },
+      {
+        "addr": "0x80086b1c",
+        "size": 360,
+        "symbol": "Wrapper::AddPane(WrapperPaneBase *)"
+      }
+    ],
+    "XRoute": [
+      {
+        "addr": "0x80152ddc",
+        "size": 384,
+        "symbol": "XRoute::Construct(cXObject *, cXObject *, RoutingSlot *)"
+      },
+      {
+        "addr": "0x80153328",
+        "size": 416,
+        "symbol": "XRoute::ShouldIgnore(cXObject *)"
+      },
+      {
+        "addr": "0x8015597c",
+        "size": 332,
+        "symbol": "XRoute::BuildGoalList(void)"
+      }
+    ],
+    "_Deque_base": [
+      {
+        "addr": "0x803b2f84",
+        "size": 260,
+        "symbol": "_Deque_base<int, allocator<int> >::_M_initialize_map(unsigned int)"
+      },
+      {
+        "addr": "0x803b4f20",
+        "size": 260,
+        "symbol": "_Deque_base<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> >::_M_initialize_map(unsigned int)"
+      },
+      {
+        "addr": "0x803b55d0",
+        "size": 260,
+        "symbol": "_Deque_base<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> >::_M_initialize_map(unsigned int)"
+      }
+    ],
+    "cSimulatorImpl": [
+      {
+        "addr": "0x80140324",
+        "size": 296,
+        "symbol": "cSimulatorImpl::Init(void)"
+      },
+      {
+        "addr": "0x80140818",
+        "size": 268,
+        "symbol": "cSimulatorImpl::DoCommand(short, int)"
+      },
+      {
+        "addr": "0x801413ec",
+        "size": 288,
+        "symbol": "cSimulatorImpl::SetFunds(int, cSimulator::tFundsPlayerNumber)"
+      }
+    ],
+    "AllocPoolManager": [
+      {
+        "addr": "0x803c1e84",
+        "size": 296,
+        "symbol": "AllocPoolManager<ProtectedAllocPool>::InitAllocPools(unsigned int *)"
+      },
+      {
+        "addr": "0x803c2018",
+        "size": 296,
+        "symbol": "AllocPoolManager<FastAllocPool>::InitAllocPools(unsigned int *)"
+      }
+    ],
+    "AmbientScorePlayer": [
+      {
+        "addr": "0x800a85a4",
+        "size": 448,
+        "symbol": "AmbientScorePlayer::UpdateListener(unsigned int, EVec3 &, EVec3 &)"
+      },
+      {
+        "addr": "0x800a8774",
+        "size": 364,
+        "symbol": "AmbientScorePlayer::Load(char *)"
+      }
+    ],
+    "AptFormat": [
+      {
+        "addr": "0x8000b1b0",
+        "size": 404,
+        "symbol": "AptFormat::~AptFormat(void)"
+      },
+      {
+        "addr": "0x8000cd18",
+        "size": 476,
+        "symbol": "AptFormat::CopyForward(AptFormat *)"
+      }
+    ],
+    "BBHTarget": [
+      {
+        "addr": "0x801a3788",
+        "size": 388,
+        "symbol": "BBHTarget::~BBHTarget(void)"
+      },
+      {
+        "addr": "0x801a3cc0",
+        "size": 368,
+        "symbol": "BBHTarget::Update(void)"
+      }
+    ],
+    "BBI": [
+      {
+        "addr": "0x8004a59c",
+        "size": 388,
+        "symbol": "BBI::InventoryItems::DeleteItem(BBI::InventoryItem *)"
+      },
+      {
+        "addr": "0x8004addc",
+        "size": 312,
+        "symbol": "BBI::InventoryItems::DoStreamRead(ReconBuffer *, int)"
+      }
+    ],
+    "CASBodyTarget": [
+      {
+        "addr": "0x801968f4",
+        "size": 348,
+        "symbol": "CASBodyTarget::~CASBodyTarget(void)"
+      },
+      {
+        "addr": "0x80196ab8",
+        "size": 496,
+        "symbol": "CASBodyTarget::GetLocalizableSubnav(int, unsigned wchar_t *)"
+      }
+    ],
+    "CUnlockDisplay": [
+      {
+        "addr": "0x80077c3c",
+        "size": 408,
+        "symbol": "CUnlockDisplay::SetupForPromotion(cXPerson *, void *)"
+      },
+      {
+        "addr": "0x80077dfc",
+        "size": 428,
+        "symbol": "CUnlockDisplay::Update(void)"
+      }
+    ],
+    "CareersImpl": [
+      {
+        "addr": "0x800b17d0",
+        "size": 372,
+        "symbol": "CareersImpl::GetOfferDialogText(unsigned wchar_t *, Career &, int, bool)"
+      },
+      {
+        "addr": "0x800b1944",
+        "size": 364,
+        "symbol": "CareersImpl::GetBehCareerData(Career &, int, int, short *)"
+      }
+    ],
+    "CasClothingUnlocks": [
+      {
+        "addr": "0x8015f21c",
+        "size": 372,
+        "symbol": "CasClothingUnlocks::MarkGroup(unsigned int, bool, bool)"
+      },
+      {
+        "addr": "0x8015f390",
+        "size": 404,
+        "symbol": "CasClothingUnlocks::PrintUnlocks(CasSimDescriptionS2C *) const"
+      }
+    ],
+    "CasSimState": [
+      {
+        "addr": "0x801743fc",
+        "size": 464,
+        "symbol": "CasSimState::GetNextAvailableHairStyle(signed char, bool, CasSimPartsS2C &)"
+      },
+      {
+        "addr": "0x8017486c",
+        "size": 280,
+        "symbol": "CasSimState::HandleEventResetSim(CasEventResetSim &)"
+      }
+    ],
+    "ECheats": [
+      {
+        "addr": "0x80020d10",
+        "size": 504,
+        "symbol": "ECheats::EnableCheats(void)"
+      },
+      {
+        "addr": "0x80020f08",
+        "size": 476,
+        "symbol": "ECheats::DisableCheats(void)"
+      }
+    ],
+    "EFloorShdTblNode": [
+      {
+        "addr": "0x800455d0",
+        "size": 260,
+        "symbol": "EFloorShdTblNode::InitTable(void)"
+      },
+      {
+        "addr": "0x80047eb8",
+        "size": 484,
+        "symbol": "EFloorShdTblNode::PreviewTable(void)"
+      }
+    ],
+    "EIPortalPointLight": [
+      {
+        "addr": "0x8022a9dc",
+        "size": 356,
+        "symbol": "EIPortalPointLight::LightingParameters(EVec3 &, float &, EVec3 &, EVec3 &)"
+      },
+      {
+        "addr": "0x8022ab40",
+        "size": 272,
+        "symbol": "EIPortalPointLight::Setup(void)"
+      }
+    ],
+    "EISpotLight": [
+      {
+        "addr": "0x8022b2b8",
+        "size": 288,
+        "symbol": "EISpotLight::Write(EStream &)"
+      },
+      {
+        "addr": "0x8022b3d8",
+        "size": 272,
+        "symbol": "EISpotLight::Read(EStream &)"
+      }
+    ],
+    "EIStaticSubModel": [
+      {
+        "addr": "0x8022e788",
+        "size": 292,
+        "symbol": "EIStaticSubModel::BuildDigests(void)"
+      },
+      {
+        "addr": "0x8022e8d8",
+        "size": 276,
+        "symbol": "EIStaticSubModel::DrawAsShadow(ELevelDrawData &)"
+      }
+    ],
+    "EParticleEffect": [
+      {
+        "addr": "0x8004b8e0",
+        "size": 344,
+        "symbol": "EParticleEffect::EParticleEffect(AttachmentNode &, EMat4 &)"
+      },
+      {
+        "addr": "0x8004bc6c",
+        "size": 320,
+        "symbol": "EParticleEffect::~EParticleEffect(void)"
+      }
+    ],
+    "EParticleObj": [
+      {
+        "addr": "0x8004c1f8",
+        "size": 344,
+        "symbol": "EParticleObj::CreateEffects(EMat4 &, float, ObjAnimDef *)"
+      },
+      {
+        "addr": "0x8004c350",
+        "size": 272,
+        "symbol": "EParticleObj::UpdateEffectPosAndAlphaFade(EAnimController &, float, EMat4 &, EVec3 *, float)"
+      }
+    ],
+    "ESimsApp": [
+      {
+        "addr": "0x80005554",
+        "size": 412,
+        "symbol": "ESimsApp::UpdateShaders(float)"
+      },
+      {
+        "addr": "0x80005ba4",
+        "size": 264,
+        "symbol": "ESimsApp::Update(void)"
+      }
+    ],
+    "ESpriteRender": [
+      {
+        "addr": "0x80035588",
+        "size": 320,
+        "symbol": "ESpriteRender::DeleteShaders(void)"
+      },
+      {
+        "addr": "0x800356c8",
+        "size": 456,
+        "symbol": "ESpriteRender::Update(void)"
+      }
+    ],
+    "FileList": [
+      {
+        "addr": "0x800a5500",
+        "size": 392,
+        "symbol": "FileList::AddRef(iResFile *)"
+      },
+      {
+        "addr": "0x800a5688",
+        "size": 276,
+        "symbol": "FileList::ReleaseRef(iResFile *)"
+      }
+    ],
+    "GoalUnlock": [
+      {
+        "addr": "0x800b859c",
+        "size": 316,
+        "symbol": "GoalUnlock::SetupObjectUnlockInfo(void)"
+      },
+      {
+        "addr": "0x800b894c",
+        "size": 288,
+        "symbol": "GoalUnlock::GrantObjectUnlocks(int)"
+      }
+    ],
+    "HouseRecon": [
+      {
+        "addr": "0x800452e8",
+        "size": 260,
+        "symbol": "HouseRecon::LoadHouseData(iResFile *)"
+      },
+      {
+        "addr": "0x800453ec",
+        "size": 308,
+        "symbol": "HouseRecon::SaveHouseData(iResFile *, int)"
+      }
+    ],
+    "HouseStats": [
+      {
+        "addr": "0x800bc45c",
+        "size": 352,
+        "symbol": "HouseStats::GetSizeScore(void)"
+      },
+      {
+        "addr": "0x800bc5bc",
+        "size": 428,
+        "symbol": "HouseStats::GetFurnishingsScore(void)"
+      }
+    ],
+    "IFFBehavior": [
+      {
+        "addr": "0x800acd44",
+        "size": 288,
+        "symbol": "IFFBehavior::GetTreeByIndex(int, short, ObjectDataBehaviorTree **)"
+      },
+      {
+        "addr": "0x800ace64",
+        "size": 332,
+        "symbol": "IFFBehavior::GetTreeIDByName(char *)"
+      }
+    ],
+    "IFFBehaviorTree": [
+      {
+        "addr": "0x8015b3e4",
+        "size": 268,
+        "symbol": "IFFBehaviorTree::LoadFromIndex(unsigned int, int)"
+      },
+      {
+        "addr": "0x8015b650",
+        "size": 456,
+        "symbol": "IFFBehaviorTree::SaveDataByID(ObjectDataID &)"
+      }
+    ],
+    "IFFSlotDescList": [
+      {
+        "addr": "0x80144c20",
+        "size": 260,
+        "symbol": "IFFSlotDescList::RemoveSlot(int)"
+      },
+      {
+        "addr": "0x80144df8",
+        "size": 264,
+        "symbol": "IFFSlotDescList::LoadFromIndex(unsigned int, int)"
+      }
+    ],
+    "InLevelBaseState": [
+      {
+        "addr": "0x8008b380",
+        "size": 280,
+        "symbol": "InLevelBaseState::HandleExitToMainMenu(void)"
+      },
+      {
+        "addr": "0x8008b5b0",
+        "size": 328,
+        "symbol": "InLevelBaseState::InLevelBaseState(int)"
+      }
+    ],
+    "K2YTarget": [
+      {
+        "addr": "0x801be304",
+        "size": 348,
+        "symbol": "K2YTarget::~K2YTarget(void)"
+      },
+      {
+        "addr": "0x801bed54",
+        "size": 492,
+        "symbol": "K2YTarget::GetKeybits(int, int)"
+      }
+    ],
+    "LiveModeChangeHouseStateMachine": [
+      {
+        "addr": "0x8008d91c",
+        "size": 412,
+        "symbol": "LiveModeChangeHouseStateMachine::Startup(void)"
+      },
+      {
+        "addr": "0x8008ff30",
+        "size": 264,
+        "symbol": "LiveModeChangeHouseStateMachine::LiveModeChangeHouseStateMachine(int, int)"
+      }
+    ],
+    "LoadingScreenStateMachine": [
+      {
+        "addr": "0x800907cc",
+        "size": 308,
+        "symbol": "LoadingScreenStateMachine::LoadingScreenStateMachine(int, int)"
+      },
+      {
+        "addr": "0x800909a4",
+        "size": 320,
+        "symbol": "LoadingScreenStateMachine::Startup(void)"
+      }
+    ],
+    "LogInteraction": [
+      {
+        "addr": "0x8013edd8",
+        "size": 324,
+        "symbol": "LogInteraction::LogInteraction(LogPersonTracker *)"
+      },
+      {
+        "addr": "0x803ad30c",
+        "size": 372,
+        "symbol": "LogInteraction::LogInteraction(LogInteraction &)"
+      }
+    ],
+    "LogPersonTracker": [
+      {
+        "addr": "0x8013ead0",
+        "size": 336,
+        "symbol": "LogPersonTracker::SetInteraction(cXPerson *, Interaction *)"
+      },
+      {
+        "addr": "0x8013ecbc",
+        "size": 276,
+        "symbol": "LogPersonTracker::LogPersonTracker(cXPerson *)"
+      }
+    ],
+    "MUStateMachine": [
+      {
+        "addr": "0x80093838",
+        "size": 288,
+        "symbol": "MUStateMachine::MUWrapperStartup(void)"
+      },
+      {
+        "addr": "0x80093a30",
+        "size": 268,
+        "symbol": "MUStateMachine::MUStateMachine(int, int)"
+      }
+    ],
+    "MUWrapper": [
+      {
+        "addr": "0x8007f7bc",
+        "size": 316,
+        "symbol": "MUWrapper::Shutdown(void)"
+      },
+      {
+        "addr": "0x80081880",
+        "size": 340,
+        "symbol": "MUWrapper::HideDialog(void)"
+      }
+    ],
+    "MemoryCardCache": [
+      {
+        "addr": "0x800d2ab4",
+        "size": 312,
+        "symbol": "MemoryCardCache::Init(NghLayout *)"
+      },
+      {
+        "addr": "0x800d2e7c",
+        "size": 320,
+        "symbol": "MemoryCardCache::CacheNghSection(NghLayout *, char *, unsigned int, unsigned int)"
+      }
+    ],
+    "MotiveEffects": [
+      {
+        "addr": "0x800c2f34",
+        "size": 292,
+        "symbol": "MotiveEffects::MotiveEffects(cXPerson *)"
+      },
+      {
+        "addr": "0x800c3058",
+        "size": 340,
+        "symbol": "MotiveEffects::GetCurrentScore(void)"
+      }
+    ],
+    "ObjSelector": [
+      {
+        "addr": "0x80110d44",
+        "size": 480,
+        "symbol": "ObjSelector::GetThumbnail(ERShader **)"
+      },
+      {
+        "addr": "0x80111264",
+        "size": 328,
+        "symbol": "ObjSelector::GetCatalogRating(int)"
+      }
+    ],
+    "PAZBase": [
+      {
+        "addr": "0x801d0190",
+        "size": 392,
+        "symbol": "PAZBase::~PAZBase(void)"
+      },
+      {
+        "addr": "0x801d0ed4",
+        "size": 364,
+        "symbol": "PAZBase::on_user_set_selection_index(int)"
+      }
+    ],
+    "PSETarget": [
+      {
+        "addr": "0x801ff574",
+        "size": 396,
+        "symbol": "PSETarget::~PSETarget(void)"
+      },
+      {
+        "addr": "0x801ff838",
+        "size": 464,
+        "symbol": "PSETarget::PushAptButtonFilters(void)"
+      }
+    ],
+    "Path": [
+      {
+        "addr": "0x8013acac",
+        "size": 460,
+        "symbol": "Path::InitAST(void)"
+      },
+      {
+        "addr": "0x803ae6d8",
+        "size": 328,
+        "symbol": "Path::~Path(void)"
+      }
+    ],
+    "PiecewiseFn": [
+      {
+        "addr": "0x8012cce4",
+        "size": 312,
+        "symbol": "PiecewiseFn::AddPoint(PiecewisePt &)"
+      },
+      {
+        "addr": "0x8012ce1c",
+        "size": 332,
+        "symbol": "PiecewiseFn::AddPointsFromText(char *)"
+      }
+    ],
+    "PreGameFreeplayState": [
+      {
+        "addr": "0x80094eec",
+        "size": 304,
+        "symbol": "PreGameFreeplayState::Startup(void)"
+      },
+      {
+        "addr": "0x8009508c",
+        "size": 480,
+        "symbol": "PreGameFreeplayState::Update(float)"
+      }
+    ],
+    "RELTarget": [
+      {
+        "addr": "0x80200a28",
+        "size": 436,
+        "symbol": "RELTarget::GetVariable(char *)"
+      },
+      {
+        "addr": "0x80200bdc",
+        "size": 340,
+        "symbol": "RELTarget::GetLocalizable(char *)"
+      }
+    ],
+    "ReconBuilder": [
+      {
+        "addr": "0x8013426c",
+        "size": 360,
+        "symbol": "ReconBuilder::Compact(ReconObject *, int)"
+      },
+      {
+        "addr": "0x801343d4",
+        "size": 324,
+        "symbol": "ReconBuilder::Compact(ReconObject *, int, iResFile *, short)"
+      }
+    ],
+    "RepTitleSupport": [
+      {
+        "addr": "0x8018ffe0",
+        "size": 316,
+        "symbol": "RepTitleSupport::GetRepTitleRaw(int, RepTitleSupport::eRepTitleRaw)"
+      },
+      {
+        "addr": "0x801902cc",
+        "size": 408,
+        "symbol": "RepTitleSupport::GetRepTitleTitle(int)"
+      }
+    ],
+    "SKLTarget": [
+      {
+        "addr": "0x801e0dc8",
+        "size": 364,
+        "symbol": "SKLTarget::~SKLTarget(void)"
+      },
+      {
+        "addr": "0x801e0f34",
+        "size": 280,
+        "symbol": "SKLTarget::SetVariable(char *, char *)"
+      }
+    ],
+    "SimsMemCardWrap": [
+      {
+        "addr": "0x80075394",
+        "size": 312,
+        "symbol": "SimsMemCardWrap::CanBeUsed(int, bool &, int)"
+      },
+      {
+        "addr": "0x800758bc",
+        "size": 280,
+        "symbol": "SimsMemCardWrap::SaveGame(int, bool, bool, int)"
+      }
+    ],
+    "SkinCompositor": [
+      {
+        "addr": "0x80075cc8",
+        "size": 292,
+        "symbol": "SkinCompositor::CreateSkinQuadrantPrecomposited(ERTexture *, unsigned int, bool)"
+      },
+      {
+        "addr": "0x80075e8c",
+        "size": 372,
+        "symbol": "SkinCompositor::InitScratchpadTextures(unsigned short)"
+      }
+    ],
+    "SmartDataFactory": [
+      {
+        "addr": "0x8015cc78",
+        "size": 340,
+        "symbol": "SmartDataFactory::GetDataProvider(unsigned int, ObjectDataID &) const"
+      },
+      {
+        "addr": "0x8015cdcc",
+        "size": 328,
+        "symbol": "SmartDataFactory::SetDataProvider(unsigned int, ObjectDataID &, ISmartDataFactory::tDataProvider)"
+      }
+    ],
+    "TextBlock": [
+      {
+        "addr": "0x80083a14",
+        "size": 316,
+        "symbol": "TextBlock::Set(unsigned wchar_t *, EVec2 &, EVec2 &, EVec4 *, ERFont *, float, bool, bool, bool)"
+      },
+      {
+        "addr": "0x80083b50",
+        "size": 308,
+        "symbol": "TextBlock::Clear(void)"
+      }
+    ],
+    "TheSimsSimsIntroMovieState": [
+      {
+        "addr": "0x80097bf8",
+        "size": 332,
+        "symbol": "TheSimsSimsIntroMovieState::Startup(void)"
+      },
+      {
+        "addr": "0x80097d8c",
+        "size": 356,
+        "symbol": "TheSimsSimsIntroMovieState::Update(float)"
+      }
+    ],
+    "ThumbnailCompresser": [
+      {
+        "addr": "0x800d8f00",
+        "size": 464,
+        "symbol": "ThumbnailCompresser::Encode(unsigned char *, int, unsigned char *, int)"
+      },
+      {
+        "addr": "0x800d90d0",
+        "size": 404,
+        "symbol": "ThumbnailCompresser::Decode(unsigned char *, int, unsigned char *, int)"
+      }
+    ],
+    "TileWalls": [
+      {
+        "addr": "0x80145ef0",
+        "size": 468,
+        "symbol": "TileWalls::GenerateRotationLookups(void)"
+      },
+      {
+        "addr": "0x80146434",
+        "size": 284,
+        "symbol": "TileWalls::CanAdd(TileWallsSegment) const"
+      }
+    ],
+    "TreeStack": [
+      {
+        "addr": "0x80148d38",
+        "size": 400,
+        "symbol": "TreeStack::AssignFrames(int)"
+      },
+      {
+        "addr": "0x80148ec8",
+        "size": 384,
+        "symbol": "TreeStack::Push(StackElem *, short *)"
+      }
+    ],
+    "TreeTableQuickData": [
+      {
+        "addr": "0x8015dd20",
+        "size": 268,
+        "symbol": "TreeTableQuickData::~TreeTableQuickData(void)"
+      },
+      {
+        "addr": "0x8015de60",
+        "size": 440,
+        "symbol": "TreeTableQuickData::LoadFromDataID(ObjectDataID &)"
+      }
+    ],
+    "UIAUDIO": [
+      {
+        "addr": "0x801770c0",
+        "size": 280,
+        "symbol": "UIAUDIO::UIAUDIO(void)"
+      },
+      {
+        "addr": "0x801777a0",
+        "size": 424,
+        "symbol": "UIAUDIO::UpdateAudioLoad(int)"
+      }
+    ],
+    "UIAnalog": [
+      {
+        "addr": "0x80180ed4",
+        "size": 324,
+        "symbol": "UIAnalog::~UIAnalog(void)"
+      },
+      {
+        "addr": "0x80181018",
+        "size": 392,
+        "symbol": "UIAnalog::GetVariable(char *)"
+      }
+    ],
+    "WidgetScreenFormat": [
+      {
+        "addr": "0x801824d8",
+        "size": 508,
+        "symbol": "WidgetScreenFormat::IterateTags(WidgetScreenFormat::IterationType)"
+      },
+      {
+        "addr": "0x80182e3c",
+        "size": 260,
+        "symbol": "WidgetScreenFormat::IsPlayerSpecificTag(char *)"
+      }
+    ],
+    "_c2DArray": [
+      {
+        "addr": "0x800d1a04",
+        "size": 276,
+        "symbol": "_c2DArray::ReadFromDisk(iResFile *, int, short, void (*)(void *, int))"
+      },
+      {
+        "addr": "0x800d1ec4",
+        "size": 308,
+        "symbol": "_c2DArray::SetSize(int, int)"
+      }
+    ],
+    "cGZMusic": [
+      {
+        "addr": "0x800bac94",
+        "size": 272,
+        "symbol": "cGZMusic::Play(void)"
+      },
+      {
+        "addr": "0x800baef8",
+        "size": 300,
+        "symbol": "cGZMusic::setVolume(int)"
+      }
+    ],
+    "cXObject": [
+      {
+        "addr": "0x800d9484",
+        "size": 360,
+        "symbol": "cXObject::~cXObject(void)"
+      },
+      {
+        "addr": "0x800e28ac",
+        "size": 444,
+        "symbol": "cXObject::GetWallBlockFlagsAtTile(CTilePt &, int)"
+      }
+    ],
+    "cXPerson": [
+      {
+        "addr": "0x8011c65c",
+        "size": 288,
+        "symbol": "cXPerson::~cXPerson(void)"
+      },
+      {
+        "addr": "0x8012c4d0",
+        "size": 436,
+        "symbol": "cXPerson::cXPerson(int)"
+      }
+    ],
+    "operator+": [
+      {
+        "addr": "0x800a42cc",
+        "size": 292,
+        "symbol": "operator+(BString2 &, BString2 &)"
+      },
+      {
+        "addr": "0x800a43f0",
+        "size": 260,
+        "symbol": "operator+(unsigned wchar_t *, BString2 &)"
+      }
+    ],
+    "stack": [
+      {
+        "addr": "0x803b6168",
+        "size": 292,
+        "symbol": "stack<MMUTarget::MMU_MENU_STATE, deque<MMUTarget::MMU_MENU_STATE, allocator<MMUTarget::MMU_MENU_STATE> > >::~stack(void)"
+      },
+      {
+        "addr": "0x803b6d54",
+        "size": 292,
+        "symbol": "stack<FAMTarget::FAM_STATE, deque<FAMTarget::FAM_STATE, allocator<FAMTarget::FAM_STATE> > >::~stack(void)"
+      }
+    ],
+    "AddFamilyToPool": [
+      {
+        "addr": "0x80042e44",
+        "size": 280,
+        "symbol": "AddFamilyToPool(int, int)"
+      }
+    ],
+    "AddPersDataPair": [
+      {
+        "addr": "0x800c90bc",
+        "size": 432,
+        "symbol": "AddPersDataPair(vector<PersDataPair, allocator<PersDataPair> > &, PersDataPair &)"
+      }
+    ],
+    "AptAuxPCEorGL_FinishAsyncLoads": [
+      {
+        "addr": "0x800096b8",
+        "size": 264,
+        "symbol": "AptAuxPCEorGL_FinishAsyncLoads(void)"
+      }
+    ],
+    "AptAuxPCEorGL_LoadAnimation": [
+      {
+        "addr": "0x80009594",
+        "size": 292,
+        "symbol": "AptAuxPCEorGL_LoadAnimation(char *, AptSharedPtr<AptFile>)"
+      }
+    ],
+    "AptShaderWord": [
+      {
+        "addr": "0x8000dddc",
+        "size": 404,
+        "symbol": "AptShaderWord::InsertSpace(void)"
+      }
+    ],
+    "AptWord": [
+      {
+        "addr": "0x8000d724",
+        "size": 264,
+        "symbol": "AptWord::InsertSpace(void)"
+      }
+    ],
+    "Bloom": [
+      {
+        "addr": "0x803c78e0",
+        "size": 308,
+        "symbol": "Bloom::Bloom(void)"
+      }
+    ],
+    "CASFashionTarget": [
+      {
+        "addr": "0x8019b254",
+        "size": 348,
+        "symbol": "CASFashionTarget::~CASFashionTarget(void)"
+      }
+    ],
+    "CASMiscTarget": [
+      {
+        "addr": "0x8019c054",
+        "size": 348,
+        "symbol": "CASMiscTarget::~CASMiscTarget(void)"
+      }
+    ],
+    "CLoadingScreen": [
+      {
+        "addr": "0x80056a64",
+        "size": 396,
+        "symbol": "CLoadingScreen::CLoadingScreen(CLoadingScreen::eLoadingScreenMode)"
+      }
+    ],
+    "CTilePt": [
+      {
+        "addr": "0x800b4ed8",
+        "size": 388,
+        "symbol": "CTilePt::GetTileDirection(CTilePt &, CTilePt &)"
+      }
+    ],
+    "CTilePt>": [
+      {
+        "addr": "0x803c0fa0",
+        "size": 300,
+        "symbol": "CTilePt * find<CTilePt *, CTilePt>(CTilePt *, CTilePt *, CTilePt &)"
+      }
+    ],
+    "CalculateFacerMatrix": [
+      {
+        "addr": "0x8022ef84",
+        "size": 288,
+        "symbol": "CalculateFacerMatrix(EVec3 &, EVec3 &, EMat4 &, bool)"
+      }
+    ],
+    "CameraMotionSystem": [
+      {
+        "addr": "0x80016258",
+        "size": 324,
+        "symbol": "CameraMotionSystem::RubberBandInterpolate(EVec3 *, EVec3, float)"
+      }
+    ],
+    "CasMediator": [
+      {
+        "addr": "0x80161d84",
+        "size": 484,
+        "symbol": "CasMediator::RemoveListener(CasListener &)"
+      }
+    ],
+    "CollisionMap": [
+      {
+        "addr": "0x80022050",
+        "size": 364,
+        "symbol": "CollisionMap::IsMoveBlocked(int, int, bool, TileWallsSegment)"
+      }
+    ],
+    "ColorStringForFlash(BString2 &, Interaction": [
+      {
+        "addr": "0x8003a180",
+        "size": 280,
+        "symbol": "ColorStringForFlash(BString2 &, Interaction::tColor)"
+      }
+    ],
+    "CreateASimBaseState": [
+      {
+        "addr": "0x80089798",
+        "size": 296,
+        "symbol": "CreateASimBaseState::OnBackOut(void)"
+      }
+    ],
+    "DialogPaneBase": [
+      {
+        "addr": "0x80088b6c",
+        "size": 312,
+        "symbol": "DialogPaneBase::DialogPaneBase(int, int)"
+      }
+    ],
+    "DlgReplaceButtonPrompts": [
+      {
+        "addr": "0x8007cb74",
+        "size": 452,
+        "symbol": "DlgReplaceButtonPrompts(unsigned wchar_t *, BString2 &)"
+      }
+    ],
+    "DrawIcon": [
+      {
+        "addr": "0x800842d8",
+        "size": 396,
+        "symbol": "DrawIcon(ERC *, EVec2 &, EVec2 &, EVec4 &, ERShader *)"
+      }
+    ],
+    "EACTrack": [
+      {
+        "addr": "0x803c33b4",
+        "size": 456,
+        "symbol": "EACTrack::operator=(EACTrack &)"
+      }
+    ],
+    "EIFloor": [
+      {
+        "addr": "0x80047318",
+        "size": 404,
+        "symbol": "EIFloor::Draw(ELevelDrawData &)"
+      }
+    ],
+    "EIObjectMan": [
+      {
+        "addr": "0x80054e14",
+        "size": 480,
+        "symbol": "EIObjectMan::AddObject(cXObject *, ERLevel *)"
+      }
+    ],
+    "EIPointLight": [
+      {
+        "addr": "0x8022a0e0",
+        "size": 408,
+        "symbol": "EIPointLight::LightingParameters(EVec3 &, float &, EVec3 &, EVec3 &)"
+      }
+    ],
+    "ELiveMode": [
+      {
+        "addr": "0x8008dd70",
+        "size": 440,
+        "symbol": "ELiveMode::IsReadyForUpdate(void)"
+      }
+    ],
+    "EMemoryMeterWin": [
+      {
+        "addr": "0x80057a1c",
+        "size": 504,
+        "symbol": "EMemoryMeterWin::PollMemoryLevels(void)"
+      }
+    ],
+    "ENgcController": [
+      {
+        "addr": "0x803c7274",
+        "size": 508,
+        "symbol": "ENgcController::GetButtons(PADStatus &)"
+      }
+    ],
+    "EORComputeZodiacSign": [
+      {
+        "addr": "0x800399e0",
+        "size": 272,
+        "symbol": "EORComputeZodiacSign(short *)"
+      }
+    ],
+    "ERAmbientSound": [
+      {
+        "addr": "0x803c88c0",
+        "size": 328,
+        "symbol": "ERAmbientSound::ERAmbientSound(ERAmbientSound &)"
+      }
+    ],
+    "EShaderDef": [
+      {
+        "addr": "0x803c360c",
+        "size": 368,
+        "symbol": "EShaderDef::operator=(EShaderDef &)"
+      }
+    ],
+    "ESimsDataManager": [
+      {
+        "addr": "0x8002302c",
+        "size": 288,
+        "symbol": "ESimsDataManager::AllocateAndLoadResource(EFile *, unsigned int, unsigned int)"
+      }
+    ],
+    "EdithDialogPrimitive": [
+      {
+        "addr": "0x800b55d0",
+        "size": 268,
+        "symbol": "EdithDialogPrimitive::ResetDialogParameters(void)"
+      }
+    ],
+    "EffectsPreRenderVisitor": [
+      {
+        "addr": "0x8003ded4",
+        "size": 308,
+        "symbol": "EffectsPreRenderVisitor::Visit(Effects::FastParticleEmitter &)"
+      }
+    ],
+    "Emitter": [
+      {
+        "addr": "0x802389dc",
+        "size": 300,
+        "symbol": "Emitter::Draw(ELevelDrawData &)"
+      }
+    ],
+    "EmitterGeom3dSubmitCB": [
+      {
+        "addr": "0x80239f50",
+        "size": 484,
+        "symbol": "EmitterGeom3dSubmitCB(particle *, PVector4 *, float, float, PVector4 *, void *)"
+      }
+    ],
+    "EmitterGeom3dTabSubmitCB": [
+      {
+        "addr": "0x8023a1f8",
+        "size": 508,
+        "symbol": "EmitterGeom3dTabSubmitCB(particle *, PVector4 *, float, float, PVector4 *, void *)"
+      }
+    ],
+    "EvalPoint": [
+      {
+        "addr": "0x8013ba9c",
+        "size": 388,
+        "symbol": "EvalPoint(IPoint, IPoint, IPoint, IPoint *, float *)"
+      }
+    ],
+    "EvaluateFloorLights": [
+      {
+        "addr": "0x800461e0",
+        "size": 280,
+        "symbol": "EvaluateFloorLights(ELightGrid &, int, EVec3 &, EVec3 &)"
+      }
+    ],
+    "FlowGotoTarget": [
+      {
+        "addr": "0x8017b02c",
+        "size": 324,
+        "symbol": "FlowGotoTarget::~FlowGotoTarget(void)"
+      }
+    ],
+    "GOLTarget": [
+      {
+        "addr": "0x801eb32c",
+        "size": 432,
+        "symbol": "GOLTarget::~GOLTarget(void)"
+      }
+    ],
+    "GatherRelationshipLevelValues": [
+      {
+        "addr": "0x800c8b14",
+        "size": 308,
+        "symbol": "GatherRelationshipLevelValues(void)"
+      }
+    ],
+    "GetCircleSegmentClosedIX": [
+      {
+        "addr": "0x80049a38",
+        "size": 376,
+        "symbol": "GetCircleSegmentClosedIX(EVec2 &, float, EVec2 &, EVec2 &, EVec2 &, Intersection &, bool)"
+      }
+    ],
+    "GetComeSeeMe": [
+      {
+        "addr": "0x800b3cf4",
+        "size": 344,
+        "symbol": "GetComeSeeMe(cXObject *)"
+      }
+    ],
+    "GetShaderForObject": [
+      {
+        "addr": "0x8003adc4",
+        "size": 500,
+        "symbol": "GetShaderForObject(cXObject *, ERShader **)"
+      }
+    ],
+    "GlobalSkillTables": [
+      {
+        "addr": "0x803ad4d4",
+        "size": 380,
+        "symbol": "GlobalSkillTables::~GlobalSkillTables(void)"
+      }
+    ],
+    "GuidIsOk": [
+      {
+        "addr": "0x80042c44",
+        "size": 360,
+        "symbol": "GuidIsOk(int)"
+      }
+    ],
+    "H2DTarget": [
+      {
+        "addr": "0x801b90cc",
+        "size": 280,
+        "symbol": "H2DTarget::ShouldH2DBeVisible(int) const"
+      }
+    ],
+    "HandleDepthOfFieldEvent": [
+      {
+        "addr": "0x80003de0",
+        "size": 508,
+        "symbol": "HandleDepthOfFieldEvent(EAnimNote &, FrameEffectsManager *)"
+      }
+    ],
+    "HandleMotionBlurEvent": [
+      {
+        "addr": "0x80003c40",
+        "size": 416,
+        "symbol": "HandleMotionBlurEvent(EAnimNote &, FrameEffectsManager *)"
+      }
+    ],
+    "HelpDialog": [
+      {
+        "addr": "0x801759e4",
+        "size": 300,
+        "symbol": "HelpDialog::HelpDialog(void)"
+      }
+    ],
+    "IFFBehaviorConstants": [
+      {
+        "addr": "0x8015a38c",
+        "size": 412,
+        "symbol": "IFFBehaviorConstants::SaveDataByID(ObjectDataID &)"
+      }
+    ],
+    "IFFResList": [
+      {
+        "addr": "0x803a49a4",
+        "size": 300,
+        "symbol": "IFFResList::IFFResList(IFFResList &)"
+      }
+    ],
+    "IFFResList>": [
+      {
+        "addr": "0x803a46fc",
+        "size": 444,
+        "symbol": "void DoContainerStream<vector<IFFResList, allocator<IFFResList> >, IFFResList>(vector<IFFResList, allocator<IFFResList> > &, IFFResList *, ReconBuffer *, int)"
+      }
+    ],
+    "IFFResMap": [
+      {
+        "addr": "0x800bd7ac",
+        "size": 444,
+        "symbol": "IFFResMap::RemoveNode(IFFResNode *)"
+      }
+    ],
+    "IFFResNode>": [
+      {
+        "addr": "0x803a3e80",
+        "size": 288,
+        "symbol": "void DoContainerStream<vector<IFFResNode, allocator<IFFResNode> >, IFFResNode>(vector<IFFResNode, allocator<IFFResNode> > &, IFFResNode *, ReconBuffer *, int)"
+      }
+    ],
+    "IRect": [
+      {
+        "addr": "0x800a5ae4",
+        "size": 420,
+        "symbol": "IRect::Intersect(IRect *, IRect *)"
+      }
+    ],
+    "ISimInstance": [
+      {
+        "addr": "0x80056628",
+        "size": 272,
+        "symbol": "ISimInstance::HasInteractions(int)"
+      }
+    ],
+    "IngredientManager": [
+      {
+        "addr": "0x8004b7c8",
+        "size": 280,
+        "symbol": "IngredientManager::MixIngredients(short, short, short, short) const"
+      }
+    ],
+    "Interaction": [
+      {
+        "addr": "0x800c1574",
+        "size": 424,
+        "symbol": "Interaction::Interaction(cXPerson *, cXObject *, int, int)"
+      }
+    ],
+    "Interests": [
+      {
+        "addr": "0x800c88c0",
+        "size": 408,
+        "symbol": "Interests::SetInterests(short *)"
+      }
+    ],
+    "InterpolateLinear<EVec3>": [
+      {
+        "addr": "0x803c77a4",
+        "size": 264,
+        "symbol": "EVec3 {anonymous} InterpolateLinear<EVec3>(EVec3, EVec3, float, float, float)"
+      }
+    ],
+    "InterpolateSkyLights": [
+      {
+        "addr": "0x80237350",
+        "size": 320,
+        "symbol": "InterpolateSkyLights(float, SkyLights &, SkyLights &, SkyLights &)"
+      }
+    ],
+    "InterpolateToGraySky": [
+      {
+        "addr": "0x802370d8",
+        "size": 416,
+        "symbol": "InterpolateToGraySky(float, LevelLightingEntry &)"
+      }
+    ],
+    "IsPlayableCharacter": [
+      {
+        "addr": "0x800ef3e0",
+        "size": 284,
+        "symbol": "IsPlayableCharacter(int, int &)"
+      }
+    ],
+    "LiveModeInitState": [
+      {
+        "addr": "0x8008bc28",
+        "size": 260,
+        "symbol": "LiveModeInitState::Reset(void)"
+      }
+    ],
+    "LoadThreadProc": [
+      {
+        "addr": "0x80009424",
+        "size": 368,
+        "symbol": "LoadThreadProc(void *)"
+      }
+    ],
+    "LoadingScreenFadeInState": [
+      {
+        "addr": "0x8009027c",
+        "size": 272,
+        "symbol": "LoadingScreenFadeInState::Update(float)"
+      }
+    ],
+    "LogInteractionSample": [
+      {
+        "addr": "0x8013e878",
+        "size": 416,
+        "symbol": "LogInteractionSample::PrintHeader(void)"
+      }
+    ],
+    "MUStatesAutoSaveExisting": [
+      {
+        "addr": "0x80092998",
+        "size": 368,
+        "symbol": "MUStatesAutoSaveExisting::Update(float)"
+      }
+    ],
+    "MUStatesAutoSaveNew": [
+      {
+        "addr": "0x8009217c",
+        "size": 352,
+        "symbol": "MUStatesAutoSaveNew::Update(float)"
+      }
+    ],
+    "MUStatesLoadHouse": [
+      {
+        "addr": "0x8009201c",
+        "size": 352,
+        "symbol": "MUStatesLoadHouse::Update(float)"
+      }
+    ],
+    "MUStatesProcessRequests": [
+      {
+        "addr": "0x80091464",
+        "size": 496,
+        "symbol": "MUStatesProcessRequests::Update(float)"
+      }
+    ],
+    "MUStatesTransitionAutoSaveExisting": [
+      {
+        "addr": "0x80092d54",
+        "size": 388,
+        "symbol": "MUStatesTransitionAutoSaveExisting::Update(float)"
+      }
+    ],
+    "MUStatesTransitionSaveExistingGame": [
+      {
+        "addr": "0x80092f5c",
+        "size": 444,
+        "symbol": "MUStatesTransitionSaveExistingGame::Update(float)"
+      }
+    ],
+    "MotiveCurveSet": [
+      {
+        "addr": "0x800c2d90",
+        "size": 264,
+        "symbol": "MotiveCurveSet::LoadFromFile(unsigned int, short)"
+      }
+    ],
+    "MotiveInc>": [
+      {
+        "addr": "0x803aaf40",
+        "size": 264,
+        "symbol": "void DoContainerStream<vector<MotiveInc, allocator<MotiveInc> >, MotiveInc>(vector<MotiveInc, allocator<MotiveInc> > &, MotiveInc *, ReconBuffer *, int)"
+      }
+    ],
+    "MoviePlayerEndgameMovieState": [
+      {
+        "addr": "0x800585fc",
+        "size": 288,
+        "symbol": "MoviePlayerEndgameMovieState::Reset(void)"
+      }
+    ],
+    "NamespaceSelector": [
+      {
+        "addr": "0x800c8030",
+        "size": 304,
+        "symbol": "NamespaceSelector::FlushAllCaches(void)"
+      }
+    ],
+    "NewControlParms": [
+      {
+        "addr": "0x8001e6dc",
+        "size": 412,
+        "symbol": "NewControlParms::NewControlParms(void)"
+      }
+    ],
+    "O2TTarget": [
+      {
+        "addr": "0x801cd3dc",
+        "size": 444,
+        "symbol": "O2TTarget::~O2TTarget(void)"
+      }
+    ],
+    "OPTTarget": [
+      {
+        "addr": "0x801fba98",
+        "size": 324,
+        "symbol": "OPTTarget::~OPTTarget(void)"
+      }
+    ],
+    "ObjectDataBehaviorConstants": [
+      {
+        "addr": "0x80159c84",
+        "size": 260,
+        "symbol": "ObjectDataBehaviorConstants::SetValueCount(int)"
+      }
+    ],
+    "ObjectDataObjDefinition": [
+      {
+        "addr": "0x8015c59c",
+        "size": 348,
+        "symbol": "ObjectDataObjDefinition::SaveToIFFFile(unsigned int, short, StringBuffer &)"
+      }
+    ],
+    "ObjectList": [
+      {
+        "addr": "0x80048590",
+        "size": 388,
+        "symbol": "ObjectList::AddObject(cXObject *)"
+      }
+    ],
+    "ObjectRecord>": [
+      {
+        "addr": "0x803aaa80",
+        "size": 264,
+        "symbol": "void DoContainerStream<vector<ObjectRecord, allocator<ObjectRecord> >, ObjectRecord>(vector<ObjectRecord, allocator<ObjectRecord> > &, ObjectRecord *, ReconBuffer *, int)"
+      }
+    ],
+    "ObjectSaveTypeTable2": [
+      {
+        "addr": "0x80022dc4",
+        "size": 320,
+        "symbol": "ObjectSaveTypeTable2::DoStream(ReconBuffer *, int)"
+      }
+    ],
+    "ParseOneString": [
+      {
+        "addr": "0x800fc604",
+        "size": 472,
+        "symbol": "ParseOneString(BString2 &, BString2 &, int, int *, int *, int *)"
+      }
+    ],
+    "PassiveInfluenceObject": [
+      {
+        "addr": "0x803a8b60",
+        "size": 336,
+        "symbol": "PassiveInfluenceObject::~PassiveInfluenceObject(void)"
+      }
+    ],
+    "PassiveInfluenceSystem": [
+      {
+        "addr": "0x8011416c",
+        "size": 472,
+        "symbol": "PassiveInfluenceSystem::RemoveObjectFromMap(cXObject *)"
+      }
+    ],
+    "PassiveInfluenceTarget": [
+      {
+        "addr": "0x803a8d6c",
+        "size": 376,
+        "symbol": "PassiveInfluenceTarget::~PassiveInfluenceTarget(void)"
+      }
+    ],
+    "Physics": [
+      {
+        "addr": "0x800593cc",
+        "size": 296,
+        "symbol": "Physics::PhysicsGravitate(EVec3 &)"
+      }
+    ],
+    "PlumbBob": [
+      {
+        "addr": "0x80059838",
+        "size": 412,
+        "symbol": "PlumbBob::PlumbBob(void)"
+      }
+    ],
+    "PlumbBobParms": [
+      {
+        "addr": "0x8005b00c",
+        "size": 416,
+        "symbol": "PlumbBobParms::PlumbBobParms(void)"
+      }
+    ],
+    "PreGameCreateAFamilyState": [
+      {
+        "addr": "0x80094ca0",
+        "size": 272,
+        "symbol": "PreGameCreateAFamilyState::Update(float)"
+      }
+    ],
+    "PreGameState": [
+      {
+        "addr": "0x800948d4",
+        "size": 272,
+        "symbol": "PreGameState::InsertPlayer2Roommate(void)"
+      }
+    ],
+    "QuickStringSet": [
+      {
+        "addr": "0x800a7a6c",
+        "size": 260,
+        "symbol": "QuickStringSet::LoadRes(iResFile *, short)"
+      }
+    ],
+    "R2LTarget": [
+      {
+        "addr": "0x801db534",
+        "size": 400,
+        "symbol": "R2LTarget::GetVariable(char *)"
+      }
+    ],
+    "RelMatrixImpl": [
+      {
+        "addr": "0x80134e14",
+        "size": 376,
+        "symbol": "RelMatrixImpl::CreateNewArray(int)"
+      }
+    ],
+    "SKNTarget": [
+      {
+        "addr": "0x80202b90",
+        "size": 452,
+        "symbol": "SKNTarget::~SKNTarget(void)"
+      }
+    ],
+    "SerializeUIGameData": [
+      {
+        "addr": "0x801905e8",
+        "size": 320,
+        "symbol": "SerializeUIGameData::Save(NghResFile::SectionID, NghResFile::SaveRecord &)"
+      }
+    ],
+    "SetLotBorders": [
+      {
+        "addr": "0x801517c0",
+        "size": 452,
+        "symbol": "SetLotBorders(int, int, int, int)"
+      }
+    ],
+    "SetVar_EYE_state": [
+      {
+        "addr": "0x801e948c",
+        "size": 352,
+        "symbol": "SetVar_EYE_state::Handler(char *)"
+      }
+    ],
+    "SetupCAS": [
+      {
+        "addr": "0x801c6fc4",
+        "size": 300,
+        "symbol": "SetupCAS(void)"
+      }
+    ],
+    "SplitPath": [
+      {
+        "addr": "0x800a579c",
+        "size": 280,
+        "symbol": "SplitPath(StringBuffer &, StringBuffer &, StringBuffer &, StringBuffer &)"
+      }
+    ],
+    "SplitWallHorizDiag": [
+      {
+        "addr": "0x80028ff0",
+        "size": 444,
+        "symbol": "SplitWallHorizDiag(TileWalls &, CTilePt &)"
+      }
+    ],
+    "SplitWallVertDiag": [
+      {
+        "addr": "0x800291ac",
+        "size": 436,
+        "symbol": "SplitWallVertDiag(TileWalls &, CTilePt &)"
+      }
+    ],
+    "SprSysSetState": [
+      {
+        "addr": "0x80238b38",
+        "size": 512,
+        "symbol": "SprSysSetState(unsigned int, unsigned int)"
+      }
+    ],
+    "StackElem": [
+      {
+        "addr": "0x801475a8",
+        "size": 264,
+        "symbol": "StackElem::ReconStream(ReconBuffer *, int, BehaviorFinder *)"
+      }
+    ],
+    "StartFire": [
+      {
+        "addr": "0x801fc5d4",
+        "size": 372,
+        "symbol": "StartFire(void)"
+      }
+    ],
+    "StartScreenStartState": [
+      {
+        "addr": "0x803a1328",
+        "size": 508,
+        "symbol": "StartScreenStartState::Draw(ERC *)"
+      }
+    ],
+    "StartScreenVars": [
+      {
+        "addr": "0x8009567c",
+        "size": 260,
+        "symbol": "StartScreenVars::DrawPressStart(ERC *)"
+      }
+    ],
+    "StaticGetShaderDimensions": [
+      {
+        "addr": "0x801ec158",
+        "size": 260,
+        "symbol": "StaticGetShaderDimensions(ERShader *, unsigned int &, unsigned int &)"
+      }
+    ],
+    "StringBuffer2": [
+      {
+        "addr": "0x800a6d58",
+        "size": 272,
+        "symbol": "StringBuffer2::append(unsigned wchar_t *, int)"
+      }
+    ],
+    "StringToHash": [
+      {
+        "addr": "0x800ebe5c",
+        "size": 312,
+        "symbol": "StringToHash(char *)"
+      }
+    ],
+    "SubstituteString": [
+      {
+        "addr": "0x8007b144",
+        "size": 504,
+        "symbol": "SubstituteString(unsigned wchar_t *, unsigned wchar_t *, unsigned wchar_t *, BString2 &)"
+      }
+    ],
+    "TTabScratchEntry": [
+      {
+        "addr": "0x8014951c",
+        "size": 420,
+        "symbol": "TTabScratchEntry::CopyFrom(ITreeTableEntry *)"
+      }
+    ],
+    "TheSimsEAMovieState": [
+      {
+        "addr": "0x800971c8",
+        "size": 288,
+        "symbol": "TheSimsEAMovieState::Startup(void)"
+      }
+    ],
+    "TheSimsEnterMainMenuState": [
+      {
+        "addr": "0x80098058",
+        "size": 292,
+        "symbol": "TheSimsEnterMainMenuState::Startup(void)"
+      }
+    ],
+    "TheSimsMainMenuState": [
+      {
+        "addr": "0x80098728",
+        "size": 272,
+        "symbol": "TheSimsMainMenuState::Reset(void)"
+      }
+    ],
+    "TheSimsNGCLicenseState": [
+      {
+        "addr": "0x80096b90",
+        "size": 352,
+        "symbol": "TheSimsNGCLicenseState::Startup(void)"
+      }
+    ],
+    "TheSimsStartScreenStateMachine": [
+      {
+        "addr": "0x80095970",
+        "size": 264,
+        "symbol": "TheSimsStartScreenStateMachine::TheSimsStartScreenStateMachine(int, int)"
+      }
+    ],
+    "TheSimsStateMachine": [
+      {
+        "addr": "0x8009acc4",
+        "size": 264,
+        "symbol": "TheSimsStateMachine::TheSimsStateMachine(int, int)"
+      }
+    ],
+    "Timer_StartFrame": [
+      {
+        "addr": "0x80076f3c",
+        "size": 392,
+        "symbol": "Timer_StartFrame(void)"
+      }
+    ],
+    "TryCatExtension(StackString": [
+      {
+        "addr": "0x8013d8d0",
+        "size": 312,
+        "symbol": "TryCatExtension(StackString<260> &, SeqResFile::OpenSpec *)"
+      }
+    ],
+    "UIAUDIOTarget": [
+      {
+        "addr": "0x8018078c",
+        "size": 324,
+        "symbol": "UIAUDIOTarget::~UIAUDIOTarget(void)"
+      }
+    ],
+    "UIButtonImages": [
+      {
+        "addr": "0x801816a0",
+        "size": 488,
+        "symbol": "UIButtonImages::LocalizeXBoxImages(void)"
+      }
+    ],
+    "UIDialog": [
+      {
+        "addr": "0x801e6f2c",
+        "size": 280,
+        "symbol": "UIDialog::UIDialog(void)"
+      }
+    ],
+    "UIHDTV": [
+      {
+        "addr": "0x8017bd54",
+        "size": 312,
+        "symbol": "UIHDTV::GetPreceedingXMLTag(char *, int)"
+      }
+    ],
+    "UnloadLevelGlobalData": [
+      {
+        "addr": "0x8008b8a8",
+        "size": 288,
+        "symbol": "UnloadLevelGlobalData(void)"
+      }
+    ],
+    "WantFearManager": [
+      {
+        "addr": "0x8014c1fc",
+        "size": 444,
+        "symbol": "WantFearManager::PickNewRoot(Neighbor *, bool)"
+      }
+    ],
+    "WorldToIso": [
+      {
+        "addr": "0x800a4c70",
+        "size": 268,
+        "symbol": "WorldToIso(EVec3 &)"
+      }
+    ],
+    "XRoute>": [
+      {
+        "addr": "0x803aa520",
+        "size": 424,
+        "symbol": "void DoContainerStream<vector<XRoute, allocator<XRoute> >, XRoute>(vector<XRoute, allocator<XRoute> > &, XRoute *, ReconBuffer *, int)"
+      }
+    ],
+    "_SecsToTime": [
+      {
+        "addr": "0x8023b0a0",
+        "size": 500,
+        "symbol": "_SecsToTime(tm *, unsigned int)"
+      }
+    ],
+    "_XmlAttribFind": [
+      {
+        "addr": "0x8023b544",
+        "size": 412,
+        "symbol": "_XmlAttribFind(unsigned char *, unsigned char *)"
+      }
+    ],
+    "_XmlAttribFindByIndex": [
+      {
+        "addr": "0x8023b6e0",
+        "size": 312,
+        "symbol": "_XmlAttribFindByIndex(unsigned char *, int)"
+      }
+    ],
+    "_XmlContentChar": [
+      {
+        "addr": "0x8023b364",
+        "size": 404,
+        "symbol": "_XmlContentChar(unsigned char *, unsigned char *)"
+      }
+    ],
+    "_loadFileSize": [
+      {
+        "addr": "0x80006404",
+        "size": 364,
+        "symbol": "_loadFileSize(char *, int *)"
+      }
+    ],
+    "basic_string": [
+      {
+        "addr": "0x803b16b0",
+        "size": 264,
+        "symbol": "basic_string<char, char_traits<char>, allocator<char> >::reserve(unsigned int)"
+      }
+    ],
+    "bindTexture": [
+      {
+        "addr": "0x800071f8",
+        "size": 360,
+        "symbol": "bindTexture(void *, int, void *)"
+      }
+    ],
+    "cAudioInfo": [
+      {
+        "addr": "0x800ab120",
+        "size": 428,
+        "symbol": "cAudioInfo::OutdoorTileRatio(void)"
+      }
+    ],
+    "cFixedWorldImpl": [
+      {
+        "addr": "0x8014cc0c",
+        "size": 440,
+        "symbol": "cFixedWorldImpl::Load(iResFile *, int)"
+      }
+    ],
+    "cGZSnd": [
+      {
+        "addr": "0x800ba96c",
+        "size": 444,
+        "symbol": "cGZSnd::getLRVolume(int, float &, float &)"
+      }
+    ],
+    "cSoundCache": [
+      {
+        "addr": "0x80119c20",
+        "size": 296,
+        "symbol": "cSoundCache::GetTrackObject(ERSoundEvent *, bool)"
+      }
+    ],
+    "cSoundModeManager": [
+      {
+        "addr": "0x800b1194",
+        "size": 392,
+        "symbol": "cSoundModeManager::Update(void)"
+      }
+    ],
+    "cSoundPlayer": [
+      {
+        "addr": "0x800b76a8",
+        "size": 364,
+        "symbol": "cSoundPlayer::Update(void)"
+      }
+    ],
+    "cXMTObject": [
+      {
+        "addr": "0x800c34b4",
+        "size": 464,
+        "symbol": "cXMTObject::~cXMTObject(void)"
+      }
+    ],
+    "cXPortal": [
+      {
+        "addr": "0x80131fe4",
+        "size": 508,
+        "symbol": "cXPortal::DumpRouteScores(ObjectModule *, short)"
+      }
+    ],
+    "collectResInfoForSel": [
+      {
+        "addr": "0x80022718",
+        "size": 468,
+        "symbol": "collectResInfoForSel(ObjSelector *, vector<unsigned int, allocator<unsigned int> > &)"
+      }
+    ],
+    "resolveSkillForPassiveInfluence": [
+      {
+        "addr": "0x8014215c",
+        "size": 272,
+        "symbol": "resolveSkillForPassiveInfluence(cXObject *, StackElem *, AnimateNewParam *, AnimRef *&)"
+      }
+    ],
+    "setExternVariable": [
+      {
+        "addr": "0x800065f4",
+        "size": 388,
+        "symbol": "setExternVariable(char *, char *)"
+      }
+    ],
+    "sum_attribute(int, RCPTarget": [
+      {
+        "addr": "0x801dda9c",
+        "size": 308,
+        "symbol": "sum_attribute(int, RCPTarget::Recipe *)"
+      }
+    ],
+    "void __adjust_heap": [
+      {
+        "addr": "0x803c65fc",
+        "size": 404,
+        "symbol": "void __adjust_heap<EResourceManager::ResourceIndexRecord *, int, EResourceManager::ResourceIndexRecord, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, int, int, EResourceManager::ResourceIndexRecord, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &))"
+      }
+    ],
+    "void __insertion_sort": [
+      {
+        "addr": "0x803c6d00",
+        "size": 272,
+        "symbol": "void __insertion_sort<EResourceManager::ResourceIndexRecord *, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &))"
+      }
+    ],
+    "void __introsort_loop": [
+      {
+        "addr": "0x803c6aec",
+        "size": 400,
+        "symbol": "void __introsort_loop<EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord, int, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, int, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &))"
+      }
+    ],
+    "void __partial_sort": [
+      {
+        "addr": "0x803c68c4",
+        "size": 312,
+        "symbol": "void __partial_sort<EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &)>(EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, EResourceManager::ResourceIndexRecord *, bool (*)(EResourceManager::ResourceIndexRecord &, EResourceManager::ResourceIndexRecord &))"
+      }
+    ]
+  }
+}
