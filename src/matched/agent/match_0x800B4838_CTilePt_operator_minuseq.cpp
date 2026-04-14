@@ -1,4 +1,6 @@
+// 0x800B4838 CTilePt::operator-=(CTilePt&) (40B)
 // FLAGS: -fno-elide-constructors
+
 struct CTilePt {
     char x;
     char y;
