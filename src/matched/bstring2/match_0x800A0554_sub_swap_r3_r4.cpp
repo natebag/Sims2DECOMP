@@ -1,3 +1,5 @@
+// 0x800A0554 (44 bytes)
+// 0x800A0554 (44 bytes)
 /* 44-byte wrapper at 0x800A0554: swaps r3/r4 and calls */
 
 extern void target_800A0554(void*, void*);
