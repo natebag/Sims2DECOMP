@@ -1,13 +1,26 @@
-/* cXObjectImpl::IsPerson(void) at 0x800E3094 (68B) */
+// 0x800E3094 cXObjectImpl::IsPerson(void) (68B) — family match with IsVehicle (== 2)
+struct VTable {
+    char pad[792];
+    short m_adj;
+    short m_pad;
+    int (*m_fn)(void*);
+};
 
-struct PersonVt { char pad[0x318]; short m_off; int (*m_fn)(void *); };
-struct PersonInner2 { char pad[0x04]; PersonVt *m_vt; };
-struct cXObjectImpl_IP { char pad[0x04]; PersonInner2 *m_inner; int IsPerson(void); };
+struct Inner {
+    char pad[4];
+    VTable* m_vt;
+};
 
-int cXObjectImpl_IP::IsPerson(void) {
-    PersonInner2 *inner = m_inner;
-    PersonVt *vt = inner->m_vt;
-    short off = vt->m_off;
-    int (*fn)(void *) = vt->m_fn;
-    return fn((char *)inner + off) == 2;
+struct cXObjectImpl {
+    char pad[4];
+    Inner* m_inner;
+    int IsPerson();
+};
+
+int cXObjectImpl::IsPerson() {
+    Inner* inner = m_inner;
+    VTable* vt = inner->m_vt;
+    int (*fn)(void*) = vt->m_fn;
+    int type = fn((char*)inner + vt->m_adj);
+    return type == 2 ? 1 : 0;
 }

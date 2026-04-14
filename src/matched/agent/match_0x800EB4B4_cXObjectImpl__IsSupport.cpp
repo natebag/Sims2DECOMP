@@ -1,13 +1,26 @@
-/* cXObjectImpl::IsSupport(void) at 0x800EB4B4 (68B) */
+// 0x800EB4B4 cXObjectImpl::IsSupport(void) (68B) — virtual slot 1016/1020 + == 6 bool idiom
+struct VTable {
+    char pad[1016];
+    short m_adj;
+    short m_pad;
+    int (*m_fn)(void*);
+};
 
-struct SupportVt { char pad[0x3F8]; short m_off; int (*m_fn)(void *); };
-struct SupportInner { char pad[0x04]; SupportVt *m_vt; };
-struct cXObjectImpl_IS { char pad[0x04]; SupportInner *m_inner; int IsSupport(void); };
+struct Inner {
+    char pad[4];
+    VTable* m_vt;
+};
 
-int cXObjectImpl_IS::IsSupport(void) {
-    SupportInner *inner = m_inner;
-    SupportVt *vt = inner->m_vt;
-    short off = vt->m_off;
-    int (*fn)(void *) = vt->m_fn;
-    return fn((char *)inner + off) == 6;
+struct cXObjectImpl {
+    char pad[4];
+    Inner* m_inner;
+    int IsSupport();
+};
+
+int cXObjectImpl::IsSupport() {
+    Inner* inner = m_inner;
+    VTable* vt = inner->m_vt;
+    int (*fn)(void*) = vt->m_fn;
+    int type = fn((char*)inner + vt->m_adj);
+    return type == 6 ? 1 : 0;
 }

@@ -1,13 +1,27 @@
-/* cXObjectImpl::IsVehicle(void) at 0x800E3050 (68B) */
+// 0x800E3050 cXObjectImpl::IsVehicle(void) (68B)
+// Pattern: virtual GetType (slot 792/796) + == 12 bool idiom
+struct VTable {
+    char pad[792];
+    short m_adj;
+    short m_pad;
+    int (*m_fn)(void*);
+};
 
-struct VehicleVt { char pad[0x318]; short m_off; int (*m_fn)(void *); };
-struct VehicleInner { char pad[0x04]; VehicleVt *m_vt; };
-struct cXObjectImpl_IV { char pad[0x04]; VehicleInner *m_inner; int IsVehicle(void); };
+struct Inner {
+    char pad[4];
+    VTable* m_vt;
+};
 
-int cXObjectImpl_IV::IsVehicle(void) {
-    VehicleInner *inner = m_inner;
-    VehicleVt *vt = inner->m_vt;
-    short off = vt->m_off;
-    int (*fn)(void *) = vt->m_fn;
-    return fn((char *)inner + off) == 0xC;
+struct cXObjectImpl {
+    char pad[4];
+    Inner* m_inner;
+    int IsVehicle();
+};
+
+int cXObjectImpl::IsVehicle() {
+    Inner* inner = m_inner;
+    VTable* vt = inner->m_vt;
+    int (*fn)(void*) = vt->m_fn;
+    int type = fn((char*)inner + vt->m_adj);
+    return type == 12 ? 1 : 0;
 }
