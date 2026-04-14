@@ -1,3 +1,4 @@
+// 0x800A4960 (44 bytes)
 /* 44-byte wrapper at 0x800A4960: calls with constants (1, 0xFFFF) */
 
 extern void target_800A4960(int, unsigned int);

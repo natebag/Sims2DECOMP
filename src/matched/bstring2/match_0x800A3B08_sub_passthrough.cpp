@@ -1,3 +1,4 @@
+// 0x800A3B08 (32 bytes)
 /* 32-byte passthrough at 0x800A3B08 */
 
 extern void target_800A3B08(void);
