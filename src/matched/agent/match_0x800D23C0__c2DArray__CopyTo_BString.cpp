@@ -1,4 +1,4 @@
-/* _c2DArray::CopyTo(BString &) - 60 bytes */
+// 0x800D23C0 _c2DArray::CopyTo(BString &) (60B)
 
 struct BString { int m_data; };
 
