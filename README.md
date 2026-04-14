@@ -4,20 +4,20 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**🎉 50% OF MATCHABLE FUNCTIONS DECOMPILED 🎉**
+**🚀 42.3% DECOMPILED — APPROACHING 52% OF MATCHABLE CODE 🚀**
 
-**41.5% decompiled and verified** — 8,502 / 20,508 functions byte-matched against the original DOL. Excluding the ~3,000 SDK functions that were compiled with a different compiler (Metrowerks, not SN Systems), **we've matched 50% of the decompilable codebase**.
+**42.3% decompiled and verified** — 8,670 / 20,508 functions byte-matched against the original DOL. Excluding the ~3,500 SDK functions compiled with Metrowerks CodeWarrior, we're matching **~51% of the game's decompilable code**.
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **8,502 / 20,508 (41.5%)** |
-| **% of matchable** | **~50%** (of ~17,000 excluding SDK) |
-| Functions remaining | ~12,006 |
+| **Verified matches** | **8,670 / 20,508 (42.3%)** |
+| **% of matchable** | **~51%** (of ~17,000 excluding SDK) |
+| Functions remaining | ~11,838 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit |
-| Matching techniques | 19 proven patterns |
+| Matching techniques | 32 proven patterns |
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
 
