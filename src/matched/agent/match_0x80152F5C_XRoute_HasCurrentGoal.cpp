@@ -1,13 +1,12 @@
-// 0x80152f5c XRoute::HasCurrentGoal (24b)
+// 0x80152F5C (24B) XRoute::HasCurrentGoal(void)
 
 struct XRoute {
-    int pad[21];
+    char pad[84];
     int m_goal;
-    int HasCurrentGoal();
+    bool HasCurrentGoal();
 };
 
-int XRoute::HasCurrentGoal() {
-    int r = 1;
-    if (m_goal == -1) r = 0;
-    return r;
+bool XRoute::HasCurrentGoal() {
+    if (m_goal != -1) return 1;
+    return 0;
 }
