@@ -166,8 +166,24 @@ for f in $FILES; do
         continue
     fi
 
-    # MISMATCH or SIZE_MISMATCH: move to wip/version_diff/ (preserve work)
+    # MISMATCH or SIZE_MISMATCH: handling depends on whether file is already tracked
     if echo "$VERIFY_OUT" | grep -qE 'MISMATCH|SIZE_MISMATCH'; then
+        # If file is already tracked in git (i.e., this is a MODIFICATION of an
+        # existing committed match), DO NOT silently move it. That caused the
+        # Session 9 bulk-sweep bug where sibling-file edits changed compiler
+        # state and quietly evicted established matches from src/matched/.
+        # Instead, BLOCK and let the author investigate.
+        if git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+            echo -e "${RED}BLOCKED (MISMATCH on tracked file): $f${NC}"
+            echo -e "${RED}    Previously-committed match no longer verifies — source or sibling${NC}"
+            echo -e "${RED}    changes likely broke it. Investigate and fix, or unstage and${NC}"
+            echo -e "${RED}    manually move to src/wip/version_diff/ if obsolete.${NC}"
+            echo "$VERIFY_OUT" | tail -3 | sed 's/^/    /'
+            BLOCKED=$((BLOCKED + 1))
+            continue
+        fi
+        # Newly-added file that doesn't verify: auto-move to wip/version_diff/
+        # (preserves the work, keeps src/matched/ clean)
         BASENAME=$(basename "$f")
         DEST="src/wip/version_diff/$BASENAME"
         cp "$f" "$DEST"
