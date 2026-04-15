@@ -1,12 +1,12 @@
+// 0x80226948 (24B) InteractorModule::WallPainter::IsAnchored(void)
+
 struct WallPainter {
-    char _pad[0x88];
-    int m_flags;
-    int IsAnchored();
+    char pad[136];
+    unsigned int m_flags;
+    bool IsAnchored();
 };
-int WallPainter::IsAnchored() {
-    int f = m_flags;
-    if ((f & 1) == 0) {
-        return 0;
-    }
+
+bool WallPainter::IsAnchored() {
+    if ((m_flags & 1) == 0) return 0;
     return 1;
 }
