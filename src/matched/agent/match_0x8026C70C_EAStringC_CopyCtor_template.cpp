@@ -1,3 +1,4 @@
+// 0x8026C70C template match (28B)
 // EAStringC::EAStringC(EAStringC&) template — matches 3 functions:
 // 0x8026c70c, 0x80282028, 0x802a1db0
 

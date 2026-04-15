@@ -1,3 +1,4 @@
+// 0x80178138 template match (96B)
 // CommandTable::ContainsCommand template — matches 4 functions:
 // 0x80177554 UIAUDIO::ContainsEntry(char *)
 // 0x80178ac4 GetLocalizableCommandTable::ContainsCommand(char *)
