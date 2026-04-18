@@ -1,3 +1,4 @@
+// 0x8029C588 (76B) AptCharacterSpriteInst::~AptCharacterSpriteInst(void)
 extern void AptCharacterSpriteInstBase_dtor(void*, int);
 
 class DOGMA_PoolManager {

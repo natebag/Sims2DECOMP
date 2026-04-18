@@ -1,3 +1,4 @@
+// 0x8029C4C0 (100B) AptCharacterStaticTextInst::~AptCharacterStaticTextInst(void)
 extern int AptCharacterStaticTextInst_vtbl[];
 
 struct AptNativeHash;

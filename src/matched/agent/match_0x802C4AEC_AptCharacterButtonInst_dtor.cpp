@@ -1,3 +1,4 @@
+// 0x802C4AEC (112B) AptCharacterButtonInst::~AptCharacterButtonInst(void)
 extern int AptCharacterButtonInst_vtbl[];
 
 struct AptDisplayList;

@@ -1,3 +1,4 @@
+// 0x8029C45C (100B) AptCharacterShapeInst::~AptCharacterShapeInst(void)
 extern int AptCharacterShapeInst_vtbl[];
 
 struct AptNativeHash;

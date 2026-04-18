@@ -1,3 +1,4 @@
+// 0x802C4C68 (92B) AptCharacterInst::~AptCharacterInst(void)
 extern int AptCharacterInst_vtbl[];
 
 struct AptNativeHash;

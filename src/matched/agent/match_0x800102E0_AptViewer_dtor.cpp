@@ -1,3 +1,4 @@
+// 0x800102E0 (120B) AptViewer::~AptViewer(void)
 extern void closeFunc();
 extern void _delete(void*);
 

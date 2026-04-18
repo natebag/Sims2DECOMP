@@ -1,3 +1,4 @@
+// 0x80282F54 (124B) AptCharacterAnimationInst::~AptCharacterAnimationInst(void)
 extern int AptCharacterAnimationInst_vtbl[];
 
 struct AptFile;

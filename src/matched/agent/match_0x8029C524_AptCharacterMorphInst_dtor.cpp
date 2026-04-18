@@ -1,3 +1,4 @@
+// 0x8029C524 (100B) AptCharacterMorphInst::~AptCharacterMorphInst(void)
 extern int AptCharacterMorphInst_vtbl[];
 
 struct AptNativeHash;
