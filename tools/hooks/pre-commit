@@ -26,6 +26,14 @@ NC='\033[0m'
 if [ "${SKIP_VERIFY:-}" = "1" ]; then
     echo -e "${RED}[pre-commit] WARNING: SKIP_VERIFY=1 -- match-file verification BYPASSED${NC}" >&2
     echo -e "${RED}[pre-commit] This bypass is logged. Do not use without justification.${NC}" >&2
+    REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo .)"
+    LOG="$REPO_ROOT/.git/hooks/bypass.log"
+    {
+        echo "--"
+        echo "ts=$(date -Iseconds)"
+        echo "user=${USER:-unknown}"
+        echo "staged=$(git diff --cached --name-only | tr '\n' ',' | sed 's/,$//')"
+    } >> "$LOG" 2>/dev/null || true
     exit 0
 fi
 
@@ -132,12 +140,26 @@ for f in $FILES; do
 
     parse_header "$f"
 
+    # Fallback: extract address from filename (match_0xADDR_*.cpp) when header
+    # lacks one. Size CANNOT be recovered this way and remains mandatory.
+    if [ -z "$ADDR" ]; then
+        FILENAME_ADDR=$(basename "$f" | grep -oE '0x[0-9A-Fa-f]{8}' | head -1)
+        if [ -n "$FILENAME_ADDR" ]; then
+            ADDR="$FILENAME_ADDR"
+        fi
+    fi
+
     if [ -z "$ADDR" ] || [ -z "$SIZE" ]; then
         echo -e "${RED}BLOCKED (HEADER): $f -- can't parse addr/size from first 5 lines${NC}"
-        echo -e "${RED}    Required: an 0xADDRESS and a size on one of the first 5 lines.${NC}"
-        echo -e "${RED}    Examples accepted:${NC}"
-        echo -e "${RED}      // 0x8012953C cXPersonImpl::IsSelected (16B)${NC}"
-        echo -e "${RED}      // Address: 0x80159D88 | Size: 12 bytes${NC}"
+        if [ -z "$SIZE" ]; then
+            echo -e "${RED}    MISSING SIZE: first 5 lines must contain (NN B), (NN b), or '12 bytes' form.${NC}"
+            echo -e "${RED}    This is QA-RULE #1 — size header is MANDATORY for verify_match.sh.${NC}"
+        fi
+        if [ -z "$ADDR" ]; then
+            echo -e "${RED}    MISSING ADDRESS: no 0xXXXXXXXX found in header or filename.${NC}"
+        fi
+        echo -e "${RED}    Required canonical form (use exactly):${NC}"
+        echo -e "${RED}      // 0x8012953C ClassName::method(args) (NN B)${NC}"
         BLOCKED=$((BLOCKED + 1))
         continue
     fi
