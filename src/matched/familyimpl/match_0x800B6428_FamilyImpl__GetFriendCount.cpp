@@ -1,17 +1,16 @@
-// 0x800B6428 FamilyImpl::GetFriendCount (60B)
+/* 0x800b6428 (60 bytes) - FamilyImpl::GetFriendCount(void) */
+extern void* g_familyImplHelper;  // SDA -21476(r13)
 
-typedef void* (*DispatchFn)(void*, void*);
-
-extern void* g_familyMgr;
-
-struct FamilyImpl_GFC {
-    void* GetFriendCount();
+class FamilyImpl {
+public:
+    int GetFriendCount(void);
 };
 
-void* FamilyImpl_GFC::GetFriendCount() {
-    char* mgr = (char*)g_familyMgr;
-    char* vt = *(char**)mgr;
-    short adj = *(short*)(vt + 0x30);
-    DispatchFn fn = (DispatchFn)*(void**)(vt + 0x34);
-    return fn(mgr + adj, this);
+int FamilyImpl::GetFriendCount() {
+    void* obj = g_familyImplHelper;
+    void* vtable = *(void**)obj;
+    short offset = *(short*)((char*)vtable + 48);
+    void* func = *(void**)((char*)vtable + 52);
+    void* inst = (char*)obj + offset;
+    return ((int (*)(void*, FamilyImpl*))func)(inst, this);
 }

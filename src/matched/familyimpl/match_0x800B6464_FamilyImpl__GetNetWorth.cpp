@@ -1,17 +1,16 @@
-// 0x800B6464 FamilyImpl::GetNetWorth (60B)
+/* 0x800b6464 (60 bytes) - FamilyImpl::GetNetWorth(void) */
+extern void* g_familyImplHelper;  // SDA -21476(r13)
 
-typedef void* (*DispatchFn)(void*, void*);
-
-extern void* g_familyMgr;
-
-struct FamilyImpl_GNW {
-    void* GetNetWorth();
+class FamilyImpl {
+public:
+    int GetNetWorth(void);
 };
 
-void* FamilyImpl_GNW::GetNetWorth() {
-    char* mgr = (char*)g_familyMgr;
-    char* vt = *(char**)mgr;
-    short adj = *(short*)(vt + 0x38);
-    DispatchFn fn = (DispatchFn)*(void**)(vt + 0x3C);
-    return fn(mgr + adj, this);
+int FamilyImpl::GetNetWorth() {
+    void* obj = g_familyImplHelper;
+    void* vtable = *(void**)obj;
+    short offset = *(short*)((char*)vtable + 56);
+    void* func = *(void**)((char*)vtable + 60);
+    void* inst = (char*)obj + offset;
+    return ((int (*)(void*, FamilyImpl*))func)(inst, this);
 }

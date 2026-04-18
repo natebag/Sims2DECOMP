@@ -1,3 +1,4 @@
+// 0x8026C728 template match (104B)
 // FLAGS: -fno-schedule-insns2
 
 // EAStringC::~EAStringC(void) template — matches ~12 functions
