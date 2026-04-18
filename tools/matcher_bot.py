@@ -747,6 +747,188 @@ def m20_struct_deref_swap(lines: list[str]) -> Optional[tuple[str, list[str]]]:
     return (f"T20_{direction}@{idx}", out)
 
 
+# ---------- Track E: New permuter mutators (M21-M25) ----------
+
+# Loop-bound rewrite: i < 49 ↔ i <= 48 ↔ i != 49
+_LOOP_BOUND_RE = re.compile(
+    r"(?P<var>[A-Za-z_][A-Za-z0-9_]*)"
+    r"\s*(?P<op><=|>=|<|>|!=|==)\s*"
+    r"(?P<bound>\d+)"
+)
+
+def m21_loop_bound_rewrite(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Rewrite loop bounds: i < 49 → i <= 48, i < N → i != N, etc."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        stripped = raw.lstrip()
+        if stripped.startswith("//") or stripped.startswith("/*"):
+            continue
+        if "for" in raw or "while" in raw:
+            for m in _LOOP_BOUND_RE.finditer(raw):
+                var = m.group("var")
+                op = m.group("op")
+                bound = int(m.group("bound"))
+                candidates.append((i, m, var, op, bound))
+    if not candidates:
+        return None
+    idx, m, var, op, bound = random.choice(candidates)
+
+    # Generate alternative forms
+    alternatives = []
+    if op == "<" and bound > 0:
+        alternatives.append((f"{var} <= {bound - 1}", "lt_to_le_minus1"))
+        if bound > 0:
+            alternatives.append((f"{var} != {bound}", "lt_to_ne"))
+    elif op == "<=" and bound > 0:
+        alternatives.append((f"{var} < {bound + 1}", "le_to_lt_plus1"))
+    elif op == ">" and bound < 1000:
+        alternatives.append((f"{var} >= {bound + 1}", "gt_to_ge_plus1"))
+    elif op == ">=" and bound < 1000:
+        alternatives.append((f"{var} > {bound - 1}", "ge_to_gt_minus1"))
+    elif op == "!=":
+        alternatives.append((f"{var} < {bound}", "ne_to_lt"))
+        alternatives.append((f"{var} > {bound}", "ne_to_gt"))
+
+    if not alternatives:
+        return None
+
+    new_cond, label = random.choice(alternatives)
+    old_text = m.group(0)
+    new_line = lines[idx][:m.start()] + new_cond + lines[idx][m.end():]
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T21_loop_bound_{label}@{idx}", out)
+
+
+# Pre/post-increment swap: ++i ↔ i++
+_PREINC_RE = re.compile(r"\+\+([A-Za-z_][A-Za-z0-9_]*)")
+_POSTINC_RE = re.compile(r"([A-Za-z_][A-Za-z0-9_]*)\+\+")
+_PREDEC_RE = re.compile(r"--([A-Za-z_][A-Za-z0-9_]*)")
+_POSTDEC_RE = re.compile(r"([A-Za-z_][A-Za-z0-9_]*)--")
+
+def m22_increment_swap(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Swap pre/post-increment: ++i → i++, i-- → --i, etc."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        stripped = raw.lstrip()
+        if stripped.startswith("//") or stripped.startswith("/*"):
+            continue
+        for m in _PREINC_RE.finditer(raw):
+            candidates.append((i, m, "++", "pre_to_post"))
+        for m in _POSTINC_RE.finditer(raw):
+            candidates.append((i, m, "++", "post_to_pre"))
+        for m in _PREDEC_RE.finditer(raw):
+            candidates.append((i, m, "--", "pre_to_post"))
+        for m in _POSTDEC_RE.finditer(raw):
+            candidates.append((i, m, "--", "post_to_pre"))
+    if not candidates:
+        return None
+
+    idx, m, op, direction = random.choice(candidates)
+    old = m.group(0)
+    var = m.group(1) if direction.startswith("pre") else m.group(1)
+
+    if direction == "pre_to_post":
+        new = f"{var}{op}"
+    else:
+        new = f"{op}{var}"
+
+    new_line = lines[idx][:m.start()] + new + lines[idx][m.end():]
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T22_inc_{direction}@{idx}", out)
+
+
+# Non-adjacent statement swap: swap lines i and i+2 (skip one line between them)
+def m23_non_adjacent_statement_swap(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Swap two non-adjacent statements (skip one line): line[i] ↔ line[i+2]."""
+    candidates = []
+    for i in range(len(lines) - 2):
+        line_i = lines[i].strip()
+        line_i_plus_2 = lines[i + 2].strip()
+        if (line_i and not line_i.startswith("//") and line_i.endswith(";") and
+            not any(kw in line_i for kw in ["if", "for", "while", "switch", "return", "break"]) and
+            line_i_plus_2 and not line_i_plus_2.startswith("//") and line_i_plus_2.endswith(";") and
+            not any(kw in line_i_plus_2 for kw in ["if", "for", "while", "switch", "return", "break"])):
+            candidates.append(i)
+    if not candidates:
+        return None
+
+    idx = random.choice(candidates)
+    out = list(lines)
+    out[idx], out[idx + 2] = out[idx + 2], out[idx]
+    return (f"T23_swap_stmt_{idx}__{idx + 2}", out)
+
+
+# Comparison signedness flip: add (unsigned) or (signed) cast
+_COMPARE_IN_LINE_RE = re.compile(r"([A-Za-z_][A-Za-z0-9_>.*\[\]]*)\s*(?:<|>|<=|>=|==|!=)\s*([A-Za-z_0-9][A-Za-z0-9_>.*\[\]]*)")
+
+def m24_comparison_signedness_flip(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Add unsigned/signed cast to LHS or RHS of comparison."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        stripped = raw.lstrip()
+        if stripped.startswith("//") or stripped.startswith("/*"):
+            continue
+        if any(op in raw for op in ["<", ">", "<=", ">=", "==", "!="]):
+            for m in _COMPARE_IN_LINE_RE.finditer(raw):
+                candidates.append((i, m, 0))
+                candidates.append((i, m, 1))
+    if not candidates:
+        return None
+
+    idx, m, side = random.choice(candidates)
+    cast_type = random.choice(["(unsigned)", "(signed)"])
+
+    if side == 0:
+        old = m.group(1)
+        new = f"{cast_type}{old}"
+    else:
+        old = m.group(2)
+        new = f"{cast_type}{old}"
+
+    new_line = lines[idx].replace(old, new, 1)
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T24_cast_{cast_type[1:-1]}_side{side}@{idx}", out)
+
+
+# Array deref style: a[i] ↔ *(a+i)
+_ARRAY_INDEX_RE = re.compile(r"([A-Za-z_][A-Za-z0-9_>.*]*)\[([^\]]+)\]")
+_PTR_DEREF_RE = re.compile(r"\*\(([A-Za-z_][A-Za-z0-9_>.*]*)\+([^\)]+)\)")
+
+def m25_array_deref_style(lines: list[str]) -> Optional[tuple[str, list[str]]]:
+    """Convert array subscript style: a[i] ↔ *(a+i)."""
+    candidates = []
+    for i, raw in enumerate(lines):
+        stripped = raw.lstrip()
+        if stripped.startswith("//") or stripped.startswith("/*"):
+            continue
+        for m in _ARRAY_INDEX_RE.finditer(raw):
+            candidates.append((i, m, "subscript_to_ptr"))
+        for m in _PTR_DEREF_RE.finditer(raw):
+            candidates.append((i, m, "ptr_to_subscript"))
+    if not candidates:
+        return None
+
+    idx, m, direction = random.choice(candidates)
+    old = m.group(0)
+
+    if direction == "subscript_to_ptr":
+        array = m.group(1)
+        index = m.group(2)
+        new = f"*({array}+{index})"
+    else:
+        array = m.group(1)
+        index = m.group(2)
+        new = f"{array}[{index}]"
+
+    new_line = lines[idx][:m.start()] + new + lines[idx][m.end():]
+    out = list(lines)
+    out[idx] = new_line
+    return (f"T25_deref_{direction}@{idx}", out)
+
+
 # All stochastic mutators for the permuter
 PERMUTER_MUTATORS = [
     m13_type_width_swap,
@@ -757,6 +939,11 @@ PERMUTER_MUTATORS = [
     m18_expression_split,
     m19_negate_condition,
     m20_struct_deref_swap,
+    m21_loop_bound_rewrite,
+    m22_increment_swap,
+    m23_non_adjacent_statement_swap,
+    m24_comparison_signedness_flip,
+    m25_array_deref_style,
 ]
 
 
