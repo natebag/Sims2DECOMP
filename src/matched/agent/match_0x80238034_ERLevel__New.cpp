@@ -1,7 +1,12 @@
-void *ERLevel__New_alloc(unsigned int);
-void *ERLevel__ctor(void *);
+/* ERLevel::New(void) at 0x80238034 (44B) */
 
-void *ERLevel__New(void) {
-    void *p = ERLevel__New_alloc(0x2E460);
-    return ERLevel__ctor(p);
+struct ERLevel_N {
+    char m_pad[189536];
+    static void* operator new(unsigned int size);
+    ERLevel_N();
+    static ERLevel_N* New();
+};
+
+ERLevel_N* ERLevel_N::New() {
+    return new ERLevel_N();
 }
