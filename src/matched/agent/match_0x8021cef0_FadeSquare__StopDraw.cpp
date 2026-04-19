@@ -1,13 +1,13 @@
-// 0x8021cef0 FadeSquare::StopDraw(void) (24B)
+// 0x8021CEF0 (24B) FadeSquare::StopDraw(void)
 
-struct FadeSquare {
-    char pad[0x10];
-    float m_alpha;
-    int m_drawing;
-    void StopDraw(void);
+struct FS_SD {
+    char pad[16];
+    float m_timer;
+    int m_flag;
+    void StopDraw();
 };
 
-void FadeSquare::StopDraw(void) {
-    m_alpha = 0.0f;
-    m_drawing = 1;
+void FS_SD::StopDraw() {
+    m_flag = 1;
+    m_timer = 0.0f;
 }
