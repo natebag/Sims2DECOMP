@@ -1,13 +1,18 @@
-// AwarenessManager::GetPlayerObject(int)
-// Address: 0x80014028 | Size: 40 bytes
-// Pattern: Array lookup with bounds check
+/* AwarenessManager::GetPlayerObject(int) at 0x80014028 (40B) */
 
-typedef unsigned int uint;
+struct AwarenessBase_GPO {
+    char _pad[0xbc];
+    void* players[];
+};
+extern AwarenessBase_GPO g_awarenessBase_GPO;
 
-// Array at 0x80475E88 (from 0x80475DCC + 0xBC)
-extern void* g_playerObjects[];
+struct AwarenessManager_GPO {
+    void* GetPlayerObject(int playerId);
+};
 
-void* AwarenessManager__GetPlayerObject(int index) {
-    if (g_playerObjects[index] == 0) return 0;
-    return g_playerObjects[index];
+void* AwarenessManager_GPO::GetPlayerObject(int playerId) {
+    void* result = 0;
+    void* entry = g_awarenessBase_GPO.players[playerId];
+    if (!entry) return result;
+    return *(void**)entry;
 }

@@ -1,18 +1,15 @@
-// 0x80224048 (24B) InteractorModule::WallManipulator::GetAffectedWallHeight(void)
-// STATUS: mismatch (S11 Audit #4) — permuter candidate
-// 24B MISMATCH vs DOL. Small function, likely instruction-scheduling or register-allocation
-// drift. Good target for HaikuPermuter when token budget allows.
+/* InteractorModule::WallManipulator::GetAffectedWallHeight(void) at 0x80224048 (24B) */
 
-extern float g_wallH_high;
-extern float g_wallH_low;
+extern float g_wallHeightHigh;
+extern float g_wallHeightLow;
 
-struct IM_WM_GAH {
+struct WallManipulator_GAWH {
     char pad[0xC4];
-    unsigned int m_C4;
+    unsigned int m_flags;
     float GetAffectedWallHeight();
 };
 
-float IM_WM_GAH::GetAffectedWallHeight() {
-    if (m_C4 & 0x100) return g_wallH_high;
-    return g_wallH_low;
+float WallManipulator_GAWH::GetAffectedWallHeight() {
+    if (m_flags & 0x100) return g_wallHeightHigh;
+    return g_wallHeightLow;
 }
