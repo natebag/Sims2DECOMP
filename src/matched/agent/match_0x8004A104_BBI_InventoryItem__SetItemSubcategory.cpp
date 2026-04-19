@@ -1,21 +1,15 @@
-namespace BBI {
+/* BBI::InventoryItem::SetItemSubcategory(BBI::InventoryItem::eItemSubcategory) at 0x8004A104 (52B) */
 
-struct InventoryItem {
-    char m_category;
-    char m_count;
-    char m_colorIndex;
-    char m_subcategory;
-    int m_guid;
-    int* m_vtable;
-
-    typedef int eItemSubcategory;
-    eItemSubcategory GetItemSubcategory() const;
-    void SetItemSubcategory(eItemSubcategory sub);
+struct BBI_II_SISC {
+    unsigned char m_cat;
+    unsigned char m_unk1;
+    unsigned char m_color;
+    unsigned char m_subcat;
+    void CheckOrLock();
+    void SetItemSubcategory(int subcat);
 };
 
-void InventoryItem::SetItemSubcategory(eItemSubcategory sub) {
-    GetItemSubcategory();
-    m_subcategory = sub;
-}
-
+void BBI_II_SISC::SetItemSubcategory(int subcat) {
+    CheckOrLock();
+    m_subcat = (unsigned char)subcat;
 }

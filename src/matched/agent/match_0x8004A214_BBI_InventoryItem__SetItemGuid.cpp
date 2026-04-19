@@ -1,20 +1,16 @@
-namespace BBI {
+/* BBI::InventoryItem::SetItemGuid(int) at 0x8004A214 (52B) */
 
-struct InventoryItem {
-    char m_category;
-    char m_count;
-    char m_colorIndex;
-    char m_subcategory;
+struct BBI_II_SIG {
+    unsigned char m_cat;
+    unsigned char m_unk1;
+    unsigned char m_color;
+    unsigned char m_subcat;
     int m_guid;
-    int* m_vtable;
-
-    int GetItemGuid() const;
+    void CheckOrLock();
     void SetItemGuid(int guid);
 };
 
-void InventoryItem::SetItemGuid(int guid) {
-    GetItemGuid();
+void BBI_II_SIG::SetItemGuid(int guid) {
+    CheckOrLock();
     m_guid = guid;
-}
-
 }
