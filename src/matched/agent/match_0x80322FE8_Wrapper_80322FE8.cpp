@@ -1,9 +1,16 @@
-struct Cls_Wrapper_80322FE8 {
-    void Delegate();
+/* EAudioStreamManager::AddRef(char*, EFile*, int) at 0x80322FE8 (32B) */
+// 0x80322FE8 (32 bytes)
+
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(char*, EFile*, int);
+};
+class EAudioStreamManager : public EResourceManager {
+public:
+    void AddRef(char* name, EFile* file, int flag);
 };
 
-void Impl_Wrapper_80322FE8(void*);
-
-void Cls_Wrapper_80322FE8::Delegate() {
-    Impl_Wrapper_80322FE8(this);
+void EAudioStreamManager::AddRef(char* name, EFile* file, int flag) {
+    EResourceManager::AddRef(name, file, flag);
 }

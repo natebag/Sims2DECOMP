@@ -1,9 +1,16 @@
-struct Cls_Wrapper_80328A18 {
-    void Delegate();
+/* EffectsEmitterManager::AddRef(unsigned int, EFile*, int) at 0x80328A18 (32B) */
+// 0x80328A18 (32 bytes)
+
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(unsigned int, EFile*, int);
+};
+class EffectsEmitterManager : public EResourceManager {
+public:
+    void AddRef(unsigned int id, EFile* file, int flag);
 };
 
-void Impl_Wrapper_80328A18(void*);
-
-void Cls_Wrapper_80328A18::Delegate() {
-    Impl_Wrapper_80328A18(this);
+void EffectsEmitterManager::AddRef(unsigned int id, EFile* file, int flag) {
+    EResourceManager::AddRef(id, file, flag);
 }

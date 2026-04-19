@@ -1,9 +1,16 @@
-struct Cls_Wrapper_803285B8 {
-    void Delegate();
+/* ESoundTrackDataManager::AddRef(unsigned int, EFile*, int) at 0x803285B8 (32B) */
+// 0x803285B8 (32 bytes)
+
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(unsigned int, EFile*, int);
+};
+class ESoundTrackDataManager : public EResourceManager {
+public:
+    void AddRef(unsigned int id, EFile* file, int flag);
 };
 
-void Impl_Wrapper_803285B8(void*);
-
-void Cls_Wrapper_803285B8::Delegate() {
-    Impl_Wrapper_803285B8(this);
+void ESoundTrackDataManager::AddRef(unsigned int id, EFile* file, int flag) {
+    EResourceManager::AddRef(id, file, flag);
 }
