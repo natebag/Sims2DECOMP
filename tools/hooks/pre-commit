@@ -51,6 +51,36 @@ fi
 
 echo -e "${YELLOW}[pre-commit] Checking match files...${NC}"
 
+# ---------------------------------------------------------------------------
+# QA-RULE #3: Address collision gate
+# Block commits that would create a second match_*.cpp at an address already
+# matched elsewhere in src/matched/** or src/wip/**. Catches the failure mode
+# from the Session 11 clone_stubs.py incident where a tool scoped its own
+# glob too narrowly and re-created 64 dupes.
+# Only checks NEW files (--diff-filter=A); rename/rewrite existing OK.
+# ---------------------------------------------------------------------------
+NEW_MATCH_FILES=$(git diff --cached --name-only --diff-filter=A | grep '^src/matched/.*/match_.*\.cpp$' || true)
+if [ -n "$NEW_MATCH_FILES" ]; then
+    if py -3 tools/check_addr_collision.py $NEW_MATCH_FILES 2>/dev/null | grep -q '^DUPE '; then
+        echo -e "${RED}[pre-commit] BLOCKED: address collision detected${NC}" >&2
+        py -3 tools/check_addr_collision.py $NEW_MATCH_FILES 2>/dev/null | while IFS= read -r line; do
+            if [[ "$line" == DUPE* ]]; then
+                # Format: DUPE <file> 0xADDR <existing1> <existing2>...
+                new_file=$(echo "$line" | awk '{print $2}')
+                addr=$(echo "$line" | awk '{print $3}')
+                existing=$(echo "$line" | cut -d' ' -f4-)
+                echo -e "${RED}  DUPE: $new_file ($addr)${NC}" >&2
+                for e in $existing; do
+                    echo -e "${RED}    already matched: $e${NC}" >&2
+                done
+            fi
+        done
+        echo -e "${RED}[pre-commit] Delete the new file(s) OR the existing match(es) before committing.${NC}" >&2
+        echo -e "${RED}[pre-commit] Bypass: SKIP_VERIFY=1 git commit ... (logged to .git/hooks/bypass.log)${NC}" >&2
+        exit 1
+    fi
+fi
+
 mkdir -p src/wip/version_diff
 
 # ---------------------------------------------------------------------------
@@ -114,18 +144,23 @@ for f in $FILES; do
     fi
 
     # Check for non-empty inline asm: find all asm(...) and asm volatile(...) forms,
-    # then filter out lines where the first character inside the parens is "" (empty
-    # string = compiler memory/ordering barrier, emits zero instructions, ALLOWED).
+    # then filter out lines where the first token inside the parens is either an
+    # empty string "" (compiler memory/ordering barrier, emits zero instructions)
+    # or a register name like "r9" / "r31" (register-pinning binding, per
+    # feedback_register_asm_policy.md 2026-04-18 — LEGAL, not codegen).
     # This catches real inline asm like asm("mr r3,r4"), asm volatile("li r0,1"),
-    # AND register bindings like register int x asm("r31"), while permitting
-    # asm volatile("" ::: "memory") and asm("") barrier forms.
+    # while permitting:
+    #   asm volatile("" ::: "memory")          — barrier
+    #   asm("")                                 — barrier
+    #   register int x asm("r31")               — register binding
     # Word-boundary (^|[^a-zA-Z0-9_]) required so test_bad_asm (4b) in a comment
     # or identifier doesn't spuriously match.
     if grep -nE '(^|[^a-zA-Z0-9_])asm[[:space:]]*(volatile[[:space:]]*)?\(' "$f" 2>/dev/null | \
-       grep -vE '(^|[^a-zA-Z0-9_])asm[[:space:]]*(volatile[[:space:]]*)?\([[:space:]]*""' > /dev/null; then
+       grep -vE '(^|[^a-zA-Z0-9_])asm[[:space:]]*(volatile[[:space:]]*)?\([[:space:]]*"(|r[0-9]+)"' > /dev/null; then
         echo -e "${RED}BLOCKED (FAKE): $f contains non-empty inline asm${NC}"
-        echo -e "${RED}    Only empty compiler barriers are allowed, e.g.:${NC}"
-        echo -e "${RED}        asm volatile(\"\" ::: \"memory\");${NC}"
+        echo -e "${RED}    Only the following asm forms are allowed:${NC}"
+        echo -e "${RED}        asm volatile(\"\" ::: \"memory\")    — compiler barrier${NC}"
+        echo -e "${RED}        register int x asm(\"r9\")         — register pinning${NC}"
         echo -e "${RED}    Any asm with instructions inside the string is forbidden.${NC}"
         BLOCKED=$((BLOCKED + 1))
         continue
