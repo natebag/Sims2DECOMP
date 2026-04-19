@@ -1,4 +1,9 @@
-struct ENgcScheduler {
+/* ENgcScheduler::GetLastRetraceCount(void) at 0x8034D9E8 (8B) */
+
+struct ENgcScheduler_GLRC {
     int GetLastRetraceCount();
 };
-int ENgcScheduler::GetLastRetraceCount() { return 1; }
+
+int ENgcScheduler_GLRC::GetLastRetraceCount() {
+    return 1;
+}
