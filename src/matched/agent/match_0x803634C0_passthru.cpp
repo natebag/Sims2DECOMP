@@ -1,5 +1,9 @@
-void impl_803634C0(void*);
-
-void wrapper_803634C0(void* a) {
-    impl_803634C0(a);
+/* operator<<(EStream&, EFontCharacter*) at 0x803634C0 (32B) */
+// 0x803634C0 (32 bytes)
+class EStream;
+class EStorable {};
+class EFontCharacter : public EStorable {};
+extern EStream& operator<<(EStream& s, EStorable* obj);
+EStream& operator<<(EStream& s, EFontCharacter* obj) {
+    return operator<<(s, (EStorable*)obj);
 }
