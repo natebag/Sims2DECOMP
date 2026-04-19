@@ -1,9 +1,15 @@
-struct Cls_Wrapper_8032CDA0 {
-    void Delegate();
+/* ENgcAudioSampleManager::Shutdown(void) at 0x8032CDA0 (32B) */
+// 0x8032CDA0 (32 bytes)
+
+class EResourceManager {
+public:
+    void Shutdown();
+};
+class ENgcAudioSampleManager : public EResourceManager {
+public:
+    void Shutdown();
 };
 
-void Impl_Wrapper_8032CDA0(void*);
-
-void Cls_Wrapper_8032CDA0::Delegate() {
-    Impl_Wrapper_8032CDA0(this);
+void ENgcAudioSampleManager::Shutdown() {
+    EResourceManager::Shutdown();
 }

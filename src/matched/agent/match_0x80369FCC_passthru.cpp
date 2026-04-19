@@ -1,5 +1,15 @@
-void impl_80369FCC(void*);
+/* ERSoundEvent::CreateCopy(void) at 0x80369FCC (32B) */
+// 0x80369FCC (32 bytes)
 
-void wrapper_80369FCC(void* a) {
-    impl_80369FCC(a);
+class EStorable {
+public:
+    EStorable* CreateCopy() const;
+};
+class ERSoundEvent : public EStorable {
+public:
+    ERSoundEvent* CreateCopy() const;
+};
+
+ERSoundEvent* ERSoundEvent::CreateCopy() const {
+    return (ERSoundEvent*)EStorable::CreateCopy();
 }

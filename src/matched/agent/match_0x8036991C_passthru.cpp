@@ -1,5 +1,11 @@
-void impl_8036991C(void*);
+/* op<<(EStream&, ERSoundEvent*) at 0x8036991C (32B) */
+// 0x8036991C (32 bytes)
 
-void wrapper_8036991C(void* a) {
-    impl_8036991C(a);
+class EStream;
+class EStorable {};
+class ERSoundEvent : public EStorable {};
+extern EStream& operator<<(EStream& s, EStorable* obj);
+
+EStream& operator<<(EStream& s, ERSoundEvent* obj) {
+    return operator<<(s, (EStorable*)obj);
 }
