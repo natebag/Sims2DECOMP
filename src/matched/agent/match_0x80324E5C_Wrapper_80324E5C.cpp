@@ -1,9 +1,14 @@
-struct Cls_Wrapper_80324E5C {
-    void Delegate();
+/* EFontManager::AddRef(char*, EFile*, int) at 0x80324E5C (32B) */
+// 0x80324E5C (32 bytes)
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(char*, EFile*, int);
 };
-
-void Impl_Wrapper_80324E5C(void*);
-
-void Cls_Wrapper_80324E5C::Delegate() {
-    Impl_Wrapper_80324E5C(this);
+class EFontManager : public EResourceManager {
+public:
+    void AddRef(char* name, EFile* file, int flag);
+};
+void EFontManager::AddRef(char* name, EFile* file, int flag) {
+    EResourceManager::AddRef(name, file, flag);
 }

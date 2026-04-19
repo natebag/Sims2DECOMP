@@ -1,9 +1,13 @@
-struct Cls_Wrapper_80324974 {
-    void Delegate();
+/* EDatasetManager::AddRefAsync(unsigned int) at 0x80324974 (32B) */
+// 0x80324974 (32 bytes)
+class EResourceManager {
+public:
+    void AddRefAsync(unsigned int id);
 };
-
-void Impl_Wrapper_80324974(void*);
-
-void Cls_Wrapper_80324974::Delegate() {
-    Impl_Wrapper_80324974(this);
+class EDatasetManager : public EResourceManager {
+public:
+    void AddRefAsync(unsigned int id);
+};
+void EDatasetManager::AddRefAsync(unsigned int id) {
+    EResourceManager::AddRefAsync(id);
 }

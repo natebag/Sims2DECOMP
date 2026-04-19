@@ -1,9 +1,11 @@
-struct Cls_Wrapper_8033ECB8 {
-    void Delegate();
+/* ENgcRenderer::Flush(ENgcRendCommand*) at 0x8033ECB8 (32B) */
+// 0x8033ECB8 (32 bytes)
+extern void GXDrawDone();
+class ENgcRendCommand;
+class ENgcRenderer {
+public:
+    void Flush(ENgcRendCommand* cmd);
 };
-
-void Impl_Wrapper_8033ECB8(void*);
-
-void Cls_Wrapper_8033ECB8::Delegate() {
-    Impl_Wrapper_8033ECB8(this);
+void ENgcRenderer::Flush(ENgcRendCommand*) {
+    GXDrawDone();
 }

@@ -1,9 +1,14 @@
-struct Cls_Wrapper_80324B54 {
-    void Delegate();
+/* EEdithTreeSetMan::AddRef(char*, EFile*, int) at 0x80324B54 (32B) */
+// 0x80324B54 (32 bytes)
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(char*, EFile*, int);
 };
-
-void Impl_Wrapper_80324B54(void*);
-
-void Cls_Wrapper_80324B54::Delegate() {
-    Impl_Wrapper_80324B54(this);
+class EEdithTreeSetMan : public EResourceManager {
+public:
+    void AddRef(char* name, EFile* file, int flag);
+};
+void EEdithTreeSetMan::AddRef(char* name, EFile* file, int flag) {
+    EResourceManager::AddRef(name, file, flag);
 }

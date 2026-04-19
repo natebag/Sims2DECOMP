@@ -1,9 +1,11 @@
-struct Cls_Wrapper_80328658 {
-    void Delegate();
+/* ETextureManager::GetHeap(void) at 0x80328658 (32B) */
+// 0x80328658 (32 bytes)
+class EAHeap;
+extern EAHeap* TextureHeap();
+class ETextureManager {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_80328658(void*);
-
-void Cls_Wrapper_80328658::Delegate() {
-    Impl_Wrapper_80328658(this);
+EAHeap* ETextureManager::GetHeap() {
+    return TextureHeap();
 }

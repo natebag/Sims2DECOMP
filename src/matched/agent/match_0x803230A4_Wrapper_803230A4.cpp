@@ -1,9 +1,11 @@
-struct Cls_Wrapper_803230A4 {
-    void Delegate();
+/* EBinaryManager::GetHeap(void) at 0x803230A4 (32B) */
+// 0x803230A4 (32 bytes)
+class EAHeap;
+extern EAHeap* VMHeap();
+class EBinaryManager {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_803230A4(void*);
-
-void Cls_Wrapper_803230A4::Delegate() {
-    Impl_Wrapper_803230A4(this);
+EAHeap* EBinaryManager::GetHeap() {
+    return VMHeap();
 }

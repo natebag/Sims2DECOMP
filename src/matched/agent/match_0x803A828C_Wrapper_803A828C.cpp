@@ -1,11 +1,15 @@
-struct Cls_Wrapper_803A828C {
-    void* _vtable;
-    void* m_pImpl;
-    void Delegate();
+/* SimpleReconObject<ThumbnailLoader>::DoStream(ReconBuffer*, int) at 0x803A828C (36B) */
+// 0x803A828C (36 bytes)
+class ReconBuffer;
+class ThumbnailLoader {
+public:
+    void DoStream(ReconBuffer* rb, int flags);
 };
-
-void Impl_Wrapper_803A828C(void*);
-
-void Cls_Wrapper_803A828C::Delegate() {
-    Impl_Wrapper_803A828C(m_pImpl);
+struct SimpleReconProxy_ThumbnailLoader {
+    void* unused;  // offset 0
+    ThumbnailLoader* m_obj;    // offset 4
+    void DoStream(ReconBuffer* rb, int flags);
+};
+void SimpleReconProxy_ThumbnailLoader::DoStream(ReconBuffer* rb, int flags) {
+    m_obj->DoStream(rb, flags);
 }

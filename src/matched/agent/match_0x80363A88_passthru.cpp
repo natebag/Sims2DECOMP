@@ -1,5 +1,9 @@
-void impl_80363A88(void*);
-
-void wrapper_80363A88(void* a) {
-    impl_80363A88(a);
+/* operator<<(EStream&, EFontSize*) at 0x80363A88 (32B) */
+// 0x80363A88 (32 bytes)
+class EStream;
+class EStorable {};
+class EFontSize : public EStorable {};
+extern EStream& operator<<(EStream& s, EStorable* obj);
+EStream& operator<<(EStream& s, EFontSize* obj) {
+    return operator<<(s, (EStorable*)obj);
 }

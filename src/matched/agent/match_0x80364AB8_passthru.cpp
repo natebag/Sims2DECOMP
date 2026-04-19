@@ -1,5 +1,11 @@
-void impl_80364AB8(void*);
-
-void wrapper_80364AB8(void* a) {
-    impl_80364AB8(a);
+/* EFontData::Construct(EFontData*) at 0x80364AB8 (32B) */
+// 0x80364AB8 (32 bytes)
+class EFontData {
+public:
+    EFontData();
+    void Construct(EFontData* other);
+};
+static inline void* operator new(unsigned sz, void* p) { return p; }
+void EFontData::Construct(EFontData*) {
+    new(this) EFontData;
 }

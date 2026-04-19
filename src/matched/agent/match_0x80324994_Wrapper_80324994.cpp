@@ -1,9 +1,13 @@
-struct Cls_Wrapper_80324994 {
-    void Delegate();
+/* EDatasetManager::PreloadResource(unsigned int) at 0x80324994 (32B) */
+// 0x80324994 (32 bytes)
+class EResourceManager {
+public:
+    void PreloadResource(unsigned int id);
 };
-
-void Impl_Wrapper_80324994(void*);
-
-void Cls_Wrapper_80324994::Delegate() {
-    Impl_Wrapper_80324994(this);
+class EDatasetManager : public EResourceManager {
+public:
+    void PreloadResource(unsigned int id);
+};
+void EDatasetManager::PreloadResource(unsigned int id) {
+    EResourceManager::PreloadResource(id);
 }

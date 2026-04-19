@@ -1,9 +1,13 @@
-struct Cls_Wrapper_80321344 {
-    void Delegate();
+/* ERTexture::CreateCopy(void) at 0x80321344 (32B) */
+// 0x80321344 (32 bytes)
+class EStorable {
+public:
+    EStorable* CreateCopy() const;
 };
-
-void Impl_Wrapper_80321344(void*);
-
-void Cls_Wrapper_80321344::Delegate() {
-    Impl_Wrapper_80321344(this);
+class ERTexture : public EStorable {
+public:
+    ERTexture* CreateCopy() const;
+};
+ERTexture* ERTexture::CreateCopy() const {
+    return (ERTexture*)EStorable::CreateCopy();
 }

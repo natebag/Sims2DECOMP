@@ -1,9 +1,14 @@
-struct Cls_Wrapper_803254F8 {
-    void Delegate();
+/* EQuickdataManager::AddRef(unsigned int, EFile*, int) at 0x803254F8 (32B) */
+// 0x803254F8 (32 bytes)
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(unsigned int, EFile*, int);
 };
-
-void Impl_Wrapper_803254F8(void*);
-
-void Cls_Wrapper_803254F8::Delegate() {
-    Impl_Wrapper_803254F8(this);
+class EQuickdataManager : public EResourceManager {
+public:
+    void AddRef(unsigned int id, EFile* file, int flag);
+};
+void EQuickdataManager::AddRef(unsigned int id, EFile* file, int flag) {
+    EResourceManager::AddRef(id, file, flag);
 }

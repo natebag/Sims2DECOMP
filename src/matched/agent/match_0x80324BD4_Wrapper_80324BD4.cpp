@@ -1,9 +1,11 @@
-struct Cls_Wrapper_80324BD4 {
-    void Delegate();
+/* EFlashManager::GetHeap(void) at 0x80324BD4 (32B) */
+// 0x80324BD4 (32 bytes)
+class EAHeap;
+extern EAHeap* VMHeap();
+class EFlashManager {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_80324BD4(void*);
-
-void Cls_Wrapper_80324BD4::Delegate() {
-    Impl_Wrapper_80324BD4(this);
+EAHeap* EFlashManager::GetHeap() {
+    return VMHeap();
 }

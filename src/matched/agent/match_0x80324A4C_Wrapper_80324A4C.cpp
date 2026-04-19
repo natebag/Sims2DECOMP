@@ -1,9 +1,11 @@
-struct Cls_Wrapper_80324A4C {
-    void Delegate();
+/* EEdithTreeSetMan::GetHeap(void) at 0x80324A4C (32B) */
+// 0x80324A4C (32 bytes)
+class EAHeap;
+extern EAHeap* VMHeap();
+class EEdithTreeSetMan {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_80324A4C(void*);
-
-void Cls_Wrapper_80324A4C::Delegate() {
-    Impl_Wrapper_80324A4C(this);
+EAHeap* EEdithTreeSetMan::GetHeap() {
+    return VMHeap();
 }

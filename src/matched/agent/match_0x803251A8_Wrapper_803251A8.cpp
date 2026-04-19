@@ -1,9 +1,14 @@
-struct Cls_Wrapper_803251A8 {
-    void Delegate();
+/* EMovieMan::AddRef(char*, EFile*, int) at 0x803251A8 (32B) */
+// 0x803251A8 (32 bytes)
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(char*, EFile*, int);
 };
-
-void Impl_Wrapper_803251A8(void*);
-
-void Cls_Wrapper_803251A8::Delegate() {
-    Impl_Wrapper_803251A8(this);
+class EMovieMan : public EResourceManager {
+public:
+    void AddRef(char* name, EFile* file, int flag);
+};
+void EMovieMan::AddRef(char* name, EFile* file, int flag) {
+    EResourceManager::AddRef(name, file, flag);
 }

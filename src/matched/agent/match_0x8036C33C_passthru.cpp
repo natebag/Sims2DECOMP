@@ -1,5 +1,11 @@
-void impl_8036C33C(void*);
-
-void wrapper_8036C33C(void* a) {
-    impl_8036C33C(a);
+/* EAudioSampleManager::GetHeap(void) at 0x8036C33C (32B) */
+// 0x8036C33C (32 bytes)
+class EAHeap;
+extern EAHeap* VMHeap();
+class EAudioSampleManager {
+public:
+    EAHeap* GetHeap();
+};
+EAHeap* EAudioSampleManager::GetHeap() {
+    return VMHeap();
 }

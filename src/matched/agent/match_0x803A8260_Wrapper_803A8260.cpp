@@ -1,11 +1,15 @@
-struct Cls_Wrapper_803A8260 {
-    void* _vtable;
-    void* m_pImpl;
-    void Delegate();
+/* SimpleReconObject<ObjectSaveTypeTable>::DoStream(ReconBuffer*, int) at 0x803A8260 (36B) */
+// 0x803A8260 (36 bytes)
+class ReconBuffer;
+class ObjectSaveTypeTable {
+public:
+    void DoStream(ReconBuffer* rb, int flags);
 };
-
-void Impl_Wrapper_803A8260(void*);
-
-void Cls_Wrapper_803A8260::Delegate() {
-    Impl_Wrapper_803A8260(m_pImpl);
+struct SimpleReconProxy_ObjectSaveTypeTable {
+    void* unused;  // offset 0
+    ObjectSaveTypeTable* m_obj;    // offset 4
+    void DoStream(ReconBuffer* rb, int flags);
+};
+void SimpleReconProxy_ObjectSaveTypeTable::DoStream(ReconBuffer* rb, int flags) {
+    m_obj->DoStream(rb, flags);
 }

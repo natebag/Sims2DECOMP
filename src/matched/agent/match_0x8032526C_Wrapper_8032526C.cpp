@@ -1,9 +1,11 @@
-struct Cls_Wrapper_8032526C {
-    void Delegate();
+/* EQuickdataManager::GetHeap(void) at 0x8032526C (32B) */
+// 0x8032526C (32 bytes)
+class EAHeap;
+extern EAHeap* VMHeap();
+class EQuickdataManager {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_8032526C(void*);
-
-void Cls_Wrapper_8032526C::Delegate() {
-    Impl_Wrapper_8032526C(this);
+EAHeap* EQuickdataManager::GetHeap() {
+    return VMHeap();
 }

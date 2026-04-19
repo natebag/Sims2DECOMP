@@ -1,5 +1,6 @@
-void impl_8036CE04(void*);
-
-void wrapper_8036CE04(void* a) {
-    impl_8036CE04(a);
+/* write at 0x8036CE04 (32B) */
+// 0x8036CE04 (32 bytes)
+extern int _write(int fd, const void* buf, unsigned int n);
+int write(int fd, const void* buf, unsigned int n) {
+    return _write(fd, buf, n);
 }

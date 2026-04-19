@@ -1,5 +1,9 @@
-void impl_803681D8(void*);
-
-void wrapper_803681D8(void* a) {
-    impl_803681D8(a);
+/* operator<<(EStream&, ERBinary*) at 0x803681D8 (32B) */
+// 0x803681D8 (32 bytes)
+class EStream;
+class EStorable {};
+class ERBinary : public EStorable {};
+extern EStream& operator<<(EStream& s, EStorable* obj);
+EStream& operator<<(EStream& s, ERBinary* obj) {
+    return operator<<(s, (EStorable*)obj);
 }

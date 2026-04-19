@@ -1,9 +1,11 @@
-struct Cls_Wrapper_803281DC {
-    void Delegate();
+/* EShaderManager::GetHeap(void) at 0x803281DC (32B) */
+// 0x803281DC (32 bytes)
+class EAHeap;
+extern EAHeap* VMHeap();
+class EShaderManager {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_803281DC(void*);
-
-void Cls_Wrapper_803281DC::Delegate() {
-    Impl_Wrapper_803281DC(this);
+EAHeap* EShaderManager::GetHeap() {
+    return VMHeap();
 }

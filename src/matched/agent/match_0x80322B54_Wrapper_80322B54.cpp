@@ -1,9 +1,13 @@
-struct Cls_Wrapper_80322B54 {
-    void Delegate();
+/* REffectsAttachment::CreateCopy(void) at 0x80322B54 (32B) */
+// 0x80322B54 (32 bytes)
+class EStorable {
+public:
+    EStorable* CreateCopy() const;
 };
-
-void Impl_Wrapper_80322B54(void*);
-
-void Cls_Wrapper_80322B54::Delegate() {
-    Impl_Wrapper_80322B54(this);
+class REffectsAttachment : public EStorable {
+public:
+    REffectsAttachment* CreateCopy() const;
+};
+REffectsAttachment* REffectsAttachment::CreateCopy() const {
+    return (REffectsAttachment*)EStorable::CreateCopy();
 }

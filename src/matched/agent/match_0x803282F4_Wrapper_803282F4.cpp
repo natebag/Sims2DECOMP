@@ -1,9 +1,14 @@
-struct Cls_Wrapper_803282F4 {
-    void Delegate();
+/* EShaderManager::AddRef(char*, EFile*, int) at 0x803282F4 (32B) */
+// 0x803282F4 (32 bytes)
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(char*, EFile*, int);
 };
-
-void Impl_Wrapper_803282F4(void*);
-
-void Cls_Wrapper_803282F4::Delegate() {
-    Impl_Wrapper_803282F4(this);
+class EShaderManager : public EResourceManager {
+public:
+    void AddRef(char* name, EFile* file, int flag);
+};
+void EShaderManager::AddRef(char* name, EFile* file, int flag) {
+    EResourceManager::AddRef(name, file, flag);
 }

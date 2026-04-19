@@ -1,9 +1,14 @@
-struct Cls_Wrapper_80324CC0 {
-    void Delegate();
+/* EFlashManager::AddRef(unsigned int, EFile*, int) at 0x80324CC0 (32B) */
+// 0x80324CC0 (32 bytes)
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(unsigned int, EFile*, int);
 };
-
-void Impl_Wrapper_80324CC0(void*);
-
-void Cls_Wrapper_80324CC0::Delegate() {
-    Impl_Wrapper_80324CC0(this);
+class EFlashManager : public EResourceManager {
+public:
+    void AddRef(unsigned int id, EFile* file, int flag);
+};
+void EFlashManager::AddRef(unsigned int id, EFile* file, int flag) {
+    EResourceManager::AddRef(id, file, flag);
 }

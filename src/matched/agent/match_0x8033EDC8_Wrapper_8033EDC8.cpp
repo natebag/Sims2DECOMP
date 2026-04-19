@@ -1,11 +1,17 @@
-struct Cls_Wrapper_8033EDC8 {
-    char _pad[0x4D8];
-    void* m_pImpl;
-    void Delegate();
+/* ENgcRenderer::RestoreViewport(void) at 0x8033EDC8 (36B) */
+// 0x8033EDC8 (36 bytes)
+class ENgcRenderStateCache {
+public:
+    void RestoreViewportState();
 };
-
-void Impl_Wrapper_8033EDC8(void*);
-
-void Cls_Wrapper_8033EDC8::Delegate() {
-    Impl_Wrapper_8033EDC8(m_pImpl);
+struct ENgcRendererProxy {
+    int _pad[310];  // 0x4D8 bytes
+    ENgcRenderStateCache* m_stateCache;
+};
+class ENgcRenderer {
+public:
+    void RestoreViewport();
+};
+void ENgcRenderer::RestoreViewport() {
+    ((ENgcRendererProxy*)this)->m_stateCache->RestoreViewportState();
 }

@@ -1,5 +1,9 @@
-void impl_80368648(void*);
-
-void wrapper_80368648(void* a) {
-    impl_80368648(a);
+/* operator<<(EStream&, ERCharacter*) at 0x80368648 (32B) */
+// 0x80368648 (32 bytes)
+class EStream;
+class EStorable {};
+class ERCharacter : public EStorable {};
+extern EStream& operator<<(EStream& s, EStorable* obj);
+EStream& operator<<(EStream& s, ERCharacter* obj) {
+    return operator<<(s, (EStorable*)obj);
 }

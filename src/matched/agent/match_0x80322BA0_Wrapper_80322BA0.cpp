@@ -1,9 +1,11 @@
-struct Cls_Wrapper_80322BA0 {
-    void Delegate();
+/* EAmbientScoreManager::GetHeap(void) at 0x80322BA0 (32B) */
+// 0x80322BA0 (32 bytes)
+class EAHeap;
+extern EAHeap* VMHeap();
+class EAmbientScoreManager {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_80322BA0(void*);
-
-void Cls_Wrapper_80322BA0::Delegate() {
-    Impl_Wrapper_80322BA0(this);
+EAHeap* EAmbientScoreManager::GetHeap() {
+    return VMHeap();
 }

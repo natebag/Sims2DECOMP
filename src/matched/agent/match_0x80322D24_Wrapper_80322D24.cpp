@@ -1,9 +1,11 @@
-struct Cls_Wrapper_80322D24 {
-    void Delegate();
+/* EAnimManager::GetHeap(void) at 0x80322D24 (32B) */
+// 0x80322D24 (32 bytes)
+class EAHeap;
+extern EAHeap* VMHeap();
+class EAnimManager {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_80322D24(void*);
-
-void Cls_Wrapper_80322D24::Delegate() {
-    Impl_Wrapper_80322D24(this);
+EAHeap* EAnimManager::GetHeap() {
+    return VMHeap();
 }

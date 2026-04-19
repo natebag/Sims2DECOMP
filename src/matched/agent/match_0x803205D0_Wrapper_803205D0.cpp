@@ -1,9 +1,13 @@
-struct Cls_Wrapper_803205D0 {
-    void Delegate();
+/* ERShader::CreateCopy(void) at 0x803205D0 (32B) */
+// 0x803205D0 (32 bytes)
+class EStorable {
+public:
+    EStorable* CreateCopy() const;
 };
-
-void Impl_Wrapper_803205D0(void*);
-
-void Cls_Wrapper_803205D0::Delegate() {
-    Impl_Wrapper_803205D0(this);
+class ERShader : public EStorable {
+public:
+    ERShader* CreateCopy() const;
+};
+ERShader* ERShader::CreateCopy() const {
+    return (ERShader*)EStorable::CreateCopy();
 }

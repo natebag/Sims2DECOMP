@@ -1,9 +1,14 @@
-struct Cls_Wrapper_80324FB8 {
-    void Delegate();
+/* EModelManager::AddRef(unsigned int, EFile*, int) at 0x80324FB8 (32B) */
+// 0x80324FB8 (32 bytes)
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(unsigned int, EFile*, int);
 };
-
-void Impl_Wrapper_80324FB8(void*);
-
-void Cls_Wrapper_80324FB8::Delegate() {
-    Impl_Wrapper_80324FB8(this);
+class EModelManager : public EResourceManager {
+public:
+    void AddRef(unsigned int id, EFile* file, int flag);
+};
+void EModelManager::AddRef(unsigned int id, EFile* file, int flag) {
+    EResourceManager::AddRef(id, file, flag);
 }

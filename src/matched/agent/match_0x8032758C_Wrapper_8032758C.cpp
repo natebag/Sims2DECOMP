@@ -1,9 +1,11 @@
-struct Cls_Wrapper_8032758C {
-    void Delegate();
+/* EResourceManager::GetHeap(void) at 0x8032758C (32B) */
+// 0x8032758C (32 bytes)
+class EAHeap;
+extern EAHeap* ResourceHeap();
+class EResourceManager {
+public:
+    EAHeap* GetHeap();
 };
-
-void Impl_Wrapper_8032758C(void*);
-
-void Cls_Wrapper_8032758C::Delegate() {
-    Impl_Wrapper_8032758C(this);
+EAHeap* EResourceManager::GetHeap() {
+    return ResourceHeap();
 }

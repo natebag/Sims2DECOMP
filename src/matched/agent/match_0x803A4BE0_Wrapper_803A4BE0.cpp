@@ -1,11 +1,15 @@
-struct Cls_Wrapper_803A4BE0 {
-    void* _vtable;
-    void* m_pImpl;
-    void Delegate();
+/* SimpleReconObject<IFFResMap>::DoStream(ReconBuffer*, int) at 0x803A4BE0 (36B) */
+// 0x803A4BE0 (36 bytes)
+class ReconBuffer;
+class IFFResMap {
+public:
+    void DoStream(ReconBuffer* rb, int flags);
 };
-
-void Impl_Wrapper_803A4BE0(void*);
-
-void Cls_Wrapper_803A4BE0::Delegate() {
-    Impl_Wrapper_803A4BE0(m_pImpl);
+struct SimpleReconProxy_IFFResMap {
+    void* unused;  // offset 0
+    IFFResMap* m_obj;    // offset 4
+    void DoStream(ReconBuffer* rb, int flags);
+};
+void SimpleReconProxy_IFFResMap::DoStream(ReconBuffer* rb, int flags) {
+    m_obj->DoStream(rb, flags);
 }

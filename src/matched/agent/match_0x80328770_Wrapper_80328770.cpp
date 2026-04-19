@@ -1,9 +1,14 @@
-struct Cls_Wrapper_80328770 {
-    void Delegate();
+/* ETextureManager::AddRef(char*, EFile*, int) at 0x80328770 (32B) */
+// 0x80328770 (32 bytes)
+class EFile;
+class EResourceManager {
+public:
+    void AddRef(char*, EFile*, int);
 };
-
-void Impl_Wrapper_80328770(void*);
-
-void Cls_Wrapper_80328770::Delegate() {
-    Impl_Wrapper_80328770(this);
+class ETextureManager : public EResourceManager {
+public:
+    void AddRef(char* name, EFile* file, int flag);
+};
+void ETextureManager::AddRef(char* name, EFile* file, int flag) {
+    EResourceManager::AddRef(name, file, flag);
 }

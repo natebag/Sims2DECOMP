@@ -1,5 +1,13 @@
-void impl_80368128(void*);
-
-void wrapper_80368128(void* a) {
-    impl_80368128(a);
+/* ERAnim::CreateCopy(void) at 0x80368128 (32B) */
+// 0x80368128 (32 bytes)
+class EStorable {
+public:
+    EStorable* CreateCopy() const;
+};
+class ERAnim : public EStorable {
+public:
+    ERAnim* CreateCopy() const;
+};
+ERAnim* ERAnim::CreateCopy() const {
+    return (ERAnim*)EStorable::CreateCopy();
 }

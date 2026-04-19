@@ -1,5 +1,9 @@
-void impl_803668F8(void*);
-
-void wrapper_803668F8(void* a) {
-    impl_803668F8(a);
+/* operator<<(EStream&, ERAmbientScore*) at 0x803668F8 (32B) */
+// 0x803668F8 (32 bytes)
+class EStream;
+class EStorable {};
+class ERAmbientScore : public EStorable {};
+extern EStream& operator<<(EStream& s, EStorable* obj);
+EStream& operator<<(EStream& s, ERAmbientScore* obj) {
+    return operator<<(s, (EStorable*)obj);
 }

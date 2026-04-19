@@ -1,11 +1,15 @@
-struct Cls_Wrapper_8039F5BC {
-    void* _vtable;
-    void* m_pImpl;
-    void Delegate();
+/* SimpleReconObject<ObjectSaveIDTable>::DoStream(ReconBuffer*, int) at 0x8039F5BC (36B) */
+// 0x8039F5BC (36 bytes)
+class ReconBuffer;
+class ObjectSaveIDTable {
+public:
+    void DoStream(ReconBuffer* rb, int flags);
 };
-
-void Impl_Wrapper_8039F5BC(void*);
-
-void Cls_Wrapper_8039F5BC::Delegate() {
-    Impl_Wrapper_8039F5BC(m_pImpl);
+struct SimpleReconProxy_ObjectSaveIDTable {
+    void* unused;  // offset 0
+    ObjectSaveIDTable* m_obj;    // offset 4
+    void DoStream(ReconBuffer* rb, int flags);
+};
+void SimpleReconProxy_ObjectSaveIDTable::DoStream(ReconBuffer* rb, int flags) {
+    m_obj->DoStream(rb, flags);
 }

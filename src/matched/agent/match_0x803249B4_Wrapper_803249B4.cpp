@@ -1,9 +1,14 @@
-struct Cls_Wrapper_803249B4 {
-    void Delegate();
+/* EDatasetManager::DelRef(unsigned int, EResourceManager::DelRefMode) at 0x803249B4 (32B) */
+// 0x803249B4 (32 bytes)
+class EResourceManager {
+public:
+    enum DelRefMode { kDelRefDefault };
+    void DelRef(unsigned int id, DelRefMode mode);
 };
-
-void Impl_Wrapper_803249B4(void*);
-
-void Cls_Wrapper_803249B4::Delegate() {
-    Impl_Wrapper_803249B4(this);
+class EDatasetManager : public EResourceManager {
+public:
+    void DelRef(unsigned int id, DelRefMode mode);
+};
+void EDatasetManager::DelRef(unsigned int id, EResourceManager::DelRefMode mode) {
+    EResourceManager::DelRef(id, mode);
 }
