@@ -59,11 +59,11 @@ echo -e "${YELLOW}[pre-commit] Checking match files...${NC}"
 # glob too narrowly and re-created 64 dupes.
 # Only checks NEW files (--diff-filter=A); rename/rewrite existing OK.
 # ---------------------------------------------------------------------------
-NEW_MATCH_FILES=$(git diff --cached --name-only --diff-filter=A | grep '^src/matched/.*/match_.*\.cpp$' || true)
-if [ -n "$NEW_MATCH_FILES" ]; then
-    if py -3 tools/check_addr_collision.py $NEW_MATCH_FILES 2>/dev/null | grep -q '^DUPE '; then
+readarray -t NEW_MATCH_FILES < <(git diff --cached --name-only --diff-filter=A | grep '^src/matched/.*/match_.*\.cpp$' || true)
+if [ ${#NEW_MATCH_FILES[@]} -gt 0 ]; then
+    if py -3 tools/check_addr_collision.py "${NEW_MATCH_FILES[@]}" 2>/dev/null | grep -q '^DUPE '; then
         echo -e "${RED}[pre-commit] BLOCKED: address collision detected${NC}" >&2
-        py -3 tools/check_addr_collision.py $NEW_MATCH_FILES 2>/dev/null | while IFS= read -r line; do
+        py -3 tools/check_addr_collision.py "${NEW_MATCH_FILES[@]}" 2>/dev/null | while IFS= read -r line; do
             if [[ "$line" == DUPE* ]]; then
                 # Format: DUPE <file> 0xADDR <existing1> <existing2>...
                 new_file=$(echo "$line" | awk '{print $2}')
