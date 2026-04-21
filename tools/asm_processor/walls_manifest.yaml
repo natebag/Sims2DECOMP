@@ -24,7 +24,7 @@ walls:
     symbol: "InteractorModule::WallManipulator::GetAffectedWallHeight()"
     category: 1
     source: "tools/asm_processor/walls/wall_0x80224048_GetAffectedWallHeight.cpp"
-    diagnosis: "lfs-vs-andi RTL hoist — scheduler emits andi. before the lfs the DOL wants first."
+    diagnosis: "lfs-vs-andi RTL hoist — SN scheduler emits `lfs` first; DOL wants `andi.` first, so swap the adj (lfs, andi.) pair."
     # Directives are embedded in the source (// ASMPROC_*). Pipeline mirrored
     # here for harness introspection only; asm_processor.py is the source of truth.
     pipeline:
@@ -39,30 +39,51 @@ walls:
     size: 56
     symbol: "ESimsCam::GetCursorLimitTopWidth()"
     category: 2
-    source: "src/wip/version_diff/match_0x8001A03C_ESimsCam__GetCursorLimitTopWidth.cpp"
-    diagnosis: "fmadds FP-register coloring — DOL uses f13*f1+f12, cc1plus picks f1*f13+f11."
+    source: "tools/asm_processor/walls/wall_0x8001A03C_ESimsCam_GetCursorLimitTopWidth.cpp"
+    diagnosis: "FP-register coloring — SN picks f0/f12/f13/f11 where DOL picks f13/f11/f0/f12. Atomic bidirectional relabel (0:13,11:12) across the fmadds chain."
     pipeline:
-      - mutator: force_reg
-        args:
-          match: "fmadds"
-          from_reg: "f11"
-          to_reg: "f12"
-          occurrence: 0
+      - mutator: fp_relabel
+        args: {swap: "0:13,11:12"}
+    expected: match           # cracked 2026-04-21 by OpusWorker (Phase 2 wall #2).
+
+  - addr: "0x80204FD8"
+    size: 60
+    symbol: "InteractorModule::DirectInteractor::CheckCancelTimer()"
+    category: 1
+    source: "tools/asm_processor/walls/wall_0x80204FD8_CheckCancelTimer.cpp"
+    diagnosis: "two-pair reorder — SN emits (stfs, lfs_thresh, fcmpu); DOL wants (lfs_thresh, fcmpu, stfs). 2x swap_adj gets sequence right but an FP-reg coloring diff (f12 vs f13 for m_cancelTimer) survives; needs force_reg follow-up."
+    pipeline:
+      - mutator: swap_adj
+        args: {a: "stfs", b: "lfs", which: "first"}
+      - mutator: swap_adj
+        args: {a: "stfs", b: "fcmpu", which: "first"}
+    expected: park           # improved-but-not-matched; awaits FP-coloring fix.
+
+  - addr: "0x8027AB3C"
+    size: 112
+    symbol: "AptActionInterpreter::_FunctionAptActionStackSwap()"
+    category: 1
+    source: "src/wip/version_diff/wip_0x8027AB3C_StackSwap_permuter.cpp"
+    diagnosis: "3 adjacent-pair swaps needed (offsets 0x38/0x3c, 0x54/0x5c, 0x60/0x64). Source currently uses register asm() pins that verify_match.sh rejects — needs rewrite to plain C++ BEFORE a directive pipeline can be authored."
+    pipeline: []             # blocked on source rewrite.
+    expected: park
+
+  - addr: "0x8027F924"
+    size: 128
+    symbol: "AptActionInterpreter::_FunctionAptActionPushStringDictByte()"
+    category: 1
+    source: "src/wip/version_diff/wip_0x8027F924_PushStringDictByte_permuter.cpp"
+    diagnosis: "3 adjacent-pair swaps needed (dict-load vs sp-load, val-load vs stack-load, addi vs stwx). Same register-asm() blocker as 0x8027AB3C — source rewrite prerequisite."
+    pipeline: []             # blocked on source rewrite.
     expected: park
 
   - addr: "0x8012B5A0"
     size: 52
     symbol: "cXPersonImpl::InvalidateRoutes()"
     category: 2
-    source: "src/wip/version_diff/wip_match_0x8012B5A0_cXPersonImpl__InvalidateRoutes.cpp"
-    diagnosis: "array base-alias — DOL picks r11 for base, cc1plus picks r3."
-    pipeline:
-      - mutator: force_reg
-        args:
-          match: "lwz"
-          from_reg: "r3"
-          to_reg: "r11"
-          occurrence: 1
+    source: "tools/asm_processor/walls/wall_0x8012B5A0_cXPersonImpl_InvalidateRoutes.cpp"
+    diagnosis: "array base-alias — DOL picks r11 for base, cc1plus picks r3. May need a gpr_relabel sibling to fp_relabel if the r3 reuse cascades like the fmadds case."
+    pipeline: []             # OpusWorker authoring — directive will land in wall source.
     expected: park
 
   - addr: "0x8012B1D4"
