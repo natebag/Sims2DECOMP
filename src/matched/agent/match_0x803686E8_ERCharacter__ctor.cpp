@@ -1,4 +1,4 @@
-/* ERCharacter::ERCharacter at 0x803686E8 (64 bytes) */
+/* ERCharacter::ERCharacter at 0x803686E8 (68 bytes) */
 
 extern int ERCharacter_vtable[];
 

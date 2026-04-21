@@ -1,4 +1,4 @@
-/* 0x8005f7e0 (72 bytes) - SAnimator2::PreloadDress(PropRef *) */
+/* 0x8005f7e0 (76 bytes) - SAnimator2::PreloadDress(PropRef *) */
 struct PropRef;
 extern char g_strPreloadDress[];
 extern "C" int LookupDress(char* str, int id);

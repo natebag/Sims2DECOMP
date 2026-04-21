@@ -1,5 +1,5 @@
 // FLAGS: -fno-schedule-insns
-/* 0x80068fbc (68 bytes) - SAnimator2::SetPlayerControl(bool) */
+/* 0x80068fbc (104 bytes) - SAnimator2::SetPlayerControl(bool) */
 class SAnimator2 {
 public:
     char pad[8];

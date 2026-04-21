@@ -1,4 +1,4 @@
-/* 0x8005cc2c (80 bytes) - SAnimator2::updateMovementState(void) */
+/* 0x8005cc2c (84 bytes) - SAnimator2::updateMovementState(void) */
 class SAnimator2 {
 public:
     char pad[0x10];

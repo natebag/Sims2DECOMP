@@ -1,4 +1,4 @@
-/* 0x8005c87c (104 bytes) - SAnimator2::checkParticleCleanup(void) */
+/* 0x8005c87c (108 bytes) - SAnimator2::checkParticleCleanup(void) */
 class SAnimator2 {
 public:
     char pad[0x61C];

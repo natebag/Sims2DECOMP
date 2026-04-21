@@ -1,5 +1,5 @@
 // FLAGS: -fno-schedule-insns
-/* 0x80066054 (84 bytes) - SAnimator2::cleanupParticlesImmediate(TRedBlackTree<...> *) */
+/* 0x80066054 (104 bytes) - SAnimator2::cleanupParticlesImmediate(TRedBlackTree<...> *) */
 class SAnimator2 {
 public:
     void cleanupParticlesImmediate(void* tree);

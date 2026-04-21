@@ -1,4 +1,4 @@
-/* ERSoundEvent::ERSoundEvent at 0x803699BC (64 bytes) */
+/* ERSoundEvent::ERSoundEvent at 0x803699BC (68 bytes) */
 
 extern int ERSoundEvent_vtable[];
 

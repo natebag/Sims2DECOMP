@@ -1,4 +1,4 @@
-/* 0x80064c18 (104 bytes) - SAnimator2::CheckOptionalMotionAnimStatusOnStateChange(SAnimator2::eAnimState) */
+/* 0x80064c18 (108 bytes) - SAnimator2::CheckOptionalMotionAnimStatusOnStateChange(SAnimator2::eAnimState) */
 class SAnimator2 {
 public:
     char pad[0x2C];

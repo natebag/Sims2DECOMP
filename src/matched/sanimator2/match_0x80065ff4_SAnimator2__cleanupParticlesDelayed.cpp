@@ -1,4 +1,4 @@
-/* 0x80065ff4 (76 bytes) - SAnimator2::cleanupParticlesDelayed(TRedBlackTree<...> *) */
+/* 0x80065ff4 (96 bytes) - SAnimator2::cleanupParticlesDelayed(TRedBlackTree<...> *) */
 class SAnimator2 {
 public:
     void cleanupParticlesImmediate(void* tree);

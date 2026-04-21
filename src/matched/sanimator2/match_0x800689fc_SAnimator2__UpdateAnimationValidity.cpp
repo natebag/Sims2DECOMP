@@ -1,4 +1,4 @@
-/* 0x800689fc (64 bytes) - SAnimator2::UpdateAnimationValidity(void) */
+/* 0x800689fc (68 bytes) - SAnimator2::UpdateAnimationValidity(void) */
 class SAnimator2 {
 public:
     char pad[8];
