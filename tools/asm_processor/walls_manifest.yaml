@@ -51,13 +51,9 @@ walls:
     symbol: "InteractorModule::DirectInteractor::CheckCancelTimer()"
     category: 1
     source: "tools/asm_processor/walls/wall_0x80204FD8_CheckCancelTimer.cpp"
-    diagnosis: "two-pair reorder — SN emits (stfs, lfs_thresh, fcmpu); DOL wants (lfs_thresh, fcmpu, stfs). 2x swap_adj gets sequence right but an FP-reg coloring diff (f12 vs f13 for m_cancelTimer) survives; needs force_reg follow-up."
-    pipeline:
-      - mutator: swap_adj
-        args: {a: "stfs", b: "lfs", which: "first"}
-      - mutator: swap_adj
-        args: {a: "stfs", b: "fcmpu", which: "first"}
-    expected: park           # improved-but-not-matched; awaits FP-coloring fix.
+    diagnosis: "two-pair reorder — SN originally emits (stfs, lfs_thresh, fcmpu); DOL wants (lfs_thresh, fcmpu, stfs). Cracked via source-level preload of thresh into a named local, which both forces the early load AND lets GCC allocate a distinct FP register for it. No asm-processor directive needed."
+    pipeline: []
+    expected: match           # cracked 2026-04-21 by OpusWorker (source-side).
 
   - addr: "0x8027AB3C"
     size: 112
