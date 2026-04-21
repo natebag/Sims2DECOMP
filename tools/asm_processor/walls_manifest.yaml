@@ -96,9 +96,9 @@ walls:
     symbol: "BBI::InventoryItem::InventoryItem()"
     category: 2
     source: "tools/asm_processor/walls/wall_0x8004A060_BBI_InventoryItem_ctor.cpp"
-    diagnosis: "ctor multi-zero-reg + store reorder. Source-side fixes: (a) extern VT[] array forces lis+addi over lis+ori for the vtable ptr (LANDED — major progress); (b) field-assignment order in source now matches DOL. Residual diffs: r0/r10 zero-register coalescing is inverted (DOL uses r0 for byte fields + r10 for the word field; GCC uses r10 for field3 then r0 for everything else), and field0[2] is scheduled before field0[0..1] + field4. Needs selective GPR relabel + store-reorder mutator OR deeper source coaxing."
-    pipeline: []             # directive authoring blocked on selective-GPR-relabel mutator.
-    expected: park
+    diagnosis: "Cracked source-side: (a) extern VT[] forces lis+addi for the vtable; (b) store the field0[0..2] bytes BEFORE field3 + field4 in source — GCC reorders them naturally into DOL's desired (field3, field4, field0[0..2]) emission order AND allocates r0 for byte stores + r10 for the word store."
+    pipeline: []
+    expected: match           # cracked 2026-04-21 by SonnetWorker2 (Phase 2 wall #4).
 
   - addr: "0x800C7D14"
     size: 48
