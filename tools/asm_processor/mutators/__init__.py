@@ -20,9 +20,9 @@ class NoApplicableSite(Exception):
     """Raised by a mutator when the .s has no site matching its spec."""
 
 
-from . import force_reg, nop_before, swap_adj  # noqa: E402 (registry below)
+from . import force_reg, fp_relabel, nop_before, swap_adj  # noqa: E402 (registry below)
 
-REGISTRY = {m.NAME: m for m in (swap_adj, force_reg, nop_before)}
+REGISTRY = {m.NAME: m for m in (swap_adj, force_reg, nop_before, fp_relabel)}
 
 
 def get(name: str):
