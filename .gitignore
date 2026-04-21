@@ -62,4 +62,18 @@ compiler/ProDGforNGCv393.exe
 # Temp scripts
 extract_*.py
 extract_*.sh
+tmp_*.sh
+tmp_*.py
 tus.txt
+
+# Cog MCP state (per-agent state, not a shared artifact)
+.cog/
+
+# Experimental test cpp files at repo root
+/test_*.cpp
+/dummy_match.cpp
+
+# Root-level log files from experimental runs
+/*.log
+/qa_monitor*.log
+/dup_verify*.log

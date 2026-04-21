@@ -1,0 +1,9 @@
+#!/bin/bash
+for addr in 801ACC34 801ACFC8 801AD004 801AD568 801AD820 801AD860 801AE1E4 801B8DB0 801B8DDC 801B8E08 801B8EC8 801B8F04 801B8FD8 801B9014 801B9050 801B9088 801B91E4 801B9220 801B9260 801B928C 801B92B8 801B92E8 801DCD88 801DCDB4 801DCE00; do
+  found=$(find src/matched/ -iname "*${addr}*" | head -1)
+  if [ -z "$found" ]; then
+    echo "OPEN:    $addr"
+  else
+    echo "MATCHED: $addr -> $found"
+  fi
+done
