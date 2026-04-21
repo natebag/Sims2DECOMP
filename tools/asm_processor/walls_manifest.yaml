@@ -23,15 +23,17 @@ walls:
     size: 24
     symbol: "InteractorModule::WallManipulator::GetAffectedWallHeight()"
     category: 1
-    source: "src/wip/version_diff/wall_0x80224048_WallManipulator_GetAffectedWallHeight.cpp"
+    source: "tools/asm_processor/walls/wall_0x80224048_GetAffectedWallHeight.cpp"
     diagnosis: "lfs-vs-andi RTL hoist — scheduler emits andi. before the lfs the DOL wants first."
+    # Directives are embedded in the source (// ASMPROC_*). Pipeline mirrored
+    # here for harness introspection only; asm_processor.py is the source of truth.
     pipeline:
       - mutator: swap_adj
         args:
-          a: "andi."
-          b: "lfs"
+          a: "lfs"
+          b: "andi."
           which: first
-    expected: park         # pioneer target — flip to 'match' once cracked.
+    expected: match         # cracked 2026-04-21 (S13 Track I pioneer).
 
   - addr: "0x8001A03C"
     size: 56

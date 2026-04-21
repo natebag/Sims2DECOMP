@@ -50,6 +50,7 @@ except ImportError:
 
 MANIFEST_PATH = REPO_ROOT / "tools" / "asm_processor" / "walls_manifest.yaml"
 VERIFY_SCRIPT = REPO_ROOT / "tools" / "verify_match.sh"
+ASM_PROCESSOR_ENTRY = REPO_ROOT / "tools" / "asm_processor" / "asm_processor.py"
 OUTDIR_ROOT = REPO_ROOT / "build" / "asm_processor" / "test"
 
 
@@ -151,62 +152,74 @@ def _verify_wall(wall: dict, verbose: bool = False) -> WallResult:
             notes=f"source missing: {source_rel}",
         )
 
-    # For Phase 1, the harness does NOT yet orchestrate the asm-level mutator
-    # pass (that's OpusWorker's asm_processor.py entrypoint). We run
-    # verify_match.sh against the source as-is, which gives us the BASELINE
-    # — a mismatch here is expected for every unfixed wall. Once OpusWorker's
-    # entrypoint is wired we'll swap this for:
-    #   1. Load source, strip `// ASMPROC_*` directives into pipeline.
-    #   2. Compile via SN cc1plus to .s.
-    #   3. Apply `mutators/` pipeline on .s text.
-    #   4. Assemble via NgcAs.
-    #   5. Call verify_match.sh on the resulting .o or a rebuilt source stub.
-    # For now, the pipeline is a dry-run so we can exercise the harness.
     pipeline = wall.get("pipeline") or []
     pipeline_labels: list[str] = []
-    if pipeline:
-        # Dry-run: verify each mutator is at least resolvable.
-        for stage in pipeline:
-            name = stage.get("mutator")
-            try:
-                mutators.get(name)
-                pipeline_labels.append(f"{name}?")  # resolved-but-not-yet-applied
-            except KeyError as e:
-                return WallResult(
-                    addr=addr, size=size, category=category, symbol=symbol,
-                    expected=expected, observed="error",
-                    notes=f"unknown mutator {name!r}",
-                )
+    unknown_mutator = None
+    for stage in pipeline:
+        name = stage.get("mutator")
+        try:
+            mutators.get(name)
+            pipeline_labels.append(name)
+        except KeyError:
+            unknown_mutator = name
+            break
+    if unknown_mutator is not None:
+        return WallResult(
+            addr=addr, size=size, category=category, symbol=symbol,
+            expected=expected, observed="error",
+            notes=f"unknown mutator {unknown_mutator!r}",
+        )
 
-    outdir = OUTDIR_ROOT / addr.lower().lstrip("0x") / "baseline"
+    # Detect whether the source has `// ASMPROC_*` directives. If it does, we
+    # drive it through asm_processor.py (OpusWorker's entrypoint) so the full
+    # pre/post pipeline runs. Otherwise we fall back to bare verify_match.sh
+    # for a baseline read — useful for walls that are still "park" pending a
+    # directive authoring pass.
+    src_text = source_abs.read_text(encoding="utf-8", errors="replace")
+    has_directive = "// ASMPROC_" in src_text or "//ASMPROC_" in src_text
+
+    outdir = OUTDIR_ROOT / addr.lower().lstrip("0x")
     outdir.mkdir(parents=True, exist_ok=True)
 
-    cmd = [
-        BASH, str(VERIFY_SCRIPT),
-        "--outdir", str(outdir),
-        str(source_abs), addr, str(size),
-    ]
+    if has_directive:
+        cmd = [
+            sys.executable, str(ASM_PROCESSOR_ENTRY),
+            "--src", str(source_abs),
+            "--addr", addr,
+            "--size", str(size),
+            "--outdir", str(outdir / "asmproc"),
+        ]
+        runner = "asm_processor"
+    else:
+        cmd = [
+            BASH, str(VERIFY_SCRIPT),
+            "--outdir", str(outdir / "baseline"),
+            str(source_abs), addr, str(size),
+        ]
+        runner = "verify_match"
+
     try:
         proc = subprocess.run(
-            cmd, capture_output=True, text=True, cwd=str(REPO_ROOT), timeout=120,
+            cmd, capture_output=True, text=True, cwd=str(REPO_ROOT), timeout=180,
         )
     except subprocess.TimeoutExpired:
         return WallResult(
             addr=addr, size=size, category=category, symbol=symbol,
-            expected=expected, observed="error", notes="verify_match.sh timeout",
+            expected=expected, observed="error",
+            notes=f"{runner} timeout",
         )
 
     stdout = proc.stdout or ""
     stderr = proc.stderr or ""
     if verbose:
-        print(f"--- {addr} {symbol} (category {category}) ---")
+        print(f"--- {addr} {symbol} (category {category}, via {runner}) ---")
         print(f"cmd: {' '.join(cmd)}")
         if stdout.strip():
             print(stdout)
         if stderr.strip():
             print(stderr, file=sys.stderr)
 
-    if "MATCH!" in stdout or stdout.strip().endswith("MATCH"):
+    if "MATCH!" in stdout or "\nMATCH\n" in stdout or stdout.strip().endswith("MATCH"):
         observed = "match"
     elif "MISMATCH" in stdout or "SIZE_MISMATCH" in stdout:
         observed = "mismatch"
@@ -215,11 +228,9 @@ def _verify_wall(wall: dict, verbose: bool = False) -> WallResult:
     else:
         observed = "error"
 
-    notes_parts: list[str] = []
+    notes_parts = [runner]
     if pipeline_labels:
-        notes_parts.append(",".join(pipeline_labels))
-    else:
-        notes_parts.append("no-pipeline")
+        notes_parts.append("+".join(pipeline_labels))
     if observed == "error" and "REJECTED" in stdout:
         notes_parts.append("verify-rejected")
     return WallResult(
