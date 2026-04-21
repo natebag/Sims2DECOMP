@@ -59,9 +59,9 @@ walls:
     size: 112
     symbol: "AptActionInterpreter::_FunctionAptActionStackSwap()"
     category: 1
-    source: "src/wip/version_diff/wip_0x8027AB3C_StackSwap_permuter.cpp"
-    diagnosis: "3 adjacent-pair swaps needed (offsets 0x38/0x3c, 0x54/0x5c, 0x60/0x64). Source currently uses register asm() pins that verify_match.sh rejects — needs rewrite to plain C++ BEFORE a directive pipeline can be authored."
-    pipeline: []             # blocked on source rewrite.
+    source: "tools/asm_processor/walls/wall_0x8027AB3C_AptActionInterpreter_StackSwap.cpp"
+    diagnosis: "Banned-pin-free rewrite compiles at 112B (size matches DOL). ~16 mismatched bytes concentrated in: (a) stack-pointer load reg (DOL r0, SN r11 at offset 0x04); (b) scaled-index mul/add reg allocation at offsets 0x10-0x14; (c) stack2 load reg at offset 0x44 (DOL r10, SN r11); (d) stwx index-reg choice at offsets 0x48/0x58 (DOL alternates r11/r10 for the base and sp4 field, SN always picks r0). Needs a mix of gpr_relabel and possibly swap_adj on the mul/add pairs."
+    pipeline: []             # awaits directive authoring (Phase 2 stretch or Phase 3).
     expected: park
 
   - addr: "0x8027F924"
