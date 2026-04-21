@@ -99,14 +99,9 @@ walls:
     size: 48
     symbol: "BBI::InventoryItem::InventoryItem()"
     category: 2
-    source: "src/wip/version_diff/wip_match_0x8004A060_BBI__InventoryItem__InventoryItem.cpp"
-    diagnosis: "ctor LIFO-vs-FIFO store order with multiple zero-register reuses."
-    pipeline:
-      - mutator: swap_adj
-        args:
-          a: "stb"
-          b: "stw"
-          which: first
+    source: "tools/asm_processor/walls/wall_0x8004A060_BBI_InventoryItem_ctor.cpp"
+    diagnosis: "ctor multi-zero-reg + store reorder. Source-side fixes: (a) extern VT[] array forces lis+addi over lis+ori for the vtable ptr (LANDED — major progress); (b) field-assignment order in source now matches DOL. Residual diffs: r0/r10 zero-register coalescing is inverted (DOL uses r0 for byte fields + r10 for the word field; GCC uses r10 for field3 then r0 for everything else), and field0[2] is scheduled before field0[0..1] + field4. Needs selective GPR relabel + store-reorder mutator OR deeper source coaxing."
+    pipeline: []             # directive authoring blocked on selective-GPR-relabel mutator.
     expected: park
 
   - addr: "0x800C7D14"
