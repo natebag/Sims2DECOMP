@@ -1,17 +1,14 @@
 // 0x803B35DC CasEventStoreSim::Log (44 bytes)
-// DOL:
-//   prologue (stwu/mflr/stw)
-//   lis r3, hi(format) ; addi r3, r3, lo(format)   ; non-SDA addr
-//   crclr 4*cr1+eq                ; varargs marker
-//   bl CasEventDummyPrintf
-//   epilogue
+// Printf-thunk template: non-SDA extern char[256] format + CasEventDummyPrintf varargs.
 
 extern char gCasEventStoreSimLogFormat[256];
 
 extern "C" void CasEventDummyPrintf(const char* fmt, ...);
 
-struct CasEventStoreSim;
+struct CasEventStoreSim {
+    void Log() const;
+};
 
-extern "C" void CasEventStoreSim_Log(CasEventStoreSim* this_) {
+void CasEventStoreSim::Log() const {
     CasEventDummyPrintf(gCasEventStoreSimLogFormat);
 }
