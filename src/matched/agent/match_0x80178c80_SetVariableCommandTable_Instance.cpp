@@ -1,4 +1,4 @@
-// 0x80178c80 (44B) SetVariableCommandTable::Instance(void)
+// 0x80178c80 (60B) SetVariableCommandTable::Instance(void)
 
 struct SetVariableCommandTable {
     char data[16];

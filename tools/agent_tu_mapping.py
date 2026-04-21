@@ -43,7 +43,7 @@ def parse_map_for_addresses(map_path):
                 
             # Parse function entries (Address Size Align ... Symbol)
             parts = line.split()
-            if len(parts) >= 7 and parts[0].startswith('8') and len(parts[0]) == 8:
+            if len(parts) >= 4 and parts[0].startswith('8') and len(parts[0]) == 8:
                 try:
                     addr = int(parts[0], 16)
                     addr_to_tu[addr] = current_tu

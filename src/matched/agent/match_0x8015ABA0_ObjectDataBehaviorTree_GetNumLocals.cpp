@@ -1,4 +1,4 @@
-// 0x8015ABA0 (108B) ObjectDataBehaviorTree::GetNumLocals(void) const
+// 0x8015ABA0 (112B) ObjectDataBehaviorTree::GetNumLocals(void) const
 
 struct ObjectDataBehaviorTree {
     char pad[84];

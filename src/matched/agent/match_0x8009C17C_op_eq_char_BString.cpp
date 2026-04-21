@@ -1,4 +1,4 @@
-// 0x8009C17C operator==(char, BString&) (40B)
+// 0x8009C17C operator==(char, BString&) (60B)
 // Arg-swap + extra args, then !result idiom
 struct BString;
 

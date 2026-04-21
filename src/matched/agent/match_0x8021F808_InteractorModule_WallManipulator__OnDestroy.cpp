@@ -1,4 +1,4 @@
-// 0x8021F808 InteractorModule::WallManipulator::OnDestroy(void) (44B)
+// 0x8021F808 InteractorModule::WallManipulator::OnDestroy(void) (52B)
 struct WallManipulator;
 struct InteractorManager;
 

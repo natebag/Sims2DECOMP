@@ -1,4 +1,4 @@
-// 0x80134BF0 (72B) RelMatrixImpl::GetArraySize(int)
+// 0x80134BF0 (84B) RelMatrixImpl::GetArraySize(int)
 
 struct MemberArray {
     void* m_start;

@@ -1,3 +1,4 @@
+// 0x801BEDCC (92 bytes)
 // ObjSelector::GetMasterSelector  
 // Address: 0x801BEDCC | Size: 92 bytes
 //

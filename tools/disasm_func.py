@@ -10,7 +10,7 @@ import tempfile
 
 DOL_PATH = "extracted/sys/main.dol"
 MAP_PATH = "extracted/files/u2_ngc_release_dvd.map"
-OBJDUMP = "/f/coding/Decompiles/Tools/devkitPro/devkitPPC/bin/powerpc-eabi-objdump.exe"
+OBJDUMP = r"F:\coding\Decompiles\Tools\devkitPro\devkitPPC\bin\powerpc-eabi-objdump.exe"
 
 def read_dol():
     with open(DOL_PATH, "rb") as f:

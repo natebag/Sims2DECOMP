@@ -1,4 +1,4 @@
-// 0x80113F04 PassiveInfluenceSystem::FlushSystem (56b)
+// 0x80113F04 (56 bytes)
 // FLAGS: -fno-elide-constructors
 
 class PassiveInfluenceMap {

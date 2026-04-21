@@ -1,5 +1,5 @@
-// 0x802F24A4 EMirrorPortal::GetCorner (40b)
 // FLAGS: -fno-elide-constructors
+// 0x802F24A4 (40 bytes)
 
 struct Corner {
     float x, y, z;

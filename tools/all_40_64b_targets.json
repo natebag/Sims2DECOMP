@@ -1,452 +1,16 @@
 {
   "total_40_64b_in_map": 1535,
-  "matched_count": 6263,
-  "unmatched_count": 826,
+  "matched_count": 7451,
+  "unmatched_count": 443,
   "groups": {
-    "InteractorModule": [
-      {
-        "addr": "0x80203e04",
-        "symbol": "InteractorModule::DirectInteractor::OnCreate(void)"
-      },
-      {
-        "addr": "0x80203e38",
-        "symbol": "InteractorModule::DirectInteractor::OnDestroy(void)"
-      },
-      {
-        "addr": "0x80204edc",
-        "symbol": "InteractorModule::DirectInteractor::GetInteractorInfo(InteractorModule::InteractorInfo &)"
-      },
-      {
-        "addr": "0x80204fd8",
-        "symbol": "InteractorModule::DirectInteractor::CheckCancelTimer(void)"
-      },
-      {
-        "addr": "0x80205014",
-        "symbol": "InteractorModule::DirectInteractor::PreDraw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x80205040",
-        "symbol": "InteractorModule::DirectInteractor::Draw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x80205748",
-        "symbol": "InteractorModule::DirectInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float)"
-      },
-      {
-        "addr": "0x80205788",
-        "symbol": "InteractorModule::DirectInteractor::ResetInputState(void)"
-      },
-      {
-        "addr": "0x80205b78",
-        "symbol": "InteractorModule::DirectInteractor::StopInObjectMenu(void)"
-      },
-      {
-        "addr": "0x80205fb4",
-        "symbol": "InteractorModule::DirectInteractor::SetAutonomous(void)"
-      },
-      {
-        "addr": "0x802079b8",
-        "symbol": "InteractorModule::FloorPainter::PreDraw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x802079e4",
-        "symbol": "InteractorModule::FloorPainter::Draw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x80209454",
-        "symbol": "InteractorModule::Interactor::UpdateObjectHighlights(EIObjectMan *)"
-      },
-      {
-        "addr": "0x80209534",
-        "symbol": "InteractorModule::Interactor::SnapToPos(EVec3 &)"
-      },
-      {
-        "addr": "0x8020955c",
-        "symbol": "InteractorModule::Interactor::EitherStickCentered(void)"
-      },
-      {
-        "addr": "0x8020af30",
-        "symbol": "InteractorModule::InteractorInputManager::OpenSession(int, InteractorModule::Interactor *, int, InteractorModule::InteractorInputManager::ButtonSemantic *, int, InteractorModule::InteractorInputManager::StickSemantic *, char *)"
-      },
-      {
-        "addr": "0x8020af5c",
-        "symbol": "InteractorModule::InteractorInputManager::CloseSession(int)"
-      },
-      {
-        "addr": "0x8020b654",
-        "symbol": "InteractorModule::InteractorManager::GetSingleton(void)"
-      },
-      {
-        "addr": "0x8020bdbc",
-        "symbol": "InteractorModule::InteractorManager::IsValidPlayerId(int) const"
-      },
-      {
-        "addr": "0x80210208",
-        "symbol": "InteractorModule::InteractorResourceSet::GetOrderTableData(unsigned int)"
-      },
-      {
-        "addr": "0x802119c0",
-        "symbol": "InteractorModule::GetPlumbBob(int)"
-      },
-      {
-        "addr": "0x802136cc",
-        "symbol": "InteractorModule::GetInteractorResourceSet(InteractorModule::Interactor *)"
-      },
-      {
-        "addr": "0x80216e98",
-        "symbol": "InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::SimInteractor &)"
-      },
-      {
-        "addr": "0x8021900c",
-        "symbol": "InteractorModule::ObjectManipulator::OnCreate(void)"
-      },
-      {
-        "addr": "0x80219040",
-        "symbol": "InteractorModule::ObjectManipulator::OnDestroy(void)"
-      },
-      {
-        "addr": "0x802191f0",
-        "symbol": "InteractorModule::ObjectManipulator::OnStop(void)"
-      },
-      {
-        "addr": "0x80219488",
-        "symbol": "InteractorModule::ObjectManipulator::PreDraw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x802194b4",
-        "symbol": "InteractorModule::ObjectManipulator::Draw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x8021a044",
-        "symbol": "InteractorModule::GrabManipulator::OnCreate(void)"
-      },
-      {
-        "addr": "0x8021a188",
-        "symbol": "InteractorModule::PlaceManipulator::OnCreate(void)"
-      },
-      {
-        "addr": "0x8021a1c0",
-        "symbol": "InteractorModule::PlaceManipulator::OnStart(InteractorModule::Interactor::InteractorParams *)"
-      },
-      {
-        "addr": "0x8021c344",
-        "symbol": "InteractorModule::PlacementObject::ResetDirection(void)"
-      },
-      {
-        "addr": "0x8021cd90",
-        "symbol": "InteractorModule::GrabManipulator::~GrabManipulator(void)"
-      },
-      {
-        "addr": "0x8021cdc8",
-        "symbol": "InteractorModule::PlaceManipulator::~PlaceManipulator(void)"
-      },
-      {
-        "addr": "0x8021d3f4",
-        "symbol": "InteractorModule::SimInteractor::OnCreate(void)"
-      },
-      {
-        "addr": "0x8021d428",
-        "symbol": "InteractorModule::SimInteractor::OnDestroy(void)"
-      },
-      {
-        "addr": "0x8021e018",
-        "symbol": "InteractorModule::SimInteractor::PreDraw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x8021e044",
-        "symbol": "InteractorModule::SimInteractor::Draw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x8021e598",
-        "symbol": "InteractorModule::SimInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float)"
-      },
-      {
-        "addr": "0x8021e5d8",
-        "symbol": "InteractorModule::SimInteractor::ResetInputState(void)"
-      },
-      {
-        "addr": "0x8021e8a8",
-        "symbol": "InteractorModule::SimInteractor::GetSelectionRadius(void)"
-      },
-      {
-        "addr": "0x8021f198",
-        "symbol": "InteractorModule::SocialModeInteractor::OnCreate(void)"
-      },
-      {
-        "addr": "0x8021f1d4",
-        "symbol": "InteractorModule::SocialModeInteractor::OnDestroy(void)"
-      },
-      {
-        "addr": "0x8021f3e8",
-        "symbol": "InteractorModule::SocialModeInteractor::ResetInputState(void)"
-      },
-      {
-        "addr": "0x8021f41c",
-        "symbol": "InteractorModule::SocialModeInteractor::PreDraw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x8021f448",
-        "symbol": "InteractorModule::SocialModeInteractor::Draw(InteractorModule::InteractorVisualizer &)"
-      },
-      {
-        "addr": "0x8021f808",
-        "symbol": "InteractorModule::WallManipulator::OnDestroy(void)"
-      },
-      {
-        "addr": "0x80221b54",
-        "symbol": "InteractorModule::WallManipulator::GetTexGenMode(void)"
-      },
-      {
-        "addr": "0x8022448c",
-        "symbol": "InteractorModule::WallPainter::OnStop(void)"
-      },
-      {
-        "addr": "0x80226a20",
-        "symbol": "InteractorModule::WallPainter::SaveInHoldPos(EVec3 &)"
-      },
-      {
-        "addr": "0x803b95ac",
-        "symbol": "InteractorModule::GrabManipulator::GrabManipulatorParams::~GrabManipulatorParams(void)"
-      },
-      {
-        "addr": "0x803b95e0",
-        "symbol": "InteractorModule::PlaceManipulator::PlaceManipulatorParams::~PlaceManipulatorParams(void)"
-      },
-      {
-        "addr": "0x803b9614",
-        "symbol": "InteractorModule::FloorPainter::FloorPainterParams::~FloorPainterParams(void)"
-      },
-      {
-        "addr": "0x803b9648",
-        "symbol": "InteractorModule::WallManipulator::WallManipulatorParams::~WallManipulatorParams(void)"
-      },
-      {
-        "addr": "0x803b967c",
-        "symbol": "InteractorModule::WallPainter::WallPainterParams::~WallPainterParams(void)"
-      },
-      {
-        "addr": "0x803bd340",
-        "symbol": "InteractorModule::Interactor::CallbackData::~CallbackData(void)"
-      },
-      {
-        "addr": "0x803bd374",
-        "symbol": "InteractorModule::FloorPainter::CallbackData::~CallbackData(void)"
-      },
-      {
-        "addr": "0x803c08c4",
-        "symbol": "InteractorModule::GrabManipulator::CallbackData::~CallbackData(void)"
-      },
-      {
-        "addr": "0x803c08f8",
-        "symbol": "InteractorModule::PlaceManipulator::CallbackData::~CallbackData(void)"
-      }
-    ],
-    "WrapperPaneBase": [
-      {
-        "addr": "0x80084a8c",
-        "symbol": "WrapperPaneBase::Startup(void)"
-      },
-      {
-        "addr": "0x8008507c",
-        "symbol": "WrapperPaneBase::SetItemText(ItemType, int, unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x80085148",
-        "symbol": "WrapperPaneBase::SetItemStyle(ItemType, int, ItemStyle)"
-      },
-      {
-        "addr": "0x8008532c",
-        "symbol": "WrapperPaneBase::SetItemShader(ItemType, int, unsigned int)"
-      },
-      {
-        "addr": "0x8008633c",
-        "symbol": "WrapperPaneBase::UpdateAptButtonPosX(WrapperPaneBase::ButtonType)"
-      },
-      {
-        "addr": "0x8008636c",
-        "symbol": "WrapperPaneBase::UpdateAptButtonPosY(WrapperPaneBase::ButtonType)"
-      },
-      {
-        "addr": "0x8008639c",
-        "symbol": "WrapperPaneBase::UpdateAptButtonWidth(WrapperPaneBase::ButtonType)"
-      },
-      {
-        "addr": "0x80087a68",
-        "symbol": "WrapperPaneBase::EnableDraw(void)"
-      },
-      {
-        "addr": "0x80087a98",
-        "symbol": "WrapperPaneBase::DisableDraw(void)"
-      },
-      {
-        "addr": "0x80087cc4",
-        "symbol": "WrapperPaneBase::GetTextItem(int)"
-      },
-      {
-        "addr": "0x80087cec",
-        "symbol": "WrapperPaneBase::GetButtonItem(int)"
-      },
-      {
-        "addr": "0x80087d14",
-        "symbol": "WrapperPaneBase::GetMenuItem(int)"
-      },
-      {
-        "addr": "0x80087d3c",
-        "symbol": "WrapperPaneBase::GetIconItem(int)"
-      },
-      {
-        "addr": "0x80087d64",
-        "symbol": "WrapperPaneBase::SetTextItemText(int, unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x80087d90",
-        "symbol": "WrapperPaneBase::SetTextItemFont(int, ERFont *)"
-      },
-      {
-        "addr": "0x80087dbc",
-        "symbol": "WrapperPaneBase::SetTextItemFontSize(int, float)"
-      },
-      {
-        "addr": "0x80087de4",
-        "symbol": "WrapperPaneBase::SetTextItemStyle(int, ItemStyle)"
-      },
-      {
-        "addr": "0x80087e10",
-        "symbol": "WrapperPaneBase::SetTextItemPos(int, EVec2 &)"
-      },
-      {
-        "addr": "0x80087e3c",
-        "symbol": "WrapperPaneBase::SetTextItemPosX(int, float)"
-      },
-      {
-        "addr": "0x80087e64",
-        "symbol": "WrapperPaneBase::SetTextItemPosY(int, float)"
-      },
-      {
-        "addr": "0x80087e8c",
-        "symbol": "WrapperPaneBase::SetButtonItemText(int, unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x80087eb8",
-        "symbol": "WrapperPaneBase::SetButtonItemFont(int, ERFont *)"
-      },
-      {
-        "addr": "0x80087ee4",
-        "symbol": "WrapperPaneBase::SetButtonItemFontSize(int, float)"
-      },
-      {
-        "addr": "0x80087f0c",
-        "symbol": "WrapperPaneBase::SetButtonItemStyle(int, ItemStyle)"
-      },
-      {
-        "addr": "0x80087f38",
-        "symbol": "WrapperPaneBase::SetButtonItemPos(int, EVec2 &)"
-      },
-      {
-        "addr": "0x80087f64",
-        "symbol": "WrapperPaneBase::SetButtonItemPosX(int, float)"
-      },
-      {
-        "addr": "0x80087f8c",
-        "symbol": "WrapperPaneBase::SetButtonItemPosY(int, float)"
-      },
-      {
-        "addr": "0x80087fb4",
-        "symbol": "WrapperPaneBase::SetMenuItemText(int, unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x80087fe0",
-        "symbol": "WrapperPaneBase::SetMenuItemFont(int, ERFont *)"
-      },
-      {
-        "addr": "0x8008800c",
-        "symbol": "WrapperPaneBase::SetMenuItemFontSize(int, float)"
-      },
-      {
-        "addr": "0x80088034",
-        "symbol": "WrapperPaneBase::SetMenutItemStyle(int, ItemStyle)"
-      },
-      {
-        "addr": "0x80088060",
-        "symbol": "WrapperPaneBase::SetMenuItemPos(int, EVec2 &)"
-      },
-      {
-        "addr": "0x8008808c",
-        "symbol": "WrapperPaneBase::SetMenuItemPosX(int, float)"
-      },
-      {
-        "addr": "0x800880b4",
-        "symbol": "WrapperPaneBase::SetMenuItemPosY(int, float)"
-      },
-      {
-        "addr": "0x800880dc",
-        "symbol": "WrapperPaneBase::SetIconItemShader(int, unsigned int)"
-      },
-      {
-        "addr": "0x80088108",
-        "symbol": "WrapperPaneBase::SetIconItemPos(int, EVec2 &)"
-      },
-      {
-        "addr": "0x80088134",
-        "symbol": "WrapperPaneBase::SetIconItemPosX(int, float)"
-      },
-      {
-        "addr": "0x8008815c",
-        "symbol": "WrapperPaneBase::SetIconItemPosY(int, float)"
-      },
-      {
-        "addr": "0x80088184",
-        "symbol": "WrapperPaneBase::SetIconItemSize(int, EVec2 &)"
-      },
-      {
-        "addr": "0x800881b0",
-        "symbol": "WrapperPaneBase::SetIconItemSizeX(int, float)"
-      },
-      {
-        "addr": "0x800881d8",
-        "symbol": "WrapperPaneBase::SetIconItemSizeY(int, float)"
-      }
-    ],
     "TArray": [
-      {
-        "addr": "0x803c187c",
-        "symbol": "TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::TArray(void)"
-      },
       {
         "addr": "0x803c1cfc",
         "symbol": "TArray<ENDummyPoint, TArrayDefaultAllocator>::TArray(void)"
       },
       {
-        "addr": "0x803c256c",
-        "symbol": "TArray<int, TArrayDefaultAllocator>::TArray(void)"
-      },
-      {
-        "addr": "0x803c25b8",
-        "symbol": "TArray<int, TArrayDefaultAllocator>::Copy(int *, int *, int)"
-      },
-      {
-        "addr": "0x803c2708",
-        "symbol": "TArray<int, TArrayDefaultAllocator>::CopyReverse(int *, int *, int)"
-      },
-      {
-        "addr": "0x803c2f2c",
-        "symbol": "TArray<unsigned char *, TArrayDefaultAllocator>::TArray(void)"
-      },
-      {
-        "addr": "0x803c3078",
-        "symbol": "TArray<unsigned char *, TArrayDefaultAllocator>::Copy(unsigned char **, unsigned char **, int)"
-      },
-      {
-        "addr": "0x803c31c8",
-        "symbol": "TArray<unsigned char *, TArrayDefaultAllocator>::CopyReverse(unsigned char **, unsigned char **, int)"
-      },
-      {
         "addr": "0x803c3790",
         "symbol": "TArray<ESubModelShader, TArrayERModelAllocator>::TArray(void)"
-      },
-      {
-        "addr": "0x803c3dc0",
-        "symbol": "TArray<unsigned int, TArrayDefaultAllocator>::Copy(unsigned int *, unsigned int *, int)"
       },
       {
         "addr": "0x803c40a4",
@@ -485,10 +49,6 @@
         "symbol": "TArray<EFontPage *, TArrayDefaultAllocator>::TArray(void)"
       },
       {
-        "addr": "0x803c7f28",
-        "symbol": "TArray<EFontPage *, TArrayDefaultAllocator>::Copy(EFontPage **, EFontPage **, int)"
-      },
-      {
         "addr": "0x803c8f34",
         "symbol": "TArray<EAnimNodeDataPos, TArrayERAnimAllocator>::TArray(void)"
       },
@@ -505,10 +65,6 @@
         "symbol": "TArray<EAnimNodeDataPos, TArrayERAnimAllocator>::Construct(EAnimNodeDataPos *, int)"
       },
       {
-        "addr": "0x803c9440",
-        "symbol": "TArray<float, TArrayERAnimAllocator>::Copy(float *, float *, int)"
-      },
-      {
         "addr": "0x803c9900",
         "symbol": "TArray<ECharacterNode, TArrayERCharacterAllocator>::TArray(void)"
       },
@@ -523,166 +79,52 @@
       {
         "addr": "0x803ca1dc",
         "symbol": "TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>::TArray(void)"
-      },
-      {
-        "addr": "0x803ca258",
-        "symbol": "TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>::Construct(SndEvtHitPatch *, int)"
-      },
-      {
-        "addr": "0x803ca284",
-        "symbol": "TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>::Copy(SndEvtHitPatch *, SndEvtHitPatch *, int)"
       }
     ],
-    "INVTarget": [
+    "InteractorModule": [
       {
-        "addr": "0x801f11f4",
-        "symbol": "INVTarget::SetBudgetCheatString(int)"
+        "addr": "0x80205748",
+        "symbol": "InteractorModule::DirectInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float)"
       },
       {
-        "addr": "0x801f1228",
-        "symbol": "INVTarget::GetMaxWCharBufSize(unsigned wchar_t *)"
+        "addr": "0x80209454",
+        "symbol": "InteractorModule::Interactor::UpdateObjectHighlights(EIObjectMan *)"
       },
       {
-        "addr": "0x801f14c0",
-        "symbol": "INVTarget::StartActionMenu(void)"
+        "addr": "0x802136cc",
+        "symbol": "InteractorModule::GetInteractorResourceSet(InteractorModule::Interactor *)"
       },
       {
-        "addr": "0x801f15fc",
-        "symbol": "INVTarget::PlaceModeCallback(InteractorModule::PlaceManipulator::CallbackData *)"
+        "addr": "0x8021900c",
+        "symbol": "InteractorModule::ObjectManipulator::OnCreate(void)"
       },
       {
-        "addr": "0x801f1974",
-        "symbol": "INVTarget::WallManipulatorCallback(InteractorModule::WallManipulator::CallbackData *)"
+        "addr": "0x80219040",
+        "symbol": "InteractorModule::ObjectManipulator::OnDestroy(void)"
       },
       {
-        "addr": "0x801f1b6c",
-        "symbol": "INVTarget::WallPainterCallback(InteractorModule::WallPainter::CallbackData *)"
+        "addr": "0x8021d3f4",
+        "symbol": "InteractorModule::SimInteractor::OnCreate(void)"
       },
       {
-        "addr": "0x801f1b94",
-        "symbol": "INVTarget::FloorModeCallback(InteractorModule::FloorPainter::CallbackData *)"
+        "addr": "0x8021d428",
+        "symbol": "InteractorModule::SimInteractor::OnDestroy(void)"
       },
       {
-        "addr": "0x801f1ddc",
-        "symbol": "INVTarget::GrabModeCallback(InteractorModule::GrabManipulator::CallbackData *)"
+        "addr": "0x8021e598",
+        "symbol": "InteractorModule::SimInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float)"
       },
       {
-        "addr": "0x801f2370",
-        "symbol": "INVTarget::InstallBldVariables(void)"
+        "addr": "0x8021f198",
+        "symbol": "InteractorModule::SocialModeInteractor::OnCreate(void)"
       },
       {
-        "addr": "0x801f451c",
-        "symbol": "INVTarget::SetOnMsgInvNextTab(char *)"
+        "addr": "0x8021f1d4",
+        "symbol": "InteractorModule::SocialModeInteractor::OnDestroy(void)"
       },
       {
-        "addr": "0x801f4550",
-        "symbol": "INVTarget::SetOnMsgInvPrevTab(char *)"
-      },
-      {
-        "addr": "0x801f6570",
-        "symbol": "INVTarget::SetOnMsgInvShpCurrentCell(char *)"
-      },
-      {
-        "addr": "0x801f66b8",
-        "symbol": "INVTarget::GetOnMsgInvBackExitReset(char *)"
-      },
-      {
-        "addr": "0x801f673c",
-        "symbol": "INVTarget::GetOnMsgInvCurrentTab(char *)"
-      },
-      {
-        "addr": "0x801f677c",
-        "symbol": "INVTarget::GetOnMsgInvCurrentCell(char *)"
-      },
-      {
-        "addr": "0x801f67bc",
-        "symbol": "INVTarget::GetOnMsgInvTabCount(char *)"
-      },
-      {
-        "addr": "0x801f67f0",
-        "symbol": "INVTarget::GetOnMsgInvInventoryCount(char *)"
-      },
-      {
-        "addr": "0x801f6824",
-        "symbol": "INVTarget::GetOnMsgInvInventoryReady(char *)"
-      },
-      {
-        "addr": "0x801f6954",
-        "symbol": "INVTarget::GetOnMsgInvShpResourcesReady(char *)"
-      },
-      {
-        "addr": "0x801f7470",
-        "symbol": "INVTarget::GetOnMsgInvShpDefaultColor(char *)"
-      },
-      {
-        "addr": "0x801f7fa8",
-        "symbol": "INVTarget::SetInvBldItemCount(void)"
-      },
-      {
-        "addr": "0x80203d30",
-        "symbol": "INVTarget::GetSelectedShoppingCategory(void)"
-      }
-    ],
-    "H2DTarget": [
-      {
-        "addr": "0x801b8db0",
-        "symbol": "H2DTarget::SpawnModelessDialog(UIDialog *)"
-      },
-      {
-        "addr": "0x801b8ddc",
-        "symbol": "H2DTarget::CleanupModelessDialogs(void)"
-      },
-      {
-        "addr": "0x801b8e08",
-        "symbol": "H2DTarget::CountModelessDialogs(void)"
-      },
-      {
-        "addr": "0x801b8ec8",
-        "symbol": "H2DTarget::RemoveAction(int, Interaction *)"
-      },
-      {
-        "addr": "0x801b8f04",
-        "symbol": "H2DTarget::RemoveAllActions(int)"
-      },
-      {
-        "addr": "0x801b8fd8",
-        "symbol": "H2DTarget::SKLInWarning(int, bool)"
-      },
-      {
-        "addr": "0x801b9014",
-        "symbol": "H2DTarget::MOTInWarning(int, bool)"
-      },
-      {
-        "addr": "0x801b9050",
-        "symbol": "H2DTarget::WAFInWarning(int, bool, bool)"
-      },
-      {
-        "addr": "0x801b9088",
-        "symbol": "H2DTarget::SetMoodMeterValue(int, float, bool)"
-      },
-      {
-        "addr": "0x801b91e4",
-        "symbol": "H2DTarget::SetInteractionDisplayValues(int, unsigned int, unsigned int)"
-      },
-      {
-        "addr": "0x801b9220",
-        "symbol": "H2DTarget::TriggerInteractionAnimation(int, unsigned int, unsigned int, unsigned int)"
-      },
-      {
-        "addr": "0x801b9260",
-        "symbol": "H2DTarget::DisplayPaused(void)"
-      },
-      {
-        "addr": "0x801b928c",
-        "symbol": "H2DTarget::DisplayFastForward(void)"
-      },
-      {
-        "addr": "0x801b92b8",
-        "symbol": "H2DTarget::CSIMSetIconDisable(int, bool)"
-      },
-      {
-        "addr": "0x801b92e8",
-        "symbol": "H2DTarget::INTMirrorUpArrow(int, bool)"
+        "addr": "0x8021f3e8",
+        "symbol": "InteractorModule::SocialModeInteractor::ResetInputState(void)"
       }
     ],
     "ERLevel": [
@@ -725,338 +167,6 @@
       {
         "addr": "0x80237784",
         "symbol": "ERLevel::OutsideLightsInit(float, LevelLightingEntry &)"
-      },
-      {
-        "addr": "0x80238034",
-        "symbol": "ERLevel::New(void)"
-      },
-      {
-        "addr": "0x80238060",
-        "symbol": "ERLevel::Construct(ERLevel *)"
-      },
-      {
-        "addr": "0x802381b0",
-        "symbol": "ERLevel::operator new(unsigned int)"
-      }
-    ],
-    "DlgWrapper": [
-      {
-        "addr": "0x8007e718",
-        "symbol": "DlgWrapper::SetDialogSizeY(float)"
-      },
-      {
-        "addr": "0x8007e954",
-        "symbol": "DlgWrapper::SetBodyPosX(float)"
-      },
-      {
-        "addr": "0x8007e990",
-        "symbol": "DlgWrapper::SetBodyPosY(float)"
-      },
-      {
-        "addr": "0x8007e9cc",
-        "symbol": "DlgWrapper::SetAcceptText(unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x8007eba8",
-        "symbol": "DlgWrapper::SetDeclineText(unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x8007ed84",
-        "symbol": "DlgWrapper::SetAlt1Text(unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x8007ef60",
-        "symbol": "DlgWrapper::SetBodyPadSize(EVec2 &)"
-      },
-      {
-        "addr": "0x8007ef9c",
-        "symbol": "DlgWrapper::SetButtonContext(char *)"
-      },
-      {
-        "addr": "0x8007efdc",
-        "symbol": "DlgWrapper::AddAcceptButton(unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x8007f00c",
-        "symbol": "DlgWrapper::AddDeclineButton(unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x8007f03c",
-        "symbol": "DlgWrapper::AddAlt1Button(unsigned wchar_t *)"
-      }
-    ],
-    "HUDTarget": [
-      {
-        "addr": "0x80186dd4",
-        "symbol": "HUDTarget::IncPause(bool)"
-      },
-      {
-        "addr": "0x80186e04",
-        "symbol": "HUDTarget::ReleasePause(bool)"
-      },
-      {
-        "addr": "0x80187f24",
-        "symbol": "HUDTarget::OnPlayerHUDShow(int)"
-      },
-      {
-        "addr": "0x80187f54",
-        "symbol": "HUDTarget::OnPlayerHUDHide(int)"
-      },
-      {
-        "addr": "0x80188d3c",
-        "symbol": "HUDTarget::CompleteMenu(int)"
-      },
-      {
-        "addr": "0x80188d7c",
-        "symbol": "HUDTarget::ShowMenu(int)"
-      },
-      {
-        "addr": "0x80188e34",
-        "symbol": "HUDTarget::CloseMenu(int)"
-      },
-      {
-        "addr": "0x801892a8",
-        "symbol": "HUDTarget::AddHUDControl(short, short, short &)"
-      },
-      {
-        "addr": "0x801892d4",
-        "symbol": "HUDTarget::RemoveHUDControl(short, short)"
-      },
-      {
-        "addr": "0x80189408",
-        "symbol": "HUDTarget::SetJobBarInputRange(int, int, int)"
-      },
-      {
-        "addr": "0x801899e8",
-        "symbol": "HUDTarget::GotoMainMenu(void)"
-      }
-    ],
-    "CTilePt": [
-      {
-        "addr": "0x800b4560",
-        "symbol": "CTilePt::GetXf(void) const"
-      },
-      {
-        "addr": "0x800b4598",
-        "symbol": "CTilePt::GetYf(void) const"
-      },
-      {
-        "addr": "0x800b476c",
-        "symbol": "CTilePt::operator==(CTilePt &) const"
-      },
-      {
-        "addr": "0x800b479c",
-        "symbol": "CTilePt::operator!=(CTilePt &) const"
-      },
-      {
-        "addr": "0x800b4810",
-        "symbol": "CTilePt::operator+=(CTilePt &)"
-      },
-      {
-        "addr": "0x800b4838",
-        "symbol": "CTilePt::operator-=(CTilePt &)"
-      },
-      {
-        "addr": "0x800b4860",
-        "symbol": "CTilePt::operator*=(int)"
-      },
-      {
-        "addr": "0x800b4cdc",
-        "symbol": "CTilePt::Get(int *, int *, int *) const"
-      },
-      {
-        "addr": "0x800b4d78",
-        "symbol": "CTilePt::Set(float, float)"
-      },
-      {
-        "addr": "0x800b4da8",
-        "symbol": "CTilePt::Set(float, float, int)"
-      }
-    ],
-    "cXPersonImpl": [
-      {
-        "addr": "0x80123704",
-        "symbol": "cXPersonImpl::GetCurrentRoute(void)"
-      },
-      {
-        "addr": "0x8012b528",
-        "symbol": "cXPersonImpl::IsFemale(void)"
-      },
-      {
-        "addr": "0x8012b564",
-        "symbol": "cXPersonImpl::IsAdult(void)"
-      },
-      {
-        "addr": "0x8012b5a0",
-        "symbol": "cXPersonImpl::InvalidateRoutes(void)"
-      },
-      {
-        "addr": "0x8012b754",
-        "symbol": "cXPersonImpl::IsModelLoaded(void)"
-      },
-      {
-        "addr": "0x8012c6e4",
-        "symbol": "cXPersonImpl::CountActions(bool)"
-      },
-      {
-        "addr": "0x8012c7fc",
-        "symbol": "cXPersonImpl::GetNeighborID(void) const"
-      },
-      {
-        "addr": "0x8012c878",
-        "symbol": "cXPersonImpl::IsRouting(void)"
-      },
-      {
-        "addr": "0x8012c928",
-        "symbol": "cXPersonImpl::SetInvisible(bool)"
-      },
-      {
-        "addr": "0x8012c950",
-        "symbol": "cXPersonImpl::SetIsAlien(bool)"
-      }
-    ],
-    "EyeToyClient": [
-      {
-        "addr": "0x80037a5c",
-        "symbol": "EyeToyClient::ReleaseTexture(ETexture *)"
-      },
-      {
-        "addr": "0x80037b40",
-        "symbol": "EyeToyClient::ReleaseRenderSurface(ERenderSurface *)"
-      },
-      {
-        "addr": "0x800384e8",
-        "symbol": "EyeToyClient::UnpluggedCallback(int)"
-      },
-      {
-        "addr": "0x80038fb0",
-        "symbol": "EyeToyClient::IsEyeToyHardwarePresent(void)"
-      },
-      {
-        "addr": "0x800391b4",
-        "symbol": "EyeToyClient::IsSlotOpenForCASImage(int, int)"
-      },
-      {
-        "addr": "0x80039240",
-        "symbol": "EyeToyClient::RestoreDefaults(void)"
-      },
-      {
-        "addr": "0x80039344",
-        "symbol": "EyeToyClient::SetSaturation(float)"
-      },
-      {
-        "addr": "0x80039378",
-        "symbol": "EyeToyClient::GetHue(void)"
-      },
-      {
-        "addr": "0x8003944c",
-        "symbol": "EyeToyClient::SetBrightness(float)"
-      }
-    ],
-    "SAnimator2": [
-      {
-        "addr": "0x8005d6a0",
-        "symbol": "SAnimator2::IsSkillIdleAnimRunning(void)"
-      },
-      {
-        "addr": "0x800653f8",
-        "symbol": "SAnimator2::GetBonePosAndDirForParticle(unsigned int, EMat4 &)"
-      },
-      {
-        "addr": "0x800655a4",
-        "symbol": "SAnimator2::convertAnimationFormatToEngineFormat(EVec3 &, EVec3 &)"
-      },
-      {
-        "addr": "0x8006643c",
-        "symbol": "SAnimator2::triggerCameraBlur(CameraBlurDataElement *)"
-      },
-      {
-        "addr": "0x80066f00",
-        "symbol": "SAnimator2::lockHandsUpCarryNodes(void)"
-      },
-      {
-        "addr": "0x80066f40",
-        "symbol": "SAnimator2::lockCarryArmNodes(float *, EACTrack *)"
-      },
-      {
-        "addr": "0x80066f80",
-        "symbol": "SAnimator2::lockCarryArmNodes(float *, int)"
-      },
-      {
-        "addr": "0x8006908c",
-        "symbol": "SAnimator2::operator delete(void *)"
-      },
-      {
-        "addr": "0x8006912c",
-        "symbol": "SAnimator2::setAnimationDirectionToPersonDirection(void)"
-      }
-    ],
-    "cXObjectImpl": [
-      {
-        "addr": "0x800dd408",
-        "symbol": "cXObjectImpl::IsContained(void)"
-      },
-      {
-        "addr": "0x800dd49c",
-        "symbol": "cXObjectImpl::GetContainedSlotNum(void)"
-      },
-      {
-        "addr": "0x800eaa00",
-        "symbol": "cXObjectImpl::Kill(void)"
-      },
-      {
-        "addr": "0x800eaa80",
-        "symbol": "cXObjectImpl::IsRenderingRoot(void)"
-      },
-      {
-        "addr": "0x800eaf44",
-        "symbol": "cXObjectImpl::SimIndependent(void)"
-      },
-      {
-        "addr": "0x800eb004",
-        "symbol": "cXObjectImpl::GetIdleStatus(void)"
-      },
-      {
-        "addr": "0x800eb080",
-        "symbol": "cXObjectImpl::ClearIdleStatus(void)"
-      },
-      {
-        "addr": "0x800eb688",
-        "symbol": "cXObjectImpl::HasZeroExtent(void)"
-      },
-      {
-        "addr": "0x800eb89c",
-        "symbol": "cXObjectImpl::HaveGraphicsBeenTagged(void)"
-      }
-    ],
-    "BString": [
-      {
-        "addr": "0x8009ddbc",
-        "symbol": "BString::append(char *, unsigned int)"
-      },
-      {
-        "addr": "0x8009e04c",
-        "symbol": "BString::assign(char *, unsigned int)"
-      },
-      {
-        "addr": "0x8009e240",
-        "symbol": "BString::insert(unsigned int, char *, unsigned int)"
-      },
-      {
-        "addr": "0x8009ecf8",
-        "symbol": "BString::c_str(void) const"
-      },
-      {
-        "addr": "0x8009feb8",
-        "symbol": "BString::operator==(BString &) const"
-      },
-      {
-        "addr": "0x8009fee8",
-        "symbol": "BString::operator!=(BString &) const"
-      },
-      {
-        "addr": "0x8009ff20",
-        "symbol": "BString::operator<(BString &) const"
       }
     ],
     "E2ETarget": [
@@ -1083,278 +193,28 @@
       {
         "addr": "0x801ad860",
         "symbol": "E2ETarget::OnDownKeyPressed(char *, char *)"
-      },
-      {
-        "addr": "0x801ae1e4",
-        "symbol": "E2ETarget::ShowHelp(void)"
       }
     ],
-    "FamilyImpl": [
+    "BString": [
       {
-        "addr": "0x800b6334",
-        "symbol": "FamilyImpl::GetMemberByGUID(int)"
+        "addr": "0x8009ddbc",
+        "symbol": "BString::append(char *, unsigned int)"
       },
       {
-        "addr": "0x800b6368",
-        "symbol": "FamilyImpl::TestMember(int) const"
+        "addr": "0x8009e04c",
+        "symbol": "BString::assign(char *, unsigned int)"
       },
       {
-        "addr": "0x800b63a4",
-        "symbol": "FamilyImpl::GetIndexedMember(int)"
+        "addr": "0x8009e240",
+        "symbol": "BString::insert(unsigned int, char *, unsigned int)"
       },
       {
-        "addr": "0x800b63d8",
-        "symbol": "FamilyImpl::GetName(StringBuffer2 *)"
+        "addr": "0x8009feb8",
+        "symbol": "BString::operator==(BString &) const"
       },
       {
-        "addr": "0x800b6428",
-        "symbol": "FamilyImpl::GetFriendCount(void)"
-      },
-      {
-        "addr": "0x800b6464",
-        "symbol": "FamilyImpl::GetNetWorth(void)"
-      },
-      {
-        "addr": "0x800b67d4",
-        "symbol": "FamilyImpl::SetName(StringBuffer2 *)"
-      }
-    ],
-    "operator<=": [
-      {
-        "addr": "0x8009c578",
-        "symbol": "operator<=(char, BString &)"
-      },
-      {
-        "addr": "0x8009c5a8",
-        "symbol": "operator<=(BString &, char *)"
-      },
-      {
-        "addr": "0x8009c5d8",
-        "symbol": "operator<=(BString &, char)"
-      },
-      {
-        "addr": "0x800a0694",
-        "symbol": "operator<=(unsigned wchar_t *, BString2 &)"
-      },
-      {
-        "addr": "0x800a06c4",
-        "symbol": "operator<=(wchar_t, BString2 &)"
-      },
-      {
-        "addr": "0x800a06f4",
-        "symbol": "operator<=(BString2 &, unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x800a0724",
-        "symbol": "operator<=(BString2 &, wchar_t)"
-      }
-    ],
-    "operator==": [
-      {
-        "addr": "0x8009c17c",
-        "symbol": "operator==(char, BString &)"
-      },
-      {
-        "addr": "0x8009c1b8",
-        "symbol": "operator==(BString &, char *)"
-      },
-      {
-        "addr": "0x800a0260",
-        "symbol": "operator==(BString2 &, BString2 &)"
-      },
-      {
-        "addr": "0x800a0290",
-        "symbol": "operator==(unsigned wchar_t *, BString2 &)"
-      },
-      {
-        "addr": "0x800a02c8",
-        "symbol": "operator==(wchar_t, BString2 &)"
-      },
-      {
-        "addr": "0x800a0304",
-        "symbol": "operator==(BString2 &, unsigned wchar_t *)"
-      },
-      {
-        "addr": "0x800a0330",
-        "symbol": "operator==(BString2 &, wchar_t)"
-      }
-    ],
-    "CasMediator": [
-      {
-        "addr": "0x801620f4",
-        "symbol": "CasMediator::GetNumBodyModels(eBodyPartS2C) const"
-      },
-      {
-        "addr": "0x80162128",
-        "symbol": "CasMediator::GetNumTattooTextures(eTattooTextureTypeS2C) const"
-      },
-      {
-        "addr": "0x8016215c",
-        "symbol": "CasMediator::GetIconTextureId(eBodyPartS2C, unsigned int) const"
-      },
-      {
-        "addr": "0x80162190",
-        "symbol": "CasMediator::GetIconTattooTextureId(eTattooTextureTypeS2C, unsigned int) const"
-      },
-      {
-        "addr": "0x801621c4",
-        "symbol": "CasMediator::GetIndexes(eBodyPartS2C, unsigned char *, unsigned char *)"
-      },
-      {
-        "addr": "0x801621f8",
-        "symbol": "CasMediator::GetIndexes(eTattooTextureTypeS2C, unsigned char *, unsigned char *)"
-      }
-    ],
-    "EGlobal": [
-      {
-        "addr": "0x8003e1f0",
-        "symbol": "EGlobal::~EGlobal(void)"
-      },
-      {
-        "addr": "0x8003e538",
-        "symbol": "EGlobal::SetAuthorModeCheats(void)"
-      },
-      {
-        "addr": "0x800407ac",
-        "symbol": "EGlobal::SimInUseByOtherPlayer(int, cXPerson *)"
-      },
-      {
-        "addr": "0x800416b8",
-        "symbol": "EGlobal::FreeSpriteRenderer(cXObject *)"
-      },
-      {
-        "addr": "0x80041a4c",
-        "symbol": "EGlobal::RecalcObjects(void)"
-      },
-      {
-        "addr": "0x80042358",
-        "symbol": "EGlobal::IsPlayerCheatOn(int) const"
-      }
-    ],
-    "FAMTarget": [
-      {
-        "addr": "0x801afcac",
-        "symbol": "FAMTarget::UnloadScreen(void)"
-      },
-      {
-        "addr": "0x801b0714",
-        "symbol": "FAMTarget::UpdateMenuState(char *, char *)"
-      },
-      {
-        "addr": "0x801b0d1c",
-        "symbol": "FAMTarget::GetFamilyInFamilyList(int)"
-      },
-      {
-        "addr": "0x801b3204",
-        "symbol": "FAMTarget::GetFamilyInLot(int)"
-      },
-      {
-        "addr": "0x801b3244",
-        "symbol": "FAMTarget::LaunchLot(void)"
-      },
-      {
-        "addr": "0x801b33cc",
-        "symbol": "FAMTarget::GetLotForFamily(int)"
-      }
-    ],
-    "NghResFile": [
-      {
-        "addr": "0x800d43fc",
-        "symbol": "NghResFile::FinishMemCardWrite(char *, unsigned char)"
-      },
-      {
-        "addr": "0x800d53e4",
-        "symbol": "NghResFile::GetThumbIdFromFamilyAndIndex(int, int)"
-      },
-      {
-        "addr": "0x800d541c",
-        "symbol": "NghResFile::StoreFamilyThumbGUID(int, int, unsigned int)"
-      },
-      {
-        "addr": "0x800d5484",
-        "symbol": "NghResFile::GetResIDFromThumbGUID(unsigned int)"
-      },
-      {
-        "addr": "0x800d6c08",
-        "symbol": "NghResFile::AreHouseContentsLoaded(unsigned int) const"
-      },
-      {
-        "addr": "0x800d8aa8",
-        "symbol": "NghResFile::IsIDRegistered(NghResFile::RegistryID)"
-      }
-    ],
-    "SimpleReconObject": [
-      {
-        "addr": "0x803a35d0",
-        "symbol": "SimpleReconObject<FamilyImpl>::DoStream(ReconBuffer *, int)"
-      },
-      {
-        "addr": "0x803a3834",
-        "symbol": "SimpleReconObject<HouseImpl>::DoStream(ReconBuffer *, int)"
-      },
-      {
-        "addr": "0x803a6178",
-        "symbol": "SimpleReconObject<NeighborhoodImpl>::DoStream(ReconBuffer *, int)"
-      },
-      {
-        "addr": "0x803a8220",
-        "symbol": "SimpleReconObject<ObjectFolderImpl>::DoStream(ReconBuffer *, int)"
-      },
-      {
-        "addr": "0x803a865c",
-        "symbol": "SimpleReconObject<ObjectModuleImpl>::DoStream(ReconBuffer *, int)"
-      },
-      {
-        "addr": "0x803adf2c",
-        "symbol": "SimpleReconObject<ReconStreamVector<SlotDescriptor> >::DoStream(ReconBuffer *, int)"
-      }
-    ],
-    "cSimulatorImpl": [
-      {
-        "addr": "0x80140924",
-        "symbol": "cSimulatorImpl::CommitPendingFunds(void)"
-      },
-      {
-        "addr": "0x80141324",
-        "symbol": "cSimulatorImpl::IsPausedAtAll(void)"
-      },
-      {
-        "addr": "0x80141a5c",
-        "symbol": "cSimulatorImpl::PostSecondOfDay(int)"
-      },
-      {
-        "addr": "0x80141a8c",
-        "symbol": "cSimulatorImpl::IsStopped(void)"
-      },
-      {
-        "addr": "0x80141b28",
-        "symbol": "cSimulatorImpl::SetArchValue(int)"
-      },
-      {
-        "addr": "0x80141b60",
-        "symbol": "cSimulatorImpl::SetObjectsValue(int)"
-      }
-    ],
-    "BBI": [
-      {
-        "addr": "0x8004a0c4",
-        "symbol": "BBI::InventoryItem::SetItemCategory(BBI::InventoryItem::eItemCategory)"
-      },
-      {
-        "addr": "0x8004a104",
-        "symbol": "BBI::InventoryItem::SetItemSubcategory(BBI::InventoryItem::eItemSubcategory)"
-      },
-      {
-        "addr": "0x8004a214",
-        "symbol": "BBI::InventoryItem::SetItemGuid(int)"
-      },
-      {
-        "addr": "0x8004a2a4",
-        "symbol": "BBI::InventoryItem::SetItemColorIndex(unsigned char)"
-      },
-      {
-        "addr": "0x8004a2e0",
-        "symbol": "BBI::InventoryItem::CopyTo(BBI::InventoryItem *) const"
+        "addr": "0x8009ff20",
+        "symbol": "BString::operator<(BString &) const"
       }
     ],
     "BString2": [
@@ -1379,234 +239,26 @@
         "symbol": "BString2::operator<(BString2 &) const"
       }
     ],
-    "CasSimRendererDynamic": [
+    "SAnimator2": [
       {
-        "addr": "0x8016fc14",
-        "symbol": "CasSimRendererDynamic::~CasSimRendererDynamic(void)"
+        "addr": "0x8005d6a0",
+        "symbol": "SAnimator2::IsSkillIdleAnimRunning(void)"
       },
       {
-        "addr": "0x801701dc",
-        "symbol": "CasSimRendererDynamic::IsShirtIdleAnim(unsigned int)"
+        "addr": "0x800653f8",
+        "symbol": "SAnimator2::GetBonePosAndDirForParticle(unsigned int, EMat4 &)"
       },
       {
-        "addr": "0x8017021c",
-        "symbol": "CasSimRendererDynamic::IsShoeIdleAnim(unsigned int)"
+        "addr": "0x800655a4",
+        "symbol": "SAnimator2::convertAnimationFormatToEngineFormat(EVec3 &, EVec3 &)"
       },
       {
-        "addr": "0x80170244",
-        "symbol": "CasSimRendererDynamic::IsPantIdleAnim(unsigned int)"
+        "addr": "0x8006643c",
+        "symbol": "SAnimator2::triggerCameraBlur(CameraBlurDataElement *)"
       },
       {
-        "addr": "0x80170278",
-        "symbol": "CasSimRendererDynamic::IsRegularIdleAnim(unsigned int)"
-      }
-    ],
-    "EIStaticModel": [
-      {
-        "addr": "0x8022bb8c",
-        "symbol": "EIStaticModel::GetBoundSphere(EBoundSphere &)"
-      },
-      {
-        "addr": "0x8022be08",
-        "symbol": "EIStaticModel::SetModel(unsigned int, bool, EInstance *, EAnimController *)"
-      },
-      {
-        "addr": "0x8022c834",
-        "symbol": "EIStaticModel::VisibilityTest(E3DWindow &)"
-      },
-      {
-        "addr": "0x8022df1c",
-        "symbol": "EIStaticModel::GetInstName(EInstance::InstType &)"
-      },
-      {
-        "addr": "0x8022dfe0",
-        "symbol": "EIStaticModel::Construct(EIStaticModel *)"
-      }
-    ],
-    "ESimsCam": [
-      {
-        "addr": "0x80016a8c",
-        "symbol": "ESimsCam::Init(void)"
-      },
-      {
-        "addr": "0x80017a90",
-        "symbol": "ESimsCam::CalcTiltFromZoom(float)"
-      },
-      {
-        "addr": "0x80019364",
-        "symbol": "ESimsCam::PointOffScreen(EVec3 &)"
-      },
-      {
-        "addr": "0x8001a03c",
-        "symbol": "ESimsCam::GetCursorLimitTopWidth(void)"
-      },
-      {
-        "addr": "0x8001a074",
-        "symbol": "ESimsCam::GetCursorLimitDepth(void)"
-      }
-    ],
-    "INGTarget": [
-      {
-        "addr": "0x801bbbf0",
-        "symbol": "INGTarget::get_current_ingredient(void)"
-      },
-      {
-        "addr": "0x801bbccc",
-        "symbol": "INGTarget::get_ingredient_type(INGTarget::IngInfo &) const"
-      },
-      {
-        "addr": "0x801bc114",
-        "symbol": "INGTarget::get_grid_ingredient(short)"
-      },
-      {
-        "addr": "0x801bc154",
-        "symbol": "INGTarget::get_mix_ingredient(short) const"
-      },
-      {
-        "addr": "0x801bca10",
-        "symbol": "INGTarget::exit_ingredients_dialog_selection_callback(int)"
-      }
-    ],
-    "ObjSelector": [
-      {
-        "addr": "0x80110754",
-        "symbol": "ObjSelector::Writable(void)"
-      },
-      {
-        "addr": "0x80111060",
-        "symbol": "ObjSelector::GetThumbnailHasShadow(void)"
-      },
-      {
-        "addr": "0x80111090",
-        "symbol": "ObjSelector::GetRuntimeHasShadow(void)"
-      },
-      {
-        "addr": "0x801110c0",
-        "symbol": "ObjSelector::GetHasGraphics(void)"
-      },
-      {
-        "addr": "0x80111148",
-        "symbol": "ObjSelector::GetIsMultiTileSubObject(void)"
-      }
-    ],
-    "ObjectFolderImpl": [
-      {
-        "addr": "0x800efd90",
-        "symbol": "ObjectFolderImpl::DeletingInstance(ObjSelector *)"
-      },
-      {
-        "addr": "0x800f0884",
-        "symbol": "ObjectFolderImpl::GetPlaceholder(void)"
-      },
-      {
-        "addr": "0x800f1264",
-        "symbol": "ObjectFolderImpl::GetTypeAttrBlock(int)"
-      },
-      {
-        "addr": "0x800f129c",
-        "symbol": "ObjectFolderImpl::Save(iResFile *)"
-      },
-      {
-        "addr": "0x800f12cc",
-        "symbol": "ObjectFolderImpl::Load(iResFile *)"
-      }
-    ],
-    "ObjectModuleImpl": [
-      {
-        "addr": "0x800f9434",
-        "symbol": "ObjectModuleImpl::AdvanceSelectedPerson(int)"
-      },
-      {
-        "addr": "0x800f9578",
-        "symbol": "ObjectModuleImpl::SetSimFlag(int, ObjectModule::SimFlag, bool)"
-      },
-      {
-        "addr": "0x800f95b0",
-        "symbol": "ObjectModuleImpl::GetSimFlag(int, ObjectModule::SimFlag)"
-      },
-      {
-        "addr": "0x800f95f0",
-        "symbol": "ObjectModuleImpl::SetIdleStatus(int, int)"
-      },
-      {
-        "addr": "0x800f9820",
-        "symbol": "ObjectModuleImpl::GetNumObjects(void)"
-      }
-    ],
-    "cTrack": [
-      {
-        "addr": "0x80118074",
-        "symbol": "cTrack::GetVHitList(int)"
-      },
-      {
-        "addr": "0x80118a64",
-        "symbol": "cTrack::SetCompareFlags(int, int)"
-      },
-      {
-        "addr": "0x80118c24",
-        "symbol": "cTrack::SetVolume(int)"
-      },
-      {
-        "addr": "0x80118c4c",
-        "symbol": "cTrack::SetPan(int)"
-      },
-      {
-        "addr": "0x80119de8",
-        "symbol": "cTrack::CheckedRegId(int)"
-      }
-    ],
-    "CASTarget": [
-      {
-        "addr": "0x8019314c",
-        "symbol": "CASTarget::GetLotNumberFromMode(int)"
-      },
-      {
-        "addr": "0x80195c40",
-        "symbol": "CASTarget::ShowAllCFAOptions(void)"
-      },
-      {
-        "addr": "0x8019632c",
-        "symbol": "CASTarget::DialogOKSelectionCallback(int)"
-      },
-      {
-        "addr": "0x801a0818",
-        "symbol": "CASTarget::HasSimInSlot(int) const"
-      }
-    ],
-    "CTGFileImpl": [
-      {
-        "addr": "0x8007cef0",
-        "symbol": "CTGFileImpl::Read(void *, int)"
-      },
-      {
-        "addr": "0x8007cf30",
-        "symbol": "CTGFileImpl::Seek(int)"
-      },
-      {
-        "addr": "0x8007cf5c",
-        "symbol": "CTGFileImpl::SeekPastEnd(int)"
-      },
-      {
-        "addr": "0x8007cf88",
-        "symbol": "CTGFileImpl::Tell(void)"
-      }
-    ],
-    "CasSimPartsS2C": [
-      {
-        "addr": "0x8016cd30",
-        "symbol": "CasSimPartsS2C::OuterLayerTorsoRequiresFullTorsoMeshInMidLayer(unsigned int) const"
-      },
-      {
-        "addr": "0x8016cd58",
-        "symbol": "CasSimPartsS2C::OuterLayerTorsoHidesMusicPlayer(unsigned int) const"
-      },
-      {
-        "addr": "0x8016d508",
-        "symbol": "CasSimPartsS2C::GetGameStateModelID(unsigned int) const"
-      },
-      {
-        "addr": "0x8016d534",
-        "symbol": "CasSimPartsS2C::GetGameStateTextureID(unsigned int) const"
+        "addr": "0x80066f80",
+        "symbol": "SAnimator2::lockCarryArmNodes(float *, int)"
       }
     ],
     "ChainResFile": [
@@ -1627,22 +279,22 @@
         "symbol": "ChainResFile::Add(Memory::HandleNode *, int, short, StringBuffer &, bool)"
       }
     ],
-    "EIStaticSubModel": [
+    "EGlobal": [
       {
-        "addr": "0x8022e67c",
-        "symbol": "EIStaticSubModel::GetBoundSphere(EBoundSphere &)"
+        "addr": "0x8003e1f0",
+        "symbol": "EGlobal::~EGlobal(void)"
       },
       {
-        "addr": "0x8022e8ac",
-        "symbol": "EIStaticSubModel::VisibilityTest(E3DWindow &)"
+        "addr": "0x800416b8",
+        "symbol": "EGlobal::FreeSpriteRenderer(cXObject *)"
       },
       {
-        "addr": "0x8022f668",
-        "symbol": "EIStaticSubModel::GetInstName(EInstance::InstType &)"
+        "addr": "0x80041a4c",
+        "symbol": "EGlobal::RecalcObjects(void)"
       },
       {
-        "addr": "0x8022f748",
-        "symbol": "EIStaticSubModel::Construct(EIStaticSubModel *)"
+        "addr": "0x80042358",
+        "symbol": "EGlobal::IsPlayerCheatOn(int) const"
       }
     ],
     "ESimsApp": [
@@ -1681,168 +333,50 @@
         "symbol": "StartScreenStartState::SetFlowStateCurrent(void)"
       }
     ],
-    "TextBaseItem": [
+    "cTrack": [
       {
-        "addr": "0x80087214",
-        "symbol": "TextBaseItem::SetDisplaySize(EVec2 &)"
+        "addr": "0x80118a64",
+        "symbol": "cTrack::SetCompareFlags(int, int)"
       },
       {
-        "addr": "0x80087264",
-        "symbol": "TextBaseItem::SetDisplayPadSize(EVec2 &)"
+        "addr": "0x80118c24",
+        "symbol": "cTrack::SetVolume(int)"
       },
       {
-        "addr": "0x800872b4",
-        "symbol": "TextBaseItem::SetVerticalCenter(bool)"
+        "addr": "0x80118c4c",
+        "symbol": "cTrack::SetPan(int)"
       },
       {
-        "addr": "0x800872e0",
-        "symbol": "TextBaseItem::SetYPosCentered(bool)"
+        "addr": "0x80119de8",
+        "symbol": "cTrack::CheckedRegId(int)"
       }
     ],
-    "UIObjectBase": [
+    "CASTarget": [
       {
-        "addr": "0x80177a64",
-        "symbol": "UIObjectBase::pushAptButtonFilter(int, char *)"
+        "addr": "0x80195c40",
+        "symbol": "CASTarget::ShowAllCFAOptions(void)"
       },
       {
-        "addr": "0x80177a98",
-        "symbol": "UIObjectBase::popAptButtonFilter(int, unsigned int)"
+        "addr": "0x8019632c",
+        "symbol": "CASTarget::DialogOKSelectionCallback(int)"
       },
       {
-        "addr": "0x80177acc",
-        "symbol": "UIObjectBase::addCmdToAptButtonFilter(int, unsigned int, ECTRL_CMD)"
-      },
-      {
-        "addr": "0x80177b08",
-        "symbol": "UIObjectBase::removeCmdFromAptButtonFilter(int, unsigned int, ECTRL_CMD)"
+        "addr": "0x801a0818",
+        "symbol": "CASTarget::HasSimInSlot(int) const"
       }
     ],
-    "UIScreenManager": [
+    "CTGFileImpl": [
       {
-        "addr": "0x8017fc74",
-        "symbol": "UIScreenManager::IsScreenManaged(UIScreenID)"
+        "addr": "0x8007cf30",
+        "symbol": "CTGFileImpl::Seek(int)"
       },
       {
-        "addr": "0x8017feb8",
-        "symbol": "UIScreenManager::FindRecordIndexByID(UIScreenID)"
+        "addr": "0x8007cf5c",
+        "symbol": "CTGFileImpl::SeekPastEnd(int)"
       },
       {
-        "addr": "0x8018003c",
-        "symbol": "UIScreenManager::IsUIScreenUnloaded(UIScreenID)"
-      },
-      {
-        "addr": "0x80180308",
-        "symbol": "UIScreenManager::PopQueue(int)"
-      }
-    ],
-    "WantFear": [
-      {
-        "addr": "0x8014ab70",
-        "symbol": "WantFear::Bookmark::Bookmark(void)"
-      },
-      {
-        "addr": "0x8014ac40",
-        "symbol": "WantFear::Bookmark::IsPlatinum(void) const"
-      },
-      {
-        "addr": "0x8014ac74",
-        "symbol": "WantFear::Bookmark::IsFear(void) const"
-      },
-      {
-        "addr": "0x8014ae08",
-        "symbol": "WantFear::Bookmark::IsInStoryTree(void) const"
-      }
-    ],
-    "_c2DArray": [
-      {
-        "addr": "0x800d1c38",
-        "symbol": "_c2DArray::RemoveArray(_c2DArray *)"
-      },
-      {
-        "addr": "0x800d22e4",
-        "symbol": "_c2DArray::CopyFrom(BString &)"
-      },
-      {
-        "addr": "0x800d2394",
-        "symbol": "_c2DArray::CopyTo(_c2DArray *)"
-      },
-      {
-        "addr": "0x800d23c0",
-        "symbol": "_c2DArray::CopyTo(BString &)"
-      }
-    ],
-    "global": [
-      {
-        "addr": "0x803a541c",
-        "symbol": "void pop_heap<FamilyImpl **, bool (*)(Family *&, Family *&)>(FamilyImpl **, FamilyImpl **, bool (*)(Family *&, Family *&))"
-      },
-      {
-        "addr": "0x803a5ba0",
-        "symbol": "void pop_heap<int *, bool (*)(int &, int &)>(int *, int *, bool (*)(int &, int &))"
-      },
-      {
-        "addr": "0x803a6c54",
-        "symbol": "void pop_heap<ObjSelector **, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, ObjSelector **, bool (*)(ObjSelector *, ObjSelector *))"
-      },
-      {
-        "addr": "0x803afe5c",
-        "symbol": "void pop_heap<CasSimDescriptionS2C **, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *)>(CasSimDescriptionS2C **, CasSimDescriptionS2C **, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *))"
-      }
-    ],
-    "Behavior": [
-      {
-        "addr": "0x800ab9b4",
-        "symbol": "Behavior::GetBaseID(short)"
-      },
-      {
-        "addr": "0x800ab9f4",
-        "symbol": "Behavior::GetMaxID(short)"
-      },
-      {
-        "addr": "0x800ad17c",
-        "symbol": "Behavior::IsDefaultParam(BehaviorNodeParam *)"
-      }
-    ],
-    "BitArray64": [
-      {
-        "addr": "0x8009b740",
-        "symbol": "BitArray64::~BitArray64(void)"
-      },
-      {
-        "addr": "0x8009b924",
-        "symbol": "BitArray64::operator&=(BitArray64 &)"
-      },
-      {
-        "addr": "0x8009b94c",
-        "symbol": "BitArray64::operator^=(BitArray64 &)"
-      }
-    ],
-    "CDirtyXmlNode": [
-      {
-        "addr": "0x8023aa04",
-        "symbol": "CDirtyXmlNode::getFirstChildNode(void)"
-      },
-      {
-        "addr": "0x8023aa40",
-        "symbol": "CDirtyXmlNode::getNextChildNode(void)"
-      },
-      {
-        "addr": "0x8023aab0",
-        "symbol": "CDirtyXmlNode::lastChild(void)"
-      }
-    ],
-    "CareersImpl": [
-      {
-        "addr": "0x800b179c",
-        "symbol": "CareersImpl::GetJobGrade(int)"
-      },
-      {
-        "addr": "0x800b1ab0",
-        "symbol": "CareersImpl::GetJobName(Job &, bool)"
-      },
-      {
-        "addr": "0x800b1ae8",
-        "symbol": "CareersImpl::GetShortName(Job &, bool)"
+        "addr": "0x8007cf88",
+        "symbol": "CTGFileImpl::Tell(void)"
       }
     ],
     "CasSimDescriptionS2C": [
@@ -1857,34 +391,6 @@
       {
         "addr": "0x8016a4e8",
         "symbol": "CasSimDescriptionS2C::SetShoeBoottopDisplayedFlag(CasSimPartsS2C &)"
-      }
-    ],
-    "CreateASimBaseState": [
-      {
-        "addr": "0x80089214",
-        "symbol": "CreateASimBaseState::GetDatasetName(char *)"
-      },
-      {
-        "addr": "0x80089910",
-        "symbol": "CreateASimBaseState::CASAccepted(void)"
-      },
-      {
-        "addr": "0x80089938",
-        "symbol": "CreateASimBaseState::CASCanceled(void)"
-      }
-    ],
-    "EGameStateMan": [
-      {
-        "addr": "0x80089b30",
-        "symbol": "EGameStateMan::AddState(EGameState *)"
-      },
-      {
-        "addr": "0x80089b68",
-        "symbol": "EGameStateMan::KillState(void)"
-      },
-      {
-        "addr": "0x80089d3c",
-        "symbol": "EGameStateMan::Draw(ERC *)"
       }
     ],
     "EIFloor": [
@@ -1915,32 +421,46 @@
         "symbol": "EIGameInstance::New(void)"
       }
     ],
-    "LoadingScreenStateMachine": [
+    "EIStaticModel": [
       {
-        "addr": "0x80090d18",
-        "symbol": "LoadingScreenStateMachine::LoadFinishedNow(void)"
+        "addr": "0x8022bb8c",
+        "symbol": "EIStaticModel::GetBoundSphere(EBoundSphere &)"
       },
       {
-        "addr": "0x80090da4",
-        "symbol": "LoadingScreenStateMachine::LoadFinishNow(void)"
+        "addr": "0x8022be08",
+        "symbol": "EIStaticModel::SetModel(unsigned int, bool, EInstance *, EAnimController *)"
       },
       {
-        "addr": "0x80090f7c",
-        "symbol": "LoadingScreenStateMachine::IsFadingIn(void)"
+        "addr": "0x8022c834",
+        "symbol": "EIStaticModel::VisibilityTest(E3DWindow &)"
       }
     ],
-    "M2MTarget": [
+    "EIStaticSubModel": [
       {
-        "addr": "0x801c1094",
-        "symbol": "M2MTarget::OnSlotSelectItemSelected(int, M2MTarget::ResultStruct &)"
+        "addr": "0x8022e67c",
+        "symbol": "EIStaticSubModel::GetBoundSphere(EBoundSphere &)"
       },
       {
-        "addr": "0x801c10c8",
-        "symbol": "M2MTarget::OnGetNumItems(M2MTarget::ResultStruct &)"
+        "addr": "0x8022e8ac",
+        "symbol": "EIStaticSubModel::VisibilityTest(E3DWindow &)"
       },
       {
-        "addr": "0x801c1110",
-        "symbol": "M2MTarget::SetDevice(int)"
+        "addr": "0x8022f748",
+        "symbol": "EIStaticSubModel::Construct(EIStaticSubModel *)"
+      }
+    ],
+    "EyeToyClient": [
+      {
+        "addr": "0x80038fb0",
+        "symbol": "EyeToyClient::IsEyeToyHardwarePresent(void)"
+      },
+      {
+        "addr": "0x80039240",
+        "symbol": "EyeToyClient::RestoreDefaults(void)"
+      },
+      {
+        "addr": "0x80039378",
+        "symbol": "EyeToyClient::GetHue(void)"
       }
     ],
     "Neighbor": [
@@ -1957,32 +477,18 @@
         "symbol": "Neighbor::SetAspirationScore(float)"
       }
     ],
-    "O2TTarget": [
+    "ObjSelector": [
       {
-        "addr": "0x801cef60",
-        "symbol": "O2TTarget::RememberAudioOptions(void)"
+        "addr": "0x80111060",
+        "symbol": "ObjSelector::GetThumbnailHasShadow(void)"
       },
       {
-        "addr": "0x801cf028",
-        "symbol": "O2TTarget::RememberGameOptions(void)"
+        "addr": "0x80111090",
+        "symbol": "ObjSelector::GetRuntimeHasShadow(void)"
       },
       {
-        "addr": "0x801cf054",
-        "symbol": "O2TTarget::RestoreGameOptions(void)"
-      }
-    ],
-    "R2LTarget": [
-      {
-        "addr": "0x801dcd88",
-        "symbol": "R2LTarget::GridIndexToRecordIndex(int)"
-      },
-      {
-        "addr": "0x801dcdb4",
-        "symbol": "R2LTarget::OldGridIndexToRecordIndex(int)"
-      },
-      {
-        "addr": "0x801dce00",
-        "symbol": "R2LTarget::ScrollRightEnabled(void)"
+        "addr": "0x80111148",
+        "symbol": "ObjSelector::GetIsMultiTileSubObject(void)"
       }
     ],
     "RelMatrixImpl": [
@@ -1999,20 +505,6 @@
         "symbol": "RelMatrixImpl::GetNthKey(int)"
       }
     ],
-    "RepTitleSupport": [
-      {
-        "addr": "0x80190224",
-        "symbol": "RepTitleSupport::GetRepTableRawTitle(int)"
-      },
-      {
-        "addr": "0x8019025c",
-        "symbol": "RepTitleSupport::GetRepTableRawFriendTitle(int)"
-      },
-      {
-        "addr": "0x80190294",
-        "symbol": "RepTitleSupport::GetRepTableRawEnemyTitle(int)"
-      }
-    ],
     "SpriteSlot": [
       {
         "addr": "0x80142f60",
@@ -2027,46 +519,18 @@
         "symbol": "SpriteSlot::Reset(void)"
       }
     ],
-    "StringBuffer2": [
+    "UIScreenManager": [
       {
-        "addr": "0x800a6ce4",
-        "symbol": "StringBuffer2::StringBuffer2(unsigned wchar_t *, unsigned int)"
+        "addr": "0x8017feb8",
+        "symbol": "UIScreenManager::FindRecordIndexByID(UIScreenID)"
       },
       {
-        "addr": "0x800a718c",
-        "symbol": "StringBuffer2::appendChar(wchar_t)"
+        "addr": "0x8018003c",
+        "symbol": "UIScreenManager::IsUIScreenUnloaded(UIScreenID)"
       },
       {
-        "addr": "0x800a7438",
-        "symbol": "StringBuffer2::assignDebug(StringBuffer &)"
-      }
-    ],
-    "TileWalls": [
-      {
-        "addr": "0x80146914",
-        "symbol": "TileWalls::~TileWalls(void)"
-      },
-      {
-        "addr": "0x80146ff8",
-        "symbol": "TileWalls::SetFloorValue(FloorPattern, DiagonalSideSelector)"
-      },
-      {
-        "addr": "0x80147020",
-        "symbol": "TileWalls::ConvertToWorldCoords(void)"
-      }
-    ],
-    "UI3D": [
-      {
-        "addr": "0x80176f90",
-        "symbol": "UI3D::ContainsEntry(char *)"
-      },
-      {
-        "addr": "0x80177004",
-        "symbol": "UI3D::GetDisplayObject(char *)"
-      },
-      {
-        "addr": "0x80177038",
-        "symbol": "UI3D::Instance(void)"
+        "addr": "0x80180308",
+        "symbol": "UIScreenManager::PopQueue(int)"
       }
     ],
     "Wrapper": [
@@ -2083,6 +547,34 @@
         "symbol": "Wrapper::FindPane(WrapperPaneBase *)"
       }
     ],
+    "WrapperPaneBase": [
+      {
+        "addr": "0x80087a68",
+        "symbol": "WrapperPaneBase::EnableDraw(void)"
+      },
+      {
+        "addr": "0x80087a98",
+        "symbol": "WrapperPaneBase::DisableDraw(void)"
+      },
+      {
+        "addr": "0x80088034",
+        "symbol": "WrapperPaneBase::SetMenutItemStyle(int, ItemStyle)"
+      }
+    ],
+    "_c2DArray": [
+      {
+        "addr": "0x800d1c38",
+        "symbol": "_c2DArray::RemoveArray(_c2DArray *)"
+      },
+      {
+        "addr": "0x800d22e4",
+        "symbol": "_c2DArray::CopyFrom(BString &)"
+      },
+      {
+        "addr": "0x800d2394",
+        "symbol": "_c2DArray::CopyTo(_c2DArray *)"
+      }
+    ],
     "cBoxX": [
       {
         "addr": "0x800adb18",
@@ -2095,20 +587,6 @@
       {
         "addr": "0x800b0028",
         "symbol": "cBoxX::PauseAmbient(void)"
-      }
-    ],
-    "cXMTObjectImpl": [
-      {
-        "addr": "0x800c6ad0",
-        "symbol": "cXMTObjectImpl::IsPartOfMe(cXObject *)"
-      },
-      {
-        "addr": "0x800c7d14",
-        "symbol": "cXMTObjectImpl::GetFirstMultiTileObject(void)"
-      },
-      {
-        "addr": "0x800c7d60",
-        "symbol": "cXMTObjectImpl::GetISimInstanceBaseVer(void)"
       }
     ],
     "operator<": [
@@ -2145,16 +623,6 @@
         "symbol": "AmbientSoundPlayer::IsValid(void)"
       }
     ],
-    "AnimTable": [
-      {
-        "addr": "0x800aaaac",
-        "symbol": "AnimTable::DestroyInstance(AnimTable *)"
-      },
-      {
-        "addr": "0x803a2aac",
-        "symbol": "AnimTable::~AnimTable(void)"
-      }
-    ],
     "AptViewer": [
       {
         "addr": "0x80010358",
@@ -2165,14 +633,14 @@
         "symbol": "AptViewer::RepeatClear(int, int)"
       }
     ],
-    "CASGeneticsTarget": [
+    "Behavior": [
       {
-        "addr": "0x801a08c0",
-        "symbol": "CASGeneticsTarget::SetWarnOnGenerate(bool)"
+        "addr": "0x800ab9b4",
+        "symbol": "Behavior::GetBaseID(short)"
       },
       {
-        "addr": "0x801a08f4",
-        "symbol": "CASGeneticsTarget::SetGenerateDefaultSim(bool)"
+        "addr": "0x800ab9f4",
+        "symbol": "Behavior::GetMaxID(short)"
       }
     ],
     "CASSelectionTarget": [
@@ -2185,14 +653,14 @@
         "symbol": "CASSelectionTarget::ClearTextures(void)"
       }
     ],
-    "CTGFileManager": [
+    "CTilePt": [
       {
-        "addr": "0x8007d354",
-        "symbol": "CTGFileManager::~CTGFileManager(void)"
+        "addr": "0x800b4810",
+        "symbol": "CTilePt::operator+=(CTilePt &)"
       },
       {
-        "addr": "0x8007d484",
-        "symbol": "CTGFileManager::ReleaseFile(CTGFile *)"
+        "addr": "0x800b4860",
+        "symbol": "CTilePt::operator*=(int)"
       }
     ],
     "CUnlockDisplay": [
@@ -2203,36 +671,6 @@
       {
         "addr": "0x80078c08",
         "symbol": "CUnlockDisplay::HasDrawn(void)"
-      }
-    ],
-    "CUnlockDisplayObject": [
-      {
-        "addr": "0x80079a64",
-        "symbol": "CUnlockDisplayObject::SetCharacterID(unsigned int)"
-      },
-      {
-        "addr": "0x80079a8c",
-        "symbol": "CUnlockDisplayObject::SetAnimationID(unsigned int)"
-      }
-    ],
-    "CameraDirector": [
-      {
-        "addr": "0x8001b038",
-        "symbol": "CameraDirector::RegisterCurrentCamera(ESimsCam *, bool)"
-      },
-      {
-        "addr": "0x8001e68c",
-        "symbol": "CameraDirector::ForceDisableHud(bool)"
-      }
-    ],
-    "CasClothingUnlocks": [
-      {
-        "addr": "0x8015f1cc",
-        "symbol": "CasClothingUnlocks::UnlockGroup(unsigned int, bool)"
-      },
-      {
-        "addr": "0x8015f1f4",
-        "symbol": "CasClothingUnlocks::LockGroup(unsigned int)"
       }
     ],
     "CasEventChangeFocus": [
@@ -2325,14 +763,24 @@
         "symbol": "CasScenePersonal::~CasScenePersonal(void)"
       }
     ],
-    "CasSimRenderer": [
+    "CasSimPartsS2C": [
       {
-        "addr": "0x8016f10c",
-        "symbol": "CasSimRenderer::GetNumActiveBodyModels(void)"
+        "addr": "0x8016cd30",
+        "symbol": "CasSimPartsS2C::OuterLayerTorsoRequiresFullTorsoMeshInMidLayer(unsigned int) const"
       },
       {
-        "addr": "0x8016f13c",
-        "symbol": "CasSimRenderer::UpdateSkin(void)"
+        "addr": "0x8016cd58",
+        "symbol": "CasSimPartsS2C::OuterLayerTorsoHidesMusicPlayer(unsigned int) const"
+      }
+    ],
+    "CreateASimBaseState": [
+      {
+        "addr": "0x80089214",
+        "symbol": "CreateASimBaseState::GetDatasetName(char *)"
+      },
+      {
+        "addr": "0x80089938",
+        "symbol": "CreateASimBaseState::CASCanceled(void)"
       }
     ],
     "DialogPaneBase": [
@@ -2343,16 +791,6 @@
       {
         "addr": "0x80089024",
         "symbol": "DialogPaneBase::SetBodyDisplayPadSize(EVec2 &)"
-      }
-    ],
-    "EIAmbLight": [
-      {
-        "addr": "0x80226e80",
-        "symbol": "EIAmbLight::Construct(EIAmbLight *)"
-      },
-      {
-        "addr": "0x80226edc",
-        "symbol": "EIAmbLight::SafeDelete(void)"
       }
     ],
     "EIFenceWall": [
@@ -2375,56 +813,6 @@
         "symbol": "EIObjTileBoundRect::GetCenter(EVec2 &)"
       }
     ],
-    "EInstance": [
-      {
-        "addr": "0x80228818",
-        "symbol": "EInstance::RemoveFromLevel(void)"
-      },
-      {
-        "addr": "0x80229618",
-        "symbol": "EInstance::IsHidden(void)"
-      }
-    ],
-    "ELiveMode": [
-      {
-        "addr": "0x8008dc0c",
-        "symbol": "ELiveMode::ChangeHouse(void)"
-      },
-      {
-        "addr": "0x8008fbd0",
-        "symbol": "ELiveMode::TriggerIntroCamera(CameraDirector *)"
-      }
-    ],
-    "ERoomWall": [
-      {
-        "addr": "0x8002f81c",
-        "symbol": "ERoomWall::CountWalls(void)"
-      },
-      {
-        "addr": "0x80030914",
-        "symbol": "ERoomWall::SafeDelete(void)"
-      }
-    ],
-    "EYETarget": [
-      {
-        "addr": "0x801e724c",
-        "symbol": "EYETarget::RestorePreviousSetting(void)"
-      },
-      {
-        "addr": "0x801e8f60",
-        "symbol": "EYETarget::Update(void)"
-      }
-    ],
-    "Emitter": [
-      {
-        "addr": "0x80238928",
-        "symbol": "Emitter::Reset(void)"
-      },
-      {
-        "addr": "0x80238b08",
-        "symbol": "Emitter::GetInstName(EInstance::InstType &)"
-      }
-    ],
     "FCMTarget": [
       {
         "addr": "0x801b441c",
@@ -2433,16 +821,6 @@
       {
         "addr": "0x801b4460",
         "symbol": "FCMTarget::SetMeterHeight(int)"
-      }
-    ],
-    "FloatConstants": [
-      {
-        "addr": "0x800b6d20",
-        "symbol": "FloatConstants::DestroyInstance(FloatConstants *)"
-      },
-      {
-        "addr": "0x803a3670",
-        "symbol": "FloatConstants::~FloatConstants(void)"
       }
     ],
     "FloatConstantsQuickData": [
@@ -2455,16 +833,6 @@
         "symbol": "FloatConstantsQuickData::GetDataID(void) const"
       }
     ],
-    "G2DTarget": [
-      {
-        "addr": "0x801b5a14",
-        "symbol": "G2DTarget::PushAptButtonFilters(void)"
-      },
-      {
-        "addr": "0x801b7000",
-        "symbol": "G2DTarget::UnloadUI(void)"
-      }
-    ],
     "GameData": [
       {
         "addr": "0x8003d208",
@@ -2473,16 +841,6 @@
       {
         "addr": "0x8003dda8",
         "symbol": "GameData::SetBuildBuyPlayer(int)"
-      }
-    ],
-    "GetLocalizableCommandTable": [
-      {
-        "addr": "0x80178d08",
-        "symbol": "GetLocalizableCommandTable::Instance(void)"
-      },
-      {
-        "addr": "0x803b1198",
-        "symbol": "GetLocalizableCommandTable::GetLocalizableCommandTableRecord::~GetLocalizableCommandTableRecord(void)"
       }
     ],
     "GetVar_GetCount": [
@@ -2505,16 +863,6 @@
         "symbol": "GetVar_SliderStep::~GetVar_SliderStep(void)"
       }
     ],
-    "GetVariableCommandTable": [
-      {
-        "addr": "0x80178bf8",
-        "symbol": "GetVariableCommandTable::Instance(void)"
-      },
-      {
-        "addr": "0x803b1130",
-        "symbol": "GetVariableCommandTable::GetVariableCommandTableRecord::~GetVariableCommandTableRecord(void)"
-      }
-    ],
     "IFFResFile2": [
       {
         "addr": "0x800bed18",
@@ -2535,14 +883,24 @@
         "symbol": "ISimsObjectModel::SetDynamic(bool)"
       }
     ],
-    "InLevelCreateASimState": [
+    "IconGroup": [
       {
-        "addr": "0x80094db0",
-        "symbol": "InLevelCreateASimState::Reset(void)"
+        "addr": "0x800bc9d0",
+        "symbol": "IconGroup::DestroyInstance(IconGroup *)"
       },
       {
-        "addr": "0x803a0e28",
-        "symbol": "InLevelCreateASimState::~InLevelCreateASimState(void)"
+        "addr": "0x803a3874",
+        "symbol": "IconGroup::~IconGroup(void)"
+      }
+    ],
+    "LoadingScreenStateMachine": [
+      {
+        "addr": "0x80090d18",
+        "symbol": "LoadingScreenStateMachine::LoadFinishedNow(void)"
+      },
+      {
+        "addr": "0x80090da4",
+        "symbol": "LoadingScreenStateMachine::LoadFinishNow(void)"
       }
     ],
     "LoadingScreenUpdateState": [
@@ -2553,16 +911,6 @@
       {
         "addr": "0x800912dc",
         "symbol": "LoadingScreenUpdateState::IsLoadComplete(void)"
-      }
-    ],
-    "LogInteraction": [
-      {
-        "addr": "0x8013ef1c",
-        "symbol": "LogInteraction::SameInteraction(LogPersonTracker *)"
-      },
-      {
-        "addr": "0x8013f268",
-        "symbol": "LogInteraction::PrintHeader(void)"
       }
     ],
     "MUStatesDisplay": [
@@ -2585,44 +933,24 @@
         "symbol": "MenuDialogPane::GetSelectedMenuItemValue(void)"
       }
     ],
-    "NeighborhoodImpl": [
+    "NghResFile": [
       {
-        "addr": "0x800cdd40",
-        "symbol": "NeighborhoodImpl::FindNeighborByID(int)"
+        "addr": "0x800d53e4",
+        "symbol": "NghResFile::GetThumbIdFromFamilyAndIndex(int, int)"
       },
       {
-        "addr": "0x800d12a0",
-        "symbol": "NeighborhoodImpl::GetLotPosition(int, int *, int *)"
+        "addr": "0x800d8aa8",
+        "symbol": "NghResFile::IsIDRegistered(NghResFile::RegistryID)"
       }
     ],
-    "ObjFnTable": [
+    "O2TTarget": [
       {
-        "addr": "0x8010fed8",
-        "symbol": "ObjFnTable::DestroyInstance(ObjFnTable *)"
+        "addr": "0x801cef60",
+        "symbol": "O2TTarget::RememberAudioOptions(void)"
       },
       {
-        "addr": "0x803a870c",
-        "symbol": "ObjFnTable::~ObjFnTable(void)"
-      }
-    ],
-    "ObjTestSim": [
-      {
-        "addr": "0x801126e0",
-        "symbol": "ObjTestSim::SetupInteractionColors(Interaction *, short)"
-      },
-      {
-        "addr": "0x80112c40",
-        "symbol": "ObjTestSim::IsMenuInProgress(void)"
-      }
-    ],
-    "ObjectDataBehaviorConstants": [
-      {
-        "addr": "0x80159c18",
-        "symbol": "ObjectDataBehaviorConstants::GetValueName(int)"
-      },
-      {
-        "addr": "0x80159c54",
-        "symbol": "ObjectDataBehaviorConstants::SetValueName(int, char *)"
+        "addr": "0x801cf028",
+        "symbol": "O2TTarget::RememberGameOptions(void)"
       }
     ],
     "ObjectFolder": [
@@ -2633,6 +961,16 @@
       {
         "addr": "0x803a7dd8",
         "symbol": "ObjectFolder::~ObjectFolder(void)"
+      }
+    ],
+    "ObjectFolderImpl": [
+      {
+        "addr": "0x800f1264",
+        "symbol": "ObjectFolderImpl::GetTypeAttrBlock(int)"
+      },
+      {
+        "addr": "0x800f129c",
+        "symbol": "ObjectFolderImpl::Save(iResFile *)"
       }
     ],
     "ObjectModule": [
@@ -2653,16 +991,6 @@
       {
         "addr": "0x801fee44",
         "symbol": "PDATarget::Update(void)"
-      }
-    ],
-    "PreGameCreateAFamilyState": [
-      {
-        "addr": "0x80094c6c",
-        "symbol": "PreGameCreateAFamilyState::Reset(void)"
-      },
-      {
-        "addr": "0x803a0df4",
-        "symbol": "PreGameCreateAFamilyState::~PreGameCreateAFamilyState(void)"
       }
     ],
     "QuickResFile": [
@@ -2715,24 +1043,14 @@
         "symbol": "SetVar_EYE_slotCurrSel::~SetVar_EYE_slotCurrSel(void)"
       }
     ],
-    "SetVariableCommandTable": [
+    "TextBaseItem": [
       {
-        "addr": "0x80178c80",
-        "symbol": "SetVariableCommandTable::Instance(void)"
+        "addr": "0x80087214",
+        "symbol": "TextBaseItem::SetDisplaySize(EVec2 &)"
       },
       {
-        "addr": "0x803b1164",
-        "symbol": "SetVariableCommandTable::SetVariableCommandTableRecord::~SetVariableCommandTableRecord(void)"
-      }
-    ],
-    "StringBuffer": [
-      {
-        "addr": "0x800a65ac",
-        "symbol": "StringBuffer::StringBuffer(char *, unsigned int)"
-      },
-      {
-        "addr": "0x800a69e4",
-        "symbol": "StringBuffer::appendChar(char)"
+        "addr": "0x80087264",
+        "symbol": "TextBaseItem::SetDisplayPadSize(EVec2 &)"
       }
     ],
     "TextBlock": [
@@ -2745,6 +1063,16 @@
         "symbol": "TextBlock::CalcSizes(void)"
       }
     ],
+    "TileWalls": [
+      {
+        "addr": "0x80146914",
+        "symbol": "TileWalls::~TileWalls(void)"
+      },
+      {
+        "addr": "0x80146ff8",
+        "symbol": "TileWalls::SetFloorValue(FloorPattern, DiagonalSideSelector)"
+      }
+    ],
     "TreeTable": [
       {
         "addr": "0x801493b0",
@@ -2755,34 +1083,24 @@
         "symbol": "TreeTable::GetIndexOfNthOrderedEntry(int) const"
       }
     ],
-    "UI2D": [
+    "UI3D": [
       {
-        "addr": "0x80176628",
-        "symbol": "UI2D::ContainsEntry(char *)"
+        "addr": "0x80176f90",
+        "symbol": "UI3D::ContainsEntry(char *)"
       },
       {
-        "addr": "0x801767f8",
-        "symbol": "UI2D::Instance(void)"
+        "addr": "0x80177004",
+        "symbol": "UI3D::GetDisplayObject(char *)"
       }
     ],
-    "UIDrawTable": [
+    "UIObjectBase": [
       {
-        "addr": "0x8017aa1c",
-        "symbol": "UIDrawTable::ContainsEntry(CBFunctor1<ERC *> &)"
+        "addr": "0x80177acc",
+        "symbol": "UIObjectBase::addCmdToAptButtonFilter(int, unsigned int, ECTRL_CMD)"
       },
       {
-        "addr": "0x8017ab18",
-        "symbol": "UIDrawTable::Instance(void)"
-      }
-    ],
-    "UIUpdateTable": [
-      {
-        "addr": "0x80181c58",
-        "symbol": "UIUpdateTable::ContainsEntry(CBFunctor0 &)"
-      },
-      {
-        "addr": "0x80181d4c",
-        "symbol": "UIUpdateTable::Instance(void)"
+        "addr": "0x80177b08",
+        "symbol": "UIObjectBase::removeCmdFromAptButtonFilter(int, unsigned int, ECTRL_CMD)"
       }
     ],
     "UrbzCreditsState": [
@@ -2795,14 +1113,14 @@
         "symbol": "UrbzCreditsState::~UrbzCreditsState(void)"
       }
     ],
-    "UrbzModeNewGameState": [
+    "WantFear": [
       {
-        "addr": "0x8009b258",
-        "symbol": "UrbzModeNewGameState::Reset(void)"
+        "addr": "0x8014ac40",
+        "symbol": "WantFear::Bookmark::IsPlatinum(void) const"
       },
       {
-        "addr": "0x803a1a04",
-        "symbol": "UrbzModeNewGameState::~UrbzModeNewGameState(void)"
+        "addr": "0x8014ac74",
+        "symbol": "WantFear::Bookmark::IsFear(void) const"
       }
     ],
     "cGZSndSys": [
@@ -2815,16 +1133,6 @@
         "symbol": "cGZSndSys::FreeUnusedSounds(void)"
       }
     ],
-    "cSimulator": [
-      {
-        "addr": "0x8014020c",
-        "symbol": "cSimulator::DestroyInstance(cSimulator *)"
-      },
-      {
-        "addr": "0x803ad4a0",
-        "symbol": "cSimulator::~cSimulator(void)"
-      }
-    ],
     "cSoundCache": [
       {
         "addr": "0x801194f0",
@@ -2833,6 +1141,16 @@
       {
         "addr": "0x80119d6c",
         "symbol": "cSoundCache::IsInMemory(ERSoundEvent *) const"
+      }
+    ],
+    "cXObjectImpl": [
+      {
+        "addr": "0x800dd49c",
+        "symbol": "cXObjectImpl::GetContainedSlotNum(void)"
+      },
+      {
+        "addr": "0x800eaf44",
+        "symbol": "cXObjectImpl::SimIndependent(void)"
       }
     ],
     "iResFile": [
@@ -2875,6 +1193,16 @@
         "symbol": "operator!=(BString2 &, unsigned wchar_t *)"
       }
     ],
+    "operator==": [
+      {
+        "addr": "0x800a0260",
+        "symbol": "operator==(BString2 &, BString2 &)"
+      },
+      {
+        "addr": "0x800a0330",
+        "symbol": "operator==(BString2 &, wchar_t)"
+      }
+    ],
     "ActionQueueHUD": [
       {
         "addr": "0x801849f0",
@@ -2887,6 +1215,12 @@
         "symbol": "AltToWorld(float &)"
       }
     ],
+    "AnimTable": [
+      {
+        "addr": "0x803a2aac",
+        "symbol": "AnimTable::~AnimTable(void)"
+      }
+    ],
     "AnimTableImpl": [
       {
         "addr": "0x800aabc4",
@@ -2897,6 +1231,12 @@
       {
         "addr": "0x80012bd0",
         "symbol": "AwarenessManager::SetAwareOfObjectKilled(cXObject *)"
+      }
+    ],
+    "BitArray64": [
+      {
+        "addr": "0x8009b740",
+        "symbol": "BitArray64::~BitArray64(void)"
       }
     ],
     "CASBodyTarget": [
@@ -2927,6 +1267,12 @@
       {
         "addr": "0x800a515c",
         "symbol": "CTGDump::~CTGDump(void)"
+      }
+    ],
+    "CTGFileManager": [
+      {
+        "addr": "0x8007d354",
+        "symbol": "CTGFileManager::~CTGFileManager(void)"
       }
     ],
     "CameraMotionSystem": [
@@ -2965,6 +1311,18 @@
         "symbol": "CasScene::IsCameraMoving(void)"
       }
     ],
+    "CasSimRenderer": [
+      {
+        "addr": "0x8016f13c",
+        "symbol": "CasSimRenderer::UpdateSkin(void)"
+      }
+    ],
+    "CasSimRendererDynamic": [
+      {
+        "addr": "0x8016fc14",
+        "symbol": "CasSimRendererDynamic::~CasSimRendererDynamic(void)"
+      }
+    ],
     "CatalogResource": [
       {
         "addr": "0x803a2e48",
@@ -2975,18 +1333,6 @@
       {
         "addr": "0x803a2e14",
         "symbol": "CatalogResourceImpl::~CatalogResourceImpl(void)"
-      }
-    ],
-    "ChangeHouseLoadHouse": [
-      {
-        "addr": "0x8008cf94",
-        "symbol": "ChangeHouseLoadHouse::DatasetFinishAddRefAsync(void)"
-      }
-    ],
-    "ChangeHouseUnloadHouse": [
-      {
-        "addr": "0x8008cf10",
-        "symbol": "ChangeHouseUnloadHouse::Update(float)"
       }
     ],
     "ConvertShoppingCategoryToInventoryCategory": [
@@ -3005,6 +1351,12 @@
       {
         "addr": "0x80142124",
         "symbol": "DestroySkillLookup(void)"
+      }
+    ],
+    "DlgWrapper": [
+      {
+        "addr": "0x8007ef9c",
+        "symbol": "DlgWrapper::SetButtonContext(char *)"
       }
     ],
     "EAnimNodeDataPos": [
@@ -3031,6 +1383,12 @@
         "symbol": "EGameState::operator new(unsigned int)"
       }
     ],
+    "EGameStateMan": [
+      {
+        "addr": "0x80089d3c",
+        "symbol": "EGameStateMan::Draw(ERC *)"
+      }
+    ],
     "EGlobalManagerClient": [
       {
         "addr": "0x803c1cc4",
@@ -3041,6 +1399,12 @@
       {
         "addr": "0x800254a8",
         "symbol": "EHouse::Refresh(void)"
+      }
+    ],
+    "EIAmbLight": [
+      {
+        "addr": "0x80226e80",
+        "symbol": "EIAmbLight::Construct(EIAmbLight *)"
       }
     ],
     "EIDirLight": [
@@ -3067,6 +1431,12 @@
         "symbol": "EIPortalPointLight::SetPortal(EInstance *, bool)"
       }
     ],
+    "EInstance": [
+      {
+        "addr": "0x80228818",
+        "symbol": "EInstance::RemoveFromLevel(void)"
+      }
+    ],
     "EQuat": [
       {
         "addr": "0x803c1db8",
@@ -3077,6 +1447,12 @@
       {
         "addr": "0x803c98bc",
         "symbol": "ERAnimBitArray::FreeMemory(void *)"
+      }
+    ],
+    "ERoomWall": [
+      {
+        "addr": "0x80030914",
+        "symbol": "ERoomWall::SafeDelete(void)"
       }
     ],
     "EScheduler": [
@@ -3103,22 +1479,28 @@
         "symbol": "ESpriteRender::operator delete(void *)"
       }
     ],
-    "EVoice": [
-      {
-        "addr": "0x803c70a0",
-        "symbol": "EVoice::reset(void)"
-      }
-    ],
     "EdithDialogPrimitive": [
       {
         "addr": "0x800b5480",
         "symbol": "EdithDialogPrimitive::~EdithDialogPrimitive(void)"
       }
     ],
+    "Emitter": [
+      {
+        "addr": "0x80238928",
+        "symbol": "Emitter::Reset(void)"
+      }
+    ],
     "EmitterGeomProcessCB": [
       {
         "addr": "0x80239f10",
         "symbol": "EmitterGeomProcessCB(void *)"
+      }
+    ],
+    "FAMTarget": [
+      {
+        "addr": "0x801b0714",
+        "symbol": "FAMTarget::UpdateMenuState(char *, char *)"
       }
     ],
     "FTilePt": [
@@ -3133,16 +1515,16 @@
         "symbol": "FadeSquare::StartDraw(EVec3 &, bool)"
       }
     ],
-    "Family": [
-      {
-        "addr": "0x800b5f28",
-        "symbol": "Family::CreateInstance(int &)"
-      }
-    ],
     "FamilyMember": [
       {
         "addr": "0x800b6a58",
         "symbol": "FamilyMember::DoStream(ReconBuffer *, int)"
+      }
+    ],
+    "FloatConstants": [
+      {
+        "addr": "0x803a3670",
+        "symbol": "FloatConstants::~FloatConstants(void)"
       }
     ],
     "FrameEffect": [
@@ -3151,10 +1533,10 @@
         "symbol": "FrameEffect::~FrameEffect(void)"
       }
     ],
-    "GameEffectsManager": [
+    "G2DTarget": [
       {
-        "addr": "0x8003e00c",
-        "symbol": "GameEffectsManager::GetSingleton(void)"
+        "addr": "0x801b5a14",
+        "symbol": "G2DTarget::PushAptButtonFilters(void)"
       }
     ],
     "GetActionMenu": [
@@ -3193,6 +1575,12 @@
         "symbol": "GetIngredientManager(void)"
       }
     ],
+    "GetLocalizableCommandTable": [
+      {
+        "addr": "0x803b1198",
+        "symbol": "GetLocalizableCommandTable::GetLocalizableCommandTableRecord::~GetLocalizableCommandTableRecord(void)"
+      }
+    ],
     "GetNghIndex": [
       {
         "addr": "0x800d3880",
@@ -3215,12 +1603,6 @@
       {
         "addr": "0x801aa580",
         "symbol": "GetTheExposureHandler(void)"
-      }
-    ],
-    "GetUserIndex": [
-      {
-        "addr": "0x800d38f0",
-        "symbol": "GetUserIndex(int)"
       }
     ],
     "GetVar_EYE_connectionStatus": [
@@ -3277,6 +1659,12 @@
         "symbol": "GetVar_SaveStatus::~GetVar_SaveStatus(void)"
       }
     ],
+    "GetVariableCommandTable": [
+      {
+        "addr": "0x803b1130",
+        "symbol": "GetVariableCommandTable::GetVariableCommandTableRecord::~GetVariableCommandTableRecord(void)"
+      }
+    ],
     "Globs": [
       {
         "addr": "0x800b81c8",
@@ -3319,16 +1707,22 @@
         "symbol": "IFFBehaviorConstants::~IFFBehaviorConstants(void)"
       }
     ],
+    "INGTarget": [
+      {
+        "addr": "0x801bca10",
+        "symbol": "INGTarget::exit_ingredients_dialog_selection_callback(int)"
+      }
+    ],
+    "INVTarget": [
+      {
+        "addr": "0x801f2370",
+        "symbol": "INVTarget::InstallBldVariables(void)"
+      }
+    ],
     "ISimInstance": [
       {
         "addr": "0x800569bc",
         "symbol": "ISimInstance::operator delete(void *)"
-      }
-    ],
-    "IconGroup": [
-      {
-        "addr": "0x803a3874",
-        "symbol": "IconGroup::~IconGroup(void)"
       }
     ],
     "IconItem": [
@@ -3343,10 +1737,10 @@
         "symbol": "InLevelBaseState::Draw(ERC *)"
       }
     ],
-    "Interaction": [
+    "InLevelCreateASimState": [
       {
-        "addr": "0x800c1960",
-        "symbol": "Interaction::SetName(BString2 &)"
+        "addr": "0x803a0e28",
+        "symbol": "InLevelCreateASimState::~InLevelCreateASimState(void)"
       }
     ],
     "InteractionHelper": [
@@ -3361,22 +1755,10 @@
         "symbol": "IsConfigFileValid(int, OptionsRecon &)"
       }
     ],
-    "IsSkillCatalogRating": [
-      {
-        "addr": "0x801d1ad0",
-        "symbol": "IsSkillCatalogRating(int)"
-      }
-    ],
     "LightingParameters": [
       {
         "addr": "0x800b8194",
         "symbol": "LightingParameters::~LightingParameters(void)"
-      }
-    ],
-    "LiveModeInitState": [
-      {
-        "addr": "0x8008ca18",
-        "symbol": "LiveModeInitState::DatasetFinishAddRefAsync(void)"
       }
     ],
     "LoadGameTarget": [
@@ -3401,6 +1783,12 @@
       {
         "addr": "0x80091018",
         "symbol": "LoadingScreenWaitingForLoadState::FaderStart(float)"
+      }
+    ],
+    "LogInteraction": [
+      {
+        "addr": "0x8013f268",
+        "symbol": "LogInteraction::PrintHeader(void)"
       }
     ],
     "MUStateMachine": [
@@ -3445,6 +1833,12 @@
         "symbol": "Neighborhood::~Neighborhood(void)"
       }
     ],
+    "ObjFnTable": [
+      {
+        "addr": "0x803a870c",
+        "symbol": "ObjFnTable::~ObjFnTable(void)"
+      }
+    ],
     "ObjFnTableQuickData": [
       {
         "addr": "0x801101c0",
@@ -3455,6 +1849,12 @@
       {
         "addr": "0x8011047c",
         "symbol": "ObjResFile::_dyncastimpl(SCID)"
+      }
+    ],
+    "ObjectDataBehaviorConstants": [
+      {
+        "addr": "0x80159c18",
+        "symbol": "ObjectDataBehaviorConstants::GetValueName(int)"
       }
     ],
     "ObjectDataBehaviorTree": [
@@ -3475,16 +1875,10 @@
         "symbol": "ObjectIterator::operator==(ObjectIterator &) const"
       }
     ],
-    "ObjectSlot": [
+    "ObjectModuleImpl": [
       {
-        "addr": "0x80142d28",
-        "symbol": "ObjectSlot::WriteSlot(SlotDescriptor *)"
-      }
-    ],
-    "ObjectTypeAttrBlock": [
-      {
-        "addr": "0x8010fe2c",
-        "symbol": "ObjectTypeAttrBlock::Clear(void)"
+        "addr": "0x800f9434",
+        "symbol": "ObjectModuleImpl::AdvanceSelectedPerson(int)"
       }
     ],
     "PAZTarget": [
@@ -3523,16 +1917,16 @@
         "symbol": "PreGameCasPlayer2State::~PreGameCasPlayer2State(void)"
       }
     ],
+    "PreGameCreateAFamilyState": [
+      {
+        "addr": "0x803a0df4",
+        "symbol": "PreGameCreateAFamilyState::~PreGameCreateAFamilyState(void)"
+      }
+    ],
     "PreGameFreeplayState": [
       {
         "addr": "0x803a0e5c",
         "symbol": "PreGameFreeplayState::~PreGameFreeplayState(void)"
-      }
-    ],
-    "PropTable": [
-      {
-        "addr": "0x80132838",
-        "symbol": "PropTable::DestroyInstance(PropTable *)"
       }
     ],
     "PropTableImpl": [
@@ -3565,12 +1959,6 @@
         "symbol": "RelInt::DoStream(ReconBuffer *, int)"
       }
     ],
-    "RelMatrix": [
-      {
-        "addr": "0x80134aa8",
-        "symbol": "RelMatrix::DestroyInstance(RelMatrix *)"
-      }
-    ],
     "Room": [
       {
         "addr": "0x801386dc",
@@ -3595,22 +1983,10 @@
         "symbol": "ScrollingTextBox::SetTextColor(EVec4 &)"
       }
     ],
-    "SeqResFile": [
-      {
-        "addr": "0x8013e420",
-        "symbol": "SeqResFile::_dyncastimpl(SCID)"
-      }
-    ],
     "SerializeUIGameData": [
       {
         "addr": "0x80190728",
         "symbol": "SerializeUIGameData::SaveComplete(NghResFile::SectionID, NghResFile::SaveRecord &)"
-      }
-    ],
-    "SetIndividualMemory": [
-      {
-        "addr": "0x8013fcdc",
-        "symbol": "SetIndividualMemory(int &, int, int)"
       }
     ],
     "SetVar_EYE_opCancelled": [
@@ -3637,22 +2013,28 @@
         "symbol": "SetVar_EYE_topLevelCurrSel::~SetVar_EYE_topLevelCurrSel(void)"
       }
     ],
+    "SetVariableCommandTable": [
+      {
+        "addr": "0x803b1164",
+        "symbol": "SetVariableCommandTable::SetVariableCommandTableRecord::~SetVariableCommandTableRecord(void)"
+      }
+    ],
     "SimModel": [
       {
         "addr": "0x80071434",
         "symbol": "SimModel::IsLoadingModels(void) const"
       }
     ],
+    "SimpleReconObject": [
+      {
+        "addr": "0x803adf2c",
+        "symbol": "SimpleReconObject<ReconStreamVector<SlotDescriptor> >::DoStream(ReconBuffer *, int)"
+      }
+    ],
     "SimsAptMalloc": [
       {
         "addr": "0x80006570",
         "symbol": "SimsAptMalloc(unsigned int)"
-      }
-    ],
-    "SimsMemCardWrap": [
-      {
-        "addr": "0x80075604",
-        "symbol": "SimsMemCardWrap::RestorePrefs(void)"
       }
     ],
     "SlotLoader": [
@@ -3683,6 +2065,12 @@
       {
         "addr": "0x80145d28",
         "symbol": "StdResFile::_dyncastimpl(SCID)"
+      }
+    ],
+    "StringBuffer2": [
+      {
+        "addr": "0x800a6ce4",
+        "symbol": "StringBuffer2::StringBuffer2(unsigned wchar_t *, unsigned int)"
       }
     ],
     "StringSet": [
@@ -3727,16 +2115,10 @@
         "symbol": "TreeTableEntryQuickData::GetDebugOnly(void) const"
       }
     ],
-    "TreeTableQuickData": [
+    "UI2D": [
       {
-        "addr": "0x8015e900",
-        "symbol": "TreeTableQuickData::CountEntries(void) const"
-      }
-    ],
-    "UIAUDIO": [
-      {
-        "addr": "0x801779dc",
-        "symbol": "UIAUDIO::Instance(void)"
+        "addr": "0x80176628",
+        "symbol": "UI2D::ContainsEntry(char *)"
       }
     ],
     "UIButtonImages": [
@@ -3751,28 +2133,16 @@
         "symbol": "UIHDTV::~UIHDTV(void)"
       }
     ],
-    "UIUserDrawCBTable": [
+    "UrbzModeNewGameState": [
       {
-        "addr": "0x80182284",
-        "symbol": "UIUserDrawCBTable::Instance(void)"
-      }
-    ],
-    "WXFTarget": [
-      {
-        "addr": "0x801e6df0",
-        "symbol": "WXFTarget::onHelpDialogSelection(int)"
+        "addr": "0x803a1a04",
+        "symbol": "UrbzModeNewGameState::~UrbzModeNewGameState(void)"
       }
     ],
     "WorldToAlt": [
       {
         "addr": "0x800a4ab0",
         "symbol": "WorldToAlt(float &)"
-      }
-    ],
-    "XRoute": [
-      {
-        "addr": "0x801534cc",
-        "symbol": "XRoute::ResetGoals(void)"
       }
     ],
     "_List_global": [
@@ -3811,16 +2181,28 @@
         "symbol": "cHitMan::GetSourceDataField(int, int, int *)"
       }
     ],
-    "cIGZSndSys": [
-      {
-        "addr": "0x800b8c88",
-        "symbol": "cIGZSndSys::CreateInstance(void)"
-      }
-    ],
     "cSamplePatch": [
       {
         "addr": "0x80119050",
         "symbol": "cSamplePatch::CreateChannel(void)"
+      }
+    ],
+    "cSimulator": [
+      {
+        "addr": "0x803ad4a0",
+        "symbol": "cSimulator::~cSimulator(void)"
+      }
+    ],
+    "cXMTObjectImpl": [
+      {
+        "addr": "0x800c7d60",
+        "symbol": "cXMTObjectImpl::GetISimInstanceBaseVer(void)"
+      }
+    ],
+    "cXPersonImpl": [
+      {
+        "addr": "0x8012c878",
+        "symbol": "cXPersonImpl::IsRouting(void)"
       }
     ],
     "cXPortalImpl": [
@@ -3853,12 +2235,6 @@
         "symbol": "global constructors keyed to DigestGeomShaderPtr::UpdateShaderFlags(bool &)"
       }
     ],
-    "global constructors keyed to Neighborhood": [
-      {
-        "addr": "0x800d19ac",
-        "symbol": "global constructors keyed to Neighborhood::CreateInstance(void)"
-      }
-    ],
     "global destructors keyed to CTGDump": [
       {
         "addr": "0x800a53b4",
@@ -3887,12 +2263,6 @@
       {
         "addr": "0x8013fc9c",
         "symbol": "global destructors keyed to LogPersonState::LogPersonState(cXPerson *)"
-      }
-    ],
-    "global destructors keyed to Neighborhood": [
-      {
-        "addr": "0x800d19d8",
-        "symbol": "global destructors keyed to Neighborhood::CreateInstance(void)"
       }
     ],
     "global destructors keyed to ObjectDataBehaviorConstants": [

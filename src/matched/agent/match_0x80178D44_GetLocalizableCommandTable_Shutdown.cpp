@@ -1,4 +1,4 @@
-// 0x80178D44 (72B) GetLocalizableCommandTable::Shutdown(void)
+// 0x80178D44 (76B) GetLocalizableCommandTable::Shutdown(void)
 
 struct GetLocalizableCommandTable_Base { char pad[12]; };
 

@@ -1,4 +1,4 @@
-// 0x80047E24 EIFloor::TestCreateFloors (40B)
+// 0x80047E24 EIFloor::TestCreateFloors (48B)
 struct EIFloor;
 extern int TestCreateFloors_impl(EIFloor* self);
 

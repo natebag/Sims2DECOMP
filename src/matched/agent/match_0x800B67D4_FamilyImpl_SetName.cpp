@@ -1,4 +1,4 @@
-// 0x800B67D4 (56B) FamilyImpl::SetName(StringBuffer2 *)
+// 0x800B67D4 (60B) FamilyImpl::SetName(StringBuffer2 *)
 
 struct BString2 {
     void assign(unsigned short*);

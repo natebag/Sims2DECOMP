@@ -1,4 +1,4 @@
-// 0x801115E8 ObjSelector::GetTypeAttributes (92B)
+// 0x801115E8 ObjSelector::GetTypeAttributes (96B)
 
 struct TypeAttrResult {
     char pad[8];

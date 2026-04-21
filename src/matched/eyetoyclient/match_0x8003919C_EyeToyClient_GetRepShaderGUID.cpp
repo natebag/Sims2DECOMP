@@ -1,4 +1,4 @@
-// 0x8003919C EyeToyClient::GetRepShaderGUID (28b)
+// 0x8003919C EyeToyClient::GetRepShaderGUID (24B)
 struct RepShaderEntry { int* guid; char pad[8]; };
 extern RepShaderEntry g_repShaderTable[3];
 

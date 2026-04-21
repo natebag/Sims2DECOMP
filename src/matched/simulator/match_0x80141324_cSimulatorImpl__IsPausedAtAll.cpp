@@ -1,4 +1,4 @@
-// cSimulatorImpl::IsPausedAtAll(void) at 0x80141324 (40B)
+// cSimulatorImpl::IsPausedAtAll(void) at 0x80141324 (44B)
 
 struct cSim_IPAA {
     char pad_00[0x36];

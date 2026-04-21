@@ -1,4 +1,4 @@
-// 0x8021A188 InteractorModule::PlaceManipulator::OnCreate(void) (44B)
+// 0x8021A188 InteractorModule::PlaceManipulator::OnCreate(void) (56B)
 struct PlaceManipulator;
 struct ObjectManipulator;
 

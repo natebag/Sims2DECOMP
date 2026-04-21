@@ -181,10 +181,12 @@ void AptActionInterpreter::_FunctionAptAction<Op>(
 
 | Sub-family | Status       | Unmatched count (100-200B) | Handoff scope     |
 |------------|--------------|----------------------------|-------------------|
-| A — Push-simple | ✅ GREEN    | ~5                        | CLEARED (2 sent today) |
-| B — Stack-mani. | ✅ GREEN    | ~3                        | CLEARED after expansion |
-| C — Conditional | ✅ GREEN    | ~1-2 (StopDragMovie only?) | Solo pioneer, expand cautiously |
+| A — Push-simple | ✅ GREEN (multi-sample) | ~5              | CLEARED (3 pioneers committed: PushNULL, PushUndefined, PushGlobalVariable) |
+| B — Stack-mani. | ✅ GREEN (single-sample, spot-audit cleared) | ~3 | CLEARED after expansion |
+| C — Conditional | ✅ GREEN (multi-sample) | ~5-10         | CLEARED (2 pioneers committed: StopDragMovie, Pop) |
 | D — Pc-reading  | ⚠️ PARTIAL  | ~8-10                     | 75-90% match — permuter needed before full blast |
+| E — Accessor-call+push | ⚠️ YELLOW (single-sample) | TBD    | Per-handler OpusReview until 2nd sample found |
+| F — Stack-pop-push-no-vcall | ⚠️ PARTIAL | ~3-5         | Permuter candidate (3-insn-pair swap)           |
 
 **Total addressable after full-template signoff:** ~17-20 new middle-pool
 blast candidates beyond the 2 Push-simple already handed off.

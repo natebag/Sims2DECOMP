@@ -1,4 +1,4 @@
-// 0x80097800 (80B) TheSimsMaxisLogoState::Shutdown(void)
+// 0x80097800 (100B) TheSimsMaxisLogoState::Shutdown(void)
 
 struct LogoResource_Data { char pad[128]; };
 struct LogoResource_Impl : public LogoResource_Data {

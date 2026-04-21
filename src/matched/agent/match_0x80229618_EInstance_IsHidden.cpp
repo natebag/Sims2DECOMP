@@ -1,4 +1,4 @@
-// 0x80229618 (48B) EInstance::IsHidden(void)
+// 0x80229618 (60B) EInstance::IsHidden(void)
 
 typedef int (*HiddenFn)(void*);
 

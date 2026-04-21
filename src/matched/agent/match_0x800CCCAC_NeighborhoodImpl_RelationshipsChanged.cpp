@@ -1,4 +1,4 @@
-// 0x800CCCAC (80B) NeighborhoodImpl::RelationshipsChanged(Neighbor *)
+// 0x800CCCAC (84B) NeighborhoodImpl::RelationshipsChanged(Neighbor *)
 
 struct Neighbor {
     char pad[36];

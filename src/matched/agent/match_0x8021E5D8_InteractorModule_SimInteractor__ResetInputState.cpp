@@ -1,4 +1,4 @@
-// 0x8021E5D8 InteractorModule::SimInteractor::ResetInputState(void) (52B)
+// 0x8021E5D8 InteractorModule::SimInteractor::ResetInputState(void) (56B)
 struct SimInteractor {
     char pad[48];
     int m_field48;

@@ -1,3 +1,4 @@
+// 0x801BDF9C (96 bytes)
 // ObjectTypeAttrBlock::ObjectTypeAttrBlock - Constructor
 // Address: 0x801BDF9C | Size: 96 bytes
 //

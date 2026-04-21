@@ -1,4 +1,4 @@
-// 0x800A0724 operator<=(BString2&, wchar_t) (40B)
+// 0x800A0724 operator<=(BString2&, wchar_t) (48B)
 // Arg-swap thunk + xori
 struct BString2;
 

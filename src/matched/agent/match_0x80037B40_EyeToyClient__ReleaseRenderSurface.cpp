@@ -1,4 +1,4 @@
-// 0x80037B40 EyeToyClient::ReleaseRenderSurface(ERenderSurface*) (60B)
+// 0x80037B40 EyeToyClient::ReleaseRenderSurface(ERenderSurface*) (64B)
 struct ERenderSurface;
 
 struct VTable {

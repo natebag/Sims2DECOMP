@@ -1,4 +1,4 @@
-// 0x80181d4c (44B) UIUpdateTable::Instance(void)
+// 0x80181d4c (60B) UIUpdateTable::Instance(void)
 
 struct UIUpdateTable {
     char data[16];

@@ -1,4 +1,4 @@
-// 0x800B63A4 FamilyImpl::GetIndexedMember(int) (40B)
+// 0x800B63A4 FamilyImpl::GetIndexedMember(int) (52B)
 
 struct FamilyImpl {
     char _pad[0x24];

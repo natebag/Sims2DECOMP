@@ -1,48 +1,66 @@
 [
   {
+    "tu": "objectdatafactory",
+    "total": 17,
+    "matched": 25,
+    "dir_count": 25,
+    "agent_count": 0,
+    "remaining": -8,
+    "pct": 147.05882352941177
+  },
+  {
+    "tu": "esimscratchpadman",
+    "total": 4,
+    "matched": 4,
+    "dir_count": 4,
+    "agent_count": 0,
+    "remaining": 0,
+    "pct": 100.0
+  },
+  {
+    "tu": "caslistener",
+    "total": 13,
+    "matched": 12,
+    "dir_count": 12,
+    "agent_count": 0,
+    "remaining": 1,
+    "pct": 92.3076923076923
+  },
+  {
     "tu": "cameramanager",
     "total": 9,
     "matched": 8,
-    "dir_count": 0,
-    "agent_count": 8,
+    "dir_count": 8,
+    "agent_count": 0,
     "remaining": 1,
     "pct": 88.88888888888889
   },
   {
     "tu": "bg",
     "total": 22,
-    "matched": 18,
-    "dir_count": 0,
-    "agent_count": 18,
-    "remaining": 4,
-    "pct": 81.81818181818183
-  },
-  {
-    "tu": "caslistener",
-    "total": 13,
-    "matched": 10,
-    "dir_count": 0,
-    "agent_count": 10,
+    "matched": 19,
+    "dir_count": 19,
+    "agent_count": 0,
     "remaining": 3,
-    "pct": 76.92307692307693
-  },
-  {
-    "tu": "objectdatafactory",
-    "total": 17,
-    "matched": 13,
-    "dir_count": 0,
-    "agent_count": 13,
-    "remaining": 4,
-    "pct": 76.47058823529412
+    "pct": 86.36363636363636
   },
   {
     "tu": "movieplayer",
     "total": 17,
-    "matched": 12,
-    "dir_count": 0,
-    "agent_count": 12,
-    "remaining": 5,
-    "pct": 70.58823529411765
+    "matched": 14,
+    "dir_count": 14,
+    "agent_count": 0,
+    "remaining": 3,
+    "pct": 82.35294117647058
+  },
+  {
+    "tu": "motivecurve",
+    "total": 4,
+    "matched": 3,
+    "dir_count": 2,
+    "agent_count": 1,
+    "remaining": 1,
+    "pct": 75.0
   },
   {
     "tu": "objectdataid",
@@ -57,17 +75,26 @@
     "tu": "treetablequickdata",
     "total": 131,
     "matched": 84,
-    "dir_count": 0,
-    "agent_count": 84,
+    "dir_count": 84,
+    "agent_count": 0,
     "remaining": 47,
     "pct": 64.12213740458014
+  },
+  {
+    "tu": "wrapper",
+    "total": 269,
+    "matched": 155,
+    "dir_count": 155,
+    "agent_count": 0,
+    "remaining": 114,
+    "pct": 57.62081784386617
   },
   {
     "tu": "treetab",
     "total": 100,
     "matched": 56,
-    "dir_count": 1,
-    "agent_count": 55,
+    "dir_count": 56,
+    "agent_count": 0,
     "remaining": 44,
     "pct": 56.00000000000001
   },
@@ -75,8 +102,8 @@
     "tu": "espriterenderman",
     "total": 9,
     "matched": 5,
-    "dir_count": 0,
-    "agent_count": 5,
+    "dir_count": 5,
+    "agent_count": 0,
     "remaining": 4,
     "pct": 55.55555555555556
   },
@@ -84,107 +111,89 @@
     "tu": "memorymeterwin",
     "total": 11,
     "matched": 6,
-    "dir_count": 0,
-    "agent_count": 6,
+    "dir_count": 5,
+    "agent_count": 1,
     "remaining": 5,
     "pct": 54.54545454545454
   },
   {
-    "tu": "interaction",
-    "total": 71,
-    "matched": 37,
-    "dir_count": 0,
-    "agent_count": 37,
-    "remaining": 34,
-    "pct": 52.112676056338024
+    "tu": "casmediator",
+    "total": 22,
+    "matched": 12,
+    "dir_count": 12,
+    "agent_count": 0,
+    "remaining": 10,
+    "pct": 54.54545454545454
+  },
+  {
+    "tu": "isiminstance",
+    "total": 60,
+    "matched": 32,
+    "dir_count": 21,
+    "agent_count": 11,
+    "remaining": 28,
+    "pct": 53.333333333333336
   },
   {
     "tu": "casevent",
     "total": 2,
     "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
+    "dir_count": 1,
+    "agent_count": 0,
     "remaining": 1,
-    "pct": 50.0
-  },
-  {
-    "tu": "motivecurve",
-    "total": 4,
-    "matched": 2,
-    "dir_count": 0,
-    "agent_count": 2,
-    "remaining": 2,
-    "pct": 50.0
-  },
-  {
-    "tu": "esimscratchpadman",
-    "total": 4,
-    "matched": 2,
-    "dir_count": 0,
-    "agent_count": 2,
-    "remaining": 2,
-    "pct": 50.0
-  },
-  {
-    "tu": "e_ispotlight",
-    "total": 24,
-    "matched": 12,
-    "dir_count": 4,
-    "agent_count": 8,
-    "remaining": 12,
     "pct": 50.0
   },
   {
     "tu": "behaviortree",
     "total": 54,
     "matched": 25,
-    "dir_count": 0,
-    "agent_count": 25,
+    "dir_count": 25,
+    "agent_count": 0,
     "remaining": 29,
     "pct": 46.2962962962963
   },
   {
-    "tu": "e_ipointamblight",
-    "total": 24,
-    "matched": 11,
-    "dir_count": 4,
-    "agent_count": 7,
-    "remaining": 13,
-    "pct": 45.83333333333333
+    "tu": "dlgwrapper",
+    "total": 80,
+    "matched": 37,
+    "dir_count": 37,
+    "agent_count": 0,
+    "remaining": 43,
+    "pct": 46.25
   },
   {
-    "tu": "e_iamblight",
-    "total": 24,
-    "matched": 11,
-    "dir_count": 2,
-    "agent_count": 9,
-    "remaining": 13,
-    "pct": 45.83333333333333
+    "tu": "gamesound",
+    "total": 35,
+    "matched": 15,
+    "dir_count": 0,
+    "agent_count": 15,
+    "remaining": 20,
+    "pct": 42.857142857142854
   },
   {
     "tu": "strset",
     "total": 55,
-    "matched": 24,
-    "dir_count": 1,
-    "agent_count": 23,
-    "remaining": 31,
-    "pct": 43.63636363636363
+    "matched": 23,
+    "dir_count": 18,
+    "agent_count": 5,
+    "remaining": 32,
+    "pct": 41.81818181818181
   },
   {
-    "tu": "e_idirlight",
-    "total": 28,
-    "matched": 12,
-    "dir_count": 2,
-    "agent_count": 10,
-    "remaining": 16,
-    "pct": 42.857142857142854
+    "tu": "uireflow",
+    "total": 49,
+    "matched": 20,
+    "dir_count": 0,
+    "agent_count": 20,
+    "remaining": 29,
+    "pct": 40.816326530612244
   },
   {
     "tu": "esim",
     "total": 109,
     "matched": 44,
-    "dir_count": 0,
-    "agent_count": 44,
+    "dir_count": 44,
+    "agent_count": 0,
     "remaining": 65,
     "pct": 40.36697247706422
   },
@@ -198,31 +207,31 @@
     "pct": 40.0
   },
   {
+    "tu": "objfntable",
+    "total": 30,
+    "matched": 12,
+    "dir_count": 1,
+    "agent_count": 11,
+    "remaining": 18,
+    "pct": 40.0
+  },
+  {
     "tu": "treesim",
     "total": 92,
     "matched": 36,
-    "dir_count": 0,
-    "agent_count": 36,
+    "dir_count": 36,
+    "agent_count": 0,
     "remaining": 56,
     "pct": 39.130434782608695
   },
   {
-    "tu": "e_ipointlight",
-    "total": 31,
-    "matched": 12,
-    "dir_count": 1,
-    "agent_count": 11,
-    "remaining": 19,
-    "pct": 38.70967741935484
-  },
-  {
-    "tu": "isiminstance",
-    "total": 60,
-    "matched": 23,
-    "dir_count": 11,
-    "agent_count": 12,
-    "remaining": 37,
-    "pct": 38.333333333333336
+    "tu": "ctilept",
+    "total": 57,
+    "matched": 22,
+    "dir_count": 0,
+    "agent_count": 22,
+    "remaining": 35,
+    "pct": 38.59649122807017
   },
   {
     "tu": "player",
@@ -231,6 +240,15 @@
     "dir_count": 0,
     "agent_count": 3,
     "remaining": 5,
+    "pct": 37.5
+  },
+  {
+    "tu": "namespaceselector",
+    "total": 16,
+    "matched": 6,
+    "dir_count": 0,
+    "agent_count": 6,
+    "remaining": 10,
     "pct": 37.5
   },
   {
@@ -252,24 +270,6 @@
     "pct": 36.666666666666664
   },
   {
-    "tu": "objfntable",
-    "total": 30,
-    "matched": 11,
-    "dir_count": 0,
-    "agent_count": 11,
-    "remaining": 19,
-    "pct": 36.666666666666664
-  },
-  {
-    "tu": "e_igameinstance",
-    "total": 22,
-    "matched": 8,
-    "dir_count": 2,
-    "agent_count": 6,
-    "remaining": 14,
-    "pct": 36.36363636363637
-  },
-  {
     "tu": "socialmodeinteractor",
     "total": 22,
     "matched": 8,
@@ -286,15 +286,6 @@
     "agent_count": 8,
     "remaining": 14,
     "pct": 36.36363636363637
-  },
-  {
-    "tu": "e_instance",
-    "total": 102,
-    "matched": 37,
-    "dir_count": 2,
-    "agent_count": 35,
-    "remaining": 65,
-    "pct": 36.27450980392157
   },
   {
     "tu": "gameeffectsmanager",
@@ -315,24 +306,6 @@
     "pct": 35.0
   },
   {
-    "tu": "e_iportalpointlight",
-    "total": 40,
-    "matched": 14,
-    "dir_count": 2,
-    "agent_count": 12,
-    "remaining": 26,
-    "pct": 35.0
-  },
-  {
-    "tu": "wrapper",
-    "total": 269,
-    "matched": 94,
-    "dir_count": 0,
-    "agent_count": 94,
-    "remaining": 175,
-    "pct": 34.94423791821561
-  },
-  {
     "tu": "behaviorconstants",
     "total": 52,
     "matched": 18,
@@ -340,6 +313,15 @@
     "agent_count": 18,
     "remaining": 34,
     "pct": 34.61538461538461
+  },
+  {
+    "tu": "_ngc_meminit",
+    "total": 3,
+    "matched": 1,
+    "dir_count": 0,
+    "agent_count": 1,
+    "remaining": 2,
+    "pct": 33.33333333333333
   },
   {
     "tu": "objdefinition",
@@ -351,12 +333,12 @@
     "pct": 33.33333333333333
   },
   {
-    "tu": "_ngc_meminit",
-    "total": 3,
-    "matched": 1,
+    "tu": "piecewise",
+    "total": 6,
+    "matched": 2,
     "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 2,
+    "agent_count": 2,
+    "remaining": 4,
     "pct": 33.33333333333333
   },
   {
@@ -387,40 +369,40 @@
     "pct": 33.33333333333333
   },
   {
-    "tu": "e_ilight",
-    "total": 45,
-    "matched": 15,
-    "dir_count": 2,
-    "agent_count": 13,
-    "remaining": 30,
-    "pct": 33.33333333333333
-  },
-  {
-    "tu": "nghresfile",
-    "total": 149,
-    "matched": 48,
+    "tu": "casclothingunlocks",
+    "total": 22,
+    "matched": 7,
     "dir_count": 0,
-    "agent_count": 48,
-    "remaining": 101,
-    "pct": 32.21476510067114
-  },
-  {
-    "tu": "iobject",
-    "total": 230,
-    "matched": 74,
-    "dir_count": 0,
-    "agent_count": 74,
-    "remaining": 156,
-    "pct": 32.17391304347826
+    "agent_count": 7,
+    "remaining": 15,
+    "pct": 31.818181818181817
   },
   {
     "tu": "mustates",
     "total": 120,
-    "matched": 37,
+    "matched": 38,
     "dir_count": 0,
-    "agent_count": 37,
-    "remaining": 83,
-    "pct": 30.833333333333336
+    "agent_count": 38,
+    "remaining": 82,
+    "pct": 31.666666666666664
+  },
+  {
+    "tu": "e_instance",
+    "total": 102,
+    "matched": 32,
+    "dir_count": 32,
+    "agent_count": 0,
+    "remaining": 70,
+    "pct": 31.372549019607842
+  },
+  {
+    "tu": "objselector",
+    "total": 64,
+    "matched": 20,
+    "dir_count": 0,
+    "agent_count": 20,
+    "remaining": 44,
+    "pct": 31.25
   },
   {
     "tu": "scrollingtextbox",
@@ -432,20 +414,47 @@
     "pct": 30.76923076923077
   },
   {
-    "tu": "e_istaticsubmodel",
-    "total": 49,
-    "matched": 15,
-    "dir_count": 2,
-    "agent_count": 13,
-    "remaining": 34,
-    "pct": 30.612244897959183
+    "tu": "nghresfile",
+    "total": 149,
+    "matched": 45,
+    "dir_count": 0,
+    "agent_count": 45,
+    "remaining": 104,
+    "pct": 30.201342281879196
+  },
+  {
+    "tu": "patch",
+    "total": 120,
+    "matched": 36,
+    "dir_count": 1,
+    "agent_count": 35,
+    "remaining": 84,
+    "pct": 30.0
+  },
+  {
+    "tu": "bstring",
+    "total": 140,
+    "matched": 42,
+    "dir_count": 0,
+    "agent_count": 42,
+    "remaining": 98,
+    "pct": 30.0
+  },
+  {
+    "tu": "slots",
+    "total": 159,
+    "matched": 45,
+    "dir_count": 0,
+    "agent_count": 45,
+    "remaining": 114,
+    "pct": 28.30188679245283
   },
   {
     "tu": "careers",
     "total": 25,
     "matched": 7,
-    "dir_count": 2,
-    "agent_count": 5,
+    "dir_count": 3,
+    "agent_count": 4,
     "remaining": 18,
     "pct": 28.000000000000004
   },
@@ -459,6 +468,15 @@
     "pct": 27.77777777777778
   },
   {
+    "tu": "animtable",
+    "total": 18,
+    "matched": 5,
+    "dir_count": 2,
+    "agent_count": 3,
+    "remaining": 13,
+    "pct": 27.77777777777778
+  },
+  {
     "tu": "interactor",
     "total": 29,
     "matched": 8,
@@ -466,15 +484,6 @@
     "agent_count": 8,
     "remaining": 21,
     "pct": 27.586206896551722
-  },
-  {
-    "tu": "patch",
-    "total": 120,
-    "matched": 33,
-    "dir_count": 1,
-    "agent_count": 32,
-    "remaining": 87,
-    "pct": 27.500000000000004
   },
   {
     "tu": "castweaktool",
@@ -486,13 +495,13 @@
     "pct": 27.27272727272727
   },
   {
-    "tu": "bstring",
-    "total": 140,
-    "matched": 38,
+    "tu": "proptable",
+    "total": 15,
+    "matched": 4,
     "dir_count": 0,
-    "agent_count": 38,
-    "remaining": 102,
-    "pct": 27.142857142857142
+    "agent_count": 4,
+    "remaining": 11,
+    "pct": 26.666666666666668
   },
   {
     "tu": "ctgdump",
@@ -502,15 +511,6 @@
     "agent_count": 4,
     "remaining": 11,
     "pct": 26.666666666666668
-  },
-  {
-    "tu": "slots",
-    "total": 159,
-    "matched": 41,
-    "dir_count": 0,
-    "agent_count": 41,
-    "remaining": 118,
-    "pct": 25.78616352201258
   },
   {
     "tu": "aptauxpceorgl",
@@ -531,12 +531,12 @@
     "pct": 25.0
   },
   {
-    "tu": "namespaceselector",
-    "total": 16,
-    "matched": 4,
-    "dir_count": 0,
-    "agent_count": 4,
-    "remaining": 12,
+    "tu": "e_ispotlight",
+    "total": 24,
+    "matched": 6,
+    "dir_count": 4,
+    "agent_count": 2,
+    "remaining": 18,
     "pct": 25.0
   },
   {
@@ -547,6 +547,24 @@
     "agent_count": 8,
     "remaining": 24,
     "pct": 25.0
+  },
+  {
+    "tu": "global",
+    "total": 128,
+    "matched": 32,
+    "dir_count": 4,
+    "agent_count": 28,
+    "remaining": 96,
+    "pct": 25.0
+  },
+  {
+    "tu": "eyetoyclient",
+    "total": 108,
+    "matched": 26,
+    "dir_count": 1,
+    "agent_count": 25,
+    "remaining": 82,
+    "pct": 24.074074074074073
   },
   {
     "tu": "optionsrecon",
@@ -567,15 +585,6 @@
     "pct": 23.52941176470588
   },
   {
-    "tu": "global",
-    "total": 128,
-    "matched": 30,
-    "dir_count": 3,
-    "agent_count": 27,
-    "remaining": 98,
-    "pct": 23.4375
-  },
-  {
     "tu": "loadingscreenstate",
     "total": 60,
     "matched": 14,
@@ -594,13 +603,13 @@
     "pct": 23.076923076923077
   },
   {
-    "tu": "dlgwrapper",
-    "total": 80,
-    "matched": 18,
+    "tu": "eroom",
+    "total": 170,
+    "matched": 39,
     "dir_count": 0,
-    "agent_count": 18,
-    "remaining": 62,
-    "pct": 22.5
+    "agent_count": 39,
+    "remaining": 131,
+    "pct": 22.941176470588236
   },
   {
     "tu": "ambientscoreplayer",
@@ -612,22 +621,22 @@
     "pct": 22.22222222222222
   },
   {
-    "tu": "statemachine",
-    "total": 64,
-    "matched": 14,
+    "tu": "camera",
+    "total": 172,
+    "matched": 38,
     "dir_count": 0,
-    "agent_count": 14,
-    "remaining": 50,
-    "pct": 21.875
+    "agent_count": 38,
+    "remaining": 134,
+    "pct": 22.093023255813954
   },
   {
-    "tu": "eroom",
-    "total": 170,
-    "matched": 37,
-    "dir_count": 0,
-    "agent_count": 37,
-    "remaining": 133,
-    "pct": 21.764705882352942
+    "tu": "neighborhood",
+    "total": 129,
+    "matched": 28,
+    "dir_count": 1,
+    "agent_count": 27,
+    "remaining": 101,
+    "pct": 21.705426356589147
   },
   {
     "tu": "skincompositor",
@@ -636,6 +645,15 @@
     "dir_count": 0,
     "agent_count": 3,
     "remaining": 11,
+    "pct": 21.428571428571427
+  },
+  {
+    "tu": "e_idirlight",
+    "total": 28,
+    "matched": 6,
+    "dir_count": 2,
+    "agent_count": 4,
+    "remaining": 22,
     "pct": 21.428571428571427
   },
   {
@@ -648,22 +666,40 @@
     "pct": 21.428571428571427
   },
   {
-    "tu": "ifloor",
-    "total": 72,
-    "matched": 15,
+    "tu": "e_simsdataman",
+    "total": 56,
+    "matched": 12,
     "dir_count": 0,
-    "agent_count": 15,
-    "remaining": 57,
+    "agent_count": 12,
+    "remaining": 44,
+    "pct": 21.428571428571427
+  },
+  {
+    "tu": "e_iamblight",
+    "total": 24,
+    "matched": 5,
+    "dir_count": 2,
+    "agent_count": 3,
+    "remaining": 19,
     "pct": 20.833333333333336
   },
   {
-    "tu": "comeseeme",
-    "total": 5,
-    "matched": 1,
-    "dir_count": 0,
+    "tu": "e_ipointamblight",
+    "total": 24,
+    "matched": 5,
+    "dir_count": 4,
     "agent_count": 1,
-    "remaining": 4,
-    "pct": 20.0
+    "remaining": 19,
+    "pct": 20.833333333333336
+  },
+  {
+    "tu": "statemachine",
+    "total": 64,
+    "matched": 13,
+    "dir_count": 0,
+    "agent_count": 13,
+    "remaining": 51,
+    "pct": 20.3125
   },
   {
     "tu": "physics",
@@ -675,7 +711,25 @@
     "pct": 20.0
   },
   {
-    "tu": "proptable",
+    "tu": "comeseeme",
+    "total": 5,
+    "matched": 1,
+    "dir_count": 0,
+    "agent_count": 1,
+    "remaining": 4,
+    "pct": 20.0
+  },
+  {
+    "tu": "casscenedefault",
+    "total": 10,
+    "matched": 2,
+    "dir_count": 0,
+    "agent_count": 2,
+    "remaining": 8,
+    "pct": 20.0
+  },
+  {
+    "tu": "playerfamilyimpl",
     "total": 15,
     "matched": 3,
     "dir_count": 0,
@@ -684,31 +738,31 @@
     "pct": 20.0
   },
   {
-    "tu": "camera",
-    "total": 172,
-    "matched": 34,
-    "dir_count": 0,
-    "agent_count": 34,
-    "remaining": 138,
-    "pct": 19.767441860465116
-  },
-  {
-    "tu": "e_simsdataman",
-    "total": 56,
-    "matched": 11,
-    "dir_count": 0,
-    "agent_count": 11,
-    "remaining": 45,
-    "pct": 19.642857142857142
-  },
-  {
     "tu": "bstring2",
     "total": 140,
-    "matched": 27,
+    "matched": 28,
     "dir_count": 0,
-    "agent_count": 27,
-    "remaining": 113,
-    "pct": 19.28571428571429
+    "agent_count": 28,
+    "remaining": 112,
+    "pct": 20.0
+  },
+  {
+    "tu": "iobject",
+    "total": 230,
+    "matched": 46,
+    "dir_count": 0,
+    "agent_count": 46,
+    "remaining": 184,
+    "pct": 20.0
+  },
+  {
+    "tu": "ifloor",
+    "total": 72,
+    "matched": 14,
+    "dir_count": 0,
+    "agent_count": 14,
+    "remaining": 58,
+    "pct": 19.444444444444446
   },
   {
     "tu": "ctgfile_ngc",
@@ -720,6 +774,15 @@
     "pct": 19.047619047619047
   },
   {
+    "tu": "globs",
+    "total": 16,
+    "matched": 3,
+    "dir_count": 0,
+    "agent_count": 3,
+    "remaining": 13,
+    "pct": 18.75
+  },
+  {
     "tu": "resfile",
     "total": 16,
     "matched": 3,
@@ -729,12 +792,12 @@
     "pct": 18.75
   },
   {
-    "tu": "globs",
-    "total": 16,
-    "matched": 3,
-    "dir_count": 0,
-    "agent_count": 3,
-    "remaining": 13,
+    "tu": "bitarray",
+    "total": 32,
+    "matched": 6,
+    "dir_count": 4,
+    "agent_count": 2,
+    "remaining": 26,
     "pct": 18.75
   },
   {
@@ -754,6 +817,33 @@
     "agent_count": 9,
     "remaining": 39,
     "pct": 18.75
+  },
+  {
+    "tu": "family",
+    "total": 65,
+    "matched": 12,
+    "dir_count": 2,
+    "agent_count": 10,
+    "remaining": 53,
+    "pct": 18.461538461538463
+  },
+  {
+    "tu": "livemode",
+    "total": 87,
+    "matched": 16,
+    "dir_count": 0,
+    "agent_count": 16,
+    "remaining": 71,
+    "pct": 18.39080459770115
+  },
+  {
+    "tu": "casscenegamecube",
+    "total": 11,
+    "matched": 2,
+    "dir_count": 0,
+    "agent_count": 2,
+    "remaining": 9,
+    "pct": 18.181818181818183
   },
   {
     "tu": "casscenepersonal",
@@ -783,6 +873,15 @@
     "pct": 17.94871794871795
   },
   {
+    "tu": "e_ilight",
+    "total": 45,
+    "matched": 8,
+    "dir_count": 2,
+    "agent_count": 6,
+    "remaining": 37,
+    "pct": 17.77777777777778
+  },
+  {
     "tu": "boxx",
     "total": 79,
     "matched": 14,
@@ -810,15 +909,6 @@
     "pct": 17.647058823529413
   },
   {
-    "tu": "eyetoyclient",
-    "total": 108,
-    "matched": 19,
-    "dir_count": 0,
-    "agent_count": 19,
-    "remaining": 89,
-    "pct": 17.59259259259259
-  },
-  {
     "tu": "awarenessmanager",
     "total": 57,
     "matched": 10,
@@ -828,6 +918,24 @@
     "pct": 17.543859649122805
   },
   {
+    "tu": "e_iportalpointlight",
+    "total": 40,
+    "matched": 7,
+    "dir_count": 2,
+    "agent_count": 5,
+    "remaining": 33,
+    "pct": 17.5
+  },
+  {
+    "tu": "appmain",
+    "total": 110,
+    "matched": 19,
+    "dir_count": 0,
+    "agent_count": 19,
+    "remaining": 91,
+    "pct": 17.272727272727273
+  },
+  {
     "tu": "iobjectman",
     "total": 29,
     "matched": 5,
@@ -835,42 +943,6 @@
     "agent_count": 5,
     "remaining": 24,
     "pct": 17.24137931034483
-  },
-  {
-    "tu": "livemode",
-    "total": 87,
-    "matched": 15,
-    "dir_count": 0,
-    "agent_count": 15,
-    "remaining": 72,
-    "pct": 17.24137931034483
-  },
-  {
-    "tu": "neighborhood",
-    "total": 129,
-    "matched": 22,
-    "dir_count": 0,
-    "agent_count": 22,
-    "remaining": 107,
-    "pct": 17.05426356589147
-  },
-  {
-    "tu": "family",
-    "total": 65,
-    "matched": 11,
-    "dir_count": 1,
-    "agent_count": 10,
-    "remaining": 54,
-    "pct": 16.923076923076923
-  },
-  {
-    "tu": "piecewise",
-    "total": 6,
-    "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 5,
-    "pct": 16.666666666666664
   },
   {
     "tu": "audioinfo",
@@ -900,22 +972,13 @@
     "pct": 16.666666666666664
   },
   {
-    "tu": "animtable",
-    "total": 18,
-    "matched": 3,
-    "dir_count": 1,
-    "agent_count": 2,
-    "remaining": 15,
-    "pct": 16.666666666666664
-  },
-  {
-    "tu": "e_istaticmodel",
-    "total": 66,
-    "matched": 11,
-    "dir_count": 0,
-    "agent_count": 11,
-    "remaining": 55,
-    "pct": 16.666666666666664
+    "tu": "e_istaticsubmodel",
+    "total": 49,
+    "matched": 8,
+    "dir_count": 2,
+    "agent_count": 6,
+    "remaining": 41,
+    "pct": 16.3265306122449
   },
   {
     "tu": "aptstring",
@@ -927,13 +990,13 @@
     "pct": 16.27906976744186
   },
   {
-    "tu": "person",
-    "total": 261,
-    "matched": 42,
-    "dir_count": 0,
-    "agent_count": 42,
-    "remaining": 219,
-    "pct": 16.091954022988507
+    "tu": "e_ipointlight",
+    "total": 31,
+    "matched": 5,
+    "dir_count": 1,
+    "agent_count": 4,
+    "remaining": 26,
+    "pct": 16.129032258064516
   },
   {
     "tu": "floorpainter",
@@ -945,13 +1008,31 @@
     "pct": 16.0
   },
   {
-    "tu": "bitarray",
-    "total": 32,
-    "matched": 5,
-    "dir_count": 3,
+    "tu": "uihdtv",
+    "total": 19,
+    "matched": 3,
+    "dir_count": 0,
+    "agent_count": 3,
+    "remaining": 16,
+    "pct": 15.789473684210526
+  },
+  {
+    "tu": "animeventhandlersupport",
+    "total": 13,
+    "matched": 2,
+    "dir_count": 0,
     "agent_count": 2,
-    "remaining": 27,
-    "pct": 15.625
+    "remaining": 11,
+    "pct": 15.384615384615385
+  },
+  {
+    "tu": "neighbor",
+    "total": 72,
+    "matched": 11,
+    "dir_count": 0,
+    "agent_count": 11,
+    "remaining": 61,
+    "pct": 15.277777777777779
   },
   {
     "tu": "newarray2d",
@@ -961,6 +1042,15 @@
     "agent_count": 3,
     "remaining": 17,
     "pct": 15.0
+  },
+  {
+    "tu": "simmodel",
+    "total": 74,
+    "matched": 11,
+    "dir_count": 1,
+    "agent_count": 10,
+    "remaining": 63,
+    "pct": 14.864864864864865
   },
   {
     "tu": "muwrapper",
@@ -990,6 +1080,15 @@
     "pct": 14.285714285714285
   },
   {
+    "tu": "floatconstants",
+    "total": 28,
+    "matched": 4,
+    "dir_count": 1,
+    "agent_count": 3,
+    "remaining": 24,
+    "pct": 14.285714285714285
+  },
+  {
     "tu": "routing",
     "total": 35,
     "matched": 5,
@@ -997,24 +1096,6 @@
     "agent_count": 5,
     "remaining": 30,
     "pct": 14.285714285714285
-  },
-  {
-    "tu": "objselector",
-    "total": 64,
-    "matched": 9,
-    "dir_count": 0,
-    "agent_count": 9,
-    "remaining": 55,
-    "pct": 14.0625
-  },
-  {
-    "tu": "ctilept",
-    "total": 57,
-    "matched": 8,
-    "dir_count": 0,
-    "agent_count": 8,
-    "remaining": 49,
-    "pct": 14.035087719298245
   },
   {
     "tu": "simulator",
@@ -1026,22 +1107,22 @@
     "pct": 13.846153846153847
   },
   {
-    "tu": "appmain",
-    "total": 110,
-    "matched": 15,
+    "tu": "thesims",
+    "total": 102,
+    "matched": 14,
     "dir_count": 0,
-    "agent_count": 15,
-    "remaining": 95,
-    "pct": 13.636363636363635
+    "agent_count": 14,
+    "remaining": 88,
+    "pct": 13.725490196078432
   },
   {
-    "tu": "playerfamilyimpl",
-    "total": 15,
-    "matched": 2,
+    "tu": "world",
+    "total": 52,
+    "matched": 7,
     "dir_count": 0,
-    "agent_count": 2,
-    "remaining": 13,
-    "pct": 13.333333333333334
+    "agent_count": 7,
+    "remaining": 45,
+    "pct": 13.461538461538462
   },
   {
     "tu": "basestates",
@@ -1071,15 +1152,6 @@
     "pct": 13.20754716981132
   },
   {
-    "tu": "thesims",
-    "total": 102,
-    "matched": 13,
-    "dir_count": 0,
-    "agent_count": 13,
-    "remaining": 89,
-    "pct": 12.745098039215685
-  },
-  {
     "tu": "wantfear",
     "total": 55,
     "matched": 7,
@@ -1107,6 +1179,24 @@
     "pct": 12.5
   },
   {
+    "tu": "xrouting",
+    "total": 32,
+    "matched": 4,
+    "dir_count": 0,
+    "agent_count": 4,
+    "remaining": 28,
+    "pct": 12.5
+  },
+  {
+    "tu": "house",
+    "total": 49,
+    "matched": 6,
+    "dir_count": 1,
+    "agent_count": 5,
+    "remaining": 43,
+    "pct": 12.244897959183673
+  },
+  {
     "tu": "casgenetics",
     "total": 33,
     "matched": 4,
@@ -1116,13 +1206,31 @@
     "pct": 12.121212121212121
   },
   {
-    "tu": "e_rlevel",
-    "total": 213,
-    "matched": 25,
+    "tu": "e_istaticmodel",
+    "total": 66,
+    "matched": 8,
     "dir_count": 0,
-    "agent_count": 25,
-    "remaining": 188,
-    "pct": 11.737089201877934
+    "agent_count": 8,
+    "remaining": 58,
+    "pct": 12.121212121212121
+  },
+  {
+    "tu": "person",
+    "total": 261,
+    "matched": 31,
+    "dir_count": 0,
+    "agent_count": 31,
+    "remaining": 230,
+    "pct": 11.877394636015326
+  },
+  {
+    "tu": "ui2d",
+    "total": 17,
+    "matched": 2,
+    "dir_count": 0,
+    "agent_count": 2,
+    "remaining": 15,
+    "pct": 11.76470588235294
   },
   {
     "tu": "gzsndsys",
@@ -1137,13 +1245,22 @@
     "tu": "simsmemcardwrap",
     "total": 35,
     "matched": 4,
-    "dir_count": 0,
-    "agent_count": 4,
+    "dir_count": 1,
+    "agent_count": 3,
     "remaining": 31,
     "pct": 11.428571428571429
   },
   {
-    "tu": "widgetsupport",
+    "tu": "objectmodule",
+    "total": 105,
+    "matched": 12,
+    "dir_count": 1,
+    "agent_count": 11,
+    "remaining": 93,
+    "pct": 11.428571428571429
+  },
+  {
+    "tu": "unlockdisplayobjectsim",
     "total": 9,
     "matched": 1,
     "dir_count": 0,
@@ -1152,7 +1269,7 @@
     "pct": 11.11111111111111
   },
   {
-    "tu": "unlockdisplayobjectsim",
+    "tu": "widgetsupport",
     "total": 9,
     "matched": 1,
     "dir_count": 0,
@@ -1179,22 +1296,22 @@
     "pct": 11.11111111111111
   },
   {
-    "tu": "neighbor",
-    "total": 72,
+    "tu": "e_rlevel",
+    "total": 213,
+    "matched": 23,
+    "dir_count": 0,
+    "agent_count": 23,
+    "remaining": 190,
+    "pct": 10.7981220657277
+  },
+  {
+    "tu": "interactorvisualizer",
+    "total": 75,
     "matched": 8,
     "dir_count": 0,
     "agent_count": 8,
-    "remaining": 64,
-    "pct": 11.11111111111111
-  },
-  {
-    "tu": "floatconstants",
-    "total": 28,
-    "matched": 3,
-    "dir_count": 0,
-    "agent_count": 3,
-    "remaining": 25,
-    "pct": 10.714285714285714
+    "remaining": 67,
+    "pct": 10.666666666666668
   },
   {
     "tu": "inventory",
@@ -1206,22 +1323,40 @@
     "pct": 10.526315789473683
   },
   {
-    "tu": "house",
-    "total": 49,
+    "tu": "sanimator2",
+    "total": 248,
+    "matched": 26,
+    "dir_count": 1,
+    "agent_count": 25,
+    "remaining": 222,
+    "pct": 10.483870967741936
+  },
+  {
+    "tu": "dirtyxml",
+    "total": 1026,
+    "matched": 107,
+    "dir_count": 0,
+    "agent_count": 107,
+    "remaining": 919,
+    "pct": 10.428849902534113
+  },
+  {
+    "tu": "hoodmanager",
+    "total": 48,
     "matched": 5,
     "dir_count": 0,
     "agent_count": 5,
-    "remaining": 44,
-    "pct": 10.204081632653061
+    "remaining": 43,
+    "pct": 10.416666666666668
   },
   {
-    "tu": "casscenedefault",
-    "total": 10,
-    "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 9,
-    "pct": 10.0
+    "tu": "tilewalls",
+    "total": 39,
+    "matched": 4,
+    "dir_count": 2,
+    "agent_count": 2,
+    "remaining": 35,
+    "pct": 10.256410256410255
   },
   {
     "tu": "morphutilities",
@@ -1251,31 +1386,22 @@
     "pct": 10.0
   },
   {
-    "tu": "xrouting",
-    "total": 32,
-    "matched": 3,
-    "dir_count": 0,
-    "agent_count": 3,
-    "remaining": 29,
-    "pct": 9.375
-  },
-  {
-    "tu": "interactorvisualizer",
-    "total": 75,
+    "tu": "interaction",
+    "total": 71,
     "matched": 7,
     "dir_count": 0,
     "agent_count": 7,
-    "remaining": 68,
-    "pct": 9.333333333333334
+    "remaining": 64,
+    "pct": 9.859154929577464
   },
   {
-    "tu": "casscenegamecube",
-    "total": 11,
-    "matched": 1,
+    "tu": "object",
+    "total": 273,
+    "matched": 25,
     "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 10,
-    "pct": 9.090909090909092
+    "agent_count": 25,
+    "remaining": 248,
+    "pct": 9.157509157509157
   },
   {
     "tu": "ewallutil",
@@ -1287,11 +1413,11 @@
     "pct": 9.090909090909092
   },
   {
-    "tu": "casclothingunlocks",
+    "tu": "e_igameinstance",
     "total": 22,
     "matched": 2,
-    "dir_count": 0,
-    "agent_count": 2,
+    "dir_count": 2,
+    "agent_count": 0,
     "remaining": 20,
     "pct": 9.090909090909092
   },
@@ -1303,15 +1429,6 @@
     "agent_count": 2,
     "remaining": 21,
     "pct": 8.695652173913043
-  },
-  {
-    "tu": "objectmodule",
-    "total": 105,
-    "matched": 9,
-    "dir_count": 0,
-    "agent_count": 9,
-    "remaining": 96,
-    "pct": 8.571428571428571
   },
   {
     "tu": "cascostumes",
@@ -1332,6 +1449,15 @@
     "pct": 8.0
   },
   {
+    "tu": "directinteractor",
+    "total": 50,
+    "matched": 4,
+    "dir_count": 0,
+    "agent_count": 4,
+    "remaining": 46,
+    "pct": 8.0
+  },
+  {
     "tu": "siminteractor",
     "total": 51,
     "matched": 4,
@@ -1341,6 +1467,15 @@
     "pct": 7.8431372549019605
   },
   {
+    "tu": "iffresfile2",
+    "total": 90,
+    "matched": 7,
+    "dir_count": 0,
+    "agent_count": 7,
+    "remaining": 83,
+    "pct": 7.777777777777778
+  },
+  {
     "tu": "uiflow",
     "total": 13,
     "matched": 1,
@@ -1348,42 +1483,6 @@
     "agent_count": 1,
     "remaining": 12,
     "pct": 7.6923076923076925
-  },
-  {
-    "tu": "animeventhandlersupport",
-    "total": 13,
-    "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 12,
-    "pct": 7.6923076923076925
-  },
-  {
-    "tu": "object",
-    "total": 273,
-    "matched": 21,
-    "dir_count": 0,
-    "agent_count": 21,
-    "remaining": 252,
-    "pct": 7.6923076923076925
-  },
-  {
-    "tu": "sanimator2",
-    "total": 248,
-    "matched": 19,
-    "dir_count": 1,
-    "agent_count": 18,
-    "remaining": 229,
-    "pct": 7.661290322580645
-  },
-  {
-    "tu": "dirtyxml",
-    "total": 1026,
-    "matched": 78,
-    "dir_count": 0,
-    "agent_count": 78,
-    "remaining": 948,
-    "pct": 7.602339181286549
   },
   {
     "tu": "smartdatafactory",
@@ -1397,20 +1496,20 @@
   {
     "tu": "versioninfo",
     "total": 10276,
-    "matched": 737,
+    "matched": 716,
     "dir_count": 0,
-    "agent_count": 737,
-    "remaining": 9539,
-    "pct": 7.172051381860646
+    "agent_count": 716,
+    "remaining": 9560,
+    "pct": 6.9676917088361225
   },
   {
-    "tu": "seqresfile",
-    "total": 15,
-    "matched": 1,
+    "tu": "cassimrenderer",
+    "total": 29,
+    "matched": 2,
     "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 14,
-    "pct": 6.666666666666667
+    "agent_count": 2,
+    "remaining": 27,
+    "pct": 6.896551724137931
   },
   {
     "tu": "timer",
@@ -1422,11 +1521,20 @@
     "pct": 6.666666666666667
   },
   {
-    "tu": "catalogresource",
+    "tu": "seqresfile",
     "total": 15,
     "matched": 1,
     "dir_count": 0,
     "agent_count": 1,
+    "remaining": 14,
+    "pct": 6.666666666666667
+  },
+  {
+    "tu": "catalogresource",
+    "total": 15,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
     "remaining": 14,
     "pct": 6.666666666666667
   },
@@ -1440,15 +1548,6 @@
     "pct": 6.666666666666667
   },
   {
-    "tu": "icongroup",
-    "total": 16,
-    "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 15,
-    "pct": 6.25
-  },
-  {
     "tu": "interactorinputmanager",
     "total": 16,
     "matched": 1,
@@ -1458,31 +1557,22 @@
     "pct": 6.25
   },
   {
-    "tu": "hoodmanager",
-    "total": 48,
-    "matched": 3,
-    "dir_count": 0,
-    "agent_count": 3,
-    "remaining": 45,
-    "pct": 6.25
-  },
-  {
-    "tu": "directinteractor",
-    "total": 50,
-    "matched": 3,
-    "dir_count": 0,
-    "agent_count": 3,
-    "remaining": 47,
-    "pct": 6.0
-  },
-  {
-    "tu": "ui2d",
-    "total": 17,
+    "tu": "uiuserdrawcb",
+    "total": 16,
     "matched": 1,
     "dir_count": 0,
     "agent_count": 1,
-    "remaining": 16,
-    "pct": 5.88235294117647
+    "remaining": 15,
+    "pct": 6.25
+  },
+  {
+    "tu": "icongroup",
+    "total": 16,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": 15,
+    "pct": 6.25
   },
   {
     "tu": "passiveinfluencemap",
@@ -1494,13 +1584,13 @@
     "pct": 5.88235294117647
   },
   {
-    "tu": "targets_s2c",
-    "total": 1482,
-    "matched": 84,
-    "dir_count": 0,
-    "agent_count": 84,
-    "remaining": 1398,
-    "pct": 5.668016194331984
+    "tu": "objectfolder",
+    "total": 140,
+    "matched": 8,
+    "dir_count": 2,
+    "agent_count": 6,
+    "remaining": 132,
+    "pct": 5.714285714285714
   },
   {
     "tu": "gamestate",
@@ -1512,6 +1602,24 @@
     "pct": 5.555555555555555
   },
   {
+    "tu": "ui3d",
+    "total": 18,
+    "matched": 1,
+    "dir_count": 0,
+    "agent_count": 1,
+    "remaining": 17,
+    "pct": 5.555555555555555
+  },
+  {
+    "tu": "targets_s2c",
+    "total": 1482,
+    "matched": 80,
+    "dir_count": 0,
+    "agent_count": 80,
+    "remaining": 1402,
+    "pct": 5.398110661268556
+  },
+  {
     "tu": "inlevel",
     "total": 19,
     "matched": 1,
@@ -1521,31 +1629,13 @@
     "pct": 5.263157894736842
   },
   {
-    "tu": "uihdtv",
-    "total": 19,
-    "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 18,
-    "pct": 5.263157894736842
-  },
-  {
-    "tu": "tilewalls",
-    "total": 39,
+    "tu": "actionmenu",
+    "total": 38,
     "matched": 2,
     "dir_count": 0,
     "agent_count": 2,
-    "remaining": 37,
-    "pct": 5.128205128205128
-  },
-  {
-    "tu": "objectfolder",
-    "total": 140,
-    "matched": 7,
-    "dir_count": 1,
-    "agent_count": 6,
-    "remaining": 133,
-    "pct": 5.0
+    "remaining": 36,
+    "pct": 5.263157894736842
   },
   {
     "tu": "emitter",
@@ -1554,6 +1644,15 @@
     "dir_count": 0,
     "agent_count": 1,
     "remaining": 20,
+    "pct": 4.761904761904762
+  },
+  {
+    "tu": "chainresfile",
+    "total": 42,
+    "matched": 2,
+    "dir_count": 0,
+    "agent_count": 2,
+    "remaining": 40,
     "pct": 4.761904761904762
   },
   {
@@ -1584,21 +1683,21 @@
     "pct": 4.464285714285714
   },
   {
+    "tu": "targets_tsc3",
+    "total": 494,
+    "matched": 22,
+    "dir_count": 0,
+    "agent_count": 22,
+    "remaining": 472,
+    "pct": 4.4534412955465585
+  },
+  {
     "tu": "casscene",
     "total": 45,
     "matched": 2,
     "dir_count": 0,
     "agent_count": 2,
     "remaining": 43,
-    "pct": 4.444444444444445
-  },
-  {
-    "tu": "iffresfile2",
-    "total": 90,
-    "matched": 4,
-    "dir_count": 0,
-    "agent_count": 4,
-    "remaining": 86,
     "pct": 4.444444444444445
   },
   {
@@ -1629,22 +1728,13 @@
     "pct": 4.081632653061225
   },
   {
-    "tu": "uireflow",
-    "total": 49,
-    "matched": 2,
-    "dir_count": 0,
-    "agent_count": 2,
-    "remaining": 47,
-    "pct": 4.081632653061225
-  },
-  {
-    "tu": "cassimrenderer",
-    "total": 29,
+    "tu": "relmatrix",
+    "total": 26,
     "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 28,
-    "pct": 3.4482758620689653
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": 25,
+    "pct": 3.8461538461538463
   },
   {
     "tu": "cassimstate",
@@ -1656,6 +1746,15 @@
     "pct": 3.4482758620689653
   },
   {
+    "tu": "cassimrendererdynamic",
+    "total": 32,
+    "matched": 1,
+    "dir_count": 0,
+    "agent_count": 1,
+    "remaining": 31,
+    "pct": 3.125
+  },
+  {
     "tu": "actionqueuehud",
     "total": 33,
     "matched": 1,
@@ -1665,22 +1764,13 @@
     "pct": 3.0303030303030303
   },
   {
-    "tu": "gamesound",
-    "total": 35,
-    "matched": 1,
+    "tu": "hudtarget",
+    "total": 79,
+    "matched": 2,
     "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 34,
-    "pct": 2.857142857142857
-  },
-  {
-    "tu": "actionmenu",
-    "total": 38,
-    "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 37,
-    "pct": 2.631578947368421
+    "agent_count": 2,
+    "remaining": 77,
+    "pct": 2.5316455696202533
   },
   {
     "tu": "cassimdescription",
@@ -1710,24 +1800,6 @@
     "pct": 2.4390243902439024
   },
   {
-    "tu": "chainresfile",
-    "total": 42,
-    "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 41,
-    "pct": 2.380952380952381
-  },
-  {
-    "tu": "targets_tsc3",
-    "total": 494,
-    "matched": 11,
-    "dir_count": 0,
-    "agent_count": 11,
-    "remaining": 483,
-    "pct": 2.2267206477732793
-  },
-  {
     "tu": "loadgametarget",
     "total": 47,
     "matched": 1,
@@ -1755,13 +1827,13 @@
     "pct": 1.7543859649122806
   },
   {
-    "tu": "simmodel",
-    "total": 74,
-    "matched": 1,
+    "tu": "targets_cas",
+    "total": 268,
+    "matched": 4,
     "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 73,
-    "pct": 1.3513513513513513
+    "agent_count": 4,
+    "remaining": 264,
+    "pct": 1.4925373134328357
   },
   {
     "tu": "wallpainter",
@@ -1773,24 +1845,6 @@
     "pct": 1.312910284463895
   },
   {
-    "tu": "hudtarget",
-    "total": 79,
-    "matched": 1,
-    "dir_count": 0,
-    "agent_count": 1,
-    "remaining": 78,
-    "pct": 1.2658227848101267
-  },
-  {
-    "tu": "targets_cas",
-    "total": 268,
-    "matched": 2,
-    "dir_count": 0,
-    "agent_count": 2,
-    "remaining": 266,
-    "pct": 0.7462686567164178
-  },
-  {
     "tu": "emitterspr3d",
     "total": 756,
     "matched": 2,
@@ -1800,34 +1854,16 @@
     "pct": 0.26455026455026454
   },
   {
-    "tu": "cxobject",
+    "tu": "frameeffects",
     "total": 0,
-    "matched": 7,
-    "dir_count": 7,
+    "matched": 17,
+    "dir_count": 17,
     "agent_count": 0,
-    "remaining": -7,
+    "remaining": -17,
     "pct": 0.0
   },
   {
-    "tu": "e_core",
-    "total": 0,
-    "matched": 19,
-    "dir_count": 19,
-    "agent_count": 0,
-    "remaining": -19,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_rbinary",
-    "total": 0,
-    "matched": 2,
-    "dir_count": 2,
-    "agent_count": 0,
-    "remaining": -2,
-    "pct": 0.0
-  },
-  {
-    "tu": "er_character",
+    "tu": "eanimnodedatapos",
     "total": 0,
     "matched": 4,
     "dir_count": 4,
@@ -1836,7 +1872,25 @@
     "pct": 0.0
   },
   {
-    "tu": "e_resource",
+    "tu": "eranim",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "csoundmodemanager",
+    "total": 0,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 0,
+    "pct": 0.0
+  },
+  {
+    "tu": "cxobject",
     "total": 0,
     "matched": 2,
     "dir_count": 2,
@@ -1845,133 +1899,16 @@
     "pct": 0.0
   },
   {
-    "tu": "e_resloader",
+    "tu": "eifencewall",
     "total": 0,
-    "matched": 1,
-    "dir_count": 1,
+    "matched": 0,
+    "dir_count": 0,
     "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "global_getters",
-    "total": 0,
-    "matched": 49,
-    "dir_count": 49,
-    "agent_count": 0,
-    "remaining": -49,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_ngc",
-    "total": 0,
-    "matched": 3,
-    "dir_count": 3,
-    "agent_count": 0,
-    "remaining": -3,
+    "remaining": 0,
     "pct": 0.0
   },
   {
     "tu": "interactormodule",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "er_binary",
-    "total": 0,
-    "matched": 4,
-    "dir_count": 4,
-    "agent_count": 0,
-    "remaining": -4,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_soundeventman",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_modelman",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_movie",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_rsoundtrackdata",
-    "total": 0,
-    "matched": 2,
-    "dir_count": 2,
-    "agent_count": 0,
-    "remaining": -2,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_animman",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "movieman",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_rcharacter",
-    "total": 0,
-    "matched": 2,
-    "dir_count": 2,
-    "agent_count": 0,
-    "remaining": -2,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_storable",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_flashman",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_boundtreenode",
     "total": 0,
     "matched": 1,
     "dir_count": 1,
@@ -1989,25 +1926,34 @@
     "pct": 0.0
   },
   {
-    "tu": "eiwallpart",
+    "tu": "eipointlight",
     "total": 0,
-    "matched": 1,
-    "dir_count": 1,
+    "matched": 7,
+    "dir_count": 7,
     "agent_count": 0,
-    "remaining": -1,
+    "remaining": -7,
     "pct": 0.0
   },
   {
-    "tu": "effects",
+    "tu": "ersoundtrackdata",
     "total": 0,
-    "matched": 3,
-    "dir_count": 3,
+    "matched": 6,
+    "dir_count": 6,
     "agent_count": 0,
-    "remaining": -3,
+    "remaining": -6,
     "pct": 0.0
   },
   {
-    "tu": "ui",
+    "tu": "objectmoduleimpl",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "ermodel",
     "total": 0,
     "matched": 8,
     "dir_count": 8,
@@ -2016,61 +1962,34 @@
     "pct": 0.0
   },
   {
-    "tu": "trivial_batch2",
+    "tu": "erambientscore",
     "total": 0,
-    "matched": 0,
-    "dir_count": 0,
+    "matched": 6,
+    "dir_count": 6,
     "agent_count": 0,
-    "remaining": 0,
+    "remaining": -6,
     "pct": 0.0
   },
   {
-    "tu": "cbmt_blast",
+    "tu": "er_character",
     "total": 0,
-    "matched": 334,
-    "dir_count": 334,
+    "matched": 4,
+    "dir_count": 4,
     "agent_count": 0,
-    "remaining": -334,
+    "remaining": -4,
     "pct": 0.0
   },
   {
-    "tu": "e_ngcaudio",
+    "tu": "isimsobjectmodel",
     "total": 0,
-    "matched": 0,
-    "dir_count": 0,
+    "matched": 8,
+    "dir_count": 8,
     "agent_count": 0,
-    "remaining": 0,
+    "remaining": -8,
     "pct": 0.0
   },
   {
-    "tu": "fake_matches_blast",
-    "total": 0,
-    "matched": 3,
-    "dir_count": 3,
-    "agent_count": 0,
-    "remaining": -3,
-    "pct": 0.0
-  },
-  {
-    "tu": "apt",
-    "total": 0,
-    "matched": 5,
-    "dir_count": 5,
-    "agent_count": 0,
-    "remaining": -5,
-    "pct": 0.0
-  },
-  {
-    "tu": "er_soundtrackdata",
-    "total": 0,
-    "matched": 2,
-    "dir_count": 2,
-    "agent_count": 0,
-    "remaining": -2,
-    "pct": 0.0
-  },
-  {
-    "tu": "esimsapp",
+    "tu": "e_resloader",
     "total": 0,
     "matched": 1,
     "dir_count": 1,
@@ -2079,12 +1998,12 @@
     "pct": 0.0
   },
   {
-    "tu": "e_ngcclock",
+    "tu": "erdataset",
     "total": 0,
-    "matched": 1,
-    "dir_count": 1,
+    "matched": 4,
+    "dir_count": 4,
     "agent_count": 0,
-    "remaining": -1,
+    "remaining": -4,
     "pct": 0.0
   },
   {
@@ -2097,7 +2016,412 @@
     "pct": 0.0
   },
   {
+    "tu": "cxpersonimpl",
+    "total": 0,
+    "matched": 50,
+    "dir_count": 50,
+    "agent_count": 0,
+    "remaining": -50,
+    "pct": 0.0
+  },
+  {
+    "tu": "efontpage",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "movieman",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "ishrubobject",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "er_soundevent",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_texture",
+    "total": 0,
+    "matched": 2,
+    "dir_count": 2,
+    "agent_count": 0,
+    "remaining": -2,
+    "pct": 0.0
+  },
+  {
+    "tu": "trivial_batch2",
+    "total": 0,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 0,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_movie",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "r2ltarget",
+    "total": 0,
+    "matched": 2,
+    "dir_count": 2,
+    "agent_count": 0,
+    "remaining": -2,
+    "pct": 0.0
+  },
+  {
+    "tu": "eilight",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "effects",
+    "total": 0,
+    "matched": 3,
+    "dir_count": 3,
+    "agent_count": 0,
+    "remaining": -3,
+    "pct": 0.0
+  },
+  {
+    "tu": "isimswallobjectmodel",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "isimsmultitileobjectmodel",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "ersoundevent",
+    "total": 0,
+    "matched": 4,
+    "dir_count": 4,
+    "agent_count": 0,
+    "remaining": -4,
+    "pct": 0.0
+  },
+  {
+    "tu": "wxftarget",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_flashman",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "playercheats",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "eredithtreeset",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "particleman",
+    "total": 0,
+    "matched": 2,
+    "dir_count": 2,
+    "agent_count": 0,
+    "remaining": -2,
+    "pct": 0.0
+  },
+  {
+    "tu": "cbmt_blast",
+    "total": 0,
+    "matched": 334,
+    "dir_count": 334,
+    "agent_count": 0,
+    "remaining": -334,
+    "pct": 0.0
+  },
+  {
+    "tu": "csimulatorimpl",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "ui",
+    "total": 0,
+    "matched": 8,
+    "dir_count": 8,
+    "agent_count": 0,
+    "remaining": -8,
+    "pct": 0.0
+  },
+  {
+    "tu": "eiportalpointlight",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "er_binary",
+    "total": 0,
+    "matched": 4,
+    "dir_count": 4,
+    "agent_count": 0,
+    "remaining": -4,
+    "pct": 0.0
+  },
+  {
+    "tu": "erbinary",
+    "total": 0,
+    "matched": 4,
+    "dir_count": 4,
+    "agent_count": 0,
+    "remaining": -4,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_animnodedatapos",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_ngcaudio",
+    "total": 0,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 0,
+    "pct": 0.0
+  },
+  {
+    "tu": "ercharacter",
+    "total": 0,
+    "matched": 4,
+    "dir_count": 4,
+    "agent_count": 0,
+    "remaining": -4,
+    "pct": 0.0
+  },
+  {
+    "tu": "audio",
+    "total": 0,
+    "matched": 10,
+    "dir_count": 10,
+    "agent_count": 0,
+    "remaining": -10,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_core",
+    "total": 0,
+    "matched": 19,
+    "dir_count": 19,
+    "agent_count": 0,
+    "remaining": -19,
+    "pct": 0.0
+  },
+  {
+    "tu": "routingslot",
+    "total": 0,
+    "matched": 3,
+    "dir_count": 3,
+    "agent_count": 0,
+    "remaining": -3,
+    "pct": 0.0
+  },
+  {
+    "tu": "invtarget",
+    "total": 0,
+    "matched": 5,
+    "dir_count": 5,
+    "agent_count": 0,
+    "remaining": -5,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_modelman",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "eistaticmodel",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "objectlist",
+    "total": 0,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 0,
+    "pct": 0.0
+  },
+  {
+    "tu": "pcttarget",
+    "total": 0,
+    "matched": 5,
+    "dir_count": 5,
+    "agent_count": 0,
+    "remaining": -5,
+    "pct": 0.0
+  },
+  {
+    "tu": "stringset",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "stl_heap",
+    "total": 0,
+    "matched": 16,
+    "dir_count": 16,
+    "agent_count": 0,
+    "remaining": -16,
+    "pct": 0.0
+  },
+  {
+    "tu": "estorable",
+    "total": 0,
+    "matched": 4,
+    "dir_count": 4,
+    "agent_count": 0,
+    "remaining": -4,
+    "pct": 0.0
+  },
+  {
     "tu": "hook_smoketest",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "eiwallpart",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_resource",
+    "total": 0,
+    "matched": 2,
+    "dir_count": 2,
+    "agent_count": 0,
+    "remaining": -2,
+    "pct": 0.0
+  },
+  {
+    "tu": "famtarget",
+    "total": 0,
+    "matched": 2,
+    "dir_count": 2,
+    "agent_count": 0,
+    "remaining": -2,
+    "pct": 0.0
+  },
+  {
+    "tu": "isimscountertopobject",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "session6",
+    "total": 0,
+    "matched": 2,
+    "dir_count": 2,
+    "agent_count": 0,
+    "remaining": -2,
+    "pct": 0.0
+  },
+  {
+    "tu": "bbi",
     "total": 0,
     "matched": 1,
     "dir_count": 1,
@@ -2115,12 +2439,21 @@
     "pct": 0.0
   },
   {
-    "tu": "objects",
+    "tu": "casgeneticstarget",
     "total": 0,
-    "matched": 3,
-    "dir_count": 3,
+    "matched": 5,
+    "dir_count": 5,
     "agent_count": 0,
-    "remaining": -3,
+    "remaining": -5,
+    "pct": 0.0
+  },
+  {
+    "tu": "reffectssequencer",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
     "pct": 0.0
   },
   {
@@ -2133,51 +2466,6 @@
     "pct": 0.0
   },
   {
-    "tu": "e_animnodedatapos",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_cheatmenu",
-    "total": 0,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 0,
-    "pct": 0.0
-  },
-  {
-    "tu": "e_syncobject",
-    "total": 0,
-    "matched": 1,
-    "dir_count": 1,
-    "agent_count": 0,
-    "remaining": -1,
-    "pct": 0.0
-  },
-  {
-    "tu": "rparticle",
-    "total": 0,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 0,
-    "pct": 0.0
-  },
-  {
-    "tu": "er_dataset",
-    "total": 0,
-    "matched": 2,
-    "dir_count": 2,
-    "agent_count": 0,
-    "remaining": -2,
-    "pct": 0.0
-  },
-  {
     "tu": "trivial",
     "total": 0,
     "matched": 11,
@@ -2187,66 +2475,66 @@
     "pct": 0.0
   },
   {
-    "tu": "reffectsemitter",
+    "tu": "fake_matches_blast",
     "total": 0,
-    "matched": 2,
-    "dir_count": 2,
+    "matched": 3,
+    "dir_count": 3,
     "agent_count": 0,
-    "remaining": -2,
+    "remaining": -3,
     "pct": 0.0
   },
   {
-    "tu": "ctgfile",
+    "tu": "eresource",
     "total": 0,
-    "matched": 1,
-    "dir_count": 1,
+    "matched": 6,
+    "dir_count": 6,
     "agent_count": 0,
-    "remaining": -1,
+    "remaining": -6,
     "pct": 0.0
   },
   {
-    "tu": "csoundmodemanager",
+    "tu": "eiamblight",
     "total": 0,
-    "matched": 4,
-    "dir_count": 4,
+    "matched": 7,
+    "dir_count": 7,
     "agent_count": 0,
-    "remaining": -4,
+    "remaining": -7,
     "pct": 0.0
   },
   {
-    "tu": "particleman",
+    "tu": "ertexture",
     "total": 0,
-    "matched": 1,
-    "dir_count": 1,
+    "matched": 6,
+    "dir_count": 6,
     "agent_count": 0,
-    "remaining": -1,
+    "remaining": -6,
     "pct": 0.0
   },
   {
-    "tu": "frameeffect",
+    "tu": "erlevel",
     "total": 0,
-    "matched": 2,
-    "dir_count": 2,
+    "matched": 7,
+    "dir_count": 7,
     "agent_count": 0,
-    "remaining": -2,
+    "remaining": -7,
     "pct": 0.0
   },
   {
-    "tu": "e_textureman",
+    "tu": "erfont",
     "total": 0,
-    "matched": 1,
-    "dir_count": 1,
+    "matched": 6,
+    "dir_count": 6,
     "agent_count": 0,
-    "remaining": -1,
+    "remaining": -6,
     "pct": 0.0
   },
   {
-    "tu": "e_font",
+    "tu": "er_dataset",
     "total": 0,
-    "matched": 2,
-    "dir_count": 2,
+    "matched": 3,
+    "dir_count": 3,
     "agent_count": 0,
-    "remaining": -2,
+    "remaining": -3,
     "pct": 0.0
   },
   {
@@ -2259,34 +2547,88 @@
     "pct": 0.0
   },
   {
-    "tu": "e_texture",
+    "tu": "e_ngc",
     "total": 0,
-    "matched": 2,
-    "dir_count": 2,
+    "matched": 3,
+    "dir_count": 3,
     "agent_count": 0,
-    "remaining": -2,
+    "remaining": -3,
     "pct": 0.0
   },
   {
-    "tu": "e_rsoundevent",
+    "tu": "reffectsemitter",
     "total": 0,
-    "matched": 2,
-    "dir_count": 2,
+    "matched": 7,
+    "dir_count": 7,
     "agent_count": 0,
-    "remaining": -2,
+    "remaining": -7,
     "pct": 0.0
   },
   {
-    "tu": "er_soundevent",
+    "tu": "e2etarget",
     "total": 0,
-    "matched": 4,
-    "dir_count": 4,
+    "matched": 6,
+    "dir_count": 6,
     "agent_count": 0,
-    "remaining": -4,
+    "remaining": -6,
     "pct": 0.0
   },
   {
-    "tu": "isimsobjectmodel",
+    "tu": "efontdata",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "esimsapp",
+    "total": 0,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 0,
+    "pct": 0.0
+  },
+  {
+    "tu": "cxobjectimpl",
+    "total": 0,
+    "matched": 70,
+    "dir_count": 70,
+    "agent_count": 0,
+    "remaining": -70,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_engine",
+    "total": 0,
+    "matched": 3,
+    "dir_count": 3,
+    "agent_count": 0,
+    "remaining": -3,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_cheatmenu",
+    "total": 0,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 0,
+    "pct": 0.0
+  },
+  {
+    "tu": "erflash",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "ctgfile",
     "total": 0,
     "matched": 1,
     "dir_count": 1,
@@ -2295,16 +2637,160 @@
     "pct": 0.0
   },
   {
-    "tu": "reffectssequencer",
+    "tu": "efontsize",
     "total": 0,
-    "matched": 5,
-    "dir_count": 5,
+    "matched": 6,
+    "dir_count": 6,
     "agent_count": 0,
-    "remaining": -5,
+    "remaining": -6,
     "pct": 0.0
   },
   {
-    "tu": "bbi",
+    "tu": "spriteslot",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_animman",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "er_soundtrackdata",
+    "total": 0,
+    "matched": 3,
+    "dir_count": 3,
+    "agent_count": 0,
+    "remaining": -3,
+    "pct": 0.0
+  },
+  {
+    "tu": "ershader",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "efloorshd",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "esubmodelshader",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "eboundtreenode",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "eidirlight",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_syncobject",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "objects",
+    "total": 0,
+    "matched": 3,
+    "dir_count": 3,
+    "agent_count": 0,
+    "remaining": -3,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_ngcclock",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "rparticle",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "efontcharacter",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "apt",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "csimulator",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "iconitem",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "shaderheap",
     "total": 0,
     "matched": 1,
     "dir_count": 1,
@@ -2322,12 +2808,138 @@
     "pct": 0.0
   },
   {
+    "tu": "e_font",
+    "total": 0,
+    "matched": 2,
+    "dir_count": 2,
+    "agent_count": 0,
+    "remaining": -2,
+    "pct": 0.0
+  },
+  {
+    "tu": "global_getters",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "einstance",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
+    "tu": "wrapperpanebase",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "reffectsattachment",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "eipointamblight",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "eigameinstance",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_soundeventman",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_boundtreenode",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "eistaticsubmodel",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
+    "pct": 0.0
+  },
+  {
+    "tu": "familyimpl",
+    "total": 0,
+    "matched": 2,
+    "dir_count": 2,
+    "agent_count": 0,
+    "remaining": -2,
+    "pct": 0.0
+  },
+  {
+    "tu": "eifloor",
+    "total": 0,
+    "matched": 6,
+    "dir_count": 6,
+    "agent_count": 0,
+    "remaining": -6,
+    "pct": 0.0
+  },
+  {
     "tu": "background",
     "total": 0,
     "matched": 1,
     "dir_count": 1,
     "agent_count": 0,
     "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "e_textureman",
+    "total": 0,
+    "matched": 1,
+    "dir_count": 1,
+    "agent_count": 0,
+    "remaining": -1,
+    "pct": 0.0
+  },
+  {
+    "tu": "eispotlight",
+    "total": 0,
+    "matched": 7,
+    "dir_count": 7,
+    "agent_count": 0,
+    "remaining": -7,
     "pct": 0.0
   },
   {
@@ -2340,15 +2952,6 @@
     "pct": 0.0
   },
   {
-    "tu": "irect",
-    "total": 2,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 2,
-    "pct": 0.0
-  },
-  {
     "tu": "ctrlcommands",
     "total": 2,
     "matched": 0,
@@ -2358,7 +2961,16 @@
     "pct": 0.0
   },
   {
-    "tu": "objecttypeattributes",
+    "tu": "irect",
+    "total": 2,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 2,
+    "pct": 0.0
+  },
+  {
+    "tu": "swizzle",
     "total": 3,
     "matched": 0,
     "dir_count": 0,
@@ -2376,7 +2988,7 @@
     "pct": 0.0
   },
   {
-    "tu": "swizzle",
+    "tu": "objecttypeattributes",
     "total": 3,
     "matched": 0,
     "dir_count": 0,
@@ -2385,25 +2997,7 @@
     "pct": 0.0
   },
   {
-    "tu": "boneparticle",
-    "total": 4,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 4,
-    "pct": 0.0
-  },
-  {
     "tu": "plumbbobowner",
-    "total": 4,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 4,
-    "pct": 0.0
-  },
-  {
-    "tu": "objectiterator",
     "total": 4,
     "matched": 0,
     "dir_count": 0,
@@ -2421,21 +3015,21 @@
     "pct": 0.0
   },
   {
-    "tu": "srand",
-    "total": 5,
+    "tu": "boneparticle",
+    "total": 4,
     "matched": 0,
     "dir_count": 0,
     "agent_count": 0,
-    "remaining": 5,
+    "remaining": 4,
     "pct": 0.0
   },
   {
-    "tu": "uirouter",
-    "total": 5,
+    "tu": "objectiterator",
+    "total": 4,
     "matched": 0,
     "dir_count": 0,
     "agent_count": 0,
-    "remaining": 5,
+    "remaining": 4,
     "pct": 0.0
   },
   {
@@ -2448,7 +3042,25 @@
     "pct": 0.0
   },
   {
+    "tu": "srand",
+    "total": 5,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 5,
+    "pct": 0.0
+  },
+  {
     "tu": "simrenderer",
+    "total": 5,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 5,
+    "pct": 0.0
+  },
+  {
+    "tu": "uirouter",
     "total": 5,
     "matched": 0,
     "dir_count": 0,
@@ -2475,7 +3087,7 @@
     "pct": 0.0
   },
   {
-    "tu": "walls",
+    "tu": "textblock",
     "total": 7,
     "matched": 0,
     "dir_count": 0,
@@ -2493,7 +3105,7 @@
     "pct": 0.0
   },
   {
-    "tu": "textblock",
+    "tu": "walls",
     "total": 7,
     "matched": 0,
     "dir_count": 0,
@@ -2508,6 +3120,15 @@
     "dir_count": 0,
     "agent_count": 0,
     "remaining": 7,
+    "pct": 0.0
+  },
+  {
+    "tu": "wcharutil",
+    "total": 8,
+    "matched": 0,
+    "dir_count": 0,
+    "agent_count": 0,
+    "remaining": 8,
     "pct": 0.0
   },
   {
@@ -2529,16 +3150,7 @@
     "pct": 0.0
   },
   {
-    "tu": "wcharutil",
-    "total": 8,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 8,
-    "pct": 0.0
-  },
-  {
-    "tu": "weather",
+    "tu": "iobjtileboundrect",
     "total": 9,
     "matched": 0,
     "dir_count": 0,
@@ -2556,7 +3168,7 @@
     "pct": 0.0
   },
   {
-    "tu": "iobjtileboundrect",
+    "tu": "weather",
     "total": 9,
     "matched": 0,
     "dir_count": 0,
@@ -2619,15 +3231,6 @@
     "pct": 0.0
   },
   {
-    "tu": "influencemap",
-    "total": 15,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 15,
-    "pct": 0.0
-  },
-  {
     "tu": "uibase",
     "total": 15,
     "matched": 0,
@@ -2637,12 +3240,12 @@
     "pct": 0.0
   },
   {
-    "tu": "uiupdate",
-    "total": 16,
+    "tu": "influencemap",
+    "total": 15,
     "matched": 0,
     "dir_count": 0,
     "agent_count": 0,
-    "remaining": 16,
+    "remaining": 15,
     "pct": 0.0
   },
   {
@@ -2655,21 +3258,12 @@
     "pct": 0.0
   },
   {
-    "tu": "uiuserdrawcb",
+    "tu": "uiupdate",
     "total": 16,
     "matched": 0,
     "dir_count": 0,
     "agent_count": 0,
     "remaining": 16,
-    "pct": 0.0
-  },
-  {
-    "tu": "wstringutil",
-    "total": 17,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 17,
     "pct": 0.0
   },
   {
@@ -2682,12 +3276,12 @@
     "pct": 0.0
   },
   {
-    "tu": "ui3d",
-    "total": 18,
+    "tu": "wstringutil",
+    "total": 17,
     "matched": 0,
     "dir_count": 0,
     "agent_count": 0,
-    "remaining": 18,
+    "remaining": 17,
     "pct": 0.0
   },
   {
@@ -2718,30 +3312,12 @@
     "pct": 0.0
   },
   {
-    "tu": "casmediator",
-    "total": 22,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 22,
-    "pct": 0.0
-  },
-  {
     "tu": "e_lightgrid",
     "total": 25,
     "matched": 0,
     "dir_count": 0,
     "agent_count": 0,
     "remaining": 25,
-    "pct": 0.0
-  },
-  {
-    "tu": "relmatrix",
-    "total": 26,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 26,
     "pct": 0.0
   },
   {
@@ -2781,15 +3357,6 @@
     "pct": 0.0
   },
   {
-    "tu": "cassimrendererdynamic",
-    "total": 32,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 32,
-    "pct": 0.0
-  },
-  {
     "tu": "widgetlayout",
     "total": 36,
     "matched": 0,
@@ -2823,15 +3390,6 @@
     "dir_count": 0,
     "agent_count": 0,
     "remaining": 46,
-    "pct": 0.0
-  },
-  {
-    "tu": "world",
-    "total": 52,
-    "matched": 0,
-    "dir_count": 0,
-    "agent_count": 0,
-    "remaining": 52,
     "pct": 0.0
   }
 ]

@@ -1,4 +1,4 @@
-// 0x80110754 (40B) ObjSelector::Writable(void)
+// 0x80110754 (60B) ObjSelector::Writable(void)
 
 struct TargetIface {
     virtual void v0() = 0;

@@ -1,4 +1,4 @@
-// 0x8014AE08 (40B) WantFear::Bookmark::IsInStoryTree(void) const
+// 0x8014AE08 (52B) WantFear::Bookmark::IsInStoryTree(void) const
 
 struct StoryTree;
 struct StoryNode {

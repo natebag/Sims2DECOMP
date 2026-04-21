@@ -1,4 +1,4 @@
-// 0x8003E00C (52B) GameEffectsManager::GetSingleton(void)
+// 0x8003E00C (60B) GameEffectsManager::GetSingleton(void)
 
 struct GameEffectsManager {
     char data[1];

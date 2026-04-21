@@ -1,4 +1,4 @@
-// 0x8021A044 InteractorModule::GrabManipulator::OnCreate(void) (44B)
+// 0x8021A044 InteractorModule::GrabManipulator::OnCreate(void) (56B)
 struct GrabManipulator;
 struct ObjectManipulator;
 

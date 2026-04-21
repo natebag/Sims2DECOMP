@@ -1,4 +1,4 @@
-// 0x80178CBC (72B) SetVariableCommandTable::Shutdown(void)
+// 0x80178CBC (76B) SetVariableCommandTable::Shutdown(void)
 
 struct SetVariableCommandTable_Base { char pad[12]; };
 

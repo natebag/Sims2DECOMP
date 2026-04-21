@@ -1,4 +1,4 @@
-// 0x80037A5C EyeToyClient::ReleaseTexture(ETexture*) (60B)
+// 0x80037A5C EyeToyClient::ReleaseTexture(ETexture*) (64B)
 struct ETexture;
 
 struct VTable {

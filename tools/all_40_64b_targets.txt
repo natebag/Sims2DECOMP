@@ -2,125 +2,13 @@
 FULL 40-64B TARGET SCAN — ALL SYSTEMS
 Map: u2_ngc_release_dvd.map
 Total 40-64B functions in map (SDK excluded): 1535
-Already matched (src/matched + src/wip): 6263
-UNMATCHED 40-64B TARGETS: 826
+Already matched (src/matched + src/wip): 7451
+UNMATCHED 40-64B TARGETS: 443
 ======================================================================
 
-[InteractorModule] — 59 functions
-  0x80203e04  InteractorModule::DirectInteractor::OnCreate(void)
-  0x80203e38  InteractorModule::DirectInteractor::OnDestroy(void)
-  0x80204edc  InteractorModule::DirectInteractor::GetInteractorInfo(InteractorModule::InteractorInfo &)
-  0x80204fd8  InteractorModule::DirectInteractor::CheckCancelTimer(void)
-  0x80205014  InteractorModule::DirectInteractor::PreDraw(InteractorModule::InteractorVisualizer &)
-  0x80205040  InteractorModule::DirectInteractor::Draw(InteractorModule::InteractorVisualizer &)
-  0x80205748  InteractorModule::DirectInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float)
-  0x80205788  InteractorModule::DirectInteractor::ResetInputState(void)
-  0x80205b78  InteractorModule::DirectInteractor::StopInObjectMenu(void)
-  0x80205fb4  InteractorModule::DirectInteractor::SetAutonomous(void)
-  0x802079b8  InteractorModule::FloorPainter::PreDraw(InteractorModule::InteractorVisualizer &)
-  0x802079e4  InteractorModule::FloorPainter::Draw(InteractorModule::InteractorVisualizer &)
-  0x80209454  InteractorModule::Interactor::UpdateObjectHighlights(EIObjectMan *)
-  0x80209534  InteractorModule::Interactor::SnapToPos(EVec3 &)
-  0x8020955c  InteractorModule::Interactor::EitherStickCentered(void)
-  0x8020af30  InteractorModule::InteractorInputManager::OpenSession(int, InteractorModule::Interactor *, int, InteractorModule::InteractorInputManager::ButtonSemantic *, int, InteractorModule::InteractorInputManager::StickSemantic *, char *)
-  0x8020af5c  InteractorModule::InteractorInputManager::CloseSession(int)
-  0x8020b654  InteractorModule::InteractorManager::GetSingleton(void)
-  0x8020bdbc  InteractorModule::InteractorManager::IsValidPlayerId(int) const
-  0x80210208  InteractorModule::InteractorResourceSet::GetOrderTableData(unsigned int)
-  0x802119c0  InteractorModule::GetPlumbBob(int)
-  0x802136cc  InteractorModule::GetInteractorResourceSet(InteractorModule::Interactor *)
-  0x80216e98  InteractorModule::InteractorVisualizer::CreateResources(InteractorModule::SimInteractor &)
-  0x8021900c  InteractorModule::ObjectManipulator::OnCreate(void)
-  0x80219040  InteractorModule::ObjectManipulator::OnDestroy(void)
-  0x802191f0  InteractorModule::ObjectManipulator::OnStop(void)
-  0x80219488  InteractorModule::ObjectManipulator::PreDraw(InteractorModule::InteractorVisualizer &)
-  0x802194b4  InteractorModule::ObjectManipulator::Draw(InteractorModule::InteractorVisualizer &)
-  0x8021a044  InteractorModule::GrabManipulator::OnCreate(void)
-  0x8021a188  InteractorModule::PlaceManipulator::OnCreate(void)
-  0x8021a1c0  InteractorModule::PlaceManipulator::OnStart(InteractorModule::Interactor::InteractorParams *)
-  0x8021c344  InteractorModule::PlacementObject::ResetDirection(void)
-  0x8021cd90  InteractorModule::GrabManipulator::~GrabManipulator(void)
-  0x8021cdc8  InteractorModule::PlaceManipulator::~PlaceManipulator(void)
-  0x8021d3f4  InteractorModule::SimInteractor::OnCreate(void)
-  0x8021d428  InteractorModule::SimInteractor::OnDestroy(void)
-  0x8021e018  InteractorModule::SimInteractor::PreDraw(InteractorModule::InteractorVisualizer &)
-  0x8021e044  InteractorModule::SimInteractor::Draw(InteractorModule::InteractorVisualizer &)
-  0x8021e598  InteractorModule::SimInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float)
-  0x8021e5d8  InteractorModule::SimInteractor::ResetInputState(void)
-  0x8021e8a8  InteractorModule::SimInteractor::GetSelectionRadius(void)
-  0x8021f198  InteractorModule::SocialModeInteractor::OnCreate(void)
-  0x8021f1d4  InteractorModule::SocialModeInteractor::OnDestroy(void)
-  0x8021f3e8  InteractorModule::SocialModeInteractor::ResetInputState(void)
-  0x8021f41c  InteractorModule::SocialModeInteractor::PreDraw(InteractorModule::InteractorVisualizer &)
-  0x8021f448  InteractorModule::SocialModeInteractor::Draw(InteractorModule::InteractorVisualizer &)
-  0x8021f808  InteractorModule::WallManipulator::OnDestroy(void)
-  0x80221b54  InteractorModule::WallManipulator::GetTexGenMode(void)
-  0x8022448c  InteractorModule::WallPainter::OnStop(void)
-  0x80226a20  InteractorModule::WallPainter::SaveInHoldPos(EVec3 &)
-  0x803b95ac  InteractorModule::GrabManipulator::GrabManipulatorParams::~GrabManipulatorParams(void)
-  0x803b95e0  InteractorModule::PlaceManipulator::PlaceManipulatorParams::~PlaceManipulatorParams(void)
-  0x803b9614  InteractorModule::FloorPainter::FloorPainterParams::~FloorPainterParams(void)
-  0x803b9648  InteractorModule::WallManipulator::WallManipulatorParams::~WallManipulatorParams(void)
-  0x803b967c  InteractorModule::WallPainter::WallPainterParams::~WallPainterParams(void)
-  0x803bd340  InteractorModule::Interactor::CallbackData::~CallbackData(void)
-  0x803bd374  InteractorModule::FloorPainter::CallbackData::~CallbackData(void)
-  0x803c08c4  InteractorModule::GrabManipulator::CallbackData::~CallbackData(void)
-  0x803c08f8  InteractorModule::PlaceManipulator::CallbackData::~CallbackData(void)
-
-[WrapperPaneBase] — 41 functions
-  0x80084a8c  WrapperPaneBase::Startup(void)
-  0x8008507c  WrapperPaneBase::SetItemText(ItemType, int, unsigned wchar_t *)
-  0x80085148  WrapperPaneBase::SetItemStyle(ItemType, int, ItemStyle)
-  0x8008532c  WrapperPaneBase::SetItemShader(ItemType, int, unsigned int)
-  0x8008633c  WrapperPaneBase::UpdateAptButtonPosX(WrapperPaneBase::ButtonType)
-  0x8008636c  WrapperPaneBase::UpdateAptButtonPosY(WrapperPaneBase::ButtonType)
-  0x8008639c  WrapperPaneBase::UpdateAptButtonWidth(WrapperPaneBase::ButtonType)
-  0x80087a68  WrapperPaneBase::EnableDraw(void)
-  0x80087a98  WrapperPaneBase::DisableDraw(void)
-  0x80087cc4  WrapperPaneBase::GetTextItem(int)
-  0x80087cec  WrapperPaneBase::GetButtonItem(int)
-  0x80087d14  WrapperPaneBase::GetMenuItem(int)
-  0x80087d3c  WrapperPaneBase::GetIconItem(int)
-  0x80087d64  WrapperPaneBase::SetTextItemText(int, unsigned wchar_t *)
-  0x80087d90  WrapperPaneBase::SetTextItemFont(int, ERFont *)
-  0x80087dbc  WrapperPaneBase::SetTextItemFontSize(int, float)
-  0x80087de4  WrapperPaneBase::SetTextItemStyle(int, ItemStyle)
-  0x80087e10  WrapperPaneBase::SetTextItemPos(int, EVec2 &)
-  0x80087e3c  WrapperPaneBase::SetTextItemPosX(int, float)
-  0x80087e64  WrapperPaneBase::SetTextItemPosY(int, float)
-  0x80087e8c  WrapperPaneBase::SetButtonItemText(int, unsigned wchar_t *)
-  0x80087eb8  WrapperPaneBase::SetButtonItemFont(int, ERFont *)
-  0x80087ee4  WrapperPaneBase::SetButtonItemFontSize(int, float)
-  0x80087f0c  WrapperPaneBase::SetButtonItemStyle(int, ItemStyle)
-  0x80087f38  WrapperPaneBase::SetButtonItemPos(int, EVec2 &)
-  0x80087f64  WrapperPaneBase::SetButtonItemPosX(int, float)
-  0x80087f8c  WrapperPaneBase::SetButtonItemPosY(int, float)
-  0x80087fb4  WrapperPaneBase::SetMenuItemText(int, unsigned wchar_t *)
-  0x80087fe0  WrapperPaneBase::SetMenuItemFont(int, ERFont *)
-  0x8008800c  WrapperPaneBase::SetMenuItemFontSize(int, float)
-  0x80088034  WrapperPaneBase::SetMenutItemStyle(int, ItemStyle)
-  0x80088060  WrapperPaneBase::SetMenuItemPos(int, EVec2 &)
-  0x8008808c  WrapperPaneBase::SetMenuItemPosX(int, float)
-  0x800880b4  WrapperPaneBase::SetMenuItemPosY(int, float)
-  0x800880dc  WrapperPaneBase::SetIconItemShader(int, unsigned int)
-  0x80088108  WrapperPaneBase::SetIconItemPos(int, EVec2 &)
-  0x80088134  WrapperPaneBase::SetIconItemPosX(int, float)
-  0x8008815c  WrapperPaneBase::SetIconItemPosY(int, float)
-  0x80088184  WrapperPaneBase::SetIconItemSize(int, EVec2 &)
-  0x800881b0  WrapperPaneBase::SetIconItemSizeX(int, float)
-  0x800881d8  WrapperPaneBase::SetIconItemSizeY(int, float)
-
-[TArray] — 31 functions
-  0x803c187c  TArray<EFileSystem::FileCreator, TArrayDefaultAllocator>::TArray(void)
+[TArray] — 19 functions
   0x803c1cfc  TArray<ENDummyPoint, TArrayDefaultAllocator>::TArray(void)
-  0x803c256c  TArray<int, TArrayDefaultAllocator>::TArray(void)
-  0x803c25b8  TArray<int, TArrayDefaultAllocator>::Copy(int *, int *, int)
-  0x803c2708  TArray<int, TArrayDefaultAllocator>::CopyReverse(int *, int *, int)
-  0x803c2f2c  TArray<unsigned char *, TArrayDefaultAllocator>::TArray(void)
-  0x803c3078  TArray<unsigned char *, TArrayDefaultAllocator>::Copy(unsigned char **, unsigned char **, int)
-  0x803c31c8  TArray<unsigned char *, TArrayDefaultAllocator>::CopyReverse(unsigned char **, unsigned char **, int)
   0x803c3790  TArray<ESubModelShader, TArrayERModelAllocator>::TArray(void)
-  0x803c3dc0  TArray<unsigned int, TArrayDefaultAllocator>::Copy(unsigned int *, unsigned int *, int)
   0x803c40a4  TArray<ESMSStrip, TArrayERModelAllocator>::TArray(void)
   0x803c41f0  TArray<ESubModel, TArrayERModelAllocator>::TArray(void)
   0x803c4310  TArray<SimsLightInfo, TArrayERModelAllocator>::TArray(void)
@@ -130,61 +18,29 @@ UNMATCHED 40-64B TARGETS: 826
   0x803c4798  TArray<ENCamera, TArrayERModelAllocator>::TArray(void)
   0x803c7ac4  TArray<ENCameraPoint, TArrayDefaultAllocator>::TArray(void)
   0x803c7b94  TArray<EFontPage *, TArrayDefaultAllocator>::TArray(void)
-  0x803c7f28  TArray<EFontPage *, TArrayDefaultAllocator>::Copy(EFontPage **, EFontPage **, int)
   0x803c8f34  TArray<EAnimNodeDataPos, TArrayERAnimAllocator>::TArray(void)
   0x803c9068  TArray<float, TArrayERAnimAllocator>::TArray(void)
   0x803c9154  TArray<EAnimEvent, TArrayERAnimAllocator>::TArray(void)
   0x803c922c  TArray<EAnimNodeDataPos, TArrayERAnimAllocator>::Construct(EAnimNodeDataPos *, int)
-  0x803c9440  TArray<float, TArrayERAnimAllocator>::Copy(float *, float *, int)
   0x803c9900  TArray<ECharacterNode, TArrayERCharacterAllocator>::TArray(void)
   0x803c9ab8  TArray<int, TArrayERCharacterAllocator>::TArray(void)
   0x803ca014  TArray<TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>, TArrayERSoundEventAllocator>::TArray(void)
   0x803ca1dc  TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>::TArray(void)
-  0x803ca258  TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>::Construct(SndEvtHitPatch *, int)
-  0x803ca284  TArray<SndEvtHitPatch, TArrayERSoundEventAllocator>::Copy(SndEvtHitPatch *, SndEvtHitPatch *, int)
 
-[INVTarget] — 22 functions
-  0x801f11f4  INVTarget::SetBudgetCheatString(int)
-  0x801f1228  INVTarget::GetMaxWCharBufSize(unsigned wchar_t *)
-  0x801f14c0  INVTarget::StartActionMenu(void)
-  0x801f15fc  INVTarget::PlaceModeCallback(InteractorModule::PlaceManipulator::CallbackData *)
-  0x801f1974  INVTarget::WallManipulatorCallback(InteractorModule::WallManipulator::CallbackData *)
-  0x801f1b6c  INVTarget::WallPainterCallback(InteractorModule::WallPainter::CallbackData *)
-  0x801f1b94  INVTarget::FloorModeCallback(InteractorModule::FloorPainter::CallbackData *)
-  0x801f1ddc  INVTarget::GrabModeCallback(InteractorModule::GrabManipulator::CallbackData *)
-  0x801f2370  INVTarget::InstallBldVariables(void)
-  0x801f451c  INVTarget::SetOnMsgInvNextTab(char *)
-  0x801f4550  INVTarget::SetOnMsgInvPrevTab(char *)
-  0x801f6570  INVTarget::SetOnMsgInvShpCurrentCell(char *)
-  0x801f66b8  INVTarget::GetOnMsgInvBackExitReset(char *)
-  0x801f673c  INVTarget::GetOnMsgInvCurrentTab(char *)
-  0x801f677c  INVTarget::GetOnMsgInvCurrentCell(char *)
-  0x801f67bc  INVTarget::GetOnMsgInvTabCount(char *)
-  0x801f67f0  INVTarget::GetOnMsgInvInventoryCount(char *)
-  0x801f6824  INVTarget::GetOnMsgInvInventoryReady(char *)
-  0x801f6954  INVTarget::GetOnMsgInvShpResourcesReady(char *)
-  0x801f7470  INVTarget::GetOnMsgInvShpDefaultColor(char *)
-  0x801f7fa8  INVTarget::SetInvBldItemCount(void)
-  0x80203d30  INVTarget::GetSelectedShoppingCategory(void)
+[InteractorModule] — 11 functions
+  0x80205748  InteractorModule::DirectInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float)
+  0x80209454  InteractorModule::Interactor::UpdateObjectHighlights(EIObjectMan *)
+  0x802136cc  InteractorModule::GetInteractorResourceSet(InteractorModule::Interactor *)
+  0x8021900c  InteractorModule::ObjectManipulator::OnCreate(void)
+  0x80219040  InteractorModule::ObjectManipulator::OnDestroy(void)
+  0x8021d3f4  InteractorModule::SimInteractor::OnCreate(void)
+  0x8021d428  InteractorModule::SimInteractor::OnDestroy(void)
+  0x8021e598  InteractorModule::SimInteractor::OnCommandUpdate(InteractorModule::InteractorInputManager::InteractorCommand, float)
+  0x8021f198  InteractorModule::SocialModeInteractor::OnCreate(void)
+  0x8021f1d4  InteractorModule::SocialModeInteractor::OnDestroy(void)
+  0x8021f3e8  InteractorModule::SocialModeInteractor::ResetInputState(void)
 
-[H2DTarget] — 15 functions
-  0x801b8db0  H2DTarget::SpawnModelessDialog(UIDialog *)
-  0x801b8ddc  H2DTarget::CleanupModelessDialogs(void)
-  0x801b8e08  H2DTarget::CountModelessDialogs(void)
-  0x801b8ec8  H2DTarget::RemoveAction(int, Interaction *)
-  0x801b8f04  H2DTarget::RemoveAllActions(int)
-  0x801b8fd8  H2DTarget::SKLInWarning(int, bool)
-  0x801b9014  H2DTarget::MOTInWarning(int, bool)
-  0x801b9050  H2DTarget::WAFInWarning(int, bool, bool)
-  0x801b9088  H2DTarget::SetMoodMeterValue(int, float, bool)
-  0x801b91e4  H2DTarget::SetInteractionDisplayValues(int, unsigned int, unsigned int)
-  0x801b9220  H2DTarget::TriggerInteractionAnimation(int, unsigned int, unsigned int, unsigned int)
-  0x801b9260  H2DTarget::DisplayPaused(void)
-  0x801b928c  H2DTarget::DisplayFastForward(void)
-  0x801b92b8  H2DTarget::CSIMSetIconDisable(int, bool)
-  0x801b92e8  H2DTarget::INTMirrorUpArrow(int, bool)
-
-[ERLevel] — 13 functions
+[ERLevel] — 10 functions
   0x80231b90  ERLevel::AddInstancesFromList(TNodeList<EInstance *> &)
   0x802331bc  ERLevel::InsertInstance(EInstance *, EInstance *)
   0x80233b9c  ERLevel::AddInstanceToIdMap(EInstance *)
@@ -195,192 +51,21 @@ UNMATCHED 40-64B TARGETS: 826
   0x80234368  ERLevel::UpdateLightGrid(void)
   0x80236570  ERLevel::DrawDOFForegroundObjects(void)
   0x80237784  ERLevel::OutsideLightsInit(float, LevelLightingEntry &)
-  0x80238034  ERLevel::New(void)
-  0x80238060  ERLevel::Construct(ERLevel *)
-  0x802381b0  ERLevel::operator new(unsigned int)
 
-[DlgWrapper] — 11 functions
-  0x8007e718  DlgWrapper::SetDialogSizeY(float)
-  0x8007e954  DlgWrapper::SetBodyPosX(float)
-  0x8007e990  DlgWrapper::SetBodyPosY(float)
-  0x8007e9cc  DlgWrapper::SetAcceptText(unsigned wchar_t *)
-  0x8007eba8  DlgWrapper::SetDeclineText(unsigned wchar_t *)
-  0x8007ed84  DlgWrapper::SetAlt1Text(unsigned wchar_t *)
-  0x8007ef60  DlgWrapper::SetBodyPadSize(EVec2 &)
-  0x8007ef9c  DlgWrapper::SetButtonContext(char *)
-  0x8007efdc  DlgWrapper::AddAcceptButton(unsigned wchar_t *)
-  0x8007f00c  DlgWrapper::AddDeclineButton(unsigned wchar_t *)
-  0x8007f03c  DlgWrapper::AddAlt1Button(unsigned wchar_t *)
-
-[HUDTarget] — 11 functions
-  0x80186dd4  HUDTarget::IncPause(bool)
-  0x80186e04  HUDTarget::ReleasePause(bool)
-  0x80187f24  HUDTarget::OnPlayerHUDShow(int)
-  0x80187f54  HUDTarget::OnPlayerHUDHide(int)
-  0x80188d3c  HUDTarget::CompleteMenu(int)
-  0x80188d7c  HUDTarget::ShowMenu(int)
-  0x80188e34  HUDTarget::CloseMenu(int)
-  0x801892a8  HUDTarget::AddHUDControl(short, short, short &)
-  0x801892d4  HUDTarget::RemoveHUDControl(short, short)
-  0x80189408  HUDTarget::SetJobBarInputRange(int, int, int)
-  0x801899e8  HUDTarget::GotoMainMenu(void)
-
-[CTilePt] — 10 functions
-  0x800b4560  CTilePt::GetXf(void) const
-  0x800b4598  CTilePt::GetYf(void) const
-  0x800b476c  CTilePt::operator==(CTilePt &) const
-  0x800b479c  CTilePt::operator!=(CTilePt &) const
-  0x800b4810  CTilePt::operator+=(CTilePt &)
-  0x800b4838  CTilePt::operator-=(CTilePt &)
-  0x800b4860  CTilePt::operator*=(int)
-  0x800b4cdc  CTilePt::Get(int *, int *, int *) const
-  0x800b4d78  CTilePt::Set(float, float)
-  0x800b4da8  CTilePt::Set(float, float, int)
-
-[cXPersonImpl] — 10 functions
-  0x80123704  cXPersonImpl::GetCurrentRoute(void)
-  0x8012b528  cXPersonImpl::IsFemale(void)
-  0x8012b564  cXPersonImpl::IsAdult(void)
-  0x8012b5a0  cXPersonImpl::InvalidateRoutes(void)
-  0x8012b754  cXPersonImpl::IsModelLoaded(void)
-  0x8012c6e4  cXPersonImpl::CountActions(bool)
-  0x8012c7fc  cXPersonImpl::GetNeighborID(void) const
-  0x8012c878  cXPersonImpl::IsRouting(void)
-  0x8012c928  cXPersonImpl::SetInvisible(bool)
-  0x8012c950  cXPersonImpl::SetIsAlien(bool)
-
-[EyeToyClient] — 9 functions
-  0x80037a5c  EyeToyClient::ReleaseTexture(ETexture *)
-  0x80037b40  EyeToyClient::ReleaseRenderSurface(ERenderSurface *)
-  0x800384e8  EyeToyClient::UnpluggedCallback(int)
-  0x80038fb0  EyeToyClient::IsEyeToyHardwarePresent(void)
-  0x800391b4  EyeToyClient::IsSlotOpenForCASImage(int, int)
-  0x80039240  EyeToyClient::RestoreDefaults(void)
-  0x80039344  EyeToyClient::SetSaturation(float)
-  0x80039378  EyeToyClient::GetHue(void)
-  0x8003944c  EyeToyClient::SetBrightness(float)
-
-[SAnimator2] — 9 functions
-  0x8005d6a0  SAnimator2::IsSkillIdleAnimRunning(void)
-  0x800653f8  SAnimator2::GetBonePosAndDirForParticle(unsigned int, EMat4 &)
-  0x800655a4  SAnimator2::convertAnimationFormatToEngineFormat(EVec3 &, EVec3 &)
-  0x8006643c  SAnimator2::triggerCameraBlur(CameraBlurDataElement *)
-  0x80066f00  SAnimator2::lockHandsUpCarryNodes(void)
-  0x80066f40  SAnimator2::lockCarryArmNodes(float *, EACTrack *)
-  0x80066f80  SAnimator2::lockCarryArmNodes(float *, int)
-  0x8006908c  SAnimator2::operator delete(void *)
-  0x8006912c  SAnimator2::setAnimationDirectionToPersonDirection(void)
-
-[cXObjectImpl] — 9 functions
-  0x800dd408  cXObjectImpl::IsContained(void)
-  0x800dd49c  cXObjectImpl::GetContainedSlotNum(void)
-  0x800eaa00  cXObjectImpl::Kill(void)
-  0x800eaa80  cXObjectImpl::IsRenderingRoot(void)
-  0x800eaf44  cXObjectImpl::SimIndependent(void)
-  0x800eb004  cXObjectImpl::GetIdleStatus(void)
-  0x800eb080  cXObjectImpl::ClearIdleStatus(void)
-  0x800eb688  cXObjectImpl::HasZeroExtent(void)
-  0x800eb89c  cXObjectImpl::HaveGraphicsBeenTagged(void)
-
-[BString] — 7 functions
-  0x8009ddbc  BString::append(char *, unsigned int)
-  0x8009e04c  BString::assign(char *, unsigned int)
-  0x8009e240  BString::insert(unsigned int, char *, unsigned int)
-  0x8009ecf8  BString::c_str(void) const
-  0x8009feb8  BString::operator==(BString &) const
-  0x8009fee8  BString::operator!=(BString &) const
-  0x8009ff20  BString::operator<(BString &) const
-
-[E2ETarget] — 7 functions
+[E2ETarget] — 6 functions
   0x801acc34  E2ETarget::EyeToyUnplugCallback(int)
   0x801acfc8  E2ETarget::SaveCurrentSettings(char *, char *)
   0x801ad004  E2ETarget::RestorePreviousSettings(void)
   0x801ad568  E2ETarget::SetDefault(char *, char *)
   0x801ad820  E2ETarget::OnUpKeyPressed(char *, char *)
   0x801ad860  E2ETarget::OnDownKeyPressed(char *, char *)
-  0x801ae1e4  E2ETarget::ShowHelp(void)
 
-[FamilyImpl] — 7 functions
-  0x800b6334  FamilyImpl::GetMemberByGUID(int)
-  0x800b6368  FamilyImpl::TestMember(int) const
-  0x800b63a4  FamilyImpl::GetIndexedMember(int)
-  0x800b63d8  FamilyImpl::GetName(StringBuffer2 *)
-  0x800b6428  FamilyImpl::GetFriendCount(void)
-  0x800b6464  FamilyImpl::GetNetWorth(void)
-  0x800b67d4  FamilyImpl::SetName(StringBuffer2 *)
-
-[operator<=] — 7 functions
-  0x8009c578  operator<=(char, BString &)
-  0x8009c5a8  operator<=(BString &, char *)
-  0x8009c5d8  operator<=(BString &, char)
-  0x800a0694  operator<=(unsigned wchar_t *, BString2 &)
-  0x800a06c4  operator<=(wchar_t, BString2 &)
-  0x800a06f4  operator<=(BString2 &, unsigned wchar_t *)
-  0x800a0724  operator<=(BString2 &, wchar_t)
-
-[operator==] — 7 functions
-  0x8009c17c  operator==(char, BString &)
-  0x8009c1b8  operator==(BString &, char *)
-  0x800a0260  operator==(BString2 &, BString2 &)
-  0x800a0290  operator==(unsigned wchar_t *, BString2 &)
-  0x800a02c8  operator==(wchar_t, BString2 &)
-  0x800a0304  operator==(BString2 &, unsigned wchar_t *)
-  0x800a0330  operator==(BString2 &, wchar_t)
-
-[CasMediator] — 6 functions
-  0x801620f4  CasMediator::GetNumBodyModels(eBodyPartS2C) const
-  0x80162128  CasMediator::GetNumTattooTextures(eTattooTextureTypeS2C) const
-  0x8016215c  CasMediator::GetIconTextureId(eBodyPartS2C, unsigned int) const
-  0x80162190  CasMediator::GetIconTattooTextureId(eTattooTextureTypeS2C, unsigned int) const
-  0x801621c4  CasMediator::GetIndexes(eBodyPartS2C, unsigned char *, unsigned char *)
-  0x801621f8  CasMediator::GetIndexes(eTattooTextureTypeS2C, unsigned char *, unsigned char *)
-
-[EGlobal] — 6 functions
-  0x8003e1f0  EGlobal::~EGlobal(void)
-  0x8003e538  EGlobal::SetAuthorModeCheats(void)
-  0x800407ac  EGlobal::SimInUseByOtherPlayer(int, cXPerson *)
-  0x800416b8  EGlobal::FreeSpriteRenderer(cXObject *)
-  0x80041a4c  EGlobal::RecalcObjects(void)
-  0x80042358  EGlobal::IsPlayerCheatOn(int) const
-
-[FAMTarget] — 6 functions
-  0x801afcac  FAMTarget::UnloadScreen(void)
-  0x801b0714  FAMTarget::UpdateMenuState(char *, char *)
-  0x801b0d1c  FAMTarget::GetFamilyInFamilyList(int)
-  0x801b3204  FAMTarget::GetFamilyInLot(int)
-  0x801b3244  FAMTarget::LaunchLot(void)
-  0x801b33cc  FAMTarget::GetLotForFamily(int)
-
-[NghResFile] — 6 functions
-  0x800d43fc  NghResFile::FinishMemCardWrite(char *, unsigned char)
-  0x800d53e4  NghResFile::GetThumbIdFromFamilyAndIndex(int, int)
-  0x800d541c  NghResFile::StoreFamilyThumbGUID(int, int, unsigned int)
-  0x800d5484  NghResFile::GetResIDFromThumbGUID(unsigned int)
-  0x800d6c08  NghResFile::AreHouseContentsLoaded(unsigned int) const
-  0x800d8aa8  NghResFile::IsIDRegistered(NghResFile::RegistryID)
-
-[SimpleReconObject] — 6 functions
-  0x803a35d0  SimpleReconObject<FamilyImpl>::DoStream(ReconBuffer *, int)
-  0x803a3834  SimpleReconObject<HouseImpl>::DoStream(ReconBuffer *, int)
-  0x803a6178  SimpleReconObject<NeighborhoodImpl>::DoStream(ReconBuffer *, int)
-  0x803a8220  SimpleReconObject<ObjectFolderImpl>::DoStream(ReconBuffer *, int)
-  0x803a865c  SimpleReconObject<ObjectModuleImpl>::DoStream(ReconBuffer *, int)
-  0x803adf2c  SimpleReconObject<ReconStreamVector<SlotDescriptor> >::DoStream(ReconBuffer *, int)
-
-[cSimulatorImpl] — 6 functions
-  0x80140924  cSimulatorImpl::CommitPendingFunds(void)
-  0x80141324  cSimulatorImpl::IsPausedAtAll(void)
-  0x80141a5c  cSimulatorImpl::PostSecondOfDay(int)
-  0x80141a8c  cSimulatorImpl::IsStopped(void)
-  0x80141b28  cSimulatorImpl::SetArchValue(int)
-  0x80141b60  cSimulatorImpl::SetObjectsValue(int)
-
-[BBI] — 5 functions
-  0x8004a0c4  BBI::InventoryItem::SetItemCategory(BBI::InventoryItem::eItemCategory)
-  0x8004a104  BBI::InventoryItem::SetItemSubcategory(BBI::InventoryItem::eItemSubcategory)
-  0x8004a214  BBI::InventoryItem::SetItemGuid(int)
-  0x8004a2a4  BBI::InventoryItem::SetItemColorIndex(unsigned char)
-  0x8004a2e0  BBI::InventoryItem::CopyTo(BBI::InventoryItem *) const
+[BString] — 5 functions
+  0x8009ddbc  BString::append(char *, unsigned int)
+  0x8009e04c  BString::assign(char *, unsigned int)
+  0x8009e240  BString::insert(unsigned int, char *, unsigned int)
+  0x8009feb8  BString::operator==(BString &) const
+  0x8009ff20  BString::operator<(BString &) const
 
 [BString2] — 5 functions
   0x800a21f8  BString2::append(unsigned wchar_t *, unsigned int)
@@ -389,79 +74,12 @@ UNMATCHED 40-64B TARGETS: 826
   0x800a47c4  BString2::operator==(BString2 &) const
   0x800a482c  BString2::operator<(BString2 &) const
 
-[CasSimRendererDynamic] — 5 functions
-  0x8016fc14  CasSimRendererDynamic::~CasSimRendererDynamic(void)
-  0x801701dc  CasSimRendererDynamic::IsShirtIdleAnim(unsigned int)
-  0x8017021c  CasSimRendererDynamic::IsShoeIdleAnim(unsigned int)
-  0x80170244  CasSimRendererDynamic::IsPantIdleAnim(unsigned int)
-  0x80170278  CasSimRendererDynamic::IsRegularIdleAnim(unsigned int)
-
-[EIStaticModel] — 5 functions
-  0x8022bb8c  EIStaticModel::GetBoundSphere(EBoundSphere &)
-  0x8022be08  EIStaticModel::SetModel(unsigned int, bool, EInstance *, EAnimController *)
-  0x8022c834  EIStaticModel::VisibilityTest(E3DWindow &)
-  0x8022df1c  EIStaticModel::GetInstName(EInstance::InstType &)
-  0x8022dfe0  EIStaticModel::Construct(EIStaticModel *)
-
-[ESimsCam] — 5 functions
-  0x80016a8c  ESimsCam::Init(void)
-  0x80017a90  ESimsCam::CalcTiltFromZoom(float)
-  0x80019364  ESimsCam::PointOffScreen(EVec3 &)
-  0x8001a03c  ESimsCam::GetCursorLimitTopWidth(void)
-  0x8001a074  ESimsCam::GetCursorLimitDepth(void)
-
-[INGTarget] — 5 functions
-  0x801bbbf0  INGTarget::get_current_ingredient(void)
-  0x801bbccc  INGTarget::get_ingredient_type(INGTarget::IngInfo &) const
-  0x801bc114  INGTarget::get_grid_ingredient(short)
-  0x801bc154  INGTarget::get_mix_ingredient(short) const
-  0x801bca10  INGTarget::exit_ingredients_dialog_selection_callback(int)
-
-[ObjSelector] — 5 functions
-  0x80110754  ObjSelector::Writable(void)
-  0x80111060  ObjSelector::GetThumbnailHasShadow(void)
-  0x80111090  ObjSelector::GetRuntimeHasShadow(void)
-  0x801110c0  ObjSelector::GetHasGraphics(void)
-  0x80111148  ObjSelector::GetIsMultiTileSubObject(void)
-
-[ObjectFolderImpl] — 5 functions
-  0x800efd90  ObjectFolderImpl::DeletingInstance(ObjSelector *)
-  0x800f0884  ObjectFolderImpl::GetPlaceholder(void)
-  0x800f1264  ObjectFolderImpl::GetTypeAttrBlock(int)
-  0x800f129c  ObjectFolderImpl::Save(iResFile *)
-  0x800f12cc  ObjectFolderImpl::Load(iResFile *)
-
-[ObjectModuleImpl] — 5 functions
-  0x800f9434  ObjectModuleImpl::AdvanceSelectedPerson(int)
-  0x800f9578  ObjectModuleImpl::SetSimFlag(int, ObjectModule::SimFlag, bool)
-  0x800f95b0  ObjectModuleImpl::GetSimFlag(int, ObjectModule::SimFlag)
-  0x800f95f0  ObjectModuleImpl::SetIdleStatus(int, int)
-  0x800f9820  ObjectModuleImpl::GetNumObjects(void)
-
-[cTrack] — 5 functions
-  0x80118074  cTrack::GetVHitList(int)
-  0x80118a64  cTrack::SetCompareFlags(int, int)
-  0x80118c24  cTrack::SetVolume(int)
-  0x80118c4c  cTrack::SetPan(int)
-  0x80119de8  cTrack::CheckedRegId(int)
-
-[CASTarget] — 4 functions
-  0x8019314c  CASTarget::GetLotNumberFromMode(int)
-  0x80195c40  CASTarget::ShowAllCFAOptions(void)
-  0x8019632c  CASTarget::DialogOKSelectionCallback(int)
-  0x801a0818  CASTarget::HasSimInSlot(int) const
-
-[CTGFileImpl] — 4 functions
-  0x8007cef0  CTGFileImpl::Read(void *, int)
-  0x8007cf30  CTGFileImpl::Seek(int)
-  0x8007cf5c  CTGFileImpl::SeekPastEnd(int)
-  0x8007cf88  CTGFileImpl::Tell(void)
-
-[CasSimPartsS2C] — 4 functions
-  0x8016cd30  CasSimPartsS2C::OuterLayerTorsoRequiresFullTorsoMeshInMidLayer(unsigned int) const
-  0x8016cd58  CasSimPartsS2C::OuterLayerTorsoHidesMusicPlayer(unsigned int) const
-  0x8016d508  CasSimPartsS2C::GetGameStateModelID(unsigned int) const
-  0x8016d534  CasSimPartsS2C::GetGameStateTextureID(unsigned int) const
+[SAnimator2] — 5 functions
+  0x8005d6a0  SAnimator2::IsSkillIdleAnimRunning(void)
+  0x800653f8  SAnimator2::GetBonePosAndDirForParticle(unsigned int, EMat4 &)
+  0x800655a4  SAnimator2::convertAnimationFormatToEngineFormat(EVec3 &, EVec3 &)
+  0x8006643c  SAnimator2::triggerCameraBlur(CameraBlurDataElement *)
+  0x80066f80  SAnimator2::lockCarryArmNodes(float *, int)
 
 [ChainResFile] — 4 functions
   0x800b1e98  ChainResFile::AddFile(iResFile *)
@@ -469,11 +87,11 @@ UNMATCHED 40-64B TARGETS: 826
   0x800b2a48  ChainResFile::GetByID(int, short, void (*)(void *, int))
   0x800b3318  ChainResFile::Add(Memory::HandleNode *, int, short, StringBuffer &, bool)
 
-[EIStaticSubModel] — 4 functions
-  0x8022e67c  EIStaticSubModel::GetBoundSphere(EBoundSphere &)
-  0x8022e8ac  EIStaticSubModel::VisibilityTest(E3DWindow &)
-  0x8022f668  EIStaticSubModel::GetInstName(EInstance::InstType &)
-  0x8022f748  EIStaticSubModel::Construct(EIStaticSubModel *)
+[EGlobal] — 4 functions
+  0x8003e1f0  EGlobal::~EGlobal(void)
+  0x800416b8  EGlobal::FreeSpriteRenderer(cXObject *)
+  0x80041a4c  EGlobal::RecalcObjects(void)
+  0x80042358  EGlobal::IsPlayerCheatOn(int) const
 
 [ESimsApp] — 4 functions
   0x80004398  ESimsApp::~ESimsApp(void)
@@ -487,76 +105,26 @@ UNMATCHED 40-64B TARGETS: 826
   0x803a154c  StartScreenStartState::GetFlowStateRequest(void)
   0x803a1574  StartScreenStartState::SetFlowStateCurrent(void)
 
-[TextBaseItem] — 4 functions
-  0x80087214  TextBaseItem::SetDisplaySize(EVec2 &)
-  0x80087264  TextBaseItem::SetDisplayPadSize(EVec2 &)
-  0x800872b4  TextBaseItem::SetVerticalCenter(bool)
-  0x800872e0  TextBaseItem::SetYPosCentered(bool)
+[cTrack] — 4 functions
+  0x80118a64  cTrack::SetCompareFlags(int, int)
+  0x80118c24  cTrack::SetVolume(int)
+  0x80118c4c  cTrack::SetPan(int)
+  0x80119de8  cTrack::CheckedRegId(int)
 
-[UIObjectBase] — 4 functions
-  0x80177a64  UIObjectBase::pushAptButtonFilter(int, char *)
-  0x80177a98  UIObjectBase::popAptButtonFilter(int, unsigned int)
-  0x80177acc  UIObjectBase::addCmdToAptButtonFilter(int, unsigned int, ECTRL_CMD)
-  0x80177b08  UIObjectBase::removeCmdFromAptButtonFilter(int, unsigned int, ECTRL_CMD)
+[CASTarget] — 3 functions
+  0x80195c40  CASTarget::ShowAllCFAOptions(void)
+  0x8019632c  CASTarget::DialogOKSelectionCallback(int)
+  0x801a0818  CASTarget::HasSimInSlot(int) const
 
-[UIScreenManager] — 4 functions
-  0x8017fc74  UIScreenManager::IsScreenManaged(UIScreenID)
-  0x8017feb8  UIScreenManager::FindRecordIndexByID(UIScreenID)
-  0x8018003c  UIScreenManager::IsUIScreenUnloaded(UIScreenID)
-  0x80180308  UIScreenManager::PopQueue(int)
-
-[WantFear] — 4 functions
-  0x8014ab70  WantFear::Bookmark::Bookmark(void)
-  0x8014ac40  WantFear::Bookmark::IsPlatinum(void) const
-  0x8014ac74  WantFear::Bookmark::IsFear(void) const
-  0x8014ae08  WantFear::Bookmark::IsInStoryTree(void) const
-
-[_c2DArray] — 4 functions
-  0x800d1c38  _c2DArray::RemoveArray(_c2DArray *)
-  0x800d22e4  _c2DArray::CopyFrom(BString &)
-  0x800d2394  _c2DArray::CopyTo(_c2DArray *)
-  0x800d23c0  _c2DArray::CopyTo(BString &)
-
-[global] — 4 functions
-  0x803a541c  void pop_heap<FamilyImpl **, bool (*)(Family *&, Family *&)>(FamilyImpl **, FamilyImpl **, bool (*)(Family *&, Family *&))
-  0x803a5ba0  void pop_heap<int *, bool (*)(int &, int &)>(int *, int *, bool (*)(int &, int &))
-  0x803a6c54  void pop_heap<ObjSelector **, bool (*)(ObjSelector *, ObjSelector *)>(ObjSelector **, ObjSelector **, bool (*)(ObjSelector *, ObjSelector *))
-  0x803afe5c  void pop_heap<CasSimDescriptionS2C **, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *)>(CasSimDescriptionS2C **, CasSimDescriptionS2C **, bool (*)(CasSimDescriptionS2C *, CasSimDescriptionS2C *))
-
-[Behavior] — 3 functions
-  0x800ab9b4  Behavior::GetBaseID(short)
-  0x800ab9f4  Behavior::GetMaxID(short)
-  0x800ad17c  Behavior::IsDefaultParam(BehaviorNodeParam *)
-
-[BitArray64] — 3 functions
-  0x8009b740  BitArray64::~BitArray64(void)
-  0x8009b924  BitArray64::operator&=(BitArray64 &)
-  0x8009b94c  BitArray64::operator^=(BitArray64 &)
-
-[CDirtyXmlNode] — 3 functions
-  0x8023aa04  CDirtyXmlNode::getFirstChildNode(void)
-  0x8023aa40  CDirtyXmlNode::getNextChildNode(void)
-  0x8023aab0  CDirtyXmlNode::lastChild(void)
-
-[CareersImpl] — 3 functions
-  0x800b179c  CareersImpl::GetJobGrade(int)
-  0x800b1ab0  CareersImpl::GetJobName(Job &, bool)
-  0x800b1ae8  CareersImpl::GetShortName(Job &, bool)
+[CTGFileImpl] — 3 functions
+  0x8007cf30  CTGFileImpl::Seek(int)
+  0x8007cf5c  CTGFileImpl::SeekPastEnd(int)
+  0x8007cf88  CTGFileImpl::Tell(void)
 
 [CasSimDescriptionS2C] — 3 functions
   0x801672fc  CasSimDescriptionS2C::CasSimDescriptionS2C(void)
   0x80169af8  CasSimDescriptionS2C::SetMidLayerTorsoStyle(Sim::MidLayerTorsoStyleS2C, CasSimPartsS2C &)
   0x8016a4e8  CasSimDescriptionS2C::SetShoeBoottopDisplayedFlag(CasSimPartsS2C &)
-
-[CreateASimBaseState] — 3 functions
-  0x80089214  CreateASimBaseState::GetDatasetName(char *)
-  0x80089910  CreateASimBaseState::CASAccepted(void)
-  0x80089938  CreateASimBaseState::CASCanceled(void)
-
-[EGameStateMan] — 3 functions
-  0x80089b30  EGameStateMan::AddState(EGameState *)
-  0x80089b68  EGameStateMan::KillState(void)
-  0x80089d3c  EGameStateMan::Draw(ERC *)
 
 [EIFloor] — 3 functions
   0x80047600  EIFloor::VisibilityTest(E3DWindow &)
@@ -568,75 +136,65 @@ UNMATCHED 40-64B TARGETS: 826
   0x802276b0  EIGameInstance::~EIGameInstance(void)
   0x80227750  EIGameInstance::New(void)
 
-[LoadingScreenStateMachine] — 3 functions
-  0x80090d18  LoadingScreenStateMachine::LoadFinishedNow(void)
-  0x80090da4  LoadingScreenStateMachine::LoadFinishNow(void)
-  0x80090f7c  LoadingScreenStateMachine::IsFadingIn(void)
+[EIStaticModel] — 3 functions
+  0x8022bb8c  EIStaticModel::GetBoundSphere(EBoundSphere &)
+  0x8022be08  EIStaticModel::SetModel(unsigned int, bool, EInstance *, EAnimController *)
+  0x8022c834  EIStaticModel::VisibilityTest(E3DWindow &)
 
-[M2MTarget] — 3 functions
-  0x801c1094  M2MTarget::OnSlotSelectItemSelected(int, M2MTarget::ResultStruct &)
-  0x801c10c8  M2MTarget::OnGetNumItems(M2MTarget::ResultStruct &)
-  0x801c1110  M2MTarget::SetDevice(int)
+[EIStaticSubModel] — 3 functions
+  0x8022e67c  EIStaticSubModel::GetBoundSphere(EBoundSphere &)
+  0x8022e8ac  EIStaticSubModel::VisibilityTest(E3DWindow &)
+  0x8022f748  EIStaticSubModel::Construct(EIStaticSubModel *)
+
+[EyeToyClient] — 3 functions
+  0x80038fb0  EyeToyClient::IsEyeToyHardwarePresent(void)
+  0x80039240  EyeToyClient::RestoreDefaults(void)
+  0x80039378  EyeToyClient::GetHue(void)
 
 [Neighbor] — 3 functions
   0x800ca348  Neighbor::GetRelationship(Neighbor *, int *)
   0x800ca924  Neighbor::GetAspirationScore(void)
   0x800ca950  Neighbor::SetAspirationScore(float)
 
-[O2TTarget] — 3 functions
-  0x801cef60  O2TTarget::RememberAudioOptions(void)
-  0x801cf028  O2TTarget::RememberGameOptions(void)
-  0x801cf054  O2TTarget::RestoreGameOptions(void)
-
-[R2LTarget] — 3 functions
-  0x801dcd88  R2LTarget::GridIndexToRecordIndex(int)
-  0x801dcdb4  R2LTarget::OldGridIndexToRecordIndex(int)
-  0x801dce00  R2LTarget::ScrollRightEnabled(void)
+[ObjSelector] — 3 functions
+  0x80111060  ObjSelector::GetThumbnailHasShadow(void)
+  0x80111090  ObjSelector::GetRuntimeHasShadow(void)
+  0x80111148  ObjSelector::GetIsMultiTileSubObject(void)
 
 [RelMatrixImpl] — 3 functions
   0x80134f8c  RelMatrixImpl::FindArray(int)
   0x80134fcc  RelMatrixImpl::GetValue(int, int)
   0x801354d4  RelMatrixImpl::GetNthKey(int)
 
-[RepTitleSupport] — 3 functions
-  0x80190224  RepTitleSupport::GetRepTableRawTitle(int)
-  0x8019025c  RepTitleSupport::GetRepTableRawFriendTitle(int)
-  0x80190294  RepTitleSupport::GetRepTableRawEnemyTitle(int)
-
 [SpriteSlot] — 3 functions
   0x80142f60  SpriteSlot::WriteSlot(SlotDescriptor *)
   0x8014308c  SpriteSlot::ChangeToSprite(int)
   0x80143464  SpriteSlot::Reset(void)
 
-[StringBuffer2] — 3 functions
-  0x800a6ce4  StringBuffer2::StringBuffer2(unsigned wchar_t *, unsigned int)
-  0x800a718c  StringBuffer2::appendChar(wchar_t)
-  0x800a7438  StringBuffer2::assignDebug(StringBuffer &)
-
-[TileWalls] — 3 functions
-  0x80146914  TileWalls::~TileWalls(void)
-  0x80146ff8  TileWalls::SetFloorValue(FloorPattern, DiagonalSideSelector)
-  0x80147020  TileWalls::ConvertToWorldCoords(void)
-
-[UI3D] — 3 functions
-  0x80176f90  UI3D::ContainsEntry(char *)
-  0x80177004  UI3D::GetDisplayObject(char *)
-  0x80177038  UI3D::Instance(void)
+[UIScreenManager] — 3 functions
+  0x8017feb8  UIScreenManager::FindRecordIndexByID(UIScreenID)
+  0x8018003c  UIScreenManager::IsUIScreenUnloaded(UIScreenID)
+  0x80180308  UIScreenManager::PopQueue(int)
 
 [Wrapper] — 3 functions
   0x80086aec  Wrapper::WrapperReadController(bool, int)
   0x80086cd8  Wrapper::FindPaneById(int)
   0x80086d10  Wrapper::FindPane(WrapperPaneBase *)
 
+[WrapperPaneBase] — 3 functions
+  0x80087a68  WrapperPaneBase::EnableDraw(void)
+  0x80087a98  WrapperPaneBase::DisableDraw(void)
+  0x80088034  WrapperPaneBase::SetMenutItemStyle(int, ItemStyle)
+
+[_c2DArray] — 3 functions
+  0x800d1c38  _c2DArray::RemoveArray(_c2DArray *)
+  0x800d22e4  _c2DArray::CopyFrom(BString &)
+  0x800d2394  _c2DArray::CopyTo(_c2DArray *)
+
 [cBoxX] — 3 functions
   0x800adb18  cBoxX::UpdateGameMode(void)
   0x800af5bc  cBoxX::SetAmbientScoreVolume(int)
   0x800b0028  cBoxX::PauseAmbient(void)
-
-[cXMTObjectImpl] — 3 functions
-  0x800c6ad0  cXMTObjectImpl::IsPartOfMe(cXObject *)
-  0x800c7d14  cXMTObjectImpl::GetFirstMultiTileObject(void)
-  0x800c7d60  cXMTObjectImpl::GetISimInstanceBaseVer(void)
 
 [operator<] — 3 functions
   0x8009c3dc  operator<(BString &, char)
@@ -651,41 +209,25 @@ UNMATCHED 40-64B TARGETS: 826
   0x800a9340  AmbientSoundPlayer::Update(void)
   0x800aaa18  AmbientSoundPlayer::IsValid(void)
 
-[AnimTable] — 2 functions
-  0x800aaaac  AnimTable::DestroyInstance(AnimTable *)
-  0x803a2aac  AnimTable::~AnimTable(void)
-
 [AptViewer] — 2 functions
   0x80010358  AptViewer::CallFunction(char *, char *, char *, int,...)
   0x80010d70  AptViewer::RepeatClear(int, int)
 
-[CASGeneticsTarget] — 2 functions
-  0x801a08c0  CASGeneticsTarget::SetWarnOnGenerate(bool)
-  0x801a08f4  CASGeneticsTarget::SetGenerateDefaultSim(bool)
+[Behavior] — 2 functions
+  0x800ab9b4  Behavior::GetBaseID(short)
+  0x800ab9f4  Behavior::GetMaxID(short)
 
 [CASSelectionTarget] — 2 functions
   0x80199e70  CASSelectionTarget::ConvertColRowToOptionIdx(char, int)
   0x8019a488  CASSelectionTarget::ClearTextures(void)
 
-[CTGFileManager] — 2 functions
-  0x8007d354  CTGFileManager::~CTGFileManager(void)
-  0x8007d484  CTGFileManager::ReleaseFile(CTGFile *)
+[CTilePt] — 2 functions
+  0x800b4810  CTilePt::operator+=(CTilePt &)
+  0x800b4860  CTilePt::operator*=(int)
 
 [CUnlockDisplay] — 2 functions
   0x80078bd0  CUnlockDisplay::SetAmbientLight(float, float, float)
   0x80078c08  CUnlockDisplay::HasDrawn(void)
-
-[CUnlockDisplayObject] — 2 functions
-  0x80079a64  CUnlockDisplayObject::SetCharacterID(unsigned int)
-  0x80079a8c  CUnlockDisplayObject::SetAnimationID(unsigned int)
-
-[CameraDirector] — 2 functions
-  0x8001b038  CameraDirector::RegisterCurrentCamera(ESimsCam *, bool)
-  0x8001e68c  CameraDirector::ForceDisableHud(bool)
-
-[CasClothingUnlocks] — 2 functions
-  0x8015f1cc  CasClothingUnlocks::UnlockGroup(unsigned int, bool)
-  0x8015f1f4  CasClothingUnlocks::LockGroup(unsigned int)
 
 [CasEventChangeFocus] — 2 functions
   0x803b3424  CasEventChangeFocus::~CasEventChangeFocus(void)
@@ -723,17 +265,17 @@ UNMATCHED 40-64B TARGETS: 826
   0x8017583c  CasScenePersonal::CasScenePersonal(void)
   0x80175878  CasScenePersonal::~CasScenePersonal(void)
 
-[CasSimRenderer] — 2 functions
-  0x8016f10c  CasSimRenderer::GetNumActiveBodyModels(void)
-  0x8016f13c  CasSimRenderer::UpdateSkin(void)
+[CasSimPartsS2C] — 2 functions
+  0x8016cd30  CasSimPartsS2C::OuterLayerTorsoRequiresFullTorsoMeshInMidLayer(unsigned int) const
+  0x8016cd58  CasSimPartsS2C::OuterLayerTorsoHidesMusicPlayer(unsigned int) const
+
+[CreateASimBaseState] — 2 functions
+  0x80089214  CreateASimBaseState::GetDatasetName(char *)
+  0x80089938  CreateASimBaseState::CASCanceled(void)
 
 [DialogPaneBase] — 2 functions
   0x80088fc8  DialogPaneBase::SetBodyDisplaySize(EVec2 &)
   0x80089024  DialogPaneBase::SetBodyDisplayPadSize(EVec2 &)
-
-[EIAmbLight] — 2 functions
-  0x80226e80  EIAmbLight::Construct(EIAmbLight *)
-  0x80226edc  EIAmbLight::SafeDelete(void)
 
 [EIFenceWall] — 2 functions
   0x80029360  EIFenceWall::GetFenceMeterValue(void)
@@ -743,49 +285,17 @@ UNMATCHED 40-64B TARGETS: 826
   0x80055d3c  EIObjTileBoundRect::Set(EVec2 &)
   0x80055e30  EIObjTileBoundRect::GetCenter(EVec2 &)
 
-[EInstance] — 2 functions
-  0x80228818  EInstance::RemoveFromLevel(void)
-  0x80229618  EInstance::IsHidden(void)
-
-[ELiveMode] — 2 functions
-  0x8008dc0c  ELiveMode::ChangeHouse(void)
-  0x8008fbd0  ELiveMode::TriggerIntroCamera(CameraDirector *)
-
-[ERoomWall] — 2 functions
-  0x8002f81c  ERoomWall::CountWalls(void)
-  0x80030914  ERoomWall::SafeDelete(void)
-
-[EYETarget] — 2 functions
-  0x801e724c  EYETarget::RestorePreviousSetting(void)
-  0x801e8f60  EYETarget::Update(void)
-
-[Emitter] — 2 functions
-  0x80238928  Emitter::Reset(void)
-  0x80238b08  Emitter::GetInstName(EInstance::InstType &)
-
 [FCMTarget] — 2 functions
   0x801b441c  FCMTarget::GetFireCodeMeterLevel(void)
   0x801b4460  FCMTarget::SetMeterHeight(int)
-
-[FloatConstants] — 2 functions
-  0x800b6d20  FloatConstants::DestroyInstance(FloatConstants *)
-  0x803a3670  FloatConstants::~FloatConstants(void)
 
 [FloatConstantsQuickData] — 2 functions
   0x800b6db4  FloatConstantsQuickData::~FloatConstantsQuickData(void)
   0x800b7084  FloatConstantsQuickData::GetDataID(void) const
 
-[G2DTarget] — 2 functions
-  0x801b5a14  G2DTarget::PushAptButtonFilters(void)
-  0x801b7000  G2DTarget::UnloadUI(void)
-
 [GameData] — 2 functions
   0x8003d208  GameData::GotoLiveMode(void)
   0x8003dda8  GameData::SetBuildBuyPlayer(int)
-
-[GetLocalizableCommandTable] — 2 functions
-  0x80178d08  GetLocalizableCommandTable::Instance(void)
-  0x803b1198  GetLocalizableCommandTable::GetLocalizableCommandTableRecord::~GetLocalizableCommandTableRecord(void)
 
 [GetVar_GetCount] — 2 functions
   0x801e92dc  GetVar_GetCount::Handler(char *)
@@ -795,10 +305,6 @@ UNMATCHED 40-64B TARGETS: 826
   0x801e92b0  GetVar_SliderStep::Handler(char *)
   0x803bac68  GetVar_SliderStep::~GetVar_SliderStep(void)
 
-[GetVariableCommandTable] — 2 functions
-  0x80178bf8  GetVariableCommandTable::Instance(void)
-  0x803b1130  GetVariableCommandTable::GetVariableCommandTableRecord::~GetVariableCommandTableRecord(void)
-
 [IFFResFile2] — 2 functions
   0x800bed18  IFFResFile2::GetByID(int, short, void (*)(void *, int))
   0x800bf8e4  IFFResFile2::Add(Memory::HandleNode *, int, short, StringBuffer &, bool)
@@ -807,17 +313,17 @@ UNMATCHED 40-64B TARGETS: 826
   0x8004dce4  ISimsObjectModel::UpdateBulb(ObjAnimDef *)
   0x80053db0  ISimsObjectModel::SetDynamic(bool)
 
-[InLevelCreateASimState] — 2 functions
-  0x80094db0  InLevelCreateASimState::Reset(void)
-  0x803a0e28  InLevelCreateASimState::~InLevelCreateASimState(void)
+[IconGroup] — 2 functions
+  0x800bc9d0  IconGroup::DestroyInstance(IconGroup *)
+  0x803a3874  IconGroup::~IconGroup(void)
+
+[LoadingScreenStateMachine] — 2 functions
+  0x80090d18  LoadingScreenStateMachine::LoadFinishedNow(void)
+  0x80090da4  LoadingScreenStateMachine::LoadFinishNow(void)
 
 [LoadingScreenUpdateState] — 2 functions
   0x80091224  LoadingScreenUpdateState::FaderStart(float)
   0x800912dc  LoadingScreenUpdateState::IsLoadComplete(void)
-
-[LogInteraction] — 2 functions
-  0x8013ef1c  LogInteraction::SameInteraction(LogPersonTracker *)
-  0x8013f268  LogInteraction::PrintHeader(void)
 
 [MUStatesDisplay] — 2 functions
   0x800931b4  MUStatesDisplay::Shutdown(void)
@@ -827,25 +333,21 @@ UNMATCHED 40-64B TARGETS: 826
   0x800867d0  MenuDialogPane::GetSelectedMenuItemStyle(void)
   0x80086808  MenuDialogPane::GetSelectedMenuItemValue(void)
 
-[NeighborhoodImpl] — 2 functions
-  0x800cdd40  NeighborhoodImpl::FindNeighborByID(int)
-  0x800d12a0  NeighborhoodImpl::GetLotPosition(int, int *, int *)
+[NghResFile] — 2 functions
+  0x800d53e4  NghResFile::GetThumbIdFromFamilyAndIndex(int, int)
+  0x800d8aa8  NghResFile::IsIDRegistered(NghResFile::RegistryID)
 
-[ObjFnTable] — 2 functions
-  0x8010fed8  ObjFnTable::DestroyInstance(ObjFnTable *)
-  0x803a870c  ObjFnTable::~ObjFnTable(void)
-
-[ObjTestSim] — 2 functions
-  0x801126e0  ObjTestSim::SetupInteractionColors(Interaction *, short)
-  0x80112c40  ObjTestSim::IsMenuInProgress(void)
-
-[ObjectDataBehaviorConstants] — 2 functions
-  0x80159c18  ObjectDataBehaviorConstants::GetValueName(int)
-  0x80159c54  ObjectDataBehaviorConstants::SetValueName(int, char *)
+[O2TTarget] — 2 functions
+  0x801cef60  O2TTarget::RememberAudioOptions(void)
+  0x801cf028  O2TTarget::RememberGameOptions(void)
 
 [ObjectFolder] — 2 functions
   0x800ebf94  ObjectFolder::CreateInstance(void)
   0x803a7dd8  ObjectFolder::~ObjectFolder(void)
+
+[ObjectFolderImpl] — 2 functions
+  0x800f1264  ObjectFolderImpl::GetTypeAttrBlock(int)
+  0x800f129c  ObjectFolderImpl::Save(iResFile *)
 
 [ObjectModule] — 2 functions
   0x800f2c54  ObjectModule::CreateInstance(void)
@@ -854,10 +356,6 @@ UNMATCHED 40-64B TARGETS: 826
 [PDATarget] — 2 functions
   0x801feaa0  PDATarget::SetupFirstOpenMessage(int, PDATarget::ePDAMode)
   0x801fee44  PDATarget::Update(void)
-
-[PreGameCreateAFamilyState] — 2 functions
-  0x80094c6c  PreGameCreateAFamilyState::Reset(void)
-  0x803a0df4  PreGameCreateAFamilyState::~PreGameCreateAFamilyState(void)
 
 [QuickResFile] — 2 functions
   0x801329b4  QuickResFile::QuickResFile(void)
@@ -879,53 +377,49 @@ UNMATCHED 40-64B TARGETS: 826
   0x801e96b8  SetVar_EYE_slotCurrSel::Handler(char *)
   0x803bab64  SetVar_EYE_slotCurrSel::~SetVar_EYE_slotCurrSel(void)
 
-[SetVariableCommandTable] — 2 functions
-  0x80178c80  SetVariableCommandTable::Instance(void)
-  0x803b1164  SetVariableCommandTable::SetVariableCommandTableRecord::~SetVariableCommandTableRecord(void)
-
-[StringBuffer] — 2 functions
-  0x800a65ac  StringBuffer::StringBuffer(char *, unsigned int)
-  0x800a69e4  StringBuffer::appendChar(char)
+[TextBaseItem] — 2 functions
+  0x80087214  TextBaseItem::SetDisplaySize(EVec2 &)
+  0x80087264  TextBaseItem::SetDisplayPadSize(EVec2 &)
 
 [TextBlock] — 2 functions
   0x800839dc  TextBlock::TextBlock(unsigned wchar_t *, EVec2 &, EVec2 &, EVec4 *, ERFont *, float, bool, bool, bool)
   0x800842ac  TextBlock::CalcSizes(void)
 
+[TileWalls] — 2 functions
+  0x80146914  TileWalls::~TileWalls(void)
+  0x80146ff8  TileWalls::SetFloorValue(FloorPattern, DiagonalSideSelector)
+
 [TreeTable] — 2 functions
   0x801493b0  TreeTable::GetNthEntry(int) const
   0x80149980  TreeTable::GetIndexOfNthOrderedEntry(int) const
 
-[UI2D] — 2 functions
-  0x80176628  UI2D::ContainsEntry(char *)
-  0x801767f8  UI2D::Instance(void)
+[UI3D] — 2 functions
+  0x80176f90  UI3D::ContainsEntry(char *)
+  0x80177004  UI3D::GetDisplayObject(char *)
 
-[UIDrawTable] — 2 functions
-  0x8017aa1c  UIDrawTable::ContainsEntry(CBFunctor1<ERC *> &)
-  0x8017ab18  UIDrawTable::Instance(void)
-
-[UIUpdateTable] — 2 functions
-  0x80181c58  UIUpdateTable::ContainsEntry(CBFunctor0 &)
-  0x80181d4c  UIUpdateTable::Instance(void)
+[UIObjectBase] — 2 functions
+  0x80177acc  UIObjectBase::addCmdToAptButtonFilter(int, unsigned int, ECTRL_CMD)
+  0x80177b08  UIObjectBase::removeCmdFromAptButtonFilter(int, unsigned int, ECTRL_CMD)
 
 [UrbzCreditsState] — 2 functions
   0x80098d30  UrbzCreditsState::Shutdown(void)
   0x803a18f4  UrbzCreditsState::~UrbzCreditsState(void)
 
-[UrbzModeNewGameState] — 2 functions
-  0x8009b258  UrbzModeNewGameState::Reset(void)
-  0x803a1a04  UrbzModeNewGameState::~UrbzModeNewGameState(void)
+[WantFear] — 2 functions
+  0x8014ac40  WantFear::Bookmark::IsPlatinum(void) const
+  0x8014ac74  WantFear::Bookmark::IsFear(void) const
 
 [cGZSndSys] — 2 functions
   0x800b90a8  cGZSndSys::removeFromList(cGZSnd *)
   0x800b914c  cGZSndSys::FreeUnusedSounds(void)
 
-[cSimulator] — 2 functions
-  0x8014020c  cSimulator::DestroyInstance(cSimulator *)
-  0x803ad4a0  cSimulator::~cSimulator(void)
-
 [cSoundCache] — 2 functions
   0x801194f0  cSoundCache::onTrackDelete(cTrack *)
   0x80119d6c  cSoundCache::IsInMemory(ERSoundEvent *) const
+
+[cXObjectImpl] — 2 functions
+  0x800dd49c  cXObjectImpl::GetContainedSlotNum(void)
+  0x800eaf44  cXObjectImpl::SimIndependent(void)
 
 [iResFile] — 2 functions
   0x8013554c  iResFile::Unlink(void)
@@ -943,17 +437,27 @@ UNMATCHED 40-64B TARGETS: 826
   0x8009c298  operator!=(BString &, char *)
   0x800a03e4  operator!=(BString2 &, unsigned wchar_t *)
 
+[operator==] — 2 functions
+  0x800a0260  operator==(BString2 &, BString2 &)
+  0x800a0330  operator==(BString2 &, wchar_t)
+
 [ActionQueueHUD] — 1 functions
   0x801849f0  ActionQueueHUD::Run(void)
 
 [AltToWorld] — 1 functions
   0x800a4a84  AltToWorld(float &)
 
+[AnimTable] — 1 functions
+  0x803a2aac  AnimTable::~AnimTable(void)
+
 [AnimTableImpl] — 1 functions
   0x800aabc4  AnimTableImpl::GetEntry(int)
 
 [AwarenessManager] — 1 functions
   0x80012bd0  AwarenessManager::SetAwareOfObjectKilled(cXObject *)
+
+[BitArray64] — 1 functions
+  0x8009b740  BitArray64::~BitArray64(void)
 
 [CASBodyTarget] — 1 functions
   0x80196f1c  CASBodyTarget::GetVariable(char *)
@@ -969,6 +473,9 @@ UNMATCHED 40-64B TARGETS: 826
 
 [CTGDump] — 1 functions
   0x800a515c  CTGDump::~CTGDump(void)
+
+[CTGFileManager] — 1 functions
+  0x8007d354  CTGFileManager::~CTGFileManager(void)
 
 [CameraMotionSystem] — 1 functions
   0x80016080  CameraMotionSystem::~CameraMotionSystem(void)
@@ -988,17 +495,17 @@ UNMATCHED 40-64B TARGETS: 826
 [CasScene] — 1 functions
   0x80167274  CasScene::IsCameraMoving(void)
 
+[CasSimRenderer] — 1 functions
+  0x8016f13c  CasSimRenderer::UpdateSkin(void)
+
+[CasSimRendererDynamic] — 1 functions
+  0x8016fc14  CasSimRendererDynamic::~CasSimRendererDynamic(void)
+
 [CatalogResource] — 1 functions
   0x803a2e48  CatalogResource::~CatalogResource(void)
 
 [CatalogResourceImpl] — 1 functions
   0x803a2e14  CatalogResourceImpl::~CatalogResourceImpl(void)
-
-[ChangeHouseLoadHouse] — 1 functions
-  0x8008cf94  ChangeHouseLoadHouse::DatasetFinishAddRefAsync(void)
-
-[ChangeHouseUnloadHouse] — 1 functions
-  0x8008cf10  ChangeHouseUnloadHouse::Update(float)
 
 [ConvertShoppingCategoryToInventoryCategory] — 1 functions
   0x801ecdc4  ConvertShoppingCategoryToInventoryCategory(int)
@@ -1008,6 +515,9 @@ UNMATCHED 40-64B TARGETS: 826
 
 [DestroySkillLookup] — 1 functions
   0x80142124  DestroySkillLookup(void)
+
+[DlgWrapper] — 1 functions
+  0x8007ef9c  DlgWrapper::SetButtonContext(char *)
 
 [EAnimNodeDataPos] — 1 functions
   0x803ca884  EAnimNodeDataPos::New(void)
@@ -1021,11 +531,17 @@ UNMATCHED 40-64B TARGETS: 826
 [EGameState] — 1 functions
   0x80089da0  EGameState::operator new(unsigned int)
 
+[EGameStateMan] — 1 functions
+  0x80089d3c  EGameStateMan::Draw(ERC *)
+
 [EGlobalManagerClient] — 1 functions
   0x803c1cc4  EGlobalManagerClient::Shutdown(void)
 
 [EHouse] — 1 functions
   0x800254a8  EHouse::Refresh(void)
+
+[EIAmbLight] — 1 functions
+  0x80226e80  EIAmbLight::Construct(EIAmbLight *)
 
 [EIDirLight] — 1 functions
   0x80227108  EIDirLight::Write(EStream &)
@@ -1039,11 +555,17 @@ UNMATCHED 40-64B TARGETS: 826
 [EIPortalPointLight] — 1 functions
   0x8022a7e8  EIPortalPointLight::SetPortal(EInstance *, bool)
 
+[EInstance] — 1 functions
+  0x80228818  EInstance::RemoveFromLevel(void)
+
 [EQuat] — 1 functions
   0x803c1db8  EQuat::Id(void)
 
 [ERAnimBitArray] — 1 functions
   0x803c98bc  ERAnimBitArray::FreeMemory(void *)
+
+[ERoomWall] — 1 functions
+  0x80030914  ERoomWall::SafeDelete(void)
 
 [EScheduler] — 1 functions
   0x803c76e8  EScheduler::~EScheduler(void)
@@ -1057,14 +579,17 @@ UNMATCHED 40-64B TARGETS: 826
 [ESpriteRender] — 1 functions
   0x80036e3c  ESpriteRender::operator delete(void *)
 
-[EVoice] — 1 functions
-  0x803c70a0  EVoice::reset(void)
-
 [EdithDialogPrimitive] — 1 functions
   0x800b5480  EdithDialogPrimitive::~EdithDialogPrimitive(void)
 
+[Emitter] — 1 functions
+  0x80238928  Emitter::Reset(void)
+
 [EmitterGeomProcessCB] — 1 functions
   0x80239f10  EmitterGeomProcessCB(void *)
+
+[FAMTarget] — 1 functions
+  0x801b0714  FAMTarget::UpdateMenuState(char *, char *)
 
 [FTilePt] — 1 functions
   0x803a2ff8  FTilePt::operator==(FTilePt &) const
@@ -1072,17 +597,17 @@ UNMATCHED 40-64B TARGETS: 826
 [FadeSquare] — 1 functions
   0x8021ceb0  FadeSquare::StartDraw(EVec3 &, bool)
 
-[Family] — 1 functions
-  0x800b5f28  Family::CreateInstance(int &)
-
 [FamilyMember] — 1 functions
   0x800b6a58  FamilyMember::DoStream(ReconBuffer *, int)
+
+[FloatConstants] — 1 functions
+  0x803a3670  FloatConstants::~FloatConstants(void)
 
 [FrameEffect] — 1 functions
   0x803c78ac  FrameEffect::~FrameEffect(void)
 
-[GameEffectsManager] — 1 functions
-  0x8003e00c  GameEffectsManager::GetSingleton(void)
+[G2DTarget] — 1 functions
+  0x801b5a14  G2DTarget::PushAptButtonFilters(void)
 
 [GetActionMenu] — 1 functions
   0x8018458c  GetActionMenu(unsigned int)
@@ -1102,6 +627,9 @@ UNMATCHED 40-64B TARGETS: 826
 [GetIngredientManager] — 1 functions
   0x8004b260  GetIngredientManager(void)
 
+[GetLocalizableCommandTable] — 1 functions
+  0x803b1198  GetLocalizableCommandTable::GetLocalizableCommandTableRecord::~GetLocalizableCommandTableRecord(void)
+
 [GetNghIndex] — 1 functions
   0x800d3880  GetNghIndex(int)
 
@@ -1113,9 +641,6 @@ UNMATCHED 40-64B TARGETS: 826
 
 [GetTheExposureHandler] — 1 functions
   0x801aa580  GetTheExposureHandler(void)
-
-[GetUserIndex] — 1 functions
-  0x800d38f0  GetUserIndex(int)
 
 [GetVar_EYE_connectionStatus] — 1 functions
   0x803bae08  GetVar_EYE_connectionStatus::~GetVar_EYE_connectionStatus(void)
@@ -1144,6 +669,9 @@ UNMATCHED 40-64B TARGETS: 826
 [GetVar_SaveStatus] — 1 functions
   0x803bada0  GetVar_SaveStatus::~GetVar_SaveStatus(void)
 
+[GetVariableCommandTable] — 1 functions
+  0x803b1130  GetVariableCommandTable::GetVariableCommandTableRecord::~GetVariableCommandTableRecord(void)
+
 [Globs] — 1 functions
   0x800b81c8  Globs::~Globs(void)
 
@@ -1165,11 +693,14 @@ UNMATCHED 40-64B TARGETS: 826
 [IFFBehaviorConstants] — 1 functions
   0x8015a878  IFFBehaviorConstants::~IFFBehaviorConstants(void)
 
+[INGTarget] — 1 functions
+  0x801bca10  INGTarget::exit_ingredients_dialog_selection_callback(int)
+
+[INVTarget] — 1 functions
+  0x801f2370  INVTarget::InstallBldVariables(void)
+
 [ISimInstance] — 1 functions
   0x800569bc  ISimInstance::operator delete(void *)
-
-[IconGroup] — 1 functions
-  0x803a3874  IconGroup::~IconGroup(void)
 
 [IconItem] — 1 functions
   0x80087818  IconItem::SetColor(EVec4 &)
@@ -1177,8 +708,8 @@ UNMATCHED 40-64B TARGETS: 826
 [InLevelBaseState] — 1 functions
   0x8008b498  InLevelBaseState::Draw(ERC *)
 
-[Interaction] — 1 functions
-  0x800c1960  Interaction::SetName(BString2 &)
+[InLevelCreateASimState] — 1 functions
+  0x803a0e28  InLevelCreateASimState::~InLevelCreateASimState(void)
 
 [InteractionHelper] — 1 functions
   0x80190dc0  InteractionHelper::GetCount(IHRecord *)
@@ -1186,14 +717,8 @@ UNMATCHED 40-64B TARGETS: 826
 [IsConfigFileValid] — 1 functions
   0x80074e28  IsConfigFileValid(int, OptionsRecon &)
 
-[IsSkillCatalogRating] — 1 functions
-  0x801d1ad0  IsSkillCatalogRating(int)
-
 [LightingParameters] — 1 functions
   0x800b8194  LightingParameters::~LightingParameters(void)
-
-[LiveModeInitState] — 1 functions
-  0x8008ca18  LiveModeInitState::DatasetFinishAddRefAsync(void)
 
 [LoadGameTarget] — 1 functions
   0x8018cc8c  LoadGameTarget::BGExec_PerformLoad(void *)
@@ -1206,6 +731,9 @@ UNMATCHED 40-64B TARGETS: 826
 
 [LoadingScreenWaitingForLoadState] — 1 functions
   0x80091018  LoadingScreenWaitingForLoadState::FaderStart(float)
+
+[LogInteraction] — 1 functions
+  0x8013f268  LogInteraction::PrintHeader(void)
 
 [MUStateMachine] — 1 functions
   0x800937e8  MUStateMachine::MURequest(MUStateMachine::eMURequest)
@@ -1228,11 +756,17 @@ UNMATCHED 40-64B TARGETS: 826
 [Neighborhood] — 1 functions
   0x803a6124  Neighborhood::~Neighborhood(void)
 
+[ObjFnTable] — 1 functions
+  0x803a870c  ObjFnTable::~ObjFnTable(void)
+
 [ObjFnTableQuickData] — 1 functions
   0x801101c0  ObjFnTableQuickData::GetDataID(void) const
 
 [ObjResFile] — 1 functions
   0x8011047c  ObjResFile::_dyncastimpl(SCID)
+
+[ObjectDataBehaviorConstants] — 1 functions
+  0x80159c18  ObjectDataBehaviorConstants::GetValueName(int)
 
 [ObjectDataBehaviorTree] — 1 functions
   0x8015b968  ObjectDataBehaviorTree::GetDataID(void) const
@@ -1243,11 +777,8 @@ UNMATCHED 40-64B TARGETS: 826
 [ObjectIterator] — 1 functions
   0x800f2a80  ObjectIterator::operator==(ObjectIterator &) const
 
-[ObjectSlot] — 1 functions
-  0x80142d28  ObjectSlot::WriteSlot(SlotDescriptor *)
-
-[ObjectTypeAttrBlock] — 1 functions
-  0x8010fe2c  ObjectTypeAttrBlock::Clear(void)
+[ObjectModuleImpl] — 1 functions
+  0x800f9434  ObjectModuleImpl::AdvanceSelectedPerson(int)
 
 [PAZTarget] — 1 functions
   0x801d1510  PAZTarget::~PAZTarget(void)
@@ -1267,11 +798,11 @@ UNMATCHED 40-64B TARGETS: 826
 [PreGameCasPlayer2State] — 1 functions
   0x803a0dc0  PreGameCasPlayer2State::~PreGameCasPlayer2State(void)
 
+[PreGameCreateAFamilyState] — 1 functions
+  0x803a0df4  PreGameCreateAFamilyState::~PreGameCreateAFamilyState(void)
+
 [PreGameFreeplayState] — 1 functions
   0x803a0e5c  PreGameFreeplayState::~PreGameFreeplayState(void)
-
-[PropTable] — 1 functions
-  0x80132838  PropTable::DestroyInstance(PropTable *)
 
 [PropTableImpl] — 1 functions
   0x80132950  PropTableImpl::GetEntry(int)
@@ -1288,9 +819,6 @@ UNMATCHED 40-64B TARGETS: 826
 [RelInt] — 1 functions
   0x80134ae8  RelInt::DoStream(ReconBuffer *, int)
 
-[RelMatrix] — 1 functions
-  0x80134aa8  RelMatrix::DestroyInstance(RelMatrix *)
-
 [Room] — 1 functions
   0x801386dc  Room::Rotate(Room::Sides, int)
 
@@ -1303,14 +831,8 @@ UNMATCHED 40-64B TARGETS: 826
 [ScrollingTextBox] — 1 functions
   0x8006cb98  ScrollingTextBox::SetTextColor(EVec4 &)
 
-[SeqResFile] — 1 functions
-  0x8013e420  SeqResFile::_dyncastimpl(SCID)
-
 [SerializeUIGameData] — 1 functions
   0x80190728  SerializeUIGameData::SaveComplete(NghResFile::SectionID, NghResFile::SaveRecord &)
-
-[SetIndividualMemory] — 1 functions
-  0x8013fcdc  SetIndividualMemory(int &, int, int)
 
 [SetVar_EYE_opCancelled] — 1 functions
   0x803bac00  SetVar_EYE_opCancelled::~SetVar_EYE_opCancelled(void)
@@ -1324,14 +846,17 @@ UNMATCHED 40-64B TARGETS: 826
 [SetVar_EYE_topLevelCurrSel] — 1 functions
   0x803baac8  SetVar_EYE_topLevelCurrSel::~SetVar_EYE_topLevelCurrSel(void)
 
+[SetVariableCommandTable] — 1 functions
+  0x803b1164  SetVariableCommandTable::SetVariableCommandTableRecord::~SetVariableCommandTableRecord(void)
+
 [SimModel] — 1 functions
   0x80071434  SimModel::IsLoadingModels(void) const
 
+[SimpleReconObject] — 1 functions
+  0x803adf2c  SimpleReconObject<ReconStreamVector<SlotDescriptor> >::DoStream(ReconBuffer *, int)
+
 [SimsAptMalloc] — 1 functions
   0x80006570  SimsAptMalloc(unsigned int)
-
-[SimsMemCardWrap] — 1 functions
-  0x80075604  SimsMemCardWrap::RestorePrefs(void)
 
 [SlotLoader] — 1 functions
   0x801445d0  SlotLoader::~SlotLoader(void)
@@ -1347,6 +872,9 @@ UNMATCHED 40-64B TARGETS: 826
 
 [StdResFile] — 1 functions
   0x80145d28  StdResFile::_dyncastimpl(SCID)
+
+[StringBuffer2] — 1 functions
+  0x800a6ce4  StringBuffer2::StringBuffer2(unsigned wchar_t *, unsigned int)
 
 [StringSet] — 1 functions
   0x803a23b4  StringSet::~StringSet(void)
@@ -1369,11 +897,8 @@ UNMATCHED 40-64B TARGETS: 826
 [TreeTableEntryQuickData] — 1 functions
   0x8015e688  TreeTableEntryQuickData::GetDebugOnly(void) const
 
-[TreeTableQuickData] — 1 functions
-  0x8015e900  TreeTableQuickData::CountEntries(void) const
-
-[UIAUDIO] — 1 functions
-  0x801779dc  UIAUDIO::Instance(void)
+[UI2D] — 1 functions
+  0x80176628  UI2D::ContainsEntry(char *)
 
 [UIButtonImages] — 1 functions
   0x80181678  UIButtonImages::GetButtonMinSize(int)
@@ -1381,17 +906,11 @@ UNMATCHED 40-64B TARGETS: 826
 [UIHDTV] — 1 functions
   0x8017b998  UIHDTV::~UIHDTV(void)
 
-[UIUserDrawCBTable] — 1 functions
-  0x80182284  UIUserDrawCBTable::Instance(void)
-
-[WXFTarget] — 1 functions
-  0x801e6df0  WXFTarget::onHelpDialogSelection(int)
+[UrbzModeNewGameState] — 1 functions
+  0x803a1a04  UrbzModeNewGameState::~UrbzModeNewGameState(void)
 
 [WorldToAlt] — 1 functions
   0x800a4ab0  WorldToAlt(float &)
-
-[XRoute] — 1 functions
-  0x801534cc  XRoute::ResetGoals(void)
 
 [_List_global] — 1 functions
   0x803ab0b4  _List_global<bool>::_Transfer(_List_node_base *, _List_node_base *, _List_node_base *)
@@ -1411,11 +930,17 @@ UNMATCHED 40-64B TARGETS: 826
 [cHitMan] — 1 functions
   0x801164b0  cHitMan::GetSourceDataField(int, int, int *)
 
-[cIGZSndSys] — 1 functions
-  0x800b8c88  cIGZSndSys::CreateInstance(void)
-
 [cSamplePatch] — 1 functions
   0x80119050  cSamplePatch::CreateChannel(void)
+
+[cSimulator] — 1 functions
+  0x803ad4a0  cSimulator::~cSimulator(void)
+
+[cXMTObjectImpl] — 1 functions
+  0x800c7d60  cXMTObjectImpl::GetISimInstanceBaseVer(void)
+
+[cXPersonImpl] — 1 functions
+  0x8012c878  cXPersonImpl::IsRouting(void)
 
 [cXPortalImpl] — 1 functions
   0x80132788  cXPortalImpl::GetRouteScore(short)
@@ -1432,9 +957,6 @@ UNMATCHED 40-64B TARGETS: 826
 [global constructors keyed to DigestGeomShaderPtr] — 1 functions
   0x802278b8  global constructors keyed to DigestGeomShaderPtr::UpdateShaderFlags(bool &)
 
-[global constructors keyed to Neighborhood] — 1 functions
-  0x800d19ac  global constructors keyed to Neighborhood::CreateInstance(void)
-
 [global destructors keyed to CTGDump] — 1 functions
   0x800a53b4  global destructors keyed to CTGDump::CTGDump(void)
 
@@ -1449,9 +971,6 @@ UNMATCHED 40-64B TARGETS: 826
 
 [global destructors keyed to LogPersonState] — 1 functions
   0x8013fc9c  global destructors keyed to LogPersonState::LogPersonState(cXPerson *)
-
-[global destructors keyed to Neighborhood] — 1 functions
-  0x800d19d8  global destructors keyed to Neighborhood::CreateInstance(void)
 
 [global destructors keyed to ObjectDataBehaviorConstants] — 1 functions
   0x8015a8dc  global destructors keyed to ObjectDataBehaviorConstants::ObjectDataBehaviorConstants(void)

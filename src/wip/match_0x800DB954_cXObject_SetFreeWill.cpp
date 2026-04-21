@@ -1,4 +1,4 @@
-// 0x800DB954 cXObject::SetFreeWill (76b)
+// 0x800DB954 (76 bytes)
 // FLAGS: -fno-elide-constructors
 
 struct cXObject_vtable {

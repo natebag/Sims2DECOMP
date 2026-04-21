@@ -1,4 +1,4 @@
-// 0x8003DBE8 match_0x8003DBE8_GameData__StageEnd (28B)
+// 0x8003DBE8 match_0x8003DBE8_GameData__StageEnd (80B)
 /* GameData::StageEnd(char *, char *, bool) at 0x8003DBE8 (80B) */
 
 extern int g_loadingFlag1;

@@ -1,4 +1,4 @@
-// 0x801AFCAC FAMTarget::UnloadScreen(void) (40B)
+// 0x801AFCAC FAMTarget::UnloadScreen(void) (44B)
 struct FAMTarget;
 struct Screen;
 

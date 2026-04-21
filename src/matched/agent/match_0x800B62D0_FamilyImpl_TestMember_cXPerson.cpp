@@ -1,4 +1,4 @@
-// 0x800B62D0 (80B) FamilyImpl::TestMember(cXPerson *) const
+// 0x800B62D0 (100B) FamilyImpl::TestMember(cXPerson *) const
 
 struct ObjSelector { int GetGUID(); };
 struct cXPerson;

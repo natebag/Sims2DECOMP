@@ -1,3 +1,4 @@
+// 0x800B4214 (60 bytes)
 // 0x800b4214 Commander::Commander (60b)
 
 struct Commander {

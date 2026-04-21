@@ -1,4 +1,4 @@
-// 0x801822C0 (72B) UIUserDrawCBTable::Shutdown(void)
+// 0x801822C0 (76B) UIUserDrawCBTable::Shutdown(void)
 
 struct UIUserDrawCBTable_Base { char pad[12]; };
 

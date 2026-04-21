@@ -1,4 +1,4 @@
-// 0x80190224 (40B) RepTitleSupport::GetRepTableRawTitle(int)
+// 0x80190224 (56B) RepTitleSupport::GetRepTableRawTitle(int)
 
 struct RepTitleSupport {
     void GetBase(int idx, int kind, ...);

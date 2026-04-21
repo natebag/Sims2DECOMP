@@ -1,4 +1,4 @@
-// 0x80069920 SAnimator2::setFollowEnd (108B)
+// 0x80069920 SAnimator2::setFollowEnd (120B)
 // Pattern: bitmask flags clear + state/rate assign + SDA2-mixed float trio + track null
 class EACTrack;
 class EAnimController {

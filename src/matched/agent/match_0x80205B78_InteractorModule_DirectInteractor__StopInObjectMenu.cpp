@@ -1,4 +1,4 @@
-// 0x80205B78 InteractorModule::DirectInteractor::StopInObjectMenu(void) (52B)
+// 0x80205B78 InteractorModule::DirectInteractor::StopInObjectMenu(void) (56B)
 struct DirectInteractor;
 
 extern char g_interactorGlobalPtrHolder[64];  // non-SDA

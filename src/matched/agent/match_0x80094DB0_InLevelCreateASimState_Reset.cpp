@@ -1,4 +1,4 @@
-// 0x80094DB0 (56B) InLevelCreateASimState::Reset(void)
+// 0x80094DB0 (64B) InLevelCreateASimState::Reset(void)
 
 struct InLevelCreateASimState_Base {
     void Reset();

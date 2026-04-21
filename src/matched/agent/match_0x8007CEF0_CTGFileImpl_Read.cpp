@@ -1,4 +1,4 @@
-// 0x8007CEF0 CTGFileImpl::Read(void*, int) (48B)
+// 0x8007CEF0 CTGFileImpl::Read(void*, int) (56B)
 typedef void* HANDLE;
 
 extern "C" int sub_802D7568(void* buf, int one, int len, HANDLE handle);

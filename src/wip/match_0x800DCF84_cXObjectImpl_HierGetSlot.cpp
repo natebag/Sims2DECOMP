@@ -1,4 +1,4 @@
-// 0x800DCF84 cXObjectImpl::HierGetSlot (52b)
+// 0x800DCF84 (52 bytes)
 // FLAGS: -fno-elide-constructors
 
 struct cXObjectImpl {

@@ -1,3 +1,4 @@
+// 0x802C5A78 (112 bytes)
 // 0x802C5A78 EBoundTreeNode::EBoundTreeNode (112b)
 
 class EBoundTreeNode {

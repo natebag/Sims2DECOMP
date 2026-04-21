@@ -1,4 +1,4 @@
-// 0x80162128 CasMediator::GetNumTattooTextures(eTattooTextureTypeS2C) const (28B)
+// 0x80162128 CasMediator::GetNumTattooTextures(eTattooTextureTypeS2C) const (52B)
 
 enum eTattooTextureTypeS2C { };
 

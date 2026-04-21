@@ -1,3 +1,4 @@
+// 0x801BDFFC (76 bytes)
 // ObjectTypeAttrBlock::~ObjectTypeAttrBlock - Destructor  
 // Address: 0x801BDFFC | Size: 76 bytes
 //

@@ -1,3 +1,4 @@
+// 0x801BF330 (96 bytes)
 // GetNpcShaderId - NPC shader lookup utility
 // Address: 0x801BF330 | Size: 96 bytes
 //

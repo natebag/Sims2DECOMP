@@ -1,4 +1,4 @@
-// 0x80177A18 (72B) UIAUDIO::Shutdown(void)
+// 0x80177A18 (76B) UIAUDIO::Shutdown(void)
 
 struct UIAUDIO_Base { char pad[116]; };
 

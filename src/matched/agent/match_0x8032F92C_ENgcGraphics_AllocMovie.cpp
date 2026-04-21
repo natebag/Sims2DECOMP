@@ -1,4 +1,4 @@
-// 0x8032F92C ENgcGraphics::AllocMovie (16b)
+// 0x8032F92C ENgcGraphics::AllocMovie (40B)
 
 void* alloc_8032F92C(unsigned long);
 void* ctor_8032F92C(void*);

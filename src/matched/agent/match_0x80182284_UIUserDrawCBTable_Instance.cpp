@@ -1,4 +1,4 @@
-// 0x80182284 (44B) UIUserDrawCBTable::Instance(void)
+// 0x80182284 (60B) UIUserDrawCBTable::Instance(void)
 
 struct UIUserDrawCBTable {
     char data[16];

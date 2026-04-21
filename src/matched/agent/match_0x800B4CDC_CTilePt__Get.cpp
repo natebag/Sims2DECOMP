@@ -1,4 +1,4 @@
-// 0x800B4CDC CTilePt::Get(int*, int*, int*) const (36B)
+// 0x800B4CDC CTilePt::Get(int*, int*, int*) const (40B)
 struct CTilePt {
     signed char m_x;
     signed char m_y;

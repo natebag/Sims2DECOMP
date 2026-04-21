@@ -1,3 +1,4 @@
+// 0x802C5AE8 (76 bytes)
 // 0x802C5AE8 EBoundTreeNode::Write (76b)
 
 class EBound3 {

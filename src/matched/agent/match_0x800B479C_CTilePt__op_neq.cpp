@@ -1,4 +1,4 @@
-// 0x800B479C CTilePt::operator!=(CTilePt&) const (44B)
+// 0x800B479C CTilePt::operator!=(CTilePt&) const (48B)
 struct CTilePt {
     unsigned char m_x;
     unsigned char m_y;

@@ -1,4 +1,4 @@
-// 0x80010CF0 AptViewer::UnLoad (64b)
+// 0x80010CF0 AptViewer::UnLoad (120B)
 
 struct AptViewer {
     char pad[0x350];

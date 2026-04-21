@@ -1,4 +1,4 @@
-// 0x802119C0 InteractorModule::GetPlumbBob(int) (40B)
+// 0x802119C0 InteractorModule::GetPlumbBob(int) (44B)
 extern void* g_plumbBobTable[1];  // SDA
 
 void* InteractorModule__GetPlumbBob(int id) {

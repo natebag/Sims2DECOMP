@@ -1,4 +1,4 @@
-// 0x8009FEE8 (40B) BString::operator!=(BString &) const
+// 0x8009FEE8 (56B) BString::operator!=(BString &) const
 
 struct BString {
     int compare(BString& other, int start, int len) const;

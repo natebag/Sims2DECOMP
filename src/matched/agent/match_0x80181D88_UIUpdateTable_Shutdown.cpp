@@ -1,4 +1,4 @@
-// 0x80181D88 (72B) UIUpdateTable::Shutdown(void)
+// 0x80181D88 (76B) UIUpdateTable::Shutdown(void)
 
 struct UIUpdateTable_Base { char pad[12]; };
 

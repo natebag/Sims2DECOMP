@@ -1,4 +1,4 @@
-// 0x800B8C88 (44B) cIGZSndSys::CreateInstance(void)
+// 0x800B8C88 (48B) cIGZSndSys::CreateInstance(void)
 
 struct cIGZSndSys {
     char data[1052];

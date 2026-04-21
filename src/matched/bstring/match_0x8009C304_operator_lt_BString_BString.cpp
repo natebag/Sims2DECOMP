@@ -1,4 +1,4 @@
-// 0x8009C304 operator<(BString &, BString &) (40B)
+// 0x8009C304 operator<(BString &, BString &) (44B)
 struct BString;
 extern int BString__compare2(BString* self, BString* other, int len, int maxlen);
 

@@ -1,3 +1,4 @@
+// 0x802C5B34 (92 bytes)
 // 0x802C5B34 EBoundTreeNode::Read (92b)
 
 class EBound3 {

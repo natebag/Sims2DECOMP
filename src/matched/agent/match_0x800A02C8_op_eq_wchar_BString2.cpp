@@ -1,4 +1,4 @@
-// 0x800A02C8 operator==(wchar_t, BString2&) (48B)
+// 0x800A02C8 operator==(wchar_t, BString2&) (60B)
 // Swap + (0, 1) args + !result idiom
 struct BString2;
 

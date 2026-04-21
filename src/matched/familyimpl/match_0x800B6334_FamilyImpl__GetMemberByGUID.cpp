@@ -1,4 +1,4 @@
-// 0x800B6334 FamilyImpl::GetMemberByGUID(int) (40B)
+// 0x800B6334 FamilyImpl::GetMemberByGUID(int) (52B)
 
 struct FamilyImpl {
     char _pad[0x24];

@@ -1,4 +1,4 @@
-// 0x801BBBF0 INGTarget::get_current_ingredient(void) (36B)
+// 0x801BBBF0 INGTarget::get_current_ingredient(void) (52B)
 struct INGTarget;
 
 extern void** INGTarget__find_current_ing_slot(INGTarget* self);

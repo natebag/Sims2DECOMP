@@ -1,4 +1,4 @@
-// cSimulatorImpl::IsStopped(void) at 0x80141A8C (40B)
+// cSimulatorImpl::IsStopped(void) at 0x80141A8C (44B)
 
 struct cSim_IS {
     char pad_00[0x178];

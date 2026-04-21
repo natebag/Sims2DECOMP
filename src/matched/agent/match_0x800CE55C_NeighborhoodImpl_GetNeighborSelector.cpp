@@ -1,4 +1,4 @@
-// 0x800CE55C (60B) NeighborhoodImpl::GetNeighborSelector(int)
+// 0x800CE55C (72B) NeighborhoodImpl::GetNeighborSelector(int)
 
 struct Selector {
     char pad[12];

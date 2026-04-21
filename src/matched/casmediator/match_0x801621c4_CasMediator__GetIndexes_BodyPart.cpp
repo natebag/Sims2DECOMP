@@ -1,4 +1,4 @@
-// 0x801621c4 CasMediator::GetIndexes(eBodyPartS2C, unsigned char *, unsigned char *) (28B)
+// 0x801621c4 CasMediator::GetIndexes(eBodyPartS2C, unsigned char *, unsigned char *) (52B)
 
 enum eBodyPartS2C { };
 

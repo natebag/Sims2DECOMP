@@ -1,4 +1,4 @@
-// 0x8009B258 (44B) UrbzModeNewGameState::Reset(void)
+// 0x8009B258 (48B) UrbzModeNewGameState::Reset(void)
 
 struct Something;
 extern char g_something[16];

@@ -1,4 +1,4 @@
-// 0x800F0884 (48B) ObjectFolderImpl::GetPlaceholder(void)
+// 0x800F0884 (60B) ObjectFolderImpl::GetPlaceholder(void)
 
 struct ObjectFolderImpl_Base {
     virtual void v0() = 0;

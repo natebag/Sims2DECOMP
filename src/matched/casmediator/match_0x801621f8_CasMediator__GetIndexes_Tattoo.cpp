@@ -1,4 +1,4 @@
-// 0x801621f8 CasMediator::GetIndexes(eTattooTextureTypeS2C, unsigned char *, unsigned char *) (28B)
+// 0x801621f8 CasMediator::GetIndexes(eTattooTextureTypeS2C, unsigned char *, unsigned char *) (52B)
 
 enum eTattooTextureTypeS2C { };
 

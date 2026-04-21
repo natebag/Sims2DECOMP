@@ -1,4 +1,4 @@
-// 0x80186DD4 HUDTarget::IncPause(bool) (36B)
+// 0x80186DD4 HUDTarget::IncPause(bool) (48B)
 struct HUDTarget {
     char pad[2228];
     int m_pauseEnabled;

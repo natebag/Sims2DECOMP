@@ -1,4 +1,4 @@
-// 0x802F1324 EGraphics::AllocDL (20B)
+// 0x802F1324 EGraphics::AllocDL (44B)
 extern "C" void* allocObj(int size);
 extern "C" void* initDL(void*, int bufSize);
 void* EGraphics_AllocDL(void* self, int mode) {

@@ -1,4 +1,4 @@
-// 0x8009C578 operator<=(char, BString&) (40B)
+// 0x8009C578 operator<=(char, BString&) (48B)
 // Arg-swap thunk + xori: !(s < c) = (c <= s)
 struct BString;
 

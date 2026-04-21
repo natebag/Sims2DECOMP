@@ -1,4 +1,4 @@
-// 0x800DCD70 cXObjectImpl::GetPrevObjectSibling(void) (64B)
+// 0x800DCD70 cXObjectImpl::GetPrevObjectSibling(void) (76B)
 // Pattern: EdithVariableSet prop lookup (key=14) + null check + delegation to HierGetParent
 extern short* GetSomeProp(void* ctx, int key);  // EdithVariableSet::operator[]
 

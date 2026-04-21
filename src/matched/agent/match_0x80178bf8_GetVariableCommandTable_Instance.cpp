@@ -1,4 +1,4 @@
-// 0x80178bf8 (44B) GetVariableCommandTable::Instance(void)
+// 0x80178bf8 (60B) GetVariableCommandTable::Instance(void)
 
 struct GetVariableCommandTable {
     char data[16];

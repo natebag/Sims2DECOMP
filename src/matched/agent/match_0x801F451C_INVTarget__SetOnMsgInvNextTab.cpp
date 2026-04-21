@@ -1,4 +1,4 @@
-// 0x801F451C INVTarget::SetOnMsgInvNextTab(char*) (40B)
+// 0x801F451C INVTarget::SetOnMsgInvNextTab(char*) (52B)
 struct INVTarget {
     char pad[132];
     int m_tabIndex;

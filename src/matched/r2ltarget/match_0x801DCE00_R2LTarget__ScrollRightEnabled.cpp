@@ -1,4 +1,4 @@
-// 0x801dce00 R2LTarget::ScrollRightEnabled (36B)
+// 0x801dce00 R2LTarget::ScrollRightEnabled (40B)
 
 class R2LTarget {
 public:

@@ -1,4 +1,4 @@
-// 0x800A0290 operator==(unsigned wchar_t*, BString2&) (48B)
+// 0x800A0290 operator==(unsigned wchar_t*, BString2&) (56B)
 // Swap + mode=0 + !result idiom
 struct BString2;
 

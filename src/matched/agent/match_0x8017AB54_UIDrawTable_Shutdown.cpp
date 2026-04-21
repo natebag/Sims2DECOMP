@@ -1,4 +1,4 @@
-// 0x8017AB54 (72B) UIDrawTable::Shutdown(void)
+// 0x8017AB54 (76B) UIDrawTable::Shutdown(void)
 
 struct UIDrawTable_Base { char pad[12]; };
 

@@ -1,4 +1,4 @@
-// 0x80162190 CasMediator::GetIconTattooTextureId(eTattooTextureTypeS2C, unsigned int) const (28B)
+// 0x80162190 CasMediator::GetIconTattooTextureId(eTattooTextureTypeS2C, unsigned int) const (52B)
 
 enum eTattooTextureTypeS2C { };
 

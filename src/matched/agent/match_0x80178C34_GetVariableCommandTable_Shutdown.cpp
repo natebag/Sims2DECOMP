@@ -1,4 +1,4 @@
-// 0x80178C34 (72B) GetVariableCommandTable::Shutdown(void)
+// 0x80178C34 (76B) GetVariableCommandTable::Shutdown(void)
 
 struct GetVariableCommandTable_Base { char pad[12]; };
 

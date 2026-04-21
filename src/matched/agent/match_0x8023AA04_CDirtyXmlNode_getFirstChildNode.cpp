@@ -1,4 +1,4 @@
-// 0x8023AA04 (48B) CDirtyXmlNode::getFirstChildNode(void)
+// 0x8023AA04 (60B) CDirtyXmlNode::getFirstChildNode(void)
 
 struct XmlVisitor_Base {
     virtual void v0() = 0;

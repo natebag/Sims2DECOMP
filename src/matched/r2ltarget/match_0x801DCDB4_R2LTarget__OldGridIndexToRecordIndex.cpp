@@ -1,4 +1,4 @@
-// 0x801DCDB4 R2LTarget::OldGridIndexToRecordIndex (44B)
+// 0x801DCDB4 R2LTarget::OldGridIndexToRecordIndex (52B)
 
 struct R2LTarget {
     char pad[0x9C];

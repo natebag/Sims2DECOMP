@@ -1,4 +1,4 @@
-// 0x80177038 (52B) UI3D::Instance(void)
+// 0x80177038 (60B) UI3D::Instance(void)
 
 struct UI3D {
     char data[32];

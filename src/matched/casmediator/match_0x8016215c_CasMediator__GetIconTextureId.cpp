@@ -1,4 +1,4 @@
-// 0x8016215c CasMediator::GetIconTextureId(eBodyPartS2C, unsigned int) const (28B)
+// 0x8016215c CasMediator::GetIconTextureId(eBodyPartS2C, unsigned int) const (52B)
 
 enum eBodyPartS2C { };
 

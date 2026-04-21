@@ -1,4 +1,4 @@
-// 0x801779dc (44B) UIAUDIO::Instance(void)
+// 0x801779dc (60B) UIAUDIO::Instance(void)
 
 struct UIAUDIO {
     char data[120];

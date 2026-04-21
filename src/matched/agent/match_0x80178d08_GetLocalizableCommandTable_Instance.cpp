@@ -1,4 +1,4 @@
-// 0x80178d08 (44B) GetLocalizableCommandTable::Instance(void)
+// 0x80178d08 (60B) GetLocalizableCommandTable::Instance(void)
 
 struct GetLocalizableCommandTable {
     char data[16];

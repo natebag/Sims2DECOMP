@@ -1,4 +1,4 @@
-// 0x801767F8 (52B) UI2D::Instance(void)
+// 0x801767F8 (60B) UI2D::Instance(void)
 
 struct UI2D {
     char data[16];

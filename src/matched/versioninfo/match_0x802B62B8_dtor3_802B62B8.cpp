@@ -1,4 +1,4 @@
-// 0x802B62B8 match_0x802B62B8_dtor3_802B62B8 (62b)
+// 0x802B62B8 match_0x802B62B8_dtor3_802B62B8 (104B)
 // FLAGS: -fno-schedule-insns
 extern int vt_802B62B8[];
 extern void nhd_802B62B8(void *, int);

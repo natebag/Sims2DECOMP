@@ -1,4 +1,4 @@
-// 0x8017021C CasSimRendererDynamic::IsShoeIdleAnim(unsigned int) (36B)
+// 0x8017021C CasSimRendererDynamic::IsShoeIdleAnim(unsigned int) (40B)
 struct AnimTable {
     int pad_0_59[15];
     int m_shoe1;   // 60

@@ -1,4 +1,4 @@
-// 0x801620f4 CasMediator::GetNumBodyModels(eBodyPartS2C) const (28B)
+// 0x801620f4 CasMediator::GetNumBodyModels(eBodyPartS2C) const (52B)
 
 enum eBodyPartS2C { };
 

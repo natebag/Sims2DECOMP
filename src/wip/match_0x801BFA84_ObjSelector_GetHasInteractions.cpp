@@ -1,3 +1,4 @@
+// 0x801BFA84 (88 bytes)
 // ObjSelector::GetHasInteractions
 // Address: 0x801BFA84 | Size: 88 bytes
 //

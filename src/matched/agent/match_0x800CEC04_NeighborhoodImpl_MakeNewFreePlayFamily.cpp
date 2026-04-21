@@ -1,4 +1,4 @@
-// 0x800CEC04 (80B) NeighborhoodImpl::MakeNewFreePlayFamily(int)
+// 0x800CEC04 (96B) NeighborhoodImpl::MakeNewFreePlayFamily(int)
 
 struct Family;
 

@@ -1,4 +1,4 @@
-// 0x8017ab18 (44B) UIDrawTable::Instance(void)
+// 0x8017ab18 (60B) UIDrawTable::Instance(void)
 
 struct UIDrawTable {
     char data[16];

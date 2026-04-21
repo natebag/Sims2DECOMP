@@ -1,4 +1,4 @@
-// 0x8015AB2C (100B) ObjectDataBehaviorTree::GetNumParams(void) const
+// 0x8015AB2C (104B) ObjectDataBehaviorTree::GetNumParams(void) const
 
 struct ObjectDataBehaviorTree {
     char pad[84];

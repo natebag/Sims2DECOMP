@@ -1,4 +1,4 @@
-// 0x8009C5A8 operator<=(BString&, char*) (40B)
+// 0x8009C5A8 operator<=(BString&, char*) (48B)
 // Arg-swap thunk + xori
 struct BString;
 

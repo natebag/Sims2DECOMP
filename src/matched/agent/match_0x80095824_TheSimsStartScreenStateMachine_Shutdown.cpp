@@ -1,4 +1,4 @@
-// 0x80095824 (76B) TheSimsStartScreenStateMachine::Shutdown(void)
+// 0x80095824 (80B) TheSimsStartScreenStateMachine::Shutdown(void)
 
 struct StateMachineStatus {
     void ShutdownCurState();

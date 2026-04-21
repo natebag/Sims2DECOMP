@@ -1,29 +1,20 @@
-import subprocess, re, os
+import subprocess
 
-files = [
-    "src/matched/agent/match_0x8003919C_EyeToyClient_GetRepShaderGUID.cpp",
-    "src/matched/agent/match_0x8003932C_EyeToyClient_GetSaturation.cpp",
-    "src/matched/agent/match_0x80039434_EyeToyClient_GetBrightness.cpp",
-    "src/matched/agent/match_0x80039480_EyeToyClient_GetTierRepShaderCount.cpp",
-    "src/matched/agent/match_80189AB0_HUDTarget__IsPlayerHUDVisible.cpp",
-    "src/matched/agent/match_800D9430_ObjDefinition__GetMultiTileOffsets.cpp",
+addrs = [
+    ('0x80205014', 'DirectInteractor_PreDraw'),
+    ('0x80205040', 'DirectInteractor_Draw'),
+    ('0x802079B8', 'FloorPainter_PreDraw'),
+    ('0x802079E4', 'FloorPainter_Draw'),
+    ('0x80219488', 'ObjectManipulator_PreDraw'),
+    ('0x802194B4', 'ObjectManipulator_Draw'),
+    ('0x8021E018', 'SimInteractor_PreDraw'),
+    ('0x8021E044', 'SimInteractor_Draw'),
+    ('0x8021F41C', 'SocialModeInteractor_PreDraw'),
+    ('0x8021F448', 'SocialModeInteractor_Draw'),
 ]
 
-for f in files:
-    m = re.search(r'0x([0-9a-fA-F]{8})', f)
-    if not m:
-        print(f"SKIP {f}")
-        continue
-    addr = f"0x{m.group(1)}"
-    size = "?"
-    with open(f, 'r') as fp:
-        for line in fp:
-            sz = re.search(r'Size:\s*(\d+)', line)
-            if sz:
-                size = sz.group(1)
-                break
-    print(f"=== {f} ({addr}, {size}) ===")
-    result = subprocess.run(["bash", "tools/verify_match.sh", f, addr, size], capture_output=True, text=True)
-    lines = result.stdout.splitlines() + result.stderr.splitlines()
-    print("\n".join(lines[-5:]))
-    print()
+for addr, name in addrs:
+    dst = f'src/matched/agent/match_{addr}_InteractorModule__{name}.cpp'
+    result = subprocess.run(['bash', 'tools/verify_match.sh', dst, addr, '44'], capture_output=True, text=True)
+    ok = 'MATCH!' in result.stdout
+    print(f'{addr} {name}: {"OK" if ok else "FAIL"}')
