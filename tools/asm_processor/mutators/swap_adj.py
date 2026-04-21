@@ -27,7 +27,7 @@ NAME = "swap_adj"
 
 # Match an instruction line: leading whitespace + opcode + rest.
 # Allows . suffix (record forms like andi., cmpw.) and numeric/dot suffixes.
-_INSN_RE = re.compile(r"^(?P<indent>[ \t]*)(?P<op>[A-Za-z_][A-Za-z0-9._]*)\b(?P<rest>.*)$")
+_INSN_RE = re.compile(r"^(?P<indent>[ \t]*)(?P<op>[A-Za-z_][A-Za-z0-9._]*)(?=\s|$)(?P<rest>.*)$")
 
 
 def _opcode(line: str) -> str | None:
