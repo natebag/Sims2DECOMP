@@ -1,0 +1,105 @@
+# walls_manifest.yaml — Wall catalog for the asm_processor regression harness.
+#
+# Each entry captures a known parked wall that asm_processor should eventually
+# crack. The harness uses this as its test input list.
+#
+# Schema per wall entry:
+#   addr:     hex address of the function start (matches DOL + DVD map)
+#   size:     function size in bytes (must equal DVD map size)
+#   symbol:   mangled/demangled symbol name (human-readable; for reports)
+#   category: 1 = adjacent-insn swap, 2 = register allocation, 3 = RTL hoist / CFG
+#   source:   relative path to the C++ file that asm_processor will compile
+#   diagnosis: short note on the observed mismatch
+#   pipeline: ordered list of mutators to apply (each entry: mutator + args)
+#   expected: 'match' (harness asserts full MATCH), 'improve' (accept any byte
+#             improvement over baseline), or 'park' (harness just records
+#             current state, does not fail the suite yet).
+#
+# Category 1 walls are expected to crack first (simplest swaps). Category 3
+# walls likely need Phase 2 mutator work or remain structural.
+
+walls:
+  - addr: "0x80224048"
+    size: 24
+    symbol: "InteractorModule::WallManipulator::GetAffectedWallHeight()"
+    category: 1
+    source: "src/wip/version_diff/wall_0x80224048_WallManipulator_GetAffectedWallHeight.cpp"
+    diagnosis: "lfs-vs-andi RTL hoist — scheduler emits andi. before the lfs the DOL wants first."
+    pipeline:
+      - mutator: swap_adj
+        args:
+          a: "andi."
+          b: "lfs"
+          which: first
+    expected: park         # pioneer target — flip to 'match' once cracked.
+
+  - addr: "0x8001A03C"
+    size: 56
+    symbol: "ESimsCam::GetCursorLimitTopWidth()"
+    category: 2
+    source: "src/wip/version_diff/match_0x8001A03C_ESimsCam__GetCursorLimitTopWidth.cpp"
+    diagnosis: "fmadds FP-register coloring — DOL uses f13*f1+f12, cc1plus picks f1*f13+f11."
+    pipeline:
+      - mutator: force_reg
+        args:
+          match: "fmadds"
+          from_reg: "f11"
+          to_reg: "f12"
+          occurrence: 0
+    expected: park
+
+  - addr: "0x8012B5A0"
+    size: 52
+    symbol: "cXPersonImpl::InvalidateRoutes()"
+    category: 2
+    source: "src/wip/version_diff/wip_match_0x8012B5A0_cXPersonImpl__InvalidateRoutes.cpp"
+    diagnosis: "array base-alias — DOL picks r11 for base, cc1plus picks r3."
+    pipeline:
+      - mutator: force_reg
+        args:
+          match: "lwz"
+          from_reg: "r3"
+          to_reg: "r11"
+          occurrence: 1
+    expected: park
+
+  - addr: "0x8012B1D4"
+    size: 48
+    symbol: "cXPersonImpl::IsDog()"
+    category: 2
+    source: "src/wip/cxpersonimpl/match_0x8012b1d4_cXPersonImpl__IsDog.cpp"
+    diagnosis: "register-pin — vtable/offset loads use non-DOL registers."
+    pipeline: []            # To be authored after we capture baseline .s.
+    expected: park
+
+  - addr: "0x8004A060"
+    size: 48
+    symbol: "BBI::InventoryItem::InventoryItem()"
+    category: 2
+    source: "src/wip/version_diff/wip_match_0x8004A060_BBI__InventoryItem__InventoryItem.cpp"
+    diagnosis: "ctor LIFO-vs-FIFO store order with multiple zero-register reuses."
+    pipeline:
+      - mutator: swap_adj
+        args:
+          a: "stb"
+          b: "stw"
+          which: first
+    expected: park
+
+  - addr: "0x800C7D14"
+    size: 48
+    symbol: "cXMTObjectImpl::GetFirstMultiTileObject()"
+    category: 3
+    source: "src/wip/version_diff/wip_match_0x800C7D14_cXMTObjectImpl__GetFirstMultiTileObject.cpp"
+    diagnosis: "cr7 reuse across mr during linked-list head traversal."
+    pipeline: []            # Likely structural — leave empty pending Phase 2 idea.
+    expected: park
+
+  - addr: "0x8020BDBC"
+    size: 56
+    symbol: "InteractorModule::InteractorManager::IsValidPlayerId(int)"
+    category: 3
+    source: "src/wip/version_diff/wip_match_0x8020BDBC_InteractorModule__InteractorManager__IsValidPlayerId.cpp"
+    diagnosis: "4-check validity cascade bool-folding — backward-branch shared-epilogue."
+    pipeline: []            # Structural; placeholder until RTL-level mutator exists.
+    expected: park
