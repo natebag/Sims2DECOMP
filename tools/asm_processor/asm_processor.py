@@ -128,7 +128,8 @@ def run(src: Path, addr: int, size: int, outdir: Path,
     print(diff.summary())
 
     if diff.match:
-        print(f"\nMATCH! {src.name} at 0x{addr:08x} ({size}B) matches DOL after {len(dirs)} mutator pass(es).")
+        print(f"\nMATCH! Function at 0x{addr:08x} ({size} bytes) matches perfectly (with relocations masked).")
+        print(f"  via asm_processor: {src.name} after {len(dirs)} mutator pass(es).")
         return 0
     if diff.size_mismatch:
         return 1

@@ -112,6 +112,23 @@ if grep -qE '__attribute__[[:space:]]*\(\([[:space:]]*noreturn[[:space:]]*\)\)' 
     exit 1
 fi
 
+# Step 0.5: asm-processor routing
+# If source contains // ASMPROC_<name>: directives, delegate to the
+# asm-processor pipeline (compile -> .s mutation -> assemble -> diff).
+# The ASMPROC comments themselves are NOT banned — they're the sanctioned
+# replacement for banned source-level register-pin / __asm__ patterns.
+if grep -qE '^[[:space:]]*//[[:space:]]*ASMPROC_[A-Za-z][A-Za-z0-9_]*' "$SRC" 2>/dev/null; then
+    echo "Detected // ASMPROC_* directive(s) — routing through tools/asm_processor/asm_processor.py"
+    PYTHON_EXE="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
+    if [ ! -x "$PYTHON_EXE" ]; then
+        PYTHON_EXE="python"
+    fi
+    ASMPROC_OUTDIR="$OUTDIR/asmproc_${BASENAME}"
+    "$PYTHON_EXE" tools/asm_processor/asm_processor.py \
+        --src "$SRC" --addr "$ADDR" --size "$SIZE" --outdir "$ASMPROC_OUTDIR"
+    exit $?
+fi
+
 # Step 1: Compile
 if [ -f "$SN_CC1PLUS" ]; then
     # Use SN Systems compiler (the real one)
