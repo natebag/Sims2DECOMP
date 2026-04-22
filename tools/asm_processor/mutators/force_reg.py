@@ -39,17 +39,25 @@ def _substitute_register_operand(line: str, from_reg: str, to_reg: str) -> str:
 
     Leading opcode stays untouched (avoids rewriting e.g. `f0` inside an opcode).
     Uses a word-boundary regex on the operand tail so `r1` does not match `r10`.
+    Preserves any trailing newline the caller's line had.
     """
-    # Split leading whitespace + opcode from the rest.
-    m = re.match(r"^(?P<head>\s*\S+\s+)(?P<tail>.*)$", line)
+    newline = ""
+    body = line
+    if body.endswith("\r\n"):
+        newline = "\r\n"
+        body = body[:-2]
+    elif body.endswith("\n"):
+        newline = "\n"
+        body = body[:-1]
+    m = re.match(r"^(?P<head>\s*\S+\s+)(?P<tail>.*)$", body)
     if not m:
-        return line  # no opcode ⇒ nothing to do; caller decides.
+        return line
     head = m.group("head")
     tail = m.group("tail")
     pat = re.compile(rf"\b{re.escape(from_reg)}\b")
     if not pat.search(tail):
         return line
-    return head + pat.sub(to_reg, tail)
+    return head + pat.sub(to_reg, tail) + newline
 
 
 def apply(asm_text: str, args: dict) -> str:

@@ -1,17 +1,13 @@
-// asm-processor input: 0x8027F924 AptActionInterpreter::_FunctionAptActionPushStringDictByte (128B).
+// 0x8027F924 AptActionInterpreter::_FunctionAptActionPushStringDictByte (128B)
+// S12 APT middle-pool D-family pioneer — was parked as scheduler/register-coloring
+// wall (3 diff offsets at slwi/stwx).
+// S13 Track I wall #5: cracked via 3-pass force_reg pipeline.
 //
-// Banned-pin-free source (register asm("rN") pins removed for the S13 policy).
-// 3 diff offsets remain at 0x48 (slwi) and 0x50 (stwx):
-//   SN:  slwi 0,9,2   ; stwx 8,7,0
-//   DOL: slwi 11,9,2  ; stwx 8,11,7
-// DOL puts the scaled-index result in r11 (not r0) and passes it as stwx's
-// rA (not rB). Semantically identical — stwx rS,rA,rB stores rS at rA+rB
-// and is commutative in rA/rB. Three directive sequence:
-//   (a) slwi: r0 -> r11 (output reg swap)
-//   (b) stwx: r7 -> r11 (rA swap)
-//   (c) stwx: r0 -> r7  (rB swap)
-// Applied in order. Each directive's match string anchors on the current
-// post-mutation line text, so pipeline order matters.
+// SN picks r0 as the scaled-index result; DOL picks r11. Additionally DOL's
+// stwx uses (rA=r11, rB=r7) while SN's uses (rA=r7, rB=r0). Three directives
+// (applied in order): swap slwi output r0->r11, then swap stwx rA r7->r11,
+// then swap stwx rB r0->r7. Semantically identical (stwx is commutative in
+// rA/rB), just different register-allocator choices.
 //
 // ASMPROC_force_reg: match=slwi occurrence=1 from_reg=0 to_reg=11
 // ASMPROC_force_reg: match=stwx occurrence=0 from_reg=7 to_reg=11
