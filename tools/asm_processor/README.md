@@ -113,3 +113,61 @@ harness so the fleet catches regressions. The harness always passes
 - Cog `send_message` between OpusWorker and SonnetWorker2 on each meaningful
   change so the test harness gets re-run promptly.
 - OpusReview design-review gate before Phase 3 batch run (S13 rule #7).
+
+## Production pipeline — verify_match.sh ASMPROC routing (S13, commit 740e7c77)
+
+`tools/verify_match.sh` auto-detects `// ASMPROC_<name>:` pragma comments
+in the source it's verifying and delegates to `asm_processor.py`. The
+delegation block lives between the banned-pattern checks (register-asm,
+__asm__, naked, noreturn, unreachable, .byte, .long) and the normal
+compile step. The detection grep is:
+
+```
+grep -qE '^[[:space:]]*//[[:space:]]*ASMPROC_[A-Za-z][A-Za-z0-9_]*'
+```
+
+So ASMPROC directives must appear on a line whose first non-whitespace
+token is the C++ comment `//`. Block comments are not supported.
+
+Pre-commit hook is unchanged — it already calls verify_match.sh with
+(file, addr, size). Sources under `src/matched/**/*.cpp` with ASMPROC
+directives validate through the full pipeline automatically:
+
+```
+  git commit
+    └── pre-commit hook
+         └── anti-cheat grep checks (ASMPROC comment is NOT a banned pattern)
+         └── parse_header for addr/size
+         └── bash tools/verify_match.sh <file> <addr> <size>
+              ├── banned-pattern checks (same set)
+              ├── grep for ASMPROC_* directive
+              └── if found -> python tools/asm_processor/asm_processor.py ...
+                              ├── parse directives
+                              ├── strip directives from source
+                              ├── SN cc1plus -> .s
+                              ├── apply mutators to .s
+                              ├── SN NgcAs -> .o
+                              ├── extract .text bytes + relocations
+                              ├── diff vs DOL at (addr, size) with reloc masking
+                              └── print "MATCH! Function at ..." on success
+```
+
+### MATCH output format
+
+`asm_processor.py` prints `MATCH! Function at 0x<addr> (<size> bytes)
+matches perfectly (with relocations masked).` on success — matches
+pre-commit's `^MATCH! Function` regex. A secondary `  via asm_processor:
+<file> after N mutator pass(es).` line follows for operator awareness.
+
+### Promotion workflow per wall
+
+To promote an asm-processor wall into `src/matched/`:
+
+1. Rewrite the source with real class hierarchy (e.g. `namespace X { struct Y { float method(); }; }`) and field offsets per the DVD map. Aliased struct names used for scratch work in `tools/asm_processor/walls/` mangle to wrong symbols.
+2. Keep the `// ASMPROC_<name>: ...` directive comment(s) at the top of the source.
+3. Put the file at `src/matched/<dir>/match_0x<ADDR>_<Class>__<Method>.cpp`. The header must contain `(NN B)` for size parsing per QA-RULE #1.
+4. `git add` + `git commit --only <path>`. Pre-commit's anti-cheat checks + verify_match.sh routing + asm_processor.py all run automatically.
+
+Worked examples in-tree as of S13 session 1:
+- `src/matched/interactormodule/match_0x80224048_WallManipulator__GetAffectedWallHeight.cpp` — uses `ASMPROC_swap_adj: a=lfs b=andi. which=first`
+- `src/matched/camera/match_0x8001A03C_ESimsCam__GetCursorLimitTopWidth.cpp` — uses `ASMPROC_fp_relabel: swap=0:13,11:12`
