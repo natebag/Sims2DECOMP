@@ -71,7 +71,16 @@ tus.txt
 
 # Experimental test cpp files at repo root
 /test_*.cpp
+/test_*.s
 /dummy_match.cpp
+/tmp_*.bin
+/test_subprocess.py
+
+# Generated target lists / scan results
+tools/all_*_targets.json
+tools/all_*_targets.txt
+tools/unmatched_*.txt
+tools/*_results.txt
 
 # Root-level log files from experimental runs
 /*.log

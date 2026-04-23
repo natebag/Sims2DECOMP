@@ -2,6 +2,7 @@
 
 struct InteractorModule_Interactor;
 extern float GetSelectionRadius__26InteractorModule_Interactor(void);
+extern float g_defaultSelectionRadius;
 
 struct InteractorModule_SimInteractor {
     char pad[0x214];
@@ -12,7 +13,7 @@ struct InteractorModule_SimInteractor {
 float InteractorModule_SimInteractor::GetSelectionRadius(void) {
     float result = GetSelectionRadius__26InteractorModule_Interactor();
     if (!m_hasSelectionRadius) {
-        result = *(float*)0x8040DD1C;
+        result = g_defaultSelectionRadius;
     }
     return result;
 }
