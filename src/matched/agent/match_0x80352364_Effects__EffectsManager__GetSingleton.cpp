@@ -1,6 +1,5 @@
 // 0x80352364 (60B) Effects::EffectsManager::GetSingleton(void)
-// Lazy singleton: if (!s_inst) s_inst = new EffectsManager(); return s_inst;
-// Calls __builtin_new(28) for sizeof(EffectsManager).
+// Lazy singleton: SDA-loaded s_inst pointer; sizeof(EffectsManager) = 28.
 
 extern void* __builtin_new(unsigned int);
 
@@ -8,6 +7,7 @@ namespace Effects {
 
 class EffectsManager {
 public:
+    char m_data[28];
     EffectsManager();
     static EffectsManager* GetSingleton();
 };
@@ -15,7 +15,7 @@ public:
 extern EffectsManager* s_inst;
 
 EffectsManager* EffectsManager::GetSingleton() {
-    if (!s_inst) {
+    if (s_inst == 0) {
         s_inst = new EffectsManager();
     }
     return s_inst;
