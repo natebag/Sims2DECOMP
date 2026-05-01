@@ -1,5 +1,5 @@
 // 0x802CBCF0 (68B) EMutex::operator--(void)
-// MI-vcall slot-3 dispatch (vtable at this+0); 2 filler virtuals + Decrement at slot 3.
+// vtable-slot-3-via-2-fillers dispatch (vtable at this+0); 2 filler virtuals + Decrement at slot 3.
 
 class EMutex {
 public:

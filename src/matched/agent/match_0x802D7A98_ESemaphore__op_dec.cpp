@@ -1,5 +1,5 @@
 // 0x802D7A98 (68B) ESemaphore::operator--(void)
-// Same MI-vcall slot-3 pattern as EMutex twins.
+// Same vtable-slot-3-via-2-fillers pattern as EMutex twins.
 
 class ESemaphore {
 public:

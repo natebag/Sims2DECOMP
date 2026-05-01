@@ -1,5 +1,5 @@
 // 0x802CBCAC (68B) EMutex::operator-=(int)
-// Twin of operator-- — same MI-vcall slot-3 dispatch (arg ignored).
+// Twin of operator-- — same vtable-slot-3-via-2-fillers dispatch (arg ignored).
 
 class EMutex {
 public:
