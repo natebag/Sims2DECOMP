@@ -1,1 +1,0 @@
-// InteractorModule_FloorPainter_Draw at 0x802079E4 (44B)

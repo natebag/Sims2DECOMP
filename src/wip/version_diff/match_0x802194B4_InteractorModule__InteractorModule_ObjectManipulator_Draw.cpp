@@ -1,1 +1,0 @@
-// InteractorModule_ObjectManipulator_Draw at 0x802194B4 (44B)

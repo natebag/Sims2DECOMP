@@ -1,1 +1,0 @@
-// InteractorModule_SimInteractor_Draw at 0x8021E044 (44B)
