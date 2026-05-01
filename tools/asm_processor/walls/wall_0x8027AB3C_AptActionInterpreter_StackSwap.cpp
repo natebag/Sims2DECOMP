@@ -38,6 +38,36 @@
 // across the conditional branch is probably why GCC picks r11 repeatedly).
 //
 // PARKED for future session / SonnetWorker2 pickup. No directive applied.
+//
+// 2026-05-01 PROOF-OF-CONCEPT (OpusWorker, S13 task 1752588a):
+// Verified that `// ASMPROC_swap_adj: a=add b=slwi which=first` cleanly
+// resolves the 0x010-0x014 instruction reorder. Post-swap_adj:
+//   0x010: slwi r0,r8,2  (was at 0x014 — correct position now)
+//   0x014: add  r9,r11,r9 (was at 0x010 — correct position now)
+//
+// Reduces diff from 8 → 6 offsets but introduces new structural blocker:
+// the post-swap `add r9,r11,r9` has rA/rB transposed vs DOL's `add r9,r9,r0`.
+// Even with gpr_relabel 11↔0 to fix register coloring, the OPERAND ORDER
+// inside the add stays SN's (rD=r9,rA=r0,rB=r9 post-relabel) vs DOL's
+// (rD=r9,rA=r9,rB=r0). add is semantically commutative but the byte encoding
+// differs.
+//
+// Remaining required mutators (none currently in arsenal):
+//   - `swap_operands match=<line> rA<->rB` — for the add at post-swap 0x014
+//   - 5-7 force_reg directives for the per-site GPR coloring mismatches
+//     (0x004 r11→r0, 0x044 r11→r10, 0x048 r0→r11, 0x04c stwx rB swap,
+//      0x058 r0→r10, 0x064 stwx rA/rB swap)
+//
+// Cleanest forward path:
+//   1. Author `swap_operands` mutator (matches a line, swaps two operand
+//      positions identified by index — generalizes the rA↔rB pattern)
+//   2. Apply: swap_adj a=add b=slwi which=first
+//      + swap_operands match="add 9,11,9" pos=2,3
+//      + 7 force_reg directives at the listed sites
+//   3. Iterate the directive set to convergence
+//
+// Without `swap_operands`, alternative: gpr_relabel-then-source-coax to
+// achieve the operand order naturally. Open question for OpusReviewGuy.
 
 typedef unsigned char u8;
 
