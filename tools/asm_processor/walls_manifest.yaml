@@ -70,8 +70,10 @@ walls:
     category: 1
     source: "tools/asm_processor/walls/wall_0x8027F924_AptActionInterpreter_PushStringDictByte.cpp"
     diagnosis: "Banned-pin-free rewrite compiles at 128B (matches DOL size) with only 3 diff offsets at 0x48 (slwi) and 0x50 (stwx). GCC emits `slwi r0, r9, 2` + `stwx r8, r7, r0`; DOL has `slwi r11, r9, 2` + `stwx r8, r11, r7`. Difference is both a register swap r0↔r11 AND an operand-reorder (rA↔rB on stwx). Single force_reg swap reaches 7d07592e but needs 7d0b392e — requires a new operand-reorder mutator to flip rA/rB slots of a matched stwx. Otherwise tractable via more complex source coaxing to nudge GCC into picking r11 as the scaled-index register."
-    pipeline: []             # 3-diff residue, awaits operand-reorder mutator or source coaxing.
-    expected: park
+    pipeline:
+      - mutator: force_reg
+        args: {swap: "0:11"}
+    expected: match           # MATCHED via 3-pass force_reg (commit 2ea1c736).
 
   - addr: "0x8012B5A0"
     size: 52
