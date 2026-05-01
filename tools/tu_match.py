@@ -42,7 +42,18 @@ DEVKIT_LD  = f"{DEVKITPPC}/bin/powerpc-eabi-ld.exe"
 DEVKIT_NM  = f"{DEVKITPPC}/bin/powerpc-eabi-nm.exe"
 CXXFILT    = f"{DEVKITPPC}/bin/powerpc-eabi-c++filt.exe"
 OBJDUMP    = f"{DEVKITPPC}/bin/powerpc-eabi-objdump.exe"
-MATCH_DIRS = ["src/matched/agent", "src/matched/trivial"]
+def _discover_match_dirs() -> list:
+    """Return all subdirectories under src/matched/.
+    Previously hardcoded to ['src/matched/agent', 'src/matched/trivial'],
+    which missed ~18 other subdirs (sanimator2/, apt/, animtable/, ...).
+    """
+    base = "src/matched"
+    if not os.path.isdir(base):
+        return []
+    return [os.path.join(base, d) for d in sorted(os.listdir(base))
+            if os.path.isdir(os.path.join(base, d))]
+
+MATCH_DIRS = _discover_match_dirs()
 BUILD_DIR  = "build/tu_match"
 
 # SN compiler flags — -msdata=eabi + -G 8 are the SDA fix
