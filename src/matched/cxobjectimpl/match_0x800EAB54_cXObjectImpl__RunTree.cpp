@@ -1,5 +1,4 @@
-// 0x800EAB54 (112 bytes)
-// cXObjectImpl::RunTree(char*)
+// 0x800EAB54 cXObjectImpl::RunTree (112B)
 
 class cXObjectImpl {
 public:
