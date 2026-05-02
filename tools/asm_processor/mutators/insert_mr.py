@@ -43,6 +43,7 @@ from . import NoApplicableSite
 NAME = "insert_mr"
 
 
+# Shared with remove_mr — extract to _helpers.py if a 3rd consumer appears.
 _INSN_RE = re.compile(
     r"^(?P<indent>[ \t]*)(?P<op>[A-Za-z_][A-Za-z0-9._]*)(?=\s|$)(?P<rest>.*)$"
 )

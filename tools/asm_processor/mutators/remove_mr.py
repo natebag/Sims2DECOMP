@@ -37,6 +37,40 @@ same as insert_mr / nop_before / swap_operands). To avoid accidentally
 deleting a non-`mr` line that happens to contain the substring text
 (e.g., a comment containing "mr 0,3"), the assert_op safety check verifies
 the matched line's opcode before deletion.
+
+When to reach for this mutator:
+  - GCC's RA emits a `mr rD, rS` rename that the DOL does NOT have, and you
+    can confirm the diff is exactly that one extra instruction (off-by-1
+    instruction count, register liveness extends across the gap, no other
+    diff sites).
+  - The natural source structure cannot suppress the rename — i.e., you've
+    already tried `register T &alias = ...;` shapes, base-pointer aliasing,
+    and `extern char[]` SDA forcing per the technique catalog.
+
+When NOT to reach for it:
+  - GCC's `mr` AND a follow-on instruction differ from DOL — that is usually
+    a deeper register-coloring problem; consider gpr_relabel + insert_mr or
+    a force_reg + remove_mr composition only after triage proves the rename
+    is the sole diff.
+  - The DOL has a `mr.` (record form) where GCC has a plain `mr` — this is
+    a fold-pair pattern (separate mutator territory), not a delete.
+  - The diff isn't byte-equal in size — remove_mr changes instruction count
+    by 1, so a SIZE_MISMATCH wall will move farther from match, not closer.
+
+Composition with insert_mr in the same pipeline (FOOTGUN):
+  The `match` substring sees POST-MUTATION state. If a prior insert_mr in
+  the same pipeline inserted a `mr X,Y` line, remove_mr's first hit can
+  be that newly-inserted line. Use one of:
+    - distinct register-pair substrings
+    - explicit occurrence index per feedback_multidirective_composition.md
+    - precise assert_op plus a unique surrounding substring
+  Do NOT rely on "later in the file" semantics — substring search hits
+  from the top.
+
+Verify-before-save: always run `verify_match.sh` (or the asm_processor
+wall harness) before committing a directive recipe. Mutator authoring is
+deterministic per (asm_text, args), so a passing verify on the target
+function is sufficient evidence of byte-match.
 """
 from __future__ import annotations
 
