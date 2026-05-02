@@ -166,6 +166,24 @@ Compiler produces `bl Helper; li r0, 0; andi. r9, r30, 1; stw r0, 4(r31); stw r0
 
 **Sub-pitfall:** field-clear *order* matters. Write the order that matches the DOL — the SN scheduler does not always sort store offsets predictably. When 2-3 stws differ in order, swap the source statements. Walls observed: ArcCopier, EResPrefetchFile, CasGenetics::Grandparent (all >2 store interleavings the scheduler reorders unpredictably).
 
+### Sibling pattern — source-order reverse for compiler reorder (ctor side)
+
+**Cross-applies to ctors** with the symmetric "vtable + zero-stores" shape. The same scheduler-reorder discipline applies: when the DOL has interleaved stores with the vtable assignment between zero-clears, mirror that order in source.
+
+```cpp
+// Ctor variant — observed in CodexWorker's Lane J 5-twin EREdithTreeSet/ERQuickdata/
+// ERSampledata/ERBinary/ENgcRenderSurface batch (commit d9d743cd).
+EREdithTreeSet::EREdithTreeSet() {
+    m_field14 = 0;                         // first zero clear
+    m_vt = (void*)vt_EREdithTreeSet;       // vtable in MIDDLE (not first or last)
+    m_field1C = 0;                         // last zero clear
+}
+```
+
+**Insight:** the SN compiler's natural emission for `m_vt = vt; m_field14 = 0; m_field1C = 0;` (vtable-first source) reorders to `<vtable_calc>, m_field14 = 0, m_vt = vt, m_field1C = 0` after scheduling. By writing source in the post-reorder order, the compiler's emission matches the DOL directly. Saves a `// FLAGS:` flag override in many cases.
+
+**Promotion candidate:** if this generalizes beyond the 5-class CodexWorker batch, it qualifies as Technique #72. Multi-instance bar already met (5 ctors), but the dtor side is covered in Recipe 8 above; ctor side may warrant separate documentation if more cases surface.
+
 ## When to reach
 
 Reach for Variant L recipes when:
