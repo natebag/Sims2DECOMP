@@ -55,6 +55,32 @@ Out-of-scope opcodes (raise unhandled for safety): `mcrf`, `mfcr`,
 `crxor`, `mcrxr`. If any of these appear in the swap region, the mutator
 raises NoApplicableSite — extending it for those is a separate exercise.
 
+When NOT to reach for this mutator:
+  - The diff includes operand-position swaps or register-name changes
+    on cmp/bc operands (e.g., `cmpw r31,r29` vs `cmpw r29,r31`). Use
+    `swap_operands` or `gpr_relabel` for those — `swap_cr_field` only
+    touches the CR field byte.
+  - The DOL uses CR-mutating opcodes (`mcrf`, `mfcr`, `mtcrf`,
+    `crand`/`cror`/etc.) inside the swap region. The mutator hard-stops
+    on these because their semantics aren't a simple field rename.
+  - You need to swap MORE THAN TWO CR fields (e.g., a 3-way permutation
+    cr0→cr2→cr5→cr0). Compose two `swap_cr_field` directives back-to-back
+    or use a different approach.
+  - The diff is byte-equal in size but only one of (cmpwi, bc) needs
+    swapping while the other already matches DOL. In that case, you
+    have an asymmetric diff and likely need a different mutator (or the
+    diff is actually a control-flow / register reuse diff, not pure CR
+    allocation).
+  - Composition with `insert_mr` / `remove_mr`: if a prior mutator
+    inserted/deleted a `mr` line within your swap region, the `start`
+    and `end` substring anchors must be chosen to avoid the new line.
+    Anchor on cc1plus-stable lines (cmp/bc) rather than mr lines for
+    composition safety. See `feedback_multidirective_composition.md`.
+
+Validated targets:
+  - PlumbBobModel::SetShadow @ 0x8005B3E0 (commit b6ff5d80) — cr0↔cr7 swap
+    bracketed by `cmpwi 7,3,0` (start) / `cmpwi 0,31,0` (end).
+
 Verify-before-save: always run `verify_match.sh` before committing a
 directive recipe. Mutator authoring is deterministic per (asm_text, args),
 so a passing verify on the target function is sufficient evidence of

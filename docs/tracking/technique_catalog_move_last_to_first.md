@@ -82,5 +82,9 @@ source-order issue, not a flag issue.
   - **Technique #N+1** candidate (numbering pending OpusReviewGuy gate review).
   - **Confidence:** Medium — single confirmed instance. Needs 2-3 more hits
     on different walls before promotion to a proven technique.
-  - **Suggested test bench:** scan VERSION_DIFF pool for walls with 3
-    adjacent `stw` lines and offset-rotation diff signature.
+  - **Suggested test bench:** scan unmatched 64-256B functions in classes
+    with global-state init patterns (e.g., GameData, EFx singletons,
+    Manager-class Reset/Init methods). Look for 3 adjacent `stw` lines
+    targeting consecutive offsets of the same base register where the
+    diff signature is offset-rotation only (same source register, same
+    base, only the offset bytes permute).
