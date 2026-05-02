@@ -41,7 +41,14 @@ def _split_body(body: str) -> dict:
     if not body:
         return {}
     args: dict = {}
-    for tok in re.split(r"\s+", body):
+    # Use shlex to support quoted values: key="value with spaces"
+    # POSIX mode preserves the quoting semantics we want.
+    import shlex
+    try:
+        tokens = shlex.split(body, posix=True)
+    except ValueError as exc:
+        raise ValueError(f"ASMPROC directive failed to tokenize: {exc}") from None
+    for tok in tokens:
         tok = tok.rstrip(",")
         if not tok:
             continue
