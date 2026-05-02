@@ -73,9 +73,10 @@ When NOT to reach for this mutator:
     allocation).
   - Composition with `insert_mr` / `remove_mr`: if a prior mutator
     inserted/deleted a `mr` line within your swap region, the `start`
-    and `end` substring anchors must be chosen to avoid the new line.
-    Anchor on cc1plus-stable lines (cmp/bc) rather than mr lines for
-    composition safety. See `feedback_multidirective_composition.md`.
+    and `end` substring anchors can shift unexpectedly. Choose start/end
+    substrings that do NOT contain `mr` (anchor on cc1plus-stable lines
+    such as `cmpwi`, `cmplwi`, `bc` instead) so the region anchor is
+    invariant under composition. See `feedback_multidirective_composition.md`.
 
 Validated targets:
   - PlumbBobModel::SetShadow @ 0x8005B3E0 (commit b6ff5d80) — cr0↔cr7 swap
