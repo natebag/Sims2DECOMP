@@ -1,6 +1,6 @@
 # Technique #71 — STL vec-iter dealloc with `__node_alloc` / `operator delete` size dispatch
 
-**Status:** VALIDATED across 5 classes (S13 2026-05-02 Lane G, SonnetWorker, commits `eebd6641` + `8c315161` + `acb5bb50` + `9471ff07`).
+**Status:** VALIDATED across 7 classes (S13 2026-05-02 Lane G, SonnetWorker, commits `eebd6641` + `8c315161` + `acb5bb50` + `9471ff07`).
 
 **Companion to:** Variant L recipe catalog (`technique_catalog_variant_l_recipes.md`), Variant G' SonnetWorker2 recipe (commit `4963e6e6`).
 
