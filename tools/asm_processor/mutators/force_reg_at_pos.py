@@ -1,6 +1,26 @@
 """force_reg_at_pos — rename a register at a SPECIFIC operand position on
 a single .s line, leaving same-named registers at OTHER positions intact.
 
+STATUS: STANDARD — Density Watch.
+
+  0 N=2 hunt hits as of S13 (TUScout, info `0a22aa88`). Implementation is
+  sound; production code at commit `7c3dd3ee` (FamilyImpl::RemoveMember,
+  7-directive recipe with insert_mr cascade) stands. Mutator stays in
+  REGISTRY as escape hatch.
+
+  Default to source-level Tech #72 (polarity flip) and Tech #73 (split-tail)
+  FIRST. The TUScout hunt confirmed the methodology insight that cc1plus
+  and SN ProDG diverge on INSTRUCTION patterns more than on register
+  choice — most apparent register-rename walls are actually opcode-idiom
+  walls requiring source-level rewriting. Invoke this mutator only when
+  structural inspection confirms a single instruction needs an asymmetric
+  register rename (same logical register at multiple operand positions on
+  one line, only one of which should change) — the genuinely-rare position-
+  aware case.
+
+  No mothball clock — STANDARD status retained pending S14 retrospective.
+  If sustained zero-invocation through S14, demotion conversation reopens.
+
 Use case (Track I queue #4, S13 session 4): Category 3 walls where a single
 instruction needs an asymmetric register rename — the same logical register
 appears at multiple operand positions on one line, and ONLY one of them

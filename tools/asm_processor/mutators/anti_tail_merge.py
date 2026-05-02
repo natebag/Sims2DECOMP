@@ -1,12 +1,103 @@
 """anti_tail_merge — un-merge cc1plus's shared return-tail blocks.
 
-Use case: cc1plus's `-O2` tail-merging consolidates N small return-tail
-blocks (typically `lwz r3, GLOBAL@sda21(0); blr`) into a single shared
-block at function end. SN ProDG's DOL output keeps M>1 duplicate copies
-of that tail, gaining +2 instructions per extra duplicate. Source-level
-coaxing (`volatile`, statement reorder, sentinel locals) is unreliable
-for this — the compiler chooses tail-merge layout independently of
-source structure.
+STATUS: EXPERIMENTAL (FALLBACK ONLY) — Tech #73 source-coax is the DEFAULT.
+
+  Decision tree for any tail-merge wall (no exceptions):
+
+    1. Read .s diff. Confirm DOL has duplicated `(materialize-r3 ; blr)`
+       epilogues vs cc1plus's single shared tail.
+    2. Try Tech #73 source-coax recipe FIRST (30-min triage budget).
+       See `docs/tracking/technique_catalog_anti_tail_merge_source_coax.md`.
+       The recipe — positive bounds-check + inner branches as early-return
+       + compute-order-aware locals — produces DOL's duplicated-tail layout
+       natively from source, with no post-cc1plus mutation. This is the
+       canonical path for the simple tail-merge case.
+    3. Only if Tech #73 demonstrably cannot reach the layout (see CONCRETE
+       FALLBACK CRITERIA below), reach for THIS mutator.
+
+  Authors who land here while writing a directive: STOP. Read Tech #73.
+  Try the source-level recipe first. Reaching this mutator without first
+  exhausting source-coax is the documented anti-pattern.
+
+  Background: As of 2026-05-02 (S13 Track I session 4 close), Tech #73 was
+  promoted with N=4 cross-shape validation (EBitArray::Get @ 0x802DF780 +
+  __cmpdi2 @ 0x80249088 + INGTarget::get_current_inginfo @ 0x801BBB60 +
+  INGTarget::get_current_mix_inginfo @ 0x801BBBA8) spanning 3 fundamentally
+  different control-flow shapes (predicate-bool / case-cascade-int /
+  state-getter pointer pair). The mutator's canonical primary (AptArray::get
+  @ 0x802860AC, commit `0c5e1dd4`) is itself a Tech #73 retest candidate;
+  if it matches under source-coax alone, the only validated invocation
+  evaporates and this mutator becomes fully unused.
+
+  CONCRETE FALLBACK CRITERIA — when source-coax CANNOT reach the layout:
+
+    The fallback case is COMPOUNDED STRUCTURAL WALLS where tail-merge
+    diffs ride alongside other RTL-level structural mutations on the
+    same function body. Source-level recipe edits cannot unwind a
+    multi-wall stack because they only act at one level of the IR.
+
+    Concrete compounded-wall fingerprint (any TWO+ of these on the same
+    function in addition to the tail-merge diff):
+      - `rlwimi`/`rlwinm` bitfield reconstruction with non-trivial mask
+        composition the source struct layout doesn't naturally produce
+      - asymmetric `andis.` patterns (high-half mask test paired with
+        a different low-half operation cc1plus won't emit)
+      - SDA singleton load/store reordering that cc1plus's load
+        scheduling doesn't reproduce from natural variable order
+      - multiple register-coloring deltas requiring `region_gpr_relabel`
+        or stacked `force_reg`/`force_reg_at_pos` directives
+      - frame-pointer or LR save/restore reordering inside the tail body
+
+    Worked exemplar (descoped under this status): AptCharacterInst::
+    sMethod_setMask @ 0x8028A244 (212B). Has rlwimi mask reconstruction
+    + asymmetric andis. + SDA singleton load + tail-merge diff stacked
+    on one function. Tech #73 alone resolves the tail-merge but leaves
+    the rlwimi/andis./SDA residuals — those still require asm-processor
+    directives, and `anti_tail_merge` as ONE step in that pipeline is
+    valid territory for this mutator.
+
+    If you have ONLY a tail-merge diff with no other structural walls,
+    you are NOT in fallback territory — go back to step 2.
+
+  Mothball clock (60-90 days from catalog merge date 2026-05-02):
+    - If NO new wall (i.e., not the AptArray::get retain) requires
+      anti_tail_merge within 60-90 days: mothball candidate. Retain
+      commit AptArray::get is itself a Tech #73 retest candidate; if
+      it matches via source-coax, the mutator becomes fully unused
+      and can be removed from REGISTRY (with the .py file kept as
+      historical reference under tools/asm_processor/mutators/).
+    - If REPEAT fallback invocations from real walls happen organically
+      (multiple distinct walls — at least 2 NEW byte-match invocations
+      beyond AptArray::get — within the clock window): mutator's status
+      promotes back to STANDARD.
+
+  FRAMEWORK-VALIDATION FRAMING (per ORG, 2026-05-02):
+    A SINGLE fallback success demonstrates REACH, not REVERSAL.
+
+    The pre-parked `filter_wallpaper @ 0x801D4F88 (64B, 3-path tail-merge)`
+    is the canonical first-fallback test case. If the directive byte-
+    matches there, that VALIDATES the demotion framework (the mutator
+    correctly handles a wall the recipe cannot reach) — it does NOT
+    promote the mutator back to STANDARD. The 60-90d clock continues.
+
+    Reversal back to STANDARD requires a SUSTAINED PATTERN of fallback
+    invocations across multiple wall classes within the clock window
+    (≥2 distinct fallback walls beyond filter_wallpaper, organically
+    surfaced by production work, not synthetically batched).
+
+    The framing matters because "first success after demotion = re-promote"
+    creates pressure to find a single confirmation case and re-promote
+    prematurely. The actual question is whether the mutator handles a
+    DENSITY of walls Tech #73 cannot reach — that's an observed pattern,
+    not a single data point.
+
+Use case (compounded-layout fallback only): cc1plus's `-O2` tail-merging
+consolidates N small return-tail blocks (typically `lwz r3, GLOBAL@sda21(0);
+blr`) into a single shared block at function end. SN ProDG's DOL output
+keeps M>1 duplicate copies of that tail, gaining +2 instructions per extra
+duplicate. When the wall ALSO requires composition with rlwimi/andis. or
+RTL-level register-shape mutators, source-coax cannot reach the layout
+alone and this mutator becomes the fallback.
 
 Transformation: duplicate-and-relocate. Picks ONE predecessor branch
 to the shared tail (the `anchor_branch`), inverts its condition, and

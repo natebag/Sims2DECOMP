@@ -1,5 +1,26 @@
 """region_gpr_relabel — bounded directed GPR rename.
 
+STATUS: STANDARD — Density Watch.
+
+  0 N=2 hunt hits across 6,818 functions as of S13 (TUScout, info
+  `6790284f`). Implementation is sound; production code at commit
+  `25fdb045` (AptActionQueueC::GetDequeLocation) stands. Mutator stays
+  in REGISTRY as escape hatch.
+
+  Default to source-level Tech #72 (polarity flip, `technique_catalog_polarity_flip.md`)
+  and Tech #73 (split-tail, `technique_catalog_anti_tail_merge_source_coax.md`)
+  FIRST. Most "register-allocation walls" turn out to be "opcode-idiom
+  walls" (cmpwi vs or., srawi vs sraw, slwi vs rlwinm, ble vs bgt) where
+  the underlying instruction pattern itself differs and source-level
+  rewriting is the right tool. Invoke this mutator only if structural
+  inspection confirms the cc1plus output and DOL agree on opcode patterns
+  AND only the register choice differs — that is a genuinely rare wall
+  class.
+
+  No mothball clock — STANDARD status retained pending S14 retrospective
+  with one more session of usage data. If sustained zero-invocation
+  through S14, demotion conversation reopens.
+
 Sibling of `gpr_relabel` (whole-file, bidirectional). region_gpr_relabel
 applies a DIRECTED `from:to` rename map to a BOUNDED contiguous region of
 post-cc1plus .s, identified by start/end anchor lines (substring-with-uniqueness).
