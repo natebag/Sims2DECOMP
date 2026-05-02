@@ -119,3 +119,17 @@ walls:
     diagnosis: "4-check validity cascade bool-folding — backward-branch shared-epilogue."
     pipeline: []            # Structural; placeholder until RTL-level mutator exists.
     expected: park
+
+  - addr: "0x802860AC"
+    size: 56
+    symbol: "AptArray::get(int) const"
+    category: 3
+    source: "src/matched/agent/match_0x802860AC_AptArray__get.cpp"
+    diagnosis: "cc1plus -O2 tail-merges the gpAptUndefined-return tail into a single shared block (12 inst / 48B); SN ProDG keeps the tail duplicated (14 inst / 56B), gaining +2 inst / +8B. Source-level coaxing insufficient — layout choice is independent of source structure. Cracked via `anti_tail_merge` mutator: invert BO=4 anchor branch (idx>=count) + retarget BO=12 also_retarget (idx<0) + insert duplicated tail block, leaving original .L7 at function end to receive the bclr fallthrough."
+    pipeline:
+      - mutator: anti_tail_merge
+        args:
+          tail_label: ".L7"
+          anchor_branch: "bc 4,0,.L7"
+          also_retarget: "bc 12,0,.L7"
+    expected: match           # cracked 2026-05-02 by MutatorSmith — anti_tail_merge canonical primary (commit 0c5e1dd4); STANDARD-ship N=1 byte-match.
