@@ -71,6 +71,69 @@
 // Mutator definition: tools/asm_processor/mutators/force_alias_base.py
 //   (PROVISIONAL — clears on first byte-match landing).
 
+// =====================================================================
+// OpusWorker source-coercion follow-up (2026-05-02, S13 session 4 Lane N)
+// =====================================================================
+// Source progression:
+//   v1 baseline (cached end):             28 inst / 112B (-5/-20B)
+//   v2 (no end cache, m_members.m_end):   30 inst / 120B (-3/-12B)
+//   v3 (dual-alias mv + mv2 ptr):         32 inst / 128B (-1/-4B)  ← CURRENT
+//   v4 (src/end reorder):                 32 inst / 128B (identical to v3)
+//
+// v3 SHAPE NOW MATCHES DOL FOR FIRST 31 INSTRUCTIONS. The residual gap is a
+// single missing `mr` instruction (4B) in the shift-loop register-allocation
+// pattern:
+//
+//   v3 .s (post addi+lwz+cmpw+beq):                  DOL .s:
+//     subf 0,10,0                                      mr   11,0     ← MISSING in v3
+//     mr   11,9                                        mr   10,9
+//                                                      subf 0,11,8
+//
+// DOL puts src into r0 (via `addi 0,9,4`), then explicitly moves to r11
+// (`mr 11,0`) for the shift loop. m_end goes into r8 (`lwz 8,4(3)`). Loop
+// body uses src=r11, dst=r10.
+//
+// cc1plus puts src directly into r10 (`addi 10,9,4`), m_end into r0
+// (`lwz 0,4(3)`). Loop body uses src=r10, dst=r11. No intermediate `mr`
+// because src is materialized straight into the loop register.
+//
+// SOURCE COERCION HIT WALL: Tried v2/v3/v4 source variations. cc1plus
+// consistently picks r10 for the addi result (lowest-numbered free volatile
+// after r0/r9 are occupied by load buffer and m_begin). No source pattern
+// found that nudges cc1plus to materialize via r0 first then mr.
+//
+// MUTATOR PIPELINE FEASIBILITY:
+//   Pre-insert transforms (3 directives, all clean):
+//     1. force_reg match="addi 10,9,4" from_reg=10 to_reg=0
+//     2. force_reg match="lwz 0,4(3)" from_reg=0 to_reg=8
+//     3. swap_operands match="cmpw 0,10,0" pos=1,2  → cmpw 0,0,10
+//        force_reg match="cmpw 0,0,10" from_reg=10 to_reg=8 → cmpw 0,0,8
+//
+//   Insert (1 directive):
+//     5. insert_mr after="# beq  cr0" src=0 dst=11 relabel=10:11,11:10
+//
+//   Post-insert transforms BLOCKED:
+//     subf 0,10,0 → after relabel becomes subf 0,11,0; need r0 (rb pos)
+//     → r8, but r0 (rt pos) must STAY r0. force_reg renames ALL whole-word
+//     `\b0\b` matches in operand tail — would clobber rt position too.
+//
+// REQUEST: position-aware register-rename mutator. Spec:
+//   `force_reg_at_pos`:
+//     args: match=<line substring>, pos=<0-indexed operand>,
+//           from_reg=<reg>, to_reg=<reg>, occurrence=<int>
+//     Effect: rename only the operand at `pos`, leaving other operands
+//     with the same register name untouched.
+//
+// Once `force_reg_at_pos` lands, the FamilyImpl manifest closes in 7
+// directives (3 pre + 1 insert + 3 post) for byte-exact match.
+//
+// Alternative path: source-level introduction of register pressure that
+// pushes cc1plus to materialize src in a different register. Tried, no
+// success in 30-min triage window. Stopping per protocol.
+//
+// CURRENT v3 SOURCE (parked here as starting point for mutator landing):
+// =====================================================================
+
 struct FamilyImpl {
     struct MemberVector {
         int* m_begin;
@@ -84,24 +147,25 @@ struct FamilyImpl {
 };
 
 void FamilyImpl::RemoveMember(int memberId) {
+    MemberVector* mv = &m_members;
     int* begin = m_members.m_begin;
-    int* end = m_members.m_end;
-    if (begin == end) return;
+    if (begin == mv->m_end) return;
 
     do {
         if (*begin == memberId) {
+            MemberVector* mv2 = &m_members;
             int* src = begin + 1;
-            if (src != end) {
+            if (src != mv2->m_end) {
                 int* dst = begin;
-                int n = end - src;
+                int n = mv2->m_end - src;
                 while (n > 0) {
                     *dst++ = *src++;
                     n--;
                 }
             }
-            m_members.m_end = m_members.m_end - 1;
+            mv2->m_end = mv2->m_end - 1;
             return;
         }
         begin++;
-    } while (begin != end);
+    } while (begin != mv->m_end);
 }
