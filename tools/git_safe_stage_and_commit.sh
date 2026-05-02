@@ -92,24 +92,45 @@ POLL_BUSY=5
 STALE_AGE=30
 STEADY_THRESHOLD=30
 
+# MSYS2/Windows detection for portable stat fallback
+_is_msys() {
+    local uname_s
+    uname_s=$(uname -s 2>/dev/null || echo "")
+    case "$uname_s" in
+        MINGW*|MSYS*|CYGWIN*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+# Portable epoch-mtime helper. Handles the race condition where the lock
+# disappears between the existence check and the stat call, and provides
+# a Python fallback on MSYS2 where stat -f %m is unsupported.
+_epoch_mtime() {
+    if [ ! -e "$LOCK" ]; then echo ""; return; fi
+    if stat -c %Y "$LOCK" >/dev/null 2>&1; then
+        stat -c %Y "$LOCK"
+        return
+    fi
+    # stat -c failed — lock may have been removed mid-check
+    if [ ! -e "$LOCK" ]; then echo ""; return; fi
+    # Lock still exists — use platform-specific fallback
+    if _is_msys; then
+        python -c "import os; print(int(os.stat('$LOCK').st_mtime))" 2>/dev/null || echo ""
+    else
+        stat -f %m "$LOCK" 2>/dev/null || echo ""
+    fi
+}
+
 lock_age_secs() {
     if [ ! -e "$LOCK" ]; then echo ""; return; fi
     local now mtime
     now=$(date +%s)
-    if stat -c %Y "$LOCK" >/dev/null 2>&1; then
-        mtime=$(stat -c %Y "$LOCK")
-    else
-        mtime=$(stat -f %m "$LOCK")
-    fi
+    mtime=$(_epoch_mtime)
+    if [ -z "$mtime" ]; then echo ""; return; fi
     echo $((now - mtime))
 }
 lock_mtime_raw() {
-    if [ ! -e "$LOCK" ]; then echo ""; return; fi
-    if stat -c %Y "$LOCK" >/dev/null 2>&1; then
-        stat -c %Y "$LOCK"
-    else
-        stat -f %m "$LOCK"
-    fi
+    _epoch_mtime
 }
 git_proc_count() {
     local uname_s
