@@ -133,3 +133,17 @@ walls:
           anchor_branch: "bc 4,0,.L7"
           also_retarget: "bc 12,0,.L7"
     expected: match           # cracked 2026-05-02 by MutatorSmith — anti_tail_merge canonical primary (commit 0c5e1dd4); STANDARD-ship N=1 byte-match.
+
+  - addr: "0x8028552C"
+    size: 80
+    symbol: "AptActionQueueC::GetDequeLocation(int) const"
+    category: 2
+    source: "src/matched/aptactionqueuec/match_0x8028552C_AptActionQueueC__GetDequeLocation.cpp"
+    diagnosis: "Pure register-coloring residual after `if (wrapped >= 0)` source polarity flip aligns block layout with DOL. cc1plus colors the post-mullw `wrapped` value r0 throughout; DOL kills r0 to r3 at the `srawi 0,0,2` shift and reuses r0 for the divw quotient. 7 mismatches (offsets 0x1c..0x44) collapse to a single directed bounded-region register rename. start_anchor=`srawi 0,0,2` (kill point — start_mode='at' renames dest only); end_anchor=`mulli 3,0,20` (last region line, end_mode='at'); rename=`0:3,9:0` simultaneous map (3 silent-identity)."
+    pipeline:
+      - mutator: region_gpr_relabel
+        args:
+          start_anchor: "srawi 0,0,2"
+          end_anchor: "mulli 3,0,20"
+          rename: "0:3,9:0"
+    expected: match           # cracked 2026-05-02 by MutatorSmith — region_gpr_relabel canonical primary (Track I queue #3); STANDARD-ship N=1 byte-match.
