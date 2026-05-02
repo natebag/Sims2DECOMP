@@ -4,20 +4,20 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**🎯 43% DECOMPILED — PAST 52% OF MATCHABLE CODE 🎯**
+**🎯 47.7% DECOMPILED — PAST 57% OF MATCHABLE CODE — APPROACHING 10K MILESTONE 🎯**
 
-**43.0% decompiled and verified** — 8,808 / 20,508 functions byte-matched against the original DOL. Excluding the ~3,500 SDK functions compiled with Metrowerks CodeWarrior, we're matching **~52% of the game's decompilable code**.
+**47.7% decompiled and verified** — 9,783 / 20,508 functions byte-matched against the original DOL. Excluding the ~3,500 SDK functions compiled with Metrowerks CodeWarrior, we're matching **~57% of the game's decompilable code**. Crossing the **10,000 matched milestone** in the next session.
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **8,808 / 20,508 (43.0%)** |
-| **% of matchable** | **~52%** (of ~17,000 excluding SDK) |
-| Functions remaining | ~11,700 |
+| **Verified matches** | **9,783 / 20,508 (47.7%)** |
+| **% of matchable** | **~57%** (of ~17,000 excluding SDK) |
+| Functions remaining | ~10,725 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
-| Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit |
-| Matching techniques | 35 proven patterns |
+| Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit + asm_processor |
+| Matching techniques | 71+ proven patterns + 8 Variant L recipes + 3 Variant ' families |
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
 
@@ -42,10 +42,22 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 - **Permuter v2** — `tools/matcher_bot.py` with 8 stochastic mutations + hill-climbing search + batch mode for automated source-level permutation against the DOL.
 - **Pre-commit verification gate** — every `src/matched/` commit is auto-verified against the DOL; fakes and broken matches are blocked before they land.
 - **DVD vs release map gotcha confirmed** — the shipped DOL is from `cm3-build22`; address lookups MUST use `u2_ngc_release_dvd.map`. The release map (`cm3-build25`) has different addresses and will produce false leads.
+- **Multi-agent fleet orchestration** — parallel Claude Code + Kimi + codex-cli agents coordinated via cog MCP. Specialized roles: production blast (SonnetWorker), structural-diagnostic (SonnetWorker2), wall cracking (OpusWorker), dedicated mutator authoring (MutatorSmith), background sweep (Kmiworker2), pre-scout audits (TUScout), 30-min qa-tick reviews (Reviewer), gate-review reserve (OpusReviewGuy), solo virgin-class lane (CodexWorker).
+- **Variant K/L/M dtor classification** (Techniques #66/#67/#68) — bl-count fingerprint pre-classifies destructor patterns: 0 bl → K (vtable-only), 1 bl → L (single helper), 1 bl + Deallocate → M, 2 bl → B/C/D/E (multi-helper).
+- **Technique #69 — SDA-extern int via -25836(r13) anchor** — `extern int s_instanceCount;` resolves to .sbss SDA cluster without map symbol entry. Sibling to existing `extern char globalName[]` SDA pattern.
+- **Technique #70 — vtable-at-offset SI ctor with member-in-derived** — single-inheritance ctors with vtable stored at non-zero offset (e.g., +0x24, +0x54, +0xF0) require the offset member to be in the DERIVED class, not the base. Validated 7 classes / 3 different offsets.
+- **Technique #71 — STL vec-iter dealloc** — `__node_alloc<128 / __builtin_delete>128` size-threshold dispatch with sizeof(T) variants (`& ~3U` for 4-byte, `& ~1U` for 2-byte, no mask for raw). Validated 7 classes (DialogPane family + EdithVariableSet + ObjectDataObjDefinition).
+- **Variant G' / Variant I' / Variant L** — extended dtor recipe families:
+  - **Variant G'** = vector-iter inline-dealloc loop with magic-div + `>128 byte` branch dispatch (validated sizeof=4/12/52). Key insight: explicit `&m_vec` pointer forces base-formation matching SGI STL `_Vector_base&` reference pattern.
+  - **Variant I'** = base-I + Technique #69 SDA-extern + inline-derived-EBitArray-member-dtor (manually-managed-vtable footnote: derived dtors must stay non-virtual or vtable lands at wrong offset).
+  - **Variant L 8-pattern recipes** — non-virtual `dtor(int flag)` method (sidesteps base/deleting variant ambiguity, 100% hit rate), MI vtable-transition (dual `m_vt = vt_a/vt_b`), `if (this != 0)` null-this guard, custom delete vectors (DOGMA_PoolManager / MainHeap / EResourceManager / AptValueGC / HeapStaticFree), singleton clear (SDA + non-SDA struct-cast variants), switch-case dispatch, virtual call slot N (8-byte slots, dtor takes 2), field-clear + flag-check interleaving.
+- **asm_processor mutator system** — post-compile asm transformation pipeline with 8+ mutators (insert_mr, remove_mr, swap_cr_field, swap_operands, swap_adj, force_reg, nop_before, fp_relabel, gpr_relabel) for handling register-allocation and scheduling differences that source-coax cannot resolve. Multi-directive composition validated (StackSwap E-15 11-directive recipe).
+- **Triage-first protocol** — every wall gets a 30-min source-level test BEFORE mutator authoring. If recipe generalizes → catalog descope (no mutator). If only mutator-shaped fix works → handoff. Caught GameData::GamePlayReset, BString2::assignDebug, ESimsCam::SetState as descopes saving authoring time.
+- **Pre-RE → cracking handoff pattern** — structural-diagnostic worker (SW2) RE-blueprints functions with full disassembly decode + recipe sketch + class layout, hands to cracking worker (OpusWorker) for byte-match. Sustained 10-25min/blueprint pace; multiple cross-class portable insights compound across sessions.
 
 ## What's Not Done
 
-- **~12,006 functions** still need matching (~58%)
+- **~10,725 functions** still need matching (~52%)
 - **SDK library functions** — DolphinSDK functions (address range 0x8024-0x8039) were compiled with Metrowerks CodeWarrior, not SN Systems — they cannot byte-match with our compiler. Excluded from the matchable pool (~3,000 functions).
 - **LIFO vs FIFO store scheduling** — our GCC does LIFO store scheduling, original SN v1.76 does FIFO. Blocks most `ctor` functions. Requires compiler patch or TU compilation.
 - **FP register alternation** — DOL alternates f0/f13 in float struct copies, our compiler uses f0 only. Blocks most float-heavy Rendering/ENgcRenderer functions.
@@ -141,14 +153,19 @@ This gives us every function name, class name, and variable name — dramaticall
 ## Project Structure
 
 ```
-src/matched/       — Verified byte-matching C++ implementations
-src/asm_decomp/    — Original PPC assembly (reference)
-src/core/          — Annotated pseudocode for key systems
-include/classes/   — Class headers with struct layouts
-config/            — decomp-toolkit config, symbols, linker scripts
-tools/             — Python scripts for matching and verification
-docs/              — Documentation and progress tracking
-extracted/         — Disc files (not in repo — you provide these)
+src/matched/                  — Verified byte-matching C++ implementations
+src/asm_decomp/               — Original PPC assembly (reference)
+src/core/                     — Annotated pseudocode for key systems
+src/wip/                      — Work-in-progress matches (non-verified, version_diff archive)
+include/classes/              — Class headers with struct layouts
+config/                       — decomp-toolkit config, symbols, linker scripts
+tools/                        — Python scripts for matching and verification
+tools/asm_processor/          — Post-compile asm mutators (insert_mr, swap_cr_field, etc.)
+tools/legacy_analysis/        — One-off analysis scripts from earlier sessions (kept for reference)
+docs/tracking/                — Session plans, technique catalogs, progress tracking
+docs/systems/                 — Per-system documentation (boot, sim AI, render, etc.)
+docs/file-formats/            — Asset format docs (.arc, .NGH, .tpl)
+extracted/                    — Disc files (not in repo — you provide these)
 ```
 
 ## Legal
