@@ -147,3 +147,26 @@ walls:
           end_anchor: "mulli 3,0,20"
           rename: "0:3,9:0"
     expected: match           # cracked 2026-05-02 by MutatorSmith — region_gpr_relabel canonical primary (Track I queue #3); STANDARD-ship N=1 byte-match.
+
+  - addr: "0x800B69D4"
+    size: 132
+    symbol: "FamilyImpl::RemoveMember(int)"
+    category: 3
+    source: "src/matched/familyimpl/match_0x800B69D4_FamilyImpl__RemoveMember.cpp"
+    diagnosis: "Asymmetric register rename + missing `mr` insertion in the shift-loop prep block. cc1plus puts src into r10 (`addi 10,9,4`) and m_end into r0 (`lwz 0,4(3)`) with shape (subf ; mr ; ...); DOL puts src into r0 first then explicitly moves to r11 (`mr 11,0`), m_end into r8, and orders the prep block as (mr 11,0 ; mr 10,9 ; subf 0,11,8). The `subf 0,10,0` line has r0 at BOTH rt and ra positions; after insert_mr's r10↔r11 relabel cascade rewrites it to `subf 0,11,0`, the rt r0 must STAY r0 while only the ra r0 must become r8. force_reg whole-line rewrite would clobber rt — needs position-aware rename. 7-directive recipe: 3 force_reg (addi/lwz/cmpw register coercion) + 1 swap_operands (cmpw rA/rB swap) + 1 swap_adj (subf/mr reorder pre-insert) + 1 insert_mr (with bidirectional relabel 10:11,11:10) + 1 force_reg_at_pos (post-cascade ra rename on subf line)."
+    pipeline:
+      - mutator: force_reg
+        args: {match: "addi 10,9,4", from_reg: "10", to_reg: "0"}
+      - mutator: force_reg
+        args: {match: "lwz 0,4(3)", from_reg: "0", to_reg: "8"}
+      - mutator: swap_operands
+        args: {match: "cmpw 0,10,0", pos: "1,2"}
+      - mutator: force_reg
+        args: {match: "cmpw 0,0,10", from_reg: "10", to_reg: "8"}
+      - mutator: swap_adj
+        args: {a: "subf", b: "mr", which: "first"}
+      - mutator: insert_mr
+        args: {after: "# beq  cr0", src: "0", dst: "11", relabel: "10:11,11:10"}
+      - mutator: force_reg_at_pos
+        args: {match: "subf 0, 11, 0", pos: "2", from_reg: "0", to_reg: "8"}
+    expected: match           # cracked 2026-05-02 by MutatorSmith — force_reg_at_pos canonical primary (Track I queue #4); STANDARD-ship N=1 byte-match. Lane O closure cascade — force_reg_at_pos PROVISIONAL → STANDARD.
