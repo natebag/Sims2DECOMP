@@ -92,7 +92,7 @@ from __future__ import annotations
 import re
 
 from . import NoApplicableSite
-from .insert_mr import _opcode
+from ._helpers import opcode as _opcode
 
 NAME = "swap_cr_field"
 

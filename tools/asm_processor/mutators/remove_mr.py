@@ -74,10 +74,14 @@ function is sufficient evidence of byte-match.
 """
 from __future__ import annotations
 
-import re
-
 from . import NoApplicableSite
-from .insert_mr import _opcode, _parse_relabel, _relabel_line
+from ._helpers import (
+    find_match_index,
+    find_terminator,
+    opcode,
+    parse_relabel,
+    relabel_line,
+)
 
 NAME = "remove_mr"
 
@@ -92,48 +96,29 @@ def apply(asm_text: str, args: dict) -> str:
         assert_op = str(assert_op).strip().lower() or None
 
     relabel_spec = args.get("relabel", "")
-    relabel_pairs = _parse_relabel(relabel_spec) if relabel_spec else []
+    relabel_pairs = parse_relabel(relabel_spec) if relabel_spec else []
     relabel_map: dict[int, int] = dict(relabel_pairs)
 
-    until_match = args.get("until")  # optional substring; default = first 'blr' after deletion
+    until_match = args.get("until")  # optional; default = first 'blr' after deletion
 
     lines = asm_text.splitlines(keepends=True)
-    hits = [i for i, line in enumerate(lines) if needle in line]
-    if not hits:
-        raise NoApplicableSite(f"remove_mr: no .s line contains {needle!r}")
-    if occurrence >= len(hits):
-        raise NoApplicableSite(
-            f"remove_mr: requested occurrence {occurrence} but only {len(hits)} match {needle!r}"
-        )
-    target_idx = hits[occurrence]
+    target_idx = find_match_index(lines, needle, occurrence, label="remove_mr")
 
     if assert_op is not None:
-        actual_op = _opcode(lines[target_idx])
+        actual_op = opcode(lines[target_idx])
         if actual_op is None or actual_op.lower() != assert_op:
             raise NoApplicableSite(
                 f"remove_mr: line {target_idx+1} matched {needle!r} but opcode is "
                 f"{actual_op!r}, expected {assert_op!r} (set assert_op='' to disable)"
             )
 
-    # Delete the line.
     new_lines = lines[:target_idx] + lines[target_idx + 1:]
 
-    # Apply optional relabel to lines from the deletion point onward until terminator.
-    # The deleted line's old index is now the index of the line that followed it.
     if relabel_map:
-        terminator_idx = len(new_lines)
-        for j in range(target_idx, len(new_lines)):
-            line = new_lines[j]
-            if until_match:
-                if until_match in line:
-                    terminator_idx = j  # exclusive
-                    break
-            else:
-                op = _opcode(line)
-                if op == "blr":
-                    terminator_idx = j + 1  # include the blr line
-                    break
+        terminator_idx = find_terminator(
+            new_lines, target_idx, until_match, include_blr_line=True
+        )
         for j in range(target_idx, terminator_idx):
-            new_lines[j] = _relabel_line(new_lines[j], relabel_map)
+            new_lines[j] = relabel_line(new_lines[j], relabel_map)
 
     return "".join(new_lines)
