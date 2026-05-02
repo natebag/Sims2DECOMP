@@ -34,7 +34,7 @@ return negative_corrected_result;  // late-block matches DOL's fallthrough
 
 | # | Function | Size | DOL Pattern | Matching Source | Validation |
 |---|----------|------|-------------|-----------------|------------|
-| 1 | **AptActionQueueC::GetDequeLocation** @ 0x8028552C | 80B | `bge → positive-tail; fallthrough = negative correction` | `if (wrapped >= 0) { return m_begin + wrapped; } return m_begin + (wrapped + m_capacity);` | **BYTE-MATCH** (commit `0c5e1dd4`, region_gpr_relabel residual register-coloring fixed post-flip) |
+| 1 | **AptActionQueueC::GetDequeLocation** @ 0x8028552C | 80B | `bge → positive-tail; fallthrough = negative correction` | `if (wrapped >= 0) { return m_begin + wrapped; } return m_begin + (wrapped + m_capacity);` | **BYTE-MATCH** (commit `25fdb045`, region_gpr_relabel residual register-coloring fixed post-flip) |
 | 2 | **GetVar_LockedStatus::Handler** | 68B | `beq → str="0"` | `if (locked) { str="1"; } else { str="0"; }` | RE+source analysis (TUScout `7626f129`) |
 | 3 | **EResourceManager::DelRef** | 188B | `bne → DelRef(res)` | `if (found==0) { virt_call(); } else { DelRef(res, mode); }` | RE+source analysis (TUScout `7626f129`) |
 | 4 | **StateMachine::PushStatus** | 176B | `beq → _M_push_back_aux_v` | `if (!full) { normal_push; } else { aux_push; }` | RE+source analysis (TUScout `7626f129`) |
