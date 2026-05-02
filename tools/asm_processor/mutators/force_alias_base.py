@@ -1,5 +1,13 @@
 """force_alias_base — synthesize a base-register alias and rewrite memops.
 
+STATUS: PROVISIONAL (2026-05-02). The mutator is correctness-validated
+(smoke + 4-target run) but has NOT YET produced a real-world byte-match.
+The 4-target validation surfaced a source-level shape mismatch on the
+primary target (FamilyImpl::RemoveMember). This block is removed by the
+first cracker who lands a successful byte-match using this mutator —
+that PR is then the seed of catalog promotion conversation (multi-
+instance threshold still applies; need >=2 instances total).
+
 Use case: Category-2 register-allocation walls where the DOL sets up an alias
 register early in the function via `addi rALIAS, rBASE, OFFBASE`, then accesses
 subsequent struct fields via `lwz/stw rA, K(rALIAS)`. GCC's RA declines to
