@@ -109,6 +109,52 @@ def case_memory_form_inside_parens():
     print("PASS case_memory_form_inside_parens")
 
 
+def case_memform_imm_eq_reg_ambiguity():
+    """ORG SA-2 regression: `lwz r3, 0(r0)` with from_reg=0,to_reg=8 must
+    produce `lwz r3, 0(r8)` (base register only), NOT `lwz r3, 8(r8)`
+    (which would happen if a naive whole-operand `\\br?0\\b` regex rewrote
+    BOTH the immediate and the base register).
+
+    Closes the imm-vs-base-reg ambiguity hole in the v1 mem-form path.
+    Rare in practice (cc1plus seldom uses r0 as a base — r0 special-cases
+    to absolute zero on PPC) but the queue #4 charter is position-aware,
+    so the operand-shape detection must be too."""
+    asm = "\tlwz r3, 0(r0)\n\tblr\n"
+    out = _run(asm, {
+        "match": "lwz r3,",
+        "pos": 1,
+        "from_reg": 0,
+        "to_reg": 8,
+    })
+    assert "lwz r3,0(r8)" in out, (
+        f"SA-2 bug regression — expected `lwz r3,0(r8)`, got: {out!r}"
+    )
+    assert "lwz r3,8(r8)" not in out, (
+        f"SA-2 bug regression — imm wrongly rewritten in: {out!r}"
+    )
+    print("PASS case_memform_imm_eq_reg_ambiguity")
+
+
+def case_memform_imm_collision_other_reg():
+    """Variant of SA-2: `lwz r3, 12(r12)` with from_reg=12,to_reg=8 must
+    produce `lwz r3, 12(r8)` (base only), NOT `lwz r3, 8(r8)`.
+    Numeric collision between imm `12` and base register `r12`."""
+    asm = "\tlwz r3, 12(r12)\n\tblr\n"
+    out = _run(asm, {
+        "match": "lwz r3,",
+        "pos": 1,
+        "from_reg": 12,
+        "to_reg": 8,
+    })
+    assert "lwz r3,12(r8)" in out, (
+        f"SA-2 variant — expected `lwz r3,12(r8)`, got: {out!r}"
+    )
+    assert "lwz r3,8(r8)" not in out, (
+        f"SA-2 variant — imm wrongly rewritten in: {out!r}"
+    )
+    print("PASS case_memform_imm_collision_other_reg")
+
+
 def case_r_prefix_preserved():
     """Bare-numeric tokens stay bare; `rN` tokens stay `rN`."""
     asm_bare = "\tadd 3,4,5\n\tblr\n"
@@ -295,6 +341,8 @@ def main():
         case_pos_0_rt_rename,
         case_pos_1_middle_rename,
         case_memory_form_inside_parens,
+        case_memform_imm_eq_reg_ambiguity,
+        case_memform_imm_collision_other_reg,
         case_r_prefix_preserved,
         case_occurrence_selector,
         case_pos_out_of_range_refuses,
