@@ -212,7 +212,7 @@ Authors faced with a tail-merge wall **MUST** apply the source-coax recipe FIRST
 ## Cross-references
 
 - [`anti_tail_merge`](../../tools/asm_processor/mutators/anti_tail_merge.py) — fallback mutator for compounded tail-merge walls (now EXPERIMENTAL; prefer this technique first).
-- [Technique #72 — polarity flip](technique_catalog_polarity_flip.md) — sibling source-coax recipe for `bcc`-direction block-layout walls. Same N=1→catalog promotion methodology.
+- [Technique #72 — polarity flip](technique_catalog_polarity_flip.md) — sibling source-coax recipe for `bcc`-direction block-layout walls. Same byte-match-to-catalog progression discipline (N≥2 minimum, cross-class verification per `catalog_format_conventions.md`).
 - [`region_gpr_relabel`](../../tools/asm_processor/mutators/region_gpr_relabel.py) — typical residual register-coloring fix once tail-merge layout is correct.
 - [Methodology: triage-first protocol](feedback_triage_first_protocol.md) — 30-min source-level test before reaching for a mutator.
 - [`catalog_format_conventions.md`](catalog_format_conventions.md) — meta-history of the catalog format (cross-class verification bar, HOLDS/FAILS coverage map, demotion vs Density Watch decision tree).

@@ -20,11 +20,13 @@ STATUS: EXPERIMENTAL (FALLBACK ONLY) — Tech #73 source-coax is the DEFAULT.
   exhausting source-coax is the documented anti-pattern.
 
   Background: As of 2026-05-02 (S13 Track I session 4 close), Tech #73 was
-  promoted with N=4 cross-shape validation (EBitArray::Get @ 0x802DF780 +
+  promoted with N=6 cross-shape validation (EBitArray::Get @ 0x802DF780 +
   __cmpdi2 @ 0x80249088 + INGTarget::get_current_inginfo @ 0x801BBB60 +
-  INGTarget::get_current_mix_inginfo @ 0x801BBBA8) spanning 3 fundamentally
-  different control-flow shapes (predicate-bool / case-cascade-int /
-  state-getter pointer pair). The mutator's canonical primary (AptArray::get
+  INGTarget::get_current_mix_inginfo @ 0x801BBBA8 + GetActionMenu @
+  0x8018458C + EShader::UseOverrideTexture @ 0x802FA438) spanning 4
+  fundamentally different control-flow shapes (predicate-bool / case-cascade-
+  int / state-getter pointer pair / predicate + multi-store side-effect).
+  The mutator's canonical primary (AptArray::get
   @ 0x802860AC, commit `0c5e1dd4`) is itself a Tech #73 retest candidate;
   if it matches under source-coax alone, the only validated invocation
   evaporates and this mutator becomes fully unused.
