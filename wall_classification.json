@@ -8,19 +8,14 @@
       "size": 36
     },
     {
-      "file": "match_0x800B853C_GoalUnlock_GetUnlockCount.cpp",
-      "addr": "0x800B853C",
-      "size": null
-    },
-    {
       "file": "match_0x800B86D8_GoalUnlock_GetObjectIndexFromGuid.cpp",
       "addr": "0x800B86D8",
       "size": 132
     },
     {
-      "file": "match_0x800B8A6C_GoalUnlock_IsRecentlyUnlocked.cpp",
-      "addr": "0x800B8A6C",
-      "size": 184
+      "file": "match_0x800C7D14_cXMTObjectImpl__GetFirstMultiTileObject.cpp",
+      "addr": "0x800C7D14",
+      "size": 48
     },
     {
       "file": "match_0x801056EC_cXObjectImpl__KillSelf.cpp",
@@ -46,26 +41,6 @@
       "file": "match_0x802EFD44_EAnimController__SetTrackSpeed.cpp",
       "addr": "0x802EFD44",
       "size": 68
-    },
-    {
-      "file": "match_0x8039BA1C___VMBASEDSIExceptionHandler_SetBranchBack.cpp",
-      "addr": "0x8039BA1C",
-      "size": null
-    },
-    {
-      "file": "match_0x8039BBC4___VMBASEISIExceptionHandler_SetBranchBack.cpp",
-      "addr": "0x8039BBC4",
-      "size": null
-    },
-    {
-      "file": "match_8015E8CC_TreeTableQuickData__GetID.cpp",
-      "addr": "0x8015E8CC",
-      "size": 28
-    },
-    {
-      "file": "match_8015E92C_TreeTableQuickData__GetPrefixCheckTreeID.cpp",
-      "addr": "0x8015E92C",
-      "size": 28
     }
   ],
   "FP_ALTERNATION": [],
@@ -77,9 +52,19 @@
       "size": null
     },
     {
+      "file": "match_0x80014028_AwarenessManager_GetPlayerObject.cpp",
+      "addr": "0x80014028",
+      "size": 40
+    },
+    {
       "file": "match_0x80016A1C_ESimsCam_ForceFullScreenViewport.cpp",
       "addr": "0x80016A1C",
       "size": null
+    },
+    {
+      "file": "match_0x80016A8C_ESimsCam__Init.cpp",
+      "addr": "0x80016A8C",
+      "size": 44
     },
     {
       "file": "match_0x800251FC_LightLocation_2.cpp",
@@ -92,13 +77,18 @@
       "size": 76
     },
     {
-      "file": "match_0x80041B6C_nonsda_null_call.cpp",
-      "addr": "0x80041B6C",
-      "size": 48
+      "file": "match_0x8004AFA8_InventoryItems_GetNewItemIndex.cpp",
+      "addr": "0x8004AFA8",
+      "size": 68
     },
     {
       "file": "match_0x80089A14_EGameStateMan_ctor.cpp",
       "addr": "0x80089A14",
+      "size": 40
+    },
+    {
+      "file": "match_0x80090F7C_LoadingScreenStateMachine__IsFadingIn.cpp",
+      "addr": "0x80090F7C",
       "size": 40
     },
     {
@@ -107,48 +97,68 @@
       "size": 68
     },
     {
-      "file": "match_0x800B6B40_FamilyImpl_SetFunds.cpp",
-      "addr": "0x800B6B40",
+      "file": "match_0x800CDD40_NeighborhoodImpl_FindNeighborByID.cpp",
+      "addr": "0x800CDD40",
+      "size": 56
+    },
+    {
+      "file": "match_0x800CDEE0_NeighborhoodImpl_FindNeighborByType.cpp",
+      "addr": "0x800CDEE0",
+      "size": 80
+    },
+    {
+      "file": "match_0x800F9620_ObjectModuleImpl_GetObjectFromID.cpp",
+      "addr": "0x800F9620",
+      "size": 72
+    },
+    {
+      "file": "match_0x800F97CC_ObjectModuleImpl_GetObject.cpp",
+      "addr": "0x800F97CC",
+      "size": 84
+    },
+    {
+      "file": "match_0x80123704_cXPersonImpl_GetCurrentRoute.cpp",
+      "addr": "0x80123704",
+      "size": 56
+    },
+    {
+      "file": "match_0x80147A34_TreeSimImpl__Reset.cpp",
+      "addr": "0x80147A34",
+      "size": 108
+    },
+    {
+      "file": "match_0x8017A860_UIDrawTable_RemoveRecord.cpp",
+      "addr": "0x8017A860",
+      "size": 156
+    },
+    {
+      "file": "match_0x802093AC_Interactor_ResetInputState.cpp",
+      "addr": "0x802093AC",
       "size": null
     },
     {
-      "file": "match_0x802092B4_InteractorModule_Interactor_GetInteractorInfo.cpp",
-      "addr": "0x802092B4",
-      "size": 36
+      "file": "match_0x80346124_ENgcRenderer__SetBlendMode.cpp",
+      "addr": "0x80346124",
+      "size": 56
     },
     {
-      "file": "match_0x802092B4_InteractorModule_Interactor_GetInteractorInfo_2.cpp",
-      "addr": "0x802092B4",
-      "size": 36
+      "file": "match_0x803C4694_TArray_ENDummy_Destruct.cpp",
+      "addr": "0x803C4694",
+      "size": 100
     },
     {
-      "file": "match_800F9A10_ObjectModuleImpl__IsBuyAndBuildDisabled.cpp",
-      "addr": "0x800F9A10",
-      "size": 36
+      "file": "match_0x803CA284_TArray_SndEvtHitPatch_Copy.cpp",
+      "addr": "0x803CA284",
+      "size": 52
     },
     {
-      "file": "match_802E3840_EEngine__GetMemoryUseSystemInfo.cpp",
-      "addr": "0x802E3840",
-      "size": 32
-    },
-    {
-      "file": "match_802E3868_EEngine__GetMemoryUseDmaInfo.cpp",
-      "addr": "0x802E3868",
-      "size": 32
+      "file": "wip_match_0x80016A8C_ESimsCam__Init.cpp",
+      "addr": "0x80016A8C",
+      "size": 44
     }
   ],
   "COMPILATION_ERROR": [],
   "SDA_R13": [
-    {
-      "file": "0x800B853C_GoalUnlock_GetUnlockCount.cpp",
-      "addr": "0x800B853C",
-      "size": 96
-    },
-    {
-      "file": "0x800B875C_GoalUnlock_GetFirstUnlockVar.cpp",
-      "addr": "0x800B875C",
-      "size": 112
-    },
     {
       "file": "0x800B87CC_GoalUnlock_IsUnlocked.cpp",
       "addr": "0x800B87CC",
@@ -165,19 +175,9 @@
       "size": 96
     },
     {
-      "file": "match_0x8001E6B8_CameraDirector_IsForceDisableHud.cpp",
-      "addr": "0x8001E6B8",
-      "size": 36
-    },
-    {
-      "file": "match_0x80075548_SimsMemCardWrap_LoadConfigFile.cpp",
-      "addr": "0x80075548",
-      "size": null
-    },
-    {
-      "file": "match_0x8007562C_SimsMemCardWrap_IsFreeplayUnlocked.cpp",
-      "addr": "0x8007562C",
-      "size": 16
+      "file": "match_0x80064434_SAnimator2__handleImpatientIdleAnimation.cpp",
+      "addr": "0x80064434",
+      "size": 260
     },
     {
       "file": "match_0x800B4214_Commander_ctor.cpp",
@@ -190,29 +190,14 @@
       "size": null
     },
     {
-      "file": "match_0x802057BC_DirectInteractor_GetSelectionRadius.cpp",
-      "addr": "0x802057BC",
-      "size": 12
-    },
-    {
-      "file": "match_0x8028AFA8_AptCharacterInst__sMethod_nextFrame.cpp",
-      "addr": "0x8028AFA8",
-      "size": 76
-    },
-    {
       "file": "match_0x802C6048_EFile_ctor.cpp",
       "addr": "0x802C6048",
       "size": 68
     },
     {
-      "file": "match_800C9780_Neighbor__GetPersistentDataFieldsByIndex.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800C9794_Neighbor__GetLatestPersDataVersion.cpp",
-      "addr": "0x800C9794",
-      "size": 8
+      "file": "wip_0x800251FC_LightLocation_2.cpp",
+      "addr": "0x800251FC",
+      "size": 20
     }
   ],
   "VTABLE_SCHEDULING": [
@@ -225,11 +210,6 @@
       "file": "match_0x8003461C_ESim__CompositeSkin.cpp",
       "addr": "0x8003461C",
       "size": 116
-    },
-    {
-      "file": "match_0x8004A060_BBI_InventoryItem__InventoryItem.cpp",
-      "addr": "0x8004A060",
-      "size": null
     },
     {
       "file": "match_0x800AA9BC_AmbientSoundPlayer__IsFinished.cpp",
@@ -272,34 +252,9 @@
       "size": 96
     },
     {
-      "file": "match_0x803699BC_ERSoundEvent__ctor.cpp",
-      "addr": "0x803699BC",
-      "size": 64
-    },
-    {
-      "file": "match_80056220_IBaseSimInstance__dtor.cpp",
-      "addr": "0x80056220",
-      "size": 52
-    },
-    {
       "file": "match_800A76AC_QuickStringSet__GetString.cpp",
       "addr": "0x800A76AC",
       "size": 80
-    },
-    {
-      "file": "match_800BADA4_cGZMusic__IsPlaying.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BAEBC_cGZMusic__GetVolume.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_802E31FC_EEngine__FrameComplete.cpp",
-      "addr": "0x802E31FC",
-      "size": 60
     },
     {
       "file": "match_802F6A2C_ERC_TriStripRef.cpp",
@@ -315,34 +270,24 @@
       "size": 24
     },
     {
-      "file": "match_0x80014028_AwarenessManager__GetPlayerObject.cpp",
-      "addr": "0x80014028",
+      "file": "match_0x8000DFA8_AptLine__UnlinkWord_VERSION_DIFF.cpp",
+      "addr": "0x8000DFA8",
+      "size": 80
+    },
+    {
+      "file": "match_0x800169E8_ESimsCam__SetFov.cpp",
+      "addr": "0x800169E8",
+      "size": 52
+    },
+    {
+      "file": "match_0x8001A074_ESimsCam__GetCursorLimitDepth.cpp",
+      "addr": "0x8001A074",
+      "size": 56
+    },
+    {
+      "file": "match_0x800391B4_EyeToyClient__IsSlotOpenForCASImage.cpp",
+      "addr": "0x800391B4",
       "size": 40
-    },
-    {
-      "file": "match_0x80017070_ESimsCam_SetZoom.cpp",
-      "addr": "0x80017070",
-      "size": 44
-    },
-    {
-      "file": "match_0x80030340_WallFadeParms__Validate.cpp",
-      "addr": "0x80030340",
-      "size": 76
-    },
-    {
-      "file": "match_0x800304D0_EIWallPart__Construct.cpp",
-      "addr": "0x800304D0",
-      "size": 44
-    },
-    {
-      "file": "match_0x80039178_EyeToyClient_DoesRepSlotHaveEyetoyImage.cpp",
-      "addr": "0x80039178",
-      "size": 36
-    },
-    {
-      "file": "match_0x80041B6C_EGlobal__EndSaveGame.cpp",
-      "addr": "0x80041B6C",
-      "size": 48
     },
     {
       "file": "match_0x80045520_EFloorShdTblNode_ctor.cpp",
@@ -355,19 +300,14 @@
       "size": 32
     },
     {
+      "file": "match_0x8004B078_BBI_InventoryItems_CreateNewItemFromGuid.cpp",
+      "addr": "0x8004B078",
+      "size": 80
+    },
+    {
       "file": "match_0x8005BDA4_IsUsingDirectControlInteractor.cpp",
       "addr": "0x8005BDA4",
       "size": 100
-    },
-    {
-      "file": "match_0x80069114_SAnimator2_GetPlayerControl.cpp",
-      "addr": "0x80069114",
-      "size": 24
-    },
-    {
-      "file": "match_0x800693B8_SAnimator2_SetSkillName.cpp",
-      "addr": "0x800693B8",
-      "size": 40
     },
     {
       "file": "match_0x8006CA38_ScrollingTextBox_SetPosition.cpp",
@@ -380,12 +320,22 @@
       "size": 80
     },
     {
+      "file": "match_0x80090F7C_LoadingScreenStateMachine_IsFadingIn.cpp",
+      "addr": "0x80090F7C",
+      "size": 40
+    },
+    {
       "file": "match_0x80095D38_StateMachine__DrawTopmost.cpp",
       "addr": "0x80095D38",
       "size": 64
     },
     {
       "file": "match_0x800961BC_StateMachine__FindStateById.cpp",
+      "addr": "0x800961BC",
+      "size": 56
+    },
+    {
+      "file": "match_0x800961BC_StateMachine_FindStateById.cpp",
       "addr": "0x800961BC",
       "size": 56
     },
@@ -405,6 +355,16 @@
       "size": 60
     },
     {
+      "file": "match_0x8009B924_BitArray64__operator_and_eq.cpp",
+      "addr": "0x8009B924",
+      "size": 40
+    },
+    {
+      "file": "match_0x8009B94C_BitArray64__operator_xor_eq.cpp",
+      "addr": "0x8009B94C",
+      "size": 40
+    },
+    {
       "file": "match_0x800A76AC_QuickStringSet_GetString.cpp",
       "addr": "0x800A76AC",
       "size": 80
@@ -420,9 +380,14 @@
       "size": 68
     },
     {
-      "file": "match_0x800B0E70_cSoundModeManager__NextFrontEndTrack.cpp",
-      "addr": "0x800B0E70",
-      "size": 32
+      "file": "match_0x800BC00C_HouseImpl_IsResident.cpp",
+      "addr": "0x800BC00C",
+      "size": 212
+    },
+    {
+      "file": "match_0x800D8A84_NghResFile__SwapFourByteNumber.cpp",
+      "addr": "0x800D8A84",
+      "size": 36
     },
     {
       "file": "match_0x800DCACC_cXObjectImpl__GetPlacementInfo.cpp",
@@ -430,14 +395,34 @@
       "size": 132
     },
     {
+      "file": "match_0x800EF9E8_ObjectFolderImpl_CreateNewUserSelector.cpp",
+      "addr": "0x800EF9E8",
+      "size": 76
+    },
+    {
+      "file": "match_0x800F9620_ObjectModuleImpl__GetObjectFromID.cpp",
+      "addr": "0x800F9620",
+      "size": 72
+    },
+    {
+      "file": "match_0x800F97CC_ObjectModuleImpl__GetObject.cpp",
+      "addr": "0x800F97CC",
+      "size": 84
+    },
+    {
       "file": "match_0x80106A28_cXObjectImpl__InventoryCommandParam_GetCount.cpp",
       "addr": "0x80106A28",
       "size": 100
     },
     {
-      "file": "match_0x80109EC4_cXObjectImpl__RunTree.cpp",
-      "addr": "0x80109EC4",
-      "size": 144
+      "file": "match_0x80109264_cXObjectImpl__TryChangeWantFearTree.cpp",
+      "addr": "0x80109264",
+      "size": 256
+    },
+    {
+      "file": "match_0x801107dc_ObjSelector__GetEffectiveTreeTableID.cpp",
+      "addr": "0x801107DC",
+      "size": 76
     },
     {
       "file": "match_0x80113174_InteractionList_remove.cpp",
@@ -445,19 +430,9 @@
       "size": 268
     },
     {
-      "file": "match_0x80118E84_cSamplePatch_dtor.cpp",
-      "addr": "0x80118E84",
-      "size": 64
-    },
-    {
-      "file": "match_0x80119088_cSampleChannel_ctor.cpp",
-      "addr": "0x80119088",
-      "size": 60
-    },
-    {
-      "file": "match_0x801190C4_cSampleChannel_dtor.cpp",
-      "addr": "0x801190C4",
-      "size": 76
+      "file": "match_0x80123704_cXPersonImpl__GetCurrentRoute_void_.cpp",
+      "addr": "0x80123704",
+      "size": 56
     },
     {
       "file": "match_0x80132C60_QuickResFile__GetString.cpp",
@@ -465,14 +440,24 @@
       "size": 188
     },
     {
-      "file": "match_0x80143438_SpriteSlot_ActivateForLoops.cpp",
-      "addr": "0x80143438",
-      "size": 44
+      "file": "match_0x80140D28_cSimulatorImpl_ComputeTimeOfDay.cpp",
+      "addr": "0x80140D28",
+      "size": 72
+    },
+    {
+      "file": "match_0x80146680_TileWalls__DirToWallSeg.cpp",
+      "addr": "0x80146680",
+      "size": 84
     },
     {
       "file": "match_0x8015A7CC_QuickDataBehaviorConstants_GetValue.cpp",
       "addr": "0x8015A7CC",
       "size": 36
+    },
+    {
+      "file": "match_0x8015E900_TreeTableQuickData_CountEntries.cpp",
+      "addr": "0x8015E900",
+      "size": 44
     },
     {
       "file": "match_0x801773D4_UIAUDIO__InstallEntry.cpp",
@@ -505,9 +490,29 @@
       "size": 104
     },
     {
-      "file": "match_0x801E62EC_WXFTarget__UpdateMenuState.cpp",
-      "addr": "0x801E62EC",
-      "size": 132
+      "file": "match_0x8019314C_CASTarget_GetLotNumberFromMode.cpp",
+      "addr": "0x8019314C",
+      "size": 40
+    },
+    {
+      "file": "match_0x801B8BA4_H2DTarget_SelectedPersonChanged.cpp",
+      "addr": "0x801B8BA4",
+      "size": 152
+    },
+    {
+      "file": "match_0x801C10C8_M2MTarget__OnGetNumItems.cpp",
+      "addr": "0x801C10C8",
+      "size": 64
+    },
+    {
+      "file": "match_0x801D1AD0_IsSkillCatalogRating.cpp",
+      "addr": "0x801D1AD0",
+      "size": 44
+    },
+    {
+      "file": "match_0x80203D30_INVTarget_GetSelectedShoppingCategory.cpp",
+      "addr": "0x80203D30",
+      "size": 56
     },
     {
       "file": "match_0x8020415C_DirectInteractor__ParseControls.cpp",
@@ -525,24 +530,14 @@
       "size": 196
     },
     {
-      "file": "match_0x80221394_WallManipulator_AdjustCursorPosition.cpp",
-      "addr": "0x80221394",
-      "size": 44
+      "file": "match_0x8021AAB8_PlacementObject__ctor.cpp",
+      "addr": "0x8021AAB8",
+      "size": 56
     },
     {
       "file": "match_0x8023A72C__Parse.cpp",
       "addr": "0x8023A72C",
       "size": 116
-    },
-    {
-      "file": "match_0x8023AC64_CDirtyXml_getFirstAttribute.cpp",
-      "addr": "0x8023AC64",
-      "size": 52
-    },
-    {
-      "file": "match_0x8023AC98_CDirtyXml_getNextAttribute.cpp",
-      "addr": "0x8023AC98",
-      "size": 52
     },
     {
       "file": "match_0x8023EE40_PCinit.cpp",
@@ -605,11 +600,6 @@
       "size": 108
     },
     {
-      "file": "match_0x8031A3C4_ERModel__CleanMorphTargets.cpp",
-      "addr": "0x8031A3C4",
-      "size": 88
-    },
-    {
       "file": "match_0x8031A7FC_ERModel__GetAttachmentID.cpp",
       "addr": "0x8031A7FC",
       "size": 80
@@ -620,111 +610,6 @@
       "size": 84
     },
     {
-      "file": "match_0x803570B4_FrameEffect_IsEffectRamping.cpp",
-      "addr": "0x803570B4",
-      "size": 32
-    },
-    {
-      "file": "match_0x803570D4_FrameEffect_IsEffectRunning.cpp",
-      "addr": "0x803570D4",
-      "size": 24
-    },
-    {
-      "file": "match_0x803697F4_ERDataset_SafeDelete.cpp",
-      "addr": "0x803697F4",
-      "size": 64
-    },
-    {
-      "file": "match_0x80369EF0_ERSoundEvent_SafeDelete.cpp",
-      "addr": "0x80369EF0",
-      "size": 64
-    },
-    {
-      "file": "match_0x8036A01C_ERSoundEvent__op_new_unsigned_int__void_ptr.cpp",
-      "addr": "0x8036A01C",
-      "size": 8
-    },
-    {
-      "file": "match_0x8036A024_ERSoundEvent__op_delete_void_ptr.cpp",
-      "addr": "0x8036A024",
-      "size": 44
-    },
-    {
-      "file": "match_0x8036A5C8_ERSoundTrackData_SafeDelete.cpp",
-      "addr": "0x8036A5C8",
-      "size": 64
-    },
-    {
-      "file": "match_0x8036ABF0_REffectsEmitter_SafeDelete.cpp",
-      "addr": "0x8036ABF0",
-      "size": 64
-    },
-    {
-      "file": "match_0x8036ACEC_REffectsEmitter__Alloc_unsigned_long.cpp",
-      "addr": "0x8036ACEC",
-      "size": 48
-    },
-    {
-      "file": "match_0x8036AD1C_REffectsEmitter_AllocAligned.cpp",
-      "addr": "0x8036AD1C",
-      "size": 48
-    },
-    {
-      "file": "match_0x8036AD4C_REffectsEmitter__Free_void_ptr.cpp",
-      "addr": "0x8036AD4C",
-      "size": 44
-    },
-    {
-      "file": "match_0x8036AF3C_REffectsSequencer__DelRefSubResources_void.cpp",
-      "addr": "0x8036AF3C",
-      "size": 4
-    },
-    {
-      "file": "match_0x8036AF40_REffectsSequencer__AddRefSubResources_void.cpp",
-      "addr": "0x8036AF40",
-      "size": 4
-    },
-    {
-      "file": "match_0x8036B0AC_REffectsSequencer__New.cpp",
-      "addr": "0x8036B0AC",
-      "size": 48
-    },
-    {
-      "file": "match_0x8036B120_REffectsSequencer_SafeDelete.cpp",
-      "addr": "0x8036B120",
-      "size": 64
-    },
-    {
-      "file": "match_0x8037BCB8_MIXQuit.cpp",
-      "addr": "0x8037BCB8",
-      "size": 4
-    },
-    {
-      "file": "match_0x8037EF30___CARDDefaultApiCallback.cpp",
-      "addr": "0x8037EF30",
-      "size": 4
-    },
-    {
-      "file": "match_0x80385494_CARDSrand.cpp",
-      "addr": "0x80385494",
-      "size": 8
-    },
-    {
-      "file": "match_0x8039E470_EFenceWall_SafeDelete.cpp",
-      "addr": "0x8039E470",
-      "size": 64
-    },
-    {
-      "file": "match_0x8039E6F8_ReconLoadPtrVector_Neighbor.cpp",
-      "addr": "0x8039E6F8",
-      "size": 52
-    },
-    {
-      "file": "match_0x8039E798_ReconSavePtrVector_Neighbor.cpp",
-      "addr": "0x8039E798",
-      "size": 52
-    },
-    {
       "file": "match_0x803AD714_ReconLoadVector_SlotDescriptor.cpp",
       "addr": "0x803AD714",
       "size": 52
@@ -733,16 +618,6 @@
       "file": "match_0x803AD7B4_ReconSaveVector_SlotDescriptor.cpp",
       "addr": "0x803AD7B4",
       "size": 52
-    },
-    {
-      "file": "match_8001621C_CameraMotionSystem_MoveCamera.cpp",
-      "addr": "0x8001621C",
-      "size": 60
-    },
-    {
-      "file": "match_8001621C_CameraMotionSystem_MoveCamera_2.cpp",
-      "addr": "0x8001621C",
-      "size": 60
     },
     {
       "file": "match_800169E8_ESimsCam_SetFov.cpp",
@@ -763,411 +638,6 @@
       "file": "match_800595B8_Player__GetPrimaryNeighbor.cpp",
       "addr": "0x800595B8",
       "size": 164
-    },
-    {
-      "file": "match_800C1034_IFFResFile2__SetOptimizeTarget.cpp",
-      "addr": "0x800C1034",
-      "size": 12
-    },
-    {
-      "file": "match_800C1C74_Interaction__GetStackObject.cpp",
-      "addr": "0x800C1C74",
-      "size": 8
-    },
-    {
-      "file": "match_800C1C7C_Interaction__GetPerson.cpp",
-      "addr": "0x800C1C7C",
-      "size": 8
-    },
-    {
-      "file": "match_800C1C84_Interaction__GetIconObject.cpp",
-      "addr": "0x800C1C84",
-      "size": 8
-    },
-    {
-      "file": "match_800C1C8C_Interaction__SetIconObject.cpp",
-      "addr": "0x800C1C8C",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D20_Interaction__GetTextColor.cpp",
-      "addr": "0x800C1D20",
-      "size": 12
-    },
-    {
-      "file": "match_800C1D44_Interaction__GetType.cpp",
-      "addr": "0x800C1D44",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D4C_Interaction__GetAttenuation.cpp",
-      "addr": "0x800C1D4C",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D54_Interaction__GetTreeID.cpp",
-      "addr": "0x800C1D54",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D64_Interaction__GetLocalVars.cpp",
-      "addr": "0x800C1D64",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D6C_Interaction__GetLocalVarsCount.cpp",
-      "addr": "0x800C1D6C",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D74_Interaction__GetTreeTabEntryIndex.cpp",
-      "addr": "0x800C1D74",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D7C_Interaction__GetPriority.cpp",
-      "addr": "0x800C1D7C",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D84_Interaction__SetPriority.cpp",
-      "addr": "0x800C1D84",
-      "size": 8
-    },
-    {
-      "file": "match_800C1D8C_Interaction__HasID.cpp",
-      "addr": "0x800C1D8C",
-      "size": 24
-    },
-    {
-      "file": "match_800C1DA4_Interaction__GetID.cpp",
-      "addr": "0x800C1DA4",
-      "size": 8
-    },
-    {
-      "file": "match_800C1DAC_Interaction__SetID.cpp",
-      "addr": "0x800C1DAC",
-      "size": 8
-    },
-    {
-      "file": "match_800C1DB4_Interaction__GetAutoFirstSelect.cpp",
-      "addr": "0x800C1DB4",
-      "size": 12
-    },
-    {
-      "file": "match_800C1DE0_Interaction__GetContinuation.cpp",
-      "addr": "0x800C1DE0",
-      "size": 12
-    },
-    {
-      "file": "match_800C1E0C_Interaction__GetChecked.cpp",
-      "addr": "0x800C1E0C",
-      "size": 12
-    },
-    {
-      "file": "match_800C1E38_Interaction__GetAvailable.cpp",
-      "addr": "0x800C1E38",
-      "size": 12
-    },
-    {
-      "file": "match_800C1E64_Interaction__GetHidden.cpp",
-      "addr": "0x800C1E64",
-      "size": 12
-    },
-    {
-      "file": "match_800C1E90_Interaction__GetPushToHead.cpp",
-      "addr": "0x800C1E90",
-      "size": 12
-    },
-    {
-      "file": "match_800C1EBC_Interaction__GetCarryNameOver.cpp",
-      "addr": "0x800C1EBC",
-      "size": 12
-    },
-    {
-      "file": "match_800C1EE8_Interaction__GetNameChanged.cpp",
-      "addr": "0x800C1EE8",
-      "size": 12
-    },
-    {
-      "file": "match_800C1F14_Interaction__GetCancelled.cpp",
-      "addr": "0x800C1F14",
-      "size": 12
-    },
-    {
-      "file": "match_800C1F40_Interaction__GetDebugOverride.cpp",
-      "addr": "0x800C1F40",
-      "size": 12
-    },
-    {
-      "file": "match_800C1F6C_Interaction__GetMustRun.cpp",
-      "addr": "0x800C1F6C",
-      "size": 12
-    },
-    {
-      "file": "match_800C1F98_Interaction__GetDisabled.cpp",
-      "addr": "0x800C1F98",
-      "size": 12
-    },
-    {
-      "file": "match_800C1FC4_Interaction__GetRunAsSub.cpp",
-      "addr": "0x800C1FC4",
-      "size": 12
-    },
-    {
-      "file": "match_800C1FF0_Interaction__GetFlags.cpp",
-      "addr": "0x800C1FF0",
-      "size": 8
-    },
-    {
-      "file": "match_800C1FF8_Interaction__SetFlags.cpp",
-      "addr": "0x800C1FF8",
-      "size": 8
-    },
-    {
-      "file": "match_800C2000_Interaction__SetShader.cpp",
-      "addr": "0x800C2000",
-      "size": 8
-    },
-    {
-      "file": "match_800C2D88_MotiveCurveSet__PrintMotiveGraph.cpp",
-      "addr": "0x800C2D88",
-      "size": 4
-    },
-    {
-      "file": "match_800C7CC0_cXMTObject__setPortalImpl.cpp",
-      "addr": "0x800C7CC0",
-      "size": 16
-    },
-    {
-      "file": "match_800C7D44_cXMTObjectImpl__GetNextMultiTileObject.cpp",
-      "addr": "0x800C7D44",
-      "size": 24
-    },
-    {
-      "file": "match_800C7F54_NamespaceSelector__FlushBehaviorConstant.cpp",
-      "addr": "0x800C7F54",
-      "size": 36
-    },
-    {
-      "file": "match_800C7F78_NamespaceSelector__FlushSoundInfo.cpp",
-      "addr": "0x800C7F78",
-      "size": 36
-    },
-    {
-      "file": "match_800C800C_NamespaceSelector__FlushStringSet.cpp",
-      "addr": "0x800C800C",
-      "size": 36
-    },
-    {
-      "file": "match_800C8860_NamespaceSelector__GetTreeSetResource.cpp",
-      "addr": "0x800C8860",
-      "size": 8
-    },
-    {
-      "file": "match_800C90B4_Neighbor__GetRelations.cpp",
-      "addr": "0x800C90B4",
-      "size": 8
-    },
-    {
-      "file": "match_800C9A8C_Neighbor__GetGUID.cpp",
-      "addr": "0x800C9A8C",
-      "size": 8
-    },
-    {
-      "file": "match_800C9A94_Neighbor__SetGUID.cpp",
-      "addr": "0x800C9A94",
-      "size": 8
-    },
-    {
-      "file": "match_800CA978_Neighbor__ResetInterests.cpp",
-      "addr": "0x800CA978",
-      "size": 36
-    },
-    {
-      "file": "match_800CB490_Neighbor__GetSlotRange.cpp",
-      "addr": "0x800CB490",
-      "size": 44
-    },
-    {
-      "file": "match_800CB4BC_Neighbor__GetBookmarkRange.cpp",
-      "addr": "0x800CB4BC",
-      "size": 44
-    },
-    {
-      "file": "match_800CC6D0_Neighborhood__CreateInstance.cpp",
-      "addr": "0x800CC6D0",
-      "size": 40
-    },
-    {
-      "file": "match_800CDD38_NeighborhoodImpl__GetHouseNumberForLevel.cpp",
-      "addr": "0x800CDD38",
-      "size": 8
-    },
-    {
-      "file": "match_800CEB20_NeighborhoodImpl__GetNumFamilies.cpp",
-      "addr": "0x800CEB20",
-      "size": 20
-    },
-    {
-      "file": "match_800CEB34_NeighborhoodImpl__GetFamilyByIndex.cpp",
-      "addr": "0x800CEB34",
-      "size": 16
-    },
-    {
-      "file": "match_800CEBDC_NeighborhoodImpl__MakeNewFamily.cpp",
-      "addr": "0x800CEBDC",
-      "size": 40
-    },
-    {
-      "file": "match_800D1294_NeighborhoodImpl__GetHouseNumber.cpp",
-      "addr": "0x800D1294",
-      "size": 8
-    },
-    {
-      "file": "match_800D1884_NeighborhoodImpl__GetNeighborhoodName.cpp",
-      "addr": "0x800D1884",
-      "size": 36
-    },
-    {
-      "file": "match_800D18A8_NeighborhoodImpl__GetHighestLevelCompleted.cpp",
-      "addr": "0x800D18A8",
-      "size": 8
-    },
-    {
-      "file": "match_800D18B0_NeighborhoodImpl__GetNeighborhoodVar.cpp",
-      "addr": "0x800D18B0",
-      "size": 16
-    },
-    {
-      "file": "match_800D18C0_NeighborhoodImpl__GetNeighborhoodVarRef.cpp",
-      "addr": "0x800D18C0",
-      "size": 16
-    },
-    {
-      "file": "match_800D18D0_NeighborhoodImpl__SetNeighborhoodVar.cpp",
-      "addr": "0x800D18D0",
-      "size": 16
-    },
-    {
-      "file": "match_800D1928_NeighborhoodImpl__GetNumNeighborHouses.cpp",
-      "addr": "0x800D1928",
-      "size": 20
-    },
-    {
-      "file": "match_800D193C_NeighborhoodImpl__GetNeighborHouseByIndex.cpp",
-      "addr": "0x800D193C",
-      "size": 16
-    },
-    {
-      "file": "match_800D1950_NeighborhoodImpl__SetHouseNum.cpp",
-      "addr": "0x800D1950",
-      "size": 8
-    },
-    {
-      "file": "match_800D26E0_GetTotalSaveGameSize.cpp",
-      "addr": "0x800D26E0",
-      "size": 12
-    },
-    {
-      "file": "match_800D26EC_GetTotalNumberOfSaveGameSections.cpp",
-      "addr": "0x800D26EC",
-      "size": 12
-    },
-    {
-      "file": "match_800D26F8_GetNumNghSubSections.cpp",
-      "addr": "0x800D26F8",
-      "size": 8
-    },
-    {
-      "file": "match_800D3860_getCurrentbuildVerNum.cpp",
-      "addr": "0x800D3860",
-      "size": 32
-    },
-    {
-      "file": "match_800D3B94_NghResFile__Create.cpp",
-      "addr": "0x800D3B94",
-      "size": 36
-    },
-    {
-      "file": "match_800D3BB8_NghResFile__Delete.cpp",
-      "addr": "0x800D3BB8",
-      "size": 8
-    },
-    {
-      "file": "match_800D3BC0_NghResFile__Open.cpp",
-      "addr": "0x800D3BC0",
-      "size": 8
-    },
-    {
-      "file": "match_800D3BC8_NghResFile__CloseForReopen.cpp",
-      "addr": "0x800D3BC8",
-      "size": 8
-    },
-    {
-      "file": "match_800D3BD0_NghResFile__Reopen.cpp",
-      "addr": "0x800D3BD0",
-      "size": 8
-    },
-    {
-      "file": "match_800D3BD8_NghResFile__Close.cpp",
-      "addr": "0x800D3BD8",
-      "size": 8
-    },
-    {
-      "file": "match_800D3BE4_NghResFile__Writable.cpp",
-      "addr": "0x800D3BE4",
-      "size": 8
-    },
-    {
-      "file": "match_800D3C18_NghResFile__ValidFile.cpp",
-      "addr": "0x800D3C18",
-      "size": 8
-    },
-    {
-      "file": "match_800D3C20_NghResFile__CountTypes.cpp",
-      "addr": "0x800D3C20",
-      "size": 8
-    },
-    {
-      "file": "match_800D3C28_NghResFile__GetIndType.cpp",
-      "addr": "0x800D3C28",
-      "size": 8
-    },
-    {
-      "file": "match_800D3CC8_NghResFile__GetByName.cpp",
-      "addr": "0x800D3CC8",
-      "size": 8
-    },
-    {
-      "file": "match_800D3D40_NghResFile__GetResType.cpp",
-      "addr": "0x800D3D40",
-      "size": 8
-    },
-    {
-      "file": "match_800D3D48_NghResFile__GetID.cpp",
-      "addr": "0x800D3D48",
-      "size": 16
-    },
-    {
-      "file": "match_800D3D5C_NghResFile__FindUniqueName.cpp",
-      "addr": "0x800D3D5C",
-      "size": 4
-    },
-    {
-      "file": "match_800D3D60_NghResFile__FindUniqueID.cpp",
-      "addr": "0x800D3D60",
-      "size": 8
-    },
-    {
-      "file": "match_800D3D68_NghResFile__Detach.cpp",
-      "addr": "0x800D3D68",
-      "size": 4
-    },
-    {
-      "file": "match_800D3D6C_NghResFile__Load.cpp",
-      "addr": "0x800D3D6C",
-      "size": 4
     },
     {
       "file": "match_80140D28_cSimulatorImpl__ComputeTimeOfDay.cpp",
@@ -1195,11 +665,6 @@
       "size": 96
     },
     {
-      "file": "match_801B0750_FAMTarget_UpdateTextvoid.cpp",
-      "addr": "0x801B0750",
-      "size": 12
-    },
-    {
       "file": "match_8024BACC_OSDBJump.cpp",
       "addr": "0x8024BACC",
       "size": 4
@@ -1218,6 +683,61 @@
       "file": "match_80349F30_ENgcRenderer_ProcessFrameEffectsfloat,_float,_float,_float,_EVec3_&,_EVec3_&.cpp",
       "addr": "0x80349F30",
       "size": 12
+    },
+    {
+      "file": "wip_0x80238268_ERLevel__SetIdMapTableSize.cpp",
+      "addr": "0x80238268",
+      "size": 8
+    },
+    {
+      "file": "wip_0x8024A9B0_TArray_EVec3__op_assign.cpp",
+      "addr": "0x8024A9B0",
+      "size": 9
+    },
+    {
+      "file": "wip_match_0x8004AFA8_BBI__InventoryItems__GetNewItemIndex.cpp",
+      "addr": "0x8004AFA8",
+      "size": 68
+    },
+    {
+      "file": "wip_match_0x800C7D14_cXMTObjectImpl__GetFirstMultiTileObject.cpp",
+      "addr": "0x800C7D14",
+      "size": 48
+    },
+    {
+      "file": "wip_match_0x800CDD40_NeighborhoodImpl__FindNeighborByID.cpp",
+      "addr": "0x800CDD40",
+      "size": 56
+    },
+    {
+      "file": "wip_match_0x801D1AD0_IsSkillCatalogRating.cpp",
+      "addr": "0x801D1AD0",
+      "size": 44
+    },
+    {
+      "file": "wip_match_0x80213700_InteractorModule__IsCameraDirectorInControl.cpp",
+      "addr": "0x80213700",
+      "size": 76
+    },
+    {
+      "file": "wip_match_0x8021AAB8_InteractorModule__PlacementObject__PlacementObject.cpp",
+      "addr": "0x8021AAB8",
+      "size": 56
+    },
+    {
+      "file": "wip_match_0x8021E8A8_SimInteractor__GetSelectionRadius.cpp",
+      "addr": "0x8021E8A8",
+      "size": 64
+    },
+    {
+      "file": "wip_match_0x8033B6EC_ENgcRenderer__dtor.cpp",
+      "addr": "0x8033B6EC",
+      "size": 52
+    },
+    {
+      "file": "wip_match_0x8035AD78_fake_InteractorManager__Update_WRONG_ADDR.cpp",
+      "addr": "0x8035AD78",
+      "size": 84
     }
   ],
   "NO_ADDRESS": [
@@ -1227,28 +747,13 @@
       "size": null
     },
     {
-      "file": "match_0x8001B038_CameraDirector__RegisterCurrentCamera.cpp",
-      "addr": "0x8001B038",
-      "size": null
-    },
-    {
-      "file": "match_0x8001E68C_CameraDirector__ForceDisableHud.cpp",
-      "addr": "0x8001E68C",
-      "size": null
-    },
-    {
       "file": "match_0x8003DDA8_GameData__SetBuildBuyPlayer.cpp",
       "addr": "0x8003DDA8",
       "size": null
     },
     {
-      "file": "match_0x800477A0_EFloorShdTblNode__RemapFloorAndGrassId.cpp",
-      "addr": "0x800477A0",
-      "size": null
-    },
-    {
-      "file": "match_0x80047E24_EIFloor__TestCreateFloors.cpp",
-      "addr": "0x80047E24",
+      "file": "match_0x8004A2E0_BBI_InventoryItem__CopyTo.cpp",
+      "addr": "0x8004A2E0",
       "size": null
     },
     {
@@ -1262,38 +767,8 @@
       "size": null
     },
     {
-      "file": "match_0x8007CEF0_CTGFileImpl_Read.cpp",
-      "addr": "0x8007CEF0",
-      "size": null
-    },
-    {
-      "file": "match_0x800842AC_TextBlock_CalcSizes.cpp",
-      "addr": "0x800842AC",
-      "size": null
-    },
-    {
-      "file": "match_0x80084A4C_IconItem__ReleaseShader.cpp",
-      "addr": "0x80084A4C",
-      "size": null
-    },
-    {
-      "file": "match_0x80085678_WrapperPaneBase__ReleaseBackgroundShader.cpp",
-      "addr": "0x80085678",
-      "size": null
-    },
-    {
-      "file": "match_0x8009C304_operator_lt_BString_BString.cpp",
-      "addr": "0x8009C304",
-      "size": null
-    },
-    {
       "file": "match_0x800A7EA0_wcscmp.cpp",
       "addr": "0x800A7EA0",
-      "size": null
-    },
-    {
-      "file": "match_0x800C2D90_MotiveCurveSet__LoadFromFile.cpp",
-      "addr": "0x800C2D90",
       "size": null
     },
     {
@@ -1302,28 +777,33 @@
       "size": null
     },
     {
-      "file": "match_0x80100C84_cXObjectImpl__TryPreloadObject.cpp",
-      "addr": "0x80100C84",
-      "size": null
-    },
-    {
       "file": "match_0x80108384_cXObjectImpl__TryParticleEffect.cpp",
       "addr": "0x80108384",
       "size": null
     },
     {
-      "file": "match_0x80151984_cFixedWorldImpl__OutOfRoutableExtent_CTilePt.cpp",
-      "addr": "0x80151984",
+      "file": "match_0x8015EEB0_CasClothingUnlocks__IsLocked_BodyPart.cpp",
+      "addr": "0x8015EEB0",
       "size": null
     },
     {
-      "file": "match_0x80151E60_cFixedWorldImpl__SetRoom.cpp",
-      "addr": "0x80151E60",
+      "file": "match_0x80190df4_InteractionHelper__GetNext.cpp",
+      "addr": "0x80190df4",
       "size": null
     },
     {
-      "file": "match_0x80211C8C_IsLegalToPlaceMultiTileAtLocation.cpp",
-      "addr": "0x80211C8C",
+      "file": "match_0x8021e8a8_InteractorModule_SimInteractor__GetSelectionRadius.cpp",
+      "addr": "0x8021e8a8",
+      "size": null
+    },
+    {
+      "file": "match_0x8022BB8C_EIStaticModel__GetBoundSphere.cpp",
+      "addr": "0x8022BB8C",
+      "size": null
+    },
+    {
+      "file": "match_0x8022E67C_EIStaticSubModel__GetBoundSphere.cpp",
+      "addr": "0x8022E67C",
       "size": null
     },
     {
@@ -1347,51 +827,6 @@
       "size": null
     },
     {
-      "file": "match_0x8023C908_XmlConvEpoch2Date.cpp",
-      "addr": "0x8023C908",
-      "size": null
-    },
-    {
-      "file": "match_0x8023F910___shr2u.cpp",
-      "addr": "0x8023F910",
-      "size": null
-    },
-    {
-      "file": "match_0x8023F914___div2i.cpp",
-      "addr": "0x8023F914",
-      "size": null
-    },
-    {
-      "file": "match_0x8023F918___shl2i.cpp",
-      "addr": "0x8023F918",
-      "size": null
-    },
-    {
-      "file": "match_0x8023F91C___mod2i.cpp",
-      "addr": "0x8023F91C",
-      "size": null
-    },
-    {
-      "file": "match_0x8023F920___shr2i.cpp",
-      "addr": "0x8023F920",
-      "size": null
-    },
-    {
-      "file": "match_0x8023F924___div2u.cpp",
-      "addr": "0x8023F924",
-      "size": null
-    },
-    {
-      "file": "match_0x8023F928___mod2u.cpp",
-      "addr": "0x8023F928",
-      "size": null
-    },
-    {
-      "file": "match_0x8024BB98___OSEVEnd.cpp",
-      "addr": "0x8024BB98",
-      "size": null
-    },
-    {
       "file": "match_0x8024DFA0_OSVReport.cpp",
       "addr": "0x8024DFA0",
       "size": null
@@ -1399,16 +834,6 @@
     {
       "file": "match_0x80251808_OSGetResetSwitchState.cpp",
       "addr": "0x80251808",
-      "size": null
-    },
-    {
-      "file": "match_0x802531F0___OSSystemCallVectorEnd.cpp",
-      "addr": "0x802531F0",
-      "size": null
-    },
-    {
-      "file": "match_0x802FBBC8_ESubModelShader__DelRefSubResources.cpp",
-      "addr": "0x802FBBC8",
       "size": null
     },
     {
@@ -1432,627 +857,12 @@
       "size": null
     },
     {
-      "file": "match_0x80363A48_EFontPage__DeallocateShader.cpp",
-      "addr": "0x80363A48",
-      "size": null
-    },
-    {
-      "file": "match_0x80368D64_ERCharacter__GetNode.cpp",
-      "addr": "0x80368D64",
-      "size": null
-    },
-    {
-      "file": "match_0x80368D74_global_ctor.cpp",
-      "addr": "0x80368D74",
-      "size": null
-    },
-    {
-      "file": "match_0x80368DA0_passthru.cpp",
-      "addr": "0x80368DA0",
-      "size": null
-    },
-    {
-      "file": "match_0x80368DC0_op_stream_ERDataset.cpp",
-      "addr": "0x80368DC0",
-      "size": null
-    },
-    {
-      "file": "match_0x80368E00_op_file_ERDataset.cpp",
-      "addr": "0x80368E00",
-      "size": null
-    },
-    {
-      "file": "match_0x80369710_func_80369710.cpp",
-      "addr": "0x80369710",
-      "size": null
-    },
-    {
-      "file": "match_0x803697B0_passthru.cpp",
-      "addr": "0x803697B0",
-      "size": null
-    },
-    {
-      "file": "match_0x803697D0_li_wrapper.cpp",
-      "addr": "0x803697D0",
-      "size": null
-    },
-    {
-      "file": "match_0x8036987C_func_8036987C.cpp",
-      "addr": "0x8036987C",
-      "size": null
-    },
-    {
-      "file": "match_0x803698D0_passthru.cpp",
-      "addr": "0x803698D0",
-      "size": null
-    },
-    {
-      "file": "match_0x803698F0_global_ctor.cpp",
-      "addr": "0x803698F0",
-      "size": null
-    },
-    {
-      "file": "match_0x8036991C_passthru.cpp",
-      "addr": "0x8036991C",
-      "size": null
-    },
-    {
-      "file": "match_0x8036993C_op_stream_ERSoundEvent.cpp",
-      "addr": "0x8036993C",
-      "size": null
-    },
-    {
-      "file": "match_0x8036997C_op_file_ERSoundEvent.cpp",
-      "addr": "0x8036997C",
-      "size": null
-    },
-    {
-      "file": "match_0x80369EA0_ERSoundEvent__Construct_ERSoundEvent_ptr.cpp",
-      "addr": "0x80369EA0",
-      "size": null
-    },
-    {
-      "file": "match_0x80369ECC_li_wrapper.cpp",
-      "addr": "0x80369ECC",
-      "size": null
-    },
-    {
-      "file": "match_0x80369F78_func_80369F78.cpp",
-      "addr": "0x80369F78",
-      "size": null
-    },
-    {
-      "file": "match_0x80369FCC_passthru.cpp",
-      "addr": "0x80369FCC",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A050_ERSoundEvent__GetEventType.cpp",
-      "addr": "0x8036A050",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A058_ERSoundEvent__GetVolume.cpp",
-      "addr": "0x8036A058",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A060_ERSoundEvent__GetProb.cpp",
-      "addr": "0x8036A060",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A068_ERSoundEvent__SetVolume.cpp",
-      "addr": "0x8036A068",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A070_ERSoundEvent__SetProb.cpp",
-      "addr": "0x8036A070",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A078_global_ctor.cpp",
-      "addr": "0x8036A078",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A0A4_passthru.cpp",
-      "addr": "0x8036A0A4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A0C4_op_stream_ERSoundTrackData.cpp",
-      "addr": "0x8036A0C4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A104_op_file_ERSoundTrackData.cpp",
-      "addr": "0x8036A104",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A584_passthru.cpp",
-      "addr": "0x8036A584",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A5A4_li_wrapper.cpp",
-      "addr": "0x8036A5A4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A650_func_8036A650.cpp",
-      "addr": "0x8036A650",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A6A4_passthru.cpp",
-      "addr": "0x8036A6A4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A6C4_ERSoundTrackData__GetInstruction.cpp",
-      "addr": "0x8036A6C4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A6D4_ERSoundTrackData__GetProgramSize.cpp",
-      "addr": "0x8036A6D4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A6E8_global_ctor.cpp",
-      "addr": "0x8036A6E8",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A714_passthru.cpp",
-      "addr": "0x8036A714",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A734_op_stream_REffectsEmitter.cpp",
-      "addr": "0x8036A734",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A774_op_file_REffectsEmitter.cpp",
-      "addr": "0x8036A774",
-      "size": null
-    },
-    {
-      "file": "match_0x8036A8C4_REffectsEmitter_DelRefSubResources.cpp",
-      "addr": "0x8036A8C4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AAC4_REffectsEmitter_Refresh.cpp",
-      "addr": "0x8036AAC4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036ABAC_passthru.cpp",
-      "addr": "0x8036ABAC",
-      "size": null
-    },
-    {
-      "file": "match_0x8036ABCC_li_wrapper.cpp",
-      "addr": "0x8036ABCC",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AC78_func_8036AC78.cpp",
-      "addr": "0x8036AC78",
-      "size": null
-    },
-    {
-      "file": "match_0x8036ACCC_passthru.cpp",
-      "addr": "0x8036ACCC",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AD78_REffectsEmitter__GetEmitterInitData.cpp",
-      "addr": "0x8036AD78",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AD80_REffectsEmitter__GetParticleBirthData.cpp",
-      "addr": "0x8036AD80",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AD88_REffectsEmitter__GetTexture.cpp",
-      "addr": "0x8036AD88",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AD90_REffectsEmitter__Refreshed.cpp",
-      "addr": "0x8036AD90",
-      "size": null
-    },
-    {
-      "file": "match_0x8036ADA4_global_ctor.cpp",
-      "addr": "0x8036ADA4",
-      "size": null
-    },
-    {
-      "file": "match_0x8036ADD0_passthru.cpp",
-      "addr": "0x8036ADD0",
-      "size": null
-    },
-    {
-      "file": "match_0x8036ADF0_op_stream_REffectsSequencer.cpp",
-      "addr": "0x8036ADF0",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AE30_op_file_REffectsSequencer.cpp",
-      "addr": "0x8036AE30",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AF44_REffectsSequencer__TryIncrementSubResources.cpp",
-      "addr": "0x8036AF44",
-      "size": null
-    },
-    {
-      "file": "match_0x8036AFFC_REffectsSequencer_Refresh.cpp",
-      "addr": "0x8036AFFC",
-      "size": null
-    },
-    {
-      "file": "match_0x8036B0DC_passthru.cpp",
-      "addr": "0x8036B0DC",
-      "size": null
-    },
-    {
-      "file": "match_0x8036B0FC_li_wrapper.cpp",
-      "addr": "0x8036B0FC",
-      "size": null
-    },
-    {
-      "file": "match_0x8036B1A8_func_8036B1A8.cpp",
-      "addr": "0x8036B1A8",
-      "size": null
-    },
-    {
-      "file": "match_0x8036B1FC_passthru.cpp",
-      "addr": "0x8036B1FC",
-      "size": null
-    },
-    {
-      "file": "match_0x8036B21C_global_ctor.cpp",
-      "addr": "0x8036B21C",
-      "size": null
-    },
-    {
-      "file": "match_0x8036B248_passthru.cpp",
-      "addr": "0x8036B248",
-      "size": null
-    },
-    {
-      "file": "match_0x8036B268_op_stream_RParticle.cpp",
-      "addr": "0x8036B268",
-      "size": null
-    },
-    {
-      "file": "match_0x8036B2A8_op_file_RParticle.cpp",
-      "addr": "0x8036B2A8",
-      "size": null
-    },
-    {
-      "file": "match_0x8036C0C0_func_8036C0C0.cpp",
-      "addr": "0x8036C0C0",
-      "size": null
-    },
-    {
-      "file": "match_0x8036C158_RParticle__Construct_RParticle_ptr.cpp",
-      "addr": "0x8036C158",
-      "size": null
-    },
-    {
-      "file": "match_0x8036C184_li_wrapper.cpp",
-      "addr": "0x8036C184",
-      "size": null
-    },
-    {
-      "file": "match_0x8037B998_AXSetMaxDspCycles_8b.cpp",
-      "addr": "0x8037B998",
-      "size": null
-    },
-    {
-      "file": "match_0x8037B9A0_AXGetMaxDspCycles_8b.cpp",
-      "addr": "0x8037B9A0",
-      "size": null
-    },
-    {
-      "file": "match_0x8037B9A8_AXGetDspCycles_8b.cpp",
-      "addr": "0x8037B9A8",
-      "size": null
-    },
-    {
-      "file": "match_0x8037BCBC_MIXSetSoundMode_8b.cpp",
-      "addr": "0x8037BCBC",
-      "size": null
-    },
-    {
-      "file": "match_0x8037BCC4_MIXGetSoundMode_8b.cpp",
-      "addr": "0x8037BCC4",
-      "size": null
-    },
-    {
-      "file": "match_0x8037D1A0_MIXGetDvdStreamFader_8b.cpp",
-      "addr": "0x8037D1A0",
-      "size": null
-    },
-    {
-      "file": "match_0x8037E388_DSPCheckInit_8b.cpp",
-      "addr": "0x8037E388",
-      "size": null
-    },
-    {
-      "file": "match_0x8037E62C___DSPGetCurrentTask_8b.cpp",
-      "addr": "0x8037E62C",
-      "size": null
-    },
-    {
-      "file": "match_0x8038041C___CARDGetFontEncode_8b.cpp",
-      "addr": "0x8038041C",
-      "size": null
-    },
-    {
-      "file": "match_0x80380B24___CARDGetFatBlock.cpp",
-      "addr": "0x80380B24",
-      "size": null
-    },
-    {
-      "file": "match_0x80380F28___CARDGetDirBlock.cpp",
-      "addr": "0x80380F28",
-      "size": null
-    },
-    {
-      "file": "match_0x80383C70___CARDIsOpened.cpp",
-      "addr": "0x80383C70",
-      "size": null
-    },
-    {
-      "file": "match_0x803850D4_CARDGetVendorID_8b.cpp",
-      "addr": "0x803850D4",
-      "size": null
-    },
-    {
-      "file": "match_0x80388790_TwoFieldSetter_C_10.cpp",
-      "addr": "0x80388790",
-      "size": null
-    },
-    {
-      "file": "match_0x80388D64_GXGetFifoBase.cpp",
-      "addr": "0x80388D64",
-      "size": null
-    },
-    {
-      "file": "match_0x80388D6C_GXGetFifoSize.cpp",
-      "addr": "0x80388D6C",
-      "size": null
-    },
-    {
-      "file": "match_0x80389150_GXGetCurrentGXThread_8b.cpp",
-      "addr": "0x80389150",
-      "size": null
-    },
-    {
-      "file": "match_0x8039BA18___VMBASEDSIExceptionHandler_SetOriginalInstruction.cpp",
-      "addr": "0x8039BA18",
-      "size": null
-    },
-    {
-      "file": "match_0x8039BBC0___VMBASEISIExceptionHandler_SetOriginalInstruction.cpp",
-      "addr": "0x8039BBC0",
-      "size": null
-    },
-    {
       "file": "match_0x803A29F0_Rb_tree_int_pair_M_erase.cpp",
       "addr": "0x803A29F0",
       "size": null
     },
     {
-      "file": "match_800B9FB0_cGZSndSys__preloadMusic.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800B9FB4_cGZSndSys__unloadMusic.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BA090_cGZSnd__Init.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BA658_cGZSnd__Load.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BA660_cGZSnd__Unload.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BA668_cGZSnd__GetVolume.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BA81C_cGZSnd__GetPan.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BA8DC_cGZSnd__GetFrequency.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BA8E4_cGZSnd__SetFrequency.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BA8EC_cGZSnd__SetPosition.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BABF8_cGZMusic__Init.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BAEAC_cGZMusic__Load.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BAEB4_cGZMusic__Unload.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BB0D0_cGZMusic__GetPan.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BB184_cGZMusic__GetFrequency.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BB18C_cGZMusic__SetFrequency.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BB194_cGZMusic__SetPosition.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC454_HouseStats__GetSquareFeet.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC95C_HouseStats__GetNumBedrooms.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC964_HouseStats__GetNumBathrooms.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC96C_HouseStats__GetNumLevels.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC974_HouseStats__GetLotSize.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC97C_HouseStats__GetObjectCount.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC984_HouseImpl__GetFamily.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC98C_HouseImpl__GetSizeScoreCurve.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BC994_HouseImpl__GetFurnishingsScoreCurve.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BCB68_IconGroupImpl__GetLabel.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BCB6C_IconGroupImpl__LoadStrings.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800BEA00_IFFResFile2__Writable.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800C189C_Interaction__SetUniqueID.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800C1960_Interaction__SetName.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800C2008_GetMotiveConstantsClient.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
       "file": "match_800C2D5C_global_ctor_redAspMotiveDecayMult.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800C7D60_cXMTObjectImpl__GetISimInstanceBaseVer.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800C7EC4_NamespaceSelector__GetBehaviorConstants.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800C7EF4_NamespaceSelector__GetSoundInfo.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800C7F24_NamespaceSelector__GetStringSet.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800CA208_Neighbor__GetFriendCount.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800CA244_Neighbor__GetEnemyCount.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800CA280_Neighbor__GetReputationValue.cpp",
       "addr": null,
       "size": null
     },
@@ -2067,82 +877,12 @@
       "size": null
     },
     {
-      "file": "match_800CC738_GetNeighborhoodConstantsClient.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800CF794_NeighborhoodImpl__GetFamilyFriendsCount.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D1958_NeighborhoodImpl__IsFreeplayLot.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D19AC_global_ctor_Neighborhood.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D19D8_global_dtor_Neighborhood.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D1C28__c2DArray__AddArray.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
       "file": "match_800D22E4__c2DArray__CopyFrom_BString.cpp",
       "addr": null,
       "size": null
     },
     {
       "file": "match_800D2394__c2DArray__CopyTo.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D23C0__c2DArray__CopyTo_BString.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D25AC_SaveAllMemoryCardCache.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D25EC_LoadCacheFromMemoryCard.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D2FBC_MemoryCardCache__LoadCacheFromMemoryCard.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_800D3BEC_NghResFile__GetFileName.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_80140D70_cSimulatorImpl__HourTimeOfDayLastChanged.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_80140DC8_cSimulatorImpl__HourTimeOfDayNextChanges.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_80183120_ActionMenu__MenuItem__GetNthItem.cpp",
       "addr": null,
       "size": null
     },
@@ -2157,32 +897,12 @@
       "size": null
     },
     {
-      "file": "match_80186DD4_HUDTarget__IncPause.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_80186E04_HUDTarget__ReleasePause.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_80189A34_HUDTarget__GetJobBarCount.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
       "file": "match_80190DF4_InteractionHelper__GetNext.cpp",
       "addr": null,
       "size": null
     },
     {
       "file": "match_80195C40_CASTarget__ShowAllCFAOptions.cpp",
-      "addr": null,
-      "size": null
-    },
-    {
-      "file": "match_801AFCAC_FAMTarget__UnloadScreen.cpp",
       "addr": null,
       "size": null
     },
@@ -2194,6 +914,26 @@
     {
       "file": "match_8021f480_SocialModeInteractor_SetupInteractionMenu.cpp",
       "addr": null,
+      "size": null
+    },
+    {
+      "file": "vd_0x80203D70_DirectInteractor_ctor.cpp",
+      "addr": "0x80203D70",
+      "size": null
+    },
+    {
+      "file": "vd_0x80209354_Interactor_OnCommandUpdate.cpp",
+      "addr": "0x80209354",
+      "size": null
+    },
+    {
+      "file": "vd_0x8021374C_SetCameraFilter.cpp",
+      "addr": "0x8021374C",
+      "size": null
+    },
+    {
+      "file": "wip_match_0x8021BE8C_PlacementObject__IsLegalToPlaceAtLocation.cpp",
+      "addr": "0x8021BE8C",
       "size": null
     }
   ],

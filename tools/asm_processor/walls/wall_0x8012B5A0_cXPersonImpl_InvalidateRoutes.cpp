@@ -1,3 +1,4 @@
+// ASMPROC_insert_mr: after=bclr src=11 dst=3 relabel=10:11,11:3
 // asm-processor PARKED — 0x8012B5A0 cXPersonImpl::InvalidateRoutes (52B).
 //
 // DIAGNOSIS (2026-04-21, OpusWorker Phase 2):

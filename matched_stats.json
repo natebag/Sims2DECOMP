@@ -1,6 +1,39 @@
 {
-  "total_files": 9508,
-  "unique_addresses": 9508,
-  "duplicate_count": 0,
-  "duplicates": {}
+  "total_files": 9689,
+  "unique_addresses": 9681,
+  "duplicate_count": 8,
+  "duplicates": {
+    "80312234": [
+      "src\\matched\\agent\\match_0x80312234_EResource__CreateCopy.cpp",
+      "src\\matched\\agent\\match_80312234_EResource__CreateCopy_void__const.cpp"
+    ],
+    "80313DB8": [
+      "src\\matched\\agent\\match_0x80313DB8_ERFlash__CreateCopy.cpp",
+      "src\\matched\\agent\\match_80313DB8_ERFlash__CreateCopy_void__const.cpp"
+    ],
+    "803178E4": [
+      "src\\matched\\agent\\match_0x803178E4_ERFont__CreateCopy.cpp",
+      "src\\matched\\agent\\match_803178E4_ERFont__CreateCopy_void__const.cpp"
+    ],
+    "8031B340": [
+      "src\\matched\\agent\\match_0x8031B340_ERModel__CreateCopy.cpp",
+      "src\\matched\\agent\\match_8031B340_ERModel__CreateCopy_void__const.cpp"
+    ],
+    "8031F540": [
+      "src\\matched\\agent\\match_0x8031F540_ERShader__UpdateWeatherShader.cpp",
+      "src\\matched\\agent\\match_8031F540_ERShader__UpdateWeatherShader_int.cpp"
+    ],
+    "80322FC8": [
+      "src\\matched\\agent\\match_0x80322FC8_EAudioStreamManager__AddRef_uint.cpp",
+      "src\\matched\\agent\\match_80322FC8_EAudioStreamManager__AddRef_unsigned_int__EFile_ptr__int.cpp"
+    ],
+    "803383A0": [
+      "src\\matched\\agent\\match_0x803383A0_ENgcRC__Init.cpp",
+      "src\\matched\\agent\\match_803383A0_ENgcRC__Init_RCMode.cpp"
+    ],
+    "801C21D8": [
+      "src\\matched\\m2mtarget\\match_0x801C21D8_M2MTarget__HideWidget.cpp",
+      "src\\matched\\targets_s2c\\match_801C21D8_M2MTarget__HideWidget.cpp"
+    ]
+  }
 }

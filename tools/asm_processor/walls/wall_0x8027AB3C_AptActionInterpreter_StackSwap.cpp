@@ -1,3 +1,14 @@
+// ASMPROC_swap_adj: a=add b=slwi which=first
+// ASMPROC_swap_operands: match="add 9,11,9" pos=1,2
+// ASMPROC_force_reg: match="add 9,9,11" from_reg=11 to_reg=0
+// ASMPROC_force_reg: match="slwi 0,8,2" from_reg=0 to_reg=11
+// ASMPROC_force_reg: match="lwz 11,8(3)" from_reg=11 to_reg=0 occurrence=0
+// ASMPROC_force_reg: match="lwz 11,8(3)" from_reg=11 to_reg=10 occurrence=0
+// ASMPROC_force_reg: match="slwi 0,9,2" from_reg=0 to_reg=11 occurrence=0
+// ASMPROC_force_reg: match="stwx 7,11,0" from_reg=0 to_reg=10
+// ASMPROC_force_reg: match="slwi 0,9,2" from_reg=0 to_reg=10 occurrence=0
+// ASMPROC_swap_operands: match="stwx 6,11,0" pos=1,2
+// ASMPROC_force_reg: match="stwx 6,0,11" from_reg=0 to_reg=10
 // asm-processor PARKED — 0x8027AB3C AptActionInterpreter::_FunctionAptActionStackSwap (112B).
 //
 // DIAGNOSIS (2026-04-21, OpusWorker, S13 Phase 3 batch):

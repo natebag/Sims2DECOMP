@@ -164,7 +164,7 @@ def get_active_function_addrs():
             if not fname.endswith('.cpp') and not fname.endswith('.c'):
                 continue
             fpath = os.path.join(root, fname)
-            with open(fpath, 'r') as f:
+            with open(fpath, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
             for m in re.finditer(r'// 0x([0-9A-Fa-f]+)\s+\((\d+) bytes\)', content):
                 addr = int(m.group(1), 16)
