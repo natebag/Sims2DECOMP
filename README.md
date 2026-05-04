@@ -4,20 +4,20 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**🎯 47.7% DECOMPILED — PAST 57% OF MATCHABLE CODE — APPROACHING 10K MILESTONE 🎯**
+**🎯 47.6% DECOMPILED — PAST 57% OF MATCHABLE CODE — ~233 FUNCTIONS FROM 10K MILESTONE 🎯**
 
-**47.7% decompiled and verified** — 9,783 / 20,508 functions byte-matched against the original DOL. Excluding the ~3,500 SDK functions compiled with Metrowerks CodeWarrior, we're matching **~57% of the game's decompilable code**. Crossing the **10,000 matched milestone** in the next session.
+**47.6% decompiled and verified** — 9,767 / 20,508 functions byte-matched against the original DOL. Excluding the ~3,500 SDK functions compiled with Metrowerks CodeWarrior, we're matching **~57% of the game's decompilable code**. Crossing the **10,000 matched milestone** is within reach over the next 2-3 sessions.
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **9,783 / 20,508 (47.7%)** |
+| **Verified matches** | **9,767 / 20,508 (47.6%)** |
 | **% of matchable** | **~57%** (of ~17,000 excluding SDK) |
-| Functions remaining | ~10,725 |
+| Functions remaining | ~10,741 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit + asm_processor |
-| Matching techniques | 71+ proven patterns + 8 Variant L recipes + 3 Variant ' families |
+| Matching techniques | 75+ proven patterns + 8 Variant L recipes + 3 Variant ' families + 4 catalog-confirmed Tech entries (volatile-CSE, lazy-callee-save-volatile-r9, region_gpr_relabel, slot-pointer-hoist) |
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
 
@@ -54,6 +54,10 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 - **asm_processor mutator system** — post-compile asm transformation pipeline with 8+ mutators (insert_mr, remove_mr, swap_cr_field, swap_operands, swap_adj, force_reg, nop_before, fp_relabel, gpr_relabel) for handling register-allocation and scheduling differences that source-coax cannot resolve. Multi-directive composition validated (StackSwap E-15 11-directive recipe).
 - **Triage-first protocol** — every wall gets a 30-min source-level test BEFORE mutator authoring. If recipe generalizes → catalog descope (no mutator). If only mutator-shaped fix works → handoff. Caught GameData::GamePlayReset, BString2::assignDebug, ESimsCam::SetState as descopes saving authoring time.
 - **Pre-RE → cracking handoff pattern** — structural-diagnostic worker (SW2) RE-blueprints functions with full disassembly decode + recipe sketch + class layout, hands to cracking worker (OpusWorker) for byte-match. Sustained 10-25min/blueprint pace; multiple cross-class portable insights compound across sessions.
+- **volatile-CSE technique CONFIRMED (2026-05-04)** — `*(T *volatile *)&m_field` cast pattern defeats GCC 2.95 CSE when DOL emits multiple `lwz` of same offset on same base register with intermediate `mr`. Validated on 2 instances (cXObjectImpl::ChangeSelectedSimL + CTGFileImpl::GetSize 4× lwz). No asm_processor needed.
+- **lazy-callee-save-volatile-r9 technique** — DOL pattern where `addi rN,rThis,off` → `lwz r0,4(rN)` → `mr r28,rN` (lazy callee-save cache) is reproduced via 4-directive asm_processor pipeline. Cracked the ERModel 17-member loop family (14 verified, +6 CTGDump op_shl twins). 5 documented variants for guard / no-relabel / r30-this / ESubModel-direct shapes.
+- **region_gpr_relabel mutator (3 instances confirmed)** — when DOL allocates registers differently than cc1plus (e.g. r6/r11/f13 vs compiler's r10/r9/f0) but operations are byte-equivalent, post-compile asm rename realigns registers. Includes **dual-region sub-pattern**: split rename around `lfd 0`/`stfd 0` lines to dodge FPR-vs-GPR digit-conflation in `relabel_token`. Plus `unsafe_clobber=true` edge case for same-line use+redef.
+- **slot-pointer-hoist technique** (catalog candidate, awaits 2nd instance) — when 3+ vcalls share callee-saved register pressure, hoist the LAST call's slot pointer + adjusted-this BEFORE earlier calls so r30/slot survive intervening CALL2/CALL3. Cracked cXObjectImpl::Error 152B (6-instruction divergence resolved).
 
 ## What's Not Done
 
