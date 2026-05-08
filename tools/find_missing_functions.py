@@ -53,8 +53,8 @@ def extract_matched_addresses(directory):
     addresses = set()
     # Pattern for filenames like match_0x802DF544_EBitArray_ctor.cpp or match_802DF544_...
     pattern = r'match_0x([0-9A-Fa-f]{8})|match_([0-9A-Fa-f]{8})'
-    
-    for filepath in Path(directory).glob('*.cpp'):
+
+    for filepath in Path(directory).rglob('*.cpp'):
         match = re.search(pattern, filepath.name)
         if match:
             addr_str = match.group(1) if match.group(1) else match.group(2)
