@@ -274,8 +274,13 @@ for off, rtype, target in relocs:
     if is_local and rtype in ('R_PPC_REL14', 'R_PPC_REL24'):
         # LOCAL branch: substitute the expected displacement and compare normally
         m = re.match(r'\.text\+0x([0-9a-fA-F]+)', target)
-        if not m: continue
-        tgt_off = int(m.group(1), 16)
+        if m:
+            tgt_off = int(m.group(1), 16)
+        elif target == '.text':
+            # bare ".text" = offset 0 (branch to start of section)
+            tgt_off = 0
+        else:
+            continue
         disp = tgt_off - off  # post-link PC-relative displacement
         instr = (comp_b[off]<<24)|(comp_b[off+1]<<16)|(comp_b[off+2]<<8)|comp_b[off+3]
         if rtype == 'R_PPC_REL14':
