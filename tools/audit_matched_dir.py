@@ -27,7 +27,7 @@ print(f'Loaded {len(ADDR_TO_SIZE)} symbols from DVD map for size lookup', flush=
 # Sample random files from agent dir
 import random
 random.seed(42)
-all_files = sorted(MATCHED_DIR.rglob('match_0x*.cpp'))
+all_files = sorted(MATCHED_DIR.rglob('match_*.cpp'))
 # Skip cbmt_blast (already verified)
 all_files = [f for f in all_files if 'cbmt_blast' not in f.parts]
 
@@ -42,7 +42,7 @@ errors = 0
 
 for i, f in enumerate(sample):
     name = f.name
-    m = re.search(r'0x([0-9A-Fa-f]{8})', name)
+    m = re.search(r'(?:0x)?([0-9A-Fa-f]{8})', name)
     if not m:
         continue
     addr = m.group(1).upper()

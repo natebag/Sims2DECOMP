@@ -46,7 +46,7 @@ def score_file(filepath):
     # Penalize placeholder names
     if re.search(r'func_[0-9a-fA-F]+', name):
         score -= 100  # func_XXXX placeholder — worst
-    elif re.search(r'^match_0x[0-9a-fA-F]+$', name):
+    elif re.search(r'^match_(?:0x)?[0-9a-fA-F]+$', name):
         score -= 90  # bare address, no function name
     elif 'sub_' in name and not any(kw in name for kw in ('__', 'Instance', 'Object')):
         score -= 50  # generic sub_ name

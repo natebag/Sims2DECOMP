@@ -1,5 +1,5 @@
 #!/bin/bash
-# size_sweep.sh — Detect header size-label mismatches across match_0x*.cpp files
+# size_sweep.sh — Detect header size-label mismatches across match_*.cpp files
 #
 # For each match file in the given git range (or working tree), extract the
 # address and the header-declared size, look up the map-declared size in the
@@ -10,7 +10,7 @@
 # first 64B or diverging partway through.
 #
 # Usage:
-#   ./tools/size_sweep.sh                  # sweep all match_0x*.cpp in src/matched/
+#   ./tools/size_sweep.sh                  # sweep all match_*.cpp in src/matched/
 #   ./tools/size_sweep.sh <git-range>      # only files in commits in range, e.g., 1d50fa8b..HEAD
 #
 # Exit code:
@@ -39,11 +39,11 @@ fi
 
 # Scope: all working-tree files if no arg, or git diff files in a range.
 if [ $# -eq 0 ]; then
-    FILES=$(find src/matched -name 'match_0x*.cpp' 2>/dev/null)
+    FILES=$(find src/matched -name 'match_*.cpp' 2>/dev/null)
     SCOPE="src/matched (working tree)"
 elif [ $# -eq 1 ]; then
     RANGE="$1"
-    FILES=$(git diff --name-only --diff-filter=AM "$RANGE" 2>/dev/null | grep 'src/matched/match_0x\|src/matched/.*/match_0x' | grep '\.cpp$')
+    FILES=$(git diff --name-only --diff-filter=AM "$RANGE" 2>/dev/null | grep 'src/matched/match_\|src/matched/.*/match_' | grep '\.cpp$')
     SCOPE="git range $RANGE"
 else
     echo "Usage: $0 [<git-range>]" >&2
@@ -51,7 +51,7 @@ else
 fi
 
 if [ -z "$FILES" ]; then
-    echo "No match_0x*.cpp files found in $SCOPE"
+    echo "No match_*.cpp files found in $SCOPE"
     exit 0
 fi
 
@@ -66,7 +66,7 @@ for f in $FILES; do
     TOTAL=$((TOTAL + 1))
 
     # Extract address from filename (match_0xADDR_...).
-    ADDR=$(basename "$f" | sed -n 's/^match_0x\([0-9a-fA-F]\+\)_.*/\1/p')
+    ADDR=$(basename "$f" | sed -n 's/^match_\(0x\)\?\([0-9a-fA-F]\+\)_.*/\2/p')
     if [ -z "$ADDR" ]; then
         SKIP=$((SKIP + 1))
         continue

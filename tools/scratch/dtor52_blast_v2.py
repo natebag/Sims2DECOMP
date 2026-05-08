@@ -80,7 +80,7 @@ def process_batch(candidates, addr_to_size, addr_to_name, batch_size=20):
             func_name = addr_to_name.get(addr.upper().replace('0X', ''), '')
             if not func_name:
                 # Extract from filename
-                m = re.search(r'match_0x[0-9A-Fa-f]+_(.+?)\.cpp', fname, re.IGNORECASE)
+                m = re.search(r'match_(?:0x)?[0-9A-Fa-f]+_(.+?)\.cpp', fname, re.IGNORECASE)
                 func_name = m.group(1) if m else "Unknown"
             
             # Create proper header

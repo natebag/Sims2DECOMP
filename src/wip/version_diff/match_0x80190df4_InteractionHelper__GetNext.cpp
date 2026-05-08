@@ -14,7 +14,6 @@ struct InteractionHelper {
 int InteractionHelper::GetNext(IHRecord* rec) {
     int tmp = rec->m_field4;
     int result = tmp;
-    if (tmp == 0)
-        result = rec->m_fieldC;
-    return result;
+    if (tmp != 0) return result;
+    return rec->m_fieldC;
 }

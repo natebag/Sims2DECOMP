@@ -139,7 +139,7 @@ def audit_file(cpp_path):
 
 
 def main():
-    files = sorted(BLAST_DIR.glob('match_0x*.cpp'))
+    files = sorted(BLAST_DIR.glob('match_*.cpp'))
     print(f'Auditing {len(files)} blast files...', file=sys.stderr)
     safe = 0
     bad = 0
