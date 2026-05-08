@@ -1,28 +1,24 @@
 // 0x8021E8A8 (64B) InteractorModule::SimInteractor::GetSelectionRadius(void)
-// If m_field_532 is 0, returns a hardcoded default radius instead of base result.
-
-extern char k_simInteractor_defaultRadius[16];
+// extern char[] SDA trick: *(float*)0x803fdd1c generates lis+ori+lfs (3-insn, 68B);
+// extern char kDefaultSelRadius[] emits lis r9,@ha; lfs f1,@l(r9) (2-insn, 64B). Matches!
 
 namespace InteractorModule {
 
-class Interactor {
-public:
-    float GetSelectionRadius();
-};
+extern float base_GetSelectionRadius();
+extern char kDefaultSelRadius[]; // 0x803fdd1c
 
-class SimInteractor : public Interactor {
-public:
-    char pad[528];
-    int m_field_532;
+struct SimInteractor {
+    char pad[0x214];
+    int m_field_214;
     float GetSelectionRadius();
 };
 
 float SimInteractor::GetSelectionRadius() {
-    float r = Interactor::GetSelectionRadius();
-    if (!m_field_532) {
-        r = *(float*)k_simInteractor_defaultRadius;
+    float result = base_GetSelectionRadius();
+    if (m_field_214 == 0) {
+        result = *(float*)kDefaultSelRadius;
     }
-    return r;
+    return result;
 }
 
-}
+} // namespace InteractorModule
