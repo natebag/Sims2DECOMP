@@ -1,26 +1,25 @@
-/* ENgcRenderer::SetBlendMode(BlendModeState const&) at 0x80346124 (56B) */
-/* VERSION_DIFF: Systemic register allocation mismatch.
- * SN ProDG allocates rlwinm destinations: r7, r11, r10, r8, r0.
- * GCC reuses r9 (freed from li-r9-temp for m_dirty) for the first rlwinm,
- * then r11, r8, r7, r0. Register numbers differ throughout and store ordering
- * changes as a consequence. Unfixable without pinning every extraction register.
- * Logic is correct; bytes differ only in register encoding.
- */
+// ENgcRenderer::SetBlendMode(BlendModeState const&) at 0x80346124 (56B)
+// VERSION_DIFF: Systemic register allocation mismatch.
+// SN ProDG allocates rlwinm destinations: r7, r11, r10, r8, r0.
+// GCC reuses r9 (freed from li-r9-temp for m_dirty) for the first rlwinm,
+// then r11, r8, r7, r0. Register numbers differ throughout and store ordering
+// changes as a consequence. Unfixable without pinning every extraction register.
+// Logic is correct; bytes differ only in register encoding.
 
 struct BlendModeParams_SBM {
     int _pad0;
-    unsigned int bits;  // offset 4: packed blend fields
+    unsigned int bits;
 };
 
 struct ENgcRenderer_SBM {
     char _pad[0x510];
-    int m_dirty;        // 0x510
+    int m_dirty;
     char _pad2[0x50];
-    unsigned char m_blendSrc;    // 0x564
-    unsigned char m_blendDst;    // 0x565
-    unsigned char m_blendAlpha;  // 0x566
-    unsigned char m_blendOp;     // 0x567
-    unsigned char m_blendFactor; // 0x568
+    unsigned char m_blendSrc;
+    unsigned char m_blendDst;
+    unsigned char m_blendAlpha;
+    unsigned char m_blendOp;
+    unsigned char m_blendFactor;
     void SetBlendMode(const BlendModeParams_SBM& p);
 };
 
