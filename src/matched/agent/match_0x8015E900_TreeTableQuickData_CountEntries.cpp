@@ -9,9 +9,13 @@ struct TreeTableQuickData {
 };
 
 int TreeTableQuickData::CountEntries() const {
-    if (m_pool != 0) {
-        void** arr = m_pool->m_arr;
-        if (arr != 0) return ((int*)arr)[-1];
+    Pool* p = m_pool;
+    if (p == 0) goto bail;
+    {
+        int* arr = (int*)p->m_arr;
+        int n = arr ? arr[-1] : 0;
+        return n;
     }
+bail:
     return 0;
 }
