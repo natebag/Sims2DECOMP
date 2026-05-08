@@ -92,7 +92,7 @@ def main():
     
     # Extract addresses from matched
     print("Extracting matched addresses...")
-    matched_addrs = extract_matched_addresses('src/matched/agent')
+    matched_addrs = extract_matched_addresses('src/matched')
     print(f"  Functions matched: {len(matched_addrs)}")
     
     # Find missing functions
