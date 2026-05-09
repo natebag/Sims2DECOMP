@@ -1,27 +1,27 @@
 {
-  "total_files": 10089,
-  "unique_addresses": 10010,
-  "duplicate_count": 4,
-  "duplicates": [
-    {
-      "address": "801858FC",
-      "file1": "match_0x801858FC_GetTutorialLocks.cpp",
-      "file2": "match_0x801858FC_GetTutorialLocks.cpp"
-    },
-    {
-      "address": "802216B8",
-      "file1": "match_0x802216B8_WallManipulator_UpdateStickState.cpp",
-      "file2": "match_0x802216B8_WallManipulator__UpdateStickState.cpp"
-    },
-    {
-      "address": "800997DC",
-      "file1": "match_0x800997DC_TheSimsStateMachine__IsFlowStateRequestPending.cpp",
-      "file2": "match_800997DC_TheSimsStateMachine__IsFlowStateRequestPending.cpp"
-    },
-    {
-      "address": "80189A34",
-      "file1": "match_0x80189A34_HUDTarget__GetJobBarCount.cpp",
-      "file2": "match_0x80189A34_HUDTarget_GetJobBarCount.cpp"
-    }
-  ]
+  "total_files": 10038,
+  "unique_addresses": 10033,
+  "duplicate_count": 5,
+  "duplicates": {
+    "8031A628": [
+      "src\\matched\\agent\\match_0x8031A628_ERModel__GetNumMorphBases.cpp",
+      "src\\matched\\agent\\match_8031A628_ERModel__GetNumMorphBases_void.cpp"
+    ],
+    "8031B2A4": [
+      "src\\matched\\agent\\match_0x8031B2A4_ERModel__GetTypeInfo.cpp",
+      "src\\matched\\ermodel\\match_0x8031B2A4_ERModel__GetTypeInfo.cpp"
+    ],
+    "8031B2B0": [
+      "src\\matched\\agent\\match_0x8031B2B0_ERModel__GetTypeName.cpp",
+      "src\\matched\\ermodel\\match_0x8031B2B0_ERModel__GetTypeName.cpp"
+    ],
+    "8031B2BC": [
+      "src\\matched\\agent\\match_0x8031B2BC_ERModel__GetTypeKey.cpp",
+      "src\\matched\\ermodel\\match_0x8031B2BC_ERModel__GetTypeKey.cpp"
+    ],
+    "8031B2C8": [
+      "src\\matched\\agent\\match_0x8031B2C8_ERModel__GetTypeVersion.cpp",
+      "src\\matched\\ermodel\\match_0x8031B2C8_ERModel__GetTypeVersion.cpp"
+    ]
+  }
 }
