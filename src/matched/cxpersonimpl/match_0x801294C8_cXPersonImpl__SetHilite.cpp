@@ -1,3 +1,4 @@
+// cXPersonImpl::SetHilite(int) - 0x801294C8 (116B)
 
 void SetHilite_Func1(void *, int);
 void SetHilite_Func2(void *, int);
