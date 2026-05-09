@@ -1,4 +1,5 @@
-/* ENgcRenderer::Material(EDLEntry *) - 132 bytes at 0x80345120 */
+// ENgcRenderer::Material(EDLEntry*) @ 0x80345120 (132B)
+// FLAGS: -fno-schedule-insns
 
 struct EDLEntry {
     char pad[4];
