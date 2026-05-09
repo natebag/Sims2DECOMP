@@ -1,4 +1,6 @@
-/* ESimsCam::GetCursorLimitDepth(void) at 0x8001A074 (56B) */
+// ESimsCam::GetCursorLimitDepth(void) @ 0x8001A074 (56B)
+// FP register allocation differs: compiled picks f0/f12/f13/f11, DOL uses f13/f11/f0/f12.
+// ASMPROC_fp_relabel: swap="0:13,11:12"
 
 struct ESimsCamCfg_GCLD {
     char pad[40];
