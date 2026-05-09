@@ -1,2 +1,0 @@
-extern void *_wrap_REffectsAttachment__Construct_REffectsAttachment_ptr();
-void *REffectsAttachment__Construct_REffectsAttachment_ptr() { return _wrap_REffectsAttachment__Construct_REffectsAttachment_ptr(); }

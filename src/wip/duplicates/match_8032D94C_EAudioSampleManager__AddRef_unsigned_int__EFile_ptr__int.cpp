@@ -1,2 +1,0 @@
-extern void *_wrap_EAudioSampleManager__AddRef_unsigned_int__EFile_ptr__int();
-void *EAudioSampleManager__AddRef_unsigned_int__EFile_ptr__int() { return _wrap_EAudioSampleManager__AddRef_unsigned_int__EFile_ptr__int(); }

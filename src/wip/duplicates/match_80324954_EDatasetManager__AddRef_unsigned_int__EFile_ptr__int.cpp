@@ -1,2 +1,0 @@
-extern void *_wrap_EDatasetManager__AddRef_unsigned_int__EFile_ptr__int();
-void *EDatasetManager__AddRef_unsigned_int__EFile_ptr__int() { return _wrap_EDatasetManager__AddRef_unsigned_int__EFile_ptr__int(); }
