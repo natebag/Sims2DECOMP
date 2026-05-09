@@ -1,5 +1,9 @@
+// ESimsCam::Init(void) at 0x80016A8C (44B)
 // FLAGS: -fno-schedule-insns
-/* ESimsCam::Init(void) at 0x80016A8C (44B) */
+// DOL uses r0 for val and r9 for zero literal; compiled swaps them.
+// Single region_gpr_relabel over entire body fixes the swap.
+// ASMPROC_region_gpr_relabel: start_anchor="lwz 9" start_mode=at end_anchor="blr" end_mode=before rename="9:0,0:9" unsafe_clobber=true
+// ASMPROC_replace_insn: match="li 9, 9" replacement="li 9,0"
 
 extern int g_scamInitVal;
 
