@@ -1,12 +1,27 @@
-typedef unsigned char u8;
+// ActionQueueHUD::DetachController(void) @ 0x8018481C (80B)
 
-extern u8* g_sdaQueueMgr2;
-u8* removeFromQueue2(u8*, int);
-void destroyAction2(u8*, int);
+struct EController;
+struct EControllerManager {
+    EController* GetPlayerController(unsigned int playerIdx);
+};
+struct EController {
+    void RemoveFilter(unsigned int filterId);
+};
 
-void ActionQueueHUD_DetachController(u8* self) {
-    if (*(int*)(self + 0x30C) == 0) return;
-    u8* mgr = removeFromQueue2(g_sdaQueueMgr2, *(int*)(self + 0x314));
-    destroyAction2(mgr, *(int*)(self + 0x30C));
-    *(int*)(self + 0x30C) = 0;
+extern EControllerManager* g_ecm;
+
+struct AQH_DetC {
+    char _pad1[780];
+    unsigned int m_filterId;
+    unsigned int m_filterId2;
+    unsigned int m_playerIdx;
+    void DetachController();
+};
+
+void AQH_DetC::DetachController() {
+    if (m_filterId == 0) return;
+    EControllerManager* mgr = g_ecm;
+    EController* ctrl = mgr->GetPlayerController(m_playerIdx);
+    ctrl->RemoveFilter(m_filterId);
+    m_filterId = 0;
 }
