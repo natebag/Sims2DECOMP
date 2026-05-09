@@ -1,13 +1,27 @@
-typedef unsigned char u8;
+// ActionQueueHUD::DeactivateEditActionQueue(void) @ 0x80184E04 (76B)
 
-extern u8* g_sdaQueueMgr;
+struct EController;
+struct EControllerManager {
+    EController* GetPlayerController(unsigned int playerIdx);
+};
+struct EController {
+    void RemoveFilter(unsigned int filterId);
+};
 
-u8* removeFromQueue(u8*, int);
-void destroyAction(u8*, int);
+extern EControllerManager* g_ecm;
 
-void ActionQueueHUD_DeactivateEditActionQueue(u8* self) {
-    *(u8*)(self + 0x318) = 1;
-    u8* mgr = (u8*)removeFromQueue(g_sdaQueueMgr, *(int*)(self + 0x314));
-    destroyAction(mgr, *(int*)(self + 0x310));
-    *(int*)(self + 0x310) = 0;
+struct AQH_DeactEAQ {
+    char _pad1[784];
+    unsigned int m_filterId2;
+    unsigned int m_playerIdx;
+    unsigned char m_active;
+    void DeactivateEditActionQueue();
+};
+
+void AQH_DeactEAQ::DeactivateEditActionQueue() {
+    m_active = 1;
+    EControllerManager* mgr = g_ecm;
+    EController* ctrl = mgr->GetPlayerController(m_playerIdx);
+    ctrl->RemoveFilter(m_filterId2);
+    m_filterId2 = 0;
 }
