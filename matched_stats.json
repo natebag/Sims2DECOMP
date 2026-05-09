@@ -1,27 +1,6 @@
 {
-  "total_files": 10038,
-  "unique_addresses": 10033,
-  "duplicate_count": 5,
-  "duplicates": {
-    "8031A628": [
-      "src\\matched\\agent\\match_0x8031A628_ERModel__GetNumMorphBases.cpp",
-      "src\\matched\\agent\\match_8031A628_ERModel__GetNumMorphBases_void.cpp"
-    ],
-    "8031B2A4": [
-      "src\\matched\\agent\\match_0x8031B2A4_ERModel__GetTypeInfo.cpp",
-      "src\\matched\\ermodel\\match_0x8031B2A4_ERModel__GetTypeInfo.cpp"
-    ],
-    "8031B2B0": [
-      "src\\matched\\agent\\match_0x8031B2B0_ERModel__GetTypeName.cpp",
-      "src\\matched\\ermodel\\match_0x8031B2B0_ERModel__GetTypeName.cpp"
-    ],
-    "8031B2BC": [
-      "src\\matched\\agent\\match_0x8031B2BC_ERModel__GetTypeKey.cpp",
-      "src\\matched\\ermodel\\match_0x8031B2BC_ERModel__GetTypeKey.cpp"
-    ],
-    "8031B2C8": [
-      "src\\matched\\agent\\match_0x8031B2C8_ERModel__GetTypeVersion.cpp",
-      "src\\matched\\ermodel\\match_0x8031B2C8_ERModel__GetTypeVersion.cpp"
-    ]
-  }
+  "total_files": 10102,
+  "unique_addresses": 10102,
+  "duplicate_count": 0,
+  "duplicates": {}
 }
