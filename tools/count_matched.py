@@ -13,7 +13,7 @@ from collections import defaultdict
 def extract_address(filename):
     """Extract hex address from filename."""
     # Match patterns like match_0x8003061C or match_8003061C
-    match = re.search(r'(?:0x)?([0-9a-fA-F]{8})', filename)
+    match = re.search(r'match_(?:0x)?([0-9a-fA-F]{8})', filename)
     if match:
         return match.group(1).upper()
     return None
