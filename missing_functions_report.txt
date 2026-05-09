@@ -3,8 +3,8 @@ MISSING FUNCTIONS REPORT
 
 Total functions in symbols.txt: 18539
 Functions in asm_decomp: 10876
-Functions matched: 9880
-Missing functions: 1261
+Functions matched: 9961
+Missing functions: 1188
 
 ALL MISSING FUNCTIONS (sorted by size):
 --------------------------------------------------------------------------------
@@ -301,7 +301,6 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x800B4C40     32B  CTilePt__ToTilePt_void__const
 0x800D43DC     32B  NghResFile__PrepareMemCardWrite_char_ptr__unsigned_char
 0x8014527C     32B  IFFSlotDescList__GetNumSlots_void
-0x8014AB2C     32B  WantFear__Tree__FixupPointers_signed_char_ptr__WantFear__Node_ptr
 0x801F99FC     32B  KEYTarget__IsModeValid_void
 0x8023EC64     32B  cmdFS_ACK
 0x8024026C     32B  DisDvdBP
@@ -331,69 +330,7 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x80306958     32B  DumpBinary64_void_ptr__int
 0x80307D74     32B  EVibrate__IsControllerOn_unsigned_char
 0x80312EC4     32B  EResPrefetch__GetLoadProgress_void
-0x803205D0     32B  ERShader__CreateCopy_void__const
-0x80320A88     32B  op_shl_EStream_ref__ERTexture_ptr
-0x80321344     32B  ERTexture__CreateCopy_void__const
-0x80322360     32B  op_shl_EStream_ref__REffectsAttachment_ptr
-0x80322A34     32B  REffectsAttachment__Construct_REffectsAttachment_ptr
-0x80322B54     32B  REffectsAttachment__CreateCopy_void__const
-0x80322BA0     32B  EAmbientScoreManager__GetHeap_void
-0x80322C84     32B  EAmbientScoreManager__AddRef_unsigned_int__EFile_ptr__int
-0x80322CA4     32B  EAmbientScoreManager__AddRef_char_ptr__EFile_ptr__int
-0x80322D24     32B  EAnimManager__GetHeap_void
-0x80322E08     32B  EAnimManager__AddRef_unsigned_int__EFile_ptr__int
-0x80322E28     32B  EAnimManager__AddRef_char_ptr__EFile_ptr__int
-0x80322FE8     32B  EAudioStreamManager__AddRef_char_ptr__EFile_ptr__int
-0x803230A4     32B  EBinaryManager__GetHeap_void
-0x8032318C     32B  EBinaryManager__AddRef_unsigned_int__EFile_ptr__int
-0x803231AC     32B  EBinaryManager__AddRef_char_ptr__EFile_ptr__int
-0x803232FC     32B  ECharacterManager__AddRef_unsigned_int__EFile_ptr__int
-0x8032331C     32B  ECharacterManager__AddRef_char_ptr__EFile_ptr__int
 0x803235F0     32B  EControllerManager__GetController_unsigned_int
-0x80324954     32B  EDatasetManager__AddRef_unsigned_int__EFile_ptr__int
-0x80324974     32B  EDatasetManager__AddRefAsync_unsigned_int
-0x80324994     32B  EDatasetManager__PreloadResource_unsigned_int
-0x803249B4     32B  EDatasetManager__DelRef_unsigned_int__EResourceManager__DelRefMode
-0x803249D4     32B  EDatasetManager__DelRef_char_ptr__EResourceManager__DelRefMode
-0x80324A4C     32B  EEdithTreeSetMan__GetHeap_void
-0x80324B34     32B  EEdithTreeSetMan__AddRef_unsigned_int__EFile_ptr__int
-0x80324B54     32B  EEdithTreeSetMan__AddRef_char_ptr__EFile_ptr__int
-0x80324BD4     32B  EFlashManager__GetHeap_void
-0x80324CC0     32B  EFlashManager__AddRef_unsigned_int__EFile_ptr__int
-0x80324CE0     32B  EFlashManager__AddRef_char_ptr__EFile_ptr__int
-0x80324E3C     32B  EFontManager__AddRef_unsigned_int__EFile_ptr__int
-0x80324E5C     32B  EFontManager__AddRef_char_ptr__EFile_ptr__int
-0x80324ED4     32B  EModelManager__GetHeap_void
-0x80324FB8     32B  EModelManager__AddRef_unsigned_int__EFile_ptr__int
-0x80324FD8     32B  EModelManager__AddRef_char_ptr__EFile_ptr__int
-0x80325188     32B  EMovieMan__AddRef_unsigned_int__EFile_ptr__int
-0x803251A8     32B  EMovieMan__AddRef_char_ptr__EFile_ptr__int
-0x8032526C     32B  EQuickdataManager__GetHeap_void
-0x803254F8     32B  EQuickdataManager__AddRef_unsigned_int__EFile_ptr__int
-0x80325518     32B  EQuickdataManager__AddRef_char_ptr__EFile_ptr__int
-0x8032758C     32B  EResourceManager__GetHeap_void
-0x80327F10     32B  EResourceManager__LookupId_EResourceManager_ptr__unsigned_int__unsigned_int_ref__unsigned_int_ref
-0x803281DC     32B  EShaderManager__GetHeap_void
-0x803282D4     32B  EShaderManager__AddRef_unsigned_int__EFile_ptr__int
-0x803282F4     32B  EShaderManager__AddRef_char_ptr__EFile_ptr__int
-0x80328374     32B  ESoundEventManager__GetHeap_void
-0x80328478     32B  ESoundEventManager__AddRef_char_ptr__EFile_ptr__int
-0x803285B8     32B  ESoundTrackDataManager__AddRef_unsigned_int__EFile_ptr__int
-0x803285D8     32B  ESoundTrackDataManager__AddRef_char_ptr__EFile_ptr__int
-0x80328658     32B  ETextureManager__GetHeap_void
-0x80328750     32B  ETextureManager__AddRef_unsigned_int__EFile_ptr__int
-0x80328770     32B  ETextureManager__AddRef_char_ptr__EFile_ptr__int
-0x803288B8     32B  EffectsAttachmentManager__AddRef_unsigned_int__EFile_ptr__int
-0x803288D8     32B  EffectsAttachmentManager__AddRef_char_ptr__EFile_ptr__int
-0x80328A18     32B  EffectsEmitterManager__AddRef_unsigned_int__EFile_ptr__int
-0x80328A38     32B  EffectsEmitterManager__AddRef_char_ptr__EFile_ptr__int
-0x80328B70     32B  EffectsSequencerManager__AddRef_unsigned_int__EFile_ptr__int
-0x80328B90     32B  EffectsSequencerManager__AddRef_char_ptr__EFile_ptr__int
-0x8032B6D4     32B  ParticleManager__AddRef_unsigned_int__EFile_ptr__int
-0x8032B6F4     32B  ParticleManager__AddRef_char_ptr__EFile_ptr__int
-0x8032CDA0     32B  ENgcAudioSampleManager__Shutdown_void
-0x8032D94C     32B  EAudioSampleManager__AddRef_unsigned_int__EFile_ptr__int
-0x8032D96C     32B  EAudioSampleManager__AddRef_char_ptr__EFile_ptr__int
 0x8032FE7C     32B  ENgcMemoryCard__ENgcMemoryCard_void
 0x80336368     32B  ENgcMovie__PlayerGetTotalFrame_void
 0x8035B44C     32B  EFloatTree__EFloatTree_void
@@ -425,9 +362,7 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x8039AD44     32B  _restfpr_28_x
 0x8039AD9C     32B  _restgpr_28_x
 0x80003468     36B  __init_hardware
-0x800B45FC     36B  CTilePt__CTilePt_FTilePt_ref__int
 0x800BCA10     36B  IconGroupImpl__IconGroupImpl_void
-0x8014AB4C     36B  WantFear__Tree__GetNthChildOfNode_WantFear__Node_ptr__short__const
 0x8015A7CC     36B  QuickDataBehaviorConstants__GetValue_int__const
 0x801AE220     36B  E2ETarget__OnEnterSettings_void
 0x801BE548     36B  K2YTarget__IsModeValid_void
@@ -501,7 +436,6 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x8039AD98     36B  _restgpr_27_x
 0x80089D78     40B  EGameState__EGameState_void
 0x80090F7C     40B  LoadingScreenStateMachine__IsFadingIn_void
-0x801104B4     40B  __tcf_0_6
 0x801386DC     40B  Room__Rotate_Room__Sides__int
 0x801752A4     40B  CasTweakTool__CasTweakTool_void
 0x80181678     40B  UIButtonImages__GetButtonMinSize_int
@@ -535,7 +469,6 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x80305DA0     40B  EDebugMenu__EDebugMenu_void
 0x803069E0     40B  ilog2_unsigned_int
 0x8030EB48     40B  BSplineVolume__GetNumVolumes_void
-0x80317790     40B  ERFont__New_void
 0x803208DC     40B  ERShader__GetTimeState_void
 0x80321C70     40B  ArcFileInfo__IsUpToDate_void
 0x80327F30     40B  EScratchBuffMan__EScratchBuffMan_void
@@ -575,15 +508,11 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x8039B780     40B  __VMBASESetupVMRegisters_SetSDR1
 0x8039BE60     40B  __node_alloc_L_false__0_R__M_deallocate_void_ptr__unsigned_int
 0x803C1DB8     40B  EQuat__Id_void
-0x8000ACB8     44B  _assertFail
 0x80016A8C     44B  ESimsCam__Init_void
 0x800A75BC     44B  QuickStringSet__QuickStringSet_void
-0x80118A64     44B  cTrack__SetCompareFlags_int__int
 0x80118E58     44B  cSamplePatch__cSamplePatch_SndEvtHitPatch_ptr__float
 0x80142F60     44B  SpriteSlot__WriteSlot_SlotDescriptor_ptr
 0x801455D8     44B  RoutingSlot__GetSnapDirection_void__const
-0x801CEF60     44B  O2TTarget__RememberAudioOptions_void
-0x801CF028     44B  O2TTarget__RememberGameOptions_void
 0x801D1AD0     44B  IsSkillCatalogRating_int
 0x801ECDC4     44B  ConvertShoppingCategoryToInventoryCategory_int
 0x8024A890     44B  __terminate
@@ -824,7 +753,6 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x8001A074     56B  ESimsCam__GetCursorLimitDepth_void
 0x80039378     56B  EyeToyClient__GetHue_void
 0x8004DCE4     56B  ISimsObjectModel__UpdateBulb_ObjAnimDef_ptr
-0x80074E28     56B  IsConfigFileValid_int__OptionsRecon_ref
 0x80078BD0     56B  CUnlockDisplay__SetAmbientLight_float__float__float
 0x8007CD38     56B  __static_initialization_and_destruction_0_26
 0x800839DC     56B  TextBlock__TextBlock_unsigned_wchar_t_ptr__EVec2_ref__EVec2_ref__EVec4_ptr__ERFont_ptr__float__bool__bool__bool
@@ -1042,7 +970,6 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x8039F8E0     60B  TArray_L_EILight_ptr__TArrayDefaultAllocator_R__CopyReverse_EILight_ptrp__EILight_ptrp__int
 0x803AB0B4     60B  _List_global_L_bool_R__Transfer__List_node_base_ptr__List_node_base_ptr__List_node_base_ptr
 0x80014208     64B  __static_initialization_and_destruction_0_4
-0x8003D208     64B  GameData__GotoLiveMode_void
 0x8004571C     64B  EFloorShdTblNode__AddLightStrip_EFloorStripInfo
 0x800499F8     64B  GetCirclePointIX_EVec2_ref__float__EVec2_ref__EVec2_ref__Intersection_ref
 0x800596E0     64B  __static_initialization_and_destruction_0_20
@@ -1196,7 +1123,6 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x80181244    104B  UIButtonImages__UIButtonImages_void
 0x8023F67C    104B  SNDVDReadSync_next
 0x8023F7B8    104B  SNDVDWriteSync_next
-0x80185870    108B  ActionQueueHUD__GetPlayerSim_void__const
 0x80366998    108B  ERAmbientSound__ERAmbientSound_void
 0x8023F60C    112B  SNDVDReadAsync_next
 0x8023F748    112B  SNDVDWriteAsync_next
@@ -1214,6 +1140,7 @@ ALL MISSING FUNCTIONS (sorted by size):
 0x8023ECCC    132B  cmdFS_HostDisconnect
 0x80298F64    132B  AptPseudoData_t__AptPseudoData_t_AptControl_ptr__int__AptCharacter_ptr
 0x8000FED4    136B  AptShaderWord__AptShaderWord_void
+0x80184FE0    136B  ActionQueueHUD__OnUserCancelledAction_unsigned_int
 0x8023F03C    136B  SNQueryData
 0x80145DA0    144B  TileWalls__TileWalls_TileWallStorage_ref
 0x801618F0    148B  CasGenetics__GetGrandparentPortraitName_bool__unsigned_int
