@@ -1,4 +1,4 @@
-// 0x8022AF8C EIPortalPointLight::New(void) (40 B)
+// 0x8022AF8C EIPortalPointLight::New(void) (40B)
 // PRAGMA_STUB: EIPortalPointLight::New(void)
 extern void* operator_new_0x8022AF8C(unsigned int size);
 extern void* ctor_0x8022AF8C(void* self);

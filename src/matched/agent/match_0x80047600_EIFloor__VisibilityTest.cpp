@@ -1,4 +1,4 @@
-// 0x80047600 EIFloor::VisibilityTest(E3DWindow &) (44 B)
+// 0x80047600 EIFloor::VisibilityTest(E3DWindow &) (44B)
 // PRAGMA_STUB: EIFloor::VisibilityTest(E3DWindow &)
 extern "C" int visTest(void* window, void* floor);
 int EIFloor_VisibilityTest(void* self, void* window) {

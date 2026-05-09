@@ -1,4 +1,4 @@
-// 0x8022C834 EIStaticModel::VisibilityTest(E3DWindow &) (44 B)
+// 0x8022C834 EIStaticModel::VisibilityTest(E3DWindow &) (44B)
 // PRAGMA_STUB: EIStaticModel::VisibilityTest(E3DWindow &)
 struct EIStaticModel_VT {
     char pad[0x3C];
