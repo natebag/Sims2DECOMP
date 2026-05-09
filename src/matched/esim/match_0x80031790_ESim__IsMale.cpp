@@ -11,14 +11,14 @@ struct ESimMaleInner {
     ESimMaleVtable *m_vtable;
 };
 
-struct ESim_IsMale {
+struct ESim {
     char pad[0x3D0];
     ESimMaleInner *m_inner;
 
     int IsMale(void);
 };
 
-int ESim_IsMale::IsMale(void) {
+int ESim::IsMale(void) {
     ESimMaleInner *inner = m_inner;
     ESimMaleVtable *vt = inner->m_vtable;
     short off = vt->m_vbaseOff;

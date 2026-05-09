@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERCharacter::New(void)
 /* ERCharacter__New_void at 0x80368B8C (40B) — auto-matched [li_two_call_chain] */
 
 extern int inner1_80368B8C(int);

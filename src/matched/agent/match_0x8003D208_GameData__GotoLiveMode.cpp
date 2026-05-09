@@ -1,3 +1,4 @@
+// PRAGMA_STUB: GameData::GotoLiveMode(void)
 // GameData::GotoLiveMode(void) at 0x8003D208 (64 bytes)
 // Clears g_inLiveMode flag and pushes Live state via EGameStateMan::SetState.
 

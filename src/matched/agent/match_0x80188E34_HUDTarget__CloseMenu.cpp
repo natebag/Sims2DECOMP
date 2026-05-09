@@ -1,3 +1,4 @@
+// PRAGMA_STUB: HUDTarget::CloseMenu(int)
 // 0x80188E34 HUDTarget::CloseMenu(int) (44B)
 struct MenuEntry { char data[180]; };
 

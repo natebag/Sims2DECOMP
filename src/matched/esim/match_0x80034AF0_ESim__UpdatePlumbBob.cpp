@@ -3,7 +3,7 @@
 
 float _dt;
 
-struct ESim_UpdatePlumbBob {
+struct ESim {
     char pad_3EC[0x3EC];
     unsigned int m_plumbBobState;
     char pad_3F0[4];
@@ -12,7 +12,7 @@ struct ESim_UpdatePlumbBob {
     void UpdatePlumbBob(void);
 };
 
-void ESim_UpdatePlumbBob::UpdatePlumbBob(void) {
+void ESim::UpdatePlumbBob(void) {
     unsigned int state = m_plumbBobState;
     if ((unsigned int)(state - 3) > 6u) {
         return;

@@ -11,14 +11,14 @@ struct ESimCatInner {
     ESimCatVtable *m_vtable;
 };
 
-struct ESim_IsCat {
+struct ESim {
     char pad[0x3D0];
     ESimCatInner *m_inner;
 
     int IsCat(void);
 };
 
-int ESim_IsCat::IsCat(void) {
+int ESim::IsCat(void) {
     ESimCatInner *inner = m_inner;
     ESimCatVtable *vt = inner->m_vtable;
     short off = vt->m_vbaseOff;

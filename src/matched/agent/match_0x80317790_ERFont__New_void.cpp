@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERFont::New(void)
 /* ERFont__New_void at 0x80317790 (40B) — auto-matched [li_two_call_chain] */
 
 extern int inner1_80317790(int);

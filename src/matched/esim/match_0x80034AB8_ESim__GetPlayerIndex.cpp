@@ -9,14 +9,14 @@ struct PlayerGlobals {
 
 extern PlayerGlobals g_playerGlobals;
 
-struct ESim_GetPlayerIndex {
+struct ESim {
     char pad_3D0[0x3D0];
     void *m_playerRef;
 
     int GetPlayerIndex(void);
 };
 
-int ESim_GetPlayerIndex::GetPlayerIndex(void) {
+int ESim::GetPlayerIndex(void) {
     void *ref = m_playerRef;
     int r = -1;
     void *p0 = g_playerGlobals.player0;

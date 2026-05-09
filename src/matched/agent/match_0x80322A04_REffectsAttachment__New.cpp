@@ -1,3 +1,4 @@
+// PRAGMA_STUB: REffectsAttachment::New(void)
 // 0x80322A04 REffectsAttachment::New (48b)
 typedef unsigned int uint;
 

@@ -1,3 +1,5 @@
+// 0x8030FAEC EREdithTreeSet::New(void) (48 B)
+// PRAGMA_STUB: EREdithTreeSet::New(void)
 void *New_Init(void);
 void *New_Alloc(void *, int, int);
 void *New_Construct(void *);

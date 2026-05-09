@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EAnimNodeDataPos::~EAnimNodeDataPos(void)
 // FLAGS: -fno-schedule-insns
 // 0x803C978C (52B)
 extern int VT[];

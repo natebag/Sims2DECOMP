@@ -1,3 +1,4 @@
+// PRAGMA_STUB: REffectsEmitter::Alloc(unsigned long)
 /* REffectsEmitter__Alloc_unsigned_long at 0x8036ACEC (48B) */
 // FLAGS: -fno-elide-constructors
 

@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERFont::Select(ERC *)
 // 0x80316EB4 ERFont::Select (52b)
 
 extern void ERFont_Select_sub(void*, void*);

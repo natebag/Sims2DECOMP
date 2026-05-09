@@ -1,3 +1,5 @@
+// 0x8007EF9C DlgWrapper::SetButtonContext(char *) (64 B)
+// PRAGMA_STUB: DlgWrapper::SetButtonContext(char *)
 typedef unsigned char u8;
 typedef unsigned int uint;
 

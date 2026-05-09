@@ -1,3 +1,4 @@
+// PRAGMA_STUB: DlgWrapper::SetDialogSizeY(float)
 // FLAGS: -fno-schedule-insns
 // 0x8007E718 (64B) DlgWrapper::SetDialogSizeY(float)
 // Store size to self[+200], push self[+200]/[+196] to helper[+48/+44], SetDirty.

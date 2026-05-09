@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERBinary::New(void)
 // 0x8036849C ERBinary::New (48b)
 typedef unsigned int uint;
 

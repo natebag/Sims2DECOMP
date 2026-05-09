@@ -1,3 +1,4 @@
+// PRAGMA_STUB: CDirtyXmlNode::getNextChildNode(void)
 /* CDirtyXmlNode::getNextChildNode(void) at 0x8023AA40 (48B) */
 
 struct CDirtyXmlNode_GNCN {

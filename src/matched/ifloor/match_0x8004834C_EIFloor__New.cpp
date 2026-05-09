@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EIFloor::New(void)
 // 0x8004834C EIFloor::New (40b)
 struct EIFloor {
     char _pad[304];

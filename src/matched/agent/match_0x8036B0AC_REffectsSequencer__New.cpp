@@ -1,3 +1,4 @@
+// PRAGMA_STUB: REffectsSequencer::New(void)
 // 0x8036B0AC REffectsSequencer::New (48b)
 typedef unsigned int uint;
 

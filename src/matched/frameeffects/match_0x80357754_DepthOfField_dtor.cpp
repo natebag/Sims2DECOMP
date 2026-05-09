@@ -1,3 +1,4 @@
+// PRAGMA_STUB: DepthOfField::~DepthOfField(void)
 // 0x80357754 DepthOfField::~DepthOfField (52b)
 // FLAGS: -fno-elide-constructors
 

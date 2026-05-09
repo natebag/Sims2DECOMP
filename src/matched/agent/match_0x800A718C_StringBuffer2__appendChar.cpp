@@ -1,3 +1,4 @@
+// PRAGMA_STUB: StringBuffer2::appendChar(wchar_t)
 // 0x800A718C StringBuffer2::appendChar(wchar_t) (56B)
 struct StringBuffer2;
 

@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERQuickdata::operator new(unsigned int)
 /* ERQuickdata__op_new_unsigned_int at 0x8031C5D0 (48B) */
 // FLAGS: -fno-elide-constructors
 

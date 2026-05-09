@@ -1,3 +1,4 @@
+// PRAGMA_STUB: RParticle::New(void)
 // 0x8036C130 RParticle::New (40b)
 struct RParticle {
     char _pad[60];

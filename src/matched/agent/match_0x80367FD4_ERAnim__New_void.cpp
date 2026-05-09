@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERAnim::New(void)
 /* ERAnim__New_void at 0x80367FD4 (40B) — auto-matched [li_two_call_chain] */
 
 extern int inner1_80367FD4(int);

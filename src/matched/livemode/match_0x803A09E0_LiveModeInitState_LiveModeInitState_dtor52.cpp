@@ -1,3 +1,4 @@
+// PRAGMA_STUB: LiveModeInitState::~LiveModeInitState(void)
 // 0x803A09E0 LiveModeInitState_LiveModeInitState_dtor52 (52b)
 // FLAGS: -fno-schedule-insns
 extern int VT[];

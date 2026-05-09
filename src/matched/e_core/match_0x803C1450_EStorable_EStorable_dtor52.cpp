@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EStorable::~EStorable(void)
 // FLAGS: -fno-schedule-insns
 // 0x803C1450 (52B)
 extern int VT[];

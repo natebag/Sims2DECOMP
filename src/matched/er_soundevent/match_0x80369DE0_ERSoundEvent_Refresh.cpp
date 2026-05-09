@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERSoundEvent::Refresh(EFile *)
 // 0x80369DE0 ERSoundEvent::Refresh (40b)
 
 extern void ERSoundEvent_RefreshImpl(void*, void*);

@@ -1,3 +1,5 @@
+// 0x80313574 ERFlash::GetFlashBigData(void) (56 B)
+// PRAGMA_STUB: ERFlash::GetFlashBigData(void)
 void EResource_Detach(void *obj);
 
 struct FlashBigFile;

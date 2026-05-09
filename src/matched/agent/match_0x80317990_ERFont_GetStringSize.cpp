@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERFont::GetStringSize(char *, EWindow *, bool)
 // FLAGS: -msdata=eabi -G 8
 // 0x80317990 ERFont::GetStringSize (56b)
 extern void Impl(int* ret, void* self, char* str, int zero, int flag, void* window);

@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERDataset::New(void)
 // 0x80369780 ERDataset::New (48b)
 typedef unsigned int uint;
 

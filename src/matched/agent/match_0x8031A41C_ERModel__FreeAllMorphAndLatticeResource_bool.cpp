@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERModel::FreeAllMorphAndLatticeResource(bool)
 /* ERModel__FreeAllMorphAndLatticeResource_bool at 0x8031A41C (60B) — auto-matched [dual_call_sub_60B] */
 
 void f1_8031A41C(void*);

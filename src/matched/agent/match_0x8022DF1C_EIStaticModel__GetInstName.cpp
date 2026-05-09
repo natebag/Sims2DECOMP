@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EIStaticModel::GetInstName(EInstance::InstType &)
 // 0x8022DF1C EIStaticModel::GetInstName(EInstance::InstType&) (44B)
 struct InstType {
     int kind;

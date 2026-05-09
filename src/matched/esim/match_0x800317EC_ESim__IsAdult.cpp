@@ -11,14 +11,14 @@ struct ESimAdultInner {
     ESimAdultVtable *m_vtable;
 };
 
-struct ESim_IsAdult {
+struct ESim {
     char pad[0x3D0];
     ESimAdultInner *m_inner;
 
     int IsAdult(void);
 };
 
-int ESim_IsAdult::IsAdult(void) {
+int ESim::IsAdult(void) {
     ESimAdultInner *inner = m_inner;
     ESimAdultVtable *vt = inner->m_vtable;
     short off = vt->m_vbaseOff;

@@ -1,3 +1,5 @@
+// 0x800416E4 EGlobal::UpdateSpriteRenderer(SpriteSlot *) (36 B)
+// PRAGMA_STUB: EGlobal::UpdateSpriteRenderer(SpriteSlot *)
 /* 36-byte wrapper at 0x800416E4: loads member at +268 and calls */
 
 struct W_800416E4 { char pad[268]; void *field; };

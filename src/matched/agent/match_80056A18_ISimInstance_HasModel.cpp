@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ISimInstance::HasModel(void)
 // 0x80056A18 (24 bytes) - ISimInstance::HasModel(void)
 // lwz r0,288(r3); li r3,1; cmpwi r0,0; bnelr; li r3,0; blr
 

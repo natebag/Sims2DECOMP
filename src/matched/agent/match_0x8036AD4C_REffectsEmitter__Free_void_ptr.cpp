@@ -1,3 +1,4 @@
+// PRAGMA_STUB: REffectsEmitter::Free(void *)
 /* REffectsEmitter__Free_void_ptr at 0x8036AD4C (44B) */
 
 extern char g_h44d_8036AD4C[256];

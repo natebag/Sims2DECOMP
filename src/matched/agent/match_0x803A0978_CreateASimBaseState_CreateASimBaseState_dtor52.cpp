@@ -1,3 +1,4 @@
+// PRAGMA_STUB: CreateASimBaseState::~CreateASimBaseState(void)
 // 0x803A0978 CreateASimBaseState_CreateASimBaseState_dtor52 (52b)
 // FLAGS: -fno-schedule-insns
 extern int VT[];

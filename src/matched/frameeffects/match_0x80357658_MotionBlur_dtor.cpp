@@ -1,3 +1,4 @@
+// PRAGMA_STUB: MotionBlur::~MotionBlur(void)
 // 0x80357658 MotionBlur::~MotionBlur (52b)
 // FLAGS: -fno-elide-constructors
 

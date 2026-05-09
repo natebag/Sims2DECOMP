@@ -1,3 +1,4 @@
+// PRAGMA_STUB: HUDTarget::RemoveHUDControl(short, short)
 // 0x801892D4 HUDTarget::RemoveHUDControl(short, short) (40B)
 struct HUDTarget;
 

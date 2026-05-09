@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ChangeHouseLoadHouse::~ChangeHouseLoadHouse(void)
 // 0x803A0B40 ChangeHouseLoadHouse_ChangeHouseLoadHouse_dtor52 (52b)
 // FLAGS: -fno-schedule-insns
 extern int VT[];

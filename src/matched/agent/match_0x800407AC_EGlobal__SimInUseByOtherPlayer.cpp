@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EGlobal::SimInUseByOtherPlayer(int, cXPerson *)
 // 0x800407AC EGlobal::SimInUseByOtherPlayer(int, cXPerson*) (48B)
 struct cXPerson;
 

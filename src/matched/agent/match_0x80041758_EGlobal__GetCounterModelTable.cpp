@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EGlobal::GetCounterModelTable(void)
 // EGlobal::GetCounterModelTable(void)
 // Address: 0x80041758 | Size: 48 bytes
 // FLAGS: -fno-elide-constructors

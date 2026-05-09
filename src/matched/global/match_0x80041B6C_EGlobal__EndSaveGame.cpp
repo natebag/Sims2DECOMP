@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EGlobal::EndSaveGame(void)
 // EGlobal::EndSaveGame(void)
 // Address: 0x80041B6C | Size: 48 bytes
 // FLAGS: -fno-elide-constructors

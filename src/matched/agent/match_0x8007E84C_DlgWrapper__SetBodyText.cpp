@@ -1,3 +1,4 @@
+// PRAGMA_STUB: DlgWrapper::SetBodyText(unsigned wchar_t *)
 // DlgWrapper::SetBodyText(unsigned wchar_t *)
 // Address: 0x8007E84C | Size: 40 bytes
 

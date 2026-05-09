@@ -1,3 +1,4 @@
+// PRAGMA_STUB: Bloom::~Bloom(void)
 // 0x803576AC Bloom::~Bloom (52b)
 // FLAGS: -fno-elide-constructors
 

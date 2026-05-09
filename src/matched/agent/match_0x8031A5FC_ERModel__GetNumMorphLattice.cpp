@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERModel::GetNumMorphLattice(int)
 // 0x8031A5FC (44B) ERModel::GetNumMorphLattice(int)
 
 struct BSplineVolume_GNL {

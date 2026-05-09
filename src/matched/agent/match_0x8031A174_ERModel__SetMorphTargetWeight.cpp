@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERModel::SetMorphTargetWeight(int, float)
 /* ERModel::SetMorphTargetWeight(int, float) at 0x8031A174 (56B) */
 
 struct ERModel_SMT {

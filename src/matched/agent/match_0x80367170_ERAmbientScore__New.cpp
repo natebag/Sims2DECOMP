@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERAmbientScore::New(void)
 // 0x80367170 ERAmbientScore::New (48b)
 typedef unsigned int uint;
 

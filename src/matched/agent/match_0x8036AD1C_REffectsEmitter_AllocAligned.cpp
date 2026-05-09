@@ -1,3 +1,4 @@
+// PRAGMA_STUB: REffectsEmitter::AllocAligned(unsigned long, unsigned long)
 // FLAGS: -fno-elide-constructors
 // 0x8036AD1C (48 bytes)
 // REffectsEmitter::AllocAligned(unsigned long, unsigned long)

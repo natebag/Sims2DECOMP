@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EBoundTreeNode::~EBoundTreeNode(void)
 // FLAGS: -fno-schedule-insns
 // 0x803C1834 (52B)
 extern int VT[];

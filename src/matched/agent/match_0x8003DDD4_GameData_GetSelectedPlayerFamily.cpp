@@ -1,3 +1,4 @@
+// PRAGMA_STUB: GameData::GetSelectedPlayerFamily(void)
 // FLAGS: -msdata=eabi -G 8
 // 0x8003DDD4 GameData::GetSelectedPlayerFamily (60b)
 struct VBase {

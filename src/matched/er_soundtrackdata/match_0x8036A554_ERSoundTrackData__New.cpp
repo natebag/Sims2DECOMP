@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERSoundTrackData::New(void)
 // 0x8036A554 ERSoundTrackData::New (48b)
 typedef unsigned int uint;
 

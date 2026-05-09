@@ -11,14 +11,14 @@ struct ESimMonkeyInner {
     ESimMonkeyVtable *m_vtable;
 };
 
-struct ESim_IsMonkey {
+struct ESim {
     char pad[0x3D0];
     ESimMonkeyInner *m_inner;
 
     int IsMonkey(void);
 };
 
-int ESim_IsMonkey::IsMonkey(void) {
+int ESim::IsMonkey(void) {
     ESimMonkeyInner *inner = m_inner;
     ESimMonkeyVtable *vt = inner->m_vtable;
     short off = vt->m_vbaseOff;

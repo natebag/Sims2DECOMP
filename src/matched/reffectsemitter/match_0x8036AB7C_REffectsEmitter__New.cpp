@@ -1,3 +1,4 @@
+// PRAGMA_STUB: REffectsEmitter::New(void)
 // 0x8036AB7C REffectsEmitter::New (48b)
 typedef unsigned int uint;
 

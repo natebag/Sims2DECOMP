@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EGlobal::UnloadSelectorData(ObjSelector *)
 /* EGlobal__UnloadSelectorData_ObjSelector_ptr at 0x800417B0 (44B) — auto-matched [load_addr_param_44B] */
 
 // FLAGS: -fno-elide-constructors

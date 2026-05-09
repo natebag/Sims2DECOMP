@@ -6,14 +6,14 @@ struct ESim_ModelObj {
     void *parts[4];
 };
 
-struct ESim_GetModelPart {
+struct ESim {
     char pad_00[0x63C];
     ESim_ModelObj *m_model; /* ptr at offset 0x63C */
 
-    void *GetModelPart(int idx);
+    void* GetModelPart(int idx);
 };
 
-void *ESim_GetModelPart::GetModelPart(int idx) {
+void* ESim::GetModelPart(int idx) {
     ESim_ModelObj *model = m_model;
     return model->parts[idx];
 }

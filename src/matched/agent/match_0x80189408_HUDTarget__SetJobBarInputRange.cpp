@@ -1,3 +1,4 @@
+// PRAGMA_STUB: HUDTarget::SetJobBarInputRange(int, int, int)
 // 0x80189408 HUDTarget::SetJobBarInputRange(int, int, int) (60B)
 struct JobBar { short m_min; short m_max; };
 

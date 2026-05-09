@@ -1,3 +1,4 @@
+// PRAGMA_STUB: HUDTarget::AddHUDControl(short, short, short &)
 // 0x801892A8 HUDTarget::AddHUDControl(short, short, short&) (44B)
 struct HUDTarget;
 

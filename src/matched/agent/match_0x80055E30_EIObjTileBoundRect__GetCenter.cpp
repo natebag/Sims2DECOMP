@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EIObjTileBoundRect::GetCenter(EVec2 &)
 // EIObjTileBoundRect::GetCenter(EVec2 &) at 0x80055E30 (52 bytes)
 // Returns the midpoint of the rect via reference output.
 

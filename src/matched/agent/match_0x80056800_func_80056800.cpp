@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ISimInstance::New(void)
 /* auto at 0x80056800 (40B) [li_two_call_chain] */
 
 extern int inner1_80056800(int);

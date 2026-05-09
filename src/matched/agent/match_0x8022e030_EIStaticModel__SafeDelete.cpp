@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EIStaticModel::SafeDelete(void)
 /* EIStaticModel::SafeDelete(void) at 0x8022E030 (64B) */
 
 struct EIStaticModel_SD {

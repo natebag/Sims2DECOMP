@@ -1,3 +1,4 @@
+// PRAGMA_STUB: HUDTarget::OnPlayerHUDHide(int)
 // 0x80187F54 HUDTarget::OnPlayerHUDHide(int) (44B)
 struct HUDTarget {
     char pad[233];

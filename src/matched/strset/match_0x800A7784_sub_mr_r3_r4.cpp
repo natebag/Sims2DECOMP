@@ -1,3 +1,5 @@
+// 0x800A7784 QuickStringSet::GetName(StringBuffer *) const (36 B)
+// PRAGMA_STUB: QuickStringSet::GetName(StringBuffer *) const
 /* 36-byte wrapper at 0x800A7784: shifts r4 to r3 */
 
 extern void target_800A7784(void*);

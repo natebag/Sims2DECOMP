@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ESim::DrawSimModel(ERC *, EMat4 *, unsigned int)
 // FLAGS: -fno-elide-constructors
 // 0x80032EF8 (60 bytes)
 /* ESim::DrawSimModel(ERC *, EMat4 *, unsigned int) */

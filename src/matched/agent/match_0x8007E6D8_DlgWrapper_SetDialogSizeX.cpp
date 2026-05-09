@@ -1,3 +1,4 @@
+// PRAGMA_STUB: DlgWrapper::SetDialogSizeX(float)
 // FLAGS: -fno-schedule-insns
 // 0x8007E6D8 (64B) DlgWrapper::SetDialogSizeX(float)
 // Store size to self[+196], push to inner->helper[+48/+44], call TextBlock::SetDirty.

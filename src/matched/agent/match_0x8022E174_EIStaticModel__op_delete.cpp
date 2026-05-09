@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EIStaticModel::operator delete(void *)
 /* EIStaticModel__op_delete at 0x8022E174 (52B) */
 
 extern void *getDelHeap_8022E174(void);

@@ -1,3 +1,4 @@
+// PRAGMA_STUB: HUDTarget::GotoMainMenu(void)
 // 0x801899E8 HUDTarget::GotoMainMenu(void) (48B)
 struct HUDTarget {
     char pad[256];

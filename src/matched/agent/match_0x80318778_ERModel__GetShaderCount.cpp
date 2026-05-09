@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERModel::GetShaderCount(void)
 /* ERModel::GetShaderCount(void) at 0x80318778 (52B) */
 
 struct ERModel_ShaderEntry {

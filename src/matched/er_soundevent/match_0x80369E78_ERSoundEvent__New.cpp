@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERSoundEvent::New(void)
 // 0x80369E78 ERSoundEvent::New (40b)
 struct ERSoundEvent {
     char _pad[52];

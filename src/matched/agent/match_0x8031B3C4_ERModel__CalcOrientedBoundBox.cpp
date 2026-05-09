@@ -1,3 +1,4 @@
+// PRAGMA_STUB: ERModel::CalcOrientedBoundBox(EMat4 &, EBound3 &)
 /* ERModel::CalcOrientedBoundBox(EMat4 &, EBound3 &) at 0x8031B3C4 (52B) */
 
 struct EMat4_stub {};

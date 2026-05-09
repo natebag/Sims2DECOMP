@@ -11,14 +11,14 @@ struct ESimInner {
     ESimInnerVtable *m_vtable;
 };
 
-struct ESim_IsDog {
+struct ESim {
     char pad[0x3D0];
     ESimInner *m_inner;
 
     int IsDog(void);
 };
 
-int ESim_IsDog::IsDog(void) {
+int ESim::IsDog(void) {
     ESimInner *inner = m_inner;
     ESimInnerVtable *vt = inner->m_vtable;
     short off = vt->m_vbaseOff;

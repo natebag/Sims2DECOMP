@@ -1,3 +1,5 @@
+// 0x803C78AC FrameEffect::~FrameEffect(void) (52 B)
+// PRAGMA_STUB: FrameEffect::~FrameEffect(void)
 // FLAGS: -fno-schedule-insns
 extern int VT[];
 void del_fn(void *);

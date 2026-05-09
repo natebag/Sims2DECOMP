@@ -1,3 +1,5 @@
+// 0x80041694 EGlobal::AllocSpriteRenderer(cXObject *) (36 B)
+// PRAGMA_STUB: EGlobal::AllocSpriteRenderer(cXObject *)
 /* 36-byte wrapper at 0x80041694: loads member at +268 and calls */
 
 struct W_80041694 { char pad[268]; void *field; };

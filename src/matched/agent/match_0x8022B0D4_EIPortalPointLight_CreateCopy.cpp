@@ -1,3 +1,5 @@
+// 0x8022B0D4 EIPortalPointLight::CreateCopy(void) const (32 B)
+// PRAGMA_STUB: EIPortalPointLight::CreateCopy(void) const
 extern void* EIPortalPointLight_CreateCopy_impl(void*, void*);
 
 struct Stub_EIPortalPointLight_CreateCopy {

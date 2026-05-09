@@ -1,3 +1,4 @@
+// PRAGMA_STUB: EIStaticModel::HasModifiableColor(void)
 // 0x8022DAAC EIStaticModel::HasModifiableColor (52b)
 
 extern int HasModifiableColorTarget(void*);
