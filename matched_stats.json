@@ -1,6 +1,27 @@
 {
-  "total_files": 9873,
-  "unique_addresses": 9873,
-  "duplicate_count": 0,
-  "duplicates": {}
+  "total_files": 10089,
+  "unique_addresses": 10010,
+  "duplicate_count": 4,
+  "duplicates": [
+    {
+      "address": "801858FC",
+      "file1": "match_0x801858FC_GetTutorialLocks.cpp",
+      "file2": "match_0x801858FC_GetTutorialLocks.cpp"
+    },
+    {
+      "address": "802216B8",
+      "file1": "match_0x802216B8_WallManipulator_UpdateStickState.cpp",
+      "file2": "match_0x802216B8_WallManipulator__UpdateStickState.cpp"
+    },
+    {
+      "address": "800997DC",
+      "file1": "match_0x800997DC_TheSimsStateMachine__IsFlowStateRequestPending.cpp",
+      "file2": "match_800997DC_TheSimsStateMachine__IsFlowStateRequestPending.cpp"
+    },
+    {
+      "address": "80189A34",
+      "file1": "match_0x80189A34_HUDTarget__GetJobBarCount.cpp",
+      "file2": "match_0x80189A34_HUDTarget_GetJobBarCount.cpp"
+    }
+  ]
 }
