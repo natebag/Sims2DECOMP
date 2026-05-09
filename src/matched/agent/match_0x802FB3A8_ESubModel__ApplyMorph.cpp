@@ -1,14 +1,19 @@
-void ESM_ApplyMorphFn(void *);
+// 0x802FB3A8 (96B) ESubModel::ApplyMorph(void)
 
-struct ESM_AM {
-    void *m_array;
-    int m_count;
+struct ESubModelShader_AM {
+    char pad[112];
+    void ApplyMorph(void);
+};
+
+struct ESubModel_AM {
+    ESubModelShader_AM *shaders;
+    int count;
     int ApplyMorph(void);
 };
 
-int ESM_AM::ApplyMorph(void) {
-    for (int i = 0; i < m_count; i++) {
-        ESM_ApplyMorphFn((char *)m_array + i * 112);
+int ESubModel_AM::ApplyMorph(void) {
+    for (int i = 0; i < count; i++) {
+        shaders[i].ApplyMorph();
     }
     return 1;
 }
