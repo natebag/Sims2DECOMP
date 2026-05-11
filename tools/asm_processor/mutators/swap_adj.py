@@ -13,14 +13,26 @@ Manifest example:
           b: andi.
           which: first   # or "all", or integer N (0-indexed pair index)
 
-"which" defaults to "first" — deterministic, reproducible. "all" is still
-deterministic (left-to-right, non-overlapping) but catches multi-site cases.
-Integer `which=N` selects the N-th non-overlapping matched pair (N=0 is the
-first, equivalent to "first"; N=1 the second; etc.) — use when there are
-3+ adjacent same-opcode lines forming overlapping pairs and you need to
-target a middle/late pair while preserving an earlier one.
+"which" defaults to "first" — deterministic, reproducible. "all" uses the
+non-overlapping walk and is best for batch swap of multi-site, non-adjacent
+matches (e.g., 6 unrelated stw/stw pairs scattered in different basic blocks).
 
-Aliases: "first" == 0. "last" == -1 (selects the last pair in the walk).
+Integer `which=N` indexes the RAW hits list (every adjacent matched pair,
+including overlapping ones) — use this when 3+ adjacent same-opcode lines
+form overlapping pairs and you need to target a middle/late pair while
+preserving an earlier one. The caller is responsible for picking a valid
+non-overlapping index OR for sequencing multiple swap_adj calls whose
+effects don't interfere.
+
+Aliases: "first" == 0. "last" == -1 (selects the last raw pair index).
+
+Validation cases (S15 catalog):
+  - which=1 stopCurAnim @ 0x80066940 — picks 2nd of 2 overlapping stw/stw
+    pairs in (stw r9,212; stw r0,1564; stw r11,224) to swap r0/r11 stores
+    into DOL's ascending-offset order (S15 Phase 2, commit `57c5af3d`).
+
+The integer-N support is 1-INSTANCE-PROVISIONAL pending a 2nd validation
+target — typically the STORE_ORDER bulk pool has 3+ overlap candidates.
 """
 from __future__ import annotations
 
