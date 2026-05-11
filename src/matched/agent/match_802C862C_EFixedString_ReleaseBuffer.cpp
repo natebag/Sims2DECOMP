@@ -1,6 +1,11 @@
-struct EFixedString_RB {
+// EFixedString::ReleaseBuffer() - 0x802C862C (4B)
+
+struct EFixedString {
+    char* m_pBuffer;
+    int m_nMaxSize;
+
     void ReleaseBuffer();
 };
 
-void EFixedString_RB::ReleaseBuffer() {
+void EFixedString::ReleaseBuffer() {
 }
