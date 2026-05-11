@@ -130,6 +130,15 @@ S16 can pick up with clean context.
    `cmpwi r9, 11`). Need to skip operands at positions that are immediates
    (per opcode-specific knowledge for cmpwi/cmplwi/addi etc.).
 
+5. **`hoist_fcmpu`** — Move `fcmpu` from end of basic block to BEFORE a
+   sequence of `stfs` instructions in same block. Signature: DOL emits
+   `fcmpu cr0, fX, fY` before stfs sequence; GCC's RTL pass actively
+   un-schedules to put fcmpu last (after stores). 2-instance class wall
+   confirmed (per OpusReviewGuy 2026-05-11):
+   - setAwarenessFollowMiddle @ 0x8006C664 (Wall #8 deferred, 8 diffs)
+   - SetTrackBlendSmooth @ 0x802EE324 (deferred, 9 diffs)
+   Day-1 STANDARD candidate with 2 validation targets ready.
+
 ## S16 MAINTENANCE CANDIDATES
 
 1. **`wall_classification.json` refresh** — 15 of 22 STORE_ORDER walls
