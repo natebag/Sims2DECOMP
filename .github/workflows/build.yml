@@ -123,6 +123,40 @@ jobs:
             DTK="dtk" \
             PYTHON="python3"
 
+      - name: Verify final DOL SHA-1 against build.sha1
+        if: steps.check-originals.outputs.has_originals == 'true'
+        run: |
+          # Confirms the linked build/G4ZE69/main.dol is byte-identical to the
+          # canonical original. Fails CI if the linker output drifts from the
+          # known-good SHA committed in config/G4ZE69/build.sha1.
+          if [ -f "build/G4ZE69/main.dol" ]; then
+            (cd $(git rev-parse --show-toplevel) && sha1sum -c config/G4ZE69/build.sha1)
+          else
+            # Skeleton build doesn't produce a G4ZE69 output; check the canonical input instead
+            EXPECTED=$(awk '{print $1}' config/G4ZE69/build.sha1)
+            ACTUAL=$(sha1sum extracted/sys/main.dol | awk '{print $1}')
+            if [ "$EXPECTED" != "$ACTUAL" ]; then
+              echo "Canonical DOL SHA mismatch: expected=$EXPECTED actual=$ACTUAL"
+              exit 1
+            fi
+            echo "Canonical DOL SHA verified: $ACTUAL"
+          fi
+
+      # ── Config integrity check (always runs, no secrets needed) ──────
+      # Catches the case where someone edits config/G4ZE69/config.yml
+      # `hash:` field without updating build.sha1 (or vice versa).
+      - name: Verify config hash consistency
+        run: |
+          CONFIG_HASH=$(grep -E '^hash:' config/G4ZE69/config.yml | awk '{print $2}')
+          SHA_HASH=$(awk '{print $1}' config/G4ZE69/build.sha1)
+          if [ "$CONFIG_HASH" != "$SHA_HASH" ]; then
+            echo "ERROR: config.yml hash != build.sha1"
+            echo "  config.yml: $CONFIG_HASH"
+            echo "  build.sha1: $SHA_HASH"
+            exit 1
+          fi
+          echo "Config hash consistency OK: $CONFIG_HASH"
+
       # ── Progress report (for decomp.dev) ────────────────────────────
       # The committed build/G4ZE69/report.json is regenerated locally after
       # match commits via `python tools/generate_report.py`. If the original

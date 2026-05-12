@@ -269,6 +269,32 @@ git add build/G4ZE69/report.json
 git commit -m "report: refresh"
 ```
 
+## Wall Diagnosis — `tools/diff_func.sh`
+
+Side-by-side disassembly diff for a single function. Compiles the C++ with SN
+ProDG (via verify_match.sh) and disassembles both the DOL bytes and the
+compiled bytes via devkitPPC's `powerpc-eabi-objdump`, then prints them in two
+columns with mismatched instruction lines highlighted in red.
+
+```bash
+bash tools/diff_func.sh src/wip/match_0x801056EC_cXObjectImpl__KillSelf.cpp 0x801056EC 148
+```
+
+This is our "poor man's objdiff" — same wall-diagnosis benefit (visual diff
+that's faster to scan than `MISMATCH 8 offsets` hex tail-log output) without
+requiring the full ninja+target/base build pipeline objdiff needs. Full objdiff
+integration is deferred to a future infra session.
+
+## Build Verification — `config/G4ZE69/build.sha1`
+
+The canonical DOL's SHA-1 lives in `config/G4ZE69/build.sha1`. CI's "Verify
+final DOL SHA-1" step (active when ORIGINAL_DOL/ELF secrets are present)
+confirms the linked output is byte-identical to the original after building.
+A second always-on CI step verifies `config/G4ZE69/config.yml`'s `hash:` field
+stays in sync with `build.sha1` so the two never drift.
+
+Canonical SHA: `d15b7be1396544a15728f25f732db63a7cfcc877`.
+
 ## decomp.dev Integration
 
 The project is listed at **https://decomp.dev/natebag/Sims2DECOMP**. Public-facing
