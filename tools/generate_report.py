@@ -44,10 +44,30 @@ def collect_matched_addresses(matched_dir: Path) -> set:
     return addrs
 
 
+_OBJ_NAME_RE = re.compile(r"([^\\/]+\.obj|[^\\/]+\.a\([^)]+\))$", re.IGNORECASE)
+
+
+def _short_obj_name(raw: str) -> str:
+    """Reduce a full obj/lib path to a compact unit name.
+
+    Examples:
+      c:\\...\\u2_ngc_release_dvd\\animeventhandlersupport.obj -> "animeventhandlersupport"
+      C:\\Program Files\\SN Systems\\ngc\\lib\\libsn.a(crt0.o) -> "libsn.a(crt0.o)"
+      c:\\...\\DolphinSDK1.0\\HW2\\lib\\os.a(OS.o)              -> "os.a(OS.o)"
+    """
+    m = _OBJ_NAME_RE.search(raw)
+    if m:
+        name = m.group(1)
+        if name.lower().endswith(".obj"):
+            return name[:-4]
+        return name
+    return raw.strip().split("\\")[-1].split("/")[-1] or "unknown"
+
+
 def parse_text_functions(map_path: Path) -> list:
-    """Return list of {addr, size, name, sdk} dicts for .text symbols with
-    size > 0. Tracks the current source-file/object reference so each function
-    can be tagged as SDK (DolphinSDK-sourced) or game code.
+    """Return list of {addr, size, name, sdk, obj} dicts for .text symbols with
+    size > 0. Tracks the running source-file/object reference so each function
+    can be tagged with its containing TU (for unit grouping) plus an SDK flag.
     """
     line_re = re.compile(r"^([0-9a-fA-F]{8})\s+([0-9a-fA-F]{8})\s+(\d+)\s+(.+)$")
     section_re = re.compile(r"^([0-9a-fA-F]{8})\s+([0-9a-fA-F]{8})\s+(\d+)\s+(\.\w+)\s*$")
@@ -55,6 +75,7 @@ def parse_text_functions(map_path: Path) -> list:
     functions = []
     current_section = None
     current_obj_is_sdk = False
+    current_obj_name = "unknown"
     src_prefixes = ("c:" + chr(92), "C:" + chr(92), "/")
 
     with open(map_path, encoding="utf-8", errors="replace") as f:
@@ -74,8 +95,9 @@ def parse_text_functions(map_path: Path) -> list:
             rest = m.group(4).strip()
 
             if rest.startswith(src_prefixes):
-                # source-file / object reference — update the running SDK flag
+                # source-file / object reference — update running TU + SDK flag
                 current_obj_is_sdk = bool(SDK_PATH_MARKER.search(rest))
+                current_obj_name = _short_obj_name(rest)
                 continue
 
             if current_section != ".text":
@@ -89,6 +111,7 @@ def parse_text_functions(map_path: Path) -> list:
                     "size": size,
                     "name": rest,
                     "sdk": current_obj_is_sdk,
+                    "obj": current_obj_name,
                 }
             )
 
@@ -127,6 +150,81 @@ def build_measures(functions: list, matched_addrs: set) -> dict:
     }
 
 
+def build_units(functions: list, matched_addrs: set) -> list:
+    """Group functions by their containing TU/object and emit one Unit per group.
+
+    Each Unit has:
+      - name: short obj/lib name (e.g. "animeventhandlersupport" or "os.a(OS.o)")
+      - measures: aggregated stats for this TU
+      - sections: a single .text section with virtual_address + size
+      - functions: list of contained functions (name, size, address-within-section)
+
+    This is what powers the treemap visualization on decomp.dev.
+    """
+    by_obj = {}
+    for fn in functions:
+        by_obj.setdefault(fn["obj"], []).append(fn)
+
+    units = []
+    for obj_name, fns in by_obj.items():
+        fns_sorted = sorted(fns, key=lambda f: f["addr"])
+        base_addr = fns_sorted[0]["addr"]
+        # Section size spans from first function start to end of last function
+        end_addr = fns_sorted[-1]["addr"] + fns_sorted[-1]["size"]
+        section_size = end_addr - base_addr
+
+        total_code = sum(f["size"] for f in fns_sorted)
+        matched_code = sum(f["size"] for f in fns_sorted if f["addr"] in matched_addrs)
+        total_functions = len(fns_sorted)
+        matched_functions = sum(1 for f in fns_sorted if f["addr"] in matched_addrs)
+        pct_bytes = (matched_code / total_code * 100.0) if total_code else 0.0
+        pct_funcs = (matched_functions / total_functions * 100.0) if total_functions else 0.0
+
+        function_entries = []
+        for f in fns_sorted:
+            function_entries.append({
+                "name": f["name"],
+                "size": str(f["size"]),
+                "metadata": {"virtual_address": str(f["addr"])},
+                "address": str(f["addr"] - base_addr),
+            })
+
+        units.append({
+            "name": obj_name,
+            "measures": {
+                "fuzzy_match_percent": round(pct_bytes, 6),
+                "total_code": str(total_code),
+                "matched_code": str(matched_code),
+                "matched_code_percent": round(pct_bytes, 6),
+                "total_data": "0",
+                "matched_data": "0",
+                "matched_data_percent": 0.0,
+                "total_functions": total_functions,
+                "matched_functions": matched_functions,
+                "matched_functions_percent": round(pct_funcs, 6),
+                "complete_code": str(matched_code),
+                "complete_code_percent": round(pct_bytes, 6),
+                "complete_data": "0",
+                "complete_data_percent": 0.0,
+                "total_units": 1,
+                "complete_units": 1 if matched_functions == total_functions else 0,
+            },
+            "sections": [{
+                "name": ".text",
+                "size": str(section_size),
+                "fuzzy_match_percent": round(pct_bytes, 6),
+                "metadata": {"virtual_address": str(base_addr)},
+            }],
+            "functions": function_entries,
+            "metadata": {
+                "complete": matched_functions == total_functions,
+                "progress_categories": ["sdk" if fns_sorted[0]["sdk"] else "game"],
+            },
+        })
+
+    return units
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--version", default=GAME_ID, help="Game ID (default: %(default)s)")
@@ -155,7 +253,7 @@ def main() -> int:
     report = {
         "version": 2,
         "measures": build_measures(functions, matched_addrs),
-        "units": [],
+        "units": build_units(functions, matched_addrs),
         "categories": [
             {
                 "id": "game",
