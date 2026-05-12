@@ -4,20 +4,20 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**🎯 47.6% DECOMPILED — PAST 57% OF MATCHABLE CODE — ~233 FUNCTIONS FROM 10K MILESTONE 🎯**
+**🎯 49.81% DECOMPILED — PAST 51% OF MATCHABLE CODE — 10K MILESTONE CROSSED — 39 FROM 50% TOTAL 🎯**
 
-**47.6% decompiled and verified** — 9,767 / 20,508 functions byte-matched against the original DOL. Excluding the ~3,500 SDK functions compiled with Metrowerks CodeWarrior, we're matching **~57% of the game's decompilable code**. Crossing the **10,000 matched milestone** is within reach over the next 2-3 sessions.
+**49.81% decompiled and verified** — 10,215 / 20,508 functions byte-matched against the original DOL. Excluding the ~500 DolphinSDK functions (address range 0x8024-0x8039) compiled with Metrowerks CodeWarrior, we're matching **~51% of the game's decompilable code**. The **10,000 matched milestone has been crossed**, and **50% total** is now within a single short session's reach (39 functions away).
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **9,767 / 20,508 (47.6%)** |
-| **% of matchable** | **~57%** (of ~17,000 excluding SDK) |
-| Functions remaining | ~10,741 |
+| **Verified matches** | **10,215 / 20,508 (49.81%)** |
+| **% of matchable** | **~51%** (of ~20,008 excluding ~500 SDK functions) |
+| Functions remaining | ~10,293 |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit + asm_processor |
-| Matching techniques | 75+ proven patterns + 8 Variant L recipes + 3 Variant ' families + 4 catalog-confirmed Tech entries (volatile-CSE, lazy-callee-save-volatile-r9, region_gpr_relabel, slot-pointer-hoist) |
+| Matching techniques | 75+ proven patterns + 8 Variant L recipes + 3 Variant ' families + catalog-confirmed Tech entries (volatile-CSE, lazy-callee-save-volatile-r9, region_gpr_relabel, slot-pointer-hoist, ctrl-first source-ordering, goto-shared-label, swap_operands lwzx N=5) |
 
 **How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
 
@@ -58,11 +58,15 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 - **lazy-callee-save-volatile-r9 technique** — DOL pattern where `addi rN,rThis,off` → `lwz r0,4(rN)` → `mr r28,rN` (lazy callee-save cache) is reproduced via 4-directive asm_processor pipeline. Cracked the ERModel 17-member loop family (14 verified, +6 CTGDump op_shl twins). 5 documented variants for guard / no-relabel / r30-this / ESubModel-direct shapes.
 - **region_gpr_relabel mutator (3 instances confirmed)** — when DOL allocates registers differently than cc1plus (e.g. r6/r11/f13 vs compiler's r10/r9/f0) but operations are byte-equivalent, post-compile asm rename realigns registers. Includes **dual-region sub-pattern**: split rename around `lfd 0`/`stfd 0` lines to dodge FPR-vs-GPR digit-conflation in `relabel_token`. Plus `unsafe_clobber=true` edge case for same-line use+redef.
 - **slot-pointer-hoist technique** (catalog candidate, awaits 2nd instance) — when 3+ vcalls share callee-saved register pressure, hoist the LAST call's slot pointer + adjusted-this BEFORE earlier calls so r30/slot survive intervening CALL2/CALL3. Cracked cXObjectImpl::Error 152B (6-instruction divergence resolved).
+- **S15 family blasts** — EFixedString string-manipulation family (15+ matches: TrimRight/TrimLeft/ExtractRoot/Extension/Filename/Directory/RemoveTrailingSlash/RemoveDriveLetter/FindReverse/Mid/Left/Remove/Replace/CompareNoCase/ReleaseBuffer/Init/GetLength), EAnimController batch (SetAllTrackSpeed/StopAllTracks/SetTrackPos/SetTrackBlend/SetNodeVisible/PrintTracks), SAnimator2 batch (StartAutoRun/getIsLeftFootUp/stopIdleOverlay/clearSuspendedCarry/GetTurnRate/getAnimDuration/triggerCameraBloom/setFollowDone/lockHandsUpCarryNodes), ENgcRenderer batch (ProcessFrameEffects/SetBlendMode/CycleToNextFrameBuffer/DisplayList/SetClearColor/ParticleListBegin), InteractorModule pair (Update/OnCommandReleased/GetPlayerInteractor/IsSimulatorPaused).
+- **New asm_processor mutators (S15 1-INSTANCE-PROVISIONAL)** — `inject_before` (cross-function instruction injection at named labels) and `fuse_mr_recordbit` (merge `mr.` Rc-bit into adjacent `or.`).
+- **ctrl-first source ordering PROMOTED** — when a controller-pointer is reused after a float-constant setup, computing the ctrl pointer FIRST in source forces GCC to match DOL's adjacent `lwz` + `lis` order (3 confirmed instances).
+- **goto-shared-label PROMOTED** — `goto` to a shared epilogue label forces non-branchless emission, matching DOL's explicit branch + shared return tail (3 instances: GetTurnRate const-value share + 2× IsSimulatorPaused boolification).
 
 ## What's Not Done
 
-- **~10,725 functions** still need matching (~52%)
-- **SDK library functions** — DolphinSDK functions (address range 0x8024-0x8039) were compiled with Metrowerks CodeWarrior, not SN Systems — they cannot byte-match with our compiler. Excluded from the matchable pool (~3,000 functions).
+- **~10,293 functions** still need matching (~50%)
+- **SDK library functions** — DolphinSDK functions (address range 0x8024-0x8039) were compiled with Metrowerks CodeWarrior, not SN Systems — they cannot byte-match with our compiler. Excluded from the matchable pool (~500 functions).
 - **LIFO vs FIFO store scheduling** — our GCC does LIFO store scheduling, original SN v1.76 does FIFO. Blocks most `ctor` functions. Requires compiler patch or TU compilation.
 - **FP register alternation** — DOL alternates f0/f13 in float struct copies, our compiler uses f0 only. Blocks most float-heavy Rendering/ENgcRenderer functions.
 - **InteractorModule struct layouts** — 86+ functions blocked on non-trivial member offsets requiring Ghidra-verified struct analysis.
