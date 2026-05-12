@@ -11,10 +11,13 @@ struct EFixedString {
 
 void EFixedString::ExtractExtension(EFixedString& out) const {
     int dot_pos = FindReverse('.');
-    int slash_pos = FindReverse('\\');
-    if (dot_pos == -1 || dot_pos < slash_pos) {
-        out.m_pBuffer[0] = '\0';
-    } else {
-        Mid(out, dot_pos + 1, -1);
-    }
+    int backslash_pos = FindReverse('\\');
+    if (dot_pos == -1) goto empty;
+    if (dot_pos >= backslash_pos) goto extract;
+empty:
+    out.m_pBuffer[0] = '\0';
+    goto done;
+extract:
+    Mid(out, dot_pos + 1, -1);
+done:;
 }
