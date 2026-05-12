@@ -96,25 +96,32 @@ def parse_text_functions(map_path: Path) -> list:
 
 
 def build_measures(functions: list, matched_addrs: set) -> dict:
-    """Compute the dtk-template `measures` block for a function list."""
+    """Compute the objdiff Measures block (matches proto3 serde JSON conventions
+    used by decomp.dev / dtk-template). uint64 fields are emitted as strings,
+    uint32 fields as integers, percent fields as floats.
+    """
     total_code = sum(f["size"] for f in functions)
     matched_code = sum(f["size"] for f in functions if f["addr"] in matched_addrs)
     total_functions = len(functions)
     matched_functions = sum(1 for f in functions if f["addr"] in matched_addrs)
 
-    pct = (matched_code / total_code * 100.0) if total_code else 0.0
+    pct_bytes = (matched_code / total_code * 100.0) if total_code else 0.0
+    pct_funcs = (matched_functions / total_functions * 100.0) if total_functions else 0.0
     return {
-        "total_code": total_code,
-        "matched_code": matched_code,
-        "matched_code_percent": round(pct, 4),
-        "fuzzy_match_percent": round(pct, 4),
-        "total_data": 0,
-        "matched_data": 0,
+        "fuzzy_match_percent": round(pct_bytes, 6),
+        "total_code": str(total_code),
+        "matched_code": str(matched_code),
+        "matched_code_percent": round(pct_bytes, 6),
+        "total_data": "0",
+        "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": total_functions,
         "matched_functions": matched_functions,
-        "complete_code": matched_code,
-        "complete_code_percent": round(pct, 4),
+        "matched_functions_percent": round(pct_funcs, 6),
+        "complete_code": str(matched_code),
+        "complete_code_percent": round(pct_bytes, 6),
+        "complete_data": "0",
+        "complete_data_percent": 0.0,
         "total_units": total_functions,
         "complete_units": matched_functions,
     }
@@ -146,8 +153,9 @@ def main() -> int:
     sdk_funcs = [f for f in functions if f["sdk"]]
 
     report = {
-        "version": "1.0",
+        "version": 2,
         "measures": build_measures(functions, matched_addrs),
+        "units": [],
         "categories": [
             {
                 "id": "game",
@@ -168,19 +176,16 @@ def main() -> int:
     print(f"Wrote {out_path}")
 
     if args.print_summary:
-        all_m = report["measures"]
-        game_m = report["categories"][0]["measures"]
-        sdk_m = report["categories"][1]["measures"]
+        def show(label: str, m: dict) -> None:
+            mc = int(m["matched_code"])
+            tc = int(m["total_code"])
+            print(f"  {label}: {m['matched_code_percent']:.2f}% matched "
+                  f"({mc:,} / {tc:,} bytes, "
+                  f"{m['matched_functions']:,} / {m['total_functions']:,} funcs)")
         print()
-        print(f"  Overall:  {all_m['matched_code_percent']:.2f}% matched "
-              f"({all_m['matched_code']:,} / {all_m['total_code']:,} bytes, "
-              f"{all_m['matched_functions']:,} / {all_m['total_functions']:,} funcs)")
-        print(f"  Game:     {game_m['matched_code_percent']:.2f}% matched "
-              f"({game_m['matched_code']:,} / {game_m['total_code']:,} bytes, "
-              f"{game_m['matched_functions']:,} / {game_m['total_functions']:,} funcs)")
-        print(f"  SDK:      {sdk_m['matched_code_percent']:.2f}% matched "
-              f"({sdk_m['matched_code']:,} / {sdk_m['total_code']:,} bytes, "
-              f"{sdk_m['matched_functions']:,} / {sdk_m['total_functions']:,} funcs)")
+        show("Overall", report["measures"])
+        show("Game   ", report["categories"][0]["measures"])
+        show("SDK    ", report["categories"][1]["measures"])
 
     return 0
 
