@@ -9,8 +9,14 @@ ISO/
 # Pre-session-zero baseline snapshot
 matched_stats_pre_s0.json
 
-# Build output
-build/
+# Build output — mostly ignored, except the dtk-template progress report
+# (kept in tree so decomp.dev / CI can read it without needing a private build
+# container + map-file mount). Regenerate locally with
+# `python tools/generate_report.py` after match commits.
+build/*
+!build/G4ZE69/
+build/G4ZE69/*
+!build/G4ZE69/report.json
 build_pc/
 build_pc2/
 *.dol

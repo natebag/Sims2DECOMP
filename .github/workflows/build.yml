@@ -122,3 +122,37 @@ jobs:
             DEVKITPPC="${DEVKITPRO}/devkitPPC" \
             DTK="dtk" \
             PYTHON="python3"
+
+      # ── Progress report (for decomp.dev) ────────────────────────────
+      # The committed build/G4ZE69/report.json is regenerated locally after
+      # match commits via `python tools/generate_report.py`. If the original
+      # map file is available (via base64 secret), regenerate fresh in CI;
+      # otherwise upload the committed report as-is.
+
+      - name: Restore original map file from secret
+        env:
+          ORIGINAL_MAP: ${{ secrets.ORIGINAL_MAP }}
+        run: |
+          if [ -n "${ORIGINAL_MAP}" ]; then
+            mkdir -p orig/G4ZE69/files extracted/files
+            echo "${ORIGINAL_MAP}" | base64 -d > orig/G4ZE69/files/u2_ngc_release_dvd.map
+            cp orig/G4ZE69/files/u2_ngc_release_dvd.map extracted/files/
+            echo "Map file restored from secret. Will regenerate report.json fresh."
+          else
+            echo "ORIGINAL_MAP secret not set — using committed report.json as-is."
+          fi
+
+      - name: Regenerate progress report (if map available)
+        run: |
+          if [ -f "orig/G4ZE69/files/u2_ngc_release_dvd.map" ]; then
+            python3 configure.py --version G4ZE69
+          else
+            test -f build/G4ZE69/report.json && echo "Using committed report.json" || \
+              (echo "ERROR: no map available and no committed report.json" && exit 1)
+          fi
+
+      - name: Upload progress report
+        uses: actions/upload-artifact@v4
+        with:
+          name: G4ZE69_report
+          path: build/G4ZE69/report.json
