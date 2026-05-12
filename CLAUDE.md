@@ -229,7 +229,10 @@ Sims 2/
 ├── tools/                       # Python analysis & build scripts
 │   ├── map_parser.py            # Parse .map → structured symbol data
 │   ├── symbol_importer.py       # Import symbols into Ghidra
-│   └── progress.py              # Track decomp % matched
+│   ├── generate_report.py       # Generate dtk-template progress report.json
+│   ├── paths.py                 # Canonical path constants (DOL_PATH, MAP_PATH, etc.)
+│   └── progress.py              # Track decomp % matched (legacy file-count metric)
+├── configure.py                 # dtk-template entry point (stub: produces report.json)
 ├── docs/
 │   ├── specs/                   # Design specs
 │   ├── systems/                 # Per-system documentation
@@ -237,11 +240,31 @@ Sims 2/
 │   └── tracking/
 │       ├── next-steps.md        # Detailed task queue
 │       └── progress.md          # Decomp progress tracking
-├── extracted/                   # Raw disc extraction
+├── extracted/                   # Raw disc extraction (legacy path; still used by existing tools)
 │   ├── sys/main.dol             # Target binary
 │   └── files/                   # Game assets + debug files
-└── build/                       # Build output
+├── orig/G4ZE69/                 # dtk-template-aware path (Windows junctions back to extracted/)
+│   ├── sys/                     # → extracted/sys
+│   └── files/                   # → extracted/files
+├── config/                      # Legacy config (used by existing tools)
+├── config/G4ZE69/               # dtk-template-aware config mirror (config.yml = renamed sims2_gc.yml)
+└── build/G4ZE69/                # Build output — report.json committed, other artifacts ignored
+    └── report.json              # Progress data for decomp.dev (regenerate after match commits)
 ```
+
+## Progress Tracking Workflow
+
+After each match commit (or batch), workers should regenerate the progress report:
+
+```bash
+python tools/generate_report.py
+git add build/G4ZE69/report.json
+git commit --amend --no-edit  # or include in next commit
+```
+
+This keeps `build/G4ZE69/report.json` in sync with the matched corpus. CI uploads
+it as a GitHub Actions artifact named `G4ZE69_report` which decomp.dev pulls for
+public progress display.
 
 ## Symbol Map Quick Reference
 

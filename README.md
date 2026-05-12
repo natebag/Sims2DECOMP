@@ -175,10 +175,15 @@ config/                       — decomp-toolkit config, symbols, linker scripts
 tools/                        — Python scripts for matching and verification
 tools/asm_processor/          — Post-compile asm mutators (insert_mr, swap_cr_field, etc.)
 tools/legacy_analysis/        — One-off analysis scripts from earlier sessions (kept for reference)
+tools/generate_report.py      — Generate decomp.dev-compatible progress report
+configure.py                  — dtk-template entry point (CI uses this)
 docs/tracking/                — Session plans, technique catalogs, progress tracking
 docs/systems/                 — Per-system documentation (boot, sim AI, render, etc.)
 docs/file-formats/            — Asset format docs (.arc, .NGH, .tpl)
 extracted/                    — Disc files (not in repo — you provide these)
+orig/G4ZE69/                  — dtk-template-aware path (junctions to extracted/ on Windows)
+config/G4ZE69/                — dtk-template-aware config mirror
+build/G4ZE69/report.json      — Progress data for decomp.dev (committed, regenerable)
 ```
 
 ## Legal
@@ -188,5 +193,6 @@ This project does not contain any original game assets or copyrighted code. You 
 ## Credits
 
 - The Sims 2 is a trademark of Electronic Arts Inc.
-- Built with [decomp-toolkit](https://github.com/encounter/decomp-toolkit)
+- Built on [encounter/dtk-template](https://github.com/encounter/dtk-template) (project structure + decomp.dev integration)
+- Powered by [decomp-toolkit](https://github.com/encounter/decomp-toolkit) (symbol management + build orchestration)
 - Inspired by the GameCube decompilation community
