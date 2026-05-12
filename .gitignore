@@ -1,9 +1,13 @@
 # Game disc / ROM files (user must provide their own)
 extracted/
+orig/
 ISO/
 *.ciso
 *.iso
 *.gcm
+
+# Pre-session-zero baseline snapshot
+matched_stats_pre_s0.json
 
 # Build output
 build/
