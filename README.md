@@ -4,22 +4,27 @@ A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo Ga
 
 ## Status
 
-**🎯 49.81% DECOMPILED — PAST 51% OF MATCHABLE CODE — 10K MILESTONE CROSSED — 39 FROM 50% TOTAL 🎯**
+**🎯 11.50% OF GAME CODE BYTES-MATCHED — 8,887 / 16,890 MATCHABLE FUNCTIONS — REAL DECOMP METRIC 🎯**
 
-**49.81% decompiled and verified** — 10,215 / 20,508 functions byte-matched against the original DOL. Excluding the ~500 DolphinSDK functions (address range 0x8024-0x8039) compiled with Metrowerks CodeWarrior, we're matching **~51% of the game's decompilable code**. The **10,000 matched milestone has been crossed**, and **50% total** is now within a single short session's reach (39 functions away).
+**11.50% of game code is byte-matched against the original DOL** — this is the industry-standard decomp metric (bytes of compiled output that exactly equal the original binary). Across the entire .text section including the unmatchable DolphinSDK (Metrowerks-compiled), the overall byte-match rate is **14.78%** (612,636 / 4,145,724 bytes).
+
+Counted by function, **8,887 of 16,890 matchable game functions** have working C++ that compiles to byte-identical PowerPC machine code. Counted across the full match corpus (including some templates that land in SDK-adjacent address space), the file count is **10,215 verified matches**. The byte vs. function gap is real: the early decomp work cracked thousands of small functions (trivial getters/setters, template instantiations, 4-20B leaf calls), so file count overstates byte progress by ~4x.
 
 | Metric | Value |
 |--------|-------|
-| **Verified matches** | **10,215 / 20,508 (49.81%)** |
-| **% of matchable** | **~51%** (of ~20,008 excluding ~500 SDK functions) |
-| Functions remaining | ~10,293 |
+| **Bytes-matched (game code)** | **11.50%** (420,292 / 3,653,648) — *headline metric* |
+| **Bytes-matched (overall .text)** | 14.78% (612,636 / 4,145,724) |
+| **Bytes-matched (SDK)** | 39.09% (192,344 / 492,076) — *unmatchable in principle but some templates land here* |
+| **Matchable functions** | 8,887 / 16,890 (52.62% by function count, of matchable game code) |
+| **Match files committed** | 10,215 verified |
+| **Functions remaining** | ~7,003 matchable game functions + 1,461 SDK (officially unmatchable) |
 | Total symbols in map | 39,169 |
 | Class struct layouts | 643 documented |
 | Original compiler | SN Systems ProDG GCC 2.95.3 (recovered) |
 | Toolchain | SN ProDG (primary) + devkitPPC (fallback) + decomp-toolkit + asm_processor |
 | Matching techniques | 75+ proven patterns + 8 Variant L recipes + 3 Variant ' families + catalog-confirmed Tech entries (volatile-CSE, lazy-callee-save-volatile-r9, region_gpr_relabel, slot-pointer-hoist, ctrl-first source-ordering, goto-shared-label, swap_operands lwzx N=5) |
 
-**How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original.
+**How matching works:** Every matched function has C++ source code that, when compiled with the original SN Systems ProDG compiler, produces the exact same bytes as the original game binary. No byte injection, no copying — real compiled C++ output matching the original. Progress is measured in **bytes of compiled output** that byte-match the DOL, the same metric used by every serious GameCube/Wii decomp project (Melee, MKW, Wind Waker, etc.).
 
 ## What's Done
 

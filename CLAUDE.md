@@ -73,9 +73,19 @@ for future decomp work, not completed decomp work.
 **Goal:** Hand-write C++ for every function that compiles to byte-identical PPC output.
 This is the core decomp work. We are at the very beginning.
 
-**Current Status (2026-04-13 — post Session 3):**
-- **8,250 functions verified matched** with real C++ (**40.2%**)
-- 12,258 functions remaining (of 20,508)
+**Current Status (2026-05-12 — post Session 15 close):**
+- **11.50% of game code is byte-matched** — 420,292 / 3,653,648 bytes of compiled output
+  byte-identical to the original DOL (excluding the unmatchable Metrowerks-compiled
+  DolphinSDK). This is the industry-standard decomp metric and what decomp.dev publishes.
+- **14.78% overall .text byte-match** (612,636 / 4,145,724 bytes including SDK region).
+- **8,887 / 16,890 matchable game functions** byte-matched (52.62% by function count).
+- **10,215 total match files committed** (10,215 > 8,887 because some matches cover
+  templates that land in SDK-adjacent address space, plus a handful of size-0 label
+  matches inside larger functions).
+- The byte-vs-function gap is real: thousands of small functions were cracked first
+  (trivial 4-20B getters/setters, template instantiations, leaf calls). Average matched
+  function ~68B; average .text function ~224B. Large structural functions remain.
+- Session 15 delta: +72 net matches.
 - Session 3 delta: +430 unique matches (7,820 → 8,250). 953 duplicate aliases
   consolidated, 1,209 stale files cleaned, 40% milestone crossed.
 - Session 2 delta: +541 matches. Matcher bot built, integrity audit purged 215 fakes.
@@ -97,12 +107,21 @@ This is the core decomp work. We are at the very beginning.
 **IMPORTANT: The DOL "matches" via byte injection. Real decomp progress is measured by
 how many functions have hand-written C++ that compiles to matching bytes WITHOUT injection.**
 
-**Gate Criteria:**
+**Gate Criteria (byte-level — the real decomp metric):**
+- [x] 5% game-code bytes-matched (~183,000 bytes)
+- [x] 10% game-code bytes-matched (~365,000 bytes)
+- [ ] 15% game-code bytes-matched (~548,000 bytes)
+- [ ] 25% game-code bytes-matched (~913,000 bytes)
+- [ ] 50% game-code bytes-matched (~1,827,000 bytes) — "halfway in real terms"
+- [ ] 75% game-code bytes-matched (~2,740,000 bytes)
+- [ ] 100% game-code bytes-matched (~3,653,648 bytes) — TRUE 100% decomp
+
+**Secondary tracking (function-count, kept for fleet dispatch but NOT the headline metric):**
 - [x] 1,000 functions hand-matched
 - [x] 5,000 functions hand-matched
-- [ ] 10,000 functions hand-matched
+- [x] 10,000 functions hand-matched (crossed S14)
 - [ ] 15,000 functions hand-matched
-- [ ] 20,508 functions hand-matched — TRUE 100% decomp
+- [ ] 16,890 functions hand-matched — 100% of matchable game functions
 
 **Approach:** Agent-parallelized matching — see strategy below.
 
