@@ -1,6 +1,16 @@
 # The Sims 2 GameCube — Matching Decompilation
 
+[![Build Status]][actions] [![Game Code]][progress site] [![Overall]][progress site]
+
+[Build Status]: https://github.com/natebag/Sims2DECOMP/actions/workflows/build.yml/badge.svg
+[actions]: https://github.com/natebag/Sims2DECOMP/actions/workflows/build.yml
+[Game Code]: https://decomp.dev/natebag/Sims2DECOMP.svg?mode=shield&measure=code&label=Game%20code&category=game
+[Overall]: https://decomp.dev/natebag/Sims2DECOMP.svg?mode=shield&measure=code&label=Overall&category=all
+[progress site]: https://decomp.dev/natebag/Sims2DECOMP
+
 A work-in-progress byte-matching decompilation of **The Sims 2** for Nintendo GameCube (G4ZE69).
+
+Live progress dashboard + per-TU treemap: **https://decomp.dev/natebag/Sims2DECOMP**
 
 ## Status
 

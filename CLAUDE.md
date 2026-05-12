@@ -254,17 +254,38 @@ Sims 2/
 
 ## Progress Tracking Workflow
 
-After each match commit (or batch), workers should regenerate the progress report:
+**Automatic (the normal case):** The pre-commit hook regenerates
+`build/G4ZE69/report.json` automatically whenever a commit touches files in
+`src/matched/`. The fresh report.json is added to the same commit. Workers do
+nothing extra — the report just stays in sync.
+
+**Manual (if needed):** If the hook is bypassed (`SKIP_VERIFY=1`), missing
+(`bash tools/install-hooks.sh` after fresh clone), or the report drifted some
+other way, regenerate manually:
 
 ```bash
 python tools/generate_report.py
 git add build/G4ZE69/report.json
-git commit --amend --no-edit  # or include in next commit
+git commit -m "report: refresh"
 ```
 
-This keeps `build/G4ZE69/report.json` in sync with the matched corpus. CI uploads
-it as a GitHub Actions artifact named `G4ZE69_report` which decomp.dev pulls for
-public progress display.
+## decomp.dev Integration
+
+The project is listed at **https://decomp.dev/natebag/Sims2DECOMP**. Public-facing
+progress numbers come from the JSON above (industry-standard byte-matched metric,
+not file-count).
+
+How the integration works:
+1. Worker commits matched code → pre-commit hook regenerates report.json → commit lands with fresh report.
+2. Push to main → GitHub Actions `Build` workflow runs → uploads `G4ZE69_report` artifact.
+3. The decomp.dev GitHub App (installed on the repo) receives a `workflow_run` webhook → pulls the artifact → updates the dashboard within seconds.
+4. PRs get an automatic comment showing the byte-progress delta vs main.
+
+If you change the report schema, validate against an active decomp.dev project
+(e.g. `zcanann/SFA-Decomp`) by downloading their latest artifact and diffing
+fields — decomp.dev uses `objdiff_core::bindings::report::Report` (proto3 +
+serde) so unrecognized fields are silently dropped, but missing required fields
+fail validation.
 
 ## Symbol Map Quick Reference
 
