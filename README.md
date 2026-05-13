@@ -108,7 +108,12 @@ cd Sims2DECOMP
 #   extracted/files/u2_ngc_release_dvd.elf
 #   extracted/files/u2_ngc_release_dvd.map
 
-# Build and verify
+# Build and verify (ninja — preferred, dtk-template standard)
+pip install ninja
+python configure.py
+ninja diff                  # default target: build/G4ZE69/main.dol
+
+# Or: legacy make-based build (same result, no parallelism)
 python tools/gen_skeleton.py
 make inject
 make diff
@@ -186,7 +191,9 @@ tools/                        — Python scripts for matching and verification
 tools/asm_processor/          — Post-compile asm mutators (insert_mr, swap_cr_field, etc.)
 tools/legacy_analysis/        — One-off analysis scripts from earlier sessions (kept for reference)
 tools/generate_report.py      — Generate decomp.dev-compatible progress report
-configure.py                  — dtk-template entry point (CI uses this)
+configure.py                  — dtk-template entry point: `python configure.py` emits build.ninja
+tools/ninja_syntax.py         — Minimal vendored NinjaWriter (used by configure.py)
+objdiff.json                  — objdiff config (custom_make: ninja) for external diff viewers
 docs/tracking/                — Session plans, technique catalogs, progress tracking
 docs/systems/                 — Per-system documentation (boot, sim AI, render, etc.)
 docs/file-formats/            — Asset format docs (.arc, .NGH, .tpl)

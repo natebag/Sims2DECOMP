@@ -9,6 +9,11 @@ ISO/
 # Pre-session-zero baseline snapshot
 matched_stats_pre_s0.json
 
+# ninja-generated build manifest (regen via `python configure.py`)
+build.ninja
+.ninja_deps
+.ninja_log
+
 # Build output — mostly ignored, except the dtk-template progress report
 # (kept in tree so decomp.dev / CI can read it without needing a private build
 # container + map-file mount). Regenerate locally with

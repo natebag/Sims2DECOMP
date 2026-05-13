@@ -179,7 +179,11 @@ jobs:
       - name: Regenerate progress report (if map available)
         run: |
           if [ -f "orig/G4ZE69/files/u2_ngc_release_dvd.map" ]; then
+            # configure.py emits build.ninja; the `report` ninja target runs
+            # generate_report.py to write build/G4ZE69/report.json.
+            pip install ninja > /dev/null
             python3 configure.py --version G4ZE69
+            ninja report
           else
             test -f build/G4ZE69/report.json && echo "Using committed report.json" || \
               (echo "ERROR: no map available and no committed report.json" && exit 1)

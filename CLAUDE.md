@@ -269,6 +269,43 @@ git add build/G4ZE69/report.json
 git commit -m "report: refresh"
 ```
 
+## Ninja Build — `configure.py` + `build.ninja`
+
+The project supports both `make` (legacy) and `ninja` (dtk-template standard).
+Both drive the same inject-based pipeline (skeleton + matched byte injection +
+link); ninja adds parallelism, incremental rebuilds, and the canonical
+`python configure.py && ninja` interface decomp.dev / objdiff users expect.
+
+```bash
+pip install ninja              # one-time, if not installed
+python configure.py             # regen build.ninja (only when sources move)
+ninja                           # default: build/G4ZE69/main.dol
+ninja skeleton                  # gen skeleton .s only
+ninja compile                   # compile every matched .cpp in parallel
+ninja diff                      # full build + `dtk dol diff` vs original
+ninja verify                    # full build + sha1sum -c
+ninja report                    # regen build/G4ZE69/report.json (no compile)
+ninja all                       # verify + report
+ninja -t clean                  # clean built files
+```
+
+**Scope:** by default only `src/matched/**/*.cpp` compile (10K files, ~3 min on 8 cores).
+Use `python configure.py --full` to enumerate the full scaffold tree (20K files,
+hours — mostly empty stubs whose .o is discarded by inject_matches.py, only useful
+as a "everything builds" sanity check).
+
+**Per-file flag overrides:** `// FLAGS: -fno-schedule-insns` (etc.) at the top of
+any matched .cpp is picked up at configure-time and applied as the `extra_flags`
+ninja variable for that one rule. Re-run `python configure.py` after adding new
+overrides.
+
+**Reconfigure:** `ninja` re-runs `configure.py` automatically when `configure.py`,
+`tools/ninja_syntax.py`, or `config/symbols.txt` change.
+
+**Tier:** this is the Tier-1 ninja wrapper around the existing devkitPPC-GCC
+compile + dtk-injection pipeline. The Tier-2 work (real per-file SN ProDG
+compilation in the link path, replacing injection) is a future infra project.
+
 ## Wall Diagnosis — `tools/diff_func.sh`
 
 Side-by-side disassembly diff for a single function. Compiles the C++ with SN

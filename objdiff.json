@@ -1,12 +1,28 @@
 {
   "$schema": "https://raw.githubusercontent.com/encounter/objdiff/main/config.schema.json",
-  "custom_make": "make",
-  "custom_args": ["compile"],
+  "min_version": "2.0.0-beta.5",
+  "custom_make": "ninja",
+  "custom_args": [],
   "build_target": false,
   "build_base": true,
   "watch_patterns": [
     "src/**/*.cpp",
     "src/**/*.c",
-    "include/**/*.h"
+    "src/**/*.s",
+    "include/**/*.h",
+    "config/G4ZE69/*.txt",
+    "config/G4ZE69/*.yml",
+    "configure.py",
+    "tools/ninja_syntax.py"
+  ],
+  "progress_categories": [
+    {
+      "id": "game",
+      "name": "Game code"
+    },
+    {
+      "id": "sdk",
+      "name": "DolphinSDK / Metrowerks"
+    }
   ]
 }
