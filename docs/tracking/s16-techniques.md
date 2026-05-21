@@ -448,7 +448,9 @@ register coalescing. The `mr r3, r10` (or similar) is the loop's return-value se
 Validated: Multiple loop-ctor patterns where GCC 2.95 refuses to emit the final
 copy without explicit register pressure.
 
-### 17. `sda21-ha-lo-declaration-control` — extern size controls addressing mode
+### 17. `sda21-ha-lo-declaration-control` — STANDARD (extern size controls addressing mode)
+
+**Status:** STANDARD-TRACK (3-instance validation cluster confirmed)
 
 **Signature:** GCC's `-G 8` threshold controls SDA21-vs-ADDR16_HA/LO addressing
 mode selection based on the **declared size** of extern symbols. When DOL has
@@ -473,8 +475,10 @@ if their extern declarations have different sizes relative to the `-G 8` thresho
 `lis+addi` globals in the same function. Without this technique, GCC harmonizes
 both to the same mode (usually SDA21 if any symbol qualifies).
 
-S16-VALIDATED:
+S16-VALIDATED (3-instance STANDARD cluster):
 - GameData::StageStartFrame (68B, commit 69280fb47) — SDA21 manager pointer + HA/LO format arg
+- MUStatesLoadConfig (commit 4c141fdb) — extern char[16] + bl chain
+- THREADEXEC_MU_SaveNewGame (commit b896c1e15) — extern char[16] + SDA flag + bl chain
 
 ---
 
