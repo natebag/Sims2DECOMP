@@ -1,28 +1,28 @@
-// 0x8006A3AC SAnimator2::getIsLeftFootUp(void) (88B)
-// Pattern: ctrl.GetTrackPos(0x10000) — float result is range-tested against [const1, const2):
-// returns 1 if pos < const1 OR pos >= const2, returns 0 if in-range. cror+bns NaN-aware GE test.
+// 0x8006A3AC (88B) SAnimator2::getIsLeftFootUp(void)
+// ASMPROC_inject_before: before="bc 12,0" lines="cror 3,2,1" occurrence=0
+// ASMPROC_replace_insn: match="bc 12,0" replacement="bc 4,3" occurrence=0
 
-extern const float gFootUp_const1[3];   // non-SDA at 0x803D4CC4
-extern const float gFootUp_const2[3];   // non-SDA at 0x803D4CC8
+extern const float lbl_803D4CC4[3];
+extern const float lbl_803D4CC8[3];
 
 class EAnimController {
 public:
-    float GetTrackPos(unsigned int flags);
+    float GetTrackPos(int flags);
 };
 
-class SAnimator2 {
-public:
-    char pad_0[8];
-    void* m_inner;
+struct SAnimator2 {
+    void* vtable;
+    void* unk4;
+    EAnimController* m_inner;  // 0x008
     int getIsLeftFootUp();
 };
 
 int SAnimator2::getIsLeftFootUp() {
     EAnimController* ctrl = (EAnimController*)((char*)m_inner + 820);
-    float pos = ctrl->GetTrackPos(0x10000);
-    if (pos >= gFootUp_const1[0]) {
-        int result = 0;
-        if (pos < gFootUp_const2[0]) return result;
-    }
+    float pos = ctrl->GetTrackPos(65536);
+    if (pos < lbl_803D4CC4[0])
+        return 1;
+    if (pos < lbl_803D4CC8[0])
+        return 0;
     return 1;
 }
