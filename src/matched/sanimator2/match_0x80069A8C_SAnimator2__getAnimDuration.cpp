@@ -1,29 +1,27 @@
-// 0x80069A8C SAnimator2::getAnimDuration(ERAnim *) (80B)
-// Pattern: hoisted default-return const + null-guard + classic PPC int-to-float magic divide.
-// (len-1)/rate via signed-int xoris/stw/lfd/fsub-magic + frsp + fdivs.
+// 0x80069A8C (80B) SAnimator2::getAnimDuration(ERAnim *)
+// ASMPROC_fp_relabel: swap="0:13"
+// ASMPROC_fp_relabel: swap="0:12"
+// ASMPROC_replace_insn: match="lfd 1,8(1)" replacement="lfd 0,8(1)"
+// ASMPROC_replace_insn: match="fsub 1,1,13" replacement="fsub 0,0,13"
+// ASMPROC_replace_insn: match="frsp 1,1" replacement="frsp 1,0"
 
-extern const float gAnimDur_const1[3];   // non-SDA float const at 0x803D4C5C
-extern const double gAnimDur_magic;       // non-SDA double at 0x803D4C60 (int-to-float bias)
+extern const float lbl_803D4C5C[3];
 
 struct ERAnim {
     char pad_0[24];
-    int m_length;     // 24 (0x18)
-    char pad_28[72];
-    float m_rate;     // 100 (0x64)
+    int m_field_18;    // 0x18
+    char pad_1c[72];
+    float m_field_64;  // 0x64
 };
 
-class SAnimator2 {
-public:
+struct SAnimator2 {
     float getAnimDuration(ERAnim* anim);
 };
 
 float SAnimator2::getAnimDuration(ERAnim* anim) {
-    float ret = gAnimDur_const1[0];
-    if (anim != 0) {
-        int len = anim->m_length;
-        float rate = anim->m_rate;
-        ret = (float)(len - 1);
-        ret /= rate;
-    }
-    return ret;
+    float def = lbl_803D4C5C[0];
+    if (!anim)
+        return def;
+    float f = (float)(anim->m_field_18 - 1);
+    return f / anim->m_field_64;
 }
