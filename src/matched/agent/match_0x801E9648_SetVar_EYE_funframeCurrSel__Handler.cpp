@@ -1,28 +1,21 @@
-// 0x801E9648 (56B) SetVar_EYE_funframeCurrSel::Handler(char *)
-// AtoI(arg); save to g_pEyeToy->funframeCurrSel (+148); ApplyFunFrame(val-1).
+// 0x801E9648 SetVar_EYE_funframeCurrSel::Handler(char*) (56B)
 
 extern "C" int AtoI(char* s);
 
 class EyeToyClient {
 public:
-    static void ApplyFunFrame(int v);
+    static void ApplyFunFrame(int idx);
 };
 
-struct EyeToyData {
-    char _pad[148];
-    int funframeCurrSel;
-};
-
-extern EyeToyData* g_pEyeToy;
+extern void* g_eyeToyMgr_SDA;
 
 class SetVar_EYE_funframeCurrSel {
 public:
-    void Handler(char* arg);
+    void Handler(char* val);
 };
 
-void SetVar_EYE_funframeCurrSel::Handler(char* arg)
-{
-    int v = AtoI(arg);
-    g_pEyeToy->funframeCurrSel = v;
-    EyeToyClient::ApplyFunFrame(v - 1);
+void SetVar_EYE_funframeCurrSel::Handler(char* val) {
+    int n = AtoI(val);
+    *(int*)((char*)g_eyeToyMgr_SDA + 148) = n;
+    EyeToyClient::ApplyFunFrame(n - 1);
 }
