@@ -1,29 +1,24 @@
-// 0x802D8538 EThread::GetThreadObject(int) (48B)
-// Static search: scan _threadList linked list for node with m_threadId==id.
-// b-forward skips advance on first iteration (while-loop pattern).
-// Match path: mr r11,r9; mr r3,r11. Null-exit: beq direct to blr (r3 undefined).
-// _threadList SDA global at r13-22764 = 0x80500034.
+// 0x802D8538 (48B) EThread::GetThreadObject(int)
 
-struct EThread {
-    char pad[0x318];
-    int m_threadId;      // offset 0x318 = 792
-    char pad2[0x18];
-    EThread* m_next;     // offset 0x334 = 820
+extern void* g_EThread_head;
 
-    static EThread* GetThreadObject(int id);
-};
+namespace EThread {
+extern "C" void* GetThreadObject(int id);
+}
 
-extern EThread* _threadList;
-
-EThread* EThread::GetThreadObject(int id) {
-    EThread* node = _threadList;
-    EThread* result = 0;
-    while (node) {
-        if (node->m_threadId == id) {
-            result = node;
-            break;
-        }
-        node = node->m_next;
+void* EThread::GetThreadObject(int id) {
+    void* node = g_EThread_head;
+    void* result = 0;
+    goto test;
+loop:
+    node = *(void**)((char*)node + 820);
+test:
+    if (node == 0) goto end;
+    if (*(int*)((char*)node + 792) == id) {
+        result = node;
+        goto end;
     }
+    goto loop;
+end:
     return result;
 }
