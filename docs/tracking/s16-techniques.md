@@ -567,11 +567,19 @@ sessions can pick up with clean context.
   registers swap + stfs order. `gpr_relabel 9:11` solves the lis swap
   but conflicts with `this_alias_rN reg=9`. Needs `region_gpr_relabel`
   to scope the swap to just the lis region.
-- **0x801F65A4 INVTarget::GetOnMsgInvExists (36B)** — 6-line register-
-  allocation divergence with mixed lwz/lbz/lhz types.
+- **0x801F65A4 INVTarget::GetOnMsgInvExists (36B)** — ✅ RESOLVED (commit
+  58f2bf42 — unsigned-short cast + swap_adj a=sth b=stw which=first; sister
+  pair with GetVar_EYE_exists::Handler @ 0x801E9248).
 - **0x8015E688 TreeTableEntryQuickData::GetDebugOnly (60B)** — DOL is
   a leaf function (no stwu); GCC adds stack frame due to volatile read.
   Source restructuring needed to eliminate stack roundtrip.
+- **0x8039D900 EAnimNote::Copy (112B)** — Kmiworker2 park. SN ProDG refuses
+  to keep 4th callee-saved induction variable (r29=dst_str) across loop.
+  DOL has distinct r28(counter), r29(dst_str), r30(dst), r31(src); compiled
+  always folds dst_str into r30±offset. Needs `inject_before with arbitrary
+  instructions` OR region-based instruction insertion to synthesize missing
+  `addi r29, r29, 12 + mr r3, r29` inside loop body. 6 source variants
+  exhausted by Kmiworker2.
 
 ---
 
