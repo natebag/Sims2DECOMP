@@ -1,24 +1,21 @@
-// 0x8006BFE8 SAnimator2::stopIdleOverlay(void) (88B)
-// Pattern: m_flags bit-12 (0x1000) check + conditional bit-13 clear and controller dispatch
-// to EAnimController::SetTrackBlendSmooth(eTrackFlags=256, f1, f2, f3).
-// Sibling to setFollowEnd (matched at 0x80069920) — same controller-base + 3 float setup
-// but with bit-12 gate + SDA-resident middle float.
+// 0x8006BFE8 (88B) SAnimator2::stopIdleOverlay(void)
+// ctrl-first source ordering: EAnimController* ctrl computed before float const setup
 
-extern const float gStopIdleOverlay_f1[3];  // non-SDA at 0x803D4DD0
-extern const float gStopIdleOverlay_f3[3];  // non-SDA at 0x803D4DD4
-extern const float gStopIdleOverlay_f2;     // SDA2 at r13-32340 (0x804FA1AC region)
+extern const float lbl_803D4DD0[3];
+extern const float lbl_803D4DD4[3];
+extern const float gStopIdleOverlay_f2;
 
 class EAnimController {
 public:
-    void SetTrackBlendSmooth(int flags, float a, float b, float c);
+    void SetTrackBlendSmooth(int flags, float f1, float f2, float f3);
 };
 
-class SAnimator2 {
-public:
-    char pad_0[8];
-    void* m_inner;     // offset 8
+struct SAnimator2 {
+    void* vtable;
+    void* unk4;
+    EAnimController* m_inner;  // 0x008
     char pad_12[1552];
-    int m_flags;       // offset 1564 (0x61C)
+    int m_flags;               // 0x61C = 1564
     void stopIdleOverlay();
 };
 
@@ -28,6 +25,6 @@ void SAnimator2::stopIdleOverlay() {
         EAnimController* ctrl = (EAnimController*)((char*)m_inner + 820);
         float f2 = gStopIdleOverlay_f2;
         m_flags = flags & ~0x1000;
-        ctrl->SetTrackBlendSmooth(256, gStopIdleOverlay_f1[0], f2, gStopIdleOverlay_f3[0]);
+        ctrl->SetTrackBlendSmooth(256, lbl_803D4DD0[0], f2, lbl_803D4DD4[0]);
     }
 }
