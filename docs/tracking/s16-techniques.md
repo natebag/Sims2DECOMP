@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (12 promoted)
+## Source-Level Techniques (13 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -350,6 +350,37 @@ S16-VALIDATED (3 instances, Lane 6 Kmiworker2):
 - TArray<EString>::Copy (92B)
 - TArray<EString>::CopyReverse (104B)
 - TArray<EString2>::CopyReverse (104B) — twin pair with the above
+
+### 13. `empty-bdnz-loop` — empty CTR-decrement loops (pure source-only)
+
+**Signature:** DOL has empty `mtctr; bdnz self` loops (CTR-based N-iter empty
+loops — likely from C++ source `for (i=0; i<N; i++) ;` for timing/sync or
+unrolled init that GCC's middle-end stripped to empty CTR-decrement).
+
+**Fix:** Source the empty `for` loop with literal bound:
+
+```cpp
+int i;
+for (i = 0; i < 4; i++) ;   // GCC emits: li r0,4; mtctr r0; bdnz self
+for (i = 0; i < 256; i++) ; // (repeated for each empty loop)
+```
+
+GCC 2.95 emits empty `for` loops as `li r0, N; mtctr r0; bdnz self` and
+does NOT optimize away the empty CTR decrement.
+
+**APPLIES TO BOTH CTORS AND METHODS** — not just constructor patterns.
+Common in init-warmup / timing / sync function bodies. EBound3::Transform
+is a method with an empty 8-iter warmup loop before the actual work.
+
+**When to apply:** Any wall where DOL has `mtctr; bdnz self` blocks but
+your version is shorter (missing the empty-loop instructions).
+
+S16-VALIDATED (5+ instances):
+- InstanceData ctor (52B, 4 empty 4-iter loops)
+- CasTweakTool ctor (40B, 2 empty 4-iter loops + vtable)
+- ERTQuantize ctor (56B, 1 empty 256-iter loop + vtable + fields)
+- ERTQuantize4D ctor (56B, sister of ERTQuantize)
+- EBound3::Transform (84B, method with empty 8-iter warmup + 2 helper calls)
 
 ---
 
