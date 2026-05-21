@@ -1,18 +1,18 @@
-// 0x800BF8E4 (60B) IFFResFile2::Add(Memory::HandleNode *, int, short, StringBuffer &, bool)
-// Direct port of ChainResFile::Add (identical bytes)
+// 0x800BF8E4 (60B) IFFResFile2::Add(Memory::HandleNode*, int, short, StringBuffer&, bool)
 
 namespace Memory { class HandleNode; }
 class StringBuffer;
 
 class IFFResFile2 {
 public:
-    void Add(Memory::HandleNode* node, int id, short version, StringBuffer& strBuf, bool flag);
+    void Add(Memory::HandleNode* hn, int idx, short sh, StringBuffer& sb, bool flag);
 };
 
-void IFFResFile2::Add(Memory::HandleNode* node, int id, short version, StringBuffer& strBuf, bool flag) {
-    char* vt = *(char**)((char*)this + 12);
+void IFFResFile2::Add(Memory::HandleNode* hn, int idx, short sh, StringBuffer& sb, bool flag) {
+    char* obj = (char*)this;
+    char* vt = *(char**)(obj + 12);
     short adj = *(short*)(vt + 256);
     void* fn = *(void**)(vt + 260);
-    ((void (*)(void*, Memory::HandleNode*, int, short, StringBuffer&, int, bool))fn)
-        ((char*)this + adj, node, id, version, strBuf, 0, flag);
+    typedef void (*Fn)(void*, Memory::HandleNode*, int, short, StringBuffer&, int, bool);
+    ((Fn)fn)(obj + adj, hn, idx, sh, sb, 0, flag);
 }
