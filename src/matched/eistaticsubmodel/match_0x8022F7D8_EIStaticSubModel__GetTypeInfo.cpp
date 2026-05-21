@@ -1,5 +1,7 @@
-// 0x8022F7D8 EIStaticSubModel::GetTypeInfo (12B) const
-struct TypeInfo_EIStaticSubModel { char data[256]; };
-extern TypeInfo_EIStaticSubModel g_EIStaticSubModel_TypeInfo[3];
-struct EIStaticSubModel_GTI { TypeInfo_EIStaticSubModel* GetTypeInfo() const; };
-TypeInfo_EIStaticSubModel* EIStaticSubModel_GTI::GetTypeInfo() const { return &g_EIStaticSubModel_TypeInfo[0]; }
+// 0x8022F7D8 EIStaticSubModel::GetTypeInfo(void) const (12B)
+struct EIStaticSubModelTypeInfo;
+extern char s_EIStaticSubModel_typeInfo[];
+class EIStaticSubModel { public: EIStaticSubModelTypeInfo* GetTypeInfo() const; };
+EIStaticSubModelTypeInfo* EIStaticSubModel::GetTypeInfo() const {
+    return (EIStaticSubModelTypeInfo*)s_EIStaticSubModel_typeInfo;
+}

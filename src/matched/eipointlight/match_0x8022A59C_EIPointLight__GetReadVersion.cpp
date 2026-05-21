@@ -1,5 +1,4 @@
-// 0x8022A59C EIPointLight::GetReadVersion (12B)
-struct RVBlock_EIPointLight { unsigned short ver[256]; };
-extern RVBlock_EIPointLight g_EIPointLight_ReadVersion[3];
-struct EIPointLight_GRV { unsigned short GetReadVersion(); };
-unsigned short EIPointLight_GRV::GetReadVersion() { return g_EIPointLight_ReadVersion[0].ver[0]; }
+// 0x8022A59C EIPointLight::GetReadVersion(void) (12B)
+struct VerBlock_EIPL { unsigned short ver[256]; };
+extern VerBlock_EIPL g_EIPointLight_ReadVersion[3];
+unsigned short EIPointLight_GetReadVersion() { return g_EIPointLight_ReadVersion[0].ver[0]; }

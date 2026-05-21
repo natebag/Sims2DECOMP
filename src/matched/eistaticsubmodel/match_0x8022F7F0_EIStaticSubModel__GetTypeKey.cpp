@@ -1,4 +1,7 @@
-// 0x8022F7F0 EIStaticSubModel::GetTypeKey (12B) const
-extern int g_EIStaticSubModel_TypeKey[3];
-struct EIStaticSubModel_GTK { int GetTypeKey() const; };
-int EIStaticSubModel_GTK::GetTypeKey() const { return g_EIStaticSubModel_TypeKey[0]; }
+// 0x8022F7F0 EIStaticSubModel::GetTypeKey(void) const (12B)
+struct EISMTypeInfo { char pad[12]; int name; int key; short version; short readVersion; };
+extern char s_EIStaticSubModel_typeInfo[];
+class EIStaticSubModel { public: int GetTypeKey() const; };
+int EIStaticSubModel::GetTypeKey() const {
+    return ((EISMTypeInfo*)s_EIStaticSubModel_typeInfo)->key;
+}

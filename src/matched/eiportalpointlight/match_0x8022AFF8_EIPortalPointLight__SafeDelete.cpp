@@ -1,4 +1,4 @@
-// 0x8022AFF8 EIPortalPointLight::SafeDelete (64B)
+// 0x8022AFF8 EIPortalPointLight::SafeDelete(void) (64B)
 
 struct EIPortalPointLight {
     virtual void v0();

@@ -1,5 +1,5 @@
-// 0x8022B074 EIPortalPointLight::GetReadVersion (12B)
-struct RVBlock_EIPortalPointLight { unsigned short ver[256]; };
-extern RVBlock_EIPortalPointLight g_EIPortalPointLight_ReadVersion[3];
-struct EIPortalPointLight_GRV { unsigned short GetReadVersion(); };
-unsigned short EIPortalPointLight_GRV::GetReadVersion() { return g_EIPortalPointLight_ReadVersion[0].ver[0]; }
+// 0x8022B074 EIPortalPointLight::GetReadVersion(void) (12B)
+struct RVBlock_EIPPL { unsigned short ver[256]; };
+extern RVBlock_EIPPL g_EIPPL_ReadVersion[3];
+struct EIPPL_GRV { unsigned short GetReadVersion(); };
+unsigned short EIPPL_GRV::GetReadVersion() { return g_EIPPL_ReadVersion[0].ver[0]; }

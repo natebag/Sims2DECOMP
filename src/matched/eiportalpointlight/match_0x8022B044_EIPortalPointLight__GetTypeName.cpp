@@ -1,4 +1,4 @@
-// 0x8022B044 EIPortalPointLight::GetTypeName (12B) const
-extern char* g_EIPortalPointLight_TypeName[3];
-struct EIPortalPointLight_GTN { const char* GetTypeName() const; };
-const char* EIPortalPointLight_GTN::GetTypeName() const { return g_EIPortalPointLight_TypeName[0]; }
+// 0x8022B044 EIPortalPointLight::GetTypeName(void) const (12B)
+extern char* g_EIPPL_TypeName[3];
+struct EIPPL_GTN { const char* GetTypeName() const; };
+const char* EIPPL_GTN::GetTypeName() const { return g_EIPPL_TypeName[0]; }

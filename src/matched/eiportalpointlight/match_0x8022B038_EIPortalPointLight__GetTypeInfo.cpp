@@ -1,5 +1,5 @@
-// 0x8022B038 EIPortalPointLight::GetTypeInfo (12B) const
-struct TypeInfo_EIPortalPointLight { char data[256]; };
-extern TypeInfo_EIPortalPointLight g_EIPortalPointLight_TypeInfo[3];
-struct EIPortalPointLight_GTI { TypeInfo_EIPortalPointLight* GetTypeInfo() const; };
-TypeInfo_EIPortalPointLight* EIPortalPointLight_GTI::GetTypeInfo() const { return &g_EIPortalPointLight_TypeInfo[0]; }
+// 0x8022B038 EIPortalPointLight::GetTypeInfo(void) const (12B)
+struct TypeInfo_EIPPL { char data[256]; };
+extern TypeInfo_EIPPL g_EIPPL_TypeInfo[3];
+struct EIPPL_GTI { TypeInfo_EIPPL* GetTypeInfo() const; };
+TypeInfo_EIPPL* EIPPL_GTI::GetTypeInfo() const { return &g_EIPPL_TypeInfo[0]; }

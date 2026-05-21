@@ -1,5 +1,7 @@
-// 0x8022F7FC EIStaticSubModel::GetTypeVersion (12B) const
-struct VerBlock_EIStaticSubModel { unsigned short ver[256]; };
-extern VerBlock_EIStaticSubModel g_EIStaticSubModel_TypeVersion[3];
-struct EIStaticSubModel_GTV { unsigned short GetTypeVersion() const; };
-unsigned short EIStaticSubModel_GTV::GetTypeVersion() const { return g_EIStaticSubModel_TypeVersion[0].ver[0]; }
+// 0x8022F7FC EIStaticSubModel::GetTypeVersion(void) const (12B)
+struct EISMTypeInfo { char pad[12]; int name; int key; unsigned short version; unsigned short readVersion; };
+extern char s_EIStaticSubModel_typeInfo[];
+class EIStaticSubModel { public: unsigned short GetTypeVersion() const; };
+unsigned short EIStaticSubModel::GetTypeVersion() const {
+    return ((EISMTypeInfo*)s_EIStaticSubModel_typeInfo)->version;
+}

@@ -1,5 +1,5 @@
-// 0x8022A560 EIPointLight::GetTypeInfo (12B) const
-struct TypeInfo_EIPointLight { char data[256]; };
-extern TypeInfo_EIPointLight g_EIPointLight_TypeInfo[3];
-struct EIPointLight_GTI { TypeInfo_EIPointLight* GetTypeInfo() const; };
-TypeInfo_EIPointLight* EIPointLight_GTI::GetTypeInfo() const { return &g_EIPointLight_TypeInfo[0]; }
+// 0x8022A560 EIPointLight::GetTypeInfo(void) const (12B)
+struct TypeInfo_EIPL { char data[256]; };
+extern TypeInfo_EIPL g_EIPL_TypeInfo[3];
+struct EIPL_GTI { TypeInfo_EIPL* GetTypeInfo() const; };
+TypeInfo_EIPL* EIPL_GTI::GetTypeInfo() const { return &g_EIPL_TypeInfo[0]; }
