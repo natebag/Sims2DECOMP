@@ -1,31 +1,22 @@
-/* NghResFile::GetByID(int, short, void (*)(void *, int)) - 0x800D3C74 (84 bytes) */
+// 0x800D3C74 (84B) NghResFile::GetByID(int, short, void (*)(void *, int))
 
-struct NghResFileNode {
-    NghResFileNode *m_next;
-    void *m_data;
-    unsigned short m_id;
+extern "C" void* helper_0x800D4348(void* this_, int id);
+
+class NghResFile {
+public:
+    void* GetByID(int id, short version, void (*cb)(void*, int));
 };
 
-struct NghResFileList {
-    NghResFileNode *m_head;
-};
-
-typedef void (*NghCallback)(void *, int);
-
-struct NghResFile {
-    NghResFileList *findListByResType(unsigned int);
-    void *GetByID(int resType, short id, NghCallback cb);
-};
-
-void *NghResFile::GetByID(int resType, short id, NghCallback cb)
-{
-    NghResFileNode *node;
-    node = findListByResType(resType)->m_head;
-    while (node != 0) {
-        if (node->m_id == id) {
-            return node->m_data;
-        }
-        node = node->m_next;
+void* NghResFile::GetByID(int id, short version, void (*cb)(void*, int)) {
+    int v = version;
+    void* it = helper_0x800D4348(this, id);
+    goto advance;
+compare:
+    if ((int)*(unsigned short*)((char*)it + 8) == v) {
+        return *(void**)((char*)it + 4);
     }
+advance:
+    it = *(void**)((char*)it + 0);
+    if (it != 0) goto compare;
     return 0;
 }
