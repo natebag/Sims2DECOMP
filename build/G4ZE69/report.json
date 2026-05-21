@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 14.894962,
+    "fuzzy_match_percent": 14.895541,
     "total_code": "4145724",
-    "matched_code": "617504",
-    "matched_code_percent": 14.894962,
+    "matched_code": "617528",
+    "matched_code_percent": 14.895541,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9051,
-    "matched_functions_percent": 49.035648,
-    "complete_code": "617504",
-    "complete_code_percent": 14.894962,
+    "matched_functions": 9052,
+    "matched_functions_percent": 49.041066,
+    "complete_code": "617528",
+    "complete_code_percent": 14.895541,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 9051
+    "complete_units": 9052
   },
   "units": [
     {
@@ -139299,18 +139299,18 @@
     {
       "name": "engine_ngc_release_dvd.lib(e_rfont.obj)",
       "measures": {
-        "fuzzy_match_percent": 6.829897,
+        "fuzzy_match_percent": 6.984536,
         "total_code": "15520",
-        "matched_code": "1060",
-        "matched_code_percent": 6.829897,
+        "matched_code": "1084",
+        "matched_code_percent": 6.984536,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 49,
-        "matched_functions": 28,
-        "matched_functions_percent": 57.142857,
-        "complete_code": "1060",
-        "complete_code_percent": 6.829897,
+        "matched_functions": 29,
+        "matched_functions_percent": 59.183673,
+        "complete_code": "1084",
+        "complete_code_percent": 6.984536,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -139320,7 +139320,7 @@
         {
           "name": ".text",
           "size": "15520",
-          "fuzzy_match_percent": 6.829897,
+          "fuzzy_match_percent": 6.984536,
           "metadata": {
             "virtual_address": "2150710888"
           }
@@ -174638,22 +174638,22 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 11.636589,
+        "fuzzy_match_percent": 11.637246,
         "total_code": "3653648",
-        "matched_code": "425160",
-        "matched_code_percent": 11.636589,
+        "matched_code": "425184",
+        "matched_code_percent": 11.637246,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 8944,
-        "matched_functions_percent": 52.954411,
-        "complete_code": "425160",
-        "complete_code_percent": 11.636589,
+        "matched_functions": 8945,
+        "matched_functions_percent": 52.960332,
+        "complete_code": "425184",
+        "complete_code_percent": 11.637246,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 16890,
-        "complete_units": 8944
+        "complete_units": 8945
       }
     },
     {
