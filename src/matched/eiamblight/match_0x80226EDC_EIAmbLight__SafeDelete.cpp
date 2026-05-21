@@ -1,4 +1,4 @@
-// 0x80226EDC EIAmbLight::SafeDelete (64B)
+// 0x80226EDC EIAmbLight::SafeDelete(void) (64B)
 
 struct EIAmbLight {
     virtual void v0();

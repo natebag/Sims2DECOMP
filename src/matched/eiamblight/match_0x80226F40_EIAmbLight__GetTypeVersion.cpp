@@ -1,4 +1,4 @@
-// 0x80226F40 EIAmbLight::GetTypeVersion (12B) const
+// 0x80226F40 EIAmbLight::GetTypeVersion(void) const (12B)
 struct VerBlock_EIAmbLight { unsigned short ver[256]; };
 extern VerBlock_EIAmbLight g_EIAmbLight_TypeVersion[3];
 struct EIAmbLight_GTV { unsigned short GetTypeVersion() const; };
