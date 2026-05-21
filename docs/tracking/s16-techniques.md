@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (10 promoted)
+## Source-Level Techniques (11 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -282,6 +282,46 @@ char* sub16 = base + 16;               // forces addi r10, r9, 16
 Validated: Effects::EffectsManager::EffectsManager @ 0x803522E4 (52B) —
 commit 8eadf3d9. 4th instance promotes uniform-volatile-int-ctor to STANDARD.
 First STANDARD-track mutator/recipe promotion in S16.
+
+### 11. `ctor-returns-this-hint` — chain malloc → ctor → store without intermediate save
+
+**Signature:** DOL emits `bl Malloc; bl Ctor; stw r3, M(r31)` chain — the
+malloc result stays in r3 across the ctor call (no intermediate save to a
+callee-saved register). GCC plays it safe and saves the malloc result to a
+callee-saved register (r29 or similar) before the ctor call, then uses the
+saved copy for the store. Result: GCC saves 3 callee-saved regs (r29/r30/r31)
+and uses a 24B stack frame vs DOL's 2 (r30/r31) and 16B frame.
+
+**Root cause:** GCC doesn't know the C-extern ctor returns its input
+pointer unchanged. By default, the C ABI says the call may clobber r3.
+
+**Fix (PURE SOURCE-ONLY, no mutator):** Declare the C-extern ctor as
+returning `void*` (the input ptr — `this`) and chain the call into the
+store:
+
+```cpp
+// WRONG — GCC saves malloc result to callee-saved reg before bl Ctor.
+extern "C" void Ctor(void* p);
+
+void* mem = Malloc(...);
+Ctor(mem);
+*ptr = mem;  // GCC: saved mem in r29 first
+
+// RIGHT — GCC uses return value of Ctor (= input ptr) directly.
+extern "C" void* Ctor(void* p);  // declare return type
+
+void* mem = Malloc(...);
+*ptr = Ctor(mem);  // GCC: stw r3, ... after bl Ctor (no save)
+```
+
+Validated as 2-INSTANCE twin: ObjSelector::SetUserName @ 0x80110A80 (92B)
++ ObjSelector::SetUserLastName @ 0x80110B58 (92B) — both commit cd793cbe.
+Identical recipe ports across siblings. +184B total.
+
+**When to apply:** Any function that does `Malloc → Ctor → store` chain
+where DOL keeps the malloc result in r3 across the ctor call. Detection:
+diff_func.sh shows extra `mr rN, r3` after malloc + larger stack frame +
+more stmw/lmw range than DOL.
 
 ---
 
