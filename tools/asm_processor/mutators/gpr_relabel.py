@@ -61,6 +61,97 @@ NON_GPR_INT_OPCODES = frozenset({
 })
 
 
+# Positions whose bare-integer operands are IMMEDIATES, not register
+# numbers. The relabel rewrite must skip these or it corrupts immediate
+# fields — most notoriously, `cmpwi rA, 0` with swap=0:N gets rewritten
+# to `cmpwi rA, N` because the bare `0` is mistakenly identified as a
+# register reference. S15 note: lockCarryArmNodes twin hit this exact
+# hazard (gpr_relabel swap=0:11 broke cmpwi r9,0). Positions use the
+# operand index AFTER the opcode (0-based). For multi-immediate opcodes
+# (rlwinm 2/3/4) all immediate slots are listed. Opcodes with optional
+# CR-field prefix (cmpwi can be `cmpwi rA,IMM` or `cmpwi cr,rA,IMM`)
+# use a negative `-1` sentinel meaning "the LAST operand."
+IMMEDIATE_POSITIONS: dict[str, tuple[int, ...]] = {
+    # Plain immediate loads
+    "li":      (1,),
+    "lis":     (1,),
+
+    # Comparison-with-immediate. The cr-field prefix is optional in SN
+    # syntax (`cmpwi 0,8` vs `cmpwi 7,0,1`) so the immediate is always
+    # the LAST operand — use the -1 sentinel.
+    "cmpi":    (-1,),
+    "cmpwi":   (-1,),
+    "cmpwi.":  (-1,),
+    "cmplwi":  (-1,),
+    "cmplwi.": (-1,),
+    "cmpdi":   (-1,),
+    "cmpldi":  (-1,),
+
+    # Three-operand arithmetic with immediate at position 2.
+    "addi":    (2,),
+    "addic":   (2,),
+    "addic.":  (2,),
+    "addis":   (2,),
+    "subfic":  (2,),
+    "mulli":   (2,),
+
+    # Three-operand logical with immediate at position 2.
+    "andi.":   (2,),
+    "andis.":  (2,),
+    "ori":     (2,),
+    "oris":    (2,),
+    "xori":    (2,),
+    "xoris":   (2,),
+
+    # Rotate-and-mask family. Standard 5-operand form has imms at 2,3,4;
+    # SN's 4-operand compact form (`rlwinm rD,rA,SH,MASK`) has imms at 2,3.
+    # Listing (2,3,4) covers both — out-of-range positions are ignored.
+    "rlwinm":  (2, 3, 4),
+    "rlwinm.": (2, 3, 4),
+    "rlwimi":  (2, 3, 4),
+    "rlwimi.": (2, 3, 4),
+    "rlwnm":   (3, 4),
+    "rlwnm.":  (3, 4),
+
+    # Shift-amount immediate.
+    "srawi":   (2,),
+    "srawi.":  (2,),
+
+    # Extended mnemonics for rlwinm (compact 1-or-2 imm forms).
+    "slwi":    (2,),
+    "srwi":    (2,),
+    "clrlwi":  (2,),
+    "clrrwi":  (2,),
+    "rotlwi":  (2,),
+    "rotrwi":  (2,),
+    "extlwi":  (2, 3),
+    "extrwi":  (2, 3),
+}
+
+
+def _resolve_immediate_positions(op: str, n_operands: int) -> frozenset[int]:
+    """Return concrete operand indices that are immediates for `op`.
+
+    `IMMEDIATE_POSITIONS` may contain `-1` as a sentinel meaning "last
+    operand index", used for opcodes like cmpwi whose CR-field prefix is
+    optional in SN syntax. This helper resolves that to a concrete index
+    based on the actual operand count of the line being processed.
+    """
+    spec = IMMEDIATE_POSITIONS.get(op)
+    if spec is None:
+        return frozenset()
+    resolved = set()
+    for p in spec:
+        if p < 0:
+            idx = n_operands + p
+            if idx >= 0:
+                resolved.add(idx)
+        else:
+            if p < n_operands:
+                resolved.add(p)
+    return frozenset(resolved)
+
+
 # Opcodes whose LAST operand is a label (branch target), not a register.
 # The label is a symbol or `.L.*` — it parses as a non-register anyway, so
 # no special-casing needed in the rewrite loop; the regex won't match it.
@@ -178,12 +269,17 @@ def apply(asm_text: str, args: dict) -> str:
             continue
 
         fp_positions = FP_POSITIONS.get(op, ())
+        imm_positions = _resolve_immediate_positions(op, len(operands))
 
         changed = False
         new_ops = list(operands)
         for pos in range(len(operands)):
             if pos in fp_positions:
                 # FP-register slot — leave for fp_relabel (if any).
+                continue
+            if pos in imm_positions:
+                # Immediate operand — relabeling would corrupt the value
+                # (e.g. swap=0:11 would rewrite `cmpwi rA,0` to `cmpwi rA,11`).
                 continue
             relabeled = _relabel_token(operands[pos], swap)
             if relabeled != operands[pos]:
