@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 14.957098,
+    "fuzzy_match_percent": 14.960282,
     "total_code": "4145724",
-    "matched_code": "620080",
-    "matched_code_percent": 14.957098,
+    "matched_code": "620212",
+    "matched_code_percent": 14.960282,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9088,
-    "matched_functions_percent": 49.236104,
-    "complete_code": "620080",
-    "complete_code_percent": 14.957098,
+    "matched_functions": 9089,
+    "matched_functions_percent": 49.241521,
+    "complete_code": "620212",
+    "complete_code_percent": 14.960282,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 9088
+    "complete_units": 9089
   },
   "units": [
     {
@@ -118294,18 +118294,18 @@
     {
       "name": "libaptz.a(AptFloat.cpp.obj)",
       "measures": {
-        "fuzzy_match_percent": 54.857143,
+        "fuzzy_match_percent": 73.714286,
         "total_code": "700",
-        "matched_code": "384",
-        "matched_code_percent": 54.857143,
+        "matched_code": "516",
+        "matched_code_percent": 73.714286,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 14,
-        "matched_functions": 12,
-        "matched_functions_percent": 85.714286,
-        "complete_code": "384",
-        "complete_code_percent": 54.857143,
+        "matched_functions": 13,
+        "matched_functions_percent": 92.857143,
+        "complete_code": "516",
+        "complete_code_percent": 73.714286,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -118315,7 +118315,7 @@
         {
           "name": ".text",
           "size": "700",
-          "fuzzy_match_percent": 54.857143,
+          "fuzzy_match_percent": 73.714286,
           "metadata": {
             "virtual_address": "2150349536"
           }
@@ -174638,22 +174638,22 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 11.707094,
+        "fuzzy_match_percent": 11.710707,
         "total_code": "3653648",
-        "matched_code": "427736",
-        "matched_code_percent": 11.707094,
+        "matched_code": "427868",
+        "matched_code_percent": 11.710707,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 8981,
-        "matched_functions_percent": 53.173475,
-        "complete_code": "427736",
-        "complete_code_percent": 11.707094,
+        "matched_functions": 8982,
+        "matched_functions_percent": 53.179396,
+        "complete_code": "427868",
+        "complete_code_percent": 11.710707,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 16890,
-        "complete_units": 8981
+        "complete_units": 8982
       }
     },
     {
