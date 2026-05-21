@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (11 promoted)
+## Source-Level Techniques (12 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -322,6 +322,34 @@ Identical recipe ports across siblings. +184B total.
 where DOL keeps the malloc result in r3 across the ctor call. Detection:
 diff_func.sh shows extra `mr rN, r3` after malloc + larger stack frame +
 more stmw/lmw range than DOL.
+
+### 12. `insert-mr-loop` — SN ProDG mr register-copy in loop body (Kmiworker2)
+
+**Signature:** SN ProDG retains an intermediate `mr rN, base` inside the
+loop body to free up `base` for re-use elsewhere. GCC's allocator elides
+this intermediate copy. Common in TArray<T>::Copy/CopyReverse calling
+op_assign on each element.
+
+**Recipe (5 directives):**
+
+1. Write natural C loop (`do-while` with post-decrement counter).
+2. `insert_mr: before="<first-loop-insn>" src=<base-reg> dst=<intermediate-reg>`
+   — MUST use `before=` so bne branches back to the inserted mr.
+3. `swap_adj: a="lwz" b="mr" which=first` — moves lwz after mr.
+4. `replace_insn` to fix the lwz operand to use the intermediate register.
+5. `swap_adj: a="addi" b="addi" which=N` — if pointer increment order differs.
+
+**Prologue extension:** When the prologue also diverges, chain `replace_insn`
+to rewrite each instruction. ~8 replace_insn for a 9-insn prologue rotation.
+Safe as long as instruction count stays constant.
+
+**Limitation:** `replace_insn` cannot insert/delete lines — only works when
+compiled + DOL have the same instruction count.
+
+S16-VALIDATED (3 instances, Lane 6 Kmiworker2):
+- TArray<EString>::Copy (92B)
+- TArray<EString>::CopyReverse (104B)
+- TArray<EString2>::CopyReverse (104B) — twin pair with the above
 
 ---
 
