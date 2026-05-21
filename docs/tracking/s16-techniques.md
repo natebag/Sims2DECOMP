@@ -583,6 +583,37 @@ sessions can pick up with clean context.
 
 ---
 
+## Known asm_processor Toolchain Bugs (S17 infra improvements)
+
+Class of bugs in the asm-text rewriting toolchain where mutators corrupt
+operand fields that are SEMANTICALLY immediate values (not registers) but
+syntactically appear as bare integers. Both bugs share the same root cause
+and fix pattern.
+
+### Fixed (S16): `gpr_relabel` cmpwi-immediate corruption (commit f9a48c59)
+
+`gpr_relabel swap=0:N` previously rewrote `cmpwi rA, 0` to `cmpwi rA, N`
+because the bare `0` matched as a register reference. Same hazard for
+addi/andi./ori/xori/rlwinm (SH/MB/ME)/subfic/mulli/li/lis/srawi/extended-
+mnemonic shift forms. Fixed via `IMMEDIATE_POSITIONS` table.
+
+### S17 candidate: `region_gpr_relabel` has the same bug
+
+`region_gpr_relabel` has NO immediate-position awareness. When swap=0:N is
+applied to a region containing `li r9, 0` or `li r0, 1`, the immediate
+operand gets rewritten, corrupting the byte encoding.
+
+**Workaround used in S16:** For cGZSndSys ctor (commit df77a64f), used an
+8-directive `replace_insn` chain instead of a 1-directive `region_gpr_relabel`.
+The replace_insn chain is verbose but surgical — each line is targeted by
+exact substring without immediate interference.
+
+**S17 fix:** Port the `IMMEDIATE_POSITIONS` table + `_resolve_immediate_positions`
+helper from `gpr_relabel.py` to `region_gpr_relabel.py`. ~30-line port.
+Backward-compatible: no existing match relies on the buggy behavior.
+
+---
+
 ## Park-Triage Quality Checklist (advisory)
 
 Before parking to MutatorSmith, triple-check the source for these common
