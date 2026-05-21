@@ -1,23 +1,23 @@
-// 0x80069470 SAnimator2::clearSuspendedCarry(void) (112B)
-// Pattern: m_flags bit-0x400 gate; if set, clear + 2 controller calls (ResumeTrack + SetTrackBlendSmooth).
-// Needs r31 callee-save for `this` persistence across the ResumeTrack call. Ctrl re-fetched after the call.
+// 0x80069470 (112B) SAnimator2::clearSuspendedCarry(void)
+// Two-call pattern: ResumeTrack then SetTrackBlendSmooth
+// ctrl-first on both calls, this in r31 (callee-save, survives 2 bl calls)
 
-extern const float gClearSuspCarry_f1[3];   // non-SDA at 0x803D4C24
-extern const float gClearSuspCarry_f3[3];   // non-SDA at 0x803D4C28
-extern const float gClearSuspCarry_f2;      // SDA at r13-32336
+extern const float lbl_803D4C24[3];
+extern const float lbl_803D4C28[3];
+extern const float gClearSuspend_f2;
 
 class EAnimController {
 public:
     void ResumeTrack(int flags);
-    void SetTrackBlendSmooth(int flags, float a, float b, float c);
+    void SetTrackBlendSmooth(int flags, float f1, float f2, float f3);
 };
 
-class SAnimator2 {
-public:
-    char pad_0[8];
-    void* m_inner;
+struct SAnimator2 {
+    void* vtable;
+    void* unk4;
+    EAnimController* m_inner;  // 0x008
     char pad_12[1552];
-    int m_flags;
+    int m_flags;               // 0x61C = 1564
     void clearSuspendedCarry();
 };
 
@@ -27,8 +27,8 @@ void SAnimator2::clearSuspendedCarry() {
         EAnimController* ctrl = (EAnimController*)((char*)m_inner + 820);
         m_flags = flags & ~0x400;
         ctrl->ResumeTrack(2048);
-        EAnimController* ctrl2 = (EAnimController*)((char*)m_inner + 820);
-        float f2 = gClearSuspCarry_f2;
-        ctrl2->SetTrackBlendSmooth(2048, gClearSuspCarry_f1[0], f2, gClearSuspCarry_f3[0]);
+        ctrl = (EAnimController*)((char*)m_inner + 820);
+        float f2 = gClearSuspend_f2;
+        ctrl->SetTrackBlendSmooth(2048, lbl_803D4C24[0], f2, lbl_803D4C28[0]);
     }
 }
