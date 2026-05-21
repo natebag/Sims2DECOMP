@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (13 promoted)
+## Source-Level Techniques (14 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -381,6 +381,40 @@ S16-VALIDATED (5+ instances):
 - ERTQuantize ctor (56B, 1 empty 256-iter loop + vtable + fields)
 - ERTQuantize4D ctor (56B, sister of ERTQuantize)
 - EBound3::Transform (84B, method with empty 8-iter warmup + 2 helper calls)
+
+### 14. `post-inc-source-order` — counter++ store-order scheduling (pure source-only)
+
+**Signature:** GCC 2.95 reorders SDA (small-data-area) writes after `*counter = id+1`
+when the source uses post-increment `id++` in the same expression as the store.
+The compiler motion hoists the increment and sinks the store, breaking DOL's
+source-listed store order.
+
+**Fix:** Split the post-increment and store into separate statements:
+
+```cpp
+// WRONG: GCC reorders the SDA write after the increment.
+*counter = id++;   // DOL expects store THEN increment
+
+// RIGHT: explicit sequencing preserves store order.
+id++;
+*counter = id;     // store at source point, then increment already happened
+```
+
+Forcing GCC to keep `id` in the same register across both statements prevents
+the scheduler from sinking the store past the increment. The separate statements
+anchor the store at the source-listed point.
+
+**When to apply:** Any wall where DOL shows a store immediately followed by a
+register increment, but your source folds them into `*counter = id++`. Look for:
+- `++counter` or `counter++` adjacent to a pointer store
+- SDA-relative stores (`stw rD, offset(r13)`) that GCC has sunk past an `addi`
+- Patterns in intrusive-list ctors, ID allocators, or slot counters
+
+**Reusable pools:** ESimsApp, EManager, ESpriteRender families likely have
+similar counter++ + store patterns.
+
+S16-VALIDATED:
+- Commander::Commander (60B, commit 4e0e4e44) — S17-deferred wall cracked
 
 ---
 
