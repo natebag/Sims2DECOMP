@@ -7,7 +7,7 @@ public:
     void InstallCommand(char* name, CBFunctor& cb);
 };
 
-extern char fmt_InstallBld_803F97C8[];
+extern char fmt_InstallBld_803F97C8[16];
 
 class INVTarget {
 public:
@@ -20,7 +20,6 @@ public:
 
 void INVTarget::InstallBldVariables() {
     char* fmt = fmt_InstallBld_803F97C8;
-    void* p = m_0;
-    if (p == 0) return;
+    if (m_0 == 0) return;
     m_4->InstallCommand(fmt, *(CBFunctor*)((char*)this + 40));
 }
