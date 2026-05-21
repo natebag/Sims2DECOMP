@@ -1,16 +1,20 @@
-struct MovieData {
-    char pad[0x150];
-    void* m_movieHeap;
+// 0x80005CFC (48 bytes) ESimsApp::GetMovieHeap(void)
+struct EGlobal;
+extern void* TextureHeap();
+
+struct ESimsApp {
+    void* GetMovieHeap();
 };
 
-extern MovieData gMovieData;
+struct MovieHeapGlobals {
+    char pad[0x5F1C];
+    void* movieHeap;
+};
 
-void* GetDefaultHeap();
-
-void* ESimsApp_GetMovieHeap() {
-    void* heap = gMovieData.m_movieHeap;
-    if (heap == 0) {
-        heap = GetDefaultHeap();
+void* ESimsApp::GetMovieHeap() {
+    MovieHeapGlobals* g = (MovieHeapGlobals*)0x80470000;
+    if (g->movieHeap == 0) {
+        return TextureHeap();
     }
-    return heap;
+    return g->movieHeap;
 }
