@@ -1,4 +1,6 @@
-/* UIAUDIO::InstallEntry at 0x801773D4 (168b) */
+// 0x801773D4 UIAUDIO::InstallEntry(char*, unsigned int, char*) (168B)
+// ASMPROC_inject_before: before="lwz 3,8(31)" lines=".Lbody:"
+// ASMPROC_replace_insn: match="bc 12,2,.L4" replacement="bc 12,2,.Lbody"
 
 extern int strcmp(const char*, const char*);
 
