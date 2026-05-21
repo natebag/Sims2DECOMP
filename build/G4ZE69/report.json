@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 14.998008,
+    "fuzzy_match_percent": 15.003025,
     "total_code": "4145724",
-    "matched_code": "621776",
-    "matched_code_percent": 14.998008,
+    "matched_code": "621984",
+    "matched_code_percent": 15.003025,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9106,
-    "matched_functions_percent": 49.333622,
-    "complete_code": "621776",
-    "complete_code_percent": 14.998008,
+    "matched_functions": 9108,
+    "matched_functions_percent": 49.344458,
+    "complete_code": "621984",
+    "complete_code_percent": 15.003025,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 9106
+    "complete_units": 9108
   },
   "units": [
     {
@@ -45100,18 +45100,18 @@
     {
       "name": "objectfolder",
       "measures": {
-        "fuzzy_match_percent": 7.905184,
+        "fuzzy_match_percent": 8.208781,
         "total_code": "34256",
-        "matched_code": "2708",
-        "matched_code_percent": 7.905184,
+        "matched_code": "2812",
+        "matched_code_percent": 8.208781,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 125,
-        "matched_functions": 52,
-        "matched_functions_percent": 41.6,
-        "complete_code": "2708",
-        "complete_code_percent": 7.905184,
+        "matched_functions": 53,
+        "matched_functions_percent": 42.4,
+        "complete_code": "2812",
+        "complete_code_percent": 8.208781,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -45121,7 +45121,7 @@
         {
           "name": ".text",
           "size": "2868316",
-          "fuzzy_match_percent": 7.905184,
+          "fuzzy_match_percent": 8.208781,
           "metadata": {
             "virtual_address": "2148449884"
           }
@@ -53720,18 +53720,18 @@
     {
       "name": "rooms",
       "measures": {
-        "fuzzy_match_percent": 4.956837,
+        "fuzzy_match_percent": 5.680869,
         "total_code": "14364",
-        "matched_code": "712",
-        "matched_code_percent": 4.956837,
+        "matched_code": "816",
+        "matched_code_percent": 5.680869,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 57,
-        "matched_functions": 13,
-        "matched_functions_percent": 22.807018,
-        "complete_code": "712",
-        "complete_code_percent": 4.956837,
+        "matched_functions": 14,
+        "matched_functions_percent": 24.561404,
+        "complete_code": "816",
+        "complete_code_percent": 5.680869,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -53741,7 +53741,7 @@
         {
           "name": ".text",
           "size": "2585492",
-          "fuzzy_match_percent": 4.956837,
+          "fuzzy_match_percent": 5.680869,
           "metadata": {
             "virtual_address": "2148751560"
           }
@@ -174638,22 +174638,22 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 11.753513,
+        "fuzzy_match_percent": 11.759206,
         "total_code": "3653648",
-        "matched_code": "429432",
-        "matched_code_percent": 11.753513,
+        "matched_code": "429640",
+        "matched_code_percent": 11.759206,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 8999,
-        "matched_functions_percent": 53.280047,
-        "complete_code": "429432",
-        "complete_code_percent": 11.753513,
+        "matched_functions": 9001,
+        "matched_functions_percent": 53.291889,
+        "complete_code": "429640",
+        "complete_code_percent": 11.759206,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 16890,
-        "complete_units": 8999
+        "complete_units": 9001
       }
     },
     {
