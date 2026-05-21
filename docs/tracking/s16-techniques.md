@@ -214,7 +214,7 @@ do {
 
 Validated: TArray<EAnimNote>::Construct (76B, EString::SetToNull at offset 8) (Kmiworker2).
 
-### 10. `eresource-derived-ctor-cluster` — uniform-volatile-int + frame-pad recipe (3-INSTANCE)
+### 10. `uniform-volatile-int-ctor` — STANDARD (4-INSTANCE validated, with sub-base ptr variant)
 
 **Signature:** EResource-derived ctor that initializes vtable @ offset 0 plus
 N zeroed fields at non-zero offsets. GCC reorders the vt store to a late
@@ -260,6 +260,28 @@ MyClass::MyClass() {
 Validated: ERSoundTrackData @ 0x8036A144 (80B), REffectsEmitter @ 0x8036A7B4
 (80B), ERAmbientScore @ 0x80366D50 (112B) — all 3 commit f7d05576. Total
 +272B in one batch.
+
+**VARIANT: Sub-base pointer pattern** (4th instance — promotes recipe to
+STANDARD). When DOL uses intermediate-base-pointer emission like `addi r11,
+r9, 4; stw r0, 4(r11)` for "neighbor stores" (rather than direct `stw r0,
+8(r9)`), force the addi via explicit sub-base locals in source:
+
+```cpp
+char* base = (char*)this;
+*(volatile int*)(base + 0) = 0;        // anchor store via base (r9)
+char* sub4 = base + 4;                 // forces addi r11, r9, 4
+*(volatile int*)(sub4 + 4) = 0;        // neighbor via sub4+4 → stw r0, 4(r11)
+*(volatile int*)(base + 4) = 0;        // back to base for direct
+*(volatile int*)(sub4 + 8) = 1;        // neighbor via sub4+8 → stw r8, 8(r11)
+char* sub16 = base + 16;               // forces addi r10, r9, 16
+*(volatile int*)(sub16 + 4) = 0;       // neighbor via sub16+4 → stw r0, 4(r10)
+*(volatile int*)(base + 16) = 0;       // back to base
+*(volatile int*)(sub16 + 8) = 1;       // neighbor via sub16+8 → stw r8, 8(r10)
+```
+
+Validated: Effects::EffectsManager::EffectsManager @ 0x803522E4 (52B) —
+commit 8eadf3d9. 4th instance promotes uniform-volatile-int-ctor to STANDARD.
+First STANDARD-track mutator/recipe promotion in S16.
 
 ---
 
