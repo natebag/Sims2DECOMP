@@ -1,8 +1,4 @@
 // 0x80110B58 ObjSelector::SetUserLastName(BString2 &) (92B)
-//
-// Sister of SetUserName @ 0x80110A80 — identical recipe, only differs in
-// field offset (136 vs 132). 2-INSTANCE validation of "ctor-returns-this
-// hint" technique (declare void* return type on the BString2_ctor extern).
 
 class BString2;
 extern "C" void* MainHeap();

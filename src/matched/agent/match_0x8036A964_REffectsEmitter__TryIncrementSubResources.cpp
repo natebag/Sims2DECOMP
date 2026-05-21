@@ -1,10 +1,4 @@
 // 0x8036A964 REffectsEmitter::TryIncrementSubResources(void) (108B)
-//
-// Resolved by PURE source-only `negated-test-fallthrough` technique
-// (S16-promoted #5). Inverted the `if (id == 0) return 1;` early-return
-// into `if (id != 0) { main_path } return 1;` polarity flip. The less
-// common case (the main bl path) becomes the inner branch, matching
-// DOL's bne-skip-and-fallthrough structure.
 
 extern "C" int helper_0x80326A60(void* mgr, unsigned int id, void** outRes);
 extern char _textureman[];
