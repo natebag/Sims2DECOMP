@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 15.216932,
+    "fuzzy_match_percent": 15.218572,
     "total_code": "4145724",
-    "matched_code": "630852",
-    "matched_code_percent": 15.216932,
+    "matched_code": "630920",
+    "matched_code_percent": 15.218572,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9234,
-    "matched_functions_percent": 50.027089,
-    "complete_code": "630852",
-    "complete_code_percent": 15.216932,
+    "matched_functions": 9235,
+    "matched_functions_percent": 50.032506,
+    "complete_code": "630920",
+    "complete_code_percent": 15.218572,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 9234
+    "complete_units": 9235
   },
   "units": [
     {
@@ -33571,18 +33571,18 @@
     {
       "name": "bomb",
       "measures": {
-        "fuzzy_match_percent": 0.0,
+        "fuzzy_match_percent": 6.463878,
         "total_code": "1052",
-        "matched_code": "0",
-        "matched_code_percent": 0.0,
+        "matched_code": "68",
+        "matched_code_percent": 6.463878,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 5,
-        "matched_functions": 0,
-        "matched_functions_percent": 0.0,
-        "complete_code": "0",
-        "complete_code_percent": 0.0,
+        "matched_functions": 1,
+        "matched_functions_percent": 20.0,
+        "complete_code": "68",
+        "complete_code_percent": 6.463878,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -33592,7 +33592,7 @@
         {
           "name": ".text",
           "size": "1052",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 6.463878,
           "metadata": {
             "virtual_address": "2148192780"
           }
@@ -174638,22 +174638,22 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 12.001922,
+        "fuzzy_match_percent": 12.003784,
         "total_code": "3653648",
-        "matched_code": "438508",
-        "matched_code_percent": 12.001922,
+        "matched_code": "438576",
+        "matched_code_percent": 12.003784,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 9127,
-        "matched_functions_percent": 54.037892,
-        "complete_code": "438508",
-        "complete_code_percent": 12.001922,
+        "matched_functions": 9128,
+        "matched_functions_percent": 54.043813,
+        "complete_code": "438576",
+        "complete_code_percent": 12.003784,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 16890,
-        "complete_units": 9127
+        "complete_units": 9128
       }
     },
     {
