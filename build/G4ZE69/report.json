@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 14.923039,
+    "fuzzy_match_percent": 14.930854,
     "total_code": "4145724",
-    "matched_code": "618668",
-    "matched_code_percent": 14.923039,
+    "matched_code": "618992",
+    "matched_code_percent": 14.930854,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9071,
-    "matched_functions_percent": 49.144003,
-    "complete_code": "618668",
-    "complete_code_percent": 14.923039,
+    "matched_functions": 9075,
+    "matched_functions_percent": 49.165673,
+    "complete_code": "618992",
+    "complete_code_percent": 14.930854,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 9071
+    "complete_units": 9075
   },
   "units": [
     {
@@ -149,18 +149,18 @@
     {
       "name": "appmain",
       "measures": {
-        "fuzzy_match_percent": 13.128086,
+        "fuzzy_match_percent": 13.67993,
         "total_code": "13772",
-        "matched_code": "1808",
-        "matched_code_percent": 13.128086,
+        "matched_code": "1884",
+        "matched_code_percent": 13.67993,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 83,
-        "matched_functions": 48,
-        "matched_functions_percent": 57.831325,
-        "complete_code": "1808",
-        "complete_code_percent": 13.128086,
+        "matched_functions": 49,
+        "matched_functions_percent": 59.036145,
+        "complete_code": "1884",
+        "complete_code_percent": 13.67993,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -170,7 +170,7 @@
         {
           "name": ".text",
           "size": "3772468",
-          "fuzzy_match_percent": 13.128086,
+          "fuzzy_match_percent": 13.67993,
           "metadata": {
             "virtual_address": "2147499996"
           }
@@ -2902,18 +2902,18 @@
     {
       "name": "camera",
       "measures": {
-        "fuzzy_match_percent": 8.268363,
+        "fuzzy_match_percent": 8.463275,
         "total_code": "38992",
-        "matched_code": "3224",
-        "matched_code_percent": 8.268363,
+        "matched_code": "3300",
+        "matched_code_percent": 8.463275,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 164,
-        "matched_functions": 77,
-        "matched_functions_percent": 46.95122,
-        "complete_code": "3224",
-        "complete_code_percent": 8.268363,
+        "matched_functions": 78,
+        "matched_functions_percent": 47.560976,
+        "complete_code": "3300",
+        "complete_code_percent": 8.463275,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -2923,7 +2923,7 @@
         {
           "name": ".text",
           "size": "3703516",
-          "fuzzy_match_percent": 8.268363,
+          "fuzzy_match_percent": 8.463275,
           "metadata": {
             "virtual_address": "2147571764"
           }
@@ -28047,18 +28047,18 @@
     {
       "name": "bitarray",
       "measures": {
-        "fuzzy_match_percent": 67.760618,
+        "fuzzy_match_percent": 71.621622,
         "total_code": "2072",
-        "matched_code": "1404",
-        "matched_code_percent": 67.760618,
+        "matched_code": "1484",
+        "matched_code_percent": 71.621622,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 32,
-        "matched_functions": 25,
-        "matched_functions_percent": 78.125,
-        "complete_code": "1404",
-        "complete_code_percent": 67.760618,
+        "matched_functions": 26,
+        "matched_functions_percent": 81.25,
+        "complete_code": "1484",
+        "complete_code_percent": 71.621622,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -28068,7 +28068,7 @@
         {
           "name": ".text",
           "size": "2072",
-          "fuzzy_match_percent": 67.760618,
+          "fuzzy_match_percent": 71.621622,
           "metadata": {
             "virtual_address": "2148120340"
           }
@@ -120218,18 +120218,18 @@
     {
       "name": "base_ngc_release_dvd.lib(e_filesystem.obj)",
       "measures": {
-        "fuzzy_match_percent": 28.03943,
+        "fuzzy_match_percent": 30.558598,
         "total_code": "3652",
-        "matched_code": "1024",
-        "matched_code_percent": 28.03943,
+        "matched_code": "1116",
+        "matched_code_percent": 30.558598,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 44,
-        "matched_functions": 29,
-        "matched_functions_percent": 65.909091,
-        "complete_code": "1024",
-        "complete_code_percent": 28.03943,
+        "matched_functions": 30,
+        "matched_functions_percent": 68.181818,
+        "complete_code": "1116",
+        "complete_code_percent": 30.558598,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -120239,7 +120239,7 @@
         {
           "name": ".text",
           "size": "1029016",
-          "fuzzy_match_percent": 28.03943,
+          "fuzzy_match_percent": 30.558598,
           "metadata": {
             "virtual_address": "2150394212"
           }
@@ -174638,22 +174638,22 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 11.668448,
+        "fuzzy_match_percent": 11.677315,
         "total_code": "3653648",
-        "matched_code": "426324",
-        "matched_code_percent": 11.668448,
+        "matched_code": "426648",
+        "matched_code_percent": 11.677315,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 8964,
-        "matched_functions_percent": 53.072824,
-        "complete_code": "426324",
-        "complete_code_percent": 11.668448,
+        "matched_functions": 8968,
+        "matched_functions_percent": 53.096507,
+        "complete_code": "426648",
+        "complete_code_percent": 11.677315,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 16890,
-        "complete_units": 8964
+        "complete_units": 8968
       }
     },
     {
