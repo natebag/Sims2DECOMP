@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (9 promoted)
+## Source-Level Techniques (10 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -213,6 +213,53 @@ do {
 + `-fno-schedule-insns` (loop stability).
 
 Validated: TArray<EAnimNote>::Construct (76B, EString::SetToNull at offset 8) (Kmiworker2).
+
+### 10. `eresource-derived-ctor-cluster` — uniform-volatile-int + frame-pad recipe (3-INSTANCE)
+
+**Signature:** EResource-derived ctor that initializes vtable @ offset 0 plus
+N zeroed fields at non-zero offsets. GCC reorders the vt store to a late
+position despite source-listing it second. DOL emits stores in
+source-listed order (with vt second).
+
+**Root cause:** Mixed-type volatile (`volatile void**` for vt vs
+`volatile int*` for zero-stores) BREAKS GCC 2.95's volatile-ordering chain.
+Different pointer types don't establish the ordering constraint, so vt
+store gets scheduled late.
+
+**Fix (4-directive recipe, 3-INSTANCE-CANDIDATE validated):**
+
+1. **Uniform `*(volatile int*)`** cast for ALL stores — cast the vtable
+   pointer to int to keep store type consistent. Preserves volatile chain.
+2. **`volatile int _frame_pad[2]`** local — forces GCC to allocate the
+   extra 8B stack space that DOL ctors have (24B frame vs GCC's natural 16B).
+3. **2 swap_adj** for prologue reorder:
+   - `// ASMPROC_swap_adj: a=li b=lis which=first`
+   - `// ASMPROC_swap_adj: a=stw b=la which=first`
+4. **Sub-base pattern** for non-trivial offsets:
+   ```cpp
+   char* sub = (char*)this + N;
+   *(volatile int*)(sub + M) = 0;
+   // Generates: addi r11, r30, N; stw r0, M(r11)
+   ```
+   Matches DOL's indirect store pattern when DOL computes the offset via
+   a sub-base register.
+
+```cpp
+extern char MyClass_vt[];
+
+MyClass::MyClass() {
+    volatile int _frame_pad[2];
+    (void)_frame_pad;
+    *(volatile int*)((char*)this + N1) = 0;
+    *(volatile int*)((char*)this + 0)  = (int)MyClass_vt;
+    *(volatile int*)((char*)this + N2) = 0;
+    // ... etc.
+}
+```
+
+Validated: ERSoundTrackData @ 0x8036A144 (80B), REffectsEmitter @ 0x8036A7B4
+(80B), ERAmbientScore @ 0x80366D50 (112B) — all 3 commit f7d05576. Total
++272B in one batch.
 
 ---
 
