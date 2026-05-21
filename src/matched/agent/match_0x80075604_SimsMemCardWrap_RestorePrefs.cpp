@@ -1,13 +1,12 @@
-// 0x80075604 (40B) SimsMemCardWrap::RestorePrefs(void)
+// 0x80075604 SimsMemCardWrap::RestorePrefs (40b)
 
-struct Prefs;
-extern char g_prefsPtr[16];
-extern int DoRestore(Prefs*);
-
-struct SimsMemCardWrap {
-    void RestorePrefs();
+struct OptionsReconGlobal {
+    int* ptr;
+    int pad[2];
 };
+extern OptionsReconGlobal g_pOptionsRecon;
+extern int OptionsRecon__RestorePreferences_void(int*);
 
-void SimsMemCardWrap::RestorePrefs() {
-    DoRestore(*(Prefs**)g_prefsPtr);
+void SimsMemCardWrap_RestorePrefs() {
+    OptionsRecon__RestorePreferences_void(g_pOptionsRecon.ptr);
 }
