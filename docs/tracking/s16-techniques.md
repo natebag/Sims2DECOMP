@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (14 promoted)
+## Source-Level Techniques (17 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -415,6 +415,66 @@ similar counter++ + store patterns.
 
 S16-VALIDATED:
 - Commander::Commander (60B, commit 4e0e4e44) — S17-deferred wall cracked
+
+### 15. `uniform-volatile-int-ctor` — STANDARD mutator (4-instance validated)
+
+**Signature:** GCC 2.95 for NGC emits a different constructor pattern for `int`-sized
+POD types when the constructor body contains volatile stores versus plain stores.
+The volatile path forces register allocation and store ordering that matches DOL's
+expected `li r0, N; stw r0, offset(r3)` prologue.
+
+**Fix:** Use the STANDARD mutator `uniform-volatile-int-ctor` (ASMPROC composition):
+
+```cpp
+// ASMPROC_uniform_volatile_int_ctor
+// No source changes needed — mutator rewrites the constructor prologue.
+```
+
+Validated: 4 distinct instances across cTile/CasGenetics/ENDummyPoint families.
+Promoted to STANDARD in S16.
+
+### 16. `insert-mr-loop` — 5-directive ASMPROC recipe
+
+**Signature:** DOL has a specific `mr` copy at loop end that GCC eliminates via
+register coalescing. The `mr r3, r10` (or similar) is the loop's return-value setup.
+
+**Fix:** 5-directive ASMPROC chain:
+
+```cpp
+// ASMPROC_insert_mr_loop
+// Injects the missing mr at the correct loop-exit point.
+```
+
+Validated: Multiple loop-ctor patterns where GCC 2.95 refuses to emit the final
+copy without explicit register pressure.
+
+### 17. `sda21-ha-lo-declaration-control` — extern size controls addressing mode
+
+**Signature:** GCC's `-G 8` threshold controls SDA21-vs-ADDR16_HA/LO addressing
+mode selection based on the **declared size** of extern symbols. When DOL has
+MIXED addressing modes in the same function — e.g. r13-relative for one global
+plus `lis+addi` for another — GCC without guidance picks ONE mode for both.
+
+**Fix:** Size the extern declarations to cross (or stay under) the `-G 8` threshold:
+
+```cpp
+// For SDA21 (compact, r13-relative) — declare as small pointer:
+extern void* g_manager;     // EMB_SDA21 → r13-relative load
+
+// For ADDR16_HA/LO (regular lis+addi global) — declare as large array:
+extern char g_format[16];   // ADDR16_HA/LO → lis+addi pair
+```
+
+**Key insight:** GCC decides addressing mode at the declaration site, NOT at the
+use site. Two globals used in the same function can have different addressing modes
+if their extern declarations have different sizes relative to the `-G 8` threshold.
+
+**When to apply:** Any wall where DOL shows visible r13-relative loads alongside
+`lis+addi` globals in the same function. Without this technique, GCC harmonizes
+both to the same mode (usually SDA21 if any symbol qualifies).
+
+S16-VALIDATED:
+- GameData::StageStartFrame (68B, commit 69280fb47) — SDA21 manager pointer + HA/LO format arg
 
 ---
 
