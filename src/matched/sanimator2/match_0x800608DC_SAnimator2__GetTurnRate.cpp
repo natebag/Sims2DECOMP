@@ -1,36 +1,31 @@
-// 0x800608DC SAnimator2::GetTurnRate(void) (76B)
-// Pattern: 2 early-exits returning a hoisted const1, then field2C switch returning const2 or
-// fallback m_field_98. Two non-SDA float constants in same constant pool but emitted at separate
-// lis sites (cross-branch register liveness not preserved).
+// 0x800608DC (76B) SAnimator2::GetTurnRate()
+// Tech #17 sda21-ha-lo-declaration-control: char[16] forces HA/LO
 
-extern const float gTurnRate_const1[3];   // non-SDA float const at 0x803D4784
-extern const float gTurnRate_const2[3];   // non-SDA float const at 0x803D4788
+extern char DEFAULT_TURN1_18308[16];
+extern char DEFAULT_TURN2_18312[16];
 
 class SAnimator2 {
 public:
-    char pad_0[24];
-    int m_state;             // 24 (0x18)
-    char pad_28[16];
-    int m_field_2C;          // 44 (0x2C)
-    char pad_48[104];
-    float m_field_98;        // 152 (0x98)
-    char pad_156[1372];
-    char m_byte_5F8;         // 1528 (0x5F8)
-
+    int m_pad0[6];        // 0..23
+    int m_18;             // 24
+    int m_pad6[4];        // 28..43
+    int m_2C;             // 44
+    char m_padPad[152 - 48];
+    float m_98;           // 152
+    char m_pad10[1528 - 156];
+    unsigned char m_5F8;  // 1528
     float GetTurnRate();
 };
 
 float SAnimator2::GetTurnRate() {
-    float r = gTurnRate_const1[0];
-    int state = m_state;
-    if (state == 3) return r;
-    char b = m_byte_5F8;
-    if (b == 2) return r;
-    int f2c = m_field_2C;
-    if (f2c != 12) goto check_range;
-load_const2:
-    return gTurnRate_const2[0];
-check_range:
-    if ((unsigned)(f2c - 13) <= 1) goto load_const2;
-    return m_field_98;
+    float result = *(float*)DEFAULT_TURN1_18308;
+    if (m_18 == 3) return result;
+    if (m_5F8 == 2) return result;
+    int v = m_2C;
+    if (v != 12) goto check_others;
+def2:
+    return *(float*)DEFAULT_TURN2_18312;
+check_others:
+    if ((unsigned int)(v - 13) <= 1) goto def2;
+    return m_98;
 }
