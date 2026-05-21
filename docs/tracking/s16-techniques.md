@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (7 promoted)
+## Source-Level Techniques (9 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -160,6 +160,59 @@ float scale = SCALE[0];
 ```
 
 Validated: 88B RoutingSlot::SetTileDistances (OpusReviewGuy, commit ecf9f8a5).
+
+### 8. `builtin-memcpy-pod` — small POD struct copy batch-load-store (Kmiworker2)
+
+**Signature:** DOL emits a batch load-then-store pattern for small POD
+struct copy (e.g. 12-20B types like EVec3, FileCreator): all field loads
+first, then all field stores, then pointer increment/decrement. Explicit
+field-by-field copy in source produces interleaved load/store scheduling
+that diverges.
+
+**Fix:** Use `__builtin_memcpy(dst, src, sizeof(T))` inside the loop body.
+GCC 2.95 emits the batch pattern directly.
+
+```cpp
+// WRONG: interleaved loads/stores
+dst->m_a = src->m_a;
+dst->m_b = src->m_b;
+dst->m_c = src->m_c;
+
+// RIGHT: batch load-then-store
+__builtin_memcpy(dst, src, sizeof(T));
+```
+
+**Limitation:** Only works when DOL truly does batch load-store. Non-POD
+types with inlined op_assign or ctor calls between loads/stores need
+different recipes — check disasm first.
+
+**Pairs with:** `replace_insn` (register fixes), `gpr_relabel` (single-swap
+cases).
+
+Validated: TArray<FileCreator>::Copy (76B) + ::CopyReverse (92B) (Kmiworker2).
+
+### 9. `induction-var-walk` — TArray<T>::Construct subobject ctor loop (Kmiworker2)
+
+**Signature:** TArray<T>::Construct calls a subobject ctor at a fixed
+offset within each element. DOL uses an induction variable:
+`ptr = dst - offset_step; ptr += element_size; Ctor(ptr); ...`. Compiler
+keeps ptr in a callee-saved register (e.g. r31) and emits
+`addi r31, r31, N; mr r3, r31` loop body matching DOL.
+
+**Fix:** Source recipe with explicit induction variable:
+
+```cpp
+SubObject* ptr = (SubObject*)((char*)dst - offset_step);
+do {
+    ptr = (SubObject*)((char*)ptr + element_size);
+    SubObject_Ctor(ptr);
+} while (i-- != 0);
+```
+
+**Pairs with:** `extern void Ctor(void*)` declarations (to avoid inlining)
++ `-fno-schedule-insns` (loop stability).
+
+Validated: TArray<EAnimNote>::Construct (76B, EString::SetToNull at offset 8) (Kmiworker2).
 
 ---
 
