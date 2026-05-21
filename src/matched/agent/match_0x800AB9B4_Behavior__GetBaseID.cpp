@@ -1,22 +1,20 @@
-// 0x800AB9B4 (64B) Behavior::GetBaseID(short)
-// DOL layout: comparison chain → explicit b→done (v>3) → r1 → r2 → r3 → done
-// Key: explicit goto done after comparison chain forces the branch at +0x20
+// 0x800AB9B4 Behavior::GetBaseID(short) (64B)
 
 class Behavior {
 public:
-    static int GetBaseID(short v);
+    static int GetBaseID(short id);
 };
 
-int Behavior::GetBaseID(short v) {
-    int result = 0;
-    if (v == 1) goto r1;
-    if (v <= 1) goto done;
-    if (v == 2) goto r2;
-    if (v == 3) goto r3;
-    goto done;
-r1: result = 256; goto done;
-r2: result = 4096; goto done;
-r3: result = 8192;
-done:
-    return result;
+int Behavior::GetBaseID(short id) {
+    int r = 0;
+    if (id == 1) goto c1;
+    if (id <= 1) goto ex;
+    if (id == 2) goto c2;
+    if (id == 3) goto c3;
+    goto ex;
+c1: r = 0x100; goto ex;
+c2: r = 0x1000; goto ex;
+c3: r = 0x2000;
+ex:
+    return r;
 }

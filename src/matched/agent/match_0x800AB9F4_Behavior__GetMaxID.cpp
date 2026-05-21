@@ -1,21 +1,20 @@
-// 0x800AB9F4 (64B) Behavior::GetMaxID(short)
-// Sister of GetBaseID — identical goto-chain pattern, different return values.
+// 0x800AB9F4 Behavior::GetMaxID(short) (64B)
 
 class Behavior {
 public:
-    static int GetMaxID(short v);
+    static int GetMaxID(short id);
 };
 
-int Behavior::GetMaxID(short v) {
-    int result = 0;
-    if (v == 1) goto r1;
-    if (v <= 1) goto done;
-    if (v == 2) goto r2;
-    if (v == 3) goto r3;
-    goto done;
-r1: result = 4095; goto done;
-r2: result = 8191; goto done;
-r3: result = 9000;
-done:
-    return result;
+int Behavior::GetMaxID(short id) {
+    int r = 0;
+    if (id == 1) goto c1;
+    if (id <= 1) goto ex;
+    if (id == 2) goto c2;
+    if (id == 3) goto c3;
+    goto ex;
+c1: r = 0xfff; goto ex;
+c2: r = 0x1fff; goto ex;
+c3: r = 0x2328;
+ex:
+    return r;
 }
