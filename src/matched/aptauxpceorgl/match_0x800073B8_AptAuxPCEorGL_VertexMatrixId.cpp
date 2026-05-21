@@ -1,9 +1,10 @@
-/* AptAuxPCEorGL_VertexMatrixId(void) at 0x800073B8 (40B) */
+// 0x800073B8 (40 bytes) AptAuxPCEorGL_VertexMatrixId(void)
+// ASMPROC_replace_insn: match="ori 3,3,59312" replacement="addi 3,3,59312"
+struct EMat4 {
+    void Id();
+};
 
-extern char g_vertexMatrixObj[];
-
-void LoadVertexMatrixId(void*);
-
-void AptAuxPCEorGL_VertexMatrixId(void) {
-    LoadVertexMatrixId(g_vertexMatrixObj);
+void AptAuxPCEorGL_VertexMatrixId() {
+    EMat4* m = (EMat4*)0x8047E7B0;
+    m->Id();
 }
