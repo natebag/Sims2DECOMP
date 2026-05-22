@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 15.70997,
+    "fuzzy_match_percent": 15.712286,
     "total_code": "4145724",
-    "matched_code": "651292",
-    "matched_code_percent": 15.70997,
+    "matched_code": "651388",
+    "matched_code_percent": 15.712286,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9478,
-    "matched_functions_percent": 51.349009,
-    "complete_code": "651292",
-    "complete_code_percent": 15.70997,
+    "matched_functions": 9479,
+    "matched_functions_percent": 51.354426,
+    "complete_code": "651388",
+    "complete_code_percent": 15.712286,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 9478
+    "complete_units": 9479
   },
   "units": [
     {
@@ -2902,18 +2902,18 @@
     {
       "name": "camera",
       "measures": {
-        "fuzzy_match_percent": 9.653262,
+        "fuzzy_match_percent": 9.899467,
         "total_code": "38992",
-        "matched_code": "3764",
-        "matched_code_percent": 9.653262,
+        "matched_code": "3860",
+        "matched_code_percent": 9.899467,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 164,
-        "matched_functions": 84,
-        "matched_functions_percent": 51.219512,
-        "complete_code": "3764",
-        "complete_code_percent": 9.653262,
+        "matched_functions": 85,
+        "matched_functions_percent": 51.829268,
+        "complete_code": "3860",
+        "complete_code_percent": 9.899467,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -2923,7 +2923,7 @@
         {
           "name": ".text",
           "size": "3703516",
-          "fuzzy_match_percent": 9.653262,
+          "fuzzy_match_percent": 9.899467,
           "metadata": {
             "virtual_address": "2147571764"
           }
@@ -174638,22 +174638,22 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 12.561363,
+        "fuzzy_match_percent": 12.563991,
         "total_code": "3653648",
-        "matched_code": "458948",
-        "matched_code_percent": 12.561363,
+        "matched_code": "459044",
+        "matched_code_percent": 12.563991,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 9371,
-        "matched_functions_percent": 55.482534,
-        "complete_code": "458948",
-        "complete_code_percent": 12.561363,
+        "matched_functions": 9372,
+        "matched_functions_percent": 55.488455,
+        "complete_code": "459044",
+        "complete_code_percent": 12.563991,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 16890,
-        "complete_units": 9371
+        "complete_units": 9372
       }
     },
     {
