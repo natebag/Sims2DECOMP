@@ -1,0 +1,4 @@
+// 0x803649EC EFontSize::GetTypeKey(void) (12 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 9,-32688; lwz 3,-10468(9)"
+extern "C" int f_803649EC() {}
