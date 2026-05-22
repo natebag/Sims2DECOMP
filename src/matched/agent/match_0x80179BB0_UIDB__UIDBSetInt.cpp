@@ -16,9 +16,7 @@ struct UIDB {
 int UIDB::UIDBSetInt(char* key, int value) {
     if (!UIDB_g_pDB) return 0;
     UIDBRecord* rec = UIDB::UIDBFindRecord(key, 0x69);
-    if (rec != 0) goto found;
-    return 0;
-found:
+    if (rec == 0) return 0;
     rec->field_8 = value;
     return 1;
 }
