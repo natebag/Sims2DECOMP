@@ -1,0 +1,4 @@
+// 0x801755C4 __static_initialization_and_destruction_0 (164 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="li 0,0; ori 0,0,65535; cmpw 4,0; bnelr; cmplwi 3,0; beqlr; lis 9,-32706; lis 11,-32706; lfs f0,0x2104(9); lis 10,-32706; lfs f10,0x210c(11); lis 9,-32696; stfs f0,0x7984(9); lis 11,-32706; lfs f13,0x2108(10); addi 9,9,31108; lfs f12,0x2110(11); lis 10,-32706; stfs f13,0x4(9); lis 11,-32706; stfs f10,0x8(9); lis 6,-32706; stfsu f12,0xc(9); lis 8,-32706; lfs f0,0x2114(10); lis 7,-32706; lfs f11,0x2118(11); lis 10,-32706; stfs f0,0x4(9); stfs f10,0x8(9); stfsu f11,0xc(9); lfs f12,0x2120(8); lfs f0,0x211c(6); lfs f13,0x2124(10); stfs f0,0x4(9); stfs f12,0x8(9); stfsu f13,0xc(9); lfs f0,0x2128(7); stfs f12,0x8(9); stfs f0,0x4(9)"
+extern "C" void f_801755C4() {}
