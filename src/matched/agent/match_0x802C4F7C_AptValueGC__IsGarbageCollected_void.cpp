@@ -1,0 +1,3 @@
+// 0x802C4F7C AptValueGC::IsGarbageCollected(void) (8 B)
+// FLAGS: -fno-schedule-insns
+extern "C" int f_802C4F7C() { return 1; }
