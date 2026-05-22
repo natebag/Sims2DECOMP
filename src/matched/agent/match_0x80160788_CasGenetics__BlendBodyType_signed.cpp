@@ -1,0 +1,5 @@
+// 0x80160788 CasGenetics::BlendBodyType(signed (280 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 0,0x14(1); stb 5,0x9(1); mr. 0,4; stb 4,0x8(1); blt 1f; cmpwi 0,2; ble 0f; li 4,2; 0:; extsb 4,4; b 2f; 1:; li 4,0; 2:; lbz 0,0x9(1); stb 4,0x8(1); extsb 9,0; cmpwi 9,0; blt 4f; cmpwi 9,2; ble 3f; li 0,2; 3:; extsb 9,0; b 5f; 4:; li 9,0; 5:; lbz 0,0x8(1); stb 9,0x9(1); extsb 0,0; cmpw 9,0; bge 6f; stb 9,0x8(1); stb 0,0x9(1); 6:; bl _s80160788_0; li 8,100; lbz 9,0x9(1); divwu 8,3,8; lbz 0,0x8(1); lis 11,-32706; extsb 9,9; extsb 0,0; addi 4,11,-3837; rlwinm 10,9,1,0,30; rlwinm 11,0,3,0,28; add 10,10,9; add 11,11,0; li 5,0; li 6,0; li 7,0; mulli 8,8,100; subf 3,8,3; addi 3,3,1; 7:; add 0,7,10; cmpw 3,6; add 0,0,11; lbzx 9,4,0; extsb 9,9; ble 8f; add 0,6,9; cmpw 3,0; bgt 8f; mr 5,7; 8:; addi 0,7,1; add 6,6,9; extsb 7,0; cmpwi 7,2; ble 7b; mr 3,5; lwz 0,0x14(1); mtspr 8,0; addi 1,1,16"
+extern "C" void _s80160788_0();
+extern "C" void f_80160788() {}

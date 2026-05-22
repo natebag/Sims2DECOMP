@@ -1,4 +1,4 @@
-import struct, os, re
+import struct, os, re, glob
 
 DOL_PATH = 'extracted/sys/main.dol'
 DOL_TEXT_START = 0x80003100
@@ -7,10 +7,10 @@ OUT_DIR = 'src/matched/agent'
 BACKSLASH = chr(92)
 
 already_matched = set()
-for fn in os.listdir(OUT_DIR):
-    m = re.match(r'match_0[xX]([0-9A-Fa-f]{8})_', fn)
+for fn in glob.glob('src/matched/**/*.cpp', recursive=True):
+    m = re.search(r'match_(0[xX])?([0-9A-Fa-f]{8})_', fn)
     if m:
-        already_matched.add(int(m.group(1), 16))
+        already_matched.add(int(m.group(2), 16))
 
 syms = {}
 with open('extracted/files/u2_ngc_release_dvd.map') as f:
@@ -22,6 +22,24 @@ with open('extracted/files/u2_ngc_release_dvd.map') as f:
                 size = int(parts[1], 16)
                 name = parts[3]
                 if BACKSLASH in name or '/' in name:
+                    continue
+                if addr not in syms:
+                    syms[addr] = (size, name)
+            except:
+                pass
+
+# Fall back to release map for functions only present in the release build (not DVD)
+with open('extracted/files/u2_ngc_release.map', errors='replace') as f:
+    for line in f:
+        parts = line.split()
+        if len(parts) >= 4:
+            try:
+                addr = int(parts[0], 16)
+                size = int(parts[1], 16)
+                name = parts[3]
+                if BACKSLASH in name or '/' in name:
+                    continue
+                if '.obj' in name or name.startswith('.'):
                     continue
                 if addr not in syms:
                     syms[addr] = (size, name)
@@ -165,6 +183,8 @@ def insn_asm_extended(w):
             8: lambda: 'subfc {},{},{}'.format(rs, ra, rb),
             75: lambda: 'mulhw {},{},{}'.format(rs, ra, rb),
             11: lambda: 'mulhwu {},{},{}'.format(rs, ra, rb),
+            459: lambda: 'divwu {},{},{}'.format(rs, ra, rb),
+            491: lambda: 'divw {},{},{}'.format(rs, ra, rb),
             470: lambda: 'dcbi {},{}'.format(ra, rb),
             83: lambda: 'mfmsr {}'.format(rs),
             146: lambda: 'mtmsr {}'.format(rs),
@@ -260,6 +280,13 @@ def insn_asm_extended(w):
             return '{} f{},f{},f{},f{}'.format(da_sel[xop5], frt, fra, frc, frb)
         return None
     return None
+
+def insn_asm_extended_or_long(w):
+    """Like insn_asm_extended but falls back to '.long 0xXXXXXXXX' for unrecognized words."""
+    r = insn_asm_extended(w)
+    if r is not None:
+        return r
+    return '.long 0x{:08X}'.format(w)
 
 def safe_name(s):
     s = re.sub(r'[^A-Za-z0-9_]', '_', s)
@@ -362,8 +389,7 @@ def try_gen_stub_lines(addr, body_words):
             direction = 'f' if t > i else 'b'
             pieces.append('{} {}{}{}'.format(info['mnemonic'], info['cr_str'], lnum, direction))
         else:
-            asm = insn_asm_extended(w)
-            if asm is None: return None
+            asm = insn_asm_extended_or_long(w)
             pieces.append(asm)
 
     # If any branch targets the position after all body instructions (i.e., the blr),

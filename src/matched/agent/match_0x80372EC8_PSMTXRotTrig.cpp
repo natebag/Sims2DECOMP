@@ -1,0 +1,4 @@
+// 0x80372EC8 PSMTXRotTrig (176 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="frsp f5,f1; frsp f4,f2; lfs f0,-17964(13); lfs f1,-17968(13); ori 0,4,32; .long 0x10402850; cmplwi 0,120; beq 0f; cmplwi 0,121; beq 1f; cmplwi 0,122; beq 2f; b 3f; 0:; .long 0xF0238000; .long 0xF0030004; .long 0x10652420; .long 0xF003000C; .long 0x10241420; .long 0xF003001C; .long 0xF003802C; .long 0xF0630024; .long 0xF0230014; b 3f; 1:; .long 0x10640420; .long 0x10200C20; .long 0xF0030018; .long 0xF0630000; .long 0x10420420; .long 0x10050420; .long 0xF0630028; .long 0xF0230010; .long 0xF0030008; .long 0xF0430020; b 3f; 2:; .long 0xF0030008; .long 0x10652420; .long 0x10441420; .long 0xF0030018; .long 0xF0030020; .long 0x10210420; .long 0xF0630010; .long 0xF0430000; .long 0xF0230028; 3:"
+extern "C" float f_80372EC8() {}

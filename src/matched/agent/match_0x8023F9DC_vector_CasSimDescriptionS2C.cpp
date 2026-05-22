@@ -1,0 +1,6 @@
+// 0x8023F9DC vector<CasSimDescriptionS2C (308 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="add 6,5,6; b 0f; li 0,8; stb 0,0x0(7); addi 0,8,-1; not 6,0; lwz 0,0x4(3); add 5,8,0; addi 0,5,-1; and 6,6,0; add 0,6,8; stw 0,0x4(3); 0:; rlwinm. 0,4,0,24,31; bne 1f; lwz 6,0x0(6); 1:; mr 3,6; blr; li 3,-1; blr; stwu 1,-32(1); mfspr 0,8; stw 0,0x24(1); li 11,24; addi 9,1,8; mtspr 9,11; li 0,0; 2:; stb 0,0x0(9); addi 9,9,1; bdnz 2b; lis 9,-32694; li 0,16; lwz 11,-26476(9); rlwinm 0,0,8,0,23; li 9,9; sth 0,0xa(1); cmpwi 11,0; stb 9,0x8(1); beq 3f; stb 9,0x10(1); b 4f; 3:; li 0,11; stb 0,0x10(1); 4:; stw 3,0x14(1); li 3,24; stw 6,0x18(1); stw 5,0x1c(1); bl _s8023F9DC_0; addi 3,1,8; li 4,24; bl _s8023F9DC_1; lwz 0,0x24(1); mtspr 8,0; addi 1,1,32; blr; lis 5,-32694; lis 0,1; lwz 9,-26480(5); ori 0,0,64512; lis 6,1; cmplw 9,0; ori 6,6,64512; bgt 5f; lis 9,-32694; lwz 6,-26480(9); 5:; lwz 0,-26480(5); lis 8,-32700; li 10,2; lis 7,-32694; subf 0,6,0; rlwinm 11,6,22,10,31; stw 0,-26480(5); lis 9,-32694; stw 10,-23472(8); rlwinm 0,6,0,22,31; stw 11,-26488(7); stw 0,-26484(9)"
+extern "C" void _s8023F9DC_0();
+extern "C" void _s8023F9DC_1();
+extern "C" void f_8023F9DC() {}

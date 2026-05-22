@@ -1,0 +1,6 @@
+// 0x8032EF28 XOSFontGetWordSize(unsigned (340 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 25,0x14(1); stw 0,0x34(1); mr 31,1; lwz 9,-26456(13); mr 28,3; mr 29,4; mr 30,5; mr 26,1; cmpwi 9,0; bge 0f; addi 9,9,7; 0:; lwz 0,-26452(13); srawi 9,9,3; lwz 10,0x0(1); li 11,0; mullw 9,9,0; li 8,0; rlwinm 9,9,2,3,29; addi 9,9,14; rlwinm 9,9,0,2,28; neg 9,9; .long 0x7D41496E; stw 11,0x0(29); stw 11,0x0(30); addi 27,1,8; sth 8,0x8(31); lhz 0,0x0(28); cmpwi 0,0; beq 3f; li 25,1; 1:; lbz 0,0x1(28); lbz 9,0x9(31); extsb 11,0; rlwinm 0,0,8,0,23; cmpwi 11,10; or 9,9,0; sth 9,0x8(31); beq 3f; lhz 0,0x0(28); cmpwi 0,2560; beq 3f; cmpwi 11,32; bne 2f; lwz 0,0x0(30); cmpwi 0,0; bne 3f; stw 25,0x0(30); mr 4,27; addi 3,31,8; li 5,0; li 6,6; addi 7,31,12; bl _s8032EF28_0; lwz 0,0x0(29); lwz 9,0xc(31); add 0,0,9; stw 0,0x0(29); b 3f; 2:; addi 3,31,8; mr 4,27; li 5,0; li 6,6; addi 7,31,12; bl _s8032EF28_1; lwz 9,0xc(31); lwz 0,0x0(29); add 0,0,9; stw 0,0x0(29); lwz 9,0x0(30); addi 9,9,1; stw 9,0x0(30); lhzu 0,0x2(28); cmpwi 0,0; bne 1b; 3:; lwz 0,0x0(1); mr 1,26; stw 0,0x0(1); lwz 11,0x0(1); lwz 0,0x4(11); mtspr 8,0; lmw 25,-28(11); mr 1,11"
+extern "C" void _s8032EF28_0();
+extern "C" void _s8032EF28_1();
+extern "C" void f_8032EF28() {}

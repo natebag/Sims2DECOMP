@@ -1,0 +1,4 @@
+// 0x8035FB7C ERTQuantize4D::PruneChild(ERTQ4Node (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lhz 9,0x18(4); cmpwi 9,0; beq 0f; mulli 9,9,72; lwz 0,0x1008(3); add 7,0,9; b 1f; 0:; li 7,0; 1:; lbz 11,0x46(4); li 0,-2; lhz 9,0x3a(7); addi 8,7,26; .long 0x5C00583E; li 10,0; and 9,9,0; cmpwi 4,0; sth 9,0x3a(7); li 0,4; mtspr 9,0; li 11,0; lbz 0,0x46(4); add 0,0,0; sthx 10,8,0; lwz 9,0x14(7); lwz 0,0x14(4); add 9,9,0; stw 9,0x14(7); 2:; lfsx f0,11,7; lfsx f13,11,4; fadds f0,f0,f13; stfsx f0,11,7; addi 11,11,4; bdnz 2b; lwz 9,0x1010(3); addi 9,9,-1; stw 9,0x1010(3); beq 3f; lwz 9,0x1008(3); lis 0,14563; ori 0,0,36409; subf 9,9,4; mullw 9,9,0; rlwinm 4,9,29,16,31; b 4f; 3:; li 4,0; 4:; mr. 10,4; beqlr; mulli 11,10,72; lhz 0,0x1006(3); lwz 9,0x1008(3); sthx 0,9,11; sth 10,0x1006(3)"
+extern "C" void f_8035FB7C() {}

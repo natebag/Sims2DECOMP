@@ -1,0 +1,4 @@
+// 0x80390BB8 GXLoadTexMtxImm (180 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmplwi 4,64; blt 0f; addi 0,4,-64; rlwinm 4,0,2,0,29; addi 7,4,1280; b 1f; 0:; rlwinm 7,4,2,0,29; 1:; cmpwi 5,1; bne 2f; li 4,8; b 3f; 2:; li 4,12; 3:; addi 0,4,-1; rlwinm 6,0,16,0,15; li 0,16; lis 4,-13311; stb 0,-32768(4); or 0,7,6; cmpwi 5,0; stw 0,-32768(4); bne 4f; addi 4,4,-32768; .long 0xE0A30000; .long 0xE0830008; .long 0xE0630010; .long 0xE0430018; .long 0xE0230020; .long 0xE0030028; .long 0xF0A40000; .long 0xF0840000; .long 0xF0640000; .long 0xF0440000; .long 0xF0240000; .long 0xF0040000; blr; 4:; addi 4,4,-32768; .long 0xE0630000; .long 0xE0430008; .long 0xE0230010; .long 0xE0030018; .long 0xF0640000; .long 0xF0440000; .long 0xF0240000; .long 0xF0040000"
+extern "C" void f_80390BB8() {}

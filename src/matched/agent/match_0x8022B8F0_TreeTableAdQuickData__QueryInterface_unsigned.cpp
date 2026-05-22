@@ -1,0 +1,6 @@
+// 0x8022B8F0 TreeTableAdQuickData::QueryInterface(unsigned (112 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 0,0xc(1); mtspr 8,0; addi 1,1,8; blr; stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); bl _s8022B8F0_0; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8; blr; stwu 1,-32(1); mfspr 0,8; stmw 29,0x14(1); stw 0,0x24(1); mr 30,3; mr 29,4; addi 4,1,8; bl _s8022B8F0_1; lwz 0,0x8(1); mr 3,30; stw 0,0x0(29); lwz 0,0x24(1); mtspr 8,0; lmw 29,0x14(1); addi 1,1,32"
+extern "C" void _s8022B8F0_0();
+extern "C" void _s8022B8F0_1();
+extern "C" void f_8022B8F0() {}

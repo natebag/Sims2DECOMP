@@ -1,0 +1,5 @@
+// 0x802118D4 WantFear::Bookmark::GetBaseShader(Neighbor (280 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="bne 0f; li 3,0; b 8f; 0:; lwz 9,0x4(31); lha 3,0x390(9); lwz 0,0x394(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 7f; lwz 3,0x0(31); li 4,8; bl _s802118D4_0; mr. 3,3; li 11,0; beq 1f; lwz 11,0x4(3); 1:; cmpwi 11,0; beq 2f; lwz 9,0x4(11); lha 3,0x58(9); lwz 0,0x5c(9); add 3,11,3; mtspr 8,0; blrl; b 3f; 2:; li 3,0; 3:; lwz 3,0xc(3); li 0,0; cmpwi 3,0; beq 4f; lwz 0,0x0(3); 4:; cmpwi 0,0; bne 6f; cmpwi 31,0; beq 5f; lwz 9,0x4(31); lha 3,0x520(9); lwz 0,0x524(9); add 3,31,3; mtspr 8,0; blrl; b 8f; 5:; li 3,0; b 8f; 6:; mr 3,0; b 8f; 7:; lwz 9,0x4(31); lha 3,0x520(9); lwz 0,0x524(9); add 3,31,3; mtspr 8,0; blrl; 8:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16; blr; li 11,0; cmplwi 3,1; bgt 9f; rlwinm 0,3,2,0,29; addi 9,13,-21420; lwzx 0,9,0; cmpwi 0,0; beq 9f; mr 11,0; 9:; mr 3,11"
+extern "C" void _s802118D4_0();
+extern "C" int f_802118D4() {}

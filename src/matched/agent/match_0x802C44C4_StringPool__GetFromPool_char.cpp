@@ -1,0 +1,13 @@
+// 0x802C44C4 StringPool::GetFromPool(char (620 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); mr 29,3; lis 11,-32484; lbz 0,0x0(29); ori 11,11,40389; addi 8,29,1; lwz 7,-26896(13); extsb 9,0; lwz 3,-26900(13); cmpwi 9,0; beq 2f; lis 10,256; ori 10,10,403; 0:; addi 0,9,-65; cmplwi 0,25; bgt 1f; addi 9,9,32; 1:; lbz 0,0x0(8); xor 11,11,9; mullw 11,11,10; addi 8,8,1; extsb 9,0; cmpwi 9,0; bne 0b; 2:; rlwinm 0,11,0,16,31; cmpwi 0,0; bne 3f; li 0,17767; 3:; rlwinm 30,0,0,16,31; divw 0,30,7; mullw 0,0,7; subf 0,0,30; rlwinm 28,0,0,16,31; rlwinm 9,28,2,0,29; lwzx 31,9,3; cmpwi 31,0; beq 6f; 4:; lwz 3,0xc(31); lhz 0,0x6(3); cmpw 0,30; bne 5f; addi 3,3,8; mr 4,29; bl _s802C44C4_0; cmpwi 3,0; bne 5f; lwz 0,0x0(31); rlwinm 9,0,24,26,31; cmpwi 9,63; beq 14f; b 13f; 5:; lwz 31,0x10(31); cmpwi 31,0; bne 4b; 6:; lwz 31,-26892(13); cmpwi 31,0; beq 9f; lwz 0,0x0(31); lwz 9,0x10(31); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26892(13); stw 11,0x0(31); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 7f; rlwinm 0,11,0,3,1; stw 0,0x0(31); b 8f; 7:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 31,11,9; stw 0,0x4(8); 8:; addi 30,31,12; mr 3,30; bl _s802C44C4_1; cmpwi 3,0; bne 10f; mr 3,30; li 4,0; bl _s802C44C4_2; b 10f; 9:; lwz 3,-23020(13); li 4,20; bl _s802C44C4_3; bl _s802C44C4_4; mr 31,3; 10:; mr 4,29; addi 3,1,8; bl _s802C44C4_5; addi 30,31,12; lwz 11,0x8(1); lhz 9,0x0(11); addi 9,9,1; sth 9,0x0(11); lwz 4,0xc(31); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 11f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s802C44C4_6; 11:; lwz 0,0x8(1); stw 0,0xc(31); lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 12f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s802C44C4_7; 12:; mr 3,30; bl _s802C44C4_8; lwz 10,-26900(13); rlwinm 11,28,2,0,29; lis 4,-32702; lis 5,-32702; lwzx 0,11,10; addi 4,4,-15448; addi 5,5,-15544; li 6,464; stw 0,0x10(31); stwx 31,11,10; lwz 9,0x8(31); lwz 0,0xc(9); lha 3,0x8(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,0x0(31); rlwinm 9,0,24,26,31; 13:; cmplwi 9,62; bgt 14f; addi 9,9,1; rlwimi 0,9,8,18,23; stw 0,0x0(31); 14:; mr 3,31; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
+extern "C" void _s802C44C4_0();
+extern "C" void _s802C44C4_1();
+extern "C" void _s802C44C4_2();
+extern "C" void _s802C44C4_3();
+extern "C" void _s802C44C4_4();
+extern "C" void _s802C44C4_5();
+extern "C" void _s802C44C4_6();
+extern "C" void _s802C44C4_7();
+extern "C" void _s802C44C4_8();
+extern "C" void f_802C44C4() {}

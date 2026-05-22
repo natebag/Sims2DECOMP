@@ -1,0 +1,4 @@
+// 0x802CF54C ERTQuantize::PruneChild(ERTQNode (232 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lhz 9,0x20(4); cmpwi 9,0; beq 0f; mulli 9,9,56; lwz 0,0x108c(3); add 6,0,9; b 1f; 0:; li 6,0; 1:; lbz 11,0x35(4); li 0,-2; lbz 9,0x32(6); addi 8,6,34; .long 0x5C00583E; li 10,0; and 9,9,0; addi 11,6,12; stb 9,0x32(6); addi 7,4,12; cmpwi 4,0; lbz 0,0x35(4); add 0,0,0; sthx 10,8,0; lwz 9,0x1c(4); lwz 0,0x1c(6); lfs f13,0xc(6); add 0,0,9; stw 0,0x1c(6); lfs f0,0xc(4); fadds f13,f13,f0; stfs f13,0xc(6); lfs f11,0x4(7); lfs f0,0x4(11); lfs f12,0x8(11); fadds f0,f0,f11; stfs f0,0x4(11); lfs f13,0x8(7); fadds f12,f12,f13; stfs f12,0x8(11); lwz 9,0x1094(3); addi 9,9,-1; stw 9,0x1094(3); beq 2f; lwz 9,0x108c(3); lis 0,-18725; ori 0,0,28087; subf 9,9,4; mullw 9,9,0; rlwinm 4,9,29,16,31; b 3f; 2:; li 4,0; 3:; mr. 10,4; beqlr; mulli 11,10,56; lhz 0,0x108a(3); lwz 9,0x108c(3); sthx 0,9,11; sth 10,0x108a(3)"
+extern "C" void f_802CF54C() {}

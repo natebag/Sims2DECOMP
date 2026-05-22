@@ -1,0 +1,4 @@
+// 0x803BF8F0 sqrtf (248 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmplw 0,3; blt 3f; mr 8,3; mr 11,7; cmpwi 8,0; rlwinm 27,8,3,0,28; ble 1f; 0:; lwz 0,0x0(10); addic. 8,8,-1; lwz 9,0x4(10); stw 0,0x0(11); addi 10,10,8; stw 9,0x4(11); addi 11,11,8; bgt 0b; 1:; lwz 0,0x4(31); mr 9,11; cmpw 9,0; beq 7f; 2:; addi 9,9,8; cmpw 9,0; bne 2b; b 7f; 3:; mr 10,30; rlwinm 27,3,3,0,28; mr. 8,0; ble 5f; 4:; lwz 0,0x0(10); addic. 8,8,-1; lwz 9,0x4(10); stw 0,0x0(11); addi 10,10,8; stw 9,0x4(11); addi 11,11,8; bgt 4b; 5:; lwz 0,0x4(31); lwz 9,0x0(31); mr 10,0; lwz 11,0x0(4); subf 0,9,0; lwz 4,0x4(4); rlwinm 0,0,0,0,28; add 11,0,11; cmpw 11,4; beq 7f; 6:; lwz 0,0x0(11); stw 0,0x0(10); lwz 9,0x4(11); addi 11,11,8; stw 9,0x4(10); cmpw 11,4; addi 10,10,8; bne 6b; 7:; lwz 0,0x0(31); add 0,0,27; stw 0,0x4(31); mr 3,31; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
+extern "C" void f_803BF8F0() {}

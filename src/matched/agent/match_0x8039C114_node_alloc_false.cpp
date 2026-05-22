@@ -1,0 +1,6 @@
+// 0x8039C114 __node_alloc<false, (324 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 30,3; mr 29,4; 0:; lwz 0,0x0(29); lwz 9,-25200(13); mullw 11,30,0; lwz 3,-25204(13); subf 10,3,9; cmplw 10,11; blt 2f; add 0,3,11; stw 0,-25204(13); b 8f; 1:; lwz 9,0x0(10); add 0,10,11; stw 0,-25200(13); stwx 9,8,7; stw 10,-25204(13); b 0b; 2:; cmplw 10,30; blt 3f; divwu 0,10,30; stw 0,0x0(29); mullw 11,30,0; lwz 3,-25204(13); add 0,3,11; stw 0,-25204(13); b 8f; 3:; lwz 9,-25196(13); add 0,11,11; cmpwi 10,0; rlwinm 9,9,28,4,31; addi 9,9,7; rlwinm 9,9,0,0,28; add 31,0,9; beq 4f; addi 0,10,-1; lis 9,-32698; rlwinm 0,0,31,1,29; addi 9,9,-22352; lwzx 11,9,0; stw 11,0x0(3); stwx 3,9,0; 4:; mr 3,31; bl _s8039C114_0; mr. 3,3; stw 3,-25204(13); bne 7f; mr 11,30; cmplwi 11,128; bgt 6f; lis 9,-32698; addi 7,9,-22352; 5:; addi 0,11,-1; rlwinm 8,0,31,1,29; lwzx 10,8,7; cmpwi 10,0; bne 1b; addi 11,11,8; cmplwi 11,128; ble 5b; 6:; li 0,0; mr 3,31; stw 0,-25200(13); bl _s8039C114_1; stw 3,-25204(13); 7:; lwz 0,-25196(13); lwz 9,-25204(13); add 0,0,31; add 9,9,31; stw 0,-25196(13); stw 9,-25200(13); b 0b; 8:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void _s8039C114_0();
+extern "C" void _s8039C114_1();
+extern "C" void f_8039C114() {}

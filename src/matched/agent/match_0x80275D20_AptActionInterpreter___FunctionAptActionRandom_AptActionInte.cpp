@@ -1,0 +1,8 @@
+// 0x80275D20 AptActionInterpreter::_FunctionAptActionRandom(AptActionInterpreter (400 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 29,3; lwz 9,0x0(29); lwz 0,0x8(29); rlwinm 9,9,2,0,29; add 9,9,0; lwz 31,-4(9); lwz 0,0x0(31); andis. 9,0,2048; bne 0f; li 28,0; b 1f; 0:; bl _s80275D20_0; mr 30,3; mr 3,31; bl _s80275D20_1; divwu 0,30,3; mullw 0,0,3; subf 28,0,30; 1:; lwz 30,-26908(13); cmpwi 30,0; beq 4f; lwz 0,0x0(30); lwz 9,0xc(30); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26908(13); stw 11,0x0(30); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 2f; rlwinm 0,11,0,3,1; stw 0,0x0(30); b 3f; 2:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 30,11,9; stw 0,0x4(8); 3:; stw 28,0xc(30); mr 31,30; b 5f; 4:; lwz 3,-23020(13); li 4,16; bl _s80275D20_2; mr 30,3; li 4,7; mr 31,30; bl _s80275D20_3; lis 9,-32702; stw 28,0xc(30); addi 9,9,-24344; stw 9,0x8(30); 5:; lwz 9,0x0(29); cmpwi 9,0; ble 6f; lwz 0,0x8(29); rlwinm 9,9,2,0,29; lis 4,-32704; lis 5,-32704; add 9,9,0; addi 5,5,5812; lwz 11,-4(9); addi 4,4,5964; li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(29); addi 9,9,-1; stw 9,0x0(29); 6:; lwz 9,0x0(29); lis 4,-32704; lwz 10,0x8(29); lis 5,-32704; rlwinm 11,9,2,0,29; addi 4,4,5760; stwx 31,11,10; addi 9,9,1; stw 9,0x0(29); addi 5,5,5812; li 6,138; lwz 9,0x8(31); lha 3,0x8(9); lwz 0,0xc(9); add 3,31,3; mtspr 8,0; blrl; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void _s80275D20_0();
+extern "C" void _s80275D20_1();
+extern "C" void _s80275D20_2();
+extern "C" void _s80275D20_3();
+extern "C" void f_80275D20() {}

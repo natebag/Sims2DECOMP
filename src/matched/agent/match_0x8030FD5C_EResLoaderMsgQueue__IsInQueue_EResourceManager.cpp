@@ -1,0 +1,4 @@
+// 0x8030FD5C EResLoaderMsgQueue::IsInQueue(EResourceManager (252 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 31,3; mr 28,5; mr. 29,4; bne 1f; b 5f; 0:; lwz 9,0x4c(31); lha 3,0x18(9); lwz 0,0x1c(9); add 3,30,3; mtspr 8,0; blrl; li 3,1; b 6f; 1:; lwz 9,0x4c(31); addi 30,31,76; li 4,-1; lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,30,3; blrl; lwz 0,0x30(31); lwz 11,0x34(31); cmpw 11,0; beq 4f; lwz 8,0x3c(31); mr 10,0; 2:; rlwinm 9,11,2,0,29; lwzx 9,9,8; cmpwi 9,0; beq 3f; lwz 0,0x0(9); cmpwi 0,3; bne 3f; lwz 0,0x4(9); cmpw 0,29; bne 3f; lwz 0,0x8(9); cmpw 0,28; beq 0b; 3:; lwz 0,0x38(31); addi 11,11,1; divw 9,11,0; mullw 9,9,0; subf 11,9,11; cmpw 11,10; bne 2b; 4:; lwz 9,0x4c(31); lha 3,0x18(9); lwz 0,0x1c(9); add 3,30,3; mtspr 8,0; blrl; 5:; li 3,0; 6:; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void f_8030FD5C() {}

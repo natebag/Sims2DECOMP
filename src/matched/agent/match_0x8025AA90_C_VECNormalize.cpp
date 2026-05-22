@@ -1,0 +1,4 @@
+// 0x8025AA90 C_VECNormalize (200 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); lfs f1,0x0(3); lfs f0,0x4(3); fmuls f2,f1,f1; lfs f3,0x8(3); fmuls f1,f0,f0; lfs f0,-18512(13); fmuls f3,f3,f3; fadds f1,f2,f1; fadds f1,f3,f1; fcmpo f0,f1,f0; fmr f4,f1; ble 0f; .long 0xFC202034; lfd f3,-18504(13); lfd f2,-18496(13); fmul f0,f1,f1,f0; fmul f1,f3,f1,f0; fmul f0,f4,f0,f0; fsub f0,f2,f0; fmul f1,f1,f0,f0; fmul f0,f1,f1,f0; fmul f1,f3,f1,f0; fmul f0,f4,f0,f0; fsub f0,f2,f0; fmul f1,f1,f0,f0; fmul f0,f1,f1,f0; fmul f1,f3,f1,f0; fmul f0,f4,f0,f0; fsub f0,f2,f0; fmul f0,f1,f0,f0; fmul f0,f4,f0,f0; frsp f0,f0; stfs f0,0x10(1); lfs f2,0x10(1); b 1f; 0:; fmr f2,f4; 1:; lfs f1,-18488(13); lfs f0,0x0(3); fdivs f1,f1,f2; fmuls f0,f0,f1; stfs f0,0x0(4); lfs f0,0x4(3); fmuls f0,f0,f1; stfs f0,0x4(4); lfs f0,0x8(3); fmuls f0,f0,f1; stfs f0,0x8(4); addi 1,1,24"
+extern "C" void f_8025AA90() {}
