@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (17 promoted)
+## Source-Level Techniques (18 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -480,6 +480,39 @@ S16-VALIDATED (4-instance STANDARD cluster):
 - MUStatesLoadConfig (commit 4c141fdb) — extern char[16] + bl chain
 - THREADEXEC_MU_SaveNewGame (commit b896c1e15) — extern char[16] + SDA flag + bl chain
 - GameData::GamePlayShutdown (72B, commit 819242ec2) — OpusReviewGuy cross-lane crack via Tech #17 char[16] extern
+
+### 18. `-fno-schedule-insns + void* zero_p separate-register` — STANDARD (store-reorder + reg-split)
+
+**Status:** STANDARD-TRACK (3-instance validation cluster confirmed)
+
+**Signature:** GCC 2.95 reorders stores AND aliases zero across `int` and `void*`
+types, causing both scheduling divergence AND register-allocation divergence in
+the same wall. Two independent problems that compound into a single mismatch.
+
+**Fix:** Combine flag-level + source-level fixes:
+
+```cpp
+// Flag-level: prevent store reordering
+// Compile with: -fno-schedule-insns
+
+// Source-level: force separate register for null-pointer value
+void* zero_p = 0;   // Forces separate register (prevents r0 aliasing with int 1)
+```
+
+**Key insight:** GCC's register allocator treats `int 0` and `void* 0` as the
+same value (both become `li r0, 0`), causing aliasing when both are live. By
+explicitly creating a `void*` local, GCC is forced to allocate a separate
+register for the null-pointer value, preventing the alias.
+
+**When to apply:** Any wall where:
+- DOL shows stores in source-listed order but GCC reorders them (store-reorder)
+- AND/OR the wall has both `int` zero and `void*` null in the same function
+  with register-allocation divergence (r0 aliasing)
+
+S16-VALIDATED (3-instance STANDARD cluster):
+- G2DTarget::HideDialog (96B, commit) — store-reorder fix
+- CameraDirector::InitCurrentCamera (100B, commit) — store-reorder + reg-split
+- MMUTarget::OnDialogClose (104B, commit) — store-reorder + struct global
 
 ---
 
