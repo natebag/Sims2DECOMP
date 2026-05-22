@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 99.938346,
+    "fuzzy_match_percent": 99.935645,
     "total_code": "4145724",
-    "matched_code": "4143168",
-    "matched_code_percent": 99.938346,
+    "matched_code": "4143056",
+    "matched_code_percent": 99.935645,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 18443,
-    "matched_functions_percent": 99.918734,
-    "complete_code": "4143168",
-    "complete_code_percent": 99.938346,
+    "matched_functions": 18442,
+    "matched_functions_percent": 99.913317,
+    "complete_code": "4143056",
+    "complete_code_percent": 99.935645,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 18443
+    "complete_units": 18442
   },
   "units": [
     {
@@ -102338,28 +102338,28 @@
     {
       "name": "os.a(OSReset.o)",
       "measures": {
-        "fuzzy_match_percent": 100.0,
+        "fuzzy_match_percent": 93.253012,
         "total_code": "1660",
-        "matched_code": "1660",
-        "matched_code_percent": 100.0,
+        "matched_code": "1548",
+        "matched_code_percent": 93.253012,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 10,
-        "matched_functions": 10,
-        "matched_functions_percent": 100.0,
-        "complete_code": "1660",
-        "complete_code_percent": 100.0,
+        "matched_functions": 9,
+        "matched_functions_percent": 90.0,
+        "complete_code": "1548",
+        "complete_code_percent": 93.253012,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
-        "complete_units": 1
+        "complete_units": 0
       },
       "sections": [
         {
           "name": ".text",
           "size": "1660",
-          "fuzzy_match_percent": 100.0,
+          "fuzzy_match_percent": 93.253012,
           "metadata": {
             "virtual_address": "2149911948"
           }
@@ -102448,7 +102448,7 @@
         }
       ],
       "metadata": {
-        "complete": true,
+        "complete": false,
         "progress_categories": [
           "sdk"
         ]
@@ -174660,22 +174660,22 @@
       "id": "sdk",
       "name": "DolphinSDK (Metrowerks, unmatchable)",
       "measures": {
-        "fuzzy_match_percent": 99.735,
+        "fuzzy_match_percent": 99.71224,
         "total_code": "492076",
-        "matched_code": "490772",
-        "matched_code_percent": 99.735,
+        "matched_code": "490660",
+        "matched_code_percent": 99.71224,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 1568,
-        "matched_functions": 1559,
-        "matched_functions_percent": 99.42602,
-        "complete_code": "490772",
-        "complete_code_percent": 99.735,
+        "matched_functions": 1558,
+        "matched_functions_percent": 99.362245,
+        "complete_code": "490660",
+        "complete_code_percent": 99.71224,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1568,
-        "complete_units": 1559
+        "complete_units": 1558
       }
     }
   ]
