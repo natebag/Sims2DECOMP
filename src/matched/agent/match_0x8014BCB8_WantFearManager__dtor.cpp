@@ -1,15 +1,21 @@
-// 0x8014BCB8 WantFearManager::~WantFearManager (76B)
-// dtor: if (m_resource) m_resource->DelRef(); delete-flag check.
+// 0x8014BCB8 WantFearManager::~WantFearManager() (76B)
 
-struct EResource {
+class EResource {
+public:
     void DelRef();
 };
 
-struct WantFearManager {
-    EResource* m_resource;
+class WantFearManager {
+public:
+    EResource* m_0;
+    int m_4, m_8, m_C, m_10;
+    char pad14[4];
+    int m_18;
     ~WantFearManager();
 };
 
 WantFearManager::~WantFearManager() {
-    if (m_resource != 0) m_resource->DelRef();
+    if (m_0 != 0) {
+        m_0->DelRef();
+    }
 }
