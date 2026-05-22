@@ -1,11 +1,13 @@
-// PRAGMA_STUB: HUDTarget::RemoveHUDControl(short, short)
 // 0x801892D4 HUDTarget::RemoveHUDControl(short, short) (40B)
-struct HUDTarget;
 
-extern const char* GetJobHUDControlName(short ctl);
+extern char* GetJobHUDControlName(short id);
 
-int HUDTarget__RemoveHUDControl(HUDTarget* self, short c1, short c2) {
-    (void)c1;
-    GetJobHUDControlName(c2);
-    return 1;
+class HUDTarget {
+public:
+    bool RemoveHUDControl(short id, short val);
+};
+
+bool HUDTarget::RemoveHUDControl(short id, short val) {
+    GetJobHUDControlName(val);
+    return true;
 }
