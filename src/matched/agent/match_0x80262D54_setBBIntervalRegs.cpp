@@ -1,0 +1,4 @@
+// 0x80262D54 setBBIntervalRegs (188 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lhz 0,0x10(3); lis 4,-32694; lbz 5,0xc(3); addi 4,4,-16744; rlwinm 0,0,5,0,26; or 0,5,0; sth 0,0x16(4); lis 7,16; lis 6,32; lwz 8,-23240(13); lis 5,4; lis 0,8; lwz 9,-23236(13); or 7,8,7; stw 9,-23236(13); stw 7,-23240(13); lhz 7,0x14(3); lbz 8,0xe(3); rlwinm 7,7,5,0,26; or 7,8,7; sth 7,0x14(4); lwz 7,-23240(13); lwz 8,-23236(13); or 6,7,6; stw 8,-23236(13); stw 6,-23240(13); lhz 6,0x12(3); lbz 7,0xd(3); rlwinm 6,6,5,0,26; or 6,7,6; sth 6,0x1a(4); lwz 6,-23240(13); lwz 7,-23236(13); or 5,6,5; stw 7,-23236(13); stw 5,-23240(13); lhz 5,0x16(3); lbz 6,0xf(3); rlwinm 3,5,5,0,26; or 3,6,3; sth 3,0x18(4); lwz 3,-23240(13); lwz 4,-23236(13); or 0,3,0; stw 4,-23236(13); stw 0,-23240(13)"
+extern "C" void f_80262D54() {}

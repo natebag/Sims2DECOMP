@@ -1,0 +1,4 @@
+// 0x80263200 setHorizontalRegs (204 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 6,-32694; lhz 0,0x1a(3); addi 6,6,-16744; sth 0,0x6(6); rlwinm 0,5,0,16,31; lis 5,4096; lwz 8,-23240(13); rlwinm 10,4,0,16,31; lis 7,8192; lwz 9,-23236(13); or 4,8,5; subfic 8,0,720; stw 9,-23236(13); lis 5,1024; lis 0,2048; stw 4,-23240(13); lbz 4,0x1d(3); lbz 9,0x1e(3); rlwimi 9,4,8,16,23; sth 9,0x4(6); lwz 4,-23240(13); lwz 9,-23236(13); or 4,4,7; stw 9,-23236(13); stw 4,-23240(13); lbz 4,0x1f(3); lhz 7,0x20(3); add 9,4,10; lbz 4,0x1c(3); addi 9,9,-40; rlwinm 3,9,7,16,24; or 3,4,3; sth 3,0xa(6); add 3,7,10; addi 3,3,40; lwz 7,-23240(13); subf 3,8,3; rlwinm 4,9,23,9,31; lwz 8,-23236(13); rlwinm 3,3,1,0,30; or 5,7,5; stw 8,-23236(13); or 3,4,3; stw 5,-23240(13); sth 3,0x8(6); lwz 3,-23240(13); lwz 4,-23236(13); or 0,3,0; stw 4,-23236(13); stw 0,-23240(13)"
+extern "C" void f_80263200() {}

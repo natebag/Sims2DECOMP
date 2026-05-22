@@ -1,0 +1,4 @@
+// 0x80035460 ESpriteRender::ESpriteRender(void) (208 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 11,-32698; li 0,0; mr 10,3; addi 11,11,-18840; stw 11,0xe8(10); addi 9,10,164; stw 0,0xa4(10); lis 8,-32707; stw 0,0x4(9); lis 11,-32765; stw 0,0x8(9); addi 11,11,23560; stw 0,0xc(9); stw 0,0x10(9); stw 0,0x14(9); stw 0,0x18(9); stw 0,0x1c(9); stw 0,0x20(9); stw 0,0x24(9); stw 0,0x28(9); lfs f0,0x14f8(8); stw 0,0x34(9); stfs f0,0x30(9); stfs f0,0x2c(9); stw 0,0x0(10); stw 0,0x4(10); stw 0,0x8(10); stw 0,0x10(10); stw 0,0x34(10); stw 0,0x18(10); stw 0,0x20(10); stw 0,0xa4(10); stw 0,0x4(9); stw 0,0x8(9); stw 0,0xc(9); stw 0,0x10(9); stw 0,0x14(9); stw 0,0x18(9); stw 0,0x1c(9); stw 0,0x20(9); stw 0,0x24(9); stw 0,0x34(9); stw 11,0xb8(10); stw 0,0x30(10); stw 10,0xbc(10); stw 0,0xc(10); stw 0,0x14(10); stw 0,0x1c(10); stw 0,0x24(10); stw 0,0x28(10); stw 0,0x2c(10)"
+extern "C" void f_80035460() {}

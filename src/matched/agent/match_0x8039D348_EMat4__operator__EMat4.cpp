@@ -1,0 +1,4 @@
+// 0x8039D348 EMat4::operator=(EMat4 (136 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 11,0x0(4); lwz 12,0x4(4); mr 8,3; stw 11,0x0(8); stw 12,0x4(8); lwz 9,0x8(4); lwz 10,0xc(4); stw 9,0x8(8); stw 10,0xc(8); lwz 11,0x10(4); lwz 12,0x14(4); stw 11,0x10(8); stw 12,0x14(8); lwz 9,0x18(4); lwz 10,0x1c(4); stw 9,0x18(8); stw 10,0x1c(8); lwz 11,0x20(4); lwz 12,0x24(4); stw 11,0x20(8); stw 12,0x24(8); lwz 9,0x28(4); lwz 10,0x2c(4); stw 9,0x28(8); stw 10,0x2c(8); lwz 11,0x30(4); lwz 12,0x34(4); stw 11,0x30(8); stw 12,0x34(8); lwz 9,0x38(4); lwz 10,0x3c(4); stw 9,0x38(8); stw 10,0x3c(8)"
+extern "C" void f_8039D348() {}

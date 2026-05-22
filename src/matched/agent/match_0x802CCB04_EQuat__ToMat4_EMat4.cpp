@@ -1,0 +1,4 @@
+// 0x802CCB04 EQuat::ToMat4(EMat4 (196 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lfs f7,0x0(3); lis 11,-32702; lfs f10,0x4(3); lis 9,-32702; lfs f11,0x8(3); fadds f3,f7,f7; lfs f4,0xc(3); fadds f12,f10,f10; fadds f13,f11,f11; lfs f0,-7336(11); fmuls f8,f3,f7; lfs f6,-7340(9); fmuls f9,f12,f10; stfs f0,0x38(4); fmuls f2,f13,f4; stfs f0,0xc(4); fmuls f3,f3,f4; stfs f0,0x1c(4); fmuls f11,f13,f11; stfs f0,0x2c(4); fadds f1,f8,f9; stfs f0,0x30(4); fmuls f5,f13,f7; stfs f0,0x34(4); fmuls f4,f12,f4; stfs f6,0x3c(4); fmuls f13,f13,f10; fadds f8,f8,f11; fmuls f12,f12,f7; fadds f9,f9,f11; fsubs f0,f12,f2; fadds f11,f5,f4; stfs f0,0x10(4); fsubs f10,f13,f3; stfs f11,0x20(4); fsubs f9,f6,f9; stfs f10,0x24(4); fsubs f8,f6,f8; stfs f9,0x0(4); fsubs f6,f6,f1; stfs f8,0x14(4); fadds f12,f12,f2; stfs f6,0x28(4); fsubs f5,f5,f4; stfs f12,0x4(4); fadds f13,f13,f3; stfs f5,0x8(4); stfs f13,0x18(4)"
+extern "C" void f_802CCB04() {}

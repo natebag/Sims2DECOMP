@@ -1,0 +1,4 @@
+// 0x80391C9C GXClearMemMetric (168 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 3,-21988(13); li 0,0; sth 0,0x32(3); lwz 3,-21988(13); sth 0,0x34(3); lwz 3,-21988(13); sth 0,0x36(3); lwz 3,-21988(13); sth 0,0x38(3); lwz 3,-21988(13); sth 0,0x3c(3); lwz 3,-21988(13); sth 0,0x3a(3); lwz 3,-21988(13); sth 0,0x40(3); lwz 3,-21988(13); sth 0,0x3e(3); lwz 3,-21988(13); sth 0,0x44(3); lwz 3,-21988(13); sth 0,0x42(3); lwz 3,-21988(13); sth 0,0x48(3); lwz 3,-21988(13); sth 0,0x46(3); lwz 3,-21988(13); sth 0,0x4c(3); lwz 3,-21988(13); sth 0,0x4a(3); lwz 3,-21988(13); sth 0,0x50(3); lwz 3,-21988(13); sth 0,0x4e(3); lwz 3,-21988(13); sth 0,0x54(3); lwz 3,-21988(13); sth 0,0x52(3); lwz 3,-21988(13); sth 0,0x58(3); lwz 3,-21988(13); sth 0,0x56(3)"
+extern "C" void f_80391C9C() {}

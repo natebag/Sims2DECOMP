@@ -1,0 +1,4 @@
+// 0x802CA30C EMat4::PostScale(EVec3 (200 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mr 9,3; lfs f11,0x0(4); lfs f0,0x0(9); lfs f13,0x10(9); fmuls f0,f0,f11; lfs f12,0x20(9); stfs f0,0x0(9); lfs f11,0x30(9); lfs f0,0x0(4); lfs f10,0x4(9); fmuls f13,f13,f0; lfs f9,0x14(9); stfs f13,0x10(9); lfs f8,0x24(9); lfs f0,0x0(4); lfs f13,0x34(9); fmuls f12,f12,f0; lfs f7,0x8(9); stfs f12,0x20(9); lfs f6,0x18(9); lfs f0,0x0(4); lfs f12,0x28(9); fmuls f11,f11,f0; lfs f5,0x38(9); stfs f11,0x30(9); lfs f0,0x4(4); fmuls f10,f10,f0; stfs f10,0x4(9); lfs f0,0x4(4); fmuls f9,f9,f0; stfs f9,0x14(9); lfs f0,0x4(4); fmuls f8,f8,f0; stfs f8,0x24(9); lfs f0,0x4(4); fmuls f13,f13,f0; stfs f13,0x34(9); lfs f0,0x8(4); fmuls f7,f7,f0; stfs f7,0x8(9); lfs f0,0x8(4); fmuls f6,f6,f0; stfs f6,0x18(9); lfs f0,0x8(4); fmuls f12,f12,f0; stfs f12,0x28(9); lfs f0,0x8(4); fmuls f5,f5,f0; stfs f5,0x38(9)"
+extern "C" void f_802CA30C() {}
