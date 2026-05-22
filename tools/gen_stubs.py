@@ -23,6 +23,8 @@ with open('extracted/files/u2_ngc_release_dvd.map') as f:
                 name = parts[3]
                 if BACKSLASH in name or '/' in name:
                     continue
+                if size == 0 or name.startswith('.') or name.startswith('<'):
+                    continue
                 if addr not in syms:
                     syms[addr] = (size, name)
             except:
@@ -39,7 +41,9 @@ with open('extracted/files/u2_ngc_release.map', errors='replace') as f:
                 name = parts[3]
                 if BACKSLASH in name or '/' in name:
                     continue
-                if '.obj' in name or name.startswith('.'):
+                if '.obj' in name or name.startswith('.') or name.startswith('<'):
+                    continue
+                if size == 0:
                     continue
                 if addr not in syms:
                     syms[addr] = (size, name)
