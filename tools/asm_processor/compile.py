@@ -185,10 +185,11 @@ def diff_bytes_with_relocs(
             continue
         is_local = target.startswith(".text")
         if is_local and rtype in ("R_PPC_REL14", "R_PPC_REL24"):
-            m = re.match(r"\.text\+0x([0-9a-fA-F]+)", target)
+            # objdump omits the "+0x0" suffix when the target offset is zero
+            m = re.match(r"\.text(?:\+0x([0-9a-fA-F]+))?$", target)
             if not m:
                 continue
-            tgt_off = int(m.group(1), 16)
+            tgt_off = int(m.group(1), 16) if m.group(1) else 0
             disp = tgt_off - off
             instr = (
                 (comp_b[off] << 24)

@@ -195,6 +195,8 @@ def insn_asm_extended(w):
             146: lambda: 'mtmsr {}'.format(rs),
             210: lambda: 'mtsr {},{}'.format(ra, rs),
             854: lambda: 'eieio',
+            371: lambda: 'mftb {},{}'.format(rs, ra | (rb << 5)),
+            439: lambda: 'mftbu {},{}'.format(rs, ra | (rb << 5)),
         }
         fn = xop_map.get(xop)
         if fn is None: return None
