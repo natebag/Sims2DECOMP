@@ -1,0 +1,5 @@
+// 0x803C6D00 void (272 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stmw 26,0x28(1); stw 0,0x44(1); mr 30,3; mr 26,4; mr 27,5; cmpw 30,26; beq 5f; addi 31,30,12; cmpw 31,26; beq 5f; lis 28,-21846; addi 29,1,8; ori 28,28,43691; 0:; lwz 0,0x0(31); mr 3,29; mr 4,30; mtspr 8,27; lwz 9,0x4(31); lwz 11,0x8(31); stw 0,0x8(1); stw 9,0x4(29); stw 11,0x8(29); blrl; cmpwi 3,0; beq 3f; mr 3,31; subf 0,30,3; addi 10,3,12; mullw 0,0,28; mr 7,10; srawi. 8,0,2; ble 2f; 1:; lwzu 0,-12(3); addic. 8,8,-1; lwz 9,0x4(3); lwz 11,0x8(3); stwu 0,-12(10); stw 9,0x4(10); stw 11,0x8(10); bgt 1b; 2:; lwz 0,0x8(1); lwz 9,0xc(1); lwz 11,0x10(1); stw 0,0x0(30); stw 9,0x4(30); stw 11,0x8(30); b 4f; 3:; lwz 0,0x8(1); mr 3,31; lwz 11,0xc(1); addi 4,1,24; lwz 9,0x10(1); mr 5,27; stw 0,0x18(1); stw 11,0x1c(1); stw 9,0x20(1); bl _s803C6D00_0; addi 7,31,12; 4:; mr 31,7; cmpw 31,26; bne 0b; 5:; lwz 0,0x44(1); mtspr 8,0; lmw 26,0x28(1); addi 1,1,64"
+extern "C" void _s803C6D00_0();
+extern "C" void f_803C6D00() {}

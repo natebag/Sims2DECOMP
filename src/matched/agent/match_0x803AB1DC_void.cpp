@@ -1,0 +1,13 @@
+// 0x803AB1DC void (664 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-632(1); mfspr 0,8; stmw 17,0x23c(1); stw 0,0x27c(1); mr 25,3; lbz 21,0x0(4); lwz 9,0x4(25); lwz 11,0x0(9); cmpw 11,9; beq 12f; lwz 0,0x0(11); cmpw 0,9; beq 12f; addi 30,1,8; li 0,0; stw 0,0x4(30); addi 31,1,32; li 3,44; mr 20,30; bl _s803AB1DC_0; mr 22,31; stw 3,0x0(3); li 29,63; stw 3,0x4(3); addi 23,1,16; stw 3,0x4(30); addi 19,1,24; addi 17,1,544; li 30,0; 0:; stw 30,0x4(31); li 3,44; bl _s803AB1DC_1; stw 3,0x0(3); cmpwi 29,0; stw 3,0x4(3); addi 29,29,-1; stw 3,0x4(31); addi 31,31,8; bne 0b; lwz 9,0x4(25); li 26,0; lwz 0,0x0(9); cmpw 0,9; beq 6f; mr 18,22; mr 24,20; 1:; lwz 9,0x4(20); lwz 11,0x4(25); lwz 3,0x0(9); stw 3,0x220(1); lwz 4,0x0(11); stw 4,0x228(1); cmpw 3,4; stw 4,0x10(1); lwz 5,0x0(4); stw 5,0x228(1); beq 2f; cmpw 3,5; beq 2f; bl _s803AB1DC_2; 2:; li 28,0; cmpw 28,26; bge 4f; lwz 9,0x4(18); lwz 0,0x0(9); cmpw 0,9; beq 4f; addi 31,1,32; mr 27,20; mr 30,31; mr 29,22; 3:; mr 3,29; stb 21,0x230(1); addi 4,1,8; addi 5,1,560; bl _s803AB1DC_3; addi 30,30,8; lwz 0,0x4(27); addi 28,28,1; addi 31,31,8; addi 29,29,8; stw 0,0x4(23); cmpw 28,26; lwz 0,-8(30); lwz 9,-4(30); lwz 11,0x10(1); lwz 10,0x14(1); stw 0,0x8(1); stw 9,0x4(27); stw 11,-8(30); stw 10,-4(30); bge 4f; lwz 9,0x4(31); lwz 0,0x0(9); cmpw 0,9; bne 3b; 4:; lwz 11,0x4(24); rlwinm 9,28,3,0,28; add 9,9,24; cmpw 28,26; stw 11,0x4(23); lwzu 0,0x18(9); lwz 11,0x4(9); stw 0,0x8(1); stw 11,0x4(24); lwz 0,0x10(1); lwz 11,0x14(1); stw 0,0x0(9); stw 11,0x4(9); bne 5f; addi 26,26,1; 5:; lwz 9,0x4(25); lwz 0,0x0(9); cmpw 0,9; bne 1b; 6:; cmpwi 26,1; rlwinm 28,26,3,0,28; ble 8f; addi 29,26,-1; mr 31,22; addi 30,22,8; 7:; mr 3,30; mr 4,31; stb 21,0x230(1); addi 5,1,560; bl _s803AB1DC_4; addi 31,31,8; addi 30,30,8; addic. 29,29,-1; bne 7b; 8:; lwz 0,0x4(25); add 8,19,28; mr 30,17; stw 0,0x4(23); cmpw 22,30; lwz 11,0x10(1); lwzx 10,19,28; lwz 0,0x4(8); lwz 9,0x14(1); stwx 11,19,28; stw 0,0x4(25); stw 9,0x4(8); stw 10,0x0(25); beq 11f; 9:; addi 30,30,-8; mr 3,30; bl _s803AB1DC_5; lwz 3,0x4(30); cmpwi 3,0; beq 10f; li 4,44; bl _s803AB1DC_6; 10:; cmpw 22,30; bne 9b; 11:; mr 3,20; bl _s803AB1DC_7; lwz 3,0x4(20); cmpwi 3,0; beq 12f; li 4,44; bl _s803AB1DC_8; 12:; lwz 0,0x27c(1); mtspr 8,0; lmw 17,0x23c(1); addi 1,1,632"
+extern "C" void _s803AB1DC_0();
+extern "C" void _s803AB1DC_1();
+extern "C" void _s803AB1DC_2();
+extern "C" void _s803AB1DC_3();
+extern "C" void _s803AB1DC_4();
+extern "C" void _s803AB1DC_5();
+extern "C" void _s803AB1DC_6();
+extern "C" void _s803AB1DC_7();
+extern "C" void _s803AB1DC_8();
+extern "C" void f_803AB1DC() {}

@@ -1,0 +1,5 @@
+// 0x8036D980 log10f (268 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stfd f31,0x18(1); stw 0,0x24(1); fmr f0,f1; stfs f0,0x8(1); lwz 0,0x8(1); mr 8,0; li 9,0; lis 0,127; ori 0,0,65535; cmpw 8,0; bgt 2f; rlwinm. 0,8,0,1,31; bne 0f; lfs f1,-25600(13); b 4f; 0:; cmpwi 8,0; bge 1f; lfs f0,-25596(13); fsubs f1,f1,f1; fdivs f1,f1,f0; b 4f; 1:; lfs f0,-25592(13); li 9,-25; fmuls f1,f1,f0; fmr f0,f1; stfs f0,0x8(1); lwz 0,0x8(1); mr 8,0; 2:; lis 0,32639; ori 0,0,65535; cmpw 8,0; bgt 3f; srawi 0,8,23; addi 9,9,-127; add 9,9,0; rlwinm 0,9,1,31,31; lis 10,17200; add 9,9,0; lfd f0,-25584(13); xoris 9,9,32768; subfic 0,0,127; stw 9,0x14(1); rlwinm 0,0,23,0,8; rlwimi 8,0,0,0,8; stw 10,0x10(1); stw 8,0x8(1); lfd f31,0x10(1); lfs f13,0x8(1); fsub f31,f31,f0; frsp f31,f31; fmr f1,f13; bl _s8036D980_0; lfs f13,-25572(13); lfs f0,-25576(13); fmuls f1,f1,f13; lfs f12,-25568(13); fmadds f0,f31,f0,f1; fmadds f1,f31,f12,f0; b 4f; 3:; fadds f1,f1,f1; 4:; lwz 0,0x24(1); mtspr 8,0; lfd f31,0x18(1); addi 1,1,32"
+extern "C" void _s8036D980_0();
+extern "C" void f_8036D980() {}

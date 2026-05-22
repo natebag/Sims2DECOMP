@@ -1,0 +1,9 @@
+// 0x800AE4BC cBoxX::GetInstanceSurroundVol(int, (492 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-104(1); mfspr 0,8; stfd f29,0x50(1); stfd f30,0x58(1); stfd f31,0x60(1); stmw 24,0x30(1); stw 0,0x6c(1); li 0,0; mr 28,5; stw 0,0x0(28); mr 27,6; stw 0,0x0(27); mr 26,7; mr 25,8; stw 0,0x0(26); mr 31,4; stw 0,0x0(25); mr. 29,3; bgt 0f; li 0,1024; li 3,0; stw 0,0x0(28); stw 0,0x0(27); stw 0,0x0(26); b 6f; 0:; mr 3,29; addi 4,1,8; bl _s800AE4BC_0; cmpwi 3,0; bne 1f; li 3,0; b 6f; 1:; lfs f0,0x8(1); lis 9,-32706; lfs f13,0xc(1); addi 11,1,24; lfs f12,-26968(9); mr 24,11; stfs f0,0x18(1); mr 3,31; stfs f13,0x1c(1); lis 30,17200; stfs f12,0x8(11); bl _s800AE4BC_1; lis 11,-32706; stw 3,0x2c(1); lis 10,-32706; lfd f31,-26960(11); mr 3,31; stw 30,0x28(1); lfs f30,-26952(10); lfd f0,0x28(1); fsub f0,f0,f31; frsp f0,f0; fmuls f29,f0,f30; bl _s800AE4BC_2; stw 3,0x2c(1); stw 30,0x28(1); lfd f0,0x28(1); fsub f0,f0,f31; frsp f0,f0; fmuls f31,f0,f30; fcmpu 0,f31,f29; cror 3,2,0; bns 2f; lis 9,-32706; lfs f0,-26948(9); fadds f31,f29,f0; 2:; lwz 11,-21484(13); mr 4,29; li 31,0; lwz 9,0x0(11); lwz 0,0x94(9); lha 3,0x90(9); mtspr 8,0; add 3,11,3; blrl; mr 30,3; lwz 9,0x4(30); lha 3,0x4a8(9); lwz 0,0x4ac(9); add 3,30,3; mtspr 8,0; blrl; cmpwi 3,0; beq 5f; cmpwi 30,0; beq 3f; lwz 3,0x0(30); li 4,2; bl _s800AE4BC_3; mr 11,3; b 4f; 3:; li 11,0; 4:; cmpwi 11,0; beq 5f; lwz 9,0x4(11); li 4,40; lha 3,0x138(9); lwz 0,0x13c(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 3,0; beq 5f; mr 31,29; 5:; mr 3,24; fmr f1,f29; fmr f2,f31; mr 4,28; mr 5,27; mr 6,26; mr 7,25; mr 8,31; bl _s800AE4BC_4; 6:; lwz 0,0x6c(1); mtspr 8,0; lmw 24,0x30(1); lfd f29,0x50(1); lfd f30,0x58(1); lfd f31,0x60(1); addi 1,1,104"
+extern "C" void _s800AE4BC_0();
+extern "C" void _s800AE4BC_1();
+extern "C" void _s800AE4BC_2();
+extern "C" void _s800AE4BC_3();
+extern "C" void _s800AE4BC_4();
+extern "C" void f_800AE4BC() {}

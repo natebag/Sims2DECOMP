@@ -1,0 +1,6 @@
+// 0x800EBE5C StringToHash(char (312 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stw 31,0x1c(1); stw 0,0x24(1); mr 31,3; bl _s800EBE5C_0; addic. 0,3,-16; ble 0f; add 31,31,0; subf 3,0,3; 0:; cmpwi 3,15; ble 1f; lwz 8,0x0(31); addi 9,1,8; lwz 0,0xc(31); lwz 11,0x4(31); lwz 10,0x8(31); stw 8,0x8(1); stw 0,0xc(9); stw 11,0x4(9); stw 10,0x8(9); lwz 0,0x8(1); lwz 9,0xc(1); lwz 11,0x10(1); lwz 10,0x14(1); mullw 0,0,11; mullw 9,9,10; stw 0,0x8(1); stw 9,0xc(1); b 6f; 1:; cmpwi 3,11; ble 2f; lwz 10,0x0(31); addi 11,1,8; lwz 0,0x8(31); lwz 9,0x4(31); stw 10,0x8(1); stw 0,0x8(11); stw 9,0x4(11); lwz 0,0xc(1); lwz 9,0x10(1); mullw 0,0,9; stw 0,0xc(1); b 6f; 2:; cmpwi 3,7; ble 3f; lwz 0,0x4(31); lwz 9,0x0(31); stw 0,0xc(1); stw 9,0x8(1); b 6f; 3:; cmpwi 3,3; ble 4f; lwz 0,0x0(31); stw 0,0xc(1); stw 0,0x8(1); b 6f; 4:; cmpwi 3,1; ble 5f; lhz 0,0x0(31); sth 0,0xe(1); sth 0,0x8(1); sth 0,0xa(1); sth 0,0xc(1); b 6f; 5:; lbz 4,0x0(31); addi 3,1,8; li 5,8; extsb 4,4; bl _s800EBE5C_1; 6:; lwz 0,0x8(1); lwz 3,0xc(1); mullw 3,0,3; lwz 0,0x24(1); mtspr 8,0; lwz 31,0x1c(1); addi 1,1,32"
+extern "C" void _s800EBE5C_0();
+extern "C" void _s800EBE5C_1();
+extern "C" void f_800EBE5C() {}

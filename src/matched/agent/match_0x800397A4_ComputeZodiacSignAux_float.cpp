@@ -1,0 +1,4 @@
+// 0x800397A4 ComputeZodiacSignAux(float (196 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); lis 9,-32707; lis 11,-32707; lis 10,-32707; mr 4,3; lfd f11,0x1820(11); addi 10,10,6256; lfs f10,0x1818(9); li 3,-1; li 7,1; lis 12,-32707; lis 5,17200; 0:; addi 9,7,-1; lfs f12,0x181c(12); rlwinm 0,9,2,0,29; addi 6,7,1; add 0,0,9; mr 8,4; add 11,0,10; li 0,5; mtspr 9,0; 1:; lbz 0,0x0(11); lfs f13,0x0(8); addi 11,11,1; extsb 0,0; addi 8,8,4; xoris 0,0,32768; stw 0,0xc(1); stw 5,0x8(1); lfd f0,0x8(1); fsub f0,f0,f11; frsp f0,f0; fsubs f13,f13,f0; fmadds f12,f13,f13,f12; bdnz 1b; fcmpu 0,f12,f10; bge 2f; fmr f10,f12; mr 3,7; 2:; mr 7,6; cmpwi 7,12; ble 0b; addi 0,3,-1; cmplwi 0,11; ble 3f; li 3,1; 3:; extsh 3,3; addi 1,1,16"
+extern "C" void f_800397A4() {}

@@ -1,0 +1,19 @@
+// 0x803595E4 BloomNGC::Draw(ERC (876 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-272(1); mfspr 0,8; stfd f30,0x100(1); stfd f31,0x108(1); stmw 19,0xcc(1); stw 0,0x114(1); lis 21,-32690; mr 27,3; lwz 9,-25824(21); addi 19,21,-25824; li 4,-1; addi 25,1,96; lwz 0,0x14(9); addi 22,1,80; lha 3,0x10(9); addi 24,1,104; mtspr 8,0; addi 20,1,136; add 3,3,19; lis 29,-32691; li 23,0; lis 28,17200; blrl; addi 3,29,21688; bl _s803595E4_0; mr 30,3; addi 4,29,21688; addi 3,1,16; bl _s803595E4_1; lwz 9,-26704(13); mr 3,30; lfs f13,0x220(9); addi 9,9,544; stfs f13,0x50(1); lfs f0,0x4(9); stfs f0,0x54(1); lfs f13,0x8(9); stfs f13,0x58(1); lfs f0,0xc(9); stfs f0,0x5c(1); bl _s803595E4_2; mr 3,30; bl _s803595E4_3; addi 4,1,16; mr 3,30; bl _s803595E4_4; addi 3,29,21688; bl _s803595E4_5; mr 26,3; bl _s803595E4_6; xoris 0,23,32768; stw 0,0xc4(1); lis 9,-32702; lfd f30,0x2c60(9); mr 6,22; stw 28,0xc0(1); mr 3,26; lhz 4,0x14(1); mr 7,25; lfd f31,0xc0(1); lhz 5,0x16(1); fsub f31,f31,f30; frsp f31,f31; stfs f31,0x60(1); stfs f31,0x4(25); bl _s803595E4_7; lhz 0,0x14(1); lfs f0,0x50(1); mr 5,9; xoris 0,0,32768; lfs f13,0x58(1); stw 0,0xc4(1); mr 11,9; fsubs f13,f13,f0; lhz 0,0x16(1); stw 28,0xc0(1); mr 6,9; xoris 0,0,32768; lfs f9,0x54(1); lfd f0,0xc0(1); mr 4,26; lfs f12,0x5c(1); li 7,4; fsub f0,f0,f30; li 8,0; frsp f0,f0; li 9,0; fmuls f0,f0,f13; li 10,0; fmr f13,f0; mr 3,24; fctiwz f11,f13; stfd f11,0xc0(1); fsubs f12,f12,f9; lwz 5,0xc4(1); stw 0,0xc4(1); rlwinm 5,5,0,16,31; stw 28,0xc0(1); lfd f0,0xc0(1); fsub f0,f0,f30; frsp f0,f0; fmuls f0,f0,f12; fmr f13,f0; fctiwz f10,f13; stfd f10,0xc0(1); lwz 6,0xc4(1); rlwinm 6,6,0,16,31; bl _s803595E4_8; addi 3,29,21688; bl _s803595E4_9; lhz 7,0x14(1); mr 29,3; lhz 8,0x16(1); lfs f1,0x40(27); li 5,128; lfs f2,0x44(27); li 6,128; lfs f3,0x48(27); mr 9,22; mr 4,24; mr 10,30; bl _s803595E4_10; lfs f12,0x50(1); lis 9,-32702; lfs f0,0x58(1); lfs f9,0x2c68(9); mr 6,5; fsubs f0,f0,f12; lfs f13,0x5c(1); lfs f12,0x54(1); fmuls f0,f0,f9; mr 4,29; fctiwz f10,f0; mr 3,20; fsubs f13,f13,f12; stfd f10,0xc0(1); fmuls f13,f13,f9; li 8,0; lwz 5,0xc4(1); fctiwz f11,f13; li 9,0; stfd f11,0xc0(1); li 10,0; li 7,4; rlwinm 5,5,0,16,31; lwz 6,0xc4(1); rlwinm 6,6,0,16,31; bl _s803595E4_11; lis 11,-32702; lfs f0,0x54(27); lfs f12,0x2c6c(11); lis 9,-32702; lfs f10,0x2c70(9); addi 5,1,176; fmuls f0,f0,f12; lfs f13,0x58(27); fmuls f0,f0,f10; mr 10,9; fctiwz f11,f0; stw 23,0xb0(1); stfd f11,0xc0(1); fmuls f13,f13,f10; li 0,64; lwz 9,0xc4(1); fctiwz f12,f13; stfd f12,0xc0(1); addi 11,1,180; stb 9,0xb0(1); li 8,255; stb 9,0x2(5); lis 3,-32702; stb 0,0x3(5); addi 29,1,168; stb 9,0x1(5); mr 6,11; lwz 10,0xc4(1); addi 9,1,16; stw 23,0xb4(1); mr 4,24; stb 10,0xb4(1); mr 7,22; stb 10,0x2(11); stb 8,0x3(11); stb 10,0x1(11); mr 8,30; lfs f0,0x2c74(3); mr 10,25; stfs f31,0x60(1); mr 3,20; stfs f31,0x4(25); stfs f0,0xa8(1); stw 29,0x8(1); stfs f0,0x4(29); bl _s803595E4_12; mr 3,30; bl _s803595E4_13; mr 3,30; bl _s803595E4_14; lwz 0,0x6cc(30); li 9,2; li 11,12; stw 9,0x9d8(30); oris 0,0,32768; stw 11,0x0(30); ori 0,0,32; stw 0,0x6cc(30); lwz 9,-25824(21); lha 3,0x18(9); lwz 0,0x1c(9); add 3,3,19; mtspr 8,0; blrl; lwz 0,0x114(1); mtspr 8,0; lmw 19,0xcc(1); lfd f30,0x100(1); lfd f31,0x108(1); addi 1,1,272"
+extern "C" void _s803595E4_0();
+extern "C" void _s803595E4_1();
+extern "C" void _s803595E4_2();
+extern "C" void _s803595E4_3();
+extern "C" void _s803595E4_4();
+extern "C" void _s803595E4_5();
+extern "C" void _s803595E4_6();
+extern "C" void _s803595E4_7();
+extern "C" void _s803595E4_8();
+extern "C" void _s803595E4_9();
+extern "C" void _s803595E4_10();
+extern "C" void _s803595E4_11();
+extern "C" void _s803595E4_12();
+extern "C" void _s803595E4_13();
+extern "C" void _s803595E4_14();
+extern "C" void f_803595E4() {}

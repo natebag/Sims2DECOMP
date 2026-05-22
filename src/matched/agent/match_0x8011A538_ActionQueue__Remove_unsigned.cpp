@@ -1,0 +1,8 @@
+// 0x8011A538 ActionQueue::Remove(unsigned (428 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; mfcr 12; stmw 27,0xc(1); stw 0,0x24(1); stw 12,0x8(1); mr 31,3; mr 29,4; lwz 0,0x2ac(31); li 3,0; lwz 9,0x2a8(31); subf 0,9,0; cmplw 29,0; bge 7f; mr 3,31; bl _s8011A538_0; cmpwi 4,29,0; lwz 4,0x2a8(31); lis 0,-13108; ori 0,0,52429; mr 3,31; add 4,4,29; mulhwu 0,4,0; rlwinm 0,0,29,3,31; mulli 0,0,10; subf 4,0,4; mulli 4,4,68; add 4,31,4; bl _s8011A538_1; mr 27,3; bne cr4,0f; lwz 9,0x2a8(31); li 0,1; addi 9,9,1; stw 9,0x2a8(31); b 4f; 0:; lwz 11,0x2a8(31); lwz 9,0x2ac(31); add 30,11,29; addi 0,30,1; cmplw 9,0; blt 3f; subf 0,11,9; subf 0,29,0; mr 9,30; addic. 28,0,-1; beq 2f; lis 29,-13108; ori 29,29,52429; 1:; addi 30,9,1; mulhwu 3,9,29; mulhwu 4,30,29; rlwinm 3,3,29,3,31; mulli 3,3,10; rlwinm 4,4,29,3,31; mulli 4,4,10; subf 3,3,9; mulli 3,3,68; subf 4,4,30; mulli 4,4,68; add 3,31,3; add 4,31,4; bl _s8011A538_2; mr 9,30; addic. 28,28,-1; bne 1b; 2:; lwz 9,0x2ac(31); li 0,1; addi 9,9,-1; stw 9,0x2ac(31); b 4f; 3:; li 0,0; 4:; cmpwi 0,0; bne 5f; li 3,0; b 7f; 5:; bne cr4,6f; lwz 0,0x2ac(31); lwz 9,0x2a8(31); cmpw 0,9; beq 6f; lis 0,-13108; ori 0,0,52429; mulhwu 0,9,0; rlwinm 0,0,29,3,31; mulli 0,0,10; subf 0,0,9; mulli 0,0,68; add 9,31,0; lwz 0,0x3c(9); andi. 11,0,2; beq 6f; cmpwi 27,0; beq 6f; rlwinm 0,0,0,28,26; mr 3,31; stw 0,0x3c(9); li 4,0; bl _s8011A538_3; 6:; li 3,1; 7:; lwz 0,0x24(1); lwz 12,0x8(1); mtspr 8,0; lmw 27,0xc(1); mtcrf 8,12; addi 1,1,32"
+extern "C" void _s8011A538_0();
+extern "C" void _s8011A538_1();
+extern "C" void _s8011A538_2();
+extern "C" void _s8011A538_3();
+extern "C" void f_8011A538() {}

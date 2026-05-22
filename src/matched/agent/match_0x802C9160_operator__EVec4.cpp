@@ -1,0 +1,4 @@
+// 0x802C9160 operator*(EVec4 (168 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lfs f0,0x4(4); mr 9,3; lfs f12,0x10(5); lfs f10,0x14(5); lfs f7,0x18(5); fmuls f12,f0,f12; lfs f13,0x0(4); fmuls f10,f0,f10; lfs f11,0x1c(5); fmuls f7,f0,f7; lfs f9,0x0(5); lfs f8,0x4(5); fmuls f0,f0,f11; lfs f6,0x8(5); fmadds f9,f13,f9,f12; lfs f4,0xc(5); fmadds f8,f13,f8,f10; fmadds f6,f13,f6,f7; lfs f11,0x8(4); fmadds f13,f13,f4,f0; lfs f5,0x20(5); lfs f7,0x24(5); lfs f4,0x28(5); fmadds f5,f11,f5,f9; lfs f3,0x2c(5); fmadds f7,f11,f7,f8; fmadds f4,f11,f4,f6; lfs f12,0xc(4); fmadds f11,f11,f3,f13; lfs f10,0x3c(5); lfs f0,0x30(5); lfs f13,0x34(5); fmadds f10,f12,f10,f11; lfs f9,0x38(5); fmadds f0,f12,f0,f5; fmadds f13,f12,f13,f7; stfs f0,0x0(9); fmadds f12,f12,f9,f4; stfs f13,0x4(9); stfs f12,0x8(9); stfs f10,0xc(9)"
+extern "C" void f_802C9160() {}

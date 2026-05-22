@@ -1,0 +1,4 @@
+// 0x802E2D5C EEngine::RetraceUpdate(float) (220 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); lwz 0,0x8(3); cmpwi 0,0; beq 3f; lfs f0,-26780(13); lfs f13,-26784(13); fmr f11,f0; fcmpu 0,f13,f0; ble 0f; fmr f11,f13; 0:; lfs f0,-26768(13); lfs f12,-26772(13); fmr f13,f0; fcmpu 0,f12,f0; ble 1f; fmr f13,f12; 1:; fmr f10,f13; fcmpu 0,f11,f13; ble 2f; fmr f10,f11; 2:; lfs f0,-22744(13); lis 9,-32702; lfd f12,-5664(9); fdivs f0,f10,f0; fadd f0,f0,f12; fctiwz f13,f0; stfd f13,0x8(1); lwz 0,0xc(1); stw 0,-26804(13); cmpwi 0,0; bgt 4f; b 5f; 3:; lfs f0,-22744(13); lis 9,-32702; lfd f12,-5664(9); fdivs f0,f1,f0; fadd f0,f0,f12; fctiwz f13,f0; stfd f13,0x8(1); lwz 0,0xc(1); stw 0,-26804(13); cmpwi 0,0; ble 5f; 4:; cmpwi 0,15; ble 6f; li 0,15; b 6f; 5:; li 0,1; 6:; stw 0,-26804(13); lwz 0,-26808(13); lwz 9,-26804(13); add 0,0,9; stw 0,-26808(13); addi 1,1,16"
+extern "C" void f_802E2D5C() {}

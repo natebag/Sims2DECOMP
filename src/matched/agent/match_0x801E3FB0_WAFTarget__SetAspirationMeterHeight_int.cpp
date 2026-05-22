@@ -1,0 +1,4 @@
+// 0x801E3FB0 WAFTarget::SetAspirationMeterHeight(int) (196 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mr. 4,4; bge 0f; lis 9,-32705; lfs f0,0x646c(9); b 2f; 0:; cmpwi 4,100; ble 1f; lis 9,-32705; lfs f0,0x6470(9); b 2f; 1:; xoris 0,4,32768; stw 0,0xc(1); lis 11,17200; lis 10,-32705; stw 11,0x8(1); lfd f13,0x6478(10); lfd f0,0x8(1); fsub f0,f0,f13; frsp f0,f0; 2:; stfs f0,0x274(3); lis 9,-32705; lfs f13,0x274(3); lfs f0,0x6480(9); fcmpu 0,f13,f0; beq 3f; lis 9,-32705; lfs f0,0x6484(9); fcmpu 0,f13,f0; beq 3f; lis 9,-32705; lfs f0,0x6488(9); fcmpu 0,f13,f0; bne 4f; 3:; lis 9,-32705; lfs f0,0x274(3); lfs f13,0x648c(9); fadds f0,f0,f13; stfs f0,0x274(3); 4:; lfs f13,0x274(3); lfs f0,0x278(3); fcmpu 0,f13,f0; li 0,0; cror 3,2,1; bns 5f; li 0,1; 5:; stw 0,0x26c(3); addi 1,1,16"
+extern "C" void f_801E3FB0() {}

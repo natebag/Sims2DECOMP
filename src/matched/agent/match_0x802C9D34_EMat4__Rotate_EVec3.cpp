@@ -1,0 +1,6 @@
+// 0x802C9D34 EMat4::Rotate(EVec3 (264 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stfd f30,0x18(1); stfd f31,0x20(1); stmw 29,0xc(1); stw 0,0x2c(1); fmr f31,f1; mr 30,3; mr 29,4; bl _s802C9D34_0; fmr f30,f1; fmr f1,f31; bl _s802C9D34_1; lfs f0,0x8(29); lis 9,-32702; lfs f12,0x0(29); mr 3,30; lfs f11,0x4(29); fmuls f4,f0,f30; lfs f10,-7484(9); fmuls f6,f12,f0; fmuls f7,f11,f0; lis 9,-32702; fsubs f9,f10,f1; lfs f13,-7480(9); fmuls f0,f0,f0; stfs f10,0x3c(30); fmuls f5,f12,f30; stfs f13,0x38(30); fmuls f8,f12,f11; stfs f13,0xc(30); fmadds f0,f0,f9,f1; stfs f13,0x1c(30); fmuls f30,f11,f30; stfs f13,0x2c(30); fmuls f8,f8,f9; stfs f13,0x30(30); fmuls f6,f6,f9; stfs f13,0x34(30); fmuls f7,f7,f9; stfs f0,0x28(30); fsubs f13,f8,f4; fadds f10,f6,f30; stfs f13,0x10(30); fsubs f0,f7,f5; stfs f10,0x20(30); fmuls f12,f12,f12; stfs f0,0x24(30); fmuls f11,f11,f11; fmadds f12,f12,f9,f1; fmadds f11,f11,f9,f1; stfs f12,0x0(30); fadds f8,f8,f4; stfs f11,0x14(30); fsubs f6,f6,f30; stfs f8,0x4(30); fadds f7,f7,f5; stfs f6,0x8(30); stfs f7,0x18(30); lwz 0,0x2c(1); mtspr 8,0; lmw 29,0xc(1); lfd f30,0x18(1); lfd f31,0x20(1); addi 1,1,40"
+extern "C" void _s802C9D34_0();
+extern "C" void _s802C9D34_1();
+extern "C" void f_802C9D34() {}

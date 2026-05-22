@@ -1,0 +1,19 @@
+// 0x802F5D48 EPrimitive::WireBox(ERC (900 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-1392(1); mfspr 0,8; stmw 14,0x528(1); stw 0,0x574(1); li 11,10; addi 9,1,1224; mtspr 9,11; stw 9,0x518(1); mr 28,3; mr 31,4; addi 0,1,56; addi 8,1,40; addi 30,1,8; addi 24,1,88; addi 22,1,168; addi 20,1,248; addi 26,1,328; addi 27,1,408; addi 25,1,488; addi 23,1,568; addi 21,1,648; addi 18,1,728; addi 19,1,824; addi 17,1,904; addi 16,1,984; addi 15,1,1064; addi 14,1,1144; 0:; bdnz 0b; lis 9,-32702; lis 11,-32702; lfs f0,-3392(9); addi 29,31,12; lfs f10,0x0(5); lis 9,-32702; lfs f13,0x4(5); lfs f12,0x8(5); fmuls f10,f10,f0; lfs f11,0xc(5); fmuls f13,f13,f0; lfs f8,-3388(11); fmuls f12,f12,f0; li 11,4; fmuls f11,f11,f0; mtspr 9,11; lfs f9,-3384(9); stfs f10,0x0(5); li 9,0; stfs f13,0x4(5); stfs f12,0x8(5); stfs f11,0xc(5); 1:; lfsx f0,9,5; fcmpu 0,f0,f8; fmr f13,f8; blt 2f; fmr f13,f0; fcmpu 0,f0,f9; ble 2f; fmr f13,f9; 2:; stfsx f13,9,5; addi 9,9,4; bdnz 1b; mr 10,0; li 11,0; li 0,4; mtspr 9,0; 3:; lfsx f0,11,5; fctiwz f13,f0; stfd f13,0x520(1); lwz 9,0x524(1); rlwinm 9,9,0,24,31; stwx 9,11,10; addi 11,11,4; bdnz 3b; lis 9,-32702; li 0,0; lfs f0,-3388(9); mr 4,30; stw 0,0x20(1); mr 3,24; stw 0,0x18(1); stw 0,0x1c(1); stfs f0,0x28(1); lfs f11,0x4(29); lfs f12,0x0(31); lfs f13,0x8(31); stfs f0,0xc(8); stfs f0,0x4(8); stfs f0,0x8(8); stfs f13,0x330(1); stfs f12,0x8(1); stfs f12,0x328(1); stfs f11,0x32c(1); stfs f11,0x4(30); lfs f0,0x330(1); stfs f0,0x8(30); bl _s802F5D48_0; lfs f12,0xc(31); mr 4,30; lfs f13,0x4(29); mr 3,22; lfs f0,0x8(31); stfs f12,0x58(1); stfs f13,0x5c(1); stfs f0,0x60(1); stfs f12,0x328(1); stfs f13,0x32c(1); stfs f0,0x330(1); bl _s802F5D48_1; lfs f12,0xc(31); mr 4,30; lfs f13,0x4(29); mr 3,20; lfs f0,0x8(29); stfs f12,0xa8(1); stfs f13,0xac(1); stfs f0,0xb0(1); stfs f12,0x328(1); stfs f13,0x32c(1); stfs f0,0x330(1); bl _s802F5D48_2; lfs f12,0x0(31); mr 4,30; lfs f13,0x4(29); mr 3,26; lfs f0,0x8(29); stfs f12,0xf8(1); stfs f13,0xfc(1); stfs f0,0x100(1); stfs f12,0x328(1); stfs f13,0x32c(1); stfs f0,0x330(1); bl _s802F5D48_3; mr 4,30; mr 3,27; bl _s802F5D48_4; lfs f12,0x0(31); mr 4,30; lfs f13,0x4(31); mr 3,25; lfs f0,0x8(31); stfs f12,0x198(1); stfs f13,0x19c(1); stfs f0,0x1a0(1); stfs f12,0x328(1); stfs f13,0x32c(1); stfs f0,0x330(1); bl _s802F5D48_5; lfs f12,0xc(31); mr 4,30; lfs f13,0x4(31); mr 3,23; lfs f0,0x8(31); stfs f12,0x1e8(1); stfs f13,0x1ec(1); stfs f0,0x1f0(1); stfs f12,0x328(1); stfs f13,0x32c(1); stfs f0,0x330(1); bl _s802F5D48_6; lfs f12,0xc(31); mr 4,30; lfs f13,0x4(31); mr 3,21; lfs f0,0x8(29); stfs f12,0x238(1); stfs f13,0x23c(1); stfs f0,0x240(1); stfs f12,0x328(1); stfs f13,0x32c(1); stfs f0,0x330(1); bl _s802F5D48_7; lfs f12,0x4(31); mr 4,27; lfs f13,0x8(29); mr 3,18; lfs f0,0x0(31); stfs f12,0x28c(1); stfs f0,0x288(1); stfs f13,0x290(1); stfs f0,0x328(1); stfs f12,0x32c(1); stfs f13,0x330(1); bl _s802F5D48_8; lwz 9,0x70(28); mr 4,30; li 5,10; lwz 0,0x7c(9); lha 3,0x78(9); mtspr 8,0; add 3,28,3; blrl; li 0,6; mtspr 9,0; 4:; bdnz 4b; mr 4,24; mr 3,19; bl _s802F5D48_9; mr 4,25; mr 3,17; bl _s802F5D48_10; mr 4,22; mr 3,16; bl _s802F5D48_11; mr 4,23; mr 3,15; bl _s802F5D48_12; mr 4,20; mr 3,14; bl _s802F5D48_13; lwz 3,0x518(1); mr 4,21; bl _s802F5D48_14; lwz 9,0x70(28); mr 4,19; li 5,6; lha 3,0x70(9); lwz 0,0x74(9); add 3,28,3; mtspr 8,0; blrl; lwz 0,0x574(1); mtspr 8,0; lmw 14,0x528(1); addi 1,1,1392"
+extern "C" void _s802F5D48_0();
+extern "C" void _s802F5D48_1();
+extern "C" void _s802F5D48_2();
+extern "C" void _s802F5D48_3();
+extern "C" void _s802F5D48_4();
+extern "C" void _s802F5D48_5();
+extern "C" void _s802F5D48_6();
+extern "C" void _s802F5D48_7();
+extern "C" void _s802F5D48_8();
+extern "C" void _s802F5D48_9();
+extern "C" void _s802F5D48_10();
+extern "C" void _s802F5D48_11();
+extern "C" void _s802F5D48_12();
+extern "C" void _s802F5D48_13();
+extern "C" void _s802F5D48_14();
+extern "C" void f_802F5D48() {}

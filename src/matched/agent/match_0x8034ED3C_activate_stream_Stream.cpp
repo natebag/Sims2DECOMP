@@ -1,0 +1,12 @@
+// 0x8034ED3C activate_stream(Stream (588 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-112(1); mfspr 0,8; stmw 29,0x64(1); stw 0,0x74(1); mr 31,3; lwz 3,0x1c(31); cmpwi 3,0; beq 0f; li 4,-904; bl _s8034ED3C_0; lwz 3,0x1c(31); lbz 4,0x15(31); bl _s8034ED3C_1; 0:; lwz 9,0x18(31); li 10,1; lwz 0,0x6c(31); li 8,0; add 11,9,9; lwz 3,0x1c(31); add 9,9,0; addi 30,11,2; add 9,9,9; rlwinm 11,30,16,16,31; addi 9,9,-1; sth 10,0x8(1); rlwinm 0,9,16,16,31; sth 8,0xa(1); sth 0,0x10(1); cmpwi 3,0; sth 9,0x12(1); sth 11,0x14(1); sth 11,0xc(1); sth 30,0xe(1); sth 30,0x16(1); beq 1f; addi 4,1,8; bl _s8034ED3C_2; 1:; lwz 9,0x10(31); addi 10,1,24; mr 29,10; li 11,24; addi 9,9,20; 2:; lwz 0,0x0(9); addic. 11,11,-24; stw 0,0x0(10); lwz 0,0x4(9); stw 0,0x4(10); lwz 0,0x8(9); stw 0,0x8(10); lwz 0,0xc(9); stw 0,0xc(10); lwz 0,0x10(9); stw 0,0x10(10); lwz 0,0x14(9); addi 9,9,24; stw 0,0x14(10); addi 10,10,24; bne 2b; lwz 0,0x0(9); lwz 11,0x10(31); stw 0,0x0(10); lwz 0,0x4(9); lwz 3,0x1c(31); stw 0,0x4(10); cmpwi 3,0; lhz 0,0x34(11); sth 0,0x38(1); lhz 9,0x36(11); sth 9,0x3a(1); lhz 0,0x38(11); sth 0,0x3c(1); lhz 9,0x3a(11); sth 9,0x3e(1); beq 3f; li 4,1; bl _s8034ED3C_3; lwz 3,0x1c(31); mr 4,29; bl _s8034ED3C_4; lwz 3,0x1c(31); li 4,4; bl _s8034ED3C_5; 3:; lwz 10,0x10(31); lis 7,17200; lis 11,-32702; lhz 0,0x3c(10); lis 8,-32702; lfd f13,0x22d0(11); lis 10,-32702; stw 0,0x5c(1); lis 11,-32702; lfs f11,0x22d8(8); stw 7,0x58(1); lfs f12,0x22dc(10); lfd f0,0x58(1); lfd f10,0x22e0(11); fsub f0,f0,f13; frsp f0,f0; fdivs f0,f0,f11; fmuls f0,f0,f12; fmr f13,f0; fcmpu 0,f13,f10; cror 3,2,1; bso 4f; fctiwz f0,f13; stfd f0,0x58(1); lwz 11,0x5c(1); b 5f; 4:; fsub f0,f13,f10; fctiwz f13,f0; stfd f13,0x58(1); lwz 11,0x5c(1); xoris 11,11,32768; 5:; lwz 3,0x1c(31); li 0,0; rlwinm 9,11,16,16,31; sth 11,0x42(1); sth 9,0x40(1); cmpwi 3,0; sth 0,0x4c(1); sth 0,0x44(1); sth 0,0x46(1); sth 0,0x48(1); sth 0,0x4a(1); beq 6f; addi 4,1,64; bl _s8034ED3C_6; 6:; lwz 5,0x6c(31); lis 6,-32715; lwz 3,0x68(31); addi 6,6,-3332; lwz 4,0x18(31); rlwinm 5,5,31,1,31; mr 7,31; bl _s8034ED3C_7; lwz 9,0x74(31); li 3,1; lwz 0,0x6c(31); rlwinm 9,9,0,10,8; add 0,30,0; stw 9,0x74(31); stw 0,0x20(31); lwz 0,0x74(1); mtspr 8,0; lmw 29,0x64(1); addi 1,1,112"
+extern "C" void _s8034ED3C_0();
+extern "C" void _s8034ED3C_1();
+extern "C" void _s8034ED3C_2();
+extern "C" void _s8034ED3C_3();
+extern "C" void _s8034ED3C_4();
+extern "C" void _s8034ED3C_5();
+extern "C" void _s8034ED3C_6();
+extern "C" void _s8034ED3C_7();
+extern "C" void f_8034ED3C() {}

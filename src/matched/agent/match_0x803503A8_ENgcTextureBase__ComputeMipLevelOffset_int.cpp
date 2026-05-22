@@ -1,0 +1,4 @@
+// 0x803503A8 ENgcTextureBase::ComputeMipLevelOffset(int, (200 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lhz 8,0x10(3); li 12,0; lbz 11,0x7c(3); addi 0,8,-1; lhz 10,0x12(3); add 0,0,11; neg 11,11; addi 9,10,-1; and 0,0,11; stw 0,0x0(5); lbz 0,0x7d(3); add 9,9,0; neg 0,0; and 9,9,0; stw 9,0x0(6); lbz 7,0x1a(3); cmpwi 7,24; bne 0f; li 7,32; 0:; cmpw 12,4; bge 3f; mtspr 9,4; 1:; lwz 9,0x0(6); lwz 0,0x0(5); mullw 0,0,9; mullw 9,0,7; addic. 11,9,7; bge 2f; addi 11,9,14; 2:; lbz 9,0x7c(3); srawi 8,8,1; addi 0,8,-1; srawi 10,10,1; add 0,0,9; srawi 11,11,3; neg 9,9; addi 11,11,31; and 0,0,9; rlwinm 11,11,0,0,26; stw 0,0x0(5); addi 9,10,-1; add 12,12,11; lbz 0,0x7d(3); add 9,9,0; neg 0,0; and 9,9,0; stw 9,0x0(6); bdnz 1b; 3:; mr 3,12"
+extern "C" void f_803503A8() {}

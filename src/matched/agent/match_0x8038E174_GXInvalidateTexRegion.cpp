@@ -1,0 +1,6 @@
+// 0x8038E174 GXInvalidateTexRegion (300 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); stwu 1,-32(1); stw 31,0x1c(1); stw 30,0x18(1); stw 29,0x14(1); lwz 7,0x0(3); lwz 0,0x4(3); rlwinm 4,7,17,29,31; addic. 8,4,-1; rlwinm 6,7,14,29,31; rlwinm 5,0,17,29,31; rlwinm 4,0,14,29,31; addi 31,5,-1; addi 6,6,-1; addi 5,4,-1; bge 0f; li 8,0; 0:; cmpwi 6,0; bge 1f; li 6,0; 1:; cmpwi 31,0; bge 2f; li 31,0; 2:; cmpwi 5,0; bge 3f; li 5,0; 3:; lbz 0,0xc(3); add 4,8,6; addi 6,4,0; cmplwi 0,0; beq 4f; addi 0,5,-2; add 6,0,6; add 6,31,6; 4:; rlwinm 0,7,26,23,31; li 7,0; rlwimi 7,0,0,23,31; addi 29,7,0; cmpwi 31,0; li 0,102; rlwimi 29,6,9,19,22; rlwimi 29,0,24,0,7; beq 6f; lbz 0,0xc(3); add 5,31,5; cmplwi 0,0; beq 5f; add 5,4,5; addi 5,5,-2; 5:; lwz 3,0x4(3); li 30,0; li 0,102; rlwimi 30,3,26,23,31; addi 3,30,0; rlwimi 3,5,9,19,22; rlwimi 3,0,24,0,7; addi 30,3,0; 6:; bl _s8038E174_0; li 0,97; lis 3,-13311; stb 0,-32768(3); cmpwi 31,0; stw 29,-32768(3); beq 7f; stb 0,-32768(3); stw 30,-32768(3); 7:; bl _s8038E174_1; lwz 0,0x24(1); lwz 31,0x1c(1); lwz 30,0x18(1); lwz 29,0x14(1); addi 1,1,32; mtspr 8,0"
+extern "C" void _s8038E174_0();
+extern "C" void _s8038E174_1();
+extern "C" void f_8038E174() {}

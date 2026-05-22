@@ -1,0 +1,5 @@
+// 0x802A2A60 LoadVarsMembersIndex::in_word_set(char (264 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-272(1); mfspr 0,8; stmw 30,0x108(1); stw 0,0x114(1); addi 0,4,-4; cmplwi 0,10; bgt 1f; lis 9,-32703; addi 11,1,8; mr 6,11; addi 9,9,-22279; li 10,240; add 7,4,3; 0:; lwz 0,0x0(9); addic. 10,10,-24; stw 0,0x0(11); lwz 0,0x4(9); stw 0,0x4(11); lwz 0,0x8(9); stw 0,0x8(11); lwz 0,0xc(9); stw 0,0xc(11); lwz 0,0x10(9); stw 0,0x10(11); lwz 0,0x14(9); addi 9,9,24; stw 0,0x14(11); addi 11,11,24; bne 0b; lwz 0,0x0(9); lbz 8,0x0(3); stw 0,0x0(11); lwz 0,0x4(9); rlwinm 10,8,0,24,31; stw 0,0x4(11); lwz 0,0x8(9); stw 0,0x8(11); lwz 0,0xc(9); stw 0,0xc(11); lbz 9,-1(7); lbzx 11,6,10; lbzx 0,6,9; add 0,4,0; add 0,0,11; cmplwi 0,16; bgt 1f; lis 9,-32700; rlwinm 31,0,3,0,28; addi 30,9,-9228; lwzx 4,30,31; lbz 0,0x0(4); cmpw 8,0; bne 1f; addi 3,3,1; addi 4,4,1; bl _s802A2A60_0; cmpwi 3,0; bne 1f; add 3,31,30; b 2f; 1:; li 3,0; 2:; lwz 0,0x114(1); mtspr 8,0; lmw 30,0x108(1); addi 1,1,272"
+extern "C" void _s802A2A60_0();
+extern "C" void f_802A2A60() {}

@@ -1,0 +1,7 @@
+// 0x8020F3A0 InteractorModule::InteractorResourceSet::RemoveTexture(unsigned (356 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); stw 4,0x8(1); mr 30,3; addi 31,30,92; addi 28,1,8; lwz 3,0x5c(30); mr 5,28; lwz 4,0x4(31); bl _s8020F3A0_0; lwz 0,0x4(31); mr 29,3; cmpw 29,0; bne 0f; li 3,0; b 10f; 0:; lwz 4,0x8(1); lis 3,-32692; addi 3,3,-7364; bl _s8020F3A0_1; addi 6,30,40; lwz 3,0x28(30); lwz 0,0x4(6); addi 4,29,4; subf 0,3,0; srawi. 10,0,3; ble 4f; lwz 7,0x8(1); 1:; srawi 11,10,1; rlwinm 9,11,3,0,28; lwzx 0,3,9; add 8,3,9; cmplw 0,7; blt 2f; mr 10,11; b 3f; 2:; subf 9,11,10; addi 3,8,8; addi 10,9,-1; 3:; cmpwi 10,0; bgt 1b; 4:; lwz 0,0x4(6); mr 10,0; cmpw 3,0; beq 5f; lwz 9,0x0(28); lwz 0,0x0(3); cmplw 9,0; bge 5f; mr 3,10; 5:; cmpw 3,10; beq 8f; addi 0,3,8; cmpw 0,10; beq 7f; mr 11,0; subf 0,11,10; srawi. 10,0,3; ble 7f; 6:; lwz 0,0x0(11); addic. 10,10,-1; lwz 9,0x4(11); stw 0,0x0(3); addi 11,11,8; stw 9,0x4(3); addi 3,3,8; bgt 6b; 7:; lwz 9,0x4(6); addi 9,9,-8; stw 9,0x4(6); 8:; lwz 5,0x4(31); cmpw 4,5; beq 9f; cmpw 5,4; beq 9f; mr 3,29; subf 5,4,5; bl _s8020F3A0_2; 9:; lwz 9,0x4(31); li 3,1; addi 9,9,-4; stw 9,0x4(31); 10:; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
+extern "C" void _s8020F3A0_0();
+extern "C" void _s8020F3A0_1();
+extern "C" void _s8020F3A0_2();
+extern "C" void f_8020F3A0() {}

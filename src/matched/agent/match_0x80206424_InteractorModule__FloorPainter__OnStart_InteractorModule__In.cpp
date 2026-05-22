@@ -1,0 +1,13 @@
+// 0x80206424 InteractorModule::FloorPainter::OnStart(InteractorModule::Interactor::InteractorParams (608 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-120(1); mfspr 0,8; stmw 24,0x58(1); stw 0,0x7c(1); mr 31,3; li 9,24; lwz 0,0x90(31); addi 11,31,128; addi 26,1,16; addi 27,1,48; stw 0,0x8(1); addi 29,1,80; 0:; lwz 0,0x0(4); addic. 9,9,-24; stw 0,0x0(11); lwz 0,0x4(4); stw 0,0x4(11); lwz 0,0x8(4); stw 0,0x8(11); lwz 0,0xc(4); stw 0,0xc(11); lwz 0,0x10(4); stw 0,0x10(11); lwz 0,0x14(4); addi 4,4,24; stw 0,0x14(11); addi 11,11,24; bne 0b; lwz 0,0x0(4); lwz 9,0x8(1); stw 0,0x0(11); lwz 0,0x4(4); stw 0,0x4(11); lwz 0,0x8(4); stw 0,0x8(11); lwz 0,0xc(4); stw 0,0xc(11); stw 9,0x90(31); lwz 0,0xa0(31); cmpwi 0,0; bne 1f; addi 0,31,168; stw 0,0xa0(31); 1:; lis 9,-32704; mr 11,26; addi 8,9,-13044; addi 30,31,8; li 9,24; addi 25,31,52; addi 24,31,60; 2:; lwz 0,0x0(8); addic. 9,9,-24; stw 0,0x0(11); lwz 0,0x4(8); stw 0,0x4(11); lwz 0,0x8(8); stw 0,0x8(11); lwz 0,0xc(8); stw 0,0xc(11); lwz 0,0x10(8); stw 0,0x10(11); lwz 0,0x14(8); addi 8,8,24; stw 0,0x14(11); addi 11,11,24; bne 2b; lwz 0,0x0(8); lis 9,-32704; addi 9,9,-13012; mr 10,27; stw 0,0x0(11); li 28,24; lwz 0,0x4(8); stw 0,0x4(11); 3:; lwz 11,0x0(9); addic. 28,28,-24; stw 11,0x0(10); lwz 11,0x4(9); stw 11,0x4(10); lwz 11,0x8(9); stw 11,0x8(10); lwz 11,0xc(9); stw 11,0xc(10); lwz 11,0x10(9); stw 11,0x10(10); lwz 11,0x14(9); addi 9,9,24; stw 11,0x14(10); addi 10,10,24; bne 3b; lwz 11,0x0(9); lwz 0,0x84(31); stw 11,0x0(10); lwz 11,0x4(9); stw 0,0x0(31); stw 11,0x4(10); bl _s80206424_0; lwz 4,0x0(31); lis 10,-32704; mr 9,27; addi 10,10,-12980; mr 7,26; mr 5,31; li 6,4; li 8,4; bl _s80206424_1; lwz 3,0x0(31); bl _s80206424_2; bl _s80206424_3; lwz 4,0x0(31); bl _s80206424_4; mr 9,3; lwz 11,0x43c(9); mr 3,30; addi 9,9,1084; lwz 10,0x8(9); lwz 0,0x4(9); stw 11,0x8(31); stw 10,0x8(30); stw 0,0x4(30); bl _s80206424_5; lis 9,-32704; lfs f0,-12964(9); stfs f0,0x4(29); stfs f0,0x50(1); lwz 0,0x50(1); lwz 11,0x4(29); stfs f0,0x4(29); stfs f0,0x50(1); stw 0,0x34(31); lwz 9,0x50(1); stw 11,0x4(25); lwz 0,0x4(29); stw 9,0x3c(31); stw 0,0x4(24); stw 28,0x4(31); lwz 0,0x9c(31); stw 0,0x7c(31); bl _s80206424_6; mr 4,31; bl _s80206424_7; mr. 3,3; beq 4f; lwz 9,0x94(31); lwz 4,0xc(9); bl _s80206424_8; stb 28,0x60(31); 4:; lwz 0,0x7c(1); mtspr 8,0; lmw 24,0x58(1); addi 1,1,120"
+extern "C" void _s80206424_0();
+extern "C" void _s80206424_1();
+extern "C" void _s80206424_2();
+extern "C" void _s80206424_3();
+extern "C" void _s80206424_4();
+extern "C" void _s80206424_5();
+extern "C" void _s80206424_6();
+extern "C" void _s80206424_7();
+extern "C" void _s80206424_8();
+extern "C" void f_80206424() {}

@@ -1,0 +1,4 @@
+// 0x802F8DE8 ERC::SetBlendMode(int, (220 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 24,0x10(1); stw 0,0x34(1); lis 9,-32702; mr 25,3; lfs f13,-3232(9); lwz 9,0x70(25); mr 30,4; fmuls f1,f1,f13; mr 26,5; lwz 0,0x2b4(9); lha 3,0x2b0(9); fctiwz f0,f1; stfd f0,0x8(1); mtspr 8,0; add 3,25,3; li 5,0; li 4,0; lwz 29,0xc(1); mr 28,6; mr 27,7; mr 24,8; rlwinm 29,29,0,24,31; blrl; lwz 9,0x70(25); li 4,1; lwz 0,0x2ac(9); lha 3,0x2a8(9); mtspr 8,0; add 3,25,3; blrl; rlwinm 26,26,2,0,29; rlwinm 28,28,4,0,27; or 30,30,26; rlwinm 27,27,6,0,25; or 30,30,28; rlwinm 29,29,8,0,23; or 30,30,27; li 0,52; or 30,30,29; stb 0,0x0(3); stw 30,0x4(3); sth 24,0x2(3); lwz 9,0x70(25); lha 3,0x2b8(9); lwz 0,0x2bc(9); add 3,25,3; mtspr 8,0; blrl; lwz 0,0x34(1); mtspr 8,0; lmw 24,0x10(1); addi 1,1,48"
+extern "C" void f_802F8DE8() {}

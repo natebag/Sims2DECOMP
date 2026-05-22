@@ -1,0 +1,4 @@
+// 0x8004C060 CalcRotAngleOff(float) (208 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 9,-32707; lfs f0,0x3170(9); fcmpu 0,f1,f0; cror 3,2,1; bns 0f; lis 9,-32707; lfs f0,0x3174(9); fsubs f13,f0,f1; b 1f; 0:; lis 9,-32707; lfs f0,0x3174(9); fadds f13,f1,f0; 1:; lis 9,-32707; lfs f0,0x3170(9); fcmpu 0,f1,f0; cror 3,2,1; bns 2f; lis 9,-32707; lfs f0,0x3178(9); fsubs f12,f0,f1; b 3f; 2:; lis 9,-32707; lfs f0,0x3178(9); fadds f12,f1,f0; 3:; lis 9,-32707; lfs f0,0x3170(9); fcmpu 0,f13,f0; lis 9,-32707; cror 3,2,1; bso 4f; lis 9,-32707; fneg f13,f13; 4:; lfs f0,0x317c(9); fcmpu 0,f13,f0; blt 6f; lis 9,-32707; lfs f0,0x3170(9); fcmpu 0,f12,f0; cror 3,2,1; bns 5f; lis 9,-32707; lfs f0,0x317c(9); fcmpu 0,f12,f0; blt 6f; blr; 5:; lis 9,-32707; fneg f13,f12; lfs f0,0x317c(9); fcmpu 0,f13,f0; bgelr; 6:; fneg f1,f1"
+extern "C" float f_8004C060() {}

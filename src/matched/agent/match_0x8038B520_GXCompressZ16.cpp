@@ -1,0 +1,5 @@
+// 0x8038B520 GXCompressZ16 (308 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; cmpwi 4,2; stw 0,0x4(1); rlwinm 0,3,8,0,23; not 0,0; stwu 1,-32(1); cntlzw 0,0; stw 31,0x1c(1); beq 7f; bge 0f; cmpwi 4,0; beq 1f; bge 2f; b 17f; 0:; cmpwi 4,4; bge 17f; b 12f; 1:; rlwinm 31,3,24,16,31; b 18f; 2:; cmpwi 0,3; ble 3f; li 4,3; b 4f; 3:; mr 4,0; 4:; cmpwi 4,3; bne 5f; li 0,7; b 6f; 5:; subfic 0,4,9; 6:; srw 0,3,0; rlwinm 0,0,0,18,31; mr 31,0; rlwimi 31,4,14,0,17; b 18f; 7:; cmpwi 0,7; ble 8f; li 4,7; b 9f; 8:; mr 4,0; 9:; cmpwi 4,7; bne 10f; li 0,4; b 11f; 10:; subfic 0,4,10; 11:; srw 0,3,0; rlwinm 0,0,0,19,31; mr 31,0; rlwimi 31,4,13,0,18; b 18f; 12:; cmpwi 0,12; ble 13f; li 4,12; b 14f; 13:; mr 4,0; 14:; cmpwi 4,12; bne 15f; li 0,0; b 16f; 15:; subfic 0,4,11; 16:; srw 0,3,0; rlwinm 0,0,0,20,31; mr 31,0; rlwimi 31,4,12,0,19; b 18f; 17:; lis 3,-32698; crxor 6,6,6; lis 4,-32698; addi 5,4,-25820; addi 3,3,-25832; li 4,1004; bl _s8038B520_0; 18:; mr 3,31; lwz 0,0x24(1); lwz 31,0x1c(1); addi 1,1,32; mtspr 8,0"
+extern "C" void _s8038B520_0();
+extern "C" void f_8038B520() {}

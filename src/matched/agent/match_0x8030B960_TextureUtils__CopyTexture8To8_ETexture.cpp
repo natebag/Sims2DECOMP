@@ -1,0 +1,10 @@
+// 0x8030B960 TextureUtils::CopyTexture8To8(ETexture (572 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stmw 21,0x14(1); stw 0,0x44(1); mr 28,4; mr. 31,3; beq 0f; cmpwi 28,0; beq 0f; lbz 0,0x18(31); cmpwi 0,143; beq 0f; lbz 0,0x18(28); cmpwi 0,143; beq 0f; lbz 0,0x1a(31); cmpwi 0,8; bne 0f; lbz 0,0x1a(28); cmpwi 0,8; beq 1f; 0:; li 3,0; b 8f; 1:; addi 29,1,8; mr 3,31; bl _s8030B960_0; li 27,0; mr 21,3; addi 30,1,12; mr 3,28; bl _s8030B960_1; lwz 9,0x24(31); mr 22,3; li 4,1; lhz 25,0x12(31); lwz 0,0x3c(9); lha 3,0x38(9); mtspr 8,0; lhz 26,0x10(31); add 3,31,3; lhz 23,0x10(28); blrl; lwz 9,0x24(31); mr 5,29; mr 6,30; li 4,0; lwz 0,0x44(9); lha 3,0x40(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x24(28); mr 24,3; li 4,2; lwz 0,0x3c(9); lha 3,0x38(9); mtspr 8,0; add 3,28,3; blrl; lwz 9,0x24(28); mr 5,29; mr 6,30; li 4,0; lha 3,0x40(9); lwz 0,0x44(9); add 3,28,3; mtspr 8,0; blrl; cmplw 27,25; bge 3f; mr 29,24; mr 30,3; 2:; mr 3,30; mr 4,29; mr 5,26; addi 27,27,1; crxor 6,6,6; bl _s8030B960_2; add 29,29,26; add 30,30,23; cmplw 27,25; blt 2b; 3:; lbz 0,0x18(31); cmpwi 0,138; bne 4f; lwz 9,0x24(31); lha 3,0x50(9); lwz 0,0x54(9); b 5f; 4:; lwz 9,0x24(31); lha 3,0x48(9); lwz 0,0x4c(9); 5:; add 3,31,3; mtspr 8,0; blrl; mr 30,3; lbz 0,0x18(28); cmpwi 0,138; bne 6f; lwz 9,0x24(28); lha 3,0x50(9); lwz 0,0x54(9); add 3,28,3; mtspr 8,0; blrl; b 7f; 6:; lwz 9,0x24(28); lha 3,0x48(9); lwz 0,0x4c(9); add 3,28,3; mtspr 8,0; blrl; 7:; lbz 5,0x1b(31); mr 4,30; lhz 0,0x14(31); rlwinm 5,5,29,3,31; mullw 5,0,5; crxor 6,6,6; bl _s8030B960_3; lwz 9,0x24(28); lwz 0,0x74(9); lha 3,0x70(9); mtspr 8,0; add 3,28,3; blrl; mr 4,22; mr 3,28; bl _s8030B960_4; lwz 9,0x24(31); lha 3,0x70(9); lwz 0,0x74(9); add 3,31,3; mtspr 8,0; blrl; mr 3,31; mr 4,21; bl _s8030B960_5; li 3,1; 8:; lwz 0,0x44(1); mtspr 8,0; lmw 21,0x14(1); addi 1,1,64"
+extern "C" void _s8030B960_0();
+extern "C" void _s8030B960_1();
+extern "C" void _s8030B960_2();
+extern "C" void _s8030B960_3();
+extern "C" void _s8030B960_4();
+extern "C" void _s8030B960_5();
+extern "C" void f_8030B960() {}

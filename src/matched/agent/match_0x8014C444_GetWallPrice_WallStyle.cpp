@@ -1,0 +1,4 @@
+// 0x8014C444 GetWallPrice(WallStyle) (224 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); cmpwi 3,2; beq 0f; cmpwi 3,12; beq 0f; cmpwi 3,13; beq 0f; cmpwi 3,14; bne 1f; 0:; li 0,1; b 2f; 1:; li 0,0; 2:; cmpwi 0,0; beq 5f; lwz 11,-21432(13); li 8,0; lwz 9,0xdc(11); lwz 9,0x0(9); cmpwi 9,0; beq 3f; lwz 8,-4(9); 3:; li 10,0; cmpw 10,8; bge 7f; 4:; lwz 11,0x0(9); addi 9,9,4; lwz 0,0xc(11); cmpw 3,0; beq 6f; addi 10,10,1; cmpw 10,8; blt 4b; b 7f; 5:; li 3,1; b 8f; 6:; lwz 0,0x4(11); lis 8,17200; lis 11,-32706; stw 0,0xc(1); lis 10,-32706; lfd f13,-8656(11); mr 3,9; stw 8,0x8(1); lfs f11,-8648(10); lfd f0,0x8(1); fsub f0,f0,f13; frsp f0,f0; fmuls f0,f0,f11; fmr f13,f0; fctiwz f12,f13; stfd f12,0x8(1); lwz 3,0xc(1); b 8f; 7:; li 3,0; 8:; addi 1,1,16"
+extern "C" void f_8014C444() {}

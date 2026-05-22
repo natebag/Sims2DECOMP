@@ -1,0 +1,4 @@
+// 0x801CC198 MOTTarget::ResetRealMotiveValues(void) (264 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 25,0x1c(1); stw 0,0x3c(1); lwz 28,0x164(3); li 30,0; cmpwi 28,0; beq 11f; addi 26,3,316; li 31,0; addi 27,3,284; li 25,0; li 29,0; 0:; cmpwi 31,3; beq 5f; bgt 1f; cmpwi 31,1; beq 3f; bgt 4f; cmpwi 31,0; beq 2f; b 10f; 1:; cmpwi 31,5; beq 7f; blt 6f; cmpwi 31,6; beq 8f; cmpwi 31,7; beq 9f; b 10f; 2:; li 30,14; b 10f; 3:; li 30,9; b 10f; 4:; li 30,8; b 10f; 5:; li 30,7; b 10f; 6:; li 30,15; b 10f; 7:; li 30,5; b 10f; 8:; li 30,6; b 10f; 9:; li 30,13; 10:; lwz 9,0x4(28); mr 4,30; addi 31,31,1; lha 3,0x58(9); lwz 0,0x5c(9); add 3,28,3; mtspr 8,0; blrl; fctiwz f0,f1; cmpwi 31,7; stfd f0,0x10(1); lwz 9,0x14(1); stwx 9,29,27; stwx 25,29,26; addi 29,29,4; ble 0b; 11:; lwz 0,0x3c(1); mtspr 8,0; lmw 25,0x1c(1); addi 1,1,56"
+extern "C" void f_801CC198() {}

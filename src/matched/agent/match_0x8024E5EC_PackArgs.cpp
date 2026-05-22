@@ -1,0 +1,7 @@
+// 0x8024E5EC PackArgs (392 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); stwu 1,-48(1); stmw 26,0x18(1); addi 26,4,0; addi 29,5,0; addi 30,3,0; li 4,0; li 5,8192; bl _s8024E5EC_0; cmpwi 26,0; bne 0f; li 0,0; stw 0,0x8(30); b 7f; 0:; rlwinm 0,26,2,0,29; addi 31,26,0; addi 27,30,8192; add 28,29,0; b 2f; 1:; lwz 3,0x0(28); bl _s8024E5EC_1; addi 0,3,1; lwz 4,0x0(28); subf 27,0,27; addi 3,27,0; bl _s8024E5EC_2; subf 0,30,27; stw 0,0x0(28); 2:; addic. 26,26,-1; addi 28,28,-4; bge 1b; subf 0,30,27; addi 3,31,1; rlwinm 0,0,0,0,29; cmplwi 3,0; add 6,30,0; rlwinm 0,3,2,0,29; subf 6,0,6; addi 5,6,0; li 7,0; ble 6f; cmplwi 3,8; addi 3,31,-7; ble 8f; addi 0,3,7; rlwinm 0,0,29,3,31; cmplwi 3,0; mtspr 9,0; addi 3,29,0; addi 4,5,0; ble 8f; 3:; lwz 0,0x0(3); addi 7,7,8; stw 0,0x0(4); lwz 0,0x4(3); stw 0,0x4(4); lwz 0,0x8(3); stw 0,0x8(4); lwz 0,0xc(3); stw 0,0xc(4); lwz 0,0x10(3); stw 0,0x10(4); lwz 0,0x14(3); stw 0,0x14(4); lwz 0,0x18(3); stw 0,0x18(4); lwz 0,0x1c(3); addi 3,3,32; stw 0,0x1c(4); addi 4,4,32; bdnz 3b; b 8f; 4:; addi 3,31,1; subf 0,7,3; cmplw 7,3; mtspr 9,0; bge 6f; 5:; lwz 0,0x0(4); addi 4,4,4; stw 0,0x0(5); addi 5,5,4; bdnz 5b; 6:; addi 0,6,-4; stw 31,-4(6); subf 0,30,0; stw 0,0x8(30); 7:; li 3,1; b 9f; 8:; rlwinm 0,7,2,0,29; add 4,29,0; add 5,5,0; b 4b; 9:; lmw 26,0x18(1); lwz 0,0x34(1); addi 1,1,48; mtspr 8,0"
+extern "C" void _s8024E5EC_0();
+extern "C" void _s8024E5EC_1();
+extern "C" void _s8024E5EC_2();
+extern "C" void f_8024E5EC() {}

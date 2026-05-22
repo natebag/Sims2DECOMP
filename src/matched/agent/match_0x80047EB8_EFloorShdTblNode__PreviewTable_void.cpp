@@ -1,0 +1,9 @@
+// 0x80047EB8 EFloorShdTblNode::PreviewTable(void) (484 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-88(1); mfspr 0,8; stmw 18,0x20(1); stw 0,0x5c(1); li 23,0; li 0,255; stw 23,0x8(1); li 24,1; stb 0,0x8(1); lwz 11,-21488(13); lwz 9,0x0(11); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-21488(13); addi 19,3,-1; lwz 9,0x0(11); lha 3,0x38(9); lwz 0,0x3c(9); add 3,11,3; mtspr 8,0; blrl; addi 21,3,-1; cmpw 24,19; bge 9f; addi 26,1,8; li 18,0; addi 22,1,16; 0:; rlwinm 0,24,0,24,31; mr 4,24; stb 0,0x1(26); li 5,0; li 6,1; stb 18,0x2(26); stb 18,0x3(26); mr 3,22; bl _s80047EB8_0; li 29,1; lwz 11,-21488(13); mr 4,22; li 25,255; addi 20,24,1; lwz 9,0x0(11); lha 3,0xe8(9); lwz 0,0xec(9); add 3,11,3; mtspr 8,0; blrl; mr 27,3; cmpw 29,21; bge 7f; addi 30,1,24; mr 28,26; 1:; mr 5,29; li 6,1; mr 4,24; mr 3,30; bl _s80047EB8_1; lwz 11,-21488(13); mr 4,30; lwz 9,0x0(11); lwz 0,0x8c(9); lha 3,0x88(9); mtspr 8,0; add 3,11,3; blrl; mr 0,3; mr 3,30; rlwinm 31,0,0,24,31; bl _s80047EB8_2; cmpwi 3,0; beq 2f; li 31,255; 2:; lwz 3,-21488(13); mr 4,30; lwz 9,0x0(3); lha 0,0xe8(9); lwz 9,0xec(9); add 3,3,0; mtspr 8,9; blrl; cmpw 31,25; bne 3f; cmpw 3,27; beq 5f; 3:; cmpwi 25,255; beq 4f; addi 23,23,1; 4:; mr 27,3; mr 25,31; stb 29,0x2(28); stb 29,0x3(28); b 6f; 5:; stb 29,0x3(26); 6:; mr 3,30; li 4,2; bl _s80047EB8_3; addi 0,29,1; rlwinm 29,0,0,24,31; cmpw 29,21; blt 1b; 7:; cmpwi 25,255; beq 8f; addi 23,23,1; 8:; mr 3,22; li 4,2; bl _s80047EB8_4; mr 24,20; cmpw 24,19; blt 0b; 9:; cmpwi 7,23,399; cror 31,30,28; mfcr 3; rlwinm 3,3,0,31,31; lwz 0,0x5c(1); mtspr 8,0; lmw 18,0x20(1); addi 1,1,88"
+extern "C" void _s80047EB8_0();
+extern "C" void _s80047EB8_1();
+extern "C" void _s80047EB8_2();
+extern "C" void _s80047EB8_3();
+extern "C" void _s80047EB8_4();
+extern "C" void f_80047EB8() {}

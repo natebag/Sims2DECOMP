@@ -1,0 +1,7 @@
+// 0x802B06AC AptValue::toBool(void) (396 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,3; lwz 0,0x0(31); rlwinm 0,0,0,25,31; cmpwi 0,6; beq 9f; bgt 0f; cmpwi 0,1; beq 1f; cmpwi 0,5; beq 7f; b 10f; 0:; cmpwi 0,7; beq 8f; cmpwi 0,42; bne 10f; 1:; bl _s802B06AC_0; cmpwi 3,7; bne 3f; lwz 0,0x0(31); mr 9,31; rlwinm 0,0,0,25,31; cmpwi 0,1; beq 2f; lwz 9,0x24(31); 2:; lwz 3,0xc(9); lis 9,-32700; addi 9,9,-6476; xor 3,3,9; subfic 0,3,0; adde 3,0,3; xori 3,3,1; b 12f; 3:; lwz 0,0x0(31); mr 9,31; mr 11,0; rlwinm 0,0,0,25,31; cmpwi 0,1; beq 4f; lwz 9,0x24(31); 4:; lwz 3,0xc(9); lhz 0,0x2(3); cmpwi 0,2; ble 5f; lbz 0,0x8(3); addi 3,3,8; cmpwi 0,48; bne 5f; lbz 0,0x1(3); cmpwi 0,120; bne 5f; li 4,0; li 5,16; bl _s802B06AC_1; cmpwi 3,0; li 3,1; b 11f; 5:; rlwinm 0,11,0,25,31; mr 9,31; cmpwi 0,1; beq 6f; lwz 9,0x24(31); 6:; lwz 3,0xc(9); addi 3,3,8; bl _s802B06AC_2; lis 9,-32703; lfs f0,0x1f30(9); fcmpu 7,f1,f0; crnor 31,30,30; mfcr 3; rlwinm 3,3,0,31,31; b 12f; 7:; lwz 3,0xc(31); b 12f; 8:; lwz 0,0xc(31); li 3,1; cmpwi 0,0; b 11f; 9:; lis 9,-32703; lfs f13,0xc(31); lfs f0,0x1f30(9); fcmpu 7,f13,f0; crnor 31,30,30; mfcr 3; rlwinm 3,3,0,31,31; b 12f; 10:; lwz 0,-22936(13); li 3,1; cmpw 31,0; 11:; bne 12f; li 3,0; 12:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16"
+extern "C" void _s802B06AC_0();
+extern "C" void _s802B06AC_1();
+extern "C" void _s802B06AC_2();
+extern "C" void f_802B06AC() {}

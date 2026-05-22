@@ -179,16 +179,30 @@ def insn_asm_extended(w):
         if (w & 1) and xop in RC_XOPS:
             result = result.replace(' ', '. ', 1) if ' ' in result else result + '.'
         return result
+    elif op == 13:  # addic. (addic + set CR0)
+        rt, ra, imm = (w >> 21) & 0x1F, (w >> 16) & 0x1F, decode_signed16(w & 0xFFFF)
+        return 'addic. {},{},{}'.format(rt, ra, imm)
     elif op == 19:
         xop = (w >> 1) & 0x3FF
         if xop == 150:
             return 'isync'
+        # Condition Register logical operations
+        cr_logical = {
+            33: 'crnor', 129: 'crandc', 193: 'crxor', 225: 'crnand',
+            257: 'crand', 289: 'creqv', 417: 'crorc', 449: 'cror',
+        }
+        if xop in cr_logical:
+            crd = (w >> 21) & 0x1F; cra = (w >> 16) & 0x1F; crb = (w >> 11) & 0x1F
+            return '{} {},{},{}'.format(cr_logical[xop], crd, cra, crb)
+        if xop == 0:  # mcrf
+            crfd = (w >> 23) & 0x7; crfs = (w >> 18) & 0x7
+            return 'mcrf cr{},cr{}'.format(crfd, crfs)
         if xop == 16:
             bo = (w >> 21) & 0x1F
             bi = (w >> 16) & 0x1F
             lk = w & 1
-            if lk: return None  # blrl = virtual call, skip
-            if bo == 20 and bi == 0: return None  # blr = BLR sentinel, skip
+            if lk: return 'blrl'  # virtual call through LR — emit as-is
+            if bo == 20 and bi == 0: return 'blr'  # mid-function early return
             # Conditional returns: simplified mnemonics
             bclr_map = {
                 (12, 0): 'bltlr', (4, 0): 'bgelr',
@@ -201,6 +215,13 @@ def insn_asm_extended(w):
             if mn is None: return None
             cr = bi // 4
             return '{} cr{}'.format(mn, cr) if cr != 0 else mn
+        if xop == 528:
+            bo = (w >> 21) & 0x1F
+            bi = (w >> 16) & 0x1F
+            lk = w & 1
+            if lk: return 'bctrl'  # call through CTR
+            if bo == 20 and bi == 0: return 'bctr'  # tail dispatch through CTR
+            return None
         return None
     elif op == 17:  # sc
         return 'sc'
@@ -209,28 +230,34 @@ def insn_asm_extended(w):
         frt, fra, frb = (w >> 21) & 0x1F, (w >> 16) & 0x1F, (w >> 11) & 0x1F
         frc = (w >> 6) & 0x1F
         fp_map = {21: 'fadds', 20: 'fsubs', 18: 'fdivs', 24: 'fres', 22: 'fsqrts'}
-        fpm_map = {25: 'fmuls'}
+        fpm_map = {25: 'fmuls', 29: 'fmadds', 28: 'fmsubs', 31: 'fnmadds', 30: 'fnmsubs'}
         if xop in fp_map:
             return '{} f{},f{},f{}'.format(fp_map[xop], frt, fra, frb)
         elif xop in fpm_map:
-            return '{} f{},f{},f{}'.format(fpm_map[xop], frt, fra, frc)
+            return '{} f{},f{},f{}'.format(fpm_map[xop], frt, fra, frc) if xop == 25 else '{} f{},f{},f{},f{}'.format(fpm_map[xop], frt, fra, frc, frb)
         return None
     elif op == 63:
-        xop = (w >> 1) & 0x3FF
+        xop10 = (w >> 1) & 0x3FF  # X-form: 10-bit XO
+        xop5 = (w >> 1) & 0x1F   # A-form: 5-bit XO
         frt, fra, frb = (w >> 21) & 0x1F, (w >> 16) & 0x1F, (w >> 11) & 0x1F
         frc = (w >> 6) & 0x1F
-        d_map = {21: 'fadd', 20: 'fsub', 18: 'fdiv', 72: 'fmr', 814: 'fctiwz', 12: 'frsp', 40: 'fneg', 264: 'fabs', 136: 'fnabs', 32: 'fcmpo'}
-        dm_map = {25: 'fmul'}
+        # X-form (2-operand/1-operand) uses 10-bit XO
+        d_map = {21: 'fadd', 20: 'fsub', 18: 'fdiv', 72: 'fmr', 14: 'fctiw', 15: 'fctiwz', 12: 'frsp', 40: 'fneg', 264: 'fabs', 136: 'fnabs', 32: 'fcmpo'}
         d0_map = {0: 'fcmpu'}
-        if xop in d0_map:
+        # A-form (fmul/fmadd/fsel) uses 5-bit XO
+        da_map = {25: 'fmul', 29: 'fmadd', 28: 'fmsub', 31: 'fnmadd', 30: 'fnmsub'}
+        da_sel = {23: 'fsel'}  # fsel: fD,fA,fC,fB
+        if xop10 in d0_map:
             bf = (w >> 23) & 0x7
-            return '{} {},f{},f{}'.format(d0_map[xop], bf, fra, frb)
-        elif xop in d_map:
-            if xop in (72, 814, 12, 40, 264, 136):
-                return '{} f{},f{}'.format(d_map[xop], frt, frb)
-            return '{} f{},f{},f{}'.format(d_map[xop], frt, fra, frb)
-        elif xop in dm_map:
-            return '{} f{},f{},f{}'.format(dm_map[xop], frt, fra, frc)
+            return '{} {},f{},f{}'.format(d0_map[xop10], bf, fra, frb)
+        elif xop10 in d_map:
+            if xop10 in (72, 14, 15, 12, 40, 264, 136):
+                return '{} f{},f{}'.format(d_map[xop10], frt, frb)
+            return '{} f{},f{},f{}'.format(d_map[xop10], frt, fra, frb)
+        elif xop5 in da_map:
+            return '{} f{},f{},f{},f{}'.format(da_map[xop5], frt, fra, frc, frb)
+        elif xop5 in da_sel:
+            return '{} f{},f{},f{},f{}'.format(da_sel[xop5], frt, fra, frc, frb)
         return None
     return None
 
@@ -347,7 +374,7 @@ def try_gen_stub_lines(addr, body_words):
     return '; '.join(pieces), extern_decls
 
 created = 0
-for size in range(8, 257, 4):
+for size in range(8, 24577, 4):
     for addr, (sym_size, name) in sorted(syms.items()):
         if addr in already_matched or sym_size != size:
             continue

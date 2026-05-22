@@ -1,0 +1,4 @@
+// 0x80055F94 EIObjTileBoundRect::Scale(float, (188 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 9,-32707; lfs f12,0x0(3); lfs f13,0x4(3); lfs f0,0x35c4(9); fsubs f12,f12,f13; fcmpu 0,f12,f0; cror 3,2,1; bns 0f; lis 9,-32707; fmuls f13,f12,f1; lfs f0,0x35c8(9); b 1f; 0:; lis 9,-32707; fneg f0,f12; lfs f13,0x35c8(9); fmuls f0,f0,f1; 1:; fmuls f1,f0,f13; lfs f13,0x0(3); lis 9,-32707; lfs f0,0x4(3); lfs f10,0xc(3); fsubs f13,f13,f1; lfs f12,0x8(3); fadds f0,f0,f1; lfs f11,0x35c4(9); fsubs f10,f10,f12; stfs f13,0x0(3); stfs f0,0x4(3); fcmpu 0,f10,f11; cror 3,2,1; bns 2f; lis 9,-32707; fmuls f13,f10,f2; lfs f0,0x35c8(9); b 3f; 2:; lis 9,-32707; fneg f0,f10; lfs f13,0x35c8(9); fmuls f0,f0,f2; 3:; fmuls f2,f0,f13; lfs f0,0xc(3); lfs f13,0x8(3); fsubs f0,f0,f2; fadds f13,f13,f2; stfs f0,0xc(3); stfs f13,0x8(3)"
+extern "C" void f_80055F94() {}

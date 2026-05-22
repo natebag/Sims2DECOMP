@@ -1,0 +1,5 @@
+// 0x801770C0 UIAUDIO::UIAUDIO(void) (280 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stfd f31,0x30(1); stmw 23,0xc(1); stw 0,0x3c(1); lis 9,-32698; mr 30,3; li 0,0; addi 9,9,25952; lis 11,-32698; stw 9,0x74(30); stw 0,0xc(30); addi 27,11,25976; stw 0,0x0(30); li 28,0; stw 0,0x4(30); li 31,0; stw 0,0x8(30); li 29,70; 0:; li 3,24; bl _s801770C0_0; lwz 0,0x8(30); stw 27,0x14(3); cmpwi 0,0; stw 31,0x0(3); stw 31,0x4(3); stw 31,0x8(3); stw 31,0xc(3); stw 31,0x10(3); bne 1f; stw 3,0x8(30); b 2f; 1:; stw 3,0x4(28); stw 28,0x0(3); 2:; mr 28,3; addic. 29,29,-1; bne 0b; lis 9,-32706; addi 23,30,36; lfs f31,0x2410(9); addi 24,30,56; addi 25,30,76; addi 26,30,96; addi 29,30,16; li 27,0; li 31,0; li 28,5; 3:; stwx 27,31,29; lwz 3,-26564(13); lwz 9,0x0(3); lha 0,0x88(9); lwz 9,0x8c(9); add 3,3,0; mtspr 8,9; blrl; stwx 3,31,29; addic. 28,28,-1; stwx 27,31,23; stwx 27,31,24; stfsx f31,31,25; stfsx f31,31,26; addi 31,31,4; bne 3b; mr 3,30; lwz 0,0x3c(1); mtspr 8,0; lmw 23,0xc(1); lfd f31,0x30(1); addi 1,1,56"
+extern "C" void _s801770C0_0();
+extern "C" void f_801770C0() {}

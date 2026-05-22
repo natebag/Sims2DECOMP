@@ -1,0 +1,4 @@
+// 0x802FF6F8 ESubModelShader::GetMinMaxX(float (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); stw 31,0x1c(1); addi 11,3,20; li 10,0; lwz 0,0x4(11); cmpw 10,0; bge 5f; lis 9,-32702; mr 12,11; addi 31,9,-2376; 0:; mulli 11,10,52; lwz 9,0x14(3); addi 6,10,1; li 8,0; lwzx 10,9,11; add 9,9,11; lwz 0,0x18(9); cmplw 8,0; bge 4f; mr 7,11; lfd f11,0x0(31); mr 11,10; lis 10,17200; 1:; lha 0,0x0(11); lfs f13,0x0(4); addi 11,11,8; xoris 0,0,32768; stw 0,0x14(1); stw 10,0x10(1); lfd f0,0x10(1); fsub f0,f0,f11; frsp f12,f0; fcmpu 0,f12,f13; cror 3,2,0; bns 2f; stfs f12,0x0(4); 2:; lfs f0,0x0(5); fcmpu 0,f12,f0; cror 3,2,1; bns 3f; stfs f12,0x0(5); 3:; lwz 9,0x14(3); addi 8,8,1; add 9,9,7; lwz 0,0x18(9); cmplw 8,0; blt 1b; 4:; lwz 0,0x4(12); mr 10,6; cmpw 10,0; blt 0b; 5:; lwz 31,0x1c(1); addi 1,1,32"
+extern "C" void f_802FF6F8() {}

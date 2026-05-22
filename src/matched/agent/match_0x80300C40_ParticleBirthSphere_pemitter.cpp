@@ -1,0 +1,9 @@
+// 0x80300C40 ParticleBirthSphere(pemitter (404 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; stfd f25,0x18(1); stfd f26,0x20(1); stfd f27,0x28(1); stfd f28,0x30(1); stfd f29,0x38(1); stfd f30,0x40(1); stfd f31,0x48(1); stmw 30,0x10(1); stw 0,0x54(1); lwz 11,-18432(13); lis 8,-32690; lwz 9,-25888(13); addi 8,8,-13824; addi 11,11,-1; lis 10,-32702; and 9,9,11; lfs f25,-2124(10); addi 7,9,1; lis 6,-32702; and 7,7,11; rlwinm 9,9,2,0,29; rlwinm 11,7,2,0,29; lwzx 10,8,9; lwzx 0,8,11; lis 9,-32702; lwz 11,0x88(3); rlwinm 10,10,0,9,31; rlwinm 0,0,0,9,31; lfs f0,-2116(6); oris 0,0,16256; oris 10,10,16256; stw 0,0x8(1); addi 7,7,1; lfs f13,-2120(9); mr 31,5; lfs f12,0x8(1); mr 30,4; lfs f29,0xd4(11); stw 10,0x8(1); fsubs f28,f12,f25; fmuls f28,f28,f0; lfs f0,0x8(1); fmr f1,f28; lfs f30,0xd0(11); fsubs f27,f0,f25; stw 7,-25888(13); fmuls f27,f27,f13; bl _s80300C40_0; fmr f31,f1; fmr f1,f27; bl _s80300C40_1; fmr f26,f1; fmr f1,f28; bl _s80300C40_2; fmr f28,f1; fmr f1,f27; bl _s80300C40_3; fmuls f30,f30,f31; fmuls f31,f29,f31; fmuls f30,f30,f1; fmuls f31,f31,f26; stfs f30,0x0(30); fmuls f29,f29,f28; stfs f31,0x8(30); stfs f29,0x4(30); fmuls f1,f29,f29; fmadds f1,f30,f30,f1; stfs f25,0xc(31); fmadds f1,f31,f31,f1; stfs f30,0x0(31); stfs f29,0x4(31); stfs f31,0x8(31); bl _s80300C40_4; lis 9,-32702; lfs f0,-2112(9); fcmpu 0,f1,f0; beq 0f; fdivs f13,f25,f1; lfs f12,0x0(31); lfs f11,0x4(31); lfs f0,0x8(31); fmuls f12,f12,f13; fmuls f0,f0,f13; stfs f12,0x0(31); fmuls f11,f11,f13; stfs f0,0x8(31); stfs f11,0x4(31); 0:; lwz 0,0x54(1); mtspr 8,0; lmw 30,0x10(1); lfd f25,0x18(1); lfd f26,0x20(1); lfd f27,0x28(1); lfd f28,0x30(1); lfd f29,0x38(1); lfd f30,0x40(1); lfd f31,0x48(1); addi 1,1,80"
+extern "C" void _s80300C40_0();
+extern "C" void _s80300C40_1();
+extern "C" void _s80300C40_2();
+extern "C" void _s80300C40_3();
+extern "C" void _s80300C40_4();
+extern "C" void f_80300C40() {}

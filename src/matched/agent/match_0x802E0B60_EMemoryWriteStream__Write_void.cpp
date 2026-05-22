@@ -1,0 +1,8 @@
+// 0x802E0B60 EMemoryWriteStream::Write(void (408 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 25,0x14(1); stw 0,0x34(1); mr. 28,5; mr 31,3; mr 26,4; mcrf cr7,cr0; bne cr7,0f; li 3,0; b 14f; 0:; addi 9,31,32; lwz 10,0x1c(31); mr 25,9; lwz 9,0x4(9); add 8,10,28; rlwinm 0,9,12,0,19; cmplw 8,0; ble 5f; cmpwi 10,0; li 27,0; beq 1f; lwz 11,0x20(31); addi 9,9,-1; rlwinm 9,9,2,0,29; lwzx 0,11,9; stw 0,0x8(1); b 2f; 1:; stw 27,0x8(1); 2:; li 30,0; cmpw 30,28; bge 13f; 3:; lwz 0,0x1c(31); andi. 29,0,4095; bne 4f; bl _s802E0B60_0; li 4,4096; li 5,0; bl _s802E0B60_1; cmpwi 3,0; stw 3,0x8(1); beq 8f; mr 3,25; addi 4,1,8; bl _s802E0B60_2; 4:; lbzx 0,26,30; addi 27,27,1; lwz 11,0x8(1); addi 30,30,1; cmpw 30,28; stbx 0,11,29; lwz 9,0x1c(31); addi 9,9,1; stw 9,0x1c(31); blt 3b; b 13f; 5:; lwz 11,0x20(31); addi 9,9,-1; rlwinm 9,9,2,0,29; rlwinm 10,10,0,20,31; lwzx 9,11,9; cmpwi 28,2; mr 11,26; stw 8,0x1c(31); add 3,9,10; beq 11f; bgt 6f; beq cr7,13f; cmpwi 28,1; beq 12f; b 7f; 6:; cmpwi 28,3; beq 10f; cmpwi 28,4; beq 9f; 7:; mr 4,26; mr 5,28; crxor 6,6,6; bl _s802E0B60_3; b 13f; 8:; mr 3,27; b 14f; 9:; lbz 0,0x0(11); addi 3,3,1; addi 11,11,1; stbx 0,9,10; 10:; lbz 0,0x0(11); addi 11,11,1; stb 0,0x0(3); addi 3,3,1; 11:; lbz 0,0x0(11); addi 11,11,1; stb 0,0x0(3); addi 3,3,1; 12:; lbz 0,0x0(11); stb 0,0x0(3); 13:; mr 3,28; 14:; lwz 0,0x34(1); mtspr 8,0; lmw 25,0x14(1); addi 1,1,48"
+extern "C" void _s802E0B60_0();
+extern "C" void _s802E0B60_1();
+extern "C" void _s802E0B60_2();
+extern "C" void _s802E0B60_3();
+extern "C" void f_802E0B60() {}

@@ -1,0 +1,13 @@
+// 0x801F7924 INVTarget::EnterWallPaperingMode(InteractorModule::WallPaperData (632 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-96(1); mfspr 0,8; mfcr 12; stmw 28,0x50(1); stw 0,0x64(1); stw 12,0x4c(1); lis 9,-32698; addi 11,1,8; addi 9,9,28960; li 0,4; stw 9,0x10(11); mr 31,3; stw 0,0x8(1); li 10,0; lwz 0,0x84(31); lis 9,-32737; stw 10,0x20(11); addi 9,9,7020; stw 10,0x14(11); mr 28,11; mr 30,5; mr. 4,4; stw 0,0xc(1); stw 9,0x14(1); stw 31,0x10(1); beq 0f; lwz 9,0x0(4); lwz 10,0x4(4); stw 9,0x20(1); stw 10,0x24(1); b 1f; 0:; lis 9,-32697; lwz 11,0x5ea4(9); lwz 10,0x0(11); lwz 0,0x0(10); stw 4,0x24(1); stw 0,0x20(1); 1:; lis 9,-32697; lwz 0,0x618c(9); cmpwi 0,0; beq 2f; lwz 0,-21076(13); mr 3,31; cmpwi 4,30,1; stw 0,0x28(1); bl _s801F7924_0; b 4f; 2:; lwz 3,0x90(31); li 4,5; lwz 5,0x24(1); cmpwi 4,30,1; bl _s801F7924_1; beq cr4,3f; cmpwi 3,0; beq 3f; bl _s801F7924_2; stw 3,0x28(1); b 4f; 3:; li 0,0; stw 0,0x28(1); 4:; bne cr4,5f; stw 30,0x1c(1); b 6f; 5:; li 0,0; stw 0,0x1c(1); 6:; li 4,0; mr 3,31; bl _s801F7924_3; lwz 0,0x28(1); li 9,1; stw 9,0x32e4(31); mr 3,31; stw 0,0x32e8(31); bl _s801F7924_4; lwz 0,0x0(31); lwz 4,-28692(13); cmpwi 0,0; beq 7f; lwz 3,0x1c(31); cmpwi 3,0; beq 7f; lis 5,16544; lwz 6,0x7c(31); ori 5,5,54284; li 7,0; bl _s801F7924_5; 7:; bl _s801F7924_6; lwz 31,0x4(28); mr 30,3; mr 4,31; bl _s801F7924_7; cmpwi 3,0; beq 9f; li 0,1; lbz 9,0x3c(30); slw 0,0,31; rlwinm 0,0,0,24,31; and. 29,9,0; bne 9f; or 0,0,9; li 3,36; stb 0,0x3c(30); bl _s801F7924_8; lis 9,-32698; li 0,4; addi 9,9,28960; stw 0,0x0(3); stw 29,0x20(3); rlwinm 4,31,3,0,28; stw 9,0x30(1); mr 11,3; stw 9,0x10(3); mr 10,28; stw 29,0x14(3); li 9,24; 8:; lwz 0,0x0(10); addic. 9,9,-24; stw 0,0x0(11); lwz 0,0x4(10); stw 0,0x4(11); lwz 0,0x8(10); stw 0,0x8(11); lwz 0,0xc(10); stw 0,0xc(11); lwz 0,0x10(10); stw 0,0x10(11); lwz 0,0x14(10); addi 10,10,24; stw 0,0x14(11); addi 11,11,24; bne 8b; lwz 0,0x0(10); lwz 9,0x30(1); stw 0,0x0(11); lwz 0,0x4(10); stw 0,0x4(11); lwz 0,0x8(10); stw 0,0x8(11); stw 9,0x10(3); lwz 0,0x0(3); lwz 9,0x2c(30); stw 0,0x40(1); stw 3,0x44(1); add 11,9,4; stw 0,0x38(1); stw 3,0x3c(1); stwx 0,9,4; stw 3,0x4(11); 9:; lis 9,-32698; addi 9,9,-10560; stw 9,0x10(28); lwz 0,0x64(1); lwz 12,0x4c(1); mtspr 8,0; lmw 28,0x50(1); mtcrf 8,12; addi 1,1,96"
+extern "C" void _s801F7924_0();
+extern "C" void _s801F7924_1();
+extern "C" void _s801F7924_2();
+extern "C" void _s801F7924_3();
+extern "C" void _s801F7924_4();
+extern "C" void _s801F7924_5();
+extern "C" void _s801F7924_6();
+extern "C" void _s801F7924_7();
+extern "C" void _s801F7924_8();
+extern "C" void f_801F7924() {}

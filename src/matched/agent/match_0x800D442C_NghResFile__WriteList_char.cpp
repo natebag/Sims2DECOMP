@@ -1,0 +1,6 @@
+// 0x800D442C NghResFile::WriteList(char (300 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 23,0xc(1); stw 0,0x34(1); mr 25,5; mr 23,4; mr 26,6; mr 27,7; mr 28,8; mr 29,9; mr 30,10; lwz 24,0x38(1); mr 4,25; bl _s800D442C_0; lwz 31,0x0(3); cmpwi 31,0; beq 5f; 0:; lwz 0,0x4(31); cmpwi 0,0; beq 4f; lwz 9,0x0(26); li 5,0; stw 25,0x0(9); addi 9,9,4; stw 9,0x0(26); lwz 11,0x0(30); addi 11,11,3; rlwinm 11,11,0,0,29; stw 11,0x0(30); lwz 9,0x0(27); stw 11,0x0(9); addi 9,9,4; stw 9,0x0(27); lwz 9,0x4(31); lwz 0,0x0(30); lwz 4,0x4(9); cmpwi 9,0; beq 1f; lwz 5,0x0(9); 1:; add 3,23,0; crxor 6,6,6; bl _s800D442C_1; lwz 9,0x4(31); li 11,0; cmpwi 9,0; beq 2f; lwz 11,0x0(9); 2:; lwz 0,0x0(30); li 10,0; add 0,0,11; stw 0,0x0(30); lwz 9,0x4(31); cmpwi 9,0; beq 3f; lwz 10,0x0(9); 3:; lwz 9,0x0(28); stw 10,0x0(9); addi 9,9,4; stw 9,0x0(28); lwz 11,0x0(29); lhz 0,0x8(31); sth 0,0x0(11); addi 11,11,2; stw 11,0x0(29); lwz 9,0x0(24); addi 9,9,14; stw 9,0x0(24); 4:; lwz 31,0x0(31); cmpwi 31,0; bne 0b; 5:; lwz 0,0x34(1); mtspr 8,0; lmw 23,0xc(1); addi 1,1,48"
+extern "C" void _s800D442C_0();
+extern "C" void _s800D442C_1();
+extern "C" void f_800D442C() {}

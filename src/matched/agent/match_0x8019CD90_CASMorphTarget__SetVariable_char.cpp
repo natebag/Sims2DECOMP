@@ -1,0 +1,8 @@
+// 0x8019CD90 CASMorphTarget::SetVariable(char (380 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stfd f31,0x28(1); stmw 29,0x1c(1); stw 0,0x34(1); mr 31,3; mr 30,4; mr 29,5; lis 3,-32705; addi 3,3,-13528; li 5,12; bl _s8019CD90_0; cmpwi 3,0; bne 9f; lbz 0,0xc(30); cmpwi 0,50; beq 9f; mr 3,29; lis 30,-32705; bl _s8019CD90_1; lfs f13,-13512(30); fmr f31,f1; fcmpu 0,f31,f13; bge 0f; fmr f31,f13; 0:; lis 9,-32705; lfs f0,-13508(9); fcmpu 0,f31,f0; ble 1f; fmr f31,f0; 1:; lwz 0,0x8c(31); mr 10,0; cmpwi 0,2; bne 2f; lis 9,-32705; lfs f0,-13504(9); fmadds f31,f31,f0,f13; b 5f; 2:; cmplwi 10,2; blt 4f; cmplwi 10,7; bgt 4f; cmplwi 10,4; blt 4f; lis 11,-32705; lis 9,-32705; lfs f0,-13512(9); lfs f13,-13500(11); fmadds f31,f31,f13,f0; fcmpu 0,f31,f0; blt 6f; fcmpu 0,f31,f13; ble 7f; 3:; fmr f31,f13; b 7f; 4:; lis 9,-32705; lis 11,-32705; lfs f13,-13512(9); fadds f31,f31,f31; lfs f0,-13496(11); 5:; fcmpu 0,f31,f13; blt 3b; fcmpu 0,f31,f0; ble 7f; 6:; fmr f31,f0; 7:; lwz 0,0x90(31); cmpw 0,10; bne 8f; lfs f0,0x94(31); fcmpu 0,f0,f31; beq 9f; 8:; lis 29,-32698; addi 30,1,8; lwz 3,0x84(31); addi 29,29,25064; li 0,5; stw 29,0x4(30); stw 0,0x8(1); mr 4,30; stw 10,0x8(30); stfs f31,0xc(30); bl _s8019CD90_2; stw 29,0x4(30); mr 3,30; li 4,2; bl _s8019CD90_3; lwz 0,0x8c(31); stfs f31,0x94(31); stw 0,0x90(31); 9:; lwz 0,0x34(1); mtspr 8,0; lmw 29,0x1c(1); lfd f31,0x28(1); addi 1,1,48"
+extern "C" void _s8019CD90_0();
+extern "C" void _s8019CD90_1();
+extern "C" void _s8019CD90_2();
+extern "C" void _s8019CD90_3();
+extern "C" void f_8019CD90() {}

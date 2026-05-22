@@ -1,0 +1,5 @@
+// 0x800122D8 AwarenessManager::GetFirstNodeRotation(float, (252 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 30,0x18(1); stw 0,0x24(1); lfs f10,0xc(4); mr 30,3; lfs f11,0x20(4); addi 31,1,8; fcmpu 7,f10,f11; beq cr7,4f; lis 11,-32707; fsubs f0,f11,f10; lfs f13,-9076(11); lis 10,-32707; lis 9,-32707; stfs f13,0x8(31); fcmpu 0,f0,f13; stfs f13,0x4(31); lfs f12,-9068(9); lfs f0,-9072(10); stfs f13,0x8(1); fmuls f1,f1,f12; stfs f0,0xc(31); bge 0f; fneg f1,f1; 0:; fadds f1,f10,f1; bge cr7,1f; fcmpu 0,f1,f11; cror 3,2,1; bso 2f; 1:; ble cr7,3f; fcmpu 0,f1,f11; cror 3,2,0; bns 3f; 2:; lfs f0,0x20(4); stfs f0,0xc(4); b 4f; 3:; stfs f1,0xc(4); 4:; lfs f1,0xc(4); fcmpu 0,f1,f2; bgt 5f; fneg f2,f2; fcmpu 0,f1,f2; bge 6f; 5:; fmr f1,f2; 6:; lis 4,-32697; addi 3,1,8; addi 4,4,13576; bl _s800122D8_0; lfs f13,0x8(1); mr 3,30; stfs f13,0x0(30); lfs f0,0x4(31); stfs f0,0x4(30); lfs f13,0x8(31); stfs f13,0x8(30); lfs f0,0xc(31); stfs f0,0xc(30); lwz 0,0x24(1); mtspr 8,0; lmw 30,0x18(1); addi 1,1,32"
+extern "C" void _s800122D8_0();
+extern "C" void f_800122D8() {}

@@ -1,0 +1,17 @@
+// 0x801B7B18 H2DTarget::~H2DTarget(void) (920 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 26,0x8(1); stw 0,0x24(1); lwz 0,-30268(13); lis 9,-32698; mr 29,3; addi 9,9,31160; mr 26,4; stw 9,0x80(29); cmpwi 0,0; beq 1f; 0:; li 3,0; bl _s801B7B18_0; lwz 0,-30268(13); cmpwi 0,0; bne 0b; 1:; lis 9,-32697; li 27,0; lwz 0,0x5c70(9); cmpwi 0,0; beq 2f; li 27,1; 2:; li 30,0; cmpw 30,27; bgt 4f; lis 9,-32697; addi 31,29,236; addi 28,9,24012; 3:; lwz 5,0x0(31); mr 4,30; lwz 3,0xb4(28); addi 30,30,1; addi 31,31,4; bl _s801B7B18_1; cmpw 30,27; ble 3b; 4:; lwz 11,0xcc(29); cmpwi 11,0; beq 5f; lwz 9,0x80(11); li 4,3; lwz 0,0xc(9); lha 3,0x8(9); mtspr 8,0; add 3,11,3; blrl; li 0,0; stw 0,0xcc(29); 5:; lwz 11,0xc8(29); cmpwi 11,0; beq 6f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 6:; lwz 11,0xc4(29); cmpwi 11,0; beq 7f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 7:; li 30,0; cmpw 30,27; bgt 16f; addi 30,27,1; li 31,0; 8:; addi 9,29,188; lwzx 11,9,31; cmpwi 11,0; beq 9f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 9:; addi 9,29,180; lwzx 11,9,31; cmpwi 11,0; beq 10f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 10:; addi 9,29,172; lwzx 11,9,31; cmpwi 11,0; beq 11f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 11:; addi 9,29,164; lwzx 11,9,31; cmpwi 11,0; beq 12f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 12:; addi 9,29,156; lwzx 11,9,31; cmpwi 11,0; beq 13f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 13:; addi 9,29,144; lwzx 11,9,31; cmpwi 11,0; beq 14f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 14:; addi 9,29,136; lwzx 11,9,31; cmpwi 11,0; beq 15f; lwz 9,0x80(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 15:; addi 31,31,4; addic. 30,30,-1; bne 8b; 16:; lis 9,-32697; li 4,49; lwz 3,0x5f10(9); bl _s801B7B18_2; lwz 0,0x0(29); cmpwi 0,0; beq 26f; lwz 3,0x4(29); addi 4,29,40; bl _s801B7B18_3; lwz 3,0x8(29); addi 4,29,56; bl _s801B7B18_4; lwz 3,0xc(29); addi 4,29,72; bl _s801B7B18_5; addi 9,29,88; li 11,0; lwz 0,0x8(9); mr 4,9; cmpwi 0,0; bne 17f; lwz 0,0x58(29); cmpwi 0,0; beq 18f; 17:; li 11,1; 18:; cmpwi 11,0; beq 19f; lwz 3,0x10(29); bl _s801B7B18_6; 19:; addi 9,29,104; li 11,0; lwz 0,0x8(9); mr 4,9; cmpwi 0,0; bne 20f; lwz 0,0x68(29); cmpwi 0,0; beq 21f; 20:; li 11,1; 21:; cmpwi 11,0; beq 22f; lwz 3,0x14(29); bl _s801B7B18_7; 22:; lwz 3,0x18(29); cmpwi 3,0; beq 23f; lwz 4,0x7c(29); bl _s801B7B18_8; 23:; lwz 3,0x1c(29); cmpwi 3,0; beq 24f; lwz 4,0x7c(29); bl _s801B7B18_9; 24:; lwz 3,0x20(29); cmpwi 3,0; beq 25f; lwz 4,0x7c(29); bl _s801B7B18_10; 25:; lwz 3,0x24(29); cmpwi 3,0; beq 26f; lwz 4,0x7c(29); bl _s801B7B18_11; 26:; lis 9,-32698; andi. 0,26,1; addi 9,9,-12328; stw 9,0x80(29); beq 27f; mr 3,29; bl _s801B7B18_12; 27:; lwz 0,0x24(1); mtspr 8,0; lmw 26,0x8(1); addi 1,1,32"
+extern "C" void _s801B7B18_0();
+extern "C" void _s801B7B18_1();
+extern "C" void _s801B7B18_2();
+extern "C" void _s801B7B18_3();
+extern "C" void _s801B7B18_4();
+extern "C" void _s801B7B18_5();
+extern "C" void _s801B7B18_6();
+extern "C" void _s801B7B18_7();
+extern "C" void _s801B7B18_8();
+extern "C" void _s801B7B18_9();
+extern "C" void _s801B7B18_10();
+extern "C" void _s801B7B18_11();
+extern "C" void _s801B7B18_12();
+extern "C" void f_801B7B18() {}

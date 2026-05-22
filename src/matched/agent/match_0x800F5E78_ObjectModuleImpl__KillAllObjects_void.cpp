@@ -1,0 +1,12 @@
+// 0x800F5E78 ObjectModuleImpl::KillAllObjects(void) (596 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; stmw 23,0x2c(1); stw 0,0x54(1); mr 31,3; addi 27,13,-31896; addi 28,1,8; addi 24,1,32; addi 23,1,24; lis 25,-32693; li 26,0; li 30,0; li 29,2; 0:; lwzx 4,30,27; cmpwi 4,0; beq 1f; addi 3,25,11064; bl _s800F5E78_0; stwx 26,30,27; 1:; addi 30,30,4; addic. 29,29,-1; bne 0b; li 0,1; stw 0,0x208c(31); addi 27,31,8344; addi 25,31,8352; addi 26,31,36; b 3f; 2:; lwz 9,0x0(31); lwz 11,0x9c(9); addi 29,9,88; lha 3,0x98(9); mtspr 8,11; lha 30,0x58(9); add 3,31,3; add 30,31,30; blrl; lwz 9,0x4(3); lha 0,0x328(9); lwz 9,0x32c(9); add 3,3,0; mtspr 8,9; blrl; lwz 0,0x4(29); mr 4,3; mr 3,30; mtspr 8,0; blrl; 3:; lwz 9,0x0(31); lha 3,0x98(9); lwz 0,0x9c(9); add 3,31,3; mtspr 8,0; blrl; mr. 3,3; bne 2b; stw 3,0x208c(31); stw 3,0x8(1); stw 3,0x4(28); addi 8,28,8; stw 3,0x4(8); lwz 0,0x2090(31); lwz 9,0x2094(31); lwz 11,0x8(1); lwz 10,0xc(1); stw 0,0x8(1); stw 9,0xc(1); stw 11,0x2090(31); stw 10,0x2094(31); lwz 11,0x2098(31); lwz 0,0x4(8); stw 0,0x4(24); lwz 9,0x4(27); stw 11,0x8(28); stw 9,0x4(8); lwz 0,0x20(1); lwz 3,0x8(1); lwz 9,0x24(1); stw 0,0x2098(31); cmpwi 3,0; stw 9,0x4(27); beq 5f; lwz 0,0xc(28); subf 0,3,0; rlwinm 4,0,0,0,29; cmplwi 4,128; ble 4f; bl _s800F5E78_1; b 5f; 4:; bl _s800F5E78_2; 5:; mr 3,25; li 4,0; li 5,64; bl _s800F5E78_3; li 0,0; stw 0,0x8(1); addi 8,28,8; stw 0,0x4(28); stw 0,0x4(8); lwz 0,0x20(31); lwz 9,0x1c(31); lwz 11,0x8(1); lwz 10,0xc(1); stw 9,0x8(1); stw 0,0xc(1); stw 11,0x1c(31); stw 10,0x20(31); lwz 11,0x24(31); lwz 0,0x4(8); stw 0,0x4(23); lwz 9,0x4(26); stw 11,0x8(28); stw 9,0x4(8); lwz 0,0x18(1); lwz 3,0x8(1); lwz 9,0x1c(1); stw 0,0x24(31); cmpwi 3,0; stw 9,0x4(26); beq 7f; lwz 0,0xc(28); subf 0,3,0; rlwinm 4,0,0,0,29; cmplwi 4,128; ble 6f; bl _s800F5E78_4; b 7f; 6:; bl _s800F5E78_5; 7:; lis 9,-32697; lwz 3,0x5ed8(9); cmpwi 3,0; beq 8f; bl _s800F5E78_6; 8:; lwz 3,-21496(13); lwz 9,0x0(3); lha 0,0x198(9); lwz 9,0x19c(9); add 3,3,0; mtspr 8,9; blrl; mr. 3,3; beq 9f; bl _s800F5E78_7; 9:; li 3,0; lwz 0,0x54(1); mtspr 8,0; lmw 23,0x2c(1); addi 1,1,80"
+extern "C" void _s800F5E78_0();
+extern "C" void _s800F5E78_1();
+extern "C" void _s800F5E78_2();
+extern "C" void _s800F5E78_3();
+extern "C" void _s800F5E78_4();
+extern "C" void _s800F5E78_5();
+extern "C" void _s800F5E78_6();
+extern "C" void _s800F5E78_7();
+extern "C" void f_800F5E78() {}

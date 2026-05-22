@@ -1,0 +1,4 @@
+// 0x800462F8 EvaluateFloorColors(EShader (172 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="addi 11,3,16; lfs f0,0x0(4); lfs f13,0x10(11); addi 10,11,16; lis 9,-32707; fmuls f13,f13,f0; lfs f9,0x2df0(9); stfs f13,0x0(6); lfs f0,0x4(4); lfs f11,0x4(10); fmuls f11,f11,f0; stfs f11,0x4(6); lfs f0,0x8(4); lfs f10,0x8(10); fmuls f10,f10,f0; stfs f10,0x8(6); lfs f0,0x0(5); lfs f12,0x10(3); fmadds f12,f12,f0,f13; stfs f12,0x0(6); fmuls f12,f12,f9; lfs f0,0x4(5); lfs f13,0x4(11); fmadds f13,f13,f0,f11; stfs f13,0x4(6); fmuls f13,f13,f9; lfs f11,0x8(5); lfs f0,0x8(11); stfs f12,0x0(6); fmadds f0,f0,f11,f10; stfs f13,0x4(6); fmuls f12,f0,f9; stfs f12,0x8(6); lfs f0,0x10(3); fmuls f0,f0,f9; stfs f0,0x0(7); lfs f13,0x4(11); fmuls f13,f13,f9; stfs f13,0x4(7); lfs f0,0x8(11); fmuls f0,f0,f9; stfs f0,0x8(7)"
+extern "C" void f_800462F8() {}

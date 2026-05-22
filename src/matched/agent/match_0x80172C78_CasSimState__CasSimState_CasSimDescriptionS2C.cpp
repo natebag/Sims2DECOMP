@@ -1,0 +1,4 @@
+// 0x80172C78 CasSimState::CasSimState(CasSimDescriptionS2C (188 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 9,-32698; li 0,0; addi 9,9,25160; stw 0,0x0(3); stw 9,0x4(3); addi 11,3,8; mr 9,4; li 10,288; 0:; lwz 0,0x0(9); addic. 10,10,-24; stw 0,0x0(11); lwz 0,0x4(9); stw 0,0x4(11); lwz 0,0x8(9); stw 0,0x8(11); lwz 0,0xc(9); stw 0,0xc(11); lwz 0,0x10(9); stw 0,0x10(11); lwz 0,0x14(9); addi 9,9,24; stw 0,0x14(11); addi 11,11,24; bne 0b; lwz 0,0x0(9); li 10,288; addi 9,3,300; stw 0,0x0(11); 1:; lwz 0,0x0(4); addic. 10,10,-24; stw 0,0x0(9); lwz 0,0x4(4); stw 0,0x4(9); lwz 0,0x8(4); stw 0,0x8(9); lwz 0,0xc(4); stw 0,0xc(9); lwz 0,0x10(4); stw 0,0x10(9); lwz 0,0x14(4); addi 4,4,24; stw 0,0x14(9); addi 9,9,24; bne 1b; lwz 0,0x0(4); stw 0,0x0(9)"
+extern "C" void f_80172C78() {}

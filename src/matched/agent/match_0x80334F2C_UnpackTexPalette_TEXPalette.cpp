@@ -1,0 +1,5 @@
+// 0x80334F2C UnpackTexPalette(TEXPalette (296 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,3; lis 0,32; lwz 9,0x0(31); ori 0,0,44848; cmpw 9,0; beq 0f; lis 3,-32702; lis 5,-32702; addi 3,3,6324; addi 5,5,6404; li 4,1666; crxor 6,6,6; bl _s80334F2C_0; 0:; lwz 0,0x8(31); li 8,0; lwz 9,0x4(31); add 0,0,31; stw 0,0x8(31); cmplw 8,9; bge 4f; li 7,1; 1:; lwz 11,0x8(31); rlwinm 9,8,3,0,28; mr 10,9; lwzx 0,9,11; cmpwi 0,0; beq 2f; add 0,0,31; stwx 0,10,11; lwz 9,0x8(31); lwzx 9,10,9; lbz 0,0x23(9); cmpwi 0,0; bne 2f; lwz 0,0x8(9); add 0,0,31; stw 0,0x8(9); lwz 9,0x8(31); lwzx 11,10,9; stb 7,0x23(11); 2:; lwz 0,0x8(31); add 9,10,0; lwz 0,0x4(9); cmpwi 0,0; beq 3f; add 0,0,31; stw 0,0x4(9); lwz 9,0x8(31); add 9,10,9; lwz 9,0x4(9); lbz 0,0x2(9); cmpwi 0,0; bne 3f; lwz 0,0x8(9); add 0,0,31; stw 0,0x8(9); lwz 9,0x8(31); add 9,10,9; lwz 11,0x4(9); stb 7,0x2(11); 3:; addi 0,8,1; lwz 9,0x4(31); rlwinm 8,0,0,16,31; cmplw 8,9; blt 1b; 4:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16"
+extern "C" void _s80334F2C_0();
+extern "C" void f_80334F2C() {}

@@ -1,0 +1,9 @@
+// 0x8003ADC4 GetShaderForObject(cXObject (500 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; mfcr 12; stmw 29,0xc(1); stw 0,0x1c(1); stw 12,0x8(1); mr. 29,4; mr 31,3; mcrf cr4,cr0; beq cr4,0f; li 0,0; stw 0,0x0(29); 0:; li 30,0; cmpwi 31,0; bne 1f; li 3,0; b 9f; 1:; lwz 9,0x4(31); lwz 0,0x314(9); lha 3,0x310(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,0x1c(3); cmpwi 0,1988; bne 2f; lis 30,-441; ori 30,30,49434; b 8f; 2:; lwz 9,0x4(31); lha 3,0x368(9); lwz 0,0x36c(9); add 3,31,3; mtspr 8,0; blrl; bl _s8003ADC4_0; cmpwi 3,0; beq 3f; lwz 9,0x4(31); lha 3,0x368(9); lwz 0,0x36c(9); add 3,31,3; mtspr 8,0; blrl; bl _s8003ADC4_1; li 4,1; bl _s8003ADC4_2; mr. 30,3; bne 8f; beq cr4,8f; lwz 9,0x4(31); lha 3,0x368(9); lwz 0,0x36c(9); add 3,31,3; mtspr 8,0; blrl; mr 4,29; bl _s8003ADC4_3; b 8f; 3:; lwz 9,0x4(31); lha 3,0x390(9); lwz 0,0x394(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 6f; lwz 3,0x0(31); li 4,3; bl _s8003ADC4_4; mr 31,3; lwz 9,0x4(31); lha 3,0x10(9); lwz 0,0x14(9); b 5f; 4:; lwz 9,0x4(31); lha 3,0x18(9); lwz 0,0x1c(9); 5:; add 3,31,3; mtspr 8,0; blrl; mr 31,3; cmpwi 31,0; beq 8f; lwz 11,0x0(31); lwz 9,0x4(11); lwz 0,0x314(9); lha 3,0x310(9); mtspr 8,0; add 3,11,3; blrl; lwz 0,0xc0(3); cmpwi 0,0; beq 4b; lwz 11,0x0(31); lwz 9,0x4(11); lha 3,0x310(9); lwz 0,0x314(9); add 3,11,3; b 7f; 6:; lwz 9,0x4(31); lwz 0,0x314(9); lha 3,0x310(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,0xc0(3); cmpwi 0,0; beq 8f; lwz 9,0x4(31); lha 3,0x310(9); lwz 0,0x314(9); add 3,31,3; 7:; mtspr 8,0; blrl; lwz 9,0xc0(3); lwz 30,0x1c(9); 8:; mr 3,30; 9:; lwz 0,0x1c(1); lwz 12,0x8(1); mtspr 8,0; lmw 29,0xc(1); mtcrf 8,12; addi 1,1,24"
+extern "C" void _s8003ADC4_0();
+extern "C" void _s8003ADC4_1();
+extern "C" void _s8003ADC4_2();
+extern "C" void _s8003ADC4_3();
+extern "C" void _s8003ADC4_4();
+extern "C" void f_8003ADC4() {}

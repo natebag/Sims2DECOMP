@@ -1,0 +1,16 @@
+// 0x8026B244 AptCallFunctionOpti(char (812 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-336(1); mfspr 0,8; mfcr 12; stmw 20,0x120(1); stw 0,0x154(1); stw 12,0x11c(1); lis 0,1024; addi 11,1,344; addi 30,1,8; mr 22,4; stw 0,0x108(1); mr 21,3; stw 11,0x10c(1); mr 4,5; stw 30,0x110(1); stw 7,0x18(1); stw 8,0x1c(1); stw 9,0x20(1); stw 10,0x24(1); bne cr1,0f; stfd f1,0x28(1); stfd f2,0x30(1); stfd f3,0x38(1); stfd f4,0x40(1); stfd f5,0x48(1); stfd f6,0x50(1); stfd f7,0x58(1); stfd f8,0x60(1); 0:; mr 27,6; cmpwi 4,0; beq 1f; addi 3,1,240; lis 23,-32694; bl _s8026B244_0; addi 30,1,240; li 3,0; bl _s8026B244_1; mr 20,30; mr 4,3; li 9,0; lis 3,-32694; li 5,0; addi 3,3,-16032; mr 6,30; li 7,1; li 8,1; bl _s8026B244_2; lwz 4,0xf0(1); mr 31,3; lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 2f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s8026B244_3; b 2f; 1:; li 3,0; addi 20,1,240; bl _s8026B244_4; lis 23,-32694; mr 31,3; 2:; lwz 0,0x108(1); addi 9,1,264; lwz 10,0x8(9); addi 11,1,248; lwz 8,0x4(9); cmpwi 27,0; stw 0,0xf8(1); addi 7,27,-1; stw 10,0x8(11); cmpwi 4,22,0; stw 8,0x4(11); ble 8f; li 8,8; addi 10,1,112; mr 30,27; 3:; lbz 11,0xf8(1); extsb 9,11; addi 0,9,1; cmplwi 0,8; bgt 4f; lwz 0,0x100(1); rlwinm 9,9,2,0,29; addi 11,11,1; add 9,0,9; stb 11,0xf8(1); b 7f; 4:; cmpwi 9,7; bgt 5f; lwz 9,0xfc(1); stb 8,0xf8(1); b 6f; 5:; lwz 9,0xfc(1); 6:; addi 0,9,4; stw 0,0xfc(1); 7:; lwz 0,0x0(9); addic. 30,30,-1; stw 0,0x0(10); addi 10,10,4; bne 3b; 8:; mr. 30,7; blt 10f; lis 28,-32694; addi 9,1,112; rlwinm 0,30,2,0,29; addi 24,28,-16032; add 29,9,0; lis 25,-32704; lis 26,-32704; 9:; lwz 11,-16032(28); addi 4,25,3088; lwz 10,0x0(29); addi 5,26,3140; lwz 8,0x8(24); rlwinm 9,11,2,0,29; addi 11,11,1; li 6,138; stwx 10,9,8; addi 29,29,-4; stw 11,-16032(28); lwz 9,0x8(10); lha 3,0x8(9); lwz 0,0xc(9); add 3,10,3; mtspr 8,0; blrl; addic. 30,30,-1; bge 9b; 10:; addi 3,1,240; mr 4,21; bl _s8026B244_5; lis 30,-32694; mr 6,20; mr 4,31; li 5,0; li 7,1; li 8,1; li 9,0; addi 3,30,-16032; bl _s8026B244_6; mr 29,3; bl _s8026B244_7; mr 28,3; mr 4,31; addi 3,30,-16032; mr 5,29; mr 6,27; bl _s8026B244_8; mr 3,28; bl _s8026B244_9; beq cr4,11f; addi 9,23,-16032; lwz 11,-16032(23); lwz 0,0x8(9); mr 4,22; rlwinm 11,11,2,0,29; add 11,11,0; lwz 3,-4(11); bl _s8026B244_10; 11:; lwz 9,-16032(23); addi 11,23,-16032; cmpwi 9,0; ble 12f; lwz 0,0x8(11); rlwinm 9,9,2,0,29; lis 4,-32704; lis 5,-32704; add 9,9,0; addi 4,4,3292; lwz 11,-4(9); addi 5,5,3140; li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,-16032(23); addi 9,9,-1; stw 9,-16032(23); 12:; lwz 4,0xf0(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 13f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s8026B244_11; 13:; lwz 0,0x154(1); lwz 12,0x11c(1); mtspr 8,0; lmw 20,0x120(1); mtcrf 8,12; addi 1,1,336"
+extern "C" void _s8026B244_0();
+extern "C" void _s8026B244_1();
+extern "C" void _s8026B244_2();
+extern "C" void _s8026B244_3();
+extern "C" void _s8026B244_4();
+extern "C" void _s8026B244_5();
+extern "C" void _s8026B244_6();
+extern "C" void _s8026B244_7();
+extern "C" void _s8026B244_8();
+extern "C" void _s8026B244_9();
+extern "C" void _s8026B244_10();
+extern "C" void _s8026B244_11();
+extern "C" void f_8026B244() {}

@@ -1,0 +1,9 @@
+// 0x8010816C cXObjectImpl::TryNotifyStackObject(StackElem (536 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; mfcr 12; stmw 28,0x20(1); stw 0,0x34(1); stw 12,0x1c(1); mr 29,3; lha 4,0x4(4); lwz 3,0x4(29); lwz 9,0x4(3); lha 0,0x488(9); lwz 9,0x48c(9); add 3,3,0; mtspr 8,9; blrl; mr. 28,3; mcrf cr4,cr0; bne cr4,0f; lwz 11,0x0(29); li 0,1; stw 0,-24512(13); li 9,21; sth 9,0x34(11); li 4,21; b 9f; 0:; lwz 3,0x0(28); lwz 9,0x18(3); lha 0,0x50(9); lwz 9,0x54(9); add 3,3,0; mtspr 8,9; blrl; mr. 31,3; beq 11f; lwz 30,0x10(31); mr 3,31; bl _s8010816C_0; mr 4,3; lha 5,0x2(31); mr 3,30; addi 6,1,8; bl _s8010816C_1; cmpwi 3,0; beq 11f; lhz 0,0x8(1); addi 30,1,12; andi. 0,0,32767; bne 3f; lha 9,0xc(1); cmpwi 9,0; blt 1f; lbz 0,0x7(31); cmpw 9,0; blt 2f; 1:; lwz 11,0x0(29); li 0,1; stw 0,-24512(13); li 9,8; sth 9,0x34(11); li 4,8; b 9f; 2:; mr 3,31; bl _s8010816C_2; lha 0,0x0(30); li 11,0; li 4,0; add 0,0,0; sthx 11,3,0; lwz 9,0x4(28); lha 3,0x248(9); lwz 0,0x24c(9); add 3,28,3; mtspr 8,0; blrl; b 11f; 3:; cmpwi 0,17; bne 6f; lha 9,0xc(1); cmpwi 9,0; blt 4f; lbz 0,0x7(31); cmpw 9,0; blt 5f; 4:; lwz 11,0x0(29); li 0,1; stw 0,-24512(13); li 9,8; sth 9,0x34(11); li 4,8; b 9f; 5:; mr 3,31; bl _s8010816C_3; lha 0,0x0(30); li 9,0; add 0,0,0; sthx 9,3,0; b 11f; 6:; cmpwi 0,64; bne 11f; beq cr4,7f; lwz 3,0x0(28); li 4,7; bl _s8010816C_4; b 8f; 7:; li 3,0; 8:; cmpwi 3,0; bne 10f; lwz 11,0x0(29); li 0,1; stw 0,-24512(13); li 9,28; sth 9,0x34(11); li 4,28; 9:; lwz 11,0x4(29); lwz 9,0x4(11); lha 3,0x110(9); lwz 0,0x114(9); add 3,11,3; mtspr 8,0; blrl; li 3,-1; li 4,-1; b 12f; 10:; li 0,0; sth 0,0x540(3); 11:; li 3,0; li 4,1; 12:; lwz 0,0x34(1); lwz 12,0x1c(1); mtspr 8,0; lmw 28,0x20(1); mtcrf 8,12; addi 1,1,48"
+extern "C" void _s8010816C_0();
+extern "C" void _s8010816C_1();
+extern "C" void _s8010816C_2();
+extern "C" void _s8010816C_3();
+extern "C" void _s8010816C_4();
+extern "C" void f_8010816C() {}

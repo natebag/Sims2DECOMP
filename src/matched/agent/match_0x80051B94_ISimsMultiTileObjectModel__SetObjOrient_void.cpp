@@ -1,0 +1,22 @@
+// 0x80051B94 ISimsMultiTileObjectModel::SetObjOrient(void) (1144 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-176(1); mfspr 0,8; mfcr 12; stfd f30,0xa0(1); stfd f31,0xa8(1); stmw 23,0x7c(1); stw 0,0xb4(1); stw 12,0x78(1); mr 26,3; lwz 28,0x328(26); cmpwi 28,0; beq 0f; lwz 3,0x0(28); li 4,8; bl _s80051B94_0; mr 31,3; b 1f; 0:; li 31,0; 1:; lwz 29,0xc(31); cmpwi 29,0; bne 2f; mr 29,31; 2:; lwz 9,0x4(28); li 4,1; addi 30,1,8; lwz 0,0x264(9); mr 24,30; lha 3,0x260(9); mtspr 8,0; add 3,28,3; blrl; lis 9,-32707; lfs f0,0x32b0(9); xoris 3,3,32768; stw 3,0x74(1); lis 0,17200; stfs f0,0x4(30); lis 8,-32707; stfs f0,0x8(1); lis 7,-32707; stw 0,0x70(1); lis 6,-32707; lwz 10,0x4(31); lfd f13,0x32a0(8); lwz 9,0x4(10); lfd f0,0x70(1); lha 3,0x40(9); lwz 0,0x44(9); fsub f0,f0,f13; lfs f12,0x32a8(7); add 3,10,3; mtspr 8,0; frsp f0,f0; lfs f13,0x32ac(6); fmuls f0,f0,f12; fmuls f30,f0,f13; blrl; cmpwi 3,0; bne 5f; lis 9,-32707; addi 31,1,32; lfs f0,0x32b4(9); mr 3,31; addi 30,1,16; addi 27,1,40; stfs f0,0x10(1); mr 25,30; stfs f0,0x1c(1); stfs f0,0x18(1); stfs f0,0x14(1); lwz 9,0x4(28); lha 4,0x358(9); lwz 0,0x35c(9); add 4,28,4; mtspr 8,0; blrl; mr 3,30; mr 4,31; bl _s80051B94_1; mr 3,31; li 4,2; bl _s80051B94_2; cmpwi 29,0; beq 4f; 3:; lwz 11,0x0(29); mr 3,31; lwz 10,0x4(11); lwz 9,0x4(10); lha 4,0x358(9); lwz 0,0x35c(9); add 4,10,4; mtspr 8,0; blrl; mr 3,25; mr 4,31; bl _s80051B94_3; mr 3,31; li 4,2; bl _s80051B94_4; lwz 29,0x8(29); cmpwi 29,0; bne 3b; 4:; mr 3,25; addi 4,1,8; bl _s80051B94_5; b 6f; 5:; lwz 9,0x4(28); addi 29,1,16; mr 3,29; addi 30,1,24; lwz 0,0x35c(9); addi 27,1,40; lha 4,0x358(9); mtspr 8,0; mr 25,29; add 4,28,4; blrl; mr 3,29; bl _s80051B94_6; lwz 9,0x4(28); mr 3,30; fmr f31,f1; lha 4,0x358(9); lwz 0,0x35c(9); add 4,28,4; mtspr 8,0; blrl; mr 3,30; bl _s80051B94_7; stfs f31,0x8(1); mr 3,30; li 4,2; stfs f1,0x4(24); bl _s80051B94_8; mr 3,29; li 4,2; bl _s80051B94_9; 6:; lwz 10,0x3c8(26); lis 9,-32707; lfs f0,0x8(1); lis 11,-32707; lfs f12,0x4c(10); mr 3,26; lfs f13,0x4(24); fmr f1,f30; fadds f0,f0,f12; lfs f10,0x32b4(9); stfs f0,0x8(1); mr 5,27; lfs f12,0x32b8(11); mr 4,25; lfs f0,0x50(10); lfs f11,0x8(1); fadds f13,f13,f0; stfs f13,0x4(24); stfs f11,0x10(1); lfs f0,0xc(1); stfs f0,0x14(1); stfs f10,0x8(25); stfs f12,0x8(27); stfs f12,0x4(27); stfs f12,0x28(1); bl _s80051B94_10; lwz 3,0x328(26); cmpwi 3,0; beq 7f; lwz 3,0x0(3); li 4,6; bl _s80051B94_11; mr 27,3; b 8f; 7:; li 27,0; 8:; lwz 3,0x328(26); lwz 9,0x4(3); lha 0,0x48(9); lwz 9,0x4c(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 16f; lwz 9,0x0(27); addi 23,26,956; lwz 11,0x3c8(26); lwz 10,0x0(9); lwz 24,0x8(11); lwz 9,0x4(10); lwz 0,0x2a4(9); lha 3,0x2a0(9); mtspr 8,0; add 3,10,3; blrl; lwz 11,0x328(26); mr 28,3; mr 3,25; lwz 9,0x4(11); lwz 0,0x35c(9); lha 4,0x358(9); mtspr 8,0; add 4,11,4; blrl; lwz 11,-21488(13); mr 4,25; lwz 9,0x0(11); lha 3,0x58(9); lwz 0,0x5c(9); add 3,11,3; mtspr 8,0; blrl; xori 3,3,1; cmpwi 3,0; beq 13f; mcrf cr4,cr0; cmpwi 28,0; bne 12f; lwz 11,-21488(13); addi 30,1,56; mr 3,30; mr 5,25; lwz 9,0x0(11); lha 4,0xa8(9); lwz 0,0xac(9); add 4,11,4; mtspr 8,0; blrl; mr 3,30; bl _s80051B94_12; mr 29,3; mr 31,30; b 10f; 9:; mr 4,29; mr 3,31; bl _s80051B94_13; mr 29,3; 10:; cmpwi 29,0; beq 11f; lwz 9,0x4(27); lha 3,0x10(9); lwz 0,0x14(9); add 3,27,3; mtspr 8,0; blrl; mr 30,3; mr 4,29; mr 3,31; bl _s80051B94_14; cmpw 30,3; bne 9b; mr 28,29; 11:; mr 3,31; li 4,2; bl _s80051B94_15; 12:; beq cr4,13f; cmpwi 28,0; beq 13f; mr 3,24; mr 4,28; mr 5,25; bl _s80051B94_16; stw 3,0x45c(26); 13:; mr 30,23; addi 31,30,4; 14:; lwz 11,0x0(30); addi 30,30,4; cmpwi 11,0; beq 15f; lwz 9,0x0(11); lha 3,0x58(9); lwz 0,0x5c(9); add 3,11,3; mtspr 8,0; blrl; 15:; cmpw 30,31; ble 14b; mr 3,25; li 4,2; bl _s80051B94_17; 16:; lwz 0,0xb4(1); lwz 12,0x78(1); mtspr 8,0; lmw 23,0x7c(1); lfd f30,0xa0(1); lfd f31,0xa8(1); mtcrf 8,12; addi 1,1,176"
+extern "C" void _s80051B94_0();
+extern "C" void _s80051B94_1();
+extern "C" void _s80051B94_2();
+extern "C" void _s80051B94_3();
+extern "C" void _s80051B94_4();
+extern "C" void _s80051B94_5();
+extern "C" void _s80051B94_6();
+extern "C" void _s80051B94_7();
+extern "C" void _s80051B94_8();
+extern "C" void _s80051B94_9();
+extern "C" void _s80051B94_10();
+extern "C" void _s80051B94_11();
+extern "C" void _s80051B94_12();
+extern "C" void _s80051B94_13();
+extern "C" void _s80051B94_14();
+extern "C" void _s80051B94_15();
+extern "C" void _s80051B94_16();
+extern "C" void _s80051B94_17();
+extern "C" void f_80051B94() {}

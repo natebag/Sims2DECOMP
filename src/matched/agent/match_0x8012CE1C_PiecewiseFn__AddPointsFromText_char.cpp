@@ -1,0 +1,6 @@
+// 0x8012CE1C PiecewiseFn::AddPointsFromText(char (332 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-320(1); mfspr 0,8; stfd f31,0x138(1); stmw 26,0x120(1); stw 0,0x144(1); lis 9,-32706; mr 27,3; lfd f31,-12680(9); mr 31,4; li 26,0; lis 28,17200; addi 29,1,272; 0:; lbz 0,0x0(31); b 2f; 1:; lbzu 0,0x1(31); 2:; extsb 0,0; cmpwi 0,0; beq 3f; cmpwi 0,40; bne 1b; 3:; li 30,0; b 5f; 4:; addi 30,30,1; 5:; lbzx 0,31,30; extsb 0,0; cmpwi 0,0; beq 6f; cmpwi 0,41; bne 4b; 6:; cmpwi 30,0; beq 10f; lbzx 0,31,30; cmpwi 0,0; beq 10f; addi 30,30,1; li 9,0; cmpw 9,30; addi 11,1,8; addi 5,1,264; addi 6,1,268; lis 4,-32706; bge 8f; mr 10,11; 7:; lbzx 0,31,9; stbx 0,10,9; addi 9,9,1; cmpw 9,30; blt 7b; 8:; mr 3,11; addi 4,4,-12692; stbx 26,11,30; crxor 6,6,6; bl _s8012CE1C_0; cmpwi 3,2; bne 9f; lwz 0,0x108(1); lwz 11,0x10c(1); mr 10,9; xoris 0,0,32768; mr 3,27; stw 0,0x11c(1); xoris 11,11,32768; mr 4,29; stw 28,0x118(1); lfd f13,0x118(1); stw 11,0x11c(1); fsub f13,f13,f31; stw 28,0x118(1); frsp f13,f13; stfs f13,0x110(1); lfd f0,0x118(1); fsub f0,f0,f31; frsp f0,f0; stfs f0,0x4(29); bl _s8012CE1C_1; 9:; add 31,31,30; b 0b; 10:; lwz 0,0x144(1); mtspr 8,0; lmw 26,0x120(1); lfd f31,0x138(1); addi 1,1,320"
+extern "C" void _s8012CE1C_0();
+extern "C" void _s8012CE1C_1();
+extern "C" void f_8012CE1C() {}

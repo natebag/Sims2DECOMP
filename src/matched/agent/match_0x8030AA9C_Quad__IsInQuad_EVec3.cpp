@@ -1,0 +1,6 @@
+// 0x8030AA9C Quad::IsInQuad(EVec3 (296 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-88(1); mfspr 0,8; stfd f31,0x50(1); stmw 26,0x38(1); stw 0,0x5c(1); mr 27,3; lis 26,-32702; mr 31,27; lfs f31,-1040(26); mr 29,4; mr 30,31; li 9,0; 0:; addi 0,9,1; mr 28,0; andi. 9,0,3; bne 1f; mr 30,27; b 2f; 1:; addi 30,30,12; 2:; lfs f12,0x0(31); lfs f13,0x0(30); lfs f0,0x4(30); fsubs f13,f13,f12; lfs f11,0x8(30); lfs f10,0x4(31); fneg f8,f13; lfs f12,0x8(31); lfs f9,-1040(26); fsubs f0,f0,f10; fsubs f11,f11,f12; stfs f13,0x8(1); stfs f11,0x10(1); fcmpu 0,f0,f9; stfs f0,0xc(1); stfs f0,0x18(1); stfs f8,0x1c(1); stfs f9,0x20(1); bne 3f; fcmpu 0,f8,f9; beq 4f; 3:; addi 3,1,24; mr 4,3; bl _s8030AA9C_0; 4:; lfs f12,0x0(31); addi 3,1,24; lfs f11,0x0(29); addi 4,1,40; lfs f13,0x4(29); fsubs f11,f11,f12; lfs f10,0x4(31); lfs f0,0x8(29); lfs f12,0x8(31); fsubs f13,f13,f10; stfs f11,0x28(1); fsubs f0,f0,f12; stfs f13,0x2c(1); stfs f0,0x30(1); bl _s8030AA9C_1; fcmpu 0,f1,f31; cror 3,2,1; bns 5f; li 3,0; b 6f; 5:; mr 9,28; addi 31,31,12; cmpwi 9,3; ble 0b; li 3,1; 6:; lwz 0,0x5c(1); mtspr 8,0; lmw 26,0x38(1); lfd f31,0x50(1); addi 1,1,88"
+extern "C" void _s8030AA9C_0();
+extern "C" void _s8030AA9C_1();
+extern "C" void f_8030AA9C() {}

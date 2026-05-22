@@ -1,0 +1,5 @@
+// 0x80213E74 InteractorModule::InteractorVisualizer::Initialize(void) (224 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stfd f31,0x20(1); stmw 26,0x8(1); stw 0,0x2c(1); lis 9,-32704; lis 11,-32735; lfs f31,-10556(9); addi 26,11,29436; mr 30,3; li 28,0; li 29,0; li 27,2; 0:; lwzx 31,29,30; li 3,56; cmpwi 31,0; bne 1f; bl _s80213E74_0; stwx 3,29,30; stw 31,0x34(3); stw 31,0x0(3); stw 31,0x4(3); stw 31,0x8(3); stw 31,0xc(3); stw 31,0x10(3); stw 31,0x14(3); stw 31,0x18(3); stw 31,0x1c(3); stw 31,0x20(3); stw 31,0x24(3); stw 31,0x28(3); stfs f31,0x2c(3); stfs f31,0x30(3); 1:; lwzx 9,29,30; addic. 27,27,-1; stw 28,0xc(9); lwzx 11,29,30; stw 28,0x10(11); lwzx 9,29,30; stw 28,0x24(9); lwzx 11,29,30; stw 28,0x18(11); lwzx 9,29,30; stw 28,0x1c(9); lwzx 11,29,30; stw 28,0x8(11); lwzx 9,29,30; addi 29,29,4; stw 26,0x14(9); bne 0b; lwz 0,0x2c(1); mtspr 8,0; lmw 26,0x8(1); lfd f31,0x20(1); addi 1,1,40"
+extern "C" void _s80213E74_0();
+extern "C" void f_80213E74() {}

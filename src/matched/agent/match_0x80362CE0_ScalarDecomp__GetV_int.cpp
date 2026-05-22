@@ -1,0 +1,12 @@
+// 0x80362CE0 ScalarDecomp::GetV(int, (584 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-96(1); mfspr 0,8; stmw 26,0x48(1); stw 0,0x64(1); mr 28,4; mr 31,3; mr 30,5; mr 29,6; cmpwi 28,2; bne 0f; lha 11,0x1c(31); lwz 9,0x4(31); mr 5,29; mullw 11,30,11; lbz 0,0x1e(31); lbz 4,0x20(31); extsb 0,0; extsb 4,4; add 9,9,11; add 9,9,0; add 4,9,4; bl _s80362CE0_0; b 9f; 0:; addi 26,1,24; mr 3,31; mr 4,30; mr 5,26; bl _s80362CE0_1; cmpwi 30,0; bne 2f; mr 3,31; li 4,1; addi 5,1,40; bl _s80362CE0_2; lwz 0,0x18(31); cmpwi 0,2; bne 1f; lfs f0,0x28(1); lfs f13,0x18(1); b 3f; 1:; mr 3,31; li 4,0; li 5,1; addi 6,1,56; bl _s80362CE0_3; lis 9,-32702; lfs f13,0x28(1); lfs f12,0x18(1); lis 11,-32702; lfs f0,0x38(1); lfs f10,0x2f2c(9); fsubs f13,f13,f12; lfs f11,0x2f28(11); fmuls f0,f0,f10; fmsubs f13,f13,f11,f0; b 8f; 2:; lwz 9,0x18(31); addi 9,9,-1; cmpw 30,9; bne 5f; addi 30,30,-1; mr 3,31; mr 4,30; addi 5,1,8; bl _s80362CE0_4; lwz 0,0x18(31); cmpwi 0,2; bne 4f; lfs f0,0x18(1); lfs f13,0x8(1); 3:; fsubs f0,f0,f13; stfs f0,0x0(29); b 9f; 4:; mr 3,31; mr 5,30; li 4,1; addi 6,1,60; bl _s80362CE0_5; lis 9,-32702; lfs f13,0x18(1); lfs f12,0x8(1); lis 11,-32702; lfs f0,0x3c(1); lfs f10,0x2f2c(9); fsubs f13,f13,f12; lfs f11,0x2f28(11); fmuls f0,f0,f10; fmsubs f13,f13,f11,f0; b 8f; 5:; addi 5,1,8; addi 27,1,40; mr 3,31; addi 4,30,-1; bl _s80362CE0_6; mr 3,31; addi 4,30,1; mr 5,27; bl _s80362CE0_7; lwz 11,0x1c(1); cmpwi 28,0; lwz 9,0xc(1); lwz 0,0x2c(1); subf 7,9,11; subf 8,11,0; bne 6f; xoris 0,7,32768; b 7f; 6:; xoris 0,8,32768; 7:; stw 0,0x44(1); lis 11,17200; lis 10,-32702; stw 11,0x40(1); lfd f13,0x2f30(10); lfd f0,0x40(1); fsub f0,f0,f13; frsp f8,f0; add 0,7,8; xoris 0,0,32768; lis 8,17200; stw 0,0x44(1); lis 9,-32702; lfd f12,0x2f30(9); lis 10,-32702; stw 8,0x40(1); lfs f13,0x0(26); lfd f0,0x40(1); lfs f9,0x2f38(10); fsub f0,f0,f12; lfs f11,0x0(27); frsp f0,f0; lfs f12,0x20(1); fdivs f8,f8,f0; lfs f10,0x8(1); fsubs f11,f11,f13; fsubs f0,f9,f12; fmuls f11,f11,f0; fsubs f13,f13,f10; fadds f12,f12,f9; fmadds f13,f13,f12,f11; fmuls f13,f13,f8; 8:; stfs f13,0x0(29); 9:; lwz 0,0x64(1); mtspr 8,0; lmw 26,0x48(1); addi 1,1,96"
+extern "C" void _s80362CE0_0();
+extern "C" void _s80362CE0_1();
+extern "C" void _s80362CE0_2();
+extern "C" void _s80362CE0_3();
+extern "C" void _s80362CE0_4();
+extern "C" void _s80362CE0_5();
+extern "C" void _s80362CE0_6();
+extern "C" void _s80362CE0_7();
+extern "C" void f_80362CE0() {}

@@ -1,0 +1,4 @@
+// 0x8038CAE8 GXInitLightDistAttn (208 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lfs f0,-17632(13); fcmpo f0,f1,f0; bge 0f; li 4,0; 0:; lfs f0,-17632(13); fcmpo f0,f2,f0; cror 2,0,2; beq 1f; lfs f0,-17608(13); fcmpo f0,f2,f0; cror 2,1,2; bne 2f; 1:; li 4,0; 2:; cmpwi 4,2; beq 5f; bge 3f; cmpwi 4,0; beq 7f; bge 4f; b 7f; 3:; cmpwi 4,4; bge 7f; b 6f; 4:; lfs f5,-17608(13); fmuls f0,f2,f1; lfs f4,-17632(13); fsubs f1,f5,f2; fdivs f3,f1,f0; b 8f; 5:; lfs f5,-17608(13); fmuls f4,f2,f1; lfs f3,-17588(13); fsubs f2,f5,f2; fmuls f0,f1,f4; fmuls f1,f3,f2; fdivs f3,f1,f4; fdivs f4,f1,f0; b 8f; 6:; fmuls f0,f2,f1; lfs f5,-17608(13); lfs f3,-17632(13); fsubs f2,f5,f2; fmuls f0,f1,f0; fdivs f4,f2,f0; b 8f; 7:; lfs f3,-17632(13); lfs f5,-17608(13); fmr f4,f3; 8:; stfs f5,0x1c(3); stfs f3,0x20(3); stfs f4,0x24(3)"
+extern "C" void f_8038CAE8() {}

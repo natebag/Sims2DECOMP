@@ -1,0 +1,4 @@
+// 0x802416AC __kernel_sinf (172 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); fmr f9,f1; fmr f0,f9; stfs f0,0x8(1); lwz 9,0x8(1); rlwinm 9,9,0,1,31; lis 0,12799; ori 0,0,65535; cmpw 9,0; bgt 0f; fmr f0,f9; fctiwz f13,f0; stfd f13,0x10(1); lwz 9,0x14(1); cmpwi 9,0; beq 2f; 0:; lfs f13,-28160(13); fmuls f10,f9,f9; lfs f0,-28164(13); fmuls f8,f10,f9; lfs f11,-28156(13); cmpwi 3,0; fmadds f0,f10,f0,f13; lfs f12,-28152(13); fmadds f0,f10,f0,f11; lfs f13,-28148(13); fmadds f0,f10,f0,f12; fmadds f0,f10,f0,f13; beq 1f; fmuls f13,f8,f0; lfs f1,-28140(13); lfs f0,-28144(13); fmsubs f1,f2,f1,f13; fmsubs f1,f10,f1,f2; fmuls f0,f8,f0; fsubs f1,f1,f0; fsubs f1,f9,f1; b 2f; 1:; lfs f1,-28144(13); fmadds f1,f10,f0,f1; fmadds f1,f8,f1,f9; 2:; addi 1,1,24"
+extern "C" void f_802416AC() {}

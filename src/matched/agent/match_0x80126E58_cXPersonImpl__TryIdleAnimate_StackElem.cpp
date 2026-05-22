@@ -1,0 +1,12 @@
+// 0x80126E58 cXPersonImpl::TryIdleAnimate(StackElem (648 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 26,0x8(1); stw 0,0x24(1); mr 28,5; mr 31,3; lbz 0,0x6(28); mr 27,4; extsb 26,0; bl _s80126E58_0; cmpwi 3,0; beq 16f; lwz 9,0x3f4(31); li 11,0; lwz 0,0x61c(9); andi. 9,0,1; beq 0f; li 11,1; 0:; cmpwi 11,0; beq 3f; lis 9,-32697; li 30,0; addi 9,9,24012; addi 29,9,188; 1:; lwz 9,0x0(29); lwz 0,0x4(31); addi 29,29,4; cmpw 9,0; bne 2f; bl _s80126E58_1; mr 4,30; li 5,0; bl _s80126E58_2; mr. 3,3; beq 2f; lwz 0,0x64(3); cmpwi 0,1; beq 14f; 2:; addi 30,30,1; cmpwi 30,1; ble 1b; 3:; lwz 3,0x3f4(31); mr 4,27; mr 5,28; lwz 9,0x0(3); lha 0,0x50(9); lwz 9,0x54(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; bne 4f; cmpwi 4,2; beq 16f; 4:; cmpwi 3,-1; bne 5f; cmpwi 4,-1; beq 10f; 5:; cmpwi 26,0; beq 14f; lha 0,0x540(31); cmpwi 0,-32768; bne 12f; lbz 9,0x5(28); andi. 0,9,16; beq 6f; lbz 0,0x7(28); sth 0,0x540(31); b 12f; 6:; lbz 0,0x3(28); andi. 11,9,2; mr 11,0; extsb 0,0; beq 7f; cmpwi 0,0; ble 9f; b 8f; 7:; cmpwi 0,0; blt 9f; 8:; lbz 9,0x7(27); extsb 0,11; cmpw 0,9; blt 11f; 9:; lwz 9,0x0(31); li 0,1; stw 0,-24512(13); li 10,8; lwz 11,0x0(9); li 4,8; sth 10,0x34(11); lwz 9,0x0(31); lwz 10,0x4(9); lwz 11,0x4(10); lha 3,0x110(11); lwz 0,0x114(11); add 3,10,3; mtspr 8,0; blrl; 10:; li 3,-1; li 4,-1; b 17f; 11:; mr 3,27; bl _s80126E58_3; lbz 0,0x3(28); extsb 0,0; add 0,0,0; lhzx 9,3,0; sth 9,0x540(31); 12:; lhz 9,0x540(31); cmpwi 9,0; bne 13f; lwz 30,0x0(31); li 4,8; addi 30,30,40; mr 3,30; bl _s80126E58_4; lha 5,0x0(3); li 4,8; mr 3,30; rlwinm 5,5,0,26,24; bl _s80126E58_5; li 0,-32768; li 3,0; li 4,1; sth 0,0x540(31); b 17f; 13:; cmpwi 26,1; bne 15f; addi 0,9,-1; sth 0,0x540(31); b 16f; 14:; li 3,0; li 4,1; b 17f; 15:; cmpwi 26,2; bne 16f; lwz 9,0x4(31); lwz 11,0x0(9); lwz 10,0x0(11); lwz 0,0x14(10); cmpwi 0,0; beq 16f; addic. 30,0,820; beq 16f; mr 3,30; lis 4,1; bl _s80126E58_6; cmpwi 3,0; beq 16f; lhz 9,0x540(31); mr 3,30; lis 4,1; addi 9,9,-1; sth 9,0x540(31); bl _s80126E58_7; 16:; li 3,0; li 4,2; 17:; lwz 0,0x24(1); mtspr 8,0; lmw 26,0x8(1); addi 1,1,32"
+extern "C" void _s80126E58_0();
+extern "C" void _s80126E58_1();
+extern "C" void _s80126E58_2();
+extern "C" void _s80126E58_3();
+extern "C" void _s80126E58_4();
+extern "C" void _s80126E58_5();
+extern "C" void _s80126E58_6();
+extern "C" void _s80126E58_7();
+extern "C" void f_80126E58() {}

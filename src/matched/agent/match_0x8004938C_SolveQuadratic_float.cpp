@@ -1,0 +1,5 @@
+// 0x8004938C SolveQuadratic(float, (228 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stfd f28,0x10(1); stfd f29,0x18(1); stfd f30,0x20(1); stfd f31,0x28(1); stmw 30,0x8(1); stw 0,0x34(1); lis 9,-32707; fmr f30,f1; lfs f0,0x2e70(9); fmr f28,f3; lis 9,-32707; fmr f31,f2; fmuls f0,f30,f0; lfs f29,0x2e74(9); fmuls f0,f0,f28; mr 31,3; fmsubs f1,f31,f31,f0; li 30,0; fcmpu 0,f1,f29; bge 0f; li 3,0; b 5f; 0:; bl _s8004938C_0; fcmpu 0,f31,f29; bge 1f; fneg f1,f1; 1:; lis 9,-32707; fadds f13,f31,f1; lfs f0,0x2e78(9); fcmpu 0,f30,f29; fmuls f1,f13,f0; beq 2f; fdivs f0,f1,f30; li 30,1; stfs f0,0x0(31); 2:; fcmpu 0,f1,f29; beq 4f; fdivs f0,f28,f1; lfs f13,0x0(31); stfs f0,0x4(31); fcmpu 0,f13,f0; ble 3f; stfs f0,0x0(31); stfs f13,0x4(31); 3:; addi 30,30,1; 4:; mr 3,30; 5:; lwz 0,0x34(1); mtspr 8,0; lmw 30,0x8(1); lfd f28,0x10(1); lfd f29,0x18(1); lfd f30,0x20(1); lfd f31,0x28(1); addi 1,1,48"
+extern "C" void _s8004938C_0();
+extern "C" void f_8004938C() {}
