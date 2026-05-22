@@ -475,10 +475,11 @@ if their extern declarations have different sizes relative to the `-G 8` thresho
 `lis+addi` globals in the same function. Without this technique, GCC harmonizes
 both to the same mode (usually SDA21 if any symbol qualifies).
 
-S16-VALIDATED (3-instance STANDARD cluster):
+S16-VALIDATED (4-instance STANDARD cluster):
 - GameData::StageStartFrame (68B, commit 69280fb47) — SDA21 manager pointer + HA/LO format arg
 - MUStatesLoadConfig (commit 4c141fdb) — extern char[16] + bl chain
 - THREADEXEC_MU_SaveNewGame (commit b896c1e15) — extern char[16] + SDA flag + bl chain
+- GameData::GamePlayShutdown (72B, commit 819242ec2) — OpusReviewGuy cross-lane crack via Tech #17 char[16] extern
 
 ---
 
