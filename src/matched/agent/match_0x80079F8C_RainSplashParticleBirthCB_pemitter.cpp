@@ -1,0 +1,4 @@
+// 0x80079F8C RainSplashParticleBirthCB(pemitter (192 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); lwz 8,-18432(13); lis 7,-32690; lwz 9,-25888(13); addi 7,7,-13824; addi 8,8,-1; lis 11,-32707; and 9,9,8; lfs f11,0x6678(11); rlwinm 10,9,2,0,29; lis 11,-32707; lwzx 0,7,10; addi 9,9,1; lwz 10,0x88(3); rlwinm 0,0,0,9,31; lfs f10,0x667c(11); lfs f13,0xd0(10); oris 0,0,16256; stw 0,0x8(1); lis 10,-32707; stw 9,-25888(13); lfs f12,0x8(1); and 9,9,8; rlwinm 11,9,2,0,29; fsubs f0,f12,f11; addi 9,9,1; fsubs f0,f0,f10; fmuls f13,f13,f0; stfs f13,0x0(4); lwzx 0,7,11; lwz 11,0x88(3); rlwinm 0,0,0,9,31; stw 9,-25888(13); lfs f13,0xd4(11); oris 0,0,16256; stw 0,0x8(1); lfs f12,0x8(1); fsubs f0,f12,f11; fsubs f0,f0,f10; lfs f12,0x6680(10); fmuls f13,f13,f0; stfs f13,0x4(4); stfs f11,0xc(5); stfs f12,0x8(5); stfs f12,0x0(5); stfs f12,0x4(5); addi 1,1,16"
+extern "C" void f_80079F8C() {}
