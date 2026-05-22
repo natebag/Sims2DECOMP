@@ -1,0 +1,4 @@
+// 0x80252554 __OSCheckSram (272 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 3,-32694; addi 5,3,-24704; addi 4,5,20; addi 6,5,12; addi 3,4,1; subf 3,6,3; cmplw 6,4; rlwinm 3,3,31,1,31; li 8,0; li 7,0; bge 3f; rlwinm. 0,3,29,3,31; mtspr 9,0; beq 1f; 0:; lhz 4,0x0(6); not 0,4; add 7,7,4; lhz 4,0x2(6); add 8,8,0; not 0,4; add 7,7,4; lhz 4,0x4(6); add 8,8,0; not 0,4; add 7,7,4; lhz 4,0x6(6); add 8,8,0; not 0,4; add 7,7,4; lhz 4,0x8(6); add 8,8,0; not 0,4; add 7,7,4; lhz 4,0xa(6); add 8,8,0; not 0,4; add 7,7,4; lhz 4,0xc(6); add 8,8,0; not 0,4; add 7,7,4; lhz 4,0xe(6); add 8,8,0; not 0,4; add 7,7,4; add 8,8,0; addi 6,6,16; bdnz 0b; andi. 3,3,7; beq 3f; 1:; mtspr 9,3; 2:; lhz 4,0x0(6); addi 6,6,2; not 0,4; add 7,7,4; add 8,8,0; bdnz 2b; 3:; lhz 4,0x0(5); rlwinm 0,7,0,16,31; li 3,0; cmplw 4,0; bnelr; lhz 4,0x2(5); rlwinm 0,8,0,16,31; cmplw 4,0; bnelr; li 3,1"
+extern "C" int f_80252554() {}

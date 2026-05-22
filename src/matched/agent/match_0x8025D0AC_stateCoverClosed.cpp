@@ -1,0 +1,9 @@
+// 0x8025D0AC stateCoverClosed (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; lis 3,-32694; stw 0,0x4(1); stwu 1,-16(1); stw 31,0xc(1); addi 31,3,-17248; lwz 0,-23452(13); cmpwi 0,13; beq 1f; bge 0f; cmpwi 0,6; bge 3f; cmpwi 0,4; bge 1f; b 3f; 0:; cmpwi 0,15; beq 1f; b 3f; 1:; bl _s8025D0AC_0; lwz 4,-23480(13); addi 0,31,64; stw 0,-23480(13); lwz 12,0x28(4); cmplwi 12,0; beq 2f; mtspr 8,12; li 3,-4; blrl; 2:; bl _s8025D0AC_1; b 4f; 3:; li 0,0; stw 0,-23408(13); bl _s8025D0AC_2; addi 3,31,112; bl _s8025D0AC_3; lis 3,-32768; lwz 0,0xf8(3); lis 4,4194; lis 3,-32730; rlwinm 0,0,30,2,31; addi 4,4,19923; mulhwu 0,4,0; rlwinm 0,0,26,6,31; mulli 6,0,1150; addi 7,3,-12184; addi 3,31,112; li 5,0; bl _s8025D0AC_4; 4:; lwz 0,0x14(1); lwz 31,0xc(1); addi 1,1,16; mtspr 8,0"
+extern "C" void _s8025D0AC_0();
+extern "C" void _s8025D0AC_1();
+extern "C" void _s8025D0AC_2();
+extern "C" void _s8025D0AC_3();
+extern "C" void _s8025D0AC_4();
+extern "C" void f_8025D0AC() {}

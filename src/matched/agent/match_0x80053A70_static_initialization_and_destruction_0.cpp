@@ -1,0 +1,9 @@
+// 0x80053A70 __static_initialization_and_destruction_0 (408 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); li 0,0; ori 0,0,65535; cmpw 4,0; bne 0f; cmpwi 3,0; beq 0f; lis 11,-32707; lis 10,-32707; lfs f12,0x32fc(11); lis 9,-32707; lfs f13,0x3304(10); lis 11,-32696; lfs f0,0x3300(9); addi 30,11,21552; stfs f13,0x5430(11); lis 7,-32696; addi 10,7,21540; stfs f12,0x5424(7); stfs f0,0x8(30); lis 29,-32688; stfs f12,0x4(10); lis 4,-32763; stfs f0,0x8(10); lis 5,-32763; lis 6,-32763; lis 8,-32707; lis 9,-32688; stfs f0,0x4(30); addi 4,4,15368; addi 5,5,15452; addi 6,6,15484; addi 8,8,12404; addi 9,9,-19376; li 7,0; addi 3,29,-18488; bl _s80053A70_0; stw 3,-24980(13); lis 4,-32763; lis 3,-32688; lis 5,-32763; lis 6,-32763; lis 8,-32707; addi 4,4,16000; addi 5,5,16084; addi 6,6,16116; addi 8,8,12424; li 7,0; addi 9,29,-18488; addi 3,3,-18448; bl _s80053A70_1; stw 3,-24976(13); lis 4,-32763; lis 3,-32688; lis 5,-32763; lis 6,-32763; lis 8,-32707; addi 4,4,16404; addi 5,5,16488; addi 6,6,16520; addi 8,8,12448; li 7,0; addi 9,29,-18488; addi 3,3,-18408; bl _s80053A70_2; stw 3,-24972(13); lis 4,-32763; lis 3,-32688; lis 5,-32763; lis 6,-32763; lis 8,-32707; addi 4,4,16808; addi 5,5,16892; addi 6,6,16924; addi 8,8,12476; li 7,0; addi 9,29,-18488; addi 3,3,-18368; bl _s80053A70_3; stw 3,-24968(13); lis 4,-32763; lis 3,-32688; lis 5,-32763; lis 6,-32763; lis 8,-32707; addi 3,3,-18328; addi 4,4,17212; addi 5,5,17296; addi 6,6,17328; addi 8,8,12500; addi 9,29,-18488; li 7,0; bl _s80053A70_4; stw 3,-24964(13); 0:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void _s80053A70_0();
+extern "C" void _s80053A70_1();
+extern "C" void _s80053A70_2();
+extern "C" void _s80053A70_3();
+extern "C" void _s80053A70_4();
+extern "C" void f_80053A70() {}

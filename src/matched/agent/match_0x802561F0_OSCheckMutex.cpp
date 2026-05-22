@@ -1,0 +1,4 @@
+// 0x802561F0 __OSCheckMutex (256 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 4,0x0(3); li 7,0; cmplwi 4,0; beq 0f; lwz 0,0x2e4(4); cmplwi 0,0; beq 0f; li 3,0; blr; 0:; lwz 5,0x4(3); cmplwi 5,0; beq 1f; lwz 0,0x2e0(5); cmplwi 0,0; beq 1f; li 3,0; blr; 1:; mr 6,4; b 7f; 2:; lwz 4,0x2e0(6); cmplwi 4,0; beq 3f; lwz 0,0x2e4(4); cmplw 6,0; beq 3f; li 3,0; blr; 3:; lwz 5,0x2e4(6); cmplwi 5,0; beq 4f; lwz 0,0x2e0(5); cmplw 6,0; beq 4f; li 3,0; blr; 4:; lhz 0,0x2c8(6); cmplwi 0,4; beq 5f; li 3,0; blr; 5:; lwz 0,0x2d0(6); cmpw 0,7; bge 6f; li 3,0; blr; 6:; mr 7,0; addi 6,4,0; 7:; cmplwi 6,0; bne 2b; lwz 0,0x8(3); cmplwi 0,0; beq 8f; lwz 0,0xc(3); cmpwi 0,0; bgt 9f; li 3,0; blr; 8:; lwz 0,0xc(3); cmpwi 0,0; beq 9f; li 3,0; blr; 9:; li 3,1"
+extern "C" int f_802561F0() {}

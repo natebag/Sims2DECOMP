@@ -1,0 +1,5 @@
+// 0x80392C84 VMFreeAll (272 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; li 5,0; li 4,0; stw 0,0x14(1); li 0,1024; mtspr 9,0; 0:; lwz 3,-21852(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21852(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21852(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21852(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21852(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21852(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21852(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21852(13); stwx 4,3,5; addi 5,5,4; bdnz 0b; li 5,0; li 0,512; mr 4,5; mtspr 9,0; 1:; lwz 3,-21856(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21856(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21856(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21856(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21856(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21856(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21856(13); stwx 4,3,5; addi 5,5,4; lwz 3,-21856(13); stwx 4,3,5; addi 5,5,4; bdnz 1b; li 0,0; stw 0,-21848(13); bl _s80392C84_0; lwz 0,0x14(1); mtspr 8,0; addi 1,1,16"
+extern "C" void _s80392C84_0();
+extern "C" void f_80392C84() {}

@@ -1,0 +1,4 @@
+// 0x802434F8 memmove (236 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mr 9,4; mr 11,3; mr 10,5; cmplw 4,3; bge 1f; add 0,4,10; cmplw 3,0; bge 1f; add 11,3,10; cmpwi 10,0; mr 4,0; addi 10,10,-1; beqlr; 0:; lbzu 0,-1(4); cmpwi 10,0; addi 10,10,-1; stbu 0,-1(11); bne 0b; blr; 1:; cmplwi 5,15; ble 4f; or 0,9,3; andi. 8,0,3; bne 4f; mr 4,9; mr 11,3; 2:; lwz 9,0x0(4); addi 10,10,-16; cmplwi 10,15; stw 9,0x0(11); lwzu 0,0x4(4); stwu 0,0x4(11); lwzu 9,0x4(4); stwu 9,0x4(11); lwzu 0,0x4(4); stwu 0,0x4(11); addi 4,4,4; addi 11,11,4; bgt 2b; cmplwi 10,3; ble 4f; 3:; lwz 0,0x0(4); addi 10,10,-4; addi 4,4,4; cmplwi 10,3; stw 0,0x0(11); addi 11,11,4; bgt 3b; 4:; cmpwi 10,0; addi 10,10,-1; beqlr; 5:; lbz 0,0x0(4); cmpwi 10,0; addi 4,4,1; addi 10,10,-1; stb 0,0x0(11); addi 11,11,1; bne 5b"
+extern "C" void f_802434F8() {}

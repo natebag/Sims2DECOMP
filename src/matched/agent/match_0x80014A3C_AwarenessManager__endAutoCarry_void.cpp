@@ -1,0 +1,6 @@
+// 0x80014A3C AwarenessManager::endAutoCarry(void) (308 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,3; lwz 0,0x0(31); andi. 9,0,1024; beq 2f; lwz 8,0x4(31); lis 7,8026; ori 7,7,65533; li 4,-1; li 10,0; mr 6,8; b 1f; 0:; addi 10,10,1; 1:; lwz 0,0x16c(8); lwz 11,0x168(8); subf 0,11,0; srawi 0,0,2; cmpw 10,0; bge 6f; rlwinm 9,10,2,0,29; lwzx 11,11,9; lwz 0,0x0(11); cmpw 0,7; bne 0b; b 5f; 2:; lwz 8,0x4(31); lis 7,-30439; ori 7,7,62663; li 4,-1; li 10,0; mr 6,8; b 4f; 3:; addi 10,10,1; 4:; lwz 0,0x16c(8); lwz 11,0x168(8); subf 0,11,0; srawi 0,0,2; cmpw 10,0; bge 6f; rlwinm 9,10,2,0,29; lwzx 11,11,9; lwz 0,0x0(11); cmpw 0,7; bne 3b; 5:; mr 4,10; 6:; cmpwi 4,0; blt 7f; lwz 9,0x0(6); lha 3,0x148(9); lwz 0,0x14c(9); add 3,6,3; mtspr 8,0; blrl; 7:; lwz 3,0x8(31); li 4,4096; bl _s80014A3C_0; cmpwi 3,0; beq 8f; lis 9,-32707; lis 11,-32707; lfs f1,-8880(9); li 4,4096; lfs f3,-8876(11); lwz 3,0x8(31); lfs f2,-32296(13); bl _s80014A3C_1; 8:; lwz 0,0x0(31); rlwinm 0,0,0,23,20; stw 0,0x0(31); lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16"
+extern "C" void _s80014A3C_0();
+extern "C" void _s80014A3C_1();
+extern "C" void f_80014A3C() {}

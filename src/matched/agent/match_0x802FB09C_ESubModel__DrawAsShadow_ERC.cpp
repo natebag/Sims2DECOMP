@@ -1,0 +1,4 @@
+// 0x802FB09C ESubModel::DrawAsShadow(ERC (224 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); mr 28,3; li 29,0; lwz 0,0x4(28); mr 30,4; cmpw 29,0; bge 3f; li 27,0; 0:; lwz 0,0x0(28); add 31,0,27; lwz 9,0x8(31); lwz 3,0x14(9); cmpwi 3,0; beq 1f; mr 11,3; b 2f; 1:; lwz 9,0x18(9); li 11,0; cmpwi 9,0; beq 2f; lwz 11,0x14(9); 2:; lwz 9,0xf0(11); mr 4,30; addi 29,29,1; addi 27,27,112; lwz 0,0x1c(9); lha 3,0x18(9); mtspr 8,0; add 3,11,3; blrl; lwz 9,0x70(30); li 4,0; lfs f1,0x24(31); lwz 0,0x1bc(9); lha 3,0x1b8(9); mtspr 8,0; add 3,30,3; blrl; lwz 9,0x70(30); lwz 4,0x0(31); lwz 0,0xbc(9); lha 3,0xb8(9); mtspr 8,0; add 3,30,3; blrl; lwz 0,0x4(28); cmpw 29,0; blt 0b; 3:; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
+extern "C" void f_802FB09C() {}

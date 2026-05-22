@@ -1,0 +1,7 @@
+// 0x802104A8 InteractorModule::GetPersonPosition(EVec3 (396 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; mfcr 12; stmw 27,0x24(1); stw 0,0x3c(1); stw 12,0x20(1); mr 31,3; mr 30,5; mr 27,6; mr. 28,4; beq 7f; lwz 9,0x4(28); cmpwi 4,30,0; lha 3,0x188(9); lwz 0,0x18c(9); add 3,28,3; mtspr 8,0; blrl; mr. 29,3; beq 4f; lwz 9,0x0(29); li 4,2; mr 5,31; lha 3,0xe0(9); lwz 0,0xe4(9); add 3,29,3; mtspr 8,0; blrl; beq cr4,0f; lis 9,-32704; lfs f0,-11256(9); b 2f; 0:; lwz 9,0x0(29); li 4,1; addi 5,1,8; lha 3,0xe0(9); lwz 0,0xe4(9); add 3,29,3; mtspr 8,0; blrl; cmpwi 27,0; beq 1f; lfs f13,0x10(1); lfs f0,0x8(31); fcmpu 0,f13,f0; ble 3f; 1:; lfs f0,0x10(1); 2:; stfs f0,0x8(31); 3:; cmpwi 29,0; beq 4f; mr 3,31; bl _s802104A8_0; lis 9,-32704; lfs f0,-11252(9); fcmpu 0,f1,f0; bge 7f; 4:; lwz 11,0x0(28); addi 30,1,24; mr 3,30; addi 28,1,8; lwz 9,0x4(11); lwz 0,0x35c(9); lha 4,0x358(9); mtspr 8,0; add 4,11,4; blrl; addi 3,1,8; mr 4,30; bl _s802104A8_1; lwz 11,0x8(1); mr 3,30; lwz 9,0x4(28); li 4,2; lwz 0,0x8(28); stw 11,0x0(31); stw 9,0x4(31); stw 0,0x8(31); bl _s802104A8_2; beq cr4,5f; lis 9,-32704; lfs f0,-11256(9); b 6f; 5:; lwz 9,0x0(29); mr 5,28; li 4,1; lha 3,0xe0(9); lwz 0,0xe4(9); add 3,29,3; mtspr 8,0; blrl; lfs f0,0x10(1); 6:; stfs f0,0x8(31); 7:; lwz 0,0x3c(1); lwz 12,0x20(1); mtspr 8,0; lmw 27,0x24(1); mtcrf 8,12; addi 1,1,56"
+extern "C" void _s802104A8_0();
+extern "C" void _s802104A8_1();
+extern "C" void _s802104A8_2();
+extern "C" void f_802104A8() {}

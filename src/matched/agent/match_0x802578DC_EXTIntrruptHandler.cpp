@@ -1,0 +1,9 @@
+// 0x802578DC EXTIntrruptHandler (208 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); stwu 1,-744(1); stw 31,0x2e4(1); stw 30,0x2e0(1); stw 29,0x2dc(1); stw 28,0x2d8(1); addi 31,4,0; extsh 3,3; addi 0,3,-11; lis 3,21845; addi 3,3,21846; mulhw 3,3,0; rlwinm 0,3,1,31,31; add 30,3,0; lis 3,80; mulli 0,30,3; srw 3,3,0; bl _s802578DC_0; rlwinm 4,30,6,0,25; lis 3,-32694; addi 0,3,-22064; add 29,0,4; lwz 28,0x8(29); lwz 0,0xc(29); rlwinm 0,0,0,29,27; stw 0,0xc(29); cmplwi 28,0; beq 0f; addi 3,1,16; bl _s802578DC_1; addi 3,1,16; bl _s802578DC_2; li 0,0; stw 0,0x8(29); addi 3,30,0; addi 4,31,0; addi 12,28,0; mtspr 8,12; blrl; addi 3,1,16; bl _s802578DC_3; mr 3,31; bl _s802578DC_4; 0:; lwz 0,0x2ec(1); lwz 31,0x2e4(1); lwz 30,0x2e0(1); lwz 29,0x2dc(1); lwz 28,0x2d8(1); addi 1,1,744; mtspr 8,0"
+extern "C" void _s802578DC_0();
+extern "C" void _s802578DC_1();
+extern "C" void _s802578DC_2();
+extern "C" void _s802578DC_3();
+extern "C" void _s802578DC_4();
+extern "C" void f_802578DC() {}

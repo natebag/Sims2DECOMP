@@ -1,0 +1,5 @@
+// 0x80097AF4 TheSimsMaxisLogoState::Draw(ERC (260 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-72(1); mfspr 0,8; stmw 29,0x3c(1); stw 0,0x4c(1); lis 9,-32697; mr 29,3; lwz 9,0x5ec8(9); mr 31,4; lwz 3,0x14(9); cmpwi 3,0; beq 0f; mr 11,3; b 1f; 0:; lwz 9,0x18(9); li 11,0; cmpwi 9,0; beq 1f; lwz 11,0x14(9); 1:; lwz 9,0xf0(11); mr 4,31; li 5,0; lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,11,3; blrl; lwz 30,0x70(31); lis 9,-32706; lfs f0,-29740(9); addi 4,1,8; lha 3,0x188(30); lis 9,-32706; stfs f0,0x4(4); addi 5,1,16; lfs f13,-29736(9); addi 11,1,24; stfs f0,0x8(1); addi 10,1,32; stfs f13,0x4(5); addi 9,1,40; stfs f13,0x10(1); add 3,31,3; stfs f0,0x18(1); fmr f1,f0; stfs f13,0x4(11); mr 6,11; stfs f13,0x20(1); mr 7,10; stfs f0,0x4(10); mr 8,9; stfs f0,0x28(1); stfs f13,0xc(9); stfs f0,0x4(9); stfs f0,0x8(9); lwz 0,0x18c(30); mtspr 8,0; blrl; lwz 3,0x1c(29); mr 4,31; bl _s80097AF4_0; lwz 0,0x4c(1); mtspr 8,0; lmw 29,0x3c(1); addi 1,1,72"
+extern "C" void _s80097AF4_0();
+extern "C" void f_80097AF4() {}

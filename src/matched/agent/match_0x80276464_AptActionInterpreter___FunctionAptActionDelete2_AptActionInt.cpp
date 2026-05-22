@@ -1,0 +1,9 @@
+// 0x80276464 AptActionInterpreter::_FunctionAptActionDelete2(AptActionInterpreter (476 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 29,0x14(1); stw 0,0x24(1); mr 31,3; lis 10,-32700; lwz 11,0x0(31); addi 30,1,8; lwz 0,0x8(31); addi 8,10,-6476; lhz 9,-6476(10); rlwinm 11,11,2,0,29; add 11,11,0; mr 29,4; lwz 3,-4(11); addi 9,9,1; sth 9,-6476(10); mr 4,30; stw 8,0x8(1); bl _s80276464_0; lwz 5,0x8(29); li 9,1; lwz 4,0x4(29); mr 6,30; mr 3,31; li 7,0; li 8,1; li 10,0; bl _s80276464_1; lwz 9,0x0(31); cmpwi 9,0; ble 0f; lwz 0,0x8(31); rlwinm 9,9,2,0,29; lis 4,-32704; lis 5,-32704; add 9,9,0; addi 5,5,5812; lwz 11,-4(9); addi 4,4,5964; li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(31); addi 9,9,-1; stw 9,0x0(31); 0:; lwz 30,-26908(13); li 29,1; cmpwi 30,0; beq 3f; lwz 0,0x0(30); lwz 9,0xc(30); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26908(13); stw 11,0x0(30); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 1f; rlwinm 0,11,0,3,1; stw 0,0x0(30); b 2f; 1:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 30,11,9; stw 0,0x4(8); 2:; stw 29,0xc(30); mr 8,30; b 4f; 3:; lwz 3,-23020(13); li 4,16; bl _s80276464_2; mr 30,3; li 4,7; bl _s80276464_3; lis 9,-32702; stw 29,0xc(30); addi 9,9,-24344; mr 8,30; stw 9,0x8(30); 4:; lwz 9,0x0(31); lis 4,-32704; lwz 10,0x8(31); lis 5,-32704; rlwinm 11,9,2,0,29; addi 4,4,5760; stwx 8,11,10; addi 9,9,1; stw 9,0x0(31); addi 5,5,5812; li 6,138; lwz 9,0x8(8); lwz 0,0xc(9); lha 3,0x8(9); mtspr 8,0; add 3,8,3; blrl; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 5f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80276464_4; 5:; lwz 0,0x24(1); mtspr 8,0; lmw 29,0x14(1); addi 1,1,32"
+extern "C" void _s80276464_0();
+extern "C" void _s80276464_1();
+extern "C" void _s80276464_2();
+extern "C" void _s80276464_3();
+extern "C" void _s80276464_4();
+extern "C" void f_80276464() {}

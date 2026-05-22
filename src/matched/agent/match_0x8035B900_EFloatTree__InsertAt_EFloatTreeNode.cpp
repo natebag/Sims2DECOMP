@@ -1,0 +1,6 @@
+// 0x8035B900 EFloatTree::InsertAt(EFloatTreeNode (344 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stfd f31,0x18(1); stmw 28,0x8(1); stw 0,0x24(1); mr 29,3; mr 30,4; fmr f31,f1; mr 28,5; li 3,32; bl _s8035B900_0; mr. 31,3; bne 0f; li 3,0; b 11f; 0:; lis 9,-32700; li 0,1; addi 9,9,11784; stw 0,0x14(31); stw 9,0x4(31); cmpwi 30,0; stw 28,0x18(31); stw 30,0x8(31); stw 9,0x0(31); stfs f31,0x1c(31); beq 6f; lfs f0,0x1c(30); fcmpu 0,f31,f0; bge 2f; lwz 9,0xc(30); stw 31,0x0(30); cmpwi 9,0; beq 1f; stw 31,0x10(9); lwz 0,0xc(30); stw 0,0xc(31); stw 31,0xc(30); stw 30,0x10(31); b 10f; 1:; lwz 9,0x0(29); stw 9,0x10(31); cmpwi 9,0; bne 7f; b 8f; 2:; lwz 9,0x10(30); stw 31,0x4(30); cmpwi 9,0; beq 3f; stw 31,0xc(9); lwz 0,0x10(30); stw 0,0x10(31); stw 31,0x10(30); stw 30,0xc(31); b 10f; 3:; lwz 9,0x4(29); stw 9,0xc(31); cmpwi 9,0; beq 4f; stw 31,0x10(9); b 5f; 4:; stw 31,0x0(29); 5:; li 0,0; stw 0,0x10(31); stw 31,0x4(29); b 10f; 6:; lwz 9,0x0(29); stw 31,0x8(29); stw 9,0x10(31); cmpwi 9,0; beq 8f; 7:; stw 31,0xc(9); b 9f; 8:; stw 31,0x4(29); 9:; li 0,0; stw 0,0xc(31); stw 31,0x0(29); 10:; mr 3,29; mr 4,31; bl _s8035B900_1; mr 3,31; 11:; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x8(1); lfd f31,0x18(1); addi 1,1,32"
+extern "C" void _s8035B900_0();
+extern "C" void _s8035B900_1();
+extern "C" void f_8035B900() {}

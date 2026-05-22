@@ -1,0 +1,6 @@
+// 0x8002D778 ERoom::ERoom(void) (276 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 20,0x8(1); stw 0,0x3c(1); mr 30,3; li 29,0; addi 20,30,4; li 0,1; stw 29,0x4(20); addi 21,30,16; stw 29,0x4(30); addi 22,30,28; stw 0,0x8(20); addi 23,30,40; stw 29,0x4(21); addi 24,30,52; stw 29,0x10(30); addi 25,30,64; stw 0,0x8(21); addi 26,30,76; stw 29,0x4(22); addi 27,30,88; stw 29,0x1c(30); addi 28,30,100; stw 0,0x8(22); addi 3,30,148; stw 29,0x4(23); stw 29,0x28(30); stw 0,0x8(23); stw 29,0x4(24); stw 29,0x34(30); stw 0,0x8(24); stw 29,0x4(25); stw 29,0x40(30); stw 0,0x8(25); stw 29,0x4(26); stw 29,0x4c(30); stw 0,0x8(26); stw 29,0x4(27); stw 29,0x58(30); stw 0,0x8(27); stw 29,0x4(28); stw 29,0x64(30); stw 0,0x8(28); bl _s8002D778_0; addi 3,30,160; bl _s8002D778_1; lis 9,-32707; lis 11,-32707; lfs f13,0xe30(9); mr 3,30; lfs f0,0xe34(11); stw 20,0x70(30); stw 21,0x74(30); stw 22,0x78(30); stw 23,0x7c(30); stw 24,0x80(30); stw 25,0x84(30); stw 26,0x88(30); stw 27,0x8c(30); stw 28,0x90(30); stw 29,0x0(30); stfs f13,0xac(30); stfs f0,0xb0(30); lwz 0,0x3c(1); mtspr 8,0; lmw 20,0x8(1); addi 1,1,56"
+extern "C" void _s8002D778_0();
+extern "C" void _s8002D778_1();
+extern "C" void f_8002D778() {}

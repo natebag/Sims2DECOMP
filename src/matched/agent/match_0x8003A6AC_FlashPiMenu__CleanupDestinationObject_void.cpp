@@ -1,0 +1,4 @@
+// 0x8003A6AC FlashPiMenu::CleanupDestinationObject(void) (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; lwz 0,0x0(31); cmpwi 0,0; beq 3f; lwz 3,-21484(13); li 30,0; lwz 9,0x0(3); lha 0,0x98(9); lwz 9,0x9c(9); add 3,3,0; mtspr 8,9; blrl; mr 11,3; 0:; lwz 0,0x0(31); cmpw 11,0; bne 1f; li 30,1; 1:; lwz 9,0x4(11); lha 3,0x490(9); lwz 0,0x494(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 7,30,0; mr. 11,3; beq 2f; beq cr7,0b; 2:; beq cr7,3f; lwz 11,0x0(31); lwz 9,0x4(11); lwz 0,0x32c(9); lha 3,0x328(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-21484(13); li 0,0; stw 0,0x0(31); mr 4,3; lwz 9,0x0(11); lha 3,0x58(9); lwz 0,0x5c(9); add 3,11,3; mtspr 8,0; blrl; 3:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void f_8003A6AC() {}

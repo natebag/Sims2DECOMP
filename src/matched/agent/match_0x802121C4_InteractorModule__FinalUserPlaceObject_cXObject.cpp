@@ -1,0 +1,8 @@
+// 0x802121C4 InteractorModule::FinalUserPlaceObject(cXObject (460 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 27,0x24(1); stw 0,0x3c(1); mr. 31,3; beq 5f; lwz 9,0x4(31); lwz 0,0x344(9); lha 3,0x340(9); mtspr 8,0; add 3,31,3; blrl; lwz 29,0x0(3); lwz 30,0x4(3); mr 3,31; bl _s802121C4_0; lwz 9,0x4(31); mr 27,3; lha 3,0x1a8(9); lwz 0,0x1ac(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 0f; lwz 9,0x4(31); li 0,1; stw 0,-32044(13); lwz 0,0x12c(9); lha 3,0x128(9); mtspr 8,0; add 3,31,3; blrl; li 0,0; stw 0,-32044(13); 0:; stw 29,0x18(1); stw 30,0x1c(1); addi 28,1,24; li 10,0; addi 9,1,8; lwz 0,0x4(28); li 11,0; mr 5,9; mr 3,31; rlwinm 0,0,0,0,27; mr 4,28; ori 0,0,8; stw 0,0x4(28); sth 10,0x8(1); lwz 0,0x18(1); rlwinm 0,0,0,0,27; ori 0,0,8; stw 0,0x18(1); sth 10,0x2(9); stw 11,0x8(9); stw 11,0x4(9); bl _s802121C4_1; cmpwi 3,0; beq 5f; cmpwi 27,0; beq 5f; lwz 0,0xc(1); cmpwi 0,0; bne 1f; lwz 9,0x4(31); mr 4,28; li 5,1; li 6,0; lha 3,0x150(9); li 7,0; lwz 0,0x154(9); add 3,31,3; mtspr 8,0; blrl; b 2f; 1:; lwz 9,0x4(31); lha 4,0x8(1); lha 3,0x488(9); addi 29,9,336; lwz 11,0x48c(9); add 3,31,3; lha 30,0x150(9); mtspr 8,11; add 30,31,30; blrl; lwz 0,0x4(29); mr 6,3; mr 3,30; mr 4,28; li 5,1; lha 7,0xa(1); mtspr 8,0; blrl; 2:; cmpwi 31,0; beq 3f; lwz 9,0x4(31); lha 3,0x520(9); lwz 0,0x524(9); add 3,31,3; mtspr 8,0; blrl; b 4f; 3:; li 3,0; 4:; li 4,1; bl _s802121C4_2; mr 3,31; bl _s802121C4_3; li 3,1; b 6f; 5:; li 3,0; 6:; lwz 0,0x3c(1); mtspr 8,0; lmw 27,0x24(1); addi 1,1,56"
+extern "C" void _s802121C4_0();
+extern "C" void _s802121C4_1();
+extern "C" void _s802121C4_2();
+extern "C" void _s802121C4_3();
+extern "C" void f_802121C4() {}

@@ -1,0 +1,6 @@
+// 0x802389DC Emitter::Draw(ELevelDrawData (300 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,3; lwz 11,0x7c(31); cmpwi 11,0; beq 8f; lis 9,-32732; stw 31,0xb0(31); addi 9,9,-30336; stw 9,0xa0(31); lwz 0,0x50(11); andis. 9,0,544; beq 0f; addi 0,11,48; stw 0,0x94(31); b 6f; 0:; lwz 10,0x80(11); lwz 0,0x14(10); cmpwi 0,0; beq 1f; mr 9,0; b 2f; 1:; lwz 11,0x18(10); li 9,0; cmpwi 11,0; beq 2f; lwz 9,0x14(11); 2:; lwz 0,0x4(9); rlwinm 0,0,0,18,22; stw 0,0x8c(31); lwz 0,0x14(10); cmpwi 0,0; beq 3f; mr 9,0; b 4f; 3:; lwz 11,0x18(10); li 9,0; cmpwi 11,0; beq 4f; lwz 9,0x14(11); 4:; lha 0,0x2(9); cmpwi 0,0; stw 0,0x90(31); beq 5f; addi 0,31,128; stw 0,0x94(31); b 6f; 5:; lwz 9,0x7c(31); addi 9,9,48; stw 9,0x94(31); 6:; lwz 9,0x7c(31); lwz 0,0x50(9); andis. 9,0,2048; beq 7f; li 0,16384; lwz 9,0x0(31); stw 0,0x8c(31); lha 3,0xe0(9); lwz 0,0xe4(9); add 3,31,3; mtspr 8,0; blrl; addi 4,31,140; bl _s802389DC_0; b 8f; 7:; mr 3,31; addi 4,3,140; bl _s802389DC_1; 8:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16"
+extern "C" void _s802389DC_0();
+extern "C" void _s802389DC_1();
+extern "C" void f_802389DC() {}

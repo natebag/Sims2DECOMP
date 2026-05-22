@@ -1,0 +1,5 @@
+// 0x802B565C DOGMA_PoolManager::DOGMA_PoolManager(unsigned (264 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 23,0xc(1); stw 0,0x34(1); mr 31,3; lwz 11,0x38(1); lwz 0,0x10(31); li 29,0; mr 28,7; lis 23,-32694; rlwimi 0,9,3,28,28; addi 25,28,4; lwz 9,0x40(1); rlwimi 0,11,2,29,29; stw 5,0x8(31); mr 3,25; rlwimi 0,9,1,30,30; stw 29,0x0(31); stw 29,0x4(31); mr 30,4; stw 0,0x10(31); mr 24,8; stw 28,0xc(31); mr 27,10; stw 29,0x14(31); stw 29,0x18(31); stw 29,0x1c(31); lwz 9,-16288(23); lbz 26,0x3f(1); mtspr 8,9; blrl; stw 3,0x0(31); cmplwi 30,15; bgt 0f; li 30,16; 0:; lwz 0,-16288(23); mr 3,30; mtspr 8,0; blrl; stw 3,0x4(31); mr 5,25; lwz 3,0x0(31); li 4,0; bl _s802B565C_0; lwz 7,0x4(31); rlwinm 0,24,30,2,31; rlwinm 9,27,30,2,31; rlwinm 11,26,30,2,31; stb 0,0x10(31); cmpwi 7,0; stb 9,0x11(31); stb 11,0x12(31); beq 1f; addi 0,30,-15; stw 29,0x0(7); stw 0,0x8(7); stw 0,0x4(7); 1:; lwz 0,0x10(31); mr 3,31; rlwimi 0,28,4,24,27; stw 0,0x10(31); lwz 0,0x34(1); mtspr 8,0; lmw 23,0xc(1); addi 1,1,48"
+extern "C" void _s802B565C_0();
+extern "C" void f_802B565C() {}

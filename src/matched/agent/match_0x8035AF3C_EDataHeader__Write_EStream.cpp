@@ -1,0 +1,6 @@
+// 0x8035AF3C EDataHeader::Write(EStream (352 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 27,0x24(1); stw 0,0x3c(1); mr 31,4; mr 27,3; lwz 9,0x18(31); addi 4,1,8; li 5,4; lwz 0,0x4(27); lha 3,0x38(9); lwz 9,0x3c(9); add 3,31,3; stw 0,0x8(1); mtspr 8,9; blrl; lwz 9,0x18(31); addi 4,1,12; li 5,4; lwz 0,0x8(27); lha 3,0x38(9); lwz 9,0x3c(9); add 3,31,3; stw 0,0xc(1); mtspr 8,9; blrl; lwz 9,0x18(31); addi 4,1,16; li 5,4; lwz 0,0xc(27); lha 3,0x38(9); lwz 9,0x3c(9); add 3,31,3; stw 0,0x10(1); mtspr 8,9; blrl; lwz 3,0x0(27); cmpwi 3,0; beq 0f; bl _s8035AF3C_0; lwz 9,0x18(31); addi 0,3,1; addi 4,1,20; li 5,4; lha 3,0x38(9); lwz 9,0x3c(9); add 3,31,3; stw 0,0x14(1); mtspr 8,9; blrl; lwz 30,0x18(31); lwz 28,0x0(27); lha 29,0x38(30); addi 30,30,56; mr 3,28; add 29,31,29; bl _s8035AF3C_1; lwz 0,0x4(30); addi 5,3,1; mr 3,29; mr 4,28; mtspr 8,0; blrl; b 1f; 0:; lwz 9,0x18(31); addi 4,1,24; stw 3,0x18(1); li 5,4; lha 3,0x38(9); lwz 0,0x3c(9); add 3,31,3; mtspr 8,0; blrl; 1:; lwz 9,0x18(31); addi 4,1,28; li 5,4; lwz 0,0x10(27); lha 3,0x38(9); lwz 9,0x3c(9); add 3,31,3; stw 0,0x1c(1); mtspr 8,9; blrl; lwz 0,0x3c(1); mtspr 8,0; lmw 27,0x24(1); addi 1,1,56"
+extern "C" void _s8035AF3C_0();
+extern "C" void _s8035AF3C_1();
+extern "C" void f_8035AF3C() {}

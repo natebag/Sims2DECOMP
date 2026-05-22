@@ -1,0 +1,4 @@
+// 0x80204620 InteractorModule::DirectInteractor::SendNeutralFreeMoveInput(void) (220 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); lwz 11,0x70(3); cmpwi 11,0; beq 5f; lwz 9,0x4(11); lha 3,0x188(9); lwz 0,0x18c(9); add 3,11,3; mtspr 8,0; blrl; mr. 3,3; beq 5f; lis 9,-32704; lfs f13,0xb4(3); lfs f11,-13608(9); fcmpu 0,f13,f11; beq 4f; lis 9,-32704; fsubs f13,f11,f13; lfs f0,-13600(9); fcmpu 0,f13,f0; ble 1f; lis 9,-32704; fmr f12,f0; lfs f0,-13604(9); 0:; fsubs f13,f13,f0; fcmpu 0,f13,f12; bgt 0b; 1:; lis 9,-32704; lfs f0,-13596(9); fcmpu 0,f13,f0; bge 3f; lis 9,-32704; fmr f12,f0; lfs f0,-13604(9); 2:; fadds f13,f13,f0; fcmpu 0,f13,f12; blt 2b; 3:; lis 9,-32704; fabs f13,f13; lfs f0,-13592(9); fcmpu 0,f13,f0; ble 4f; lis 9,-32704; lfs f0,-13608(9); stfs f0,0x608(3); 4:; li 0,9; stfs f11,0xb4(3); stw 0,0xb0(3); 5:; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
+extern "C" void f_80204620() {}

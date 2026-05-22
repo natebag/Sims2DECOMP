@@ -1,0 +1,6 @@
+// 0x80388BB8 GXGetFifoStatus (276 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); li 0,0; stwu 1,-80(1); stmw 23,0x2c(1); addi 26,5,0; mr 25,4; addi 27,6,0; addi 30,9,0; addi 28,7,0; addi 29,8,0; mr 31,3; stb 0,0x0(5); stb 0,0x0(4); stw 0,0x0(6); stb 0,0x0(9); lwz 0,-21956(13); cmplw 3,0; bne 0f; lwz 4,-21996(13); lhz 3,0x3a(4); lhz 4,0x38(4); rlwimi 4,3,16,0,15; addis 0,4,-32768; stw 0,0x14(31); lwz 4,-21996(13); lhz 3,0x32(4); lhz 0,0x30(4); rlwimi 0,3,16,0,15; stw 0,0x1c(31); 0:; lwz 0,-21960(13); cmplw 31,0; bne 1f; bl _s80388BB8_0; mr 3,31; bl _s80388BB8_1; lwz 3,-22000(13); lwz 0,0x14(3); rlwinm 0,0,6,31,31; stb 0,0x0(30); 1:; lwz 3,0x1c(31); lwz 0,0xc(31); subfc 0,3,0; subfe 23,23,23; neg 0,23; stb 0,0x0(25); lwz 3,0x1c(31); lwz 0,0x10(31); subfc 0,0,3; subfe 24,24,24; neg 0,24; stb 0,0x0(26); lwz 0,0x1c(31); stw 0,0x0(27); lwz 0,-21960(13); subf 0,0,31; cntlzw 0,0; rlwinm 0,0,27,24,31; stb 0,0x0(28); lwz 0,-21956(13); subf 0,0,31; cntlzw 0,0; rlwinm 0,0,27,24,31; stb 0,0x0(29); lmw 23,0x2c(1); lwz 0,0x54(1); addi 1,1,80; mtspr 8,0"
+extern "C" void _s80388BB8_0();
+extern "C" void _s80388BB8_1();
+extern "C" void f_80388BB8() {}

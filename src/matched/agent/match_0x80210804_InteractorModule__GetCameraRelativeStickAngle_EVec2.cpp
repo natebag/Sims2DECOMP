@@ -1,0 +1,8 @@
+// 0x80210804 InteractorModule::GetCameraRelativeStickAngle(EVec2 (376 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-88(1); mfspr 0,8; stfd f31,0x50(1); stmw 30,0x48(1); stw 0,0x5c(1); lfs f0,0x0(3); addi 10,4,1048; addi 8,4,1084; lfs f7,0x43c(4); lfs f12,0x418(4); lis 9,-32704; lfs f11,0x4(10); addi 11,1,8; lfs f10,0x4(8); fsubs f9,f7,f12; lfs f8,0x4(3); mr 31,11; stfs f0,0x8(1); fsubs f6,f10,f11; lfs f5,-11228(9); mr 30,5; lfs f0,0x8(10); lfs f13,0x8(8); fcmpu 0,f9,f5; stfs f8,0x4(11); stfs f5,0x8(11); stfs f0,0x20(1); stfs f13,0x30(1); stfs f12,0x18(1); stfs f11,0x1c(1); stfs f7,0x28(1); stfs f10,0x2c(1); stfs f9,0x38(1); stfs f6,0x3c(1); stfs f5,0x40(1); bne 0f; fcmpu 0,f6,f5; beq 1f; 0:; addi 3,1,56; mr 4,3; bl _s80210804_0; 1:; lfs f1,0x3c(1); lfs f2,0x38(1); bl _s80210804_1; lis 9,-32704; lfs f0,0x8(1); lfs f13,-11228(9); fmr f31,f1; fcmpu 0,f0,f13; bne 2f; lfs f0,0x4(31); fcmpu 0,f0,f13; bne 2f; lfs f0,0x8(31); fcmpu 0,f0,f13; beq 3f; 2:; mr 3,31; mr 4,3; bl _s80210804_2; 3:; lfs f1,0xc(1); lfs f2,0x8(1); fneg f1,f1; fneg f2,f2; bl _s80210804_3; cmpwi 30,0; beq 4f; stfs f1,0x0(30); 4:; lis 9,-32704; fadds f1,f1,f31; lfs f0,-11224(9); fcmpu 0,f1,f0; bge 6f; lis 9,-32704; fmr f13,f0; lfs f0,-11220(9); 5:; fadds f1,f1,f0; fcmpu 0,f1,f13; blt 5b; 6:; lis 9,-32704; lfs f0,-11216(9); fcmpu 0,f1,f0; ble 8f; lis 9,-32704; fmr f13,f0; lfs f0,-11220(9); 7:; fsubs f1,f1,f0; fcmpu 0,f1,f13; bgt 7b; 8:; lwz 0,0x5c(1); mtspr 8,0; lmw 30,0x48(1); lfd f31,0x50(1); addi 1,1,88"
+extern "C" void _s80210804_0();
+extern "C" void _s80210804_1();
+extern "C" void _s80210804_2();
+extern "C" void _s80210804_3();
+extern "C" void f_80210804() {}

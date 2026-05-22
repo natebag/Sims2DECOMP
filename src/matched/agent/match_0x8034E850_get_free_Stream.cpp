@@ -1,0 +1,5 @@
+// 0x8034E850 get_free(Stream (280 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 26,0x8(1); stw 0,0x24(1); lis 9,-32690; mr 27,3; addi 8,9,-14064; li 30,-1; addi 26,8,8; li 10,0; li 28,0; li 29,0; lis 7,-32690; 0:; lwzx 0,29,8; cmpwi 0,0; bne 6f; addi 7,7,-14060; addi 4,13,-22484; li 8,0; addi 6,7,-4; mr 5,4; li 10,0; 1:; lwz 30,0x0(5); addi 0,30,1; cmpwi 30,-1; stw 0,0x0(5); bne 3f; mr 30,0; addi 0,30,1; stw 0,0x0(4); b 3f; 2:; addi 8,8,1; addi 10,10,120; 3:; cmplwi 8,1; bgt 4f; lwzx 0,6,10; cmpwi 0,0; beq 2b; lwzx 0,7,10; cmpw 0,30; bne 2b; 4:; cmpwi 8,2; bne 1b; addi 31,9,-14064; addi 9,31,28; lwzx 3,9,29; cmpwi 3,0; beq 5f; li 4,-904; bl _s8034E850_0; 5:; li 0,1; addi 9,31,4; stwx 0,31,29; addi 11,31,12; stwx 30,9,29; add 0,29,31; stwx 28,29,26; stwx 28,11,29; stw 0,0x0(27); b 7f; 6:; addi 10,10,1; addi 29,29,120; cmplwi 10,1; ble 0b; 7:; mr 3,30; lwz 0,0x24(1); mtspr 8,0; lmw 26,0x8(1); addi 1,1,32"
+extern "C" void _s8034E850_0();
+extern "C" void f_8034E850() {}

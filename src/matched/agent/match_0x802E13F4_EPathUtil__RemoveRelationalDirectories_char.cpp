@@ -1,0 +1,6 @@
+// 0x802E13F4 EPathUtil::RemoveRelationalDirectories(char (384 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-288(1); mfspr 0,8; stmw 28,0x110(1); stw 0,0x124(1); addi 31,1,8; mr 30,4; mr 29,3; li 4,0; mr 3,31; li 5,260; bl _s802E13F4_0; li 28,0; lbz 0,0x0(30); mr 11,31; cmpwi 0,46; bne 1f; lbz 0,0x1(30); cmpwi 0,46; bne 1f; lbz 0,0x2(30); extsb 0,0; cmpwi 0,92; beq 0f; cmpwi 0,47; bne 1f; 0:; mr 4,31; mr 3,29; b 12f; 1:; lbz 0,0x0(30); cmpwi 0,0; beq 11f; mr 10,11; 2:; cmpwi 0,46; bne 6f; cmpwi 28,0; beq 6f; lbz 0,0x0(31); extsb 0,0; cmpwi 0,47; beq 3f; cmpwi 0,92; bne 4f; 3:; addi 31,31,-1; 4:; addi 4,30,1; cmplw 31,10; ble 10f; lbz 0,0x0(31); extsb 0,0; cmpwi 0,58; beq 10f; cmpwi 0,47; beq 10f; cmpwi 0,92; beq 10f; li 9,0; 5:; stb 9,0x0(31); addi 31,31,-1; cmplw 31,11; ble 10f; lbz 0,0x0(31); extsb 0,0; cmpwi 0,58; beq 10f; cmpwi 0,47; beq 10f; cmpwi 0,92; bne 5b; b 10f; 6:; lbz 0,0x0(30); mr 9,0; extsb 0,0; cmpwi 0,47; beq 7f; cmpwi 0,92; bne 8f; 7:; li 28,1; b 9f; 8:; li 28,0; 9:; stb 9,0x0(31); addi 4,30,1; addi 31,31,1; 10:; mr 30,4; lbz 0,0x0(30); cmpwi 0,0; bne 2b; 11:; lbz 0,0x0(30); mr 3,29; addi 4,1,8; stb 0,0x0(31); 12:; bl _s802E13F4_1; mr 3,29; lwz 0,0x124(1); mtspr 8,0; lmw 28,0x110(1); addi 1,1,288"
+extern "C" void _s802E13F4_0();
+extern "C" void _s802E13F4_1();
+extern "C" void f_802E13F4() {}

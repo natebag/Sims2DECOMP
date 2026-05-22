@@ -1,0 +1,4 @@
+// 0x800D3258 MemoryCardCache::LoadConfigFromMemoryCard(int) (228 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 28,3; mr 30,4; li 29,0; b 1f; 0:; lwz 3,-26384(13); mr 5,30; lwz 4,-24284(13); li 6,8192; lwz 9,0x0(3); li 7,8192; lwz 8,0x0(28); li 29,1; lha 0,0x38(9); lwz 9,0x3c(9); add 3,3,0; mtspr 8,9; blrl; mr 31,3; b 2f; 1:; lwz 3,-26384(13); mr 5,30; lwz 4,-24284(13); lwz 9,0x0(3); lha 0,0x20(9); lwz 9,0x24(9); add 3,3,0; mtspr 8,9; blrl; mr 31,3; cmpwi 31,1; beq 0b; 2:; cmpwi 29,0; beq 3f; lwz 3,-26384(13); mr 5,30; lwz 4,-24284(13); lwz 9,0x0(3); lha 0,0x28(9); lwz 9,0x2c(9); add 3,3,0; mtspr 8,9; blrl; 3:; cmpwi 31,1; bne 4f; stw 31,0xc(28); li 3,0; b 5f; 4:; li 3,3; 5:; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void f_800D3258() {}

@@ -1,0 +1,9 @@
+// 0x800CE120 NeighborhoodImpl::LoadPersistentData(cXPerson (480 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); mr 30,4; mr 31,3; lwz 11,0x0(30); lwz 9,0x4(11); lha 3,0x368(9); lwz 0,0x36c(9); add 3,11,3; mtspr 8,0; blrl; mr 4,3; mr 3,31; bl _s800CE120_0; mr. 29,3; bne 0f; lwz 11,0x0(30); lwz 9,0x4(11); lwz 0,0x36c(9); lha 3,0x368(9); mtspr 8,0; add 3,11,3; blrl; mr 4,3; mr 3,31; bl _s800CE120_1; lwz 9,0x4(30); lha 4,0x4(3); lha 3,0x1b8(9); lwz 0,0x1bc(9); add 3,30,3; mtspr 8,0; blrl; b 5f; 0:; lwz 9,0x4(30); addi 27,29,112; lha 4,0x4(29); lwz 0,0x1bc(9); lha 3,0x1b8(9); mtspr 8,0; add 3,30,3; blrl; lwz 0,0x0(29); cmpwi 0,0; beq 3f; bl _s800CE120_2; li 31,0; mr 28,3; cmpw 31,28; bge 3f; 1:; mr 3,31; bl _s800CE120_3; lwz 9,0x0(29); lwz 0,0x4(3); cmpw 9,0; blt 2f; lwz 4,0x0(3); cmpwi 4,58; beq 2f; cmpwi 4,65; beq 2f; lwz 9,0x4(30); add 0,4,4; lhax 5,27,0; lha 3,0x140(9); lwz 0,0x144(9); add 3,30,3; mtspr 8,0; blrl; 2:; addi 31,31,1; cmpw 31,28; blt 1b; 3:; lwz 9,0x4(30); li 4,61; lha 5,0x7a(27); lha 3,0x140(9); lwz 0,0x144(9); add 3,30,3; mtspr 8,0; blrl; mr 3,29; bl _s800CE120_4; mr. 11,3; beq 5f; lwz 9,0x0(11); lha 3,0x98(9); lwz 0,0x9c(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 3,1; bne 5f; lwz 9,0x4(30); addi 31,29,272; lwz 0,0x254(9); lha 3,0x250(9); mtspr 8,0; add 3,30,3; blrl; li 0,16; mr 9,3; mtspr 9,0; addi 3,29,336; addi 10,9,64; li 11,0; 4:; lfsx f0,11,31; stfsx f0,11,9; addi 11,11,4; lfs f0,0x0(3); addi 3,3,4; stfs f0,0x0(10); addi 10,10,4; bdnz 4b; 5:; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
+extern "C" void _s800CE120_0();
+extern "C" void _s800CE120_1();
+extern "C" void _s800CE120_2();
+extern "C" void _s800CE120_3();
+extern "C" void _s800CE120_4();
+extern "C" void f_800CE120() {}

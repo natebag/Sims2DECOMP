@@ -1,0 +1,7 @@
+// 0x801164E4 cHitMan::ControlGroup(int) (364 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-96(1); mfspr 0,8; stmw 29,0x54(1); stw 0,0x64(1); mr 8,3; stw 4,0x48(1); addi 10,8,32; addi 9,1,72; lwz 3,0x4(10); mr 29,9; lwz 11,0x4(3); 0:; cmpwi 11,0; beq 2f; lwz 0,0x10(11); cmpw 0,4; blt 1f; mr 3,11; lwz 11,0x8(3); b 0b; 1:; lwz 11,0xc(11); b 0b; 2:; lwz 11,0x4(10); cmpw 3,11; beq 3f; lwz 9,0x0(9); lwz 0,0x10(3); cmpw 9,0; bge 4f; 3:; mr 3,11; 4:; stw 3,0x8(1); addi 31,8,32; lwz 0,0x4(31); cmpw 3,0; stw 0,0x10(1); bne 12f; li 3,8; bl _s801164E4_0; lwz 4,0x48(1); bl _s801164E4_1; lwz 11,0x4(31); mr 30,3; lwz 9,0x4(11); cmpwi 9,0; beq 8f; lwz 10,0x0(29); 5:; lwz 0,0x10(9); cmpw 0,10; blt 6f; mr 11,9; lwz 9,0x8(11); b 7f; 6:; lwz 9,0xc(9); 7:; cmpwi 9,0; bne 5b; 8:; stw 11,0x18(1); li 10,0; lwz 0,0x4(31); cmpw 11,0; stw 0,0x20(1); beq 9f; lwz 9,0x10(11); lwz 0,0x0(29); cmpw 0,9; bge 10f; 9:; li 10,1; 10:; cmpwi 10,0; beq 11f; lwz 0,0x0(29); li 9,0; lwz 11,0x18(1); mr 4,31; stw 0,0x38(1); addi 3,1,40; stw 9,0x3c(1); addi 5,1,64; stw 11,0x40(1); addi 6,1,56; stw 11,0x30(1); bl _s801164E4_2; lwz 0,0x28(1); stw 0,0x18(1); 11:; lwz 9,0x18(1); stw 30,0x14(9); b 13f; 12:; lwz 30,0x14(3); 13:; mr 3,30; lwz 0,0x64(1); mtspr 8,0; lmw 29,0x54(1); addi 1,1,96"
+extern "C" void _s801164E4_0();
+extern "C" void _s801164E4_1();
+extern "C" void _s801164E4_2();
+extern "C" void f_801164E4() {}

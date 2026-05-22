@@ -1,0 +1,4 @@
+// 0x8037BA9C __MIXSetPan (188 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 0,-22064(13); lis 4,-32698; lwz 5,0x14(3); addi 9,4,-31008; cmplwi 0,3; lwz 6,0x18(3); subfic 7,5,127; subfic 10,6,127; bne 0f; rlwinm 0,5,1,0,30; add 8,9,0; lha 0,0x98c(8); rlwinm 5,7,1,0,30; rlwinm 4,10,1,0,30; stw 0,0x20(3); add 7,9,5; rlwinm 0,6,1,0,30; lha 6,0x98c(7); add 5,9,4; add 4,9,0; stw 6,0x24(3); lha 0,0x98c(5); stw 0,0x28(3); lha 0,0x98c(4); stw 0,0x2c(3); lha 0,0xa8c(7); stw 0,0x30(3); lha 0,0xa8c(8); stw 0,0x34(3); blr; 0:; rlwinm 0,5,2,0,29; add 4,9,0; lwz 5,0x78c(4); rlwinm 0,7,2,0,29; rlwinm 4,10,2,0,29; stw 5,0x20(3); add 5,9,0; rlwinm 0,6,2,0,29; lwz 6,0x78c(5); add 5,9,4; add 4,9,0; stw 6,0x24(3); lwz 0,0x78c(5); stw 0,0x28(3); lwz 0,0x78c(4); stw 0,0x2c(3)"
+extern "C" void f_8037BA9C() {}

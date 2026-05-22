@@ -1,0 +1,4 @@
+// 0x80149A1C TreeTableAdScratch::operator=(ITreeTableAd (228 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); mr 28,4; mr 29,3; lwz 9,0x0(28); lwz 11,0x0(29); lwz 0,0x2c(9); lha 3,0x28(9); addi 27,11,48; mtspr 8,0; lha 30,0x30(11); add 3,28,3; add 30,29,30; blrl; lwz 0,0x4(27); mr 4,3; mr 3,30; mtspr 8,0; blrl; lwz 9,0x0(28); lwz 11,0x0(29); lwz 0,0x3c(9); lha 3,0x38(9); addi 27,11,64; mtspr 8,0; lha 30,0x40(11); add 3,28,3; add 30,29,30; blrl; lwz 0,0x4(27); mr 4,3; mr 3,30; mtspr 8,0; blrl; lwz 9,0x0(28); lwz 11,0x0(29); lwz 0,0x5c(9); lha 3,0x58(9); addi 27,11,96; mtspr 8,0; lha 30,0x60(11); add 3,28,3; add 30,29,30; blrl; lwz 0,0x4(27); mr 4,3; mr 3,30; mtspr 8,0; blrl; mr 3,29; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
+extern "C" void f_80149A1C() {}

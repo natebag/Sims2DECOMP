@@ -1,0 +1,6 @@
+// 0x802B5848 DOGMA_PoolManager::Allocate(unsigned (324 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 31,3; mr 29,4; bl _s802B5848_0; lwz 9,0x18(31); mr 30,3; lwz 0,0xc(31); addi 9,9,1; stw 9,0x18(31); cmplw 30,0; ble 1f; lis 9,-32694; addi 3,29,8; lwz 0,-16288(9); mtspr 8,0; blrl; li 0,0; stw 0,0x4(3); lwz 9,0x14(31); stw 9,0x0(3); lwz 9,0x14(31); cmpwi 9,0; beq 0f; stw 3,0x4(9); 0:; stw 3,0x14(31); addi 3,3,8; b 6f; 1:; lwz 11,0x0(31); rlwinm 9,30,0,0,29; li 10,1; lwzx 0,9,11; cmpwi 0,0; bne 2f; li 10,0; 2:; cmpwi 10,0; beq 3f; mr 3,31; mr 4,30; bl _s802B5848_1; b 6f; 3:; lwz 11,0x4(31); lis 9,-32694; 4:; lwz 10,0x8(11); cmplw 10,30; bge 5f; lwz 11,0x0(11); cmpwi 11,0; bne 4b; lwz 0,-16288(9); lwz 3,0x8(31); mtspr 8,0; blrl; lwz 9,0x8(31); lwz 0,0x4(31); addi 9,9,-15; stw 9,0x8(3); stw 0,0x0(3); stw 9,0x4(3); stw 3,0x4(31); lwz 0,0x8(3); lwz 9,0x4(3); subf 11,30,0; subf 9,0,9; stw 11,0x8(3); addi 9,9,12; add 3,3,9; b 6f; 5:; lwz 3,0x4(11); subf 0,30,10; stw 0,0x8(11); subf 3,10,3; addi 3,3,12; add 3,11,3; 6:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void _s802B5848_0();
+extern "C" void _s802B5848_1();
+extern "C" void f_802B5848() {}

@@ -1,0 +1,6 @@
+// 0x801A991C CSPTarget::ChangeSelectedTab(CSPTarget::eTabs) (328 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; li 10,0; lwz 0,0x90(31); li 30,0; stw 4,0x90(31); cmpwi 0,1; beq 2f; bgt 0f; cmpwi 0,0; beq 1f; b 4f; 0:; cmpwi 0,2; beq 3f; b 4f; 1:; lis 9,-32705; addi 10,9,-5436; b 4f; 2:; lis 9,-32705; addi 10,9,-5420; b 4f; 3:; lis 9,-32705; addi 10,9,-5404; 4:; lwz 9,0x90(31); cmpwi 9,1; beq 7f; bgt 5f; cmpwi 9,0; beq 6f; b 9f; 5:; cmpwi 9,2; beq 8f; b 9f; 6:; lis 9,-32705; addi 30,9,-5436; b 9f; 7:; lis 9,-32705; addi 30,9,-5420; b 9f; 8:; lis 9,-32705; addi 30,9,-5404; 9:; cmpwi 0,-1; beq 10f; lis 9,-32705; lwz 11,0x0(31); addi 9,9,27156; rlwinm 0,0,2,0,29; lwzx 5,9,0; cmpwi 11,0; beq 10f; lwz 3,0x1c(31); cmpwi 3,0; beq 10f; lwz 6,0x7c(31); mr 4,10; li 7,0; bl _s801A991C_0; 10:; lwz 0,0x90(31); cmpwi 0,-1; beq 11f; lis 9,-32705; lwz 11,0x0(31); addi 9,9,27168; rlwinm 0,0,2,0,29; lwzx 5,9,0; cmpwi 11,0; beq 11f; lwz 3,0x1c(31); cmpwi 3,0; beq 11f; lwz 6,0x7c(31); mr 4,30; li 7,0; bl _s801A991C_1; 11:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void _s801A991C_0();
+extern "C" void _s801A991C_1();
+extern "C" void f_801A991C() {}

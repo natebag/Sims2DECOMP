@@ -1,0 +1,4 @@
+// 0x80371558 OSGetFontWidth (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; addi 6,3,0; stw 0,0x4(1); stwu 1,-32(1); stw 31,0x1c(1); addi 31,4,0; lhz 5,-25400(13); cmplwi 5,65535; beq 0f; b 6f; 0:; lis 3,-32768; lwz 0,0xcc(3); cmpwi 0,0; beq 1f; blt 4f; b 4f; 1:; lis 3,-13312; lhz 0,0x206e(3); rlwinm. 0,0,0,30,30; beq 2f; li 0,1; b 3f; 2:; li 0,0; 3:; sth 0,-25400(13); b 5f; 4:; li 0,0; sth 0,-25400(13); 5:; lis 3,-32713; lhz 5,-25400(13); addi 0,3,2136; stw 0,-22372(13); 6:; lwz 12,-22372(13); addi 3,5,0; addi 4,6,0; mtspr 8,12; addi 5,1,20; addi 6,1,16; blrl; cmplwi 31,0; addi 6,3,0; beq 7f; lwz 4,0x14(1); lwz 3,0x10(1); lhz 0,0x22(4); add 0,4,0; lbzx 0,3,0; stw 0,0x0(31); 7:; lwz 0,0x24(1); mr 3,6; lwz 31,0x1c(1); addi 1,1,32; mtspr 8,0"
+extern "C" void f_80371558() {}

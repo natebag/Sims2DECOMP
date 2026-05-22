@@ -1,0 +1,7 @@
+// 0x80378418 AXAcquireVoice (372 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; lis 6,-32690; stw 0,0x4(1); stwu 1,-56(1); stmw 26,0x20(1); addi 28,3,0; addi 29,4,0; addi 30,5,0; addi 27,6,-3232; bl _s80378418_0; lwz 4,0x0(27); addi 31,3,0; cmplwi 4,0; beq 0f; lwz 0,0x0(4); stw 0,0x0(27); 0:; cmplwi 4,0; addi 26,4,0; bne 6f; addi 0,28,-1; cmplwi 28,1; mtspr 9,0; addi 5,27,4; addi 6,27,132; ble 6f; 1:; lwz 3,0x0(5); li 4,0; cmplwi 3,0; beq 3f; lwz 7,0x0(6); cmplw 3,7; bne 2f; li 0,0; stw 0,0x0(6); mr 4,3; stw 0,0x0(5); b 3f; 2:; cmplwi 7,0; beq 3f; lwz 3,0x4(7); li 0,0; addi 4,7,0; stw 3,0x0(6); lwz 3,0x0(6); stw 0,0x0(3); 3:; cmplwi 4,0; addi 26,4,0; beq 5f; lhz 0,0x146(4); cmplwi 0,1; bne 4f; li 0,1; stw 0,0x20(4); 4:; lwz 12,0x10(4); cmplwi 12,0; beq 6f; mtspr 8,12; addi 3,26,0; blrl; b 6f; 5:; addi 5,5,4; addi 6,6,4; bdnz 1b; 6:; cmplwi 26,0; beq 9f; rlwinm 0,28,2,0,29; add 4,27,0; lwz 3,0x0(4); li 0,0; stw 3,0x0(26); stw 0,0x4(26); lwz 0,0x0(26); cmplwi 0,0; beq 7f; lwz 3,0x0(4); stw 26,0x4(3); stw 26,0x0(4); b 8f; 7:; stw 26,0x80(4); stw 26,0x0(4); 8:; stw 28,0xc(26); mr 3,26; stw 29,0x10(26); stw 30,0x14(26); bl _s80378418_1; 9:; mr 3,31; bl _s80378418_2; mr 3,26; lmw 26,0x20(1); lwz 0,0x3c(1); addi 1,1,56; mtspr 8,0"
+extern "C" void _s80378418_0();
+extern "C" void _s80378418_1();
+extern "C" void _s80378418_2();
+extern "C" void f_80378418() {}

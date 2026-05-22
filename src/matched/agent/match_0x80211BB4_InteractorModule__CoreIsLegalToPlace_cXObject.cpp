@@ -1,0 +1,4 @@
+// 0x80211BB4 InteractorModule::CoreIsLegalToPlace(cXObject (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 31,4; mr 29,5; mr. 30,3; beq 0f; lwz 0,0x4(31); lwz 9,0x0(31); rlwinm 0,0,0,0,27; rlwinm 9,9,0,0,27; ori 0,0,8; ori 9,9,8; stw 0,0x4(31); stw 9,0x0(31); lwz 11,0x4(30); lwz 0,0x354(11); lha 3,0x350(11); mtspr 8,0; add 3,30,3; blrl; mr 5,3; mr 4,31; stw 5,0x0(29); li 6,0; li 7,0; lwz 9,0x4(30); lha 3,0x130(9); lwz 0,0x134(9); add 3,30,3; mtspr 8,0; blrl; cmpwi 3,0; beq 0f; lwz 9,0x4(30); mr 4,31; lwz 5,0x0(29); li 6,0; lha 3,0x148(9); li 7,0; lwz 0,0x14c(9); add 3,30,3; mtspr 8,0; blrl; cmpwi 3,0; li 3,1; bne 1f; 0:; li 3,0; 1:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void f_80211BB4() {}

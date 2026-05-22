@@ -1,0 +1,8 @@
+// 0x8000DDDC AptShaderWord::InsertSpace(void) (404 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; stmw 28,0x40(1); stw 0,0x54(1); mr 30,3; lwz 11,0xc(30); cmpwi 11,0; beq 1f; lwz 0,0x0(11); cmpwi 0,0; bne 0f; lwz 0,0xc(11); cmpwi 0,0; beq 1f; 0:; lis 9,-32707; lfs f1,0x24(11); lfs f2,-10460(9); li 4,1; lwz 3,-32708(13); bl _s8000DDDC_0; 1:; lis 9,-32698; addi 31,1,8; addi 28,9,-21112; li 29,0; stw 28,0x2c(31); lis 9,-32707; stw 29,0x8(1); lis 10,-32707; lfs f13,-10456(9); addi 8,1,56; stw 29,0x8(31); lis 4,-32707; stw 29,0xc(31); addi 4,4,-10492; stw 29,0x10(31); mr 6,8; stw 29,0x14(31); mr 3,31; stw 29,0x18(31); li 5,1; stfs f13,0x38(1); stfs f13,0x3c(1); lfs f0,-10452(10); lwz 11,0x38(1); lwz 10,0x3c(1); stfs f0,0x38(1); stfs f0,0x3c(1); lwz 0,0x38(1); lwz 9,0x3c(1); stw 11,0x24(1); stfs f13,0x38(1); stw 10,0x28(1); stw 0,0x2c(1); stw 9,0x30(1); stfs f13,0x4(8); bl _s8000DDDC_1; lfs f13,0x2c(1); lfs f0,0x24(30); lwz 11,0x10(30); fadds f0,f0,f13; stfs f13,0x30(30); cmpwi 11,0; stfs f0,0x24(30); beq 2f; lis 9,-32707; lfs f1,0x24(11); lfs f2,-10460(9); li 4,1; lwz 3,-32708(13); bl _s8000DDDC_2; 2:; lwz 3,0x8(31); stw 28,0x2c(31); cmpwi 3,0; beq 3f; bl _s8000DDDC_3; 3:; lwz 11,0xc(31); cmpwi 11,0; beq 4f; lwz 9,0x8c(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; lwz 11,0x10(31); cmpwi 11,0; beq 4f; lwz 9,0x8c(11); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; stw 29,0x10(31); 4:; lwz 0,0x54(1); mtspr 8,0; lmw 28,0x40(1); addi 1,1,80"
+extern "C" void _s8000DDDC_0();
+extern "C" void _s8000DDDC_1();
+extern "C" void _s8000DDDC_2();
+extern "C" void _s8000DDDC_3();
+extern "C" void f_8000DDDC() {}

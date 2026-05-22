@@ -1,0 +1,5 @@
+// 0x8025A5E4 SIGetTypeString (344 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; lis 4,-32700; stw 0,0x4(1); stwu 1,-24(1); stw 31,0x14(1); addi 31,4,-16040; bl _s8025A5E4_0; lis 0,2; cmpw 3,0; beq 9f; bge 2f; cmpwi 3,64; beq 17f; bge 1f; lis 0,-29936; cmpw 3,0; beq 14f; bge 0f; lis 0,-30720; cmpw 3,0; beq 13f; b 17f; 0:; cmpwi 3,8; beq 5f; b 17f; 1:; lis 0,1; cmpw 3,0; beq 8f; bge 17f; cmpwi 3,128; beq 6f; b 17f; 2:; lis 0,2048; cmpw 3,0; beq 16f; bge 4f; lis 0,512; cmpw 3,0; beq 10f; bge 3f; lis 0,4; cmpw 3,0; beq 11f; b 17f; 3:; lis 0,1280; cmpw 3,0; beq 7f; b 17f; 4:; lis 0,2304; cmpw 3,0; beq 12f; bge 17f; lis 0,2080; cmpw 3,0; beq 15f; b 17f; 5:; addi 3,31,104; b 18f; 6:; addi 3,13,-27828; b 18f; 7:; addi 3,31,116; b 18f; 8:; addi 3,31,132; b 18f; 9:; addi 3,31,148; b 18f; 10:; addi 3,31,164; b 18f; 11:; addi 3,31,176; b 18f; 12:; addi 3,31,192; b 18f; 13:; addi 3,31,212; b 18f; 14:; addi 3,31,232; b 18f; 15:; addi 3,31,252; b 18f; 16:; addi 3,31,264; b 18f; 17:; addi 3,13,-27820; 18:; lwz 0,0x1c(1); lwz 31,0x14(1); addi 1,1,24; mtspr 8,0"
+extern "C" void _s8025A5E4_0();
+extern "C" void f_8025A5E4() {}

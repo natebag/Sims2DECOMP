@@ -1,0 +1,6 @@
+// 0x8003AFD4 GameData::GameData(void) (296 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 31,3; li 30,0; stw 30,0x0(31); addi 3,31,4; addi 29,31,244; li 28,1; bl _s8003AFD4_0; li 9,1; li 0,-1; stw 0,0xa0(31); lis 11,-32707; stw 30,0x2c(31); stw 30,0x30(31); stw 30,0x34(31); stw 30,0x3c(31); stw 30,0x40(31); stw 30,0x44(31); stw 30,0x48(31); stw 30,0x4c(31); stw 30,0x50(31); stw 30,0x6c(31); stw 30,0x70(31); stw 30,0x74(31); stw 30,0x78(31); stw 9,0x80(31); stw 9,0x84(31); stw 30,0x8c(31); stw 30,0x90(31); stw 30,0x94(31); stw 30,0x98(31); stw 30,0x9c(31); stw 30,0xa4(31); stw 30,0xa8(31); stw 30,0xb0(31); stw 30,0xb4(31); stw 30,0xb8(31); stw 30,0xbc(31); stw 30,0xc0(31); stw 30,0xc4(31); stw 30,0xc8(31); stw 30,0xcc(31); stw 30,0xd8(31); lfs f0,0x1ca8(11); stfs f0,0xdc(31); stfs f0,0xe0(31); stw 9,0xe4(31); stw 30,0xf0(31); stw 30,0xe8(31); stw 30,0xec(31); 0:; mr 3,29; bl _s8003AFD4_1; addi 29,29,16; cmpwi 28,0; addi 28,28,-1; bne 0b; lis 9,-32707; li 0,0; lfs f0,0x1ca8(9); mr 3,31; stw 0,0x124(31); stfs f0,0x120(31); stw 28,0x128(31); stw 0,0x114(31); stfs f0,0x118(31); stfs f0,0x11c(31); lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void _s8003AFD4_0();
+extern "C" void _s8003AFD4_1();
+extern "C" void f_8003AFD4() {}

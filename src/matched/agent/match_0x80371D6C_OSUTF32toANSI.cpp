@@ -1,0 +1,4 @@
+// 0x80371D6C OSUTF32toANSI (284 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmplwi 3,255; ble 0f; li 3,0; blr; 0:; cmplwi 3,128; blt 1f; cmplwi 3,159; ble 2f; 1:; rlwinm 3,3,0,24,31; blr; 2:; cmplwi 3,338; blt 12f; cmplwi 3,8482; bgt 12f; li 0,4; lis 4,-32700; mtspr 9,0; addi 4,4,14752; li 5,0; 3:; lhz 0,0x0(4); cmplw 3,0; bne 4f; addi 3,5,128; blr; 4:; lhzu 0,0x2(4); addi 5,5,1; cmplw 3,0; bne 5f; addi 3,5,128; blr; 5:; lhzu 0,0x2(4); addi 5,5,1; cmplw 3,0; bne 6f; addi 3,5,128; blr; 6:; lhzu 0,0x2(4); addi 5,5,1; cmplw 3,0; bne 7f; addi 3,5,128; blr; 7:; lhzu 0,0x2(4); addi 5,5,1; cmplw 3,0; bne 8f; addi 3,5,128; blr; 8:; lhzu 0,0x2(4); addi 5,5,1; cmplw 3,0; bne 9f; addi 3,5,128; blr; 9:; lhzu 0,0x2(4); addi 5,5,1; cmplw 3,0; bne 10f; addi 3,5,128; blr; 10:; lhzu 0,0x2(4); addi 5,5,1; cmplw 3,0; bne 11f; addi 3,5,128; blr; 11:; addi 4,4,2; addi 5,5,1; bdnz 3b; 12:; li 3,0"
+extern "C" int f_80371D6C() {}

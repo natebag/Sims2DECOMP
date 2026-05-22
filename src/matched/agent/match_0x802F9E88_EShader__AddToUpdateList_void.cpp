@@ -1,0 +1,5 @@
+// 0x802F9E88 EShader::AddToUpdateList(void) (288 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stw 31,0x14(1); stw 0,0x1c(1); mr 31,3; lwz 0,0xe8(31); cmpwi 0,0; bne 3f; lis 3,-32692; li 4,36; addi 3,3,-17444; li 5,8; bl _s802F9E88_0; li 0,3; mtspr 9,0; 0:; bdnz 0b; lis 9,-32702; lis 11,-32693; lfs f0,-3084(9); addi 10,11,2264; li 4,-1; stfs f0,0xc(1); stfs f0,0x8(1); lwz 0,0xc(1); lwz 9,0x8(1); stw 0,0x8(3); stw 9,0x4(3); stfs f0,0xc(1); stfs f0,0x8(1); lwz 0,0xc(1); lwz 9,0x8(1); stw 0,0x10(3); stw 9,0xc(3); stfs f0,0x8(1); stfs f0,0xc(1); lwz 0,0x8(1); lwz 9,0xc(1); stw 0,0x14(3); stw 9,0x18(3); stw 3,0xe8(31); stw 31,0x0(3); lwz 9,0x8d8(11); lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,3,10; blrl; lwz 3,0xe8(31); lwz 0,-22716(13); stw 0,0x1c(3); lwz 9,-22716(13); cmpwi 9,0; beq 1f; stw 3,0x20(9); b 2f; 1:; stw 3,-22720(13); 2:; li 0,0; lis 11,-32693; stw 0,0x20(3); addi 10,11,2264; stw 3,-22716(13); lwz 9,0x8d8(11); lha 3,0x18(9); lwz 0,0x1c(9); add 3,3,10; mtspr 8,0; blrl; 3:; lwz 0,0x1c(1); mtspr 8,0; lwz 31,0x14(1); addi 1,1,24"
+extern "C" void _s802F9E88_0();
+extern "C" void f_802F9E88() {}

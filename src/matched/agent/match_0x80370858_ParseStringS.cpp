@@ -1,0 +1,5 @@
+// 0x80370858 ParseStringS (316 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); rlwinm 0,3,0,16,31; cmpwi 0,1; stwu 1,-32(1); stw 31,0x1c(1); addi 31,6,0; stw 30,0x18(1); addi 30,4,0; li 4,0; beq 1f; bge 7f; cmpwi 0,0; bge 0f; b 7f; 0:; lbz 0,0x0(30); lwz 8,-22384(13); cmplwi 0,0; mr 4,0; beq 7f; addi 30,30,1; b 7f; 1:; lbz 0,0x0(30); lwz 8,-22380(13); cmplwi 0,0; mr 4,0; beq 7f; rlwinm 0,4,0,24,31; cmplwi 0,129; li 6,1; li 7,0; addi 30,30,1; blt 2f; cmplwi 0,159; bgt 2f; mr 7,6; 2:; cmpwi 7,0; bne 4f; rlwinm 0,4,0,24,31; cmplwi 0,224; li 7,0; blt 3f; cmplwi 0,252; bgt 3f; li 7,1; 3:; cmpwi 7,0; bne 4f; li 6,0; 4:; cmpwi 6,0; beq 7f; lbz 7,0x0(30); li 0,0; mr 6,0; cmplwi 7,64; blt 5f; cmplwi 7,252; bgt 5f; li 6,1; 5:; cmpwi 6,0; beq 6f; cmplwi 7,127; beq 6f; li 0,1; 6:; cmpwi 0,0; beq 7f; lbz 0,0x0(30); rlwinm 4,4,8,8,23; addi 30,30,1; or 4,4,0; 7:; stw 8,0x0(5); bl _s80370858_0; stw 3,0x0(31); mr 3,30; lwz 0,0x24(1); lwz 31,0x1c(1); lwz 30,0x18(1); addi 1,1,32; mtspr 8,0"
+extern "C" void _s80370858_0();
+extern "C" void f_80370858() {}

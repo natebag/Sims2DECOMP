@@ -1,0 +1,5 @@
+// 0x802F7134 ERC::LineStreakList(int, (256 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 31,3; mr 29,5; mr 28,6; mr. 30,4; beq 0f; mr 4,7; rlwinm 5,30,5,0,26; bl _s802F7134_0; lwz 9,0x70(31); li 4,0; li 5,13; lwz 0,0x2b4(9); lha 3,0x2b0(9); mtspr 8,0; add 3,31,3; blrl; lwz 11,0x0(31); add 9,30,30; li 4,5; lwz 0,0x54(11); add 0,0,9; stw 0,0x54(11); lwz 9,0x70(31); lwz 0,0x2ac(9); lha 3,0x2a8(9); mtspr 8,0; add 3,31,3; blrl; li 0,62; stw 30,0x4(3); stb 0,0x0(3); addi 9,3,8; addi 11,3,24; lfs f0,0x0(29); stfs f0,0x8(3); lfs f13,0x4(29); stfs f13,0x4(9); lfs f0,0x8(29); stfs f0,0x8(9); lfs f13,0xc(29); stfs f13,0xc(9); lfs f0,0x0(28); stfs f0,0x18(3); lfs f13,0x4(28); stfs f13,0x4(11); lfs f0,0x8(28); stfs f0,0x8(11); lfs f13,0xc(28); stfs f13,0xc(11); lwz 9,0x70(31); lha 3,0x2b8(9); lwz 0,0x2bc(9); add 3,31,3; mtspr 8,0; blrl; 0:; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void _s802F7134_0();
+extern "C" void f_802F7134() {}

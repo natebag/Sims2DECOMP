@@ -1,0 +1,4 @@
+// 0x80371A98 OSUTF8to32 (276 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lbz 5,0x0(3); cmplwi 5,0; beq 0f; addi 3,3,1; 0:; rlwinm. 0,5,0,24,24; bne 1f; addi 6,5,0; li 7,0; b 5f; 1:; rlwinm 0,5,0,24,26; cmplwi 0,192; bne 2f; rlwinm 6,5,0,27,31; li 7,1; b 5f; 2:; rlwinm 0,5,0,24,27; cmplwi 0,224; bne 3f; rlwinm 6,5,0,28,31; li 7,2; b 5f; 3:; rlwinm 0,5,0,24,28; cmplwi 0,240; bne 4f; rlwinm 6,5,0,29,31; li 7,3; b 5f; 4:; li 3,0; blr; 5:; cmplwi 7,0; mtspr 9,7; ble 8f; 6:; lbz 5,0x0(3); rlwinm 6,6,6,0,25; addi 3,3,1; rlwinm 0,5,0,24,25; cmplwi 0,128; beq 7f; li 3,0; blr; 7:; rlwinm 0,5,0,26,31; or 6,6,0; bdnz 6b; 8:; cmplwi 6,127; bgt 9f; cmplwi 7,0; beq 11f; li 3,0; blr; 9:; cmplwi 6,2047; bgt 10f; cmplwi 7,1; beq 11f; li 3,0; blr; 10:; cmplwi 6,65535; bgt 11f; cmplwi 7,2; beq 11f; li 3,0; blr; 11:; cmplwi 6,55296; blt 12f; cmplwi 6,57343; bgt 12f; li 3,0; blr; 12:; stw 6,0x0(4)"
+extern "C" void f_80371A98() {}

@@ -1,0 +1,6 @@
+// 0x8019A4B0 CASSelectionTarget::ClearTextures(unsigned (324 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 24,0x8(1); stw 0,0x2c(1); mr 25,5; mr 27,4; mr 26,3; cmplw 27,25; bgt 8f; rlwinm 9,27,2,0,29; lis 24,-32692; addi 0,9,1364; mr 28,9; add 29,0,26; 0:; lwz 4,0x0(29); cmpwi 4,0; beq 1f; addi 3,24,-7364; li 5,1; bl _s8019A4B0_0; li 0,0; stw 0,0x0(29); 1:; addi 9,26,1428; mr 11,9; lwzx 9,9,28; cmpwi 9,0; beq 7f; lwz 0,0x14(9); cmpwi 0,0; bne 2f; lwz 9,0x18(9); li 0,0; cmpwi 9,0; beq 2f; lwz 0,0x14(9); 2:; cmpwi 0,0; beq 7f; lwzx 9,11,28; lwz 0,0x14(9); cmpwi 0,0; beq 3f; mr 3,0; b 4f; 3:; lwz 9,0x18(9); li 3,0; cmpwi 9,0; beq 4f; lwz 3,0x14(9); 4:; lwz 9,0xf0(3); lwz 11,0x5d4(26); lha 0,0x38(9); addi 30,9,56; lwz 9,0x14(11); add 31,3,0; cmpwi 9,0; beq 5f; mr 3,9; b 6f; 5:; lwz 9,0x18(11); li 3,0; cmpwi 9,0; beq 6f; lwz 3,0x14(9); 6:; li 4,0; bl _s8019A4B0_1; lwz 0,0x4(30); mr 4,3; mr 3,31; li 5,0; mtspr 8,0; blrl; 7:; addi 27,27,1; addi 29,29,4; addi 28,28,4; cmplw 27,25; ble 0b; 8:; lwz 0,0x2c(1); mtspr 8,0; lmw 24,0x8(1); addi 1,1,40"
+extern "C" void _s8019A4B0_0();
+extern "C" void _s8019A4B0_1();
+extern "C" void f_8019A4B0() {}

@@ -1,0 +1,4 @@
+// 0x8014113C cSimulatorImpl::UpdateSpeed(void) (204 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); lwz 9,-21496(13); mr 31,3; lwz 11,0x0(9); lha 3,0x70(11); lwz 0,0x74(11); add 3,9,3; mtspr 8,0; blrl; cmpwi 3,0; bne 0f; lwz 3,-21496(13); lwz 9,0x0(3); lha 0,0x68(9); lwz 9,0x6c(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 1f; 0:; lis 9,-32706; lfs f0,-10672(9); b 5f; 1:; lha 0,0x34(31); lis 9,-32706; lfs f0,-10668(9); cmpwi 0,-2; beq 3f; bgt 2f; cmpwi 0,-3; beq 4f; b 5f; 2:; cmpwi 0,-1; bne 5f; lis 9,-32706; lfs f0,-10664(9); b 5f; 3:; lis 9,-32706; lfs f0,-10660(9); b 5f; 4:; lis 9,-32706; lfs f0,-10656(9); 5:; stfs f0,0xa8(31); lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16"
+extern "C" void f_8014113C() {}

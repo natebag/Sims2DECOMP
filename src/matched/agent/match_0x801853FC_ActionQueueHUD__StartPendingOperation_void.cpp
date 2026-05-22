@@ -1,0 +1,9 @@
+// 0x801853FC ActionQueueHUD::StartPendingOperation(void) (468 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 30,3; li 6,0; lwz 0,0x150(30); lwz 10,0x2c0(30); cmplw 6,0; bge 1f; mr 11,0; addi 9,30,168; 0:; lwz 0,0x0(9); addi 9,9,20; cmpw 0,10; beq 6f; addi 6,6,1; cmplw 6,11; blt 0b; 1:; lwz 31,0x150(30); 2:; lbz 0,0x168(30); li 28,0; stb 31,0x309(30); cmpwi 0,1; beq 3f; cmpwi 0,5; bne 8f; 3:; mulli 10,31,20; addi 9,30,168; lwz 11,0x164(30); lwzx 0,9,10; cmpw 11,0; bne 4f; lwz 0,0x150(30); cmpw 31,0; bne 7f; 4:; lwz 4,0x150(30); addi 3,30,156; addi 5,30,344; mr 6,31; bl _s801853FC_0; lwz 4,0x150(30); cmplw 31,4; bge 5f; rlwinm 5,4,2,0,29; addi 3,30,80; addi 5,5,80; addi 4,4,-1; add 5,30,5; mr 6,31; bl _s801853FC_1; lwz 4,0x150(30); addi 3,30,116; mr 6,31; rlwinm 5,4,2,0,29; addi 5,5,116; addi 4,4,-1; add 5,30,5; bl _s801853FC_2; 5:; lwz 9,0x150(30); lbz 0,0x318(30); addi 9,9,1; stw 9,0x150(30); cmpwi 0,2; bne 13f; lbz 9,0x319(30); extsb 0,9; cmpw 0,31; blt 13f; addi 0,9,1; stb 0,0x319(30); b 13f; 6:; mr 31,6; b 2b; 7:; lwz 9,0x158(30); add 31,10,30; addi 29,30,344; b 9f; 8:; cmpwi 0,4; bne 12f; mulli 31,31,20; lwz 9,0x158(30); addi 29,30,344; add 31,31,30; 9:; stwu 9,0x9c(31); lwz 0,0x4(29); stw 0,0x4(31); lwz 3,0x8(29); cmpwi 3,0; beq 10f; bl _s801853FC_3; 10:; lwz 3,0x8(31); cmpwi 3,0; beq 11f; bl _s801853FC_4; 11:; lwz 9,0x8(29); li 28,1; stw 9,0x8(31); lwz 0,0xc(29); stw 0,0xc(31); b 13f; 12:; cmpwi 0,2; bne 13f; lwz 0,0x150(30); cmplw 31,0; blt 13f; li 28,1; 13:; cmpwi 28,0; li 0,10; beq 14f; li 0,1; 14:; stb 0,0x30a(30); lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void _s801853FC_0();
+extern "C" void _s801853FC_1();
+extern "C" void _s801853FC_2();
+extern "C" void _s801853FC_3();
+extern "C" void _s801853FC_4();
+extern "C" void f_801853FC() {}

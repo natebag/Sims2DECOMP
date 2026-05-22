@@ -1,0 +1,5 @@
+// 0x80234260 ERLevel::CalcBounds(void) (264 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-88(1); mfspr 0,8; stmw 24,0x38(1); stw 0,0x5c(1); lis 9,-32704; addi 8,1,32; lfs f0,-2860(9); addi 11,1,20; mr 26,4; addi 10,1,8; stfs f0,0x4(8); addis 27,26,3; stfs f0,0x8(8); li 6,1; stfs f0,0x20(1); li 29,0; lwz 7,0x24(1); mr 24,11; lwz 0,0x20(1); mr 25,10; lwz 8,0x28(1); mr 28,3; stw 0,0x14(1); stw 7,0x4(11); stw 8,0x8(11); lwz 9,0x14(1); lwz 0,-15688(27); stw 9,0x8(1); stw 7,0x4(10); cmpw 29,0; stw 8,0x8(10); stw 6,0x30(1); bge 1f; li 31,0; 0:; addi 9,27,-23880; mr 3,26; lwzx 5,9,31; addi 4,1,8; addi 6,1,48; mr 30,27; addi 5,5,60; addi 29,29,1; bl _s80234260_0; addi 31,31,4; lwz 0,-15688(30); cmpw 29,0; blt 0b; 1:; lwz 6,0x8(25); addi 7,28,12; lwz 9,0x8(1); mr 3,28; lwz 0,0x4(25); lwz 11,0x14(1); lwz 10,0x8(24); lwz 8,0x4(24); stw 9,0x0(28); stw 0,0x4(28); stw 6,0x8(28); stw 11,0xc(28); stw 10,0x8(7); stw 8,0x4(7); lwz 0,0x5c(1); mtspr 8,0; lmw 24,0x38(1); addi 1,1,88"
+extern "C" void _s80234260_0();
+extern "C" void f_80234260() {}

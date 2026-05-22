@@ -1,0 +1,4 @@
+// 0x800CEA24 NeighborhoodImpl::GetFamilyInHouse(int) (252 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,4; cmpwi 29,12; bgt 3f; addi 9,3,92; lwz 31,0x5c(3); lwz 0,0x4(9); mr 30,9; cmpw 31,0; beq 5f; 0:; lwz 3,0x0(31); lwz 9,0x0(3); lha 0,0xa8(9); lwz 9,0xac(9); add 3,3,0; mtspr 8,9; blrl; cmpw 3,29; bne 1f; lwz 3,0x0(31); lwz 9,0x0(3); lha 0,0x98(9); lwz 9,0x9c(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,1; bne 2f; 1:; lwz 0,0x4(30); addi 31,31,4; cmpw 31,0; bne 0b; b 5f; 2:; lwz 3,0x0(31); b 6f; 3:; addi 9,3,92; lwz 31,0x5c(3); lwz 0,0x4(9); mr 30,9; cmpw 31,0; beq 5f; 4:; lwz 3,0x0(31); lwz 9,0x0(3); lha 0,0xa8(9); lwz 9,0xac(9); add 3,3,0; mtspr 8,9; blrl; cmpw 3,29; beq 2b; lwz 0,0x4(30); addi 31,31,4; cmpw 31,0; bne 4b; 5:; li 3,0; 6:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void f_800CEA24() {}

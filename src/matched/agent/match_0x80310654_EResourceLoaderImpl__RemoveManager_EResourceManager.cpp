@@ -1,0 +1,4 @@
+// 0x80310654 EResourceLoaderImpl::RemoveManager(EResourceManager (220 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 30,0x10(1); stw 0,0x1c(1); mr 31,3; mr 30,4; lwz 0,0x350(31); cmpwi 0,0; beq 4f; lwz 9,0x0(31); lwz 0,0x3c(9); lha 3,0x38(9); mtspr 8,0; add 3,31,3; blrl; addi 0,31,860; lwz 9,0x35c(31); stw 0,0x8(1); li 4,-1; lha 3,0x10(9); lwz 9,0x14(9); add 3,0,3; mtspr 8,9; blrl; lwz 0,0x348(31); addi 11,31,840; cmpw 0,30; bne 0f; lwz 0,0xd04(30); stw 0,0x348(31); b 1f; 0:; lwz 9,0xd00(30); lwz 0,0xd04(30); stw 0,0xd04(9); 1:; lwz 0,0x4(11); cmpw 0,30; bne 2f; lwz 0,0xd00(30); stw 0,0x4(11); b 3f; 2:; lwz 0,0xd00(30); lwz 9,0xd04(30); stw 0,0xd00(9); 3:; lwz 3,0x8(1); lwz 9,0x0(3); lha 0,0x18(9); lwz 9,0x1c(9); add 3,3,0; mtspr 8,9; blrl; 4:; lwz 0,0x1c(1); mtspr 8,0; lmw 30,0x10(1); addi 1,1,24"
+extern "C" void f_80310654() {}

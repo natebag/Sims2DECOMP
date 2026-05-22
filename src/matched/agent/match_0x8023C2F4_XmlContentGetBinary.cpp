@@ -1,0 +1,5 @@
+// 0x8023C2F4 XmlContentGetBinary (280 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,4; mr 30,5; bl _s8023C2F4_0; mr. 3,3; bne 0f; li 3,0; b 9f; 0:; lbz 9,0x0(3); cmpwi 7,31,0; b 2f; 1:; lbzu 9,0x1(3); 2:; addi 9,9,-1; cmplwi 9,31; ble 1b; bne cr7,5f; lbz 0,0x0(3); li 8,0; b 4f; 3:; lbzu 0,0x2(3); addi 8,8,1; 4:; cmplwi 0,47; ble 8f; lbz 0,0x1(3); cmplwi 0,47; bgt 3b; b 8f; 5:; cmpwi 30,0; bge 6f; li 3,-1; b 9f; 6:; li 8,0; cmpw 8,30; bge 8f; lbz 0,0x0(3); cmplwi 0,47; ble 8f; lbz 10,0x1(3); cmplwi 10,47; ble 8f; lis 9,-32704; lis 11,-32704; addi 6,9,-1724; addi 7,11,-1468; 7:; rlwinm 0,0,0,24,31; rlwinm 11,10,0,24,31; lbzx 9,6,0; addi 8,8,1; lbzx 0,7,11; addi 3,3,2; cmpw 8,30; or 9,9,0; stb 9,0x0(31); addi 31,31,1; bge 8f; lbz 0,0x0(3); cmplwi 0,47; ble 8f; lbz 10,0x1(3); cmplwi 10,47; bgt 7b; 8:; mr 3,8; 9:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void _s8023C2F4_0();
+extern "C" void f_8023C2F4() {}

@@ -1,0 +1,4 @@
+// 0x80134B20 RelMatrixImpl::CopyTo(RelMatrix (208 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 25,0xc(1); stw 0,0x2c(1); addi 9,3,4; lwz 31,0x4(3); lwz 0,0x4(9); mr 27,4; cmpw 31,0; beq 3f; mr 25,9; 0:; lwz 30,0x0(31); addi 26,31,4; lwz 11,0x0(27); li 28,0; lwz 9,0x0(30); lwz 0,0x4(30); lha 3,0x28(11); subf 0,9,0; lwz 4,0x10(30); lwz 9,0x2c(11); srawi 31,0,2; add 3,27,3; mr 5,31; mtspr 8,9; blrl; cmpw 28,31; bge 2f; li 29,0; 1:; lwz 9,0x0(27); mr 5,28; lwz 11,0x0(30); addi 28,28,1; lha 3,0x48(9); lwz 0,0x4c(9); lwzx 6,11,29; add 3,27,3; lwz 4,0x10(30); mtspr 8,0; addi 29,29,4; blrl; cmpw 28,31; blt 1b; 2:; lwz 0,0x4(25); mr 31,26; cmpw 31,0; bne 0b; 3:; lwz 0,0x2c(1); mtspr 8,0; lmw 25,0xc(1); addi 1,1,40"
+extern "C" void f_80134B20() {}

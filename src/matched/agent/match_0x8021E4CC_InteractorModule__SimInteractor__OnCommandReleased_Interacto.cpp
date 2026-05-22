@@ -1,0 +1,4 @@
+// 0x8021E4CC InteractorModule::SimInteractor::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) (204 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); mr 11,3; mr. 4,4; bne 1f; lwz 0,0x214(11); stw 4,0x30(11); cmpwi 0,2; bne 0f; li 0,1; stw 0,0x214(11); 0:; lwz 9,0x5c(11); lha 3,0xd0(9); lwz 0,0xd4(9); add 3,11,3; mtspr 8,0; blrl; b 6f; 1:; cmpwi 4,1; bne 2f; li 0,0; stw 0,0x188(11); b 6f; 2:; cmpwi 4,7; bne 3f; lis 9,-32704; lfs f0,-8944(9); stfs f0,0x34(11); b 6f; 3:; cmpwi 4,8; bne 4f; lis 9,-32704; lfs f0,-8944(9); stfs f0,0x38(11); b 6f; 4:; cmpwi 4,11; bne 5f; lis 9,-32704; lfs f0,-8944(9); stfs f0,0x3c(11); b 6f; 5:; cmpwi 4,12; bne 6f; lis 9,-32704; lfs f0,-8944(9); stfs f0,0x40(11); 6:; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
+extern "C" void f_8021E4CC() {}

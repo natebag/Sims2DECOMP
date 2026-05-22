@@ -1,0 +1,4 @@
+// 0x8038CEFC GXSetChanMatColor (232 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmpwi 3,3; beq 4f; bge 0f; cmpwi 3,1; beq 2f; bge 3f; cmpwi 3,0; bge 1f; blr; 0:; cmpwi 3,5; beq 6f; bgelr; b 5f; 1:; lwz 3,-17720(13); li 5,0; lwz 0,0x0(4); lwz 3,0xb0(3); rlwimi 3,0,0,0,23; addi 7,3,0; b 7f; 2:; lwz 3,-17720(13); li 5,1; lwz 0,0x0(4); lwz 7,0xb4(3); rlwimi 7,0,0,0,23; b 7f; 3:; lwz 3,-17720(13); li 5,0; lbz 0,0x3(4); lwz 7,0xb0(3); rlwimi 7,0,0,24,31; b 7f; 4:; lwz 3,-17720(13); li 5,1; lbz 0,0x3(4); lwz 7,0xb4(3); rlwimi 7,0,0,24,31; b 7f; 5:; lwz 7,0x0(4); li 5,0; b 7f; 6:; lwz 7,0x0(4); li 5,1; b 7f; blr; 7:; li 0,16; lwz 4,-17720(13); lis 6,-13311; stb 0,-32768(6); addi 3,5,4108; rlwinm 0,5,2,0,29; stw 3,-32768(6); li 5,1; add 3,4,0; stw 7,-32768(6); sth 5,0x2(4); stw 7,0xb0(3)"
+extern "C" void f_8038CEFC() {}

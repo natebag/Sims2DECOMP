@@ -1,0 +1,4 @@
+// 0x801676F0 CasSimDescriptionS2C::SetBodyPartIndex(eBodyPartS2C, (256 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmpwi 4,14; bgt 1f; cmpwi 4,12; bge 9f; cmpwi 4,6; bgt 0f; cmpwi 4,2; bge 6f; cmpwi 4,0; beq 4f; cmpwi 4,1; beq 5f; blr; 0:; cmpwi 4,8; ble 7f; b 8f; 1:; cmpwi 4,19; beq 13f; bgt 2f; cmpwi 4,17; bgt 12f; cmpwi 4,16; bge 11f; b 10f; 2:; cmpwi 4,24; bgt 3f; cmpwi 4,22; bge 16f; cmpwi 4,20; beq 14f; cmpwi 4,21; beq 15f; blr; 3:; cmpwi 4,25; beq 17f; blr; 4:; stb 5,0x8a(3); blr; 5:; stb 5,0x8c(3); blr; 6:; stb 5,0x8d(3); blr; 7:; stb 5,0x98(3); blr; 8:; stb 5,0xa4(3); blr; 9:; stb 5,0xb4(3); blr; 10:; stb 5,0xc4(3); blr; 11:; stb 5,0xcc(3); blr; 12:; stb 5,0xd4(3); blr; 13:; stb 5,0xd5(3); blr; 14:; stb 5,0xf0(3); blr; 15:; stb 5,0xea(3); blr; 16:; stb 5,0xdc(3); blr; 17:; stb 5,0xe8(3)"
+extern "C" void f_801676F0() {}

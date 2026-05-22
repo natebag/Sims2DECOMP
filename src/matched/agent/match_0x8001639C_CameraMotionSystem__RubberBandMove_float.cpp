@@ -1,0 +1,7 @@
+// 0x8001639C CameraMotionSystem::RubberBandMove(float) (312 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stfd f31,0x28(1); stmw 28,0x18(1); stw 0,0x34(1); mr 31,3; addi 28,1,8; lfs f0,0x8(31); addi 9,31,8; addi 29,31,44; fmr f31,f1; stfs f0,0x8(1); mr 4,29; mr 5,28; lfs f13,0x4(9); addi 30,31,56; stfs f13,0x4(28); lfs f0,0x8(9); stfs f0,0x8(28); bl _s8001639C_0; lfs f0,0x14(31); addi 9,31,20; fmr f1,f31; mr 3,31; stfs f0,0x8(1); mr 4,30; mr 5,28; lfs f0,0x4(9); stfs f0,0x4(28); lfs f13,0x8(9); stfs f13,0x8(28); bl _s8001639C_1; lwz 7,0x20(31); addi 9,31,32; lwz 8,0x8(9); addi 11,31,68; lwz 0,0x4(9); lis 10,-32707; stw 7,0x44(31); stw 8,0x8(11); stw 0,0x4(11); lfs f11,0x8(29); lfs f12,0x8(30); lfs f13,0x38(31); fsubs f12,f12,f11; lfs f10,0x2c(31); lfs f0,0x4(30); lfs f11,0x4(29); fsubs f13,f13,f10; lfs f9,-7432(10); fsubs f0,f0,f11; stfs f12,0x10(1); fcmpu 0,f13,f9; stfs f13,0x8(1); stfs f0,0xc(1); bne 0f; lfs f0,0x4(28); fcmpu 0,f0,f9; bne 0f; lfs f0,0x8(28); fcmpu 0,f0,f9; beq 1f; 0:; mr 3,28; mr 4,28; bl _s8001639C_2; 1:; lwz 10,0x0(28); addi 11,31,80; lwz 0,0x8(28); lwz 9,0x4(28); stw 10,0x50(31); stw 0,0x8(11); stw 9,0x4(11); lwz 0,0x34(1); mtspr 8,0; lmw 28,0x18(1); lfd f31,0x28(1); addi 1,1,48"
+extern "C" void _s8001639C_0();
+extern "C" void _s8001639C_1();
+extern "C" void _s8001639C_2();
+extern "C" void f_8001639C() {}

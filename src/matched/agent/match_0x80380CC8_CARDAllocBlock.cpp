@@ -1,0 +1,5 @@
+// 0x80380CC8 __CARDAllocBlock (280 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; mulli 7,3,272; stw 0,0x4(1); stwu 1,-32(1); lis 6,-32688; addi 0,6,-24000; stw 31,0x1c(1); add 9,0,7; stw 30,0x18(1); lwz 0,0x0(9); cmpwi 0,0; bne 0f; li 3,-3; b 9f; 0:; lwz 8,0x88(9); lhz 0,0x6(8); cmplw 0,4; bge 1f; li 3,-9; b 9f; 1:; subf 0,4,0; sth 0,0x6(8); lis 6,1; addi 12,6,-1; lhz 11,0x8(8); addi 0,12,0; li 30,0; b 8f; 2:; lhz 10,0x10(9); addi 30,30,1; rlwinm 6,30,0,16,31; addi 7,10,-5; cmpw 7,6; bge 3f; li 3,-6; b 9f; 3:; addi 11,11,1; rlwinm 6,11,0,16,31; cmplwi 6,5; blt 4f; cmplw 6,10; blt 5f; 4:; li 11,5; 5:; rlwinm 6,11,1,15,30; add 7,8,6; lhz 6,0x0(7); cmplwi 6,0; bne 8f; rlwinm 6,12,0,16,31; cmplwi 6,65535; bne 6f; mr 12,11; b 7f; 6:; rlwinm 6,31,1,15,30; sthx 11,8,6; 7:; sth 0,0x0(7); addi 31,11,0; addi 4,4,-1; 8:; cmplwi 4,0; bne 2b; sth 11,0x8(8); mr 4,8; sth 12,0xbe(9); bl _s80380CC8_0; 9:; lwz 0,0x24(1); lwz 31,0x1c(1); lwz 30,0x18(1); addi 1,1,32; mtspr 8,0"
+extern "C" void _s80380CC8_0();
+extern "C" void f_80380CC8() {}

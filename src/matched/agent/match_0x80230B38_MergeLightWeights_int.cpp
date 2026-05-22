@@ -1,0 +1,4 @@
+// 0x80230B38 MergeLightWeights(int, (244 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="li 11,4; li 10,0; mtspr 9,11; addi 9,4,4; 0:; lbzx 0,4,10; extsb 0,0; cmpw 0,3; bne 5f; lhax 4,11,4; mr 3,9; li 9,0; cmpwi 4,-1; beqlr; 1:; lwz 0,0x0(6); li 10,0; addi 8,9,1; mr 7,0; cmpw 10,0; bge 3f; lha 0,0x0(5); cmpw 0,4; bne 2f; lfs f0,0x4(5); fadds f0,f0,f1; stfs f0,0x4(5); b 3f; 2:; addi 10,10,1; cmpw 10,7; bge 3f; rlwinm 9,10,3,0,28; lhax 0,9,5; add 11,9,5; cmpw 0,4; bne 2b; lfs f0,0x4(11); fadds f0,f0,f1; stfs f0,0x4(11); 3:; lwz 0,0x0(6); cmpw 10,0; bne 4f; rlwinm 0,10,3,0,28; sthx 4,5,0; lwz 11,0x0(6); rlwinm 9,11,3,0,28; add 9,9,5; addi 11,11,1; stfs f1,0x4(9); stw 11,0x0(6); 4:; mr 9,8; cmpwi 8,3; bgtlr; add 0,8,8; lhax 4,3,0; cmpwi 4,-1; bne 1b; blr; 5:; addi 9,9,8; addi 11,11,8; addi 10,10,1; bdnz 0b"
+extern "C" void f_80230B38() {}

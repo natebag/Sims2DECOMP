@@ -1,0 +1,7 @@
+// 0x803C88C0 ERAmbientSound::ERAmbientSound(ERAmbientSound (328 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); lwz 0,0x0(4); mr 31,3; lwz 9,0x4(4); addi 10,4,12; lwz 11,0x8(4); addi 8,31,12; stw 0,0x0(31); addi 28,4,36; stw 9,0x4(31); li 7,0; stw 11,0x8(31); addi 29,31,36; addi 6,31,44; lwz 0,0xc(4); lwz 9,0x8(10); lwz 11,0x4(10); stw 0,0xc(31); stw 9,0x8(8); stw 11,0x4(8); lbz 0,0x18(4); stb 0,0x18(31); lbz 9,0x19(4); stb 9,0x19(31); lbz 0,0x1a(4); stb 0,0x1a(31); lbz 9,0x1b(4); stb 9,0x1b(31); lbz 0,0x1c(4); stb 0,0x1c(31); lbz 9,0x1d(4); stb 9,0x1d(31); lbz 0,0x1e(4); stb 0,0x1e(31); lbz 9,0x1f(4); stb 9,0x1f(31); lbz 0,0x20(4); stb 0,0x20(31); lbz 9,0x21(4); stb 9,0x21(31); lwz 11,0x24(4); lwz 0,0x4(28); stw 7,0x24(31); subf 0,11,0; stw 7,0x4(29); srawi. 0,0,2; stw 7,0x4(6); beq 1f; rlwinm 0,0,2,0,29; mr 30,0; cmplwi 0,128; ble 0f; mr 3,30; bl _s803C88C0_0; b 2f; 0:; mr 3,30; bl _s803C88C0_1; b 2f; 1:; li 3,0; li 30,0; 2:; add 0,3,30; stw 3,0x0(29); stw 0,0xc(29); stw 3,0x4(29); lwz 30,0x4(28); lwz 4,0x0(28); cmpw 30,4; beq 3f; subf 30,4,30; mr 5,30; bl _s803C88C0_2; add 3,3,30; 3:; stw 3,0x4(29); mr 3,31; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
+extern "C" void _s803C88C0_0();
+extern "C" void _s803C88C0_1();
+extern "C" void _s803C88C0_2();
+extern "C" void f_803C88C0() {}

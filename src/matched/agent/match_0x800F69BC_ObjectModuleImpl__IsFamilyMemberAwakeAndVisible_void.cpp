@@ -1,0 +1,5 @@
+// 0x800F69BC ObjectModuleImpl::IsFamilyMemberAwakeAndVisible(void) (248 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); addi 9,3,8280; lwz 31,0x2058(3); lwz 0,0x4(9); cmpw 31,0; beq 2f; mr 30,9; 0:; lwz 9,0x0(31); li 4,34; lwz 3,0x0(9); addi 3,3,40; bl _s800F69BC_0; lha 0,0x0(3); cmpwi 0,0; bne 1f; lwz 9,0x0(31); lwz 10,0x4(9); lwz 11,0x4(10); lha 3,0x1c0(11); lwz 0,0x1c4(11); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; bne 1f; lwz 9,0x0(31); lwz 11,0x0(9); lwz 10,0x4(11); lwz 9,0x4(10); lha 3,0x1a8(9); lwz 0,0x1ac(9); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; beq 1f; lwz 11,0x0(31); li 4,-1; lwz 10,0x4(11); lwz 9,0x4(10); lha 3,0x120(9); lwz 0,0x124(9); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; beq 1f; li 3,1; b 3f; 1:; lwz 0,0x4(30); addi 31,31,4; cmpw 31,0; bne 0b; 2:; li 3,0; 3:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void _s800F69BC_0();
+extern "C" void f_800F69BC() {}

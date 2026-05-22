@@ -1,0 +1,4 @@
+// 0x80205FF4 InteractorModule::DirectInteractor::ResetIdleTime(void) (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,3; lis 9,-32704; lfs f0,-13476(9); lwz 0,0x80(31); stfs f0,0x58(31); cmpwi 0,0; beq 1f; lwz 0,0x0(31); lis 9,-32697; addi 9,9,24012; addi 9,9,188; rlwinm 0,0,2,0,29; lwzx 11,9,0; cmpwi 11,0; beq 0f; lwz 9,0x4(11); lha 3,0xc8(9); lwz 0,0xcc(9); add 3,11,3; mtspr 8,0; blrl; 0:; li 0,0; stw 0,0x80(31); 1:; lwz 0,0x0(31); lis 9,-32697; addi 9,9,24012; rlwinm 0,0,2,0,29; addi 9,9,188; lwzx 11,9,0; cmpwi 11,0; beq 2f; lwz 9,0x4(11); lha 3,0x188(9); lwz 0,0x18c(9); add 3,11,3; mtspr 8,0; blrl; mr. 3,3; beq 2f; lwz 0,0x2c(3); cmpwi 0,10; bne 2f; li 0,9; stw 0,0xb0(3); 2:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16"
+extern "C" void f_80205FF4() {}

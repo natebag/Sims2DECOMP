@@ -1,0 +1,4 @@
+// 0x801677F0 CasSimDescriptionS2C::GetBodyPartTextureIndex(eBodyPartS2C) (268 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmpwi 4,15; beq 9f; bgt 1f; cmpwi 4,8; bgt 0f; cmpwi 4,7; bge 6f; cmpwi 4,0; beq 4f; blt 16f; b 5f; 0:; cmpwi 4,11; ble 7f; b 8f; 1:; cmpwi 4,20; beq 12f; bgt 2f; cmpwi 4,18; beq 16f; bgt 11f; b 10f; 2:; cmpwi 4,24; bgt 3f; cmpwi 4,22; bge 14f; b 13f; 3:; cmpwi 4,25; beq 15f; b 16f; 4:; lbz 3,0x8b(3); extsb 3,3; blr; 5:; lbz 3,0x8e(3); extsb 3,3; blr; 6:; lbz 3,0x99(3); extsb 3,3; blr; 7:; lbz 3,0xa5(3); extsb 3,3; blr; 8:; lbz 3,0xb5(3); extsb 3,3; blr; 9:; lbz 3,0xc5(3); extsb 3,3; blr; 10:; lbz 3,0xcd(3); extsb 3,3; blr; 11:; lbz 3,0xd6(3); extsb 3,3; blr; 12:; lbz 3,0xf1(3); extsb 3,3; blr; 13:; lbz 3,0xeb(3); extsb 3,3; blr; 14:; lbz 3,0xdd(3); extsb 3,3; blr; 15:; lbz 3,0xe9(3); extsb 3,3; blr; 16:; li 3,0"
+extern "C" int f_801677F0() {}

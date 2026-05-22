@@ -1,0 +1,5 @@
+// 0x802F8918 ERC::TextureMatrix(EMat4 (280 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 26,0x8(1); stw 0,0x24(1); mr 31,3; mr 28,5; mr 27,6; mr 26,7; mr 29,8; mr. 30,4; beq 3f; lwz 9,0x70(31); li 4,0; li 5,0; lwz 0,0x2b4(9); lha 3,0x2b0(9); mtspr 8,0; add 3,31,3; blrl; mr 4,30; li 5,64; mr 3,31; bl _s802F8918_0; lwz 9,0x70(31); mr 30,3; li 4,1; lwz 0,0x2ac(9); lha 3,0x2a8(9); mtspr 8,0; add 3,31,3; blrl; li 0,16; cmpwi 29,1; stb 0,0x0(3); stw 30,0x4(3); li 0,128; stb 28,0x1(3); bne 0f; li 0,256; 0:; cmpwi 27,0; beq 1f; ori 0,0,512; 1:; cmpwi 26,0; beq 2f; ori 0,0,1024; 2:; rlwinm 0,0,25,7,31; stb 0,0x2(3); lwz 9,0x70(31); lha 3,0x2b8(9); lwz 0,0x2bc(9); add 3,31,3; mtspr 8,0; blrl; b 5f; 3:; lwz 9,0x70(31); cmpwi 29,0; li 4,128; lha 0,0x130(9); addi 11,9,304; add 3,31,0; beq 4f; li 4,256; 4:; lwz 0,0x4(11); mtspr 8,0; blrl; 5:; lwz 0,0x24(1); mtspr 8,0; lmw 26,0x8(1); addi 1,1,32"
+extern "C" void _s802F8918_0();
+extern "C" void f_802F8918() {}

@@ -1,0 +1,4 @@
+// 0x802AAE30 AptNativeHash::RegisterReferences(AptValue (220 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 29,3; mr 28,4; lwz 4,0x8(29); cmpwi 4,0; beq 0f; lis 9,-32694; mr 3,28; lwz 5,-11332(9); lwz 9,-27024(13); addi 5,5,8; mtspr 8,9; blrl; 0:; lwz 4,0xc(29); cmpwi 4,0; beq 1f; lis 9,-32694; mr 3,28; lwz 5,-10852(9); lwz 9,-27024(13); addi 5,5,8; mtspr 8,9; blrl; 1:; lwz 0,0x4(29); cmpwi 0,0; beq 4f; lwz 0,0x0(29); li 30,0; cmpw 30,0; bge 4f; li 31,0; 2:; lwz 11,0x4(29); add 9,31,11; lwz 4,0x4(9); cmpwi 4,0; beq 3f; lwzx 5,31,11; mr 3,28; lwz 9,-27024(13); addi 5,5,8; mtspr 8,9; blrl; 3:; lwz 0,0x0(29); addi 30,30,1; addi 31,31,8; cmpw 30,0; blt 2b; 4:; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void f_802AAE30() {}

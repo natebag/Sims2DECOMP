@@ -1,0 +1,4 @@
+// 0x8032AEC0 Posterize(short (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mullw 5,5,6; lha 0,0x4(7); cmpwi 0,4; mtspr 9,5; bne 1f; cmpwi 5,0; blelr; li 9,0; 0:; lhax 0,9,3; andi. 0,0,25368; ori 0,0,3171; sthx 0,9,4; addi 9,9,2; bdnz 0b; blr; 1:; cmpwi 0,3; bne 3f; mfspr 0,9; cmpwi 0,0; blelr; lis 9,-32700; li 7,0; addi 6,9,-4508; 2:; lhax 9,7,3; rlwinm 11,9,22,27,31; rlwinm 8,9,27,27,31; lbzx 0,6,11; rlwinm 9,9,0,27,31; lbzx 11,6,8; lbzx 10,6,9; extsb 0,0; extsb 11,11; rlwinm 0,0,10,0,21; rlwinm 11,11,5,0,26; extsb 10,10; or 0,0,11; or 10,10,0; sthx 10,7,4; addi 7,7,2; bdnz 2b; blr; 3:; cmpwi 0,2; bnelr; mfspr 0,9; cmpwi 0,0; blelr; li 9,0; 4:; lhax 0,9,3; andi. 0,0,16912; ori 0,0,7399; sthx 0,9,4; addi 9,9,2; bdnz 4b"
+extern "C" void f_8032AEC0() {}

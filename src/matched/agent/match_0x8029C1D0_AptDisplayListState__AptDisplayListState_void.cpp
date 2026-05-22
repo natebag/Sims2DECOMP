@@ -1,0 +1,8 @@
+// 0x8029C1D0 AptDisplayListState::AptDisplayListState(void) (380 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 26,0x8(1); stw 0,0x24(1); mr 27,3; li 4,100; lwz 3,-23016(13); lis 29,-17747; ori 29,29,61453; li 28,0; bl _s8029C1D0_0; li 26,-1; mr 30,3; li 5,0; li 4,46; bl _s8029C1D0_1; lis 9,-32704; addi 3,30,12; addi 9,9,23568; stw 9,0x8(30); bl _s8029C1D0_2; stw 29,0x4c(30); lis 9,-32704; lwz 0,0x5c(30); lis 11,-32704; lfs f13,0x7698(9); mr 3,30; rlwinm 0,0,0,18,15; li 4,1; stfs f13,0x10(30); rlwimi 0,28,12,18,19; lfs f0,0x769c(11); stw 0,0x5c(30); stw 28,0x48(30); sth 28,0x5c(30); stfs f13,0x34(30); stfs f0,0x44(30); stfs f0,0x14(30); stfs f0,0x18(30); stfs f13,0x1c(30); stfs f0,0x20(30); stfs f0,0x24(30); stfs f13,0x28(30); stfs f13,0x2c(30); stfs f13,0x30(30); stfs f0,0x38(30); stfs f0,0x3c(30); stfs f0,0x40(30); bl _s8029C1D0_3; lwz 11,0x5c(30); li 10,1; lwz 9,0x0(30); lis 4,-32704; lwz 0,0x58(30); ori 11,11,2048; rlwinm 11,11,0,22,20; rlwimi 9,28,26,5,5; rlwimi 0,26,1,17,30; stw 9,0x0(30); stw 0,0x58(30); lis 5,-32704; stw 11,0x5c(30); addi 4,4,30316; stw 28,0x60(30); addi 5,5,29796; stw 30,0x0(27); li 6,2182; lwz 0,0x0(30); rlwimi 0,28,27,4,4; stw 0,0x0(30); lwz 9,0x0(27); lwz 0,0x0(9); rlwimi 0,10,8,18,23; stw 0,0x0(9); lwz 11,0x0(27); lwz 9,0x8(11); lwz 0,0xc(9); lha 3,0x8(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x0(27); mr 3,27; lwz 0,0x58(11); rlwimi 0,26,15,0,16; stw 0,0x58(11); lwz 9,0x0(27); stw 28,0x54(9); lwz 11,0x0(27); stw 28,0x50(11); lwz 0,0x24(1); mtspr 8,0; lmw 26,0x8(1); addi 1,1,32"
+extern "C" void _s8029C1D0_0();
+extern "C" void _s8029C1D0_1();
+extern "C" void _s8029C1D0_2();
+extern "C" void _s8029C1D0_3();
+extern "C" void f_8029C1D0() {}

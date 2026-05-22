@@ -1,0 +1,6 @@
+// 0x800C5F10 cXMTObjectImpl::AssignOffsets(void) (308 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; mfcr 12; stmw 26,0x10(1); stw 0,0x2c(1); stw 12,0xc(1); lwz 31,0xc(3); cmpwi 31,0; bne 0f; mr 31,3; 0:; lwz 3,0x0(31); li 4,1; lwz 26,0x10(31); lwz 27,0x14(31); addi 3,3,40; lwz 28,0x18(31); bl _s800C5F10_0; lha 0,0x0(3); mr. 31,31; beq 8f; rlwinm 0,0,0,29,31; li 30,0; cmpwi 0,6; mfcr 29; cmpwi 4,0,2; cmpwi 2,0,0; cmpwi 3,0,4; 1:; lwz 9,0x10(31); li 4,1; lwz 0,0x14(31); lwz 11,0x18(31); subf 9,26,9; lwz 3,0x0(31); subf 0,27,0; subf 11,28,11; stw 9,0x1c(31); stw 11,0x24(31); addi 3,3,40; stw 0,0x20(31); bl _s800C5F10_1; lwz 11,0x1c(31); lwz 9,0x20(31); stw 30,0x20(31); stw 30,0x1c(31); beq cr4,4f; bgt cr4,2f; beq cr2,3f; b 7f; 2:; beq cr3,5f; mtcrf 128,29; beq 6f; b 7f; 3:; stw 11,0x1c(31); stw 9,0x20(31); b 7f; 4:; neg 0,9; stw 11,0x20(31); stw 0,0x1c(31); b 7f; 5:; neg 0,11; neg 9,9; stw 0,0x1c(31); stw 9,0x20(31); b 7f; 6:; neg 0,11; stw 9,0x1c(31); stw 0,0x20(31); 7:; lwz 31,0x8(31); cmpwi 31,0; bne 1b; 8:; lwz 0,0x2c(1); lwz 12,0xc(1); mtspr 8,0; lmw 26,0x10(1); mtcrf 56,12; addi 1,1,40"
+extern "C" void _s800C5F10_0();
+extern "C" void _s800C5F10_1();
+extern "C" void f_800C5F10() {}

@@ -1,0 +1,5 @@
+// 0x800AF61C cBoxX::FindSndobInstancePair(ERSoundEvent (272 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-72(1); mfspr 0,8; stmw 29,0x3c(1); stw 0,0x4c(1); stw 5,0x30(1); mr 31,3; mr 30,6; addi 8,1,48; lwz 10,0x24(4); lwz 11,0x4(10); 0:; cmpwi 11,0; beq 2f; lwz 0,0x10(11); cmplw 0,5; blt 1f; mr 10,11; lwz 11,0x8(10); b 0b; 1:; lwz 11,0xc(11); b 0b; 2:; stw 10,0x8(1); addi 9,4,32; mr 29,9; lwz 4,0x4(9); lwz 11,0x4(4); cmpwi 11,0; beq 6f; lwz 9,0x0(8); 3:; lwz 0,0x10(11); cmplw 9,0; bge 4f; mr 4,11; lwz 11,0x8(4); b 5f; 4:; lwz 11,0xc(11); 5:; cmpwi 11,0; bne 3b; 6:; lwz 0,0x8(1); stw 4,0x10(1); stw 0,0x18(1); b 9f; 7:; lwz 0,0x14(9); cmpw 0,30; bne 8f; stw 9,0x0(31); b 11f; 8:; mr 3,9; stw 9,0x28(1); bl _s800AF61C_0; lwz 0,0x28(1); stw 3,0x18(1); stw 0,0x20(1); 9:; lwz 9,0x18(1); li 11,1; lwz 0,0x10(1); cmpw 9,0; bne 10f; li 11,0; 10:; cmpwi 11,0; bne 7b; lwz 0,0x4(29); stw 0,0x0(31); 11:; mr 3,31; lwz 0,0x4c(1); mtspr 8,0; lmw 29,0x3c(1); addi 1,1,72"
+extern "C" void _s800AF61C_0();
+extern "C" void f_800AF61C() {}

@@ -1,0 +1,4 @@
+// 0x80130960 cXPortal::DirtyAllRoutes(ObjectModule (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 30,3; li 31,0; lwz 9,0x0(30); lha 3,0x110(9); lwz 0,0x114(9); add 3,30,3; mtspr 8,0; blrl; mr 29,3; cmpw 31,29; bge 5f; lis 28,-32706; 0:; lwz 9,0x0(30); mr 4,31; lha 3,0x108(9); lwz 0,0x10c(9); add 3,30,3; mtspr 8,0; blrl; mr. 11,3; beq 1f; lwz 9,0x4(11); lha 3,0x20(9); lwz 0,0x24(9); add 3,11,3; mtspr 8,0; blrl; b 2f; 1:; li 3,0; 2:; addi 9,3,8; addi 4,31,1; lwz 3,0x8(3); lwz 0,0x4(9); cmpw 3,0; beq 4f; lfs f0,-12416(28); 3:; stfs f0,0x0(3); addi 3,3,4; lwz 0,0x4(9); cmpw 3,0; bne 3b; 4:; mr 31,4; cmpw 31,29; blt 0b; 5:; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void f_80130960() {}

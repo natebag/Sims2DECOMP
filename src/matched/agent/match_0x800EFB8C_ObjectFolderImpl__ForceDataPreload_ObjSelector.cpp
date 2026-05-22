@@ -1,0 +1,5 @@
+// 0x800EFB8C ObjectFolderImpl::ForceDataPreload(ObjSelector (300 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 26,0x8(1); stw 0,0x24(1); mr 30,3; mr 28,5; li 27,1; mr. 29,4; beq 3f; lwz 11,0x38(29); lwz 0,0xc0(11); cmpwi 0,0; bne 2f; lwz 9,0x0(30); li 4,0; lha 26,0x14(11); lha 3,0x70(9); lwz 0,0x74(9); add 3,30,3; mtspr 8,0; blrl; mr. 31,3; beq 3f; 0:; lwz 9,0x38(31); lha 0,0x14(9); cmpw 0,26; bne 1f; lwz 0,0xc0(9); cmpwi 0,0; beq 1f; mr 3,31; mr 4,29; bl _s800EFB8C_0; cmpwi 3,0; beq 1f; lwz 9,0x0(30); mr 4,31; mr 5,28; lwz 0,0x204(9); lha 3,0x200(9); mtspr 8,0; add 3,30,3; blrl; lwz 0,0xa0(31); cmpwi 0,1; beq 1f; li 27,0; 1:; lwz 9,0x0(30); mr 4,31; lha 3,0x70(9); lwz 0,0x74(9); add 3,30,3; mtspr 8,0; blrl; mr. 31,3; bne 0b; b 3f; 2:; lwz 9,0x0(30); mr 5,28; mr 4,29; lwz 0,0x204(9); lha 3,0x200(9); mtspr 8,0; add 3,30,3; blrl; lwz 0,0xa0(29); cmpwi 0,1; beq 3f; li 27,0; 3:; mr 3,27; lwz 0,0x24(1); mtspr 8,0; lmw 26,0x8(1); addi 1,1,32"
+extern "C" void _s800EFB8C_0();
+extern "C" void f_800EFB8C() {}

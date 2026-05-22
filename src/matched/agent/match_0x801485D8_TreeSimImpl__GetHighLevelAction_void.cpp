@@ -1,0 +1,4 @@
+// 0x801485D8 TreeSimImpl::GetHighLevelAction(void) (244 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 30,3; lwz 11,0x0(30); lwz 9,0x18(11); lwz 0,0x64(9); lha 3,0x60(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x0(30); addi 3,3,-2; extsh 31,3; lwz 9,0x18(11); lha 3,0x48(9); lwz 0,0x4c(9); add 3,11,3; mtspr 8,0; blrl; lwz 29,0x10(3); cmpwi 31,0; blt 2f; 0:; lwz 11,0x0(30); mr 4,31; lwz 9,0x18(11); lwz 0,0x5c(9); lha 3,0x58(9); mtspr 8,0; add 3,11,3; blrl; lwz 0,0x10(3); cmpw 0,29; beq 1f; lwz 11,0x0(30); addi 4,31,1; extsh 4,4; lwz 9,0x18(11); lha 3,0x58(9); lwz 0,0x5c(9); add 3,11,3; mtspr 8,0; b 3f; 1:; addi 0,31,-1; extsh 31,0; cmpwi 31,0; bge 0b; 2:; lwz 3,0x0(30); li 4,0; lwz 9,0x18(3); lha 0,0x58(9); lwz 9,0x5c(9); add 3,3,0; mtspr 8,9; 3:; blrl; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void f_801485D8() {}

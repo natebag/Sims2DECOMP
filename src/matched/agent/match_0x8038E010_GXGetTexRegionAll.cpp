@@ -1,0 +1,4 @@
+// 0x8038E010 GXGetTexRegionAll (268 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 0,0x0(3); rlwinm 0,0,5,12,26; stw 0,0x0(6); lwz 0,0x4(3); rlwinm 0,0,5,12,26; stw 0,0x0(8); lbz 0,0xd(3); cmplwi 0,0; beq 11f; lwz 0,0x0(3); rlwinm 0,0,17,29,31; cmpwi 0,4; beq 2f; bge 0f; cmpwi 0,3; bge 1f; b 4f; 0:; cmpwi 0,6; bge 4f; b 3f; 1:; lis 6,1; addi 0,6,-32768; stw 0,0x0(7); b 5f; 2:; lis 0,2; stw 0,0x0(7); b 5f; 3:; lis 0,8; stw 0,0x0(7); b 5f; 4:; li 0,0; stw 0,0x0(7); 5:; lwz 0,0x4(3); rlwinm 0,0,17,29,31; cmpwi 0,4; beq 8f; bge 6f; cmpwi 0,3; bge 7f; b 10f; 6:; cmpwi 0,6; bge 10f; b 9f; 7:; lis 6,1; addi 0,6,-32768; stw 0,0x0(9); b 12f; 8:; lis 0,2; stw 0,0x0(9); b 12f; 9:; lis 0,8; stw 0,0x0(9); b 12f; 10:; li 0,0; stw 0,0x0(9); b 12f; 11:; lhz 0,0x8(3); rlwinm 0,0,5,0,26; stw 0,0x0(7); lhz 0,0xa(3); rlwinm 0,0,5,0,26; stw 0,0x0(9); 12:; lbz 0,0xc(3); stb 0,0x0(5); lbz 0,0xd(3); stb 0,0x0(4)"
+extern "C" void f_8038E010() {}

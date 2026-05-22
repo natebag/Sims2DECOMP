@@ -1,0 +1,5 @@
+// 0x802CC230 ENDummy::SetDummyPoint(int, (264 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,3; mr 31,4; addi 3,29,72; mr 30,5; lwz 0,0x4(3); cmpw 31,0; ble 0f; addi 4,31,1; li 5,0; bl _s802CC230_0; 0:; mulli 9,31,80; lwz 8,0x48(29); lwz 0,0x0(30); addi 10,30,4; addi 6,30,16; stwx 0,8,9; add 8,8,9; lwz 0,0x4(30); addi 5,8,4; lwz 11,0x4(10); addi 7,8,16; lwz 9,0x8(10); stw 0,0x4(8); stw 9,0x8(5); stw 11,0x4(5); lwz 9,0x10(30); lwz 10,0x14(30); stw 9,0x10(8); stw 10,0x14(8); lwz 11,0x8(6); lwz 12,0xc(6); stw 11,0x8(7); stw 12,0xc(7); lwz 9,0x10(6); lwz 10,0x14(6); stw 9,0x10(7); stw 10,0x14(7); lwz 11,0x18(6); lwz 12,0x1c(6); stw 11,0x18(7); stw 12,0x1c(7); lwz 9,0x20(6); lwz 10,0x24(6); stw 9,0x20(7); stw 10,0x24(7); lwz 11,0x28(6); lwz 12,0x2c(6); stw 11,0x28(7); stw 12,0x2c(7); lwz 9,0x30(6); lwz 10,0x34(6); stw 9,0x30(7); stw 10,0x34(7); lwz 11,0x38(6); lwz 12,0x3c(6); stw 11,0x38(7); stw 12,0x3c(7); lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void _s802CC230_0();
+extern "C" void f_802CC230() {}

@@ -1,0 +1,7 @@
+// 0x802A84C4 AptStage::objectMemberLookup(AptValue (392 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stfd f31,0x18(1); stmw 30,0x10(1); stw 0,0x24(1); cmpwi 4,0; beq 0f; lwz 3,0x0(5); lhz 4,0x2(3); addi 3,3,8; bl _s802A84C4_0; b 1f; 0:; li 3,0; 1:; cmpwi 3,0; beq 10f; lwz 3,0x4(3); cmpwi 3,3; beq 7f; bgt 2f; cmpwi 3,1; beq 9f; cmpwi 3,2; beq 3f; b 10f; 2:; cmpwi 3,100; beq 10f; bgt 10f; cmpwi 3,4; beq 9f; b 10f; 3:; lis 9,-32694; lwz 0,-16128(9); mtspr 8,0; blrl; lwz 3,-26912(13); fmr f31,f1; cmpwi 3,0; beq 8f; lwz 0,0x0(3); lwz 9,0xc(3); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26912(13); stw 11,0x0(3); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 5f; 4:; rlwinm 0,11,0,3,1; stw 0,0x0(3); b 6f; 5:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 3,11,9; stw 0,0x4(8); 6:; stfs f31,0xc(3); b 11f; 7:; lis 9,-32694; lwz 0,-16124(9); mtspr 8,0; blrl; lwz 3,-26912(13); fmr f31,f1; cmpwi 3,0; beq 8f; lwz 0,0x0(3); lwz 9,0xc(3); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26912(13); stw 11,0x0(3); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; bge 4b; b 5b; 8:; lwz 3,-23020(13); li 4,16; bl _s802A84C4_1; mr 30,3; li 4,6; bl _s802A84C4_2; lis 9,-32702; stfs f31,0xc(30); addi 9,9,-26784; mr 3,30; stw 9,0x8(30); b 11f; 9:; lwz 3,-22936(13); b 11f; 10:; li 3,0; 11:; lwz 0,0x24(1); mtspr 8,0; lmw 30,0x10(1); lfd f31,0x18(1); addi 1,1,32"
+extern "C" void _s802A84C4_0();
+extern "C" void _s802A84C4_1();
+extern "C" void _s802A84C4_2();
+extern "C" void f_802A84C4() {}

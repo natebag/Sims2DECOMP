@@ -1,0 +1,5 @@
+// 0x80211524 InteractorModule::CanObjectBeDestroyed(cXObject (316 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; li 4,43; lwz 9,0x4(31); lha 3,0x260(9); lwz 0,0x264(9); add 3,31,3; mtspr 8,0; blrl; rlwinm 30,3,29,31,31; cmpwi 30,0; beq 6f; lwz 9,0x4(31); lha 3,0x390(9); lwz 0,0x394(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; bne 0f; lwz 9,0x4(31); li 4,0; lha 3,0x2c0(9); lwz 0,0x2c4(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 6f; b 5f; 0:; cmpwi 31,0; beq 1f; lwz 3,0x0(31); li 4,3; bl _s80211524_0; mr 31,3; b 2f; 1:; li 31,0; 2:; lwz 9,0x4(31); lha 3,0x40(9); lwz 0,0x44(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; bne 6f; lwz 9,0x4(31); lha 3,0x10(9); lwz 0,0x14(9); b 4f; 3:; lwz 9,0x4(31); lha 3,0x18(9); lwz 0,0x1c(9); 4:; add 3,31,3; mtspr 8,0; blrl; mr 31,3; cmpwi 31,0; beq 6f; lwz 3,0x0(31); li 4,0; lwz 9,0x4(3); lha 0,0x2c0(9); lwz 9,0x2c4(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 3b; 5:; li 30,0; 6:; mr 3,30; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void _s80211524_0();
+extern "C" void f_80211524() {}

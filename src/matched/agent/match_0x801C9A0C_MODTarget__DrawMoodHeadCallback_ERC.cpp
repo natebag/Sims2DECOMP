@@ -1,0 +1,4 @@
+// 0x801C9A0C MODTarget::DrawMoodHeadCallback(ERC (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); lis 9,-32697; mr 30,4; lwz 9,0x5e88(9); cmpwi 9,0; beq 0f; lwz 9,0x0(9); lwz 11,0x0(9); lwz 9,0x14(11); b 1f; 0:; li 9,0; 1:; cmpwi 9,0; li 10,0; beq 2f; lwz 10,0x628(9); 2:; lis 9,-32697; lwz 9,0x5e8c(9); cmpwi 9,0; beq 3f; lwz 9,0x0(9); lwz 11,0x0(9); lwz 9,0x14(11); b 4f; 3:; li 9,0; 4:; cmpwi 9,0; li 31,0; beq 5f; lwz 31,0x628(9); 5:; cmpwi 10,0; beq 6f; lwz 9,0x3b0(10); mr 4,30; lha 3,0x18(9); lwz 0,0x1c(9); add 3,10,3; mtspr 8,0; blrl; 6:; cmpwi 31,0; beq 7f; lwz 9,0x3b0(31); mr 4,30; lha 3,0x18(9); lwz 0,0x1c(9); add 3,31,3; mtspr 8,0; blrl; 7:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void f_801C9A0C() {}

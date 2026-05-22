@@ -1,0 +1,4 @@
+// 0x8035B360 EDataHeader::IsSignatureValid(void) (236 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 9,0x8(3); lis 0,17996; ori 0,0,21320; cmpw 9,0; beq 5f; cmplw 9,0; bgt 1f; lis 0,17224; ori 0,0,21059; cmpw 9,0; beq 5f; cmplw 9,0; bgt 0f; lis 0,16718; ori 0,0,18765; cmpw 9,0; beq 5f; lis 0,16969; ori 0,0,20050; b 3f; 0:; lis 0,17492; ori 0,0,21332; cmpw 9,0; beq 5f; lis 0,17732; ori 0,0,21576; b 3f; 1:; lis 0,19791; ori 0,0,17484; cmpw 9,0; beq 5f; cmplw 9,0; bgt 2f; lis 0,17999; ori 0,0,20052; cmpw 9,0; beq 5f; lis 0,19525; ori 0,0,22092; b 3f; 2:; lis 0,21320; ori 0,0,17490; cmpw 9,0; beq 5f; cmplw 9,0; bgt 4f; lis 0,20545; ori 0,0,21076; 3:; cmpw 9,0; beq 5f; b 6f; 4:; lis 0,21592; ori 0,0,17996; cmpw 9,0; bne 6f; 5:; li 3,1; blr; 6:; li 3,0"
+extern "C" int f_8035B360() {}

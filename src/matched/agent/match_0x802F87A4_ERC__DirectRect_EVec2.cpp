@@ -1,0 +1,4 @@
+// 0x802F87A4 ERC::DirectRect(EVec2 (224 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stfd f31,0x20(1); stmw 27,0xc(1); stw 0,0x2c(1); mr 29,3; mr 28,4; lwz 9,0x70(29); mr 27,5; li 5,0; li 4,0; lwz 0,0x2b4(9); mr 30,6; lha 3,0x2b0(9); fmr f31,f1; mtspr 8,0; add 3,29,3; blrl; lwz 9,0x70(29); li 4,6; lwz 0,0x2ac(9); lha 3,0x2a8(9); mtspr 8,0; add 3,29,3; blrl; li 0,41; stb 0,0x0(3); lfs f0,0x0(28); stfs f0,0x8(3); lfs f13,0x4(28); stfs f13,0xc(3); lfs f0,0x0(27); stfs f0,0x10(3); lfs f13,0x4(27); stfs f13,0x14(3); lfs f0,0x0(30); stfs f0,0x18(3); lfs f13,0x4(30); stfs f13,0x1c(3); lfs f0,0x8(30); stfs f0,0x20(3); lfs f13,0xc(30); stfs f31,0x28(3); stfs f13,0x24(3); lwz 9,0x70(29); lha 3,0x2b8(9); lwz 0,0x2bc(9); add 3,29,3; mtspr 8,0; blrl; lwz 0,0x2c(1); mtspr 8,0; lmw 27,0xc(1); lfd f31,0x20(1); addi 1,1,40"
+extern "C" void f_802F87A4() {}

@@ -1,0 +1,4 @@
+// 0x800970F0 TheSimsMemCardCheckState::Draw(ERC (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stw 31,0x2c(1); stw 0,0x34(1); lis 9,-32697; mr 31,4; lwz 9,0x5ec8(9); lwz 3,0x14(9); cmpwi 3,0; beq 0f; mr 11,3; b 1f; 0:; lwz 9,0x18(9); li 11,0; cmpwi 9,0; beq 1f; lwz 11,0x14(9); 1:; lwz 9,0xf0(11); mr 4,31; li 5,0; lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x70(31); lis 9,-32706; lfs f1,-29820(9); addi 4,1,8; lha 3,0x188(11); lis 9,-32706; stfs f1,0x4(4); addi 5,1,16; lfs f0,-29816(9); addi 6,1,24; stfs f1,0x8(1); addi 7,1,32; stfs f0,0x4(5); lis 8,-32697; stfs f0,0x10(1); add 3,31,3; stfs f1,0x18(1); addi 8,8,25232; stfs f0,0x4(6); stfs f0,0x20(1); stfs f1,0x4(7); lwz 0,0x18c(11); mtspr 8,0; blrl; lwz 0,0x34(1); mtspr 8,0; lwz 31,0x2c(1); addi 1,1,48"
+extern "C" void f_800970F0() {}

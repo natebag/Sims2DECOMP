@@ -1,0 +1,8 @@
+// 0x8034C984 ENgcSFXStreamer::Allocate(ERSampledata (380 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 25,0xc(1); stw 0,0x2c(1); mr 28,4; mr 26,5; bl _s8034C984_0; bl _s8034C984_1; mr 25,3; cmpwi 25,-1; beq 2f; mulli 31,25,68; lis 9,-32690; addi 29,9,-19244; li 0,1; addi 27,29,36; stwx 0,27,31; lwz 0,0x18(28); cmpwi 0,0; beq 1f; bl _s8034C984_2; cmpwi 3,-1; beq 0f; mulli 10,3,68; lwz 0,0x14(28); li 6,0; stwx 0,27,31; addi 5,29,52; stwx 6,5,31; addi 4,29,56; add 7,10,29; add 8,31,29; stwx 7,4,31; addi 30,29,40; stb 26,0x30(8); addi 29,29,44; stb 6,0x31(8); li 3,127; lwz 0,0x40(8); lbz 9,0x27(28); rlwimi 0,9,29,2,2; stw 0,0x40(8); lwz 9,0x1c(28); lwzx 11,27,31; stwx 9,30,31; lwz 0,0x4(11); stwx 0,29,31; lwz 9,0x18(28); stwx 8,5,10; stwx 6,4,10; stwx 9,27,10; stb 26,0x30(7); stb 3,0x31(7); lwz 0,0x40(7); lbz 9,0x27(28); rlwimi 0,9,29,2,2; stw 0,0x40(7); lwz 9,0x20(28); lwzx 11,27,10; stwx 9,30,10; lwz 0,0x4(11); stwx 0,29,10; b 2f; 0:; li 0,0; li 25,-1; stwx 0,27,31; b 2f; 1:; lwz 8,0x14(28); addi 9,29,52; stwx 0,9,31; addi 11,29,56; stwx 0,11,31; add 10,31,29; stwx 8,27,31; li 0,64; stb 0,0x31(10); addi 8,29,40; stb 26,0x30(10); addi 7,29,44; lwz 0,0x40(10); lbz 9,0x27(28); rlwimi 0,9,29,2,2; stw 0,0x40(10); lwz 9,0x1c(28); lwzx 11,27,31; stwx 9,8,31; lwz 0,0x4(11); stwx 0,7,31; 2:; bl _s8034C984_3; mr 3,25; lwz 0,0x2c(1); mtspr 8,0; lmw 25,0xc(1); addi 1,1,40"
+extern "C" void _s8034C984_0();
+extern "C" void _s8034C984_1();
+extern "C" void _s8034C984_2();
+extern "C" void _s8034C984_3();
+extern "C" void f_8034C984() {}

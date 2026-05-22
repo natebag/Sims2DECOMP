@@ -1,0 +1,7 @@
+// 0x80034E40 __static_initialization_and_destruction_0 (312 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); li 0,0; ori 0,0,65535; cmpw 4,0; bne 3f; cmpwi 3,0; beq 2f; lis 3,-32688; lis 4,-32765; lis 5,-32765; lis 6,-32765; lis 8,-32707; lis 9,-32688; addi 5,5,20588; addi 6,6,20620; addi 8,8,4120; addi 9,9,-19376; addi 4,4,20504; li 7,0; addi 3,3,-19416; bl _s80034E40_0; lis 8,-32707; lis 9,-32707; lfs f0,0x122c(9); lis 6,-32697; lfs f13,0x1220(8); lis 11,-32707; lis 10,-32707; stw 3,-25104(13); lfs f12,0x1224(10); addi 9,6,21724; lfs f11,0x121c(11); lis 5,-32697; stfs f13,0x8(9); addi 11,5,21736; lis 4,-32697; stfs f12,0x8(11); addi 10,4,21748; lis 7,-32707; stfs f0,0x8(10); lis 3,-32697; stfs f11,0x54dc(6); addi 3,3,21760; stfs f11,0x4(9); lfs f10,0x1228(7); stfs f12,0x54e8(5); stfs f10,0x4(11); stfs f0,0x54f4(4); stfs f0,0x4(10); bl _s80034E40_1; lis 9,-32707; lis 11,-32707; lfs f13,0x1230(9); lis 10,-32707; lfs f12,0x1234(11); lis 9,-32697; lfs f0,0x1238(10); li 0,4; addi 11,9,21788; stfs f13,0x551c(9); mtspr 9,0; stfs f0,0x8(11); stfs f12,0x4(11); 0:; bdnz 0b; li 0,4; mtspr 9,0; 1:; bdnz 1b; b 3f; 2:; lis 3,-32697; li 4,2; addi 3,3,21760; bl _s80034E40_2; 3:; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
+extern "C" void _s80034E40_0();
+extern "C" void _s80034E40_1();
+extern "C" void _s80034E40_2();
+extern "C" void f_80034E40() {}

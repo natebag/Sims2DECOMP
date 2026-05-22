@@ -1,0 +1,4 @@
+// 0x801819D0 UIUpdateTable::AddRecord(UIUpdateTable::UpdateTablePriority, (204 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 10,0x8(3); lwz 9,0x4(10); stw 9,0x8(3); cmpwi 9,0; beq 0f; li 0,0; stw 0,0x0(9); 0:; stw 5,0xc(10); stw 6,0x10(10); stw 4,0x8(10); lwz 0,0x0(3); cmpwi 0,0; bne 1f; stw 10,0x0(3); stw 0,0x0(10); stw 10,0x4(3); stw 0,0x4(10); blr; 1:; mr 11,0; li 9,0; b 3f; 2:; cmpwi 11,0; beqlr; 3:; lwz 0,0x8(11); cmpw 0,4; ble 6f; lwz 0,0x0(11); stw 0,0x0(10); lwz 9,0x0(11); cmpwi 9,0; beq 4f; stw 10,0x4(9); b 5f; 4:; stw 10,0x0(3); stw 9,0x0(10); 5:; stw 11,0x4(10); li 9,1; stw 10,0x0(11); b 7f; 6:; lwz 0,0x4(11); cmpwi 0,0; bne 7f; stw 10,0x4(11); li 9,1; stw 11,0x0(10); stw 10,0x4(3); stw 0,0x4(10); 7:; lwz 11,0x4(11); cmpwi 9,0; beq 2b"
+extern "C" void f_801819D0() {}

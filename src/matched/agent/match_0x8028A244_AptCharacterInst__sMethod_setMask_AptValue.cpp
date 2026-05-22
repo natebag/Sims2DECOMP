@@ -1,0 +1,4 @@
+// 0x8028A244 AptCharacterInst::sMethod_setMask(AptValue (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mr 8,3; cmpwi 4,1; beq 1f; lwz 0,0x0(8); li 11,0; rlwinm 9,0,0,25,31; addi 9,9,-12; cmplwi 9,7; bgt 0f; rlwinm 11,0,5,31,31; 0:; cmpwi 11,0; beq 1f; lwz 3,-22936(13); blr; 1:; lis 9,-32694; li 7,0; lwz 11,-16032(9); addi 9,9,-16032; lwz 0,0x8(9); rlwinm 11,11,2,0,29; add 11,11,0; lwz 10,-4(11); lwz 0,0x0(10); rlwinm 9,0,0,25,31; addi 9,9,-12; cmplwi 9,7; bgt 2f; rlwinm 7,0,5,31,31; 2:; cmpwi 7,0; bne 3f; lwz 3,-22936(13); cmpw 10,3; bnelr; lwz 9,0x4c(8); li 0,-1; mr 3,10; stw 0,0x0(9); blr; 3:; cmpwi 10,0; beq 4f; andis. 9,0,2048; beq 4f; lwz 11,0x58(10); lwz 9,0x58(8); mr 0,11; rlwimi 0,9,0,0,16; srawi 11,11,15; stw 0,0x58(10); addi 11,11,1; lwz 9,0x4c(8); stw 11,0x0(9); 4:; lwz 3,-22936(13)"
+extern "C" void f_8028A244() {}

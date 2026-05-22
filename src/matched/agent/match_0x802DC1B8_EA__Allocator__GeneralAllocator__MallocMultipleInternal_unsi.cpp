@@ -1,0 +1,7 @@
+// 0x802DC1B8 EA::Allocator::GeneralAllocator::MallocMultipleInternal(unsigned (416 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 24,0x8(1); stw 0,0x2c(1); mr 29,3; mr 26,4; mr 25,6; mr 24,8; mr. 3,7; beq 0f; cmpwi 26,0; beq 15f; mr 27,3; li 0,0; b 2f; 0:; cmpwi 26,0; bne 1f; mr 3,29; mr 5,24; li 4,0; bl _s802DC1B8_0; b 15f; 1:; rlwinm 9,26,2,0,29; li 27,0; addi 9,9,11; cmplwi 9,16; li 0,16; ble 2f; rlwinm 0,9,0,0,28; 2:; li 10,0; li 28,0; cmplw 10,5; lwz 8,0x4(29); bge 6f; mr 11,25; 3:; lwz 9,0x0(11); addi 11,11,4; addi 9,9,11; cmplwi 9,16; ble 4f; rlwinm 9,9,0,0,28; b 5f; 4:; li 9,16; 5:; addi 10,10,1; add 28,28,9; cmplw 10,5; blt 3b; 6:; add 9,28,0; andi. 0,8,1; addi 31,9,-7; beq 7f; mr 3,29; bl _s802DC1B8_1; 7:; lwz 30,0x4a0(29); li 0,0; stw 0,0x4a0(29); mr 4,31; mr 5,24; mr 3,29; bl _s802DC1B8_2; mr. 3,3; stw 30,0x4a0(29); beq 13f; addi 3,3,-8; cmpwi 27,0; lwz 0,0x4(3); rlwinm 11,0,0,0,28; bne 8f; subf 0,28,11; add 9,3,28; ori 0,0,1; mr 11,28; stw 0,0x4(9); addi 27,9,8; 8:; li 10,0; addi 4,26,-1; b 10f; 9:; addi 10,10,1; 10:; addi 0,3,8; rlwinm 9,10,2,0,29; stwx 0,9,27; cmplw 10,4; bge 12f; lwzx 9,9,25; addi 0,9,11; cmplwi 0,16; li 31,16; ble 11f; rlwinm 31,0,0,0,28; 11:; ori 0,31,1; subf 11,31,11; stw 0,0x4(3); add 3,3,31; b 9b; 12:; ori 0,11,1; stw 0,0x4(3); b 14f; 13:; li 27,0; 14:; mr 3,27; 15:; lwz 0,0x2c(1); mtspr 8,0; lmw 24,0x8(1); addi 1,1,40"
+extern "C" void _s802DC1B8_0();
+extern "C" void _s802DC1B8_1();
+extern "C" void _s802DC1B8_2();
+extern "C" void f_802DC1B8() {}

@@ -1,0 +1,4 @@
+// 0x8032D4F4 ENgcAudioSampleManager::heapResortLarger(ARAMBlock (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 9,0x4(4); lwz 11,0x10(4); lwz 0,0x10(9); lwz 10,0xc(4); subf 7,11,0; cmpwi 10,0; beqlr; 0:; lwz 9,0x4(10); lwz 11,0x10(10); lwz 0,0x10(9); subf 0,11,0; cmplw 0,7; blt 4f; lwz 0,0xc(4); cmpw 10,0; beqlr; lwz 9,0x8(4); cmpwi 9,0; beq 1f; stw 0,0xc(9); b 2f; 1:; stw 0,0xd24(3); 2:; lwz 9,0xc(4); cmpwi 9,0; beq 3f; lwz 0,0x8(4); stw 0,0x8(9); 3:; stw 10,0xc(4); lwz 0,0x8(10); stw 0,0x8(4); stw 4,0x8(10); lwz 9,0x8(4); stw 4,0xc(9); blr; 4:; mr 8,10; lwz 10,0xc(8); cmpwi 10,0; bne 0b; lwz 9,0x8(4); cmpwi 9,0; beq 5f; lwz 0,0xc(4); stw 0,0xc(9); b 6f; 5:; lwz 0,0xc(4); stw 0,0xd24(3); 6:; lwz 9,0xc(4); li 11,0; lwz 0,0x8(4); stw 0,0x8(9); stw 4,0xc(8); stw 8,0x8(4); stw 11,0xc(4)"
+extern "C" void f_8032D4F4() {}

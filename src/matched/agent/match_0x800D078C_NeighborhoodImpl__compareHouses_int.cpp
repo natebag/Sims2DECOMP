@@ -1,0 +1,4 @@
+// 0x800D078C NeighborhoodImpl::compareHouses(int (232 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 28,0x20(1); stw 0,0x34(1); lwz 30,-21476(13); mr 29,3; mr 28,4; addi 5,1,8; lwz 9,0x0(30); addi 6,1,12; lwz 4,0x70(30); lwz 0,0x18c(9); lha 3,0x188(9); mtspr 8,0; add 3,30,3; blrl; lwz 9,0x0(30); addi 5,1,16; addi 6,1,20; lwz 4,0x0(29); lwz 0,0x18c(9); lha 3,0x188(9); mtspr 8,0; add 3,30,3; blrl; lwz 9,0x0(30); addi 5,1,24; lwz 4,0x0(28); addi 6,1,28; lwz 0,0x18c(9); lha 3,0x188(9); mtspr 8,0; add 3,30,3; blrl; lwz 8,0x8(1); lwz 7,0xc(1); lwz 9,0x10(1); lwz 10,0x14(1); lwz 0,0x18(1); subf 9,8,9; lwz 11,0x1c(1); subf 10,7,10; subf 0,8,0; mullw 9,9,9; subf 11,7,11; mullw 10,10,10; mullw 0,0,0; mullw 11,11,11; add 9,9,10; add 0,0,11; cmpw cr7,9,0; mfcr 3; rlwinm 3,3,29,31,31; lwz 0,0x34(1); mtspr 8,0; lmw 28,0x20(1); addi 1,1,48"
+extern "C" void f_800D078C() {}

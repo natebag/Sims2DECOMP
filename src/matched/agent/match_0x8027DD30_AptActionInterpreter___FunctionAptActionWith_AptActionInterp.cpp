@@ -1,0 +1,5 @@
+// 0x8027DD30 AptActionInterpreter::_FunctionAptActionWith(AptActionInterpreter (276 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 29,0x14(1); stw 0,0x24(1); mr 31,4; mr 29,3; lwz 9,0x0(31); addi 9,9,3; rlwinm 30,9,0,0,29; addi 0,30,4; stw 0,0x0(31); lwz 9,0x0(29); lwz 0,0x8(29); rlwinm 9,9,2,0,29; add 9,9,0; lwz 5,-4(9); lwz 0,0x0(5); andis. 9,0,2048; bne 0f; li 0,0; stw 0,0x8(31); lwz 9,0x0(30); stw 9,0x0(31); b 1f; 0:; lwz 3,0x4(31); li 4,0; addi 6,1,8; bl _s8027DD30_0; lwz 11,0x8(1); lis 4,-32704; lwz 0,0x0(30); lis 5,-32704; stw 11,0x8(31); addi 4,4,8516; stw 0,0xc(31); addi 5,5,6212; li 6,7694; lwz 9,0x8(11); lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 1:; lwz 9,0x0(29); cmpwi 9,0; ble 2f; lwz 0,0x8(29); rlwinm 9,9,2,0,29; lis 4,-32704; lis 5,-32704; add 9,9,0; addi 4,4,5964; lwz 11,-4(9); addi 5,5,5812; li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(29); addi 9,9,-1; stw 9,0x0(29); 2:; lwz 0,0x24(1); mtspr 8,0; lmw 29,0x14(1); addi 1,1,32"
+extern "C" void _s8027DD30_0();
+extern "C" void f_8027DD30() {}

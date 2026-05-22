@@ -1,0 +1,4 @@
+// 0x801678FC CasSimDescriptionS2C::SetBodyPartTextureIndex(eBodyPartS2C, (232 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmpwi 4,14; bgt 1f; cmpwi 4,12; bge 8f; cmpwi 4,6; bgt 0f; cmpwi 4,2; bge 5f; cmpwi 4,0; beq 4f; blr; 0:; cmpwi 4,8; ble 6f; b 7f; 1:; cmpwi 4,19; beq 11f; bgt 2f; cmpwi 4,17; bgtlr; cmpwi 4,16; bge 10f; b 9f; 2:; cmpwi 4,24; bgt 3f; cmpwi 4,22; bge 14f; cmpwi 4,20; beq 12f; cmpwi 4,21; beq 13f; blr; 3:; cmpwi 4,25; beq 15f; blr; 4:; stb 5,0x8b(3); blr; 5:; stb 5,0x8e(3); blr; 6:; stb 5,0x99(3); blr; 7:; stb 5,0xa5(3); blr; 8:; stb 5,0xb5(3); blr; 9:; stb 5,0xc5(3); blr; 10:; stb 5,0xcd(3); blr; 11:; stb 5,0xd6(3); blr; 12:; stb 5,0xf1(3); blr; 13:; stb 5,0xeb(3); blr; 14:; stb 5,0xdd(3); blr; 15:; stb 5,0xe9(3)"
+extern "C" void f_801678FC() {}

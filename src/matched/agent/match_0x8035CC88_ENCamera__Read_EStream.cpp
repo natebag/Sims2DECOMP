@@ -1,0 +1,9 @@
+// 0x8035CC88 ENCamera::Read(EStream (508 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-104(1); mfspr 0,8; stmw 27,0x54(1); stw 0,0x6c(1); mr 31,4; mr 29,3; lwz 9,0x18(31); addi 4,1,72; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,0x48(1); cmpwi 0,0; bne 5f; lwz 9,0x18(31); mr 4,29; li 5,64; li 28,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,29,64; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,29,68; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 4,0x44(29); addi 3,29,72; li 5,0; bl _s8035CC88_0; lwz 0,0x44(29); cmpw 28,0; bge 1f; li 27,0; 0:; lwz 9,0x18(31); li 5,4; lwz 30,0x48(29); addi 28,28,1; lwz 0,0x34(9); lha 3,0x30(9); add 30,30,27; mtspr 8,0; mr 4,30; add 3,31,3; addi 27,27,96; blrl; addi 4,30,4; mr 3,31; bl _s8035CC88_1; addi 4,30,16; mr 3,31; bl _s8035CC88_2; lwz 9,0x18(31); addi 4,30,80; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,30,84; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,30,88; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,30,92; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,0x44(29); cmpw 28,0; blt 0b; 1:; addi 3,1,8; mr 4,29; bl _s8035CC88_3; li 31,0; li 30,0; addi 28,1,8; b 4f; 2:; lbzx 0,28,30; cmpwi 0,32; beq 3f; stbx 0,29,31; addi 31,31,1; 3:; addi 30,30,1; 4:; addi 3,1,8; bl _s8035CC88_4; cmpw 30,3; blt 2b; li 0,0; stbx 0,29,31; 5:; lwz 0,0x6c(1); mtspr 8,0; lmw 27,0x54(1); addi 1,1,104"
+extern "C" void _s8035CC88_0();
+extern "C" void _s8035CC88_1();
+extern "C" void _s8035CC88_2();
+extern "C" void _s8035CC88_3();
+extern "C" void _s8035CC88_4();
+extern "C" void f_8035CC88() {}

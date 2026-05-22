@@ -1,0 +1,5 @@
+// 0x8032D784 ENgcAudioSampleManager::heapWalk(bool) (292 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 30,3; lis 29,-32692; lwz 9,0xd20(30); lwz 31,0x4(9); 0:; lwz 11,0x4(31); lwz 0,0x0(11); cmpw 0,31; bne 8f; lwz 9,0x0(31); lwz 0,0x4(9); cmpw 0,31; bne 8f; lwz 9,0x10(11); lwz 0,0x10(31); cmpw 9,0; beq 8f; addi 3,29,14816; mr 4,31; bl _s8032D784_0; cmpwi 3,0; beq 3f; lwz 9,0x8(31); cmpwi 9,0; beq 1f; lwz 0,0xc(9); cmpw 0,31; b 2f; 1:; lwz 0,0xd24(30); cmpw 31,0; 2:; bne 8f; lwz 9,0xc(31); cmpwi 9,0; beq 3f; lwz 0,0x8(9); cmpw 0,31; bne 8f; 3:; lwz 31,0x4(31); lwz 0,0x4(31); cmpwi 0,0; bne 0b; lwz 31,0xd24(30); cmpwi 7,31,0; beq cr7,7f; lwz 0,0x8(31); cmpwi 0,0; bne 8f; beq cr7,7f; 4:; lwz 9,0x8(31); cmpwi 9,0; beq 5f; lwz 0,0xc(9); cmpw 0,31; bne 8f; 5:; lwz 9,0xc(31); cmpwi 7,9,0; beq cr7,6f; lwz 0,0x8(9); cmpw 0,31; bne 8f; 6:; mr 31,9; bne cr7,4b; 7:; li 3,1; b 9f; 8:; li 3,0; 9:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void _s8032D784_0();
+extern "C" void f_8032D784() {}

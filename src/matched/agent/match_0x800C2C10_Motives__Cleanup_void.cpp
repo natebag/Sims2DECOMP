@@ -1,0 +1,4 @@
+// 0x800C2C10 Motives::Cleanup(void) (192 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stfd f31,0x20(1); stmw 26,0x8(1); stw 0,0x2c(1); lis 9,-32706; mr 31,3; lfs f31,-23608(9); addi 28,31,64; li 29,0; lis 26,-32706; lis 27,-32706; mr 30,31; 0:; lwz 3,0x80(31); lwz 9,0x4(3); lha 0,0x218(9); lwz 9,0x21c(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 7,3,0; rlwinm 0,29,2,0,29; cmpwi 29,0; beq cr7,1f; beq 1f; stfs f31,0x0(30); 1:; lfs f0,0x0(30); addi 29,29,1; lfs f13,-23604(26); addi 30,30,4; cmpwi 7,29,15; fcmpu 0,f0,f13; ble 2f; stfsx f13,31,0; 2:; lfsx f0,31,0; lfs f13,-23600(27); fcmpu 0,f0,f13; bge 3f; stfsx f13,31,0; 3:; lfsx f0,31,0; stfsx f0,28,0; ble cr7,0b; lwz 0,0x2c(1); mtspr 8,0; lmw 26,0x8(1); lfd f31,0x20(1); addi 1,1,40"
+extern "C" void f_800C2C10() {}

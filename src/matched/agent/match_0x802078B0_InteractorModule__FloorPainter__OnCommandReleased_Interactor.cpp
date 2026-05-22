@@ -1,0 +1,4 @@
+// 0x802078B0 InteractorModule::FloorPainter::OnCommandReleased(InteractorModule::InteractorInputManager::InteractorCommand) (188 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmpwi 4,8; beq 2f; bgt 0f; cmpwi 4,2; beq 5f; cmpwi 4,7; beq 1f; blr; 0:; cmpwi 4,11; beq 3f; cmpwi 4,12; beq 4f; blr; 1:; lis 9,-32704; lfs f0,-12956(9); stfs f0,0x34(3); blr; 2:; lis 9,-32704; lfs f0,-12956(9); stfs f0,0x38(3); blr; 3:; lis 9,-32704; lfs f0,-12956(9); stfs f0,0x3c(3); blr; 4:; lis 9,-32704; lfs f0,-12956(9); stfs f0,0x40(3); blr; 5:; lbz 0,0x60(3); andi. 9,0,2; beqlr; lwz 10,0xa0(3); li 0,0; stb 0,0x60(3); cmpwi 10,0; beqlr; lwz 11,0x0(10); lwz 0,0x4(10); mr 9,11; cmpw 11,0; beq 7f; 6:; addi 9,9,8; cmpw 9,0; bne 6b; 7:; stw 11,0x4(10)"
+extern "C" void f_802078B0() {}

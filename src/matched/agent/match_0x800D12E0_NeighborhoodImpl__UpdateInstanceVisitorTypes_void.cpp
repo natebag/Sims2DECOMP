@@ -1,0 +1,4 @@
+// 0x800D12E0 NeighborhoodImpl::UpdateInstanceVisitorTypes(void) (244 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); lwz 3,-21484(13); li 29,0; lwz 28,-21424(13); lwz 9,0x0(3); lha 0,0x100(9); lwz 9,0x104(9); add 3,3,0; mtspr 8,9; blrl; mr 27,3; cmpw 29,27; bge 3f; 0:; lwz 11,-21484(13); mr 4,29; lwz 9,0x0(11); lwz 0,0xfc(9); lha 3,0xf8(9); mtspr 8,0; add 3,11,3; blrl; mr 30,3; li 4,32; lwz 9,0x4(30); lha 3,0x138(9); lwz 0,0x13c(9); add 3,30,3; mtspr 8,0; blrl; mr. 31,3; bne 1f; li 31,1; 1:; lwz 9,0x0(28); mr 4,30; lha 3,0x48(9); lwz 0,0x4c(9); add 3,28,3; mtspr 8,0; blrl; cmpwi 3,0; beq 2f; li 31,0; 2:; lwz 9,0x4(30); extsh 5,31; li 4,32; addi 29,29,1; lha 3,0x140(9); lwz 0,0x144(9); add 3,30,3; mtspr 8,0; blrl; cmpw 29,27; blt 0b; 3:; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
+extern "C" void f_800D12E0() {}

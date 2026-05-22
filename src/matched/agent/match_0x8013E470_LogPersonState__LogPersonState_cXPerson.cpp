@@ -1,0 +1,5 @@
+// 0x8013E470 LogPersonState::LogPersonState(cXPerson (236 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; mr. 30,4; bne 0f; lis 9,-32706; stw 30,0x0(31); lfs f0,-11164(9); stfs f0,0x24(31); stfs f0,0x4(31); stfs f0,0x8(31); stfs f0,0xc(31); stfs f0,0x10(31); stfs f0,0x14(31); stfs f0,0x18(31); stfs f0,0x1c(31); stfs f0,0x20(31); b 1f; 0:; lwz 11,0x0(30); lwz 9,0x4(11); lwz 0,0x36c(9); lha 3,0x368(9); mtspr 8,0; add 3,11,3; blrl; bl _s8013E470_0; stw 3,0x0(31); lwz 9,0x4(30); lha 3,0x250(9); lwz 0,0x254(9); add 3,30,3; mtspr 8,0; blrl; lfs f0,0xc(3); stfs f0,0x4(31); lfs f13,0x14(3); stfs f13,0x8(31); lfs f0,0x18(3); stfs f0,0xc(31); lfs f13,0x1c(3); stfs f13,0x10(31); lfs f0,0x20(3); stfs f0,0x14(31); lfs f13,0x24(3); stfs f13,0x18(31); lfs f0,0x34(3); stfs f0,0x1c(31); lfs f13,0x38(3); stfs f13,0x20(31); lfs f0,0x3c(3); stfs f0,0x24(31); 1:; mr 3,31; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void _s8013E470_0();
+extern "C" void f_8013E470() {}

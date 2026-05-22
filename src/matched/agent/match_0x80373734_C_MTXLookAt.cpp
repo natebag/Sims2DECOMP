@@ -1,0 +1,8 @@
+// 0x80373734 C_MTXLookAt (396 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); stwu 1,-80(1); stw 31,0x4c(1); stw 30,0x48(1); stw 29,0x44(1); mr 29,3; mr 30,4; mr 31,5; lfs f1,0x0(30); addi 3,1,48; lfs f0,0x0(6); mr 4,3; fsubs f0,f1,f0; stfs f0,0x30(1); lfs f1,0x4(30); lfs f0,0x4(6); fsubs f0,f1,f0; stfs f0,0x34(1); lfs f1,0x8(30); lfs f0,0x8(6); fsubs f0,f1,f0; stfs f0,0x38(1); bl _s80373734_0; mr 3,31; addi 4,1,48; addi 5,1,36; bl _s80373734_1; addi 3,1,36; mr 4,3; bl _s80373734_2; addi 3,1,48; addi 4,1,36; addi 5,1,24; bl _s80373734_3; lfs f0,0x24(1); stfs f0,0x0(29); lfs f0,0x28(1); stfs f0,0x4(29); lfs f0,0x2c(1); stfs f0,0x8(29); lfs f3,0x0(30); lfs f2,0x24(1); lfs f1,0x4(30); lfs f0,0x28(1); fmuls f2,f3,f2; lfs f3,0x8(30); fmuls f0,f1,f0; lfs f1,0x2c(1); fmuls f1,f3,f1; fadds f0,f2,f0; fadds f0,f1,f0; fneg f0,f0; stfs f0,0xc(29); lfs f0,0x18(1); stfs f0,0x10(29); lfs f0,0x1c(1); stfs f0,0x14(29); lfs f0,0x20(1); stfs f0,0x18(29); lfs f3,0x0(30); lfs f2,0x18(1); lfs f1,0x4(30); lfs f0,0x1c(1); fmuls f2,f3,f2; lfs f3,0x8(30); fmuls f0,f1,f0; lfs f1,0x20(1); fmuls f1,f3,f1; fadds f0,f2,f0; fadds f0,f1,f0; fneg f0,f0; stfs f0,0x1c(29); lfs f0,0x30(1); stfs f0,0x20(29); lfs f0,0x34(1); stfs f0,0x24(29); lfs f0,0x38(1); stfs f0,0x28(29); lfs f3,0x0(30); lfs f2,0x30(1); lfs f1,0x4(30); lfs f0,0x34(1); fmuls f2,f3,f2; lfs f3,0x8(30); fmuls f0,f1,f0; lfs f1,0x38(1); fmuls f1,f3,f1; fadds f0,f2,f0; fadds f0,f1,f0; fneg f0,f0; stfs f0,0x2c(29); lwz 0,0x54(1); lwz 31,0x4c(1); lwz 30,0x48(1); lwz 29,0x44(1); addi 1,1,80; mtspr 8,0"
+extern "C" void _s80373734_0();
+extern "C" void _s80373734_1();
+extern "C" void _s80373734_2();
+extern "C" void _s80373734_3();
+extern "C" void f_80373734() {}

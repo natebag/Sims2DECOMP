@@ -1,0 +1,6 @@
+// 0x800F2CBC ObjectModuleImpl::ObjectModuleImpl(void) (272 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; stmw 28,0x40(1); stw 0,0x54(1); lis 9,-32698; mr 30,3; addi 9,9,7552; addi 3,30,4; stw 9,0x0(30); bl _s800F2CBC_0; lis 9,-32698; lis 11,-32698; addi 9,9,6856; li 0,0; stw 9,0x10(30); addi 11,11,6888; stw 11,0x0(30); addi 9,30,36; stw 0,0x1c(30); addi 11,30,8244; stw 0,0x20(30); addi 10,30,8252; stw 0,0x4(9); addi 8,30,8260; stw 0,0x2034(30); addi 9,30,8268; stw 0,0x4(11); addi 7,30,8280; stw 0,0x4(10); addi 11,30,8288; stw 0,0x2044(30); addi 10,30,8296; stw 0,0x4(8); addi 6,30,8304; stw 0,0x4(9); addi 28,30,8312; stw 0,0x2058(30); addi 8,30,8320; stw 0,0x4(7); addi 29,30,8336; stw 0,0x4(11); addi 9,30,8344; stw 0,0x2068(30); addi 3,30,8352; stw 0,0x4(10); li 4,0; stw 0,0x4(6); li 5,64; stw 0,0x2078(30); stw 0,0x4(28); stw 0,0x4(8); stw 0,0x2090(30); stw 0,0x4(29); stw 0,0x4(9); stw 0,0x208c(30); stw 0,0x14(30); stw 0,0x2c(30); stw 0,0x30(30); sth 0,0x2054(30); stw 0,0x2088(30); stw 0,0x18(30); bl _s800F2CBC_1; mr 3,30; lwz 0,0x54(1); mtspr 8,0; lmw 28,0x40(1); addi 1,1,80"
+extern "C" void _s800F2CBC_0();
+extern "C" void _s800F2CBC_1();
+extern "C" void f_800F2CBC() {}

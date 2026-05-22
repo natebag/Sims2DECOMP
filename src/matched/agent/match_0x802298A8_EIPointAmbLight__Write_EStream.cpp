@@ -1,0 +1,6 @@
+// 0x802298A8 EIPointAmbLight::Write(EStream (200 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 29,0x1c(1); stw 0,0x2c(1); mr 29,3; mr 30,4; bl _s802298A8_0; mr 3,30; addi 4,29,172; bl _s802298A8_1; mr 30,3; addi 4,1,16; lwz 9,0x18(30); li 5,4; lfs f0,0xb8(29); lwz 0,0x3c(9); lha 3,0x38(9); mtspr 8,0; stfs f0,0x10(1); add 3,30,3; blrl; lwz 9,0x18(30); addi 4,1,20; li 5,4; lfs f0,0xbc(29); lwz 0,0x3c(9); lha 3,0x38(9); mtspr 8,0; stfs f0,0x14(1); add 3,30,3; blrl; lwz 0,0xc0(29); li 9,0; cmpwi 0,0; beq 0f; li 9,1; 0:; stb 9,0x8(1); addi 4,1,8; li 5,1; lwz 9,0x18(30); lha 3,0x38(9); lwz 0,0x3c(9); add 3,30,3; mtspr 8,0; blrl; lwz 0,0x2c(1); mtspr 8,0; lmw 29,0x1c(1); addi 1,1,40"
+extern "C" void _s802298A8_0();
+extern "C" void _s802298A8_1();
+extern "C" void f_802298A8() {}

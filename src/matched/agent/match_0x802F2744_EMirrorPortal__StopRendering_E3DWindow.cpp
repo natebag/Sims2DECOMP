@@ -1,0 +1,6 @@
+// 0x802F2744 EMirrorPortal::StopRendering(E3DWindow (344 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,3; mr 31,4; lwz 0,0x48(29); mr 30,5; cmpwi 0,0; beq 3f; bl _s802F2744_0; lwz 9,0x9c(31); mr 4,30; lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,31,3; blrl; mr 3,29; mr 4,30; bl _s802F2744_1; lwz 10,0x70(30); lis 9,-32702; lfs f3,-3756(9); lis 11,-32702; lfs f1,-3760(11); lha 3,0x238(10); fmr f4,f3; lwz 0,0x23c(10); fmr f2,f1; add 3,30,3; fmr f5,f4; mtspr 8,0; blrl; lwz 9,0x44(29); cmpwi 9,0; beq 2f; lwz 3,0x14(9); cmpwi 3,0; beq 0f; mr 11,3; b 1f; 0:; lwz 9,0x18(9); li 11,0; cmpwi 9,0; beq 1f; lwz 11,0x14(9); 1:; lwz 9,0xf0(11); mr 4,30; li 5,0; lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,11,3; blrl; lwz 9,0x70(30); li 4,1; li 5,2; li 6,0; lwz 0,0x1cc(9); li 7,0; lha 3,0x1c8(9); mtspr 8,0; add 3,30,3; blrl; lwz 9,0x70(30); lwz 0,0xf4(9); lha 3,0xf0(9); mtspr 8,0; add 3,30,3; blrl; lwz 9,0x70(30); li 5,4; lwz 4,0x34(29); lha 3,0x18(9); lwz 0,0x1c(9); add 3,30,3; mtspr 8,0; blrl; 2:; li 0,0; stw 0,0x48(29); 3:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void _s802F2744_0();
+extern "C" void _s802F2744_1();
+extern "C" void f_802F2744() {}

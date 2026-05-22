@@ -1,0 +1,4 @@
+// 0x802C7760 EFixedString::CompareSymbol(char (276 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 3,0x0(3); mr 8,4; lbz 9,0x0(3); addi 9,9,-48; cmplwi 9,9; bgt 1f; lbz 0,0x0(8); cmpwi 0,95; bne 1f; addi 8,8,1; b 2f; 0:; li 3,-1; blr; 1:; lbz 9,0x0(4); addi 9,9,-48; cmplwi 9,9; bgt 2f; lbz 0,0x0(3); cmpwi 0,95; bne 2f; addi 3,3,1; 2:; lbz 0,0x0(3); extsb 10,0; addi 9,10,-97; cmplwi 9,25; bgt 3f; addi 0,10,-32; extsb 10,0; b 4f; 3:; addi 0,10,-65; cmplwi 0,25; ble 4f; addi 0,10,-48; cmplwi 0,9; ble 4f; cmpwi 10,0; beq 4f; li 10,95; 4:; lbz 0,0x0(8); extsb 11,0; addi 9,11,-97; cmplwi 9,25; bgt 5f; addi 0,11,-32; extsb 11,0; b 6f; 5:; addi 0,11,-65; cmplwi 0,25; ble 6f; addi 0,11,-48; cmplwi 0,9; ble 6f; cmpwi 11,0; beq 6f; li 11,95; 6:; cmpw 10,11; blt 0b; bgt 7f; lbzu 0,0x1(3); addi 8,8,1; cmpwi 0,0; bne 2b; lbz 0,0x0(8); cmpwi 0,0; bne 2b; li 3,0; blr; 7:; li 3,1"
+extern "C" int f_802C7760() {}

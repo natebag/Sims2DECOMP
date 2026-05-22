@@ -1,0 +1,8 @@
+// 0x80345314 ENgcRenderer::RenderSurface(EDLEntry (376 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 30,0x30(1); stw 0,0x3c(1); lwz 11,-26040(13); mr 31,3; lwz 30,0x4(4); cmpwi 11,0; beq 0f; lwz 9,0x20(11); lwz 0,0x6c(9); lha 3,0x68(9); mtspr 8,0; add 3,11,3; blrl; li 0,0; lwz 3,0x4d8(31); stw 0,-26040(13); bl _s80345314_0; 0:; cmpwi 30,0; beq 1f; lwz 9,0x20(30); stw 30,-26040(13); lwz 0,0x64(9); lha 3,0x60(9); mtspr 8,0; add 3,30,3; blrl; lwz 3,0x4d8(31); bl _s80345314_1; lwz 11,0x4d8(31); li 0,0; li 10,7; lwz 9,0x6cc(11); stb 0,0x3b4(11); stb 0,0x3ac(11); oris 9,9,32768; ori 9,9,64; stw 10,0x3b0(11); lwz 12,-26040(13); stw 9,0x6cc(11); lwz 0,0x8(12); andi. 9,0,2; beq 2f; lwz 0,0x0(12); lis 5,17200; lwz 11,0x4(12); xoris 0,0,32768; mr 7,9; stw 0,0x2c(1); xoris 11,11,32768; lis 10,-32702; lis 6,-32702; stw 5,0x28(1); addi 8,1,8; lfd f12,0x1e48(10); addi 30,12,12; lfd f13,0x28(1); lis 10,-32702; stw 11,0x2c(1); mr 3,31; lfs f11,0x1e50(6); fsub f13,f13,f12; stw 5,0x28(1); frsp f13,f13; stfs f11,0x8(1); mr 4,8; lfd f0,0x28(1); addi 5,1,24; stfs f11,0x4(8); stfs f13,0x8(8); fsub f0,f0,f12; frsp f0,f0; lfs f12,0x1e54(10); stfs f0,0xc(8); lfs f13,0xc(12); stfs f13,0x18(1); lfs f0,0x4(30); stfs f0,0x1c(1); lfs f13,0x8(30); stfs f12,0x24(1); stfs f13,0x20(1); bl _s80345314_2; b 2f; 1:; lbz 3,0x37d(31); addi 6,31,918; addi 4,31,894; li 5,1; bl _s80345314_3; 2:; lwz 0,0x3c(1); mtspr 8,0; lmw 30,0x30(1); addi 1,1,56"
+extern "C" void _s80345314_0();
+extern "C" void _s80345314_1();
+extern "C" void _s80345314_2();
+extern "C" void _s80345314_3();
+extern "C" void f_80345314() {}

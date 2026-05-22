@@ -1,0 +1,10 @@
+// 0x80217B30 InteractorModule::InteractorVisualizer::DrawResource(InteractorModule::Interactor (464 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 26,0x18(1); stw 0,0x34(1); mr 31,3; mr 30,5; mr 29,6; mr 27,7; bl _s80217B30_0; mr. 3,3; beq 2f; mr 4,30; bl _s80217B30_1; mr. 28,3; beq 2f; li 0,1; li 9,0; lis 3,-32697; stw 0,0x10c(31); stw 9,0x110(31); addi 3,3,24012; bl _s80217B30_2; lfs f11,0x418(3); addi 9,3,1084; lfs f13,0x43c(3); addi 10,1,8; addi 3,3,1048; lfs f12,0x8(9); fsubs f13,f13,f11; lfs f0,0x4(9); lfs f10,0x8(3); addi 7,31,56; lfs f11,0x4(3); lis 8,-32704; stfs f13,0x8(1); fsubs f12,f12,f10; fsubs f0,f0,f11; stfs f12,0x10(1); stfs f0,0xc(1); mr 26,10; lwz 0,0x8(1); lwz 9,0x4(10); lwz 11,0x8(10); stw 0,0x38(31); stw 9,0x4(7); stw 11,0x8(7); lfs f0,0x3c(31); lfs f13,0x38(31); fneg f0,f0; stfs f13,0x3c(31); stfs f0,0x38(31); lfs f13,-10344(8); fcmpu 0,f0,f13; bne 0f; lfs f0,0x4(7); fcmpu 0,f0,f13; bne 0f; lfs f0,0x8(7); fcmpu 0,f0,f13; beq 1f; 0:; mr 3,7; mr 4,3; bl _s80217B30_3; 1:; lwz 11,0x0(29); addi 9,31,44; lwz 10,0x4(29); lis 8,-32696; lwz 0,0x8(29); addi 30,31,28; stw 11,0x2c(31); mr 3,27; stw 10,0x4(9); stw 0,0x8(9); lfs f11,0x55c4(8); lfs f0,0x0(29); lfs f13,0x8(29); lfs f12,0x4(29); fmuls f0,f0,f11; stfs f0,0x8(1); fmuls f13,f13,f11; fmuls f12,f12,f11; stfs f13,0x10(1); stfs f12,0xc(1); lwz 9,0x8(1); lwz 11,0x8(26); lwz 0,0x4(26); stw 9,0x1c(31); stw 0,0x4(30); stw 11,0x8(30); lfs f1,0x88(28); bl _s80217B30_4; lwz 11,-28504(13); mr 4,30; lwz 9,0x70(11); lwz 0,0x16c(9); lha 3,0x168(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-28504(13); mr 4,27; li 5,1; lwz 9,0x70(11); lha 3,0xe8(9); lwz 0,0xec(9); add 3,11,3; mtspr 8,0; blrl; lwz 4,-28504(13); mr 3,28; bl _s80217B30_5; 2:; lwz 0,0x34(1); mtspr 8,0; lmw 26,0x18(1); addi 1,1,48"
+extern "C" void _s80217B30_0();
+extern "C" void _s80217B30_1();
+extern "C" void _s80217B30_2();
+extern "C" void _s80217B30_3();
+extern "C" void _s80217B30_4();
+extern "C" void _s80217B30_5();
+extern "C" void f_80217B30() {}

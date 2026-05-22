@@ -1,0 +1,4 @@
+// 0x80284628 AptAnimationPoolData::appendButtonToBIL(AptCIH (184 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,3; mr 30,5; lwz 11,0x10(29); mr 3,4; lwz 10,0x14(29); lis 4,-32704; mulli 11,11,28; lis 5,-32704; addi 4,4,12224; addi 5,5,11876; li 6,1308; stwx 3,11,10; lwz 9,0x8(3); lha 0,0x8(9); lwz 9,0xc(9); add 3,3,0; mtspr 8,9; blrl; lwz 11,0x10(29); lwz 9,0x14(29); mulli 11,11,28; lwz 0,0x0(30); lwz 10,0x4(30); lwz 8,0x8(30); lwz 7,0xc(30); add 11,11,9; stwu 0,0x4(11); stw 10,0x4(11); stw 8,0x8(11); stw 7,0xc(11); lwz 0,0x14(30); lwz 10,0x10(30); stw 0,0x14(11); stw 10,0x10(11); lwz 9,0x10(29); addi 9,9,1; stw 9,0x10(29); lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+extern "C" void f_80284628() {}

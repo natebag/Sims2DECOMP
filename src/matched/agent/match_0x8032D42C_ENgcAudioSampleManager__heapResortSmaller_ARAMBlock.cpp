@@ -1,0 +1,4 @@
+// 0x8032D42C ENgcAudioSampleManager::heapResortSmaller(ARAMBlock (200 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 9,0x4(4); lwz 11,0x10(4); lwz 0,0x10(9); lwz 10,0x8(4); subf 8,11,0; cmpwi 10,0; beqlr; 0:; lwz 9,0x4(10); lwz 11,0x10(10); lwz 0,0x10(9); subf 0,11,0; cmplw 0,8; bgt 2f; lwz 9,0x8(4); cmpw 10,9; beqlr; lwz 0,0xc(4); stw 0,0xc(9); cmpwi 0,0; beq 1f; lwz 9,0xc(4); lwz 0,0x8(4); stw 0,0x8(9); 1:; stw 10,0x8(4); lwz 0,0xc(10); stw 0,0xc(4); stw 4,0xc(10); lwz 9,0xc(4); stw 4,0x8(9); blr; 2:; lwz 10,0x8(10); cmpwi 10,0; bne 0b; lwz 0,0xc(4); lwz 9,0x8(4); cmpwi 0,0; stw 0,0xc(9); beq 3f; lwz 9,0xc(4); lwz 0,0x8(4); stw 0,0x8(9); 3:; stw 10,0x8(4); lwz 0,0xd24(3); cmpwi 0,0; stw 0,0xc(4); beq 4f; lwz 9,0xd24(3); stw 4,0x8(9); 4:; stw 4,0xd24(3)"
+extern "C" void f_8032D42C() {}

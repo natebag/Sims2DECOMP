@@ -1,0 +1,8 @@
+// 0x802CB2B8 EMat4::BlendQuat(float, (372 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-192(1); mfspr 0,8; stfd f31,0xb8(1); stmw 28,0xa8(1); stw 0,0xc4(1); mr 28,3; mr 30,4; fmr f31,f1; mr 29,5; addi 3,1,8; bl _s802CB2B8_0; addi 3,1,24; mr 4,29; bl _s802CB2B8_1; lwz 0,0x30(30); addi 9,1,40; addi 30,30,48; addi 11,29,48; lwz 7,0x8(30); addi 10,1,56; lwz 6,0x4(30); addi 4,1,8; stw 0,0x28(1); fmr f1,f31; addi 5,1,104; addi 3,1,72; lwz 8,0x30(29); stw 7,0x8(9); stw 6,0x4(9); lwz 9,0x4(11); lwz 0,0x8(11); stw 8,0x38(1); stw 0,0x8(10); stw 9,0x4(10); lfs f0,0x18(1); lfs f13,0x1c(1); lfs f12,0x20(1); lfs f11,0x24(1); stfs f0,0x68(1); stfs f13,0x6c(1); stfs f12,0x70(1); stfs f11,0x74(1); stfs f0,0x58(1); stfs f13,0x5c(1); stfs f12,0x60(1); stfs f11,0x64(1); bl _s802CB2B8_2; addi 3,1,72; mr 4,28; bl _s802CB2B8_3; lfs f11,0x28(1); mr 3,28; lfs f10,0x2c(1); lfs f0,0x38(1); lfs f13,0x3c(1); lfs f9,0x30(1); fsubs f0,f0,f11; lfs f12,0x40(1); fsubs f13,f13,f10; stfs f0,0x98(1); fsubs f12,f12,f9; stfs f13,0x9c(1); fmuls f8,f12,f31; stfs f12,0xa0(1); fmuls f0,f0,f31; stfs f8,0x90(1); fmuls f13,f13,f31; stfs f0,0x88(1); fadds f11,f11,f0; stfs f13,0x8c(1); fadds f10,f10,f13; stfs f11,0x78(1); fadds f9,f9,f8; stfs f10,0x7c(1); stfs f9,0x80(1); lwz 0,0x78(1); lwz 9,0x7c(1); lwz 11,0x80(1); stw 0,0x58(1); stw 9,0x5c(1); stw 11,0x60(1); lfs f0,0x58(1); lfs f13,0x5c(1); lfs f12,0x60(1); stfs f0,0x30(28); stfs f13,0x34(28); stfs f12,0x38(28); lwz 0,0xc4(1); mtspr 8,0; lmw 28,0xa8(1); lfd f31,0xb8(1); addi 1,1,192"
+extern "C" void _s802CB2B8_0();
+extern "C" void _s802CB2B8_1();
+extern "C" void _s802CB2B8_2();
+extern "C" void _s802CB2B8_3();
+extern "C" void f_802CB2B8() {}

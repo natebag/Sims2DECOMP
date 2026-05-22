@@ -1,0 +1,4 @@
+// 0x8016A518 CasSimDescriptionS2C::SetBodyTypeMorphValues(void) (224 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lbz 0,0x88(3); extsb 0,0; cmpwi 0,1; beq 2f; bgt 0f; cmpwi 0,0; beq 1f; blr; 0:; cmpwi 0,2; beq 5f; blr; 1:; lwz 0,0x84(3); cmpwi 0,0; lis 9,-32706; lfs f0,0x508(9); stfs f0,0x100(3); stfs f0,0xf8(3); stfs f0,0xfc(3); blr; 2:; lwz 0,0x84(3); cmpwi 0,0; beq 4f; lis 11,-32706; lis 9,-32706; lfs f13,0x508(9); lfs f0,0x50c(11); 3:; stfs f13,0x100(3); stfs f0,0xf8(3); stfs f13,0xfc(3); blr; 4:; lis 9,-32706; lis 11,-32706; lfs f13,0x50c(9); lfs f0,0x510(11); stfs f13,0xfc(3); stfs f0,0x100(3); stfs f13,0xf8(3); blr; 5:; lwz 0,0x84(3); cmpwi 0,0; beq 6f; lis 11,-32706; lis 9,-32706; lfs f13,0x518(9); lfs f0,0x514(11); b 3b; 6:; lis 9,-32706; lis 11,-32706; lis 10,-32706; lfs f13,0x510(9); lfs f12,0x518(11); lfs f0,0x514(10); stfs f13,0xf8(3); stfs f0,0x100(3); stfs f12,0xfc(3)"
+extern "C" void f_8016A518() {}
