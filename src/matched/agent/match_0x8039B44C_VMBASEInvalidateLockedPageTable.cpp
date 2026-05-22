@@ -1,0 +1,4 @@
+// 0x8039B44C __VMBASEInvalidateLockedPageTable (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="li 0,256; li 5,0; mtspr 9,0; 0:; lwz 3,-21528(13); li 4,0; stbx 4,3,5; lwz 0,-21528(13); add 3,5,0; stb 4,0x1(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x2(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x3(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x4(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x5(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x6(3); lwz 0,-21528(13); add 3,5,0; addi 5,5,8; stb 4,0x7(3); lwz 3,-21528(13); stbx 4,3,5; lwz 0,-21528(13); add 3,5,0; stb 4,0x1(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x2(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x3(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x4(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x5(3); lwz 0,-21528(13); add 3,5,0; stb 4,0x6(3); lwz 0,-21528(13); add 3,5,0; addi 5,5,8; stb 4,0x7(3); bdnz 0b"
+extern "C" void f_8039B44C() {}

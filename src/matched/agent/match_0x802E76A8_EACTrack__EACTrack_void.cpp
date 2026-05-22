@@ -1,0 +1,5 @@
+// 0x802E76A8 EACTrack::EACTrack(void) (252 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stfd f30,0x18(1); stfd f31,0x20(1); stmw 29,0xc(1); stw 0,0x2c(1); lis 9,-32702; mr 30,3; lfs f0,-4728(9); lis 11,-32702; li 0,251; li 9,3; stfs f0,0x0(30); li 10,0; li 8,1; lis 7,-32702; lfs f30,-4724(11); lis 6,-32702; stw 0,0x8(30); lis 11,-32702; stb 9,0xc(30); lis 5,-32702; stb 10,0xd(30); li 29,0; stb 8,0xe(30); addi 3,30,140; stfs f30,0x4(30); lfs f31,-4720(7); stfs f31,0x10(30); stfs f31,0x14(30); lfs f0,-4716(6); stfs f0,0x1c(30); lfs f13,-4712(11); stfs f13,0x20(30); lfs f0,-4708(5); stw 29,0x7c(30); stfs f0,0x18(30); bl _s802E76A8_0; li 0,-1; stfs f31,0x78(30); stw 0,0x74(30); mr 3,30; stfs f30,0x50(30); stw 29,0x30(30); stw 29,0x24(30); stw 29,0x28(30); stfs f31,0x3c(30); stfs f31,0x40(30); stfs f30,0x4c(30); stfs f30,0x0(30); stb 29,0xa0(30); stfs f31,0x5c(30); stw 29,0x98(30); stw 29,0x9c(30); stw 29,0xa8(30); stw 29,0xac(30); lwz 0,0x2c(1); mtspr 8,0; lmw 29,0xc(1); lfd f30,0x18(1); lfd f31,0x20(1); addi 1,1,40"
+extern "C" void _s802E76A8_0();
+extern "C" void f_802E76A8() {}

@@ -1,0 +1,5 @@
+// 0x802D94C4 EA::Allocator::GeneralAllocator::GetBlockInfoForChunk(EA::Allocator::GeneralAllocator::Chunk (224 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); mr 30,4; mr 31,5; lwz 0,0x4(30); rlwinm 28,0,0,0,28; rlwinm 27,0,0,30,30; add 9,30,28; lwz 0,0x4(9); andi. 11,0,1; beq 1f; addi 29,30,8; mr 4,29; bl _s802D94C4_0; cmpwi 27,0; beq 0f; li 9,2; li 11,1; stb 9,0x10(31); lwz 0,0x0(30); subf 0,0,30; stw 0,0x0(31); lwz 9,0x0(30); stw 11,0x14(31); add 9,9,28; stw 29,0x8(31); addi 9,9,16; stw 3,0xc(31); stw 9,0x4(31); b 2f; 0:; li 0,2; stw 27,0x14(31); stb 0,0x10(31); stw 30,0x0(31); stw 28,0x4(31); stw 29,0x8(31); stw 3,0xc(31); b 2f; 1:; addi 9,30,16; li 0,4; stb 0,0x10(31); stw 28,0x4(31); stw 9,0x8(31); stw 30,0x0(31); lwz 9,0x4(30); stw 11,0x14(31); rlwinm 9,9,0,0,28; addi 9,9,-16; stw 9,0xc(31); 2:; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
+extern "C" void _s802D94C4_0();
+extern "C" void f_802D94C4() {}

@@ -1,0 +1,5 @@
+// 0x802CAE68 EMat4::Ortho(float, (228 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stfd f26,0x10(1); stfd f27,0x18(1); stfd f28,0x20(1); stfd f29,0x28(1); stfd f30,0x30(1); stfd f31,0x38(1); stmw 30,0x8(1); stw 0,0x44(1); mr 30,3; fmr f26,f1; fmr f28,f2; fmr f27,f3; fmr f31,f4; fmr f30,f6; fmr f29,f5; bl _s802CAE68_0; lis 9,-32702; fadds f13,f31,f27; lfs f11,-7412(9); fsubs f31,f31,f27; lis 11,-32702; fneg f13,f13; fsubs f29,f30,f29; lfs f10,-7404(11); fadds f0,f28,f26; lis 9,-32702; fdivs f13,f13,f31; lfs f12,-7408(9); mr 3,30; stfs f12,0x3c(30); fsubs f28,f28,f26; stfs f13,0x34(30); fdivs f31,f11,f31; fneg f0,f0; stfs f31,0x14(30); fneg f30,f30; fdivs f0,f0,f28; fdivs f30,f30,f29; stfs f0,0x30(30); fdivs f10,f10,f29; stfs f30,0x38(30); fdivs f11,f11,f28; stfs f10,0x28(30); stfs f11,0x0(30); lwz 0,0x44(1); mtspr 8,0; lmw 30,0x8(1); lfd f26,0x10(1); lfd f27,0x18(1); lfd f28,0x20(1); lfd f29,0x28(1); lfd f30,0x30(1); lfd f31,0x38(1); addi 1,1,64"
+extern "C" void _s802CAE68_0();
+extern "C" void f_802CAE68() {}

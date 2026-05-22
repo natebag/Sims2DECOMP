@@ -1,0 +1,4 @@
+// 0x80076DA4 SkinCompositor::GetFinalReflectionMask(void) (208 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); stmw 29,0x14(1); mr 31,3; li 9,0; lhz 0,0x0(31); cmplw 9,0; bge 3f; 0:; rlwinm 0,0,0,16,31; li 3,0; mullw 30,9,0; cmplw 3,0; addi 29,9,1; bge 2f; addi 12,1,8; 1:; lwz 5,0xc(31); add 7,30,3; rlwinm 6,7,2,0,29; lwz 4,0x20(31); lwzx 9,6,5; addi 0,3,1; rlwinm 3,0,0,16,31; rlwinm 8,9,16,24,31; rlwinm 10,9,24,24,31; rlwinm 11,9,8,24,31; stb 11,0x8(1); rlwinm 9,9,0,24,31; stb 9,0x3(12); stb 8,0x1(12); stb 10,0x2(12); rlwinm 8,8,16,0,15; rlwinm 10,10,8,0,23; lbzx 0,4,7; rlwinm 0,0,0,24,26; or 9,9,0; stb 9,0x3(12); rlwinm 9,9,0,24,31; lbz 0,0x8(1); rlwinm 0,0,24,0,7; or 0,0,8; or 0,0,10; or 0,0,9; stwx 0,6,5; lhz 9,0x0(31); cmplw 3,9; blt 1b; 2:; lhz 0,0x0(31); rlwinm 9,29,0,16,31; cmplw 9,0; blt 0b; 3:; lmw 29,0x14(1); addi 1,1,32"
+extern "C" void f_80076DA4() {}

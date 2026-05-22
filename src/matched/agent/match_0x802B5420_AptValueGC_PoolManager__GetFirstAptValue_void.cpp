@@ -1,0 +1,4 @@
+// 0x802B5420 AptValueGC_PoolManager::GetFirstAptValue(void) (204 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lwz 11,0x4(3); lbz 8,-21327(13); 0:; addi 3,11,12; mr 10,3; b 8f; 1:; rlwinm 0,8,0,24,31; lbz 9,-21327(13); cmpwi 0,4; bne 2f; lwz 0,0x4(3); rlwinm 0,0,1,31,31; b 4f; 2:; cmpwi 0,0; bne 3f; lwz 0,0x0(3); rlwinm 0,0,1,31,31; b 4f; 3:; li 0,0; 4:; cmpwi 0,0; bnelr; rlwinm 0,9,0,24,31; cmpwi 0,4; bne 5f; lwz 0,0x4(3); rlwinm 0,0,0,1,31; b 7f; 5:; cmpwi 0,0; bne 6f; lwz 0,0x0(3); rlwinm 0,0,0,1,31; b 7f; 6:; li 0,0; 7:; add 3,3,0; 8:; cmplw 3,10; li 0,0; blt 9f; lwz 0,0x8(11); lwz 9,0x4(11); subf 9,0,9; addi 9,9,12; add 9,11,9; subfc 0,9,3; subfe 0,0,0; neg 0,0; 9:; cmpwi 0,0; bne 1b; lwz 11,0x0(11); cmpwi 11,0; bne 0b; li 3,0"
+extern "C" int f_802B5420() {}

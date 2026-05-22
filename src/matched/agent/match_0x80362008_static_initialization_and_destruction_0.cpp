@@ -1,0 +1,4 @@
+// 0x80362008 __static_initialization_and_destruction_0 (180 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); stmw 30,0x8(1); li 0,0; ori 0,0,65535; cmpw 4,0; bne 0f; cmpwi 3,0; beq 0f; lis 11,-32702; lis 9,-32702; lfs f13,0x2ec8(11); lis 30,-32690; lfs f0,0x2ec4(9); addi 7,30,-7008; stfs f13,0xc(7); lis 6,-32690; stfs f0,-7072(6); addi 9,6,-7072; stfs f0,0xc(9); lis 5,-32690; stfs f13,-7056(5); addi 11,5,-7056; stfs f0,0xc(11); lis 4,-32690; stfs f0,-7040(4); addi 10,4,-7040; stfs f0,0xc(10); lis 3,-32690; stfs f0,-7024(3); addi 8,3,-7024; stfs f0,0xc(8); stfs f0,-7008(30); stfs f0,0x8(7); stfs f0,0x4(9); stfs f0,0x8(9); stfs f0,0x4(11); stfs f0,0x8(11); stfs f13,0x4(10); stfs f0,0x8(10); stfs f0,0x4(8); stfs f13,0x8(8); stfs f0,0x4(7); 0:; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void f_80362008() {}

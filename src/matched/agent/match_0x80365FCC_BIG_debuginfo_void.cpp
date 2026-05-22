@@ -1,0 +1,5 @@
+// 0x80365FCC BIG_debuginfo(void (256 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 30,3; mr 31,4; mr 29,5; bl _s80365FCC_0; li 28,0; add 30,30,3; lbz 9,-8(30); addi 10,30,-8; addi 0,9,-65; cmplwi 0,25; ble 0f; addi 0,9,-97; cmplwi 0,25; bgt 2f; 0:; lbz 9,0x1(10); addi 0,9,-48; cmplwi 0,9; bgt 2f; lbz 11,0x2(10); addi 0,11,-48; cmplwi 0,9; bgt 2f; lbz 10,0x3(10); addi 0,10,-48; cmplwi 0,9; bgt 2f; li 28,8; cmpwi 31,0; beq 1f; extsb 9,9; extsb 11,11; addi 9,9,-48; addi 11,11,-48; mulli 9,9,100; extsb 0,10; mulli 11,11,10; add 9,9,11; addi 9,9,-48; add 9,9,0; stw 9,0x0(31); 1:; cmpwi 29,0; beq 2f; addi 11,30,-4; lbz 0,-4(30); lbz 9,0x1(11); lbz 10,0x2(11); rlwinm 0,0,24,0,7; rlwinm 9,9,16,0,15; lbz 8,0x3(11); or 0,0,9; rlwinm 10,10,8,0,23; or 0,0,10; or 0,0,8; stw 0,0x0(29); 2:; mr 3,28; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void _s80365FCC_0();
+extern "C" void f_80365FCC() {}

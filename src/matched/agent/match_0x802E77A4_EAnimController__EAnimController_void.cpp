@@ -1,0 +1,5 @@
+// 0x802E77A4 EAnimController::EAnimController(void) (224 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 31,3; li 30,0; stw 30,0x24(31); addi 9,31,72; stw 30,0x4(9); li 28,1; stw 30,0x48(31); li 0,2; stw 28,0x8(9); li 29,-1; stw 0,0x0(31); lwz 3,0x24(31); stw 29,0x8(31); stw 30,0x6c(31); cmpwi 3,0; stw 30,0x38(31); stw 30,0x3c(31); stw 30,0x40(31); stw 30,0x44(31); stw 30,0x70(31); stw 30,0xc(31); stw 30,0x10(31); stw 30,0x14(31); stw 30,0x18(31); stw 30,0x1c(31); stw 30,0x20(31); beq 0f; bl _s802E77A4_0; stw 30,0x24(31); 0:; lis 9,-32702; stw 29,0x28(31); lfs f0,-4704(9); mr 3,31; stw 28,0x60(31); stfs f0,0x58(31); stw 30,0x74(31); stw 30,0x24(31); stw 29,0x34(31); stw 29,0x30(31); stw 29,0x2c(31); stfs f0,0x54(31); stw 30,0x5c(31); stw 30,0x18(31); stw 30,0x64(31); stw 30,0x68(31); stw 30,0x20(31); stw 30,0x1c(31); lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void _s802E77A4_0();
+extern "C" void f_802E77A4() {}

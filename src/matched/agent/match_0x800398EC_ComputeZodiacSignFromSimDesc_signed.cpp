@@ -1,0 +1,5 @@
+// 0x800398EC ComputeZodiacSignFromSimDesc(signed (244 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stw 0,0x2c(1); lbz 0,0x0(3); lbz 9,0x1(3); lis 5,17200; extsb 0,0; mr 8,10; xoris 0,0,32768; extsb 9,9; stw 0,0x24(1); xoris 9,9,32768; lbz 11,0x2(3); mr 7,10; stw 5,0x20(1); mr 6,10; extsb 11,11; lbz 0,0x3(3); lfd f12,0x20(1); xoris 11,11,32768; stw 9,0x24(1); extsb 0,0; lis 9,-32707; xoris 0,0,32768; stw 5,0x20(1); mr 4,10; lfd f11,0x1838(9); lfd f13,0x20(1); stw 11,0x24(1); fsub f12,f12,f11; lbz 10,0x4(3); fsub f13,f13,f11; stw 5,0x20(1); frsp f13,f13; extsb 10,10; stfs f13,0xc(1); lfd f0,0x20(1); xoris 10,10,32768; stw 0,0x24(1); frsp f12,f12; fsub f0,f0,f11; addi 3,1,8; stw 5,0x20(1); frsp f0,f0; stfs f0,0x10(1); lfd f13,0x20(1); stw 10,0x24(1); fsub f13,f13,f11; stfs f12,0x8(1); stw 5,0x20(1); frsp f13,f13; stfs f13,0x14(1); lfd f0,0x20(1); fsub f0,f0,f11; frsp f0,f0; stfs f0,0x18(1); bl _s800398EC_0; lwz 0,0x2c(1); mtspr 8,0; addi 1,1,40"
+extern "C" void _s800398EC_0();
+extern "C" void f_800398EC() {}

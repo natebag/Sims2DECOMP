@@ -1,0 +1,4 @@
+// 0x803C95A8 TArray<EAnimEvent, (196 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="addi 8,5,-1; cmpwi 5,0; beqlr; 0:; addi 4,4,80; addi 3,3,80; lwz 11,-80(4); lwz 12,-76(4); cmpwi 8,0; addi 8,8,-1; stw 11,-80(3); stw 12,-76(3); lwz 9,-72(4); lwz 10,-68(4); stw 9,-72(3); stw 10,-68(3); lwz 11,-64(4); lwz 12,-60(4); stw 11,-64(3); stw 12,-60(3); lwz 9,-56(4); lwz 10,-52(4); stw 9,-56(3); stw 10,-52(3); lwz 11,-48(4); lwz 12,-44(4); stw 11,-48(3); stw 12,-44(3); lwz 9,-40(4); lwz 10,-36(4); stw 9,-40(3); stw 10,-36(3); lwz 11,-32(4); lwz 12,-28(4); stw 11,-32(3); stw 12,-28(3); lwz 9,-24(4); lwz 10,-20(4); stw 9,-24(3); stw 10,-20(3); lwz 0,-16(4); stw 0,-16(3); lwz 9,-12(4); stw 9,-12(3); lwz 0,-8(4); stw 0,-8(3); lwz 9,-4(4); stw 9,-4(3); bne 0b"
+extern "C" void f_803C95A8() {}

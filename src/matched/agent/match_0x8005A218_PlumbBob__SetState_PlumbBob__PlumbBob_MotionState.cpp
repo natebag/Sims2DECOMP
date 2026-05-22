@@ -1,0 +1,4 @@
+// 0x8005A218 PlumbBob::SetState(PlumbBob::PlumbBob_MotionState) (200 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); lwz 0,0x158(3); cmpw 4,0; beq 0f; stw 4,0x158(3); cmpwi 4,6; bgt 0f; cmpwi 4,5; blt 0f; lwz 0,0x0(3); lis 7,-32707; lwz 6,0x4(3); addi 11,3,296; lwz 8,0x8(3); lis 10,-32696; stw 0,0x128(3); addi 10,10,21920; lfs f13,0x4210(7); addi 9,1,8; stw 6,0x4(11); addi 7,3,12; stw 8,0x8(11); addi 5,3,24; stfs f13,0x24(3); li 6,0; stfs f13,0x8(1); lfs f0,0x4c(10); stfs f13,0x4(9); stfs f0,0x8(9); lwz 8,0x4(9); lwz 0,0x8(1); lwz 11,0x8(9); stw 0,0xc(3); stw 11,0x8(7); stw 8,0x4(7); stfs f13,0x8(1); lfs f0,0x50(10); stfs f13,0x4(9); stfs f0,0x28(3); lfs f0,0x54(10); lwz 8,0x4(9); stfs f0,0x8(9); lwz 0,0x8(1); lwz 11,0x8(9); stw 0,0x18(3); stw 11,0x8(5); stw 8,0x4(5); stw 6,0x168(3); 0:; addi 1,1,24"
+extern "C" void f_8005A218() {}

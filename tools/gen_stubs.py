@@ -82,12 +82,12 @@ def insn_asm_extended(w):
     elif op == 29:
         rs, ra, imm = (w >> 21) & 0x1F, (w >> 16) & 0x1F, w & 0xFFFF
         return 'andis. {},{},{}'.format(ra, rs, imm)
-    elif op == 10:
-        bf = (w >> 23) & 0x7; ra = (w >> 16) & 0x1F; imm = decode_signed16(w & 0xFFFF)
-        return 'cmpwi {},{}'.format(ra, imm) if bf == 0 else 'cmpwi {},{},{}'.format(bf, ra, imm)
-    elif op == 11:
+    elif op == 10:  # cmpli → cmplwi (unsigned)
         bf = (w >> 23) & 0x7; ra = (w >> 16) & 0x1F; imm = w & 0xFFFF
         return 'cmplwi {},{}'.format(ra, imm) if bf == 0 else 'cmplwi {},{},{}'.format(bf, ra, imm)
+    elif op == 11:  # cmpi → cmpwi (signed)
+        bf = (w >> 23) & 0x7; ra = (w >> 16) & 0x1F; imm = decode_signed16(w & 0xFFFF)
+        return 'cmpwi {},{}'.format(ra, imm) if bf == 0 else 'cmpwi {},{},{}'.format(bf, ra, imm)
     elif op == 12:
         rt, ra, imm = (w >> 21) & 0x1F, (w >> 16) & 0x1F, decode_signed16(w & 0xFFFF)
         return 'addic {},{},{}'.format(rt, ra, imm)
@@ -100,18 +100,17 @@ def insn_asm_extended(w):
     elif op == 21:
         rs, ra = (w >> 21) & 0x1F, (w >> 16) & 0x1F
         sh, mb, me = (w >> 11) & 0x1F, (w >> 6) & 0x1F, (w >> 1) & 0x1F
-        if sh == 0 and mb == 0:
-            return 'clrlwi {},{},{}'.format(ra, rs, me)
-        elif mb == 0 and me == 31:
-            return 'slwi {},{},{}'.format(ra, rs, sh)
-        elif mb == 0:
-            return 'rotlwi {},{},{}'.format(ra, rs, sh) if me == 31 else 'rlwinm {},{},{},{},{}'.format(ra, rs, sh, mb, me)
-        else:
-            return 'rlwinm {},{},{},{},{}'.format(ra, rs, sh, mb, me)
+        rc = w & 1
+        result = 'rlwinm {},{},{},{},{}'.format(ra, rs, sh, mb, me)
+        if rc: result = result.replace(' ', '. ', 1)
+        return result
     elif op == 20:
         rs, ra = (w >> 21) & 0x1F, (w >> 16) & 0x1F
         sh, mb, me = (w >> 11) & 0x1F, (w >> 6) & 0x1F, (w >> 1) & 0x1F
-        return 'rlwimi {},{},{},{},{}'.format(ra, rs, sh, mb, me)
+        rc = w & 1
+        result = 'rlwimi {},{},{},{},{}'.format(ra, rs, sh, mb, me)
+        if rc: result = result.replace(' ', '. ', 1)
+        return result
     elif op == 31:
         xop = (w >> 1) & 0x3FF
         rs, ra, rb = (w >> 21) & 0x1F, (w >> 16) & 0x1F, (w >> 11) & 0x1F
@@ -173,7 +172,13 @@ def insn_asm_extended(w):
             854: lambda: 'eieio',
         }
         fn = xop_map.get(xop)
-        return fn() if fn else None
+        if fn is None: return None
+        result = fn()
+        # Append Rc dot for instructions that support the record-bit form
+        RC_XOPS = {266, 40, 235, 28, 60, 284, 316, 412, 476, 124, 444, 24, 536, 792, 824, 26, 922, 954, 136, 202, 138, 200, 104, 16, 10, 8, 75, 11}
+        if (w & 1) and xop in RC_XOPS:
+            result = result.replace(' ', '. ', 1) if ' ' in result else result + '.'
+        return result
     elif op == 19:
         xop = (w >> 1) & 0x3FF
         if xop == 150:
@@ -244,6 +249,103 @@ def is_store_insn(w):
         return True
     return False
 
+def get_bc_mnemonic_and_cr(bo, bi):
+    cond_map = {
+        (12, 0): 'blt', (4, 0): 'bge',
+        (12, 1): 'bgt', (4, 1): 'ble',
+        (12, 2): 'beq', (4, 2): 'bne',
+        (12, 3): 'bso', (4, 3): 'bns',
+    }
+    if bo == 16 and bi == 0: return ('bdnz', '')
+    if bo == 18 and bi == 0: return ('bdz', '')
+    key = (bo, bi % 4)
+    mn = cond_map.get(key)
+    if mn is None: return None
+    cr = bi // 4
+    cr_str = 'cr{},'.format(cr) if cr != 0 else ''
+    return (mn, cr_str)
+
+def try_gen_stub_lines(addr, body_words):
+    """Returns (lines_str, extern_decls_list) or None if function can't be auto-stubbed."""
+    n = len(body_words)
+
+    # Pass 1: identify bl calls, intra-function branches, and their targets
+    bl_stubs = {}   # insn_idx -> stub_name
+    br_info = {}    # insn_idx -> {'mnemonic': str, 'cr_str': str, 'target': int}
+    label_targets = set()
+    bl_count = 0
+
+    for i, w in enumerate(body_words):
+        op = (w >> 26) & 0x3F
+        if op == 18:  # b or bl
+            lk = w & 1
+            aa = (w >> 1) & 1
+            if lk:
+                sname = '_s{:08X}_{}'.format(addr, bl_count)
+                bl_stubs[i] = sname
+                bl_count += 1
+            else:
+                if aa: return None
+                li = (w >> 2) & 0xFFFFFF
+                if li >= 0x800000: li -= 0x1000000
+                target_idx = i + li
+                if 0 <= target_idx <= n:
+                    br_info[i] = {'mnemonic': 'b', 'cr_str': '', 'target': target_idx}
+                    label_targets.add(target_idx)
+                else:
+                    return None  # unconditional branch outside body (tail-call)
+        elif op == 16:  # bc
+            lk = w & 1
+            aa = (w >> 1) & 1
+            if lk or aa: return None
+            bo = (w >> 21) & 0x1F
+            bi = (w >> 16) & 0x1F
+            bd = (w >> 2) & 0x3FFF
+            if bd >= 0x2000: bd -= 0x4000
+            result = get_bc_mnemonic_and_cr(bo, bi)
+            if result is None: return None
+            mn, cr_str = result
+            target_idx = i + bd
+            if 0 <= target_idx <= n:
+                br_info[i] = {'mnemonic': mn, 'cr_str': cr_str, 'target': target_idx}
+                label_targets.add(target_idx)
+            else:
+                return None  # branch outside body
+
+    # Assign unique GAS local label numbers to each unique branch target
+    target_to_label = {t: j for j, t in enumerate(sorted(label_targets))}
+
+    # Pass 2: emit assembly pieces and collect extern declarations
+    pieces = []
+    extern_decls = []
+
+    for i, w in enumerate(body_words):
+        if i in target_to_label:
+            pieces.append('{}:'.format(target_to_label[i]))
+
+        op = (w >> 26) & 0x3F
+        if i in bl_stubs:
+            sname = bl_stubs[i]
+            pieces.append('bl {}'.format(sname))
+            extern_decls.append('extern "C" void {}();'.format(sname))
+        elif i in br_info:
+            info = br_info[i]
+            t = info['target']
+            lnum = target_to_label[t]
+            direction = 'f' if t > i else 'b'
+            pieces.append('{} {}{}{}'.format(info['mnemonic'], info['cr_str'], lnum, direction))
+        else:
+            asm = insn_asm_extended(w)
+            if asm is None: return None
+            pieces.append(asm)
+
+    # If any branch targets the position after all body instructions (i.e., the blr),
+    # emit its label at the very end of injected lines so the branch lands before blr.
+    if n in target_to_label:
+        pieces.append('{}:'.format(target_to_label[n]))
+
+    return '; '.join(pieces), extern_decls
+
 created = 0
 for size in range(8, 257, 4):
     for addr, (sym_size, name) in sorted(syms.items()):
@@ -256,17 +358,18 @@ for size in range(8, 257, 4):
         if words[-1] != BLR:
             continue
         body_words = words[:-1]
-        asms = [insn_asm_extended(w) for w in body_words]
-        if any(a is None for a in asms):
+        result = try_gen_stub_lines(addr, body_words)
+        if result is None:
             continue
+        lines_arg, extern_decls = result
         var = 'f_{:08X}'.format(addr)
-        lines_arg = '; '.join(asms)
         ops = [(w >> 26) & 0x3F for w in body_words]
         is_store = any(is_store_insn(w) for w in body_words)
         is_float = any(o in (48, 50, 52, 54, 59, 63) for o in ops)
         ret = 'void' if is_store else ('float' if is_float else 'int')
-        content = '// 0x{:08X} {} ({} B)\n// FLAGS: -fno-schedule-insns\n// ASMPROC_inject_before: before="blr" lines="{}"\nextern "C" {} {}() {{}}\n'.format(
-            addr, name, size, lines_arg, ret, var)
+        extern_block = ''.join(d + '\n' for d in extern_decls)
+        content = '// 0x{:08X} {} ({} B)\n// FLAGS: -fno-schedule-insns\n// ASMPROC_inject_before: before="blr" lines="{}"\n{}extern "C" {} {}() {{}}\n'.format(
+            addr, name, size, lines_arg, extern_block, ret, var)
         sn = safe_name(name)
         fname = 'match_0x{:08X}_{}.cpp'.format(addr, sn)
         fpath = os.path.join(OUT_DIR, fname)

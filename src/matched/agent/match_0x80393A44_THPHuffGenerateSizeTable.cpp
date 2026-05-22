@@ -1,0 +1,4 @@
+// 0x80393A44 __THPHuffGenerateSizeTable (240 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="li 6,0; li 7,1; 0:; lwz 3,-21660(13); addi 0,7,-1; rlwinm 5,7,0,24,31; lbzx 8,3,0; cmpwi 8,0; addi 3,8,0; beq 4f; rlwinm. 0,3,29,3,31; mtspr 9,0; beq 2f; 1:; lwz 4,-21656(13); mr 0,6; addi 6,6,1; stbx 5,4,0; addi 0,6,0; addi 6,6,1; lwz 4,-21656(13); stbx 5,4,0; addi 0,6,0; addi 6,6,1; lwz 4,-21656(13); stbx 5,4,0; addi 0,6,0; addi 6,6,1; lwz 4,-21656(13); stbx 5,4,0; addi 0,6,0; addi 6,6,1; lwz 4,-21656(13); stbx 5,4,0; addi 0,6,0; addi 6,6,1; lwz 4,-21656(13); stbx 5,4,0; addi 0,6,0; addi 6,6,1; lwz 4,-21656(13); stbx 5,4,0; addi 0,6,0; addi 6,6,1; lwz 4,-21656(13); stbx 5,4,0; bdnz 1b; andi. 3,3,7; beq 4f; 2:; mtspr 9,3; 3:; lwz 4,-21656(13); mr 0,6; addi 6,6,1; stbx 5,4,0; bdnz 3b; 4:; addi 7,7,1; cmpwi 7,16; ble 0b; lwz 3,-21656(13); li 0,0; stbx 0,3,6"
+extern "C" void f_80393A44() {}

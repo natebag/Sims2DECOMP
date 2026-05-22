@@ -1,0 +1,4 @@
+// 0x80362F28 ECullPlane::SetPlane(EVec4 (236 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); stmw 28,0x30(1); lfs f0,0x0(4); addi 10,1,8; lis 9,-32702; addi 8,1,20; stfs f0,0x0(3); neg 0,10; add 6,10,0; add 7,8,0; lfs f0,0x4(4); li 0,3; mtspr 9,0; addi 29,3,19; stfs f0,0x4(3); addi 30,3,16; li 5,0; mr 31,6; lfs f0,0x8(4); mr 12,7; li 28,0; stfs f0,0x8(3); lfs f13,0xc(4); stfs f13,0xc(3); lfs f0,0x2f40(9); stfs f0,0x20(1); fmr f13,f0; stfs f0,0x28(1); stfs f0,0x24(1); lwz 0,0x20(1); lwz 9,0x24(1); lwz 11,0x28(1); stw 0,0x14(1); stw 9,0x4(8); stw 11,0x8(8); lwz 0,0x14(1); stw 0,0x8(1); stw 9,0x4(10); stw 11,0x8(10); 0:; lfsx f0,28,3; fcmpu 0,f0,f13; ble 1f; srawi 0,12,2; srawi 9,31,2; b 2f; 1:; srawi 0,6,2; srawi 9,7,2; 2:; stbx 0,29,5; stbx 9,30,5; addi 7,7,4; addi 6,6,4; addi 31,31,4; addi 12,12,4; addi 28,28,4; addi 5,5,1; bdnz 0b; lmw 28,0x30(1); addi 1,1,64"
+extern "C" void f_80362F28() {}

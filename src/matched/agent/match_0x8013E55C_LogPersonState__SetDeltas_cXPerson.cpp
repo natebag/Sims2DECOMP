@@ -1,0 +1,5 @@
+// 0x8013E55C LogPersonState::SetDeltas(cXPerson (200 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stfd f31,0x38(1); stmw 30,0x30(1); stw 0,0x44(1); mr 30,3; addi 3,1,8; bl _s8013E55C_0; lfs f10,0xc(1); lfs f8,0x10(1); lfs f6,0x14(1); lfs f0,0x4(30); lfs f13,0x8(30); lfs f12,0xc(30); fsubs f10,f10,f0; fsubs f8,f8,f13; lfs f7,0x18(1); fsubs f6,f6,f12; lfs f9,0x1c(1); lfs f11,0x20(1); lfs f12,0x24(1); lfs f13,0x28(1); lfs f0,0x2c(1); lfs f5,0x10(30); lfs f4,0x14(30); lfs f3,0x18(30); fsubs f7,f7,f5; lfs f2,0x1c(30); fsubs f9,f9,f4; lfs f1,0x20(30); fsubs f11,f11,f3; lfs f31,0x24(30); fsubs f12,f12,f2; fsubs f13,f13,f1; stfs f10,0x4(30); fsubs f0,f0,f31; stfs f8,0x8(30); stfs f0,0x24(30); stfs f6,0xc(30); stfs f7,0x10(30); stfs f9,0x14(30); stfs f11,0x18(30); stfs f12,0x1c(30); stfs f13,0x20(30); lwz 0,0x44(1); mtspr 8,0; lmw 30,0x30(1); lfd f31,0x38(1); addi 1,1,64"
+extern "C" void _s8013E55C_0();
+extern "C" void f_8013E55C() {}

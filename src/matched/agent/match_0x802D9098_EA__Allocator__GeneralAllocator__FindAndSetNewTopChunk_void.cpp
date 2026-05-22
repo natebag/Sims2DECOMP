@@ -1,0 +1,4 @@
+// 0x802D9098 EA::Allocator::GeneralAllocator::FindAndSetNewTopChunk(void) (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); stw 31,0xc(1); mr 6,3; li 5,0; lwz 7,0x46c(6); addi 0,6,1100; addi 3,6,52; cmpw 7,0; beq 6f; mr 4,0; 0:; lwz 9,0x4(7); lwz 11,0x0(7); add 9,7,9; addi 9,9,-16; cmplw 11,9; bge 5f; 1:; lwz 0,0x4(11); rlwinm 10,0,0,0,28; add 8,11,10; lwz 0,0x4(8); andi. 31,0,1; bne 4f; cmplwi 10,8192; bgt 2f; cmpw 8,9; bne 3f; 2:; mr 3,11; b 6f; 3:; cmplw 10,5; ble 4f; mr 3,11; mr 5,10; 4:; mr 11,8; cmplw 11,9; blt 1b; 5:; lwz 7,0x20(7); cmpw 7,4; bne 0b; 6:; addi 0,6,52; cmpw 3,0; beq 7f; lwz 0,0xc(3); lwz 9,0x8(3); stw 0,0xc(9); lwz 11,0xc(3); lwz 0,0x8(3); stw 0,0x8(11); stw 3,0xc(3); stw 3,0x8(3); 7:; stw 3,0x444(6); lwz 31,0xc(1); addi 1,1,16"
+extern "C" void f_802D9098() {}

@@ -1,0 +1,5 @@
+// 0x8033ECD8 ENgcRenderer::PushAndClearViewport(void) (240 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 30,0x10(1); stw 0,0x1c(1); mr 30,3; lwz 3,0x4d8(30); bl _s8033ECD8_0; lis 9,-32702; lwz 11,0x4d8(30); lfs f12,0x1d40(9); lis 9,-32702; lis 7,17200; stfs f12,0x9b0(11); mr 8,10; lfd f13,0x1d48(9); lis 11,-32702; lwz 9,0x4d8(30); li 6,0; lfs f11,0x1d50(11); stfs f12,0x9b4(9); lhz 0,0x372(30); lwz 9,0x4d8(30); stw 0,0xc(1); stw 7,0x8(1); lfd f0,0x8(1); fsub f0,f0,f13; frsp f0,f0; stfs f0,0x9b8(9); lhz 0,0x374(30); lwz 11,0x4d8(30); stw 0,0xc(1); stw 7,0x8(1); lfd f0,0x8(1); fsub f0,f0,f13; frsp f0,f0; stfs f0,0x9bc(11); lwz 9,0x4d8(30); stfs f12,0x9c0(9); lwz 11,0x4d8(30); stfs f11,0x9c4(11); lwz 9,0x4d8(30); stw 6,0x9c8(9); lwz 11,0x4d8(30); stw 6,0x9cc(11); lwz 9,0x4d8(30); lhz 0,0x372(30); stw 0,0x9d0(9); lhz 0,0x374(30); lwz 11,0x4d8(30); stw 0,0x9d4(11); lwz 9,0x4d8(30); lwz 0,0x6cc(9); oris 0,0,32768; ori 0,0,1536; stw 0,0x6cc(9); lwz 0,0x1c(1); mtspr 8,0; lmw 30,0x10(1); addi 1,1,24"
+extern "C" void _s8033ECD8_0();
+extern "C" void f_8033ECD8() {}

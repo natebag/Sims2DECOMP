@@ -1,0 +1,4 @@
+// 0x80375C74 __ARReadDMA (176 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 6,-13312; lhz 0,0x5020(6); rlwinm 7,0,0,0,21; rlwinm 0,3,16,16,31; or 0,7,0; sth 0,0x5020(6); rlwinm 0,3,0,16,31; lhz 7,0x5022(6); rlwinm 3,7,0,27,15; or 0,3,0; sth 0,0x5022(6); rlwinm 0,4,16,16,31; lhz 3,0x5024(6); rlwinm 3,3,0,0,21; or 0,3,0; sth 0,0x5024(6); rlwinm 0,4,0,16,31; rlwinm 3,5,16,16,31; lhz 4,0x5026(6); rlwinm 4,4,0,27,15; or 0,4,0; sth 0,0x5026(6); rlwinm 0,5,0,16,31; lhz 4,0x5028(6); ori 4,4,32768; sth 4,0x5028(6); lhz 4,0x5028(6); rlwinm 4,4,0,0,21; or 3,4,3; sth 3,0x5028(6); lhz 3,0x502a(6); rlwinm 3,3,0,27,15; or 0,3,0; sth 0,0x502a(6); 0:; addi 4,6,20480; lhzu 0,0xa(4); rlwinm. 0,0,0,22,22; bne 0b; lhz 3,0x0(4); li 0,-137; and 0,3,0; ori 0,0,32; sth 0,0x0(4)"
+extern "C" void f_80375C74() {}

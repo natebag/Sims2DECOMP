@@ -1,0 +1,4 @@
+// 0x802091BC InteractorModule::Interactor::Interactor(void) (196 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); lis 11,-32704; lis 9,-32697; mr 8,3; lfs f0,-12728(11); li 0,0; addi 9,9,-32144; stw 9,0x5c(8); addi 11,8,8; stw 0,0x0(8); addi 9,8,20; stw 0,0x4(8); addi 10,8,32; stfs f0,0x4(11); li 7,1; stfs f0,0x8(11); addi 6,1,8; stfs f0,0x8(8); stfs f0,0x4(9); stfs f0,0x8(9); stfs f0,0x14(8); stfs f0,0x4(10); stfs f0,0x8(10); stfs f0,0x20(8); stw 0,0x30(8); stw 0,0x2c(8); 0:; cmpwi 7,0; addi 7,7,-1; bne 0b; lis 9,-32704; li 11,0; lfs f0,-12728(9); mr 3,8; stw 11,0x44(8); stfs f0,0x4(6); stfs f0,0x8(1); stw 11,0x4c(8); lwz 0,0x8(1); lwz 9,0x4(6); stw 0,0x3c(8); stw 9,0x38(8); stfs f0,0x54(8); stw 0,0x34(8); stfs f0,0x50(8); stfs f0,0x58(8); stw 9,0x40(8); stw 11,0x48(8); addi 1,1,16"
+extern "C" void f_802091BC() {}

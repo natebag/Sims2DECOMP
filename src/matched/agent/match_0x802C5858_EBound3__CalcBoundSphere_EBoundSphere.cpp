@@ -1,0 +1,5 @@
+// 0x802C5858 EBound3::CalcBoundSphere(EBoundSphere (216 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 30,0x28(1); stw 0,0x34(1); mr 10,3; lis 9,-32702; addi 7,10,12; lfs f10,0xc(10); lfs f11,0x0(10); addi 8,1,8; lfs f8,0x4(7); mr 30,4; lfs f0,0x4(10); fadds f11,f11,f10; lfs f9,0x8(7); mr 3,8; lfs f12,0x8(10); fadds f0,f0,f8; lfs f13,-7572(9); stfs f11,0x18(1); fadds f12,f12,f9; stfs f0,0x1c(1); fmuls f10,f12,f13; fmuls f11,f11,f13; stfs f10,0x10(1); fmuls f0,f0,f13; stfs f11,0x8(1); stfs f0,0xc(1); stfs f12,0x20(1); lwz 0,0x8(1); lwz 9,0x4(8); lwz 11,0x8(8); stw 9,0x4(30); stw 11,0x8(30); stw 0,0x0(30); lfs f13,0x4(30); lfs f9,0x8(7); lfs f11,0xc(10); lfs f10,0x4(7); lfs f0,0x8(30); lfs f12,0x0(30); fsubs f13,f13,f10; fsubs f0,f0,f9; stfs f13,0xc(1); fsubs f12,f12,f11; stfs f0,0x10(1); stfs f12,0x8(1); bl _s802C5858_0; stfs f1,0xc(30); lwz 0,0x34(1); mtspr 8,0; lmw 30,0x28(1); addi 1,1,48"
+extern "C" void _s802C5858_0();
+extern "C" void f_802C5858() {}

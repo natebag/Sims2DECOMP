@@ -1,0 +1,5 @@
+// 0x80066F00 SAnimator2::lockHandsUpCarryNodes(void) (64 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); lwz 9,0x8(3); lwz 9,0x358(9); cmpwi 9,0; lwz 3,0x8(3); lis 5,-32688; addi 5,5,-18056; li 4,2048; addi 3,3,820; bl _s80066F00_0; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
+extern "C" void _s80066F00_0();
+extern "C" void f_80066F00() {}

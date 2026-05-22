@@ -1,0 +1,4 @@
+// 0x80390228 GXSetPixelFmt (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lis 5,-32698; lwz 7,-17720(13); rlwinm 6,3,2,0,29; addi 0,5,-22880; lwz 5,0x1dc(7); add 6,0,6; lwz 0,0x0(6); addi 8,5,0; rlwimi 5,0,0,29,31; stw 5,0x1dc(7); lwz 0,0x1dc(7); rlwimi 0,4,3,26,28; stw 0,0x1dc(7); lwz 5,0x1dc(7); cmplw 8,5; beq 2f; li 0,97; lis 4,-13311; stb 0,-32768(4); cmpwi 3,2; stw 5,-32768(4); bne 0f; li 0,1; b 1f; 0:; li 0,0; 1:; lwz 5,-17720(13); lwz 4,0x204(5); rlwimi 4,0,9,22,22; stw 4,0x204(5); lwz 0,0x5ac(5); ori 0,0,4; stw 0,0x5ac(5); 2:; lwz 0,0x0(6); cmplwi 0,4; bne 3f; lwz 6,-17720(13); addi 0,3,-4; li 4,66; lwz 3,0x1d4(6); rlwimi 3,0,9,21,22; li 0,97; stw 3,0x1d4(6); lis 3,-13311; lwz 5,0x1d4(6); rlwimi 5,4,24,0,7; stw 5,0x1d4(6); stb 0,-32768(3); lwz 0,0x1d4(6); stw 0,-32768(3); 3:; lwz 3,-17720(13); li 0,0; sth 0,0x2(3)"
+extern "C" void f_80390228() {}

@@ -1,0 +1,5 @@
+// 0x8035FE54 ERTQuantize4D::MColormap(ERTQ4Node (244 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); mr 28,4; mr 30,3; lhz 0,0x3a(28); cmpwi 0,0; beq 4f; li 29,0; addi 31,28,26; 0:; lhz 0,0x3a(28); sraw 0,0,29; andi. 9,0,1; beq 3f; lhz 9,0x0(31); cmpwi 9,0; beq 1f; mulli 9,9,72; lwz 0,0x1008(30); add 4,0,9; b 2f; 1:; li 4,0; 2:; mr 3,30; bl _s8035FE54_0; 3:; addi 29,29,1; addi 31,31,2; cmplwi 29,15; ble 0b; 4:; lwz 9,0x14(28); cmpwi 9,0; beq 6f; lis 0,17200; stw 9,0xc(1); li 10,0; lis 9,-32702; stw 0,0x8(1); lfd f13,0x2e88(9); li 0,4; lfd f0,0x8(1); mtspr 9,0; fsub f0,f0,f13; frsp f13,f0; 5:; lfsx f0,10,28; lwz 9,0x1024(30); fdivs f0,f0,f13; rlwinm 9,9,4,0,27; add 9,9,30; addi 9,9,4192; stfsx f0,9,10; addi 10,10,4; bdnz 5b; lwz 9,0x1024(30); stb 9,0x45(28); addi 9,9,1; stw 9,0x1024(30); 6:; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
+extern "C" void _s8035FE54_0();
+extern "C" void f_8035FE54() {}

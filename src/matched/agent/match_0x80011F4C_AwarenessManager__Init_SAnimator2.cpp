@@ -1,0 +1,5 @@
+// 0x80011F4C AwarenessManager::Init(SAnimator2 (232 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stfd f31,0x18(1); stmw 30,0x10(1); stw 0,0x24(1); mr 30,3; addi 11,4,1548; stw 5,0x8(30); lis 9,-32707; stw 4,0x4(30); lfs f31,-9132(9); lwz 0,0x4(11); stw 0,0x24(30); lwz 9,0xc(11); stw 9,0x28(30); lfs f0,0xfc(4); stfs f0,0x2c(30); lfs f13,0x104(4); stfs f13,0x30(30); lwz 0,0x4(4); stw 0,0x34(30); lwz 9,0x8(4); stfs f31,0xc(30); stw 9,0x38(30); bl _s80011F4C_0; xoris 3,3,32768; stw 3,0xc(1); lis 0,17200; lis 11,-32707; lis 8,-32707; stw 0,0x8(1); lis 7,-32707; lfd f13,-9128(11); li 10,0; lfd f0,0x8(1); li 11,-1; lfs f12,-9120(8); fsub f0,f0,f13; lwz 0,0x0(30); lfs f11,-9116(7); frsp f0,f0; fmuls f0,f0,f12; rlwinm 0,0,0,21,19; fmuls f0,f0,f11; stw 11,0x14(30); stw 0,0x0(30); stfs f0,0x10(30); stw 10,0x40(30); stfs f31,0x3c(30); stw 10,0x18(30); stw 10,0x1c(30); stfs f31,0x20(30); lwz 0,0x24(1); mtspr 8,0; lmw 30,0x10(1); lfd f31,0x18(1); addi 1,1,32"
+extern "C" void _s80011F4C_0();
+extern "C" void f_80011F4C() {}

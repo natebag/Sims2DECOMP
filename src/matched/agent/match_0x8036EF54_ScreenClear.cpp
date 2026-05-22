@@ -1,0 +1,4 @@
+// 0x8036EF54 ScreenClear (248 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="rlwinm 7,4,0,16,31; rlwinm 5,5,0,16,31; li 8,0; b 5f; 0:; cmpwi 7,0; addi 4,7,1; rlwinm 4,4,31,1,31; ble 4f; rlwinm. 0,4,30,2,31; mtspr 9,0; beq 2f; 1:; lbz 0,0x0(6); stb 0,0x0(3); lbz 0,0x1(6); stb 0,0x1(3); lbz 0,0x0(6); stb 0,0x2(3); lbz 0,0x2(6); stb 0,0x3(3); lbz 0,0x0(6); stb 0,0x4(3); lbz 0,0x1(6); stb 0,0x5(3); lbz 0,0x0(6); stb 0,0x6(3); lbz 0,0x2(6); stb 0,0x7(3); lbz 0,0x0(6); stb 0,0x8(3); lbz 0,0x1(6); stb 0,0x9(3); lbz 0,0x0(6); stb 0,0xa(3); lbz 0,0x2(6); stb 0,0xb(3); lbz 0,0x0(6); stb 0,0xc(3); lbz 0,0x1(6); stb 0,0xd(3); lbz 0,0x0(6); stb 0,0xe(3); lbz 0,0x2(6); stb 0,0xf(3); addi 3,3,16; bdnz 1b; andi. 4,4,3; beq 4f; 2:; mtspr 9,4; 3:; lbz 0,0x0(6); stb 0,0x0(3); lbz 0,0x1(6); stb 0,0x1(3); lbz 0,0x0(6); stb 0,0x2(3); lbz 0,0x2(6); stb 0,0x3(3); addi 3,3,4; bdnz 3b; 4:; addi 8,8,1; 5:; cmpw 8,5; blt 0b"
+extern "C" void f_8036EF54() {}

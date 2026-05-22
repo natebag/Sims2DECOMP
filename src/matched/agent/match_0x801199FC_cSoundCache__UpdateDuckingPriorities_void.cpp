@@ -1,0 +1,4 @@
+// 0x801199FC cSoundCache::UpdateDuckingPriorities(void) (212 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="li 11,64; li 0,0; li 9,0; mtspr 9,11; stb 0,-31767(13); li 8,1; stw 9,-32128(13); stb 0,-31768(13); stb 0,-31766(13); stw 9,-31772(13); 0:; lwz 9,0x0(3); addi 3,3,4; cmpwi 9,0; beq 5f; lwz 0,0x34(9); cmpwi 0,0; beq 5f; lwz 11,0x0(9); lbz 0,0x1c(11); extsb 10,0; andi. 0,10,1; beq 1f; lbz 9,0x16(11); lbz 0,-31768(13); cmplw 9,0; ble 1f; stb 9,-31768(13); 1:; andi. 0,10,2; beq 2f; lbz 9,0x16(11); lbz 0,-31766(13); cmplw 9,0; ble 2f; stb 9,-31766(13); 2:; andi. 0,10,8; beq 3f; lbz 9,0x16(11); lbz 0,-31767(13); cmplw 9,0; ble 3f; stb 9,-31767(13); 3:; andi. 0,10,4; beq 4f; lbz 0,0x16(11); cmpwi 0,0; beq 4f; stw 8,-32128(13); 4:; lbz 0,0x1e(11); cmpwi 0,0; beq 5f; stw 8,-31772(13); 5:; bdnz 0b"
+extern "C" void f_801199FC() {}

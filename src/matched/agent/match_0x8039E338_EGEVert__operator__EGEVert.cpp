@@ -1,0 +1,4 @@
+// 0x8039E338 EGEVert::operator=(EGEVert (192 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lfs f13,0x0(4); li 0,4; mtspr 9,0; addi 11,3,16; stfs f13,0x0(3); addi 9,4,16; lfs f0,0x4(4); stfs f0,0x4(3); lfs f13,0x8(4); stfs f13,0x8(3); lfs f0,0xc(4); stfs f0,0xc(3); 0:; lwz 0,0x0(9); addi 9,9,4; stw 0,0x0(11); addi 11,11,4; bdnz 0b; lfs f0,0x20(4); addi 9,4,32; addi 11,3,32; li 0,4; stfs f0,0x20(3); mtspr 9,0; addi 7,4,64; addi 10,3,48; lfs f13,0x4(9); addi 4,4,48; addi 8,3,64; stfs f13,0x4(11); lfs f0,0x8(9); stfs f0,0x8(11); lfs f13,0xc(9); stfs f13,0xc(11); 1:; lwz 0,0x0(4); addi 4,4,4; stw 0,0x0(10); addi 10,10,4; bdnz 1b; li 0,4; mr 11,8; mtspr 9,0; mr 9,7; 2:; lwz 0,0x0(9); addi 9,9,4; stw 0,0x0(11); addi 11,11,4; bdnz 2b"
+extern "C" void f_8039E338() {}

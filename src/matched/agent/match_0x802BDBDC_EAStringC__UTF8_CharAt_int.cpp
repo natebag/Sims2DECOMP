@@ -1,0 +1,5 @@
+// 0x802BDBDC EAStringC::UTF8_CharAt(int) (256 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 30,0x10(1); stw 0,0x1c(1); mr. 30,4; bge 1f; li 3,-1; b 7f; 0:; li 9,0; b 4f; 1:; lwz 9,0x0(3); li 31,0; cmpw 31,30; addi 3,9,8; bge 3f; 2:; addi 4,1,8; bl _s802BDBDC_0; lwz 0,0x8(1); cmpwi 0,0; beq 0b; addi 31,31,1; cmpw 31,30; blt 2b; 3:; mr 9,3; 4:; cmpwi 9,0; li 3,-1; beq 7f; lbz 3,0x0(9); andi. 0,3,128; beq 7f; rlwinm 0,3,0,24,26; cmpwi 0,192; bne 5f; lbz 0,0x1(9); rlwinm 3,3,6,21,25; rlwinm 0,0,0,26,31; or 3,3,0; b 7f; 5:; rlwinm 0,3,0,24,27; cmpwi 0,224; bne 6f; lbz 0,0x1(9); rlwinm 3,3,12,16,19; lbz 10,0x2(9); rlwinm 0,0,6,20,25; or 3,3,0; rlwinm 9,10,0,26,31; or 3,3,9; b 7f; 6:; lbz 0,0x1(9); rlwinm 3,3,18,11,13; lbz 10,0x2(9); rlwinm 11,0,12,14,19; lbz 9,0x3(9); or 3,3,11; rlwinm 0,10,6,20,25; or 3,3,0; rlwinm 9,9,0,26,31; or 3,3,9; 7:; lwz 0,0x1c(1); mtspr 8,0; lmw 30,0x10(1); addi 1,1,24"
+extern "C" void _s802BDBDC_0();
+extern "C" void f_802BDBDC() {}

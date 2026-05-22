@@ -1,0 +1,4 @@
+// 0x8038DE98 GXInitTexCacheRegion (244 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="cmpwi 6,1; beq 2f; bge 0f; cmpwi 6,0; bge 1f; b 4f; 0:; cmpwi 6,3; bge 4f; b 3f; 1:; li 9,3; b 4f; 2:; li 9,4; b 4f; 3:; li 9,5; 4:; li 6,0; stw 6,0x0(3); rlwinm 0,5,27,5,31; cmpwi 8,2; lwz 5,0x0(3); rlwimi 5,0,0,17,31; stw 5,0x0(3); lwz 0,0x0(3); rlwimi 0,9,15,14,16; stw 0,0x0(3); lwz 0,0x0(3); rlwimi 0,9,18,11,13; stw 0,0x0(3); lwz 0,0x0(3); rlwimi 0,6,21,10,10; stw 0,0x0(3); beq 8f; bge 5f; cmpwi 8,0; beq 6f; bge 7f; b 10f; 5:; cmpwi 8,4; bge 10f; b 9f; 6:; li 9,3; b 10f; 7:; li 9,4; b 10f; 8:; li 9,5; b 10f; 9:; li 9,0; 10:; li 0,0; stw 0,0x4(3); li 0,1; lwz 6,0x4(3); rlwimi 6,7,27,17,31; stw 6,0x4(3); lwz 5,0x4(3); rlwimi 5,9,15,14,16; stw 5,0x4(3); lwz 5,0x4(3); rlwimi 5,9,18,11,13; stw 5,0x4(3); stb 4,0xc(3); stb 0,0xd(3)"
+extern "C" void f_8038DE98() {}

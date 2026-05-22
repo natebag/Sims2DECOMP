@@ -1,0 +1,4 @@
+// 0x8032EDA4 XOSFontDrawChar(unsigned (204 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); stmw 30,0x8(1); mr 31,5; rlwinm 4,4,1,0,30; li 10,0; lis 30,-32700; 0:; lwz 0,-26436(13); add 9,31,10; lwz 11,-26440(13); mr 7,10; mullw 9,9,0; cmpwi 10,0; add 9,9,9; add 11,11,9; add 8,11,4; bge 1f; addi 7,10,7; 1:; srawi 0,7,3; addi 5,10,1; mulli 9,0,24; li 11,0; rlwinm 0,0,3,0,28; subf 0,0,10; addi 6,30,-4476; add 12,9,0; 2:; rlwinm 0,11,3,0,28; li 9,4; add 0,12,0; mtspr 9,9; rlwinm 0,0,2,0,29; addi 7,11,1; add 10,3,0; 3:; lbz 11,0x0(10); addi 10,10,1; rlwinm 9,11,29,27,30; lhzx 0,6,9; rlwinm 11,11,1,27,30; sth 0,0x0(8); lhzx 9,6,11; sthu 9,0x2(8); addi 8,8,2; bdnz 3b; mr 11,7; cmpwi 11,2; ble 2b; mr 10,5; cmpwi 10,23; ble 0b; lmw 30,0x8(1); addi 1,1,16"
+extern "C" void f_8032EDA4() {}
