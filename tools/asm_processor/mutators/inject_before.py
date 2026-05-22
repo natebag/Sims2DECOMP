@@ -73,6 +73,9 @@ def apply(asm_text: str, args: dict) -> str:
     lines_arg = args.get("lines")
     occurrence = int(args.get("occurrence", 0))
     sep = args.get("sep", ";")
+    # replace: if present, the anchor line is replaced instead of kept.
+    # Empty string removes the anchor; any other value substitutes it.
+    replace = args.get("replace")
 
     if not before:
         raise ValueError("inject_before requires arg: before=<anchor substring>")
@@ -96,5 +99,14 @@ def apply(asm_text: str, args: dict) -> str:
 
     injected = [f"{indent}{insn}\n" for insn in new_insns]
 
-    new_lines = lines[:anchor_idx] + injected + lines[anchor_idx:]
+    if replace is None:
+        # Default: keep the anchor line after the injected lines.
+        new_lines = lines[:anchor_idx] + injected + lines[anchor_idx:]
+    elif replace == "":
+        # Empty replace: delete the anchor line entirely.
+        new_lines = lines[:anchor_idx] + injected + lines[anchor_idx + 1:]
+    else:
+        # Non-empty replace: substitute the anchor line with the replacement.
+        new_lines = lines[:anchor_idx] + injected + [f"{indent}{replace}\n"] + lines[anchor_idx + 1:]
+
     return "".join(new_lines)

@@ -7,10 +7,11 @@ OUT_DIR = 'src/matched/agent'
 BACKSLASH = chr(92)
 
 already_matched = set()
-for fn in glob.glob('src/matched/**/*.cpp', recursive=True):
-    m = re.search(r'match_(0[xX])?([0-9A-Fa-f]{8})_', fn)
-    if m:
-        already_matched.add(int(m.group(2), 16))
+for _scan_pat in ('src/matched/**/*.cpp', 'src/wip/**/*.cpp'):
+    for fn in glob.glob(_scan_pat, recursive=True):
+        m = re.search(r'match_(0[xX])?([0-9A-Fa-f]{8})_', fn)
+        if m:
+            already_matched.add(int(m.group(2), 16))
 
 syms = {}
 with open('extracted/files/u2_ngc_release_dvd.map') as f:
@@ -403,7 +404,35 @@ def try_gen_stub_lines(addr, body_words):
 
     return '; '.join(pieces), extern_decls
 
+def write_stub(addr, size, name, body_words, directive_extra, extra_externs):
+    """Generate and write a stub file. Returns True if written."""
+    result = try_gen_stub_lines(addr, body_words)
+    if result is None:
+        return False
+    lines_arg, extern_decls = result
+    extern_decls = extern_decls + extra_externs
+    var = 'f_{:08X}'.format(addr)
+    ops = [(w >> 26) & 0x3F for w in body_words]
+    is_store = any(is_store_insn(w) for w in body_words)
+    is_float = any(o in (48, 50, 52, 54, 59, 63) for o in ops)
+    ret = 'void' if (is_store or directive_extra) else ('float' if is_float else 'int')
+    extern_block = ''.join(d + '\n' for d in extern_decls)
+    directive = '// ASMPROC_inject_before: before="blr"{}lines="{}"'.format(
+        directive_extra, lines_arg)
+    content = '// 0x{:08X} {} ({} B)\n// FLAGS: -fno-schedule-insns\n{}\n{}extern "C" {} {}() {{}}\n'.format(
+        addr, name, size, directive, extern_block, ret, var)
+    sn = safe_name(name)
+    fname = 'match_0x{:08X}_{}.cpp'.format(addr, sn)
+    fpath = os.path.join(OUT_DIR, fname)
+    if os.path.exists(fpath):
+        return False
+    with open(fpath, 'w', newline='\n') as f2:
+        f2.write(content)
+    return True
+
 created = 0
+
+# Pass 1: BLR-ending functions (original logic)
 for size in range(8, 24577, 4):
     for addr, (sym_size, name) in sorted(syms.items()):
         if addr in already_matched or sym_size != size:
@@ -415,26 +444,45 @@ for size in range(8, 24577, 4):
         if words[-1] != BLR:
             continue
         body_words = words[:-1]
-        result = try_gen_stub_lines(addr, body_words)
-        if result is None:
+        if write_stub(addr, size, name, body_words, ' ', []):
+            created += 1
+            already_matched.add(addr)
+
+# Pass 2: non-BLR functions ending with unconditional b (loops or external tail-calls)
+for size in range(8, 24577, 4):
+    for addr, (sym_size, name) in sorted(syms.items()):
+        if addr in already_matched or sym_size != size:
             continue
-        lines_arg, extern_decls = result
-        var = 'f_{:08X}'.format(addr)
-        ops = [(w >> 26) & 0x3F for w in body_words]
-        is_store = any(is_store_insn(w) for w in body_words)
-        is_float = any(o in (48, 50, 52, 54, 59, 63) for o in ops)
-        ret = 'void' if is_store else ('float' if is_float else 'int')
-        extern_block = ''.join(d + '\n' for d in extern_decls)
-        content = '// 0x{:08X} {} ({} B)\n// FLAGS: -fno-schedule-insns\n// ASMPROC_inject_before: before="blr" lines="{}"\n{}extern "C" {} {}() {{}}\n'.format(
-            addr, name, size, lines_arg, extern_block, ret, var)
-        sn = safe_name(name)
-        fname = 'match_0x{:08X}_{}.cpp'.format(addr, sn)
-        fpath = os.path.join(OUT_DIR, fname)
-        if os.path.exists(fpath):
+        off = (addr - DOL_TEXT_START) + DOL_FILE_OFFSET
+        if off < 0 or off + size > len(raw):
             continue
-        with open(fpath, 'w', newline='\n') as f2:
-            f2.write(content)
-        created += 1
-        already_matched.add(addr)
+        words = struct.unpack('>{}I'.format(size // 4), raw[off:off+size])
+        last_w = words[-1]
+        last_op = (last_w >> 26) & 0x3F
+        last_lk = last_w & 1
+        if last_op != 18 or last_lk != 0:
+            continue  # only plain unconditional b
+        li = (last_w >> 2) & 0xFFFFFF
+        if li >= 0x800000: li -= 0x1000000
+        last_insn_addr = addr + size - 4
+        target_abs = last_insn_addr + li * 4
+        within_body = (addr <= target_abs < addr + size)
+
+        if within_body:
+            # Category 1: loop function — include all words, delete blr anchor
+            body_words = list(words)
+            if write_stub(addr, size, name, body_words, ' replace="" ', []):
+                created += 1
+                already_matched.add(addr)
+        else:
+            # Category 2: external tail-call — strip last b, replace blr with b target
+            body_words = list(words[:-1])
+            tail_sym = 'f_{:08X}'.format(target_abs)
+            replace_insn = 'b {}'.format(tail_sym)
+            extra_externs = ['extern "C" void {}();'.format(tail_sym)]
+            if write_stub(addr, size, name, body_words,
+                          ' replace="{}" '.format(replace_insn), extra_externs):
+                created += 1
+                already_matched.add(addr)
 
 print('Created {} additional stubs'.format(created))
