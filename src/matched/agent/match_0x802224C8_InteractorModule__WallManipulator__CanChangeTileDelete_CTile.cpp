@@ -1,0 +1,23 @@
+// 0x802224C8 InteractorModule::WallManipulator::CanChangeTileDelete(CTilePt (1308 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-144(1); mfspr 0,8; mfcr 12; stmw 24,0x70(1); stw 0,0x94(1); stw 12,0x6c(1); lwz 27,-21488(13); mr 24,4; mr 29,5; mr 28,3; lwz 9,0x0(27); addi 3,1,8; mr 5,24; li 26,0; lha 4,0xa8(9); li 25,0; lwz 0,0xac(9); add 4,27,4; mtspr 8,0; blrl; mr 4,29; addi 3,1,8; bl _s802224C8_0; mr 30,3; mr 4,29; addi 3,1,8; bl _s802224C8_1; mr. 31,3; beq 25f; addi 3,1,8; mr 4,29; bl _s802224C8_2; cmpwi 3,2; beq 0f; cmpwi 3,12; beq 0f; cmpwi 3,13; beq 0f; cmpwi 3,14; bne 1f; 0:; li 0,1; b 2f; 1:; li 0,0; 2:; cmpwi 0,0; beq 3f; li 25,1; 3:; cmpwi 31,0; beq 25f; lwz 0,0xc4(28); mr 9,0; andi. 11,0,256; beq 4f; cmpwi 25,0; beq 25f; 4:; andi. 0,9,768; bne 5f; cmpwi 30,0; beq 25f; 5:; lwz 9,0x0(27); mr 4,24; li 25,1; lha 3,0x128(9); lwz 0,0x12c(9); add 3,27,3; mtspr 8,0; blrl; cmpwi 3,0; beq 25f; cmpwi 29,16; beq 35f; bgt 35f; cmpwi 29,2; bgt 35f; cmpwi 4,29,1; blt cr4,35f; addi 3,1,64; mr 4,24; li 5,0; bl _s802224C8_3; b 21f; 6:; lwz 31,0x44(1); lwz 9,0x4(31); lha 3,0x318(9); lwz 0,0x31c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,8; bne 15f; addi 3,1,8; mr 4,29; bl _s802224C8_4; cmpwi 3,3; beq 7f; cmpwi 3,5; beq 7f; cmpwi 3,6; beq 7f; cmpwi 3,15; beq 7f; cmpwi 3,23; bne 8f; 7:; li 0,1; b 9f; 8:; li 0,0; 9:; cmpwi 0,0; bne 10f; cmpwi 3,22; bne 22f; 10:; lwz 9,0x4(31); li 4,13; lwz 0,0x264(9); lha 3,0x260(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 30,3; li 4,1; lha 3,0x260(9); lwz 0,0x264(9); add 3,31,3; mtspr 8,0; blrl; subfic 4,3,8; rlwinm 4,4,31,30,31; mr 3,29; bl _s802224C8_5; cmpwi 3,1; bne 11f; andi. 0,30,8; bne 14f; 11:; cmpwi 3,8; bne 12f; andi. 11,30,4; bne 14f; 12:; cmpwi 3,2; bne 13f; andi. 0,30,1; bne 14f; 13:; cmpwi 3,4; bne 22f; andi. 11,30,2; beq 22f; 14:; li 25,0; cmpwi 26,0; bne 22f; li 26,35; b 22f; 15:; lwz 9,0x4(31); lha 3,0x318(9); lwz 0,0x31c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,8; beq 20f; lwz 9,0x4(31); lha 3,0x318(9); lwz 0,0x31c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,2; beq 20f; lwz 9,0x4(31); li 4,13; lwz 0,0x264(9); lha 3,0x260(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 30,3; li 4,1; lha 3,0x260(9); lwz 0,0x264(9); add 3,31,3; mtspr 8,0; blrl; subfic 4,3,8; rlwinm 4,4,31,30,31; mr 3,29; bl _s802224C8_6; cmpwi 3,1; bne 16f; andi. 0,30,8; bne 19f; 16:; cmpwi 3,8; bne 17f; andi. 11,30,4; bne 19f; 17:; cmpwi 3,2; bne 18f; andi. 0,30,1; bne 19f; 18:; cmpwi 3,4; bne 20f; andi. 11,30,2; beq 20f; 19:; li 25,0; cmpwi 26,0; bne 22f; li 26,11; b 22f; 20:; addi 3,1,64; bl _s802224C8_7; 21:; lwz 0,0x44(1); cmpwi 0,0; bne 6b; 22:; cmpwi 25,0; beq 35f; addi 3,1,80; mr 4,24; mr 28,3; bl _s802224C8_8; bne cr4,23f; lis 4,-32696; mr 3,28; addi 4,4,24102; bl _s802224C8_9; b 24f; 23:; lis 4,-32696; mr 3,28; addi 4,4,24096; bl _s802224C8_10; 24:; lwz 9,0x0(27); mr 4,28; lha 3,0x128(9); lwz 0,0x12c(9); add 3,27,3; mtspr 8,0; blrl; cmpwi 3,0; bne 26f; mr 3,28; li 4,2; bl _s802224C8_11; 25:; addi 3,1,8; li 4,2; bl _s802224C8_12; li 3,0; b 36f; 26:; li 4,2; mr 3,29; bl _s802224C8_13; mr 27,3; mr 4,28; addi 3,1,88; li 5,0; bl _s802224C8_14; b 33f; 27:; lwz 31,0x5c(1); lwz 9,0x4(31); lha 3,0x318(9); lwz 0,0x31c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,8; beq 32f; lwz 9,0x4(31); lha 3,0x318(9); lwz 0,0x31c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,2; beq 32f; lwz 9,0x4(31); li 4,13; lwz 0,0x264(9); lha 3,0x260(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 30,3; li 4,1; mr 29,30; lha 3,0x260(9); lwz 0,0x264(9); add 3,31,3; mtspr 8,0; blrl; subfic 4,3,8; rlwinm 4,4,31,30,31; mr 3,27; bl _s802224C8_15; cmpwi 3,1; bne 28f; andi. 0,30,8; bne 31f; 28:; cmpwi 3,8; bne 29f; andi. 11,30,4; bne 31f; 29:; cmpwi 3,2; bne 30f; andi. 0,30,1; bne 31f; 30:; cmpwi 3,4; bne 32f; andi. 11,29,2; beq 32f; 31:; cmpwi 26,0; li 25,0; b 34f; 32:; addi 3,1,88; bl _s802224C8_16; 33:; lwz 0,0x5c(1); cmpwi 0,0; bne 27b; 34:; mr 3,28; li 4,2; bl _s802224C8_17; 35:; addi 3,1,8; li 4,2; bl _s802224C8_18; mr 3,25; 36:; lwz 0,0x94(1); lwz 12,0x6c(1); mtspr 8,0; lmw 24,0x70(1); mtcrf 8,12; addi 1,1,144"
+extern "C" void _s802224C8_0();
+extern "C" void _s802224C8_1();
+extern "C" void _s802224C8_2();
+extern "C" void _s802224C8_3();
+extern "C" void _s802224C8_4();
+extern "C" void _s802224C8_5();
+extern "C" void _s802224C8_6();
+extern "C" void _s802224C8_7();
+extern "C" void _s802224C8_8();
+extern "C" void _s802224C8_9();
+extern "C" void _s802224C8_10();
+extern "C" void _s802224C8_11();
+extern "C" void _s802224C8_12();
+extern "C" void _s802224C8_13();
+extern "C" void _s802224C8_14();
+extern "C" void _s802224C8_15();
+extern "C" void _s802224C8_16();
+extern "C" void _s802224C8_17();
+extern "C" void _s802224C8_18();
+extern "C" void f_802224C8() {}

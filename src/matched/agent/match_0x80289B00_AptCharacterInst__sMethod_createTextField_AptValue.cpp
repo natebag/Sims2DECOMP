@@ -1,0 +1,17 @@
+// 0x80289B00 AptCharacterInst::sMethod_createTextField(AptValue (820 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-128(1); mfspr 0,8; stfd f28,0x60(1); stfd f29,0x68(1); stfd f30,0x70(1); stfd f31,0x78(1); stmw 25,0x44(1); stw 0,0x84(1); mr 31,3; cmpwi 4,6; beq 0f; lwz 3,-22936(13); b 7f; 0:; lis 9,-32694; lwz 11,-16032(9); addi 9,9,-16032; lwz 0,0x8(9); addi 7,11,-1; addi 6,11,-5; addi 9,11,-2; addi 10,11,-3; addi 8,11,-4; rlwinm 7,7,2,0,29; rlwinm 9,9,2,0,29; add 7,7,0; rlwinm 10,10,2,0,29; rlwinm 8,8,2,0,29; rlwinm 6,6,2,0,29; rlwinm 11,11,2,0,29; add 10,10,0; add 8,8,0; add 6,6,0; add 11,11,0; add 9,9,0; lwz 3,-4(7); lwz 29,-4(10); lwz 28,-4(8); lwz 30,-4(9); lwz 27,-4(6); lwz 26,-4(11); bl _s80289B00_0; mr 25,3; mr 3,30; bl _s80289B00_1; mr 3,29; fmr f29,f1; bl _s80289B00_2; mr 3,28; fmr f28,f1; bl _s80289B00_3; fmr f30,f1; mr 3,27; bl _s80289B00_4; lis 11,-32700; fmr f31,f1; lhz 9,-6476(11); addi 0,11,-6476; stw 0,0x18(1); addi 4,1,24; addi 9,9,1; mr 3,26; sth 9,-6476(11); bl _s80289B00_5; lwz 3,-23020(13); li 4,64; bl _s80289B00_6; lis 9,-32704; lis 11,-32704; lfs f0,0x4c74(9); mr 30,3; lfs f13,0x4c78(11); li 0,0; li 9,2; li 11,-1; stw 9,0x0(30); li 8,0; stfs f0,0xc(30); stfs f30,0x10(30); stfs f31,0x14(30); stfs f13,0x24(30); stw 0,0x38(30); stw 11,0x18(30); stfs f0,0x8(30); stw 0,0x1c(30); stw 0,0x20(30); stw 0,0x28(30); stw 0,0x2c(30); stw 0,0x30(30); stw 0,0x34(30); lwz 9,0x4c(31); lwz 11,0x8(9); lwz 0,0x4(11); stw 0,0x4(30); lwz 9,0x4c(31); lwz 11,0x8(9); lwz 10,0x4(11); addi 10,10,8; lwz 0,0xc(10); cmpw 8,0; bge 3f; lwz 9,0x10(10); lwz 11,0x0(9); mr 7,9; b 2f; 1:; lwz 0,0xc(10); addi 8,8,1; cmpw 8,0; bge 3f; rlwinm 9,8,2,0,29; lwzx 11,9,7; 2:; lwz 0,0x0(11); cmpwi 0,3; bne 1b; stw 8,0x18(30); 3:; lwz 3,0x4c(31); lis 9,-32704; li 27,0; lfs f1,0x4c74(9); addi 5,25,16384; mr 8,31; stw 27,0x8(1); li 4,0; stw 27,0xc(1); mr 6,30; stw 27,0x10(1); addi 7,1,24; stw 27,0x14(1); li 9,1; li 10,-1; addi 3,3,36; bl _s80289B00_7; li 28,0; mr 29,3; bl _s80289B00_8; cmpwi 3,15; bne 4f; mr 3,29; bl _s80289B00_9; subfic 0,3,0; adde 28,0,3; 4:; cmpwi 28,0; beq 5f; lwz 11,0x4c(29); lis 9,-256; li 10,-1; lis 8,-32704; lwz 0,0x74(11); li 7,6; stw 9,0x34(11); fmr f1,f29; oris 0,0,32768; stw 10,0x30(11); rlwinm 0,0,0,3,0; lis 9,-32704; stw 0,0x74(11); mr 3,29; lfs f12,0x4c74(9); li 4,0; lfs f13,0x14(30); li 5,0; lfs f11,0x4c78(8); stfs f13,0x5c(11); lfs f0,0x8(30); stfs f0,0x50(11); lfs f13,0x10(30); stfs f13,0x58(11); lfs f0,0xc(30); stfs f12,0x48(11); stfs f0,0x54(11); stw 27,0x24(11); stfs f11,0x60(11); stfs f12,0x44(11); lwz 0,0x1c(30); stw 0,0x3c(11); lwz 9,0x18(30); stw 7,0x6c(11); stw 9,0x64(11); bl _s80289B00_10; mr 3,29; fmr f1,f28; li 4,1; li 5,0; bl _s80289B00_11; 5:; lwz 4,0x18(1); lwz 30,-22936(13); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 6f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80289B00_12; 6:; mr 3,30; 7:; lwz 0,0x84(1); mtspr 8,0; lmw 25,0x44(1); lfd f28,0x60(1); lfd f29,0x68(1); lfd f30,0x70(1); lfd f31,0x78(1); addi 1,1,128"
+extern "C" void _s80289B00_0();
+extern "C" void _s80289B00_1();
+extern "C" void _s80289B00_2();
+extern "C" void _s80289B00_3();
+extern "C" void _s80289B00_4();
+extern "C" void _s80289B00_5();
+extern "C" void _s80289B00_6();
+extern "C" void _s80289B00_7();
+extern "C" void _s80289B00_8();
+extern "C" void _s80289B00_9();
+extern "C" void _s80289B00_10();
+extern "C" void _s80289B00_11();
+extern "C" void _s80289B00_12();
+extern "C" void f_80289B00() {}

@@ -1,0 +1,13 @@
+// 0x802613C0 DVDLowRead (664 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; lis 7,-13312; stw 0,0x4(1); stwu 1,-64(1); stmw 22,0x18(1); addi 25,4,0; addi 4,7,24576; lis 7,-32694; addi 31,7,-16952; addi 24,3,0; addi 26,5,0; addi 30,31,204; mr 27,6; stw 25,0x18(4); stw 24,0xc4(31); stw 25,0xc8(31); stw 26,0xcc(31); lwz 0,-23324(13); cmplwi 0,0; bne 0f; li 0,-1; stw 0,0x0(31); li 0,0; addi 3,24,0; stw 0,-23292(13); addi 4,25,0; addi 5,26,0; addi 6,27,0; bl _s802613C0_0; b 13f; 0:; lwz 0,-23324(13); cmplwi 0,1; bne 13f; lwz 0,-27680(13); cmpwi 0,0; beq 1f; addi 3,24,0; addi 4,25,0; addi 5,26,0; addi 6,27,0; bl _s802613C0_1; b 13f; 1:; addi 29,31,188; lwz 0,0x0(30); addi 28,31,192; lwz 3,0xbc(31); lwz 4,0xc0(31); rlwinm 23,0,17,15,31; addi 0,3,-1; add 0,4,0; rlwinm 22,0,17,15,31; bl _s802613C0_2; lbz 0,0x8(3); cmplwi 0,0; beq 2f; li 0,1; b 3f; 2:; li 0,0; 3:; cmpwi 0,0; beq 4f; li 3,5; b 5f; 4:; li 3,15; 5:; addi 0,22,-2; cmplw 23,0; bgt 6f; addi 0,3,3; add 0,22,0; cmplw 23,0; bge 7f; 6:; li 0,1; b 8f; 7:; li 0,0; 8:; cmpwi 0,0; bne 9f; li 0,-1; stw 0,0x0(31); li 0,0; addi 3,24,0; stw 0,-23292(13); addi 4,25,0; addi 5,26,0; addi 6,27,0; bl _s802613C0_3; b 13f; 9:; lwz 3,0x0(29); lwz 4,0x0(28); addi 3,3,-1; lwz 0,0x0(30); add 3,4,3; rlwinm 3,3,17,15,31; rlwinm 4,0,17,15,31; cmplw 3,4; beq 10f; addi 0,3,1; cmplw 0,4; bne 12f; 10:; bl _s802613C0_4; lis 5,-32768; lwz 8,-23312(13); lwz 0,0xf8(5); lis 5,4194; lwz 9,-23308(13); li 6,0; rlwinm 7,0,30,2,31; addi 0,5,19923; mulhwu 0,0,7; rlwinm 0,0,26,6,31; subfc 9,9,4; subfe 8,8,3; mulli 5,0,5; xoris 4,6,32768; xoris 3,8,32768; subfc 0,9,5; subfe 3,3,4; subfe 3,4,4; neg. 3,3; beq 11f; li 0,-1; stw 0,0x0(31); addi 3,24,0; addi 4,25,0; stw 6,-23292(13); addi 5,26,0; addi 6,27,0; bl _s802613C0_5; b 13f; 11:; li 0,1; stw 0,0x0(31); lis 3,17180; addi 0,3,-8573; stw 24,0x4(31); mulhwu 0,0,7; stw 25,0x8(31); stw 26,0xc(31); rlwinm 0,0,17,15,31; mulli 3,0,500; stw 27,0x10(31); li 0,-1; stw 0,0x14(31); subfc 5,9,5; subfe 4,8,6; rlwinm 0,3,29,3,31; stw 6,-23292(13); addc 23,5,0; adde 22,4,6; addi 3,31,64; bl _s802613C0_6; lis 3,-32730; addi 7,3,3904; addi 6,23,0; addi 5,22,0; addi 3,31,64; bl _s802613C0_7; b 13f; 12:; addi 3,24,0; addi 4,25,0; addi 5,26,0; addi 6,27,0; bl _s802613C0_8; 13:; lmw 22,0x18(1); li 3,1; lwz 0,0x44(1); addi 1,1,64; mtspr 8,0"
+extern "C" void _s802613C0_0();
+extern "C" void _s802613C0_1();
+extern "C" void _s802613C0_2();
+extern "C" void _s802613C0_3();
+extern "C" void _s802613C0_4();
+extern "C" void _s802613C0_5();
+extern "C" void _s802613C0_6();
+extern "C" void _s802613C0_7();
+extern "C" void _s802613C0_8();
+extern "C" void f_802613C0() {}

@@ -1,0 +1,12 @@
+// 0x800D2FE0 MemoryCardCache::LoadCacheFromMemoryCard(int, (632 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-96(1); mfspr 0,8; stmw 18,0x28(1); stw 0,0x64(1); mr 19,3; li 0,0; lis 9,-32696; mr 22,4; addi 25,9,25388; mr 24,5; stw 0,0x14(19); li 18,0; addi 31,1,8; li 20,0; b 7f; 0:; lwz 30,0x14(25); li 18,1; bl _s800D2FE0_0; li 26,0; mr 4,30; li 5,64; li 6,0; li 7,0; bl _s800D2FE0_1; lis 21,-32696; stw 25,0x8(1); addi 29,1,8; stw 20,0xc(31); mr 27,3; stw 20,0x4(31); stw 20,0x8(31); lwz 9,0x8(1); lwz 11,0x4(9); lwz 31,0x4(11); cmpwi 31,0; beq 6f; li 23,0; mr 25,29; 1:; lwz 3,-26384(13); mr 5,22; lwz 4,-31932(13); mr 6,31; lwz 9,0x0(3); mr 7,26; mr 8,27; lha 0,0x38(9); lwz 9,0x3c(9); add 3,3,0; mtspr 8,9; blrl; mr 28,3; cmpwi 28,1; bne 6f; stw 23,0x18(1); addi 30,1,24; stw 23,0x4(30); addi 3,21,25388; mr 4,26; addi 5,1,32; addi 6,1,36; bl _s800D2FE0_2; cmpwi 3,0; bne 2f; mr 3,19; addi 4,21,25388; mr 5,27; mr 6,26; mr 7,31; bl _s800D2FE0_3; cmpwi 3,0; beq 3f; li 28,0; b 6f; 2:; stw 27,0x4(30); mr 6,30; stw 31,0x18(1); mr 3,24; lwz 4,0x20(1); lwz 5,0x24(1); bl _s800D2FE0_4; 3:; lwz 6,0x4(25); add 26,26,31; lwz 10,0x8(1); mulli 8,6,24; lwz 11,0xc(25); lwz 9,0x4(10); mr 7,10; lwz 10,0x8(25); add 9,8,9; lwz 0,0x4(9); add 11,11,0; stw 11,0xc(25); lwz 9,0x4(7); lwzx 9,9,8; addi 0,9,-1; cmpw 10,0; bge 4f; addi 0,10,1; stw 0,0x8(29); b 5f; 4:; cmpwi 9,0; ble 5f; addi 0,6,1; stw 23,0x8(29); stw 0,0x4(29); 5:; lwz 9,0x4(29); lwz 11,0x8(1); mulli 9,9,24; lwz 0,0x4(11); add 9,9,0; lwz 31,0x4(9); cmpwi 31,0; bne 1b; 6:; bl _s800D2FE0_5; mr 4,27; bl _s800D2FE0_6; cmpwi 28,1; bne 8f; stb 22,0x134(24); addi 3,24,40; lwz 4,-31932(13); bl _s800D2FE0_7; stw 20,0x20(24); b 8f; 7:; lwz 3,-26384(13); mr 5,22; lwz 4,-31932(13); lwz 9,0x0(3); lha 0,0x20(9); lwz 9,0x24(9); add 3,3,0; mtspr 8,9; blrl; mr 28,3; cmpwi 28,1; beq 0b; 8:; cmpwi 18,0; beq 9f; lwz 3,-26384(13); mr 5,22; lwz 4,-31932(13); lwz 9,0x0(3); lha 0,0x28(9); lwz 9,0x2c(9); add 3,3,0; mtspr 8,9; blrl; 9:; cmpwi 28,1; bne 10f; stw 28,0x8(19); li 3,0; b 11f; 10:; li 3,3; 11:; lwz 0,0x64(1); mtspr 8,0; lmw 18,0x28(1); addi 1,1,96"
+extern "C" void _s800D2FE0_0();
+extern "C" void _s800D2FE0_1();
+extern "C" void _s800D2FE0_2();
+extern "C" void _s800D2FE0_3();
+extern "C" void _s800D2FE0_4();
+extern "C" void _s800D2FE0_5();
+extern "C" void _s800D2FE0_6();
+extern "C" void _s800D2FE0_7();
+extern "C" void f_800D2FE0() {}

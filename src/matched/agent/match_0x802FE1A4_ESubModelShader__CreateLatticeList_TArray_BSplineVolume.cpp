@@ -1,0 +1,11 @@
+// 0x802FE1A4 ESubModelShader::CreateLatticeList(TArray<BSplineVolume, (604 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 25,0xc(1); stw 0,0x2c(1); mr 28,4; mr 31,3; lwz 4,0x4(28); cmpwi 4,0; bne 0f; li 3,0; b 17f; 0:; rlwinm 4,4,2,0,29; mr 3,31; li 5,16; bl _s802FE1A4_0; lwz 0,0x68(31); mr 25,3; cmpwi 0,0; beq 4f; lwz 0,0x6c(31); li 29,0; cmpw 29,0; bge 3f; li 27,0; li 30,0; 1:; lwz 9,0x68(31); add 9,30,9; lwz 4,0x8(9); cmpwi 4,0; beq 2f; mr 3,31; bl _s802FE1A4_1; lwz 9,0x68(31); add 9,30,9; stw 27,0x8(9); 2:; lwz 0,0x6c(31); addi 29,29,1; addi 30,30,12; cmpw 29,0; blt 1b; 3:; lwz 4,0x68(31); mr 3,31; bl _s802FE1A4_2; 4:; li 9,0; li 30,0; stw 9,0x6c(31); lwz 0,0x4(28); cmpw 30,0; bge 13f; addi 27,31,20; 5:; lwz 0,0x4(27); li 4,0; li 29,0; addi 26,30,1; cmpw 4,0; bge 12f; mr 12,27; li 3,0; li 5,0; 6:; lwz 9,0x14(31); add 11,9,5; lwz 0,0xc(11); cmpwi 0,0; beq 11f; lwz 0,0x18(11); li 8,0; cmpw 8,0; bge 9f; mulli 6,30,224; add 9,9,3; lwz 7,0x18(9); lwz 10,0xc(9); 7:; lbz 0,0x0(10); addi 10,10,4; cmpwi 0,0; beq 8f; lwz 9,0x0(28); add 11,0,0; add 9,9,6; lbz 0,0x83(9); cmpw 11,0; beq 10f; 8:; addi 8,8,1; cmpw 8,7; blt 7b; 9:; cmpwi 29,0; beq 11f; lwz 0,0x6c(31); rlwinm 0,0,2,0,29; stwx 30,25,0; lwz 9,0x6c(31); addi 9,9,1; stw 9,0x6c(31); b 12f; 10:; li 29,1; b 9b; 11:; lwz 0,0x4(12); addi 4,4,1; addi 3,3,52; addi 5,5,52; cmpw 4,0; blt 6b; 12:; lwz 0,0x4(28); mr 30,26; cmpw 30,0; blt 5b; 13:; lwz 4,0x6c(31); cmpwi 4,0; bne 14f; mr 3,31; mr 4,25; bl _s802FE1A4_3; li 3,0; b 17f; 14:; mulli 4,4,12; li 5,16; mr 3,31; bl _s802FE1A4_4; lwz 5,0x6c(31); mr 0,3; stw 0,0x68(31); mulli 5,5,12; li 4,0; bl _s802FE1A4_5; lwz 0,0x6c(31); li 8,0; cmpw 8,0; bge 16f; li 7,0; mr 10,25; 15:; lwz 9,0x0(10); addi 8,8,1; lwz 0,0x0(28); addi 10,10,4; mulli 9,9,224; lwz 11,0x68(31); add 0,0,9; stwx 0,7,11; addi 7,7,12; lwz 0,0x6c(31); cmpw 8,0; blt 15b; 16:; mr 3,31; mr 4,25; bl _s802FE1A4_6; li 3,1; 17:; lwz 0,0x2c(1); mtspr 8,0; lmw 25,0xc(1); addi 1,1,40"
+extern "C" void _s802FE1A4_0();
+extern "C" void _s802FE1A4_1();
+extern "C" void _s802FE1A4_2();
+extern "C" void _s802FE1A4_3();
+extern "C" void _s802FE1A4_4();
+extern "C" void _s802FE1A4_5();
+extern "C" void _s802FE1A4_6();
+extern "C" void f_802FE1A4() {}

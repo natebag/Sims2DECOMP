@@ -1,0 +1,10 @@
+// 0x80044E60 ObjectSaveTypeTable3::DoStream(ReconBuffer (548 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); lwz 9,0x0(3); li 11,0; lwz 27,-21508(13); mr 29,4; addis 9,9,1; mr 28,5; stw 11,0x6004(9); addi 31,9,-32764; addi 30,9,24580; lwz 0,0xc(29); cmpwi 0,0; beq 6f; lwz 0,-32764(9); cmpwi 0,0; beq 6f; lwz 0,0x18(31); cmpwi 0,0; beq 6f; 0:; lwz 9,0x0(30); addi 9,9,1; mulli 11,9,28; stw 9,0x0(30); lwzx 0,11,31; add 9,11,31; cmpwi 0,0; beq 6f; lwz 0,0x18(9); cmpwi 0,0; bne 0b; b 6f; 1:; cmpwi 28,0; ble 2f; lwz 4,0x0(30); mr 3,29; li 5,1; mulli 4,4,28; add 4,31,4; addi 4,4,4; bl _s80044E60_0; lwz 4,0x0(30); mr 3,29; li 5,1; mulli 4,4,28; add 4,31,4; addi 4,4,8; bl _s80044E60_1; 2:; lwz 4,0x0(30); mr 3,29; li 5,1; mulli 4,4,28; add 4,31,4; addi 4,4,12; bl _s80044E60_2; cmpwi 28,1; ble 3f; lwz 4,0x0(30); mr 3,29; li 5,1; mulli 4,4,28; add 4,31,4; addi 4,4,14; bl _s80044E60_3; b 4f; 3:; lwz 9,0x0(30); li 0,-1; mulli 9,9,28; add 9,9,31; sth 0,0xe(9); 4:; lwz 4,0x0(30); mr 3,29; mulli 4,4,28; add 4,31,4; addi 4,4,16; bl _s80044E60_4; lwz 0,0x0(30); lwz 9,0x0(27); mulli 0,0,28; lha 3,0x78(9); lwz 9,0x7c(9); add 3,27,3; lwzx 4,31,0; mtspr 8,9; blrl; lwz 11,0x0(30); li 0,0; mulli 11,11,28; add 11,11,31; stw 3,0x14(11); lwz 9,0x0(30); mulli 9,9,28; add 9,9,31; stw 0,0x18(9); lwz 11,0x0(30); addi 9,11,1; stw 9,0x0(30); lwz 0,0xc(29); cmpwi 0,0; beq 6f; mulli 9,9,28; lwzx 0,9,31; add 11,9,31; cmpwi 0,0; beq 6f; lwz 0,0x18(11); cmpwi 0,0; beq 6f; 5:; lwz 9,0x0(30); addi 9,9,1; mulli 11,9,28; stw 9,0x0(30); lwzx 0,11,31; add 9,11,31; cmpwi 0,0; beq 6f; lwz 0,0x18(9); cmpwi 0,0; bne 5b; 6:; lwz 4,0x0(30); mr 3,29; li 5,1; mulli 4,4,28; add 4,31,4; bl _s80044E60_5; lwz 0,0x0(30); mulli 0,0,28; lwzx 9,31,0; cmpwi 9,0; bne 1b; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
+extern "C" void _s80044E60_0();
+extern "C" void _s80044E60_1();
+extern "C" void _s80044E60_2();
+extern "C" void _s80044E60_3();
+extern "C" void _s80044E60_4();
+extern "C" void _s80044E60_5();
+extern "C" void f_80044E60() {}

@@ -1,0 +1,14 @@
+// 0x800134F8 AwarenessManager::MemoryAwarenessClearAction(void) (712 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 30,0x10(1); stw 0,0x1c(1); mr 31,3; lwz 0,0x0(31); andi. 9,0,16; beq 2f; lwz 4,0x18(31); lwz 5,0x14(31); addi 6,1,8; bl _s800134F8_0; lwz 4,0x8(1); cmpwi 4,0; beq 1f; lwz 4,0x0(4); lis 30,-32693; addi 3,30,11064; bl _s800134F8_1; cmpwi 3,0; beq 0f; lwz 9,0x8(1); addi 3,30,11064; li 5,1; lwz 4,0x0(9); bl _s800134F8_2; b 1f; 0:; lwz 9,0x8(1); addi 3,30,11064; lwz 4,0x0(9); bl _s800134F8_3; 1:; lwz 0,0x0(31); rlwinm 0,0,0,28,26; stw 0,0x0(31); 2:; lwz 0,0x4(31); mr 3,0; cmpwi 0,0; beq 3f; lwz 0,0x18(3); cmpwi 0,6; beq 4f; 3:; lwz 0,0x18(3); cmpwi 0,7; bne 5f; 4:; bl _s800134F8_4; 5:; lwz 3,0x8(31); lis 30,-32707; cmpwi 3,0; beq 6f; lwz 0,0x44(3); cmpwi 0,0; beq 6f; li 4,1024; bl _s800134F8_5; cmpwi 3,0; beq 6f; lis 9,-32707; lfs f1,-8968(30); lfs f3,-8964(9); li 4,1024; lwz 3,0x8(31); lfs f2,-32300(13); bl _s800134F8_6; 6:; lwz 0,0x0(31); andi. 9,0,2; beq 7f; lis 9,-32707; ori 0,0,8; lfs f0,-8968(9); stw 0,0x0(31); stfs f0,0x20(31); 7:; lwz 11,0x34(31); li 4,64; lwz 10,0x0(11); lwz 9,0x4(10); lha 3,0x78(9); lwz 0,0x7c(9); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; bne 8f; lwz 11,0x34(31); li 4,2048; lwz 10,0x0(11); lwz 9,0x4(10); lha 3,0x78(9); lwz 0,0x7c(9); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; beq 10f; 8:; lwz 0,0x0(31); andi. 9,0,2176; bne 10f; lwz 3,0x1c(31); cmpwi 3,0; beq 12f; lwz 3,0x0(3); li 4,2; bl _s800134F8_7; mr. 3,3; beq 10f; lwz 9,0x4(3); li 4,0; lwz 11,0x34(31); lha 0,0x2f8(9); addi 10,9,760; cmpwi 11,0; add 3,3,0; beq 9f; lwz 4,0x0(11); 9:; lwz 0,0x4(10); mtspr 8,0; blrl; 10:; lwz 3,0x1c(31); cmpwi 3,0; beq 12f; lwz 0,0x0(31); andi. 9,0,2208; bne 12f; lwz 3,0x0(3); li 4,2; bl _s800134F8_8; mr. 3,3; beq 12f; lwz 9,0x4(3); li 4,0; lwz 11,0x34(31); lha 0,0x300(9); addi 10,9,768; cmpwi 11,0; add 3,3,0; beq 11f; lwz 4,0x0(11); 11:; lwz 0,0x4(10); mtspr 8,0; blrl; 12:; lwz 0,0x0(31); lis 9,-32707; lfs f0,-8968(9); li 11,0; lwz 10,0x34(31); rlwinm 0,0,0,27,25; rlwinm 0,0,0,25,23; li 9,-1; stw 0,0x0(31); cmpwi 10,0; stw 9,0x14(31); stw 11,0x18(31); stfs f0,0x20(31); stw 11,0x1c(31); beq 13f; lwz 9,0x0(10); li 4,10; lwz 3,0x0(9); bl _s800134F8_9; b 14f; 13:; li 3,0; 14:; cmpwi 3,0; beq 16f; lwz 3,0xb0(3); li 9,1; lwz 0,0x10(3); cmpwi 0,0; bne 15f; li 9,0; 15:; cmpwi 9,0; beq 16f; lwz 0,0x48(3); ori 0,0,40; stw 0,0x48(3); 16:; lwz 0,0x1c(1); mtspr 8,0; lmw 30,0x10(1); addi 1,1,24"
+extern "C" void _s800134F8_0();
+extern "C" void _s800134F8_1();
+extern "C" void _s800134F8_2();
+extern "C" void _s800134F8_3();
+extern "C" void _s800134F8_4();
+extern "C" void _s800134F8_5();
+extern "C" void _s800134F8_6();
+extern "C" void _s800134F8_7();
+extern "C" void _s800134F8_8();
+extern "C" void _s800134F8_9();
+extern "C" void f_800134F8() {}

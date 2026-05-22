@@ -1,0 +1,16 @@
+// 0x802A72F0 AptLoadVars::sMethod_send(AptValue (764 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stmw 26,0x28(1); stw 0,0x44(1); mr 30,4; mr 26,3; addi 0,30,-1; cmplwi 0,2; ble 3f; lwz 31,-26916(13); cmpwi 31,0; beq 2f; lwz 0,0x0(31); lwz 9,0xc(31); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26916(13); stw 11,0x0(31); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 0f; rlwinm 0,11,0,3,1; stw 0,0x0(31); b 1f; 0:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 31,11,9; stw 0,0x4(8); 1:; li 0,0; mr 3,31; stw 0,0xc(31); b 14f; 2:; lwz 3,-23020(13); li 4,16; bl _s802A72F0_0; mr 30,3; li 4,5; bl _s802A72F0_1; lis 9,-32702; stw 31,0xc(30); addi 9,9,-29224; mr 3,30; stw 9,0x8(30); b 14f; 3:; lis 28,-32694; lis 31,-32700; lwz 9,-16032(28); addi 27,28,-16032; lwz 0,0x8(27); addi 29,31,-6476; lhz 11,-6476(31); rlwinm 9,9,2,0,29; add 9,9,0; addi 4,1,8; lwz 3,-4(9); addi 11,11,1; sth 11,-6476(31); stw 29,0x8(1); bl _s802A72F0_2; lhz 9,-6476(31); cmpwi 30,1; stw 29,0x10(1); addi 9,9,1; sth 9,-6476(31); ble 4f; lwz 9,-16032(28); addi 4,1,16; lwz 0,0x8(27); addi 9,9,-1; rlwinm 9,9,2,0,29; add 9,9,0; lwz 3,-4(9); bl _s802A72F0_3; 4:; lhz 9,-6476(31); cmpwi 30,2; stw 29,0x18(1); addi 9,9,1; sth 9,-6476(31); ble 5f; lwz 9,-16032(28); addi 4,1,24; lwz 0,0x8(27); addi 9,9,-2; rlwinm 9,9,2,0,29; add 9,9,0; lwz 3,-4(9); bl _s802A72F0_4; 5:; addi 3,1,32; mr 4,26; bl _s802A72F0_5; li 29,1; lis 9,-32694; lwz 3,0x8(1); lwz 4,0x10(1); li 7,0; lwz 5,0x18(1); addi 3,3,8; lwz 6,0x20(1); addi 4,4,8; lwz 0,-16220(9); addi 5,5,8; addi 6,6,8; mtspr 8,0; blrl; lwz 3,-26916(13); cmpwi 3,0; beq 8f; lwz 0,0x0(3); lwz 9,0xc(3); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26916(13); stw 11,0x0(3); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 6f; rlwinm 0,11,0,3,1; stw 0,0x0(3); b 7f; 6:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 3,11,9; stw 0,0x4(8); 7:; stw 29,0xc(3); mr 31,3; b 9f; 8:; lwz 3,-23020(13); li 4,16; bl _s802A72F0_6; mr 30,3; li 4,5; mr 31,30; bl _s802A72F0_7; lis 9,-32702; stw 29,0xc(30); addi 9,9,-29224; stw 9,0x8(30); 9:; lwz 4,0x20(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 10f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s802A72F0_8; 10:; lwz 4,0x18(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 11f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s802A72F0_9; 11:; lwz 4,0x10(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 12f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s802A72F0_10; 12:; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 13f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s802A72F0_11; 13:; mr 3,31; 14:; lwz 0,0x44(1); mtspr 8,0; lmw 26,0x28(1); addi 1,1,64"
+extern "C" void _s802A72F0_0();
+extern "C" void _s802A72F0_1();
+extern "C" void _s802A72F0_2();
+extern "C" void _s802A72F0_3();
+extern "C" void _s802A72F0_4();
+extern "C" void _s802A72F0_5();
+extern "C" void _s802A72F0_6();
+extern "C" void _s802A72F0_7();
+extern "C" void _s802A72F0_8();
+extern "C" void _s802A72F0_9();
+extern "C" void _s802A72F0_10();
+extern "C" void _s802A72F0_11();
+extern "C" void f_802A72F0() {}

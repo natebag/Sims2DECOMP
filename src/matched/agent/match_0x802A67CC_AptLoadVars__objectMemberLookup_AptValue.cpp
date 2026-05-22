@@ -1,0 +1,32 @@
+// 0x802A67CC AptLoadVars::objectMemberLookup(AptValue (1516 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); mr 30,3; cmpwi 4,0; beq 0f; lwz 3,0x0(5); lhz 4,0x2(3); addi 3,3,8; bl _s802A67CC_0; b 1f; 0:; li 3,0; 1:; cmpwi 3,0; beq 26f; lwz 31,0x4(3); cmpwi 31,4; beq 9f; bgt 2f; cmpwi 31,2; beq 5f; bgt 7f; cmpwi 31,1; beq 3f; b 26f; 2:; cmpwi 31,6; beq 13f; blt 11f; cmpwi 31,7; beq 18f; cmpwi 31,8; beq 20f; b 26f; 3:; lwz 28,-27136(13); cmpwi 28,0; bne 4f; lwz 3,-23016(13); li 4,40; bl _s802A67CC_1; mr 30,3; lis 29,-32726; addi 29,29,28604; li 4,9; bl _s802A67CC_2; lis 9,-32703; li 4,8; addi 9,9,8984; addi 3,30,12; stw 9,0x8(30); bl _s802A67CC_3; stb 28,0x20(30); lis 11,-32704; addi 11,11,16488; lwz 9,0x0(30); lwz 0,0x20(30); lis 4,-32703; stw 29,0x24(30); rlwimi 9,31,8,18,23; rlwinm 0,0,0,10,7; stw 11,0x8(30); stw 0,0x20(30); lis 5,-32703; stw 30,-27136(13); addi 4,4,-21004; stw 9,0x0(30); addi 5,5,-21544; li 6,1013; lha 3,0x8(11); lwz 0,0xc(11); add 3,30,3; mtspr 8,0; blrl; 4:; lwz 3,-27136(13); b 27f; 5:; lwz 31,-27132(13); cmpwi 31,0; bne 6f; lwz 3,-23016(13); li 4,40; bl _s802A67CC_4; mr 30,3; lis 29,-32726; addi 29,29,29424; li 4,9; bl _s802A67CC_5; lis 9,-32703; li 4,8; addi 9,9,8984; addi 3,30,12; stw 9,0x8(30); bl _s802A67CC_6; stb 31,0x20(30); lis 10,-32704; addi 10,10,16488; lwz 11,0x0(30); lwz 0,0x20(30); li 9,1; stw 29,0x24(30); rlwimi 11,9,8,18,23; rlwinm 0,0,0,10,7; stw 10,0x8(30); stw 0,0x20(30); lis 4,-32703; stw 30,-27132(13); lis 5,-32703; stw 11,0x0(30); addi 4,4,-21004; addi 5,5,-21544; li 6,1017; lha 3,0x8(10); lwz 0,0xc(10); add 3,30,3; mtspr 8,0; blrl; 6:; lwz 3,-27132(13); b 27f; 7:; lwz 31,-27128(13); cmpwi 31,0; bne 8f; lwz 3,-23016(13); li 4,40; bl _s802A67CC_7; mr 30,3; lis 29,-32726; addi 29,29,30188; li 4,9; bl _s802A67CC_8; lis 9,-32703; li 4,8; addi 9,9,8984; addi 3,30,12; stw 9,0x8(30); bl _s802A67CC_9; stb 31,0x20(30); lis 10,-32704; addi 10,10,16488; lwz 11,0x0(30); lwz 0,0x20(30); li 9,1; stw 29,0x24(30); rlwimi 11,9,8,18,23; rlwinm 0,0,0,10,7; stw 10,0x8(30); stw 0,0x20(30); lis 4,-32703; stw 30,-27128(13); lis 5,-32703; stw 11,0x0(30); addi 4,4,-21004; addi 5,5,-21544; li 6,1021; lha 3,0x8(10); lwz 0,0xc(10); add 3,30,3; mtspr 8,0; blrl; 8:; lwz 3,-27128(13); b 27f; 9:; lwz 31,-27124(13); cmpwi 31,0; bne 10f; lwz 3,-23016(13); li 4,40; bl _s802A67CC_10; mr 30,3; lis 29,-32726; addi 29,29,31556; li 4,9; bl _s802A67CC_11; lis 9,-32703; li 4,8; addi 9,9,8984; addi 3,30,12; stw 9,0x8(30); bl _s802A67CC_12; stb 31,0x20(30); lis 10,-32704; addi 10,10,16488; lwz 11,0x0(30); lwz 0,0x20(30); li 9,1; stw 29,0x24(30); rlwimi 11,9,8,18,23; rlwinm 0,0,0,10,7; stw 10,0x8(30); stw 0,0x20(30); lis 4,-32703; stw 30,-27124(13); lis 5,-32703; stw 11,0x0(30); addi 4,4,-21004; addi 5,5,-21544; li 6,1025; lha 3,0x8(10); lwz 0,0xc(10); add 3,30,3; mtspr 8,0; blrl; 10:; lwz 3,-27124(13); b 27f; 11:; lwz 31,-27120(13); cmpwi 31,0; bne 12f; lwz 3,-23016(13); li 4,40; bl _s802A67CC_13; mr 30,3; lis 29,-32726; addi 29,29,31800; li 4,9; bl _s802A67CC_14; lis 9,-32703; li 4,8; addi 9,9,8984; addi 3,30,12; stw 9,0x8(30); bl _s802A67CC_15; stb 31,0x20(30); lis 10,-32704; addi 10,10,16488; lwz 11,0x0(30); lwz 0,0x20(30); li 9,1; stw 29,0x24(30); rlwimi 11,9,8,18,23; rlwinm 0,0,0,10,7; stw 10,0x8(30); stw 0,0x20(30); lis 4,-32703; stw 30,-27120(13); lis 5,-32703; stw 11,0x0(30); addi 4,4,-21004; addi 5,5,-21544; li 6,1029; lha 3,0x8(10); lwz 0,0xc(10); add 3,30,3; mtspr 8,0; blrl; 12:; lwz 3,-27120(13); b 27f; 13:; lwz 0,0x24(30); li 31,1; cmpwi 0,0; bne 14f; li 31,0; 14:; lwz 3,-26916(13); cmpwi 3,0; beq 17f; lwz 0,0x0(3); lwz 9,0xc(3); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26916(13); stw 11,0x0(3); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 15f; rlwinm 0,11,0,3,1; stw 0,0x0(3); b 16f; 15:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 3,11,9; stw 0,0x4(8); 16:; stw 31,0xc(3); b 27f; 17:; lwz 3,-23020(13); li 4,16; bl _s802A67CC_16; mr 30,3; li 4,5; bl _s802A67CC_17; lis 9,-32702; stw 31,0xc(30); addi 9,9,-29224; mr 3,30; stw 9,0x8(30); b 27f; 18:; lwz 31,-27116(13); cmpwi 31,0; bne 19f; lwz 3,-23016(13); li 4,40; bl _s802A67CC_18; mr 30,3; lis 29,-32726; addi 29,29,32044; li 4,9; bl _s802A67CC_19; lis 9,-32703; li 4,8; addi 9,9,8984; addi 3,30,12; stw 9,0x8(30); bl _s802A67CC_20; stb 31,0x20(30); lis 10,-32704; addi 10,10,16488; lwz 11,0x0(30); lwz 0,0x20(30); li 9,1; stw 29,0x24(30); rlwimi 11,9,8,18,23; rlwinm 0,0,0,10,7; stw 10,0x8(30); stw 0,0x20(30); lis 4,-32703; stw 30,-27116(13); lis 5,-32703; stw 11,0x0(30); addi 4,4,-21004; addi 5,5,-21544; li 6,1038; lha 3,0x8(10); lwz 0,0xc(10); add 3,30,3; mtspr 8,0; blrl; 19:; lwz 3,-27116(13); b 27f; 20:; lwz 30,-26892(13); cmpwi 30,0; beq 24f; lwz 0,0x0(30); lwz 9,0x10(30); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26892(13); stw 11,0x0(30); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 21f; rlwinm 0,11,0,3,1; stw 0,0x0(30); b 22f; 21:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 30,11,9; stw 0,0x4(8); 22:; addi 31,30,12; mr 3,31; bl _s802A67CC_21; cmpwi 3,0; bne 23f; mr 3,31; li 4,0; bl _s802A67CC_22; 23:; mr 31,30; b 25f; 24:; lwz 3,-23020(13); li 4,20; bl _s802A67CC_23; bl _s802A67CC_24; mr 31,3; 25:; lis 4,-32703; addi 3,1,8; addi 4,4,-20912; addi 30,31,12; bl _s802A67CC_25; addi 4,1,8; mr 3,30; bl _s802A67CC_26; addi 3,1,8; li 4,2; bl _s802A67CC_27; mr 3,31; b 27f; 26:; li 3,0; 27:; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
+extern "C" void _s802A67CC_0();
+extern "C" void _s802A67CC_1();
+extern "C" void _s802A67CC_2();
+extern "C" void _s802A67CC_3();
+extern "C" void _s802A67CC_4();
+extern "C" void _s802A67CC_5();
+extern "C" void _s802A67CC_6();
+extern "C" void _s802A67CC_7();
+extern "C" void _s802A67CC_8();
+extern "C" void _s802A67CC_9();
+extern "C" void _s802A67CC_10();
+extern "C" void _s802A67CC_11();
+extern "C" void _s802A67CC_12();
+extern "C" void _s802A67CC_13();
+extern "C" void _s802A67CC_14();
+extern "C" void _s802A67CC_15();
+extern "C" void _s802A67CC_16();
+extern "C" void _s802A67CC_17();
+extern "C" void _s802A67CC_18();
+extern "C" void _s802A67CC_19();
+extern "C" void _s802A67CC_20();
+extern "C" void _s802A67CC_21();
+extern "C" void _s802A67CC_22();
+extern "C" void _s802A67CC_23();
+extern "C" void _s802A67CC_24();
+extern "C" void _s802A67CC_25();
+extern "C" void _s802A67CC_26();
+extern "C" void _s802A67CC_27();
+extern "C" void f_802A67CC() {}

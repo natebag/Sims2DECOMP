@@ -1,0 +1,14 @@
+// 0x800CEC64 NeighborhoodImpl::BaseMakeNewFamily(bool, (740 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; mfcr 12; stmw 26,0x20(1); stw 0,0x3c(1); stw 12,0x1c(1); mr 27,3; mr 28,4; mr. 31,5; bge 2f; li 30,1; b 1f; 0:; addi 30,30,1; 1:; lwz 9,0x0(27); mr 4,30; lha 3,0x120(9); lwz 0,0x124(9); add 3,27,3; mtspr 8,0; blrl; cmpwi 3,0; bne 0b; mr 31,30; cmpwi 31,32767; ble 2f; li 3,0; b 21f; 2:; addi 9,27,92; lwz 30,0x5c(27); lwz 0,0x4(9); cmpwi 4,28,0; mr 29,9; li 28,1; cmpw 30,0; beq 5f; 3:; lwz 3,0x0(30); lwz 9,0x0(3); lha 0,0xb8(9); lwz 9,0xbc(9); add 3,3,0; mtspr 8,9; blrl; cmpw 3,28; blt 4f; lwz 3,0x0(30); lwz 9,0x0(3); lha 0,0xb8(9); lwz 9,0xbc(9); add 3,3,0; mtspr 8,9; blrl; addi 28,3,1; 4:; lwz 0,0x4(29); addi 30,30,4; cmpw 30,0; bne 3b; 5:; li 0,0; stw 0,0x8(1); beq cr4,6f; li 3,3432; bl _s800CEC64_0; mr 4,31; bl _s800CEC64_1; b 7f; 6:; li 3,56; bl _s800CEC64_2; mr 4,31; bl _s800CEC64_3; 7:; stw 3,0x8(1); lwz 11,0x8(1); cmpwi 11,0; beq 20f; lwz 9,0x0(11); addi 26,1,8; lwz 0,0x74(9); lha 3,0x70(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x8(1); mr 4,28; lwz 9,0x0(11); lwz 0,0xc4(9); lha 3,0xc0(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x8(1); lwz 4,-24304(13); lwz 9,0x0(11); lwz 0,0xd4(9); lha 3,0xd0(9); mtspr 8,0; add 3,11,3; blrl; lwz 30,0x4(29); lwz 0,0xc(29); cmpw 30,0; beq 8f; lwz 0,0x8(1); stw 0,0x0(30); lwz 9,0x4(29); addi 9,9,4; stw 9,0x4(29); b 19f; 8:; lwz 0,0x5c(27); li 9,1; stw 9,0x10(1); addi 10,1,16; subf 0,0,30; addi 11,1,12; srawi 9,0,2; stw 9,0xc(1); cmplwi 9,1; bge 9f; mr 11,10; 9:; lwz 0,0x0(11); add. 0,9,0; beq 11f; rlwinm 0,0,2,0,29; mr 28,0; cmplwi 0,128; ble 10f; mr 3,28; bl _s800CEC64_4; mr 31,3; b 12f; 10:; mr 3,28; bl _s800CEC64_5; mr 31,3; b 12f; 11:; li 31,0; li 28,0; 12:; lwz 4,0x0(29); cmpw 30,4; beq 13f; subf 30,4,30; mr 3,31; mr 5,30; bl _s800CEC64_6; add 0,3,30; b 14f; 13:; mr 0,31; 14:; lwz 9,0x10(1); mr 30,0; mtspr 9,9; cmpwi 9,0; beq 16f; 15:; lwz 0,0x0(26); stw 0,0x0(30); addi 30,30,4; bdnz 15b; 16:; lwz 3,0x0(29); lwz 0,0xc(29); cmpwi 3,0; subf 0,3,0; srawi 0,0,2; beq 18f; rlwinm 4,0,2,0,29; cmplwi 4,128; ble 17f; bl _s800CEC64_7; b 18f; 17:; bl _s800CEC64_8; 18:; add 0,28,31; stw 31,0x0(29); stw 30,0x4(29); stw 0,0xc(29); 19:; lwz 4,0x4(29); lwz 3,0x5c(27); subf 0,3,4; srawi 0,0,2; cmplwi 0,1; ble 20f; lis 5,-32755; addi 5,5,-12972; bl _s800CEC64_9; 20:; lwz 3,0x8(1); 21:; lwz 0,0x3c(1); lwz 12,0x1c(1); mtspr 8,0; lmw 26,0x20(1); mtcrf 8,12; addi 1,1,56"
+extern "C" void _s800CEC64_0();
+extern "C" void _s800CEC64_1();
+extern "C" void _s800CEC64_2();
+extern "C" void _s800CEC64_3();
+extern "C" void _s800CEC64_4();
+extern "C" void _s800CEC64_5();
+extern "C" void _s800CEC64_6();
+extern "C" void _s800CEC64_7();
+extern "C" void _s800CEC64_8();
+extern "C" void _s800CEC64_9();
+extern "C" void f_800CEC64() {}

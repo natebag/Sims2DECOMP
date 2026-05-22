@@ -1,0 +1,11 @@
+// 0x8024E0EC OSSetErrorHandler (536 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); stwu 1,-48(1); stw 31,0x2c(1); stw 30,0x28(1); stw 29,0x24(1); addi 29,3,0; stw 28,0x20(1); addi 28,4,0; bl _s8024E0EC_0; lis 4,-32694; rlwinm 5,29,2,14,29; addi 0,4,-24784; rlwinm 6,29,0,16,31; add 4,0,5; lwz 30,0x0(4); cmplwi 6,16; mr 29,3; stw 28,0x0(4); bne 8f; bl _s8024E0EC_1; addi 31,3,0; ori 3,31,8192; bl _s8024E0EC_2; bl _s8024E0EC_3; cmplwi 28,0; beq 4f; lis 5,-32768; lis 4,24582; lwz 6,0xdc(5); addi 4,4,-1793; b 3f; 0:; lwz 0,0x19c(6); ori 0,0,2304; stw 0,0x19c(6); lhz 5,0x1a2(6); rlwinm. 0,5,0,31,31; bne 2f; ori 5,5,1; li 0,4; sth 5,0x1a2(6); mtspr 9,0; addi 5,6,0; 1:; li 0,-1; stw 0,0x94(5); stw 0,0x90(5); stw 0,0x1cc(5); stw 0,0x1c8(5); stw 0,0x9c(5); stw 0,0x98(5); stw 0,0x1d4(5); stw 0,0x1d0(5); stw 0,0xa4(5); stw 0,0xa0(5); stw 0,0x1dc(5); stw 0,0x1d8(5); stw 0,0xac(5); stw 0,0xa8(5); stw 0,0x1e4(5); stw 0,0x1e0(5); stw 0,0xb4(5); stw 0,0xb0(5); stw 0,0x1ec(5); stw 0,0x1e8(5); stw 0,0xbc(5); stw 0,0xb8(5); stw 0,0x1f4(5); stw 0,0x1f0(5); stw 0,0xc4(5); stw 0,0xc0(5); stw 0,0x1fc(5); stw 0,0x1f8(5); stw 0,0xcc(5); stw 0,0xc8(5); stw 0,0x204(5); stw 0,0x200(5); addi 5,5,64; bdnz 1b; li 0,4; stw 0,0x194(6); 2:; lwz 0,-27912(13); lwz 5,0x194(6); rlwinm 0,0,0,24,28; or 0,5,0; stw 0,0x194(6); lwz 0,0x194(6); and 0,0,4; stw 0,0x194(6); lwz 6,0x2fc(6); 3:; cmplwi 6,0; bne 0b; lwz 0,-27912(13); ori 31,31,2304; rlwinm 0,0,0,24,28; or 3,3,0; b 7f; 4:; lis 5,-32768; lis 4,24582; lwz 6,0xdc(5); addi 4,4,-1793; li 5,-2305; b 6f; 5:; lwz 0,0x19c(6); and 0,0,5; stw 0,0x19c(6); lwz 0,0x194(6); rlwinm 0,0,0,29,23; stw 0,0x194(6); lwz 0,0x194(6); and 0,0,4; stw 0,0x194(6); lwz 6,0x2fc(6); 6:; cmplwi 6,0; bne 5b; li 0,-2305; rlwinm 3,3,0,29,23; and 31,31,0; 7:; lis 4,24582; addi 0,4,-1793; and 3,3,0; bl _s8024E0EC_4; mr 3,31; bl _s8024E0EC_5; 8:; mr 3,29; bl _s8024E0EC_6; mr 3,30; lwz 0,0x34(1); lwz 31,0x2c(1); lwz 30,0x28(1); lwz 29,0x24(1); lwz 28,0x20(1); addi 1,1,48; mtspr 8,0"
+extern "C" void _s8024E0EC_0();
+extern "C" void _s8024E0EC_1();
+extern "C" void _s8024E0EC_2();
+extern "C" void _s8024E0EC_3();
+extern "C" void _s8024E0EC_4();
+extern "C" void _s8024E0EC_5();
+extern "C" void _s8024E0EC_6();
+extern "C" void f_8024E0EC() {}

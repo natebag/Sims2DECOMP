@@ -1,0 +1,16 @@
+// 0x80289F18 AptCharacterInst::sMethod_swapDepths(AptValue (812 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 29,0x1c(1); stw 0,0x2c(1); mr 31,3; cmpwi 4,1; beq 1f; lwz 0,0x0(31); li 11,0; rlwinm 9,0,0,25,31; addi 9,9,-12; cmplwi 9,7; bgt 0f; rlwinm 11,0,5,31,31; 0:; cmpwi 11,0; bne 15f; 1:; lis 9,-32694; li 10,0; lwz 11,-16032(9); li 8,0; addi 9,9,-16032; lwz 0,0x8(9); rlwinm 11,11,2,0,29; add 11,11,0; lwz 29,-4(11); stw 10,0x10(1); lwz 11,0x0(29); stw 10,0x14(1); rlwinm 9,11,0,25,31; addi 0,9,-12; cmplwi 0,7; bgt 2f; rlwinm 8,11,5,31,31; 2:; cmpwi 8,0; beq 3f; stw 29,0x14(1); b 10f; 3:; li 0,0; cmpwi 9,1; beq 4f; cmpwi 9,42; bne 5f; 4:; andis. 9,11,2048; beq 5f; li 0,1; 5:; cmpwi 0,0; beq 6f; lis 11,-32700; addi 30,1,8; lhz 9,-6476(11); addi 0,11,-6476; stw 0,0x8(1); mr 3,29; addi 9,9,1; mr 4,30; sth 9,-6476(11); bl _s80289F18_0; lwz 11,0x48(31); li 4,0; mr 5,30; addi 6,1,16; lwz 9,0x4c(11); addi 7,1,20; lwz 3,0x24(9); bl _s80289F18_1; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 10f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80289F18_2; b 10f; 6:; lwz 0,0x0(29); li 11,0; rlwinm 9,0,0,25,31; cmpwi 9,7; bne 7f; rlwinm 11,0,5,31,31; 7:; cmpwi 11,0; bne 9f; cmpwi 9,6; li 9,0; bne 8f; rlwinm 9,0,5,31,31; 8:; cmpwi 9,0; beq 10f; 9:; mr 3,29; bl _s80289F18_3; lwz 0,0x58(31); addi 4,3,16384; srawi 0,0,15; cmpw 4,0; beq 15f; lwz 11,0x48(31); li 5,0; addi 6,1,16; addi 7,1,20; lwz 9,0x4c(11); lwz 3,0x24(9); bl _s80289F18_4; 10:; lwz 10,0x14(1); cmpwi 10,0; beq 11f; lwz 0,0x0(10); andis. 9,0,2048; beq 11f; cmpw 10,31; beq 11f; lwz 11,0x58(10); lis 29,-32704; lwz 9,0x58(31); lis 30,-32704; mr 0,11; rlwimi 0,9,0,0,16; stw 0,0x58(10); lwz 9,0x58(31); lwz 3,0x14(1); rlwimi 9,11,0,0,16; stw 9,0x58(31); bl _s80289F18_5; mr 3,31; bl _s80289F18_6; lwz 11,0x48(31); mr 5,31; lwz 4,0x58(31); lwz 9,0x4c(11); srawi 4,4,15; lwz 3,0x24(9); bl _s80289F18_7; lwz 9,0x48(31); lwz 5,0x14(1); lwz 11,0x4c(9); lwz 4,0x58(5); lwz 3,0x24(11); srawi 4,4,15; bl _s80289F18_8; lwz 9,0x8(31); addi 4,29,19580; addi 5,30,19480; li 6,1186; lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,31,3; blrl; lwz 11,0x14(1); addi 4,29,19580; addi 5,30,19480; li 6,1187; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; b 15f; 11:; lwz 0,0x0(29); li 11,0; rlwinm 9,0,0,25,31; cmpwi 9,7; bne 12f; rlwinm 11,0,5,31,31; 12:; cmpwi 11,0; bne 14f; cmpwi 9,6; li 9,0; bne 13f; rlwinm 9,0,5,31,31; 13:; cmpwi 9,0; beq 15f; 14:; mr 3,31; bl _s80289F18_9; lwz 11,0x48(31); mr 3,29; lwz 9,0x4c(11); lwz 30,0x24(9); bl _s80289F18_10; addi 4,3,16384; mr 5,31; mr 3,30; bl _s80289F18_11; lwz 9,0x8(31); lis 4,-32704; lis 5,-32704; addi 4,4,19580; lha 3,0x10(9); addi 5,5,19480; lwz 0,0x14(9); li 6,1194; add 3,31,3; mtspr 8,0; blrl; 15:; lwz 3,-22936(13); lwz 0,0x2c(1); mtspr 8,0; lmw 29,0x1c(1); addi 1,1,40"
+extern "C" void _s80289F18_0();
+extern "C" void _s80289F18_1();
+extern "C" void _s80289F18_2();
+extern "C" void _s80289F18_3();
+extern "C" void _s80289F18_4();
+extern "C" void _s80289F18_5();
+extern "C" void _s80289F18_6();
+extern "C" void _s80289F18_7();
+extern "C" void _s80289F18_8();
+extern "C" void _s80289F18_9();
+extern "C" void _s80289F18_10();
+extern "C" void _s80289F18_11();
+extern "C" void f_80289F18() {}

@@ -1,0 +1,17 @@
+// 0x8030B228 TextureUtils::CopyTexture32To8(ETexture (900 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-8536(1); mfspr 0,8; stmw 16,0x2118(1); stw 0,0x215c(1); mr 25,4; mr. 24,3; beq 1f; cmpwi 25,0; beq 1f; lbz 0,0x18(24); cmpwi 0,143; beq 1f; lbz 0,0x18(25); cmpwi 0,143; beq 1f; lbz 0,0x1a(24); cmpwi 0,32; bne 1f; lbz 0,0x1a(25); cmpwi 0,8; bne 1f; addi 3,1,8; bl _s8030B228_0; lhz 5,0x10(25); addi 3,1,8; li 4,255; li 6,0; rlwinm 5,5,9,0,22; li 7,0; li 8,1; bl _s8030B228_1; cmpwi 3,0; beq 0f; lhz 31,0x10(24); lhz 23,0x10(25); lhz 22,0x12(24); lhz 20,0x12(25); cmpw 31,23; bne 0f; cmpw 22,20; beq 2f; 0:; addi 3,1,8; li 4,2; bl _s8030B228_2; 1:; li 3,0; b 15f; 2:; addi 29,1,8456; mr 3,24; bl _s8030B228_3; li 28,0; lwz 9,0x24(24); mr 16,3; li 4,1; addi 30,1,8460; lwz 0,0x3c(9); mr 17,29; lha 3,0x38(9); mr 18,30; mtspr 8,0; add 3,24,3; blrl; lwz 9,0x24(24); li 4,0; mr 5,29; mr 6,30; lha 3,0x40(9); lwz 0,0x44(9); add 3,24,3; mtspr 8,0; blrl; mr 21,3; cmplw 28,20; bge 6f; 3:; li 27,0; addi 26,28,1; mullw 4,28,31; cmplw 27,31; bge 5f; rlwinm 0,4,2,0,29; addi 30,1,8464; add 29,0,21; 4:; lwz 0,0x0(29); addi 3,1,8; mr 4,30; addi 27,27,1; mr 10,0; addi 29,29,4; rlwinm 0,10,8,24,31; rlwinm 11,10,16,24,31; stb 0,0x2110(1); rlwinm 9,10,24,24,31; rlwinm 0,10,0,24,31; stb 11,0x1(30); stb 9,0x2(30); stb 0,0x3(30); bl _s8030B228_4; cmplw 27,31; blt 4b; 5:; mr 28,26; cmplw 28,22; blt 3b; 6:; addi 3,1,8; bl _s8030B228_5; mr 3,25; bl _s8030B228_6; lwz 9,0x24(25); mr 19,3; li 4,2; lwz 0,0x3c(9); lha 3,0x38(9); mtspr 8,0; add 3,25,3; blrl; lwz 9,0x24(25); mr 5,17; mr 6,18; li 4,0; lwz 0,0x44(9); lha 3,0x40(9); mtspr 8,0; add 3,25,3; blrl; lbz 0,0x18(25); mr 22,3; cmpwi 0,138; bne 7f; lwz 9,0x24(25); lha 3,0x50(9); lwz 0,0x54(9); b 8f; 7:; lwz 9,0x24(25); lha 3,0x48(9); lwz 0,0x4c(9); 8:; add 3,25,3; mtspr 8,0; blrl; mr 31,3; addi 3,1,8; li 28,0; bl _s8030B228_7; mr 29,3; cmplw 28,29; bge 10f; mr 30,31; addi 31,1,8464; 9:; mr 4,28; addi 3,1,8; mr 5,31; addi 28,28,1; bl _s8030B228_8; lbz 0,0x2110(1); cmplw 28,29; lbz 9,0x1(31); lbz 11,0x2(31); rlwinm 0,0,24,0,7; rlwinm 9,9,16,0,15; lbz 10,0x3(31); or 0,0,9; rlwinm 11,11,8,0,23; or 0,0,11; or 10,10,0; stw 10,0x0(30); addi 30,30,4; blt 9b; 10:; li 28,0; cmplw 28,20; bge 14f; 11:; li 27,0; addi 26,28,1; mullw 4,28,23; cmplw 27,23; bge 13f; rlwinm 0,4,2,0,29; mr 31,4; add 29,0,21; addi 30,1,8464; 12:; lwz 0,0x0(29); addi 3,1,8; mr 4,30; addi 27,27,1; mr 10,0; addi 29,29,4; rlwinm 0,10,8,24,31; rlwinm 11,10,16,24,31; stb 0,0x2110(1); rlwinm 9,10,24,24,31; rlwinm 0,10,0,24,31; stb 11,0x1(30); stb 9,0x2(30); stb 0,0x3(30); bl _s8030B228_9; stbx 3,31,22; cmplw 27,23; addi 31,31,1; blt 12b; 13:; mr 28,26; cmplw 28,20; blt 11b; 14:; lwz 9,0x24(25); lwz 0,0x74(9); lha 3,0x70(9); mtspr 8,0; add 3,25,3; blrl; mr 4,19; mr 3,25; bl _s8030B228_10; lwz 9,0x24(24); lha 3,0x70(9); lwz 0,0x74(9); add 3,24,3; mtspr 8,0; blrl; mr 3,24; mr 4,16; bl _s8030B228_11; addi 3,1,8; li 4,2; bl _s8030B228_12; li 3,1; 15:; lwz 0,0x215c(1); mtspr 8,0; lmw 16,0x2118(1); addi 1,1,8536"
+extern "C" void _s8030B228_0();
+extern "C" void _s8030B228_1();
+extern "C" void _s8030B228_2();
+extern "C" void _s8030B228_3();
+extern "C" void _s8030B228_4();
+extern "C" void _s8030B228_5();
+extern "C" void _s8030B228_6();
+extern "C" void _s8030B228_7();
+extern "C" void _s8030B228_8();
+extern "C" void _s8030B228_9();
+extern "C" void _s8030B228_10();
+extern "C" void _s8030B228_11();
+extern "C" void _s8030B228_12();
+extern "C" void f_8030B228() {}

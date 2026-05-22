@@ -1,0 +1,20 @@
+// 0x8028A318 AptCharacterInst::sMethod_getBounds(AptValue (916 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stfd f31,0x30(1); stmw 29,0x24(1); stw 0,0x3c(1); mr 29,3; cmpwi 4,1; bgt 0f; mr 30,29; bne 2f; lis 9,-32694; lwz 11,-16032(9); addi 9,9,-16032; lwz 0,0x8(9); rlwinm 11,11,2,0,29; add 11,11,0; lwz 9,-4(11); lwz 0,0x0(9); andis. 11,0,2048; bne 1f; 0:; lwz 3,-22936(13); b 19f; 1:; mr 30,9; 2:; lwz 3,-23016(13); li 4,36; bl _s8028A318_0; mr 31,3; li 4,27; bl _s8028A318_1; lis 9,-32703; li 4,8; addi 9,9,8984; addi 3,31,12; stw 9,0x8(31); bl _s8028A318_2; li 0,0; lis 9,-32703; stb 0,0x20(31); addi 9,9,21120; stw 9,0x8(31); mr 3,29; lwz 0,0x20(31); addi 4,1,8; rlwinm 0,0,0,10,7; stw 0,0x20(31); bl _s8028A318_3; lfs f11,0x20(30); lfs f0,0x10(1); lfs f13,0x8(1); fsubs f31,f0,f11; lfs f12,0xc(1); stfs f31,0x10(1); lfs f11,0x14(1); lfs f0,0x20(30); lwz 5,-26912(13); fsubs f13,f13,f0; stfs f13,0x8(1); cmpwi 5,0; lfs f0,0x24(30); fsubs f12,f12,f0; stfs f12,0xc(1); lfs f0,0x24(30); fsubs f11,f11,f0; stfs f11,0x14(1); beq 5f; lwz 0,0x0(5); lwz 9,0xc(5); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26912(13); stw 11,0x0(5); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 3f; rlwinm 0,11,0,3,1; stw 0,0x0(5); b 4f; 3:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 5,11,9; stw 0,0x4(8); 4:; stfs f31,0xc(5); b 6f; 5:; lwz 3,-23020(13); li 4,16; bl _s8028A318_4; mr 30,3; li 4,6; bl _s8028A318_5; lis 9,-32702; stfs f31,0xc(30); addi 9,9,-26784; mr 5,30; stw 9,0x8(30); 6:; lis 4,-32694; addi 3,31,12; addi 4,4,-11332; mr 29,3; addi 4,4,692; bl _s8028A318_6; lwz 5,-26912(13); lfs f31,0x8(1); cmpwi 5,0; beq 9f; lwz 0,0x0(5); lwz 9,0xc(5); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26912(13); stw 11,0x0(5); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 7f; rlwinm 0,11,0,3,1; stw 0,0x0(5); b 8f; 7:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 5,11,9; stw 0,0x4(8); 8:; stfs f31,0xc(5); b 10f; 9:; lwz 3,-23020(13); li 4,16; bl _s8028A318_7; mr 30,3; li 4,6; bl _s8028A318_8; lis 9,-32702; stfs f31,0xc(30); addi 9,9,-26784; mr 5,30; stw 9,0x8(30); 10:; lis 4,-32694; mr 3,29; addi 4,4,-11332; addi 4,4,696; bl _s8028A318_9; lwz 5,-26912(13); lfs f31,0x14(1); cmpwi 5,0; beq 13f; lwz 0,0x0(5); lwz 9,0xc(5); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26912(13); stw 11,0x0(5); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 11f; rlwinm 0,11,0,3,1; stw 0,0x0(5); b 12f; 11:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 5,11,9; stw 0,0x4(8); 12:; stfs f31,0xc(5); b 14f; 13:; lwz 3,-23020(13); li 4,16; bl _s8028A318_10; mr 30,3; li 4,6; bl _s8028A318_11; lis 9,-32702; stfs f31,0xc(30); addi 9,9,-26784; mr 5,30; stw 9,0x8(30); 14:; lis 4,-32694; mr 3,29; addi 4,4,-11332; addi 4,4,704; bl _s8028A318_12; lwz 5,-26912(13); lfs f31,0xc(1); cmpwi 5,0; beq 17f; lwz 0,0x0(5); lwz 9,0xc(5); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26912(13); stw 11,0x0(5); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 15f; rlwinm 0,11,0,3,1; stw 0,0x0(5); b 16f; 15:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 5,11,9; stw 0,0x4(8); 16:; stfs f31,0xc(5); b 18f; 17:; lwz 3,-23020(13); li 4,16; bl _s8028A318_13; mr 30,3; li 4,6; bl _s8028A318_14; lis 9,-32702; stfs f31,0xc(30); addi 9,9,-26784; mr 5,30; stw 9,0x8(30); 18:; lis 4,-32694; mr 3,29; addi 4,4,-11332; addi 4,4,708; bl _s8028A318_15; mr 3,31; 19:; lwz 0,0x3c(1); mtspr 8,0; lmw 29,0x24(1); lfd f31,0x30(1); addi 1,1,56"
+extern "C" void _s8028A318_0();
+extern "C" void _s8028A318_1();
+extern "C" void _s8028A318_2();
+extern "C" void _s8028A318_3();
+extern "C" void _s8028A318_4();
+extern "C" void _s8028A318_5();
+extern "C" void _s8028A318_6();
+extern "C" void _s8028A318_7();
+extern "C" void _s8028A318_8();
+extern "C" void _s8028A318_9();
+extern "C" void _s8028A318_10();
+extern "C" void _s8028A318_11();
+extern "C" void _s8028A318_12();
+extern "C" void _s8028A318_13();
+extern "C" void _s8028A318_14();
+extern "C" void _s8028A318_15();
+extern "C" void f_8028A318() {}

@@ -1,0 +1,13 @@
+// 0x80259EDC GetTypeCallback (664 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); stwu 1,-48(1); stmw 26,0x18(1); addi 27,3,0; lis 3,-32700; addi 0,3,-15952; rlwinm 29,27,2,0,29; add 30,0,29; lis 3,-32694; addi 26,4,0; addi 31,3,-21872; lwz 0,0x0(30); rlwinm 0,0,0,25,23; stw 0,0x0(30); lwz 0,0x0(30); or 0,0,26; stw 0,0x0(30); bl _s80259EDC_0; rlwinm 0,27,3,0,28; add 5,31,0; stw 4,0x124(5); lis 4,-32768; rlwinm. 0,26,0,28,31; stw 3,0x120(5); srw 4,4,27; lwz 3,-23536(13); lwz 28,0x0(30); andc 0,3,4; stw 0,-23536(13); and 26,3,4; bne 0f; rlwinm 3,28,0,3,4; addis 0,3,-2048; cmplwi 0,0; bne 0f; rlwinm. 0,28,0,0,0; beq 0f; rlwinm. 0,28,0,5,5; beq 3f; 0:; addi 3,27,0; li 4,0; bl _s80259EDC_1; rlwinm 0,27,4,0,27; lwz 30,0x0(30); add 31,31,0; li 29,0; addi 28,29,0; addi 31,31,352; 1:; lwz 12,0x0(31); cmplwi 12,0; beq 2f; stw 28,0x0(31); mtspr 8,12; addi 3,27,0; addi 4,30,0; blrl; 2:; addi 29,29,1; cmpwi 29,4; addi 31,31,4; blt 1b; b 11f; 3:; mr 3,27; bl _s80259EDC_2; cmpwi 26,0; rlwinm 26,3,8,8,23; beq 4f; rlwinm. 0,26,0,11,11; beq 4f; lis 3,208; addi 0,3,-256; and 0,26,0; oris 0,0,19984; add 4,31,29; stwu 0,0x1f0(4); li 0,128; lis 3,-32730; stw 0,0x0(30); addi 8,3,-24868; addi 3,27,0; addi 6,30,0; li 5,3; li 7,3; li 10,0; li 9,0; bl _s80259EDC_3; b 11f; 4:; rlwinm. 0,28,0,11,11; beq 6f; lis 3,208; addi 3,3,-256; and 0,26,3; and 3,28,3; cmplw 0,3; beq 8f; rlwinm. 0,26,0,11,11; bne 5f; oris 26,3,16; addi 3,27,0; rlwinm 4,26,24,16,31; bl _s80259EDC_4; 5:; oris 0,26,19968; add 4,31,29; stwu 0,0x1f0(4); li 0,128; lis 3,-32730; stw 0,0x0(30); addi 8,3,-24868; addi 3,27,0; addi 6,30,0; li 5,3; li 7,3; li 10,0; li 9,0; bl _s80259EDC_5; b 11f; 6:; rlwinm. 0,28,0,1,1; beq 7f; lis 3,208; addi 0,3,-256; and 28,28,0; oris 28,28,16; addi 3,27,0; rlwinm 4,28,24,16,31; bl _s80259EDC_6; oris 0,28,19968; add 4,31,29; stwu 0,0x1f0(4); li 0,128; lis 3,-32730; stw 0,0x0(30); addi 8,3,-24868; addi 3,27,0; addi 6,30,0; li 5,3; li 7,3; li 10,0; li 9,0; bl _s80259EDC_7; b 11f; 7:; addi 3,27,0; li 4,0; bl _s80259EDC_8; 8:; rlwinm 0,27,4,0,27; lwz 30,0x0(30); add 31,31,0; li 29,0; addi 28,29,0; addi 31,31,352; 9:; lwz 12,0x0(31); cmplwi 12,0; beq 10f; stw 28,0x0(31); mtspr 8,12; addi 3,27,0; addi 4,30,0; blrl; 10:; addi 29,29,1; cmpwi 29,4; addi 31,31,4; blt 9b; 11:; lmw 26,0x18(1); lwz 0,0x34(1); addi 1,1,48; mtspr 8,0"
+extern "C" void _s80259EDC_0();
+extern "C" void _s80259EDC_1();
+extern "C" void _s80259EDC_2();
+extern "C" void _s80259EDC_3();
+extern "C" void _s80259EDC_4();
+extern "C" void _s80259EDC_5();
+extern "C" void _s80259EDC_6();
+extern "C" void _s80259EDC_7();
+extern "C" void _s80259EDC_8();
+extern "C" void f_80259EDC() {}

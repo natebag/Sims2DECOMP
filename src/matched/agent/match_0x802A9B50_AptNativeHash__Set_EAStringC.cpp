@@ -1,0 +1,10 @@
+// 0x802A9B50 AptNativeHash::Set(EAStringC (548 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 30,3; mr 29,4; mr. 31,5; bne 0f; bl _s802A9B50_0; b 15f; 0:; lwz 11,0x0(29); lis 9,-32700; addi 9,9,-6476; cmpw 11,9; beq 15f; lhz 0,0x6(11); cmpwi 0,0; bne 1f; mr 3,29; bl _s802A9B50_1; 1:; lwz 3,0x0(29); lhz 28,0x6(3); cmpwi 28,1689; bne 7f; lis 9,-32694; lhz 11,0x2(3); lwz 4,-10852(9); lhz 0,0x2(4); cmpw 11,0; beq 2f; li 3,0; b 4f; 2:; cmpw 3,4; bne 3f; li 3,1; b 4f; 3:; addi 3,3,8; addi 4,4,8; bl _s802A9B50_2; subfic 0,3,0; adde 3,0,3; 4:; cmpwi 3,0; beq 7f; cmpwi 31,0; beq 5f; lwz 9,0x8(31); lis 4,-32703; lis 5,-32703; addi 4,4,-17060; lha 3,0x8(9); addi 5,5,-17188; lwz 0,0xc(9); li 6,102; add 3,31,3; mtspr 8,0; blrl; 5:; lwz 11,0xc(30); cmpwi 11,0; beq 6f; lwz 9,0x8(11); lis 4,-32703; lis 5,-32703; addi 4,4,-17060; lha 3,0x10(9); addi 5,5,-17188; lwz 0,0x14(9); li 6,103; add 3,11,3; mtspr 8,0; blrl; 6:; stw 31,0xc(30); b 15f; 7:; cmpwi 28,27581; bne 13f; lis 9,-32694; lwz 3,0x0(29); lwz 4,-11332(9); lhz 11,0x2(3); lhz 0,0x2(4); cmpw 11,0; beq 8f; li 3,0; b 10f; 8:; cmpw 3,4; bne 9f; li 3,1; b 10f; 9:; addi 3,3,8; addi 4,4,8; bl _s802A9B50_3; subfic 0,3,0; adde 3,0,3; 10:; cmpwi 3,0; beq 13f; cmpwi 31,0; beq 11f; lwz 9,0x8(31); lis 4,-32703; lis 5,-32703; addi 4,4,-17236; lha 3,0x8(9); addi 5,5,-17188; lwz 0,0xc(9); li 6,80; add 3,31,3; mtspr 8,0; blrl; 11:; lwz 11,0x8(30); cmpwi 11,0; beq 12f; lwz 9,0x8(11); lis 4,-32703; lis 5,-32703; addi 4,4,-17236; lha 3,0x10(9); addi 5,5,-17188; lwz 0,0x14(9); li 6,81; add 3,11,3; mtspr 8,0; blrl; 12:; stw 31,0x8(30); b 15f; 13:; lwz 0,0x4(30); cmpwi 0,0; bne 14f; mr 3,30; bl _s802A9B50_4; 14:; mr 3,30; mr 4,29; mr 5,31; bl _s802A9B50_5; 15:; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+extern "C" void _s802A9B50_0();
+extern "C" void _s802A9B50_1();
+extern "C" void _s802A9B50_2();
+extern "C" void _s802A9B50_3();
+extern "C" void _s802A9B50_4();
+extern "C" void _s802A9B50_5();
+extern "C" void f_802A9B50() {}

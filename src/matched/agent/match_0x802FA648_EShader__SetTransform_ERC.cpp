@@ -1,0 +1,12 @@
+// 0x802FA648 EShader::SetTransform(ERC (596 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-152(1); mfspr 0,8; stfd f29,0x80(1); stfd f30,0x88(1); stfd f31,0x90(1); stmw 23,0x5c(1); stw 0,0x9c(1); mr 28,3; mr 24,4; lwz 0,0x4(28); andis. 9,0,2048; beq 11f; lbz 0,0x0(28); li 27,0; cmpw 27,0; bge 11f; lis 9,-32702; lis 11,-32702; lis 10,-32702; lfs f31,-3068(9); lfs f30,-3064(11); addi 26,1,72; lfs f29,-3060(10); mr 31,28; li 25,0; li 23,0; 0:; lbz 9,0x86(31); addi 9,9,-4; cmplwi 9,2; bgt 10f; addi 9,28,116; lwzx 0,9,23; andi. 9,0,64; beq 1f; lwz 9,0xe8(28); addi 3,1,8; mr 4,26; mr 29,3; addi 11,9,8; mr 30,26; addi 9,9,4; lfsx f0,11,25; lfsx f13,9,25; stfs f0,0x4c(1); stfs f13,0x48(1); stfs f31,0x8(26); bl _s802FA648_0; b 2f; 1:; addi 3,1,8; bl _s802FA648_1; addi 29,1,8; addi 30,1,72; 2:; lbz 0,0x86(31); cmpwi 0,4; bne 4f; lbz 0,0x87(31); cmpwi 0,0; bne 3f; lfs f13,0x9c(31); mr 4,30; lfs f0,0xa0(31); mr 3,29; stfs f13,0x48(1); stfs f0,0x4c(1); stfs f31,0x8(30); bl _s802FA648_2; lfs f13,0x94(31); mr 3,29; lfs f0,0x98(31); mr 4,30; stfs f13,0x48(1); stfs f0,0x4c(1); stfs f30,0x8(30); bl _s802FA648_3; b 5f; 3:; lfs f13,0x9c(31); mr 4,30; lfs f0,0xa0(31); mr 3,29; stfs f13,0x4c(1); stfs f0,0x50(1); stfs f13,0x48(1); stfs f29,0x8(1); stfs f29,0x18(1); stfs f31,0x1c(1); stfs f30,0x2c(1); stfs f31,0x30(1); bl _s802FA648_4; lfs f13,0x94(31); mr 3,29; lfs f0,0x98(31); mr 4,30; stfs f13,0x4c(1); stfs f0,0x50(1); stfs f13,0x48(1); bl _s802FA648_5; b 5f; 4:; lfs f13,0x9c(31); mr 4,30; lfs f0,0xa0(31); mr 3,29; stfs f13,0x48(1); stfs f0,0x4c(1); stfs f31,0x8(30); bl _s802FA648_6; lfs f13,0x94(31); mr 3,29; lfs f0,0x98(31); mr 4,30; stfs f13,0x48(1); stfs f0,0x4c(1); stfs f30,0x8(30); bl _s802FA648_7; 5:; lbz 0,0x86(31); cmpwi 0,5; beq 6f; cmpwi 0,6; beq 7f; b 8f; 6:; li 5,2; b 9f; 7:; li 5,3; b 9f; 8:; li 5,0; 9:; lwz 9,0x70(24); addi 4,1,8; li 6,0; li 7,0; lha 3,0x118(9); mr 8,27; lwz 0,0x11c(9); add 3,24,3; mtspr 8,0; blrl; 10:; lbz 0,0x0(28); addi 27,27,1; addi 31,31,64; addi 25,25,8; cmpw 27,0; addi 23,23,64; blt 0b; 11:; lwz 0,0x9c(1); mtspr 8,0; lmw 23,0x5c(1); lfd f29,0x80(1); lfd f30,0x88(1); lfd f31,0x90(1); addi 1,1,152"
+extern "C" void _s802FA648_0();
+extern "C" void _s802FA648_1();
+extern "C" void _s802FA648_2();
+extern "C" void _s802FA648_3();
+extern "C" void _s802FA648_4();
+extern "C" void _s802FA648_5();
+extern "C" void _s802FA648_6();
+extern "C" void _s802FA648_7();
+extern "C" void f_802FA648() {}

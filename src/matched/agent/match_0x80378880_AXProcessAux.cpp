@@ -1,0 +1,12 @@
+// 0x80378880 __AXProcessAux (572 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; lis 4,-32690; stw 0,0x4(1); stwu 1,-56(1); stw 31,0x34(1); addi 31,4,-2976; lwz 0,-22248(13); lwz 3,-22244(13); mulli 4,0,1920; lwz 0,-22280(13); mulli 3,3,1920; add 4,31,4; add 3,31,3; stw 4,-22264(13); addi 4,4,5760; stw 3,-22260(13); addi 3,3,5760; cmplwi 0,0; stw 4,-22256(13); stw 3,-22252(13); beq 1f; lwz 0,-22208(13); cmplwi 0,2; bne 0f; lwz 0,-22232(13); li 4,1920; mulli 0,0,1920; add 5,31,0; stw 5,0x20(1); addi 0,5,640; addi 3,5,1280; stw 0,0x24(1); addi 0,5,7040; stw 3,0x28(1); stw 0,0x2c(1); lwz 3,0x20(1); bl _s80378880_0; lwz 3,0x2c(1); li 4,640; bl _s80378880_1; lwz 12,-22280(13); addi 3,1,32; lwz 4,-22272(13); mtspr 8,12; blrl; lwz 3,0x20(1); li 4,1920; bl _s80378880_2; lwz 3,0x2c(1); li 4,640; bl _s80378880_3; b 1f; 0:; lwz 0,-22232(13); li 4,1920; mulli 0,0,1920; add 5,31,0; stw 5,0x14(1); addi 3,5,640; addi 0,5,1280; stw 3,0x18(1); stw 0,0x1c(1); lwz 3,0x14(1); bl _s80378880_4; lwz 12,-22280(13); addi 3,1,20; lwz 4,-22272(13); mtspr 8,12; blrl; lwz 3,0x14(1); li 4,1920; bl _s80378880_5; 1:; lwz 0,-22276(13); cmplwi 0,0; beq 2f; lwz 0,-22208(13); cmplwi 0,2; beq 2f; lwz 0,-22232(13); li 4,1920; mulli 0,0,1920; add 5,31,0; addi 5,5,5760; stw 5,0x8(1); addi 3,5,640; addi 0,5,1280; stw 3,0xc(1); stw 0,0x10(1); lwz 3,0x8(1); bl _s80378880_6; lwz 12,-22276(13); addi 3,1,8; lwz 4,-22268(13); mtspr 8,12; blrl; lwz 3,0x8(1); li 4,1920; bl _s80378880_7; 2:; lwz 4,-22248(13); lis 3,-21845; lwz 5,-22244(13); addi 8,3,-21845; lwz 3,-22232(13); addi 0,4,1; lwz 4,-22240(13); addi 5,5,1; stw 0,-22248(13); addi 0,3,1; lwz 3,-22236(13); stw 5,-22244(13); addi 5,4,1; lwz 10,-22248(13); addi 4,3,1; stw 0,-22232(13); lwz 7,-22244(13); mulhwu 9,8,10; lwz 3,-22232(13); stw 5,-22240(13); stw 4,-22236(13); mulhwu 6,8,7; lwz 5,-22240(13); lwz 4,-22236(13); mulhwu 0,8,3; rlwinm 9,9,31,1,31; rlwinm 6,6,31,1,31; rlwinm 0,0,31,1,31; mulli 8,9,3; mulli 6,6,3; mulli 0,0,3; subf 8,8,10; subf 6,6,7; stw 8,-22248(13); rlwinm 5,5,0,31,31; rlwinm 4,4,0,31,31; stw 6,-22244(13); subf 0,0,3; stw 5,-22240(13); stw 4,-22236(13); stw 0,-22232(13); lwz 0,0x3c(1); lwz 31,0x34(1); addi 1,1,56; mtspr 8,0"
+extern "C" void _s80378880_0();
+extern "C" void _s80378880_1();
+extern "C" void _s80378880_2();
+extern "C" void _s80378880_3();
+extern "C" void _s80378880_4();
+extern "C" void _s80378880_5();
+extern "C" void _s80378880_6();
+extern "C" void _s80378880_7();
+extern "C" void f_80378880() {}
