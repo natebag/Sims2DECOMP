@@ -1,0 +1,4 @@
+// 0x8023700C CalcSkyLights(SkyLights (204 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); stmw 30,0x18(1); addi 9,3,16; lfs f11,0x1c(3); lfs f13,0x8(9); addi 10,1,8; lfs f12,0x4(9); addi 7,5,16; lfs f0,0x10(3); fmuls f13,f13,f11; fmuls f12,f12,f11; stfs f13,0x10(1); fmuls f0,f0,f11; stfs f12,0xc(1); stfs f0,0x8(1); addi 8,5,28; li 30,1; li 6,0; lwz 9,0x4(10); lwz 11,0x8(10); lwz 0,0x8(1); stw 9,0x4(5); stw 11,0x8(5); stw 0,0x0(5); lfs f11,0xc(3); lfs f0,0x0(3); lfs f13,0x8(3); lfs f12,0x4(3); fmuls f0,f0,f11; stfs f0,0x8(1); fmuls f13,f13,f11; fmuls f12,f12,f11; stfs f13,0x10(1); stfs f12,0xc(1); lwz 0,0x8(1); lwz 9,0x8(10); lwz 11,0x4(10); stw 0,0x10(5); stw 9,0x8(7); stw 11,0x4(7); lwz 0,0x0(4); lwz 9,0x8(4); lwz 11,0x4(4); stw 0,0x1c(5); stw 9,0x8(8); stw 11,0x4(8); stw 30,0xf0(5); stw 6,0xf4(5); lmw 30,0x18(1); addi 1,1,32"
+extern "C" void f_8023700C() {}

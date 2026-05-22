@@ -1,0 +1,4 @@
+// 0x8028897C AptCharacterTextInst::AptCharacterTextInst(void) (188 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); stmw 29,0xc(1); lis 8,-32700; lis 9,-32704; mr 11,3; li 10,0; addi 0,8,-6476; addi 9,9,20136; li 6,-1; stw 0,0x18(11); stw 9,0x14(11); lis 7,-32704; stw 10,0x10(11); li 30,1; stw 6,0x0(11); lis 4,-256; stw 10,0x8(11); li 29,3; stw 10,0xc(11); lwz 5,-27584(13); lhz 9,-6476(8); lfs f0,0x4bd8(7); addi 9,9,1; sth 9,-6476(8); stw 0,0x1c(11); lhz 9,-6476(8); addi 9,9,1; sth 9,-6476(8); stw 30,0x2c(11); lwz 0,0x74(11); stw 6,0x30(11); rlwinm 0,0,0,3,31; stw 4,0x34(11); mr 9,0; stw 29,0x38(11); rlwimi 9,5,28,3,3; stfs f0,0x48(11); stw 9,0x74(11); stw 10,0x68(11); stw 10,0x20(11); stw 30,0x28(11); stw 10,0x40(11); stfs f0,0x44(11); stw 10,0x70(11); lmw 29,0xc(1); addi 1,1,24"
+extern "C" void f_8028897C() {}

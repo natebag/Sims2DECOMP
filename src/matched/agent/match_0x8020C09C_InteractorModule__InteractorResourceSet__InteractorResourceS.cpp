@@ -1,0 +1,4 @@
+// 0x8020C09C InteractorModule::InteractorResourceSet::InteractorResourceSet(void) (176 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-128(1); stmw 29,0x74(1); li 0,0; mr 9,3; stw 0,0x0(9); addi 11,9,8; stw 0,0x4(9); addi 8,9,20; stw 0,0x4(11); addi 10,9,28; stb 0,0x10(9); addi 11,9,40; stw 0,0x14(9); addi 7,9,48; stw 0,0x4(8); addi 4,9,60; stw 0,0x4(10); addi 30,9,68; stb 0,0x10(8); addi 29,9,76; stw 0,0x28(9); addi 6,9,84; stw 0,0x4(11); addi 5,9,92; stw 0,0x4(7); addi 10,9,100; stb 0,0x10(11); addi 8,9,108; stw 0,0x3c(9); addi 11,9,116; stw 0,0x4(4); stw 0,0x4(30); stw 0,0x4c(9); stw 0,0x4(29); stw 0,0x4(6); stw 0,0x5c(9); stw 0,0x4(5); stw 0,0x4(10); stw 0,0x6c(9); stw 0,0x4(8); stw 0,0x4(11); lmw 29,0x74(1); addi 1,1,128"
+extern "C" void f_8020C09C() {}

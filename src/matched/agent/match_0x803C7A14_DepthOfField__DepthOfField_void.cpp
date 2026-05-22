@@ -1,0 +1,4 @@
+// 0x803C7A14 DepthOfField::DepthOfField(void) (176 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); stmw 30,0x8(1); lis 11,-32697; mr 9,3; addi 11,11,-10424; lis 10,-32702; stw 11,0x10(9); lis 6,-32702; lis 11,-32697; li 0,0; lfs f0,0x2b7c(10); addi 11,11,-10616; li 8,1; lis 5,-32702; stfs f0,0x4(9); addi 10,9,24; stfs f0,0x0(9); lis 4,-32702; addi 7,9,44; addi 30,9,64; lfs f0,0x2b80(6); stw 8,0xc(9); stfs f0,0x8(9); stw 11,0x10(9); stw 0,0x14(9); lfs f0,0x2b84(5); stfs f0,0x18(9); stfs f0,0x8(10); stfs f0,0x4(10); lfs f13,0x2b88(4); stw 0,0x28(9); stfs f13,0x24(9); stfs f0,0x2c(9); stfs f0,0x8(7); stfs f0,0x4(7); stw 0,0x3c(9); stfs f13,0x38(9); stfs f0,0x40(9); stfs f0,0x8(30); stfs f0,0x4(30); stfs f13,0x4c(9); lmw 30,0x8(1); addi 1,1,16"
+extern "C" void f_803C7A14() {}

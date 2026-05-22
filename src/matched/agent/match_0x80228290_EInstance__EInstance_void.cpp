@@ -1,0 +1,4 @@
+// 0x80228290 EInstance::EInstance(void) (224 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); stmw 30,0x18(1); lis 11,-32697; mr 9,3; addi 11,11,-28816; lis 8,-32704; stw 11,0x0(9); lis 10,-32704; lfs f13,-6188(10); addi 6,9,72; lfs f0,-6192(8); addi 5,9,60; li 11,0; li 7,1; stfs f0,0x8(1); li 4,15; stfs f0,0x10(1); li 30,-1; stfs f0,0xc(1); lwz 0,0x8(1); lwz 8,0xc(1); lwz 10,0x10(1); stw 0,0x48(9); stw 10,0x8(6); stw 8,0x4(6); lwz 0,0x48(9); stw 0,0x3c(9); stw 10,0x8(5); stw 8,0x4(5); stw 4,0x5c(9); stfs f13,0x64(9); stw 7,0x70(9); stw 11,0x4(9); stw 11,0x34(9); stw 11,0x78(9); stw 11,0x8(9); stw 11,0x10(9); stw 11,0x38(9); stw 11,0x58(9); stfs f13,0x60(9); stw 7,0x68(9); stw 7,0x6c(9); stw 11,0x74(9); stw 11,0x14(9); stw 11,0x28(9); stw 11,0x24(9); stw 11,0x20(9); stw 11,0xc(9); stw 30,0x54(9); stw 11,0x1c(9); stw 11,0x30(9); stw 11,0x2c(9); stw 11,0x18(9); lmw 30,0x18(1); addi 1,1,32"
+extern "C" void f_80228290() {}
