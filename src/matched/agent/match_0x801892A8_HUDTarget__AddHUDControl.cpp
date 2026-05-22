@@ -1,11 +1,14 @@
-// PRAGMA_STUB: HUDTarget::AddHUDControl(short, short, short &)
 // 0x801892A8 HUDTarget::AddHUDControl(short, short, short&) (44B)
-struct HUDTarget;
 
-extern const char* GetJobHUDControlName(short ctl);
+extern char* GetJobHUDControlName(short id);
 
-int HUDTarget__AddHUDControl(HUDTarget* self, short c1, short c2, short& out) {
-    out = c1;
-    GetJobHUDControlName(c1);
-    return 1;
+class HUDTarget {
+public:
+    bool AddHUDControl(short id, short val, short& outRef);
+};
+
+bool HUDTarget::AddHUDControl(short id, short val, short& outRef) {
+    outRef = id;
+    GetJobHUDControlName(id);
+    return true;
 }
