@@ -1,20 +1,22 @@
-// 0x801657E0 CasScene::Update (68b)
+// 0x801657E0 CasScene::Update(float) (68B)
 
-struct CasScene {
+extern void func_800A81D8(void* p);
+extern int func_802343A0(void* p);
+
+class CasScene {
+public:
     char pad[0xA80];
-    void* model;
-    char pad2[0x3C];
-    void* anim;
+    void* m_A80;
+    char padA84[0x3C];
+    void* m_AC0;
+    void Update(float t);
+    void UpdateCamera(float t);
 };
 
-extern void CasScene_UpdateInternal(CasScene*);
-extern void UpdateAnim(void*);
-extern void UpdateModel(void*);
-
-void CasScene_Update(CasScene* self, float dt) {
-    CasScene_UpdateInternal(self);
-    UpdateAnim(self->anim);
-    if (self->model != 0) {
-        UpdateModel(self->model);
+void CasScene::Update(float t) {
+    UpdateCamera(t);
+    func_800A81D8(m_AC0);
+    if (m_A80 != 0) {
+        func_802343A0(m_A80);
     }
 }
