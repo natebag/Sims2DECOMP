@@ -88,17 +88,75 @@ struct cXPersonImpl {
                                                        lfsx f1,3,index*4`
                                                       16 motives × 4 bytes. */
 
-    /* 0x0E8 */ u8            _pad0E8[0x334];
+    /* ------ S18 v2 amendment (OpusArchitect typereq-evidence e350ab65
+     * + S17 banked 35ae87de): 16 new offsets across the middle/back-half
+     * of the previously-opaque 0x0E8..0x41B envelope.  All read [V] from
+     * ASMPROC stubs in src/matched/agent/match_*cXPersonImpl*.cpp ------ */
+    /* 0x0E8 */ u8            _pad0E8[0x18];
+
+    /* 0x100 */ s16           m_field100;      /* [V] singleton short (1 site) */
+    /* 0x102 */ u8            _pad102[0x02];
+    /* 0x104 */ u16           m_secondaryFlags;/* [V] 2 files, lhz/sth — paralleled
+                                                      with m_flags @ 0x9C */
+    /* 0x106 */ u8            _pad106[0x22];
+
+    /* 0x128 */ s32           m_field128;      /* [V] ctor-init only */
+    /* 0x12C */ void*         m_field12C;      /* [V] rw pointer field */
+    /* 0x130 */ u8            _pad130[0xB8];
+
+    /* 0x1E8 */ void*         m_field1E8;      /* [V] mostly-read pointer (3 reads / 1 write) */
+    /* 0x1EC */ u8            _pad1EC[0xBC];
+
+    /* 0x2A8 */ void*         m_field2A8;      /* [V] 6 read sites — read-only ptr,
+                                                      possibly m_currentJob/m_homeRef */
+    /* 0x2AC */ void*         m_field2AC;      /* [V] 4 read sites — companion to 0x2A8 */
+    /* 0x2B0 */ u8            _pad2B0[0x134];
+
+    /* 0x3E4 */ void*         m_field3E4;      /* [V] mostly-read (6 reads / 1 write) */
+    /* 0x3E8 */ u8            _pad3E8[0x0C];
+
+    /* 0x3F4 */ void*         m_currentInteraction; /* [V] HOTTEST ptr field after
+                                                            m_motives — 16 read sites /
+                                                            1 writer.  Sites: ctor,
+                                                            ~cXPersonImpl, Reset,
+                                                            Simulate, ReconStream,
+                                                            TryChangeSuit, TrySetMotiveDelta,
+                                                            UpdateCurrentAction,
+                                                            GosubObjectTree.
+                                                            Inferred semantic: the
+                                                            "what this Sim is currently
+                                                            doing" root pointer.
+                                                            Possibly m_actionRoot or
+                                                            m_currentBehavior — needs
+                                                            deeper RE to fix the exact
+                                                            name. */
+    /* 0x3F8 */ s32           m_field3F8;      /* [V] paired with m_currentInteraction */
+    /* 0x3FC */ s32           m_field3FC;
+    /* 0x400 */ u8            _pad400[0x08];
+
+    /* 0x408 */ void*         m_field408;      /* [V] rw pointer (3 reads / 1 write) */
+    /* 0x40C */ void*         m_field40C;      /* [V] rw pointer (5 reads / 1 write) */
+    /* 0x410 */ u8            _pad410[0x0C];
 
     /* 0x41C */ s16           m_currentRoom;   /* [V] GetCurrentRoom (0x8012C7F4)
                                                       `lhz 3,0x41c(3)` */
-    /* 0x41E */ u8            _pad41E[0x152];
+    /* 0x41E */ u8            _pad41E[0x02];
+
+    /* 0x420 */ void*         m_field420;      /* [V] 6 reads — likely m_pendingRoom
+                                                      or m_currentRoomScratch (adjacent
+                                                      to m_currentRoom @ 0x41C) */
+    /* 0x424 */ s32           m_field424;
+    /* 0x428 */ u8            _pad428[0x148];
 
     /* 0x570 */ s32           m_field570;      /* [I] zeroed in ctor */
     /* 0x574 */ u8            _pad574[0x04];
 
     /* 0x578 */ u8            m_subRegion578[0x4C]; /* [V] sub-region pointed at by
-                                                            m_subPtr (this+0x4) */
+                                                            m_subPtr (this+0x4).
+                                                            Known write port at
+                                                            internal +0x08 (= this+0x580)
+                                                            per e350ab65 evidence —
+                                                            sub-shape not yet recovered. */
 
     /* 0x5C4 */ cXObjectImpl* m_embeddedImpl_ptr_alias; /* [V] same as m_implPtr;
                                                               start of embedded

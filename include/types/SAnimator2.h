@@ -93,9 +93,33 @@ struct SAnimator2 {
     /* 0x130 */ s32                 m_lastCostume;        /* [L] */
     /* 0x134 */ u8                  _pad134[0x4C];
     /* 0x180 */ u8                  m_headOrient[0x78];   /* [L] EHeadOrient blob */
-    /* 0x1F8 */ u8                  _pad1F8[0x400];
+    /* 0x1F8 */ u8                  _pad1F8[0x3F0];
+
+    /* ------ skill-state cluster (S18 v2 — OpusArchitect typereq-evidence
+     * post 7acdbd6d; sites: ctor 0x8005BFD0, Initialize, startSkill
+     * 0x80066490, TryIdleAnimate, isAnimationDone, Update) ------ */
+    /* 0x5E8 */ void*               m_activeSkillObject;  /* [V] startSkill stores
+                                                              arg's 0x0 field here */
+    /* 0x5EC */ void*               m_pendingSkillRef;    /* [V] cleared on
+                                                              transition; compared
+                                                              vs external object id */
+    /* 0x5F0 */ s32                 m_skillStateFlag;     /* [V] startSkill checks
+                                                              == 1 (active pending) */
+    /* 0x5F4 */ s32                 m_skillExtraState;    /* [V] Update touches;
+                                                              ctor zeroes */
+
     /* 0x5F8 */ s8                  m_portalMode;         /* [V] GetPortalMode 0x800690F8 */
-    /* 0x5F9 */ u8                  _pad5F9[0x0B];
+    /* 0x5F9 */ u8                  _pad5F9[0x03];        /* 3 companion bytes
+                                                              stored separately
+                                                              in ctor (stb 0x5F9/
+                                                              0x5FA/0x5FB) —
+                                                              treat as opaque */
+    /* 0x5FC */ s32                 m_skillStatusWord;    /* [V] ctor stw 0x5FC;
+                                                              status word
+                                                              accompanying the
+                                                              0x5F8 byte zone */
+    /* 0x600 */ u8                  _pad600[0x04];
+
     /* 0x604 */ CasSimDescriptionS2C* m_pNormalSimDescription; /* [L] */
     /* 0x608 */ u8                  _pad608[0x04];
     /* 0x60C */ s32                 m_boneIndices[4];     /* [V] SetBoneIndex 0x80069194,
