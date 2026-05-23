@@ -1,5 +1,7 @@
 // 0x80018510 ESimsCam::CalcZoomStiffness(void) (56 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); lwz 9,0x0(3); lfs f5,0x448(3); lfs f4,0x2c(9); lfs f1,0x20(9); lfs f2,0x24(9); lfs f3,0x28(9); bl _s80018510_0; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
-extern "C" void _s80018510_0();
-extern "C" void f_80018510() {}
+struct ECamP { char _pad[0x20]; float f20; float f24; float f28; float f2c; };
+struct ESimsCam { ECamP* m_params; char _pad[0x444]; float m_zoom; float CalcZoomStiffness(); };
+extern float _s80018510_0(float, float, float, float, float);
+float ESimsCam::CalcZoomStiffness() {
+    return _s80018510_0(m_params->f20, m_params->f24, m_params->f28, m_params->f2c, m_zoom);
+}
