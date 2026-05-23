@@ -1,4 +1,4 @@
 // 0x80030954 ERoomWall::GetShortDistToCam(int) (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="rlwinm 4,4,2,0,29; addi 3,3,52; lfsx f1,3,4"
-extern "C" int f_80030954() {}
+struct ERoomWall { char _pad[0x34]; float m_shortDistToCam[9]; float GetShortDistToCam(int); };
+float ERoomWall::GetShortDistToCam(int wallId) { return m_shortDistToCam[wallId]; }
