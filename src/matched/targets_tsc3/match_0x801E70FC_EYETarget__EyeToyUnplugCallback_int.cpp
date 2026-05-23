@@ -1,9 +1,28 @@
-/* EYETarget__EyeToyUnplugCallback_int at 0x801E70FC (24B) � auto-matched [null_check_sda_store_24B] */
+// 0x801E70FC EYETarget::EyeToyUnplugCallback(int) (24B) — semantic conversion of auto-stub
+//
+// Original disasm:
+//   lwz   r9, -0x7028(r13)   ; s_eyeTargetSingleton (SDA)
+//   cmpwi r9, 0
+//   beqlr                    ; if (!p) return;
+//   li    r0, 1
+//   stw   r0, 0xB0(r9)       ; p->m_pendingUnplugEvent = 1;
+//   blr
+//
+// Static callback registered with EyeToy SDK — int arg is the event code and is
+// ignored (callback merely sets a pending-event flag for the next Update() to
+// process). Declared static to match the signature without requiring a `this`.
 
-struct Target_801E70FC { char pad[0xB0]; int m_field; };
-extern Target_801E70FC *g_ptr_801E70FC;
-void func_801E70FC(void) {
-    Target_801E70FC *p = g_ptr_801E70FC;
+class EYETarget {
+public:
+    char pad[0xB0];
+    int m_pendingUnplugEvent;
+    static void EyeToyUnplugCallback(int code);
+};
+
+extern EYETarget* s_eyeTargetSingleton;
+
+void EYETarget::EyeToyUnplugCallback(int /*code*/) {
+    EYETarget* p = s_eyeTargetSingleton;
     if (!p) return;
-    p->m_field = 1;
+    p->m_pendingUnplugEvent = 1;
 }
