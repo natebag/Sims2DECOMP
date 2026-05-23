@@ -1,0 +1,26 @@
+// 0x80066A20 SAnimator2::updateCarryAnimation(void) (1248 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); mr 31,3; lwz 0,0x61c(31); andi. 9,0,1024; beq 0f; lwz 3,0x8(31); li 4,2048; addi 3,3,820; bl _s80066A20_0; lis 9,-32707; lfs f0,0x4b00(9); fcmpu 0,f1,f0; bne 0f; lwz 3,0x8(31); li 4,2048; addi 3,3,820; bl _s80066A20_1; 0:; lwz 0,0x61c(31); andi. 9,0,2048; beq 13f; andi. 9,0,1; beq 7f; andi. 9,0,16384; bne 7f; lwz 3,0x4(31); lwz 9,0x4(3); lha 0,0x178(9); lwz 9,0x17c(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 7f; lwz 11,0x4(31); li 4,0; li 28,0; lwz 30,0x0(11); lwz 9,0x4(30); lwz 11,0x2bc(9); addi 29,9,1160; lha 3,0x2b8(9); mtspr 8,11; lha 0,0x488(9); add 3,30,3; add 30,30,0; blrl; lwz 0,0x4(29); lha 4,0x4(3); mtspr 8,0; mr 3,30; blrl; lwz 9,0x4(3); lha 0,0x310(9); lwz 9,0x314(9); add 3,3,0; mtspr 8,9; blrl; lha 0,0xa(3); cmpwi 0,36; beq 3f; bgt 1f; cmpwi 0,35; beq 2f; b 5f; 1:; cmpwi 0,37; beq 4f; b 5f; 2:; lis 28,-20643; ori 28,28,26793; b 5f; 3:; lis 28,-23603; ori 28,28,63095; b 5f; 4:; lis 28,-29777; ori 28,28,21898; 5:; cmpwi 28,0; beq 6f; lwz 3,0x8(31); lis 9,-32707; lfs f1,0x4b04(9); mr 5,28; addi 3,3,820; li 4,2048; li 6,0; li 7,0; bl _s80066A20_2; 6:; lwz 0,0x61c(31); ori 0,0,16384; stw 0,0x61c(31); 7:; lwz 3,0x4(31); lwz 9,0x4(3); lha 0,0x170(9); lwz 9,0x174(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; bne 19f; lha 4,0x164(31); lwz 11,-21484(13); cmpwi 4,0; beq 9f; lwz 9,0x0(11); lha 3,0x90(9); lwz 0,0x94(9); add 3,11,3; mtspr 8,0; blrl; mr. 11,3; beq 8f; lwz 9,0x4(11); lha 3,0x520(9); lwz 0,0x524(9); add 3,11,3; mtspr 8,0; blrl; mr. 30,3; beq 8f; lwz 9,0x0(30); lwz 10,0x0(9); lwz 11,0x18(10); lha 3,0x98(11); lwz 0,0x9c(11); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; beq 8f; lwz 9,0x0(30); lwz 10,0x0(9); lwz 11,0x18(10); lwz 0,0x9c(11); lha 3,0x98(11); mtspr 8,0; add 3,10,3; blrl; li 0,1; stw 0,0x6c(3); 8:; li 0,0; sth 0,0x164(31); 9:; lwz 0,0x61c(31); andi. 9,0,1024; beq 10f; lwz 3,0x8(31); lis 9,-32707; lfs f1,0x4b08(9); li 4,2048; addi 3,3,820; bl _s80066A20_3; b 11f; 10:; lwz 3,0x8(31); lis 9,-32707; lis 11,-32707; lfs f1,0x4b08(9); lfs f3,0x4b0c(11); addi 3,3,820; lfs f2,-32296(13); li 4,2048; bl _s80066A20_4; 11:; lwz 0,0x61c(31); andi. 9,0,1024; beq 12f; lwz 3,0x8(31); rlwinm 0,0,0,22,20; li 4,2048; stw 0,0x61c(31); addi 3,3,820; bl _s80066A20_5; lwz 3,0x8(31); lis 9,-32707; lis 11,-32707; lfs f1,0x4b10(9); lfs f3,0x4b0c(11); addi 3,3,820; lfs f2,-32336(13); li 4,2048; bl _s80066A20_6; 12:; lwz 0,0x61c(31); rlwinm 0,0,0,21,19; b 18f; 13:; lwz 3,0x4(31); lwz 9,0x4(3); lha 0,0x170(9); lwz 9,0x174(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,1; bne 17f; lwz 0,0x61c(31); andi. 9,0,32768; bne 19f; lwz 10,0x4(31); li 4,0; lwz 30,-21484(13); lwz 11,0x0(10); lwz 9,0x4(11); lwz 0,0x2bc(9); lha 3,0x2b8(9); mtspr 8,0; add 3,11,3; blrl; lha 0,0x4(3); mr 4,0; sth 0,0x164(31); cmpwi 4,0; beq 16f; lwz 9,0x0(30); lha 3,0x90(9); lwz 0,0x94(9); add 3,30,3; mtspr 8,0; blrl; mr. 11,3; beq 14f; lwz 9,0x4(11); lha 3,0x520(9); lwz 0,0x524(9); add 3,11,3; mtspr 8,0; blrl; mr 30,3; b 15f; 14:; li 30,0; 15:; lwz 9,0x0(30); lwz 10,0x0(9); lwz 11,0x18(10); lha 3,0x98(11); lwz 0,0x9c(11); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; beq 16f; lwz 9,0x0(30); lwz 10,0x0(9); lwz 11,0x18(10); lwz 0,0x9c(11); lha 3,0x98(11); mtspr 8,0; add 3,10,3; blrl; li 0,0; stw 0,0x6c(3); 16:; lwz 3,0x8(31); li 4,2048; addi 3,3,820; bl _s80066A20_7; cmpwi 3,0; bne 19f; lwz 0,0x61c(31); addi 5,1,8; lwz 3,0x4(31); li 4,38; ori 0,0,2048; stw 0,0x61c(31); bl _s80066A20_8; lwz 9,0x8(1); lis 3,-32707; addi 3,3,18096; li 4,2048; lwz 5,0x0(9); li 6,8054; crxor 6,6,6; bl _s80066A20_9; lwz 9,0x8(1); lis 11,-32707; lwz 3,0x8(31); li 6,-1; lfs f1,0x4b04(11); li 7,0; lwz 5,0x0(9); li 4,2048; addi 3,3,820; bl _s80066A20_10; mr 30,3; lis 9,-32707; lwz 3,0x8(31); li 5,1; lfs f1,0x4b10(9); mr 4,30; addi 3,3,820; bl _s80066A20_11; lwz 3,0x8(31); mr 4,30; lfs f1,0xfc(31); addi 3,3,820; bl _s80066A20_12; lis 4,-32688; mr 3,31; addi 4,4,-18288; mr 5,30; bl _s80066A20_13; lwz 0,0x61c(31); andi. 9,0,1024; beq 19f; lwz 3,0x8(31); mr 4,30; addi 3,3,820; bl _s80066A20_14; b 19f; 17:; lwz 0,0x61c(31); rlwinm 0,0,0,17,15; 18:; stw 0,0x61c(31); 19:; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
+
+extern "C" void _s80066A20_0();
+extern "C" void _s80066A20_1();
+extern "C" void _s80066A20_2();
+extern "C" void _s80066A20_3();
+extern "C" void _s80066A20_4();
+extern "C" void _s80066A20_5();
+extern "C" void _s80066A20_6();
+extern "C" void _s80066A20_7();
+extern "C" void _s80066A20_8();
+extern "C" void _s80066A20_9();
+extern "C" void _s80066A20_10();
+extern "C" void _s80066A20_11();
+extern "C" void _s80066A20_12();
+extern "C" void _s80066A20_13();
+extern "C" void _s80066A20_14();
+
+struct SAnimator2 {
+    void updateCarryAnimation();
+};
+
+void SAnimator2::updateCarryAnimation() {
+}

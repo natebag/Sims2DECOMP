@@ -1,0 +1,12 @@
+// 0x800675A0 SAnimator2::GetCostumeName(SAnimator::OutfitS2C) (324 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); cmpwi 4,6; beq 10f; bgt 1f; cmpwi 4,2; beq 3f; bgt 0f; cmpwi 4,1; beq 2f; b 15f; 0:; cmpwi 4,4; beq 8f; cmpwi 4,5; beq 9f; b 15f; 1:; cmpwi 4,8; beq 12f; blt 11f; cmpwi 4,9; beq 13f; cmpwi 4,10; beq 14f; b 15f; 2:; lis 3,-32707; addi 3,3,19220; b 16f; 3:; bl _s800675A0_0; lis 9,21845; srawi 11,3,31; ori 9,9,21846; mulhw 9,3,9; subf 9,11,9; rlwinm 0,9,1,0,30; add 0,0,9; subf 9,0,3; cmpwi 9,1; beq 6f; bgt 4f; cmpwi 9,0; beq 5f; b 15f; 4:; cmpwi 9,2; beq 7f; b 15f; 5:; lis 3,-32707; addi 3,3,19228; b 16f; 6:; lis 3,-32707; addi 3,3,19240; b 16f; 7:; lis 3,-32707; addi 3,3,19252; b 16f; 8:; lis 3,-32707; addi 3,3,19264; b 16f; 9:; lis 3,-32707; addi 3,3,19276; b 16f; 10:; lis 3,-32707; addi 3,3,19280; b 16f; 11:; lis 3,-32707; addi 3,3,19288; b 16f; 12:; lis 3,-32707; addi 3,3,19304; b 16f; 13:; lis 3,-32707; addi 3,3,19312; b 16f; 14:; lis 3,-32707; addi 3,3,19320; b 16f; 15:; li 3,0; 16:; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
+
+extern "C" void _s800675A0_0();
+
+struct SAnimator2 {
+    void GetCostumeName_SAnimator__OutfitS2C();
+};
+
+void SAnimator2::GetCostumeName_SAnimator__OutfitS2C() {
+}

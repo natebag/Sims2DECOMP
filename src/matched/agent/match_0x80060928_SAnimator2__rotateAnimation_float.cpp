@@ -1,7 +1,0 @@
-// 0x80060928 SAnimator2::rotateAnimation(float, (348 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stfd f29,0x10(1); stfd f30,0x18(1); stfd f31,0x20(1); stmw 30,0x8(1); stw 0,0x2c(1); mr 31,3; fmr f31,f1; fmr f30,f3; fmr f29,f2; li 30,0; bl _s80060928_0; fmuls f31,f31,f1; fabs f0,f30; fcmpu 0,f31,f0; cror 3,2,1; bns 0f; stfs f29,0x30(31); mr 3,31; fmr f1,f29; li 30,1; bl _s80060928_1; b 7f; 0:; lis 9,-32707; lfs f0,0x4790(9); fcmpu 0,f30,f0; beq 2f; bge 1f; lis 9,-32707; lfs f13,0x4794(9); b 3f; 1:; lis 9,-32707; lfs f13,0x4798(9); b 3f; 2:; fmr f13,f0; 3:; lfs f0,0x30(31); lis 9,-32707; lfs f12,0x479c(9); fmadds f31,f13,f31,f0; stfs f31,0x30(31); fcmpu 0,f31,f12; ble 5f; lis 9,-32707; fmr f13,f12; lfs f0,0x478c(9); 4:; fsubs f31,f31,f0; fcmpu 0,f31,f13; bgt 4b; stfs f31,0x30(31); 5:; lis 9,-32707; lfs f13,0x30(31); lfs f0,0x47a0(9); fcmpu 0,f13,f0; cror 3,2,0; bns 7f; lis 9,-32707; fmr f11,f0; lfs f12,0x478c(9); 6:; fadds f0,f13,f12; fmr f13,f0; fcmpu 0,f0,f11; cror 3,2,0; bso 6b; stfs f0,0x30(31); 7:; lfs f0,0xfc(31); lis 9,-32707; lfs f13,0x104(31); lfs f12,0x47a4(9); fmuls f0,f0,f13; fcmpu 0,f0,f12; cror 3,2,1; bns 8f; stfs f29,0x30(31); mr 3,31; fmr f1,f29; li 30,1; bl _s80060928_2; 8:; mr 3,30; lwz 0,0x2c(1); mtspr 8,0; lmw 30,0x8(1); lfd f29,0x10(1); lfd f30,0x18(1); lfd f31,0x20(1); addi 1,1,40"
-extern "C" void _s80060928_0();
-extern "C" void _s80060928_1();
-extern "C" void _s80060928_2();
-extern "C" void f_80060928() {}

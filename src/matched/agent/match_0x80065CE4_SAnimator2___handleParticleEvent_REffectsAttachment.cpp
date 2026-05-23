@@ -1,5 +1,0 @@
-// 0x80065CE4 SAnimator2::_handleParticleEvent(REffectsAttachment (260 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 26,0x18(1); stw 0,0x34(1); mr 27,4; mr 28,3; lwz 9,0x14(27); lwz 0,0x18(27); subf 0,9,0; srawi. 9,0,3; mtspr 9,9; ble 5f; lbz 26,-18451(13); mfspr 30,9; li 29,0; 0:; lwz 10,0x14(27); add 9,10,29; lwz 0,0x4(9); cmpwi 0,0; beq 4f; lbz 0,0x1(9); extsb 0,0; cmpwi 0,0; ble 4f; stw 0,0x8(1); lwz 9,0x4(9); lwz 11,0x4(28); stw 9,0xc(1); lbzx 0,10,29; extsb 0,0; sth 0,0x10(1); extsh 31,0; lwz 9,0x4(11); lha 3,0x118(9); lwz 0,0x11c(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 3,0; bne 1f; lwz 3,0x4(28); lwz 9,0x4(3); lha 0,0x330(9); lwz 9,0x334(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 2f; 1:; or 0,31,26; b 3f; 2:; mr 0,31; 3:; sth 0,0x10(1); mr 3,28; addi 4,1,8; li 5,0; bl _s80065CE4_0; 4:; addi 29,29,8; addic. 30,30,-1; bne 0b; 5:; lwz 0,0x34(1); mtspr 8,0; lmw 26,0x18(1); addi 1,1,48"
-extern "C" void _s80065CE4_0();
-extern "C" void f_80065CE4() {}

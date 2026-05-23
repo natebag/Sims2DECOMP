@@ -1,4 +1,0 @@
-// 0x80067B54 SAnimator2::updateCensor(void) (248 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,3; li 4,30; lwz 11,0x4(31); lwz 9,0x4(11); lha 3,0x138(9); lwz 0,0x13c(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x8(31); lwz 9,0x358(9); cmpwi 9,0; li 0,0; beq 0f; lwz 0,0x18(9); 0:; cmpwi 0,50; ble 8f; li 0,0; lwz 9,0x8(31); stw 0,0x17c(31); andi. 11,3,128; stw 0,0x62c(9); beq 1f; li 0,1; stw 0,0x17c(31); 1:; andi. 0,3,1; beq 2f; li 0,1; stw 0,0x17c(31); 2:; andi. 11,3,2; beq 3f; li 0,1; stw 0,0x17c(31); 3:; andi. 0,3,4; beq 4f; li 0,1; stw 0,0x17c(31); 4:; andi. 11,3,8; beq 5f; li 0,1; stw 0,0x17c(31); 5:; andi. 0,3,16; beq 6f; li 0,1; stw 0,0x17c(31); 6:; cmpwi 3,0; beq 7f; lwz 9,0x8(31); li 0,2; stw 0,0x68(9); b 8f; 7:; lwz 9,0x8(31); stw 3,0x68(9); 8:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16"
-extern "C" void f_80067B54() {}

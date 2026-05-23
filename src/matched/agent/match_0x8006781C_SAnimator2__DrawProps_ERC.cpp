@@ -1,8 +1,0 @@
-// 0x8006781C SAnimator2::DrawProps(ERC (460 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; mfcr 12; stmw 24,0x10(1); stw 0,0x34(1); stw 12,0xc(1); mr 30,3; mr 28,4; lwz 3,0x8(30); mr 31,5; mr 27,6; bl _s8006781C_0; cmpwi 3,0; bne 11f; addi 9,30,360; lwz 11,0x168(30); lwz 0,0x4(9); mr 24,9; li 25,1; li 26,0; subf 0,11,0; srawi. 9,0,2; ble 11f; cmpwi 3,31,0; li 29,0; cmpwi 4,27,0; 0:; lwz 31,0x168(30); lwzx 4,31,29; lwz 0,0x8(4); cmpwi 0,0; bne 1f; lwz 4,0x0(4); lis 3,-32692; addi 3,3,-27556; bl _s8006781C_1; lwzx 9,31,29; stw 3,0x8(9); 1:; lwz 11,0x168(30); beq cr3,2f; lwzx 9,11,29; lwz 0,0x4(9); cmpwi 0,0; beq 10f; 2:; lwzx 3,11,29; lis 0,-8315; ori 0,0,57248; lwz 9,0x0(3); cmpw 9,0; beq 3f; lis 0,-3455; ori 0,0,41780; cmpw 9,0; beq 3f; lis 0,12829; ori 0,0,57670; cmpw 9,0; beq 3f; lis 0,-16753; ori 0,0,26647; cmpw 9,0; beq 3f; lis 0,-55; ori 0,0,51739; cmpw 9,0; bne 7f; 3:; cmpwi 7,27,0; cmpwi 25,0; mfcr 31; rlwinm 31,31,28,0,3; bne 5f; beq cr4,4f; lwz 9,0xf0(27); mr 4,28; li 5,0; lha 3,0x10(9); lwz 0,0x14(9); add 3,27,3; mtspr 8,0; blrl; 4:; li 25,1; 5:; mtcrf 128,31; beq 6f; lwz 9,0x168(30); lwzx 11,9,29; lwz 3,0x8(11); cmpwi 3,0; beq 10f; mr 4,28; bl _s8006781C_2; b 10f; 6:; lwz 9,0x168(30); lwzx 11,9,29; lwz 3,0x8(11); b 8f; 7:; lwz 3,0x8(3); 8:; cmpwi 3,0; beq 9f; mr 4,28; bl _s8006781C_3; 9:; li 25,0; 10:; lwz 0,0x4(24); addi 26,26,1; lwz 9,0x168(30); addi 29,29,4; subf 0,9,0; srawi 0,0,2; cmpw 26,0; blt 0b; 11:; lwz 0,0x34(1); lwz 12,0xc(1); mtspr 8,0; lmw 24,0x10(1); mtcrf 24,12; addi 1,1,48"
-extern "C" void _s8006781C_0();
-extern "C" void _s8006781C_1();
-extern "C" void _s8006781C_2();
-extern "C" void _s8006781C_3();
-extern "C" void f_8006781C() {}
