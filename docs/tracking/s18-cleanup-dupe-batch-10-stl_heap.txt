@@ -1,0 +1,30 @@
+# S18 Wave 1 Batch 10: stl_heap/ stale agent/ inject dupes
+# Count: 24
+# Sample-verify: 100% HW (50/50 second sample, T+60 tick)
+# Conflict scan: CLEAN (0 agent/ stubs touched last 70 min)
+# Ref: TUScout dupe-scan post b5ea55d6, breakdown post e19f2e52
+
+src/matched/agent/match_0x8039DC3C_void.cpp
+src/matched/agent/match_0x8039DCBC_void.cpp
+src/matched/agent/match_0x8039DFE4_void.cpp
+src/matched/agent/match_0x8039E0FC_void.cpp
+src/matched/agent/match_0x8039E150_void.cpp
+src/matched/agent/match_0x8039ECEC_void.cpp
+src/matched/agent/match_0x803A539C_void.cpp
+src/matched/agent/match_0x803A541C_void.cpp
+src/matched/agent/match_0x803A58A8_void.cpp
+src/matched/agent/match_0x803A5B20_void.cpp
+src/matched/agent/match_0x803A5BA0_void.cpp
+src/matched/agent/match_0x803A5EC8_void.cpp
+src/matched/agent/match_0x803A5FE0_void.cpp
+src/matched/agent/match_0x803A6034_void.cpp
+src/matched/agent/match_0x803A6BD4_void.cpp
+src/matched/agent/match_0x803A6C54_void.cpp
+src/matched/agent/match_0x803A6F7C_void.cpp
+src/matched/agent/match_0x803A7080_void.cpp
+src/matched/agent/match_0x803A70D4_void.cpp
+src/matched/agent/match_0x803AFDDC_void.cpp
+src/matched/agent/match_0x803AFE5C_void.cpp
+src/matched/agent/match_0x803B0184_void.cpp
+src/matched/agent/match_0x803B0288_void.cpp
+src/matched/agent/match_0x803B02DC_void.cpp
