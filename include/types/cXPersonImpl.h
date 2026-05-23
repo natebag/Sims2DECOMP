@@ -115,22 +115,52 @@ struct cXPersonImpl {
     /* 0x3E4 */ void*         m_field3E4;      /* [V] mostly-read (6 reads / 1 write) */
     /* 0x3E8 */ u8            _pad3E8[0x0C];
 
-    /* 0x3F4 */ void*         m_currentInteraction; /* [V] HOTTEST ptr field after
-                                                            m_motives — 16 read sites /
-                                                            1 writer.  Sites: ctor,
-                                                            ~cXPersonImpl, Reset,
-                                                            Simulate, ReconStream,
-                                                            TryChangeSuit, TrySetMotiveDelta,
-                                                            UpdateCurrentAction,
-                                                            GosubObjectTree.
-                                                            Inferred semantic: the
-                                                            "what this Sim is currently
-                                                            doing" root pointer.
-                                                            Possibly m_actionRoot or
-                                                            m_currentBehavior — needs
-                                                            deeper RE to fix the exact
-                                                            name. */
-    /* 0x3F8 */ s32           m_field3F8;      /* [V] paired with m_currentInteraction */
+    /* 0x3F4 */ void*         m_simulator;     /* [V] HOTTEST ptr field after
+                                                      m_motives — 16 read sites /
+                                                      1 binding writer.
+
+                                                      Writer profile (OpusArchitect
+                                                      disambiguation, post cd1c56b7):
+                                                       - ctor (0x8011AE04): zero-init
+                                                       - Initialize (0x8011E0FC):
+                                                         * loads singleton from SDA
+                                                           `lwz r3, -21432(r13)`
+                                                         * calls two consecutive
+                                                           methods on it; 2nd return
+                                                           value is the bound ptr
+                                                         * stores at this+0x3F4
+                                                         * immediately dispatches a
+                                                           virtual call through it
+                                                           (MI-shape vtable:
+                                                            top_offset@+0x10,
+                                                            fnptr@+0x14)
+
+                                                      Bind-once-in-Initialize pattern
+                                                      (NOT rebound at gameplay time)
+                                                      rules out m_currentInteraction.
+                                                      Strongest inference is
+                                                      m_simulator — a per-instance
+                                                      simulator object handed out by
+                                                      a game-wide manager. The SDA
+                                                      slot at -21432(r13) is hot
+                                                      across INVTarget, SAnimator2,
+                                                      CTGFileImpl — a top-level
+                                                      world/simulator singleton.
+
+                                                      Read sites are all lifecycle/
+                                                      dispatch: Reset, Simulate,
+                                                      ReconStream, TryChangeSuit,
+                                                      ~cXPersonImpl, etc. — i.e.
+                                                      "use my simulator", not "what
+                                                      am I currently doing".
+
+                                                      Type is `void*` until the
+                                                      sim-manager class identity is
+                                                      confirmed; upgrade to e.g.
+                                                      `CSimulatorImpl*` when a
+                                                      sibling class's binding
+                                                      reveals it. */
+    /* 0x3F8 */ s32           m_field3F8;      /* [V] paired with m_simulator */
     /* 0x3FC */ s32           m_field3FC;
     /* 0x400 */ u8            _pad400[0x08];
 
