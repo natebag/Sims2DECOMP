@@ -165,8 +165,23 @@ struct cXPersonImpl {
     /* 0x400 */ u8            _pad400[0x08];
 
     /* 0x408 */ void*         m_field408;      /* [V] rw pointer (3 reads / 1 write) */
-    /* 0x40C */ void*         m_field40C;      /* [V] rw pointer (5 reads / 1 write) */
-    /* 0x410 */ u8            _pad410[0x0C];
+    /* 0x40C */ XRoute*       m_routeStackBegin; /* [V] begin ptr of XRoute stack
+                                                      (164B per element). Evidence:
+                                                      GetCurrentRoute 0x80123704
+                                                      + GetRouteStackSize 0x8012C9D8.
+                                                      `(end - begin) / 164` divisor
+                                                      uses `mulli * 164` +
+                                                      `lis -15985 / ori 39961`
+                                                      reciprocal-magic-constant pair.
+                                                      PersonSlayer typereq 61704577. */
+    /* 0x410 */ XRoute*       m_routeStackEnd; /* [V] past-end ptr of XRoute stack.
+                                                      GetCurrentRoute returns
+                                                      `&m_routeStackBegin[count-1]`
+                                                      where count =
+                                                      (m_routeStackEnd -
+                                                       m_routeStackBegin) / 164.
+                                                      Returns NULL when stack empty. */
+    /* 0x414 */ u8            _pad414[0x08];
 
     /* 0x41C */ s16           m_currentRoom;   /* [V] GetCurrentRoom (0x8012C7F4)
                                                       `lhz 3,0x41c(3)` */
