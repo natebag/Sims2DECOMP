@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 99.996334,
+    "fuzzy_match_percent": 100.0,
     "total_code": "4145724",
-    "matched_code": "4145572",
-    "matched_code_percent": 99.996334,
+    "matched_code": "4145724",
+    "matched_code_percent": 100.0,
     "total_data": "681400",
     "matched_data": "62778",
     "matched_data_percent": 9.213091,
     "total_functions": 18458,
-    "matched_functions": 18457,
-    "matched_functions_percent": 99.994582,
-    "complete_code": "4145572",
-    "complete_code_percent": 99.996334,
+    "matched_functions": 18458,
+    "matched_functions_percent": 100.0,
+    "complete_code": "4145724",
+    "complete_code_percent": 100.0,
     "complete_data": "62778",
     "complete_data_percent": 9.213091,
     "total_units": 18458,
-    "complete_units": 18457
+    "complete_units": 18458
   },
   "units": [
     {
@@ -61431,28 +61431,28 @@
     {
       "name": "person",
       "measures": {
-        "fuzzy_match_percent": 99.823034,
+        "fuzzy_match_percent": 100.0,
         "total_code": "85892",
-        "matched_code": "85740",
-        "matched_code_percent": 99.823034,
+        "matched_code": "85892",
+        "matched_code_percent": 100.0,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 221,
-        "matched_functions": 220,
-        "matched_functions_percent": 99.547511,
-        "complete_code": "85740",
-        "complete_code_percent": 99.823034,
+        "matched_functions": 221,
+        "matched_functions_percent": 100.0,
+        "complete_code": "85892",
+        "complete_code_percent": 100.0,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
-        "complete_units": 0
+        "complete_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "2694484",
-          "fuzzy_match_percent": 99.823034,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2148638248"
           }
@@ -61854,10 +61854,10 @@
           "size": "152",
           "metadata": {
             "virtual_address": "2148674068",
-            "complete": false
+            "complete": true
           },
           "address": "35820",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "cXPersonImpl::MoveOutOfWay(int)",
@@ -63671,7 +63671,7 @@
         }
       ],
       "metadata": {
-        "complete": false,
+        "complete": true,
         "progress_categories": [
           "game"
         ]
@@ -211554,22 +211554,22 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 99.99584,
+        "fuzzy_match_percent": 100.0,
         "total_code": "3653648",
-        "matched_code": "3653496",
-        "matched_code_percent": 99.99584,
+        "matched_code": "3653648",
+        "matched_code_percent": 100.0,
         "total_data": "681400",
         "matched_data": "62778",
         "matched_data_percent": 9.213091,
         "total_functions": 16890,
-        "matched_functions": 16889,
-        "matched_functions_percent": 99.994079,
-        "complete_code": "3653496",
-        "complete_code_percent": 99.99584,
+        "matched_functions": 16890,
+        "matched_functions_percent": 100.0,
+        "complete_code": "3653648",
+        "complete_code_percent": 100.0,
         "complete_data": "62778",
         "complete_data_percent": 9.213091,
         "total_units": 16890,
-        "complete_units": 16889
+        "complete_units": 16890
       }
     },
     {
