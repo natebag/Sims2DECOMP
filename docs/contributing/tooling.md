@@ -23,7 +23,7 @@ Every script in `tools/` documented with purpose, inputs, and when to use it.
 
 **Usage**: `python tools/inject_matches.py [--rebuild] [--verify] [--dry-run]`
 
-**Note**: KimiWorker's S17 fixes added `rglob` (subdirectory scanning), `build/G4ZE69/obj/matched/` path, and multi-format annotation regex. Without those, 25,000+ files would be silently skipped.
+**Note**: scans `src/matched/` recursively (subdirectory-aware) and accepts multiple annotation comment formats (`(N B)`, `(N bytes)`, `(NB)`). The build object path is `build/G4ZE69/obj/matched/`.
 
 ## Audit + analysis
 
@@ -48,8 +48,8 @@ Every script in `tools/` documented with purpose, inputs, and when to use it.
 
 ## Fleet hygiene
 
-### `tools/find_unmatched.py` (S17 artifact)
-**Purpose**: lists addresses that have inject stubs but no semantic C++ — i.e., the metric-moving target pool for ratio gains.
+### `tools/find_unmatched.py`
+**Purpose**: lists addresses that have inject stubs but no hand-written C++ — the target pool for hand-written-ratio gains.
 
 ### `tools/size_sweep.sh`
 **Purpose**: batch size-vs-byte audit. Used by Reviewer cycles to spot-check that converted files match their declared sizes.

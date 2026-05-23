@@ -1,48 +1,49 @@
 # Roadmap
 
-## What's done
+## Completed
 
-- ✅ **100% byte-match on `.text`** — closed in the marathon session, 4,145,724 / 4,145,724 bytes
-- ✅ **Stub-to-real-C++ Phase 1 (S17)** — semantic ratio climbed from 50.4% → 56.7%
-- ✅ **Cleanup pillar** — ~1,088 historical duplicate stubs purged
-- ✅ **Data tracking** — `.data` family pillar instrumented; current baseline 9.21%
-- ✅ **Tooling foundation** — `inject_matches.py` subdir fix, multi-format annotation regex, build path corrections (KimiWorker S17 work)
+- `.text` byte-match — 4,145,724 / 4,145,724 bytes (100.00%)
+- All 18,458 functions matched
+- Data section tracking instrumented (`.ctors` / `.dtors` / `.rodata` / `.data` / `.sdata` / `.sdata2`)
+- 13 canonical class layout headers in `include/types/`
+- `tools/inject_matches.py` subdirectory scanning + multi-format annotation regex
+- Documentation site (this site)
 
-## What's next (S18+)
+## Open work
 
-### Priority 1 — Per-agent worktrees
-The single biggest architectural lesson from S17: a shared git working tree across multiple agents causes wildcard-staging incidents even when operators are disciplined. Three such incidents happened in S17 — all resolved cleanly, but the recurrence vector exists structurally. Moving to per-agent worktrees eliminates the entire incident class.
+### Stub-to-real-C++ conversion
 
-### Priority 2 — Net-new-address targeting for semantic ratio
-The semantic-ratio classifier dedupes by unique address. Polishing already-counted addresses produces 0 ratio gain. Future sessions should default to `find src/matched -name "match*<ADDR>*.cpp" | grep -v agent/` checks before claiming work — pick the addresses that move the metric.
+About 43% of matched functions are byte-equivalent stubs produced by `ASMPROC inject_before` rather than hand-written C++. Converting these is the path to a readable, modifiable, retargetable source tree.
 
-### Priority 3 — Data section conversion
-Now that `.data` family tracking is live (9.21% baseline), the data pillar is open work:
+Largest open areas:
 
-- **`.dtors` (360 B at 0%)** — declare static destructor table → easy quick win
-- **`.ctors` (644 B at 2%)** — declare static constructor table → easy quick win
-- **`.rodata` (362 KB at 17%)** — vtable conversion per class (TypeArch headers already document layouts)
-- **`.data` (306 KB at 0.25%)** — biggest opportunity (initialized globals, lookup tables, game-state structs)
+- `cXObjectImpl` methods compiled in the `objectsim` TU (~91 KB)
+- `SAnimator2` complex stubs (123 functions, 100 B+ each)
+- `EAnimController` complex stubs (81 functions, 100 B+ each)
+- `cXPersonImpl` virgin pool (~69 KB across ~86 addresses)
+- `xrouting` residual patterns
 
-### Priority 4 — Deep-RE on `objectsim` TU
-The single largest deep-RE opportunity in the project. ~91 KB of `cXObjectImpl` methods in a separate TU — `Simulate`, `Try*` dispatchers, `KillSelf`. Multi-hour cracks per function. Scout intel (`m_objectTypeKey @ 0x488`, vtable layout) already banked from S17.
+### Data section coverage
 
-### Priority 5 — Cross-canonical-dir cleanup
-~22 `targets_s2c` ↔ `famtarget` cross-canonical-directory duplicates remain (Phase A-E focused on `agent/` dupes). Quick hygiene pass.
+Currently 9.21% byte-matched. Approaching this systematically:
 
-## Stretch goals
+| Section | Current | Approach |
+|---------|---------|----------|
+| `.dtors` (360 B) | 0.00% | Declare the static destructor table |
+| `.ctors` (644 B) | 2.02% | Declare the static constructor table |
+| `.rodata` (362 KB) | 16.92% | Vtable conversion per class; string table consolidation |
+| `.data` (306 KB) | 0.25% | Initialized globals, lookup tables, game-state structs |
+| `.sdata` (7.5 KB) | 7.97% | r13-relative globals |
+| `.sdata2` (4 KB) | 0.70% | r2-relative globals |
 
-- **PC port** — gated on bringing semantic ratio above ~80% across all major game-logic subsystems. A real, multi-year direction.
-- **Mod tooling** — the matching infrastructure could support modifiability beyond byte-match (e.g., custom interactions, custom assets) once semantic recovery is high enough that authors can read what they're modifying.
-- **Companion documentation** — character lore, asset format reverse-engineering, behavior-tree semantics. The empirical work done during the marathon (5 misnomer corrections, hot-field identification) is the first chapter of this.
+### Tooling
 
-## Session cadence
+- Per-agent git worktrees — would eliminate the shared-`cwd` cross-contamination class observed when multiple contributors stage files concurrently
+- Cross-canonical-dir cleanup — ~22 remaining `targets_s2c` ↔ `famtarget` directory duplicates from before the canonical-dir convention settled
+- `EVec3` ABI reconciliation — the codebase uses both int-EVec3 (`ISimsObjectModel`) and float-EVec3 (`SAnimator2`, `EAnimController`) variants; consolidate into `include/shared-types/`
 
-Marathon sessions like S17 produce the bulk of bulk-conversion output. Between marathons, smaller maintenance sessions can handle:
+### Distant goals
 
-- Cleanup audits + cross-canonical hygiene
-- New misnomer corrections from contributor work
-- TypeArch header amendments as new fields surface
-- decomp.dev metric drift watch
-
-There's no fixed cadence. The repo is in a stable state — every commit verifies. Work resumes whenever someone has a multi-hour window and a target subsystem.
+- PC port — requires bringing the hand-written-C++ ratio above the major game-logic subsystems before it's practical
+- Asset format documentation — `.arc`, `.NGH`, `.tpl` formats
+- Modding surface — once the codebase is readable enough that authors can navigate it

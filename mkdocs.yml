@@ -81,22 +81,18 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - The 100% Story:
-    - Overview: story/index.md
-    - The Marathon: story/marathon.md
-    - Technique Library: story/techniques.md
   - Status:
-    - Live Progress: status/index.md
-    - Semantic Recovery: status/semantic-recovery.md
+    - Overview: status/index.md
+    - Semantic recovery: status/semantic-recovery.md
   - Methodology:
     - Overview: methodology/index.md
-    - Byte Matching: byte_matching_plan.md
-    - Matching Patterns: matching-patterns.md
-    - Register Matching Recipes: register-matching-recipes.md
-    - Struct Layouts: struct_layouts.md
+    - Byte matching: byte_matching_plan.md
+    - Matching patterns: matching-patterns.md
+    - Register matching recipes: register-matching-recipes.md
+    - Struct layouts: struct_layouts.md
+  - Techniques: techniques.md
   - Contributing:
-    - How to Help: contributing/index.md
-    - Tooling Guide: contributing/tooling.md
-    - Subsystem Map: contributing/subsystems.md
-  - Roadmap:
-    - Roadmap: roadmap/index.md
+    - Workflow: contributing/index.md
+    - Tooling: contributing/tooling.md
+    - Subsystems: contributing/subsystems.md
+  - Roadmap: roadmap/index.md

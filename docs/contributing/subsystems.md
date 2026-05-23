@@ -1,97 +1,84 @@
 # Subsystem Map
 
-Where each subsystem stands, who owns it, and where help is most welcome.
+Directory-by-directory status across `src/matched/`. Lists what's hand-written C++, what's still byte-equivalent stubs, and where help is most welcome.
 
-## Status legend
+## Legend
 
 | Symbol | Meaning |
 |--------|---------|
-| ✅ | Substantially semantic (>50% real C++) |
-| 🟡 | Partial coverage (mostly stubs, scattered semantic work) |
-| 🔴 | Untouched semantically (100% byte-match, ~0% readable C++) |
-| 📦 | SDK / middleware (out of scope for port-readiness work) |
+| ✅ | Substantially hand-written (>50% of matched functions are real C++) |
+| 🟡 | Partial coverage — mostly stubs with scattered hand-written work |
+| 🔴 | Byte-matched but ~0% hand-written |
+| 📦 | SDK / middleware — out of scope for stub-to-real-C++ conversion |
 
-## The big subsystems
+## Object family — 🟡 partial
 
-### Object family
-**Status**: 🟡 partial
+- `cXObject` (wrapper class): hand-written; holder pattern documented in `include/types/cXObject.h`
+- `cXObjectImpl` (cousin class, the real impl): RTTI accessors + Construct/Destruct families converted. Primary field `m_objectTypeKey @ 0x488` documented (17 read sites, no write sites — likely set in ctor injection).
+- `objectsim` translation unit: ~91 KB of complex methods remaining (`Simulate`, `Try*` dispatchers, `KillSelf`). Each is roughly multi-hour deep-RE work.
+- `iobject`, `objectfolder`, `objectmodule`: substantially hand-written.
 
-- `cXObject` (wrapper): semantic for top-level, holder pattern documented
-- `cXObjectImpl` (impl, "cousin" class): RTTI accessors + Construct/Destruct families converted; primary fields documented including `m_objectTypeKey @ 0x488` (the hottest field)
-- `objectsim` TU: ~91 KB of complex methods remaining — `Simulate`, `Try*` dispatchers, `KillSelf` — multi-hour cracks per function
-- `iobject`, `objectfolder`, `objectmodule`: substantially semantic
+## Person family — 🟡 partial across three directories
 
-**S18 priority**: high. The `objectsim` TU is the single largest deep-RE opportunity in the project.
+- `src/matched/cxperson/` — three legacy templates (`Skipping3D`, `Place`, `Turn`).
+- `src/matched/cxpersonimpl/` — 64 pre-existing conversions.
+- `src/matched/person/` — additional layer of pre-existing work.
+- Remaining: ~86 inject-only addresses in `cXPersonImpl`, mostly 88 B and up.
 
-### Person family
-**Status**: 🟡 partial — three semantic directories coexist
+## Animation family — 🟡 mid
 
-- `src/matched/cxperson/` — 3 S16 templates (`Skipping3D`, `Place`, `Turn`)
-- `src/matched/cxpersonimpl/` — 64 pre-existing semantic conversions
-- `src/matched/person/` — additional pre-existing layer
-- Remaining: ~86 virgin VAs in `cXPersonImpl`, most 88B+ (back-loaded — easy quick wins largely done)
+- `sanimator2`: small getters/setters and 32–52 B band partially done; 123 complex 100 B+ stubs remain.
+- `e_animcontroller`: destructor + shutdown + track-management methods converted; 81 complex 100 B+ remain.
+- `e_rlevel`: room/instance management partially hand-written.
 
-**S18 priority**: medium. Bigger functions per remaining target = lower throughput.
+## Targets family — ✅ trivial-stub territory closed
 
-### Animation family
-**Status**: 🟡 mid
+`src/matched/targets_s2c/`, `targets_tsc3/`, `targets_cas/`, plus per-class subdirs (`famtarget/`, `mmutarget/`, etc.).
 
-- `sanimator2`: 8B getters/setters cracked, 32-52B band partial, 123 complex 100B+ stubs remain
-- `e_animcontroller`: dtor + Shutdown + track-management methods converted, 81 complex 100B+ remaining
-- `e_rlevel`: room/instance management partially semantic
+- 35 trivial conversions landed across `FAMTarget` / `MMUTarget` / `CRDTarget` / `CSPTarget` / `PAZBase` / `R2LTarget` / `CASGeneticsTarget` / `CasListener` / `CasMediator` / `INVTarget`.
+- 10 inject-only `INVTarget` stubs remain at 184 B and up — each requires per-function asm reading.
+- Field layouts documented in [`include/types/INVTarget.h`](https://github.com/natebag/Sims2DECOMP/blob/main/include/types/INVTarget.h) and [`include/types/CasMediator.h`](https://github.com/natebag/Sims2DECOMP/blob/main/include/types/CasMediator.h).
 
-**S18 priority**: medium. Requires deep RE with `diff_func.sh` tooling per function.
+## Mid-tier systems — 🟡 polished, complex residue
 
-### Targets-family (`targets_s2c` / `targets_tsc3` / `targets_cas`)
-**Status**: ✅ Lane 1 trivial-stub territory exhausted in S17
+- `eroom` (`ERoom`): hand-written, layout in [`include/types/ERoom.h`](https://github.com/natebag/Sims2DECOMP/blob/main/include/types/ERoom.h).
+- `camera` (`ESimsCam`): hand-written, layout in [`include/types/ESimsCam.h`](https://github.com/natebag/Sims2DECOMP/blob/main/include/types/ESimsCam.h).
+- `xrouting` (`XRoute`): 76 complex stubs remain — SDA-relative, r9-relative, callee-saved, and tail-call shapes that don't fit family-blast templates.
 
-- 35 conversions across `FAMTarget` / `MMUTarget` / `CRDTarget` / `CSPTarget` / `PAZBase` / `R2LTarget` / `CASGeneticsTarget` / `CasListener` / `CasMediator` / `INVTarget`
-- 10 verified-virgin `INVTarget` ASMPROC stubs remain — all 184B+ (multi-hour each)
-- Roadmap: see [TypeArch's `include/types/INVTarget.h`](https://github.com/natebag/Sims2DECOMP/blob/main/include/types/INVTarget.h) for documented field offsets
+## Resource files — ✅ family-blast complete
 
-**S18 priority**: low-medium. Big `INVTarget` cracks are the next opportunity.
+`ChainResFile`, `IFFResFile2`, `NghResFile`.
 
-### Mid-tier systems
-**Status**: 🟡 substantial polish, residue of complex patterns
+## Behavior + EI light family — ✅ family-blast complete
 
-- `eroom` (`ERoom`): semantic with [`include/types/ERoom.h`](https://github.com/natebag/Sims2DECOMP/blob/main/include/types/ERoom.h)
-- `camera` (`ESimsCam`): semantic 
-- `xrouting` (`XRoute`): partial — 76 complex stubs remain (SDA-relative / r9-relative / callee-saved / tail-call patterns that don't fit simple templates)
+`Behavior::Get*`, `EIAmbLight`, `EIDirLight`, `EIPortalPointLight`, `EIStaticModel`, etc.
 
-**S18 priority**: medium. Pattern variety = needs per-shape tooling.
+## TileWalls — ✅ substantially hand-written
 
-### Animation events / effects
-**Status**: 🟡 partial — many conversions in S16
+Placement methods covered by the family-blast pattern.
 
-### Resource files
-**Status**: ✅ family-blast complete on `ChainResFile` / `IFFResFile2` / `NghResFile`
+## APT (Macromedia Flash bytecode interpreter) — 📦 SDK-adjacent
 
-### Behavior + EI light family
-**Status**: ✅ family-blast complete (`Behavior::Get*`, `EIAmbLight`/`EIDirLight`/`EIStaticModel`/etc.)
+~21 methods converted in the `AptFloat` / `AptBoolean` / `AptInteger` / `AptValue` families; ~30 additional files verified as already matching. The bulk of the interpreter remains byte-matched but not hand-written. Treat as middleware — not a high-priority port-readiness target.
 
-### APT (Macromedia Flash bytecode interpreter)
-**Status**: 📦 SDK-adjacent. KimiWorker's S17 work converted ~21 `AptFloat` / `AptBoolean` / `AptInteger` / `AptValue` family methods + verified ~30 existing semantic files. Bulk of the interpreter remains unmatched-as-real-C++ but byte-matched.
+## SDK (`DolphinSDK`, `VMBase`, etc.) — 📦 middleware
 
-### TileWalls (placement / building)
-**Status**: ✅ substantially semantic — S16 family-blast covered placement methods
+Byte-matched. Not a stub-to-real-C++ target — the SDK ships from Nintendo and isn't re-derived in source.
 
-### SDK (`DolphinSDK` / `VMBase` / etc.)
-**Status**: 📦 byte-matched (the 100% close required the final `VMBASEDSIExceptionHandler` + `VMBASEISIExceptionHandler` twin). NOT a stub-to-real-C++ target — SDK comes from Nintendo and shouldn't be re-derived.
+## Data section opportunities
 
-## Data section roadmap
+Tracked separately from the hand-written-ratio metric.
 
-A separate axis of work, just opened up:
+| Section | Current | Approach |
+|---------|---------|----------|
+| `.dtors` (360 B) | 0.00% | Declare the static destructor table |
+| `.ctors` (644 B) | 2.02% | Declare the static constructor table |
+| `.rodata` (362 KB) | 16.92% | Vtable conversion per class; string-table consolidation |
+| `.data` (306 KB) | 0.25% | Initialized globals, game-state tables, lookup arrays |
+| `.sdata` / `.sdata2` (~12 KB) | <8% | r13- and r2-relative globals |
 
-| Section | Opportunity | Approach |
-|---------|-------------|----------|
-| `.dtors` (360 B at 0%) | Quick win — could hit 100% in one commit | Declare static destructor table |
-| `.ctors` (644 B at 2%) | Similar to dtors | Declare static constructor table |
-| `.rodata` (362 KB at 17%) | Vtables + string tables | Vtable conversion per class (TypeArch headers already document layouts) |
-| `.data` (306 KB at 0.25%) | Biggest opportunity | Initialized globals, game-state tables |
-| `.sdata` / `.sdata2` (~12 KB at <8%) | Small | r13/r2-relative globals |
+See [Status — data section](../status/index.md#data-section-byte-match) for live numbers.
 
-See [`.data` tracking](../status/index.md#per-section-data-breakdown) for current numbers.
+## Claiming a subsystem
 
-## Want to claim a subsystem?
-
-Open an issue on the repo with the subsystem you're targeting and the time you're willing to spend. The fleet-coordination protocol means we want to avoid two contributors working the same VAs in parallel — the issue serves as the public claim.
+Open an issue on the repo with the subsystem you're targeting. The issue acts as the public claim and reduces the risk of two contributors working the same addresses in parallel.
