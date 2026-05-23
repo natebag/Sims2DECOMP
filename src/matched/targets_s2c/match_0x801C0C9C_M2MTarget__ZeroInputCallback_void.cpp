@@ -1,3 +1,6 @@
-/* M2MTarget__ZeroInputCallback_void at 0x801C0C9C (4B) — auto-matched */
-
-void func_801C0C9C(void) {}
+// 0x801C0C9C M2MTarget::ZeroInputCallback(void) (4B) â€” semantic conversion of auto-stub
+class M2MTarget {
+public:
+    void ZeroInputCallback(void);
+};
+void M2MTarget::ZeroInputCallback(void) {}

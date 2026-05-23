@@ -1,3 +1,6 @@
-/* MDITarget__UpdateModelessDialogs_void at 0x801C3C9C (4B) — auto-matched */
-
-void func_801C3C9C(void) {}
+// 0x801C3C9C MDITarget::UpdateModelessDialogs(void) (4B) â€” semantic conversion of auto-stub
+class MDITarget {
+public:
+    void UpdateModelessDialogs(void);
+};
+void MDITarget::UpdateModelessDialogs(void) {}

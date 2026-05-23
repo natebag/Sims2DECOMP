@@ -1,3 +1,6 @@
-/* ACTTarget__DebugListValidation_void at 0x801A2C30 (4B) — auto-matched */
-
-void func_801A2C30(void) {}
+// 0x801A2C30 ACTTarget::DebugListValidation(void) (4B) â€” semantic conversion of auto-stub
+class ACTTarget {
+public:
+    void DebugListValidation(void);
+};
+void ACTTarget::DebugListValidation(void) {}

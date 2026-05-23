@@ -1,3 +1,6 @@
-/* MOTTarget__UpdateMotives_void at 0x801CBB74 (4B) — auto-matched */
-
-void func_801CBB74(void) {}
+// 0x801CBB74 MOTTarget::UpdateMotives(void) (4B) â€” semantic conversion of auto-stub
+class MOTTarget {
+public:
+    void UpdateMotives(void);
+};
+void MOTTarget::UpdateMotives(void) {}
