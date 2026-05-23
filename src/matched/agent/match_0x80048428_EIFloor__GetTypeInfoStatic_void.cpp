@@ -1,4 +1,5 @@
 // 0x80048428 EIFloor::GetTypeInfoStatic(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 3,-32688; addi 3,3,-18568"
-extern "C" int f_80048428() {}
+struct EATypeInfo { char _pad[0x0C]; const char* m_name; unsigned m_key; unsigned short m_version; unsigned short m_readVersion; };
+extern EATypeInfo g_EIFloorTypeInfo;
+struct EIFloor { static EATypeInfo* GetTypeInfoStatic(); };
+EATypeInfo* EIFloor::GetTypeInfoStatic() { return &g_EIFloorTypeInfo; }

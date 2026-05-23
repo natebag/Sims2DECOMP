@@ -1,4 +1,5 @@
 // 0x80048404 EIFloor::GetTypeName(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 9,-32688; lwz 3,-18556(9)"
-extern "C" int f_80048404() {}
+struct EATypeInfo { char _pad[0x0C]; const char* m_name; unsigned m_key; unsigned short m_version; unsigned short m_readVersion; };
+extern EATypeInfo g_EIFloorTypeInfo;
+struct EIFloor { const char* GetTypeName(); };
+const char* EIFloor::GetTypeName() { return g_EIFloorTypeInfo.m_name; }
