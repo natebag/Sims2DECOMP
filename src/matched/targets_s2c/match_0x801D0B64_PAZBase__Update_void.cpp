@@ -1,3 +1,6 @@
-/* PAZBase__Update_void at 0x801D0B64 (4B) — auto-matched */
-
-void func_801D0B64(void) {}
+// 0x801D0B64 PAZBase::Update(void) (4B) â€” semantic conversion of auto-stub
+class PAZBase {
+public:
+    void Update(void);
+};
+void PAZBase::Update(void) {}
