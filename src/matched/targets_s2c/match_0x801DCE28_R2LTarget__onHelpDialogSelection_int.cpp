@@ -1,3 +1,6 @@
-/* R2LTarget__onHelpDialogSelection_int at 0x801DCE28 (4B) — auto-matched */
-
-void func_801DCE28(void) {}
+// 0x801DCE28 R2LTarget::onHelpDialogSelection(int) (4B) â€” semantic conversion of auto-stub
+class R2LTarget {
+public:
+    int onHelpDialogSelection(int sel);
+};
+int R2LTarget::onHelpDialogSelection(int sel) {}

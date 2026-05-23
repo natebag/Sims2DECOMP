@@ -1,3 +1,6 @@
-/* R2LTarget__Update_void at 0x801DBB98 (4B) — auto-matched */
-
-void func_801DBB98(void) {}
+// 0x801DBB98 R2LTarget::Update(void) (4B) â€” semantic conversion of auto-stub
+class R2LTarget {
+public:
+    void Update(void);
+};
+void R2LTarget::Update(void) {}
