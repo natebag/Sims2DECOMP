@@ -750,6 +750,50 @@ semantic dir's types, dropping a previously-matched function). Proposal: extend
 pre-commit hook to compare `matched_code_percent` at HEAD vs after-commit and BLOCK
 if it drops. Under review for S18 post-wave2 implementation.
 
+### 8. Canonical vs TU-Duplicate Convertibility
+
+**Fourth dimension of cluster classification** (OpusArchitect, S18 — INVTarget survey).
+
+When a class's canonical .obj range shows heavy GCC inlining, the canonical address space
+contains **mid-function continuations** rather than standalone prologues. These are
+structurally difficult to convert: no natural entry point, no isolated register-pressure
+pattern, no standard prologue to anchor. The TU-duplicate copies live in a DIFFERENT
+.obj — emitted at a call site where cross-obj inlining was impossible — and retain a
+**standalone function shape**: normal `stwu r1,-N(r1)` prologue, isolated register
+pressure, straightforward conversion.
+
+**Heuristic — prologue probe:**
+Look up the target address in the map. Disassemble the first instruction:
+- `stwu r1, -N(r1)` → **standalone prologue** → CONVERT this address
+- `beq / bne / cmpwi / b <label>` → **mid-function entry** → SKIP; find TU-duplicate instead
+
+**Case study: INVTarget (OpusArchitect, S18)**
+| Range | TU (.obj) | First-instruction profile | Convertibility |
+|---|---|---|---|
+| `0x803xxxxx` | `targets_tsc3.obj` (canonical) | mid-function continuations | **HARD — avoid** |
+| `0x801Exxxx–0x801F0xxx` | `quickresfile.obj` (TU-dup) | standalone prologues | **EASY — target this pool** |
+
+OpusArchitect documented **23 virgin TU-duplicate candidates** using the prologue probe
+across the quickresfile.obj range. Workers: run the same probe on your class before
+deciding which address range to convert.
+
+**Implication:** `canonical = best conversion target` is **false** for inlining-heavy
+classes. For these classes the TU-duplicate IS the canonical conversion target.
+
+**Cross-class portability:** untested beyond INVTarget but mechanically applicable to any
+class whose canonical .obj range shows predominantly non-prologue first instructions.
+Measure inlining density (% of addresses with `stwu` as first instruction) before
+committing to a pool.
+
+**Four dimensions of cluster classification (complete):**
+1. **Dispatch pattern** — A (helper-inline / `extern void` fix), B (method-replication
+   all-blrl, no fix available), A+B hybrid
+2. **Distribution shape** — single-TU concentrated / multi-TU concentrated / distributed
+3. **Game role** — system-specific / feature-group / pervasive game-logic class
+4. **Convertibility shape** — canonical-standalone vs TU-duplicate-standalone ← *this section*
+
+---
+
 **Living chapter:** add new clusters, patterns, and distribution examples as workers
 surface them. This chapter is the canonical reference for all TU-archaeology work.
 
