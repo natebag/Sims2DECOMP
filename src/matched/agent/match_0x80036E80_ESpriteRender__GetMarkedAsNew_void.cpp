@@ -1,4 +1,3 @@
 // 0x80036E80 ESpriteRender::GetMarkedAsNew(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x4(3)"
-extern "C" int f_80036E80() {}
+struct ESpriteRender { char _pad[4]; unsigned m_markedAsNew; unsigned GetMarkedAsNew(); };
+unsigned ESpriteRender::GetMarkedAsNew() { return m_markedAsNew; }

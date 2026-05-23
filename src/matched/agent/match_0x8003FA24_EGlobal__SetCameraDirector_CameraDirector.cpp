@@ -1,4 +1,3 @@
 // 0x8003FA24 EGlobal::SetCameraDirector(CameraDirector (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 4,0xe0(3)"
-extern "C" void f_8003FA24() {}
+struct EGlobal { char _pad[0xe0]; unsigned m_cameraDirector; void SetCameraDirector(unsigned); };
+void EGlobal::SetCameraDirector(unsigned cd) { m_cameraDirector = cd; }
