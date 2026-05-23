@@ -1,3 +1,3 @@
-/* SAnimator2__ResetCensorship_void at 0x8005F4E0 (4B) — auto-matched */
-
-void func_8005F4E0(void) {}
+/* 0x8005F4E0 (4 bytes) - SAnimator2::ResetCensorship(void) */
+struct SAnimator2 { void ResetCensorship(); };
+void SAnimator2::ResetCensorship() {}
