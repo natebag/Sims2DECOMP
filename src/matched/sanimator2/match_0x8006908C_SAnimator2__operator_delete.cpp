@@ -1,5 +1,4 @@
-/* SAnimator2::operator delete(void *) at 0x8006908C (52B) */
-
+/* 0x8006908C (52 bytes) - SAnimator2::operator delete(void *) */
 struct EAHeap_SAOD {
     void Free(void* ptr);
 };
