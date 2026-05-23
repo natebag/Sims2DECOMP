@@ -1,4 +1,0 @@
-// 0x80161A6C CasListener::HandleEvent(CasEvent (228 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); lwz 0,0x0(4); mr 11,3; cmpwi 0,3; beq 5f; bgt 0f; cmpwi 0,1; beq 4f; bgt 1f; cmpwi 0,0; beq 3f; b 9f; 0:; cmpwi 0,5; beq 6f; blt 2f; cmpwi 0,6; beq 8f; b 9f; 1:; lwz 9,0x4(11); lha 3,0x20(9); lwz 0,0x24(9); b 7f; 2:; lwz 9,0x4(11); lha 3,0x28(9); lwz 0,0x2c(9); b 7f; 3:; lwz 9,0x4(11); lha 3,0x30(9); lwz 0,0x34(9); b 7f; 4:; lwz 9,0x4(11); lha 3,0x38(9); lwz 0,0x3c(9); b 7f; 5:; lwz 9,0x4(11); lha 3,0x40(9); lwz 0,0x44(9); b 7f; 6:; lwz 9,0x4(11); lha 3,0x48(9); lwz 0,0x4c(9); 7:; add 3,11,3; mtspr 8,0; blrl; b 9f; 8:; lwz 9,0x4(11); lha 3,0x50(9); lwz 0,0x54(9); add 3,11,3; mtspr 8,0; blrl; 9:; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
-extern "C" void f_80161A6C() {}

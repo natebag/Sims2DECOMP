@@ -1,4 +1,0 @@
-// 0x80146A9C TileWalls::HasDiagonal(void) (24 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x0(3); li 3,1; andi. 9,0,48; bnelr; li 3,0"
-extern "C" int f_80146A9C() {}
