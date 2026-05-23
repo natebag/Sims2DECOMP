@@ -1,0 +1,3 @@
+// 0x8024BB00 OSExceptionVector (156B) — Dolphin SDK OSException.o
+// ASMPROC_inject_before: before="blr" replace="nop" lines="mtsprg 0,4; lwz 4,0xc0(0); stw 3,0xc(4); mfsprg 3,0; stw 3,0x10(4); stw 5,0x14(4); lhz 3,0x1a2(4); ori 3,3,2; sth 3,0x1a2(4); mfcr 3; stw 3,0x80(4); mflr 3; stw 3,0x84(4); mfctr 3; stw 3,0x88(4); mfxer 3; stw 3,0x8c(4); mfsrr0 3; stw 3,0x198(4); mfsrr1 3; stw 3,0x19c(4); mr 5,3; nop; mfmsr 3; ori 3,3,48; mtsrr1 3; li 3,0; lwz 4,0xd4(0); rlwinm. 5,5,0,30,30; bne 0f; lis 5,-32731; addi 5,5,-17508; mtsrr0 5; rfi; 0:; rlwinm 5,3,2,22,29; lwz 5,0x3000(5); mtsrr0 5; rfi"
+extern "C" void OSExceptionVector() {}
