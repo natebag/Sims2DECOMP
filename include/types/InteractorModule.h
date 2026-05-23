@@ -40,7 +40,9 @@
 #define SIMS2_TYPES_INTERACTORMODULE_H
 
 #include "../types.h"
-#include "EVec3.h"   /* canonical EVec3 + EVec2 (drops legacy locals) */
+#include "EVec3.h"      /* canonical EVec3 + EVec2 (drops legacy locals) */
+#include "WallTypes.h"  /* canonical TileWallsSegment + DiagonalSideSelector +
+                            TilePtDir (drops local definitions) */
 
 /* Forward decls — out-of-namespace types referenced by InteractorModule */
 struct ESimsCam;
@@ -55,10 +57,10 @@ struct ObjSelector;
 struct ISimInstance;
 struct CTilePt;
 struct FTilePt;
-struct TileWallsSegment;
-struct DiagonalSideSelector;
 template <typename T> struct TNodeList;
-enum   TilePtDir { TilePtDir_OPAQUE = 0 };
+/* TilePtDir / TileWallsSegment / DiagonalSideSelector now sourced from
+ * include/types/WallTypes.h (S18 promotion). Pre-S18 versions of this
+ * file declared TilePtDir locally as a workaround. */
 
 namespace InteractorModule {
 
