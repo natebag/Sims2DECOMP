@@ -1,3 +1,4 @@
+/* 0x802339DC (92 bytes) - ERLevel::NotifyInstanceMoved(EInstance*) */
 struct EInstance {
     char pad[0x54];
     int m_roomIndex;

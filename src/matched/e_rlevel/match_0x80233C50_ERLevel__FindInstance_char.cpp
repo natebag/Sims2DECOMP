@@ -1,3 +1,4 @@
+/* 0x80233C50 (64 bytes) - ERLevel::FindInstance(char*) */
 typedef unsigned int uint32;
 
 struct EInstance;

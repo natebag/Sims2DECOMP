@@ -1,3 +1,4 @@
+/* 0x80233BD8 (120 bytes) - ERLevel::RemoveInstanceFromIdMap(EInstance*) */
 typedef unsigned int uint32;
 struct HTIteratorPtrType;
 
