@@ -101,3 +101,7 @@ tools/*_results.txt
 /*.log
 /qa_monitor*.log
 /dup_verify*.log
+
+# MkDocs build output (docs site)
+/site/
+build/docs-site/

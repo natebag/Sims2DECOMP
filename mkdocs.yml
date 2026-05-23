@@ -1,0 +1,102 @@
+site_name: The Sims 2 GameCube — Decomp
+site_description: A byte-matching decompilation of The Sims 2 for Nintendo GameCube
+site_url: https://natebag.github.io/Sims2DECOMP/
+repo_url: https://github.com/natebag/Sims2DECOMP
+repo_name: natebag/Sims2DECOMP
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  language: en
+  font:
+    text: Quicksand
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: sims-light
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: sims-dark
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/diamond-stone
+  favicon: assets/favicon.svg
+
+extra_css:
+  - stylesheets/sims-theme.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/natebag/Sims2DECOMP
+    - icon: material/chart-line
+      link: https://decomp.dev/natebag/Sims2DECOMP
+      name: Live progress on decomp.dev
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - The 100% Story:
+    - Overview: story/index.md
+    - The Marathon: story/marathon.md
+    - Technique Library: story/techniques.md
+  - Status:
+    - Live Progress: status/index.md
+    - Semantic Recovery: status/semantic-recovery.md
+  - Methodology:
+    - Overview: methodology/index.md
+    - Byte Matching: byte_matching_plan.md
+    - Matching Patterns: matching-patterns.md
+    - Register Matching Recipes: register-matching-recipes.md
+    - Struct Layouts: struct_layouts.md
+  - Contributing:
+    - How to Help: contributing/index.md
+    - Tooling Guide: contributing/tooling.md
+    - Subsystem Map: contributing/subsystems.md
+  - Roadmap:
+    - Roadmap: roadmap/index.md
