@@ -1,0 +1,9 @@
+src/matched/agent/match_0x8003489C_ESim__HasQueuedOperation_void.cpp
+src/matched/agent/match_0x8003E5B4_EGlobal__GetGameFontID_void.cpp
+src/matched/agent/match_80036E70_ESpriteRender__GetObject.cpp
+src/matched/agent/match_80036E78_ESpriteRender__GetMarked.cpp
+src/matched/agent/match_80036E80_ESpriteRender__GetMarkedAsNew.cpp
+src/matched/agent/match_8003DDA0_GameData__GetBuildBuyPlayer.cpp
+src/matched/agent/match_80075B08_GetSpaceRequiredForPs2HDDSave.cpp
+src/matched/agent/match_802C70B4_EFileSystem_InitHDD.cpp
+src/matched/agent/match_803288F8_EffectsAttachmentManager__CanCache_EResource_ptr.cpp

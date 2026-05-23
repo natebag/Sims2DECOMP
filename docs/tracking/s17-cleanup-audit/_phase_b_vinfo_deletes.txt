@@ -1,0 +1,3 @@
+src/matched/versioninfo/match_0x802AFFF8_AptTextFormat__op_new__unsigned_int.cpp
+src/matched/versioninfo/match_0x802BB694_AptXmlNode__op_new__unsigned_int.cpp
+src/matched/versioninfo/match_0x802C4FDC_AptXmlAttributes__op_new__unsigned_int.cpp
