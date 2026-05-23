@@ -1,4 +1,4 @@
 // 0x80030624 EIWallPart::IsDiagonal(void) (24 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x320(3); li 3,1; andi. 9,0,48; bnelr; li 3,0"
-extern "C" int f_80030624() {}
+struct EIWallPart { char _pad[0x320]; unsigned m_wallFlags; int IsDiagonal(); };
+int EIWallPart::IsDiagonal() { return (m_wallFlags & 0x30) != 0; }
