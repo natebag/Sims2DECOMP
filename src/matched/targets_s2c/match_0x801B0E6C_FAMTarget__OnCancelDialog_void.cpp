@@ -1,3 +1,6 @@
-/* FAMTarget__OnCancelDialog_void at 0x801B0E6C (4B) — auto-matched */
-
-void func_801B0E6C(void) {}
+// 0x801B0E6C FAMTarget::OnCancelDialog(void) (4B) â€” semantic conversion of auto-stub
+class FAMTarget {
+public:
+    void OnCancelDialog(void);
+};
+void FAMTarget::OnCancelDialog(void) {}

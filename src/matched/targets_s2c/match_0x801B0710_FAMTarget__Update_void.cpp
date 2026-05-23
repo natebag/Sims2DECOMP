@@ -1,3 +1,6 @@
-/* FAMTarget__Update_void at 0x801B0710 (4B) — auto-matched */
-
-void func_801B0710(void) {}
+// 0x801B0710 FAMTarget::Update(void) (4B) â€” semantic conversion of auto-stub
+class FAMTarget {
+public:
+    void Update(void);
+};
+void FAMTarget::Update(void) {}

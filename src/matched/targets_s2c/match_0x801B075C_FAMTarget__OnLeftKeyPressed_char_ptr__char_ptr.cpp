@@ -1,3 +1,6 @@
-/* FAMTarget__OnLeftKeyPressed_char_ptr__char_ptr at 0x801B075C (4B) — auto-matched */
-
-void func_801B075C(void) {}
+// 0x801B075C FAMTarget::OnLeftKeyPressed(char*, char*) (4B) â€” semantic conversion of auto-stub
+class FAMTarget {
+public:
+    void OnLeftKeyPressed(char* a, char* b);
+};
+void FAMTarget::OnLeftKeyPressed(char* a, char* b) {}

@@ -1,3 +1,6 @@
-/* FAMTarget__Shutdown_void at 0x801B070C (4B) — auto-matched */
-
-void func_801B070C(void) {}
+// 0x801B070C FAMTarget::Shutdown(void) (4B) â€” semantic conversion of auto-stub
+class FAMTarget {
+public:
+    void Shutdown(void);
+};
+void FAMTarget::Shutdown(void) {}

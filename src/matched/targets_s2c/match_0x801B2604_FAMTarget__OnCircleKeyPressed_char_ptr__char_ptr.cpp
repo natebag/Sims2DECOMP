@@ -1,3 +1,6 @@
-/* FAMTarget__OnCircleKeyPressed_char_ptr__char_ptr at 0x801B2604 (4B) — auto-matched */
-
-void func_801B2604(void) {}
+// 0x801B2604 FAMTarget::OnCircleKeyPressed(char*, char*) (4B) â€” semantic conversion of auto-stub
+class FAMTarget {
+public:
+    void OnCircleKeyPressed(char* a, char* b);
+};
+void FAMTarget::OnCircleKeyPressed(char* a, char* b) {}
