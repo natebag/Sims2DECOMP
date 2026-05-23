@@ -1,21 +1,21 @@
-// 0x802E7884 (96B) EAnimController::~EAnimController(void)
-// Variant L: SI deleting-dtor — Deallocate + ENodeList::RemoveAll(@+0x48) + conditional EResource::DelRef + __builtin_delete branch.
-
-void EAnimController_Deallocate(void* obj);
+// 0x802E7884 (96 bytes) - EAnimController::~EAnimController(int)
 void ENodeList_RemoveAll(void* nodelist);
 void EResource_DelRef(void* obj);
 void __builtin_delete(void* p);
 
-struct EAnimController {
-    char pad_00_23[36];
+class EAnimController {
+public:
+    char pad_00[36];
     void* m_field_24;
-    char pad_28_47[32];
+    char pad_28[32];
     int m_node_list_at_48;
+
+    void Deallocate();
     void dtor(int flag);
 };
 
 void EAnimController::dtor(int flag) {
-    EAnimController_Deallocate(this);
+    Deallocate();
     ENodeList_RemoveAll(&m_node_list_at_48);
     if (m_field_24 != 0) {
         EResource_DelRef(m_field_24);
