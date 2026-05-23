@@ -48,7 +48,7 @@ DOL = REPO / "extracted" / "sys" / "main.dol"
 SYMBOLS_FILE = REPO / "config" / "symbols.txt"
 SKELETON_DIR = REPO / "build" / "skeleton"
 MATCHED_SRC = REPO / "src" / "matched"
-MATCHED_OBJ = REPO / "build" / "obj" / "matched"
+MATCHED_OBJ = REPO / "build" / "G4ZE69" / "obj" / "matched"
 OUTPUT_ELF = REPO / "build" / "sims2.elf"
 LDSCRIPT = REPO / "config" / "ldscript.lcf"
 
@@ -222,7 +222,7 @@ def parse_source_annotations(src_path):
         if in_if0 > 0:
             continue
 
-        m = re.match(r"// 0x([0-9A-Fa-f]+)\s+\((\d+) bytes\)", s)
+        m = re.match(r"\s*//.*?\b0x([0-9A-Fa-f]+)\b.*?\((\d+)\s*(?:bytes?|b)\)", s, re.IGNORECASE)
         if m:
             pending = (int(m.group(1), 16), int(m.group(2)))
             continue
@@ -251,8 +251,9 @@ def find_matching_functions(dol_data, verbose=False):
     mismatch = 0
     skipped = 0
 
-    for src_file in sorted(MATCHED_SRC.glob("*.cpp")):
-        obj_file = MATCHED_OBJ / (src_file.stem + ".o")
+    for src_file in sorted(MATCHED_SRC.rglob("*.cpp")):
+        rel_path = src_file.relative_to(MATCHED_SRC)
+        obj_file = MATCHED_OBJ / rel_path.with_suffix(".o")
         if not obj_file.exists():
             continue
 
@@ -481,8 +482,10 @@ def compile_matched_sources():
 
     compiled = 0
     errors = 0
-    for src_file in sorted(MATCHED_SRC.glob("*.cpp")):
-        obj_file = MATCHED_OBJ / (src_file.stem + ".o")
+    for src_file in sorted(MATCHED_SRC.rglob("*.cpp")):
+        rel_path = src_file.relative_to(MATCHED_SRC)
+        obj_file = MATCHED_OBJ / rel_path.with_suffix(".o")
+        obj_file.parent.mkdir(parents=True, exist_ok=True)
         # Skip if .o is newer than .cpp
         try:
             if obj_file.exists() and obj_file.stat().st_mtime > src_file.stat().st_mtime:
