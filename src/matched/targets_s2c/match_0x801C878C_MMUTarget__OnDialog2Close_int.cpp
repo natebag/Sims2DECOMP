@@ -1,3 +1,6 @@
-/* MMUTarget__OnDialog2Close_int at 0x801C878C (4B) — auto-matched */
-
-void func_801C878C(void) {}
+// 0x801C878C MMUTarget::OnDialog2Close(int) (4B) â€” semantic conversion of auto-stub
+class MMUTarget {
+public:
+    int OnDialog2Close(int code);
+};
+int MMUTarget::OnDialog2Close(int code) {}

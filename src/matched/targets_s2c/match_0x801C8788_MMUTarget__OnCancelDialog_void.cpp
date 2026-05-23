@@ -1,3 +1,6 @@
-/* MMUTarget__OnCancelDialog_void at 0x801C8788 (4B) — auto-matched */
-
-void func_801C8788(void) {}
+// 0x801C8788 MMUTarget::OnCancelDialog(void) (4B) â€” semantic conversion of auto-stub
+class MMUTarget {
+public:
+    void OnCancelDialog(void);
+};
+void MMUTarget::OnCancelDialog(void) {}
