@@ -1,4 +1,4 @@
-// 0x802BB830 AptBoolean_ClearPool (12b)
+// 0x802BB830 AptBoolean_ClearPool (132B)
 
 typedef unsigned int uint;
 typedef void (*VoidFn)(void*);
