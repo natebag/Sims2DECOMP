@@ -292,11 +292,20 @@ def build_units(functions: list, matched_addrs: set) -> list:
 
         function_entries = []
         for f in fns_sorted:
+            # Per-function match flag — decomp.dev's treemap colors each
+            # inner square by this value. Without it, every function
+            # defaults to 0% (grey) even when the unit overall reads 100%.
+            is_matched = f["addr"] in matched_addrs
+            fn_pct = 100.0 if is_matched else 0.0
             function_entries.append({
                 "name": f["name"],
                 "size": str(f["size"]),
-                "metadata": {"virtual_address": str(f["addr"])},
+                "metadata": {
+                    "virtual_address": str(f["addr"]),
+                    "complete": is_matched,
+                },
                 "address": str(f["addr"] - base_addr),
+                "fuzzy_match_percent": fn_pct,
             })
 
         units.append({
