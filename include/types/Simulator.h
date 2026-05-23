@@ -12,21 +12,24 @@
  * the manager-singleton lookup at SDA -21432(r13). The natural type
  * candidate is `cSimulator*` or `cSimulatorImpl*` — documented here.
  *
- * **CAVEAT:** the Initialize asm at 0x8011E0FC dispatches through an
- * MI-shape vtable (`lwz 9,0x0(r3); lha 0,0x10(9); lwz 9,0x14(9)` —
- * top_offset@+0x10, fnptr@+0x14). cSimulatorImpl as documented here is
- * a single-inheritance derivative of cSimulator and would NOT emit that
- * MI-thunk shape. Two possibilities:
- *   (a) The legacy cSimulatorImpl is incomplete and actually has MI
- *       (additional base classes not yet recovered).
- *   (b) The +0x3F4 pointer is NOT cSimulator* — it's some other
- *       per-sim object that genuinely does inherit via MI (e.g. a
- *       behavior root, event listener, network proxy, animation
- *       controller).
+ * **RESOLVED (S18 v5):** PersonSlayer's
+ * CheckFirstPlayerForFailedSocialModeEntry @ 0x8012B8CC (commit 5d2ecd7fe)
+ * answered the question. The dispatch pattern is:
+ *   lwz r11,0x3f4(this)   ; r11 = m_simulator
+ *   lwz r9,0x0(r11)        ; r9  = *(m_simulator+0) = vtable ptr — SI shape
+ *   lha r3,0x138(r9)       ; top_offset for slot 39
+ *   lwz r0,0x13c(r9)       ; fnptr for slot 39
+ *   add r3,r11,r3 ; mtspr 9,0 ; blrl
+ * **Vtable @ offset 0 of the object = SINGLE-INHERITANCE**, so the type
+ * IS cSimulator*. cXPersonImpl.h v5 upgrades the field from void* to
+ * cSimulator* accordingly.
  *
- * Until that's resolved, `cXPersonImpl::m_simulator` stays `void*` in
- * include/types/cXPersonImpl.h. Document the candidacy here so the
- * next writer who cracks a 0x3F4-reading function can pin it.
+ * Important nuance: SN ProDG emits MI-thunk-shape SLOT pairs (s16
+ * top_offset + s16 pad + void* fnptr = 8B per slot) for SI vtables too.
+ * The "SI vs MI" signal is the VTABLE-PTR LOCATION IN THE OBJECT (here:
+ * offset 0 = SI; offset > 0 of the object's head + secondary vtable@+0x320
+ * etc. = MI as in ISimsObjectModel). The per-slot shape is identical
+ * across SI and MI emissions.
  *
  * The SDA slot at `-21432(r13)` is hot across INVTarget, SAnimator2,
  * CTGFileImpl, and cXPersonImpl::Initialize — definitively a game-wide
@@ -182,6 +185,33 @@ public:
     /* 0x17C */ s32    m_updateFlag;
     /* total 0x180 */
 };
+
+/* ============================================================================
+ * Vtable slot index — observed slots used by writers
+ *
+ * SN ProDG vtable layout (used by both SI and MI emissions):
+ *   each slot is 8 bytes: { s16 top_offset; s16 _pad; void* fnptr; }
+ *   slot N base address inside vtable = N * 8 = 0x008*N (decimal: 8N)
+ *
+ * **Slot 39 (vtable offset 0x138 / 0x13C) — no-args verb method.**
+ * Sites observed:
+ *   - cXPersonImpl::CheckFirstPlayerForFailedSocialModeEntry @ 0x8012B8CC
+ *     calls slot 39 on m_simulator (= this+0x3F4 cSimulator*).
+ *   - cXPersonImpl::CheckSecondPlayerForFailedSocialModeEntry @ 0x8012B978
+ *     calls slot 39 on a different register-source object — could be
+ *     another cSimulator-shaped instance (player 2's simulator?), or a
+ *     sibling class that shares vtable layout. Cross-evidence wanted.
+ * Candidate semantic names from PersonSlayer's analysis:
+ *   OnSocialModeFailed / BumpFailureCounter / OnFirstPlayerFailed
+ * Treat as placeholder `// SLOT39: void Method(void)` until cross-evidence
+ * locks the name. Add the real name here when a sibling site disambiguates.
+ *
+ * Caveat: slot 39 is FAR into the vtable (39 vmethods). cSimulator/
+ * cSimulatorImpl as documented in the legacy header has maybe 4-5
+ * virtuals. The full vmethod surface is much richer than the legacy
+ * enumerates — expect more vtable slots to surface as writers crack
+ * additional cSimulator-touching functions.
+ * ========================================================================== */
 
 /* ============================================================================
  * Free function

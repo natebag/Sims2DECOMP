@@ -35,6 +35,7 @@
 /* Forward decls */
 struct cXObject;
 struct cXObjectImpl;
+struct cSimulator;       /* see include/types/Simulator.h */
 struct Interaction;
 struct XRoute;
 struct RoutingSlot;
@@ -115,7 +116,7 @@ struct cXPersonImpl {
     /* 0x3E4 */ void*         m_field3E4;      /* [V] mostly-read (6 reads / 1 write) */
     /* 0x3E8 */ u8            _pad3E8[0x0C];
 
-    /* 0x3F4 */ void*         m_simulator;     /* [V] HOTTEST ptr field after
+    /* 0x3F4 */ cSimulator*   m_simulator;     /* [V] HOTTEST ptr field after
                                                       m_motives — 16 read sites /
                                                       1 binding writer.
 
@@ -154,12 +155,32 @@ struct cXPersonImpl {
                                                       "use my simulator", not "what
                                                       am I currently doing".
 
-                                                      Type is `void*` until the
-                                                      sim-manager class identity is
-                                                      confirmed; upgrade to e.g.
-                                                      `CSimulatorImpl*` when a
-                                                      sibling class's binding
-                                                      reveals it. */
+                                                      S18 v5 UPDATE: type upgraded
+                                                      to `cSimulator*` per
+                                                      PersonSlayer's
+                                                      CheckFirstPlayerForFailed
+                                                      SocialModeEntry @ 0x8012B8CC
+                                                      (commit 5d2ecd7fe). Dispatch:
+                                                       lwz r11,0x3f4(this)
+                                                       lwz r9,0x0(r11)      ; vt@0
+                                                       lha r3,0x138(r9)     ; top_off
+                                                       lwz r0,0x13c(r9)     ; fnptr
+                                                       add r3,r11,r3 ; blrl
+                                                      vt @ offset 0 = SI shape, so
+                                                      m_simulator is cSimulator*
+                                                      (not the MI-shape object I
+                                                      previously suspected). Slot
+                                                      39 (offset 0x138/0x13C) is
+                                                      a no-args verb method — see
+                                                      include/types/Simulator.h.
+
+                                                      MI-thunk slot shape (top_off+
+                                                      fnptr) is SN ProDG's emit
+                                                      style for SI vtables too —
+                                                      the SI vs MI signal is the
+                                                      VTABLE-PTR LOCATION in the
+                                                      object (here: offset 0), NOT
+                                                      the per-slot shape. */
     /* 0x3F8 */ s32           m_field3F8;      /* [V] paired with m_simulator */
     /* 0x3FC */ s32           m_field3FC;
     /* 0x400 */ u8            _pad400[0x08];
