@@ -1,5 +1,4 @@
-// 0x80231B90 ERLevel::AddInstancesFromList(TNodeList<EInstance*>&) (64B)
-
+/* 0x80231B90 (64 bytes) - ERLevel::AddInstancesFromList(TNodeList<EInstance*>&) */
 class EInstance;
 
 template <typename T>
