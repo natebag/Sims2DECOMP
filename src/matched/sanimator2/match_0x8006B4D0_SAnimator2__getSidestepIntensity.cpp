@@ -1,11 +1,7 @@
-// 0x8006b4d0 SAnimator2::getSidestepIntensity(void) (92B)
-// sin(angle)^2 with NaN-loose deadzone clamps via single-insn ble/bge.
-// Tail-bl into sinf — float-arg passthrough.
-
+/* 0x8006B4D0 (92 bytes) - SAnimator2::getSidestepIntensity(void) */
 extern "C" float sinf(float);
 
-class SAnimator2 {
-public:
+struct SAnimator2 {
     char pad[0x110];
     float m_field110;
     float getSidestepIntensity();

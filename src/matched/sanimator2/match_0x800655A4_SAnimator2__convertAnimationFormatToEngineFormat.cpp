@@ -1,5 +1,4 @@
-// 0x800655A4 SAnimator2::convertAnimationFormatToEngineFormat(EVec3&, EVec3&) (48B)
-
+/* 0x800655A4 (48 bytes) - SAnimator2::convertAnimationFormatToEngineFormat(EVec3 &, EVec3 &) */
 struct EVec3 { float x, y, z; };
 
 struct SAnimator2 {
