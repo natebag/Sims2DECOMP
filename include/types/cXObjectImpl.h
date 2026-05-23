@@ -167,8 +167,18 @@ struct cXObjectImpl {
     /* ------------------------------------------------------------------------
      * 0x84 — graphics & model
      * ---------------------------------------------------------------------- */
-    /* 0x84 */ void*           m_hilite;      /* `stw 30,0x84(this)`; later
-                                                  `ori 0,0,512; stw 0,0x84(this)` */
+    /* 0x84 */ u32             m_miscFlags;   /* 32-bit MiscFlag bitmap.
+                                                  Evidence: GetMiscFlag (0x800EAA68)
+                                                  `lwz 0,0x84(3); and 9,0,4; bne...`
+                                                  and SetMiscFlag (0x800EAA48)
+                                                  `lwz 0,0x84(3); andc/or 0,0,4;
+                                                   stw 0,0x84(3)`.
+                                                  Ctor zero-inits then ORs in
+                                                  bit 0x200 (`stw 30,0x84;
+                                                  ori 0,0,512; stw 0,0x84`).
+                                                  (Was previously labeled
+                                                  m_hilite from legacy header
+                                                  draft — incorrect.) */
     /* 0x88 */ void*           m_debugName;   /* `lwz 0,0x38(m_model); stw 0,0x88(this)` */
     /* 0x8C */ void*           m_model;       /* ctor arg3 (`stw 17,0x8c(this)`);
                                                   ComputeRect / GetFrontFaceDirection
