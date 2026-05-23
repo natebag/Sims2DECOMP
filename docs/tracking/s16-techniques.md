@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (18 promoted)
+## Source-Level Techniques (19 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -513,6 +513,88 @@ S16-VALIDATED (3-instance STANDARD cluster):
 - G2DTarget::HideDialog (96B, commit) — store-reorder fix
 - CameraDirector::InitCurrentCamera (100B, commit) — store-reorder + reg-split
 - MMUTarget::OnDialogClose (104B, commit) — store-reorder + struct global
+
+### 19. `tu-extern-free-function` — TU-local duplicate `bl` resolution
+
+**Signature:** A `bl` target VA in your function's DOL disasm returns **no match**
+in `extracted/files/u2_ngc_release.map`. The linker baked a TU-local static-inline
+copy of the helper into the original DOL; the canonical class-mangled symbol lives at
+a different VA. Declaring the callee as a class member resolves to the canonical VA →
+wrong `bl` offset → verify_match fails.
+
+**Pre-commit check (prevents an hour of failed verify_match):**
+
+```bash
+# For each bl target VA in your function's DOL disasm:
+grep "^<target_va> " extracted/files/u2_ngc_release.map
+# Empty output = TU-duplicate hazard — apply this technique.
+```
+
+**Fix:** Declare the helper as an `extern` free function, NOT as a class member:
+
+```cpp
+// WRONG — resolves to canonical class-mangled symbol (wrong VA)
+// obj->ContainsEntry(id);
+
+// RIGHT — free-function declaration; linker picks TU-local copy first
+extern int  ContainsEntry(UI2D* target, char* id);
+extern void UnInstallEntry(UI2D* target, char* id);
+extern void UIDBSetString(char* key, unsigned short* value);
+```
+
+**Why it works:** SN ProDG mangles `extern void Foo(Args)` as `Foo__F<argtypes>`.
+The class member `UI2D::ContainsEntry` mangles as `ContainsEntry__4UI2DPc` — a
+**different linker symbol**. The original TU's static-inline copy emits the
+free-function symbol; your `extern` declaration resolves to it first in link order.
+
+**When to apply:** Any function where a `bl` target VA is absent from the release map.
+Safe unconditionally — when no TU-local duplicate exists the `extern` resolves to the
+canonical (harmless).
+
+**Pitfalls:**
+- Wrong arg types → linker finds a different-signature free symbol → bad call shape.
+  Cross-check types against bl register assignment (r3=arg1, r4=arg2, …).
+- If the target VA IS in the map, use the canonical class-member call form instead.
+
+**Companion: FLAGS-line-reset.** When converting an inject_before stub to semantic
+`.cpp`, do NOT carry forward the stub's `// FLAGS:` line. Stub flags were tuned for
+empty-body injection. Try SN ProDG defaults first; add `// FLAGS:` only if a
+scheduling mismatch is confirmed by diff_func.sh. Validated: a9581e43c — the carried
+FLAGS line was actively preventing the match.
+
+Validated:
+- SetInvBldItemCount (INVTarget, N=1) — `extern void UIDBSetString(...)` → 0x80179C68 TU-local (OpusArchitect, Lane 1)
+- UninstallInventoryPanelInfo 184B, commit a9581e43c (INVTarget, N=2) — three `extern` free-function decls → 0x80176628 + 0x80176584 + 0x80179C68 TU-locals (OpusArchitect, Lane 1)
+- Cross-class candidate: cXObjectImpl::Simulate 0x801096C4 (ObjectSimSlayer, via pre-scout) — pending landed commit for formal N=3
+
+---
+
+## TU-Duplicate Cluster Map
+
+Documented clusters of TU-local helper duplicates in the DOL — addresses absent from
+`extracted/files/u2_ngc_release.map` that represent static-inline copies baked into
+specific translation units. Cross-reference your `bl` targets against this table
+BEFORE writing `extern` free-function declarations.
+
+**How to identify new clusters (build archaeology):** The DOL contains BuildAgent
+comment strings that expose each TU's `.obj` boundary:
+`c:\BuildAgent\cm3-build25-NGC\CMBuild\output\obj\u2_ngc_release\<obj_name>.obj`
+
+Grep these strings in the DOL binary (or ELF) to reverse-engineer TU boundaries with
+precision. Functions in the same `.obj` that call each other can produce TU-local
+duplicates when the linker does not dedup across translation units.
+
+This table is living infrastructure intel — add new clusters as workers surface them.
+
+| # | Name | VA Range | Co-located helpers | Workers affected |
+|---|------|----------|--------------------|-----------------|
+| 1 | UI + Camera shared TU | `0x80015xxx–0x80016xxx` | ESimsCam helpers, AptViewer helpers | SonnetWorker2 (InteractorModule) |
+| 2 | UI Target family TU | `0x80176xxx–0x80179xxx` | `UI2D::ContainsEntry`, `UI2D::UnInstallEntry`, `UIDB::UIDBSetString` | OpusArchitect (INVTarget) — **proven** commit a9581e43c |
+| 3 | TileWalls + InteractorManager TU | `0x8020Bxxx` | TileWalls helpers, InteractorManager helpers | SonnetWorker2 (wall-builder paths) |
+| 4 | objsim super-TU | `0x800D–0x801F` (wide range) | cXObjectImpl helpers, `Try*`/`Simulate` callee roster | ObjectSimSlayer (Simulate + Try* family) |
+
+**Protocol when you hit a new cluster:** post an info note tagged `tu-duplicate-cluster`
+with the VA range, co-located helpers, and affected worker lanes, then update this table.
 
 ---
 
