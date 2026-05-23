@@ -62,22 +62,69 @@ namespace InteractorModule {
  * accessor is found, and I'll trace the offset.
  * ========================================================================== */
 struct INVTarget {
-    /* 0x0000 */ void*     m_field00;          /* used in vcall guard */
-    /* 0x0004 */ u8        _pad0004[0x18];
-    /* 0x001C */ void*     m_field1C;          /* used in vcall guard alongside m_field00 */
-    /* 0x0020 */ u8        _pad0020[0x5C];
-    /* 0x007C */ s32       m_field7C;          /* sda-call arg */
-    /* 0x0080 */ u8        _pad0080[0x04];
-    /* 0x0084 */ u32       m_currentTab;       /* tab index */
-    /* 0x0088 */ u8        _pad0088[0x08];
-    /* 0x0090 */ void*     m_invHelper;        /* inventory helper sub-object */
-    /* 0x0094 */ u8        _pad0094[0x28];
-    /* 0x00BC */ u32       m_tabCount;
-    /* 0x00C0 */ u8        _padBody[0x3224];   /* opaque body — unverified */
-    /* 0x32E4 */ s32       m_buildModeActive;
-    /* 0x32E8 */ void*     m_lastBuildResult;
+    /* 0x0000 */ void*       m_field00;          /* used in vcall guard */
+    /* 0x0004 */ u8          _pad0004[0x18];
+    /* 0x001C */ void*       m_field1C;          /* used in vcall guard alongside m_field00 */
+    /* 0x0020 */ u8          _pad0020[0x5C];
+    /* 0x007C */ s32         m_field7C;          /* sda-call arg */
+    /* 0x0080 */ u8          _pad0080[0x04];
+    /* 0x0084 */ u32         m_currentTab;       /* tab index */
+    /* 0x0088 */ u8          _pad0088[0x08];
+    /* 0x0090 */ void*       m_invHelper;        /* inventory helper sub-object */
+    /* 0x0094 */ u8          _pad0094[0x28];
+    /* 0x00BC */ u32         m_tabCount;
+    /* 0x00C0 */ u8          _pad00C0[0x10];
+    /* 0x00D0 */ void*       m_filterContext;    /* CategoryFilter* — PushPlaceFilter
+                                                      (0x801F06EC) + PushGrabFilter
+                                                      (0x801F0780) both write here via
+                                                      `stw r0, 0xd0(r31)` after a
+                                                      3-step filter-construction call
+                                                      chain. The filter is then re-fed
+                                                      into 3 successive bl _s..._{3,4,5}
+                                                      arguments (likely SetMask /
+                                                      SetMode / RegisterFilter). */
+    /* 0x00D4 */ u8          _pad00D4[0x04];
+    /* 0x00D8 */ void**      m_objectInfoTable;  /* ObjectInfo* array indexed by
+                                                      *(sda[m_currentTab*4]) * 4.
+                                                      Evidence:
+                                                        addi r3, r3, 216  ; r3 = this+0xD8
+                                                        ... lwzx r3, r3, r0 (offset-load)
+                                                      from GetOnMsgInvShpIsPack
+                                                      (0x801F7EB0) and
+                                                      GetOnMsgInvHelpMode (0x801F7F1C).
+                                                      Used by every GetOnMsgInvShp*
+                                                      object-property getter. */
+    /* 0x00DC */ u8          _padBody[0x30C0];   /* opaque body — unverified */
+    /* 0x319C */ u8          m_actionMenu[0x148];/* ActionMenu sub-object embedded
+                                                      here. Evidence: SEMANTIC match at
+                                                      StartActionMenu (0x801F14C0):
+                                                        char pad[0x319C - 0x84 - 4];
+                                                        ActionMenu m_actionMenu;
+                                                      Calls m_actionMenu.Start(this,
+                                                      m_currentTab). Size 0x148 is the
+                                                      span up to m_buildModeActive @
+                                                      0x32E4 — likely smaller; treat
+                                                      as opaque embedded blob. */
+    /* 0x32E4 */ s32         m_buildModeActive;
+    /* 0x32E8 */ void*       m_lastBuildResult;
     /* total ≥ 0x32EC; tail unknown */
 };
+
+/* ============================================================================
+ * Field NOT found: m_shoppingMode
+ *
+ * OpusArchitect hypothesized an `m_isShoppingMode` flag to distinguish the
+ * InvShp* family (shopping context) from the Inv* family (inventory context).
+ * Investigation of multiple SetOnMsg* / GetOnMsg* stubs shows NO instance
+ * field is checked to switch shopping vs inventory; the distinction is made
+ * by which method the UI dispatches to, not by a stored flag. So treat
+ * "shopping mode" as call-context state (which dispatch path was taken),
+ * not as a per-instance member.
+ *
+ * If a counter-example surfaces (a method that toggles instance state to
+ * choose Inv vs InvShp behavior), post `typereq-evidence:INVTarget_<symbol>`
+ * with the matched file and I'll trace.
+ * ========================================================================== */
 
 /* ============================================================================
  * Function prototypes — matched INVTarget methods (subset)
@@ -118,6 +165,13 @@ extern "C" void f_801F5A94(void); /* GetMotiveText(int)                       */
 extern "C" void f_801F76A8(void); /* EnterWallBuildMode(WallData*)            */
 extern "C" void f_801F7924(void); /* EnterWallPaperingMode(WallPaperData*)    */
 extern "C" void f_801F7B9C(void); /* EnterFloorTilingMode(FloorData*)         */
+
+/* Filter push (write m_filterContext @ 0xD0) */
+extern "C" void f_801F06EC(void); /* PushPlaceFilter(void)                    */
+extern "C" void f_801F0780(void); /* PushGrabFilter(void)                     */
+
+/* Action menu (dispatches via m_actionMenu @ 0x319C) */
+extern "C" void f_801F14C0(void); /* StartActionMenu(void)                    */
 
 /* Cheats / misc */
 extern "C" void f_801EFA1C(void); /* Cheat_InstallSelectedCategoryObjectShaders(int) */
