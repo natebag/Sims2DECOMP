@@ -1,4 +1,5 @@
 // 0x80030748 EIFenceWall::GetTypeInfoStatic(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 3,-32688; addi 3,3,-19496"
-extern "C" int f_80030748() {}
+struct EATypeInfo { char _pad[0x0C]; const char* m_name; unsigned m_key; unsigned short m_version; unsigned short m_readVersion; };
+extern EATypeInfo g_EIFenceWallTypeInfo;
+struct EIFenceWall { static EATypeInfo* GetTypeInfoStatic(); };
+EATypeInfo* EIFenceWall::GetTypeInfoStatic() { return &g_EIFenceWallTypeInfo; }

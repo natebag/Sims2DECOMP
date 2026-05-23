@@ -1,4 +1,5 @@
 // 0x80030730 EIFenceWall::GetTypeKey(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 9,-32688; lwz 3,-19480(9)"
-extern "C" int f_80030730() {}
+struct EATypeInfo { char _pad[0x0C]; const char* m_name; unsigned m_key; unsigned short m_version; unsigned short m_readVersion; };
+extern EATypeInfo g_EIFenceWallTypeInfo;
+struct EIFenceWall { unsigned GetTypeKey(); };
+unsigned EIFenceWall::GetTypeKey() { return g_EIFenceWallTypeInfo.m_key; }
