@@ -1,2 +1,0 @@
-void init_global_destructors_keyed_to_cXObjectImpl__overrideDialogRetu(int, unsigned int);
-void global_destructors_keyed_to_cXObjectImpl__overrideDialogRetu() { init_global_destructors_keyed_to_cXObjectImpl__overrideDialogRetu(0, 0xFFFF); }
