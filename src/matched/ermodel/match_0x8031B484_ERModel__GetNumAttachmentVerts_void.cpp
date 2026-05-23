@@ -1,4 +1,3 @@
 // 0x8031B484 ERModel::GetNumAttachmentVerts(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x138(3)"
-extern "C" int f_8031B484() {}
+struct ERModel { char _pad[0x138]; unsigned m_field; unsigned GetNumAttachmentVerts(); };
+unsigned ERModel::GetNumAttachmentVerts() { return m_field; }

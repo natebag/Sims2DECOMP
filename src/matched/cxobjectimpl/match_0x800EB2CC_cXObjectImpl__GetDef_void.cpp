@@ -1,4 +1,3 @@
 // 0x800EB2CC cXObjectImpl::GetDef(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x88(3)"
-extern "C" int f_800EB2CC() {}
+struct cXObjectImpl { char _pad[0x88]; unsigned m_field; unsigned GetDef(); };
+unsigned cXObjectImpl::GetDef() { return m_field; }

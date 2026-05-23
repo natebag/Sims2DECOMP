@@ -1,4 +1,3 @@
 // 0x800C1D4C Interaction::GetAttenuation(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lfs f1,0x30(3)"
-extern "C" int f_800C1D4C() {}
+struct Interaction { char _pad[0x30]; float m_field; float GetAttenuation(); };
+float Interaction::GetAttenuation() { return m_field; }

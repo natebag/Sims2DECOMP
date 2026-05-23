@@ -1,4 +1,3 @@
 // 0x802F22C8 EGraphics::GetActualScreenXSize(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x18(3)"
-extern "C" int f_802F22C8() {}
+struct EGraphics { char _pad[0x18]; unsigned m_field; unsigned GetActualScreenXSize(); };
+unsigned EGraphics::GetActualScreenXSize() { return m_field; }

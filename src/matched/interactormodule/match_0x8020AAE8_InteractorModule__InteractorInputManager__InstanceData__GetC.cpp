@@ -1,4 +1,5 @@
-// 0x8020AAE8 InteractorModule::InteractorInputManager::InstanceData::GetControllerFilterId(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x14(3)"
-extern "C" int f_8020AAE8() {}
+// 0x8020AAE8 InteractorModule::InteractorInputManager::InstanceData::GetC(void) (8 B)
+namespace InteractorModule { namespace InteractorInputManager {
+struct InstanceData { char _pad[0x14]; unsigned m_c; unsigned GetC(); };
+} }
+unsigned InteractorModule::InteractorInputManager::InstanceData::GetC() { return m_c; }

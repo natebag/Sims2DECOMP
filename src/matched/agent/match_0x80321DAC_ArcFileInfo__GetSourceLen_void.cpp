@@ -1,4 +1,3 @@
 // 0x80321DAC ArcFileInfo::GetSourceLen(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x8(3)"
-extern "C" int f_80321DAC() {}
+struct ArcFileInfo { char _pad[0x8]; unsigned m_field; unsigned GetSourceLen(); };
+unsigned ArcFileInfo::GetSourceLen() { return m_field; }

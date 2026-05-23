@@ -1,4 +1,3 @@
-// 0x800C1C8C Interaction::SetIconObject(cXObject (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 4,0x10(3)"
-extern "C" void f_800C1C8C() {}
+// 0x800C1C8C Interaction::SetIconObject(cXObject) (8 B)
+struct Interaction { char _pad[0x10]; unsigned m_field; void SetIconObject(unsigned); };
+void Interaction::SetIconObject(unsigned val) { m_field = val; }

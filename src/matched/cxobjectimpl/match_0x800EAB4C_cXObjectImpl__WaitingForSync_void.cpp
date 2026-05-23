@@ -1,4 +1,3 @@
 // 0x800EAB4C cXObjectImpl::WaitingForSync(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0xe4(3)"
-extern "C" int f_800EAB4C() {}
+struct cXObjectImpl { char _pad[0xe4]; unsigned m_field; unsigned WaitingForSync(); };
+unsigned cXObjectImpl::WaitingForSync() { return m_field; }

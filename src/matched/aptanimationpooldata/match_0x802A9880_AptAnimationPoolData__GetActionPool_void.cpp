@@ -1,4 +1,3 @@
 // 0x802A9880 AptAnimationPoolData::GetActionPool(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x98(3)"
-extern "C" int f_802A9880() {}
+struct AptAnimationPoolData { char _pad[0x98]; unsigned m_field; unsigned GetActionPool(); };
+unsigned AptAnimationPoolData::GetActionPool() { return m_field; }

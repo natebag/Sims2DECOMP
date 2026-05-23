@@ -1,4 +1,3 @@
 // 0x80183248 ActionMenu::MenuItem::GetNext(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x60(3)"
-extern "C" int f_80183248() {}
+namespace ActionMenu { struct MenuItem { char _pad[0x60]; unsigned m_next; unsigned GetNext(); }; }
+unsigned ActionMenu::MenuItem::GetNext() { return m_next; }

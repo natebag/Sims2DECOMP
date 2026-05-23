@@ -1,4 +1,3 @@
 // 0x800C1D6C Interaction::GetLocalVarsCount(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x20(3)"
-extern "C" int f_800C1D6C() {}
+struct Interaction { char _pad[0x20]; unsigned m_field; unsigned GetLocalVarsCount(); };
+unsigned Interaction::GetLocalVarsCount() { return m_field; }

@@ -1,4 +1,3 @@
 // 0x802C692C EFile::GetPath(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x1c(3)"
-extern "C" int f_802C692C() {}
+struct EFile { char _pad[0x1c]; unsigned m_field; unsigned GetPath(); };
+unsigned EFile::GetPath() { return m_field; }

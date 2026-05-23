@@ -1,4 +1,3 @@
 // 0x801A08A8 CASTarget::GetGeneticsTarget(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x1370(3)"
-extern "C" int f_801A08A8() {}
+struct CASTarget { char _pad[0x1370]; unsigned m_field; unsigned GetGeneticsTarget(); };
+unsigned CASTarget::GetGeneticsTarget() { return m_field; }

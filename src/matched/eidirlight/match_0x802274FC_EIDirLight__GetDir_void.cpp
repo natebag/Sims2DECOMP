@@ -1,4 +1,3 @@
 // 0x802274FC EIDirLight::GetDir(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="addi 3,3,172"
-extern "C" int f_802274FC() {}
+struct EIDirLight { char _pad[172]; unsigned m_arr[1]; unsigned* GetDir(); };
+unsigned* EIDirLight::GetDir() { return m_arr; }

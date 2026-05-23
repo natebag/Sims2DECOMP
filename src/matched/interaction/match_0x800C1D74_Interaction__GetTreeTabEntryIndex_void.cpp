@@ -1,4 +1,3 @@
 // 0x800C1D74 Interaction::GetTreeTabEntryIndex(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x14(3)"
-extern "C" int f_800C1D74() {}
+struct Interaction { char _pad[0x14]; unsigned m_field; unsigned GetTreeTabEntryIndex(); };
+unsigned Interaction::GetTreeTabEntryIndex() { return m_field; }

@@ -1,4 +1,3 @@
 // 0x801BD8F4 ITBTarget::IsIntroThoughtBalloonActive(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x88(3)"
-extern "C" int f_801BD8F4() {}
+struct ITBTarget { char _pad[0x88]; unsigned m_field; unsigned IsIntroThoughtBalloonActive(); };
+unsigned ITBTarget::IsIntroThoughtBalloonActive() { return m_field; }

@@ -1,4 +1,3 @@
 // 0x802F21B0 EGraphics::FrameBufferClearFlag(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0xc(3)"
-extern "C" int f_802F21B0() {}
+struct EGraphics { char _pad[0xc]; unsigned m_field; unsigned FrameBufferClearFlag(); };
+unsigned EGraphics::FrameBufferClearFlag() { return m_field; }

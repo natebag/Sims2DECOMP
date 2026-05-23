@@ -1,4 +1,3 @@
 // 0x802C6934 EFile::GetName(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x20(3)"
-extern "C" int f_802C6934() {}
+struct EFile { char _pad[0x20]; unsigned m_field; unsigned GetName(); };
+unsigned EFile::GetName() { return m_field; }

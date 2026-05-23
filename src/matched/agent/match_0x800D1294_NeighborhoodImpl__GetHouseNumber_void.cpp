@@ -1,4 +1,3 @@
 // 0x800D1294 NeighborhoodImpl::GetHouseNumber(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x70(3)"
-extern "C" int f_800D1294() {}
+struct NeighborhoodImpl { char _pad[0x70]; unsigned m_field; unsigned GetHouseNumber(); };
+unsigned NeighborhoodImpl::GetHouseNumber() { return m_field; }

@@ -1,4 +1,4 @@
-// 0x800B1B4C CareersImpl::GetSuit(Job (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x68(4)"
-extern "C" int f_800B1B4C() {}
+// 0x800B1B4C CareersImpl::GetSuit(Job) (8 B)
+struct Job { char _pad[0x68]; unsigned m_suit; };
+struct CareersImpl { unsigned GetSuit(Job*); };
+unsigned CareersImpl::GetSuit(Job* job) { return job->m_suit; }

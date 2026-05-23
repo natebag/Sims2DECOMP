@@ -1,4 +1,3 @@
 // 0x80317980 ERFont::GetYSize(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lfs f1,0x4c(3)"
-extern "C" int f_80317980() {}
+struct ERFont { char _pad[0x4c]; float m_field; float GetYSize(); };
+float ERFont::GetYSize() { return m_field; }

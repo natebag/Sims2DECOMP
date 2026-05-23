@@ -1,4 +1,3 @@
-// 0x8022F588 EIStaticSubModel::ModifyColor(unsigned (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 4,0x94(3)"
-extern "C" void f_8022F588() {}
+// 0x8022F588 EIStaticSubModel::ModifyColor(unsigned) (8 B)
+struct EIStaticSubModel { char _pad[0x94]; unsigned m_field; void ModifyColor(unsigned); };
+void EIStaticSubModel::ModifyColor(unsigned val) { m_field = val; }

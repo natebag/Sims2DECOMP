@@ -1,4 +1,3 @@
-// 0x803C2F10 EString2::operator (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x0(3)"
-extern "C" int f_803C2F10() {}
+// 0x803C2F10 EString2::operator(void) (8 B)
+struct EString2 { unsigned m_field; unsigned operator_deref(); };
+unsigned EString2::operator_deref() { return m_field; }

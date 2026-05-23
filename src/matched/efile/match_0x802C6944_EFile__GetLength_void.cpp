@@ -1,4 +1,3 @@
 // 0x802C6944 EFile::GetLength(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x14(3)"
-extern "C" int f_802C6944() {}
+struct EFile { char _pad[0x14]; unsigned m_field; unsigned GetLength(); };
+unsigned EFile::GetLength() { return m_field; }

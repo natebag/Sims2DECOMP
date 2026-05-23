@@ -1,4 +1,3 @@
 // 0x80325588 EQuickdataManager::GetCurrentLanguage(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0xd20(3)"
-extern "C" int f_80325588() {}
+struct EQuickdataManager { char _pad[0xd20]; unsigned m_field; unsigned GetCurrentLanguage(); };
+unsigned EQuickdataManager::GetCurrentLanguage() { return m_field; }

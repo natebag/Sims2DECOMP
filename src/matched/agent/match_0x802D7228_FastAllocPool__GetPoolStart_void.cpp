@@ -1,4 +1,3 @@
 // 0x802D7228 FastAllocPool::GetPoolStart(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x0(3)"
-extern "C" int f_802D7228() {}
+struct FastAllocPool { unsigned m_field; unsigned GetPoolStart(); };
+unsigned FastAllocPool::GetPoolStart() { return m_field; }

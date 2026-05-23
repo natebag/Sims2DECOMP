@@ -1,4 +1,3 @@
 // 0x8030FC5C EREdithTreeSet::GetNumTrees(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x18(3)"
-extern "C" int f_8030FC5C() {}
+struct EREdithTreeSet { char _pad[0x18]; unsigned m_field; unsigned GetNumTrees(); };
+unsigned EREdithTreeSet::GetNumTrees() { return m_field; }

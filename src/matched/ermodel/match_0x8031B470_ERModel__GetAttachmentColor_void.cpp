@@ -1,4 +1,3 @@
 // 0x8031B470 ERModel::GetAttachmentColor(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lbz 3,0x134(3)"
-extern "C" int f_8031B470() {}
+struct ERModel { char _pad[0x134]; unsigned char m_field; unsigned char GetAttachmentColor(); };
+unsigned char ERModel::GetAttachmentColor() { return m_field; }

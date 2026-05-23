@@ -1,4 +1,3 @@
 // 0x800D8EE0 NghResFile::SetStoreChecksum(bool) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 4,0x18c(3)"
-extern "C" void f_800D8EE0() {}
+struct NghResFile { char _pad[0x18c]; unsigned m_field; void SetStoreChecksum(unsigned); };
+void NghResFile::SetStoreChecksum(unsigned val) { m_field = val; }

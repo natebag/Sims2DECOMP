@@ -1,4 +1,3 @@
 // 0x802D858C EThread::GetStack(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x31c(3)"
-extern "C" int f_802D858C() {}
+struct EThread { char _pad[0x31c]; unsigned m_field; unsigned GetStack(); };
+unsigned EThread::GetStack() { return m_field; }

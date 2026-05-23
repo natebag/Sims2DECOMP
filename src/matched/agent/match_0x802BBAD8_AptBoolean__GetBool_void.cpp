@@ -1,4 +1,3 @@
 // 0x802BBAD8 AptBoolean::GetBool(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0xc(3)"
-extern "C" int f_802BBAD8() {}
+struct AptBoolean { char _pad[0xc]; unsigned m_field; unsigned GetBool(); };
+unsigned AptBoolean::GetBool() { return m_field; }
