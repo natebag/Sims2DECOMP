@@ -1,4 +1,3 @@
 // 0x80086840 Wrapper::WrapperStartup(UIObjectBase (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 4,0x88(3)"
-extern "C" void f_80086840() {}
+struct Wrapper { char _pad[0x88]; unsigned m_uiObject; void WrapperStartup(unsigned); };
+void Wrapper::WrapperStartup(unsigned obj) { m_uiObject = obj; }

@@ -1,4 +1,3 @@
 // 0x8007E67C DlgWrapper::GetDialogPosX(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lfs f1,0xbc(3)"
-extern "C" int f_8007E67C() {}
+struct DlgWrapper { char _pad[0xbc]; float m_dialogPosX; float GetDialogPosX(); };
+float DlgWrapper::GetDialogPosX() { return m_dialogPosX; }

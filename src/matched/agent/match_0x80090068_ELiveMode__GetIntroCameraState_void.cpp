@@ -1,4 +1,4 @@
 // 0x80090068 ELiveMode::GetIntroCameraState(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0xc(3)"
-extern "C" int f_80090068() {}
+typedef unsigned IntroCameraStartState;
+struct ELiveMode { char _pad[0xc]; unsigned m_introCameraState; IntroCameraStartState GetIntroCameraState(); };
+IntroCameraStartState ELiveMode::GetIntroCameraState() { return m_introCameraState; }

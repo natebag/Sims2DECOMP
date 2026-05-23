@@ -1,4 +1,3 @@
 // 0x8007E760 DlgWrapper::GetDialogSizeX(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lfs f1,0xc4(3)"
-extern "C" int f_8007E760() {}
+struct DlgWrapper { char _pad[0xc4]; float m_dialogSizeX; float GetDialogSizeX(); };
+float DlgWrapper::GetDialogSizeX() { return m_dialogSizeX; }

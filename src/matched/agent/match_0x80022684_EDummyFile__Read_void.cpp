@@ -1,4 +1,3 @@
 // 0x80022684 EDummyFile::Read(void (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="mr 3,5"
-extern "C" int f_80022684() {}
+struct EDummyFile { unsigned Read(void*, unsigned); };
+unsigned EDummyFile::Read(void* buf, unsigned count) { return count; }

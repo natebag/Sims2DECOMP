@@ -1,4 +1,3 @@
 // 0x80056354 ISimInstance::GetXOb(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x328(3)"
-extern "C" int f_80056354() {}
+struct ISimInstance { char _pad[0x328]; unsigned m_xob; unsigned GetXOb(); };
+unsigned ISimInstance::GetXOb() { return m_xob; }

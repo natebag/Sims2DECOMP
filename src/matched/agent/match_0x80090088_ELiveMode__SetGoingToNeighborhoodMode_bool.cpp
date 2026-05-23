@@ -1,4 +1,3 @@
 // 0x80090088 ELiveMode::SetGoingToNeighborhoodMode(bool) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 4,0x24(3)"
-extern "C" void f_80090088() {}
+struct ELiveMode { char _pad[0x24]; unsigned m_goingToNeighborhood; void SetGoingToNeighborhoodMode(bool); };
+void ELiveMode::SetGoingToNeighborhoodMode(bool val) { m_goingToNeighborhood = val; }

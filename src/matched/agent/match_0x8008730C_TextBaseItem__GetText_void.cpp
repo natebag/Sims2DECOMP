@@ -1,4 +1,3 @@
 // 0x8008730C TextBaseItem::GetText(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x20(3)"
-extern "C" int f_8008730C() {}
+struct TextBaseItem { char _pad[0x20]; unsigned m_text; unsigned GetText(); };
+unsigned TextBaseItem::GetText() { return m_text; }

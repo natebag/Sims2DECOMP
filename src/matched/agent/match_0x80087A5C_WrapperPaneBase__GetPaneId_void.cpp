@@ -1,4 +1,3 @@
 // 0x80087A5C WrapperPaneBase::GetPaneId(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x0(3)"
-extern "C" int f_80087A5C() {}
+struct WrapperPaneBase { unsigned m_paneId; unsigned GetPaneId(); };
+unsigned WrapperPaneBase::GetPaneId() { return m_paneId; }

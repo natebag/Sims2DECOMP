@@ -1,4 +1,3 @@
 // 0x800873A4 TextBaseItem::GetStyle(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x6c(3)"
-extern "C" int f_800873A4() {}
+struct TextBaseItem { char _pad[0x6c]; unsigned m_style; unsigned GetStyle(); };
+unsigned TextBaseItem::GetStyle() { return m_style; }

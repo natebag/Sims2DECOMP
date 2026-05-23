@@ -1,4 +1,3 @@
 // 0x8008729C TextBaseItem::GetDisplayPadSize(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="addi 3,3,52"
-extern "C" int f_8008729C() {}
+struct TextBaseItem { char _pad[0x34]; float m_displayPadSize[2]; float* GetDisplayPadSize(); };
+float* TextBaseItem::GetDisplayPadSize() { return m_displayPadSize; }

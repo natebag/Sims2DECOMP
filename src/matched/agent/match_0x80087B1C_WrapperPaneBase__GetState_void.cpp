@@ -1,4 +1,4 @@
 // 0x80087B1C WrapperPaneBase::GetState(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x34(3)"
-extern "C" int f_80087B1C() {}
+typedef unsigned PaneState;
+struct WrapperPaneBase { char _pad[0x34]; PaneState m_state; PaneState GetState(); };
+PaneState WrapperPaneBase::GetState() { return m_state; }

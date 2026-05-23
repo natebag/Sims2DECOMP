@@ -1,4 +1,3 @@
 // 0x800871F4 TextBaseItem::SetPosX(float) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stfs f1,0x24(3)"
-extern "C" void f_800871F4() {}
+struct TextBaseItem { char _pad[0x24]; float m_posX; void SetPosX(float); };
+void TextBaseItem::SetPosX(float val) { m_posX = val; }

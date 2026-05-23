@@ -1,4 +1,3 @@
 // 0x80079C68 CUnlockDisplayObject::GetType(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x4(3)"
-extern "C" int f_80079C68() {}
+struct CUnlockDisplayObject { char _pad[0x4]; unsigned m_type; unsigned GetType(); };
+unsigned CUnlockDisplayObject::GetType() { return m_type; }

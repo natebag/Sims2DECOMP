@@ -1,4 +1,3 @@
 // 0x800799C4 CUnlockDisplayObject::GetModel(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x14(3)"
-extern "C" int f_800799C4() {}
+struct CUnlockDisplayObject { char _pad[0x14]; unsigned m_model; unsigned GetModel(); };
+unsigned CUnlockDisplayObject::GetModel() { return m_model; }

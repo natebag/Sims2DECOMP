@@ -1,4 +1,3 @@
 // 0x80087354 TextBaseItem::GetFont(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x50(3)"
-extern "C" int f_80087354() {}
+struct TextBaseItem { char _pad[0x50]; unsigned m_font; unsigned GetFont(); };
+unsigned TextBaseItem::GetFont() { return m_font; }
