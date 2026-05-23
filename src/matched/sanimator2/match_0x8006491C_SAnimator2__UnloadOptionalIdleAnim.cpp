@@ -1,4 +1,4 @@
-// 0x8006491C SAnimator2::UnloadOptionalIdleAnim(void) (292 B)
+/* 0x8006491C (292 bytes) - SAnimator2::UnloadOptionalIdleAnim(void) */
 typedef unsigned char u8;
 
 extern char _animman[];
@@ -7,10 +7,20 @@ u8* EResourceManager__GetRef_unsigned_int(u8* mgr, unsigned int id);
 void EResourceManager__DelRef_unsigned_int_int(u8* mgr, unsigned int id, int mode);
 void EResourceManager__DelRefAsync_unsigned_int(u8* mgr, unsigned int id);
 
-void SAnimator2__UnloadOptionalIdleAnim_void(u8* self) {
+struct SAnimator2 {
+    char pad[4];
+    u8* m_pPerson;
+    char pad2[0x5F2];
+    u8  m_portalModeType;
+    char pad3[0x21];
+    unsigned int m_flags;
+    void UnloadOptionalIdleAnim();
+};
+
+void SAnimator2::UnloadOptionalIdleAnim() {
     int animType = -1;
-    if (*(unsigned int*)(self + 0x61C) & 0x00100000u) {
-        switch (*(unsigned char*)(self + 0x5FA)) {
+    if (m_flags & 0x00100000u) {
+        switch (m_portalModeType) {
         case 5:  animType = 60; break;
         case 9:  animType = 58; break;
         case 7:  animType = 62; break;
@@ -20,15 +30,15 @@ void SAnimator2__UnloadOptionalIdleAnim_void(u8* self) {
         }
         if (animType != -1) {
             u8* animRef;
-            GetStdAnimRef__cXPerson_ptr__StdAnimIdx__AnimRef_ptrr(*(u8**)(self + 4), animType, &animRef);
+            GetStdAnimRef__cXPerson_ptr__StdAnimIdx__AnimRef_ptrr(m_pPerson, animType, &animRef);
             if (EResourceManager__GetRef_unsigned_int((u8*)_animman, *(unsigned int*)animRef)) {
                 EResourceManager__DelRef_unsigned_int_int((u8*)_animman, *(unsigned int*)animRef, 1);
             } else {
                 EResourceManager__DelRefAsync_unsigned_int((u8*)_animman, *(unsigned int*)animRef);
             }
         }
-        *(unsigned int*)(self + 0x61C) &= ~0x00100000u;
+        m_flags &= ~0x00100000u;
     }
-    *(unsigned char*)(self + 0x5FA) = 0;
-    *(unsigned int*)(self + 0x61C) &= ~0x08000000u;
+    m_portalModeType = 0;
+    m_flags &= ~0x08000000u;
 }
