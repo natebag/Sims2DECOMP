@@ -18,6 +18,7 @@
 #define SIMS2_TYPES_EANIMCONTROLLER_H
 
 #include "../types.h"
+#include "EVec3.h"
 
 /* Forward decls */
 struct EACTrack;
@@ -33,13 +34,9 @@ struct ECharacterNode;
 struct EMat4;
 struct EBound3;
 
-/* Local float-EVec3 (matches sanimator2 + eanim coord space; distinct from
- * the int-EVec3 used by ISimsObjectModel). */
-struct EAC_EVec3 {
-    /* 0x0 */ float x;
-    /* 0x4 */ float y;
-    /* 0x8 */ float z;
-};
+/* Animation-space coordinates use the canonical float `EVec3` from
+ * include/types/EVec3.h. Pre-S18 versions of this file used a local
+ * `EAC_EVec3` typedef before EVec3.h existed. */
 
 /* Animation track flag bitfield — used to identify tracks. Concrete enum
  * values not yet recovered; treat as opaque bitfield. */

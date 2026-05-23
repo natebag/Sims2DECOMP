@@ -20,6 +20,7 @@
 #define SIMS2_TYPES_SANIMATOR2_H
 
 #include "../types.h"
+#include "EVec3.h"
 
 /* Forward decls */
 struct cXPerson;
@@ -49,14 +50,9 @@ struct EBoneParticle;
 struct AwarenessManager;
 struct EHeadOrient;
 
-/* Local float-EVec3 to match SAnimator2's animation-space coordinates.
- * Distinct from the int-EVec3 used by ISimsObjectModel (see comment in
- * include/types/ISimsObjectModel.h). */
-struct SANIM_EVec3 {
-    /* 0x0 */ float x;
-    /* 0x4 */ float y;
-    /* 0x8 */ float z;
-};
+/* SAnimator2's animation-space coordinates are the canonical float `EVec3`
+ * (see include/types/EVec3.h). Pre-S18 versions of this file used a local
+ * `SANIM_EVec3` typedef before EVec3.h existed. */
 
 /* ============================================================================
  * SAnimator2 — primary sim animation controller
@@ -71,7 +67,7 @@ struct SAnimator2 {
     /* 0x010 */ s32                 m_followState;        /* [L] */
     /* 0x014 */ u8                  _pad014[0x04];
     /* 0x018 */ s32                 m_followMode;         /* [L] */
-    /* 0x01C */ SANIM_EVec3         m_pos;                /* [L]  +0x1C..+0x27 */
+    /* 0x01C */ EVec3         m_pos;                /* [L]  +0x1C..+0x27 */
     /* 0x028 */ u8                  _pad028[0x04];
     /* 0x02C */ s32                 m_animState;          /* [L] */
     /* 0x030 */ float               m_animDirection;      /* [L] */

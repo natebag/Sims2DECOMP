@@ -31,22 +31,22 @@
 #define SIMS2_TYPES_ISIMSOBJECTMODEL_H
 
 #include "../types.h"
+#include "EVec3.h"
 
 /* Forward decls */
 struct cXObject;
 struct EHouse;
-struct EVec3_int;
 
-/* Local EVec3 forward; the project may have a fuller EVec3 elsewhere
- * (e.g. include/animation/sanimator2.h declares one as floats). The
- * matched iobject .cpp files use `struct EVec3 { int x, y, z; }` — note
- * INT not float — for SetPos/SetDir field shape. Use this local struct
- * to avoid ABI confusion until a project-wide EVec3 is canonized. */
-struct ISOM_EVec3 {
-    /* 0x0 */ s32 x;
-    /* 0x4 */ s32 y;
-    /* 0x8 */ s32 z;
-};
+/* Note on EVec3 ABI: m_pos / m_dir are integer-coord vectors (world-grid
+ * Sims coordinate space), so they use the canonical `EVec3i` type from
+ * EVec3.h — NOT the float-form `EVec3` used by graphics/physics/animation.
+ * Evidence: src/matched/iobject/match_0x80053DE0 (SetPos) and
+ * match_0x80053E08 (SetDir) declare `struct EVec3 { int x, y, z; }` locally
+ * and compile to int lwz/stw triplets. See include/types/EVec3.h for the
+ * full reconciliation story.
+ *
+ * Pre-S18 versions of this file used a local `ISOM_EVec3` typedef as a
+ * workaround; that has been removed in favour of canonical `EVec3i`. */
 
 /* ============================================================================
  * ISimsObjectModel — base interface for object models
@@ -91,8 +91,8 @@ struct ISimsObjectModel {
 
     /* 0x3C8 */ u8          _pad3C8[0x3C];
 
-    /* 0x404 */ ISOM_EVec3  m_pos;           /* SetPos                          */
-    /* 0x410 */ ISOM_EVec3  m_dir;           /* SetDir                          */
+    /* 0x404 */ EVec3i  m_pos;           /* SetPos                          */
+    /* 0x410 */ EVec3i  m_dir;           /* SetDir                          */
 
     /* 0x41C */ u8          _padTail[0x40];  /* opaque tail                     */
 };
