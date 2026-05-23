@@ -1,4 +1,4 @@
-// 0x8001AD94 ESimsCam::SetControllerFilterId(unsigned (12 B)
+// 0x8001AD94 ESimsCam::SetControllerFilterId(unsigned) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 4,0x560(3); li 3,1"
-extern "C" void f_8001AD94() {}
+struct ESimsCam { char _pad[0x560]; int m_controllerFilterId; int SetControllerFilterId(unsigned); };
+int ESimsCam::SetControllerFilterId(unsigned v) { m_controllerFilterId = v; return 1; }

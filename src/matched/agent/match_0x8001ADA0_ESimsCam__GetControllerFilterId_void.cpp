@@ -1,4 +1,4 @@
 // 0x8001ADA0 ESimsCam::GetControllerFilterId(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x560(3)"
-extern "C" int f_8001ADA0() {}
+struct ESimsCam { char _pad[0x560]; int m_controllerFilterId; int GetControllerFilterId(); };
+int ESimsCam::GetControllerFilterId() { return m_controllerFilterId; }
