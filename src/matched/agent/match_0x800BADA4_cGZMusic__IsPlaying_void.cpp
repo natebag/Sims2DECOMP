@@ -1,4 +1,3 @@
 // 0x800BADA4 cGZMusic::IsPlaying(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x8(3)"
-extern "C" int f_800BADA4() {}
+struct cGZMusic { char _pad[0x8]; unsigned m_isPlaying; unsigned IsPlaying(); };
+unsigned cGZMusic::IsPlaying() { return m_isPlaying; }

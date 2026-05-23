@@ -1,4 +1,3 @@
 // 0x800A6E68 StringBuffer2::c_str(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x0(3)"
-extern "C" int f_800A6E68() {}
+struct StringBuffer2 { unsigned m_data; unsigned c_str(); };
+unsigned StringBuffer2::c_str() { return m_data; }

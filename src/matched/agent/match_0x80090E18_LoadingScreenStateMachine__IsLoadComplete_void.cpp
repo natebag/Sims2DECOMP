@@ -1,4 +1,3 @@
 // 0x80090E18 LoadingScreenStateMachine::IsLoadComplete(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0xa4(3)"
-extern "C" int f_80090E18() {}
+struct LoadingScreenStateMachine { char _pad[0xa4]; unsigned m_isLoadComplete; unsigned IsLoadComplete(); };
+unsigned LoadingScreenStateMachine::IsLoadComplete() { return m_isLoadComplete; }

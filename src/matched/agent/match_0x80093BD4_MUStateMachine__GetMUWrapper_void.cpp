@@ -1,4 +1,3 @@
 // 0x80093BD4 MUStateMachine::GetMUWrapper(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x98(3)"
-extern "C" int f_80093BD4() {}
+struct MUStateMachine { char _pad[0x98]; unsigned m_muWrapper; unsigned GetMUWrapper(); };
+unsigned MUStateMachine::GetMUWrapper() { return m_muWrapper; }

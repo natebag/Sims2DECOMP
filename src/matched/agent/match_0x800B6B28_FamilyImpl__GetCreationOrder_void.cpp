@@ -1,4 +1,3 @@
 // 0x800B6B28 FamilyImpl::GetCreationOrder(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x10(3)"
-extern "C" int f_800B6B28() {}
+struct FamilyImpl { char _pad[0x10]; unsigned m_creationOrder; unsigned GetCreationOrder(); };
+unsigned FamilyImpl::GetCreationOrder() { return m_creationOrder; }

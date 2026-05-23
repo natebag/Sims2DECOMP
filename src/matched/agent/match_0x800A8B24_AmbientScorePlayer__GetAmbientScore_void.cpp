@@ -1,4 +1,3 @@
 // 0x800A8B24 AmbientScorePlayer::GetAmbientScore(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x8(3)"
-extern "C" int f_800A8B24() {}
+struct AmbientScorePlayer { char _pad[0x8]; unsigned m_ambientScore; unsigned GetAmbientScore(); };
+unsigned AmbientScorePlayer::GetAmbientScore() { return m_ambientScore; }

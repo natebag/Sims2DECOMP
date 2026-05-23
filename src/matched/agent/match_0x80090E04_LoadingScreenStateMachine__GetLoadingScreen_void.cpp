@@ -1,4 +1,3 @@
 // 0x80090E04 LoadingScreenStateMachine::GetLoadingScreen(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x98(3)"
-extern "C" int f_80090E04() {}
+struct LoadingScreenStateMachine { char _pad[0x98]; unsigned m_loadingScreen; unsigned GetLoadingScreen(); };
+unsigned LoadingScreenStateMachine::GetLoadingScreen() { return m_loadingScreen; }
