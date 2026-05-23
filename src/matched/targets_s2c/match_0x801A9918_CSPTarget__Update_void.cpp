@@ -1,3 +1,6 @@
-/* CSPTarget__Update_void at 0x801A9918 (4B) — auto-matched */
-
-void func_801A9918(void) {}
+// 0x801A9918 CSPTarget::Update(void) (4B) â€” semantic conversion of auto-stub
+class CSPTarget {
+public:
+    void Update(void);
+};
+void CSPTarget::Update(void) {}

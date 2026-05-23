@@ -1,3 +1,6 @@
-/* CSPTarget__onHelpDialogSelection_int at 0x801AA57C (4B) — auto-matched */
-
-void func_801AA57C(void) {}
+// 0x801AA57C CSPTarget::onHelpDialogSelection(int) (4B) â€” semantic conversion of auto-stub
+class CSPTarget {
+public:
+    int onHelpDialogSelection(int sel);
+};
+int CSPTarget::onHelpDialogSelection(int sel) {}
