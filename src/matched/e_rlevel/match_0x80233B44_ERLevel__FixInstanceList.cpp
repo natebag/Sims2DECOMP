@@ -1,5 +1,4 @@
-// 0x80233B44 ERLevel::FixInstanceList(TNodeList<EInstance*>&) (88B)
-
+/* 0x80233B44 (88 bytes) - ERLevel::FixInstanceList(TNodeList<EInstance*>&) */
 class EInstance {
 public:
     virtual ~EInstance() = 0;
@@ -25,9 +24,9 @@ public:
 };
 
 struct ListNode {
-    EInstance* data;  // m_0
-    int m_4;          // padding or something
-    ListNode* next;   // m_8
+    EInstance* data;
+    int m_4;
+    ListNode* next;
 };
 
 template<class T>

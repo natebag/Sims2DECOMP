@@ -1,6 +1,4 @@
-// 0x802337D4 ERLevel::PrepareInstance(EInstance*) (80B)
-// MI vcall at slot 38 (offset 0x130/0x134)
-
+/* 0x802337D4 (80 bytes) - ERLevel::PrepareInstance(EInstance*) */
 class ERLevel;
 
 class EInstance {
