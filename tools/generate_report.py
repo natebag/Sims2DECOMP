@@ -19,6 +19,7 @@ Usage:
 import argparse
 import json
 import re
+import struct
 import sys
 from pathlib import Path
 
@@ -26,6 +27,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from paths import REPO_ROOT, GAME_ID, MAP_PATH
 
 MATCH_REGEX = re.compile(r"match_(?:0[xX])?([0-9A-Fa-f]{8})_", re.IGNORECASE)
+
+# Data sections we track for byte-match progress. PROGBITS only — BSS sections
+# are zero-init at runtime, so there's no "match" work (just correct sizing).
+DATA_SECTIONS = (".ctors", ".dtors", ".rodata", ".data", ".sdata", ".sdata2")
+
+ORIG_ELF = REPO_ROOT / "extracted" / "files" / "u2_ngc_release_dvd.elf"
+BUILT_ELF = REPO_ROOT / "build" / "sims2.elf"
+
+# ELF32 constants
+SHT_PROGBITS = 1
 
 # A function is classified as "SDK" if its symbol is sourced from a TU under
 # the DolphinSDK1.0 library path in the map file. This is more precise than
@@ -118,7 +129,99 @@ def parse_text_functions(map_path: Path) -> list:
     return functions
 
 
-def build_measures(functions: list, matched_addrs: set) -> dict:
+def read_elf_progbits_sections(elf_path: Path) -> dict:
+    """Read PROGBITS data sections from a 32-bit big-endian PowerPC ELF.
+
+    Returns {section_name: (vaddr, bytes)} for sections in DATA_SECTIONS.
+    Pure-Python — no pyelftools dependency. Sections we don't care about
+    (.text, .init, .bss family, .shstrtab) are skipped.
+    """
+    if not elf_path.exists():
+        return {}
+
+    with open(elf_path, "rb") as f:
+        data = f.read()
+
+    # ELF header (52 bytes for ELF32). Fields we need:
+    #   0x20 e_shoff   (4) section header offset
+    #   0x2E e_shentsize (2)
+    #   0x30 e_shnum   (2)
+    #   0x32 e_shstrndx (2)
+    e_shoff = struct.unpack(">I", data[0x20:0x24])[0]
+    e_shentsize = struct.unpack(">H", data[0x2E:0x30])[0]
+    e_shnum = struct.unpack(">H", data[0x30:0x32])[0]
+    e_shstrndx = struct.unpack(">H", data[0x32:0x34])[0]
+
+    # Section header (40 bytes for ELF32, BE):
+    #   sh_name(4), sh_type(4), sh_flags(4), sh_addr(4), sh_offset(4),
+    #   sh_size(4), sh_link(4), sh_info(4), sh_addralign(4), sh_entsize(4)
+    def shdr(idx: int) -> tuple:
+        off = e_shoff + idx * e_shentsize
+        return struct.unpack(">10I", data[off:off + 40])
+
+    # Resolve string table for section names
+    _, _, _, _, str_off, str_size, *_ = shdr(e_shstrndx)
+    strtab = data[str_off:str_off + str_size]
+
+    def name_at(name_off: int) -> str:
+        end = strtab.find(b"\x00", name_off)
+        return strtab[name_off:end].decode("ascii", errors="replace")
+
+    sections = {}
+    for i in range(e_shnum):
+        sh_name, sh_type, _flags, sh_addr, sh_offset, sh_size, *_ = shdr(i)
+        if sh_type != SHT_PROGBITS:
+            continue
+        name = name_at(sh_name)
+        if name not in DATA_SECTIONS:
+            continue
+        sections[name] = (sh_addr, data[sh_offset:sh_offset + sh_size])
+
+    return sections
+
+
+def compute_data_metrics(orig_elf: Path, built_elf: Path) -> dict:
+    """Compare data sections between original (authority) and built ELFs.
+
+    Returns dict with total/matched bytes + per-section breakdown.
+
+    Strategy: byte-by-byte equality per section using the ORIGINAL section
+    as the size authority. If built ELF is missing or a section is missing
+    from the build, it counts as 0 matched for that section but still
+    contributes its size to total_data (so the denominator stays honest).
+    """
+    orig = read_elf_progbits_sections(orig_elf)
+    built = read_elf_progbits_sections(built_elf) if built_elf.exists() else {}
+
+    total = 0
+    matched = 0
+    per_section = {}
+
+    for name in DATA_SECTIONS:
+        orig_entry = orig.get(name)
+        if orig_entry is None:
+            continue
+        _orig_addr, orig_bytes = orig_entry
+        sec_total = len(orig_bytes)
+        total += sec_total
+
+        sec_matched = 0
+        built_entry = built.get(name)
+        if built_entry is not None:
+            _built_addr, built_bytes = built_entry
+            # Compare up to min length; unmatched bytes beyond build's size = 0
+            cmp_len = min(len(orig_bytes), len(built_bytes))
+            for j in range(cmp_len):
+                if orig_bytes[j] == built_bytes[j]:
+                    sec_matched += 1
+        matched += sec_matched
+        per_section[name] = {"total": sec_total, "matched": sec_matched}
+
+    return {"total": total, "matched": matched, "per_section": per_section}
+
+
+def build_measures(functions: list, matched_addrs: set,
+                   data_metrics: dict | None = None) -> dict:
     """Compute the objdiff Measures block (matches proto3 serde JSON conventions
     used by decomp.dev / dtk-template). uint64 fields are emitted as strings,
     uint32 fields as integers, percent fields as floats.
@@ -130,21 +233,28 @@ def build_measures(functions: list, matched_addrs: set) -> dict:
 
     pct_bytes = (matched_code / total_code * 100.0) if total_code else 0.0
     pct_funcs = (matched_functions / total_functions * 100.0) if total_functions else 0.0
+
+    # Data metrics — empty dict means we couldn't measure (no original ELF).
+    # In that case fall back to zeros (matches pre-data-tracking behavior).
+    total_data = (data_metrics or {}).get("total", 0)
+    matched_data = (data_metrics or {}).get("matched", 0)
+    pct_data = (matched_data / total_data * 100.0) if total_data else 0.0
+
     return {
         "fuzzy_match_percent": round(pct_bytes, 6),
         "total_code": str(total_code),
         "matched_code": str(matched_code),
         "matched_code_percent": round(pct_bytes, 6),
-        "total_data": "0",
-        "matched_data": "0",
-        "matched_data_percent": 0.0,
+        "total_data": str(total_data),
+        "matched_data": str(matched_data),
+        "matched_data_percent": round(pct_data, 6),
         "total_functions": total_functions,
         "matched_functions": matched_functions,
         "matched_functions_percent": round(pct_funcs, 6),
         "complete_code": str(matched_code),
         "complete_code_percent": round(pct_bytes, 6),
-        "complete_data": "0",
-        "complete_data_percent": 0.0,
+        "complete_data": str(matched_data),
+        "complete_data_percent": round(pct_data, 6),
         "total_units": total_functions,
         "complete_units": matched_functions,
     }
@@ -247,18 +357,25 @@ def main() -> int:
     matched_addrs = collect_matched_addresses(REPO_ROOT / "src" / "matched")
     functions = parse_text_functions(MAP_PATH)
 
+    # Measure data sections (.ctors/.dtors/.rodata/.data/.sdata/.sdata2) against
+    # the authoritative ELF. Computed once, threaded into all measures blocks so
+    # the global total is consistent (decomp.dev reads the top-level measures).
+    data_metrics = compute_data_metrics(ORIG_ELF, BUILT_ELF)
+
     game_funcs = [f for f in functions if not f["sdk"]]
     sdk_funcs = [f for f in functions if f["sdk"]]
 
     report = {
         "version": 2,
-        "measures": build_measures(functions, matched_addrs),
+        "measures": build_measures(functions, matched_addrs, data_metrics),
         "units": build_units(functions, matched_addrs),
         "categories": [
             {
                 "id": "game",
                 "name": "Game code (SN Systems ProDG)",
-                "measures": build_measures(game_funcs, matched_addrs),
+                # Game category gets the data metrics — data sections are
+                # almost entirely game-originated (not SDK).
+                "measures": build_measures(game_funcs, matched_addrs, data_metrics),
             },
             {
                 "id": "sdk",
