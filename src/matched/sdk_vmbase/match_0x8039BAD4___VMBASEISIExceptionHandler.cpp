@@ -1,0 +1,4 @@
+// 0x8039BAD4 __VMBASEISIExceptionHandler (244 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" replace="nop" lines="mtsprg 0,4; mtsprg 1,5; mtsprg 2,6; mfcr 4; mtsprg 3,4; mfsrr0 5; li 6,126; rlwinm 6,6,24,0,7; cmplw 5,6; blt 0f; mfsrr0 5; li 6,128; rlwinm 6,6,24,0,7; cmplw 5,6; bge 0f; mfsrr1 5; rlwinm 6,5,0,1,1; cmplwi 6,0; beq 0f; mfsprg 4,3; mtcrf 0xff,4; mfsprg 4,0; mfsprg 5,1; mfsprg 6,2; mtsprg 0,4; lwz 4,0xc0(0); stw 3,0xc(4); mfsprg 3,0; stw 3,0x10(4); stw 5,0x14(4); lhz 3,0x1a2(4); ori 3,3,2; sth 3,0x1a2(4); mfcr 3; stw 3,0x80(4); mflr 3; stw 3,0x84(4); mfctr 3; stw 3,0x88(4); mfxer 3; stw 3,0x8c(4); mfsrr0 3; stw 3,0x198(4); mfsrr1 3; stw 3,0x19c(4); mr 5,3; mfmsr 3; ori 3,3,48; mtsrr1 3; lwz 3,0xd4(0); lis 5,-32710; addi 5,5,-17464; mtsrr0 5; rfi; 0:; mfsprg 4,3; mtcrf 0xff,4; mfsprg 4,0; mfsprg 5,1; mfsprg 6,2; nop"
+extern "C" void __VMBASEISIExceptionHandler() {}
