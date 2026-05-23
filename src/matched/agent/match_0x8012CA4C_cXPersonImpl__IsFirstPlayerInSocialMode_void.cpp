@@ -1,4 +1,3 @@
 // 0x8012CA4C cXPersonImpl::IsFirstPlayerInSocialMode(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x544(3)"
-extern "C" int f_8012CA4C() {}
+struct cXPersonImpl { char _pad[0x544]; unsigned m_firstPlayerInSocialMode; unsigned IsFirstPlayerInSocialMode(); };
+unsigned cXPersonImpl::IsFirstPlayerInSocialMode() { return m_firstPlayerInSocialMode; }

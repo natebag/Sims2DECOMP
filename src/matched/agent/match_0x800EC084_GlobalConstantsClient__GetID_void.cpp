@@ -1,4 +1,3 @@
 // 0x800EC084 GlobalConstantsClient::GetID(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lha 3,0x4(3)"
-extern "C" int f_800EC084() {}
+struct GlobalConstantsClient { char _pad[0x4]; short m_id; int GetID(); };
+int GlobalConstantsClient::GetID() { return m_id; }

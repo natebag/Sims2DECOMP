@@ -1,4 +1,3 @@
 // 0x800EB2FC cXObjectImpl::GetLocation(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="addi 3,3,104"
-extern "C" int f_800EB2FC() {}
+struct cXObjectImpl { char _pad[104]; unsigned m_location[1]; unsigned* GetLocation(); };
+unsigned* cXObjectImpl::GetLocation() { return m_location; }

@@ -1,4 +1,3 @@
 // 0x80149B00 TreeTableAdScratch::GetPersonalityAd(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lha 3,0x4(3)"
-extern "C" int f_80149B00() {}
+struct TreeTableAdScratch { char _pad[0x4]; short m_personalityAd; int GetPersonalityAd(); };
+int TreeTableAdScratch::GetPersonalityAd() { return m_personalityAd; }

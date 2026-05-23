@@ -1,4 +1,3 @@
 // 0x8012C7DC cXPersonImpl::SetIdleLoopCount(short) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="sth 4,0x540(3)"
-extern "C" void f_8012C7DC() {}
+struct cXPersonImpl { char _pad[0x540]; short m_idleLoopCount; void SetIdleLoopCount(short); };
+void cXPersonImpl::SetIdleLoopCount(short val) { m_idleLoopCount = val; }

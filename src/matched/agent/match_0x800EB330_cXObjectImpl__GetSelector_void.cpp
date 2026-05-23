@@ -1,4 +1,3 @@
 // 0x800EB330 cXObjectImpl::GetSelector(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x8c(3)"
-extern "C" int f_800EB330() {}
+struct cXObjectImpl { char _pad[0x8c]; unsigned m_selector; unsigned GetSelector(); };
+unsigned cXObjectImpl::GetSelector() { return m_selector; }

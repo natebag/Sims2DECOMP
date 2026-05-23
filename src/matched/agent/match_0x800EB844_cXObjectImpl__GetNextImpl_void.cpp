@@ -1,4 +1,3 @@
 // 0x800EB844 cXObjectImpl::GetNextImpl(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x5c(3)"
-extern "C" int f_800EB844() {}
+struct cXObjectImpl { char _pad[0x5c]; unsigned m_nextImpl; unsigned GetNextImpl(); };
+unsigned cXObjectImpl::GetNextImpl() { return m_nextImpl; }

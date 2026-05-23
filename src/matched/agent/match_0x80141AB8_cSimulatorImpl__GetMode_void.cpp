@@ -1,4 +1,3 @@
 // 0x80141AB8 cSimulatorImpl::GetMode(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lha 3,0x3a(3)"
-extern "C" int f_80141AB8() {}
+struct cSimulatorImpl { char _pad[0x3a]; short m_mode; int GetMode(); };
+int cSimulatorImpl::GetMode() { return m_mode; }

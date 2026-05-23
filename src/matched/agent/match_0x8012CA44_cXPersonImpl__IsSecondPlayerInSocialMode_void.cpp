@@ -1,4 +1,3 @@
 // 0x8012CA44 cXPersonImpl::IsSecondPlayerInSocialMode(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x548(3)"
-extern "C" int f_8012CA44() {}
+struct cXPersonImpl { char _pad[0x548]; unsigned m_secondPlayerInSocialMode; unsigned IsSecondPlayerInSocialMode(); };
+unsigned cXPersonImpl::IsSecondPlayerInSocialMode() { return m_secondPlayerInSocialMode; }

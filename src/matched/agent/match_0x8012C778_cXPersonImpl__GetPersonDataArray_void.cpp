@@ -1,4 +1,3 @@
 // 0x8012C778 cXPersonImpl::GetPersonDataArray(void) (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="addi 3,3,8"
-extern "C" int f_8012C778() {}
+struct cXPersonImpl { char _pad[8]; unsigned m_personDataArray[1]; unsigned* GetPersonDataArray(); };
+unsigned* cXPersonImpl::GetPersonDataArray() { return m_personDataArray; }
