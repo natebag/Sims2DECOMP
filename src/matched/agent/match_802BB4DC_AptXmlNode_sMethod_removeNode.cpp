@@ -1,5 +1,12 @@
-static void* s_undefinedValue;
+// FLAGS: -fno-elide-constructors
+// 0x802BB4DC AptXmlNode::sMethod_removeNode(AptValue*) (8B)
 
-void* func_stub(void* self, int arg) {
-    return s_undefinedValue;
+extern void* g_constructorObject;
+
+struct AptXmlNode {
+    static void* sMethod_removeNode();
+};
+
+void* AptXmlNode::sMethod_removeNode() {
+    return g_constructorObject;
 }

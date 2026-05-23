@@ -1,5 +1,8 @@
-static void* s_constructorObject;
+// FLAGS: -fno-elide-constructors
+// 0x802B0E44 _constructorObject(AptValue*) (8B)
 
-void* constructorObject(void* val, int type) {
-    return s_constructorObject;
+extern void* g_constructorObject;
+
+void* constructorObject() {
+    return g_constructorObject;
 }

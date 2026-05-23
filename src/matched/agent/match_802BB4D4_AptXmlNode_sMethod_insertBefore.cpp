@@ -1,5 +1,12 @@
-static void* s_undefinedValue;
+// FLAGS: -fno-elide-constructors
+// 0x802BB4D4 AptXmlNode::sMethod_insertBefore(AptValue*) (8B)
 
-void* func_stub(void* self, int arg) {
-    return s_undefinedValue;
+extern void* g_constructorObject;
+
+struct AptXmlNode {
+    static void* sMethod_insertBefore();
+};
+
+void* AptXmlNode::sMethod_insertBefore() {
+    return g_constructorObject;
 }

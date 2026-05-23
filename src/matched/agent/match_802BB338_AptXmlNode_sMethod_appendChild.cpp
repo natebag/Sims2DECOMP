@@ -1,5 +1,12 @@
-static void* s_undefinedValue;
+// FLAGS: -fno-elide-constructors
+// 0x802BB338 AptXmlNode::sMethod_appendChild(AptValue*) (8B)
 
-void* func_stub(void* self, int arg) {
-    return s_undefinedValue;
+extern void* g_constructorObject;
+
+struct AptXmlNode {
+    static void* sMethod_appendChild();
+};
+
+void* AptXmlNode::sMethod_appendChild() {
+    return g_constructorObject;
 }
