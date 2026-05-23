@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 99.967195,
+    "fuzzy_match_percent": 99.976072,
     "total_code": "4145724",
-    "matched_code": "4144364",
-    "matched_code_percent": 99.967195,
+    "matched_code": "4144732",
+    "matched_code_percent": 99.976072,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 18450,
-    "matched_functions_percent": 99.956658,
-    "complete_code": "4144364",
-    "complete_code_percent": 99.967195,
+    "matched_functions": 18453,
+    "matched_functions_percent": 99.972911,
+    "complete_code": "4144732",
+    "complete_code_percent": 99.976072,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 18450
+    "complete_units": 18453
   },
   "units": [
     {
@@ -102156,28 +102156,28 @@
     {
       "name": "os.a(OSMemory.o)",
       "measures": {
-        "fuzzy_match_percent": 72.995781,
+        "fuzzy_match_percent": 100.0,
         "total_code": "948",
-        "matched_code": "692",
-        "matched_code_percent": 72.995781,
+        "matched_code": "948",
+        "matched_code_percent": 100.0,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 9,
-        "matched_functions": 7,
-        "matched_functions_percent": 77.777778,
-        "complete_code": "692",
-        "complete_code_percent": 72.995781,
+        "matched_functions": 9,
+        "matched_functions_percent": 100.0,
+        "complete_code": "948",
+        "complete_code_percent": 100.0,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
-        "complete_units": 0
+        "complete_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "948",
-          "fuzzy_match_percent": 72.995781,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2149910828"
           }
@@ -102258,7 +102258,7 @@
         }
       ],
       "metadata": {
-        "complete": false,
+        "complete": true,
         "progress_categories": [
           "sdk"
         ]
@@ -102338,28 +102338,28 @@
     {
       "name": "os.a(OSReset.o)",
       "measures": {
-        "fuzzy_match_percent": 93.253012,
+        "fuzzy_match_percent": 100.0,
         "total_code": "1660",
-        "matched_code": "1548",
-        "matched_code_percent": 93.253012,
+        "matched_code": "1660",
+        "matched_code_percent": 100.0,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 10,
-        "matched_functions": 9,
-        "matched_functions_percent": 90.0,
-        "complete_code": "1548",
-        "complete_code_percent": 93.253012,
+        "matched_functions": 10,
+        "matched_functions_percent": 100.0,
+        "complete_code": "1660",
+        "complete_code_percent": 100.0,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
-        "complete_units": 0
+        "complete_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "1660",
-          "fuzzy_match_percent": 93.253012,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2149911948"
           }
@@ -102448,7 +102448,7 @@
         }
       ],
       "metadata": {
-        "complete": false,
+        "complete": true,
         "progress_categories": [
           "sdk"
         ]
@@ -174660,22 +174660,22 @@
       "id": "sdk",
       "name": "DolphinSDK (Metrowerks, unmatchable)",
       "measures": {
-        "fuzzy_match_percent": 99.72362,
+        "fuzzy_match_percent": 99.798405,
         "total_code": "492076",
-        "matched_code": "490716",
-        "matched_code_percent": 99.72362,
+        "matched_code": "491084",
+        "matched_code_percent": 99.798405,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 1568,
-        "matched_functions": 1560,
-        "matched_functions_percent": 99.489796,
-        "complete_code": "490716",
-        "complete_code_percent": 99.72362,
+        "matched_functions": 1563,
+        "matched_functions_percent": 99.681122,
+        "complete_code": "491084",
+        "complete_code_percent": 99.798405,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1568,
-        "complete_units": 1560
+        "complete_units": 1563
       }
     }
   ]
