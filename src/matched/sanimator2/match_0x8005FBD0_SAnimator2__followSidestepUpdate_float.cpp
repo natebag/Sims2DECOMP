@@ -1,10 +1,17 @@
 // 0x8005FBD0 SAnimator2::followSidestepUpdate(float (492 B)
 // FLAGS: -fno-schedule-insns
 // ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stfd f31,0x28(1); stmw 26,0x10(1); stw 0,0x34(1); mr 31,3; mr 27,4; lwz 9,0xc(31); mr 29,5; lwz 11,0x61c(31); li 26,0; lwz 10,0x0(9); lwz 0,0x4(9); andi. 9,11,2; stfs f1,0x8(1); subf 0,10,0; srawi 30,0,3; beq 3f; lfs f0,0xfc(31); lis 9,-32707; lfs f13,0x104(31); lfs f12,0x473c(9); fmuls f0,f0,f13; fcmpu 0,f0,f12; li 0,5; cror 3,2,1; bso 2f; lwz 0,0x108(31); cmpwi 0,4; bne 0f; lwz 3,0x8(31); lis 4,1; addi 3,3,820; bl _s8005FBD0_0; lis 9,-32707; lfs f0,0x4740(9); fcmpu 0,f1,f0; li 0,5; bgt 2f; 0:; lwz 0,0x108(31); cmpwi 0,5; bne 1f; lwz 3,0x8(31); lis 4,1; addi 3,3,820; bl _s8005FBD0_1; lis 9,-32707; lfs f0,0x4744(9); fcmpu 0,f1,f0; li 0,6; bgt 2f; 1:; lwz 0,0x108(31); cmpwi 0,6; bne 3f; lwz 3,0x8(31); lis 4,1; addi 3,3,820; bl _s8005FBD0_2; lis 9,-32707; lfs f0,0x4740(9); fcmpu 0,f1,f0; cror 3,2,0; bns 3f; li 0,4; 2:; stw 0,0x108(31); 3:; lwz 0,0x14(31); cmpwi 0,0; bne 4f; li 0,1; stw 0,0x14(31); 4:; lis 9,-32707; lfs f13,0x8(1); lfs f0,0x4748(9); addi 30,30,-1; lwz 0,0x14(31); lis 28,-32707; fcmpu 0,f13,f0; ble 8f; mr 9,0; cmpw 9,30; bge 9f; 5:; lwz 0,0x1c8(31); cmpw 9,0; ble 6f; mr 3,31; addi 4,1,8; bl _s8005FBD0_3; 6:; lfs f0,0x8(1); lfs f31,0x4748(28); fcmpu 0,f0,f31; ble 7f; lwz 9,0x14(31); mr 3,31; addi 9,9,1; stw 9,0x14(31); bl _s8005FBD0_4; fmr f0,f1; mr 3,31; stfs f0,0x0(27); bl _s8005FBD0_5; stfs f1,0x0(29); 7:; lfs f0,0x8(1); lwz 0,0x14(31); fcmpu 0,f0,f31; ble 8f; mr 9,0; cmpw 0,30; blt 5b; 8:; cmpw 0,30; blt 10f; 9:; lis 9,-32707; li 26,1; lfs f0,0x4748(9); b 11f; 10:; lfs f0,0x0(29); 11:; stfs f0,0x110(31); mr 3,26; lwz 0,0x34(1); mtspr 8,0; lmw 26,0x10(1); lfd f31,0x28(1); addi 1,1,48"
+
 extern "C" void _s8005FBD0_0();
 extern "C" void _s8005FBD0_1();
 extern "C" void _s8005FBD0_2();
 extern "C" void _s8005FBD0_3();
 extern "C" void _s8005FBD0_4();
 extern "C" void _s8005FBD0_5();
-extern "C" void f_8005FBD0() {}
+
+struct SAnimator2 {
+    void followSidestepUpdate();
+};
+
+void SAnimator2::followSidestepUpdate() {
+}

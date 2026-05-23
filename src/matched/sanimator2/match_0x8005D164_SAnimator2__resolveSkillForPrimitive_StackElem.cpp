@@ -1,9 +1,16 @@
 // 0x8005D164 SAnimator2::resolveSkillForPrimitive(StackElem (560 B)
 // FLAGS: -fno-schedule-insns
 // ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); li 9,0; mr 27,6; stw 9,0x0(27); mr 28,5; mr 30,3; mr 29,4; lbz 0,0x5(28); lha 31,0x0(28); andi. 9,0,2; beq 2f; cmpwi 31,0; blt 0f; lbz 0,0x7(29); cmpw 31,0; blt 1f; 0:; lwz 9,0x4(30); li 0,1; li 4,8; lwz 11,0x0(9); stw 0,-24512(13); lwz 10,0x0(11); lwz 9,0x18(10); lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,10,3; blrl; lwz 11,0x4(30); li 4,8; lwz 10,0x0(11); lwz 9,0x4(10); lha 3,0x110(9); lwz 0,0x114(9); add 3,10,3; mtspr 8,0; blrl; b 10f; 1:; mr 3,29; bl _s8005D164_0; lwz 9,0x4(30); add 0,31,31; lhax 31,3,0; lwz 11,0x0(9); lha 4,0x4(29); lwz 9,0x4(11); lha 3,0x488(9); lwz 0,0x48c(9); add 3,11,3; mtspr 8,0; blrl; b 3f; 2:; lwz 3,0x4(30); lwz 9,0x4(3); lha 0,0x2e8(9); lwz 9,0x2ec(9); add 3,3,0; mtspr 8,9; blrl; 3:; mr 9,3; lbz 0,0x4(28); extsb 0,0; cmpwi 0,1; beq 8f; bgt 4f; cmpwi 0,0; beq 5f; b 12f; 4:; cmpwi 0,2; beq 7f; cmpwi 0,3; beq 11f; b 12f; 5:; cmpwi 9,0; bne 6f; lwz 9,0x4(30); li 0,1; li 4,23; lwz 11,0x0(9); stw 0,-24512(13); lwz 10,0x0(11); lwz 9,0x18(10); lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,10,3; blrl; lwz 11,0x4(30); li 4,23; lwz 10,0x0(11); lwz 9,0x4(10); lha 3,0x110(9); lwz 0,0x114(9); add 3,10,3; mtspr 8,0; blrl; b 10f; 6:; lwz 4,0x4(30); mr 3,9; mr 5,31; mr 7,27; li 6,1; bl _s8005D164_1; b 9f; 7:; lwz 3,0x4(30); mr 4,31; mr 5,27; bl _s8005D164_2; b 9f; 8:; lwz 3,0x4(30); mr 4,31; mr 5,27; bl _s8005D164_3; 9:; cmpwi 3,-1; bne 12f; cmpwi 4,-1; bne 12f; 10:; li 3,-1; li 4,-1; b 13f; 11:; lwz 3,0x4(30); mr 4,31; mr 5,27; bl _s8005D164_4; cmpwi 3,-1; bne 12f; cmpwi 4,-1; li 3,-1; li 4,-1; beq 13f; 12:; li 3,0; li 4,1; 13:; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
+
 extern "C" void _s8005D164_0();
 extern "C" void _s8005D164_1();
 extern "C" void _s8005D164_2();
 extern "C" void _s8005D164_3();
 extern "C" void _s8005D164_4();
-extern "C" void f_8005D164() {}
+
+struct SAnimator2 {
+    void resolveSkillForPrimitive();
+};
+
+void SAnimator2::resolveSkillForPrimitive() {
+}

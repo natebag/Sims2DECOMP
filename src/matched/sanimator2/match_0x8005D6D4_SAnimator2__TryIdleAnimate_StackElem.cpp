@@ -1,6 +1,7 @@
 // 0x8005D6D4 SAnimator2::TryIdleAnimate(StackElem (848 B)
 // FLAGS: -fno-schedule-insns
 // ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 27,0x14(1); stw 0,0x2c(1); mr 31,3; mr 28,5; lwz 0,0x28(31); mr 27,4; lha 29,0x0(28); cmpwi 0,0; beq 0f; lis 30,-32693; mr 4,0; addi 3,30,11064; bl _s8005D6D4_0; cmpwi 3,0; beq 13f; lwz 4,0x28(31); addi 3,30,11064; li 5,1; bl _s8005D6D4_1; lis 3,-32707; lwz 4,0x28(31); addi 3,3,17872; crxor 6,6,6; bl _s8005D6D4_2; lwz 9,-32344(13); li 0,0; stw 0,0x28(31); addi 9,9,-1; stw 9,-32344(13); 0:; cmpwi 29,0; bne 4f; lbz 0,0x5(28); andi. 9,0,2; bne 4f; andi. 9,0,4; bne 4f; lwz 9,0x8(31); addi 11,9,820; lwz 9,0x8(11); cmpwi 9,0; blt 1f; mulli 9,9,176; lwz 0,0x44(11); add 9,0,9; b 2f; 1:; li 9,0; 2:; cmpwi 9,0; beq 3f; lwz 0,0x30(9); rlwinm 0,0,0,0,23; oris 0,0,1; ori 0,0,32; stw 0,0x30(9); 3:; lwz 0,0x61c(31); li 29,0; li 30,1; oris 0,0,32; stw 0,0x61c(31); b 18f; 4:; lwz 0,0x61c(31); rlwinm 0,0,0,11,9; stw 0,0x61c(31); lbz 9,0x5(28); andi. 0,9,4; beq 5f; lwz 3,0x8(31); lis 4,1; addi 3,3,820; bl _s8005D6D4_3; cmpwi 3,0; beq 6f; mr 3,31; addi 4,1,8; bl _s8005D6D4_4; b 8f; 5:; mr 4,27; mr 3,31; mr 5,28; addi 6,1,8; bl _s8005D6D4_5; mr 29,3; mr 30,4; cmpwi 29,0; bne 9f; cmpwi 30,1; bne 9f; lwz 3,0x8(31); lis 4,1; lwz 30,0x8(1); addi 3,3,820; bl _s8005D6D4_6; lwz 0,0x0(30); cmpw 0,3; bne 7f; 6:; li 3,0; li 4,1; b 22f; 7:; lwz 4,0x8(1); mr 3,31; bl _s8005D6D4_7; 8:; mr 29,3; mr 30,4; 9:; lha 0,0x2(28); srawi. 4,0,8; ble 10f; lwz 11,0x4(31); lwz 10,0x0(11); lwz 9,0x4(10); lha 3,0xc0(9); lwz 0,0xc4(9); add 3,10,3; mtspr 8,0; blrl; mr 29,3; mr 30,4; 10:; cmpwi 29,0; bne 21f; cmpwi 30,1; bne 18f; lwz 0,0x5f0(31); li 27,1; cmpwi 0,1; bne 11f; lwz 9,0x8(1); lwz 11,0x5ec(31); lwz 0,0x0(9); cmpw 11,0; bne 11f; li 27,0; 11:; li 4,1; mr 3,31; bl _s8005D6D4_8; lbz 0,0x5(28); li 5,1; lwz 4,0x8(1); andi. 9,0,1; bne 12f; li 5,0; 12:; mr 3,31; li 6,32; bl _s8005D6D4_9; cmpwi 3,0; bne 14f; 13:; li 3,0; li 4,2; b 22f; 14:; lbz 0,0x6(28); cmpwi 0,2; bne 17f; lwz 9,0x8(31); addi 11,9,820; lwz 9,0x8(11); cmpwi 9,0; blt 15f; mulli 9,9,176; lwz 0,0x44(11); add 9,0,9; b 16f; 15:; li 9,0; 16:; cmpwi 9,0; beq 17f; li 0,0; stb 0,0xd(9); 17:; cmpwi 27,0; beq 18f; li 0,0; stw 0,0xf0(31); 18:; cmpwi 29,0; bne 21f; cmpwi 30,1; bne 21f; lbz 0,0x5(28); andi. 9,0,8; beq 20f; lwz 3,0x4(31); lwz 9,0x4(3); lha 0,0x168(9); lwz 9,0x16c(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 19f; lwz 3,0x4(31); lwz 9,0x4(3); lha 0,0x168(9); lwz 9,0x16c(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,3; bne 20f; 19:; lwz 0,0x61c(31); mr 3,31; rlwinm 0,0,0,19,17; stw 0,0x61c(31); bl _s8005D6D4_10; b 21f; 20:; mr 3,31; bl _s8005D6D4_11; lwz 0,0x61c(31); ori 0,0,8192; stw 0,0x61c(31); 21:; mr 3,29; mr 4,30; 22:; lwz 0,0x2c(1); mtspr 8,0; lmw 27,0x14(1); addi 1,1,40"
+
 extern "C" void _s8005D6D4_0();
 extern "C" void _s8005D6D4_1();
 extern "C" void _s8005D6D4_2();
@@ -13,4 +14,10 @@ extern "C" void _s8005D6D4_8();
 extern "C" void _s8005D6D4_9();
 extern "C" void _s8005D6D4_10();
 extern "C" void _s8005D6D4_11();
-extern "C" void f_8005D6D4() {}
+
+struct SAnimator2 {
+    void TryIdleAnimate();
+};
+
+void SAnimator2::TryIdleAnimate() {
+}
