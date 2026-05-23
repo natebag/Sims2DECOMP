@@ -1,4 +1,5 @@
 // 0x8003512C ESim::GetReadVersion(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 9,-32688; lhz 3,-19394(9)"
-extern "C" int f_8003512C() {}
+struct EATypeInfo { char _pad[0x0C]; const char* m_name; unsigned m_key; unsigned short m_version; unsigned short m_readVersion; };
+extern EATypeInfo g_ESimTypeInfo;
+struct ESim { unsigned short GetReadVersion(); };
+unsigned short ESim::GetReadVersion() { return g_ESimTypeInfo.m_readVersion; }

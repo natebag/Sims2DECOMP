@@ -1,4 +1,5 @@
 // 0x80035120 ESim::GetTypeInfoStatic(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 3,-32688; addi 3,3,-19416"
-extern "C" int f_80035120() {}
+struct EATypeInfo { char _pad[0x0C]; const char* m_name; unsigned m_key; unsigned short m_version; unsigned short m_readVersion; };
+extern EATypeInfo g_ESimTypeInfo;
+struct ESim { static EATypeInfo* GetTypeInfoStatic(); };
+EATypeInfo* ESim::GetTypeInfoStatic() { return &g_ESimTypeInfo; }
