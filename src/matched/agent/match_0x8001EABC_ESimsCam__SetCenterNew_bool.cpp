@@ -1,4 +1,4 @@
 // 0x8001EABC ESimsCam::SetCenterNew(bool) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 4,0x540(3)"
-extern "C" void f_8001EABC() {}
+struct ESimsCam { char _pad[0x540]; int m_centerNew; void SetCenterNew(int); };
+void ESimsCam::SetCenterNew(int v) { m_centerNew = v; }
