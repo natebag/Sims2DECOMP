@@ -46,9 +46,17 @@ SDK_PATH_MARKER = re.compile(r"DolphinSDK", re.IGNORECASE)
 
 
 def collect_matched_addresses(matched_dir: Path) -> set:
-    """Scan src/matched/ for `match_<addr>_*.cpp` filenames, return set of ints."""
+    """Scan src/matched/ for `match_<addr>_*.cpp` filenames, return set of ints.
+
+    Explicitly skips any path containing a 'wip' directory component (e.g.
+    src/wip/version_diff/) so that parked WIP files never contaminate floor
+    readings during pre-commit hook regen or manual generate_report.py runs.
+    """
     addrs = set()
     for cpp in matched_dir.rglob("match_*.cpp"):
+        # Guard: skip any path that has a 'wip' component (symlink escape, future layout)
+        if "wip" in cpp.parts:
+            continue
         m = MATCH_REGEX.match(cpp.name)
         if m:
             addrs.add(int(m.group(1), 16))
