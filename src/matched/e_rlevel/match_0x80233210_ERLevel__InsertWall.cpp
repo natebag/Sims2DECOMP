@@ -1,3 +1,4 @@
+/* 0x80233210 (24 bytes) - ERLevel::InsertWall(EInstance*, int) */
 typedef unsigned int uint32;
 
 struct ENodeList {

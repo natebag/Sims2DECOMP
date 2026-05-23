@@ -1,3 +1,4 @@
+/* 0x80233308 (24 bytes) - ERLevel::RemoveLight(EILight*) */
 struct TNodeList_EILight {
     void *Find(void *);
     void Remove(void *);

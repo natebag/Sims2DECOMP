@@ -1,3 +1,4 @@
+/* 0x8023326C (24 bytes) - ERLevel::RemoveWall(EInstance*) */
 struct NLIteratorPtrType;
 
 struct ENodeList {

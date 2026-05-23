@@ -1,3 +1,4 @@
+/* 0x802332C4 (24 bytes) - ERLevel::InsertLight(EILight*) */
 struct TNodeList_EILight {
     int Add(void *);
 };

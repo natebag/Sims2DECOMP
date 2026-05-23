@@ -1,3 +1,4 @@
+/* 0x802331BC (24 bytes) - ERLevel::InsertInstance(EInstance*, EInstance*) */
 struct EInstance;
 
 struct ERLevel {
