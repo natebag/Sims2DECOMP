@@ -1,18 +1,18 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 99.988904,
+    "fuzzy_match_percent": 99.988229,
     "total_code": "4145724",
-    "matched_code": "4145264",
-    "matched_code_percent": 99.988904,
+    "matched_code": "4145236",
+    "matched_code_percent": 99.988229,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
     "matched_functions": 18456,
     "matched_functions_percent": 99.989165,
-    "complete_code": "4145264",
-    "complete_code_percent": 99.988904,
+    "complete_code": "4145236",
+    "complete_code_percent": 99.988229,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
@@ -101449,28 +101449,28 @@
     {
       "name": "os.a(OSContext.o)",
       "measures": {
-        "fuzzy_match_percent": 91.469194,
+        "fuzzy_match_percent": 100.0,
         "total_code": "2532",
-        "matched_code": "2316",
-        "matched_code_percent": 91.469194,
+        "matched_code": "2532",
+        "matched_code_percent": 100.0,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 17,
-        "matched_functions": 16,
-        "matched_functions_percent": 94.117647,
-        "complete_code": "2316",
-        "complete_code_percent": 91.469194,
+        "matched_functions": 17,
+        "matched_functions_percent": 100.0,
+        "complete_code": "2532",
+        "complete_code_percent": 100.0,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
-        "complete_units": 0
+        "complete_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "2532",
-          "fuzzy_match_percent": 91.469194,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2149897532"
           }
@@ -101615,7 +101615,7 @@
         }
       ],
       "metadata": {
-        "complete": false,
+        "complete": true,
         "progress_categories": [
           "sdk"
         ]
@@ -174276,18 +174276,18 @@
     {
       "name": "vmbase.a(VMBase.o)",
       "measures": {
-        "fuzzy_match_percent": 99.87512,
+        "fuzzy_match_percent": 99.750241,
         "total_code": "195388",
-        "matched_code": "195144",
-        "matched_code_percent": 99.87512,
+        "matched_code": "194900",
+        "matched_code_percent": 99.750241,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 40,
-        "matched_functions": 39,
-        "matched_functions_percent": 97.5,
-        "complete_code": "195144",
-        "complete_code_percent": 99.87512,
+        "matched_functions": 38,
+        "matched_functions_percent": 95.0,
+        "complete_code": "194900",
+        "complete_code_percent": 99.750241,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -174297,7 +174297,7 @@
         {
           "name": ".text",
           "size": "195388",
-          "fuzzy_match_percent": 99.87512,
+          "fuzzy_match_percent": 99.750241,
           "metadata": {
             "virtual_address": "2151263676"
           }
@@ -174660,18 +174660,18 @@
       "id": "sdk",
       "name": "DolphinSDK (Metrowerks, unmatchable)",
       "measures": {
-        "fuzzy_match_percent": 99.906519,
+        "fuzzy_match_percent": 99.900828,
         "total_code": "492076",
-        "matched_code": "491616",
-        "matched_code_percent": 99.906519,
+        "matched_code": "491588",
+        "matched_code_percent": 99.900828,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 1568,
         "matched_functions": 1566,
         "matched_functions_percent": 99.872449,
-        "complete_code": "491616",
-        "complete_code_percent": 99.906519,
+        "complete_code": "491588",
+        "complete_code_percent": 99.900828,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1568,
