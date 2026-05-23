@@ -565,36 +565,193 @@ FLAGS line was actively preventing the match.
 Validated:
 - SetInvBldItemCount (INVTarget, N=1) — `extern void UIDBSetString(...)` → 0x80179C68 TU-local (OpusArchitect, Lane 1)
 - UninstallInventoryPanelInfo 184B, commit a9581e43c (INVTarget, N=2) — three `extern` free-function decls → 0x80176628 + 0x80176584 + 0x80179C68 TU-locals (OpusArchitect, Lane 1)
-- Cross-class candidate: cXObjectImpl::Simulate 0x801096C4 (ObjectSimSlayer, via pre-scout) — pending landed commit for formal N=3
+- Cross-class PROVEN (SonnetWorker1, SAnimator2): pre-existing SAnimator2 matches use
+  `extern void` free-function declarations independently — same mechanism, different
+  class/worker. Catalog "pending cross-class" caveat DROPPED; technique is PROVEN cross-class.
+- cXObjectImpl::Simulate 0x801096C4 (ObjectSimSlayer, via pre-scout) — pending landed
+  commit for formal N=4
 
 ---
 
-## TU-Duplicate Cluster Map
+## TU-Archaeology Chapter
 
-Documented clusters of TU-local helper duplicates in the DOL — addresses absent from
-`extracted/files/u2_ngc_release.map` that represent static-inline copies baked into
-specific translation units. Cross-reference your `bl` targets against this table
-BEFORE writing `extern` free-function declarations.
+Full build-archaeology methodology for identifying, classifying, and handling
+TU-duplicate functions in the Sims 2 GC DOL. This chapter supersedes the earlier
+"TU-Duplicate Cluster Map" stub. All workers must run the pre-flight checklist before
+writing any `extern` free-function declarations.
 
-**How to identify new clusters (build archaeology):** The DOL contains BuildAgent
-comment strings that expose each TU's `.obj` boundary:
-`c:\BuildAgent\cm3-build25-NGC\CMBuild\output\obj\u2_ngc_release\<obj_name>.obj`
+### 1. Pre-flight Checklist
 
-Grep these strings in the DOL binary (or ELF) to reverse-engineer TU boundaries with
-precision. Functions in the same `.obj` that call each other can produce TU-local
-duplicates when the linker does not dedup across translation units.
+**3-step process before writing any `extern` free-function declarations:**
 
-This table is living infrastructure intel — add new clusters as workers surface them.
+**Step 1 — Identify the TU's `.obj` home (FIXED awk one-liner):**
 
-| # | Name | VA Range | Co-located helpers | Workers affected |
-|---|------|----------|--------------------|-----------------|
-| 1 | UI + Camera shared TU | `0x80015xxx–0x80016xxx` | ESimsCam helpers, AptViewer helpers | SonnetWorker2 (InteractorModule) |
-| 2 | UI Target family TU | `0x80176xxx–0x80179xxx` | `UI2D::ContainsEntry`, `UI2D::UnInstallEntry`, `UIDB::UIDBSetString` | OpusArchitect (INVTarget) — **proven** commit a9581e43c |
-| 3 | TileWalls + InteractorManager TU | `0x8020Bxxx` | TileWalls helpers, InteractorManager helpers | SonnetWorker2 (wall-builder paths) |
-| 4 | objsim super-TU | `0x800D–0x801F` (wide range) | cXObjectImpl helpers, `Try*`/`Simulate` callee roster | ObjectSimSlayer (Simulate + Try* family) |
+```bash
+TARGET_VA=0x80123704  # replace with your function's VA
+awk '/\.obj/ && $3 == "4"' extracted/files/u2_ngc_release.map | \
+  awk '{ printf "%016x %s\n", strtonum("0x" $1), $0 }' | \
+  sort | \
+  awk -v t="$TARGET_VA" '
+    BEGIN { target=strtonum(t) }
+    { va=strtonum("0x" $1); if (va <= target) last=$0 }
+    END { print last }
+  '
+```
+
+> **Why this is the FIXED version:** The release map is NOT sorted by VA — sections
+> interleave. The earlier naive `tail -1` after filter picked last-in-file-order, not
+> greatest ≤ target. Fix: `$3 == "4"` filters `.text` section only (drops debug/data/bss);
+> zero-pad + sort produces true VA order; walk finds the correct last entry ≤ target.
+> Confirmed bug independently by OpusArchitect (post 4d40d8f8) and OpusReviewGuy.
+
+**Step 2 — Check if the `.obj` name matches your class:**
+- `.obj` name **matches** class name → **canonical TU** — proceed normally, no `extern void` needed
+- `.obj` name **does NOT match** → **TU-duplicate confirmed** — go to Step 3
+
+**Step 3 — Disassemble to check call dispatch shape:**
+- All-`blrl` / virtual dispatch only → **Pattern B** (see §4) — convert normally, no `extern void`
+- Has direct `bl` to a non-map VA → **Pattern A or A+B** (see §4) — apply Technique #19
+
+---
+
+### 2. Per-lane `.obj` Map
+
+Current workers' canonical `.obj` and known TU-duplicate ranges.
+
+| Worker | Lane | Canonical `.obj` | Canonical VA range | TU-duplicate context |
+|--------|------|-----------------|-------------------|----------------------|
+| OpusArchitect | 1 (INVTarget) | `quickresfile.obj` | 0x80176xxx–0x80179xxx | Cluster #2 (UI Target family) — **ACTIVE** |
+| ObjectSimSlayer | 2 (objectsim) | `objectsim.obj` | 0x801A43E4+0x19BB8 | loadingscreenstate/dlgwrapper/textblock/wrapper.obj (Clusters #3–#4) |
+| PersonSlayer | 3 (cxpersonimpl) | `person.obj` | 0x801CExxx–0x801Exxx | bstring2/coordconversions/ambientsoundplayer.obj (Cluster #5) |
+| SonnetWorker1 | 5 (sanimator2) | `sanimator2.obj` | 0x800A0238–0x800B8067 | eyetoyclient/ezodiac/flashpimenu/gameeffectsmanager/global/aptstring.obj (Cluster #6) |
+| SonnetWorker2 | 6 (InteractorModule) | `interactormodule.obj` | TBD | aptviewer.obj + tilewalls.obj flagged as potential — run pre-flight on first conversion |
+| KimiWorker | 7 (EString) | `estring.obj` | 0x802Dxxxx | PAUSED — floor-breach investigation; cross-check type decls against existing semantic dirs |
+
+---
+
+### 3. Six Confirmed Clusters
+
+TU-local helper duplicate clusters confirmed by workers via build-archaeology. Cross-reference
+your `bl` targets against this table before writing `extern` declarations.
+
+| # | Name | VA Range | Co-located `.obj`s | Pattern | Shape | Workers |
+|---|------|----------|--------------------|---------|-------|---------|
+| 1 | AptViewer + Camera shared TU | `0x80015xxx–0x80016xxx` | aptviewer.obj, camera.obj | TBD | Single-TU Concentrated | SonnetWorker2 (IM) |
+| 2 | UI Target family | `0x80176xxx–0x80179xxx` | quickresfile.obj (UI2D/UIDB helpers) | **A** (helper-inline) | Single-TU Concentrated | OpusArchitect — **proven** a9581e43c |
+| 3 | TileWalls + InteractorManager | `0x8020Bxxx` | tilewalls.obj, interactormanager.obj | TBD | Single-TU Concentrated | SonnetWorker2 (wall paths) |
+| 4 | cXObjectImpl dialog group | `0x800Dxxx–0x801Fxxx` (wide) | loadingscreenstate/dlgwrapper/textblock/wrapper.obj | **A+B** Hybrid | Multi-TU Concentrated | ObjectSimSlayer |
+| 5 | cXPersonImpl distributed | `0x8012xxx–0x801Exxx` | bstring2/coordconversions/ambientsoundplayer.obj | **B** (method-replication) | Distributed | PersonSlayer |
+| 6 | SAnimator2 distributed | `0x800A0238–0x800B8067` | eyetoyclient/ezodiac/flashpimenu/gameeffectsmanager/global/aptstring.obj | **A+B** Hybrid | Distributed | SonnetWorker1 |
+
+**Additional documented (sibling-class):**
+- `cXMTObjectImpl` (render group) → Multi-TU Concentrated (ObjectSimSlayer, per OpusArchitect sibling scout)
+- `cXPortalImpl` → Distributed (pattern TBD, identified by OpusArchitect sibling-class analysis)
 
 **Protocol when you hit a new cluster:** post an info note tagged `tu-duplicate-cluster`
-with the VA range, co-located helpers, and affected worker lanes, then update this table.
+with VA range, co-located `.obj`s, pattern, and shape, then update this table.
+
+---
+
+### 4. Three Dispatch Patterns
+
+Classify your TU-duplicate by examining direct `bl` call shapes in the disassembly.
+
+| Pattern | Definition | Workaround | Active example |
+|---------|-----------|-----------|---------------|
+| **A — Helper-inline only** | Class methods canonical; only inline helpers are TU-duplicated | `extern void Helper(args...)` free-function decls (Technique #19) | OpusArchitect's INVTarget (Cluster #2) |
+| **B — Method-replication only** | Methods replicated across TUs but use ONLY virtual dispatch (`blrl`/`bctrl`) | None — convert normally | PersonSlayer's cXPersonImpl Wave 1 (Cluster #5) |
+| **A+B — Hybrid** | Methods replicated AND each copy has TU-localized helper inlining | `extern void` for each helper (regardless of which method copy) | ObjectSimSlayer's cXObjectImpl (Cluster #4), SonnetWorker1's SAnimator2 (Cluster #6) |
+
+**Identification rule:** disassemble the target function and inspect every `bl` target:
+- If every off-class call is `blrl`/`bctrl` → Pattern B
+- If any `bl` target is absent from the release map → Pattern A or A+B
+- If both → Pattern A+B Hybrid (apply `extern void` to the missing-map targets)
+
+**Pre-identify helper roster for A+B classes:** for cXObjectImpl in the `0x800D–0x801F`
+range, the dlgwrapper helper roster is shared across most methods — identify once per
+TU cluster, reuse across all conversions in that cluster.
+
+---
+
+### 5. Three Distribution Shapes
+
+TU-duplicate clusters fall into one of three distribution shapes, which predict
+workaround complexity before you even open the disassembly.
+
+| Shape | Definition | Examples | Implication |
+|-------|-----------|---------|------------|
+| **Single-TU Concentrated** | All duplicates baked into ONE translation unit or a tight feature-group | Clusters #1–#3 (aptviewer, UI Target, TileWalls) | Helper roster is small + consistent per cluster; one `extern` pattern covers all methods |
+| **Multi-TU Concentrated** | Duplicates spread across a small set of logically-related TUs (same feature area) | Cluster #4 (cXObjectImpl: dlgwrapper/loadingscreenstate/textblock/wrapper) | Helpers may vary per TU sub-group; run awk per method, share roster per sub-group |
+| **Distributed** | Duplicates scattered across logically-unrelated TUs (game-wide helper consumers) | Clusters #5–#6 (cXPersonImpl, SAnimator2) | Each TU sub-copy may have independent helper roster; run full awk pre-flight per function |
+
+**Predictor (build-archaeology hypothesis):**
+- System-specific classes (UI targets, camera, wall logic) → Single-TU Concentrated
+- Feature-group classes (objectsim dialog, render pipeline) → Multi-TU Concentrated
+- Pervasive game-logic classes (person, animator, physics) → Distributed
+
+Prediction model is O(1) from the class role; use it to calibrate investigation depth
+before opening disassembly.
+
+---
+
+### 6. Build-archaeology Meta-finding
+
+**The per-feature `.obj` + inline-helper pattern:**
+
+The EA build system compiled Sims 2 with per-feature translation units. When a class
+implementation is large and feature-specific methods live in separate `.obj` files,
+the linker sometimes bakes inline helpers into each `.obj` rather than resolving them
+to a shared canonical location. This produces:
+
+1. A canonical class method in `classname.obj` (in the release map)
+2. Duplicate copies of inline helpers in consuming `.obj` files (absent from the
+   release map — map only records canonical symbols)
+
+**Source-dispatch-style hypothesis:**
+- Direct member calls (`m_x->method()`) inline → the callee appears as a non-map TU-local → **Pattern A or A+B**
+- Virtual-interface calls (`m_iface->virtualMethod()`) stay as `blrl` → no TU-local hazard → **Pattern B**
+- Mixed → **Pattern A+B Hybrid**
+
+This hypothesis explains why `blrl`-heavy classes (cXPersonImpl virtual overrides) show
+Pattern B, while direct-call-heavy classes (objectsim, sanimator) show A+B.
+
+**BuildAgent path archaeology:** The DOL contains BuildAgent comment strings exposing
+each TU's `.obj` boundary:
+
+```
+c:\BuildAgent\cm3-build25-NGC\CMBuild\output\obj\u2_ngc_release\<obj_name>.obj
+```
+
+Grepping these in the DOL binary (or ELF) pinpoints TU boundaries. Functions in the
+same `.obj` that call each other produce TU-local duplicates when the linker does not
+dedup across translation units. This is the primary cluster-discovery method.
+
+---
+
+### 7. Methodology Productionization
+
+**Adoption status (S18):** awk pre-flight mandatory for all workers since S18 broadcast.
+All 6 active workers confirmed adoption. Jitter (50–150ms pre-commit sleep) in place
+to reduce index.lock contention during fleet commits.
+
+**Candidate for `obj_lookup.sh` script:** the 4-pipe awk one-liner is error-prone to
+retype. Wrap in `tools/obj_lookup.sh <TARGET_VA>` for fleet convenience. Deferred to
+a future infra session — current priority is S18 convert throughput.
+
+**Cluster map maintenance:** when a new cluster is discovered:
+1. Post info note tagged `tu-duplicate-cluster` (VA range + co-located objs + pattern + shape)
+2. Update the §3 cluster table in this chapter
+3. Update the §2 per-lane `.obj` map if the worker's lane is new
+
+**Floor-breach prevention protocol (proposed, OpusReviewGuy):** current per-file
+`verify_match.sh` catches individual file mismatches but does not catch cross-pipeline
+regressions (e.g., a converted file whose type declarations collide with another
+semantic dir's types, dropping a previously-matched function). Proposal: extend
+pre-commit hook to compare `matched_code_percent` at HEAD vs after-commit and BLOCK
+if it drops. Under review for S18 post-wave2 implementation.
+
+**Living chapter:** add new clusters, patterns, and distribution examples as workers
+surface them. This chapter is the canonical reference for all TU-archaeology work.
 
 ---
 
