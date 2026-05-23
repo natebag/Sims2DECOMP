@@ -1,22 +1,22 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 99.979256,
+    "fuzzy_match_percent": 99.985141,
     "total_code": "4145724",
-    "matched_code": "4144864",
-    "matched_code_percent": 99.979256,
+    "matched_code": "4145108",
+    "matched_code_percent": 99.985141,
     "total_data": "0",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 18454,
-    "matched_functions_percent": 99.978329,
-    "complete_code": "4144864",
-    "complete_code_percent": 99.979256,
+    "matched_functions": 18455,
+    "matched_functions_percent": 99.983747,
+    "complete_code": "4145108",
+    "complete_code_percent": 99.985141,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 18458,
-    "complete_units": 18454
+    "complete_units": 18455
   },
   "units": [
     {
@@ -174276,18 +174276,18 @@
     {
       "name": "vmbase.a(VMBase.o)",
       "measures": {
-        "fuzzy_match_percent": 99.750241,
+        "fuzzy_match_percent": 99.87512,
         "total_code": "195388",
-        "matched_code": "194900",
-        "matched_code_percent": 99.750241,
+        "matched_code": "195144",
+        "matched_code_percent": 99.87512,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 40,
-        "matched_functions": 38,
-        "matched_functions_percent": 95.0,
-        "complete_code": "194900",
-        "complete_code_percent": 99.750241,
+        "matched_functions": 39,
+        "matched_functions_percent": 97.5,
+        "complete_code": "195144",
+        "complete_code_percent": 99.87512,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -174297,7 +174297,7 @@
         {
           "name": ".text",
           "size": "195388",
-          "fuzzy_match_percent": 99.750241,
+          "fuzzy_match_percent": 99.87512,
           "metadata": {
             "virtual_address": "2151263676"
           }
@@ -174660,22 +174660,22 @@
       "id": "sdk",
       "name": "DolphinSDK (Metrowerks, unmatchable)",
       "measures": {
-        "fuzzy_match_percent": 99.82523,
+        "fuzzy_match_percent": 99.874816,
         "total_code": "492076",
-        "matched_code": "491216",
-        "matched_code_percent": 99.82523,
+        "matched_code": "491460",
+        "matched_code_percent": 99.874816,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 1568,
-        "matched_functions": 1564,
-        "matched_functions_percent": 99.744898,
-        "complete_code": "491216",
-        "complete_code_percent": 99.82523,
+        "matched_functions": 1565,
+        "matched_functions_percent": 99.808673,
+        "complete_code": "491460",
+        "complete_code_percent": 99.874816,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1568,
-        "complete_units": 1564
+        "complete_units": 1565
       }
     }
   ]
