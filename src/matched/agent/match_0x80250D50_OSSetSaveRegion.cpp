@@ -1,4 +1,9 @@
-// 0x80250D50 OSSetSaveRegion (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 3,-23640(13); stw 4,-23636(13)"
-extern "C" void f_80250D50() {}
+// 0x80250D50 OSSetSaveRegion (12B)
+// stw r3,-xxx(r13); stw r4,-xxx(r13); blr — dual SDA store
+extern int gSaveRegionA;
+extern int gSaveRegionB;
+void OSSetSaveRegion(int a, int b) {
+    gSaveRegionA = a;
+    gSaveRegionB = b;
+}

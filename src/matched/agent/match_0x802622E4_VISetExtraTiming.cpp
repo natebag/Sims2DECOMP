@@ -1,4 +1,9 @@
-// 0x802622E4 __VISetExtraTiming (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,-23196(13); stw 3,-23196(13); mr 3,0"
-extern "C" void f_802622E4() {}
+// 0x802622E4 __VISetExtraTiming (16B)
+// lwz r0,-xxx(r13); stw r3,-xxx(r13); mr r3,r0; blr — SDA exchange-and-return-old
+extern int gVIExtraTiming;
+int VISetExtraTiming(int newVal) {
+    int old = gVIExtraTiming;
+    gVIExtraTiming = newVal;
+    return old;
+}

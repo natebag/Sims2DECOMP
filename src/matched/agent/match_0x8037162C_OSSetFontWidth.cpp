@@ -1,4 +1,9 @@
-// 0x8037162C OSSetFontWidth (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,-22376(13); stw 3,-22376(13); mr 3,0"
-extern "C" void f_8037162C() {}
+// 0x8037162C OSSetFontWidth (16B)
+// lwz r0,-xxx(r13); stw r3,-xxx(r13); mr r3,r0; blr — SDA exchange-and-return-old
+extern int gOSFontWidth;
+int OSSetFontWidth(int newVal) {
+    int old = gOSFontWidth;
+    gOSFontWidth = newVal;
+    return old;
+}

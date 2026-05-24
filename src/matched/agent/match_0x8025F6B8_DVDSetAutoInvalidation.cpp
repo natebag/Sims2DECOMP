@@ -1,4 +1,9 @@
-// 0x8025F6B8 DVDSetAutoInvalidation (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,-27788(13); stw 3,-27788(13); mr 3,0"
-extern "C" void f_8025F6B8() {}
+// 0x8025F6B8 DVDSetAutoInvalidation (16B)
+// lwz r0,-xxx(r13); stw r3,-xxx(r13); mr r3,r0; blr — SDA exchange-and-return-old
+extern int gDVDAutoInvalidation;
+int DVDSetAutoInvalidation(int newVal) {
+    int old = gDVDAutoInvalidation;
+    gDVDAutoInvalidation = newVal;
+    return old;
+}
