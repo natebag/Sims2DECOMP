@@ -1,0 +1,40 @@
+// 0x80231C7C ERLevel::Read(EStream (1720 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-96(1); mfspr 0,8; stmw 27,0x4c(1); stw 0,0x64(1); mr 31,4; mr 27,3; bl _s80231C7C_0; lwz 9,0x18(31); addi 4,1,56; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,1,8; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,1,12; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,1,16; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lis 9,-32688; lhz 0,-13058(9); cmpwi 0,3; beq 4f; bgt 0f; cmpwi 0,0; blt 28f; cmpwi 0,1; ble 1f; b 2f; 0:; cmpwi 0,5; beq 14f; blt 8f; cmpwi 0,6; beq 22f; b 28f; 1:; addi 29,1,24; li 0,0; stw 0,0x4(29); li 9,1; stw 0,0x18(1); addi 30,1,40; stw 9,0x8(29); addi 4,1,60; stw 0,0x4(30); mr 3,31; stw 0,0x28(1); stw 9,0x8(30); bl _s80231C7C_1; mr 4,29; bl _s80231C7C_2; mr 4,30; bl _s80231C7C_3; addis 4,27,3; addi 4,4,-23948; bl _s80231C7C_4; addi 4,1,64; bl _s80231C7C_5; lwz 4,0x3c(1); mr 3,27; bl _s80231C7C_6; mr 3,27; mr 4,29; bl _s80231C7C_7; mr 3,27; mr 4,30; bl _s80231C7C_8; mr 3,30; bl _s80231C7C_9; mr 3,29; bl _s80231C7C_10; b 28f; 2:; addis 30,27,3; mr 3,31; addi 4,30,-23948; li 29,0; bl _s80231C7C_11; mr 28,30; lwz 9,0x18(31); addi 4,30,-15688; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-15688(30); cmpw 29,0; bge 28f; addi 30,28,-23880; 3:; mr 4,30; mr 3,31; bl _s80231C7C_12; addi 29,29,1; lwz 0,-15688(28); addi 30,30,4; cmpw 29,0; blt 3b; b 28f; 4:; addis 30,27,3; mr 3,31; addi 4,30,-23948; li 29,0; bl _s80231C7C_13; mr 28,30; lwz 9,0x18(31); addi 4,30,-25216; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-25216(30); cmpw 29,0; bge 6f; addi 30,28,-25212; 5:; mr 4,30; mr 3,31; bl _s80231C7C_14; addi 29,29,1; lwz 0,-25216(28); addi 30,30,4; cmpw 29,0; blt 5b; 6:; lwz 9,0x18(31); addi 4,28,-15688; li 5,4; li 29,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-15688(28); cmpw 29,0; bge 28f; addis 9,27,3; addi 30,9,-23880; 7:; mr 4,30; mr 3,31; bl _s80231C7C_15; addi 29,29,1; lwz 0,-15688(28); addi 30,30,4; cmpw 29,0; blt 7b; b 28f; 8:; addis 30,27,3; mr 3,31; addi 4,30,-23948; li 29,0; bl _s80231C7C_16; mr 28,30; lwz 9,0x18(31); addi 4,30,-25012; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-25012(30); cmpw 29,0; bge 10f; addi 30,28,-25008; 9:; mr 4,30; mr 3,31; bl _s80231C7C_17; addi 29,29,1; lwz 0,-25012(28); addi 30,30,4; cmpw 29,0; blt 9b; 10:; lwz 9,0x18(31); addi 4,28,-25216; li 5,4; li 29,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-25216(28); cmpw 29,0; bge 12f; addis 9,27,3; addi 30,9,-25212; 11:; mr 4,30; mr 3,31; bl _s80231C7C_18; addi 29,29,1; lwz 0,-25216(28); addi 30,30,4; cmpw 29,0; blt 11b; 12:; lwz 9,0x18(31); addi 4,28,-15688; li 5,4; li 29,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-15688(28); cmpw 29,0; bge 28f; addis 9,27,3; addi 30,9,-23880; 13:; mr 4,30; mr 3,31; bl _s80231C7C_19; addi 29,29,1; lwz 0,-15688(28); addi 30,30,4; cmpw 29,0; blt 13b; b 28f; 14:; addis 30,27,3; mr 3,31; addi 4,30,-23948; li 29,0; bl _s80231C7C_20; mr 28,30; lwz 9,0x18(31); addi 4,30,-24608; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-24608(30); cmpw 29,0; bge 16f; addi 30,28,-24604; 15:; mr 4,30; mr 3,31; bl _s80231C7C_21; addi 29,29,1; lwz 0,-24608(28); addi 30,30,4; cmpw 29,0; blt 15b; 16:; lwz 9,0x18(31); addi 4,28,-25012; li 5,4; li 29,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-25012(28); cmpw 29,0; bge 18f; addis 9,27,3; addi 30,9,-25008; 17:; mr 4,30; mr 3,31; bl _s80231C7C_22; addi 29,29,1; lwz 0,-25012(28); addi 30,30,4; cmpw 29,0; blt 17b; 18:; lwz 9,0x18(31); addi 4,28,-25216; li 5,4; li 29,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-25216(28); cmpw 29,0; bge 20f; addis 9,27,3; addi 30,9,-25212; 19:; mr 4,30; mr 3,31; bl _s80231C7C_23; addi 29,29,1; lwz 0,-25216(28); addi 30,30,4; cmpw 29,0; blt 19b; 20:; lwz 9,0x18(31); addi 4,28,-15688; li 5,4; li 29,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-15688(28); cmpw 29,0; bge 28f; addis 9,27,3; addi 30,9,-23880; 21:; mr 4,30; mr 3,31; bl _s80231C7C_24; addi 29,29,1; lwz 0,-15688(28); addi 30,30,4; cmpw 29,0; blt 21b; b 28f; 22:; addis 30,27,3; mr 3,31; addi 4,30,-23948; li 29,0; bl _s80231C7C_25; mr 28,30; lwz 9,0x18(31); addi 4,30,-25228; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,30,-25012; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-25012(30); cmpw 29,0; bge 24f; addi 30,28,-25008; 23:; mr 4,30; mr 3,31; bl _s80231C7C_26; addi 29,29,1; lwz 0,-25012(28); addi 30,30,4; cmpw 29,0; blt 23b; 24:; lwz 9,0x18(31); addi 4,28,-25224; li 5,4; li 29,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,28,-25220; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x18(31); addi 4,28,-25216; li 5,4; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-25216(28); cmpw 29,0; bge 26f; addis 9,27,3; addi 30,9,-25212; 25:; mr 4,30; mr 3,31; bl _s80231C7C_27; addi 29,29,1; lwz 0,-25216(28); addi 30,30,4; cmpw 29,0; blt 25b; 26:; lwz 9,0x18(31); addi 4,28,-15688; li 5,4; li 29,0; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,-15688(28); cmpw 29,0; bge 28f; addis 9,27,3; addi 30,9,-23880; 27:; mr 4,30; mr 3,31; bl _s80231C7C_28; addi 29,29,1; lwz 0,-15688(28); addi 30,30,4; cmpw 29,0; blt 27b; 28:; lwz 0,0x64(1); mtspr 8,0; lmw 27,0x4c(1); addi 1,1,96"
+
+extern "C" void _s80231C7C_0();
+extern "C" void _s80231C7C_1();
+extern "C" void _s80231C7C_2();
+extern "C" void _s80231C7C_3();
+extern "C" void _s80231C7C_4();
+extern "C" void _s80231C7C_5();
+extern "C" void _s80231C7C_6();
+extern "C" void _s80231C7C_7();
+extern "C" void _s80231C7C_8();
+extern "C" void _s80231C7C_9();
+extern "C" void _s80231C7C_10();
+extern "C" void _s80231C7C_11();
+extern "C" void _s80231C7C_12();
+extern "C" void _s80231C7C_13();
+extern "C" void _s80231C7C_14();
+extern "C" void _s80231C7C_15();
+extern "C" void _s80231C7C_16();
+extern "C" void _s80231C7C_17();
+extern "C" void _s80231C7C_18();
+extern "C" void _s80231C7C_19();
+extern "C" void _s80231C7C_20();
+extern "C" void _s80231C7C_21();
+extern "C" void _s80231C7C_22();
+extern "C" void _s80231C7C_23();
+extern "C" void _s80231C7C_24();
+extern "C" void _s80231C7C_25();
+extern "C" void _s80231C7C_26();
+extern "C" void _s80231C7C_27();
+extern "C" void _s80231C7C_28();
+
+struct ERLevel {
+    void Read();
+};
+
+void ERLevel::Read() {
+}

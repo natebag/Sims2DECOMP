@@ -1,0 +1,17 @@
+// 0x800F8D44 ObjectModuleImpl::ComputeStats(int (932 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-72(1); mfspr 0,8; stmw 19,0x14(1); stw 0,0x4c(1); li 0,0; mr 26,4; stw 0,0x0(26); mr 27,5; stw 0,0x0(27); mr 23,6; stw 0,0x0(23); mr 24,7; stw 0,0x0(24); mr 25,8; stw 0,0x0(25); li 20,0; li 19,0; lwz 9,0x0(3); lha 0,0x98(9); lwz 9,0x9c(9); add 3,3,0; mtspr 8,9; blrl; mr. 31,3; beq 11f; li 21,1; lis 22,-32706; 0:; lwz 9,0x4(31); lwz 0,0x494(9); lha 3,0x490(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 28,3; li 4,59; lha 3,0x260(9); lwz 0,0x264(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,1; beq 1f; cmpwi 3,9; beq 2f; b 3f; 1:; stw 3,0x0(23); b 3f; 2:; stw 21,0x0(24); 3:; lwz 9,0x4(31); lha 3,0x390(9); lwz 0,0x394(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 6f; cmpwi 31,0; beq 4f; lwz 3,0x0(31); li 4,3; bl _s800F8D44_0; mr 30,3; b 5f; 4:; li 30,0; 5:; cmpwi 30,0; beq 6f; lwz 9,0x4(30); lha 3,0x10(9); lwz 0,0x14(9); add 3,30,3; mtspr 8,0; blrl; cmpw 30,3; bne 10f; 6:; lwz 9,0x4(31); lha 3,0x318(9); lwz 0,0x31c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,7; beq 10f; lwz 9,0x4(31); lha 3,0x1a8(9); lwz 0,0x1ac(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 7f; lwz 9,0x4(31); lha 3,0x430(9); lwz 0,0x434(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 7f; lwz 9,0x4(31); addi 3,1,8; lwz 29,-21488(13); lha 4,0x358(9); lwz 9,0x35c(9); lwz 30,0x0(29); add 4,31,4; mtspr 8,9; lha 0,0xf8(30); addi 30,30,248; add 29,29,0; blrl; lwz 0,0x4(30); addi 4,1,8; mr 3,29; mtspr 8,0; blrl; mr 30,3; li 4,2; addi 3,1,8; bl _s800F8D44_1; andi. 0,30,32; bne 7f; stw 21,0x0(25); 7:; lwz 9,0x4(31); lha 3,0x428(9); lwz 0,0x42c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 8f; lwz 9,0x4(31); lwz 0,0x3cc(9); lha 3,0x3c8(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,0x0(26); cmpwi 20,0; add 0,0,3; stw 0,0x0(26); beq 10f; lwz 9,0x4(31); lwz 0,0x514(9); lha 3,0x510(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 29,3; lwz 0,0x32c(9); lha 3,0x328(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 30,3; lha 3,0x3c8(9); lwz 0,0x3cc(9); add 3,31,3; mtspr 8,0; blrl; mr 7,3; mr 5,29; mr 6,30; li 3,0; addi 4,22,-17456; crxor 6,6,6; bl _s800F8D44_2; b 10f; 8:; lwz 9,0x4(31); lha 3,0x3f8(9); lwz 0,0x3fc(9); add 3,31,3; mtspr 8,0; blrl; mr. 3,3; beq 10f; cmpwi 3,4; beq 10f; cmpwi 19,0; beq 9f; lwz 9,0x4(31); lwz 0,0x514(9); lha 3,0x510(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 29,3; lwz 0,0x32c(9); lha 3,0x328(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 30,3; lha 3,0x3c8(9); lwz 0,0x3cc(9); add 3,31,3; mtspr 8,0; blrl; mr 7,3; mr 5,29; mr 6,30; li 3,0; addi 4,22,-17456; crxor 6,6,6; bl _s800F8D44_3; 9:; lwz 9,0x4(31); lwz 0,0x3cc(9); lha 3,0x3c8(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,0x0(27); add 0,0,3; stw 0,0x0(27); 10:; mr. 31,28; bne 0b; 11:; cmpwi 20,0; beq 12f; li 3,0; bl _s800F8D44_4; 12:; cmpwi 19,0; beq 13f; li 3,0; bl _s800F8D44_5; 13:; lwz 0,0x4c(1); mtspr 8,0; lmw 19,0x14(1); addi 1,1,72"
+
+extern "C" void _s800F8D44_0();
+extern "C" void _s800F8D44_1();
+extern "C" void _s800F8D44_2();
+extern "C" void _s800F8D44_3();
+extern "C" void _s800F8D44_4();
+extern "C" void _s800F8D44_5();
+
+struct ObjectModuleImpl {
+    void ComputeStats();
+};
+
+void ObjectModuleImpl::ComputeStats() {
+}

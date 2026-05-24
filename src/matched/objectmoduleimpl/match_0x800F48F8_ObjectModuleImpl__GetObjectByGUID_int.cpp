@@ -1,0 +1,10 @@
+// 0x800F48F8 ObjectModuleImpl::GetObjectByGUID(int) (284 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); lwz 9,-21508(13); mr 29,3; lwz 11,0x0(9); lha 3,0x78(11); lwz 0,0x7c(11); add 3,9,3; mtspr 8,0; blrl; lwz 30,0x2094(29); mr 28,3; lwz 31,0x2090(29); b 2f; 0:; lwz 9,0x0(31); cmpwi 9,0; beq 1f; lwz 3,0x4(9); lwz 9,0x4(3); lha 0,0x368(9); lwz 9,0x36c(9); add 3,3,0; mtspr 8,9; blrl; cmpw 3,28; bne 1f; lwz 9,0x0(31); li 3,0; cmpwi 9,0; beq 7f; lwz 3,0x4(9); b 7f; 1:; addi 31,31,4; 2:; cmpw 31,30; beq 3f; cmpwi 31,0; bne 0b; 3:; addi 30,29,8352; li 31,0; li 29,0; 4:; lwzx 9,31,30; cmpwi 9,0; beq 6f; lwz 3,0x4(9); lwz 9,0x4(3); lha 0,0x368(9); lwz 9,0x36c(9); add 3,3,0; mtspr 8,9; blrl; cmpw 3,28; bne 6f; lwzx 3,31,30; li 0,0; cmpwi 3,0; beq 5f; lwz 0,0x4(3); 5:; mr 3,0; b 7f; 6:; addi 29,29,1; addi 31,31,4; cmpwi 29,15; ble 4b; li 3,0; 7:; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+
+struct ObjectModuleImpl {
+    void GetObjectByGUID();
+};
+
+void ObjectModuleImpl::GetObjectByGUID() {
+}

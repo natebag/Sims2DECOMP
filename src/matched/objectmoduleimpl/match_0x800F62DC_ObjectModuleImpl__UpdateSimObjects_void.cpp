@@ -1,0 +1,20 @@
+// 0x800F62DC ObjectModuleImpl::UpdateSimObjects(void) (948 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; stmw 25,0x34(1); stw 0,0x54(1); li 0,0; addi 9,1,8; stw 0,0x8(1); mr 26,3; stw 0,0x4(9); mr 28,9; addi 9,9,8; lwz 11,0x2c(26); stw 0,0x4(9); cmpwi 11,0; stw 11,0x20(1); beq 15f; mr 25,28; 0:; lwz 9,0x20(1); lwz 10,0x4(9); lwz 11,0x4(10); lwz 0,0x314(11); lha 3,0x310(11); mtspr 8,0; add 3,10,3; blrl; lha 0,0x54(3); cmpwi 0,0; beq 12f; lwz 9,0x4(25); addi 27,1,32; lwz 0,0xc(25); cmpw 9,0; beq 1f; lwz 0,0x20(1); stw 0,0x0(9); lwz 9,0x4(28); addi 9,9,4; stw 9,0x4(28); b 12f; 1:; lwz 30,0x4(28); li 9,1; lwz 0,0x8(1); addi 11,1,40; stw 9,0x28(1); addi 10,1,36; subf 0,0,30; srawi 9,0,2; stw 9,0x24(1); cmplwi 9,1; bge 2f; mr 10,11; 2:; lwz 0,0x0(10); add. 0,9,0; beq 4f; rlwinm 0,0,2,0,29; mr 31,0; cmplwi 0,128; ble 3f; mr 3,31; bl _s800F62DC_0; mr 29,3; b 5f; 3:; mr 3,31; bl _s800F62DC_1; mr 29,3; b 5f; 4:; li 29,0; li 31,0; 5:; lwz 4,0x0(28); cmpw 30,4; beq 6f; subf 30,4,30; mr 3,29; mr 5,30; bl _s800F62DC_2; add 0,3,30; b 7f; 6:; mr 0,29; 7:; lwz 9,0x28(1); mr 30,0; mtspr 9,9; cmpwi 9,0; beq 9f; 8:; lwz 0,0x0(27); stw 0,0x0(30); addi 30,30,4; bdnz 8b; 9:; lwz 3,0x0(28); lwz 0,0xc(28); cmpwi 3,0; subf 0,3,0; srawi 0,0,2; beq 11f; rlwinm 4,0,2,0,29; cmplwi 4,128; ble 10f; bl _s800F62DC_3; b 11f; 10:; bl _s800F62DC_4; 11:; add 0,31,29; stw 29,0x0(28); stw 30,0x4(28); stw 0,0xc(28); 12:; lwz 9,0x20(1); lwz 10,0x4(9); lwz 11,0x4(10); lha 3,0x490(11); lwz 0,0x494(11); add 3,10,3; mtspr 8,0; blrl; mr. 11,3; beq 13f; lwz 9,0x4(11); lha 3,0x520(9); lwz 0,0x524(9); add 3,11,3; mtspr 8,0; blrl; b 14f; 13:; li 3,0; 14:; cmpwi 3,0; stw 3,0x20(1); bne 0b; 15:; li 27,0; b 24f; 16:; lwz 25,0x38(27); lha 0,0x12(25); cmpwi 0,7; bne 24f; 17:; lha 0,0x54(25); cmpwi 0,0; beq 24f; lwz 31,0x8(1); li 30,0; lwz 0,0x4(28); cmpw 31,0; beq 22f; 18:; lwz 11,0x0(31); lwz 3,0x4(11); lwz 9,0x4(3); lha 0,0x368(9); lwz 9,0x36c(9); add 3,3,0; mtspr 8,9; blrl; cmpw 3,27; bne 21f; cmpwi 30,0; beq 20f; lwz 9,0x0(31); lwz 30,0x0(26); lwz 11,0x4(9); lha 29,0x58(30); lwz 9,0x4(11); addi 30,30,88; add 29,26,29; lwz 0,0x32c(9); lha 3,0x328(9); mtspr 8,0; add 3,11,3; blrl; lwz 0,0x4(30); mr 4,3; mr 3,29; mtspr 8,0; blrl; lwz 5,0x4(28); addi 4,31,4; cmpw 4,5; beq 19f; cmpw 5,4; beq 19f; mr 3,31; subf 5,4,5; bl _s800F62DC_5; 19:; lwz 9,0x4(28); addi 9,9,-4; stw 9,0x4(28); b 17b; 20:; lwz 11,0x0(31); lwz 3,0x4(11); lwz 9,0x4(3); lha 0,0x328(9); lwz 9,0x32c(9); add 3,3,0; mtspr 8,9; blrl; mr 30,3; 21:; lwz 0,0x4(28); addi 31,31,4; cmpw 31,0; bne 18b; 22:; cmpwi 30,0; bne 23f; lwz 9,0x0(26); mr 4,27; li 5,0; lha 3,0x50(9); lwz 0,0x54(9); add 3,26,3; mtspr 8,0; blrl; mr 30,3; 23:; mr 3,27; bl _s800F62DC_6; lis 0,16108; ori 0,0,8300; cmpw 3,0; bne 24f; sth 30,0x2054(26); 24:; lwz 3,-21508(13); mr 4,27; lwz 9,0x0(3); lha 0,0x70(9); lwz 9,0x74(9); add 3,3,0; mtspr 8,9; blrl; mr. 27,3; bne 16b; lwz 3,0x8(1); cmpwi 3,0; beq 26f; lwz 0,0xc(28); subf 0,3,0; rlwinm 4,0,0,0,29; cmplwi 4,128; ble 25f; bl _s800F62DC_7; b 26f; 25:; bl _s800F62DC_8; 26:; lwz 0,0x54(1); mtspr 8,0; lmw 25,0x34(1); addi 1,1,80"
+
+extern "C" void _s800F62DC_0();
+extern "C" void _s800F62DC_1();
+extern "C" void _s800F62DC_2();
+extern "C" void _s800F62DC_3();
+extern "C" void _s800F62DC_4();
+extern "C" void _s800F62DC_5();
+extern "C" void _s800F62DC_6();
+extern "C" void _s800F62DC_7();
+extern "C" void _s800F62DC_8();
+
+struct ObjectModuleImpl {
+    void UpdateSimObjects();
+};
+
+void ObjectModuleImpl::UpdateSimObjects() {
+}
