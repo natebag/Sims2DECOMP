@@ -10,7 +10,7 @@ authoring new mutators — many walls now have established recipes.
 
 ---
 
-## Source-Level Techniques (19 promoted)
+## Source-Level Techniques (20 promoted)
 
 Each technique has a known divergence signature and a source-level fix.
 Apply these FIRST during wall triage — they avoid the mutator-authoring cycle.
@@ -570,6 +570,45 @@ Validated:
   class/worker. Catalog "pending cross-class" caveat DROPPED; technique is PROVEN cross-class.
 - cXObjectImpl::Simulate 0x801096C4 (ObjectSimSlayer, via pre-scout) — pending landed
   commit for formal N=4
+
+### 20. `switch-vs-if-cascade-dispatch-shape` — switch-vs-if layout coax
+
+**Signature:** DOL emits an N-arm dispatch as `cmpwi; bne <skip>; <arm-body>; b <end>`
+repeated (inverted test + forward branch-to-skip + fall-through body). GCC emits a
+different branch layout — typically an `if/else` chain with correct arm coverage but
+wrong polarity or mismatched branch targets.
+
+**Fix:** Write each non-default case as inverted test + early return (leaves body as
+fall-through for the matching case):
+
+```cpp
+// WRONG — `if (x == val)` produces beq-dominant layout
+if (level == TARGET_LEVEL) {
+    return handleTargetLevel();
+}
+return doDefault();
+
+// RIGHT — inverted test + early-return forces DOL's bne-dispatch shape
+if (level != TARGET_LEVEL) {
+    doDefault();
+    return defaultResult;
+}
+// TARGET_LEVEL case falls through here
+return handleTargetLevel();
+```
+
+The inverted form (`if (x != val) { ...; return; }`) forces the compiler to emit the
+`bne`-dispatch shape the DOL uses. Structured `if/else` or direct `if (x == val)` cases
+often produce `beq`-dominant layouts that don't match.
+
+**Companion: comparison operand order.** When a `cmpw` emits with swapped operands
+(`cmpw r3, r4` vs expected `cmpw r4, r3`), flip the comparison operand order:
+`m_inner != ret` → `ret != m_inner` (or vice versa). Controls which value becomes
+the `rs` vs `ra` operand in the instruction encoding.
+
+**Validated (N=2 cross-class):**
+- ObjectSimSlayer: `cXObjectImpl::TryTutorial` (284B, commit 8bc13adab) — switch-dispatch + operand-order coax
+- OpusArchitect: `INVTarget::Cheat_HandleReturnUpHierarchy` (132B, commit 351029952) — inverted-if variant confirmed independently
 
 ---
 
