@@ -50,6 +50,7 @@ CLAIM_RE = re.compile(
 LAST_VERIFY_FILE = REPO_ROOT / ".last_verify_commit"
 INFLATE_THRESHOLD = 0.5  # flag if claimed > measured * (1 + threshold)
 MISMATCH_FLOOR = 3       # don't flag if absolute mismatch < this (noise)
+BULK_RELOCATE_FLOOR = 50 # measured >> claimed by this much = bulk relocate (not discipline incident)
 
 
 def run_git(*args, cwd=None) -> str:
@@ -154,17 +155,37 @@ def get_commits_since(since_ref: str | None, all_history: bool) -> list:
 
 
 def classify(claimed: int | None, measured: int) -> str:
+    """Classify a commit's conversion claim vs measured inject delta.
+
+    Statuses:
+      OK           — claimed ≈ measured (within threshold)
+      UNCLAIMED    — no numeric claim in commit message
+      INFLATE      — claimed >> measured (tag-discipline incident, DM author)
+      BULK_RELOCATE— measured >> claimed by large margin (relocate batch;
+                     commit message understated but not a discipline incident)
+      UNDER_CLAIM  — measured moderately > claimed (hidden wins, minor)
+    """
     if claimed is None:
         return "UNCLAIMED"
     if measured == 0 and claimed == 0:
         return "OK"
+    # INFLATE: claimed much more than measured
     if measured == 0 and claimed > MISMATCH_FLOOR:
         return "INFLATE"
     if claimed <= 0:
+        # measured conversions but claimed 0 — check for bulk relocate
+        if measured >= BULK_RELOCATE_FLOOR:
+            return "BULK_RELOCATE"
         return "OK"
+    # Both positive — compare ratio
     ratio = claimed / max(measured, 1)
     if ratio > (1 + INFLATE_THRESHOLD) and (claimed - measured) >= MISMATCH_FLOOR:
         return "INFLATE"
+    # measured >> claimed
+    if measured > claimed and (measured - claimed) >= BULK_RELOCATE_FLOOR:
+        return "BULK_RELOCATE"
+    if measured > claimed and (measured - claimed) >= MISMATCH_FLOOR:
+        return "UNDER_CLAIM"
     return "OK"
 
 
@@ -196,7 +217,7 @@ def main() -> int:
 
     print(f"\nVerifying {len(commits)} commits...\n")
 
-    total_claimed = total_measured = inflate_count = 0
+    total_claimed = total_measured = inflate_count = bulk_count = under_count = 0
     results = []
 
     for commit_hash, subject in commits:
@@ -220,6 +241,10 @@ def main() -> int:
         total_measured += delta["net"]
         if status == "INFLATE":
             inflate_count += 1
+        elif status == "BULK_RELOCATE":
+            bulk_count += 1
+        elif status == "UNDER_CLAIM":
+            under_count += 1
 
     # Print per-commit detail
     if not args.summary_only:
@@ -236,12 +261,20 @@ def main() -> int:
     print(f"Commits checked:    {len(commits)}")
     print(f"Total claimed:      {total_claimed}")
     print(f"Total measured:     {total_measured}")
-    print(f"Inflate flags:      {inflate_count}")
+    print(f"INFLATE flags:      {inflate_count}  (claimed >> measured — tag discipline incident)")
+    print(f"BULK_RELOCATE:      {bulk_count}  (measured >> claimed — unsung hygiene, not incident)")
+    print(f"UNDER_CLAIM:        {under_count}  (measured moderately > claimed — hidden wins)")
     if inflate_count:
-        print(f"\nINFLATED commits:")
+        print(f"\nINFLATED commits (DM author):")
         for r in results:
             if r["status"] == "INFLATE":
                 print(f"  {r['hash']} claimed={r['claimed']} measured={r['measured']}: {r['subject'][:60]}")
+    if bulk_count:
+        print(f"\nBULK_RELOCATE commits (hygiene, no action needed):")
+        for r in results:
+            if r["status"] == "BULK_RELOCATE":
+                claimed_str = str(r["claimed"]) if r["claimed"] is not None else "unclaimed"
+                print(f"  {r['hash']} claimed={claimed_str} measured={r['measured']}: {r['subject'][:60]}")
 
     # Save last-verify ref
     if args.save_last:
