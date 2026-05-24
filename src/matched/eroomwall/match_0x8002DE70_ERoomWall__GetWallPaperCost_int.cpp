@@ -1,0 +1,12 @@
+// 0x8002DE70 ERoomWall::GetWallPaperCost(int, (268 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stw 31,0x1c(1); stw 0,0x24(1); mr. 31,4; beq 0f; bl _s8002DE70_0; mullw 3,31,3; b 7f; 0:; lwz 3,0x14(3); li 6,0; cmpwi 3,0; beq 6f; lis 9,-32697; lis 11,-32707; addi 31,9,24012; addi 4,11,3640; lis 9,-32707; addi 5,9,3648; 1:; lwz 9,0x0(3); lwz 3,0x8(3); cmpwi 9,0; beq 5f; lwz 11,0x3a0(9); cmpwi 11,0; beq 5f; lwz 9,0xd8(31); li 0,0; lwz 8,0x8(11); lwz 9,0x0(9); cmpwi 9,0; beq 2f; lwz 0,-4(9); 2:; cmpwi 0,0; ble 5f; mtspr 9,0; lfd f11,0x0(4); lfs f10,0x0(5); mr 10,9; lis 7,17200; 3:; lwz 9,0x0(10); addi 10,10,4; lwz 0,0x8(9); cmpw 8,0; bne 4f; lwz 0,0x0(9); stw 0,0x14(1); mr 11,9; stw 7,0x10(1); lfd f0,0x10(1); fsub f0,f0,f11; frsp f0,f0; fmuls f0,f0,f10; fmr f13,f0; fctiwz f12,f13; stfd f12,0x10(1); lwz 11,0x14(1); subf 6,11,6; 4:; bdnz 3b; 5:; mr. 3,3; bne 1b; 6:; mr 3,6; 7:; lwz 0,0x24(1); mtspr 8,0; lwz 31,0x1c(1); addi 1,1,32"
+
+extern "C" void _s8002DE70_0();
+
+struct ERoomWall {
+    void GetWallPaperCost();
+};
+
+void ERoomWall::GetWallPaperCost() {
+}

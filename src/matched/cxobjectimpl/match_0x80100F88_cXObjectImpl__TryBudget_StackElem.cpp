@@ -1,0 +1,12 @@
+// 0x80100F88 cXObjectImpl::TryBudget(StackElem (392 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 29,0x14(1); stw 0,0x24(1); mr 31,5; lbz 0,0x0(31); cmpwi 0,1; beq 2f; bgt 0f; cmpwi 0,0; beq 1f; b 4f; 0:; cmpwi 0,2; beq 3f; b 4f; 1:; li 4,7; b 5f; 2:; li 4,9; b 5f; 3:; li 4,25; b 5f; 4:; lbz 4,0x1(31); 5:; lha 5,0x2(31); rlwinm 4,4,0,24,31; lbz 30,0x6(31); cmplwi 30,8; ble 6f; lwz 11,0x0(3); li 0,1; stw 0,-24512(13); li 9,57; sth 9,0x34(11); li 4,57; lwz 11,0x4(3); lwz 9,0x4(11); lha 3,0x110(9); lwz 0,0x114(9); add 3,11,3; mtspr 8,0; blrl; b 8f; 6:; lhz 0,0x4(31); li 29,0; andi. 9,0,4; beq 7f; li 29,1; 7:; li 6,0; li 7,0; addi 8,1,8; bl _s80100F88_0; cmpwi 3,-1; bne 9f; cmpwi 4,-1; bne 9f; 8:; li 3,-1; li 4,-1; b 14f; 9:; lwz 11,-21496(13); mr 4,29; lwz 9,0x0(11); lwz 0,0xa4(9); lha 3,0xa0(9); mtspr 8,0; add 3,11,3; blrl; lhz 9,0x4(31); xori 0,9,2; andi. 11,0,2; bne 10f; lhz 0,0x8(1); neg 0,0; sth 0,0x8(1); 10:; lha 5,0x8(1); cmpwi 5,0; blt 11f; cmpw 3,5; blt 13f; 11:; andi. 0,9,1; bne 12f; lwz 3,-21496(13); mr 4,30; mr 6,29; lwz 9,0x0(3); lha 0,0xa8(9); lwz 9,0xac(9); add 3,3,0; mtspr 8,9; blrl; 12:; li 3,0; li 4,1; b 14f; 13:; li 3,0; li 4,0; 14:; lwz 0,0x24(1); mtspr 8,0; lmw 29,0x14(1); addi 1,1,32"
+
+extern "C" void _s80100F88_0();
+
+struct cXObjectImpl {
+    void TryBudget_StackElem();
+};
+
+void cXObjectImpl::TryBudget_StackElem() {
+}

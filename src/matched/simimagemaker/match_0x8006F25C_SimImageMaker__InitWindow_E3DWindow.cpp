@@ -1,0 +1,13 @@
+// 0x8006F25C SimImageMaker::InitWindow(E3DWindow (428 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-72(1); mfspr 0,8; stmw 28,0x38(1); stw 0,0x4c(1); addi 30,1,8; li 0,64; stw 0,0x4(30); lis 9,-32707; stw 0,0x8(1); li 11,1; lfs f0,0x5310(9); li 0,3; stw 0,0x8(30); addi 8,1,20; stw 11,0x1c(30); addi 10,1,40; stw 11,0x18(30); mr 31,3; stfs f0,0x28(1); mr 29,4; stfs f0,0x30(1); mr 28,5; stfs f0,0x2c(1); li 6,1; lwz 0,0x28(1); lwz 9,0x2c(1); lwz 11,0x30(1); stw 0,0x14(1); stw 9,0x4(8); stw 11,0x8(8); stfs f0,0x8(10); stfs f0,0x4(10); stfs f0,0x28(1); lwz 0,0x28(1); lwz 9,0x8(10); lwz 11,0x4(10); lwz 7,0x0(31); stw 0,0x14(1); lwz 0,0x8(31); lwz 10,0x4(31); stw 9,0x8(8); cmpwi 0,16; stw 11,0x4(8); stw 7,0x8(1); stw 10,0xc(1); bne 0f; li 6,0; 0:; li 0,0; stw 6,0x20(1); stw 0,0x24(1); lwz 11,-26392(13); lwz 9,0x0(11); lwz 0,0x44(9); lha 3,0x40(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-26392(13); lwz 9,0x0(11); lwz 0,0x184(9); lha 3,0x180(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-26392(13); mr 4,30; lwz 9,0x0(11); lwz 0,0xd4(9); lha 3,0xd0(9); mtspr 8,0; add 3,11,3; blrl; lis 9,-32707; lis 11,-32707; lfs f2,0x5314(9); mr 30,3; lis 9,-32707; lfs f1,0x214(31); lfs f4,0x531c(9); mr 3,29; lfs f3,0x5318(11); bl _s8006F25C_0; lwz 9,0x9c(29); mr 4,30; li 5,5; lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,29,3; blrl; mr 3,29; addi 4,31,496; addi 6,31,520; addi 5,31,508; bl _s8006F25C_1; lwz 9,0x9c(29); mr 4,28; lha 3,0x10(9); lwz 0,0x14(9); add 3,29,3; mtspr 8,0; blrl; lwz 0,0x4c(1); mtspr 8,0; lmw 28,0x38(1); addi 1,1,72"
+
+extern "C" void _s8006F25C_0();
+extern "C" void _s8006F25C_1();
+
+struct SimImageMaker {
+    void InitWindow_E3DWindow();
+};
+
+void SimImageMaker::InitWindow_E3DWindow() {
+}

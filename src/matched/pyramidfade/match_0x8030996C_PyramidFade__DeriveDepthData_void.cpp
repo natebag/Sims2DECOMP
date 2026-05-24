@@ -1,0 +1,10 @@
+// 0x8030996C PyramidFade::DeriveDepthData(void) (308 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); stmw 28,0x30(1); lis 9,-32702; addi 11,1,20; lfs f0,-1184(9); addi 8,3,56; addi 9,1,8; lis 5,-32702; stfs f0,0x20(1); neg 0,9; stfs f0,0x28(1); add 31,11,0; stfs f0,0x24(1); add 30,9,0; lwz 10,0x20(1); fmr f10,f0; lwz 6,0x24(1); lis 4,-32702; lwz 7,0x28(1); addi 29,3,152; stw 10,0x14(1); addi 28,1,32; stw 6,0x4(11); li 10,0; stw 7,0x8(11); li 12,0; lfs f11,-1180(5); addi 11,3,136; lwz 0,0x14(1); lfs f0,0x38(3); stw 0,0x8(1); stw 6,0x4(9); stw 7,0x8(9); stfs f0,0x20(1); lfs f12,-1176(4); lfs f0,0x4(8); stfs f0,0x24(1); lfs f13,0x8(8); stfs f13,0x28(1); lfs f0,0xc(8); stfs f0,0x2c(1); 0:; lfsx f0,12,28; fcmpu 0,f0,f10; ble 1f; srawi 0,30,2; addi 9,3,144; stbx 0,29,10; stfs f11,0x8(11); b 2f; 1:; srawi 0,31,2; addi 9,3,144; stbx 0,29,10; stfs f12,0x8(11); 2:; lfsx f0,9,12; addi 10,10,1; lfs f13,-8(11); addi 12,12,4; fneg f0,f0; addi 31,31,4; fmuls f0,f0,f13; addi 30,30,4; stfs f0,0x0(11); cmpwi 10,1; addi 11,11,4; ble 0b; lwz 0,0x9c(3); cmpwi 0,0; bne 3f; lis 9,-32702; lis 11,-32702; lfs f0,-1180(9); lfs f13,-1184(11); stfs f0,0x88(3); stfs f13,0x90(3); 3:; lmw 28,0x30(1); addi 1,1,64"
+
+struct PyramidFade {
+    void DeriveDepthData();
+};
+
+void PyramidFade::DeriveDepthData() {
+}

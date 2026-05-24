@@ -1,0 +1,10 @@
+// 0x8014951C TTabScratchEntry::CopyFrom(ITreeTableEntry (420 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 26,0x8(1); stw 0,0x24(1); mr 31,4; mr 27,3; lwz 9,0x0(31); lwz 0,0x13c(9); lha 3,0x138(9); mtspr 8,0; add 3,31,3; blrl; sth 3,0x4(27); lwz 9,0x0(31); lwz 0,0x12c(9); lha 3,0x128(9); mtspr 8,0; add 3,31,3; blrl; sth 3,0x6(27); lwz 9,0x0(27); lwz 0,0xf4(9); lha 3,0xf0(9); mtspr 8,0; add 3,27,3; blrl; lwz 9,0x0(31); mr 26,3; lha 3,0xf0(9); lwz 0,0xf4(9); add 3,31,3; mtspr 8,0; blrl; cmpw 26,3; ble 0f; lwz 9,0x0(31); lha 3,0xf0(9); lwz 0,0xf4(9); add 3,31,3; mtspr 8,0; blrl; mr 26,3; 0:; li 28,0; cmpw 28,26; bge 2f; 1:; lwz 9,0x0(31); mr 4,28; lwz 11,0x0(27); lwz 0,0x114(9); lha 3,0x110(9); addi 29,11,288; mtspr 8,0; lha 30,0x120(11); add 3,31,3; add 30,27,30; blrl; lwz 0,0x4(29); mr 5,3; mr 4,28; mr 3,30; mtspr 8,0; addi 28,28,1; blrl; cmpw 28,26; blt 1b; 2:; lwz 9,0x0(31); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,31,3; blrl; sth 3,0x112(27); lwz 9,0x0(31); lwz 0,0x14c(9); lha 3,0x148(9); mtspr 8,0; add 3,31,3; blrl; stw 3,0x108(27); lwz 9,0x0(31); lwz 0,0x164(9); lha 3,0x160(9); mtspr 8,0; add 3,31,3; blrl; stfs f1,0x10c(27); lwz 9,0x0(31); lwz 0,0x1e4(9); lha 3,0x1e0(9); mtspr 8,0; add 3,31,3; blrl; sth 3,0x110(27); lwz 9,0x0(31); lha 3,0xb8(9); lwz 0,0xbc(9); add 3,31,3; mtspr 8,0; blrl; sth 3,0x116(27); lwz 0,0x24(1); mtspr 8,0; lmw 26,0x8(1); addi 1,1,32"
+
+struct TTabScratchEntry {
+    void CopyFrom_ITreeTableEntry();
+};
+
+void TTabScratchEntry::CopyFrom_ITreeTableEntry() {
+}

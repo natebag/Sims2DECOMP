@@ -1,0 +1,16 @@
+// 0x800BBD40 HouseImpl::DoCommand(short, (604 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,3; mr 31,4; lwz 11,0x14(29); mr 30,5; cmpwi 11,0; beq 0f; lwz 9,0x0(11); lha 3,0x28(9); lwz 0,0x2c(9); add 3,11,3; mtspr 8,0; blrl; 0:; cmpwi 31,236; beq 6f; bgt 2f; cmpwi 31,216; beq 4f; bgt 1f; cmpwi 31,134; beq 14f; b 13f; 1:; cmpwi 31,217; beq 10f; cmpwi 31,222; beq 12f; b 13f; 2:; cmpwi 31,254; beq 5f; bgt 3f; cmpwi 31,237; beq 7f; cmpwi 31,239; beq 8f; b 13f; 3:; cmpwi 31,256; beq 11f; cmpwi 31,1012; beq 9f; b 13f; 4:; lwz 9,0x0(29); lha 3,0x88(9); lwz 0,0x8c(9); add 3,29,3; mtspr 8,0; blrl; b 14f; 5:; lwz 3,-21496(13); li 4,9; lwz 9,0x0(3); lha 0,0x30(9); lwz 9,0x34(9); add 3,3,0; mtspr 8,9; blrl; cmpw 30,3; bne 14f; lwz 11,-21496(13); li 4,9; li 5,0; lwz 9,0x0(11); lwz 0,0x3c(9); lha 3,0x38(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-21476(13); li 4,0; lwz 9,0x0(11); lha 3,0x120(9); lwz 0,0x124(9); add 3,11,3; mtspr 8,0; blrl; stw 3,0x14(29); b 14f; 6:; lwz 3,-21484(13); mr 4,30; lwz 9,0x0(3); lha 0,0x78(9); lwz 9,0x7c(9); add 3,3,0; mtspr 8,9; blrl; lwz 3,-21472(13); bl _s800BBD40_0; b 14f; 7:; lwz 3,-21472(13); mr 4,30; bl _s800BBD40_1; b 14f; 8:; li 0,0; ori 0,0,65531; cmpw 30,0; beq 14f; lwz 3,-21472(13); mr 4,30; bl _s800BBD40_2; b 14f; 9:; lwz 3,-21472(13); bl _s800BBD40_3; b 14f; 10:; lwz 3,-21472(13); bl _s800BBD40_4; b 14f; 11:; lwz 9,0x0(29); rlwinm 5,30,0,16,31; srawi 4,30,16; lha 3,0x28(9); lwz 0,0x2c(9); add 3,29,3; mtspr 8,0; blrl; b 14f; 12:; lwz 3,-21484(13); mr 4,30; lwz 9,0x0(3); lha 0,0x90(9); lwz 9,0x94(9); add 3,3,0; mtspr 8,9; blrl; mr. 11,3; beq 14f; lwz 9,0x4(11); lha 3,0x318(9); lwz 0,0x31c(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 3,2; bne 14f; lwz 3,-21476(13); lwz 9,0x0(3); lha 0,0x98(9); lwz 9,0x9c(9); add 3,3,0; mtspr 8,9; blrl; b 14f; 13:; li 3,0; b 15f; 14:; li 3,1; 15:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+
+extern "C" void _s800BBD40_0();
+extern "C" void _s800BBD40_1();
+extern "C" void _s800BBD40_2();
+extern "C" void _s800BBD40_3();
+extern "C" void _s800BBD40_4();
+
+struct HouseImpl {
+    void DoCommand();
+};
+
+void HouseImpl::DoCommand() {
+}

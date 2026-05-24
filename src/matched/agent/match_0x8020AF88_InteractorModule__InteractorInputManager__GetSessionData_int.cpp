@@ -1,4 +1,13 @@
-// 0x8020AF88 InteractorModule::InteractorInputManager::GetSessionData(int) (32 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x0(3); cmpwi 0,0; beq 0f; rlwinm 3,4,5,0,26; add 3,0,3; blr; 0:; li 3,0"
-extern "C" int f_8020AF88() {}
+// 0x8020AF88 InteractorModule::InteractorInputManager::GetSessionData(int) (32B)
+// lwz r0,0; cmpwi r0,0; beq->li r3,0; rlwinm r3,r4,5,0,26; add r3,r0,r3; blr
+namespace InteractorModule {
+struct InteractorInputManager {
+    char* m_sessionTable;  // offset 0
+    int* GetSessionData(int idx) const;
+};
+int* InteractorInputManager::GetSessionData(int idx) const {
+    if (!m_sessionTable) return 0;
+    return (int*)(m_sessionTable + idx * 32);
+}
+}

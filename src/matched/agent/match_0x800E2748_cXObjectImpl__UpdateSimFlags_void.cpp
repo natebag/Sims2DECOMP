@@ -1,4 +1,0 @@
-// 0x800E2748 cXObjectImpl::UpdateSimFlags(void) (256 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); mr 29,3; lwz 10,0x4(29); lwz 30,0x58(29); lwz 9,0x4(10); lwz 11,0x0(30); lha 3,0x328(9); lwz 9,0x32c(9); addi 27,11,576; add 3,10,3; lha 0,0x240(11); mtspr 8,9; add 30,30,0; blrl; lwz 11,0x4(29); mr 28,3; lwz 9,0x4(11); lwz 0,0x22c(9); lha 3,0x228(9); mtspr 8,0; add 3,11,3; blrl; lwz 0,0x4(27); mr 6,3; mr 4,28; mr 3,30; li 5,2; mtspr 8,0; blrl; lwz 10,0x4(29); lwz 30,0x58(29); lwz 9,0x4(10); lwz 11,0x0(30); lha 3,0x328(9); lwz 9,0x32c(9); addi 27,11,576; add 3,10,3; lha 0,0x240(11); mtspr 8,9; add 30,30,0; blrl; lwz 11,0x4(29); mr 28,3; lwz 9,0x4(11); lwz 0,0x3f4(9); lha 3,0x3f0(9); mtspr 8,0; add 3,11,3; blrl; lwz 0,0x4(27); mr 6,3; mr 3,30; mr 4,28; li 5,8; mtspr 8,0; blrl; lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
-extern "C" void f_800E2748() {}

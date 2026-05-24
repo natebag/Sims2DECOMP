@@ -1,0 +1,57 @@
+// 0x8003193C ESim::initModel(void) (1624 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-96(1); mfspr 0,8; stmw 28,0x50(1); stw 0,0x64(1); mr 31,3; lis 29,-32693; b 1f; 0:; addi 3,1,8; bl _s8003193C_0; addi 3,1,8; li 4,10; bl _s8003193C_1; addi 3,1,8; li 4,2; bl _s8003193C_2; 1:; lwz 11,0x3d0(31); li 4,128; lwz 10,0x0(11); lwz 9,0x4(10); lha 3,0x78(9); lwz 0,0x7c(9); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; beq 0b; li 0,0; mr 3,31; stw 0,0x3d4(31); bl _s8003193C_3; cmpwi 3,0; beq 2f; addi 30,31,820; lis 4,-90; mr 3,30; ori 4,4,848; li 5,0; li 6,0; bl _s8003193C_4; lis 9,-32707; lis 5,-16374; lfs f1,0x112c(9); mr 3,30; li 4,1; ori 5,5,5585; li 6,-1; li 7,0; bl _s8003193C_5; b 3f; 2:; addi 30,31,820; lis 4,8120; mr 3,30; ori 4,4,2804; li 5,0; li 6,0; bl _s8003193C_6; lis 9,-32707; lis 5,-16374; lfs f1,0x112c(9); mr 3,30; li 4,1; ori 5,5,5585; li 6,-1; li 7,0; bl _s8003193C_7; 3:; lis 9,-32707; li 28,0; lfs f0,0x1130(9); stfs f0,0x54(30); lwz 11,0x3d0(31); lwz 9,0x4(11); lwz 0,0x164(9); lha 3,0x160(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x3d0(31); mr 30,3; lwz 9,0x4(11); lwz 0,0x1b4(9); lha 3,0x1b0(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-21476(13); mr 4,3; lwz 9,0x0(11); lha 3,0xb8(9); lwz 0,0xbc(9); add 3,11,3; mtspr 8,0; blrl; mr. 3,3; beq 4f; bl _s8003193C_8; mr. 11,3; beq 4f; lwz 9,0x0(11); lha 3,0x98(9); lwz 0,0x9c(9); add 3,11,3; mtspr 8,0; blrl; 4:; lwz 9,0x3d0(31); lwz 10,0x0(9); lwz 11,0x4(10); lha 3,0x368(11); lwz 0,0x36c(11); add 3,10,3; mtspr 8,0; blrl; bl _s8003193C_9; mr 5,3; lis 4,-32707; addi 4,4,4364; addi 3,1,8; crxor 6,6,6; bl _s8003193C_10; lis 3,-32693; addi 4,1,8; addi 3,3,24536; li 5,0; li 6,0; bl _s8003193C_11; mr. 4,3; beq 5f; addi 3,29,24536; li 5,0; bl _s8003193C_12; 5:; cmpwi 30,0; beq 7f; lwz 0,0x8(30); cmpwi 0,0; beq 11f; lwz 3,0x120(31); cmpwi 3,0; beq 6f; bl _s8003193C_13; li 0,0; stw 0,0x120(31); 6:; lwz 4,0x8(30); lis 3,-32692; li 5,0; li 6,0; addi 3,3,-27556; bl _s8003193C_14; li 0,0; stw 3,0x120(31); stw 0,0x440(31); addi 9,31,1088; lis 10,-32765; stw 0,0x34(9); stw 0,0x4(9); addi 10,10,12084; stw 0,0x8(9); addi 6,31,176; stw 0,0xc(9); addi 11,31,1144; stw 0,0x10(9); lis 7,-32697; stw 0,0x14(9); addi 7,7,21748; stw 0,0x18(9); lis 8,-32765; stw 0,0x1c(9); addi 8,8,11624; stw 0,0x20(9); li 5,-1; stw 0,0x24(9); stw 6,0x448(31); stw 10,0x454(31); stw 31,0x464(31); stw 31,0x458(31); stw 28,0x440(31); stw 0,0x444(31); stw 0,0x44c(31); stw 0,0x478(31); stw 0,0x34(11); stw 0,0x4(11); stw 0,0x8(11); stw 0,0xc(11); stw 0,0x10(11); stw 0,0x14(11); stw 0,0x18(11); stw 0,0x1c(11); stw 0,0x20(11); stw 0,0x24(11); stw 7,0x480(31); stw 31,0x49c(31); stw 31,0x490(31); stw 8,0x48c(31); stw 28,0x478(31); stw 5,0x47c(31); stw 0,0x484(31); b 11f; 7:; addi 3,1,72; addi 29,1,40; bl _s8003193C_15; lwz 9,0x3d0(31); lwz 10,0x0(9); lwz 11,0x4(10); lwz 0,0x36c(11); lha 3,0x368(11); mtspr 8,0; add 3,10,3; blrl; bl _s8003193C_16; bl _s8003193C_17; addi 4,1,8; li 5,32; bl _s8003193C_18; lwz 9,0x3d0(31); lwz 10,0x0(9); lwz 11,0x4(10); lwz 0,0x36c(11); lha 3,0x368(11); mtspr 8,0; add 3,10,3; blrl; bl _s8003193C_19; bl _s8003193C_20; mr 4,29; li 5,32; bl _s8003193C_21; li 0,1; stw 30,0x3d8(31); stw 0,0x52c(31); mr 3,31; bl _s8003193C_22; cmpwi 3,0; bne 10f; lwz 11,0x3d0(31); lwz 30,0x63c(31); lwz 9,0x4(11); lwz 0,0x154(9); lha 3,0x150(9); mtspr 8,0; add 3,11,3; blrl; mr 4,3; li 5,0; mr 3,30; bl _s8003193C_23; lwz 11,0x3d0(31); lwz 9,0x4(11); lwz 0,0x154(9); lha 3,0x150(9); mtspr 8,0; add 3,11,3; blrl; lwz 0,0x118(3); cmpwi 0,0; beq 8f; lwz 11,0x3d0(31); addi 30,1,72; lwz 10,0x0(11); lwz 9,0x4(10); lha 3,0x368(9); lwz 0,0x36c(9); add 3,10,3; mtspr 8,0; blrl; bl _s8003193C_24; mr 5,3; lis 4,-32707; mr 3,30; addi 4,4,4376; crxor 6,6,6; bl _s8003193C_25; b 9f; 8:; addi 30,1,72; lis 4,-32707; mr 3,30; addi 4,4,4388; mr 6,29; addi 5,1,8; crxor 6,6,6; bl _s8003193C_26; mr 3,30; bl _s8003193C_27; 9:; lwz 4,0x48(1); lwz 3,0x63c(31); bl _s8003193C_28; lwz 3,0x63c(31); bl _s8003193C_29; lwz 3,0x63c(31); bl _s8003193C_30; lwz 3,0x63c(31); bl _s8003193C_31; lwz 3,0x63c(31); bl _s8003193C_32; lwz 3,0x63c(31); li 0,1; stw 0,0x524(31); li 4,1; bl _s8003193C_33; mr 3,31; bl _s8003193C_34; 10:; lis 9,-32765; lis 11,-32697; lis 10,-32765; li 0,0; addi 9,9,11352; addi 11,11,21748; addi 10,10,11624; addi 8,31,176; li 7,-1; stw 28,0x478(31); stw 31,0x464(31); lis 3,-32692; stw 31,0x458(31); lis 4,27935; stw 28,0x440(31); ori 4,4,2390; stw 31,0x49c(31); addi 3,3,-27556; stw 31,0x490(31); li 5,0; stw 8,0x448(31); li 6,0; stw 9,0x454(31); stw 7,0x47c(31); stw 11,0x480(31); stw 10,0x48c(31); stw 0,0x484(31); stw 0,0x444(31); stw 0,0x44c(31); bl _s8003193C_35; stw 3,0x3e8(31); addi 3,1,72; lwz 4,0x48(1); bl _s8003193C_36; 11:; lis 9,-32707; li 29,0; lfs f0,0x1134(9); stw 29,0x3ec(31); stfs f0,0x3f0(31); lwz 3,0x408(31); cmpwi 3,0; beq 12f; bl _s8003193C_37; stw 29,0x408(31); 12:; lwz 3,0x40c(31); cmpwi 3,0; beq 13f; bl _s8003193C_38; stw 29,0x40c(31); 13:; lwz 3,0x410(31); cmpwi 3,0; beq 14f; bl _s8003193C_39; stw 29,0x410(31); 14:; lis 30,-32692; lis 4,-15965; addi 30,30,-27556; ori 4,4,38141; li 5,0; li 6,0; mr 3,30; bl _s8003193C_40; stw 3,0x408(31); lis 4,21133; ori 4,4,37832; li 5,0; li 6,0; mr 3,30; bl _s8003193C_41; stw 3,0x40c(31); lis 4,26846; ori 4,4,35554; li 5,0; li 6,0; mr 3,30; bl _s8003193C_42; stw 3,0x410(31); lis 4,14471; stw 29,0x62c(31); mr 3,30; ori 4,4,64717; li 5,0; li 6,0; bl _s8003193C_43; li 0,-1; li 11,1; stw 3,0x42c(31); lis 9,-32697; stw 0,0x630(31); stw 29,0x3d8(31); stw 11,0x634(31); lwz 0,0x5c74(9); cmpwi 0,0; beq 15f; mr 3,31; li 4,1; bl _s8003193C_44; b 16f; 15:; mr 3,31; li 4,0; bl _s8003193C_45; 16:; li 0,1; stw 0,0x638(31); lwz 0,0x64(1); mtspr 8,0; lmw 28,0x50(1); addi 1,1,96"
+
+extern "C" void _s8003193C_0();
+extern "C" void _s8003193C_1();
+extern "C" void _s8003193C_2();
+extern "C" void _s8003193C_3();
+extern "C" void _s8003193C_4();
+extern "C" void _s8003193C_5();
+extern "C" void _s8003193C_6();
+extern "C" void _s8003193C_7();
+extern "C" void _s8003193C_8();
+extern "C" void _s8003193C_9();
+extern "C" void _s8003193C_10();
+extern "C" void _s8003193C_11();
+extern "C" void _s8003193C_12();
+extern "C" void _s8003193C_13();
+extern "C" void _s8003193C_14();
+extern "C" void _s8003193C_15();
+extern "C" void _s8003193C_16();
+extern "C" void _s8003193C_17();
+extern "C" void _s8003193C_18();
+extern "C" void _s8003193C_19();
+extern "C" void _s8003193C_20();
+extern "C" void _s8003193C_21();
+extern "C" void _s8003193C_22();
+extern "C" void _s8003193C_23();
+extern "C" void _s8003193C_24();
+extern "C" void _s8003193C_25();
+extern "C" void _s8003193C_26();
+extern "C" void _s8003193C_27();
+extern "C" void _s8003193C_28();
+extern "C" void _s8003193C_29();
+extern "C" void _s8003193C_30();
+extern "C" void _s8003193C_31();
+extern "C" void _s8003193C_32();
+extern "C" void _s8003193C_33();
+extern "C" void _s8003193C_34();
+extern "C" void _s8003193C_35();
+extern "C" void _s8003193C_36();
+extern "C" void _s8003193C_37();
+extern "C" void _s8003193C_38();
+extern "C" void _s8003193C_39();
+extern "C" void _s8003193C_40();
+extern "C" void _s8003193C_41();
+extern "C" void _s8003193C_42();
+extern "C" void _s8003193C_43();
+extern "C" void _s8003193C_44();
+extern "C" void _s8003193C_45();
+
+struct ESim {
+    void initModel();
+};
+
+void ESim::initModel() {
+}

@@ -1,0 +1,26 @@
+// 0x80369294 ERDataset::Load(EFile (1148 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-232(1); mfspr 0,8; stmw 21,0xbc(1); stw 0,0xec(1); mr 29,4; mr 23,3; lwz 9,0x28(29); mr 21,5; lha 3,0x30(9); lwz 0,0x34(9); add 3,29,3; mtspr 8,0; blrl; mr 22,3; addi 3,1,8; bl _s80369294_0; lis 5,17492; addi 3,1,8; mr 4,29; ori 5,5,21332; li 6,10; li 7,10; bl _s80369294_1; cmpwi 3,0; bne 0f; addi 3,1,8; li 4,2; bl _s80369294_2; b 21f; 0:; addi 3,1,8; addi 30,23,20; bl _s80369294_3; li 24,0; lwz 11,0x18(1); lis 9,-32702; lwz 0,0x10(23); lis 3,-32693; lfs f1,0x3330(9); addi 3,3,24536; rlwimi 0,11,8,0,23; stw 0,0x10(23); bl _s80369294_4; mr 3,23; bl _s80369294_5; lwz 9,0x28(29); addi 4,1,32; li 5,64; lwz 0,0x1c(9); lha 3,0x18(9); mtspr 8,0; add 3,29,3; blrl; lwz 9,0x28(29); addi 4,1,144; li 5,4; lha 3,0x18(9); lwz 0,0x1c(9); add 3,29,3; mtspr 8,0; blrl; lwz 4,0x90(1); mr 3,30; bl _s80369294_6; mr 28,30; b 19f; 1:; lwz 3,-22652(13); mr 4,31; lwz 9,0x0(3); lha 0,0xa0(9); lwz 9,0xa4(9); add 3,3,0; mtspr 8,9; blrl; mr. 31,3; beq 20f; lwz 9,0x28(29); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,29,3; blrl; subf 3,22,3; xoris 3,3,32768; lis 0,17200; stw 3,0xb4(1); mr 10,9; lis 11,-32702; lis 8,-32702; stw 0,0xb0(1); lis 3,-32693; lfd f13,0x3338(11); addi 3,3,24536; lfd f0,0xb0(1); stw 21,0xb4(1); lfd f12,0x3340(8); fsub f0,f0,f13; stw 0,0xb0(1); frsp f0,f0; lfd f1,0xb0(1); fsub f1,f1,f12; frsp f1,f1; fdivs f1,f0,f1; bl _s80369294_7; lwz 9,0x28(29); addi 4,1,148; li 5,4; lwz 0,0x1c(9); lha 3,0x18(9); mtspr 8,0; add 3,29,3; blrl; lwz 9,0x28(29); addi 4,1,152; li 5,4; lwz 0,0x1c(9); lha 3,0x18(9); mtspr 8,0; add 3,29,3; blrl; lwz 9,0x28(29); addi 4,1,156; li 5,4; lha 3,0x18(9); lwz 0,0x1c(9); add 3,29,3; mtspr 8,0; blrl; lwz 4,0x9c(1); cmpwi 4,0; beq 2f; lwz 9,0x28(29); li 5,1; lha 3,0x28(9); lwz 0,0x2c(9); add 3,29,3; mtspr 8,0; blrl; 2:; lwz 4,0x94(1); mr 3,31; lwz 6,0x98(1); mr 5,29; addi 25,24,1; bl _s80369294_8; mr. 3,3; beq 18f; lwz 9,0x4(28); lwz 0,0xc(28); lwz 11,0x94(1); cmpw 9,0; stw 31,0x84(1); stw 11,0x80(1); stw 3,0x88(1); beq 3f; stw 3,0x8(9); stw 11,0x0(9); stw 31,0x4(9); lwz 9,0x4(28); addi 9,9,12; stw 9,0x4(28); b 18f; 3:; lwz 0,0x14(23); mr 30,9; lis 9,-21846; li 11,1; ori 9,9,43691; subf 0,0,30; mullw 0,0,9; stw 11,0xa4(1); addi 10,1,164; addi 11,1,160; srawi 9,0,2; stw 9,0xa0(1); cmplwi 9,1; bge 4f; mr 11,10; 4:; lwz 0,0x0(11); add. 3,9,0; beq 6f; mulli 3,3,12; cmplwi 3,128; mr 26,3; ble 5f; bl _s80369294_9; b 7f; 5:; bl _s80369294_10; b 7f; 6:; li 3,0; li 26,0; 7:; mr 31,3; lwz 10,0x0(28); mr 27,31; addi 25,24,1; mr 3,27; cmpw 10,30; beq 9f; 8:; lwz 0,0x0(10); lwz 9,0x4(10); lwz 11,0x8(10); stw 0,0x0(3); addi 10,10,12; stw 9,0x4(3); cmpw 10,30; stw 11,0x8(3); addi 3,3,12; bne 8b; 9:; lwz 0,0xa4(1); mr 31,3; cmpwi 0,1; bne 10f; lwz 0,0x80(1); lwz 9,0x84(1); lwz 11,0x88(1); stw 0,0x0(31); stw 9,0x4(31); stw 11,0x8(31); addi 31,31,12; b 13f; 10:; mr. 9,0; mr 3,31; mtspr 9,9; beq 12f; 11:; lwz 0,0x80(1); lwz 9,0x84(1); lwz 11,0x88(1); stw 0,0x0(3); stw 9,0x4(3); stw 11,0x8(3); addi 3,3,12; bdnz 11b; 12:; mr 31,3; 13:; lwz 11,0x0(28); lwz 0,0x4(28); mr 3,11; lwz 9,0xc(28); cmpw 11,0; beq 15f; 14:; addi 11,11,12; cmpw 11,0; bne 14b; 15:; lis 0,-21846; subf 9,3,9; ori 0,0,43691; cmpwi 3,0; mullw 9,9,0; srawi 4,9,2; beq 17f; mulli 4,4,12; cmplwi 4,128; ble 16f; bl _s80369294_11; b 17f; 16:; bl _s80369294_12; 17:; add 0,26,27; stw 27,0x0(28); stw 31,0x4(28); stw 0,0xc(28); 18:; mr 24,25; 19:; lwz 0,0x90(1); cmpw 24,0; bge 20f; lwz 9,0x28(29); addi 31,1,96; mr 4,31; li 5,32; lha 3,0x18(9); lwz 0,0x1c(9); add 3,29,3; mtspr 8,0; blrl; cmpwi 3,32; bne 20f; lbz 0,0x60(1); cmpwi 0,0; bne 1b; 20:; lis 9,-32702; lis 3,-32693; lfs f1,0x3348(9); addi 3,3,24536; bl _s80369294_13; addi 3,1,8; li 4,2; bl _s80369294_14; 21:; lwz 0,0xec(1); mtspr 8,0; lmw 21,0xbc(1); addi 1,1,232"
+
+extern "C" void _s80369294_0();
+extern "C" void _s80369294_1();
+extern "C" void _s80369294_2();
+extern "C" void _s80369294_3();
+extern "C" void _s80369294_4();
+extern "C" void _s80369294_5();
+extern "C" void _s80369294_6();
+extern "C" void _s80369294_7();
+extern "C" void _s80369294_8();
+extern "C" void _s80369294_9();
+extern "C" void _s80369294_10();
+extern "C" void _s80369294_11();
+extern "C" void _s80369294_12();
+extern "C" void _s80369294_13();
+extern "C" void _s80369294_14();
+
+struct ERDataset {
+    void Load_EFile();
+};
+
+void ERDataset::Load_EFile() {
+}

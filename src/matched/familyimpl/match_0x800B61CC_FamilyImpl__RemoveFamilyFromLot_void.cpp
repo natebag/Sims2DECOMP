@@ -1,0 +1,12 @@
+// 0x800B61CC FamilyImpl::RemoveFamilyFromLot(void) (260 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 25,0xc(1); stw 0,0x2c(1); mr 27,3; lwz 31,-21484(13); addi 11,27,36; lwz 9,0x24(27); lwz 0,0x4(11); li 28,0; subf 0,9,0; srawi. 9,0,2; ble 2f; mr 25,11; li 26,0; 0:; lwz 10,-21476(13); lwz 9,0x24(27); lwz 11,0x0(10); lwzx 4,9,26; lwz 0,0xc4(11); lha 3,0xc0(11); mtspr 8,0; add 3,10,3; blrl; lwz 30,0x0(31); lha 29,0xe8(30); addi 30,30,232; add 29,31,29; bl _s800B61CC_0; lwz 0,0x4(30); mr 4,3; mr 3,29; mtspr 8,0; blrl; mr. 3,3; beq 1f; lwz 11,0x0(3); lwz 30,0x0(31); lwz 9,0x4(11); lha 29,0x58(30); lwz 0,0x32c(9); addi 30,30,88; lha 3,0x328(9); add 29,31,29; mtspr 8,0; add 3,11,3; blrl; lwz 0,0x4(30); mr 4,3; mr 3,29; mtspr 8,0; blrl; 1:; lwz 0,0x4(25); addi 28,28,1; lwz 9,0x24(27); addi 26,26,4; subf 0,9,0; srawi 0,0,2; cmpw 28,0; blt 0b; 2:; lwz 0,0x2c(1); mtspr 8,0; lmw 25,0xc(1); addi 1,1,40"
+
+extern "C" void _s800B61CC_0();
+
+struct FamilyImpl {
+    void RemoveFamilyFromLot();
+};
+
+void FamilyImpl::RemoveFamilyFromLot() {
+}

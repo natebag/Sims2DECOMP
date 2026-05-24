@@ -1,0 +1,74 @@
+// 0x8017E2A8 cXObjectImpl::FindGoodLocation(FindGoodLocationParams (1776 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="bl _s8017E2A8_0; lbz 9,0x0(26); addi 9,9,-48; cmplwi 9,1; ble 1f; cmpwi 27,0; beq 0f; lis 4,-32706; mr 3,31; addi 4,4,14192; bl _s8017E2A8_1; b 1f; 0:; lis 4,-32706; mr 3,31; addi 4,4,14196; bl _s8017E2A8_2; 1:; mr 4,26; mr 3,31; bl _s8017E2A8_3; lis 4,-32706; mr 3,31; addi 4,4,14496; bl _s8017E2A8_4; lwz 0,0xac(1); mtspr 8,0; lmw 25,0x8c(1); addi 1,1,168; blr; stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,3; lwz 0,0x0(31); cmpwi 0,0; beq 2f; lis 4,-32706; addi 4,4,14504; bl _s8017E2A8_5; lwz 9,0x0(31); lis 4,-32706; lwz 3,-25136(13); lis 8,-32706; li 5,0; li 6,0; li 7,2; addi 4,4,14152; addi 8,8,14516; crxor 6,6,6; bl _s8017E2A8_6; bl _s8017E2A8_7; lwz 4,0x0(31); bl _s8017E2A8_8; li 0,0; stw 0,0x4(31); stw 0,0x0(31); 2:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16; blr; stwu 1,-152(1); mfspr 0,8; stmw 29,0x8c(1); stw 0,0x9c(1); mr 29,4; mr 30,3; lis 4,-32706; addi 4,4,14256; bl _s8017E2A8_9; lis 4,-32706; mr 5,29; addi 4,4,14212; addi 3,1,8; crxor 6,6,6; bl _s8017E2A8_10; addi 4,1,8; mr 3,30; bl _s8017E2A8_11; lis 4,-32706; mr 3,30; addi 4,4,14260; bl _s8017E2A8_12; lwz 0,0x9c(1); mtspr 8,0; lmw 29,0x8c(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stmw 29,0x8c(1); stw 0,0x9c(1); mr 29,4; mr 30,3; lis 4,-32706; addi 4,4,14268; bl _s8017E2A8_13; lis 4,-32706; mr 5,29; addi 4,4,14212; addi 3,1,8; crxor 6,6,6; bl _s8017E2A8_14; addi 4,1,8; mr 3,30; bl _s8017E2A8_15; lis 4,-32706; mr 3,30; addi 4,4,14272; bl _s8017E2A8_16; lwz 0,0x9c(1); mtspr 8,0; lmw 29,0x8c(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stmw 29,0x8c(1); stw 0,0x9c(1); mr 29,4; mr 30,3; lis 4,-32706; addi 4,4,14280; bl _s8017E2A8_17; lis 4,-32706; mr 5,29; addi 4,4,14212; addi 3,1,8; crxor 6,6,6; bl _s8017E2A8_18; addi 4,1,8; mr 3,30; bl _s8017E2A8_19; lis 4,-32706; mr 3,30; addi 4,4,14284; bl _s8017E2A8_20; lwz 0,0x9c(1); mtspr 8,0; lmw 29,0x8c(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stmw 29,0x8c(1); stw 0,0x9c(1); mr 29,4; mr 30,3; lis 4,-32706; addi 4,4,14208; bl _s8017E2A8_21; lis 4,-32706; mr 5,29; addi 4,4,14212; addi 3,1,8; crxor 6,6,6; bl _s8017E2A8_22; addi 4,1,8; mr 3,30; bl _s8017E2A8_23; lis 4,-32706; mr 3,30; addi 4,4,14216; bl _s8017E2A8_24; lwz 0,0x9c(1); mtspr 8,0; lmw 29,0x8c(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stmw 29,0x8c(1); stw 0,0x9c(1); mr 29,4; mr 30,3; lis 4,-32706; addi 4,4,14224; bl _s8017E2A8_25; lis 4,-32706; mr 5,29; addi 4,4,14212; addi 3,1,8; crxor 6,6,6; bl _s8017E2A8_26; addi 4,1,8; mr 3,30; bl _s8017E2A8_27; lis 4,-32706; mr 3,30; addi 4,4,14228; bl _s8017E2A8_28; lwz 0,0x9c(1); mtspr 8,0; lmw 29,0x8c(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stfd f31,0x90(1); stmw 30,0x88(1); stw 0,0x9c(1); mr 30,3; lis 4,-32706; fmr f31,f1; addi 4,4,14524; bl _s8017E2A8_29; lis 9,-32706; lis 4,-32706; lfs f0,0x38d0(9); addi 4,4,14532; addi 3,1,8; fmuls f31,f31,f0; fmr f1,f31; creqv 6,6,6; bl _s8017E2A8_30; addi 4,1,8; mr 3,30; bl _s8017E2A8_31; lis 4,-32706; mr 3,30; addi 4,4,14536; bl _s8017E2A8_32; lwz 0,0x9c(1); mtspr 8,0; lmw 30,0x88(1); lfd f31,0x90(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stfd f31,0x90(1); stmw 30,0x88(1); stw 0,0x9c(1); mr 30,3; lis 4,-32706; fmr f31,f1; addi 4,4,14548; bl _s8017E2A8_33; lis 9,-32706; lis 4,-32706; lfs f0,0x38e4(9); addi 4,4,14532; addi 3,1,8; fmuls f31,f31,f0; fmr f1,f31; creqv 6,6,6; bl _s8017E2A8_34; addi 4,1,8; mr 3,30; bl _s8017E2A8_35; lis 4,-32706; mr 3,30; addi 4,4,14556; bl _s8017E2A8_36; lwz 0,0x9c(1); mtspr 8,0; lmw 30,0x88(1); lfd f31,0x90(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stfd f31,0x90(1); stmw 30,0x88(1); stw 0,0x9c(1); mr 30,3; lis 4,-32706; addi 4,4,14568; fmr f31,f1; bl _s8017E2A8_37; lis 4,-32706; fmr f1,f31; addi 4,4,14576; addi 3,1,8; creqv 6,6,6; bl _s8017E2A8_38; addi 4,1,8; mr 3,30; bl _s8017E2A8_39; lis 4,-32706; mr 3,30; addi 4,4,14584; bl _s8017E2A8_40; lwz 0,0x9c(1); mtspr 8,0; lmw 30,0x88(1); lfd f31,0x90(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stmw 29,0x8c(1); stw 0,0x9c(1); mr 30,4; mr 29,3; lis 4,-32706; addi 4,4,14308; bl _s8017E2A8_41; mulli 30,30,100; lis 0,-32640; ori 0,0,32897; lis 4,-32706; addi 3,1,8; addi 4,4,14212; mulhwu 30,30,0; rlwinm 5,30,25,7,31; crxor 6,6,6; bl _s8017E2A8_42; addi 4,1,8; mr 3,29; bl _s8017E2A8_43; lis 4,-32706; mr 3,29; addi 4,4,14316; bl _s8017E2A8_44; lwz 0,0x9c(1); mtspr 8,0; lmw 29,0x8c(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stmw 28,0x88(1); stw 0,0x9c(1); mr 29,4; mr 30,3; rlwinm 28,29,24,8,31; lis 4,-32706; addi 4,4,14352; rlwinm 29,29,0,24,31; bl _s8017E2A8_45; lis 4,-32706; mr 3,30; addi 4,4,14360; bl _s8017E2A8_46; lis 4,-32706; mr 5,28; addi 3,1,8; addi 4,4,14364; crxor 6,6,6; bl _s8017E2A8_47; addi 4,1,8; mr 3,30; bl _s8017E2A8_48; lis 4,-32706; mr 3,30; addi 4,4,14372; bl _s8017E2A8_49; mr 3,30; mr 4,29; bl _s8017E2A8_50; lwz 0,0x9c(1); mtspr 8,0; lmw 28,0x88(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stmw 29,0x8c(1); stw 0,0x9c(1); mr 29,4; mr 30,3; lis 4,-32706; addi 4,4,14352; bl _s8017E2A8_51; lis 4,-32706; mr 3,30; addi 4,4,14360; bl _s8017E2A8_52; lis 4,-32706; mr 5,29; addi 4,4,14364; addi 3,1,8; crxor 6,6,6; bl _s8017E2A8_53; addi 4,1,8; mr 3,30; bl _s8017E2A8_54; lis 4,-32706; mr 3,30; addi 4,4,14372; bl _s8017E2A8_55; lwz 0,0x9c(1); mtspr 8,0; lmw 29,0x8c(1); addi 1,1,152; blr; stwu 1,-152(1); mfspr 0,8; stmw 29,0x8c(1); stw 0,0x9c(1); mr 29,4; mr 30,3; lis 4,-32706; addi 4,4,14380; bl _s8017E2A8_56; lis 4,-32706; mr 5,29; addi 4,4,14212; addi 3,1,8; crxor 6,6,6; bl _s8017E2A8_57; addi 4,1,8; mr 3,30; bl _s8017E2A8_58; lis 4,-32706; mr 3,30; addi 4,4,14388; bl _s8017E2A8_59; lwz 0,0x9c(1); mtspr 8,0; lmw 29,0x8c(1); addi 1,1,152; blr; stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; lwz 30,0x0(31); cmpwi 30,0; bne 3f; li 0,1; li 9,4096; stw 0,0x8(31); stw 9,0xc(31); bl _s8017E2A8_60; lwz 4,0xc(31); li 5,0; bl _s8017E2A8_61; stw 30,0x10(31); cmpwi 3,0; stw 3,0x0(31); stw 3,0x4(31); beq 3f; lis 4,-32706; mr 3,31; addi 4,4,14172; bl _s8017E2A8_62; 3:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+
+extern "C" void _s8017E2A8_0();
+extern "C" void _s8017E2A8_1();
+extern "C" void _s8017E2A8_2();
+extern "C" void _s8017E2A8_3();
+extern "C" void _s8017E2A8_4();
+extern "C" void _s8017E2A8_5();
+extern "C" void _s8017E2A8_6();
+extern "C" void _s8017E2A8_7();
+extern "C" void _s8017E2A8_8();
+extern "C" void _s8017E2A8_9();
+extern "C" void _s8017E2A8_10();
+extern "C" void _s8017E2A8_11();
+extern "C" void _s8017E2A8_12();
+extern "C" void _s8017E2A8_13();
+extern "C" void _s8017E2A8_14();
+extern "C" void _s8017E2A8_15();
+extern "C" void _s8017E2A8_16();
+extern "C" void _s8017E2A8_17();
+extern "C" void _s8017E2A8_18();
+extern "C" void _s8017E2A8_19();
+extern "C" void _s8017E2A8_20();
+extern "C" void _s8017E2A8_21();
+extern "C" void _s8017E2A8_22();
+extern "C" void _s8017E2A8_23();
+extern "C" void _s8017E2A8_24();
+extern "C" void _s8017E2A8_25();
+extern "C" void _s8017E2A8_26();
+extern "C" void _s8017E2A8_27();
+extern "C" void _s8017E2A8_28();
+extern "C" void _s8017E2A8_29();
+extern "C" void _s8017E2A8_30();
+extern "C" void _s8017E2A8_31();
+extern "C" void _s8017E2A8_32();
+extern "C" void _s8017E2A8_33();
+extern "C" void _s8017E2A8_34();
+extern "C" void _s8017E2A8_35();
+extern "C" void _s8017E2A8_36();
+extern "C" void _s8017E2A8_37();
+extern "C" void _s8017E2A8_38();
+extern "C" void _s8017E2A8_39();
+extern "C" void _s8017E2A8_40();
+extern "C" void _s8017E2A8_41();
+extern "C" void _s8017E2A8_42();
+extern "C" void _s8017E2A8_43();
+extern "C" void _s8017E2A8_44();
+extern "C" void _s8017E2A8_45();
+extern "C" void _s8017E2A8_46();
+extern "C" void _s8017E2A8_47();
+extern "C" void _s8017E2A8_48();
+extern "C" void _s8017E2A8_49();
+extern "C" void _s8017E2A8_50();
+extern "C" void _s8017E2A8_51();
+extern "C" void _s8017E2A8_52();
+extern "C" void _s8017E2A8_53();
+extern "C" void _s8017E2A8_54();
+extern "C" void _s8017E2A8_55();
+extern "C" void _s8017E2A8_56();
+extern "C" void _s8017E2A8_57();
+extern "C" void _s8017E2A8_58();
+extern "C" void _s8017E2A8_59();
+extern "C" void _s8017E2A8_60();
+extern "C" void _s8017E2A8_61();
+extern "C" void _s8017E2A8_62();
+
+struct cXObjectImpl {
+    void FindGoodLocation_FindGoodLocationParams();
+};
+
+void cXObjectImpl::FindGoodLocation_FindGoodLocationParams() {
+}

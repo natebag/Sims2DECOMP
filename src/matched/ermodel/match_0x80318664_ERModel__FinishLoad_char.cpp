@@ -1,0 +1,13 @@
+// 0x80318664 ERModel::FinishLoad(char) (276 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 28,0x28(1); stw 0,0x3c(1); lis 9,-32702; lis 11,-32702; rlwinm 0,4,0,24,31; lfs f0,0x898(9); lfs f13,0x89c(11); rlwinm 7,0,26,31,31; rlwinm 6,4,25,31,31; rlwinm 9,0,31,31,31; rlwinm 11,0,30,31,31; rlwinm 8,0,28,31,31; mr 31,3; li 10,0; rlwinm 0,0,27,31,31; rlwinm 4,4,0,31,31; stw 9,0x20(31); stw 4,0x14(31); stw 11,0x24(31); stw 10,0x30(31); stw 8,0x38(31); stw 0,0x34(31); stw 7,0x28(31); stw 6,0x2c(31); stfs f0,0x20(1); stfs f13,0x24(1); lwz 0,0x34(31); cmpwi 0,0; beq 0f; bl _s80318664_0; 0:; lwz 7,0x38(31); cmpwi 7,0; bne 3f; addi 10,31,60; lis 11,-32702; lwz 0,0x4(10); addi 11,11,2048; lfs f13,0x20(1); addi 9,1,8; lfs f0,0x24(1); addi 8,31,20; stw 11,0x8(1); li 29,0; mr 28,10; stw 7,0x10(9); cmpw 29,0; stw 8,0x4(9); stfs f13,0x8(9); stfs f0,0xc(9); bge 2f; li 30,0; 1:; lwz 3,0x3c(31); addi 4,1,8; addi 29,29,1; add 3,3,30; bl _s80318664_1; addi 30,30,24; lwz 0,0x4(28); cmpw 29,0; blt 1b; 2:; lwz 0,0x18(1); stw 0,0x100(31); 3:; lwz 0,0x3c(1); mtspr 8,0; lmw 28,0x28(1); addi 1,1,56"
+
+extern "C" void _s80318664_0();
+extern "C" void _s80318664_1();
+
+struct ERModel {
+    void FinishLoad();
+};
+
+void ERModel::FinishLoad() {
+}

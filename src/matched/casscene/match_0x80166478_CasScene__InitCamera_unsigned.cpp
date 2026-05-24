@@ -1,0 +1,12 @@
+// 0x80166478 CasScene::InitCamera(unsigned (304 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; stmw 28,0x40(1); stw 0,0x54(1); mr 31,3; cmpwi 4,9; bgt 0f; mulli 11,4,24; stw 4,0xab4(31); lis 9,-32706; addi 9,9,-1508; addi 10,1,8; addi 30,1,32; addi 28,1,48; lwzx 29,11,9; lis 3,-32696; add 11,11,9; addi 3,3,30832; lwz 6,0x14(11); mr 4,30; lwz 7,0x4(11); mr 5,28; lwz 8,0x8(11); lwz 9,0xc(11); lwz 0,0x10(11); stw 29,0x8(1); stw 6,0x14(10); stw 7,0x4(10); stw 8,0x8(10); stw 9,0xc(10); stw 0,0x10(10); lfs f0,0x8(1); lfs f13,0xc(1); lfs f12,0x10(1); lfs f11,0x14(1); lfs f10,0x18(1); lfs f9,0x1c(1); stfs f0,0x20(1); stfs f13,0x24(1); stfs f12,0x28(1); stfs f11,0x30(1); stfs f10,0x34(1); stfs f9,0x38(1); bl _s80166478_0; lwz 0,0x20(1); addi 9,31,2768; lwz 7,0x8(30); addi 6,31,2704; lwz 8,0x4(30); addi 5,31,2816; stw 0,0xad0(31); lis 3,-32706; stw 7,0x8(9); addi 4,31,2716; stw 8,0x4(9); lfs f0,-928(3); lwz 0,0xad0(31); lwz 11,0x30(1); lwz 10,0x8(28); stw 0,0xa90(31); stw 7,0x8(6); stw 8,0x4(6); lwz 9,0x4(28); stw 11,0xb00(31); stw 10,0x8(5); stw 9,0x4(5); lwz 0,0xb00(31); stw 0,0xa9c(31); stw 10,0x8(4); stw 9,0x4(4); stfs f0,0xaa8(31); 0:; lwz 0,0x54(1); mtspr 8,0; lmw 28,0x40(1); addi 1,1,80"
+
+extern "C" void _s80166478_0();
+
+struct CasScene {
+    void InitCamera();
+};
+
+void CasScene::InitCamera() {
+}

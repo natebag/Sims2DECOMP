@@ -1,0 +1,30 @@
+// 0x80139264 SpacePartition::CountSuccessors(int) (1388 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-88(1); mfspr 0,8; stmw 21,0x2c(1); stw 0,0x5c(1); mr 24,3; mr 27,4; bl _s80139264_0; mr. 25,3; bne 0f; li 3,0; b 50f; 0:; lwz 0,0x8(25); cmpwi 0,-1; bne 49f; li 0,0; addi 11,24,60; stw 0,0x8(25); mr 28,11; cmpwi 27,0; lwz 0,0x4(11); lwz 9,0x3c(24); subf 0,9,0; srawi 0,0,2; stw 0,0xc(25); bne 16f; addi 9,24,44; lwz 29,0x2c(24); lwz 0,0x4(9); mr 22,9; cmpw 29,0; beq 49f; mr 23,28; 1:; lwz 11,0x0(29); addi 26,29,4; cmpwi 11,-1; beq 14f; lwz 9,0x4(23); lwz 0,0xc(23); cmpw 9,0; beq 2f; stw 11,0x0(9); lwz 9,0x4(28); addi 9,9,4; stw 9,0x4(28); b 13f; 2:; lwz 30,0x4(28); li 9,1; lwz 0,0x3c(24); addi 11,1,12; stw 9,0xc(1); addi 10,1,8; subf 0,0,30; srawi 9,0,2; stw 9,0x8(1); cmplwi 9,1; bge 3f; mr 10,11; 3:; lwz 0,0x0(10); add. 0,9,0; beq 5f; rlwinm 0,0,2,0,29; mr 27,0; cmplwi 0,128; ble 4f; mr 3,27; bl _s80139264_1; mr 31,3; b 6f; 4:; mr 3,27; bl _s80139264_2; mr 31,3; b 6f; 5:; li 31,0; li 27,0; 6:; lwz 4,0x0(28); cmpw 30,4; beq 7f; subf 30,4,30; mr 3,31; mr 5,30; bl _s80139264_3; add 0,3,30; b 8f; 7:; mr 0,31; 8:; lwz 9,0xc(1); mr 30,0; addi 26,29,4; mtspr 9,9; cmpwi 9,0; beq 10f; 9:; lwz 0,0x0(29); stw 0,0x0(30); addi 30,30,4; bdnz 9b; 10:; lwz 3,0x0(28); lwz 0,0xc(28); cmpwi 3,0; subf 0,3,0; srawi 0,0,2; beq 12f; rlwinm 4,0,2,0,29; cmplwi 4,128; ble 11f; bl _s80139264_4; b 12f; 11:; bl _s80139264_5; 12:; add 0,27,31; stw 31,0x0(28); stw 30,0x4(28); stw 0,0xc(28); 13:; lwz 9,0x8(25); addi 9,9,1; stw 9,0x8(25); 14:; lwz 0,0x4(22); mr 29,26; cmpw 29,0; bne 1b; b 49f; 15:; li 0,1; b 19f; 16:; cmpwi 27,1; beq 49f; mr 3,24; mr 4,27; bl _s80139264_6; addi 22,24,44; mr 3,24; mr 4,27; bl _s80139264_7; addi 9,24,28; lwz 11,0x1c(24); lwz 0,0x4(9); mr 21,9; mr 25,3; cmpw 11,0; beq 18f; mr 9,0; 17:; lwz 0,0x0(11); cmpw 27,0; beq 15b; addi 11,11,4; cmpw 11,9; bne 17b; 18:; li 0,0; 19:; cmpwi 0,0; beq 32f; lwz 9,0x8(25); li 11,1; addi 31,1,16; addi 9,9,1; stw 9,0x8(25); stw 11,0x10(1); lwz 30,0x4(28); lwz 0,0xc(28); cmpw 30,0; beq 20f; stw 11,0x0(30); lwz 9,0x4(28); addi 9,9,4; stw 9,0x4(28); b 32f; 20:; lwz 0,0x3c(24); addi 10,1,24; stw 11,0x18(1); subf 0,0,30; addi 11,1,20; srawi 9,0,2; stw 9,0x14(1); cmplwi 9,1; bge 21f; mr 11,10; 21:; lwz 0,0x0(11); add. 0,9,0; beq 23f; rlwinm 0,0,2,0,29; mr 26,0; cmplwi 0,128; ble 22f; mr 3,26; bl _s80139264_8; mr 29,3; b 24f; 22:; mr 3,26; bl _s80139264_9; mr 29,3; b 24f; 23:; li 29,0; li 26,0; 24:; lwz 4,0x0(28); cmpw 30,4; beq 25f; subf 30,4,30; mr 3,29; mr 5,30; bl _s80139264_10; add 0,3,30; b 26f; 25:; mr 0,29; 26:; lwz 9,0x18(1); mr 30,0; mtspr 9,9; cmpwi 9,0; beq 28f; 27:; lwz 0,0x0(31); stw 0,0x0(30); addi 30,30,4; bdnz 27b; 28:; lwz 3,0x0(28); lwz 0,0xc(28); cmpwi 3,0; subf 0,3,0; srawi 0,0,2; beq 31f; rlwinm 4,0,2,0,29; cmplwi 4,128; ble 30f; bl _s80139264_11; b 31f; 29:; li 0,1; b 35f; 30:; bl _s80139264_12; 31:; add 0,26,29; stw 29,0x0(28); stw 30,0x4(28); stw 0,0xc(28); 32:; lwz 9,0x4(22); lwz 11,0x2c(24); cmpw 11,9; beq 34f; 33:; lwz 0,0x0(11); cmpw 27,0; beq 29b; addi 11,11,4; cmpw 11,9; bne 33b; 34:; li 0,0; 35:; cmpwi 0,0; beq 49f; lwz 29,0x1c(24); lwz 0,0x4(21); cmpw 29,0; beq 49f; mr 23,28; 36:; lwz 4,0x0(29); addi 26,29,4; cmpwi 4,-1; beq 48f; mr 3,24; bl _s80139264_13; mr. 3,3; beq 48f; lwz 9,0x4(3); lwz 0,0x4(25); cmpw 9,0; bne 48f; lwz 9,0x0(3); lwz 0,0x0(25); cmpw 9,0; bne 48f; lwz 9,0x8(25); addi 9,9,1; stw 9,0x8(25); lwz 9,0x4(23); lwz 0,0xc(23); cmpw 9,0; beq 37f; lwz 0,0x0(29); stw 0,0x0(9); lwz 9,0x4(28); addi 9,9,4; stw 9,0x4(28); b 48f; 37:; lwz 30,0x4(28); li 9,1; lwz 0,0x3c(24); addi 11,1,32; stw 9,0x20(1); addi 10,1,28; subf 0,0,30; srawi 9,0,2; stw 9,0x1c(1); cmplwi 9,1; bge 38f; mr 10,11; 38:; lwz 0,0x0(10); add. 0,9,0; beq 40f; rlwinm 0,0,2,0,29; mr 27,0; cmplwi 0,128; ble 39f; mr 3,27; bl _s80139264_14; mr 31,3; b 41f; 39:; mr 3,27; bl _s80139264_15; mr 31,3; b 41f; 40:; li 31,0; li 27,0; 41:; lwz 4,0x0(28); cmpw 30,4; beq 42f; subf 30,4,30; mr 3,31; mr 5,30; bl _s80139264_16; add 0,3,30; b 43f; 42:; mr 0,31; 43:; lwz 9,0x20(1); mr 30,0; addi 26,29,4; mtspr 9,9; cmpwi 9,0; beq 45f; 44:; lwz 0,0x0(29); stw 0,0x0(30); addi 30,30,4; bdnz 44b; 45:; lwz 3,0x0(28); lwz 0,0xc(28); cmpwi 3,0; subf 0,3,0; srawi 0,0,2; beq 47f; rlwinm 4,0,2,0,29; cmplwi 4,128; ble 46f; bl _s80139264_17; b 47f; 46:; bl _s80139264_18; 47:; add 0,27,31; stw 31,0x0(28); stw 30,0x4(28); stw 0,0xc(28); 48:; lwz 0,0x4(21); mr 29,26; cmpw 29,0; bne 36b; 49:; lwz 3,0x8(25); 50:; lwz 0,0x5c(1); mtspr 8,0; lmw 21,0x2c(1); addi 1,1,88"
+
+extern "C" void _s80139264_0();
+extern "C" void _s80139264_1();
+extern "C" void _s80139264_2();
+extern "C" void _s80139264_3();
+extern "C" void _s80139264_4();
+extern "C" void _s80139264_5();
+extern "C" void _s80139264_6();
+extern "C" void _s80139264_7();
+extern "C" void _s80139264_8();
+extern "C" void _s80139264_9();
+extern "C" void _s80139264_10();
+extern "C" void _s80139264_11();
+extern "C" void _s80139264_12();
+extern "C" void _s80139264_13();
+extern "C" void _s80139264_14();
+extern "C" void _s80139264_15();
+extern "C" void _s80139264_16();
+extern "C" void _s80139264_17();
+extern "C" void _s80139264_18();
+
+struct SpacePartition {
+    void CountSuccessors();
+};
+
+void SpacePartition::CountSuccessors() {
+}

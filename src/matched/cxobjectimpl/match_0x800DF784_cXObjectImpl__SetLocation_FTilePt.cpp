@@ -1,0 +1,22 @@
+// 0x800DF784 cXObjectImpl::SetLocation(FTilePt (792 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 23,0x14(1); stw 0,0x3c(1); mr 29,3; mr 27,4; lwz 11,0x68(29); lwz 12,0x6c(29); mr 26,5; lwz 10,0x4(29); stw 11,0x8(1); stw 12,0xc(1); lwz 9,0x4(10); lha 3,0x4a8(9); lwz 0,0x4ac(9); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,0; bne 0f; lwz 3,-21488(13); lwz 9,0x0(3); lha 0,0xd8(9); lwz 9,0xdc(9); add 3,3,0; mtspr 8,9; blrl; lwz 4,0x4(29); bl _s800DF784_0; 0:; lwz 0,0x4(27); addi 9,29,104; mr 23,9; mr 4,26; stw 0,0x4(9); addi 25,1,8; addi 24,29,112; addi 28,29,40; lwz 0,0x0(27); lwz 11,0x4(29); stw 0,0x68(29); lwz 9,0x4(11); lwz 0,0x1dc(9); lha 3,0x1d8(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x4(29); lwz 9,0x4(11); lwz 0,0x4ac(9); lha 3,0x4a8(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x4(29); mr 30,3; lwz 9,0x4(11); lha 3,0x2d0(9); lwz 0,0x2d4(9); add 3,11,3; b 2f; 1:; lwz 9,0x4(31); lwz 0,0x4ac(9); lha 3,0x4a8(9); mtspr 8,0; add 3,31,3; blrl; lwz 9,0x4(31); mr 30,3; lha 3,0x2d0(9); lwz 0,0x2d4(9); add 3,31,3; 2:; mtspr 8,0; blrl; mr 31,3; cmpwi 30,0; bne 3f; cmpwi 31,0; bne 1b; cmpwi 30,0; bne 3f; lwz 3,-21488(13); lwz 9,0x0(3); lha 0,0xd8(9); lwz 9,0xdc(9); add 3,3,0; mtspr 8,9; blrl; lwz 4,0x4(29); bl _s800DF784_1; 3:; lwz 3,0x4(29); mr 5,24; mr 4,23; lwz 9,0x4(3); lha 0,0x1b8(9); lwz 9,0x1bc(9); add 3,3,0; mtspr 8,9; blrl; mr 4,26; mr 3,27; bl _s800DF784_2; extsh 30,3; li 4,29; mr 3,28; bl _s800DF784_3; lha 31,0x0(3); li 4,29; mr 3,28; mr 5,30; bl _s800DF784_4; cmpw 31,30; beq 4f; mr 3,28; li 4,7; bl _s800DF784_5; lha 0,0x0(3); cmpwi 0,0; beq 4f; mr 4,31; li 3,239; bl _s800DF784_6; mr 4,30; li 3,239; bl _s800DF784_7; 4:; lwz 3,0x4(29); li 30,0; lwz 9,0x4(3); lha 0,0x2b0(9); lwz 9,0x2b4(9); add 3,3,0; mtspr 8,9; blrl; mr 31,3; cmpw 30,31; bge 9f; 5:; lwz 3,0x4(29); mr 4,30; lwz 9,0x4(3); lha 0,0x2c0(9); lwz 9,0x2c4(9); add 3,3,0; mtspr 8,9; blrl; mr. 11,3; beq 6f; lwz 9,0x4(11); lha 3,0x520(9); lwz 0,0x524(9); add 3,11,3; mtspr 8,0; blrl; b 7f; 6:; li 3,0; 7:; cmpwi 3,0; beq 8f; lwz 3,0x4(3); mr 4,27; mr 5,26; lwz 9,0x4(3); lha 0,0x330(9); lwz 9,0x334(9); add 3,3,0; mtspr 8,9; blrl; 8:; addi 30,30,1; cmpw 30,31; blt 5b; 9:; mr 3,25; mr 4,23; bl _s800DF784_8; cmpwi 3,1; beq 11f; lwz 0,0x6c(29); cmpwi 0,0; bge 10f; lwz 0,0x68(29); cmpwi 0,0; bge 10f; lis 9,-32697; lwz 3,0x5bc8(9); cmpwi 3,0; beq 10f; lwz 4,0x4(29); bl _s800DF784_9; 10:; lwz 3,-21496(13); lwz 9,0x0(3); lha 0,0x198(9); lwz 9,0x19c(9); add 3,3,0; mtspr 8,9; blrl; lwz 4,0x4(29); bl _s800DF784_10; 11:; lwz 0,0x3c(1); mtspr 8,0; lmw 23,0x14(1); addi 1,1,56"
+
+extern "C" void _s800DF784_0();
+extern "C" void _s800DF784_1();
+extern "C" void _s800DF784_2();
+extern "C" void _s800DF784_3();
+extern "C" void _s800DF784_4();
+extern "C" void _s800DF784_5();
+extern "C" void _s800DF784_6();
+extern "C" void _s800DF784_7();
+extern "C" void _s800DF784_8();
+extern "C" void _s800DF784_9();
+extern "C" void _s800DF784_10();
+
+struct cXObjectImpl {
+    void SetLocation_FTilePt();
+};
+
+void cXObjectImpl::SetLocation_FTilePt() {
+}

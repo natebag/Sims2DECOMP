@@ -1,0 +1,19 @@
+// 0x80318FB0 ERModel::DrawHierarchical(ERC (612 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-72(1); mfspr 0,8; stmw 24,0x28(1); stw 0,0x4c(1); mr 25,5; mr 28,3; mr 29,4; mr 24,6; mr. 5,7; beq 14f; cmpwi 25,0; beq 14f; lwz 0,0x8c(28); cmpwi 0,0; beq 0f; lwz 9,0x70(29); mr 4,25; lha 3,0xd8(9); lwz 0,0xdc(9); add 3,29,3; mtspr 8,0; blrl; b 1f; 0:; lwz 9,0x70(29); mr 4,25; lha 3,0xe8(9); lwz 0,0xec(9); add 3,29,3; mtspr 8,0; blrl; 1:; lwz 0,0x1c(28); lwz 3,-26704(13); cmpwi 0,0; beq 10f; cmpwi 3,0; beq 10f; lwz 11,0x290(3); addi 9,3,656; lwz 10,0x8(9); addi 31,1,8; lwz 0,0x4(9); mr 26,31; stw 11,0x8(1); lis 9,-32702; stw 0,0x4(31); addi 30,3,640; stw 10,0x8(31); lfs f13,0x8a4(9); lfs f0,0x8(1); fcmpu 0,f0,f13; bne 2f; lfs f0,0x4(26); fcmpu 0,f0,f13; bne 2f; lfs f0,0x8(26); fcmpu 0,f0,f13; beq 3f; 2:; mr 3,31; mr 4,31; bl _s80318FB0_0; 3:; lis 9,-32702; mr 3,30; lfs f0,0x8a8(9); mr 4,31; li 30,0; stfs f0,0xc(31); bl _s80318FB0_1; fneg f1,f1; addi 3,1,24; stfs f1,0xc(31); bl _s80318FB0_2; addi 9,28,60; lwz 0,0x4(9); mr 27,9; cmpw 30,0; bge 7f; mr 31,26; li 26,0; 4:; lwz 0,0x3c(28); add 3,0,26; lwz 11,0xc(3); cmpwi 11,0; blt 5f; mulli 0,11,68; lwzx 9,24,0; andi. 0,9,8; bne 6f; rlwinm 9,11,6,0,25; lfs f13,0x4(31); add 9,9,25; lfs f12,0x8(1); addi 11,9,48; lfs f10,0x30(9); lfs f0,0x4(11); mr 4,3; lfs f11,0x8(11); addi 3,1,24; fmuls f13,f13,f0; lfs f1,0x8(31); fmadds f12,f12,f10,f13; lfs f0,0xc(31); fmadds f1,f1,f11,f12; li 5,1; fadds f1,f1,f0; bl _s80318FB0_3; b 6f; 5:; mr 4,29; bl _s80318FB0_4; 6:; lwz 0,0x4(27); addi 30,30,1; addi 26,26,24; cmpw 30,0; blt 4b; 7:; lwz 31,0x1c(1); cmpwi 31,0; beq 9f; 8:; lwz 3,0x18(31); mr 4,29; bl _s80318FB0_5; lwz 31,0xc(31); cmpwi 31,0; bne 8b; 9:; addi 3,1,24; bl _s80318FB0_6; b 14f; 10:; addi 9,28,60; li 31,0; lwz 0,0x4(9); mr 27,9; cmpw 31,0; bge 14f; li 30,0; 11:; lwz 0,0x3c(28); add 3,0,30; lwz 0,0xc(3); cmpwi 0,0; blt 12f; mulli 0,0,68; lwzx 9,24,0; andi. 0,9,8; bne 13f; 12:; mr 4,29; bl _s80318FB0_7; 13:; lwz 0,0x4(27); addi 31,31,1; addi 30,30,24; cmpw 31,0; blt 11b; 14:; lwz 0,0x4c(1); mtspr 8,0; lmw 24,0x28(1); addi 1,1,72"
+
+extern "C" void _s80318FB0_0();
+extern "C" void _s80318FB0_1();
+extern "C" void _s80318FB0_2();
+extern "C" void _s80318FB0_3();
+extern "C" void _s80318FB0_4();
+extern "C" void _s80318FB0_5();
+extern "C" void _s80318FB0_6();
+extern "C" void _s80318FB0_7();
+
+struct ERModel {
+    void DrawHierarchical();
+};
+
+void ERModel::DrawHierarchical() {
+}

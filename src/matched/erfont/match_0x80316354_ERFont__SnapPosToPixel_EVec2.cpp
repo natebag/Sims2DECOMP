@@ -1,0 +1,10 @@
+// 0x80316354 ERFont::SnapPosToPixel(EVec2 (184 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); cmpwi 7,5,0; bne cr7,0f; cmpwi 6,0; beq 2f; 0:; beq cr7,1f; lis 9,-32702; lfs f0,0x0(4); lfs f12,0x714(9); lis 0,17200; lis 11,-32702; fadds f0,f0,f12; mr 10,9; lfd f12,0x718(11); fctiwz f13,f0; stfd f13,0x8(1); lwz 9,0xc(1); xoris 9,9,32768; stw 9,0xc(1); stw 0,0x8(1); lfd f0,0x8(1); fsub f0,f0,f12; frsp f0,f0; stfs f0,0x0(4); 1:; cmpwi 6,0; beq 2f; lis 9,-32702; lfs f0,0x4(4); lfs f12,0x714(9); lis 0,17200; lis 11,-32702; fadds f0,f0,f12; mr 10,9; lfd f12,0x718(11); fctiwz f13,f0; stfd f13,0x8(1); lwz 9,0xc(1); xoris 9,9,32768; stw 9,0xc(1); stw 0,0x8(1); lfd f0,0x8(1); fsub f0,f0,f12; frsp f0,f0; stfs f0,0x4(4); 2:; addi 1,1,16"
+
+struct ERFont {
+    void SnapPosToPixel_EVec2();
+};
+
+void ERFont::SnapPosToPixel_EVec2() {
+}

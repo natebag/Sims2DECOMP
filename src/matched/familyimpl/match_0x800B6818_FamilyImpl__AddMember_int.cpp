@@ -1,0 +1,15 @@
+// 0x800B6818 FamilyImpl::AddMember(int) (444 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 26,0x18(1); stw 0,0x34(1); lwz 0,0x28(3); lwz 9,0x24(3); cmpw 9,0; beq 1f; mr 11,0; 0:; lwz 0,0x0(9); cmpw 0,4; beq 17f; addi 9,9,4; cmpw 9,11; bne 0b; 1:; stw 4,0x8(1); addi 30,3,36; addi 26,1,8; lwz 9,0x4(30); lwz 0,0xc(30); cmpw 9,0; beq 2f; stw 4,0x0(9); lwz 9,0x4(30); addi 9,9,4; stw 9,0x4(30); b 17f; 2:; lwz 0,0x24(3); mr 29,9; li 9,1; addi 11,1,16; subf 0,0,29; stw 9,0x10(1); srawi 3,0,2; addi 9,1,12; stw 3,0xc(1); cmplwi 3,1; bge 3f; mr 9,11; 3:; lwz 0,0x0(9); add. 0,3,0; beq 5f; rlwinm 0,0,2,0,29; mr 27,0; cmplwi 0,128; ble 4f; mr 3,27; bl _s800B6818_0; b 6f; 4:; mr 3,27; bl _s800B6818_1; b 6f; 5:; li 3,0; li 27,0; 6:; mr 31,3; lwz 9,0x0(30); mr 28,31; mr 3,28; cmpw 9,29; beq 8f; 7:; lwz 0,0x0(9); addi 9,9,4; stw 0,0x0(3); cmpw 9,29; addi 3,3,4; bne 7b; 8:; lwz 0,0x10(1); mr 31,3; cmpwi 0,1; bne 9f; lwz 0,0x0(26); stw 0,0x0(31); addi 31,31,4; b 12f; 9:; mr. 9,0; mr 3,31; mtspr 9,9; beq 11f; 10:; lwz 0,0x0(26); stw 0,0x0(3); addi 3,3,4; bdnz 10b; 11:; mr 31,3; 12:; lwz 9,0x0(30); lwz 11,0x4(30); mr 3,9; lwz 0,0xc(30); cmpw 9,11; beq 14f; 13:; addi 9,9,4; cmpw 9,11; bne 13b; 14:; subf 0,3,0; cmpwi 3,0; srawi 0,0,2; beq 16f; rlwinm 4,0,2,0,29; cmplwi 4,128; ble 15f; bl _s800B6818_2; b 16f; 15:; bl _s800B6818_3; 16:; add 0,27,28; stw 28,0x0(30); stw 0,0xc(30); stw 31,0x4(30); 17:; lwz 0,0x34(1); mtspr 8,0; lmw 26,0x18(1); addi 1,1,48"
+
+extern "C" void _s800B6818_0();
+extern "C" void _s800B6818_1();
+extern "C" void _s800B6818_2();
+extern "C" void _s800B6818_3();
+
+struct FamilyImpl {
+    void AddMember();
+};
+
+void FamilyImpl::AddMember() {
+}

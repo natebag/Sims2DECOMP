@@ -1,0 +1,22 @@
+// 0x8011271C ObjTestSim::AppendInteractionsForMenu(InteractionList (1164 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-128(1); mfspr 0,8; mfcr 12; stmw 21,0x54(1); stw 0,0x84(1); stw 12,0x50(1); mr 27,3; mr 22,4; lwz 3,0x4(27); mr 25,5; lwz 9,0x4(3); lha 0,0x390(9); lwz 9,0x394(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 0f; lwz 11,0x4(27); lwz 9,0x4(11); lwz 0,0x314(9); lha 3,0x310(9); mtspr 8,0; add 3,11,3; blrl; lha 0,0x10(3); cmpwi 0,0; bgt 17f; 0:; lwz 3,0x4(27); lwz 9,0x4(3); lha 0,0x360(9); lwz 9,0x364(9); add 3,3,0; mtspr 8,9; blrl; mr. 24,3; beq 17f; lwz 9,0x0(24); li 21,0; lha 3,0xc0(9); lwz 0,0xc4(9); add 3,24,3; mtspr 8,0; blrl; mr. 31,3; beq 3f; lwz 0,0x4(27); cmpwi 0,0; beq 3f; lwz 3,0x0(27); cmpwi 3,0; beq 3f; lwz 11,0x0(3); cmpwi 11,0; beq 1f; lwz 9,0x4(11); lha 3,0x520(9); lwz 0,0x524(9); add 3,11,3; mtspr 8,0; blrl; b 2f; 1:; li 3,0; 2:; cmpwi 3,0; beq 3f; lwz 10,0x4(27); lwz 9,0x0(3); lwz 11,0x4(10); lwz 29,0x0(9); lha 3,0x378(11); lwz 11,0x37c(11); lwz 30,0x18(29); add 3,10,3; mtspr 8,11; lha 0,0xa0(30); addi 30,30,160; add 29,29,0; blrl; lwz 11,0x4(27); mr 28,3; lwz 9,0x4(11); lwz 0,0x32c(9); lha 3,0x328(9); mtspr 8,0; add 3,11,3; blrl; lwz 0,0x4(30); mr 5,3; mr 3,29; mr 4,28; mr 6,31; li 7,0; mtspr 8,0; blrl; xori 21,3,1; 3:; lwz 3,0x0(27); stw 27,-31792(13); lwz 9,0x4(3); stw 22,-21348(13); lha 0,0xe8(9); lwz 9,0xec(9); add 3,3,0; mtspr 8,9; blrl; bl _s8011271C_0; mr. 11,3; beq 6f; lwz 9,0x0(11); lha 3,0x48(9); lwz 0,0x4c(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 3,0; beq 6f; lwz 3,0x4(27); cmpwi 3,0; beq 4f; lwz 3,0x0(3); li 4,2; bl _s8011271C_1; b 5f; 4:; li 3,0; 5:; cmpwi 3,0; beq 6f; lwz 5,0x0(27); cmpw 3,5; beq 6f; mr 4,3; addi 3,1,8; bl _s8011271C_2; mr 4,22; mr 3,27; addi 5,1,8; bl _s8011271C_3; subf 25,3,25; li 4,2; addi 3,1,8; bl _s8011271C_4; 6:; lis 9,-32697; li 29,0; addi 9,9,24012; mr 31,29; addi 30,9,188; 7:; lwz 9,0x0(30); lwz 0,0x0(27); addi 30,30,4; cmpw 9,0; bne 8f; bl _s8011271C_5; mr 4,31; li 5,0; bl _s8011271C_6; cmpwi 3,0; beq 8f; li 29,1; 8:; addi 31,31,1; cmpwi 31,1; ble 7b; lwz 9,0x0(24); li 26,0; lha 3,0x70(9); lwz 0,0x74(9); add 3,24,3; mtspr 8,0; blrl; mr 23,3; cmpw 26,23; bge 16f; cmpwi 25,0; ble 16f; cmpwi 4,29,0; 9:; lwz 9,0x0(24); mr 4,26; lha 3,0xa0(9); lwz 0,0xa4(9); add 3,24,3; mtspr 8,0; blrl; mr 31,3; cmpwi 21,0; beq 10f; lwz 9,0x0(31); lha 3,0x180(9); lwz 0,0x184(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 15f; 10:; lwz 9,0x0(31); lha 3,0xc8(9); lwz 0,0xcc(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 11f; lwz 9,-21432(13); lwz 0,0x3d8(9); cmpwi 0,0; beq 15f; 11:; addi 28,1,8; beq cr4,13f; lwz 11,-21488(13); lwz 9,0x0(11); lwz 0,0xdc(9); lha 3,0xd8(9); mtspr 8,0; add 3,11,3; blrl; lwz 4,0x4(27); mr 6,28; mr 5,31; bl _s8011271C_7; lwz 9,0x0(27); lwz 10,0x0(9); lwz 11,0x4(10); lwz 0,0x344(11); lha 3,0x340(11); mtspr 8,0; add 3,10,3; blrl; lwz 0,0x4(28); li 11,0; lwz 9,0x4(3); cmpw 9,0; bge 12f; lwz 0,0xc(28); cmpw 9,0; blt 12f; lwz 3,0x0(3); lwz 0,0x8(1); cmpw 3,0; bge 12f; lwz 0,0x8(28); cmpw cr7,3,0; cror 31,30,29; mfcr 11; rlwinm 11,11,0,31,31; 12:; cmpwi 11,0; beq 15f; 13:; lwz 9,0x0(31); lwz 29,0x0(27); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; lwz 30,0x4(27); add 3,31,3; blrl; mr 6,3; mr 4,29; mr 5,30; li 7,50; addi 3,1,8; bl _s8011271C_8; lwz 9,0x0(31); lwz 0,0xcc(9); lha 3,0xc8(9); mtspr 8,0; add 3,31,3; blrl; lwz 0,0x3c(28); cmpwi 3,0; rlwinm 0,0,0,23,21; stw 0,0x3c(28); beq 14f; ori 0,0,512; stw 0,0x3c(28); 14:; mr 4,22; mr 3,27; mr 5,28; bl _s8011271C_9; subf 25,3,25; li 4,2; mr 3,28; bl _s8011271C_10; 15:; addi 26,26,1; cmpw 26,23; bge 16f; cmpwi 25,0; bgt 9b; 16:; li 0,0; stw 0,-31792(13); 17:; lwz 0,0x84(1); lwz 12,0x50(1); mtspr 8,0; lmw 21,0x54(1); mtcrf 8,12; addi 1,1,128"
+
+extern "C" void _s8011271C_0();
+extern "C" void _s8011271C_1();
+extern "C" void _s8011271C_2();
+extern "C" void _s8011271C_3();
+extern "C" void _s8011271C_4();
+extern "C" void _s8011271C_5();
+extern "C" void _s8011271C_6();
+extern "C" void _s8011271C_7();
+extern "C" void _s8011271C_8();
+extern "C" void _s8011271C_9();
+extern "C" void _s8011271C_10();
+
+struct ObjTestSim {
+    void AppendInteractionsForMenu_InteractionList();
+};
+
+void ObjTestSim::AppendInteractionsForMenu_InteractionList() {
+}

@@ -1,0 +1,62 @@
+// 0x801EBA20 GOLTarget::GetLocalizable(char (1500 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-128(1); mfspr 0,8; stmw 27,0x6c(1); stw 0,0x84(1); mr 31,3; mr 30,4; li 3,8192; bl _s801EBA20_0; mr 28,3; li 0,0; sth 0,0x0(28); lbz 9,0x0(30); lwz 29,0x8c(31); addi 9,9,-48; cmplwi 9,1; bgt 0f; addi 30,30,1; 0:; lis 3,-32704; mr 4,30; addi 3,3,-29008; li 5,9; bl _s801EBA20_1; cmpwi 3,0; bne 2f; addi 3,30,9; bl _s801EBA20_2; li 30,0; lwz 10,-21476(13); addi 31,3,-1; lis 9,-32697; lwz 11,0x0(10); lwz 4,0x5c5c(9); lha 3,0x120(11); lwz 0,0x124(11); add 3,10,3; mtspr 8,0; blrl; mr. 11,3; beq 1f; lwz 9,0x0(11); mr 4,31; lha 3,0x150(9); lwz 0,0x154(9); add 3,11,3; mtspr 8,0; blrl; mr 30,3; 1:; lis 4,-32704; mr 5,30; addi 4,4,-30836; addi 3,1,8; crxor 6,6,6; bl _s801EBA20_3; addi 3,1,8; bl _s801EBA20_4; addi 4,3,1; mr 5,28; addi 3,1,8; bl _s801EBA20_5; b 38f; 2:; lis 3,-32704; mr 4,30; addi 3,3,-28996; bl _s801EBA20_6; cmpwi 3,0; bne 3f; lwz 3,0x98(31); addi 3,3,1; bl _s801EBA20_7; mr 5,3; lis 4,-32697; addi 4,4,24012; addi 3,1,64; crxor 6,6,6; bl _s801EBA20_8; lwz 9,0x40(1); b 34f; 3:; lis 3,-32704; mr 4,30; addi 3,3,-28980; li 5,15; bl _s801EBA20_9; cmpwi 3,0; bne 11f; addi 3,1,8; addi 30,30,15; bl _s801EBA20_10; li 27,0; lis 9,-32697; rlwinm 0,29,2,0,29; addi 31,9,24012; lis 3,-32704; addi 9,31,188; addi 3,3,-28964; lwzx 29,9,0; mr 4,30; bl _s801EBA20_11; cmpwi 3,0; bne 5f; lis 5,-32704; mr 4,31; addi 5,5,-28952; addi 3,1,68; crxor 6,6,6; bl _s801EBA20_12; lwz 9,0x44(1); li 4,0; cmpwi 9,0; beq 4f; lwz 4,0x0(9); 4:; addi 3,1,8; bl _s801EBA20_13; lwz 9,0x4(29); li 4,15; b 9f; 5:; lis 3,-32704; mr 4,30; addi 3,3,-28932; bl _s801EBA20_14; cmpwi 3,0; bne 7f; lis 5,-32704; mr 4,31; addi 5,5,-28920; addi 3,1,72; crxor 6,6,6; bl _s801EBA20_15; lwz 9,0x48(1); li 4,0; cmpwi 9,0; beq 6f; lwz 4,0x0(9); 6:; addi 3,1,8; bl _s801EBA20_16; lwz 9,0x4(29); li 4,17; b 9f; 7:; lis 3,-32704; mr 4,30; addi 3,3,-28900; bl _s801EBA20_17; cmpwi 3,0; bne 10f; lis 5,-32704; mr 4,31; addi 5,5,-28892; addi 3,1,76; crxor 6,6,6; bl _s801EBA20_18; lwz 9,0x4c(1); li 4,0; cmpwi 9,0; beq 8f; lwz 4,0x0(9); 8:; addi 3,1,8; bl _s801EBA20_19; lwz 9,0x4(29); li 4,18; 9:; lha 3,0x138(9); lwz 0,0x13c(9); add 3,29,3; mtspr 8,0; blrl; mr 27,3; 10:; lis 4,-32704; addi 30,1,24; addi 3,1,8; addi 4,4,-30460; bl _s801EBA20_20; addi 29,1,32; mr 3,30; bl _s801EBA20_21; lis 5,-30584; srawi 0,27,31; ori 5,5,34953; lis 4,-32704; mulhw 5,27,5; addi 4,4,-30836; mr 3,29; add 5,5,27; srawi 5,5,4; subf 5,0,5; extsh 5,5; crxor 6,6,6; bl _s801EBA20_22; mr 4,29; mr 3,30; bl _s801EBA20_23; li 6,-1; li 5,0; addi 3,1,8; mr 4,30; bl _s801EBA20_24; addi 3,1,8; bl _s801EBA20_25; mr 4,3; mr 3,28; bl _s801EBA20_26; mr 3,30; li 4,2; bl _s801EBA20_27; addi 3,1,8; li 4,2; bl _s801EBA20_28; b 38f; 11:; lis 3,-32704; mr 4,30; addi 3,3,-28872; li 5,11; bl _s801EBA20_29; cmpwi 3,0; bne 30f; addi 3,30,11; bl _s801EBA20_30; mr 30,3; lwz 4,0x98(31); lis 3,-32697; addi 3,3,24012; addi 4,4,1; bl _s801EBA20_31; mr. 3,3; beq 38f; li 9,0; cmpwi 30,7; beq 21f; bgt 13f; cmpwi 30,3; beq 17f; bgt 12f; cmpwi 30,1; beq 15f; cmpwi 30,2; beq 16f; b 29f; 12:; cmpwi 30,5; beq 19f; bgt 20f; b 18f; 13:; cmpwi 30,11; beq 25f; bgt 14f; cmpwi 30,9; beq 23f; bgt 24f; b 22f; 14:; cmpwi 30,13; beq 27f; blt 26f; cmpwi 30,14; beq 28f; b 29f; 15:; mr 9,3; b 29f; 16:; addi 9,3,16; b 29f; 17:; addi 9,3,32; b 29f; 18:; addi 9,3,36; b 29f; 19:; addi 9,3,20; b 29f; 20:; addi 9,3,24; b 29f; 21:; addi 9,3,28; b 29f; 22:; addi 9,3,4; b 29f; 23:; addi 9,3,8; b 29f; 24:; addi 9,3,12; b 29f; 25:; addi 9,3,40; b 29f; 26:; addi 9,3,44; b 29f; 27:; addi 9,3,48; b 29f; 28:; addi 9,3,52; 29:; cmpwi 9,0; beq 38f; lwz 9,0x0(9); b 34f; 30:; lis 3,-32704; mr 4,30; addi 3,3,-28860; bl _s801EBA20_32; cmpwi 3,0; bne 31f; mr 4,29; addi 3,1,80; crxor 6,6,6; bl _s801EBA20_33; lwz 9,0x50(1); b 34f; 31:; lis 3,-32704; mr 4,30; addi 3,3,-28844; bl _s801EBA20_34; cmpwi 3,0; bne 32f; mr 4,29; addi 3,1,84; crxor 6,6,6; bl _s801EBA20_35; lwz 9,0x54(1); b 34f; 32:; lis 3,-32704; mr 4,30; addi 3,3,-28828; bl _s801EBA20_36; cmpwi 3,0; bne 33f; mr 4,29; addi 3,1,88; crxor 6,6,6; bl _s801EBA20_37; lwz 9,0x58(1); b 34f; 33:; lis 3,-32704; mr 4,30; addi 3,3,-28808; bl _s801EBA20_38; cmpwi 3,0; bne 36f; mr 4,29; addi 3,1,92; crxor 6,6,6; bl _s801EBA20_39; lwz 9,0x5c(1); 34:; li 4,0; cmpwi 9,0; beq 35f; lwz 4,0x0(9); 35:; mr 3,28; bl _s801EBA20_40; b 38f; 36:; lis 3,-32704; mr 4,30; addi 3,3,-28784; bl _s801EBA20_41; cmpwi 3,0; bne 38f; mr 4,29; addi 3,1,96; crxor 6,6,6; bl _s801EBA20_42; lwz 9,0x60(1); li 4,0; cmpwi 9,0; beq 37f; lwz 4,0x0(9); 37:; mr 3,28; bl _s801EBA20_43; 38:; mr 3,28; bl _s801EBA20_44; mr 3,28; bl _s801EBA20_45; mr 3,28; bl _s801EBA20_46; mr 3,28; bl _s801EBA20_47; addi 3,3,1; rlwinm 3,3,1,0,30; bl _s801EBA20_48; mr 30,3; mr 4,28; bl _s801EBA20_49; mr 3,28; bl _s801EBA20_50; mr 3,30; lwz 0,0x84(1); mtspr 8,0; lmw 27,0x6c(1); addi 1,1,128"
+
+extern "C" void _s801EBA20_0();
+extern "C" void _s801EBA20_1();
+extern "C" void _s801EBA20_2();
+extern "C" void _s801EBA20_3();
+extern "C" void _s801EBA20_4();
+extern "C" void _s801EBA20_5();
+extern "C" void _s801EBA20_6();
+extern "C" void _s801EBA20_7();
+extern "C" void _s801EBA20_8();
+extern "C" void _s801EBA20_9();
+extern "C" void _s801EBA20_10();
+extern "C" void _s801EBA20_11();
+extern "C" void _s801EBA20_12();
+extern "C" void _s801EBA20_13();
+extern "C" void _s801EBA20_14();
+extern "C" void _s801EBA20_15();
+extern "C" void _s801EBA20_16();
+extern "C" void _s801EBA20_17();
+extern "C" void _s801EBA20_18();
+extern "C" void _s801EBA20_19();
+extern "C" void _s801EBA20_20();
+extern "C" void _s801EBA20_21();
+extern "C" void _s801EBA20_22();
+extern "C" void _s801EBA20_23();
+extern "C" void _s801EBA20_24();
+extern "C" void _s801EBA20_25();
+extern "C" void _s801EBA20_26();
+extern "C" void _s801EBA20_27();
+extern "C" void _s801EBA20_28();
+extern "C" void _s801EBA20_29();
+extern "C" void _s801EBA20_30();
+extern "C" void _s801EBA20_31();
+extern "C" void _s801EBA20_32();
+extern "C" void _s801EBA20_33();
+extern "C" void _s801EBA20_34();
+extern "C" void _s801EBA20_35();
+extern "C" void _s801EBA20_36();
+extern "C" void _s801EBA20_37();
+extern "C" void _s801EBA20_38();
+extern "C" void _s801EBA20_39();
+extern "C" void _s801EBA20_40();
+extern "C" void _s801EBA20_41();
+extern "C" void _s801EBA20_42();
+extern "C" void _s801EBA20_43();
+extern "C" void _s801EBA20_44();
+extern "C" void _s801EBA20_45();
+extern "C" void _s801EBA20_46();
+extern "C" void _s801EBA20_47();
+extern "C" void _s801EBA20_48();
+extern "C" void _s801EBA20_49();
+extern "C" void _s801EBA20_50();
+
+struct GOLTarget {
+    void GetLocalizable();
+};
+
+void GOLTarget::GetLocalizable() {
+}

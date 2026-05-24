@@ -1,8 +1,0 @@
-// 0x8016F174 CasSimRenderer::Draw(ERC (400 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-120(1); mfspr 0,8; stfd f31,0x70(1); stmw 27,0x5c(1); stw 0,0x7c(1); lis 9,-32697; mr 31,3; lwz 9,0x5bc0(9); mr 27,4; cmpwi 9,0; beq 2f; lwz 11,0x214(31); mr 0,11; cmpwi 11,0; bge 0f; addi 0,11,3; 0:; lwz 9,0x1348(9); rlwinm 0,0,0,0,29; subf 0,0,11; srw 9,9,0; andi. 0,9,1; beq 2f; lwz 4,0x0(31); cmpwi 4,0; beq 2f; lwz 4,0x18(4); cmpwi 4,0; beq 2f; lwz 9,0x70(27); addi 4,4,8; addi 30,1,8; addi 29,1,24; lwz 0,0x16c(9); addi 28,31,372; lha 3,0x168(9); mtspr 8,0; add 3,27,3; blrl; lis 11,-32706; lwz 10,0x70(27); lfs f31,0x1738(11); lis 9,-32706; lfs f1,0x173c(9); mr 4,30; stfs f31,0xc(30); fmr f2,f31; stfs f31,0x8(30); fmr f3,f1; stfs f31,0x4(30); stfs f31,0x8(1); lha 3,0x270(10); lwz 0,0x274(10); add 3,27,3; mtspr 8,0; blrl; lfs f13,0x20c(31); mr 4,30; lfs f0,0x208(31); addi 3,31,492; stfs f31,0x8(1); addi 5,31,504; fadds f0,f0,f13; mr 6,29; stfs f0,0x8(30); stfs f31,0x4(30); bl _s8016F174_0; lwz 5,-26812(13); mr 4,29; mr 3,28; bl _s8016F174_1; lwz 5,0x198(31); cmpwi 5,0; li 29,0; beq 1f; lwz 29,0x18(5); 1:; lwz 9,0x70(27); mr 5,29; lwz 30,0x10(28); lha 3,0xd8(9); lwz 0,0xdc(9); mr 4,30; add 3,27,3; mtspr 8,0; blrl; mr 3,31; mr 4,27; bl _s8016F174_2; mr 3,27; addi 4,31,112; mr 6,30; mr 7,29; li 5,0; li 8,1; bl _s8016F174_3; 2:; lwz 0,0x7c(1); mtspr 8,0; lmw 27,0x5c(1); lfd f31,0x70(1); addi 1,1,120"
-extern "C" void _s8016F174_0();
-extern "C" void _s8016F174_1();
-extern "C" void _s8016F174_2();
-extern "C" void _s8016F174_3();
-extern "C" void f_8016F174() {}

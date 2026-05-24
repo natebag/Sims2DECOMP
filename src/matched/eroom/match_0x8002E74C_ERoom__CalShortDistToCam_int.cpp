@@ -1,0 +1,10 @@
+// 0x8002E74C ERoom::CalShortDistToCam(int) (256 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stfd f31,0x30(1); stmw 23,0xc(1); stw 0,0x3c(1); mr 26,3; mr 25,4; lwz 28,0x94(26); lwz 27,0xa0(26); cmpwi 28,0; beq 6f; lis 9,-32707; rlwinm 29,25,2,0,29; lfs f31,0xe5c(9); lis 23,-32707; lis 24,-32707; 0:; lwz 30,0x1c(27); lwz 9,0x1c(28); stfsx f31,30,29; lwz 31,0x0(9); cmpwi 31,0; beq 3f; 1:; lwz 11,0x0(31); mr 4,25; lwz 9,0x3c(11); lha 3,0x28(9); lwz 0,0x2c(9); add 3,11,3; mtspr 8,0; blrl; lfsx f0,30,29; fcmpu 0,f1,f0; bge 2f; stfsx f1,30,29; 2:; lwz 31,0x8(31); cmpwi 31,0; bne 1b; 3:; lfs f13,0xac(26); addi 9,30,8; lfsx f0,30,29; lfs f12,0xb0(26); fsubs f0,f13,f0; lfs f11,0xe60(23); fsubs f13,f13,f12; fdivs f0,f0,f13; stfsx f0,9,29; fcmpu 0,f0,f11; bge 4f; stfsx f11,9,29; b 5f; 4:; lfs f13,0xe64(24); fcmpu 0,f0,f13; ble 5f; stfsx f13,9,29; 5:; lwz 28,0x10(28); lwz 27,0x10(27); cmpwi 28,0; bne 0b; 6:; lwz 0,0x3c(1); mtspr 8,0; lmw 23,0xc(1); lfd f31,0x30(1); addi 1,1,56"
+
+struct ERoom {
+    void CalShortDistToCam();
+};
+
+void ERoom::CalShortDistToCam() {
+}

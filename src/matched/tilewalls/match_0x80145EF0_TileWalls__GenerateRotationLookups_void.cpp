@@ -1,0 +1,13 @@
+// 0x80145EF0 TileWalls::GenerateRotationLookups(void) (468 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 21,0xc(1); stw 0,0x3c(1); lis 9,-32688; lis 11,-32688; addi 29,9,-17360; addi 21,11,-16336; li 31,0; li 22,1; li 23,16; li 24,32; 0:; rlwinm 30,31,8,0,23; li 4,0; add 3,30,29; li 5,256; bl _s80145EF0_0; addi 25,31,1; mulli 26,31,20; andi. 0,31,1; mr 6,30; addi 7,30,128; addi 8,30,64; mcrf cr7,cr0; li 10,0; 1:; slw 0,22,10; cmpwi 0,32; bne 3f; beq cr7,2f; addi 11,10,1; stwx 23,29,7; b 9f; 2:; stwx 0,29,7; addi 11,10,1; b 9f; 3:; cmpwi 0,16; bne 5f; beq cr7,4f; addi 11,10,1; stwx 24,29,8; b 9f; 4:; stwx 0,29,8; addi 11,10,1; b 9f; 5:; mr 9,0; addi 11,10,1; rlwinm 0,9,2,0,29; cmpwi 31,0; ble 8f; mtspr 9,31; 6:; rlwinm 9,9,1,0,30; cmplwi 9,8; ble 7f; li 9,1; 7:; bdnz 6b; 8:; add 0,0,6; stwx 9,29,0; 9:; mr 10,11; cmpwi 10,5; ble 1b; lis 9,-32688; li 5,1; addi 27,9,-17360; mr 12,30; lis 28,-32688; 10:; rlwinm 11,5,2,0,29; addi 4,5,1; add 0,11,12; lwzx 9,27,0; cmpwi 9,0; bne 13f; li 9,6; mr 7,30; mtspr 9,9; li 10,0; add 8,11,7; li 3,1; addi 6,28,-17360; 11:; slw 0,3,10; and. 9,5,0; beq 12f; rlwinm 0,0,2,0,29; lwzx 11,6,8; add 0,0,7; lwzx 9,6,0; or 11,11,9; stwx 11,6,8; 12:; addi 10,10,1; bdnz 11b; 13:; mr 5,4; cmpwi 5,63; ble 10b; add 30,26,21; li 4,0; mr 3,30; li 5,20; bl _s80145EF0_1; li 0,4; addi 30,30,4; mtspr 9,0; li 10,1; 14:; add 9,10,31; cmpwi 9,4; ble 15f; addi 9,9,-4; 15:; stw 9,0x0(30); addi 10,10,1; addi 30,30,4; bdnz 14b; mr 31,25; cmpwi 31,3; ble 0b; lwz 0,0x3c(1); mtspr 8,0; lmw 21,0xc(1); addi 1,1,56"
+
+extern "C" void _s80145EF0_0();
+extern "C" void _s80145EF0_1();
+
+struct TileWalls {
+    void GenerateRotationLookups();
+};
+
+void TileWalls::GenerateRotationLookups() {
+}

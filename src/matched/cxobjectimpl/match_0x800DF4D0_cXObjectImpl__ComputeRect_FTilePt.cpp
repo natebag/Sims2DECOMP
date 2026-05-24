@@ -1,0 +1,15 @@
+// 0x800DF4D0 cXObjectImpl::ComputeRect(FTilePt (692 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 27,0x1c(1); stw 0,0x34(1); mr 31,3; mr 28,5; lwz 11,0x4(31); mr 30,4; li 27,0; lwz 9,0x4(11); lwz 0,0x38c(9); lha 3,0x388(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x4(31); lwz 9,0x4(11); lwz 0,0x38c(9); lha 3,0x388(9); mtspr 8,0; add 3,11,3; blrl; rlwinm 0,3,1,31,31; lwz 11,0x0(30); lwz 9,0x4(30); add 0,0,3; srawi 0,0,1; add 10,9,0; add 8,11,0; subf 9,0,9; subf 11,0,11; stw 9,0xc(28); stw 11,0x8(28); stw 10,0x4(28); stw 8,0x0(28); lwz 10,0x4(31); lwz 9,0x88(31); lwz 11,0x4(10); lha 29,0x9a(9); lha 3,0x318(11); lwz 0,0x31c(11); add 3,10,3; mtspr 8,0; blrl; cmpwi 3,2; bne 2f; cmpwi 31,0; beq 0f; lwz 9,0x4(31); li 4,2; lwz 3,0x0(9); bl _s800DF4D0_0; mr 30,3; b 1f; 0:; li 30,0; 1:; lwz 3,0x4(31); li 4,1; lwz 9,0x4(3); lha 0,0x260(9); lwz 9,0x264(9); add 3,3,0; mtspr 8,9; blrl; andi. 0,3,1; bne 2f; lwz 9,0x4(30); li 4,73; lha 3,0x138(9); lwz 0,0x13c(9); add 3,30,3; mtspr 8,0; blrl; mr 27,3; 2:; cmpwi 29,0; cmpwi 7,27,0; bne 3f; beq cr7,10f; 3:; rlwinm 5,29,20,28,31; rlwinm 7,29,28,28,31; rlwinm 6,29,24,28,31; rlwinm 8,29,0,28,31; stw 7,0xc(1); stw 8,0x8(1); stw 6,0x10(1); stw 5,0x14(1); beq cr7,4f; rlwinm 10,27,20,28,31; rlwinm 9,27,28,28,31; rlwinm 11,27,24,28,31; rlwinm 0,27,0,28,31; subf 0,0,8; subf 9,9,7; subf 11,11,6; subf 10,10,5; stw 0,0x8(1); stw 9,0xc(1); stw 11,0x10(1); stw 10,0x14(1); 4:; addi 30,31,40; li 4,1; mr 3,30; bl _s800DF4D0_1; li 4,1; mr 3,30; bl _s800DF4D0_2; mr 3,30; li 4,1; bl _s800DF4D0_3; lha 9,0x0(3); mr 0,9; cmpwi 9,0; bge 5f; addi 0,9,7; 5:; rlwinm 0,0,0,0,28; subf 0,0,9; extsh 0,0; subfic 0,0,8; rlwinm 9,0,1,31,31; add 0,0,9; srawi 10,0,1; mr 0,10; cmpwi 10,0; bge 6f; addi 0,10,3; 6:; rlwinm 0,0,0,0,29; addi 6,1,8; subf 0,0,10; lwz 9,0x8(28); rlwinm 0,0,2,0,29; addi 8,10,1; lwzx 11,6,0; cmpwi 8,0; mr 0,8; add 9,9,11; stw 9,0x8(28); bge 7f; addi 0,10,4; 7:; rlwinm 0,0,0,0,29; lwz 9,0x4(28); subf 0,0,8; rlwinm 0,0,2,0,29; addi 8,10,2; lwzx 11,6,0; mr 7,8; cmpwi 8,0; subf 9,11,9; stw 9,0x4(28); bge 8f; addi 7,10,5; 8:; rlwinm 0,7,0,0,29; lwz 9,0x0(28); subf 0,0,8; rlwinm 0,0,2,0,29; addi 8,10,3; lwzx 11,6,0; mr 7,8; cmpwi 8,0; subf 9,11,9; stw 9,0x0(28); bge 9f; addi 7,10,6; 9:; rlwinm 0,7,0,0,29; lwz 11,0xc(28); subf 0,0,8; rlwinm 0,0,2,0,29; lwzx 9,6,0; add 11,11,9; stw 11,0xc(28); 10:; lwz 0,0x34(1); mtspr 8,0; lmw 27,0x1c(1); addi 1,1,48"
+
+extern "C" void _s800DF4D0_0();
+extern "C" void _s800DF4D0_1();
+extern "C" void _s800DF4D0_2();
+extern "C" void _s800DF4D0_3();
+
+struct cXObjectImpl {
+    void ComputeRect_FTilePt();
+};
+
+void cXObjectImpl::ComputeRect_FTilePt() {
+}

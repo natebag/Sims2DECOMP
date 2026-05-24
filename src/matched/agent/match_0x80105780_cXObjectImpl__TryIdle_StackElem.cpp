@@ -1,6 +1,0 @@
-// 0x80105780 cXObjectImpl::TryIdle(StackElem (352 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,3; mr 31,5; mr 3,4; lha 9,0x0(31); cmpwi 9,0; blt 0f; lbz 0,0x7(3); cmpw 9,0; blt 1f; 0:; lwz 11,0x0(29); li 0,1; stw 0,-24512(13); li 9,8; sth 9,0x34(11); li 4,8; lwz 11,0x4(29); lwz 9,0x4(11); lha 3,0x110(9); lwz 0,0x114(9); add 3,11,3; mtspr 8,0; blrl; li 3,-1; li 4,-1; b 6f; 1:; bl _s80105780_0; lwz 11,0x4(29); mr 30,3; lha 0,0x0(31); lwz 9,0x4(11); add 31,0,0; lha 3,0x240(9); lwz 0,0x244(9); add 3,11,3; mtspr 8,0; blrl; mr. 3,3; bne 2f; sthx 3,30,31; li 4,-1; lwz 3,0x4(29); lwz 9,0x4(3); lha 0,0x248(9); lwz 9,0x24c(9); add 3,3,0; mtspr 8,9; blrl; 2:; lhax 0,30,31; cmpwi 0,0; bge 3f; li 0,0; sthx 0,30,31; 3:; lhax 0,30,31; cmpwi 0,0; bne 4f; li 3,0; li 4,1; b 6f; 4:; mr 3,29; bl _s80105780_1; cmpwi 3,0; beq 5f; lwz 11,0x4(29); lhax 4,30,31; lwz 9,0x4(11); addi 4,4,-1; lha 3,0x248(9); lwz 0,0x24c(9); add 3,11,3; mtspr 8,0; blrl; li 3,0; li 4,2; b 6f; 5:; lhzx 9,30,31; li 3,0; li 4,2; addi 9,9,-1; sthx 9,30,31; 6:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
-extern "C" void _s80105780_0();
-extern "C" void _s80105780_1();
-extern "C" void f_80105780() {}

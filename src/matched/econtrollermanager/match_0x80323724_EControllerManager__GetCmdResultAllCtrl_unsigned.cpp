@@ -1,0 +1,13 @@
+// 0x80323724 EControllerManager::GetCmdResultAllCtrl(unsigned (352 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-88(1); mfspr 0,8; mfcr 12; stmw 14,0x10(1); stw 0,0x5c(1); stw 12,0xc(1); lwz 27,0x0(5); lwz 28,0x4(5); mr 14,4; lwz 29,0x0(6); lwz 30,0x4(6); mr 15,7; extsh 0,27; srawi 16,28,16; srawi 17,30,16; rlwinm 18,0,3,0,28; cmpwi 4,0,0; mr 19,8; mr 20,9; li 21,0; 0:; lwz 3,-26524(13); mr 4,21; bl _s80323724_0; mr 31,3; blt cr4,1f; lwzx 9,31,16; add 9,18,9; lwz 23,-8(9); lwz 24,-4(9); mr 11,24; b 2f; 1:; mr 11,28; 2:; srawi 9,27,16; blt cr4,3f; srawi 0,23,16; add 0,0,9; b 4f; 3:; mr 0,9; 4:; mtspr 8,11; add 3,31,0; mr 4,20; blrl; extsh 11,29; mr 22,3; cmpwi 11,0; blt 5f; lwzx 0,31,17; rlwinm 9,11,3,0,28; add 9,9,0; lwz 25,-8(9); lwz 26,-4(9); mr 10,26; b 6f; 5:; mr 10,30; 6:; cmpwi 11,0; srawi 9,29,16; blt 7f; srawi 0,25,16; add 0,0,9; b 8f; 7:; mr 0,9; 8:; add 3,31,0; mr 4,20; mtspr 8,10; blrl; mr 6,3; mr 5,22; mr 3,31; mr 4,14; mr 7,15; bl _s80323724_1; mr. 3,3; beq 9f; cmpwi 19,0; beq 9f; stw 21,0x0(19); 9:; addi 21,21,1; cmpwi 21,3; bgt 10f; cmpwi 3,0; beq 0b; 10:; lwz 0,0x5c(1); lwz 12,0xc(1); mtspr 8,0; lmw 14,0x10(1); mtcrf 8,12; addi 1,1,88"
+
+extern "C" void _s80323724_0();
+extern "C" void _s80323724_1();
+
+struct EControllerManager {
+    void GetCmdResultAllCtrl();
+};
+
+void EControllerManager::GetCmdResultAllCtrl() {
+}

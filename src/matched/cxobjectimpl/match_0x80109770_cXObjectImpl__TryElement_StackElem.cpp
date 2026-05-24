@@ -1,0 +1,67 @@
+// 0x80109770 cXObjectImpl::TryElement(StackElem (1148 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stw 31,0x24(1); stw 0,0x2c(1); mr 31,5; cmpwi 31,33; mr 5,6; sth 31,-31804(13); beq 39f; bgt 8f; cmpwi 31,15; beq 45f; bgt 4f; cmpwi 31,8; beq 46f; bgt 2f; cmpwi 31,2; beq 40f; bgt 0f; cmpwi 31,0; beq 41f; cmpwi 31,1; beq 25f; b 73f; 0:; cmpwi 31,5; beq 43f; bgt 1f; cmpwi 31,4; beq 44f; b 73f; 1:; cmpwi 31,7; beq 42f; b 73f; 2:; cmpwi 31,11; beq 47f; bgt 3f; cmpwi 31,9; beq 52f; cmpwi 31,10; beq 53f; b 73f; 3:; cmpwi 31,13; beq 32f; bgt 30f; b 48f; 4:; cmpwi 31,24; beq 35f; bgt 6f; cmpwi 31,19; beq 19f; bgt 5f; cmpwi 31,16; beq 20f; cmpwi 31,18; beq 38f; b 73f; 5:; cmpwi 31,21; beq 29f; blt 31f; cmpwi 31,23; beq 49f; b 73f; 6:; cmpwi 31,28; beq 23f; bgt 7f; cmpwi 31,25; beq 34f; cmpwi 31,26; beq 21f; b 73f; 7:; cmpwi 31,31; beq 51f; bgt 18f; cmpwi 31,29; beq 70f; b 73f; 8:; cmpwi 31,51; beq 37f; bgt 12f; cmpwi 31,42; beq 36f; bgt 10f; cmpwi 31,36; beq 26f; bgt 9f; cmpwi 31,34; beq 17f; cmpwi 31,35; beq 54f; b 73f; 9:; cmpwi 31,40; beq 61f; bgt 22f; cmpwi 31,39; beq 60f; b 73f; 10:; cmpwi 31,46; beq 27f; bgt 11f; cmpwi 31,43; beq 33f; cmpwi 31,44; beq 71f; b 73f; 11:; cmpwi 31,49; beq 28f; bgt 24f; cmpwi 31,48; beq 50f; b 73f; 12:; cmpwi 31,58; beq 63f; bgt 14f; cmpwi 31,54; beq 57f; bgt 13f; cmpwi 31,52; beq 55f; cmpwi 31,53; beq 56f; b 73f; 13:; cmpwi 31,56; beq 59f; bgt 62f; b 58f; 14:; cmpwi 31,63; beq 67f; bgt 15f; cmpwi 31,60; beq 65f; blt 64f; cmpwi 31,61; beq 66f; b 73f; 15:; cmpwi 31,66; beq 69f; bgt 16f; cmpwi 31,65; beq 68f; b 73f; 16:; cmpwi 31,67; beq 72f; b 73f; 17:; bl _s80109770_0; b 74f; 18:; bl _s80109770_1; b 74f; 19:; bl _s80109770_2; b 74f; 20:; addi 6,1,24; addi 7,1,16; addi 8,1,28; addi 9,1,8; bl _s80109770_3; b 74f; 21:; bl _s80109770_4; b 74f; 22:; bl _s80109770_5; b 74f; 23:; bl _s80109770_6; b 74f; 24:; bl _s80109770_7; b 74f; 25:; bl _s80109770_8; b 74f; 26:; li 6,0; bl _s80109770_9; b 74f; 27:; bl _s80109770_10; b 74f; 28:; bl _s80109770_11; b 74f; 29:; bl _s80109770_12; b 74f; 30:; bl _s80109770_13; b 74f; 31:; bl _s80109770_14; b 74f; 32:; bl _s80109770_15; b 74f; 33:; bl _s80109770_16; b 74f; 34:; bl _s80109770_17; b 74f; 35:; bl _s80109770_18; b 74f; 36:; bl _s80109770_19; b 74f; 37:; bl _s80109770_20; b 74f; 38:; li 0,-1; addi 6,1,10; sth 0,0xa(1); bl _s80109770_21; b 74f; 39:; bl _s80109770_22; b 74f; 40:; mr 4,5; bl _s80109770_23; b 74f; 41:; bl _s80109770_24; b 74f; 42:; bl _s80109770_25; b 74f; 43:; bl _s80109770_26; b 74f; 44:; bl _s80109770_27; b 74f; 45:; bl _s80109770_28; b 74f; 46:; bl _s80109770_29; b 74f; 47:; bl _s80109770_30; b 74f; 48:; bl _s80109770_31; b 74f; 49:; bl _s80109770_32; b 74f; 50:; bl _s80109770_33; b 74f; 51:; bl _s80109770_34; b 74f; 52:; bl _s80109770_35; b 74f; 53:; bl _s80109770_36; b 74f; 54:; bl _s80109770_37; b 74f; 55:; bl _s80109770_38; b 74f; 56:; bl _s80109770_39; b 74f; 57:; bl _s80109770_40; b 74f; 58:; bl _s80109770_41; b 74f; 59:; bl _s80109770_42; b 74f; 60:; bl _s80109770_43; b 74f; 61:; bl _s80109770_44; b 74f; 62:; bl _s80109770_45; b 74f; 63:; bl _s80109770_46; b 74f; 64:; bl _s80109770_47; b 74f; 65:; bl _s80109770_48; b 74f; 66:; bl _s80109770_49; b 74f; 67:; bl _s80109770_50; b 74f; 68:; bl _s80109770_51; b 74f; 69:; bl _s80109770_52; b 74f; 70:; bl _s80109770_53; b 74f; 71:; bl _s80109770_54; b 74f; 72:; bl _s80109770_55; b 74f; 73:; lwz 11,0x0(3); li 0,1; stw 0,-24512(13); li 9,5; sth 9,0x34(11); li 4,5; lwz 11,0x4(3); lwz 9,0x4(11); lha 3,0x110(9); lwz 0,0x114(9); add 3,11,3; mtspr 8,0; blrl; li 3,-1; li 4,-1; b 75f; 74:; subfic 0,31,-1000; sth 0,-31804(13); 75:; lwz 0,0x2c(1); mtspr 8,0; lwz 31,0x24(1); addi 1,1,40"
+
+extern "C" void _s80109770_0();
+extern "C" void _s80109770_1();
+extern "C" void _s80109770_2();
+extern "C" void _s80109770_3();
+extern "C" void _s80109770_4();
+extern "C" void _s80109770_5();
+extern "C" void _s80109770_6();
+extern "C" void _s80109770_7();
+extern "C" void _s80109770_8();
+extern "C" void _s80109770_9();
+extern "C" void _s80109770_10();
+extern "C" void _s80109770_11();
+extern "C" void _s80109770_12();
+extern "C" void _s80109770_13();
+extern "C" void _s80109770_14();
+extern "C" void _s80109770_15();
+extern "C" void _s80109770_16();
+extern "C" void _s80109770_17();
+extern "C" void _s80109770_18();
+extern "C" void _s80109770_19();
+extern "C" void _s80109770_20();
+extern "C" void _s80109770_21();
+extern "C" void _s80109770_22();
+extern "C" void _s80109770_23();
+extern "C" void _s80109770_24();
+extern "C" void _s80109770_25();
+extern "C" void _s80109770_26();
+extern "C" void _s80109770_27();
+extern "C" void _s80109770_28();
+extern "C" void _s80109770_29();
+extern "C" void _s80109770_30();
+extern "C" void _s80109770_31();
+extern "C" void _s80109770_32();
+extern "C" void _s80109770_33();
+extern "C" void _s80109770_34();
+extern "C" void _s80109770_35();
+extern "C" void _s80109770_36();
+extern "C" void _s80109770_37();
+extern "C" void _s80109770_38();
+extern "C" void _s80109770_39();
+extern "C" void _s80109770_40();
+extern "C" void _s80109770_41();
+extern "C" void _s80109770_42();
+extern "C" void _s80109770_43();
+extern "C" void _s80109770_44();
+extern "C" void _s80109770_45();
+extern "C" void _s80109770_46();
+extern "C" void _s80109770_47();
+extern "C" void _s80109770_48();
+extern "C" void _s80109770_49();
+extern "C" void _s80109770_50();
+extern "C" void _s80109770_51();
+extern "C" void _s80109770_52();
+extern "C" void _s80109770_53();
+extern "C" void _s80109770_54();
+extern "C" void _s80109770_55();
+
+struct cXObjectImpl {
+    void TryElement_StackElem();
+};
+
+void cXObjectImpl::TryElement_StackElem() {
+}

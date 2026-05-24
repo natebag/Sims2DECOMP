@@ -1,0 +1,17 @@
+// 0x80033218 ESim::DrawCursorHighLight(ERC (668 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-704(1); mfspr 0,8; stfd f31,0x2b8(1); stmw 23,0x294(1); stw 0,0x2c4(1); lis 9,-32697; mr 31,3; addi 30,9,24012; mr 29,4; lwz 0,0x358(30); cmpwi 0,0; bne 5f; lwz 0,0xcc(30); addi 11,30,188; lwz 10,0x3d0(31); rlwinm 0,0,2,0,29; lwzx 9,11,0; cmpw 9,10; beq 5f; bl _s80033218_0; cmpwi 3,0; bne 5f; lwz 0,0xcc(30); lis 9,-32696; addi 9,9,21920; addi 24,1,8; mulli 0,0,12; addi 4,1,256; addi 23,1,304; addi 30,1,648; addi 26,1,320; addi 27,1,384; addi 25,1,400; add 28,0,9; li 0,4; mtspr 9,0; 0:; bdnz 0b; li 0,4; mtspr 9,0; 1:; bdnz 1b; lwz 9,0x0(28); li 0,0; lwz 10,0x4(28); lwz 11,0x8(28); stw 0,0xfc(1); stw 9,0x8(1); stw 0,0xf8(1); stw 10,0x4(24); stw 11,0x8(24); lwz 9,0x0(31); lha 3,0x110(9); lwz 0,0x114(9); add 3,31,3; mtspr 8,0; blrl; lis 9,-32707; lfs f0,0x418(31); addi 9,9,4516; lfs f13,-26800(13); lis 10,-32707; lwz 11,0x0(9); lwz 12,0x4(9); lfs f12,0x11ac(10); fadds f0,f0,f13; stw 11,0x288(1); stw 12,0x28c(1); fcmpu 0,f0,f12; stfs f0,0x418(31); ble 2f; lis 9,-32707; lwz 11,0x41c(31); lwz 0,0x420(31); lfs f0,0x11b0(9); stw 0,0x41c(31); stfs f0,0x418(31); stw 11,0x420(31); 2:; lfs f31,0x418(31); lis 9,-32707; lfs f0,0x11b4(9); lis 11,-32707; fdivs f31,f31,f12; lwz 9,0x41c(31); lfs f12,0x11b8(11); mr 3,26; lwz 0,0x420(31); lis 11,-32707; rlwinm 9,9,2,0,29; lfs f10,0x11b0(11); rlwinm 0,0,2,0,29; lfsx f11,9,30; lfsx f13,30,0; lis 30,-32707; fmuls f0,f31,f0; fmuls f12,f31,f12; fmuls f12,f12,f31; fmuls f0,f0,f31; fmadds f0,f0,f31,f12; fmadds f31,f31,f10,f0; fsubs f13,f13,f11; fmadds f31,f31,f13,f11; bl _s80033218_1; lis 9,-32707; stfs f31,0x184(1); lfs f0,0x11c0(9); mr 4,27; stfs f31,0x180(1); mr 3,26; stfs f0,0x8(27); bl _s80033218_2; lfs f12,0x4(23); mr 4,27; lfs f0,0x130(1); mr 3,26; lfs f13,0x11bc(30); stfs f0,0x180(1); stfs f12,0x184(1); stfs f13,0x8(27); bl _s80033218_3; lwz 9,0x70(29); mr 4,26; li 5,1; lwz 0,0xec(9); lha 3,0xe8(9); mtspr 8,0; add 3,29,3; blrl; li 0,4; mtspr 9,0; 3:; bdnz 3b; li 0,4; mtspr 9,0; 4:; bdnz 4b; lwz 11,0x0(28); li 0,0; lwz 10,0x8(28); mr 4,25; lwz 9,0x4(28); stw 0,0x284(1); stw 11,0x190(1); stw 0,0x280(1); stw 10,0x8(25); stw 9,0x4(25); lwz 9,0x70(29); lwz 0,0x16c(9); lha 3,0x168(9); mtspr 8,0; add 3,29,3; blrl; lwz 3,0x408(31); mr 4,29; bl _s80033218_4; lwz 9,0x70(29); mr 4,24; lha 3,0x168(9); lwz 0,0x16c(9); add 3,29,3; mtspr 8,0; blrl; lwz 3,0x40c(31); mr 4,29; bl _s80033218_5; 5:; lwz 0,0x2c4(1); mtspr 8,0; lmw 23,0x294(1); lfd f31,0x2b8(1); addi 1,1,704"
+
+extern "C" void _s80033218_0();
+extern "C" void _s80033218_1();
+extern "C" void _s80033218_2();
+extern "C" void _s80033218_3();
+extern "C" void _s80033218_4();
+extern "C" void _s80033218_5();
+
+struct ESim {
+    void DrawCursorHighLight();
+};
+
+void ESim::DrawCursorHighLight() {
+}

@@ -1,0 +1,10 @@
+// 0x800DD5E4 cXObjectImpl::ExtractContainedSims(void) (260 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,3; li 30,0; b 3f; 0:; lwz 3,0x4(29); lwz 9,0x4(3); lha 0,0x2c0(9); lwz 9,0x2c4(9); add 3,3,0; mtspr 8,9; blrl; mr. 31,3; beq 3f; lwz 9,0x4(31); lha 3,0x4a8(9); lwz 0,0x4ac(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 2f; lwz 3,0x0(31); lwz 9,0x18(3); lha 0,0x18(9); lwz 9,0x1c(9); add 3,3,0; mtspr 8,9; blrl; li 4,0; li 11,0; mr. 3,3; beq 1f; lwz 11,0x4(3); 1:; lwz 9,0x4(11); lha 3,0x50(9); lwz 0,0x54(9); add 3,11,3; mtspr 8,0; blrl; b 3f; 2:; lwz 9,0x4(31); lha 3,0x2f0(9); lwz 0,0x2f4(9); add 3,31,3; mtspr 8,0; blrl; 3:; lwz 3,0x4(29); lwz 9,0x4(3); lha 0,0x2b0(9); lwz 9,0x2b4(9); add 3,3,0; mtspr 8,9; blrl; mr 4,30; cmpw 30,3; addi 30,30,1; blt 0b; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+
+struct cXObjectImpl {
+    void ExtractContainedSims();
+};
+
+void cXObjectImpl::ExtractContainedSims() {
+}

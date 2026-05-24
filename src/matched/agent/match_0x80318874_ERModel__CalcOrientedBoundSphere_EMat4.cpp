@@ -1,5 +1,0 @@
-// 0x80318874 ERModel::CalcOrientedBoundSphere(EMat4 (220 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 28,0x18(1); stw 0,0x2c(1); mr 30,4; mr 28,3; mr 29,5; mr 3,30; bl _s80318874_0; addi 9,28,72; lfs f12,0x10(30); lfs f11,0x4(9); addi 10,1,8; lfs f13,0x14(30); lfs f8,0x48(28); fmuls f12,f11,f12; lfs f0,0x18(30); fmuls f13,f11,f13; lfs f10,0x0(30); lfs f9,0x4(30); fmuls f11,f11,f0; lfs f7,0x8(30); fmadds f10,f8,f10,f12; lfs f0,0x8(9); fmadds f9,f8,f9,f13; lfs f12,0x20(30); fmadds f8,f8,f7,f11; lfs f13,0x24(30); lfs f7,0x28(30); fmadds f12,f0,f12,f10; lfs f6,0x38(30); fmadds f13,f0,f13,f9; lfs f11,0x30(30); fmadds f0,f0,f7,f8; lfs f10,0x34(30); fadds f0,f0,f6; fadds f12,f12,f11; stfs f0,0x10(1); fadds f13,f13,f10; stfs f12,0x8(1); stfs f13,0xc(1); lwz 9,0x8(1); lwz 11,0x8(10); lwz 0,0x4(10); stw 9,0x0(29); stw 0,0x4(29); stw 11,0x8(29); lfs f0,0x54(28); fmuls f0,f0,f1; stfs f0,0xc(29); lwz 0,0x2c(1); mtspr 8,0; lmw 28,0x18(1); addi 1,1,40"
-extern "C" void _s80318874_0();
-extern "C" void f_80318874() {}

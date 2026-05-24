@@ -1,0 +1,10 @@
+// 0x80145E30 TileWalls::TileWalls(TileWallStorage (192 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="lbz 0,0x0(4); mr 11,3; stw 0,0x0(11); andi. 10,0,16; lbz 0,0x1(4); stw 0,0x4(11); lbz 9,0x2(4); sth 9,0x8(11); lbz 0,0x3(4); sth 0,0xa(11); lbz 9,0x3(4); sth 9,0x10(11); lbz 0,0x3(4); sth 0,0x12(11); lbz 9,0x4(4); sth 9,0x14(11); lbz 0,0x5(4); sth 0,0x16(11); lbz 9,0x7(4); sth 9,0x18(11); lbz 0,0x6(4); sth 0,0x1a(11); beq 0f; lbz 0,0x6(4); sth 0,0x1c(11); lbz 9,0x7(4); sth 9,0x1e(11); b 1f; 0:; sth 10,0x1c(11); sth 10,0x1e(11); 1:; lwz 0,0x0(11); andi. 0,0,32; beq 2f; lbz 0,0x6(4); sth 0,0x20(11); lbz 9,0x7(4); sth 9,0x22(11); b 3f; 2:; sth 0,0x20(11); sth 0,0x22(11); 3:; li 0,0; stw 5,0x30(11); stw 0,0x24(11); mr 3,11; stw 6,0x34(11); stw 7,0x28(11); stw 8,0x2c(11)"
+
+struct TileWalls {
+    void TileWalls_TileWallStorage();
+};
+
+void TileWalls::TileWalls_TileWallStorage() {
+}

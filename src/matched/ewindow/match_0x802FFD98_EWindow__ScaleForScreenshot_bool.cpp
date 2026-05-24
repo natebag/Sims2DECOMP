@@ -1,0 +1,10 @@
+// 0x802FFD98 EWindow::ScaleForScreenshot(bool, (376 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); stmw 29,0x2c(1); mr 10,6; mr 29,7; cmpwi 3,0; beq 0f; xoris 0,4,32768; stw 0,0x24(1); lis 6,17200; mr 11,9; xoris 0,5,32768; stw 6,0x20(1); lis 8,-32702; mr 7,9; lfd f12,-2224(8); lfd f13,0x20(1); xoris 4,10,32768; stw 0,0x24(1); mr 5,9; fsub f13,f13,f12; xoris 29,29,32768; stw 6,0x20(1); frsp f13,f13; stfs f13,0x8(1); lis 10,-32702; lfd f0,0x20(1); addi 9,1,8; stw 4,0x24(1); lis 11,-32702; fsub f0,f0,f12; lfs f11,-2216(10); stw 6,0x20(1); frsp f0,f0; stfs f0,0x4(9); lis 4,-32693; lfd f13,0x20(1); addi 30,4,2292; stw 29,0x24(1); lis 3,-32693; stfs f11,0x8(9); fsub f13,f13,f12; stw 6,0x20(1); frsp f13,f13; lwz 7,0x8(1); addi 6,3,2304; lfd f0,0x20(1); lwz 5,0x4(9); lwz 8,0x8(9); fsub f0,f0,f12; lfs f11,-2212(11); frsp f0,f0; stfs f13,0x8(1); stfs f0,0x4(9); stfs f11,0x8(9); lwz 10,0x4(9); lwz 11,0x8(9); lwz 0,0x8(1); stw 7,0x8f4(4); stw 8,0x8(30); stw 0,0x900(3); stw 11,0x8(6); stw 5,0x4(30); stw 10,0x4(6); b 1f; 0:; lis 10,-32702; addi 11,1,8; lfs f0,-2216(10); lis 9,-32702; lfs f13,-2212(9); lis 5,-32693; stfs f0,0x8(1); addi 3,5,2292; stfs f0,0x8(11); lis 4,-32693; stfs f0,0x4(11); addi 7,4,2304; lwz 6,0x8(11); lwz 8,0x8(1); lwz 30,0x4(11); stfs f13,0x8(1); stfs f13,0x8(11); stfs f13,0x4(11); lwz 9,0x8(11); lwz 10,0x4(11); lwz 0,0x8(1); stw 8,0x8f4(5); stw 6,0x8(3); stw 0,0x900(4); stw 9,0x8(7); stw 30,0x4(3); stw 10,0x4(7); 1:; lmw 29,0x2c(1); addi 1,1,56"
+
+struct EWindow {
+    void ScaleForScreenshot();
+};
+
+void EWindow::ScaleForScreenshot() {
+}

@@ -1,4 +1,0 @@
-// 0x80032B84 ESim::PropOrderTableCallback(ELevelDrawData (212 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); lwz 31,0x24(4); mr 29,3; lwz 0,0x528(31); cmpwi 0,0; beq 2f; lwz 5,0x358(31); cmpwi 5,0; beq 0f; lwz 5,0x18(5); b 1f; 0:; li 5,0; 1:; lwz 4,0x344(31); cmpwi 4,0; beq 3f; cmpwi 5,0; beq 3f; lwz 30,0x98(29); lwz 9,0x70(30); lwz 0,0xdc(9); lha 3,0xd8(9); mtspr 8,0; add 3,30,3; blrl; lwz 11,0x3d0(31); lwz 9,0x4(11); lwz 0,0x18c(9); lha 3,0x188(9); mtspr 8,0; add 3,11,3; blrl; lwz 9,0x0(3); mr 4,30; li 5,0; li 6,0; lha 0,0xd0(9); lwz 9,0xd4(9); add 3,3,0; mtspr 8,9; blrl; 2:; li 0,0; stw 0,0xb8(29); stw 0,0xac(29); stw 0,0xb4(29); stw 0,0xa8(29); 3:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
-extern "C" void f_80032B84() {}

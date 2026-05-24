@@ -1,0 +1,17 @@
+// 0x800BA168 cGZSnd::Play(void) (656 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 30,0x28(1); stw 0,0x34(1); mr 31,3; li 0,1; lwz 9,0x18(31); stw 0,0xc(31); cmpwi 9,0; bne 3f; lwz 10,0x14(31); cmpwi 10,0; beq 2f; lwz 9,-24468(13); rlwinm 8,10,2,22,29; addi 6,31,20; addi 7,9,4; lwzx 11,7,8; cmpwi 11,0; beq 1f; lwz 0,0x0(11); cmpw 10,0; beq 1f; 0:; mr 10,11; lwz 11,0x18(11); cmpwi 11,0; beq 1f; lwz 9,0x0(6); lwz 0,0x0(11); cmpw 9,0; bne 0b; cmpwi 10,0; beq 1f; lwz 0,0x18(11); stw 0,0x18(10); lwzx 9,7,8; stw 9,0x18(11); stwx 11,7,8; 1:; cmpwi 11,0; stw 11,0x18(31); bne 2f; bl _s800BA168_0; li 4,28; li 5,0; bl _s800BA168_1; mr 30,3; li 4,0; li 5,28; bl _s800BA168_2; lwz 4,0x14(31); mr 3,30; bl _s800BA168_3; lwz 11,-24468(13); lbz 9,0x17(31); stw 3,0x18(31); addi 11,11,4; rlwinm 9,9,2,0,29; lwzx 0,11,9; stw 0,0x18(3); stwx 3,11,9; 2:; lwz 11,0x18(31); cmpwi 11,0; beq 3f; lwz 9,0x4(11); addi 9,9,1; stw 9,0x4(11); 3:; lwz 9,0x18(31); li 0,0; stw 0,0x8(31); cmpwi 9,0; beq 8f; lwz 0,0x10(9); li 30,0; cmpwi 0,0; beq 4f; lwz 11,-26532(13); lis 4,-32693; addi 4,4,-11760; lwz 9,0x0(11); lha 3,0x28(9); lwz 0,0x2c(9); add 3,11,3; mtspr 8,0; blrl; lfs f0,0x30(31); fcmpu 0,f1,f0; bge 5f; 4:; li 30,1; 5:; stw 30,0x8(31); cmpwi 30,0; bne 8f; lwz 3,0x18(31); bl _s800BA168_4; lwz 0,0x1c(31); cmpwi 0,0; bne 6f; lwz 3,-26564(13); lwz 9,0x0(3); lha 0,0x88(9); lwz 9,0x8c(9); add 3,3,0; mtspr 8,9; blrl; stw 3,0x1c(31); cmpwi 3,0; beq 8f; lwz 11,-26564(13); mr 4,3; lwz 5,0x14(31); lwz 9,0x0(11); lwz 0,0x9c(9); lha 3,0x98(9); mtspr 8,0; add 3,11,3; blrl; lwz 0,0x1c(31); cmpwi 0,0; beq 8f; 6:; lwz 4,0x38(31); mr 3,31; stw 30,0x8(1); addi 5,1,32; addi 30,1,8; addi 6,1,36; bl _s800BA168_5; lwz 9,0x10(31); li 0,1; stw 0,0x10(30); cmpwi 9,0; lwz 0,0x8(1); lfs f0,0x20(1); ori 0,0,8; stw 0,0x8(1); stfs f0,0x4(30); lwz 0,0x8(1); lfs f0,0x24(1); ori 0,0,1; stw 0,0x8(1); stfs f0,0x8(30); lwz 0,0x8(1); ori 0,0,2; stw 0,0x8(1); beq 7f; lis 9,-32706; lfs f0,-25352(9); stfs f0,0xc(30); lwz 0,0x8(1); ori 0,0,4; stw 0,0x8(1); 7:; lwz 3,-26564(13); mr 5,30; lwz 4,0x1c(31); lwz 9,0x0(3); lha 0,0xb0(9); lwz 9,0xb4(9); add 3,3,0; mtspr 8,9; blrl; 8:; li 3,1; lwz 0,0x34(1); mtspr 8,0; lmw 30,0x28(1); addi 1,1,48"
+
+extern "C" void _s800BA168_0();
+extern "C" void _s800BA168_1();
+extern "C" void _s800BA168_2();
+extern "C" void _s800BA168_3();
+extern "C" void _s800BA168_4();
+extern "C" void _s800BA168_5();
+
+struct cGZSnd {
+    void Play();
+};
+
+void cGZSnd::Play() {
+}

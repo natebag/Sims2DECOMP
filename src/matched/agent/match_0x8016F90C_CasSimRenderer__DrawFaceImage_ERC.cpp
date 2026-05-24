@@ -1,5 +1,0 @@
-// 0x8016F90C CasSimRenderer::DrawFaceImage(ERC (276 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stmw 30,0x38(1); stw 0,0x44(1); mr 30,3; mr 31,4; lwz 0,0x210(30); cmpwi 0,0; beq 0f; lwz 3,0x0(30); bl _s8016F90C_0; cmpwi 3,0; beq 0f; lwz 9,0x70(31); li 5,0; lwz 4,0x210(30); lwz 0,0x124(9); lha 3,0x120(9); mtspr 8,0; add 3,31,3; blrl; lwz 30,0x70(31); lis 9,-32706; lfs f12,0x1770(9); lis 11,-32706; lha 3,0x188(30); lis 10,-32706; lfs f13,0x1774(11); addi 4,1,8; stfs f12,0x8(1); lis 9,-32706; lfs f0,0x1778(10); addi 5,1,16; stfs f13,0x4(4); addi 11,1,24; lfs f12,0x177c(9); addi 10,1,32; stfs f0,0x10(1); addi 9,1,40; stfs f12,0x4(5); add 3,31,3; stfs f13,0x18(1); mr 8,9; stfs f0,0x4(11); fmr f1,f13; stfs f0,0x20(1); mr 6,11; stfs f13,0x4(10); mr 7,10; stfs f0,0x28(1); stfs f0,0xc(9); stfs f0,0x4(9); stfs f0,0x8(9); lwz 0,0x18c(30); mtspr 8,0; blrl; lwz 9,0x70(31); li 4,0; li 5,0; lha 3,0x120(9); lwz 0,0x124(9); add 3,31,3; mtspr 8,0; blrl; 0:; lwz 0,0x44(1); mtspr 8,0; lmw 30,0x38(1); addi 1,1,64"
-extern "C" void _s8016F90C_0();
-extern "C" void f_8016F90C() {}

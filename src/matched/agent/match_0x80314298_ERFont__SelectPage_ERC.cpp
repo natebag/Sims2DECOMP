@@ -1,4 +1,0 @@
-// 0x80314298 ERFont::SelectPage(ERC (240 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stw 31,0x14(1); stw 0,0x1c(1); lwz 0,0x68(3); mr 31,4; cmpw 0,5; beq 3f; stw 5,0x68(3); lis 9,-32691; addi 9,9,21688; lwz 7,0x54(3); lbz 11,0x4645(9); rlwinm 8,5,2,0,29; lbz 10,0x4646(9); lbz 0,0x4644(9); stb 11,0x9(1); stb 0,0x8(1); stb 10,0xa(1); lwz 9,0x20(7); lwzx 11,9,8; lwz 5,0x8(11); lwz 3,0x14(5); cmpwi 3,0; beq 0f; mr 11,3; b 1f; 0:; lwz 3,0x18(5); li 11,0; cmpwi 3,0; beq 1f; lwz 11,0x14(3); 1:; lwz 9,0xf0(11); mr 4,31; li 5,0; lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,11,3; blrl; lwz 9,0x70(31); li 4,1; lbz 11,0x8(1); lha 0,0x1c8(9); addi 10,9,456; cmpwi 11,0; add 3,31,0; bne 2f; li 4,0; 2:; lwz 0,0x4(10); li 7,0; lbz 5,0x9(1); lbz 6,0xa(1); mtspr 8,0; blrl; 3:; lwz 0,0x1c(1); mtspr 8,0; lwz 31,0x14(1); addi 1,1,24"
-extern "C" void f_80314298() {}

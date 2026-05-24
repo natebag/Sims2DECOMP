@@ -1,0 +1,10 @@
+// 0x800E1FF4 cXObjectImpl::UserPlace(FTilePt (308 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 30,3; lwz 11,0x4(30); lwz 9,0x4(11); lwz 0,0x13c(9); lha 3,0x138(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x4(30); lwz 9,0x4(11); lha 3,0x390(9); lwz 0,0x394(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 3,0; bne 2f; lwz 11,0x4(30); li 4,11; li 5,0; li 6,0; lwz 9,0x4(11); li 31,0; lwz 0,0x104(9); lha 3,0x100(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0x4(30); lwz 9,0x4(11); lha 3,0x2b0(9); lwz 0,0x2b4(9); add 3,11,3; mtspr 8,0; blrl; mr 29,3; cmpw 31,29; bge 2f; 0:; lwz 3,0x4(30); mr 4,31; lwz 9,0x4(3); lha 0,0x2c0(9); lwz 9,0x2c4(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 1f; lwz 11,0x4(30); mr 4,31; lwz 9,0x4(11); lwz 0,0x2c4(9); lha 3,0x2c0(9); mtspr 8,0; add 3,11,3; blrl; lwz 9,0x4(3); li 4,11; li 5,0; li 6,0; lha 0,0x100(9); lwz 9,0x104(9); add 3,3,0; mtspr 8,9; blrl; 1:; addi 31,31,1; cmpw 31,29; blt 0b; 2:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+
+struct cXObjectImpl {
+    void UserPlace_FTilePt();
+};
+
+void cXObjectImpl::UserPlace_FTilePt() {
+}

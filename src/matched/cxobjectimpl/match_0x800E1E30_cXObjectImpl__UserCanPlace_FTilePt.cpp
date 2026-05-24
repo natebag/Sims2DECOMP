@@ -1,0 +1,15 @@
+// 0x800E1E30 cXObjectImpl::UserCanPlace(FTilePt (452 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stmw 22,0x18(1); stw 0,0x44(1); lwz 29,-21488(13); li 9,0; mr 22,3; mr 31,4; lwz 30,0x0(29); mr 23,5; mr 27,6; mr 24,7; lha 0,0x58(30); addi 30,30,88; stw 9,-31884(13); add 29,29,0; li 5,1; stw 9,-31888(13); addi 3,1,8; bl _s800E1E30_0; li 25,0; lwz 0,0x4(30); mr 3,29; addi 4,1,8; li 26,0; mtspr 8,0; blrl; cmpwi 3,0; bne 0f; lwz 29,-21488(13); addi 28,1,16; mr 4,31; li 5,1; lwz 30,0x0(29); mr 3,28; li 26,1; lha 0,0x128(30); addi 30,30,296; add 29,29,0; bl _s800E1E30_1; lwz 0,0x4(30); mr 3,29; mr 4,28; mtspr 8,0; blrl; cmpwi 3,0; bne 1f; 0:; li 25,1; 1:; cmpwi 26,0; beq 2f; addi 3,1,16; li 4,2; bl _s800E1E30_2; 2:; addi 3,1,8; li 4,2; bl _s800E1E30_3; cmpwi 25,0; beq 3f; li 0,1; b 6f; 3:; lwz 3,0x4(22); mr 5,23; mr 4,31; mr 6,27; lwz 9,0x4(3); mr 7,24; lha 0,0x130(9); lwz 9,0x134(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 4f; lwz 0,0x4(31); rlwinm 0,0,0,28,31; cmpwi 0,8; bne 4f; lwz 0,0x0(31); rlwinm 0,0,0,28,31; cmpwi 0,8; beq 5f; 4:; li 3,0; b 8f; 5:; lwz 9,-21432(13); lwz 0,0x3dc(9); cmpwi 0,0; bne 7f; cmpwi 27,0; beq 7f; lwz 9,0x4(27); mr 4,24; lha 3,0x2b8(9); lwz 0,0x2bc(9); add 3,27,3; mtspr 8,0; blrl; mr. 3,3; beq 7f; lwz 3,0x8(3); cmpwi 3,7; bgt 7f; cmpwi 3,5; blt 7f; li 0,11; 6:; li 3,0; stw 0,-31888(13); b 8f; 7:; li 3,1; 8:; lwz 0,0x44(1); mtspr 8,0; lmw 22,0x18(1); addi 1,1,64"
+
+extern "C" void _s800E1E30_0();
+extern "C" void _s800E1E30_1();
+extern "C" void _s800E1E30_2();
+extern "C" void _s800E1E30_3();
+
+struct cXObjectImpl {
+    void UserCanPlace_FTilePt();
+};
+
+void cXObjectImpl::UserCanPlace_FTilePt() {
+}

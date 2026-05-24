@@ -1,0 +1,18 @@
+// 0x80047508 ERoom::ProcessCell(TNodeList<ERoomWall (712 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="blrl; lwz 9,0x70(31); li 4,2; li 5,0; li 6,0; lha 3,0x1d8(9); lwz 0,0x1dc(9); add 3,31,3; mtspr 8,0; blrl; lwz 30,0x104(30); cmpwi 30,0; beq 1f; 0:; lwz 9,0x70(31); lwz 4,0x4(30); lha 3,0xb8(9); lwz 0,0xbc(9); add 3,31,3; mtspr 8,0; blrl; lwz 30,0x0(30); cmpwi 30,0; bne 0b; 1:; lwz 9,0x70(31); li 4,0; li 5,0; li 6,0; lwz 0,0x1dc(9); lha 3,0x1d8(9); mtspr 8,0; add 3,31,3; blrl; li 0,0; stw 0,0xa8(29); lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24; blr; stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); lwz 31,0x104(3); lwz 30,0x98(4); cmpwi 31,0; beq 3f; 2:; lwz 9,0x70(30); lwz 4,0x4(31); lha 3,0xb8(9); lwz 0,0xbc(9); add 3,30,3; mtspr 8,0; blrl; lwz 31,0x0(31); cmpwi 31,0; bne 2b; 3:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16; blr; stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); addi 0,3,272; mr 3,4; mr 4,0; bl _s80047508_0; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8; blr; lwz 9,-32508(13); cmpwi 9,0; beq 5f; lwz 3,0x0(9); cmpwi 3,0; beq 4f; lwz 0,0x0(3); stw 0,0x0(9); 4:; beqlr; lwz 9,-32504(13); addi 9,9,1; stw 9,-32504(13); blr; 5:; li 3,0; blr; lwz 11,-32508(13); cmpwi 11,0; beqlr; cmpwi 3,0; beqlr; lwz 9,-32504(13); addi 9,9,-1; stw 9,-32504(13); beqlr; lwz 0,0x0(11); stw 0,0x0(3); stw 3,0x0(11); blr; stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); lis 9,-32696; lwz 30,-29684(9); addi 29,9,-29684; b 7f; 6:; lwz 11,0x1c(30); lwz 30,0x10(30); lwz 9,0x0(11); lha 3,0x8(9); lwz 0,0xc(9); add 3,11,3; mtspr 8,0; blrl; 7:; li 31,1; cmpwi 30,0; bne 8f; li 31,0; 8:; cmpwi 31,0; bne 6b; mr 3,29; bl _s80047508_1; lwz 30,-32508(13); cmpwi 30,0; beq 9f; li 4,0; mr 3,30; bl _s80047508_2; bl _s80047508_3; mr 4,30; bl _s80047508_4; 9:; stw 31,-32508(13); lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24; blr; stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,6; mr 4,3; sth 3,0x0(31); sth 3,0x0(5); lwz 3,-21472(13); cmpwi 3,0; beq 10f; li 0,0; rlwinm 4,4,0,16,31; ori 0,0,65530; cmplw 4,0; bgt 10f; bl _s80047508_5; mr. 3,3; beq 10f; lhz 0,0x2(3); sth 0,0x0(31); 10:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16; blr; stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); mr. 3,3; beq 11f; bl _s80047508_6; b 12f; 11:; lwz 3,-32492(13); 12:; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
+
+extern "C" void _s80047508_0();
+extern "C" void _s80047508_1();
+extern "C" void _s80047508_2();
+extern "C" void _s80047508_3();
+extern "C" void _s80047508_4();
+extern "C" void _s80047508_5();
+extern "C" void _s80047508_6();
+
+struct ERoom {
+    void ProcessCell_TNodeList_ERoomWall();
+};
+
+void ERoom::ProcessCell_TNodeList_ERoomWall() {
+}

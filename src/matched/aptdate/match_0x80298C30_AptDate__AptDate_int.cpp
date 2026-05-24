@@ -1,0 +1,14 @@
+// 0x80298C30 AptDate::AptDate(int, (420 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 23,0xc(1); stw 0,0x34(1); mr 31,3; mr 29,4; mr 24,9; mr 28,5; mr 27,6; mr 26,7; mr 25,8; mr 23,10; li 4,29; bl _s80298C30_0; lis 9,-32703; li 4,8; addi 9,9,8984; addi 3,31,12; stw 9,0x8(31); bl _s80298C30_1; li 0,0; lis 9,-32704; stb 0,0x20(31); addi 9,9,27112; li 11,0; stw 9,0x8(31); lwz 0,0x20(31); lis 30,-32694; stw 11,0x64(31); addi 30,30,-16288; rlwinm 0,0,0,10,7; addi 3,31,36; stw 0,0x20(31); li 4,1; lwz 9,0x90(30); mtspr 8,9; blrl; lwz 0,0x90(30); addi 3,31,68; li 4,0; mtspr 8,0; blrl; lwz 9,0x34(31); lwz 0,0x54(31); cmpw 9,0; ble 0f; lwz 9,0x2c(31); lwz 0,0x4c(31); addi 9,9,24; b 3f; 0:; bne 1f; lwz 9,0x2c(31); lwz 0,0x4c(31); cmpw 9,0; bgt 4f; 1:; lwz 9,0x34(31); lwz 0,0x54(31); cmpw 9,0; blt 2f; bne 5f; lwz 9,0x2c(31); lwz 0,0x4c(31); cmpw 9,0; bge 5f; b 4f; 2:; lwz 9,0x2c(31); lwz 0,0x4c(31); addi 9,9,-24; 3:; subf 9,0,9; stw 9,0x64(31); b 5f; 4:; subf 0,0,9; stw 0,0x64(31); 5:; cmpwi 29,-1; beq 6f; stw 29,0x3c(31); 6:; cmpwi 28,-1; beq 7f; stw 28,0x38(31); 7:; cmpwi 27,-1; beq 8f; stw 27,0x34(31); 8:; cmpwi 26,-1; beq 9f; stw 26,0x2c(31); 9:; cmpwi 25,-1; beq 10f; stw 25,0x28(31); 10:; cmpwi 24,-1; beq 11f; stw 24,0x24(31); 11:; cmpwi 23,-1; beq 12f; stw 23,0x40(31); 12:; lwz 6,0x64(31); mr 3,31; addi 4,31,36; addi 5,31,68; bl _s80298C30_2; mr 3,31; lwz 0,0x34(1); mtspr 8,0; lmw 23,0xc(1); addi 1,1,48"
+
+extern "C" void _s80298C30_0();
+extern "C" void _s80298C30_1();
+extern "C" void _s80298C30_2();
+
+struct AptDate {
+    void AptDate();
+};
+
+void AptDate::AptDate() {
+}

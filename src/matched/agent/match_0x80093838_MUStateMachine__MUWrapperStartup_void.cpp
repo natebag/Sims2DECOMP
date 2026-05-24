@@ -1,6 +1,0 @@
-// 0x80093838 MUStateMachine::MUWrapperStartup(void) (288 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 30,0x10(1); stw 0,0x1c(1); mr 30,3; li 3,280; bl _s80093838_0; lis 9,-32698; mr 12,3; li 0,0; addi 9,9,-12328; stw 9,0x80(12); addi 8,12,40; stw 0,0x0(12); addi 9,12,56; stw 0,0x4(12); addi 6,12,72; stw 0,0x8(12); addi 3,12,88; stw 0,0xc(12); lis 10,-32706; stw 0,0x10(12); addi 4,12,104; stw 0,0x14(12); lis 11,-32698; stw 0,0x18(12); addi 10,10,-32228; stw 0,0x8(8); addi 11,11,-12392; stw 0,0x28(12); addi 5,12,140; stw 0,0x8(9); addi 7,12,148; stw 0,0x38(12); lis 9,-32698; stw 0,0x8(6); li 8,1; stw 0,0x48(12); addi 9,9,-12264; stw 0,0x8(3); cmpwi 12,0; stw 0,0x58(12); stw 0,0x8(4); stw 11,0x80(12); stw 10,0x84(12); stw 0,0x68(12); stw 0,0x78(12); stw 0,0x88(12); stw 0,0x8c(12); stw 0,0x4(5); stw 0,0x4(7); stw 8,0xa0(12); stw 9,0x80(12); stw 8,0x9c(12); stw 0,0xa4(12); stw 0,0xa8(12); stw 0,0xc0(12); stw 0,0xc4(12); stw 0,0xf4(12); stw 0,0xf8(12); stw 0,0x104(12); stw 12,0x98(30); stw 0,0xfc(12); stw 0,0x100(12); beq 0f; mr 3,12; bl _s80093838_1; 0:; lwz 0,0x1c(1); mtspr 8,0; lmw 30,0x10(1); addi 1,1,24"
-extern "C" void _s80093838_0();
-extern "C" void _s80093838_1();
-extern "C" void f_80093838() {}

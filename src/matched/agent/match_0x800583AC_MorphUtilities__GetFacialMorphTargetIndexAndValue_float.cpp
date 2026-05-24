@@ -1,4 +1,0 @@
-// 0x800583AC MorphUtilities::GetFacialMorphTargetIndexAndValue(float, (200 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 9,-32707; li 0,-1; lfs f0,0x3c54(9); stw 0,0x0(5); stfs f0,0x0(4); fcmpu 0,f1,f0; stw 0,0x0(7); stfs f0,0x0(6); cror 3,2,1; bns 1f; lis 9,-32707; lfs f0,0x3c58(9); fcmpu 0,f1,f0; bge 1f; li 0,0; fsubs f0,f0,f1; 0:; stw 0,0x0(5); stfs f0,0x0(4); blr; 1:; lis 9,-32707; lfs f13,0x3c58(9); fcmpu 0,f1,f13; cror 3,2,1; bns 2f; lis 9,-32707; lfs f0,0x3c5c(9); fcmpu 0,f1,f0; bge 2f; li 0,1; fsubs f0,f1,f13; b 0b; 2:; lis 9,-32707; lfs f0,0x3c5c(9); fcmpu 0,f1,f0; cror 3,2,1; bnslr; lis 9,-32707; lfs f13,0x3c60(9); fcmpu 0,f1,f13; cror 3,2,0; bnslr; li 0,1; fsubs f13,f13,f1; stw 0,0x0(5); li 9,2; stfs f13,0x0(4); fsubs f0,f1,f0; stw 9,0x0(7); stfs f0,0x0(6)"
-extern "C" void f_800583AC() {}

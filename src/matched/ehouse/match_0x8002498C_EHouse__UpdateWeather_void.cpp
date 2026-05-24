@@ -1,0 +1,17 @@
+// 0x8002498C EHouse::UpdateWeather(void) (880 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stfd f31,0x28(1); stmw 29,0x1c(1); stw 0,0x34(1); mr 31,3; lwz 0,0x1c(31); cmpwi 0,0; beq 16f; lis 9,-32697; lfs f0,0x40(31); addi 30,9,24012; lwz 9,0xc8(30); fctiwz f13,f0; lis 10,-32702; lwz 8,0x54(9); addi 10,10,14408; stfd f13,0x10(1); addi 7,10,4; addi 29,8,-1; lis 11,-32707; mulli 0,29,12; lfs f10,0x990(11); lis 9,-32707; lwz 3,0x14(1); lfs f9,0x994(9); mr 5,4; lfsx f13,10,0; lfsx f0,7,0; fadds f0,f0,f10; fctiwz f12,f13; stfd f12,0x10(1); fadds f0,f0,f9; lwz 4,0x14(1); fctiwz f11,f0; stfd f11,0x10(1); lwz 5,0x14(1); bl _s8002498C_0; cmpwi 3,0; beq 0f; lwz 0,0x3f4(30); cmpwi 0,0; beq 1f; 0:; lwz 0,0x3f4(30); cmpwi 0,1; bne 5f; 1:; lwz 0,0x124(31); cmpwi 0,0; bne 6f; mulli 0,29,12; lis 9,-32702; addi 9,9,14408; addi 11,9,4; lfsx f2,9,0; mr 4,0; lfsx f13,11,0; fcmpu 0,f2,f13; ble 2f; lis 9,-32707; lfs f0,0x998(9); fsubs f0,f0,f2; fadds f31,f13,f0; b 3f; 2:; fsubs f31,f13,f2; 3:; lis 9,-32702; lis 11,-32697; addi 9,9,14408; lwz 0,0x61c0(11); addi 9,9,8; lwzx 30,9,4; cmpwi 0,1; bne 4f; lis 9,-32707; li 30,2; lfs f31,0x99c(9); 4:; li 3,56; bl _s8002498C_1; lis 9,-32707; fmr f2,f31; lfs f1,0x9a0(9); mr 4,30; fmr f3,f1; bl _s8002498C_2; stw 3,0x124(31); mr 3,31; bl _s8002498C_3; b 6f; 5:; lwz 3,0x124(31); cmpwi 3,0; beq 6f; li 4,3; bl _s8002498C_4; li 0,0; mr 3,31; stw 0,0x124(31); bl _s8002498C_5; 6:; lwz 0,0x38(31); cmpwi 0,0; beq 12f; lwz 11,-21496(13); li 4,0; lwz 9,0x0(11); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-21496(13); mr 30,3; li 4,5; lwz 9,0x0(11); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-21496(13); mr 29,3; li 4,6; lwz 9,0x0(11); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,11,3; blrl; mulli 30,30,60; lis 0,17200; lwz 7,0x34(31); mr 8,10; xoris 3,3,32768; lis 9,-32707; lis 11,-32707; add 30,30,29; lfd f0,0x9a8(9); xoris 30,30,32768; lfs f10,0x9b0(11); stw 30,0x14(1); mr 11,10; lis 9,-32707; lfs f9,0x40(31); stw 0,0x10(1); lfd f11,0x9b8(9); lfd f12,0x10(1); stw 3,0x14(1); fsub f12,f12,f0; stw 0,0x10(1); frsp f12,f12; lfd f13,0x10(1); stw 7,0x14(1); fsub f13,f13,f0; frsp f13,f13; stw 0,0x10(1); fdivs f13,f13,f10; lfd f0,0x10(1); fsub f0,f0,f11; frsp f11,f0; fadds f13,f12,f13; fcmpu 0,f9,f11; bge 7f; lis 9,-32707; lfs f0,0x998(9); fadds f13,f13,f0; 7:; lwz 0,0x30(31); cmpwi 0,0; beq 8f; cmpwi 0,1; bne 10f; lis 9,-32707; fsubs f0,f13,f11; lis 11,-32707; lfs f12,0x994(9); lfs f13,0x99c(11); fsubs f0,f0,f12; fdivs f0,f0,f13; b 9f; 8:; lis 9,-32707; fsubs f13,f13,f11; lfs f12,0x994(9); lis 11,-32707; lfs f11,0x990(11); lis 9,-32707; fsubs f13,f13,f12; lfs f0,0x9c0(9); fdivs f13,f13,f11; fsubs f0,f0,f13; 9:; stfs f0,0x3c(31); 10:; lis 9,-32707; lfs f0,0x3c(31); lfs f13,0x9c4(9); fcmpu 0,f0,f13; blt 11f; lis 9,-32707; fmr f13,f0; lfs f12,0x9c0(9); fcmpu 0,f0,f12; ble 11f; fmr f13,f12; 11:; stfs f13,0x3c(31); b 15f; 12:; lwz 0,0x30(31); cmpwi 0,0; beq 13f; cmpwi 0,1; bne 15f; lis 9,-32707; lfs f0,0x9c0(9); b 14f; 13:; lis 9,-32707; lfs f0,0x9c4(9); 14:; stfs f0,0x3c(31); 15:; lwz 9,0x1c(31); lfs f0,0x3c(31); addis 9,9,3; stfs f0,-7448(9); 16:; lwz 0,0x34(1); mtspr 8,0; lmw 29,0x1c(1); lfd f31,0x28(1); addi 1,1,48"
+
+extern "C" void _s8002498C_0();
+extern "C" void _s8002498C_1();
+extern "C" void _s8002498C_2();
+extern "C" void _s8002498C_3();
+extern "C" void _s8002498C_4();
+extern "C" void _s8002498C_5();
+
+struct EHouse {
+    void UpdateWeather();
+};
+
+void EHouse::UpdateWeather() {
+}

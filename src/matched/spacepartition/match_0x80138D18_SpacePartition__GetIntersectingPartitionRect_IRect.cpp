@@ -1,0 +1,10 @@
+// 0x80138D18 SpacePartition::GetIntersectingPartitionRect(IRect (280 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mr 6,3; li 10,0; lwz 9,0x4(6); lwz 0,0x4(9); lwz 3,0x0(9); cmpw 3,0; beq 2f; lis 11,32767; lwz 7,0x0(4); mr 8,0; ori 11,11,65535; 0:; lwz 0,0x8(3); cmpw 7,0; bge 1f; lwz 9,0x8(4); lwz 0,0x0(3); cmpw 9,0; ble 1f; lwz 9,0x4(4); lwz 0,0xc(3); cmpw 9,0; bge 1f; lwz 9,0xc(4); lwz 0,0x4(3); cmpw 9,0; ble 1f; mr 10,3; lwz 0,0x10(10); cmpw 0,11; beq 3f; 1:; addi 3,3,20; cmpw 3,8; bne 0b; 2:; lwz 3,0x8(6); cmpwi 3,0; bne 4f; 3:; mr 3,10; blr; 4:; lwz 0,0x4(3); lwz 3,0x0(3); cmpw 3,0; beq 7f; lis 11,32767; lwz 7,0x0(4); mr 8,0; ori 11,11,65535; 5:; lwz 0,0x8(3); cmpw 7,0; bge 6f; lwz 9,0x8(4); lwz 0,0x0(3); cmpw 9,0; ble 6f; lwz 9,0x4(4); lwz 0,0xc(3); cmpw 9,0; bge 6f; lwz 9,0xc(4); lwz 0,0x4(3); cmpw 9,0; ble 6f; mr 10,3; lwz 0,0x10(10); cmpw 0,11; beq 3b; 6:; addi 3,3,20; cmpw 3,8; bne 5b; 7:; mr 3,10"
+
+struct SpacePartition {
+    void GetIntersectingPartitionRect_IRect();
+};
+
+void SpacePartition::GetIntersectingPartitionRect_IRect() {
+}

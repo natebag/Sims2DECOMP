@@ -1,0 +1,18 @@
+// 0x8003B2B0 GameData::LoadDefaultNeighborhood(void) (752 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stfd f31,0x20(1); stmw 28,0x10(1); stw 0,0x2c(1); lis 9,-32707; addi 28,1,8; lfs f0,0x1de8(9); lis 29,-32693; lwz 11,-26532(13); addi 29,29,-11760; stfs f0,0x8(1); mr 4,29; stfs f0,0x4(28); lwz 9,0x0(11); lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,11,3; blrl; lis 30,-32688; lwz 3,-32056(13); addi 30,30,-20016; stfs f1,0x4(28); mr 4,30; bl _s8003B2B0_0; lwz 11,-26532(13); mr 4,29; lwz 9,0x0(11); lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-26532(13); mr 4,29; lfs f0,0x4(28); lwz 9,0x0(11); fsubs f31,f1,f0; lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,11,3; blrl; fmr f2,f1; lis 3,-32707; stfs f2,0x4(28); fmr f1,f31; addi 3,3,7340; lfs f0,0x8(1); fsubs f2,f2,f0; creqv 6,6,6; bl _s8003B2B0_1; lwz 3,-32056(13); mr 4,30; bl _s8003B2B0_2; lwz 11,-26532(13); mr 4,29; lwz 9,0x0(11); lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-26532(13); mr 4,29; lfs f0,0x4(28); lwz 9,0x0(11); fsubs f31,f1,f0; lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,11,3; blrl; fmr f2,f1; lis 3,-32707; stfs f2,0x4(28); fmr f1,f31; addi 3,3,7404; lfs f0,0x8(1); fsubs f2,f2,f0; creqv 6,6,6; bl _s8003B2B0_3; lwz 11,-21476(13); lwz 9,0x0(11); lwz 0,0x194(9); lha 3,0x190(9); mtspr 8,0; add 3,11,3; blrl; lwz 4,-32056(13); bl _s8003B2B0_4; lwz 11,-26532(13); mr 4,29; lwz 9,0x0(11); lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-26532(13); mr 4,29; lfs f0,0x4(28); lwz 9,0x0(11); fsubs f31,f1,f0; lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,11,3; blrl; fmr f2,f1; lis 3,-32707; stfs f2,0x4(28); fmr f1,f31; addi 3,3,7480; lfs f0,0x8(1); fsubs f2,f2,f0; creqv 6,6,6; bl _s8003B2B0_5; lwz 11,-21476(13); lwz 9,0x0(11); lwz 0,0x194(9); lha 3,0x190(9); mtspr 8,0; add 3,11,3; blrl; lis 9,-32697; lwz 11,-21476(13); lwz 0,0x5c6c(9); subfic 9,0,0; adde 0,9,0; sth 0,0x86(3); lwz 9,0x0(11); lwz 0,0x194(9); lha 3,0x190(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-21476(13); li 0,0; sth 0,0x88(3); lwz 9,0x0(11); lwz 0,0x194(9); lha 3,0x190(9); mtspr 8,0; add 3,11,3; blrl; lwz 9,0x0(3); lwz 5,-32040(13); lha 0,0x68(9); lwz 9,0x6c(9); lwz 4,-32056(13); add 3,3,0; mtspr 8,9; blrl; lwz 11,-26532(13); mr 4,29; lwz 9,0x0(11); lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,-26532(13); mr 4,29; lfs f0,0x4(28); lwz 9,0x0(11); fsubs f31,f1,f0; lha 3,0x28(9); lwz 0,0x2c(9); add 3,11,3; mtspr 8,0; blrl; fmr f2,f1; lis 3,-32707; stfs f2,0x4(28); addi 3,3,7568; fmr f1,f31; lfs f0,0x8(1); fsubs f2,f2,f0; creqv 6,6,6; bl _s8003B2B0_6; lwz 0,0x2c(1); mtspr 8,0; lmw 28,0x10(1); lfd f31,0x20(1); addi 1,1,40"
+
+extern "C" void _s8003B2B0_0();
+extern "C" void _s8003B2B0_1();
+extern "C" void _s8003B2B0_2();
+extern "C" void _s8003B2B0_3();
+extern "C" void _s8003B2B0_4();
+extern "C" void _s8003B2B0_5();
+extern "C" void _s8003B2B0_6();
+
+struct GameData {
+    void LoadDefaultNeighborhood();
+};
+
+void GameData::LoadDefaultNeighborhood() {
+}

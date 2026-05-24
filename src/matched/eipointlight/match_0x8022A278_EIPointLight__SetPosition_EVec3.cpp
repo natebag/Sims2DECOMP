@@ -1,0 +1,10 @@
+// 0x8022A278 EIPointLight::SetPosition(EVec3 (220 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 30,0x18(1); stw 0,0x24(1); mr 30,4; mr 31,3; lwz 11,0x0(30); addi 9,31,172; lwz 0,0x8(30); addi 5,1,8; lwz 10,0x4(30); addi 6,1,10; stw 11,0xac(31); stw 0,0x8(9); stw 10,0x4(9); lwz 0,0x1c(31); cmpwi 0,0; beq 0f; lwz 3,0x28(31); li 4,0; mtspr 8,0; blrl; b 1f; 0:; sth 0,0x8(1); sth 0,0xa(1); 1:; lfs f0,0x0(30); lfs f13,0x4(30); mr 9,11; lwz 0,0xb8(31); fctiwz f12,f0; stfd f12,0x10(1); fctiwz f11,f13; lwz 10,0x14(1); stfd f11,0x10(1); cmpw 10,0; lwz 11,0x14(1); bne 2f; lwz 0,0xbc(31); cmpw 11,0; bne 2f; lha 9,0xa(1); lwz 0,0xc0(31); cmpw 0,9; beq 3f; 2:; lha 0,0xa(1); li 9,1; stw 10,0xb8(31); stw 0,0xc0(31); stw 11,0xbc(31); stw 9,-28500(13); 3:; lwz 0,0x24(1); mtspr 8,0; lmw 30,0x18(1); addi 1,1,32"
+
+struct EIPointLight {
+    void SetPosition_EVec3();
+};
+
+void EIPointLight::SetPosition_EVec3() {
+}

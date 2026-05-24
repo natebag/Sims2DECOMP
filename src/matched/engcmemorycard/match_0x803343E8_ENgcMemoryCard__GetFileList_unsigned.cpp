@@ -1,0 +1,19 @@
+// 0x803343E8 ENgcMemoryCard::GetFileList(unsigned (1184 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-160(1); mfspr 0,8; stmw 24,0x80(1); stw 0,0xa4(1); li 0,0; mr 25,3; mr 28,4; mr 26,6; mr 24,7; stw 0,0x7c(1); stw 0,0x78(1); bl _s803343E8_0; li 27,0; addi 29,1,120; addi 30,1,124; 0:; mr 3,28; mr 4,29; mr 5,30; bl _s803343E8_1; cmpwi 3,-7; beq 13f; bgt 2f; cmpwi 3,-12; beq 13f; bgt 1f; cmpwi 3,-14; beq 12f; bgt 11f; cmpwi 3,-128; b 13f; 1:; cmpwi 3,-10; beq 13f; blt 10f; cmpwi 3,-9; beq 10f; cmpwi 3,-8; b 13f; 2:; cmpwi 3,-3; beq 6f; bgt 3f; cmpwi 3,-5; beq 8f; bgt 7f; b 9f; 3:; cmpwi 7,3,-1; beq cr7,14f; blt cr7,5f; cmpwi 3,0; beq 4f; cmpwi 3,1; b 14f; 4:; li 31,1; b 15f; 5:; li 31,-9; b 15f; 6:; cmpwi 7,3,-1; li 31,-1; b 15f; 7:; cmpwi 7,3,-1; li 31,-7; b 15f; 8:; li 0,1; cmpwi 7,3,-1; stw 0,-26380(13); li 31,-8; b 15f; 9:; cmpwi 7,3,-1; li 31,-4; b 15f; 10:; cmpwi 7,3,-1; li 31,-3; b 15f; 11:; cmpwi 7,3,-1; li 31,-6; b 15f; 12:; cmpwi 7,3,-1; li 31,-5; b 15f; 13:; cmpwi 7,3,-1; 14:; li 31,0; 15:; beq cr7,0b; cmpwi 31,1; bne 63f; lis 4,-32692; mr 3,28; addi 4,4,29280; li 5,0; bl _s803343E8_2; cmpwi 3,-7; beq 28f; bgt 18f; cmpwi 3,-12; beq 28f; bgt 17f; cmpwi 3,-14; beq 27f; bgt 26f; cmpwi 3,-128; 16:; beq 28f; cmpwi 3,0; b 29f; 17:; cmpwi 3,-10; beq 28f; blt 25f; cmpwi 3,-9; beq 25f; cmpwi 3,-8; b 16b; 18:; cmpwi 3,-3; beq 21f; bgt 19f; cmpwi 3,-5; beq 23f; bgt 22f; b 24f; 19:; cmpwi 3,-1; beq 28f; blt 20f; cmpwi 3,0; beq 30f; cmpwi 7,3,1; b 29f; 20:; li 31,-9; cmpwi 3,0; b 30f; 21:; li 31,-1; cmpwi 3,0; b 30f; 22:; li 31,-7; cmpwi 3,0; b 30f; 23:; stw 31,-26380(13); cmpwi 3,0; li 31,-8; b 30f; 24:; li 31,-4; cmpwi 3,0; b 30f; 25:; li 31,-3; cmpwi 3,0; b 30f; 26:; li 31,-6; cmpwi 3,0; b 30f; 27:; li 31,-5; cmpwi 3,0; b 30f; 28:; li 31,0; cmpwi 3,0; b 30f; 29:; li 31,0; 30:; beq 31f; cmpwi 3,-6; bne 45f; 31:; mr 3,28; bl _s803343E8_3; cmpwi 3,-7; beq 44f; bgt 33f; cmpwi 3,-12; beq 44f; bgt 32f; cmpwi 3,-14; beq 43f; bgt 42f; cmpwi 3,-128; b 44f; 32:; cmpwi 3,-10; beq 44f; blt 41f; cmpwi 3,-9; beq 41f; cmpwi 3,-8; b 44f; 33:; cmpwi 3,-3; beq 37f; bgt 34f; cmpwi 3,-5; beq 39f; bgt 38f; b 40f; 34:; cmpwi 3,-1; beq 44f; blt 36f; cmpwi 3,0; beq 35f; cmpwi 3,1; b 44f; 35:; li 31,1; b 45f; 36:; li 31,-9; b 45f; 37:; li 31,-1; b 45f; 38:; li 31,-7; b 45f; 39:; li 0,1; li 31,-8; stw 0,-26380(13); b 45f; 40:; li 31,-4; b 45f; 41:; li 31,-3; b 45f; 42:; li 31,-6; b 45f; 43:; li 31,-5; b 45f; 44:; li 31,0; 45:; cmpwi 31,1; bne 63f; rlwinm 0,27,5,0,26; li 29,0; add 30,0,24; 46:; mr 3,28; mr 4,29; addi 5,1,8; bl _s803343E8_4; cmpwi 3,-7; beq 59f; bgt 48f; cmpwi 3,-12; beq 59f; bgt 47f; cmpwi 3,-14; beq 58f; bgt 57f; cmpwi 3,-128; b 59f; 47:; cmpwi 3,-10; beq 59f; blt 56f; cmpwi 3,-9; beq 56f; cmpwi 3,-8; b 59f; 48:; cmpwi 3,-3; beq 52f; bgt 49f; cmpwi 3,-5; beq 54f; bgt 53f; b 55f; 49:; cmpwi 3,-1; beq 59f; blt 51f; cmpwi 3,0; beq 50f; cmpwi 3,1; b 59f; 50:; li 31,1; b 60f; 51:; li 31,-9; b 60f; 52:; li 31,-1; b 60f; 53:; li 31,-7; b 60f; 54:; li 0,1; li 31,-8; stw 0,-26380(13); b 60f; 55:; li 31,-4; b 60f; 56:; li 31,-3; b 60f; 57:; li 31,-6; b 60f; 58:; li 31,-5; b 60f; 59:; li 31,0; 60:; cmpwi 31,1; bne 61f; mr 3,30; addi 4,1,8; li 5,31; addi 27,27,1; bl _s803343E8_5; li 0,0; stb 0,0x20(30); addi 30,30,32; 61:; cmpw 27,26; beq 62f; addi 29,29,1; cmpwi 29,126; ble 46b; 62:; mr 3,28; bl _s803343E8_6; 63:; mr 3,25; bl _s803343E8_7; mr 3,31; lwz 0,0xa4(1); mtspr 8,0; lmw 24,0x80(1); addi 1,1,160"
+
+extern "C" void _s803343E8_0();
+extern "C" void _s803343E8_1();
+extern "C" void _s803343E8_2();
+extern "C" void _s803343E8_3();
+extern "C" void _s803343E8_4();
+extern "C" void _s803343E8_5();
+extern "C" void _s803343E8_6();
+extern "C" void _s803343E8_7();
+
+struct ENgcMemoryCard {
+    void GetFileList();
+};
+
+void ENgcMemoryCard::GetFileList() {
+}

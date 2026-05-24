@@ -1,0 +1,13 @@
+// 0x80166A9C CasScene::SetUpWindow(ERC (276 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stfd f31,0x30(1); stmw 28,0x20(1); stw 0,0x3c(1); lwz 8,-26392(13); lis 6,17200; lis 10,-32706; lwz 0,0x1c(8); mr 7,11; lwz 9,0x18(8); mr 30,3; xoris 0,0,32768; lfd f13,-888(10); stw 0,0x1c(1); xoris 9,9,32768; lfs f31,0xabc(30); mr 28,4; stw 6,0x18(1); lwz 10,0x0(8); lfd f0,0x18(1); stw 9,0x1c(1); fsub f0,f0,f13; lwz 0,0x144(10); stw 6,0x18(1); frsp f0,f0; fmuls f31,f31,f0; lha 3,0x140(10); lfd f0,0x18(1); mtspr 8,0; add 3,8,3; lwz 29,0xb18(30); fsub f0,f0,f13; frsp f0,f0; fdivs f31,f31,f0; blrl; lfs f3,0xb10(30); mr 3,29; lfs f4,0xb14(30); fmr f2,f1; fmr f1,f31; bl _s80166A9C_0; lis 9,-32706; lis 11,-32706; lfs f0,-880(9); addi 4,30,2704; lwz 3,0xb18(30); addi 9,1,8; lfs f13,-876(11); mr 6,9; stfs f0,0x8(1); addi 5,30,2716; stfs f0,0x4(9); stfs f13,0x8(9); bl _s80166A9C_1; lwz 11,0xb18(30); mr 4,28; lwz 9,0x9c(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 0,0x3c(1); mtspr 8,0; lmw 28,0x20(1); lfd f31,0x30(1); addi 1,1,56"
+
+extern "C" void _s80166A9C_0();
+extern "C" void _s80166A9C_1();
+
+struct CasScene {
+    void SetUpWindow();
+};
+
+void CasScene::SetUpWindow() {
+}

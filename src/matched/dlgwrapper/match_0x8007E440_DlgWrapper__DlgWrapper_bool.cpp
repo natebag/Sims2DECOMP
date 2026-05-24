@@ -1,0 +1,10 @@
+// 0x8007E440 DlgWrapper::DlgWrapper(bool) (260 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); stmw 29,0x14(1); lis 11,-32698; mr 9,3; li 0,0; addi 11,11,-12328; stw 11,0x80(9); addi 7,9,40; stw 0,0x0(9); addi 11,9,56; stw 0,0x4(9); addi 6,9,72; stw 0,0x8(9); addi 3,9,88; stw 0,0xc(9); lis 8,-32707; stw 0,0x10(9); addi 29,9,104; stw 0,0x14(9); lis 10,-32698; stw 0,0x18(9); addi 8,8,26920; stw 0,0x8(7); addi 10,10,-12392; stw 0,0x28(9); addi 30,9,140; stw 0,0x8(11); addi 5,9,148; stw 0,0x38(9); lis 11,-32698; stw 0,0x8(6); li 7,1; stw 0,0x48(9); addi 11,11,-12520; stw 0,0x8(3); lis 6,-32707; stw 0,0x58(9); mr 3,9; stw 0,0x8(29); stw 10,0x80(9); stw 8,0x84(9); stw 0,0x68(9); stw 0,0x78(9); stw 0,0x88(9); stw 0,0x8c(9); stw 0,0x4(30); stw 0,0x4(5); stw 7,0xa0(9); stw 11,0x80(9); stw 4,0xa4(9); stw 7,0x9c(9); stw 0,0xa8(9); stw 0,0xac(9); stw 0,0xb0(9); stw 0,0xb4(9); stw 0,0xb8(9); lfs f0,0x6aac(6); stw 0,0xcc(9); stfs f0,0xc4(9); stfs f0,0xc0(9); stfs f0,0xbc(9); stfs f0,0xc8(9); lmw 29,0x14(1); addi 1,1,32"
+
+struct DlgWrapper {
+    void DlgWrapper();
+};
+
+void DlgWrapper::DlgWrapper() {
+}

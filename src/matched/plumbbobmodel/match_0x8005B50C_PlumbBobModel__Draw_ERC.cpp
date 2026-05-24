@@ -1,0 +1,17 @@
+// 0x8005B50C PlumbBobModel::Draw(ERC (572 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-104(1); mfspr 0,8; stmw 29,0x5c(1); stw 0,0x6c(1); mr 31,3; mr 29,4; lwz 0,0x28(31); cmpwi 0,0; beq 7f; addi 3,1,8; bl _s8005B50C_0; lwz 0,0x24(31); cmpwi 0,0; beq 2f; lis 9,-32696; lfs f12,-26800(13); lfs f13,0x55cc(9); lfs f0,0x34(31); lis 9,-32707; lfs f11,0x431c(9); fmadds f13,f13,f12,f0; stfs f13,0x34(31); fcmpu 0,f13,f11; bge 0f; lis 9,-32707; lfs f12,0x4320(9); b 1f; 0:; lis 9,-32707; fmr f12,f13; lfs f0,0x4320(9); fcmpu 0,f13,f0; ble 1f; fmr f12,f11; 1:; fmr f1,f12; stfs f12,0x34(31); addi 3,1,8; bl _s8005B50C_1; 2:; lfs f0,0x18(31); lwz 0,0x20(31); stfs f0,0x1c(31); cmpwi 0,0; beq 4f; lfs f0,-26800(13); lis 9,-32696; lfs f13,0x30(31); addi 8,9,21920; fadds f13,f13,f0; stfs f13,0x30(31); lfs f0,0x28(8); fadds f0,f0,f0; fcmpu 0,f13,f0; ble 3f; lwz 0,0x38(31); lis 9,-32707; lfs f0,0x431c(9); subfic 0,0,1; stfs f0,0x30(31); stw 0,0x38(31); 3:; lwz 9,0x38(31); lis 11,-32707; addi 10,8,24; lfs f13,0x4324(11); subfic 0,9,1; lfs f0,0x30(31); rlwinm 0,0,2,0,29; rlwinm 9,9,2,0,29; lfsx f10,10,9; fmuls f0,f0,f13; lfsx f12,10,0; lfs f11,0x5c(8); lfs f13,0x1c(31); fsubs f12,f12,f10; fmuls f0,f0,f11; fmadds f0,f0,f12,f10; fadds f13,f13,f0; stfs f13,0x1c(31); 4:; lis 9,-32707; lfs f1,0x8(31); lfs f0,0x431c(9); fcmpu 0,f1,f0; beq 5f; addi 3,1,8; bl _s8005B50C_2; 5:; lfs f0,0xc(31); addi 9,31,12; lfs f11,0x0(31); addi 11,1,56; stfs f0,0x38(1); addi 30,1,8; mr 3,30; addi 4,1,72; lfs f12,0x4(9); lfs f13,0x4(31); stfs f12,0x4(11); fmuls f13,f11,f13; lfs f0,0x8(9); stfs f0,0x8(11); stfs f11,0x4c(1); stfs f13,0x50(1); stfs f11,0x48(1); bl _s8005B50C_3; lis 9,-32707; lfs f9,0x0(31); lfs f0,0x4328(9); fcmpu 0,f9,f0; ble 6f; lwz 11,0x28(31); fsubs f9,f9,f0; lis 9,-32707; lfs f11,0x1c(31); lfs f0,0x84(11); lfs f13,0x78(11); lfs f12,0x88(11); lfs f10,0x4324(9); fsubs f0,f0,f13; fmuls f0,f0,f12; fmuls f0,f0,f10; fmadds f0,f0,f9,f11; stfs f0,0x1c(31); 6:; lfs f0,0x40(1); mr 3,30; lfs f13,0x1c(31); lwz 9,0x28(31); fadds f0,f0,f13; stfs f0,0x40(1); lfs f1,0x88(9); bl _s8005B50C_4; lwz 9,0x70(29); mr 4,30; li 5,1; lha 3,0xe8(9); lwz 0,0xec(9); add 3,29,3; mtspr 8,0; blrl; lwz 3,0x28(31); mr 4,29; bl _s8005B50C_5; 7:; lwz 0,0x6c(1); mtspr 8,0; lmw 29,0x5c(1); addi 1,1,104"
+
+extern "C" void _s8005B50C_0();
+extern "C" void _s8005B50C_1();
+extern "C" void _s8005B50C_2();
+extern "C" void _s8005B50C_3();
+extern "C" void _s8005B50C_4();
+extern "C" void _s8005B50C_5();
+
+struct PlumbBobModel {
+    void Draw();
+};
+
+void PlumbBobModel::Draw() {
+}

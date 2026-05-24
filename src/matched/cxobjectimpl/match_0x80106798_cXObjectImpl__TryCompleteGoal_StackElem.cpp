@@ -1,0 +1,14 @@
+// 0x80106798 cXObjectImpl::TryCompleteGoal(StackElem (540 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 26,0x10(1); stw 0,0x2c(1); mr 29,5; mr 27,3; lha 0,0x0(29); li 9,0; cmpwi 0,0; bne 0f; lbz 0,0x4(29); cmpwi 0,0; beq 1f; 0:; li 9,1; 1:; cmpwi 9,0; bne 10f; lwz 11,-21476(13); li 4,1; lwz 9,0x0(11); lwz 0,0x124(9); lha 3,0x120(9); mtspr 8,0; add 3,11,3; blrl; mr 26,3; lwz 9,0x0(26); lha 3,0x148(9); lwz 0,0x14c(9); add 3,26,3; mtspr 8,0; blrl; lbz 28,0x7(29); mr. 30,3; beq 7f; lbz 4,0x5(29); mr 3,27; lha 5,0x2(29); li 6,0; li 7,0; addi 8,1,8; bl _s80106798_0; cmpwi 3,-1; bne 2f; cmpwi 4,-1; beq 4f; 2:; lha 31,0x8(1); cmpwi 31,0; blt 3f; lwz 9,0x0(30); mr 4,28; lha 3,0x18(9); lwz 0,0x1c(9); add 3,30,3; mtspr 8,0; blrl; cmpw 31,3; blt 5f; 3:; lwz 11,0x0(27); li 0,1; stw 0,-24512(13); li 9,73; sth 9,0x34(11); li 4,73; lwz 11,0x4(27); lwz 9,0x4(11); lha 3,0x110(9); lwz 0,0x114(9); add 3,11,3; mtspr 8,0; blrl; 4:; li 3,-1; li 4,-1; b 11f; 5:; lwz 9,0x0(30); mr 4,28; lha 5,0x8(1); lwz 0,0x2c(9); lha 3,0x28(9); mtspr 8,0; add 3,30,3; blrl; lbz 0,0x6(29); andi. 9,0,1; beq 6f; cmpwi 3,0; li 3,0; li 4,1; bne 11f; b 7f; 6:; cmpwi 3,0; beq 8f; 7:; li 3,0; li 4,0; b 11f; 8:; andi. 9,0,2; beq 9f; lis 9,-32697; lwz 3,0x5bcc(9); cmpwi 3,0; beq 9f; lha 5,0x8(1); mr 4,28; bl _s80106798_1; cmpwi 3,0; bne 9f; li 3,0; li 4,4; b 11f; 9:; lwz 9,0x0(30); mr 4,28; lha 5,0x8(1); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,30,3; blrl; lbz 0,0x7(29); cmpwi 0,1; bne 10f; lwz 9,0x0(26); lha 3,0x160(9); lwz 0,0x164(9); add 3,26,3; mtspr 8,0; blrl; lha 4,0x8(1); li 5,1; bl _s80106798_2; 10:; li 3,0; li 4,1; 11:; lwz 0,0x2c(1); mtspr 8,0; lmw 26,0x10(1); addi 1,1,40"
+
+extern "C" void _s80106798_0();
+extern "C" void _s80106798_1();
+extern "C" void _s80106798_2();
+
+struct cXObjectImpl {
+    void TryCompleteGoal_StackElem();
+};
+
+void cXObjectImpl::TryCompleteGoal_StackElem() {
+}

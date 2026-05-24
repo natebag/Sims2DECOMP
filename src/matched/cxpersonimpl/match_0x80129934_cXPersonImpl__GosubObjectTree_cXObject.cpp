@@ -1,0 +1,19 @@
+// 0x80129934 cXPersonImpl::GosubObjectTree(cXObject (780 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; mfcr 12; stmw 25,0x24(1); stw 0,0x44(1); stw 12,0x20(1); mr 31,3; mr 27,4; mr 30,7; lwz 3,0x0(31); bl _s80129934_0; cmpwi 3,0; beq 23f; cmpwi 4,27,0; beq cr4,0f; lwz 9,0x4(27); lha 3,0x520(9); lwz 0,0x524(9); add 3,27,3; mtspr 8,0; blrl; b 1f; 0:; li 3,0; 1:; stw 3,0x8(1); lwz 9,0x0(31); lwz 11,0x0(9); lwz 10,0x0(11); lwz 9,0x18(10); lha 3,0x60(9); lwz 0,0x64(9); add 3,10,3; mtspr 8,0; blrl; stw 3,0xc(1); cmpwi 30,0; stw 30,0x10(1); beq 2f; lwz 0,0x534(31); cmpwi 0,0; beq 2f; addi 3,31,304; mr 4,27; li 5,0; bl _s80129934_1; 2:; addi 29,31,1056; addi 30,1,8; lwz 10,0x4(29); lwz 0,0xc(29); cmpw 10,0; beq 3f; lwz 9,0x8(1); lwz 0,0x8(30); lwz 11,0x4(30); stw 0,0x8(10); stw 9,0x0(10); stw 11,0x4(10); lwz 9,0x4(29); addi 9,9,12; stw 9,0x4(29); b 18f; 3:; lwz 0,0x420(31); mr 28,10; lis 9,-21846; li 11,1; ori 9,9,43691; subf 0,0,28; mullw 0,0,9; stw 11,0x1c(1); addi 9,1,28; addi 11,1,24; srawi 3,0,2; stw 3,0x18(1); cmplwi 3,1; bge 4f; mr 11,9; 4:; lwz 0,0x0(11); add. 0,3,0; beq 6f; mulli 0,0,12; mr 26,0; cmplwi 0,128; ble 5f; mr 3,26; bl _s80129934_2; b 7f; 5:; mr 3,26; bl _s80129934_3; b 7f; 6:; li 3,0; li 26,0; 7:; mr 31,3; lwz 10,0x0(29); mr 25,31; mr 3,25; cmpw 10,28; beq 9f; 8:; lwz 0,0x0(10); lwz 9,0x4(10); lwz 11,0x8(10); stw 0,0x0(3); addi 10,10,12; stw 9,0x4(3); cmpw 10,28; stw 11,0x8(3); addi 3,3,12; bne 8b; 9:; lwz 0,0x1c(1); mr 31,3; cmpwi 0,1; bne 10f; lwz 0,0x8(30); lwz 9,0x0(30); lwz 11,0x4(30); stw 9,0x0(31); stw 11,0x4(31); stw 0,0x8(31); addi 31,31,12; b 13f; 10:; mr. 9,0; mr 3,31; mtspr 9,9; beq 12f; 11:; lwz 0,0x0(30); lwz 9,0x4(30); lwz 11,0x8(30); stw 0,0x0(3); stw 9,0x4(3); stw 11,0x8(3); addi 3,3,12; bdnz 11b; 12:; mr 31,3; 13:; lwz 11,0x0(29); lwz 0,0x4(29); mr 3,11; lwz 9,0xc(29); cmpw 11,0; beq 15f; 14:; addi 11,11,12; cmpw 11,0; bne 14b; 15:; lis 0,-21846; subf 9,3,9; ori 0,0,43691; cmpwi 3,0; mullw 9,9,0; srawi 4,9,2; beq 17f; mulli 4,4,12; cmplwi 4,128; ble 16f; bl _s80129934_4; b 17f; 16:; bl _s80129934_5; 17:; add 0,26,25; stw 25,0x0(29); stw 0,0xc(29); stw 31,0x4(29); 18:; beq cr4,19f; lwz 9,0x4(27); lha 3,0x520(9); lwz 0,0x524(9); add 3,27,3; mtspr 8,0; blrl; b 20f; 19:; li 3,0; 20:; addi 31,3,40; beq cr4,21f; lwz 9,0x4(27); lha 3,0x520(9); lwz 0,0x524(9); add 3,27,3; mtspr 8,0; blrl; b 22f; 21:; li 3,0; 22:; li 4,62; addi 3,3,40; bl _s80129934_6; lhz 5,0x0(3); li 4,62; mr 3,31; addi 5,5,1; extsh 5,5; bl _s80129934_7; li 3,1; b 24f; 23:; li 3,0; 24:; lwz 0,0x44(1); lwz 12,0x20(1); mtspr 8,0; lmw 25,0x24(1); mtcrf 8,12; addi 1,1,64"
+
+extern "C" void _s80129934_0();
+extern "C" void _s80129934_1();
+extern "C" void _s80129934_2();
+extern "C" void _s80129934_3();
+extern "C" void _s80129934_4();
+extern "C" void _s80129934_5();
+extern "C" void _s80129934_6();
+extern "C" void _s80129934_7();
+
+struct cXPersonImpl {
+    void GosubObjectTree_cXObject();
+};
+
+void cXPersonImpl::GosubObjectTree_cXObject() {
+}

@@ -1,0 +1,15 @@
+// 0x80106270 cXObjectImpl::TryCheckObject(StackElem (760 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); mr 30,5; li 0,-1; lha 4,0x2(30); mr 31,3; lha 5,0x0(30); sth 0,0x8(1); li 6,0; li 7,0; addi 8,1,8; bl _s80106270_0; cmpwi 3,-1; bne 0f; cmpwi 4,-1; beq 12f; 0:; lha 5,0x4(30); cmpwi 5,2; beq 9f; bgt 1f; cmpwi 5,0; beq 2f; cmpwi 5,1; beq 6f; b 17f; 1:; cmpwi 5,3; beq 10f; cmpwi 5,4; beq 11f; b 17f; 2:; lwz 3,0x4(31); lha 4,0x8(1); lwz 9,0x4(3); lha 0,0x488(9); lwz 9,0x48c(9); add 3,3,0; mtspr 8,9; blrl; mr. 3,3; beq 17f; lwz 3,0x0(3); li 29,0; lwz 9,0x18(3); lha 0,0x18(9); lwz 9,0x1c(9); add 3,3,0; mtspr 8,9; blrl; mr. 3,3; beq 3f; lwz 29,0x4(3); 3:; cmpwi 29,0; beq 17f; bl _s80106270_1; li 30,0; lis 9,-32697; mr 28,3; addi 9,9,24012; addi 31,9,188; 4:; lwz 0,0x0(31); addi 31,31,4; cmpw 0,29; bne 5f; mr 3,28; mr 4,30; li 5,0; bl _s80106270_2; mr. 3,3; beq 5f; lwz 0,0x80(3); cmpwi 0,0; beq 16f; 5:; addi 30,30,1; cmpwi 30,1; ble 4b; b 17f; 6:; lwz 3,0x4(31); lha 4,0x8(1); lwz 9,0x4(3); lha 0,0x488(9); lwz 9,0x48c(9); 7:; add 3,3,0; mtspr 8,9; blrl; 8:; cmpwi 3,0; beq 17f; b 16f; 9:; lwz 3,0x4(31); lha 4,0x8(1); lwz 9,0x4(3); lha 0,0x488(9); lwz 9,0x48c(9); add 3,3,0; mtspr 8,9; blrl; mr. 11,3; beq 17f; lwz 9,0x4(11); lha 3,0x4a8(9); lwz 0,0x4ac(9); add 3,11,3; mtspr 8,0; blrl; b 8b; 10:; lwz 3,-21476(13); lha 4,0x8(1); lwz 9,0x0(3); lha 0,0xb8(9); lwz 9,0xbc(9); b 7b; 11:; li 30,0; lhz 4,0x16(31); addi 0,4,-1; cmplwi 0,8; ble 13f; lwz 11,0x0(31); li 0,1; stw 0,-24512(13); li 9,20; sth 9,0x34(11); li 4,20; lwz 11,0x4(31); lwz 9,0x4(11); lha 3,0x110(9); lwz 0,0x114(9); add 3,11,3; mtspr 8,0; blrl; 12:; li 3,-1; li 4,-1; b 18f; 13:; lwz 3,0x4(31); extsh 28,4; lha 4,0x8(1); lwz 9,0x4(3); lha 0,0x488(9); lwz 9,0x48c(9); add 3,3,0; mtspr 8,9; blrl; mr. 3,3; beq 15f; lwz 3,0x0(3); lwz 9,0x18(3); lha 0,0x18(9); lwz 9,0x1c(9); add 3,3,0; mtspr 8,9; blrl; mr. 3,3; li 11,0; beq 14f; lwz 11,0x4(3); 14:; cmpwi 11,0; beq 15f; lwz 9,0x4(11); lwz 29,-21476(13); lha 3,0x1b0(9); lwz 9,0x1b4(9); lwz 30,0x0(29); add 3,11,3; mtspr 8,9; lha 0,0xb8(30); addi 30,30,184; add 29,29,0; blrl; lwz 0,0x4(30); mr 4,3; mr 3,29; mtspr 8,0; blrl; mr 4,28; bl _s80106270_3; mr 30,3; 15:; li 3,0; sth 30,0x16(31); li 4,1; b 18f; 16:; li 3,0; li 4,1; b 18f; 17:; li 3,0; li 4,0; 18:; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
+
+extern "C" void _s80106270_0();
+extern "C" void _s80106270_1();
+extern "C" void _s80106270_2();
+extern "C" void _s80106270_3();
+
+struct cXObjectImpl {
+    void TryCheckObject_StackElem();
+};
+
+void cXObjectImpl::TryCheckObject_StackElem() {
+}

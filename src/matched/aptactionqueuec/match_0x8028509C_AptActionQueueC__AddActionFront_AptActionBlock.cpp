@@ -1,0 +1,10 @@
+// 0x8028509C AptActionQueueC::AddActionFront(AptActionBlock (196 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; mr 7,4; lwz 9,0x4(31); mr 8,5; lwz 0,0x0(31); mr 30,6; addi 11,9,-20; cmplw 11,0; bge 0f; lwz 9,0x10(31); mulli 9,9,20; addi 9,9,-20; add 11,0,9; 0:; lwz 0,0x8(31); cmpw 11,0; beq 1f; stw 11,0x4(31); li 10,1; lis 4,-32704; lis 5,-32704; lwz 9,0x4c(8); addi 4,4,12888; addi 5,5,11876; li 6,1759; lwz 0,0x28(9); stw 0,0x8(11); lwz 9,0x4(31); stw 10,0x0(9); lwz 11,0x4(31); stw 7,0xc(11); lwz 9,0x4(31); stw 8,0x10(9); lwz 11,0x8(8); lha 3,0x8(11); lwz 0,0xc(11); add 3,8,3; mtspr 8,0; blrl; lwz 9,0x4(31); stw 30,0x4(9); 1:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+
+struct AptActionQueueC {
+    void AddActionFront_AptActionBlock();
+};
+
+void AptActionQueueC::AddActionFront_AptActionBlock() {
+}

@@ -1,0 +1,12 @@
+// 0x801AD704 E2ETarget::OnXKeyPressed(char (284 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-272(1); mfspr 0,8; stw 31,0x10c(1); stw 0,0x114(1); mr 31,3; lwz 0,0xd8(31); cmpwi 0,2; bne 0f; lwz 9,0x80(31); li 5,0; lwz 4,-30520(13); lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,31,3; blrl; lis 4,-32705; li 5,1; b 1f; 0:; cmpwi 0,1; bne 2f; lwz 9,0x80(31); li 5,0; lwz 4,-30524(13); lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,31,3; blrl; lis 4,-32705; li 5,2; 1:; addi 4,4,-8800; addi 3,1,8; crxor 6,6,6; bl _s801AD704_0; lwz 9,0x80(31); addi 5,1,8; lwz 4,-30552(13); lha 3,0x10(9); lwz 0,0x14(9); add 3,31,3; mtspr 8,0; blrl; b 4f; 2:; lwz 0,0xa8(31); cmpwi 0,0; bne 3f; lwz 9,0x80(31); li 5,0; lwz 4,-30524(13); lha 3,0x10(9); lwz 0,0x14(9); add 3,31,3; mtspr 8,0; blrl; 3:; lwz 0,0xa8(31); cmpwi 0,1; bne 4f; lwz 9,0x80(31); li 5,0; lwz 4,-30560(13); lha 3,0x10(9); lwz 0,0x14(9); add 3,31,3; mtspr 8,0; blrl; 4:; lwz 0,0x114(1); mtspr 8,0; lwz 31,0x10c(1); addi 1,1,272"
+
+extern "C" void _s801AD704_0();
+
+struct E2ETarget {
+    void OnXKeyPressed();
+};
+
+void E2ETarget::OnXKeyPressed() {
+}

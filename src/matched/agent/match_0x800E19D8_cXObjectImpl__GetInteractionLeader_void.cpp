@@ -1,5 +1,0 @@
-// 0x800E19D8 cXObjectImpl::GetInteractionLeader(void) (284 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,3; lwz 3,0x4(29); lwz 9,0x4(3); lha 0,0x390(9); lwz 9,0x394(9); add 3,3,0; mtspr 8,9; blrl; cmpwi 3,0; beq 5f; lwz 3,0x4(29); lwz 9,0x4(3); lha 0,0x310(9); lwz 9,0x314(9); add 3,3,0; mtspr 8,9; blrl; lha 30,0x10(3); cmpwi 30,0; ble 5f; neg 0,30; cmpwi 29,0; extsh 30,0; beq 0f; lwz 9,0x4(29); li 4,3; lwz 3,0x0(9); bl _s800E19D8_0; mr 11,3; b 1f; 0:; li 11,0; 1:; cmpwi 11,0; beq 5f; lwz 9,0x4(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; b 4f; 2:; lwz 11,0x0(31); lwz 9,0x4(11); lwz 0,0x314(9); lha 3,0x310(9); mtspr 8,0; add 3,11,3; blrl; lha 0,0x10(3); cmpw 0,30; bne 3f; cmpwi 31,0; li 3,0; beq 6f; lwz 3,0x0(31); b 6f; 3:; lwz 9,0x4(31); lha 3,0x18(9); lwz 0,0x1c(9); add 3,31,3; 4:; mtspr 8,0; blrl; mr. 31,3; bne 2b; 5:; lwz 3,0x4(29); 6:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
-extern "C" void _s800E19D8_0();
-extern "C" void f_800E19D8() {}

@@ -1,0 +1,15 @@
+// 0x8003154C ESim::TransferModelToCache(void) (544 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); lis 9,-32697; mr 31,3; addi 0,9,21760; lwz 11,0x5500(9); stw 0,0x8(1); li 4,-1; li 29,0; lha 3,0x10(11); lwz 9,0x14(11); add 3,3,0; mtspr 8,9; blrl; lwz 0,0x644(31); cmpwi 0,1; bne 0f; addi 29,13,-32632; b 3f; 0:; cmpwi 0,2; bne 1f; addi 29,13,-32628; b 3f; 1:; lwz 3,0x63c(31); cmpwi 3,0; beq 2f; li 4,3; bl _s8003154C_0; 2:; stw 29,0x63c(31); b 6f; 3:; lwz 0,0x0(29); cmpwi 0,0; beq 9f; li 30,0; li 28,0; b 8f; 4:; lwz 3,-21484(13); mr 4,30; lwz 9,0x0(3); lha 0,0xf8(9); lwz 9,0xfc(9); add 3,3,0; mtspr 8,9; blrl; mr. 3,3; beq 7f; lwz 9,0x0(3); lwz 11,0x0(9); lwz 3,0x14(11); cmpw 3,31; beq 7f; lwz 9,0x63c(3); lwz 0,0x0(29); cmpw 9,0; bne 7f; lwz 3,0x63c(31); cmpw 3,9; beq 5f; cmpwi 3,0; beq 5f; li 4,3; bl _s8003154C_1; 5:; stw 28,0x63c(31); 6:; lwz 3,0x8(1); lwz 9,0x0(3); lha 0,0x18(9); lwz 9,0x1c(9); add 3,3,0; mtspr 8,9; blrl; b 16f; 7:; addi 0,30,1; rlwinm 30,0,0,16,31; 8:; lwz 3,-21484(13); lwz 9,0x0(3); lha 0,0x100(9); lwz 9,0x104(9); add 3,3,0; mtspr 8,9; blrl; cmpw 30,3; blt 4b; 9:; lwz 3,0x0(29); lwz 0,0x63c(31); cmpw 3,0; beq 11f; cmpwi 3,0; beq 10f; li 4,3; bl _s8003154C_2; 10:; li 0,0; stw 0,0x0(29); 11:; lwz 11,0x3d0(31); cmpwi 11,0; beq 12f; lwz 9,0x4(11); li 4,8; lha 3,0x138(9); lwz 0,0x13c(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 3,0; bne 13f; 12:; lwz 0,0x3d8(31); cmpwi 0,0; bne 13f; lwz 0,0x630(31); cmpwi 0,-1; beq 14f; 13:; li 0,0; stw 0,0x0(29); lwz 3,0x63c(31); cmpwi 3,0; beq 15f; li 4,3; bl _s8003154C_3; b 15f; 14:; lwz 0,0x63c(31); stw 0,0x0(29); 15:; lwz 11,0x8(1); li 0,0; stw 0,0x63c(31); lwz 9,0x0(11); lha 3,0x18(9); lwz 0,0x1c(9); add 3,11,3; mtspr 8,0; blrl; 16:; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
+
+extern "C" void _s8003154C_0();
+extern "C" void _s8003154C_1();
+extern "C" void _s8003154C_2();
+extern "C" void _s8003154C_3();
+
+struct ESim {
+    void TransferModelToCache();
+};
+
+void ESim::TransferModelToCache() {
+}

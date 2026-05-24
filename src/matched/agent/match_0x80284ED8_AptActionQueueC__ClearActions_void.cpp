@@ -1,5 +1,0 @@
-// 0x80284ED8 AptActionQueueC::ClearActions(void) (256 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 27,0xc(1); stw 0,0x24(1); mr 30,3; lwz 31,0x4(30); lwz 0,0x8(30); cmpw 31,0; beq 3f; lis 28,-32704; lis 29,-32704; li 27,0; 0:; lwz 0,0x0(31); cmpwi 0,1; bne 1f; lwz 3,0x10(31); addi 4,28,12756; addi 5,29,11876; li 6,1655; lwz 9,0x8(3); lha 0,0x10(9); lwz 9,0x14(9); add 3,3,0; mtspr 8,9; blrl; b 2f; 1:; cmpwi 0,2; bne 2f; lwz 11,0x8(31); addi 4,28,12756; addi 5,29,11876; li 6,1659; lwz 9,0x8(11); lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,11,3; blrl; lwz 11,0xc(31); addi 4,28,12756; addi 5,29,11876; li 6,1660; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; 2:; stw 27,0x0(31); mr 4,31; mr 3,30; bl _s80284ED8_0; lwz 0,0x8(30); mr 31,3; cmpw 31,0; bne 0b; 3:; lwz 0,0x0(30); stw 0,0x4(30); stw 0,0x8(30); lwz 0,0x24(1); mtspr 8,0; lmw 27,0xc(1); addi 1,1,32"
-extern "C" void _s80284ED8_0();
-extern "C" void f_80284ED8() {}

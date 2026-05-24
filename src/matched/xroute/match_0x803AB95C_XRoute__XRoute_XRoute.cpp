@@ -1,0 +1,13 @@
+// 0x803AB95C XRoute::XRoute(XRoute (544 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 29,0x14(1); stw 0,0x24(1); mr 30,4; mr 31,3; lwz 0,0x4(30); li 9,0; lwz 11,0x0(30); addi 10,31,8; stw 9,0x0(31); subf 0,11,0; stw 9,0x4(31); srawi. 0,0,4; stw 9,0x4(10); beq 1f; rlwinm 0,0,4,0,27; mr 29,0; cmplwi 0,128; ble 0f; mr 3,29; bl _s803AB95C_0; b 2f; 0:; mr 3,29; bl _s803AB95C_1; b 2f; 1:; li 3,0; li 29,0; 2:; add 0,3,29; stw 3,0x0(31); stw 0,0xc(31); mr 7,3; stw 3,0x4(31); addi 5,31,16; addi 6,30,16; lwz 4,0x4(30); lwz 8,0x0(30); cmpw 8,4; beq 4f; 3:; lwz 0,0x0(8); lwz 9,0x4(8); lwz 11,0x8(8); lwz 10,0xc(8); stw 0,0x0(7); addi 8,8,16; stw 9,0x4(7); cmpw 8,4; stw 11,0x8(7); stw 10,0xc(7); addi 7,7,16; bne 3b; 4:; lis 9,-32698; stw 7,0x4(31); addi 9,9,18896; li 0,3; stw 9,0x10(31); mtspr 9,0; addi 11,5,16; addi 9,6,16; lfs f0,0x4(6); stfs f0,0x4(5); lfs f13,0x8(6); stfs f13,0x8(5); lfs f0,0xc(6); stfs f0,0xc(5); 5:; lwz 0,0x0(9); addi 9,9,4; stw 0,0x0(11); addi 11,11,4; bdnz 5b; lwz 9,0x1c(6); mr 3,31; stw 9,0x1c(5); lwz 0,0x20(6); stw 0,0x20(5); lwz 9,0x24(6); stw 9,0x24(5); lwz 0,0x28(6); stw 0,0x28(5); lwz 9,0x2c(6); stw 9,0x2c(5); lfs f0,0x30(6); stfs f0,0x30(5); lwz 0,0x34(6); stw 0,0x34(5); lwz 9,0x38(6); stw 9,0x38(5); lwz 0,0x4c(30); stw 0,0x4c(31); lwz 9,0x50(30); stw 9,0x50(31); lwz 0,0x54(30); stw 0,0x54(31); lwz 9,0x58(30); stw 9,0x58(31); lwz 0,0x5c(30); stw 0,0x5c(31); lwz 11,0x60(30); stw 11,0x60(31); lwz 9,0x64(30); lwz 10,0x68(30); stw 9,0x64(31); stw 10,0x68(31); lwz 0,0x6c(30); stw 0,0x6c(31); lwz 9,0x70(30); lwz 10,0x74(30); stw 9,0x70(31); stw 10,0x74(31); lwz 0,0x78(30); stw 0,0x78(31); lwz 9,0x7c(30); stw 9,0x7c(31); lwz 0,0x80(30); stw 0,0x80(31); lwz 9,0x84(30); stw 9,0x84(31); lwz 0,0x88(30); stw 0,0x88(31); lwz 9,0x8c(30); stw 9,0x8c(31); lhz 0,0x90(30); sth 0,0x90(31); lwz 9,0x94(30); stw 9,0x94(31); lwz 0,0x98(30); stw 0,0x98(31); lhz 9,0x9c(30); sth 9,0x9c(31); lwz 0,0xa0(30); stw 0,0xa0(31); lwz 0,0x24(1); mtspr 8,0; lmw 29,0x14(1); addi 1,1,32"
+
+extern "C" void _s803AB95C_0();
+extern "C" void _s803AB95C_1();
+
+struct XRoute {
+    void XRoute_XRoute();
+};
+
+void XRoute::XRoute_XRoute() {
+}

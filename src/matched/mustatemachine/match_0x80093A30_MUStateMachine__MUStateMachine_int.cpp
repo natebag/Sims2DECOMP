@@ -1,0 +1,12 @@
+// 0x80093A30 MUStateMachine::MUStateMachine(int, (268 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; stmw 27,0x24(1); stw 0,0x3c(1); lis 9,-32698; mr 30,3; li 29,0; addi 9,9,-7936; li 0,-1; li 27,1; stw 4,0x0(30); lis 8,-32706; stw 9,0x18(30); addi 6,30,44; stw 5,0x1c(30); addi 7,30,52; stw 0,0xc(30); addi 9,30,60; stw 0,0x4(30); addi 11,30,84; stw 29,0x8(30); addi 10,30,100; stw 29,0x10(30); addi 28,30,116; stw 27,0x14(30); addi 5,30,124; stw 29,0x20(30); mr 3,11; stw 29,0x24(30); li 4,0; lfs f0,-32012(8); stw 29,0x2c(30); stfs f0,0x28(30); stw 29,0x4(6); stw 29,0x4(7); stw 29,0x3c(30); stfs f0,0x14(9); stw 29,0x4(9); stw 29,0x8(9); stw 29,0xc(9); stfs f0,0x10(9); stw 29,0x54(30); stw 29,0x4(11); stw 29,0x8(11); stw 29,0xc(11); stw 29,0x64(30); stw 29,0xc(10); stw 29,0x4(10); stw 29,0x8(10); stw 29,0x4(28); stw 29,0x4(5); bl _s80093A30_0; lis 9,-32698; stw 27,0x94(30); addi 9,9,-8584; stw 29,0x98(30); stw 9,0x18(30); mr 3,30; stw 29,0x84(30); stw 29,0x88(30); stw 29,0x8c(30); stw 29,0x90(30); lwz 0,0x3c(1); mtspr 8,0; lmw 27,0x24(1); addi 1,1,56"
+
+extern "C" void _s80093A30_0();
+
+struct MUStateMachine {
+    void MUStateMachine();
+};
+
+void MUStateMachine::MUStateMachine() {
+}

@@ -1,0 +1,16 @@
+// 0x800AB5BC Behavior::GetNodeRef(short, (504 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stmw 23,0x1c(1); stw 0,0x44(1); mr 28,3; mr 27,4; mr 24,5; mr. 23,6; beq 8f; li 0,0; mr 4,27; stw 0,0x0(23); li 31,0; stw 0,0x10(1); lis 29,-32696; lwz 9,0x0(28); lwz 0,0x34(9); lha 3,0x30(9); mtspr 8,0; add 3,28,3; blrl; mr 4,3; rlwinm 5,27,0,16,31; addi 3,1,8; bl _s800AB5BC_0; lis 9,-32696; addi 10,9,24016; lwz 11,0x5dd0(9); lwz 0,0x4(10); subf 0,11,0; rlwinm. 9,0,30,2,31; beq 4f; mr 25,10; lis 26,-32696; li 30,0; 0:; lwz 9,0x5dd0(26); addi 4,1,8; lwzx 3,9,30; addi 3,3,88; bl _s800AB5BC_1; cmpwi 3,0; beq 3f; lwz 9,0x5dd0(29); cmpwi 31,0; lwzx 0,9,30; stw 0,0x10(1); beq 2f; rlwinm 9,31,2,0,29; lis 8,-32696; mr 10,9; addi 11,9,-4; 1:; lwz 9,0x5dd0(8); addic. 31,31,-1; lwzx 0,9,11; addi 11,11,-4; stwx 0,9,10; addi 10,10,-4; bne 1b; 2:; lwz 9,0x5dd0(29); lwz 0,0x10(1); stw 0,0x0(9); b 4f; 3:; lwz 0,0x4(25); addi 31,31,1; lwz 9,0x5dd0(29); addi 30,30,4; subf 0,9,0; srawi 0,0,2; cmplw 31,0; blt 0b; 4:; lwz 0,0x10(1); cmpwi 0,0; bne 7f; lis 11,-32696; mr 3,28; addi 10,11,24016; lwz 8,0x5dd0(11); lwz 9,0x4(10); mr 4,27; addi 5,1,16; li 6,0; subf 9,8,9; srawi 9,9,2; addi 31,9,-1; rlwinm 30,31,2,0,29; lwzx 0,8,30; stw 0,0x10(1); bl _s800AB5BC_2; cmpwi 3,0; beq 8f; cmpwi 31,0; beq 6f; mr 10,30; lis 8,-32696; addi 11,30,-4; 5:; lwz 9,0x5dd0(8); addic. 31,31,-1; lwzx 0,9,11; addi 11,11,-4; stwx 0,9,10; addi 10,10,-4; bne 5b; 6:; lis 9,-32696; lwz 0,0x10(1); lwz 11,0x5dd0(9); stw 0,0x0(11); 7:; cmpwi 24,0; blt 8f; lwz 3,0x10(1); bl _s800AB5BC_3; cmpw 24,3; bge 8f; lwz 3,0x10(1); mr 4,24; bl _s800AB5BC_4; mr. 3,3; bne 9f; 8:; li 3,0; b 10f; 9:; stw 3,0x0(23); li 3,1; 10:; lwz 0,0x44(1); mtspr 8,0; lmw 23,0x1c(1); addi 1,1,64"
+
+extern "C" void _s800AB5BC_0();
+extern "C" void _s800AB5BC_1();
+extern "C" void _s800AB5BC_2();
+extern "C" void _s800AB5BC_3();
+extern "C" void _s800AB5BC_4();
+
+struct Behavior {
+    void GetNodeRef();
+};
+
+void Behavior::GetNodeRef() {
+}

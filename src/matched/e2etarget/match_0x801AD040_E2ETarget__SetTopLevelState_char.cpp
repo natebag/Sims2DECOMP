@@ -1,0 +1,13 @@
+// 0x801AD040 E2ETarget::SetTopLevelState(char (448 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-280(1); mfspr 0,8; stmw 28,0x108(1); stw 0,0x11c(1); mr 30,3; mr 28,5; mr 29,4; mr 3,28; bl _s801AD040_0; lwz 0,0xd8(30); mr 4,29; stw 3,0xd8(30); mr 5,28; stw 0,0xdc(30); mr 3,30; bl _s801AD040_1; lwz 0,0xd8(30); cmpwi 0,0; bne 1f; lis 9,-32705; addi 11,1,8; addi 9,9,-1936; li 10,24; 0:; lwz 0,0x0(9); addic. 10,10,-24; stw 0,0x0(11); lwz 0,0x4(9); stw 0,0x4(11); lwz 0,0x8(9); stw 0,0x8(11); lwz 0,0xc(9); stw 0,0xc(11); lwz 0,0x10(9); stw 0,0x10(11); lwz 0,0x14(9); addi 9,9,24; stw 0,0x14(11); addi 11,11,24; bne 0b; lwz 0,0x0(9); stw 0,0x0(11); lwz 0,0x4(9); stw 0,0x4(11); lwz 0,0x8(9); stw 0,0x8(11); b 5f; 1:; cmpwi 0,1; bne 3f; lis 9,-32705; addi 10,1,8; addi 8,9,-1900; li 0,24; 2:; lwz 11,0x0(8); addic. 0,0,-24; stw 11,0x0(10); lwz 11,0x4(8); stw 11,0x4(10); lwz 11,0x8(8); stw 11,0x8(10); lwz 11,0xc(8); stw 11,0xc(10); lwz 11,0x10(8); stw 11,0x10(10); lwz 11,0x14(8); addi 8,8,24; stw 11,0x14(10); addi 10,10,24; bne 2b; lwz 11,0x0(8); lbz 9,0xa(8); stw 11,0x0(10); lwz 11,0x4(8); lhz 0,0x8(8); stb 9,0xa(10); stw 11,0x4(10); sth 0,0x8(10); b 5f; 3:; cmpwi 0,2; bne 5f; lis 9,-32705; addi 10,1,8; addi 9,9,-1864; li 0,24; 4:; lwz 11,0x0(9); addic. 0,0,-24; stw 11,0x0(10); lwz 11,0x4(9); stw 11,0x4(10); lwz 11,0x8(9); stw 11,0x8(10); lwz 11,0xc(9); stw 11,0xc(10); lwz 11,0x10(9); stw 11,0x10(10); lwz 11,0x14(9); addi 9,9,24; stw 11,0x14(10); addi 10,10,24; bne 4b; lwz 11,0x0(9); lhz 0,0xc(9); stw 11,0x0(10); lwz 11,0x4(9); sth 0,0xc(10); stw 11,0x4(10); lwz 11,0x8(9); stw 11,0x8(10); 5:; lwz 0,0x11c(1); mtspr 8,0; lmw 28,0x108(1); addi 1,1,280"
+
+extern "C" void _s801AD040_0();
+extern "C" void _s801AD040_1();
+
+struct E2ETarget {
+    void SetTopLevelState();
+};
+
+void E2ETarget::SetTopLevelState() {
+}

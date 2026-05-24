@@ -1,0 +1,10 @@
+// 0x80323468 EControllerManager::SwapPlayerControls(unsigned (356 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-392(1); cmpw 4,5; beq 9f; li 0,4; rlwinm 8,4,2,0,29; mtspr 9,0; rlwinm 10,5,2,0,29; addi 12,1,8; li 9,0; 0:; lwzx 0,9,3; cmpw 0,4; bne 1f; stwx 5,9,3; b 2f; 1:; cmpw 0,5; bne 2f; stwx 4,9,3; 2:; addi 9,9,4; bdnz 0b; lis 9,-32688; mr 11,12; addi 9,9,-12424; li 0,0; lwzx 5,9,10; li 10,32; lwzx 6,9,8; mtspr 9,10; lwz 4,0x8(6); 3:; stw 0,0x0(11); stw 0,0x4(11); stw 0,0x8(11); addi 11,11,12; bdnz 3b; lwz 0,0x8(6); li 7,0; cmpw 7,0; bgt 5f; addi 8,6,12; mr 10,12; 4:; lwz 0,0x0(8); addi 7,7,1; lwz 9,0x4(8); lwz 11,0x8(8); stw 0,0x0(10); addi 8,8,12; stw 9,0x4(10); stw 11,0x8(10); addi 10,10,12; lwz 0,0x8(6); cmpw 7,0; ble 4b; 5:; lwz 9,0x8(5); li 7,0; stw 9,0x8(6); lwz 0,0x8(5); cmpw 7,0; bgt 7f; addi 8,6,12; addi 10,5,12; 6:; lwz 0,0x0(10); addi 7,7,1; lwz 9,0x4(10); lwz 11,0x8(10); stw 0,0x0(8); addi 10,10,12; stw 9,0x4(8); stw 11,0x8(8); addi 8,8,12; lwz 0,0x8(5); cmpw 7,0; ble 6b; 7:; stw 4,0x8(5); cmpwi 4,0; blt 9f; mr 8,12; addi 10,5,12; addi 7,4,1; 8:; lwz 0,0x0(8); addic. 7,7,-1; lwz 9,0x4(8); lwz 11,0x8(8); stw 0,0x0(10); addi 8,8,12; stw 9,0x4(10); stw 11,0x8(10); addi 10,10,12; bne 8b; 9:; addi 1,1,392"
+
+struct EControllerManager {
+    void SwapPlayerControls();
+};
+
+void EControllerManager::SwapPlayerControls() {
+}
