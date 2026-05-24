@@ -1,4 +1,9 @@
-// 0x80378AC8 AXRegisterAuxBCallback (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stw 3,-22276(13); stw 4,-22268(13)"
-extern "C" void f_80378AC8() {}
+// 0x80378AC8 AXRegisterAuxBCallback (12B)
+// stw r3,-22276(r13); stw r4,-22268(r13); blr
+extern void* gAuxBCallback;
+extern void* gAuxBUserdata;
+void AXRegisterAuxBCallback(void* callback, void* userdata) {
+    gAuxBCallback = callback;
+    gAuxBUserdata = userdata;
+}
