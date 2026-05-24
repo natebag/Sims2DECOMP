@@ -1,4 +1,6 @@
-// 0x802E2928 EApp::GetAppName(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 3,-32702; addi 3,3,-6180"
-extern "C" int f_802E2928() {}
+// 0x802E2928 EApp::GetAppName (12B)
+// lis r3,HA(gAppName); addi r3,r3,LO(gAppName)
+extern char gAppName[];
+struct EApp { const char* GetAppName() const; };
+const char* EApp::GetAppName() const { return gAppName; }

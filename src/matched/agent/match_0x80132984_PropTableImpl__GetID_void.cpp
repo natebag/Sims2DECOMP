@@ -1,4 +1,20 @@
 // 0x80132984 PropTableImpl::GetID(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,0x4(3); lha 3,0x4(9)"
-extern "C" int f_80132984() {}
+// Pattern: lwz r9,0x4(r3); lha r3,0x4(r9); blr
+
+struct PropTableData {
+    short m_unknown0; // 0x0
+    short m_unknown2; // 0x2
+    short m_id;       // 0x4
+};
+
+struct PropTableImpl {
+    char _pad[0x4];
+    PropTableData* m_data; // 0x4
+
+    short GetID();
+};
+
+short PropTableImpl::GetID() {
+    return m_data->m_id;
+}

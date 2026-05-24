@@ -1,4 +1,18 @@
 // 0x802E2910 EApp::GetRootDirectory(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,0x470(3); lwz 3,0x0(9)"
-extern "C" int f_802E2910() {}
+// Pattern: lwz r9,0x470(r3); lwz r3,0x0(r9); blr
+
+struct EDirectory {
+    void* m_path; // 0x0
+};
+
+struct EApp {
+    char _pad[0x470];
+    EDirectory* m_rootDirectory; // 0x470
+
+    void* GetRootDirectory();
+};
+
+void* EApp::GetRootDirectory() {
+    return m_rootDirectory->m_path;
+}
