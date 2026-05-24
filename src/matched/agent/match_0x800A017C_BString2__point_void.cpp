@@ -1,4 +1,6 @@
 // 0x800A017C BString2::point(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,0x0(3); lwz 3,0x0(9)"
-extern "C" int f_800A017C() {}
+// lwz r9,0x0(r3); lwz r3,0x0(r9); blr
+struct BString2Impl { int m_ptr; };
+struct BString2 { BString2Impl* m_impl; int point() const; };
+int BString2::point() const { return m_impl->m_ptr; }
