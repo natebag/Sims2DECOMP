@@ -1337,5 +1337,15 @@ by OpusReviewGuy cycle-3 review. Catalog-worthy per cycle-3 sign-off.
 > operator, not literal paren, so `(636 B)` matches as false positive (1,919 hits vs correct 293).
 > Use: `grep -lE '\((3[0-9]|4[0-9]|50) B\)'` (ERE) or SIZE_RE on line 1 in Python.
 
+> **Band-iteration ordering warning (tick scripts):** When building bands as an ordered list and
+> testing each file against the first matching band, a 30-50B label placed AFTER a 17-32B label
+> will only capture 33-50B (since 17-32 consumes 30-32 first). This produced a false `-44` delta
+> in T+210 tick output. **Always use explicit non-overlapping range checks for official reporting:**
+> ```python
+> b_30_50 = sum(1 for sz in sizes if 30 <= sz <= 50)   # exact
+> b_51_80 = sum(1 for sz in sizes if 51 <= sz <= 80)   # exact
+> ```
+> Never compare a band-iteration "30-50B" count against an explicit-range "30-50B" baseline.
+
 ---
 
