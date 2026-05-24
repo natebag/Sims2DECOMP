@@ -1,4 +1,11 @@
-// 0x802D7230 FastAllocPool::GetPoolSize(void) (16 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x8(3); lwz 3,0xc(3); mullw 3,3,0"
-extern "C" int f_802D7230() {}
+// 0x802D7230 FastAllocPool::GetPoolSize(void) (16B)
+// lwz r0,0x8(r3); lwz r3,0xc(r3); mullw r3,r3,r0; blr — no flags, scheduler reorders loads
+struct FastAllocPool {
+    char pad[8];
+    int m_blockSize;   // offset 0x8
+    int m_blockCount;  // offset 0xc
+    int GetPoolSize() const;
+};
+int FastAllocPool::GetPoolSize() const {
+    return m_blockCount * m_blockSize;
+}
