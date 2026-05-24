@@ -1,0 +1,27 @@
+// 0x802773E4 AptActionInterpreter::_FunctionAptActionTypeOf(AptActionInterpreter (1016 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 27,0x14(1); stw 0,0x2c(1); mr 27,3; lwz 30,-26892(13); lwz 9,0x0(27); lwz 0,0x8(27); cmpwi 30,0; rlwinm 9,9,2,0,29; add 9,9,0; lwz 28,-4(9); beq 3f; lwz 0,0x0(30); lwz 9,0x10(30); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26892(13); stw 11,0x0(30); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 0f; rlwinm 0,11,0,3,1; stw 0,0x0(30); b 1f; 0:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 30,11,9; stw 0,0x4(8); 1:; addi 31,30,12; mr 3,31; bl _s802773E4_0; cmpwi 3,0; bne 2f; mr 3,31; li 4,0; bl _s802773E4_1; 2:; mr 29,30; b 4f; 3:; lwz 3,-23020(13); li 4,20; bl _s802773E4_2; bl _s802773E4_3; mr 29,3; 4:; lwz 0,0x0(28); mr 9,0; andis. 11,0,2048; beq 32f; rlwinm 0,9,0,25,31; li 11,0; cmpwi 0,7; bne 5f; rlwinm 11,9,5,31,31; 5:; cmpwi 11,0; bne 7f; li 11,0; cmpwi 0,6; bne 6f; rlwinm 11,9,5,31,31; 6:; cmpwi 11,0; beq 8f; 7:; lis 9,-32694; addi 3,1,8; lwz 4,-10936(9); b 31f; 8:; li 11,0; cmpwi 0,5; bne 9f; rlwinm 11,9,5,31,31; 9:; cmpwi 11,0; beq 10f; lis 9,-32694; addi 3,1,8; lwz 4,-11176(9); b 31f; 10:; li 11,0; cmpwi 0,1; beq 11f; cmpwi 0,42; bne 12f; 11:; andis. 0,9,2048; beq 12f; li 11,1; 12:; cmpwi 11,0; beq 13f; lis 9,-32694; addi 3,1,8; lwz 4,-10704(9); b 31f; 13:; rlwinm 11,9,0,25,31; li 0,0; cmpwi 11,27; bne 14f; rlwinm 0,9,5,31,31; 14:; cmpwi 0,0; bne 16f; li 0,0; cmpwi 11,22; bne 15f; rlwinm 0,9,5,31,31; 15:; cmpwi 0,0; beq 17f; 16:; lis 9,-32694; addi 3,1,8; lwz 4,-10932(9); b 31f; 17:; addi 0,11,-12; li 10,0; cmplwi 0,7; bgt 18f; rlwinm 10,9,5,31,31; 18:; cmpwi 10,0; beq 25f; mr 3,28; li 31,0; bl _s802773E4_4; cmpwi 3,13; bne 19f; mr 3,28; bl _s802773E4_5; subfic 0,3,0; adde 31,0,3; 19:; cmpwi 31,0; bne 21f; mr 3,28; li 31,0; bl _s802773E4_6; cmpwi 3,18; bne 20f; mr 3,28; bl _s802773E4_7; subfic 0,3,0; adde 31,0,3; 20:; cmpwi 31,0; beq 22f; 21:; lis 9,-32694; addi 3,1,8; lwz 4,-10956(9); b 31f; 22:; mr 3,28; li 31,0; bl _s802773E4_8; cmpwi 3,19; bne 23f; mr 3,28; bl _s802773E4_9; subfic 0,3,0; adde 31,0,3; 23:; cmpwi 31,0; beq 24f; lis 9,-32694; addi 3,1,8; lwz 4,-10656(9); b 31f; 24:; lis 9,-32694; addi 3,1,8; lwz 4,-10932(9); b 31f; 25:; cmpwi 11,3; bne 26f; lis 9,-32694; addi 3,1,8; lwz 4,-10940(9); b 31f; 26:; rlwinm 10,9,5,27,31; andis. 0,9,2048; bne 27f; lis 9,-32694; addi 3,1,8; lwz 4,-10656(9); b 31f; 27:; addi 0,11,-43; li 9,0; cmplwi 0,2; bgt 28f; rlwinm 9,10,0,31,31; 28:; cmpwi 9,0; bne 30f; cmpwi 11,9; li 0,0; bne 29f; rlwinm 0,10,0,31,31; 29:; cmpwi 0,0; beq 33f; 30:; lis 9,-32694; addi 3,1,8; lwz 4,-11112(9); 31:; addi 30,29,12; addi 4,4,8; bl _s802773E4_10; addi 4,1,8; mr 3,30; bl _s802773E4_11; addi 3,1,8; li 4,2; bl _s802773E4_12; b 33f; 32:; lis 9,-32694; addi 3,1,8; lwz 4,-10656(9); addi 30,29,12; addi 4,4,8; bl _s802773E4_13; addi 4,1,8; mr 3,30; bl _s802773E4_14; addi 3,1,8; li 4,2; bl _s802773E4_15; 33:; lwz 9,0x0(27); cmpwi 9,0; ble 34f; lwz 0,0x8(27); rlwinm 9,9,2,0,29; lis 4,-32704; lis 5,-32704; add 9,9,0; addi 5,5,5812; lwz 11,-4(9); addi 4,4,5964; li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(27); addi 9,9,-1; stw 9,0x0(27); 34:; lwz 9,0x0(27); lis 4,-32704; lwz 10,0x8(27); lis 5,-32704; rlwinm 11,9,2,0,29; addi 4,4,5760; stwx 29,11,10; addi 9,9,1; stw 9,0x0(27); addi 5,5,5812; li 6,138; lwz 9,0x8(29); lha 3,0x8(9); lwz 0,0xc(9); add 3,29,3; mtspr 8,0; blrl; lwz 0,0x2c(1); mtspr 8,0; lmw 27,0x14(1); addi 1,1,40"
+
+extern "C" void _s802773E4_0();
+extern "C" void _s802773E4_1();
+extern "C" void _s802773E4_2();
+extern "C" void _s802773E4_3();
+extern "C" void _s802773E4_4();
+extern "C" void _s802773E4_5();
+extern "C" void _s802773E4_6();
+extern "C" void _s802773E4_7();
+extern "C" void _s802773E4_8();
+extern "C" void _s802773E4_9();
+extern "C" void _s802773E4_10();
+extern "C" void _s802773E4_11();
+extern "C" void _s802773E4_12();
+extern "C" void _s802773E4_13();
+extern "C" void _s802773E4_14();
+extern "C" void _s802773E4_15();
+
+struct AptActionInterpreter {
+    void _FunctionAptActionTypeOf_AptActionInte();
+};
+
+void AptActionInterpreter::_FunctionAptActionTypeOf_AptActionInte() {
+}

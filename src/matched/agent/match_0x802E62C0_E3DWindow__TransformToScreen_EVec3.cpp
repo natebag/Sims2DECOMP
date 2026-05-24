@@ -1,5 +1,0 @@
-// 0x802E62C0 E3DWindow::TransformToScreen(EVec3 (228 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-64(1); mfspr 0,8; stfd f30,0x30(1); stfd f31,0x38(1); stmw 30,0x28(1); stw 0,0x44(1); lis 9,-32702; lfs f0,0x0(4); lfs f13,0x4(4); mr 31,3; lfs f12,0x8(4); mr 30,5; lfs f31,-5012(9); fmr f30,f1; stfs f0,0x18(1); addi 3,1,8; stfs f13,0x1c(1); addi 4,1,24; addi 5,31,288; stfs f12,0x20(1); stfs f31,0x24(1); bl _s802E62C0_0; lis 9,-32702; lfs f13,0x14(1); lfs f0,-5008(9); fcmpu 0,f13,f0; ble 1f; fdivs f1,f31,f13; li 0,2; mtspr 9,0; addi 8,1,8; mr 10,8; addi 11,31,592; addi 3,31,576; li 9,0; 0:; lfsx f0,9,10; lfsx f12,9,3; lfsx f13,9,11; fmuls f0,f0,f1; fmadds f0,f0,f12,f13; stfsx f0,9,30; addi 9,9,4; bdnz 0b; lfs f0,0x8(8); li 3,1; fadds f0,f0,f30; fmuls f0,f0,f1; stfs f0,0x8(30); b 2f; 1:; li 3,0; 2:; lwz 0,0x44(1); mtspr 8,0; lmw 30,0x28(1); lfd f30,0x30(1); lfd f31,0x38(1); addi 1,1,64"
-extern "C" void _s802E62C0_0();
-extern "C" void f_802E62C0() {}

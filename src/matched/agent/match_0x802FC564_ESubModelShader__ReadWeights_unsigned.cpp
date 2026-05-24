@@ -1,7 +1,0 @@
-// 0x802FC564 ESubModelShader::ReadWeights(unsigned (420 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 28,0x18(1); stw 0,0x2c(1); mr 29,4; mr 31,5; mr 28,29; cmpwi 6,0; beq 12f; lwz 4,0x18(31); lis 5,-32702; lis 7,-32702; addi 5,5,-2744; addi 7,7,-2584; rlwinm 4,4,2,0,29; li 6,1911; bl _s802FC564_0; lwz 0,0x18(31); mr 9,3; mr 4,29; rlwinm 0,0,2,0,29; stw 9,0x10(31); mr 5,0; add 29,29,0; bl _s802FC564_1; lbz 0,0x2b(31); cmpwi 0,0; bne 12f; addi 30,1,8; li 4,0; mr 3,30; li 5,16; crxor 6,6,6; bl _s802FC564_2; lwz 0,0x18(31); li 10,0; cmplw 10,0; bge 9f; lwz 11,0x10(31); mr 8,0; 0:; lbz 0,0x0(11); lwz 9,0x8(1); cmpwi 0,0; beq 1f; ori 9,9,1; 1:; cmpwi 9,0; li 0,1; bne 2f; li 0,0; 2:; stw 0,0x8(1); lwz 9,0xc(1); lbz 0,0x1(11); cmpwi 0,0; beq 3f; ori 9,9,1; 3:; cmpwi 9,0; li 0,1; bne 4f; li 0,0; 4:; stw 0,0xc(1); lwz 9,0x10(1); lbz 0,0x2(11); cmpwi 0,0; beq 5f; ori 9,9,1; 5:; cmpwi 9,0; li 0,1; bne 6f; li 0,0; 6:; stw 0,0x10(1); lwz 9,0x14(1); lbz 0,0x3(11); cmpwi 0,0; beq 7f; ori 9,9,1; 7:; cmpwi 9,0; li 0,1; bne 8f; li 0,0; 8:; addi 10,10,1; stw 0,0x14(1); addi 11,11,4; cmplw 10,8; blt 0b; 9:; li 0,4; li 11,0; mtspr 9,0; addi 10,31,36; 10:; lwz 0,0x0(30); addi 30,30,4; cmpwi 0,0; beq 11f; lbz 0,0x2b(31); stbx 11,10,0; lbz 9,0x2b(31); addi 9,9,1; stb 9,0x2b(31); 11:; addi 11,11,1; bdnz 10b; 12:; subf 3,28,29; lwz 0,0x2c(1); mtspr 8,0; lmw 28,0x18(1); addi 1,1,40"
-extern "C" void _s802FC564_0();
-extern "C" void _s802FC564_1();
-extern "C" void _s802FC564_2();
-extern "C" void f_802FC564() {}

@@ -1,0 +1,16 @@
+// 0x802733D4 AptActionInterpreter::_FunctionAptActionDivide(AptActionInterpreter (496 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stfd f31,0x28(1); stmw 27,0x14(1); stw 0,0x34(1); mr 31,3; li 29,0; lwz 9,0x0(31); lwz 0,0x8(31); addi 11,9,-1; rlwinm 9,9,2,0,29; rlwinm 11,11,2,0,29; add 9,9,0; add 11,11,0; lwz 30,-4(9); lwz 28,-4(11); bl _s802733D4_0; cmpwi 3,7; bne 1f; lwz 0,0x0(30); andis. 9,0,2048; beq 0f; lwz 0,0x0(28); andis. 9,0,2048; bne 1f; 0:; lwz 29,-22936(13); 1:; cmpwi 29,0; bne 6f; mr 3,30; bl _s802733D4_1; fmr f31,f1; mr 3,28; bl _s802733D4_2; lis 9,-32704; lfs f0,0x1bb4(9); fcmpu 0,f31,f0; bne 2f; lwz 29,-22936(13); b 6f; 2:; lwz 30,-26912(13); fdivs f31,f1,f31; cmpwi 30,0; beq 5f; lwz 0,0x0(30); lwz 9,0xc(30); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26912(13); stw 11,0x0(30); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 3f; rlwinm 0,11,0,3,1; stw 0,0x0(30); b 4f; 3:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 30,11,9; stw 0,0x4(8); 4:; stfs f31,0xc(30); mr 29,30; b 6f; 5:; lwz 3,-23020(13); li 4,16; bl _s802733D4_3; mr 30,3; li 4,6; mr 29,30; bl _s802733D4_4; lis 9,-32702; stfs f31,0xc(30); addi 9,9,-26784; stw 9,0x8(30); 6:; lwz 0,0x0(31); lis 28,-32704; cmpwi 0,2; blt 8f; li 30,1; lis 27,-32704; 7:; lwz 11,0x0(31); addi 4,27,6004; lwz 8,0x8(31); addi 5,28,5812; subf 11,30,11; li 6,180; rlwinm 11,11,2,0,29; addi 30,30,1; lwzx 10,11,8; lwz 9,0x8(10); lha 3,0x10(9); lwz 0,0x14(9); add 3,10,3; mtspr 8,0; blrl; cmpwi 30,2; ble 7b; lwz 9,0x0(31); addi 9,9,-2; stw 9,0x0(31); 8:; lwz 9,0x0(31); lis 4,-32704; lwz 10,0x8(31); lis 5,-32704; rlwinm 11,9,2,0,29; addi 4,4,5760; stwx 29,11,10; addi 9,9,1; stw 9,0x0(31); addi 5,5,5812; li 6,138; lwz 9,0x8(29); lha 3,0x8(9); lwz 0,0xc(9); add 3,29,3; mtspr 8,0; blrl; lwz 0,0x34(1); mtspr 8,0; lmw 27,0x14(1); lfd f31,0x28(1); addi 1,1,48"
+
+extern "C" void _s802733D4_0();
+extern "C" void _s802733D4_1();
+extern "C" void _s802733D4_2();
+extern "C" void _s802733D4_3();
+extern "C" void _s802733D4_4();
+
+struct AptActionInterpreter {
+    void _FunctionAptActionDivide_AptActionInte();
+};
+
+void AptActionInterpreter::_FunctionAptActionDivide_AptActionInte() {
+}

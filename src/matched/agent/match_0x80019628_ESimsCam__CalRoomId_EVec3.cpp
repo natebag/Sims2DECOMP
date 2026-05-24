@@ -1,6 +1,0 @@
-// 0x80019628 ESimsCam::CalRoomId(EVec3 (324 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 30,0x18(1); stw 0,0x24(1); lis 9,-32697; lwz 9,0x5e94(9); cmpwi 9,0; bne 0f; li 3,0; b 5f; 0:; lfs f0,0x50(9); lfs f12,0x4(4); mr 8,7; lfs f13,0x4c(9); lis 6,17200; fsubs f12,f12,f0; lfs f9,0x0(4); fmr f0,f12; mr 9,7; fctiwz f11,f0; lis 11,-32707; stfd f11,0x10(1); fsubs f9,f9,f13; fmr f0,f9; lfd f13,-7184(11); fctiwz f10,f0; lwz 4,0x14(1); stfd f10,0x10(1); lis 10,-32707; xoris 0,4,32768; lfs f11,-7176(10); lwz 5,0x14(1); stw 0,0x14(1); stw 6,0x10(1); lfd f0,0x10(1); fsub f0,f0,f13; frsp f0,f0; fsubs f12,f12,f0; fcmpu 0,f12,f11; cror 3,2,1; bns 1f; addi 4,4,1; 1:; xoris 0,5,32768; stw 0,0x14(1); stw 6,0x10(1); lfd f0,0x10(1); fsub f0,f0,f13; frsp f0,f0; fsubs f0,f9,f0; fcmpu 0,f0,f11; cror 3,2,1; bns 2f; addi 5,5,1; 2:; cmpwi 4,0; ble 3f; cmpwi 5,0; bgt 4f; 3:; li 3,0; ori 3,3,65531; b 5f; 4:; lwz 30,-21488(13); li 6,1; addi 3,1,8; bl _s80019628_0; lwz 9,0x0(30); addi 4,1,8; lha 3,0xe8(9); lwz 0,0xec(9); add 3,30,3; mtspr 8,0; blrl; mr 30,3; li 4,2; addi 3,1,8; bl _s80019628_1; mr 3,30; 5:; lwz 0,0x24(1); mtspr 8,0; lmw 30,0x18(1); addi 1,1,32"
-extern "C" void _s80019628_0();
-extern "C" void _s80019628_1();
-extern "C" void f_80019628() {}

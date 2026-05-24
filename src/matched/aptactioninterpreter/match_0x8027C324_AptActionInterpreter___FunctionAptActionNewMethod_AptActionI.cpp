@@ -1,0 +1,15 @@
+// 0x8027C324 AptActionInterpreter::_FunctionAptActionNewMethod(AptActionInterpreter (620 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 26,0x10(1); stw 0,0x2c(1); mr 31,3; lis 7,-32700; lwz 9,0x0(31); addi 6,7,-6476; lwz 0,0x8(31); mr 26,4; addi 10,9,-2; rlwinm 11,9,2,0,29; addi 9,9,-1; lhz 8,-6476(7); rlwinm 9,9,2,0,29; rlwinm 10,10,2,0,29; add 9,9,0; add 11,11,0; add 10,10,0; lwz 3,-4(11); lwz 29,-4(9); addi 8,8,1; lwz 30,-4(10); addi 4,1,8; sth 8,-6476(7); lis 28,-32704; stw 6,0x8(1); bl _s8027C324_0; mr 3,30; bl _s8027C324_1; lwz 9,0x0(31); mr 27,3; cmpwi 9,0; ble 0f; lwz 0,0x8(31); rlwinm 9,9,2,0,29; lis 30,-32704; addi 5,28,5812; add 9,9,0; addi 4,30,5964; lwz 11,-4(9); li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(31); addi 9,9,-1; stw 9,0x0(31); cmpwi 9,0; ble 0f; addi 9,9,-1; stw 9,0x0(31); cmpwi 9,0; ble 0f; lwz 0,0x8(31); rlwinm 9,9,2,0,29; addi 4,30,5964; addi 5,28,5812; add 9,9,0; li 6,160; lwz 10,-4(9); lwz 11,0x8(10); lha 3,0x10(11); lwz 0,0x14(11); add 3,10,3; mtspr 8,0; blrl; lwz 9,0x0(31); addi 9,9,-1; stw 9,0x0(31); 0:; lwz 5,0x8(26); mr 7,27; addi 6,1,8; mr 4,29; li 8,1; mr 3,31; bl _s8027C324_2; lis 27,-32704; lwz 9,0x8(29); mr 30,3; lis 28,-32704; addi 4,27,8248; lha 3,0x10(9); addi 5,28,6212; lwz 0,0x14(9); li 6,6866; add 3,29,3; mtspr 8,0; blrl; cmpwi 30,0; beq 1f; lwz 9,0x0(31); lis 4,-32704; lwz 10,0x8(31); lis 5,-32704; rlwinm 11,9,2,0,29; addi 4,4,5760; stwx 30,11,10; addi 9,9,1; stw 9,0x0(31); addi 5,5,5812; li 6,138; lwz 9,0x8(30); lwz 0,0xc(9); lha 3,0x8(9); mtspr 8,0; add 3,30,3; blrl; lwz 9,0x8(30); addi 4,27,8248; addi 5,28,6212; li 6,6872; lha 3,0x10(9); lwz 0,0x14(9); add 3,30,3; mtspr 8,0; blrl; b 2f; 1:; lwz 9,0x0(31); lis 4,-32704; lwz 10,-22936(13); lis 5,-32704; lwz 8,0x8(31); rlwinm 11,9,2,0,29; addi 9,9,1; addi 4,4,5760; stwx 10,11,8; addi 5,5,5812; stw 9,0x0(31); li 6,138; lwz 9,0x8(10); lha 3,0x8(9); lwz 0,0xc(9); add 3,10,3; mtspr 8,0; blrl; 2:; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 3f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s8027C324_3; 3:; lwz 0,0x2c(1); mtspr 8,0; lmw 26,0x10(1); addi 1,1,40"
+
+extern "C" void _s8027C324_0();
+extern "C" void _s8027C324_1();
+extern "C" void _s8027C324_2();
+extern "C" void _s8027C324_3();
+
+struct AptActionInterpreter {
+    void _FunctionAptActionNewMethod_AptActionI();
+};
+
+void AptActionInterpreter::_FunctionAptActionNewMethod_AptActionI() {
+}

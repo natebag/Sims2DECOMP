@@ -1,6 +1,0 @@
-// 0x802942A8 AptDate::setDates(AptSysClock (312 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 30,4; mr 31,5; lwz 5,0x18(30); stw 5,0x18(31); lwz 4,0x14(30); stw 4,0x14(31); lwz 9,0x10(30); stw 9,0x10(31); lwz 0,0x8(30); subf 11,6,0; stw 11,0x8(31); lwz 0,0x8(30); subf 0,6,0; cmpwi 0,23; ble 0f; lis 0,10922; srawi 9,11,31; ori 0,0,43691; mulhw 0,11,0; srawi 0,0,2; subf 0,9,0; mulli 0,0,24; subf 0,0,11; stw 0,0x8(31); bl _s802942A8_0; lwz 9,0x10(31); addi 9,9,1; cmpw 9,3; stw 9,0x10(31); ble 2f; lwz 9,0x14(31); li 0,1; stw 0,0x10(31); addi 9,9,1; cmpwi 9,11; stw 9,0x14(31); ble 2f; lwz 9,0x18(31); li 0,0; stw 0,0x14(31); addi 9,9,1; stw 9,0x18(31); b 2f; 0:; cmpwi 0,0; bge 2f; addi 9,9,-1; subfic 0,6,24; stw 0,0x8(31); cmpwi 9,0; stw 9,0x10(31); bgt 2f; addi 0,4,-1; cmpwi 0,0; stw 0,0x14(31); bge 1f; addi 9,5,-1; li 0,11; stw 0,0x14(31); stw 9,0x18(31); 1:; lwz 4,0x14(31); lwz 5,0x18(31); bl _s802942A8_1; stw 3,0x10(31); 2:; lwz 0,0x4(30); stw 0,0x4(31); lwz 9,0x0(30); stw 9,0x0(31); lwz 0,0x1c(30); stw 0,0x1c(31); lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
-extern "C" void _s802942A8_0();
-extern "C" void _s802942A8_1();
-extern "C" void f_802942A8() {}

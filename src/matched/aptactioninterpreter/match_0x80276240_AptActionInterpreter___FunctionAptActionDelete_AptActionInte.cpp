@@ -1,0 +1,16 @@
+// 0x80276240 AptActionInterpreter::_FunctionAptActionDelete(AptActionInterpreter (548 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 27,0x14(1); stw 0,0x2c(1); mr 29,3; mr 27,4; lwz 9,0x0(29); lwz 0,0x8(29); addi 11,9,-1; rlwinm 11,11,2,0,29; rlwinm 9,9,2,0,29; add 11,11,0; add 9,9,0; lwz 31,-4(11); lwz 28,-4(9); lwz 9,0x8(31); lha 3,0x28(9); lwz 0,0x2c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 0f; lis 11,-32700; addi 30,1,8; lhz 9,-6476(11); addi 0,11,-6476; stw 0,0x8(1); mr 3,28; addi 9,9,1; mr 4,30; sth 9,-6476(11); bl _s80276240_0; lwz 5,0x8(27); mr 4,31; li 9,1; mr 6,30; mr 3,29; li 7,0; li 8,1; li 10,0; bl _s80276240_1; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 0f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80276240_2; 0:; lwz 0,0x0(29); lis 31,-32704; cmpwi 0,2; blt 2f; li 30,1; lis 28,-32704; 1:; lwz 11,0x0(29); addi 4,28,6004; lwz 8,0x8(29); addi 5,31,5812; subf 11,30,11; li 6,180; rlwinm 11,11,2,0,29; addi 30,30,1; lwzx 10,11,8; lwz 9,0x8(10); lha 3,0x10(9); lwz 0,0x14(9); add 3,10,3; mtspr 8,0; blrl; cmpwi 30,2; ble 1b; lwz 9,0x0(29); addi 9,9,-2; stw 9,0x0(29); 2:; lwz 30,-26908(13); li 31,1; cmpwi 30,0; beq 5f; lwz 0,0x0(30); lwz 9,0xc(30); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26908(13); stw 11,0x0(30); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 3f; rlwinm 0,11,0,3,1; stw 0,0x0(30); b 4f; 3:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 30,11,9; stw 0,0x4(8); 4:; stw 31,0xc(30); mr 8,30; b 6f; 5:; lwz 3,-23020(13); li 4,16; bl _s80276240_3; mr 30,3; li 4,7; bl _s80276240_4; lis 9,-32702; stw 31,0xc(30); addi 9,9,-24344; mr 8,30; stw 9,0x8(30); 6:; lwz 9,0x0(29); lis 4,-32704; lwz 10,0x8(29); lis 5,-32704; rlwinm 11,9,2,0,29; addi 4,4,5760; stwx 8,11,10; addi 9,9,1; stw 9,0x0(29); addi 5,5,5812; li 6,138; lwz 9,0x8(8); lha 3,0x8(9); lwz 0,0xc(9); add 3,8,3; mtspr 8,0; blrl; lwz 0,0x2c(1); mtspr 8,0; lmw 27,0x14(1); addi 1,1,40"
+
+extern "C" void _s80276240_0();
+extern "C" void _s80276240_1();
+extern "C" void _s80276240_2();
+extern "C" void _s80276240_3();
+extern "C" void _s80276240_4();
+
+struct AptActionInterpreter {
+    void _FunctionAptActionDelete_AptActionInte();
+};
+
+void AptActionInterpreter::_FunctionAptActionDelete_AptActionInte() {
+}

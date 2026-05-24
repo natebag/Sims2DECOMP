@@ -1,0 +1,16 @@
+// 0x802FE5CC ESubModelShader::ParameterizeVerts(TArray<BSplineVolume, (836 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-128(1); mfspr 0,8; stmw 19,0x4c(1); stw 0,0x84(1); mr 27,3; bl _s802FE5CC_0; cmpwi 3,0; beq 11f; mr 3,27; li 23,0; bl _s802FE5CC_1; addi 19,27,44; addi 9,27,20; lwz 0,0x4(9); mr 21,9; cmpw 23,0; bge 8f; 0:; mulli 11,23,52; lwz 9,0x14(27); addi 20,23,1; mr 3,9; add 9,9,11; mr 24,11; lwz 0,0xc(9); cmpwi 0,0; beq 7f; lwz 0,0x18(9); li 10,0; cmpw 10,0; bge 7f; 1:; add 8,3,24; rlwinm 9,10,2,0,29; lwz 11,0xc(8); mr 12,9; addi 22,10,1; lbzx 0,9,11; cmpwi 0,0; beq 6f; lwz 0,0x6c(27); li 6,0; mr 28,0; cmpw 6,0; bge 6f; lis 9,-32702; lis 11,-32702; rlwinm 0,23,16,0,15; mr 31,8; lfd f12,-2456(9); or 29,0,10; lfs f11,-2448(11); rlwinm 8,10,4,0,27; rlwinm 4,10,3,0,28; lis 25,17200; addi 30,1,8; addi 5,1,24; li 26,0; 2:; lwz 9,0x68(27); lwz 10,0xc(31); lwzx 11,26,9; add 7,26,9; lbzx 0,12,10; lbz 9,0x83(11); add 0,0,0; cmpw 0,9; bne 5f; lwz 0,0x10(27); andi. 9,0,16; beq 3f; lwz 9,0x4(7); lwz 0,0x8(7); mr 6,8; mulli 9,9,20; lwzx 11,3,24; mr 7,8; add 10,11,4; addi 12,1,8; addi 31,1,24; add 9,9,0; stw 29,0xc(9); lhax 0,11,4; lha 9,0x2(10); xoris 0,0,32768; lha 11,0x4(10); stw 0,0x44(1); xoris 9,9,32768; xoris 11,11,32768; stw 25,0x40(1); lfd f0,0x40(1); stw 9,0x44(1); fsub f0,f0,f12; stw 25,0x40(1); frsp f0,f0; fmuls f0,f0,f11; lfd f13,0x40(1); stw 11,0x44(1); stfs f0,0x18(1); fsub f13,f13,f12; stw 25,0x40(1); frsp f13,f13; fmuls f13,f13,f11; lwz 11,0x18(1); lfd f0,0x40(1); stfs f13,0x1c(1); fsub f0,f0,f12; frsp f0,f0; fmuls f0,f0,f11; stfs f0,0x20(1); lwz 0,0x8(5); lwz 9,0x4(5); stw 11,0x8(1); stw 0,0x8(30); stw 9,0x4(30); b 4f; 3:; lwz 9,0x4(7); addi 12,1,8; lwz 0,0x8(7); addi 31,1,24; mulli 9,9,20; lwzx 11,3,24; add 10,11,8; add 9,9,0; stw 29,0xc(9); lfsx f13,11,8; lfs f12,0x8(10); lfs f0,0x4(10); stfs f13,0x18(1); stfs f0,0x1c(1); stfs f12,0x20(1); lwz 0,0x18(1); lwz 9,0x8(5); lwz 11,0x4(5); stw 0,0x8(1); stw 9,0x8(30); stw 11,0x4(30); 4:; lwz 11,0x68(27); mr 3,31; lfs f0,0x8(1); addi 5,1,40; add 9,26,11; lwz 28,0x8(9); lwz 30,0x4(9); stfs f0,0x28(1); mulli 30,30,20; lfs f0,0x4(12); stfs f0,0x2c(1); add 29,30,28; lfs f0,0x8(12); stfs f0,0x30(1); lwz 0,0x4(9); lwz 6,0x8(9); mulli 0,0,20; lwzx 4,26,11; add 6,6,0; addi 6,6,16; bl _s802FE5CC_2; lwz 0,0x18(1); lwz 9,0x8(31); lwz 10,0x4(31); stwx 0,30,28; stw 9,0x8(29); stw 10,0x4(29); lwz 11,0x68(27); add 11,26,11; lwz 9,0x4(11); addi 9,9,1; stw 9,0x4(11); b 6f; 5:; addi 6,6,1; addi 26,26,12; cmpw 6,28; blt 2b; 6:; lwz 0,0x14(27); mr 10,22; add 11,0,24; mr 3,0; lwz 9,0x18(11); cmpw 10,9; blt 1b; 7:; lwz 0,0x4(21); mr 23,20; cmpw 23,0; blt 0b; 8:; lwz 0,0x4(19); cmpwi 0,0; bne 9f; mr 3,27; bl _s802FE5CC_3; mr 3,27; bl _s802FE5CC_4; 9:; lwz 0,0x4(21); li 11,0; cmpw 11,0; bge 11f; mr 8,21; li 7,0; li 10,0; 10:; lwz 9,0x2c(27); addi 11,11,1; add 9,9,10; stw 7,0xc(9); addi 10,10,52; lwz 0,0x4(8); cmpw 11,0; blt 10b; 11:; lwz 0,0x84(1); mtspr 8,0; lmw 19,0x4c(1); addi 1,1,128"
+
+extern "C" void _s802FE5CC_0();
+extern "C" void _s802FE5CC_1();
+extern "C" void _s802FE5CC_2();
+extern "C" void _s802FE5CC_3();
+extern "C" void _s802FE5CC_4();
+
+struct ESubModelShader {
+    void ParameterizeVerts_TArray_BSplineVolume();
+};
+
+void ESubModelShader::ParameterizeVerts_TArray_BSplineVolume() {
+}

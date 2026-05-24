@@ -1,0 +1,14 @@
+// 0x80274BF4 AptActionInterpreter::_FunctionAptActionGetVariable(AptActionInterpreter (344 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 29,0x14(1); stw 0,0x24(1); mr 31,3; mr 29,4; lwz 9,0x0(31); lwz 0,0x8(31); rlwinm 9,9,2,0,29; add 9,9,0; lwz 3,-4(9); lwz 0,0x0(3); andis. 9,0,2048; beq 1f; lis 11,-32700; addi 30,1,8; lhz 9,-6476(11); addi 0,11,-6476; mr 4,30; stw 0,0x8(1); addi 9,9,1; sth 9,-6476(11); bl _s80274BF4_0; lwz 5,0x8(29); mr 6,30; lwz 4,0x4(29); li 9,0; mr 3,31; li 7,1; li 8,1; bl _s80274BF4_1; lwz 9,0x0(31); mr 30,3; cmpwi 9,0; ble 0f; lwz 0,0x8(31); rlwinm 9,9,2,0,29; lis 4,-32704; lis 5,-32704; add 9,9,0; addi 5,5,5812; lwz 11,-4(9); addi 4,4,5964; li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(31); addi 9,9,-1; stw 9,0x0(31); 0:; lwz 9,0x0(31); lis 4,-32704; lwz 10,0x8(31); lis 5,-32704; rlwinm 11,9,2,0,29; addi 4,4,5760; stwx 30,11,10; addi 9,9,1; stw 9,0x0(31); addi 5,5,5812; li 6,138; lwz 9,0x8(30); lwz 0,0xc(9); lha 3,0x8(9); mtspr 8,0; add 3,30,3; blrl; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 1f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80274BF4_2; 1:; lwz 0,0x24(1); mtspr 8,0; lmw 29,0x14(1); addi 1,1,32"
+
+extern "C" void _s80274BF4_0();
+extern "C" void _s80274BF4_1();
+extern "C" void _s80274BF4_2();
+
+struct AptActionInterpreter {
+    void _FunctionAptActionGetVariable_AptActio();
+};
+
+void AptActionInterpreter::_FunctionAptActionGetVariable_AptActio() {
+}

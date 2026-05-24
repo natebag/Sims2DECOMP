@@ -1,0 +1,21 @@
+// 0x80271BB8 AptActionInterpreter::_doEnumerate(AptValue (760 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 24,0x8(1); stw 0,0x2c(1); mr 28,3; li 11,0; lwz 9,0x0(28); lwz 0,0x8(28); rlwinm 9,9,2,0,29; add 9,9,0; lwz 26,-4(9); lwz 9,0x0(26); mr 6,26; rlwinm 0,9,0,25,31; cmpwi 0,1; beq 0f; cmpwi 0,42; bne 1f; 0:; andis. 0,9,2048; beq 1f; li 11,1; 1:; cmpwi 11,0; beq 3f; lwz 0,0x0(6); rlwinm 0,0,0,25,31; cmpwi 0,1; beq 2f; lwz 6,0x24(6); 2:; addi 6,6,12; mr 3,28; li 7,1; li 8,1; li 9,0; bl _s80271BB8_0; mr 26,3; 3:; lwz 9,0x0(28); cmpwi 9,0; ble 4f; addi 0,9,-1; stw 0,0x0(28); 4:; lwz 9,0x0(28); lwz 0,-22936(13); lwz 10,0x8(28); rlwinm 11,9,2,0,29; addi 9,9,1; stwx 0,11,10; stw 9,0x0(28); lwz 11,0x8(26); lha 3,0x20(11); lwz 0,0x24(11); add 3,26,3; mtspr 8,0; blrl; mr. 27,3; beq 22f; 5:; mr 3,27; bl _s80271BB8_1; mr. 29,3; beq 19f; lis 25,-32694; addi 24,25,-11332; 6:; lwz 3,0x0(29); lwz 4,-11332(25); lhz 9,0x2(3); lhz 0,0x2(4); cmpw 9,0; beq 7f; li 3,0; b 9f; 7:; cmpw 3,4; bne 8f; li 3,1; b 9f; 8:; addi 3,3,8; addi 4,4,8; bl _s80271BB8_2; subfic 0,3,0; adde 3,0,3; 9:; cmpwi 3,0; bne 18f; lwz 3,0x0(29); lwz 4,0x1e0(24); lhz 9,0x2(3); lhz 0,0x2(4); cmpw 9,0; beq 10f; li 3,0; b 12f; 10:; cmpw 3,4; bne 11f; li 3,1; b 12f; 11:; addi 3,3,8; addi 4,4,8; bl _s80271BB8_3; subfic 0,3,0; adde 3,0,3; 12:; cmpwi 3,0; bne 18f; lwz 30,-26892(13); cmpwi 30,0; beq 16f; lwz 0,0x0(30); lwz 9,0x10(30); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26892(13); stw 11,0x0(30); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 13f; rlwinm 0,11,0,3,1; stw 0,0x0(30); b 14f; 13:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 30,11,9; stw 0,0x4(8); 14:; addi 31,30,12; mr 3,31; bl _s80271BB8_4; cmpwi 3,0; bne 15f; mr 3,31; li 4,0; bl _s80271BB8_5; 15:; mr 31,30; b 17f; 16:; lwz 3,-23020(13); li 4,20; bl _s80271BB8_6; bl _s80271BB8_7; mr 31,3; 17:; mr 4,29; addi 3,31,12; bl _s80271BB8_8; lwz 11,0x0(28); lis 4,-32704; lwz 10,0x8(28); lis 5,-32704; rlwinm 9,11,2,0,29; addi 4,4,5760; stwx 31,9,10; addi 11,11,1; stw 11,0x0(28); addi 5,5,5812; li 6,138; lwz 9,0x8(31); lha 3,0x8(9); lwz 0,0xc(9); add 3,31,3; mtspr 8,0; blrl; 18:; mr 4,29; mr 3,27; bl _s80271BB8_9; mr. 29,3; bne 6b; 19:; lwz 11,0x8(27); cmpwi 11,0; beq 20f; lwz 9,0x8(11); lha 3,0x20(9); lwz 0,0x24(9); add 3,11,3; mtspr 8,0; blrl; mr 27,3; b 21f; 20:; li 27,0; 21:; cmpwi 27,0; bne 5b; 22:; lwz 9,0x8(26); lis 4,-32704; lis 5,-32704; addi 4,4,6884; lha 3,0x10(9); addi 5,5,6212; lwz 0,0x14(9); li 6,2667; add 3,26,3; mtspr 8,0; blrl; lwz 0,0x2c(1); mtspr 8,0; lmw 24,0x8(1); addi 1,1,40"
+
+extern "C" void _s80271BB8_0();
+extern "C" void _s80271BB8_1();
+extern "C" void _s80271BB8_2();
+extern "C" void _s80271BB8_3();
+extern "C" void _s80271BB8_4();
+extern "C" void _s80271BB8_5();
+extern "C" void _s80271BB8_6();
+extern "C" void _s80271BB8_7();
+extern "C" void _s80271BB8_8();
+extern "C" void _s80271BB8_9();
+
+struct AptActionInterpreter {
+    void _doEnumerate();
+};
+
+void AptActionInterpreter::_doEnumerate() {
+}

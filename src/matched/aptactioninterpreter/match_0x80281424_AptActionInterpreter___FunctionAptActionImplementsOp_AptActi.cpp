@@ -1,0 +1,23 @@
+// 0x80281424 AptActionInterpreter::_FunctionAptActionImplementsOp(AptActionInterpreter (932 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; stmw 19,0x1c(1); stw 0,0x54(1); lis 10,-32700; mr 28,3; lhz 9,-6476(10); addi 0,10,-6476; stw 0,0x8(1); addi 9,9,1; sth 9,-6476(10); lwz 11,0x0(28); lwz 0,0x8(28); addi 9,11,-1; rlwinm 9,9,2,0,29; rlwinm 11,11,2,0,29; add 9,9,0; add 11,11,0; lwz 3,-4(9); lwz 25,-4(11); bl _s80281424_0; lwz 9,0x0(25); mr 26,3; li 10,0; rlwinm 11,9,0,25,31; addi 0,11,-43; cmplwi 0,2; bgt 0f; rlwinm 10,9,5,31,31; 0:; cmpwi 10,0; bne 5f; cmpwi 11,9; li 0,0; bne 1f; rlwinm 0,9,5,31,31; 1:; cmpwi 0,0; bne 5f; lwz 0,0x0(28); addi 30,26,2; cmpw 0,30; blt 4f; li 31,1; cmpw 31,30; bgt 3f; lis 27,-32704; lis 29,-32704; 2:; lwz 11,0x0(28); addi 4,27,6004; lwz 8,0x8(28); addi 5,29,5812; subf 11,31,11; li 6,180; rlwinm 11,11,2,0,29; addi 31,31,1; lwzx 10,11,8; lwz 9,0x8(10); lha 3,0x10(9); lwz 0,0x14(9); add 3,10,3; mtspr 8,0; blrl; cmpw 31,30; ble 2b; 3:; lwz 0,0x0(28); subf 0,30,0; stw 0,0x0(28); 4:; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 15f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80281424_1; b 15f; 5:; lwz 3,-23016(13); li 4,48; li 27,0; addi 23,26,2; bl _s80281424_2; bl _s80281424_3; mr 24,3; cmpw 27,26; bge 10f; lis 9,-32703; lis 11,-32703; addi 19,9,8984; addi 20,11,21264; lis 21,-32704; lis 22,-32704; 6:; lwz 9,0x0(28); addi 0,27,2; lwz 11,0x8(28); subf 9,0,9; rlwinm 9,9,2,0,29; add 9,9,11; lwz 10,-4(9); lwz 11,0x8(10); lha 3,0x20(11); lwz 0,0x24(11); add 3,10,3; mtspr 8,0; blrl; mr 29,3; lwz 31,0xc(29); cmpwi 31,0; bne 9f; lwz 3,-23016(13); li 4,36; bl _s80281424_4; mr 30,3; li 4,28; bl _s80281424_5; stw 19,0x8(30); addi 3,30,12; li 4,8; bl _s80281424_6; lwz 0,0x0(30); lis 9,-32703; addi 9,9,21256; stw 31,0x20(30); rlwimi 0,31,26,5,5; stw 9,0x8(30); stw 0,0x0(30); mr. 31,30; beq 7f; lha 3,0x8(9); addi 4,21,4132; lwz 9,0x4(20); addi 5,22,4004; add 3,31,3; li 6,102; mtspr 8,9; blrl; 7:; lwz 11,0xc(29); cmpwi 11,0; beq 8f; lwz 9,0x8(11); addi 4,21,4132; addi 5,22,4004; li 6,103; lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; 8:; stw 31,0xc(29); 9:; mr 4,27; mr 5,31; mr 3,24; addi 27,27,1; bl _s80281424_7; cmpw 27,26; blt 6b; 10:; lwz 9,0x8(25); lha 3,0x20(9); lwz 0,0x24(9); add 3,25,3; mtspr 8,0; blrl; cmpwi 3,0; beq 11f; lis 4,-32704; addi 3,1,16; addi 4,4,8636; bl _s80281424_8; lwz 9,0x8(25); lwz 0,0x24(9); lha 3,0x20(9); mtspr 8,0; add 3,25,3; blrl; addi 4,1,16; mr 5,24; bl _s80281424_9; lwz 4,0x10(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 11f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80281424_10; 11:; lwz 0,0x0(28); cmpw 0,23; blt 14f; li 31,1; cmpw 31,23; bgt 13f; lis 29,-32704; lis 30,-32704; 12:; lwz 11,0x0(28); addi 4,29,6004; lwz 8,0x8(28); addi 5,30,5812; subf 11,31,11; li 6,180; rlwinm 11,11,2,0,29; addi 31,31,1; lwzx 10,11,8; lwz 9,0x8(10); lha 3,0x10(9); lwz 0,0x14(9); add 3,10,3; mtspr 8,0; blrl; cmpw 31,23; ble 12b; 13:; lwz 0,0x0(28); subf 0,23,0; stw 0,0x0(28); 14:; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 15f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80281424_11; 15:; lwz 0,0x54(1); mtspr 8,0; lmw 19,0x1c(1); addi 1,1,80"
+
+extern "C" void _s80281424_0();
+extern "C" void _s80281424_1();
+extern "C" void _s80281424_2();
+extern "C" void _s80281424_3();
+extern "C" void _s80281424_4();
+extern "C" void _s80281424_5();
+extern "C" void _s80281424_6();
+extern "C" void _s80281424_7();
+extern "C" void _s80281424_8();
+extern "C" void _s80281424_9();
+extern "C" void _s80281424_10();
+extern "C" void _s80281424_11();
+
+struct AptActionInterpreter {
+    void _FunctionAptActionImplementsOp_AptActi();
+};
+
+void AptActionInterpreter::_FunctionAptActionImplementsOp_AptActi() {
+}

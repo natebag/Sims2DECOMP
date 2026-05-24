@@ -1,0 +1,10 @@
+// 0x80281B14 AptActionInterpreter::_FunctionAptActionThrow(AptActionInterpreter (192 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; lis 4,-32704; lwz 9,0x0(31); lis 5,-32704; lwz 0,0x8(31); addi 4,4,4900; rlwinm 9,9,2,0,29; addi 5,5,4952; add 9,9,0; li 6,657; lwz 30,-4(9); lwz 11,0x8(30); lha 3,0x8(11); lwz 0,0xc(11); add 3,30,3; mtspr 8,0; blrl; lwz 9,0x0(31); stw 30,0x54(31); cmpwi 9,0; ble 0f; lwz 0,0x8(31); rlwinm 9,9,2,0,29; lis 4,-32704; lis 5,-32704; add 9,9,0; addi 4,4,5964; lwz 11,-4(9); addi 5,5,5812; li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(31); addi 9,9,-1; stw 9,0x0(31); 0:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+
+struct AptActionInterpreter {
+    void _FunctionAptActionThrow_AptActionInter();
+};
+
+void AptActionInterpreter::_FunctionAptActionThrow_AptActionInter() {
+}

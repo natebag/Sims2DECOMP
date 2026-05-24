@@ -1,0 +1,13 @@
+// 0x80016770 ESimsCam::GetNearPlane(void) (544 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-96(1); mfspr 0,8; stfd f29,0x48(1); stfd f30,0x50(1); stfd f31,0x58(1); stmw 26,0x30(1); stw 0,0x64(1); mr 28,3; bl _s80016770_0; lwz 9,0x0(28); fmr f30,f1; lwz 0,0x568(28); lfs f31,0x6c(9); cmpwi 0,0; bne 0f; lwz 0,0x564(28); cmpwi 0,0; beq 1f; 0:; lis 9,-32707; lfs f31,-7408(9); b 4f; 1:; lis 9,-32697; lwz 0,0x4(28); addi 9,9,24012; addi 31,9,188; rlwinm 0,0,2,0,29; lwzx 11,31,0; cmpwi 11,0; beq 4f; lwz 9,0x4(11); li 4,30; lha 3,0x138(9); lwz 0,0x13c(9); add 3,11,3; mtspr 8,0; blrl; cmpwi 3,0; beq 4f; lwz 3,0x4(28); bl _s80016770_1; cmpwi 3,0; beq 4f; lwz 0,0x4(28); rlwinm 0,0,2,0,29; lwzx 11,31,0; lwz 9,0x4(11); lha 3,0x188(9); lwz 0,0x18c(9); add 3,11,3; mtspr 8,0; blrl; mr. 27,3; beq 4f; lis 9,-32707; lis 11,-32707; addi 9,9,-7416; lfs f29,-7404(11); lwz 7,0x0(9); lwz 8,0x4(9); addi 30,1,8; addi 31,28,176; addi 29,1,40; stw 7,0x28(1); stw 8,0x2c(1); addi 26,1,44; 2:; lwz 9,0x0(27); addi 5,1,8; lwz 4,0x0(29); lwz 0,0xe4(9); addi 29,29,4; lha 3,0xe0(9); mtspr 8,0; add 3,27,3; blrl; lfs f9,0x4(30); lfs f13,0x10(31); lfs f0,0xb0(28); lfs f7,0x8(1); fmuls f13,f9,f13; lfs f12,0x8(30); lfs f8,0x18(31); fmadds f0,f7,f0,f13; lfs f11,0x20(31); lfs f10,0x14(31); fmuls f8,f9,f8; lfs f13,0x8(31); fmadds f11,f12,f11,f0; lfs f5,0x4(31); fmuls f9,f9,f10; lfs f6,0x30(31); fmadds f13,f7,f13,f8; lfs f0,0x28(31); fmadds f7,f7,f5,f9; lfs f8,0x24(31); fadds f11,f11,f6; lfs f10,0x38(31); fmadds f0,f12,f0,f13; lfs f9,0x34(31); fmadds f12,f12,f8,f7; stfs f11,0x18(1); fadds f0,f0,f10; stfs f0,0x20(1); fadds f12,f12,f9; stfs f12,0x1c(1); lwz 0,0x18(1); lwz 11,0x20(1); stw 0,0x8(1); lwz 9,0x1c(1); stw 11,0x8(30); stw 9,0x4(30); lfs f13,0x8(30); fcmpu 0,f13,f29; bge 3f; lwz 9,0x0(28); fneg f13,f13; lfs f0,0x6c(9); fadds f0,f0,f0; fcmpu 0,f13,f0; blt 0b; 3:; cmpw 29,26; ble 2b; 4:; lis 9,-32707; lwz 11,0x0(28); lfs f1,-7400(9); lfs f0,0x70(11); fsubs f1,f1,f30; fmuls f1,f31,f1; fmadds f1,f0,f30,f1; lwz 0,0x64(1); mtspr 8,0; lmw 26,0x30(1); lfd f29,0x48(1); lfd f30,0x50(1); lfd f31,0x58(1); addi 1,1,96"
+
+extern "C" void _s80016770_0();
+extern "C" void _s80016770_1();
+
+struct ESimsCam {
+    void GetNearPlane();
+};
+
+void ESimsCam::GetNearPlane() {
+}

@@ -1,0 +1,20 @@
+// 0x8001D368 CameraDirector::StartAnim(int, (656 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-160(1); mfspr 0,8; stmw 22,0x78(1); stw 0,0xa4(1); mr 24,3; mr 30,4; lwz 0,0x170(24); mr 23,5; mr 22,6; cmpwi 0,0; beq 1f; lwz 0,0x238(24); cmpwi 0,2; beq 1f; lwz 0,0x240(24); xori 0,0,1; andi. 9,0,1; beq 1f; lwz 9,0x1cc(24); cmpwi 9,0; li 0,0; beq 0f; lwz 0,0x18(9); 0:; cmpwi 0,0; beq 1f; addi 31,24,424; mr 3,31; bl _s8001D368_0; lis 9,-32707; li 0,0; lfs f1,-6760(9); mr 5,30; stw 0,0x220(24); mr 3,31; li 4,1; li 6,-1; li 7,0; bl _s8001D368_1; cmpwi 3,0; bne 2f; 1:; li 3,0; b 6f; 2:; lfs f1,0x22c(24); mr 3,31; lis 4,1; li 5,1; bl _s8001D368_2; addi 31,24,128; addi 30,1,24; addi 29,1,40; lwz 3,0x170(24); addi 4,1,8; mr 5,30; mr 6,29; bl _s8001D368_3; mr 5,30; mr 6,29; mr 3,31; addi 4,1,8; bl _s8001D368_4; lwz 0,0x230(24); cmpwi 0,0; beq 4f; mr 3,31; bl _s8001D368_5; lwz 5,0x118(24); cmpwi 5,0; beq 3f; addi 3,1,56; mr 4,31; bl _s8001D368_6; lwz 9,0x38(1); lwz 10,0x3c(1); lwz 11,0x40(1); lwz 12,0x44(1); lwz 7,0x48(1); lwz 8,0x4c(1); lwz 5,0x50(1); lwz 6,0x54(1); lwz 3,0x58(1); lwz 4,0x5c(1); lwz 29,0x60(1); lwz 30,0x64(1); lwz 27,0x68(1); lwz 28,0x6c(1); lwz 25,0x70(1); lwz 26,0x74(1); stw 9,0x80(24); stw 10,0x84(24); stw 11,0x8(31); stw 12,0xc(31); stw 7,0x10(31); stw 8,0x14(31); stw 5,0x18(31); stw 6,0x1c(31); stw 3,0x20(31); stw 4,0x24(31); stw 29,0x28(31); stw 30,0x2c(31); stw 27,0x30(31); stw 28,0x34(31); stw 25,0x38(31); stw 26,0x3c(31); 3:; lwz 5,0x11c(24); cmpwi 5,0; beq 4f; addi 3,1,56; mr 4,31; bl _s8001D368_7; lwz 11,0x38(1); lwz 12,0x3c(1); lwz 7,0x40(1); lwz 8,0x44(1); lwz 5,0x48(1); lwz 6,0x4c(1); lwz 3,0x50(1); lwz 4,0x54(1); lwz 29,0x58(1); lwz 30,0x5c(1); lwz 27,0x60(1); lwz 28,0x64(1); lwz 25,0x68(1); lwz 26,0x6c(1); lwz 9,0x70(1); lwz 10,0x74(1); stw 11,0x80(24); stw 12,0x84(24); stw 9,0x38(31); stw 10,0x3c(31); stw 7,0x8(31); stw 8,0xc(31); stw 5,0x10(31); stw 6,0x14(31); stw 3,0x18(31); stw 4,0x1c(31); stw 29,0x20(31); stw 30,0x24(31); stw 27,0x28(31); stw 28,0x2c(31); stw 25,0x30(31); stw 26,0x34(31); 4:; li 0,6; stw 23,0x1a4(24); stw 0,0x160(24); cmpwi 22,0; li 0,1; beq 5f; li 0,2; 5:; stw 0,0x164(24); lis 11,-32707; lis 9,-32707; lfs f13,-6752(9); mr 3,24; lfs f0,-6756(11); stfs f13,0x228(24); stfs f0,0x168(24); stfs f13,0x224(24); bl _s8001D368_8; li 3,1; 6:; lwz 0,0xa4(1); mtspr 8,0; lmw 22,0x78(1); addi 1,1,160"
+
+extern "C" void _s8001D368_0();
+extern "C" void _s8001D368_1();
+extern "C" void _s8001D368_2();
+extern "C" void _s8001D368_3();
+extern "C" void _s8001D368_4();
+extern "C" void _s8001D368_5();
+extern "C" void _s8001D368_6();
+extern "C" void _s8001D368_7();
+extern "C" void _s8001D368_8();
+
+struct CameraDirector {
+    void StartAnim();
+};
+
+void CameraDirector::StartAnim() {
+}

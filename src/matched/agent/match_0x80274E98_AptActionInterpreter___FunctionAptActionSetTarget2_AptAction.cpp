@@ -1,7 +1,0 @@
-// 0x80274E98 AptActionInterpreter::_FunctionAptActionSetTarget2(AptActionInterpreter (380 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); mr 29,3; lis 10,-32700; lwz 11,0x0(29); addi 8,10,-6476; lwz 0,0x8(29); addi 30,1,8; lhz 9,-6476(10); rlwinm 11,11,2,0,29; add 11,11,0; mr 31,4; lwz 3,-4(11); addi 9,9,1; sth 9,-6476(10); mr 4,30; stw 8,0x8(1); bl _s80274E98_0; lwz 9,0x8(1); lhz 28,0x2(9); cmpwi 28,0; bne 1f; lwz 11,0x8(31); cmpwi 11,0; beq 0f; lwz 9,0x8(11); lis 4,-32704; lis 5,-32704; addi 4,4,7112; lha 3,0x10(9); addi 5,5,6212; lwz 0,0x14(9); li 6,4323; add 3,11,3; mtspr 8,0; blrl; 0:; stw 28,0x8(31); b 2f; 1:; lwz 4,0x8(31); mr 5,30; lwz 3,0x4(31); bl _s80274E98_1; li 0,0; stw 3,0x8(31); stw 0,0xc(31); lis 4,-32704; lis 5,-32704; addi 4,4,7112; lwz 9,0x8(3); addi 5,5,6212; li 6,4333; lha 0,0x8(9); lwz 9,0xc(9); add 3,3,0; mtspr 8,9; blrl; 2:; lwz 9,0x0(29); cmpwi 9,0; ble 3f; lwz 0,0x8(29); rlwinm 9,9,2,0,29; lis 4,-32704; lis 5,-32704; add 9,9,0; addi 4,4,5964; lwz 11,-4(9); addi 5,5,5812; li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(29); addi 9,9,-1; stw 9,0x0(29); 3:; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 4f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80274E98_2; 4:; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
-extern "C" void _s80274E98_0();
-extern "C" void _s80274E98_1();
-extern "C" void _s80274E98_2();
-extern "C" void f_80274E98() {}

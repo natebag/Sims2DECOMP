@@ -1,0 +1,12 @@
+// 0x8001E1FC CameraDirector::ProcessPropertyEventTags(void) (228 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stfd f31,0x20(1); stw 31,0x1c(1); stw 0,0x2c(1); mr 31,3; lwz 0,0x220(31); cmpwi 0,0; beq 0f; lwz 11,-21496(13); lwz 9,0x0(11); lwz 0,0x14(9); lha 3,0x10(9); mtspr 8,0; add 3,11,3; blrl; lis 9,-32707; lfs f13,-26800(13); lfs f0,-6704(9); lfs f11,0x224(31); mr 11,10; fmuls f13,f13,f0; lis 8,17200; fmadds f13,f13,f1,f11; lis 9,-32707; fmr f0,f13; lfd f11,-6696(9); fctiwz f12,f0; stfd f12,0x10(1); lwz 6,0x14(1); xoris 0,6,32768; cmpwi 6,0; stw 0,0x14(1); stw 8,0x10(1); lfd f0,0x10(1); fsub f0,f0,f11; frsp f31,f0; fsubs f13,f13,f31; stfs f13,0x224(31); beq 0f; lfs f0,0x228(31); mr 5,10; lwz 4,0x220(31); mr 3,31; fctiwz f13,f0; stfd f13,0x10(1); lwz 5,0x14(1); bl _s8001E1FC_0; lfs f0,0x228(31); fadds f0,f0,f31; stfs f0,0x228(31); 0:; lwz 0,0x2c(1); mtspr 8,0; lwz 31,0x1c(1); lfd f31,0x20(1); addi 1,1,40"
+
+extern "C" void _s8001E1FC_0();
+
+struct CameraDirector {
+    void ProcessPropertyEventTags();
+};
+
+void CameraDirector::ProcessPropertyEventTags() {
+}

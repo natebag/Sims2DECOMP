@@ -1,6 +1,0 @@
-// 0x802E3BD4 E3DWindow::SetProjection(float, (280 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-112(1); mfspr 0,8; stfd f28,0x50(1); stfd f29,0x58(1); stfd f30,0x60(1); stfd f31,0x68(1); stw 31,0x4c(1); stw 0,0x74(1); mr 31,3; fmr f29,f3; fmr f31,f1; addi 3,1,8; fmr f30,f2; fmr f28,f4; bl _s802E3BD4_0; lis 9,-32702; stfs f31,0x28c(31); lfs f0,-5108(9); stfs f30,0x29c(31); fcmpu 0,f29,f0; stfs f29,0x2f0(31); stfs f0,0x2f4(31); bge 0f; stfs f29,0x2f4(31); 0:; lwz 9,0x8(1); lwz 10,0xc(1); addi 7,1,8; lwz 11,0x8(7); lwz 12,0xc(7); addi 8,31,352; stfs f28,0x2f8(31); mr 3,31; stw 9,0x160(31); stw 10,0x164(31); stw 11,0x8(8); stw 12,0xc(8); lwz 9,0x10(7); lwz 10,0x14(7); stw 9,0x10(8); stw 10,0x14(8); lwz 11,0x18(7); lwz 12,0x1c(7); stw 11,0x18(8); stw 12,0x1c(8); lwz 9,0x20(7); lwz 10,0x24(7); stw 9,0x20(8); stw 10,0x24(8); lwz 11,0x28(7); lwz 12,0x2c(7); stw 11,0x28(8); stw 12,0x2c(8); lwz 9,0x30(7); lwz 10,0x34(7); stw 9,0x30(8); stw 10,0x34(8); lwz 11,0x38(7); lwz 12,0x3c(7); stw 11,0x38(8); stw 12,0x3c(8); bl _s802E3BD4_1; lwz 0,0x74(1); mtspr 8,0; lwz 31,0x4c(1); lfd f28,0x50(1); lfd f29,0x58(1); lfd f30,0x60(1); lfd f31,0x68(1); addi 1,1,112"
-extern "C" void _s802E3BD4_0();
-extern "C" void _s802E3BD4_1();
-extern "C" void f_802E3BD4() {}
