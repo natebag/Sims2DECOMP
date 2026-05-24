@@ -1,4 +1,9 @@
-// 0x801ECC98 StaticGetShaderId(InteractorModule::FloorData (32 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="mr. 3,3; beq 0f; lwz 9,0x0(3); lwz 3,0xc(9); blr; 0:; lis 3,-10852; ori 3,3,31669"
-extern "C" int f_801ECC98() {}
+// 0x801ECC98 StaticGetShaderId(InteractorModule::FloorData*) (32 B)
+// null-check via mr., vtable[3] (offset 12) = shader ID.
+namespace InteractorModule {
+struct FloorData { int* m_vt; };
+}
+int StaticGetShaderId(InteractorModule::FloorData* d) {
+    if (!d) return (int)0xD59C7BB5;
+    return d->m_vt[3];
+}
