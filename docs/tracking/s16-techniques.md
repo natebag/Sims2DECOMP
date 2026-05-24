@@ -612,6 +612,71 @@ the `rs` vs `ra` operand in the instruction encoding.
 
 ---
 
+## Anti-Patterns
+
+Conversion failure modes that produce NEAR-MATCH or MISMATCH asm. Consult before
+writing inline class definitions in match files.
+
+### Anti-pattern #1: Fake-struct conversion failure modes
+
+**Context:** When converting an inject_before stub to real C++, workers sometimes
+declare a struct/class inline in the match file because the canonical header isn't
+available yet. Four known failure modes (KimiWorker postmortem, S18):
+
+**1. Register-allocation drift (most common)**
+Raw pointer cast `((ClassName*)ptr)->field` lets GCC reuse r3 for the member load
+(`lwz r3, offset(r3)`). Struct-member access via a proper typed variable may route
+through an intermediate register (e.g., r9), shifting all downstream allocations.
+→ Use struct-member access via the canonical struct name, NOT raw casts.
+
+**2. Fake struct names break compiler type sharing**
+`struct EString_MU` instead of `struct EString` prevents the compiler from sharing
+type information with other functions in the same TU that reference the real type.
+Different type identity → different register allocation and spill decisions.
+→ Use the CANONICAL class name verbatim.
+
+**3. Wrong method signatures change ABI**
+Incorrect return type or missing `const` qualifier changes calling convention and
+register assignment. Even `EString*` vs `void` for the same method produces
+measurably different instruction sequences.
+→ Verify return type against the agent stub disasm:
+  - r3 live on blr + load pattern before blr = pointer/value return
+  - No r3 setup before blr = void (or bool via cr)
+
+**4. Invented helper methods**
+Declaring helper methods not in the canonical class can cause extra call sites or
+different inline decisions.
+→ Do NOT invent methods. Only declare what appears in the release map or agent stub.
+
+**Correct pattern:**
+```cpp
+// RIGHT — canonical name, struct-member access, const accessor, verified return type
+struct EString {
+    char* m_data;
+    int m_len;
+    EString* MakeUpper();  // return type verified: EString* (NOT void) per A/B below
+};
+EString* myStr = getEString();
+myStr->m_data;             // OK — member access through typed pointer
+// NOT: ((EString*)rawPtr)->m_data  (raw cast may alias r3)
+```
+
+**Smoking-gun — EString::MakeUpper A/B (KimiWorker, S18):**
+- `EString* MakeUpper()` → **MATCH** (r3 correctly holds return ptr through body)
+- `void MakeUpper()` → **MISMATCH** (r3/r11 register-allocation drift)
+
+**Incident postmortem / KimiWorker exoneration:**
+The two S18 floor breaches (EString commit 7b81fa6a9 + BString2 commit 7b4992361)
+were initially attributed to fake-struct failure modes. Subsequent A/B testing
+(KimiWorker, S18) confirmed the converted files DID byte-match when return types
+were correct. The actual floor breaches were caused by **untracked worker WIP files
+contaminating the pre-commit hook regen** (generate_report.py filesystem rglob picks
+up on-disk untracked files, inflating or deflating the matched count). The fake-struct
+failure modes are valid **PREVENTIVE guidance** — they were NOT the root cause of
+those specific incidents. KimiWorker's technique is sound.
+
+---
+
 ## TU-Archaeology Chapter
 
 Full build-archaeology methodology for identifying, classifying, and handling
