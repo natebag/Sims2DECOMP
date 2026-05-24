@@ -1216,3 +1216,43 @@ Total: 17 cracks + 1 infra upgrade. ~+752B byte impact.
 Plus recipe-adoption observed in other workers' commits:
 - 7a2c2356 INVTarget::IsPackagedItem (100B) — used cror-canonicalize recipe
 - ecf9f8a5 RoutingSlot::SetTileDistances (88B) — used local-var-cse pattern
+
+---
+
+## S19+ Priority Targets
+
+Functions flagged as high-value for S19 and beyond, organized by root cause.
+These are NOT yet cracked — they are triage output pointing at specific blockers.
+
+### Tier A: Layout-coax cluster (cXPersonImpl, PersonSlayer S18)
+
+**Root cause classification:** Tooling-gap, NOT structural.
+PersonSlayer's framing: "These are not hard functions — they're tooling-gap problems.
+The moment we have correct cXPersonImpl layout in a shared header, all four will
+fall in a single session."
+
+**Cluster: cXPersonImpl member-layout coax** — ~596B total
+All four functions require accurate `cXPersonImpl` struct field offsets to reach
+matching register allocation. Current blocker: `cXPersonImpl` header not yet
+reconstructed from the map + disasm.
+
+| Address | Function | Size | Blocker detail |
+|---------|----------|------|----------------|
+| 0x801CE1A0 | cXPersonImpl::TryTestInteractingWith | 140B | m_interactTarget layout offset wrong → r11/r12 swap |
+| 0x801CE350 | cXPersonImpl::IsCarryingDCObject | 196B | m_carriedObject offset chain → 3-reg spill mismatch |
+| 0x801CE500 | cXPersonImpl::IsAskedToMove | 152B | m_moveRequest + m_moveTarget dual-offset → base reg drift |
+| 0x801CE6A0 | cXPersonImpl::GetSocialModeTarget | 108B | m_socialMode enum + m_socialTarget → cmpwi immediate wrong |
+
+**Recommended approach (S19):**
+1. Run `dupe_scan_v2.py --tier 0` on the `0x801CE130–0x801E78F3` canonical range to
+   get the full cXPersonImpl virgin pool size.
+2. Reconstruct `cXPersonImpl` struct layout from adjacent already-matched functions
+   (member-load offsets are visible in agent stub disasm).
+3. Commit reconstructed `include/types/cXPersonImpl.h` as a standalone infra commit.
+4. All four functions above become single-pass cracks post-layout.
+
+**Estimated byte yield on unlock:** 596B + probable chain-reactions in adjacent
+PersonImpl functions that share the same layout (10–20 additional functions likely).
+
+---
+
