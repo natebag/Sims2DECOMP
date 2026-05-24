@@ -1,10 +1,46 @@
 // 0x802FF7D0 ESubModelShader::CanColorBeModified(void) (64 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,0x8(3); lwz 0,0x14(9); cmpwi 0,0; beq 0f; mr 9,0; b 1f; 0:; lwz 11,0x18(9); li 9,0; cmpwi 11,0; beq 1f; lwz 9,0x14(11); 1:; lwz 0,0xb4(9); lwz 3,0x74(9); or 3,3,0; rlwinm 3,3,27,31,31"
+// Pattern: extra indirection via field_8; same null-checked subobj walk + rlwinm bit-5 as ERShader
 
-struct ESubModelShader {
-    void CanColorBeModified();
+struct ERSubObj {
+    char pad_0[0x74];
+    unsigned int m_colorFlags;    // offset 0x74
+    char pad_1[0x3c];
+    unsigned int m_modifierMask;  // offset 0xb4
 };
 
-void ESubModelShader::CanColorBeModified() {
+struct ERContainer {
+    char pad[0x14];
+    ERSubObj* m_subObj;  // offset 0x14
+};
+
+struct InnerShader {
+    char pad_0[0x14];
+    ERSubObj* field_14;     // offset 0x14: sub-object pointer (or null)
+    ERContainer* field_18;  // offset 0x18: fallback container pointer
+};
+
+struct ESubModelShader {
+    int field_0;
+    int field_4;
+    InnerShader* field_8;  // offset 0x8: inner shader pointer
+    int CanColorBeModified() const;
+};
+
+int ESubModelShader::CanColorBeModified() const {
+    InnerShader* inner = (InnerShader*)field_8;
+    ERSubObj* obj = (ERSubObj*)inner->field_14;
+    ERSubObj* subobj;
+    if (obj != 0) {
+        subobj = obj;
+    } else {
+        ERContainer* container = (ERContainer*)inner->field_18;
+        subobj = 0;
+        if (container != 0) {
+            subobj = container->m_subObj;
+        }
+    }
+    unsigned int mask = subobj->m_modifierMask;
+    unsigned int flags = subobj->m_colorFlags;
+    return ((flags | mask) >> 5) & 1;
 }
