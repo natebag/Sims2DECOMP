@@ -1,4 +1,6 @@
-// 0x800EC07C GlobalConstantsClient::GetFileID(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-31848(13)"
-extern "C" int f_800EC07C() {}
+// 0x800EC07C GlobalConstantsClient::GetFileID (8B)
+// lwz r3,gFileID(r13)
+extern int gFileID;
+struct GlobalConstantsClient { int GetFileID() const; };
+int GlobalConstantsClient::GetFileID() const { return gFileID; }

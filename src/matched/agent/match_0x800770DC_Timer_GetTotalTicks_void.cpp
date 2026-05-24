@@ -1,4 +1,5 @@
-// 0x800770DC Timer_GetTotalTicks(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-24896(13)"
-extern "C" int f_800770DC() {}
+// 0x800770DC Timer_GetTotalTicks (8B)
+// lwz r3,gTimerTotalTicks(r13)
+extern int gTimerTotalTicks;
+int Timer_GetTotalTicks() { return gTimerTotalTicks; }

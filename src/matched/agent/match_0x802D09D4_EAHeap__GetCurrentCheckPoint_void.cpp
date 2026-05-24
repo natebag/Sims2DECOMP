@@ -1,4 +1,6 @@
-// 0x802D09D4 EAHeap::GetCurrentCheckPoint(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-26860(13)"
-extern "C" int f_802D09D4() {}
+// 0x802D09D4 EAHeap::GetCurrentCheckPoint (8B)
+// lwz r3,gCheckPoint(r13)
+extern int gCheckPoint;
+struct EAHeap { int GetCurrentCheckPoint() const; };
+int EAHeap::GetCurrentCheckPoint() const { return gCheckPoint; }

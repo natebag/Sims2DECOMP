@@ -1,4 +1,6 @@
-// 0x8032E884 ENgcEngine::IsResetting(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-26472(13)"
-extern "C" int f_8032E884() {}
+// 0x8032E884 ENgcEngine::IsResetting (8B)
+// lwz r3,gIsResetting(r13)
+extern int gIsResetting;
+struct ENgcEngine { int IsResetting() const; };
+int ENgcEngine::IsResetting() const { return gIsResetting; }
