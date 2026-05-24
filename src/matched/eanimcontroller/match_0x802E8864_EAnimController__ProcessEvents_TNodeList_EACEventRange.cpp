@@ -1,0 +1,15 @@
+// 0x802E8864 EAnimController::ProcessEvents(TNodeList<EACEventRange (392 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; mfcr 12; stfd f29,0x38(1); stfd f30,0x40(1); stfd f31,0x48(1); stmw 23,0x14(1); stw 0,0x54(1); stw 12,0x10(1); mr 25,3; mr 24,4; mr 31,5; addi 3,25,72; bl _s802E8864_0; lwz 28,0x0(24); cmpwi 28,0; beq 6f; cmpwi 4,31,0; lis 23,-32702; 0:; lwz 30,0x0(28); beq cr4,5f; lfs f13,0x4(30); lfs f0,0x8(30); fcmpu 0,f13,f0; cror 3,2,0; bns 1f; fmr f30,f13; fmr f31,f0; b 2f; 1:; fmr f30,f0; fmr f31,f13; 2:; lwz 9,0x0(30); lwz 11,0x7c(9); addi 27,11,148; lwz 0,0x4(27); cmpwi 0,0; ble 5f; lfd f29,-4672(23); mr 31,0; lis 26,17200; li 29,0; 3:; lwz 9,0x0(27); add 4,9,29; lwz 0,0x44(4); xoris 0,0,32768; stw 0,0xc(1); stw 26,0x8(1); lfd f0,0x8(1); fsub f0,f0,f29; frsp f13,f0; fcmpu 0,f13,f30; cror 3,2,1; bns 4f; fcmpu 0,f13,f31; cror 3,2,0; bns 4f; lwz 9,0x0(30); lfs f0,0x48(9); fcmpu 0,f13,f0; beq 4f; addi 3,25,72; bl _s802E8864_1; 4:; addi 29,29,80; addic. 31,31,-1; bne 3b; 5:; lfs f0,0x8(30); lwz 9,0x0(30); stfs f0,0x48(9); lwz 28,0x8(28); cmpwi 28,0; bne 0b; 6:; lwz 9,0x4(24); b 9f; 7:; lwz 0,0x8(24); lwz 3,0x0(9); cmpwi 0,0; lwz 31,0x4(9); beq 8f; bl _s802E8864_2; 8:; mr 9,31; 9:; li 0,1; cmpwi 9,0; bne 10f; li 0,0; 10:; cmpwi 0,0; bne 7b; mr 3,24; bl _s802E8864_3; lwz 0,0x54(1); lwz 12,0x10(1); mtspr 8,0; lmw 23,0x14(1); lfd f29,0x38(1); lfd f30,0x40(1); lfd f31,0x48(1); mtcrf 8,12; addi 1,1,80"
+
+extern "C" void _s802E8864_0();
+extern "C" void _s802E8864_1();
+extern "C" void _s802E8864_2();
+extern "C" void _s802E8864_3();
+
+struct EAnimController {
+    void ProcessEvents();
+};
+
+void EAnimController::ProcessEvents() {
+}

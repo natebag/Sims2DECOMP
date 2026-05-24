@@ -1,0 +1,12 @@
+// 0x802EB340 EAnimController::Layer(float, (508 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-112(1); mfspr 0,8; stfd f31,0x68(1); stmw 29,0x5c(1); stw 0,0x74(1); mr 30,3; mr 29,4; lwz 9,0x0(29); fmr f31,f1; lwz 0,0x0(30); addi 4,29,4; addi 3,1,8; or 0,0,9; stw 0,0x0(30); bl _s802EB340_0; addi 7,30,4; addi 9,1,8; lfs f4,0x8(9); addi 6,1,24; lfs f6,0x4(9); addi 4,29,20; lfs f8,0xc(9); addi 5,30,20; lfs f0,0x4(7); fneg f5,f6; lfs f11,0x8(1); addi 8,30,32; lfs f13,0x4(30); fmuls f3,f6,f0; fmuls f9,f4,f0; lfs f10,0x8(7); fmuls f2,f8,f0; lfs f7,0xc(7); fmuls f0,f11,f0; addi 3,29,32; fneg f12,f11; fmsubs f9,f8,f13,f9; fmsubs f12,f12,f13,f3; fmadds f5,f5,f13,f0; fmadds f9,f6,f10,f9; fmuls f0,f11,f10; fmuls f3,f4,f10; fmadds f13,f4,f13,f2; fmadds f11,f11,f7,f9; fsubs f13,f13,f0; stfs f11,0x18(1); fmadds f10,f8,f10,f5; fsubs f12,f12,f3; lwz 0,0x18(1); fmadds f8,f8,f7,f12; fmadds f6,f6,f7,f13; stfs f8,0x24(1); fmadds f4,f4,f7,f10; stfs f6,0x1c(1); stfs f4,0x20(1); lwz 9,0xc(6); lwz 11,0x4(6); lwz 10,0x8(6); stw 0,0x4(30); stw 9,0xc(7); stw 11,0x4(7); stw 10,0x8(7); lfs f12,0x14(29); lfs f0,0x8(4); lfs f13,0x14(30); fmuls f12,f31,f12; lfs f11,0x4(4); fmuls f0,f31,f0; stfs f0,0x20(1); fadds f13,f13,f12; stfs f12,0x18(1); fmuls f11,f31,f11; stfs f13,0x14(30); stfs f11,0x1c(1); lfs f0,0x4(5); lfs f12,0x8(5); fadds f0,f0,f11; stfs f0,0x4(5); lfs f13,0x20(1); fadds f12,f12,f13; stfs f12,0x8(5); lfs f10,0x20(30); lfs f13,0x20(29); lfs f11,0x4(3); lfs f8,0x8(3); fmuls f13,f10,f13; lfs f12,0x4(8); fsubs f9,f13,f10; lfs f0,0x8(8); fmuls f7,f9,f31; stfs f13,0x18(1); fmuls f12,f12,f11; fmuls f0,f0,f8; stfs f12,0x1c(1); stfs f0,0x20(1); fadds f10,f10,f7; lfs f13,0x4(8); lfs f11,0x8(8); fsubs f12,f12,f13; stfs f9,0x48(1); stfs f12,0x4c(1); fsubs f0,f0,f11; fmuls f11,f0,f31; stfs f0,0x50(1); fmuls f12,f12,f31; stfs f7,0x38(1); stfs f12,0x3c(1); stfs f11,0x40(1); lfs f0,0x4(8); lfs f13,0x8(8); stfs f10,0x28(1); fadds f0,f0,f12; fadds f13,f13,f11; stfs f0,0x2c(1); stfs f13,0x30(1); lwz 9,0x28(1); lwz 11,0x2c(1); lwz 0,0x30(1); stw 9,0x20(30); stw 0,0x8(8); stw 11,0x4(8); lwz 0,0x74(1); mtspr 8,0; lmw 29,0x5c(1); lfd f31,0x68(1); addi 1,1,112"
+
+extern "C" void _s802EB340_0();
+
+struct EAnimController {
+    void Layer();
+};
+
+void EAnimController::Layer() {
+}

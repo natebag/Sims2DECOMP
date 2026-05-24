@@ -1,0 +1,12 @@
+// 0x802F0428 EAnimController::CalcNodePos(int) (308 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 29,0x1c(1); stw 0,0x2c(1); mr 29,3; mr 31,4; mr. 30,5; blt 1f; lwz 9,0x24(31); cmpwi 9,0; li 0,0; beq 0f; lwz 0,0x18(9); 0:; cmpw 30,0; blt 2f; 1:; lis 9,-32702; lfs f0,-4296(9); stfs f0,0x8(29); stfs f0,0x0(29); b 3f; 2:; mr 3,31; mr 4,30; bl _s802F0428_0; lis 9,-32702; lfs f0,0x58(31); lfs f12,-4292(9); mulli 0,30,184; lwz 11,0x24(31); addi 10,1,8; fdivs f12,f12,f0; lwz 9,0x14(11); add 9,9,0; addi 11,9,16; lfs f11,0x10(9); lfs f0,0x8(11); lfs f13,0x4(11); fmuls f11,f11,f12; fmuls f0,f0,f12; stfs f11,0x8(1); fmuls f13,f13,f12; stfs f0,0x10(1); stfs f13,0xc(1); lfs f13,0x4(10); lfs f12,0x18(3); lfs f8,0x10(3); lfs f9,0x8(3); fmuls f12,f13,f12; lfs f6,0x14(3); fmuls f8,f13,f8; lfs f7,0x0(3); fmadds f9,f11,f9,f12; lfs f4,0x4(3); fmuls f13,f13,f6; lfs f0,0x8(10); fmadds f7,f11,f7,f8; lfs f10,0x20(3); fmadds f11,f11,f4,f13; lfs f12,0x28(3); lfs f6,0x24(3); fmadds f10,f0,f10,f7; lfs f5,0x38(3); fmadds f12,f0,f12,f9; lfs f8,0x30(3); fmadds f0,f0,f6,f11; lfs f13,0x34(3); fadds f12,f12,f5; fadds f10,f10,f8; stfs f12,0x8(29); fadds f0,f0,f13; stfs f10,0x0(29); 3:; stfs f0,0x4(29); mr 3,29; lwz 0,0x2c(1); mtspr 8,0; lmw 29,0x1c(1); addi 1,1,40"
+
+extern "C" void _s802F0428_0();
+
+struct EAnimController {
+    void CalcNodePos();
+};
+
+void EAnimController::CalcNodePos() {
+}

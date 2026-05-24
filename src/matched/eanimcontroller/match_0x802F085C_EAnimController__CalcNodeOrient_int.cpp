@@ -1,0 +1,17 @@
+// 0x802F085C EAnimController::CalcNodeOrient(int, (468 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-232(1); mfspr 0,8; stmw 25,0xcc(1); stw 0,0xec(1); mr 29,3; mr 31,5; mr. 27,4; blt 1f; lwz 9,0x24(29); cmpwi 9,0; li 0,0; beq 0f; lwz 0,0x18(9); 0:; cmpw 27,0; blt 2f; 1:; mr 3,31; bl _s802F085C_0; b 6f; 2:; mr 3,29; mr 4,27; addi 5,1,8; bl _s802F085C_1; lwz 3,0x24(29); cmpwi 3,0; beq 4f; lwz 3,0x14(3); cmpwi 3,0; beq 4f; mulli 0,27,184; add 3,3,0; lwz 9,0xb0(3); cmpwi 9,0; beq 3f; addi 4,3,16; addi 3,1,72; bl _s802F085C_2; b 5f; 3:; lwz 11,0x30(3); lwz 12,0x34(3); addi 8,3,48; addi 4,3,16; stw 11,0x48(1); stw 12,0x4c(1); addi 3,1,72; lwz 9,0x8(8); lwz 10,0xc(8); stw 9,0x50(1); stw 10,0x54(1); lwz 11,0x10(8); lwz 12,0x14(8); stw 11,0x58(1); stw 12,0x5c(1); lwz 9,0x18(8); lwz 10,0x1c(8); stw 9,0x60(1); stw 10,0x64(1); lwz 11,0x20(8); lwz 12,0x24(8); stw 11,0x68(1); stw 12,0x6c(1); lwz 9,0x28(8); lwz 10,0x2c(8); stw 9,0x70(1); stw 10,0x74(1); lwz 11,0x30(8); lwz 12,0x34(8); stw 11,0x78(1); stw 12,0x7c(1); lwz 9,0x38(8); lwz 10,0x3c(8); stw 9,0x80(1); stw 10,0x84(1); bl _s802F085C_3; b 5f; 4:; addi 3,1,72; bl _s802F085C_4; 5:; addi 3,1,136; addi 4,1,72; addi 5,1,8; bl _s802F085C_5; lwz 11,0x88(1); lwz 12,0x8c(1); lwz 7,0x90(1); lwz 8,0x94(1); lwz 5,0x98(1); lwz 6,0x9c(1); lwz 3,0xa0(1); lwz 4,0xa4(1); lwz 29,0xa8(1); lwz 30,0xac(1); lwz 27,0xb0(1); lwz 28,0xb4(1); lwz 25,0xb8(1); lwz 26,0xbc(1); lwz 9,0xc0(1); lwz 10,0xc4(1); stw 11,0x0(31); stw 12,0x4(31); stw 9,0x38(31); stw 10,0x3c(31); stw 7,0x8(31); stw 8,0xc(31); stw 5,0x10(31); stw 6,0x14(31); stw 3,0x18(31); stw 4,0x1c(31); stw 29,0x20(31); stw 30,0x24(31); stw 27,0x28(31); stw 28,0x2c(31); stw 25,0x30(31); stw 26,0x34(31); 6:; lwz 0,0xec(1); mtspr 8,0; lmw 25,0xcc(1); addi 1,1,232"
+
+extern "C" void _s802F085C_0();
+extern "C" void _s802F085C_1();
+extern "C" void _s802F085C_2();
+extern "C" void _s802F085C_3();
+extern "C" void _s802F085C_4();
+extern "C" void _s802F085C_5();
+
+struct EAnimController {
+    void CalcNodeOrient();
+};
+
+void EAnimController::CalcNodeOrient() {
+}

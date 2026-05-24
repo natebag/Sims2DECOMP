@@ -1,0 +1,12 @@
+// 0x802EB1B0 EAnimController::Blend(float, (400 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-96(1); mfspr 0,8; stfd f31,0x58(1); stmw 29,0x4c(1); stw 0,0x64(1); mr 29,3; mr 30,4; lwz 11,0x0(30); addi 10,30,4; lwz 0,0x0(29); addi 9,1,8; fmr f31,f1; addi 3,29,4; or 0,0,11; mr 5,9; stw 0,0x0(29); mr 4,3; lfs f0,0x4(30); stfs f0,0x8(1); lfs f13,0x4(10); stfs f13,0x4(9); lfs f0,0x8(10); stfs f0,0x8(9); lfs f13,0xc(10); stfs f13,0xc(9); bl _s802EB1B0_0; addi 10,29,20; addi 9,30,20; lfs f13,0x4(9); addi 8,29,32; lfs f12,0x4(10); addi 7,30,32; lfs f10,0x8(9); lfs f11,0x14(29); fsubs f13,f13,f12; lfs f9,0x8(10); fmuls f8,f13,f31; lfs f0,0x14(30); stfs f13,0x3c(1); fsubs f10,f10,f9; fsubs f0,f0,f11; stfs f8,0x2c(1); fmuls f13,f0,f31; stfs f0,0x38(1); fmuls f12,f10,f31; stfs f13,0x28(1); stfs f12,0x30(1); fadds f11,f11,f13; stfs f10,0x40(1); lfs f0,0x4(10); lfs f13,0x8(10); stfs f11,0x18(1); fadds f0,f0,f8; fadds f13,f13,f12; stfs f0,0x1c(1); stfs f13,0x20(1); lwz 9,0x18(1); lwz 11,0x1c(1); lwz 0,0x20(1); stw 9,0x14(29); stw 0,0x8(10); stw 11,0x4(10); lfs f9,0x20(29); lfs f13,0x4(8); lfs f0,0x20(30); lfs f12,0x4(7); lfs f11,0x8(7); fsubs f0,f0,f9; lfs f10,0x8(8); fsubs f12,f12,f13; fmuls f8,f0,f31; stfs f12,0x2c(1); fsubs f11,f11,f10; stfs f0,0x28(1); fmuls f12,f12,f31; stfs f11,0x30(1); stfs f8,0x18(1); fmuls f11,f11,f31; stfs f12,0x1c(1); fadds f9,f9,f8; stfs f11,0x20(1); lfs f0,0x4(8); lfs f13,0x8(8); stfs f9,0x8(1); fadds f0,f0,f12; fadds f13,f13,f11; stfs f0,0xc(1); stfs f13,0x10(1); lwz 9,0x8(1); lwz 11,0xc(1); lwz 0,0x10(1); stw 9,0x20(29); stw 0,0x8(8); stw 11,0x4(8); lwz 0,0x64(1); mtspr 8,0; lmw 29,0x4c(1); lfd f31,0x58(1); addi 1,1,96"
+
+extern "C" void _s802EB1B0_0();
+
+struct EAnimController {
+    void Blend();
+};
+
+void EAnimController::Blend() {
+}

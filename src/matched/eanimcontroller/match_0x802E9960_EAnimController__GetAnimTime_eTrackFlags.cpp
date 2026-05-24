@@ -1,0 +1,10 @@
+// 0x802E9960 EAnimController::GetAnimTime(eTrackFlags) (420 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); lis 0,1; ori 0,0,255; and. 9,4,0; beq 2f; lwz 0,0x8(3); mr 11,0; cmpwi 0,-1; beq 0f; mulli 9,11,176; lwz 0,0x44(3); add 9,9,0; lwz 0,0x30(9); b 1f; 0:; li 0,0; 1:; and. 9,0,4; beq 17f; mulli 9,11,176; b 16f; 2:; cmpwi 4,2048; beq 9f; bgt 4f; cmpwi 4,512; beq 7f; bgt 3f; cmpwi 4,256; beq 6f; b 14f; 3:; cmpwi 4,1024; beq 8f; b 14f; 4:; cmpwi 4,8192; beq 11f; bgt 5f; cmpwi 4,4096; beq 10f; b 14f; 5:; cmpwi 4,16384; beq 12f; li 0,0; ori 0,0,32768; cmpw 4,0; beq 13f; b 14f; 6:; lwz 9,0x38(3); b 15f; 7:; lwz 9,0x38(3); addi 9,9,1; b 15f; 8:; lwz 9,0x38(3); addi 9,9,2; b 15f; 9:; lwz 9,0x38(3); addi 9,9,3; b 15f; 10:; lwz 9,0x38(3); addi 9,9,4; b 15f; 11:; lwz 9,0x38(3); addi 9,9,5; b 15f; 12:; lwz 9,0x38(3); addi 9,9,6; b 15f; 13:; lwz 9,0x38(3); addi 9,9,7; b 15f; 14:; li 9,-1; 15:; cmpwi 9,-1; beq 17f; mulli 9,9,176; 16:; lwz 0,0x44(3); add 3,0,9; b 18f; 17:; li 3,0; 18:; cmpwi 3,0; beq 20f; lwz 0,0xa8(3); cmpwi 0,1; bne 20f; lwz 9,0x7c(3); li 0,1; cmpwi 9,0; bne 19f; li 0,0; 19:; cmpwi 0,0; beq 20f; lwz 9,0x18(9); lis 0,17200; lis 11,-32702; addi 9,9,-1; lfd f0,-4608(11); xoris 9,9,32768; lfs f13,0x0(3); stw 9,0xc(1); stw 0,0x8(1); lfd f1,0x8(1); fsub f1,f1,f0; frsp f1,f1; fdivs f1,f1,f13; b 21f; 20:; lis 9,-32702; lfs f1,-4600(9); 21:; addi 1,1,16"
+
+struct EAnimController {
+    void GetAnimTime();
+};
+
+void EAnimController::GetAnimTime() {
+}

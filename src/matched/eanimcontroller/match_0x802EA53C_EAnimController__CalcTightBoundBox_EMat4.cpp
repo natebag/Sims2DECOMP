@@ -1,0 +1,13 @@
+// 0x802EA53C EAnimController::CalcTightBoundBox(EMat4 (348 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 26,0x18(1); stw 0,0x34(1); mr 31,5; mr 28,3; lwz 5,-26812(13); mr 27,6; li 26,1; bl _s802EA53C_0; li 30,0; lis 9,-32702; addi 11,1,8; lfs f0,-4576(9); addi 8,31,12; stfs f0,0x8(11); stfs f0,0x4(11); stfs f0,0x8(1); lwz 0,0x8(1); lwz 9,0x4(11); lwz 10,0x8(11); stw 0,0xc(31); stw 10,0x8(8); stw 9,0x4(8); stw 9,0x4(31); lwz 0,0xc(31); stw 10,0x8(31); stw 0,0x0(31); mr 29,11; b 7f; 0:; cmpwi 27,0; beq 1f; rlwinm 9,30,2,0,29; addi 8,30,1; lwzx 0,9,27; cmpwi 0,0; beq 6f; 1:; addi 3,1,8; mr 4,28; mr 5,30; bl _s802EA53C_1; cmpwi 26,0; beq 2f; lwz 0,0x8(1); addi 9,31,12; lwz 11,0x4(29); addi 8,30,1; lwz 10,0x8(29); li 26,0; stw 0,0xc(31); stw 10,0x8(9); stw 11,0x4(9); stw 11,0x4(31); lwz 0,0xc(31); stw 10,0x8(31); stw 0,0x0(31); b 6f; 2:; li 0,3; addi 8,30,1; mtspr 9,0; li 9,0; 3:; lfsx f13,9,29; addi 11,31,12; lfsx f0,9,31; fcmpu 0,f13,f0; bge 4f; stfsx f13,9,31; b 5f; 4:; lfsx f0,11,9; fcmpu 0,f13,f0; ble 5f; stfsx f13,11,9; 5:; addi 9,9,4; bdnz 3b; 6:; mr 30,8; 7:; lwz 9,0x24(28); cmpwi 9,0; li 0,0; beq 8f; lwz 0,0x18(9); 8:; cmpw 30,0; blt 0b; lwz 0,0x34(1); mtspr 8,0; lmw 26,0x18(1); addi 1,1,48"
+
+extern "C" void _s802EA53C_0();
+extern "C" void _s802EA53C_1();
+
+struct EAnimController {
+    void CalcTightBoundBox();
+};
+
+void EAnimController::CalcTightBoundBox() {
+}
