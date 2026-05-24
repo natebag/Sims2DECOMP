@@ -1,4 +1,22 @@
-// 0x802D2C48 EString::MakeUpper(void) (52 B)
+// EString::MakeUpper(void) - 0x802D2C48 (52B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 11,0x0(3); lbz 9,0x0(11); cmpwi 9,0; beqlr; 0:; addi 0,9,-97; cmplwi 0,25; bgt 1f; addi 0,9,-32; stb 0,0x0(11); 1:; lbzu 9,0x1(11); cmpwi 9,0; bne 0b"
-extern "C" void f_802D2C48() {}
+// ASMPROC_force_reg_at_pos: match="lwz 3,0(3)" pos=0 from_reg=3 to_reg=11
+// ASMPROC_region_gpr_relabel: start_anchor="lwz 11,0(3)" start_mode=after end_anchor="blr" end_mode=at rename="3:11"
+
+struct EString {
+    char* m_pBuffer;
+    int m_nLen;
+
+    void MakeUpper(void);
+};
+
+void EString::MakeUpper(void) {
+    char* p = m_pBuffer;
+    unsigned char c = (unsigned char)*p;
+    if (!c) return;
+    do {
+        if ((unsigned int)(c - 'a') <= 25u)
+            *p = (char)(c - 32);
+        c = (unsigned char)*++p;
+    } while (c);
+}
