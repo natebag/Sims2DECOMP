@@ -157,7 +157,7 @@ Drop: KimiWorker, KimiGuy, Researcher (per S13 fleet composition ruling).
   - agent/match_801E70A0_K2YTarget__GetSavedFirstName.cpp (+ GetSavedLastName)
   - agent/match_801E70B8_PAZTarget__GetTLA.cpp
   - agent/match_801E70C4_PZ1Target__GetTLA.cpp
-- [ ] Investigate THPReadQuantizationTable (0x803934A8) assembler error: "junk at end of line: f0" in ASMPROC-generated .s file
+- [ ] Fix THPReadQuantizationTable (0x803934A8) assembler error: 8× `fmul f1,f2,f1,f0` in inject_before directive should be `fmadd f1,f2,f1,f0` (PPC fmadd frD,frA,frC,frB = DCT accumulate). One-line sed fix across the directive.
 
 ---
 
