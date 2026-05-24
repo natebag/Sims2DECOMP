@@ -185,17 +185,27 @@ public:
     char* GetBuffer(s32 minLen);
     void  ReleaseBuffer(void);
 
-    /* Path ops */
-    void    FixTrailingSlash(void);
-    void    RemoveTrailingSlash(void);
-    void    RemoveDriveLetter(void);
-    EString ExtractFilename(void) const;
-    EString ExtractRoot(void) const;
-    EString ExtractDirectory(void) const;
-    EString ExtractExtension(void) const;
-    void    MakeLegalFilename(void);
-    void    MakeLegalSymbolName(void);
-    void    RemoveRelationalDirectories(void);
+    /* Path ops
+     *
+     * NOTE: KimiWorker verified MakeLegalFilename @ 0x802D38AC requires
+     * EString* return for byte-match (commit bfa445849, "Header bug" flag).
+     * Other in-place mutators below are LIKELY-AFFECTED (similar shape:
+     * stack frame + final `mr 3, r30` to restore this in r3). Writers:
+     * A/B-test against agent stub asm BEFORE assuming `void`. If you
+     * confirm EString* is needed for one of the void-declared methods
+     * below, ship the conversion AND post `typereq-amendment:
+     * EString_<method>_return_type` so TypeArch amends canonical and
+     * future writers see the corrected signature. */
+    void     FixTrailingSlash(void);            /* POTENTIALLY EString* — verify A/B */
+    void     RemoveTrailingSlash(void);         /* POTENTIALLY EString* — verify A/B */
+    void     RemoveDriveLetter(void);           /* POTENTIALLY EString* — verify A/B */
+    EString  ExtractFilename(void) const;
+    EString  ExtractRoot(void) const;
+    EString  ExtractDirectory(void) const;
+    EString  ExtractExtension(void) const;
+    EString* MakeLegalFilename(void);           /* [V] KimiWorker bfa445849 — EString* REQUIRED */
+    void     MakeLegalSymbolName(void);         /* POTENTIALLY EString* — verify A/B */
+    void     RemoveRelationalDirectories(void); /* POTENTIALLY EString* — verify A/B */
 
     /* Trim */
     void TrimRight(char c);
