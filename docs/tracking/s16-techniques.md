@@ -1275,7 +1275,8 @@ by OpusReviewGuy cycle-3 review. Catalog-worthy per cycle-3 sign-off.
 | >512B     | 1,692 | 18.3% | Full TU/structural only |
 
 **17–80B sweet-spot combined:** 1,083 stubs (11.7% of pool) — tractable without mutators  
-**30–50B cross-check band:** 462 stubs — MainGuy's retargeting effectiveness metric  
+**30–50B cross-check band:** 293 stubs (SIZE_RE first-line parse) — retargeting effectiveness metric  
+**17–50B combined:** 462 stubs (211 + 251) — note: "462" in early T+180 reports was this, mislabeled as "30-50B"  
 **≤16B SDA wall:** 237 stubs — NOT default pattern blast territory
 
 ### Pattern assignment by band
@@ -1289,9 +1290,13 @@ by OpusReviewGuy cycle-3 review. Catalog-worthy per cycle-3 sign-off.
 | 129B+ | TU compilation or deep RE | Pattern blast ineffective |
 
 ### T+210 tracking targets
-- **30–50B delta** from 462: primary effectiveness metric for MainGuy's retargeting
+- **30–50B delta** from **293** (SIZE_RE-accurate): primary retargeting effectiveness metric
 - **51–80B delta** from 621: secondary metric; largest tractable sub-pool
 - If both stay flat: workers picking from elsewhere → retargeting needs amplification
+
+> **Grep method warning:** `grep "\([3-4][0-9]\|5[0-9]\) B)"` is WRONG — BRE `\(` is a group
+> operator, not literal paren, so `(636 B)` matches as false positive (1,919 hits vs correct 293).
+> Use: `grep -lE '\((3[0-9]|4[0-9]|50) B\)'` (ERE) or SIZE_RE on line 1 in Python.
 
 ---
 
