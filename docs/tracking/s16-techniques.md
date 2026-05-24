@@ -1402,5 +1402,38 @@ by OpusReviewGuy cycle-3 review. Catalog-worthy per cycle-3 sign-off.
 > ```
 > Never compare a band-iteration "30-50B" count against an explicit-range "30-50B" baseline.
 
+### Fleet routing protocol — two hard prerequisites (S18-ext validated)
+
+**1. "Fertile pool" requires per-band composition check before routing.**
+
+Class-stub-count is NOT sufficient for routing a worker to a class directory.
+The target must be decomposed by band before claiming it's tractable.
+
+Example (S18-ext aptactioninterpreter): 127 total inject stubs looks like a
+large tractable pool. Actual band composition:
+- 102 × >256B VM-dispatch table handlers — requires MutatorSmith
+- 24 × 129–256B — requires TU compilation or deep RE
+- 1 × 51–80B — accessible
+- 0 × 30–50B — accessible
+
+**A "biggest unworked pool" directive without band-breakdown is a false positive.**
+Always run `tools/tick270.py` (or equivalent per-band count) on the target class
+directory before issuing a routing directive.
+
+**2. Class-dir metric freeze = design, not stall, when workers are re-routed.**
+
+When a worker is re-assigned from a class-dir to a lateral pool (e.g., agent/
+51-80B), the original class-dir inject count will show zero movement. This looks
+identical to a stall but is actually an intentional routing artifact.
+
+Before escalating a "class-dir freeze" as a velocity bottleneck, verify:
+- Is any worker *currently assigned* to that class-dir?
+- If no → freeze is expected. The metric is dormant, not stalled.
+- Only escalate if: (a) a worker IS assigned and (b) the freeze persists 2+ ticks.
+
+**This two-check protocol closes the "false stall alarm" class of incidents.**
+Validated: S18-ext T+270 aptactioninterpreter/eanim freeze was design (workers
+re-routed to agent/ 51-80B per fleet directive) not bottleneck.
+
 ---
 
