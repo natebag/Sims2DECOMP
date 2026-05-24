@@ -1131,6 +1131,45 @@ sessions can pick up with clean context.
   `addi r29, r29, 12 + mr r3, r29` inside loop body. 6 source variants
   exhausted by Kmiworker2.
 
+### 2-step bool materializer (while-loop condition under -fno-schedule-insns)
+
+**First instance:** `0x802CC934 ENodeList::GetSizeRev` (48B) — S18-ext,
+OpusReviewGuy writer-pivot attempt. 3 source variants, 0 MATCH. Clean wall.
+
+**Assembly signature:**
+```
+1:
+li  0, 1          ← materialize true
+cmpwi r9, 0
+bne 2f            ← if r9 != NULL, skip false-assignment
+li  0, 0          ← materialize false
+2:
+cmpwi 0, 0        ← test materialized bool
+bne 0b            ← loop back if true
+```
+
+**Context:** Linked-list traversal. `r9 = this->field_4` (initial), then
+`r9 = r9->field_4` each iteration. Pattern: count nodes via offset-4 `next` ptr.
+
+**Why it walls:** GCC 2.95 under `-fno-schedule-insns` materializes the
+loop-exit condition through an int temporary rather than a direct `cmpwi`+`bne`.
+- Plain `while (p != 0)` → GCC optimizes to direct `cmpwi+bne` → 9 instr / 36B (too short)
+- Explicit int bool `int cont = (p != 0);` → doubles work → 16 instr / 64B (too long)
+- `goto` pre-test → GCC still optimizes the bool test → 8 instr / 32B (too short)
+
+**Candidate Pattern #12 (NOT YET FORMALIZED):** 2-step bool materializer for
+`while` loop conditions. Needs source coax that forces the compiler to generate
+the `li r0,1; cmpwi; bne; li r0,0; cmpwi r0,0; bne` sequence. No confirmed
+recipe yet. Likely class: `while (cond) { ... }` loops where `cond` is a
+pointer comparison AND the loop body has specific register pressure preventing
+direct-cmpwi optimization.
+
+**Affected band:** Likely appears in ≤128B linked-list traversal functions.
+Not confirmed in other addresses yet — treat as 1-instance until N≥2.
+
+**S19 action:** Route to MutatorSmith or find a second instance to validate
+the pattern; then formalize as Source Pattern #12.
+
 ---
 
 ## Known asm_processor Toolchain Bugs (S17 infra improvements)
