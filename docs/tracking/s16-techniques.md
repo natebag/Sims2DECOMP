@@ -1172,6 +1172,61 @@ the pattern; then formalize as Source Pattern #12.
 
 ---
 
+### Complex preamble wall (lis/stfs/stb zero-init with SDA float constant)
+
+**First instance:** `0x80329824 ImageProcessingManager::FilterParams::Reset`
+(68B) — S18-ext, SonnetWorker1 attempt. Flagged as preamble wall, not
+attempted to completion.
+
+**Assembly signature (known):**
+```
+lis  r9,-32702        # load SDA base (upper half)
+li   r0,0
+lfs  f0,0x1274(r9)    # load float constant from SDA (likely 0.0f or 1.0f)
+li   r9,0
+stb  r0,0xb(r3)       # scattered byte stores + sth + stfs sequence
+sth  r9,0x4(r3)
+stfs f0,0x18(r3)
+stb  r0,0x2(r3)
+stb  r0,0x0(r3)
+stb  r0,0x1(r3)
+stb  r0,0x8(r3)
+stb  r0,0x9(r3)
+stb  r0,0xa(r3)
+stfs f0,0xc(r3)
+stfs f0,0x10(r3)
+stfs f0,0x14(r3)
+```
+
+**Why it walls:**
+- Struct has mixed-width zero-init (bytes + short + floats at scattered offsets)
+- SDA float constant must be loaded via `lis/lfs` — source must reference an
+  SDA-resident global float (e.g. `extern float g_zero_float` in SDA) to force
+  the correct addressing
+- Store ordering: 14 stores across mixed types — GCC may reorder unless `volatile`
+  anchors are used
+- The `li r9,0 / sth r9,0x4(r3)` pattern for a short field vs the stb/stfs
+  fields suggests the struct layout has a packed/unaligned short requiring
+  explicit-width store
+
+**Candidate class:** struct Reset() with SDA-float fields + mixed-width zero-init
++ ≥10 stores. Likely appears in settings/param structs across the codebase.
+
+**Attempted approaches:** None completed (parked pre-attempt at "complex preamble"
+stage — size 68B, band 51-80B).
+
+**S19 action:** 
+1. Identify the FilterParams struct layout from the ELF debug map
+2. Confirm which field at offset 0x4 is a `short` (not `int`) — that determines
+   if explicit `*(short*)` cast is needed
+3. Find the SDA float constant at SDA base-32702 offset +0x1274 — likely
+   `0.0f` or a game-specific sentinel
+4. Source pattern: explicit `*(short*)&m_field = 0` for the sth field + volatile
+   or source-order control for the stb/stfs scatter
+5. Route to MutatorSmith if store ordering still diverges after source coax
+
+---
+
 ## Known asm_processor Toolchain Bugs (S17 infra improvements)
 
 Class of bugs in the asm-text rewriting toolchain where mutators corrupt
