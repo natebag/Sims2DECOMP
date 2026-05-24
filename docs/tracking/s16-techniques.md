@@ -1256,3 +1256,42 @@ PersonImpl functions that share the same layout (10–20 additional functions li
 
 ---
 
+## Fleet Targeting Guide — Band × Pattern Matrix
+
+**Source:** TUScout per-band breakdown (T+180 snapshot, 2026-05-24) cross-validated
+by OpusReviewGuy cycle-3 review. Catalog-worthy per cycle-3 sign-off.
+
+### Inject pool band distribution (S18-ext close, 9,281 stubs)
+
+| Band      | Count | % Pool | Notes |
+|-----------|------:|------:|-------|
+| ≤16B      |   237 |  2.6% | SDA wall zone — r9-vs-r3 register pressure |
+| 17–32B    |   211 |  2.3% | Easy getter/setter pool |
+| 33–50B    |   251 |  2.7% | Sweet-spot top |
+| **51–80B**  | **621** | **6.7%** | **BIGGEST tractable sub-pool; pattern-fertile** |
+| 81–128B   | 1,355 | 14.7% | Mid-band; needs mutators |
+| 129–256B  | 2,793 | 30.2% | Bulk lake; complex structure |
+| 257–512B  | 2,080 | 22.5% | Hard; often TU-level |
+| >512B     | 1,692 | 18.3% | Full TU/structural only |
+
+**17–80B sweet-spot combined:** 1,083 stubs (11.7% of pool) — tractable without mutators  
+**30–50B cross-check band:** 462 stubs — MainGuy's retargeting effectiveness metric  
+**≤16B SDA wall:** 237 stubs — NOT default pattern blast territory
+
+### Pattern assignment by band
+
+| Band | Applicable patterns | Notes |
+|------|--------------------|----|
+| ≤16B | Pattern #3 (SDA exchange-global) **only** | Default catalog hits r9-vs-r3 wall |
+| 17–50B | #1 (double-deref), #2 (deref+const), #7 (bit extract), #8 (lha load), #9 (lbz+rlwinm&1) | Getter/setter blast territory |
+| 51–80B | #4/#5 (equality field==N/0), #10 (branchless cr0.GT), #11 (null-guard mr./beqlr) | Controlled-branch fertile zone |
+| 81–128B | Mutators required (region_gpr_relabel, swap_operands, etc.) | NOT pattern-blast territory |
+| 129B+ | TU compilation or deep RE | Pattern blast ineffective |
+
+### T+210 tracking targets
+- **30–50B delta** from 462: primary effectiveness metric for MainGuy's retargeting
+- **51–80B delta** from 621: secondary metric; largest tractable sub-pool
+- If both stay flat: workers picking from elsewhere → retargeting needs amplification
+
+---
+
