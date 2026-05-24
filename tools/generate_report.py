@@ -20,6 +20,7 @@ import argparse
 import json
 import re
 import struct
+import subprocess
 import sys
 from pathlib import Path
 
@@ -46,21 +47,47 @@ SDK_PATH_MARKER = re.compile(r"DolphinSDK", re.IGNORECASE)
 
 
 def collect_matched_addresses(matched_dir: Path) -> set:
-    """Scan src/matched/ for `match_<addr>_*.cpp` filenames, return set of ints.
+    """Return set of matched function addresses (ints) from src/matched/.
 
-    Explicitly skips any path containing a 'wip' directory component (e.g.
-    src/wip/version_diff/) so that parked WIP files never contaminate floor
-    readings during pre-commit hook regen or manual generate_report.py runs.
+    Extended Option 2 patch: uses `git ls-files --cached -- src/matched/` instead
+    of filesystem rglob. This means only files tracked by git (committed or
+    explicitly staged) are counted. Untracked on-disk WIP files left by other
+    fleet workers NEVER contaminate floor readings.
+
+    Pre-commit hook correctness: the worker's newly-staged match file is already
+    in the index when the hook runs, so it IS counted. Workers whose files are
+    merely on-disk-but-unstaged are NOT counted.
+
+    Falls back to the wip-guarded rglob if git is unavailable (CI without git,
+    fresh checkout edge cases, etc.).
     """
     addrs = set()
-    for cpp in matched_dir.rglob("match_*.cpp"):
-        # Guard: skip any path that has a 'wip' component (symlink escape, future layout)
-        if "wip" in cpp.parts:
-            continue
-        m = MATCH_REGEX.match(cpp.name)
-        if m:
-            addrs.add(int(m.group(1), 16))
-    return addrs
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "--cached", "--", "src/matched/"],
+            cwd=str(REPO_ROOT),
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        for line in result.stdout.splitlines():
+            p = Path(line)
+            # Skip wip paths (version_diff/, etc.)
+            if "wip" in p.parts:
+                continue
+            m = MATCH_REGEX.match(p.name)
+            if m:
+                addrs.add(int(m.group(1), 16))
+        return addrs
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        # git unavailable — fall back to wip-guarded rglob
+        for cpp in matched_dir.rglob("match_*.cpp"):
+            if "wip" in cpp.parts:
+                continue
+            m = MATCH_REGEX.match(cpp.name)
+            if m:
+                addrs.add(int(m.group(1), 16))
+        return addrs
 
 
 _OBJ_NAME_RE = re.compile(r"([^\\/]+\.obj|[^\\/]+\.a\([^)]+\))$", re.IGNORECASE)
