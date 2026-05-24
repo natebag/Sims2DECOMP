@@ -6,6 +6,11 @@
  *
  * Source TU: e_string.obj + estring2.obj + efixedstring.obj
  *
+ * v2 (S18 post-KimiWorker-incident): added byte-match conversion guidance.
+ * No method signature changes — the v1 declarations are canonical and
+ * byte-match-correct (KimiWorker's MakeUpper fake-struct used wrong
+ * return type, see postmortem info-post `postmortem` id a2da1ccb).
+ *
  * ============================================================================
  * Use EString.h for ANY string-touching semantic conversion. The three
  * string classes cover:
@@ -17,6 +22,49 @@
  * head: data, size, capacity). Explicit specializations for
  * TArray<EString*> + TArray<EString2*> are provided because their TU has
  * specific Construct/Copy/SetSize implementations.
+ *
+ * ============================================================================
+ * **BYTE-MATCH CONVERSION GUIDANCE (READ BEFORE WRITING ANY EString CONVERT)**
+ *
+ * The KimiWorker EString incident (commits 7b81fa6a9 + fef98cc51 reverted
+ * after floor breach) was caused by fake-struct deviation from this
+ * canonical layout. To avoid repeating:
+ *
+ * 1. **#include "types/EString.h"** instead of declaring a local fake struct.
+ *    Do NOT redeclare `struct EString_MU { char* m_buffer; ... }` or
+ *    similar local-renamed shims. The fake struct generates DIFFERENT
+ *    mangled symbols which can collide with the real EString in other
+ *    TUs, causing collateral byte-match damage in unrelated units (the
+ *    7b81fa6a9 incident broke a 152B person-unit function via this
+ *    mechanism).
+ *
+ * 2. **Use the canonical method signatures EXACTLY as declared here.**
+ *    Do NOT change return types (e.g. `void MakeUpper(void)` is canonical;
+ *    `EString* MakeUpper(void)` would change the ABI). If a byte-match
+ *    seems to require a different signature, post `typereq-amendment:
+ *    EString_<method>_return_type` to the info board with the agent stub
+ *    asm as evidence — TypeArch will amend within SLA.
+ *
+ * 3. **Use struct-member access patterns, NOT raw pointer arithmetic.**
+ *    `m_buffer[i]` good; `((char*)this)[+0x00]` bad. The register-
+ *    allocation drift insight from the BString2 incident: raw-cast access
+ *    patterns reuse r3, struct-member access uses r9 intermediates.
+ *    Compiler emits different code for byte-identical-looking source.
+ *
+ * 4. **Helper methods (Deallocate / SetToNull / FreeBuffer / AllocBuffer
+ *    / MakeCopy) ARE real EString::* member methods** per symbol map
+ *    (live in 0x8046xxxx range — possibly TU-duplicated; verify the bl
+ *    target address via the FIXED awk one-liner before bl-calling them
+ *    in your conversion). They are NOT private helpers or free functions.
+ *
+ * 5. **For in-place mutators (MakeUpper / MakeLower / Empty / Format /
+ *    TrimLeft / TrimRight / Replace / etc.) declared `void` here:**
+ *    `void` IS the byte-match-correct signature. Do not "upgrade" to
+ *    `EString*` return — that's KimiWorker's MakeUpper mistake. The
+ *    function preserves r3 in the original by being a leaf/clean-frame
+ *    function, not by explicit return.
+ *
+ * If you suspect a canonical signature gap, POST a typereq don't fake-struct.
  * ============================================================================
  */
 #ifndef SIMS2_TYPES_ESTRING_H
@@ -89,10 +137,10 @@ public:
     EString& operator=(char* str);
 
     /* Query / mutate */
-    s32   GetLength(void) const;
-    void  MakeUpper(void);
-    void  MakeLower(void);
-    void  Empty(void);
+    s32       GetLength(void) const;
+    EString*  MakeUpper(void);  /* returns this; byte-match REQUIRES EString* return per KimiWorker A/B test 2026-05-24 (r3 preservation forces r11 intermediate for loop ptr) */
+    void      MakeLower(void);  /* pending verify — may also need EString* return per symmetry */
+    void      Empty(void);      /* void IS correct (has stack frame, reg-alloc determined by prologue) */
 
     /* Concat */
     EString  operator+(char c) const;
