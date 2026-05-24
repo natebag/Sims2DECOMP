@@ -1,0 +1,10 @@
+// 0x800EEB60 ObjectFolderImpl::GetSelectorByBehavior(Behavior (460 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-72(1); li 0,0; addi 9,1,8; stw 0,0x4(9); addi 11,1,40; stw 0,0x8(9); addi 3,3,64; stw 0,0x4(11); li 10,256; stw 0,0x8(11); mr 7,9; stw 3,0x28(1); mr 6,11; stw 10,0x4(11); addi 8,1,56; lwz 9,0x28(1); lwz 11,0x2c(1); lwz 10,0x30(1); stw 9,0x18(1); stw 11,0x1c(1); stw 10,0x20(1); stw 0,0x4(8); stw 0,0x8(8); stw 3,0x38(1); stw 0,0x4(8); lwz 9,0x3c(1); cmpwi 9,255; bgt 1f; lwz 11,0x38(1); rlwinm 9,9,2,0,29; lwzx 9,11,9; cmpwi 9,0; beq 0f; stw 9,0x40(1); b 1f; 0:; lwz 9,0x3c(1); addi 0,9,1; stw 0,0x3c(1); cmpwi 0,255; bgt 1f; lwz 9,0x38(1); rlwinm 0,0,2,0,29; lwzx 0,9,0; cmpwi 0,0; beq 0b; stw 0,0x40(1); 1:; lwz 9,0x3c(1); mr 10,7; lwz 0,0x40(1); stw 9,0x2c(1); stw 0,0x30(1); lwz 9,0x38(1); lwz 11,0x8(6); lwz 0,0x4(6); stw 9,0x8(1); stw 0,0x4(7); stw 11,0x8(7); stw 9,0x28(1); b 6f; 2:; lwz 3,0x8(10); lwz 0,0xc(3); cmpw 0,4; beq 8f; cmpwi 3,0; beq 4f; lwz 0,0xa4(3); cmpwi 0,0; stw 0,0x8(7); bne 3f; lwz 9,0x4(7); addi 9,9,1; stw 9,0x4(7); 3:; lwz 0,0x8(7); cmpwi 0,0; bne 6f; 4:; lwz 9,0x4(7); cmpwi 9,255; bgt 6f; lwz 11,0x0(7); rlwinm 9,9,2,0,29; lwzx 9,11,9; cmpwi 9,0; beq 5f; stw 9,0x8(7); b 6f; 5:; lwz 9,0x4(7); addi 0,9,1; stw 0,0x4(7); cmpwi 0,255; bgt 6f; lwz 9,0x0(7); rlwinm 0,0,2,0,29; lwzx 0,9,0; cmpwi 0,0; beq 5b; stw 0,0x8(7); 6:; lwz 9,0x4(10); li 11,0; lwz 0,0x1c(1); cmpw 9,0; bne 7f; lwz 9,0x8(7); lwz 0,0x20(1); cmpw 9,0; bne 7f; lwz 9,0x8(1); lwz 0,0x18(1); xor 11,9,0; subfic 8,11,0; adde 11,8,11; 7:; cmpwi 11,0; beq 2b; li 3,0; 8:; addi 1,1,72"
+
+struct ObjectFolderImpl {
+    void GetSelectorByBehavior_Behavior();
+};
+
+void ObjectFolderImpl::GetSelectorByBehavior_Behavior() {
+}

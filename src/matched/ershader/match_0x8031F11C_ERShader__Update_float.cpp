@@ -1,0 +1,19 @@
+// 0x8031F11C ERShader::Update(float, (760 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-72(1); mfspr 0,8; stmw 21,0x1c(1); stw 0,0x4c(1); mr 31,3; lwz 0,0x58(31); andi. 9,0,2; beq 11f; stb 4,0x66(31); andi. 9,0,4; stb 5,0x67(31); beq 8f; lis 3,-32692; lwz 4,0x5c(31); addi 3,3,-17444; bl _s8031F11C_0; stw 3,0x1c(31); cmpwi 3,0; beq 11f; lwz 11,0x58(31); li 0,0; stw 0,0x5c(31); rlwinm 11,11,0,30,28; lwz 9,0x48(31); stw 11,0x58(31); lbz 10,0x64(31); lbzx 0,9,10; stb 0,0x50(31); lwz 9,0x58(3); andi. 0,9,2; li 0,0; bne 2f; lwz 0,0x14(3); cmpwi 0,0; beq 0f; mr 9,0; b 1f; 0:; lwz 3,0x18(3); li 9,0; cmpwi 3,0; beq 1f; lwz 9,0x14(3); 1:; lwz 0,0x4(9); rlwinm 0,0,6,31,31; 2:; cmpwi 0,0; bne 3f; lwz 4,0x1c(31); mr 3,31; lwz 5,0x18(31); bl _s8031F11C_1; cmpwi 3,0; beq 3f; lis 9,-32702; lfs f0,0x40(31); lfs f13,0xa90(9); fcmpu 0,f0,f13; bne 4f; 3:; lwz 4,0x1c(31); mr 3,31; bl _s8031F11C_2; li 0,0; stw 0,0x1c(31); b 11f; 4:; lwz 0,0x58(31); lis 3,-32692; li 5,16; stfs f13,0x60(31); ori 0,0,8; addi 3,3,-17444; stw 0,0x58(31); li 4,68; bl _s8031F11C_3; lwz 0,0x14(31); mr 5,3; cmpwi 0,0; beq 5f; mr 12,0; b 6f; 5:; lwz 9,0x18(31); li 12,0; cmpwi 9,0; beq 6f; lwz 12,0x14(9); 6:; lis 9,-32702; addi 11,5,48; lfs f0,0xa94(9); lis 6,-32702; addi 9,5,16; mr 21,11; stfs f0,0x8(1); addi 10,9,16; stfs f0,0x10(1); mr 27,9; stfs f0,0xc(1); li 3,0; lwz 0,0x8(1); addi 29,5,32; lwz 8,0xc(1); addi 30,12,32; lwz 7,0x10(1); addi 28,12,16; stw 0,0x30(5); addi 22,12,48; stw 8,0x4(11); addi 23,12,120; stw 7,0x8(11); addi 24,5,8; addi 25,12,124; addi 26,5,64; lfs f13,0x30(5); addi 7,12,132; li 4,0; li 8,0; stfs f13,0x10(9); lfs f0,0x4(11); stfs f0,0x4(10); lfs f13,0x8(11); stfs f13,0x8(10); lfs f0,0x10(9); stfs f0,0x10(5); lfs f13,0x4(10); stfs f13,0x4(9); lfs f0,0x8(10); stfs f0,0x8(9); lfs f13,0xc(10); stfs f13,0xc(9); lfs f0,0xa98(6); stfs f0,0x2c(9); 7:; lfsx f0,4,23; stfsx f0,8,5; lfsx f13,4,25; addi 4,4,64; stfsx f13,8,24; addi 8,8,4; lbz 0,0x0(7); addi 7,7,64; stbx 0,26,3; addi 3,3,1; cmpwi 3,1; ble 7b; lfs f13,0x3c(12); lis 9,-32702; lfs f1,0xa90(9); mr 3,31; stfs f13,0x3c(5); lfs f0,0x20(12); stfs f0,0x20(5); lfs f13,0x4(30); stfs f13,0x4(29); lfs f0,0x8(30); stfs f0,0x8(29); lfs f13,0xc(30); stfs f13,0xc(29); lfs f0,0x10(12); stfs f0,0x10(5); lfs f13,0x4(28); stfs f13,0x4(27); lfs f0,0x8(28); stfs f0,0x8(27); lfs f13,0xc(28); stfs f13,0xc(27); lwz 0,0x30(12); lwz 9,0x8(22); lwz 11,0x4(22); stw 0,0x30(5); stw 9,0x8(21); stw 11,0x4(21); stw 5,0x68(31); bl _s8031F11C_4; b 11f; 8:; andi. 9,0,8; beq 9f; mr 3,31; bl _s8031F11C_5; b 11f; 9:; andi. 9,0,32; beq 10f; mr 3,31; bl _s8031F11C_6; b 11f; 10:; andi. 9,0,16; beq 11f; mr 3,31; mr 4,6; bl _s8031F11C_7; 11:; lwz 0,0x4c(1); mtspr 8,0; lmw 21,0x1c(1); addi 1,1,72"
+
+extern "C" void _s8031F11C_0();
+extern "C" void _s8031F11C_1();
+extern "C" void _s8031F11C_2();
+extern "C" void _s8031F11C_3();
+extern "C" void _s8031F11C_4();
+extern "C" void _s8031F11C_5();
+extern "C" void _s8031F11C_6();
+extern "C" void _s8031F11C_7();
+
+struct ERShader {
+    void Update();
+};
+
+void ERShader::Update() {
+}

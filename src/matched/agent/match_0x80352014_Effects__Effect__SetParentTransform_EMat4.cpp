@@ -1,4 +1,0 @@
-// 0x80352014 Effects::Effect::SetParentTransform(EMat4 (200 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 11,0x0(4); lwz 12,0x4(4); addi 8,3,256; stw 11,0x100(3); stw 12,0x104(3); lwz 9,0x8(4); lwz 10,0xc(4); stw 9,0x8(8); stw 10,0xc(8); lwz 11,0x10(4); lwz 12,0x14(4); stw 11,0x10(8); stw 12,0x14(8); lwz 9,0x18(4); lwz 10,0x1c(4); stw 9,0x18(8); stw 10,0x1c(8); lwz 11,0x20(4); lwz 12,0x24(4); stw 11,0x20(8); stw 12,0x24(8); lwz 9,0x28(4); lwz 10,0x2c(4); stw 9,0x28(8); stw 10,0x2c(8); lwz 11,0x30(4); lwz 12,0x34(4); stw 11,0x30(8); stw 12,0x34(8); lwz 9,0x38(4); lwz 10,0x3c(4); stw 9,0x38(8); stw 10,0x3c(8); lwz 0,0x140(3); andi. 9,0,4; bnelr; lis 11,-32702; lis 9,-32702; lfs f0,0x26b8(9); lfs f13,0x26b4(11); stfs f0,0x124(3); stfs f13,0x128(3); stfs f13,0x100(3); stfs f0,0x104(3); stfs f0,0x108(3); stfs f0,0x110(3); stfs f13,0x114(3); stfs f0,0x118(3); stfs f0,0x120(3)"
-extern "C" void f_80352014() {}

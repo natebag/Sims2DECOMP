@@ -1,0 +1,10 @@
+// 0x8004246C EGlobal::InitPlayerCheats(void) (424 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); stmw 26,0x8(1); mr 12,3; li 11,0; li 9,2; li 10,4096; li 8,8192; li 0,32; li 6,16384; li 4,4; li 5,128; li 3,8; li 7,-32768; li 30,64; sth 4,0x2(12); li 29,16; sth 3,0x4(12); addi 26,12,2; sth 10,0x6(12); addi 27,12,134; sth 30,0x8(12); li 28,0; sth 9,0xa(12); li 31,0; sth 11,0xc(12); sth 3,0xe(12); sth 4,0x10(12); sth 9,0x12(12); sth 8,0x14(12); sth 7,0x16(12); sth 11,0x18(12); sth 10,0x1a(12); sth 0,0x1c(12); sth 10,0x1e(12); sth 8,0x20(12); sth 9,0x22(12); sth 11,0x24(12); sth 9,0x26(12); sth 0,0x28(12); sth 6,0x2a(12); sth 7,0x2c(12); sth 10,0x2e(12); sth 11,0x30(12); sth 0,0x32(12); sth 9,0x34(12); sth 7,0x36(12); sth 0,0x38(12); sth 10,0x3a(12); sth 0,0x3c(12); sth 5,0x3e(12); sth 9,0x40(12); sth 6,0x42(12); sth 8,0x44(12); sth 0,0x58(12); sth 7,0x5e(12); sth 9,0x62(12); sth 5,0x64(12); sth 10,0x66(12); sth 30,0x6c(12); sth 6,0x74(12); sth 8,0x76(12); sth 3,0x7e(12); sth 4,0x80(12); sth 29,0x82(12); sth 11,0x84(12); sth 5,0x46(12); sth 11,0x48(12); sth 0,0x4a(12); sth 5,0x4c(12); sth 4,0x4e(12); sth 10,0x50(12); sth 6,0x52(12); sth 11,0x54(12); sth 29,0x56(12); sth 5,0x5a(12); sth 9,0x5c(12); sth 11,0x60(12); sth 6,0x68(12); sth 8,0x6a(12); sth 8,0x6e(12); sth 6,0x70(12); sth 8,0x72(12); sth 11,0x78(12); sth 3,0x7a(12); sth 4,0x7c(12); 0:; mulli 0,31,12; li 9,6; mtspr 9,9; addi 8,31,1; li 11,0; add 10,31,31; add 9,0,26; 1:; lhz 0,0x0(9); addi 9,9,2; or 11,0,11; bdnz 1b; or 0,28,11; mr 31,8; sthx 11,27,10; rlwinm 28,0,0,16,31; cmpwi 31,10; ble 0b; sth 28,0x0(12); lmw 26,0x8(1); addi 1,1,32"
+
+struct EGlobal {
+    void InitPlayerCheats();
+};
+
+void EGlobal::InitPlayerCheats() {
+}

@@ -1,0 +1,26 @@
+// 0x800ED1B4 ObjectFolderImpl::Destroy(void) (1292 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-384(1); mfspr 0,8; stmw 24,0x160(1); stw 0,0x184(1); mr 29,3; bl _s800ED1B4_0; lwz 11,-21412(13); cmpwi 11,0; beq 0f; lwz 9,0x0(11); lha 3,0x18(9); lwz 0,0x1c(9); add 3,11,3; mtspr 8,0; blrl; 0:; li 10,0; addi 9,1,8; stw 10,0x4(9); addi 11,1,40; stw 10,0x8(9); addi 7,29,64; stw 10,0x4(11); li 0,256; stw 10,0x8(11); mr 30,9; stw 7,0x28(1); mr 6,11; stw 0,0x4(11); addi 8,1,56; mr 28,7; addi 25,29,1092; lwz 9,0x2c(1); addi 24,29,1360; lwz 0,0x28(1); addi 27,29,1632; lwz 11,0x30(1); stw 9,0x1c(1); stw 0,0x18(1); stw 11,0x20(1); stw 10,0x4(8); stw 10,0x8(8); stw 7,0x38(1); stw 10,0x4(8); lwz 9,0x3c(1); cmpwi 9,255; bgt 2f; lwz 11,0x38(1); rlwinm 9,9,2,0,29; lwzx 9,11,9; cmpwi 9,0; beq 1f; stw 9,0x40(1); b 2f; 1:; lwz 9,0x3c(1); addi 0,9,1; stw 0,0x3c(1); cmpwi 0,255; bgt 2f; lwz 9,0x38(1); rlwinm 0,0,2,0,29; lwzx 0,9,0; cmpwi 0,0; beq 1b; stw 0,0x40(1); 2:; lwz 9,0x3c(1); mr 26,30; lwz 0,0x40(1); stw 9,0x2c(1); stw 0,0x30(1); lwz 9,0x38(1); lwz 11,0x8(6); lwz 0,0x4(6); stw 9,0x8(1); stw 0,0x4(30); stw 11,0x8(30); stw 9,0x28(1); b 12f; 3:; lwz 31,0x8(26); cmpwi 31,0; beq 5f; lwz 0,0xa4(31); cmpwi 0,0; stw 0,0x8(30); bne 4f; lwz 9,0x4(30); addi 9,9,1; stw 9,0x4(30); 4:; lwz 0,0x8(30); cmpwi 0,0; bne 7f; 5:; lwz 9,0x4(30); cmpwi 9,255; bgt 7f; lwz 11,0x0(30); rlwinm 9,9,2,0,29; lwzx 9,11,9; cmpwi 9,0; beq 6f; stw 9,0x8(30); b 7f; 6:; lwz 9,0x4(30); addi 0,9,1; stw 0,0x4(30); cmpwi 0,255; bgt 7f; lwz 9,0x0(30); rlwinm 0,0,2,0,29; lwzx 0,9,0; cmpwi 0,0; beq 6b; stw 0,0x8(30); 7:; mr 3,31; bl _s800ED1B4_1; rlwinm 9,3,2,22,29; lwzx 11,28,9; cmpw 31,11; bne 8f; lwz 0,0xa4(31); stwx 0,28,9; b 11f; 8:; cmpwi 11,0; beq 11f; lwz 0,0xa4(11); mr 9,0; cmpwi 0,0; beq 11f; cmpw 9,31; beq 10f; 9:; mr 11,9; lwz 0,0xa4(11); cmpwi 0,0; beq 11f; mr 9,0; cmpw 0,31; bne 9b; 10:; cmpwi 9,0; beq 11f; lwz 0,0xa4(31); stw 0,0xa4(11); 11:; mr 4,31; mr 3,29; bl _s800ED1B4_2; 12:; lwz 9,0x4(30); li 11,0; lwz 0,0x1c(1); cmpw 9,0; bne 13f; lwz 9,0x8(30); lwz 0,0x20(1); cmpw 9,0; bne 13f; lwz 9,0x8(1); lwz 0,0x18(1); xor 11,9,0; subfic 10,11,0; adde 11,10,11; 13:; cmpwi 11,0; beq 3b; lwz 31,0x440(29); cmpwi 31,0; beq 16f; lwz 3,0x3c(29); cmpwi 3,0; beq 15f; mr 4,31; bl _s800ED1B4_3; cmpwi 3,0; beq 15f; lwz 9,0xc(31); lha 3,0x60(9); lwz 0,0x64(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 14f; lwz 9,0xc(31); lha 3,0x40(9); lwz 0,0x44(9); add 3,31,3; mtspr 8,0; blrl; 14:; lwz 9,0xc(31); li 4,3; lha 3,0x8(9); lwz 0,0xc(9); add 3,31,3; mtspr 8,0; blrl; 15:; li 0,0; stw 0,0x440(29); 16:; mr 3,25; bl _s800ED1B4_4; mr 3,24; bl _s800ED1B4_5; li 10,0; li 9,0; 17:; rlwinm 0,9,2,0,29; addi 11,9,1; lwzx 9,28,0; cmpwi 9,0; beq 19f; stwx 10,28,0; 18:; lwz 9,0xa4(9); cmpwi 9,0; bne 18b; 19:; mr 9,11; cmpwi 9,255; ble 17b; lwz 3,0x690(29); cmpwi 3,0; beq 20f; bl _s800ED1B4_6; li 0,0; stw 0,0x690(29); 20:; lwz 3,0x694(29); cmpwi 3,0; beq 21f; bl _s800ED1B4_7; li 0,0; stw 0,0x694(29); 21:; lwz 9,0x3c(29); cmpwi 9,0; beq 31f; lwz 0,0x8(9); cmpwi 0,0; beq 27f; li 0,0; stw 0,0x158(1); lwz 9,0x4(9); lwz 0,0x8(9); stw 0,0x158(1); stw 0,0x8(1); b 25f; 22:; lwz 11,0x18(3); cmpwi 11,0; beq 23f; lwz 9,0xc(11); li 4,17; lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; mr 31,3; b 24f; 23:; li 31,0; 24:; addi 4,1,80; li 5,260; addi 3,1,72; bl _s800ED1B4_8; lwz 9,0xc(31); addi 4,1,72; lha 3,0x58(9); lwz 0,0x5c(9); add 3,31,3; mtspr 8,0; blrl; lwz 3,0x158(1); bl _s800ED1B4_9; stw 3,0x158(1); 25:; lwz 9,0x3c(29); li 11,1; lwz 3,0x158(1); lwz 0,0x4(9); cmpw 3,0; stw 0,0x8(1); bne 26f; li 11,0; 26:; cmpwi 11,0; bne 22b; 27:; lwz 31,0x3c(29); cmpwi 31,0; beq 30f; lwz 0,0x8(31); cmpwi 0,0; beq 28f; lwz 9,0x4(31); mr 3,31; lwz 4,0x4(9); bl _s800ED1B4_10; lwz 9,0x4(31); li 0,0; stw 9,0x8(9); lwz 11,0x4(31); stw 0,0x4(11); lwz 9,0x4(31); stw 9,0xc(9); stw 0,0x8(31); 28:; lwz 3,0x4(31); cmpwi 3,0; beq 29f; li 4,28; bl _s800ED1B4_11; 29:; mr 3,31; bl _s800ED1B4_12; 30:; li 0,0; stw 0,0x3c(29); 31:; lwz 31,0x660(29); lwz 0,0x4(27); cmpw 31,0; beq 34f; 32:; lwz 3,0x0(31); cmpwi 3,0; beq 33f; li 4,3; bl _s800ED1B4_13; 33:; lwz 0,0x4(27); addi 31,31,4; cmpw 31,0; bne 32b; 34:; lwz 0,0x660(29); li 9,0; li 3,220; li 4,0; stw 0,0x4(27); stw 9,0x38(29); bl _s800ED1B4_14; lwz 0,0x184(1); mtspr 8,0; lmw 24,0x160(1); addi 1,1,384"
+
+extern "C" void _s800ED1B4_0();
+extern "C" void _s800ED1B4_1();
+extern "C" void _s800ED1B4_2();
+extern "C" void _s800ED1B4_3();
+extern "C" void _s800ED1B4_4();
+extern "C" void _s800ED1B4_5();
+extern "C" void _s800ED1B4_6();
+extern "C" void _s800ED1B4_7();
+extern "C" void _s800ED1B4_8();
+extern "C" void _s800ED1B4_9();
+extern "C" void _s800ED1B4_10();
+extern "C" void _s800ED1B4_11();
+extern "C" void _s800ED1B4_12();
+extern "C" void _s800ED1B4_13();
+extern "C" void _s800ED1B4_14();
+
+struct ObjectFolderImpl {
+    void Destroy();
+};
+
+void ObjectFolderImpl::Destroy() {
+}

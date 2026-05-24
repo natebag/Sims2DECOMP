@@ -1,0 +1,13 @@
+// 0x8004121C EGlobal::GetCursorPosAsFtile(FTilePt (316 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 30,0x20(1); stw 0,0x2c(1); lis 9,-32707; addi 31,1,8; lfs f0,0x28c0(9); mr 30,4; stfs f0,0x8(31); stfs f0,0x4(31); stfs f0,0x8(1); bl _s8004121C_0; li 4,0; li 5,-1; bl _s8004121C_1; mr. 3,3; beq 0f; lwz 10,0x8(3); addi 9,3,8; lwz 0,0x8(9); lwz 11,0x4(9); stw 10,0x8(1); stw 0,0x8(31); stw 11,0x4(31); 0:; lis 9,-32697; lfs f13,0xc(1); addi 9,9,24012; lfs f9,0x8(1); lfs f0,0xa8(9); lfs f11,0xa4(9); mr 7,8; fsubs f13,f13,f0; mr 9,8; fmr f0,f13; lis 11,-32707; fctiwz f12,f0; lis 6,17200; stfd f12,0x18(1); fsubs f11,f9,f11; fmr f0,f11; lfd f12,0x28c8(11); fctiwz f10,f0; lwz 8,0x1c(1); stfd f10,0x18(1); lis 10,-32707; xoris 0,8,32768; lfd f9,0x28d0(10); lwz 11,0x1c(1); stw 0,0x1c(1); stw 6,0x18(1); lfd f0,0x18(1); fsub f0,f0,f12; frsp f0,f0; fsubs f13,f13,f0; fcmpu 0,f13,f9; cror 3,2,1; bns 1f; addi 8,8,1; 1:; xoris 0,11,32768; stw 0,0x1c(1); stw 6,0x18(1); lfd f0,0x18(1); fsub f0,f0,f12; frsp f0,f0; fsubs f0,f11,f0; fmr f13,f0; fcmpu 0,f13,f9; cror 3,2,1; bns 2f; addi 11,11,1; 2:; rlwinm 9,8,4,0,27; rlwinm 0,11,4,0,27; stw 0,0x0(30); stw 9,0x4(30); lwz 0,0x2c(1); mtspr 8,0; lmw 30,0x20(1); addi 1,1,40"
+
+extern "C" void _s8004121C_0();
+extern "C" void _s8004121C_1();
+
+struct EGlobal {
+    void GetCursorPosAsFtile_FTilePt();
+};
+
+void EGlobal::GetCursorPosAsFtile_FTilePt() {
+}

@@ -1,0 +1,18 @@
+// 0x80348684 ENgcRenderer::NgcScreenTriList(EDLEntry (804 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-56(1); mfspr 0,8; mfcr 12; stmw 26,0x20(1); stw 0,0x3c(1); stw 12,0x1c(1); mr 31,3; lwz 27,0x10(4); lwz 0,0x4638(31); lwz 29,0x4(4); cmpwi 0,0; lwz 26,0x8(4); lwz 28,0xc(4); beq 7f; lwz 0,-26252(13); li 30,0; stw 30,-26196(13); cmpwi 0,0; beq 7f; li 4,0; bl _s80348684_0; lwz 9,0x4d8(31); lwz 0,0x6e8(9); rlwinm 0,0,0,29,27; stw 0,0x6e8(9); lwz 3,0x4d8(31); bl _s80348684_1; lis 9,-32702; lwz 7,0x4d8(31); lfs f12,0x1ea0(9); lis 11,-32702; lfd f13,0x1ea8(11); stfs f12,0x9b0(7); lis 6,17200; lis 9,-32702; mr 8,10; lwz 11,0x4d8(31); lfs f11,0x1eb0(9); stfs f12,0x9b4(11); lhz 0,0x372(31); lwz 9,0x4d8(31); stw 0,0x14(1); stw 6,0x10(1); lfd f0,0x10(1); fsub f0,f0,f13; frsp f0,f0; stfs f0,0x9b8(9); lhz 0,0x374(31); lwz 11,0x4d8(31); stw 0,0x14(1); stw 6,0x10(1); lfd f0,0x10(1); fsub f0,f0,f13; frsp f0,f0; stfs f0,0x9bc(11); lwz 9,0x4d8(31); stfs f12,0x9c0(9); lwz 11,0x4d8(31); stfs f11,0x9c4(11); lwz 9,0x4d8(31); stw 30,0x9c8(9); lwz 11,0x4d8(31); stw 30,0x9cc(11); lwz 9,0x4d8(31); lhz 0,0x372(31); stw 0,0x9d0(9); lhz 0,0x374(31); lwz 11,0x4d8(31); stw 0,0x9d4(11); lwz 10,0x4d8(31); lwz 0,0x6cc(10); oris 0,0,32768; ori 0,0,1536; stw 0,0x6cc(10); lwz 9,0x510(31); cmpwi 9,0; beq 0f; mr 3,31; li 4,0; bl _s80348684_2; 0:; lwz 11,0x4d8(31); li 10,15; li 8,1; cmpwi 4,27,0; stw 30,0x9d8(11); lwz 9,0x4d8(31); lwz 0,0x6cc(9); stw 10,0x0(9); oris 0,0,32768; stw 0,0x6cc(9); lwz 11,0x4d8(31); lwz 0,0x6cc(11); oris 0,0,32768; ori 0,0,32; stw 0,0x6cc(11); lwz 9,0x4d8(31); lwz 0,0x6cc(9); stw 30,0x4c(9); oris 0,0,32768; stw 30,0x4(9); ori 0,0,1; stw 30,0x28(9); stw 0,0x6cc(9); stw 30,0x2c(9); stw 30,0x30(9); stw 30,0x38(9); stw 30,0x3c(9); stw 30,0x40(9); stw 30,0x44(9); stw 30,0x48(9); lwz 11,0x4d8(31); lwz 0,0x6cc(11); stw 8,0x28(11); oris 0,0,32768; ori 0,0,1; stw 0,0x6cc(11); beq cr4,1f; lwz 9,0x4d8(31); lwz 0,0x6cc(9); stw 8,0x30(9); oris 0,0,32768; ori 0,0,1; stw 0,0x6cc(9); 1:; cmpwi 28,0; mfcr 30; beq 2f; lwz 9,0x4d8(31); lwz 0,0x6cc(9); stw 8,0x38(9); oris 0,0,32768; ori 0,0,1; stw 0,0x6cc(9); 2:; lwz 3,0x4d8(31); li 4,0; bl _s80348684_3; li 3,144; li 4,2; rlwinm 5,29,0,16,31; bl _s80348684_4; cmpwi 29,0; ble 6f; mtspr 9,29; mcrf cr7,cr4; mtcrf 128,30; mr 5,28; mr 7,27; mr 6,26; lis 8,-13311; 3:; lfs f0,0x0(6); lfs f13,0x4(6); lfs f12,0x8(6); stfs f0,-32768(8); stfs f13,-32768(8); stfs f12,-32768(8); beq cr7,4f; lbz 0,0x0(7); lbz 9,0x1(7); lbz 11,0x2(7); lbz 10,0x3(7); stb 0,-32768(8); stb 9,-32768(8); stb 11,-32768(8); stb 10,-32768(8); 4:; beq 5f; lfs f0,0x0(5); lfs f13,0x4(5); stfs f0,-32768(8); stfs f13,-32768(8); 5:; addi 5,5,8; addi 7,7,4; addi 6,6,12; bdnz 3b; 6:; lwz 3,0x4d8(31); bl _s80348684_5; mr 3,31; li 4,0; bl _s80348684_6; lwz 11,0x4d8(31); li 0,2; li 10,12; stw 0,0x9d8(11); lwz 9,0x4d8(31); lwz 0,0x6cc(9); stw 10,0x0(9); oris 0,0,32768; stw 0,0x6cc(9); lwz 11,0x4d8(31); lwz 0,0x6cc(11); oris 0,0,32768; ori 0,0,32; stw 0,0x6cc(11); 7:; lwz 9,0x4dc(31); addi 9,9,16; stw 9,0x4dc(31); lwz 0,0x3c(1); lwz 12,0x1c(1); mtspr 8,0; lmw 26,0x20(1); mtcrf 8,12; addi 1,1,56"
+
+extern "C" void _s80348684_0();
+extern "C" void _s80348684_1();
+extern "C" void _s80348684_2();
+extern "C" void _s80348684_3();
+extern "C" void _s80348684_4();
+extern "C" void _s80348684_5();
+extern "C" void _s80348684_6();
+
+struct ENgcRenderer {
+    void NgcScreenTriList_EDLEntry();
+};
+
+void ENgcRenderer::NgcScreenTriList_EDLEntry() {
+}

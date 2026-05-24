@@ -1,0 +1,31 @@
+// 0x8033C510 ENgcRenderer::CreateGXDisplayList(EDL (1336 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-80(1); mfspr 0,8; mfcr 12; stmw 22,0x28(1); stw 0,0x54(1); stw 12,0x24(1); mr 0,9; mr 29,4; mr 27,5; mr 26,6; mr 24,7; lwz 31,0x58(1); li 9,1; lwz 22,0x5c(1); mr. 25,10; beq 0f; li 9,2; 0:; cmpwi 2,0,0; beq cr2,1f; addi 9,9,1; 1:; cmpwi 3,8,0; beq cr3,2f; addi 9,9,1; cmpwi 22,0; beq 2f; addi 9,9,1; 2:; cmpwi 26,254; li 11,2; mfcr 28; bgt 3f; li 11,1; 3:; lwz 0,0x60(1); cmpwi 4,0,0; li 0,0; beq cr4,4f; li 0,1; 4:; mullw 9,9,11; rlwinm 30,26,0,16,31; add 9,9,0; mullw 9,9,26; addi 9,9,34; rlwinm 9,9,0,0,26; stw 9,0x0(31); bl _s8033C510_0; lwz 4,0x0(31); li 6,0; li 7,0; li 5,32; bl _s8033C510_1; mr 23,3; mr 4,23; mr 3,29; bl _s8033C510_2; lis 9,-32690; li 4,-1; addi 0,9,-25796; lwz 11,-25796(9); stw 0,0x18(1); lwz 9,0x14(11); lha 3,0x10(11); mtspr 8,9; add 3,3,0; blrl; lwz 5,0x0(31); addi 3,1,8; mr 4,23; bl _s8033C510_3; addi 11,1,8; ori 0,27,6; lwz 9,0x8(11); rlwinm 31,0,0,24,31; lwz 10,0xc(11); addi 9,9,1; stw 11,-21544(13); cmplw 9,10; ble 5f; bl _s8033C510_4; 5:; lwz 10,-21544(13); lwz 9,0x8(10); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(10); lwz 11,-21544(13); lwz 9,0x8(11); lwz 0,0xc(11); addi 9,9,2; cmplw 9,0; ble 6f; bl _s8033C510_5; 6:; lwz 10,-21544(13); rlwinm 0,30,24,8,31; mtcrf 128,28; lwz 9,0x8(10); stb 0,0x0(9); addi 9,9,1; stw 9,0x8(10); lwz 11,-21544(13); lwz 9,0x8(11); stb 30,0x0(9); addi 9,9,1; stw 9,0x8(11); bgt 18f; li 30,0; cmpw 30,26; bge 30f; addi 29,24,7; 7:; beq cr4,9f; lwz 11,-21544(13); lbz 9,0x0(29); lwz 10,0x8(11); rlwinm 9,9,0,30,31; lwz 8,0xc(11); addi 10,10,1; rlwinm 0,9,1,0,30; add 31,0,9; cmplw 10,8; ble 8f; bl _s8033C510_6; 8:; lwz 11,-21544(13); lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); 9:; lwz 9,-21544(13); rlwinm 31,30,0,24,31; lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,1; cmplw 11,0; ble 10f; bl _s8033C510_7; 10:; lwz 11,-21544(13); cmpwi 25,0; lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); beq 12f; lwz 9,-21544(13); lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,1; cmplw 11,0; ble 11f; bl _s8033C510_8; 11:; lwz 11,-21544(13); lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); 12:; beq cr2,14f; lwz 9,-21544(13); lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,1; cmplw 11,0; ble 13f; bl _s8033C510_9; 13:; lwz 11,-21544(13); lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); 14:; beq cr3,17f; lwz 9,-21544(13); lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,1; cmplw 11,0; ble 15f; bl _s8033C510_10; 15:; lwz 11,-21544(13); cmpwi 22,0; lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); beq 17f; lwz 9,-21544(13); lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,1; cmplw 11,0; ble 16f; bl _s8033C510_11; 16:; lwz 11,-21544(13); lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); 17:; addi 30,30,1; addi 29,29,8; cmpw 30,26; blt 7b; b 30f; 18:; li 28,0; cmpw 28,26; bge 30f; addi 27,24,7; 19:; beq cr4,21f; lwz 11,-21544(13); lbz 9,0x0(27); lwz 10,0x8(11); rlwinm 9,9,0,30,31; lwz 8,0xc(11); addi 10,10,1; rlwinm 0,9,1,0,30; add 31,0,9; cmplw 10,8; ble 20f; bl _s8033C510_12; 20:; lwz 11,-21544(13); lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); 21:; lwz 9,-21544(13); rlwinm 31,28,0,16,31; lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,2; cmplw 11,0; ble 22f; bl _s8033C510_13; 22:; lwz 10,-21544(13); rlwinm 30,31,24,8,31; rlwinm 29,31,0,24,31; cmpwi 25,0; lwz 9,0x8(10); stb 30,0x0(9); addi 9,9,1; stw 9,0x8(10); lwz 11,-21544(13); lwz 9,0x8(11); stb 29,0x0(9); addi 9,9,1; stw 9,0x8(11); beq 24f; lwz 9,-21544(13); lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,2; cmplw 11,0; ble 23f; bl _s8033C510_14; 23:; lwz 11,-21544(13); lwz 9,0x8(11); stb 30,0x0(9); addi 9,9,1; stw 9,0x8(11); lwz 10,-21544(13); lwz 9,0x8(10); stb 29,0x0(9); addi 9,9,1; stw 9,0x8(10); 24:; beq cr2,26f; lwz 9,-21544(13); lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,2; cmplw 11,0; ble 25f; bl _s8033C510_15; 25:; lwz 10,-21544(13); rlwinm 0,31,24,8,31; lwz 9,0x8(10); stb 0,0x0(9); addi 9,9,1; stw 9,0x8(10); lwz 11,-21544(13); lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); 26:; beq cr3,29f; lwz 9,-21544(13); lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,2; cmplw 11,0; ble 27f; bl _s8033C510_16; 27:; lwz 10,-21544(13); rlwinm 30,31,24,8,31; rlwinm 31,31,0,24,31; cmpwi 22,0; lwz 9,0x8(10); stb 30,0x0(9); addi 9,9,1; stw 9,0x8(10); lwz 11,-21544(13); lwz 9,0x8(11); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(11); beq 29f; lwz 9,-21544(13); lwz 11,0x8(9); lwz 0,0xc(9); addi 11,11,2; cmplw 11,0; ble 28f; bl _s8033C510_17; 28:; lwz 11,-21544(13); lwz 9,0x8(11); stb 30,0x0(9); addi 9,9,1; stw 9,0x8(11); lwz 10,-21544(13); lwz 9,0x8(10); stb 31,0x0(9); addi 9,9,1; stw 9,0x8(10); 29:; addi 28,28,1; addi 27,27,8; cmpw 28,26; blt 19b; 30:; bl _s8033C510_18; bl _s8033C510_19; lwz 3,0x18(1); lwz 9,0x0(3); lha 0,0x18(9); lwz 9,0x1c(9); add 3,3,0; mtspr 8,9; blrl; mr 3,23; lwz 0,0x54(1); lwz 12,0x24(1); mtspr 8,0; lmw 22,0x28(1); mtcrf 56,12; addi 1,1,80"
+
+extern "C" void _s8033C510_0();
+extern "C" void _s8033C510_1();
+extern "C" void _s8033C510_2();
+extern "C" void _s8033C510_3();
+extern "C" void _s8033C510_4();
+extern "C" void _s8033C510_5();
+extern "C" void _s8033C510_6();
+extern "C" void _s8033C510_7();
+extern "C" void _s8033C510_8();
+extern "C" void _s8033C510_9();
+extern "C" void _s8033C510_10();
+extern "C" void _s8033C510_11();
+extern "C" void _s8033C510_12();
+extern "C" void _s8033C510_13();
+extern "C" void _s8033C510_14();
+extern "C" void _s8033C510_15();
+extern "C" void _s8033C510_16();
+extern "C" void _s8033C510_17();
+extern "C" void _s8033C510_18();
+extern "C" void _s8033C510_19();
+
+struct ENgcRenderer {
+    void CreateGXDisplayList_EDL();
+};
+
+void ENgcRenderer::CreateGXDisplayList_EDL() {
+}

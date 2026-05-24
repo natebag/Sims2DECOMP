@@ -1,0 +1,10 @@
+// 0x801D7CAC PCTTarget::calc_wall_value(InteractorModule::Interactor::CallbackData (244 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="mr. 4,4; bne 0f; li 3,0; blr; 0:; lwz 0,0xe8(3); li 12,0; cmpwi 0,0; beq 1f; lwz 9,0x210(3); lwz 0,0x10(4); mullw 0,0,9; srawi 9,0,31; xor 12,9,0; subf 12,9,12; b 10f; 1:; addi 5,4,20; lis 9,-32697; lwz 4,0x14(4); lwz 0,0x4(5); lwz 3,0x5ea8(9); cmpw 4,0; beq 10f; 2:; lwz 8,0x0(4); cmpwi 8,1; bne 4f; addi 7,4,8; li 0,1; lwz 6,0x4(5); lwz 4,0x4(4); b 9f; 3:; lwz 0,0x4(9); b 9f; 4:; lwz 11,0x0(3); lwz 6,0x4(5); addi 7,4,8; mr 10,11; lwz 4,0x4(4); b 7f; 5:; lwz 9,0x0(11); cmpwi 9,0; beq 6f; lwz 0,0xc(9); cmpw 0,8; beq 3b; 6:; addi 11,11,4; 7:; cmpwi 10,0; li 0,0; beq 8f; lwz 0,-4(10); 8:; rlwinm 0,0,2,0,29; add 0,10,0; cmpw 11,0; bne 5b; li 0,0; 9:; mullw 0,0,4; mr 4,7; cmpw 4,6; add 12,12,0; bne 2b; 10:; mr 3,12"
+
+struct PCTTarget {
+    void calc_wall_value_InteractorModule__Interactor__Cal();
+};
+
+void PCTTarget::calc_wall_value_InteractorModule__Interactor__Cal() {
+}

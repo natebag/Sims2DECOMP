@@ -1,0 +1,21 @@
+// 0x800F0B18 ObjectFolderImpl::DeleteUserSelectors(void) (1052 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-144(1); mfspr 0,8; stmw 24,0x70(1); stw 0,0x94(1); li 0,0; addi 9,1,8; stw 0,0x4(9); addi 11,1,24; stw 0,0x8(9); addi 10,1,32; stw 0,0x18(1); mr 29,9; stw 0,0x4(11); addi 9,1,64; stw 0,0x4(10); mr 24,3; stw 0,0x4(9); addi 11,24,64; stw 0,0x8(9); addi 10,1,48; stw 11,0x40(1); addi 26,1,80; stw 0,0x4(9); lwz 9,0x44(1); cmpwi 9,255; bgt 1f; lwz 11,0x40(1); rlwinm 9,9,2,0,29; lwzx 9,11,9; cmpwi 9,0; beq 0f; stw 9,0x48(1); b 1f; 0:; lwz 9,0x44(1); addi 0,9,1; stw 0,0x44(1); cmpwi 0,255; bgt 1f; lwz 9,0x40(1); rlwinm 0,0,2,0,29; lwzx 0,9,0; cmpwi 0,0; beq 0b; stw 0,0x48(1); 1:; lwz 11,0x40(1); lwz 0,0x44(1); lwz 9,0x48(1); stw 0,0x34(1); stw 9,0x38(1); stw 11,0x30(1); lwz 9,0x8(10); lwz 0,0x4(10); stw 11,0x8(1); stw 0,0x4(29); stw 9,0x8(29); addi 25,24,64; b 19f; 2:; lwz 0,0x8(29); mr 3,0; stw 0,0x60(1); bl _s800F0B18_0; cmpwi 3,0; li 0,1; bne 3f; li 0,0; 3:; cmpwi 0,0; beq 15f; lwz 11,0x1c(1); addi 27,1,96; lwz 0,0x24(1); mr 30,11; cmpw 11,0; beq 4f; lwz 0,0x60(1); stw 0,0x0(11); lwz 9,0x1c(1); addi 9,9,4; stw 9,0x1c(1); b 15f; 4:; lwz 9,0x18(1); li 0,1; stw 0,0x68(1); subf 9,9,11; addi 0,1,104; srawi 9,9,2; addi 11,1,100; stw 9,0x64(1); cmplwi 9,1; bge 5f; mr 11,0; 5:; lwz 0,0x0(11); add. 3,9,0; beq 7f; rlwinm 3,3,2,0,29; cmplwi 3,128; mr 28,3; ble 6f; bl _s800F0B18_1; mr 31,3; b 8f; 6:; bl _s800F0B18_2; mr 31,3; b 8f; 7:; li 31,0; li 28,0; 8:; lwz 4,0x18(1); cmpw 30,4; beq 9f; subf 30,4,30; mr 3,31; mr 5,30; bl _s800F0B18_3; add 3,3,30; b 10f; 9:; mr 3,31; 10:; lwz 0,0x68(1); mr 30,3; mtspr 9,0; cmpwi 0,0; beq 12f; 11:; lwz 0,0x0(27); stw 0,0x0(30); addi 30,30,4; bdnz 11b; 12:; lwz 3,0x18(1); lwz 0,0x24(1); cmpwi 3,0; subf 0,3,0; srawi 0,0,2; beq 14f; rlwinm 4,0,2,0,29; cmplwi 4,128; ble 13f; bl _s800F0B18_4; b 14f; 13:; bl _s800F0B18_5; 14:; add 0,28,31; stw 31,0x18(1); stw 30,0x1c(1); stw 0,0x24(1); 15:; lwz 9,0x8(29); cmpwi 9,0; beq 17f; lwz 0,0xa4(9); cmpwi 0,0; stw 0,0x8(29); bne 16f; lwz 9,0x4(29); addi 9,9,1; stw 9,0x4(29); 16:; lwz 0,0x8(29); cmpwi 0,0; bne 19f; 17:; lwz 9,0x4(29); cmpwi 9,255; bgt 19f; lwz 11,0x0(29); rlwinm 9,9,2,0,29; lwzx 9,11,9; cmpwi 9,0; beq 18f; stw 9,0x8(29); b 19f; 18:; lwz 9,0x4(29); addi 0,9,1; stw 0,0x4(29); cmpwi 0,255; bgt 19f; lwz 9,0x0(29); rlwinm 0,0,2,0,29; lwzx 0,9,0; cmpwi 0,0; beq 18b; stw 0,0x8(29); 19:; li 0,0; li 9,256; stw 0,0x4(26); li 8,0; stw 0,0x8(26); stw 25,0x50(1); stw 9,0x4(26); lwz 0,0x4(29); lwz 9,0x54(1); lwz 10,0x50(1); lwz 11,0x58(1); cmpw 0,9; stw 10,0x28(1); stw 9,0x2c(1); stw 11,0x30(1); bne 20f; lwz 0,0x8(29); cmpw 0,11; bne 20f; lwz 0,0x8(1); xor 8,0,10; subfic 9,8,0; adde 8,9,8; 20:; cmpwi 8,0; beq 2b; lwz 0,0x1c(1); li 29,0; lwz 9,0x18(1); subf 0,9,0; srawi 28,0,2; cmpw 29,28; bge 26f; 21:; lwz 9,0x18(1); rlwinm 30,29,2,0,29; lwzx 31,9,30; mr 3,31; bl _s800F0B18_6; rlwinm 9,3,2,22,29; mr 10,30; lwzx 11,25,9; cmpw 31,11; bne 22f; lwz 0,0xa4(11); addi 30,29,1; stwx 0,25,9; b 25f; 22:; addi 30,29,1; cmpwi 11,0; beq 25f; lwz 0,0xa4(11); mr 9,0; cmpwi 0,0; beq 25f; cmpw 9,31; beq 24f; 23:; mr 11,9; lwz 0,0xa4(11); cmpwi 0,0; beq 25f; mr 9,0; cmpw 0,31; bne 23b; 24:; cmpwi 9,0; beq 25f; lwz 0,0xa4(31); stw 0,0xa4(11); 25:; lwz 9,0x18(1); mr 3,24; mr 29,30; lwzx 4,9,10; bl _s800F0B18_7; cmpw 29,28; blt 21b; 26:; lwz 3,0x18(1); cmpwi 3,0; beq 28f; lwz 0,0x24(1); subf 0,3,0; rlwinm 4,0,0,0,29; cmplwi 4,128; ble 27f; bl _s800F0B18_8; b 28f; 27:; bl _s800F0B18_9; 28:; lwz 0,0x94(1); mtspr 8,0; lmw 24,0x70(1); addi 1,1,144"
+
+extern "C" void _s800F0B18_0();
+extern "C" void _s800F0B18_1();
+extern "C" void _s800F0B18_2();
+extern "C" void _s800F0B18_3();
+extern "C" void _s800F0B18_4();
+extern "C" void _s800F0B18_5();
+extern "C" void _s800F0B18_6();
+extern "C" void _s800F0B18_7();
+extern "C" void _s800F0B18_8();
+extern "C" void _s800F0B18_9();
+
+struct ObjectFolderImpl {
+    void DeleteUserSelectors();
+};
+
+void ObjectFolderImpl::DeleteUserSelectors() {
+}

@@ -1,4 +1,0 @@
-// 0x800F1A8C ObjectFolderImpl::LoadResourceByIndex(unsigned (268 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 27,0x14(1); stw 0,0x2c(1); mr 28,4; mr 30,3; mr 27,5; mr 29,6; mr 3,8; cmpwi 28,-1; beq 1f; cmpwi 7,0; beq 1f; mr 31,3; cmpwi 31,-1; bne 0f; lwz 9,0x0(29); lha 3,0x28(9); lwz 0,0x2c(9); add 3,29,3; mtspr 8,0; blrl; mr 31,3; 0:; lwz 9,0x0(30); mr 4,28; lwz 0,0x3c(9); lha 3,0x38(9); mtspr 8,0; add 3,30,3; blrl; mr 30,3; mr 4,31; lwz 9,0xc(30); mr 5,27; li 6,0; lha 3,0x90(9); lwz 0,0x94(9); add 3,30,3; mtspr 8,0; blrl; mr. 3,3; beq 1f; lwz 9,0xc(30); mr 4,3; addi 5,1,8; li 0,0; lha 3,0xb0(9); lwz 9,0xb4(9); add 3,30,3; sth 0,0x8(1); mtspr 8,9; blrl; lwz 9,0x0(29); mr 4,28; lha 5,0x8(1); lha 3,0x38(9); lwz 0,0x3c(9); add 3,29,3; mtspr 8,0; blrl; b 2f; 1:; li 3,0; 2:; lwz 0,0x2c(1); mtspr 8,0; lmw 27,0x14(1); addi 1,1,40"
-extern "C" void f_800F1A8C() {}

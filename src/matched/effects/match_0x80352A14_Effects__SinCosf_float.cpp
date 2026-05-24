@@ -1,0 +1,10 @@
+// 0x80352A14 Effects::SinCosf(float, (340 B)
+// FLAGS: -fno-schedule-insns
+// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); lis 9,-32702; lfs f11,0x2700(9); fcmpu 0,f1,f11; bne 0f; lis 9,-32702; stfs f11,0x0(3); lfs f0,0x2704(9); stfs f0,0x0(4); b 7f; 0:; lis 9,-32702; lfs f12,0x2708(9); mr 11,10; lis 6,17200; lis 9,-32702; fmuls f12,f1,f12; lfd f8,0x2710(9); fmr f0,f12; fctiwz f13,f0; stfd f13,0x8(1); lwz 7,0xc(1); xoris 0,7,32768; stw 0,0xc(1); rlwinm 7,7,0,30,31; stw 6,0x8(1); lfd f0,0x8(1); fsub f0,f0,f8; frsp f0,f0; fsubs f1,f12,f0; fcmpu 0,f1,f11; bge 1f; lis 9,-32702; addi 7,7,-1; lfs f0,0x2704(9); fadds f1,f1,f0; 1:; lis 11,-32702; lfs f13,0x2718(11); mr 10,9; lwz 8,-25876(13); cmpwi 7,1; fmuls f13,f1,f13; fmr f0,f13; fctiwz f12,f0; stfd f12,0x8(1); lwz 9,0xc(1); xoris 0,9,32768; stw 0,0xc(1); rlwinm 9,9,4,0,27; add 11,8,9; lfsx f9,8,9; stw 6,0x8(1); lfs f10,0x8(11); lfd f0,0x8(1); lfs f11,0x4(11); fsub f0,f0,f8; lfs f12,0xc(11); frsp f0,f0; fsubs f13,f13,f0; fmadds f12,f13,f12,f10; fmadds f1,f13,f11,f9; beq 4f; bgt 2f; cmpwi 7,0; beq 3f; b 6f; 2:; cmpwi 7,2; beq 5f; b 6f; 3:; stfs f1,0x0(3); stfs f12,0x0(4); b 7f; 4:; stfs f12,0x0(3); fneg f0,f1; stfs f0,0x0(4); b 7f; 5:; fneg f0,f1; stfs f0,0x0(3); fneg f13,f12; stfs f13,0x0(4); b 7f; 6:; fneg f0,f12; stfs f0,0x0(3); stfs f1,0x0(4); 7:; addi 1,1,16"
+
+struct Effects {
+    void SinCosf();
+};
+
+void Effects::SinCosf() {
+}
