@@ -280,13 +280,14 @@ def write_build_ninja(version: str, args: argparse.Namespace) -> Path:
     n.newline()
 
     # ---- MWCC (Metrowerks) — for DolphinSDK matching (issue #1) ----
-    # Installed by `python tools/download_tool.py mwcc --tag GC-1.2.5n`.
-    # Path is best-effort: a source file with `// COMPILER: mwcc` invokes
-    # $mwcc; if MWCC isn't installed, the rule's command will fail with a
-    # clear error. Default-build users without any MWCC-tagged source see
-    # no behavior change.
-    mwcc_tag_default = "GC-1.2.5n"
-    mwcc_path = REPO_ROOT / "build" / "tools" / "mwcc" / mwcc_tag_default / "mwcceppc.exe"
+    # Installed by `python tools/download_tool.py compilers` (which also
+    # installs SN ProDG). The default-extract layout puts MWCC at
+    # compiler/mwcc/1.2.5n/ — the canonical DolphinSDK 1.0 HW2 compiler.
+    # A source file with `// COMPILER: mwcc` invokes $mwcc; if MWCC isn't
+    # installed, the rule's command will fail with a clear error.
+    # Default-build users without any MWCC-tagged source see no behavior change.
+    mwcc_tag_default = "1.2.5n"
+    mwcc_path = REPO_ROOT / "compiler" / "mwcc" / mwcc_tag_default / "mwcceppc.exe"
     n.variable("mwcc_tag", mwcc_tag_default)
     n.variable("mwcc", str(mwcc_path).replace("\\", "/"))
     # MWCC flags for DolphinSDK 1.0 HW2 build — match the canonical GC-1.2.5n

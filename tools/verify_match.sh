@@ -61,8 +61,20 @@ DEVKITPPC="/f/coding/Decompiles/Tools/devkitPro/devkitPPC"
 OBJDUMP="$DEVKITPPC/bin/powerpc-eabi-objdump"
 DOL="extracted/sys/main.dol"
 
-# SN Systems ProDG compiler (the ORIGINAL compiler)
-SN_BIN="compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin"
+# SN Systems ProDG compiler (the ORIGINAL compiler — v3.9.3).
+# Canonical location is compiler/prodg/3.9.3/ as installed by
+# `python tools/download_tool.py compilers`. The legacy
+# compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin/ path is honored
+# as a fallback for existing checkouts that haven't migrated.
+if [ -x "compiler/prodg/3.9.3/cc1plus.exe" ]; then
+    SN_BIN="compiler/prodg/3.9.3"
+elif [ -x "compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin/cc1plus.exe" ]; then
+    SN_BIN="compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin"
+else
+    echo "ERROR: SN ProDG 3.9.3 not found. Run:"
+    echo "  python tools/download_tool.py compilers"
+    exit 1
+fi
 SN_CC1PLUS="$SN_BIN/cc1plus.exe"
 SN_AS="$SN_BIN/NgcAs.exe"
 

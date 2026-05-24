@@ -1,131 +1,95 @@
 # Toolchain Bootstrap
 
-How to obtain the compilers needed to build this project. Driven by
+How to install the compilers needed to build this project. Driven by
 `tools/download_tool.py` (addresses GitHub issue #3).
 
-## What you need
-
-| Tool | Purpose | License | How to get |
-|------|---------|---------|------------|
-| **SN Systems ProDG for GameCube v3.93** | Compiles game code (the original-build toolchain) | Proprietary, NOT redistributable | User-supplied or project release artifact |
-| **MWCC GC-1.2.5n** (planned) | Compiles DolphinSDK region for issue #1 | Public via decomp.dev mirror | `download_tool.py mwcc --tag GC-1.2.5n` |
-| **devkitPPC** | Linker (`powerpc-eabi-ld`) + objdump | Open source | Install separately per devkitPro docs |
-
-## Quick start (existing developers)
-
-If you already have `compiler/ProDGforNGCv393/` populated (the legacy
-checked-in layout), the build will continue to work as-is. The download
-tool's `verify` command confirms what's installed:
+## Quick start
 
 ```bash
-python tools/download_tool.py verify --version v393
+python tools/download_tool.py compilers
 ```
 
-## Fresh clone (no compiler/ directory)
+That's the whole bootstrap. Fetches `compilers_latest.zip` (~80MB) from
+`files.decomp.dev` and extracts the compilers we use into `compiler/`.
+The same archive is used by other GameCube / Wii decomp projects on
+decomp.dev — no special permissions, no licensing-restricted private
+mirror, no GitHub release artifacts to manage.
 
-SN ProDG is license-restricted and not redistributed by decomp.dev. Three
-ways to obtain it:
+After install, run `python tools/download_tool.py verify` to confirm.
 
-### Option 1 — from a SN Systems ProDG installer you own
+## What gets installed
 
-If you have the original ProDG for GameCube installer disc / ISO:
+| Path | Compiler | Purpose |
+|------|----------|---------|
+| `compiler/prodg/3.9.3/` | SN ProDG 3.9.3 (GCC 2.95.3 + SN BUILD v1.76) | **Primary game compiler** — what the original DOL was built with |
+| `compiler/prodg/3.8.1/` | SN ProDG 3.8.1 | A/B alt — flag-divergence testing |
+| `compiler/prodg/3.7/` | SN ProDG 3.7 | A/B alt |
+| `compiler/prodg/3.5/` | SN ProDG 3.5 | A/B alt |
+| `compiler/mwcc/1.2.5n/` | Metrowerks CodeWarrior GC-1.2.5n | **DolphinSDK matching** (issue #1) |
 
-1. Extract the `Disk1/data1/Build_Tools_Bin/` directory from the installer
-2. Wrap it in a tar archive:
-   ```bash
-   tar czf prodg_v393.tar.gz Disk1/data1/Build_Tools_Bin/
-   ```
-3. Install with:
-   ```bash
-   python tools/download_tool.py sn-prodg --version v393 \
-       --from-archive prodg_v393.tar.gz
-   ```
-
-### Option 2 — from a project release artifact (if maintainer has uploaded one)
-
-The repo maintainer may host a private release with the compiler artifact.
-If so, the URL goes in an env var:
+The archive also contains MWCC variants for Wii / Xbox 360 and additional
+GameCube MWCC versions. Those are skipped by default. To opt into one:
 
 ```bash
-export SN_PRODG_RELEASE_URL=https://github.com/.../prodg_v393.tar.gz
-python tools/download_tool.py sn-prodg --version v393
+python tools/download_tool.py mwcc --tag 1.3.2
 ```
 
-The tool SHA-verifies the download against the manifest in `download_tool.py`
-to detect tampering. If the maintainer rotates the artifact, the manifest
-hash must be updated in lockstep.
-
-### Option 3 — alternate ProDG versions (for A/B compiler-flag testing)
-
-Versions 3.5, 3.7, and 3.81 are also tracked. They produce *slightly* different
-output than 3.93 and are useful for diagnosing whether a wall is a compiler-
-version-specific quirk. SHA hashes for these are pinned in `download_tool.py`.
+## Verification
 
 ```bash
-python tools/download_tool.py sn-prodg --version v381 \
-    --from-archive prodg_v381.tar.gz
+$ python tools/download_tool.py verify
+  [OK]    SN ProDG 3.9.3 (primary)            compiler/prodg/3.9.3/cc1plus.exe
+  [OK]    SN ProDG 3.8.1 (alt)                compiler/prodg/3.8.1/cc1plus.exe
+  [OK]    SN ProDG 3.7   (alt)                compiler/prodg/3.7/cc1plus.exe
+  [OK]    SN ProDG 3.5   (alt)                compiler/prodg/3.5/cc1plus.exe
+  [OK]    MWCC GC-1.2.5n (DolphinSDK)         compiler/mwcc/1.2.5n/mwcceppc.exe
 ```
 
-## For project maintainers — uploading a release artifact
+`tools/verify_match.sh` looks for `compiler/prodg/3.9.3/cc1plus.exe` first
+and falls back to the legacy `compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin/`
+path so existing checkouts keep working during the migration.
 
-If you have authoritative SN ProDG binaries and want to make fresh clones
-work, host them as a GitHub Release:
+`configure.py`'s MWCC rule points at `compiler/mwcc/1.2.5n/mwcceppc.exe`.
 
-1. Archive the canonical install:
-   ```bash
-   cd compiler/
-   tar czf ../prodg_v393.tar.gz ProDGforNGCv393/
-   ```
-2. Compute the SHA256:
-   ```bash
-   sha256sum prodg_v393.tar.gz
-   ```
-3. Update `tools/download_tool.py`'s `SN_PRODG_MANIFEST["v393"]["sha256"]`
-   with the new hash, replacing the `REPLACE_ME` placeholder.
-4. Create a GitHub Release on the project:
-   ```bash
-   gh release create v0.1-toolchain prodg_v393.tar.gz \
-       --title "Toolchain bootstrap v0.1" \
-       --notes "SN ProDG v3.93 binary release for Sims2DECOMP. See \
-       docs/specs/toolchain-bootstrap.md."
-   ```
-5. Update README + project docs to point users at the release URL via
-   the `SN_PRODG_RELEASE_URL` env var.
+## Reproducibility
 
-**Licensing caveat:** SN Systems ProDG is proprietary. Verify your rights to
-redistribute before uploading to a public release. If in doubt, leave the
-release private + only share the URL with verified contributors who own
-their own license.
-
-## MWCC for DolphinSDK matching (issue #1)
-
-Once the SDK-MWCC build path lands (planned in S19), this command will
-fetch the canonical Metrowerks compiler from decomp.dev's public mirror:
+The compilers archive on decomp.dev is versioned by tag (e.g.
+`compilers_20240706.zip`). The default `--tag latest` follows whatever
+decomp.dev publishes as current. To pin a specific snapshot for build
+reproducibility:
 
 ```bash
-python tools/download_tool.py mwcc --tag GC-1.2.5n
+python tools/download_tool.py compilers --tag 20240706
 ```
 
-MWCC archives are public and SHA-verified through decomp.dev. No license
-ambiguity here — many active decomp projects use the same mirror.
+The cached archive lives at `build/tools/downloads/compilers_<tag>.zip`
+and is gitignored.
 
-## Layout produced
+## What you still need separately
 
-After running the tool, the canonical layout is:
+| Tool | Why | Install |
+|------|-----|---------|
+| `devkitPPC` | Linker (`powerpc-eabi-ld`) + objdump + assembler | https://devkitpro.org |
+| `decomp-toolkit` (`dtk`) | ELF/DOL operations, diffing, ldscript helpers | https://github.com/encounter/decomp-toolkit |
+| Python 3.10+ | All build scripts | https://python.org |
 
+These have their own license / installer flows. The compilers archive
+covers only the GameCube-specific compiler binaries.
+
+## Removing the in-tree compiler/ checkout
+
+The repo currently ships some compiler binaries committed under
+`compiler/ProDGforNGCv393/`, `compiler/alt_versions/`, and `compiler/maybe/`
+(predates the `download_tool.py` workflow). Once you've confirmed the
+download path works on your machine, the maintainer can drop those from
+git with:
+
+```bash
+git rm --cached -r compiler/ProDGforNGCv393/ compiler/alt_versions/ compiler/maybe/
+echo "compiler/" >> .gitignore
+git commit -m "compiler/: migrate to download_tool.py, drop in-tree binaries"
 ```
-compiler/
-├── ProDGforNGCv393/Disk1/data1/Build_Tools_Bin/   # primary (v3.93)
-│   ├── cc1plus.exe       # C++ compiler driver
-│   ├── NgcAs.exe         # assembler
-│   ├── cpp.exe           # preprocessor
-│   └── (other ProDG bits)
-└── alt_versions/v{35,37,381}/                       # alt versions (optional)
-    └── (similar contents)
 
-build/tools/mwcc/<tag>/
-└── mwcceppc.exe         # MWCC for SDK matching (issue #1)
-```
-
-This matches what `tools/verify_match.sh` and `configure.py` look for —
-existing scripts work transparently after install.
+After that, fresh clones pull the compilers from decomp.dev on demand.
+The existing developer's `compiler/` directory is untouched on disk;
+only the git tracking changes.
