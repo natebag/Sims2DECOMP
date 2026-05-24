@@ -1,4 +1,14 @@
-// 0x80388D74 GXGetFifoLimits (20 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0xc(3); stw 0,0x0(4); lwz 0,0x10(3); stw 0,0x0(5)"
-extern "C" void f_80388D74() {}
+// 0x80388D74 GXGetFifoLimits (20B)
+// lwz r0,0xc(r3); stw r0,0(r4); lwz r0,0x10(r3); stw r0,0(r5); blr
+struct GXFifoObj {
+    char pad[12];
+    int m_lo;   // offset 0xc
+    int m_hi;   // offset 0x10
+};
+void GXGetFifoLimits(const GXFifoObj* fifo, int* lo, int* hi) {
+    int v = fifo->m_lo;
+    *lo = v;
+    v = fifo->m_hi;
+    *hi = v;
+}

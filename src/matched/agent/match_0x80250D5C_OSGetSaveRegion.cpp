@@ -1,4 +1,11 @@
-// 0x80250D5C OSGetSaveRegion (20 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,-23640(13); stw 0,0x0(3); lwz 0,-23636(13); stw 0,0x0(4)"
-extern "C" void f_80250D5C() {}
+// 0x80250D5C OSGetSaveRegion (20B)
+// lwz r0,-23640(r13); stw r0,0(r3); lwz r0,-23636(r13); stw r0,0(r4); blr
+extern int gSaveRegionA;
+extern int gSaveRegionB;
+void OSGetSaveRegion(int* outA, int* outB) {
+    int v = gSaveRegionA;
+    *outA = v;
+    v = gSaveRegionB;
+    *outB = v;
+}
