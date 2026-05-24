@@ -115,6 +115,16 @@ def detect_toolchain(args: argparse.Namespace) -> dict[str, str]:
 # (the SN .o format isn't linker-compatible without more glue — Tier 2 work).
 FLAGS_PATTERN = re.compile(r"^//\s*FLAGS:\s*(.+?)\s*$", re.MULTILINE)
 
+# Per-file compiler selector (GitHub issue #1). Default is the project-wide
+# devkitPPC g++. Setting `// COMPILER: mwcc` at the top of a source file routes
+# it to the MWCC compile rule, which is required for matching the DolphinSDK
+# region (originally built with Metrowerks CodeWarrior, byte-incompatible
+# with GCC output regardless of source coax).
+#
+# MWCC must be installed first via `python tools/download_tool.py mwcc`.
+# See docs/specs/toolchain-bootstrap.md.
+COMPILER_PATTERN = re.compile(r"^//\s*COMPILER:\s*(\S+)\s*$", re.MULTILINE)
+
 
 def parse_per_file_flags(src_path: Path) -> str | None:
     """Read the first `// FLAGS: ...` line from a source file, if any."""
@@ -125,6 +135,19 @@ def parse_per_file_flags(src_path: Path) -> str | None:
         return None
     m = FLAGS_PATTERN.search(head)
     return m.group(1).strip() if m else None
+
+
+def parse_per_file_compiler(src_path: Path) -> str | None:
+    """Read the first `// COMPILER: ...` line, if any. Returns the lowercased
+    compiler name (e.g. 'mwcc') or None for the default (devkitPPC g++).
+    """
+    try:
+        with open(src_path, encoding="utf-8", errors="replace") as f:
+            head = f.read(2048)
+    except OSError:
+        return None
+    m = COMPILER_PATTERN.search(head)
+    return m.group(1).strip().lower() if m else None
 
 
 def enumerate_cxx_sources(full: bool) -> list[Path]:
@@ -256,6 +279,28 @@ def write_build_ninja(version: str, args: argparse.Namespace) -> Path:
     n.variable("asflags", "-mgekko -mregnames -memb")
     n.newline()
 
+    # ---- MWCC (Metrowerks) — for DolphinSDK matching (issue #1) ----
+    # Installed by `python tools/download_tool.py mwcc --tag GC-1.2.5n`.
+    # Path is best-effort: a source file with `// COMPILER: mwcc` invokes
+    # $mwcc; if MWCC isn't installed, the rule's command will fail with a
+    # clear error. Default-build users without any MWCC-tagged source see
+    # no behavior change.
+    mwcc_tag_default = "GC-1.2.5n"
+    mwcc_path = REPO_ROOT / "build" / "tools" / "mwcc" / mwcc_tag_default / "mwcceppc.exe"
+    n.variable("mwcc_tag", mwcc_tag_default)
+    n.variable("mwcc", str(mwcc_path).replace("\\", "/"))
+    # MWCC flags for DolphinSDK 1.0 HW2 build — match the canonical GC-1.2.5n
+    # defaults that other GameCube decomp projects use for the SDK region.
+    # See zeldaret/oot's Makefile + doldecomp/melee's tools/configure.py for
+    # the reference flag set. -O4,p = aggressive optimization with peephole;
+    # -fp hard = hardware FP; -enum int = MSVC-compatible enum sizing.
+    mwcc_flags = (
+        "-c -proc gekko -fp hard -O4,p -enum int "
+        "-Cpp_exceptions off -RTTI off -inline auto -nodefaults"
+    )
+    n.variable("mwccflags_base", f"{mwcc_flags} {includes} {defines}")
+    n.newline()
+
     # ---- linker config (mirrors Makefile) ----
     n.variable("ldscript", "config/ldscript.lcf")
     n.variable("ldflags", "-T $ldscript -nostdlib --allow-multiple-definition --no-check-sections --noinhibit-exec")
@@ -283,6 +328,18 @@ def write_build_ninja(version: str, args: argparse.Namespace) -> Path:
         description="CC $in",
         depfile="$out.d",
         deps="gcc",
+    )
+    n.newline()
+
+    # MWCC rule for source files marked `// COMPILER: mwcc` — needed for
+    # DolphinSDK matching (issue #1). Only invoked when a build statement
+    # explicitly targets it; default builds with no MWCC-tagged sources are
+    # unaffected. If MWCC isn't installed, the command fails with a clear
+    # error directing users to download_tool.py.
+    n.rule(
+        "cxx_mwcc",
+        command='"$mwcc" $mwccflags_base $extra_flags -o "$out" "$in"',
+        description="MWCC $in",
     )
     n.newline()
 
@@ -388,7 +445,9 @@ def write_build_ninja(version: str, args: argparse.Namespace) -> Path:
     n.newline()
 
     # Compile every .cpp / .c source. Files with `// FLAGS:` get per-file extra flags.
+    # Files with `// COMPILER: mwcc` route to the MWCC rule (DolphinSDK matching).
     all_objs: list[str] = []
+    mwcc_count = 0
     src_dir_rel = "src"
     for src in cxx_sources:
         rel = src.relative_to(REPO_ROOT / src_dir_rel)
@@ -396,9 +455,17 @@ def write_build_ninja(version: str, args: argparse.Namespace) -> Path:
         obj_str = str(obj_rel).replace("\\", "/")
         src_str = str(src.relative_to(REPO_ROOT)).replace("\\", "/")
         extra = parse_per_file_flags(src)
+        compiler = parse_per_file_compiler(src)
         variables = {"extra_flags": extra} if extra else None
-        n.build(outputs=obj_str, rule="cxx", inputs=src_str, variables=variables)
+        if compiler == "mwcc":
+            n.build(outputs=obj_str, rule="cxx_mwcc", inputs=src_str, variables=variables)
+            mwcc_count += 1
+        else:
+            n.build(outputs=obj_str, rule="cxx", inputs=src_str, variables=variables)
         all_objs.append(obj_str)
+    if mwcc_count > 0:
+        print(f"[configure.py] {mwcc_count} source(s) routed to MWCC "
+              f"(install via `python tools/download_tool.py mwcc`)")
     for src in c_sources:
         rel = src.relative_to(REPO_ROOT / src_dir_rel)
         obj_rel = (obj_dir / rel).with_suffix(".o").relative_to(REPO_ROOT)
