@@ -1,3 +1,4 @@
+// 0x802D53AC operator>>(EStream&, EString2&) (72 B)
 struct EStream {
     void ReadString(char* buf, int maxLen);
 };
@@ -12,3 +13,4 @@ EStream& operator>>(EStream& s, EString2& str) {
     str.Set(buf);
     return s;
 }
+

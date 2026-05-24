@@ -1,3 +1,4 @@
+// 0x80360EA4 EStringRedBlackTreeNoCase::Remove(void*) (72 B)
 struct SRBNCIteratorPtrType;
 
 struct EStringRedBlackTreeNoCase {
@@ -14,3 +15,4 @@ int EStringRedBlackTreeNoCase::Remove(char *key) {
 not_found:
     return 0;
 }
+
