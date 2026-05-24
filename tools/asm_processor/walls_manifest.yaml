@@ -170,3 +170,22 @@ walls:
       - mutator: force_reg_at_pos
         args: {match: "subf 0, 11, 0", pos: "2", from_reg: "0", to_reg: "8"}
     expected: match           # cracked 2026-05-02 by MutatorSmith — force_reg_at_pos canonical primary (Track I queue #4); STANDARD-ship N=1 byte-match. Lane O closure cascade — force_reg_at_pos PROVISIONAL → STANDARD.
+
+  - addr: "0x8021E6E0"
+    size: 76
+    symbol: "InteractorModule::SimInteractor::ImmediatelyCutCursorAndCameraToPos(EVec3*)"
+    category: 2
+    source: "src/matched/agent/match_0x8021E6E0_InteractorModule__SimInteractor__ImmediatelyCutCursorAndCame.cpp"
+    diagnosis: "Compiler-version scheduler divergence: DOL's SN ProDG uses 'cascade displacement' when mr r9,r4 (pos_copy) is inserted — x is displaced from r9 and takes cp's old r11 slot, cp moves to r8 (x->r11, y->r10, z->r0). Our SN ProDG uses 'grab-available' — x grabs the first free r0, producing a cyclic rotation x->r0, y->r11, z->r10. Store order is also wrong due to the register pressure difference. Two-directive fix: (1) region_gpr_relabel cyclic rename {r0->r11, r11->r10, r10->r0} over the 6-instruction load/store region, (2) swap_adj stw/stw which=last to reorder cp[2]=z before cp[1]=y."
+    pipeline:
+      - mutator: region_gpr_relabel
+        args:
+          start_anchor: "lwz 0,0(9)"
+          end_anchor: "stw 10,8(8)"
+          rename: "0:11,11:10,10:0"
+      - mutator: swap_adj
+        args:
+          a: stw
+          b: stw
+          which: last
+    expected: match           # cracked 2026-05-23 by SonnetWorker2 — region_gpr_relabel+swap_adj composition (N=1 for cyclic rename variant).
