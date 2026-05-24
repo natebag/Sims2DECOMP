@@ -161,8 +161,8 @@ def classify(claimed: int | None, measured: int) -> str:
       OK           — claimed ≈ measured (within threshold)
       UNCLAIMED    — no numeric claim in commit message
       INFLATE      — claimed >> measured (tag-discipline incident, DM author)
-      BULK_RELOCATE— measured >> claimed by large margin (relocate batch;
-                     commit message understated but not a discipline incident)
+      BULK_RELOCATE— measured >> claimed OR measured << 0 by large margin
+                     (relocate/first-commit batch; not a discipline incident)
       UNDER_CLAIM  — measured moderately > claimed (hidden wins, minor)
     """
     if claimed is None:
@@ -177,6 +177,10 @@ def classify(claimed: int | None, measured: int) -> str:
         if measured >= BULK_RELOCATE_FLOOR:
             return "BULK_RELOCATE"
         return "OK"
+    # Negative measured: commit net-added inject stubs (first-commit of agent batch
+    # or relocate that added newly-tracked WIP files). Not an inflation incident.
+    if measured < -BULK_RELOCATE_FLOOR:
+        return "BULK_RELOCATE"
     # Both positive — compare ratio
     ratio = claimed / max(measured, 1)
     if ratio > (1 + INFLATE_THRESHOLD) and (claimed - measured) >= MISMATCH_FLOOR:
