@@ -1,4 +1,10 @@
-// 0x800A0188 BString2::len(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x0(3); addi 3,3,4"
-extern "C" int f_800A0188() {}
+// 0x800A0188 BString2::len(void) (12B)
+// lwz r3,0(r3); addi r3,r3,4; blr
+struct BString2 {
+    int m_len;  // offset 0
+    int len() const;
+};
+int BString2::len() const {
+    return m_len + 4;
+}
