@@ -33,6 +33,46 @@ MATCH_REGEX = re.compile(r"match_(?:0[xX])?([0-9A-Fa-f]{8})_", re.IGNORECASE)
 # are zero-init at runtime, so there's no "match" work (just correct sizing).
 DATA_SECTIONS = (".ctors", ".dtors", ".rodata", ".data", ".sdata", ".sdata2")
 
+# Match quality classification — see GitHub issue #2.
+#
+# A "match" in this project can mean three very different things:
+#   - CLEAN:    hand-written C++ that compiles to byte-matching output. Runs
+#               cross-platform (PC port viable).
+#   - MUTATOR:  hand-written C++ + ASMPROC compiler-output mutators (gpr_relabel,
+#               swap_adj, replace_insn, etc.) nudging GCC's specific output. C++
+#               body runs cross-platform; mutators only affect emission.
+#   - INJECTED: ASMPROC_inject_before pragma copies raw DOL bytes into the .o.
+#               Equivalent to #pragma GLOBAL_ASM. C++ shell is a no-op. Does NOT
+#               run cross-platform.
+#
+# matched_code_percent (regression-gate metric) counts all three.
+# matched_code_percent_semantic (PC-port-meaningful metric) counts CLEAN + MUTATOR.
+# matched_code_percent_clean (purest hand-written metric) counts CLEAN only.
+INJECT_BEFORE_RE = re.compile(rb"ASMPROC_inject_before|#\s*pragma\s+ASMPROC\s+inject_before")
+MUTATOR_RE = re.compile(
+    rb"ASMPROC_(?:gpr_relabel|region_gpr_relabel|swap_adj|swap_operands|"
+    rb"replace_insn|hoist_fcmpu|self_return_blr|this_alias|force_alias_base|"
+    rb"force_sda21_destination_reg|dummy_write|virt_return_passthrough)"
+)
+
+
+def classify_match_file(file_path: Path) -> str:
+    """Classify a single matched .cpp file as 'clean', 'mutator', or 'injected'.
+
+    See module-level docstring for definitions. Falls back to 'clean' on read
+    errors to avoid double-counting genuinely empty / minimal files as injected.
+    """
+    try:
+        with open(file_path, "rb") as f:
+            content = f.read()
+    except OSError:
+        return "clean"
+    if INJECT_BEFORE_RE.search(content):
+        return "injected"
+    if MUTATOR_RE.search(content):
+        return "mutator"
+    return "clean"
+
 ORIG_ELF = REPO_ROOT / "extracted" / "files" / "u2_ngc_release_dvd.elf"
 BUILT_ELF = REPO_ROOT / "build" / "sims2.elf"
 
@@ -46,8 +86,12 @@ SHT_PROGBITS = 1
 SDK_PATH_MARKER = re.compile(r"DolphinSDK", re.IGNORECASE)
 
 
-def collect_matched_addresses(matched_dir: Path) -> set:
-    """Return set of matched function addresses (ints) from src/matched/.
+def collect_matched_addresses(matched_dir: Path) -> dict:
+    """Return {addr: classification} for all matched functions in src/matched/.
+
+    Classification is one of {"clean", "mutator", "injected"} per
+    classify_match_file. The dict's keys behave like the legacy set for
+    `addr in matched_addrs` membership tests, so existing callers stay valid.
 
     Extended Option 2 patch: uses `git ls-files --cached -- src/matched/` instead
     of filesystem rglob. This means only files tracked by git (committed or
@@ -61,7 +105,7 @@ def collect_matched_addresses(matched_dir: Path) -> set:
     Falls back to the wip-guarded rglob if git is unavailable (CI without git,
     fresh checkout edge cases, etc.).
     """
-    addrs = set()
+    classifications: dict[int, str] = {}
     try:
         result = subprocess.run(
             ["git", "ls-files", "--cached", "--", "src/matched/"],
@@ -77,8 +121,9 @@ def collect_matched_addresses(matched_dir: Path) -> set:
                 continue
             m = MATCH_REGEX.match(p.name)
             if m:
-                addrs.add(int(m.group(1), 16))
-        return addrs
+                addr = int(m.group(1), 16)
+                classifications[addr] = classify_match_file(REPO_ROOT / p)
+        return classifications
     except (subprocess.CalledProcessError, FileNotFoundError):
         # git unavailable — fall back to wip-guarded rglob
         for cpp in matched_dir.rglob("match_*.cpp"):
@@ -86,8 +131,8 @@ def collect_matched_addresses(matched_dir: Path) -> set:
                 continue
             m = MATCH_REGEX.match(cpp.name)
             if m:
-                addrs.add(int(m.group(1), 16))
-        return addrs
+                classifications[int(m.group(1), 16)] = classify_match_file(cpp)
+        return classifications
 
 
 _OBJ_NAME_RE = re.compile(r"([^\\/]+\.obj|[^\\/]+\.a\([^)]+\))$", re.IGNORECASE)
@@ -255,19 +300,61 @@ def compute_data_metrics(orig_elf: Path, built_elf: Path) -> dict:
     return {"total": total, "matched": matched, "per_section": per_section}
 
 
-def build_measures(functions: list, matched_addrs: set,
+def build_measures(functions: list, matched_addrs: dict,
                    data_metrics: dict | None = None) -> dict:
     """Compute the objdiff Measures block (matches proto3 serde JSON conventions
     used by decomp.dev / dtk-template). uint64 fields are emitted as strings,
     uint32 fields as integers, percent fields as floats.
+
+    Adds three honesty-tier metrics on top of the baseline byte-match floor
+    (see GitHub issue #2):
+      - matched_code_percent (baseline)  — byte-match regression gate. Counts
+        all matches including ASMPROC_inject_before byte injections.
+      - matched_code_percent_semantic    — PC-port-meaningful. Counts hand-written
+        C++ (with or without ASMPROC mutators). Excludes inject_before.
+      - matched_code_percent_clean       — purest. Counts only hand-written C++
+        with NO ASMPROC directives at all.
     """
     total_code = sum(f["size"] for f in functions)
-    matched_code = sum(f["size"] for f in functions if f["addr"] in matched_addrs)
     total_functions = len(functions)
-    matched_functions = sum(1 for f in functions if f["addr"] in matched_addrs)
+
+    matched_code = 0
+    matched_functions = 0
+    semantic_code = 0
+    semantic_functions = 0
+    clean_code = 0
+    clean_functions = 0
+    injected_code = 0
+    injected_functions = 0
+    mutator_code = 0
+    mutator_functions = 0
+
+    for f in functions:
+        if f["addr"] not in matched_addrs:
+            continue
+        classification = matched_addrs[f["addr"]]
+        matched_code += f["size"]
+        matched_functions += 1
+        if classification == "clean":
+            clean_code += f["size"]
+            clean_functions += 1
+            semantic_code += f["size"]
+            semantic_functions += 1
+        elif classification == "mutator":
+            mutator_code += f["size"]
+            mutator_functions += 1
+            semantic_code += f["size"]
+            semantic_functions += 1
+        else:  # injected
+            injected_code += f["size"]
+            injected_functions += 1
 
     pct_bytes = (matched_code / total_code * 100.0) if total_code else 0.0
     pct_funcs = (matched_functions / total_functions * 100.0) if total_functions else 0.0
+    pct_semantic = (semantic_code / total_code * 100.0) if total_code else 0.0
+    pct_semantic_funcs = (semantic_functions / total_functions * 100.0) if total_functions else 0.0
+    pct_clean = (clean_code / total_code * 100.0) if total_code else 0.0
+    pct_clean_funcs = (clean_functions / total_functions * 100.0) if total_functions else 0.0
 
     # Data metrics — empty dict means we couldn't measure (no original ELF).
     # In that case fall back to zeros (matches pre-data-tracking behavior).
@@ -280,6 +367,20 @@ def build_measures(functions: list, matched_addrs: set,
         "total_code": str(total_code),
         "matched_code": str(matched_code),
         "matched_code_percent": round(pct_bytes, 6),
+        # Honesty-tier additions (GitHub issue #2)
+        "matched_code_semantic": str(semantic_code),
+        "matched_code_percent_semantic": round(pct_semantic, 6),
+        "matched_code_clean": str(clean_code),
+        "matched_code_percent_clean": round(pct_clean, 6),
+        "matched_code_mutator": str(mutator_code),
+        "matched_code_injected": str(injected_code),
+        "matched_functions_semantic": semantic_functions,
+        "matched_functions_percent_semantic": round(pct_semantic_funcs, 6),
+        "matched_functions_clean": clean_functions,
+        "matched_functions_percent_clean": round(pct_clean_funcs, 6),
+        "matched_functions_mutator": mutator_functions,
+        "matched_functions_injected": injected_functions,
+        # End honesty-tier additions
         "total_data": str(total_data),
         "matched_data": str(matched_data),
         "matched_data_percent": round(pct_data, 6),
@@ -295,7 +396,7 @@ def build_measures(functions: list, matched_addrs: set,
     }
 
 
-def build_units(functions: list, matched_addrs: set) -> list:
+def build_units(functions: list, matched_addrs: dict) -> list:
     """Group functions by their containing TU/object and emit one Unit per group.
 
     Each Unit has:
@@ -330,7 +431,8 @@ def build_units(functions: list, matched_addrs: set) -> list:
             # Per-function match flag — decomp.dev's treemap colors each
             # inner square by this value. Without it, every function
             # defaults to 0% (grey) even when the unit overall reads 100%.
-            is_matched = f["addr"] in matched_addrs
+            classification = matched_addrs.get(f["addr"])
+            is_matched = classification is not None
             fn_pct = 100.0 if is_matched else 0.0
             function_entries.append({
                 "name": f["name"],
@@ -338,6 +440,9 @@ def build_units(functions: list, matched_addrs: set) -> list:
                 "metadata": {
                     "virtual_address": str(f["addr"]),
                     "complete": is_matched,
+                    # Honesty-tier per-function classification (issue #2).
+                    # "clean", "mutator", "injected", or null for unmatched.
+                    "match_quality": classification,
                 },
                 "address": str(f["addr"] - base_addr),
                 "fuzzy_match_percent": fn_pct,
@@ -438,9 +543,20 @@ def main() -> int:
         def show(label: str, m: dict) -> None:
             mc = int(m["matched_code"])
             tc = int(m["total_code"])
-            print(f"  {label}: {m['matched_code_percent']:.2f}% matched "
+            sc = int(m.get("matched_code_semantic", 0))
+            cc = int(m.get("matched_code_clean", 0))
+            inj = int(m.get("matched_code_injected", 0))
+            mut = int(m.get("matched_code_mutator", 0))
+            print(f"  {label}: byte-floor {m['matched_code_percent']:.2f}% "
                   f"({mc:,} / {tc:,} bytes, "
                   f"{m['matched_functions']:,} / {m['total_functions']:,} funcs)")
+            print(f"    semantic (real C++, PC-port-viable): "
+                  f"{m.get('matched_code_percent_semantic', 0):.2f}% "
+                  f"({sc:,} bytes — {cc:,} clean + {mut:,} mutator)")
+            print(f"    clean (no ASMPROC at all): "
+                  f"{m.get('matched_code_percent_clean', 0):.2f}% ({cc:,} bytes)")
+            print(f"    injected (raw DOL bytes, NOT runnable on PC): "
+                  f"{inj:,} bytes")
         print()
         show("Overall", report["measures"])
         show("Game   ", report["categories"][0]["measures"])
