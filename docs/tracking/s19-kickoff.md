@@ -152,6 +152,12 @@ Drop: KimiWorker, KimiGuy, Researcher (per S13 fleet composition ruling).
 - [ ] Run verify_conversions.py --since S18-open-hash to audit S18-ext conversion claims
 - [ ] Assign Wave 1 workers to 30-50B agent/ pool with CRLF pre-check briefing
 - [ ] Route MutatorSmith to eanimcontroller wall analysis
+- [ ] Fix 7 HEADER-blocked files (missing canonical `// 0xXXXXXXXX Name (NN B)` headers):
+  - agent/match_800A0170_BString2__ref_count.cpp (+ point + len)
+  - agent/match_801E70A0_K2YTarget__GetSavedFirstName.cpp (+ GetSavedLastName)
+  - agent/match_801E70B8_PAZTarget__GetTLA.cpp
+  - agent/match_801E70C4_PZ1Target__GetTLA.cpp
+- [ ] Investigate THPReadQuantizationTable (0x803934A8) assembler error: "junk at end of line: f0" in ASMPROC-generated .s file
 
 ---
 
