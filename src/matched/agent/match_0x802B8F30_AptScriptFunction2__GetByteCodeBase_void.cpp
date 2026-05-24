@@ -1,4 +1,11 @@
-// 0x802B8F30 AptScriptFunction2::GetByteCodeBase(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x34(3); addi 3,3,28"
-extern "C" int f_802B8F30() {}
+// 0x802B8F30 AptScriptFunction2::GetByteCodeBase(void) (12B)
+// lwz r3,0x34(r3); addi r3,r3,28; blr
+struct AptScriptFunction2 {
+    char pad[0x34];
+    char* m_codeBase;  // offset 0x34
+    char* GetByteCodeBase() const;
+};
+char* AptScriptFunction2::GetByteCodeBase() const {
+    return m_codeBase + 28;
+}

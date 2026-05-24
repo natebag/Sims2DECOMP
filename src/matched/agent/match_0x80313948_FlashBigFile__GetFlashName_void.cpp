@@ -1,4 +1,10 @@
-// 0x80313948 FlashBigFile::GetFlashName(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x0(3); addi 3,3,24"
-extern "C" int f_80313948() {}
+// 0x80313948 FlashBigFile::GetFlashName(void) (12B)
+// lwz r3,0x0(r3); addi r3,r3,24; blr
+struct FlashBigFile {
+    char* m_buf;  // offset 0
+    const char* GetFlashName() const;
+};
+const char* FlashBigFile::GetFlashName() const {
+    return m_buf + 24;
+}
