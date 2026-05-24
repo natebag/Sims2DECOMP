@@ -1,4 +1,9 @@
 // 0x8008FF18 LiveModeInitState::DatasetPendingAddRefAsync(void) (24 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x1c(3); li 3,1; cmplwi 0,0; bnelr; li 3,0"
-extern "C" int f_8008FF18() {}
+struct LiveModeInitState {
+    char _pad[0x1c];
+    int m_field_0x1c;
+    int DatasetPendingAddRefAsync();
+};
+int LiveModeInitState::DatasetPendingAddRefAsync() {
+    return m_field_0x1c != 0;
+}
