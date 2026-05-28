@@ -301,58 +301,41 @@ def compute_data_metrics(orig_elf: Path, built_elf: Path) -> dict:
 
 
 def build_measures(functions: list, matched_addrs: dict,
-                   data_metrics: dict | None = None) -> dict:
-    """Compute the objdiff Measures block (matches proto3 serde JSON conventions
-    used by decomp.dev / dtk-template). uint64 fields are emitted as strings,
-    uint32 fields as integers, percent fields as floats.
+                   data_metrics: dict | None = None,
+                   unit_totals: tuple[int, int] | None = None) -> dict:
+    """Compute the objdiff Measures block (proto3 + serde JSON, decomp.dev/dtk
+    convention). uint64 fields are emitted as strings, uint32 as integers,
+    percent fields as floats.
 
-    Adds three honesty-tier metrics on top of the baseline byte-match floor
-    (see GitHub issue #2):
-      - matched_code_percent (baseline)  — byte-match regression gate. Counts
-        all matches including ASMPROC_inject_before byte injections.
-      - matched_code_percent_semantic    — PC-port-meaningful. Counts hand-written
-        C++ (with or without ASMPROC mutators). Excludes inject_before.
-      - matched_code_percent_clean       — purest. Counts only hand-written C++
-        with NO ASMPROC directives at all.
+    Honesty contract (per decomp.dev maintainer guidance, May 2026): only
+    CLEAN matches count toward matched_code / matched_functions / fuzzy_match /
+    complete_code. ASMPROC mutator-assisted matches and inject_before byte
+    stubs are NOT public matches and are excluded from every measure here.
+
+    Rich internal honesty-tier breakdown (clean / mutator / injected) is
+    available via tools/audit_clean_matches.py — it reads source directly
+    and does not depend on this report.
+
+    Parameters:
+      unit_totals: optional (total_units, complete_units) override. If None,
+                   falls back to (total_functions, clean_functions) for
+                   backward compatibility with category sub-calls that
+                   don't have per-unit grouping handy.
     """
     total_code = sum(f["size"] for f in functions)
     total_functions = len(functions)
 
-    matched_code = 0
-    matched_functions = 0
-    semantic_code = 0
-    semantic_functions = 0
     clean_code = 0
     clean_functions = 0
-    injected_code = 0
-    injected_functions = 0
-    mutator_code = 0
-    mutator_functions = 0
 
     for f in functions:
-        if f["addr"] not in matched_addrs:
-            continue
-        classification = matched_addrs[f["addr"]]
-        matched_code += f["size"]
-        matched_functions += 1
+        classification = matched_addrs.get(f["addr"])
+        # Public matched bucket = CLEAN ONLY. Mutator and injected are not
+        # matches as far as decomp.dev / objdiff are concerned.
         if classification == "clean":
             clean_code += f["size"]
             clean_functions += 1
-            semantic_code += f["size"]
-            semantic_functions += 1
-        elif classification == "mutator":
-            mutator_code += f["size"]
-            mutator_functions += 1
-            semantic_code += f["size"]
-            semantic_functions += 1
-        else:  # injected
-            injected_code += f["size"]
-            injected_functions += 1
 
-    pct_bytes = (matched_code / total_code * 100.0) if total_code else 0.0
-    pct_funcs = (matched_functions / total_functions * 100.0) if total_functions else 0.0
-    pct_semantic = (semantic_code / total_code * 100.0) if total_code else 0.0
-    pct_semantic_funcs = (semantic_functions / total_functions * 100.0) if total_functions else 0.0
     pct_clean = (clean_code / total_code * 100.0) if total_code else 0.0
     pct_clean_funcs = (clean_functions / total_functions * 100.0) if total_functions else 0.0
 
@@ -362,37 +345,30 @@ def build_measures(functions: list, matched_addrs: dict,
     matched_data = (data_metrics or {}).get("matched", 0)
     pct_data = (matched_data / total_data * 100.0) if total_data else 0.0
 
+    if unit_totals is None:
+        total_units, complete_units = total_functions, clean_functions
+    else:
+        total_units, complete_units = unit_totals
+
+    # Schema-strict objdiff.report.Measures fields only.
+    # See: encounter/objdiff objdiff-core/protos/report.proto
     return {
-        "fuzzy_match_percent": round(pct_bytes, 6),
+        "fuzzy_match_percent": round(pct_clean, 6),
         "total_code": str(total_code),
-        "matched_code": str(matched_code),
-        "matched_code_percent": round(pct_bytes, 6),
-        # Honesty-tier additions (GitHub issue #2)
-        "matched_code_semantic": str(semantic_code),
-        "matched_code_percent_semantic": round(pct_semantic, 6),
-        "matched_code_clean": str(clean_code),
-        "matched_code_percent_clean": round(pct_clean, 6),
-        "matched_code_mutator": str(mutator_code),
-        "matched_code_injected": str(injected_code),
-        "matched_functions_semantic": semantic_functions,
-        "matched_functions_percent_semantic": round(pct_semantic_funcs, 6),
-        "matched_functions_clean": clean_functions,
-        "matched_functions_percent_clean": round(pct_clean_funcs, 6),
-        "matched_functions_mutator": mutator_functions,
-        "matched_functions_injected": injected_functions,
-        # End honesty-tier additions
+        "matched_code": str(clean_code),
+        "matched_code_percent": round(pct_clean, 6),
         "total_data": str(total_data),
         "matched_data": str(matched_data),
         "matched_data_percent": round(pct_data, 6),
         "total_functions": total_functions,
-        "matched_functions": matched_functions,
-        "matched_functions_percent": round(pct_funcs, 6),
-        "complete_code": str(matched_code),
-        "complete_code_percent": round(pct_bytes, 6),
+        "matched_functions": clean_functions,
+        "matched_functions_percent": round(pct_clean_funcs, 6),
+        "complete_code": str(clean_code),
+        "complete_code_percent": round(pct_clean, 6),
         "complete_data": str(matched_data),
         "complete_data_percent": round(pct_data, 6),
-        "total_units": total_functions,
-        "complete_units": matched_functions,
+        "total_units": total_units,
+        "complete_units": complete_units,
     }
 
 
@@ -420,63 +396,70 @@ def build_units(functions: list, matched_addrs: dict) -> list:
         section_size = end_addr - base_addr
 
         total_code = sum(f["size"] for f in fns_sorted)
-        matched_code = sum(f["size"] for f in fns_sorted if f["addr"] in matched_addrs)
+        # Public match counts CLEAN ONLY (mutator + injected excluded).
+        clean_code = sum(
+            f["size"] for f in fns_sorted
+            if matched_addrs.get(f["addr"]) == "clean"
+        )
         total_functions = len(fns_sorted)
-        matched_functions = sum(1 for f in fns_sorted if f["addr"] in matched_addrs)
-        pct_bytes = (matched_code / total_code * 100.0) if total_code else 0.0
-        pct_funcs = (matched_functions / total_functions * 100.0) if total_functions else 0.0
+        clean_functions = sum(
+            1 for f in fns_sorted
+            if matched_addrs.get(f["addr"]) == "clean"
+        )
+        pct_clean = (clean_code / total_code * 100.0) if total_code else 0.0
+        pct_clean_funcs = (clean_functions / total_functions * 100.0) if total_functions else 0.0
 
         function_entries = []
         for f in fns_sorted:
-            # Per-function match flag — decomp.dev's treemap colors each
-            # inner square by this value. Without it, every function
-            # defaults to 0% (grey) even when the unit overall reads 100%.
-            classification = matched_addrs.get(f["addr"])
-            is_matched = classification is not None
-            fn_pct = 100.0 if is_matched else 0.0
+            # Per-function display is clean-only too. decomp.dev's treemap
+            # colors each inner square by fuzzy_match_percent; mutator and
+            # injected entries render as not-yet-done (correct — they aren't
+            # legitimate matches).
+            is_clean = matched_addrs.get(f["addr"]) == "clean"
+            fn_pct = 100.0 if is_clean else 0.0
             function_entries.append({
                 "name": f["name"],
                 "size": str(f["size"]),
+                # ReportItemMetadata accepts only demangled_name and
+                # virtual_address. Earlier `complete` / `match_quality`
+                # fields were schema-rejected by decomp.dev's parser.
                 "metadata": {
                     "virtual_address": str(f["addr"]),
-                    "complete": is_matched,
-                    # Honesty-tier per-function classification (issue #2).
-                    # "clean", "mutator", "injected", or null for unmatched.
-                    "match_quality": classification,
                 },
                 "address": str(f["addr"] - base_addr),
                 "fuzzy_match_percent": fn_pct,
             })
 
+        unit_is_complete = (clean_functions == total_functions)
         units.append({
             "name": obj_name,
             "measures": {
-                "fuzzy_match_percent": round(pct_bytes, 6),
+                "fuzzy_match_percent": round(pct_clean, 6),
                 "total_code": str(total_code),
-                "matched_code": str(matched_code),
-                "matched_code_percent": round(pct_bytes, 6),
+                "matched_code": str(clean_code),
+                "matched_code_percent": round(pct_clean, 6),
                 "total_data": "0",
                 "matched_data": "0",
                 "matched_data_percent": 0.0,
                 "total_functions": total_functions,
-                "matched_functions": matched_functions,
-                "matched_functions_percent": round(pct_funcs, 6),
-                "complete_code": str(matched_code),
-                "complete_code_percent": round(pct_bytes, 6),
+                "matched_functions": clean_functions,
+                "matched_functions_percent": round(pct_clean_funcs, 6),
+                "complete_code": str(clean_code),
+                "complete_code_percent": round(pct_clean, 6),
                 "complete_data": "0",
                 "complete_data_percent": 0.0,
                 "total_units": 1,
-                "complete_units": 1 if matched_functions == total_functions else 0,
+                "complete_units": 1 if unit_is_complete else 0,
             },
             "sections": [{
                 "name": ".text",
                 "size": str(section_size),
-                "fuzzy_match_percent": round(pct_bytes, 6),
+                "fuzzy_match_percent": round(pct_clean, 6),
                 "metadata": {"virtual_address": str(base_addr)},
             }],
             "functions": function_entries,
             "metadata": {
-                "complete": matched_functions == total_functions,
+                "complete": unit_is_complete,
                 "progress_categories": ["sdk" if fns_sorted[0]["sdk"] else "game"],
             },
         })
@@ -514,22 +497,41 @@ def main() -> int:
     game_funcs = [f for f in functions if not f["sdk"]]
     sdk_funcs = [f for f in functions if f["sdk"]]
 
+    # Build units first so we can compute proper TU-level totals for the
+    # top-level measures block (total_units = number of TUs, complete_units
+    # = number of TUs where every function is clean).
+    units = build_units(functions, matched_addrs)
+    top_unit_totals = (
+        len(units),
+        sum(1 for u in units if u["metadata"]["complete"]),
+    )
+    game_units = [u for u in units if "game" in u["metadata"]["progress_categories"]]
+    sdk_units = [u for u in units if "sdk" in u["metadata"]["progress_categories"]]
+    game_unit_totals = (
+        len(game_units),
+        sum(1 for u in game_units if u["metadata"]["complete"]),
+    )
+    sdk_unit_totals = (
+        len(sdk_units),
+        sum(1 for u in sdk_units if u["metadata"]["complete"]),
+    )
+
     report = {
         "version": 2,
-        "measures": build_measures(functions, matched_addrs, data_metrics),
-        "units": build_units(functions, matched_addrs),
+        "measures": build_measures(functions, matched_addrs, data_metrics, top_unit_totals),
+        "units": units,
         "categories": [
             {
                 "id": "game",
                 "name": "Game code (SN Systems ProDG)",
                 # Game category gets the data metrics — data sections are
                 # almost entirely game-originated (not SDK).
-                "measures": build_measures(game_funcs, matched_addrs, data_metrics),
+                "measures": build_measures(game_funcs, matched_addrs, data_metrics, game_unit_totals),
             },
             {
                 "id": "sdk",
                 "name": "DolphinSDK (Metrowerks, unmatchable)",
-                "measures": build_measures(sdk_funcs, matched_addrs),
+                "measures": build_measures(sdk_funcs, matched_addrs, None, sdk_unit_totals),
             },
         ],
     }
@@ -540,27 +542,21 @@ def main() -> int:
     print(f"Wrote {out_path}")
 
     if args.print_summary:
+        # Honest, schema-compliant summary. Rich internal breakdown
+        # (clean / mutator / injected) lives in tools/audit_clean_matches.py.
         def show(label: str, m: dict) -> None:
             mc = int(m["matched_code"])
             tc = int(m["total_code"])
-            sc = int(m.get("matched_code_semantic", 0))
-            cc = int(m.get("matched_code_clean", 0))
-            inj = int(m.get("matched_code_injected", 0))
-            mut = int(m.get("matched_code_mutator", 0))
-            print(f"  {label}: byte-floor {m['matched_code_percent']:.2f}% "
+            print(f"  {label}: matched {m['matched_code_percent']:.2f}% "
                   f"({mc:,} / {tc:,} bytes, "
-                  f"{m['matched_functions']:,} / {m['total_functions']:,} funcs)")
-            print(f"    semantic (real C++, PC-port-viable): "
-                  f"{m.get('matched_code_percent_semantic', 0):.2f}% "
-                  f"({sc:,} bytes — {cc:,} clean + {mut:,} mutator)")
-            print(f"    clean (no ASMPROC at all): "
-                  f"{m.get('matched_code_percent_clean', 0):.2f}% ({cc:,} bytes)")
-            print(f"    injected (raw DOL bytes, NOT runnable on PC): "
-                  f"{inj:,} bytes")
+                  f"{m['matched_functions']:,} / {m['total_functions']:,} funcs clean)")
         print()
         show("Overall", report["measures"])
         show("Game   ", report["categories"][0]["measures"])
         show("SDK    ", report["categories"][1]["measures"])
+        print()
+        print("Internal honesty breakdown (clean / mutator / injected):")
+        print("  python tools/audit_clean_matches.py")
 
     return 0
 
