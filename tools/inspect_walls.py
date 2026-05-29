@@ -1,5 +1,5 @@
 import json
-with open('wall_classification.json') as f:
+with open('build/reports/wall_classification.json') as f:
     data = json.load(f)
 
 for cat in ['UNKNOWN', 'NO_ADDRESS']:

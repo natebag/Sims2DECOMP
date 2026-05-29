@@ -65,6 +65,6 @@ if __name__ == '__main__':
     stats = count_matched_functions()
     
     # Save to JSON for other tools
-    with open('matched_stats.json', 'w') as f:
+    with open('build/reports/matched_stats.json', 'w') as f:
         json.dump(stats, f, indent=2)
-    print("\n\nStats saved to matched_stats.json")
+    print("\n\nStats saved to build/reports/matched_stats.json")

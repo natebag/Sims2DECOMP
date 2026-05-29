@@ -228,9 +228,9 @@ def main():
             'files_deleted': deleted_count,
             'dedup_run': True
         }
-        with open('matched_stats.json', 'w') as f:
+        with open('build/reports/matched_stats.json', 'w') as f:
             json.dump(stats, f, indent=2)
-        print("\nUpdated stats saved to matched_stats.json")
+        print("\nUpdated stats saved to build/reports/matched_stats.json")
 
 
 if __name__ == '__main__':

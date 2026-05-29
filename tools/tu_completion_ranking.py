@@ -169,7 +169,7 @@ def main():
         print(f"{i}. {r['tu']} — {r['matched']}/{r['total']} matched ({r['pct']:.1f}%) — {r['remaining']} remaining")
     
     # Write full report to file for posting
-    with open('tu_ranking_full.json', 'w') as f:
+    with open('build/reports/tu_ranking_full.json', 'w') as f:
         import json
         json.dump(rankings, f, indent=2)
 

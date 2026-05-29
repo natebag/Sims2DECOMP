@@ -110,5 +110,5 @@ for cl in extern_clusters[:20]:
     print(f"  {cl['extern_name']}: {cl['matched_count']} files")
     print(f"    Examples: {cl['examples'][:3]}")
 
-with open('sda_family_report3.json', 'w') as fp:
+with open('build/reports/sda_family_report3.json', 'w') as fp:
     json.dump({'method_families': families, 'extern_clusters': extern_clusters}, fp, indent=2)

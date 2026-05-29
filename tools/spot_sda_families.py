@@ -86,5 +86,5 @@ for fam in families[:20]:
     print(f"    Examples: {', '.join(fam['examples'])}")
 
 # Save detailed report
-with open('sda_family_report.json', 'w') as fp:
+with open('build/reports/sda_family_report.json', 'w') as fp:
     json.dump(families, fp, indent=2)

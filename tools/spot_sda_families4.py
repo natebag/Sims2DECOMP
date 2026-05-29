@@ -135,5 +135,5 @@ for fam in class_families[:20]:
     print(f"  VD examples: {fam['vd_examples'][:3]}")
     print(f"  Agent examples: {fam['agent_examples'][:3]}")
 
-with open('sda_family_report4.json', 'w') as fp:
+with open('build/reports/sda_family_report4.json', 'w') as fp:
     json.dump({'method_families': method_families, 'class_families': class_families}, fp, indent=2)

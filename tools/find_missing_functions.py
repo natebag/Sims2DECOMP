@@ -175,7 +175,7 @@ def main():
         print(f"  0x{func['addr']:08X} ({func['size']:3d}B) - {func['name'][:70]}")
     
     # Save full list to file
-    output_file = 'missing_functions_report.txt'
+    output_file = 'build/reports/missing_functions_report.txt'
     with open(output_file, 'w') as f:
         f.write("MISSING FUNCTIONS REPORT\n")
         f.write("=" * 80 + "\n\n")

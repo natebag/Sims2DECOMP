@@ -20,7 +20,7 @@ for tu in tus:
     counts = {'small': 0, 'medium': 0, 'large': 0}
     examples = []
     
-    with open('missing_functions_report.txt', 'r') as f:
+    with open('build/reports/missing_functions_report.txt', 'r') as f:
         for line in f:
             if tu.replace('_', '') in line.lower() or tu in line.lower():
                 parts = line.split()

@@ -62,7 +62,7 @@ for i, tu in enumerate(tus):
 tu_stats.sort(key=lambda x: (-x['pct'], -x['total']))
 
 # Save to file
-with open('tu_ranking_full.json', 'w') as f:
+with open('build/reports/tu_ranking_full.json', 'w') as f:
     json.dump(tu_stats, f, indent=2)
 
 print(f'\nProcessed {len(tu_stats)} TUs with data')

@@ -108,10 +108,10 @@ def main():
     report = "\n".join(report_lines)
     
     # Write to file
-    with open('vtable_report.md', 'w') as f:
+    with open('build/reports/vtable_report.md', 'w') as f:
         f.write(report)
     
-    print("Report written to vtable_report.md")
+    print("Report written to build/reports/vtable_report.md")
     print("\n" + "="*60)
     print(report[:3000])
     print("\n... (truncated)")

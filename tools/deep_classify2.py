@@ -3,7 +3,7 @@ import re
 import subprocess
 from pathlib import Path
 
-with open('wall_classification.json') as f:
+with open('build/reports/wall_classification.json') as f:
     data = json.load(f)
 
 UNKNOWN = data['UNKNOWN']
@@ -143,7 +143,7 @@ print("NO_ADDRESS reclassification:")
 for wall, count in sorted(no_addr_counts.items(), key=lambda x: -x[1]):
     print(f"  {wall}: {count}")
 
-with open('wall_classification.json', 'w') as f:
+with open('build/reports/wall_classification.json', 'w') as f:
     json.dump(data, f, indent=2)
 
 print("\n=== FINAL COUNTS ===")

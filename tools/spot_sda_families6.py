@@ -161,5 +161,5 @@ for fam in class_families[:25]:
     print(f"  VD: {fam['vd_examples'][:3]}")
 
 # Save report
-with open('sda_family_report6.json', 'w') as fp:
+with open('build/reports/sda_family_report6.json', 'w') as fp:
     json.dump({'method_families': method_families, 'class_families': class_families}, fp, indent=2)

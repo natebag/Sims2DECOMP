@@ -4,9 +4,10 @@
 # Uses the ORIGINAL SN Systems ProDG compiler (cc1plus.exe + NgcAs.exe)
 # that built The Sims 2 GameCube. Falls back to devkitPPC GCC if SN not found.
 #
-# Usage: ./tools/verify_match.sh [--outdir DIR] <source.cpp> <address_hex> <size_decimal>
+# Usage: ./tools/verify_match.sh [--outdir DIR] [--strict] <source.cpp> <address_hex> <size_decimal>
 # Example: ./tools/verify_match.sh src/matched/test.cpp 0x800044C0 8
 #          ./tools/verify_match.sh --outdir build/verify/run_42 src/matched/test.cpp 0x800044C0 8
+#          ./tools/verify_match.sh --strict src/matched/test.cpp 0x800044C0 8
 #
 # --outdir DIR  Directory for temp build artifacts (.o, .s, _clean.cpp).
 #               Default: build/verify  (kept for backwards compatibility)
@@ -14,15 +15,25 @@
 #               when running multiple verify_match.sh in parallel (matcher_bot
 #               variants share label-based filenames otherwise).
 #
+# --strict      Reject any source file containing ASMPROC_* directives.
+#               In normal mode, ASMPROC files are routed through
+#               asm_processor.py. In strict mode they are treated as
+#               MISMATCH — the file is not real hand-written C++ decomp.
+#
 # Returns exit code 0 if function bytes match, 1 if mismatch.
 
 set -e
 
 # --- arg parsing ---------------------------------------------------------
 OUTDIR="build/verify"
+STRICT=0
 POSITIONAL=()
 while [ $# -gt 0 ]; do
     case "$1" in
+        --strict)
+            STRICT=1
+            shift
+            ;;
         --outdir)
             if [ -z "${2:-}" ]; then
                 echo "ERROR: --outdir requires a directory argument" >&2
@@ -124,11 +135,19 @@ if grep -qE '__attribute__[[:space:]]*\(\([[:space:]]*noreturn[[:space:]]*\)\)' 
     exit 1
 fi
 
-# Step 0.5: asm-processor routing
+# Step 0.5: strict-mode ASMPROC rejection
+# In --strict mode, ASMPROC directives are treated as post-compile surgery
+# and the file is rejected outright. This closes the last spoof path at
+# the verifier level — only clean hand-written C++ passes.
+if [ "$STRICT" -eq 1 ] && grep -qE '^[[:space:]]*//[[:space:]]*ASMPROC_[A-Za-z][A-Za-z0-9_]*' "$SRC" 2>/dev/null; then
+    echo "REJECTED (--strict): $SRC contains ASMPROC_* directives — post-compile asm surgery is not clean decomp."
+    exit 1
+fi
+
+# Step 0.6: asm-processor routing (normal mode only)
 # If source contains // ASMPROC_<name>: directives, delegate to the
 # asm-processor pipeline (compile -> .s mutation -> assemble -> diff).
-# The ASMPROC comments themselves are NOT banned — they're the sanctioned
-# replacement for banned source-level register-pin / __asm__ patterns.
+# In strict mode this block is unreachable (rejected above).
 if grep -qE '^[[:space:]]*//[[:space:]]*ASMPROC_[A-Za-z][A-Za-z0-9_]*' "$SRC" 2>/dev/null; then
     echo "Detected // ASMPROC_* directive(s) — routing through tools/asm_processor/asm_processor.py"
     PYTHON_EXE="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"

@@ -186,7 +186,7 @@ def main():
     print("=" * 70)
     
     # Export targetable list
-    targetable_file = Path('targetable_functions.txt')
+    targetable_file = Path('build/reports/targetable_functions.txt')
     with open(targetable_file, 'w') as f:
         f.write("# Targetable 65-128B functions (likely matchable with v3.93)\n")
         f.write("# Format: address size file function_name\n\n")
@@ -199,7 +199,7 @@ def main():
     print(f"\nTargetable functions list saved to: {targetable_file}")
     
     # Export VERSION_DIFF list
-    version_diff_file = Path('version_diff_functions.txt')
+    version_diff_file = Path('build/reports/version_diff_functions.txt')
     with open(version_diff_file, 'w') as f:
         f.write("# VERSION_DIFF 65-128B functions (require v1.76 compiler)\n")
         f.write("# Format: address size file function_name patterns\n\n")

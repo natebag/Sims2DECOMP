@@ -153,5 +153,5 @@ report = {
     'method_families': method_families,
     'class_families': class_families,
 }
-with open('sda_family_report2.json', 'w') as fp:
+with open('build/reports/sda_family_report2.json', 'w') as fp:
     json.dump(report, fp, indent=2)

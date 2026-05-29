@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Auto-match goldmine functions from missing_functions_report.txt.
+"""Auto-match goldmine functions from build/reports/missing_functions_report.txt.
 
 Classifies 4-64B functions by pattern and auto-generates C++ for trivial ones:
 - Phase 1 (4-12B): empty, return constant, getter, setter, chained getter, tail call
@@ -1329,7 +1329,7 @@ def main():
 
     # Parse missing_functions_report.txt
     functions = []
-    with open("missing_functions_report.txt", "r") as f:
+    with open("build/reports/missing_functions_report.txt", "r") as f:
         for line in f:
             m = re.match(r"(0x[0-9a-fA-F]+)\s+(\d+)B\s+(.+)", line)
             if m:

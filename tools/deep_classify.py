@@ -3,7 +3,7 @@ import re
 import subprocess
 from pathlib import Path
 
-with open('wall_classification.json') as f:
+with open('build/reports/wall_classification.json') as f:
     data = json.load(f)
 
 UNKNOWN = data['UNKNOWN']

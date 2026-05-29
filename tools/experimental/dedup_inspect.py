@@ -1,6 +1,6 @@
 import json, re, os
 
-with open('matched_stats.json') as f:
+with open('build/reports/matched_stats.json') as f:
     data = json.load(f)
 
 dupes = data.get('duplicates', {})

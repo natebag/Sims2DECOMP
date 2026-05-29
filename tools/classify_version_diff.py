@@ -208,7 +208,7 @@ def main():
     print(f"TOTAL: {total} files")
     
     # Save detailed results
-    out_path = Path("wall_classification.json")
+    out_path = Path("build/reports/wall_classification.json")
     import json
     with open(out_path, "w") as out:
         json.dump({k: [{"file": n, "addr": a, "size": s} for n, a, s in v] for k, v in results.items()}, out, indent=2)
