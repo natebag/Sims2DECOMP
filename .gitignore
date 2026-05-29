@@ -22,6 +22,7 @@ build/*
 !build/G4ZE69/
 build/G4ZE69/*
 !build/G4ZE69/report.json
+!build/reports/
 build_pc/
 build_pc2/
 *.dol
@@ -84,12 +85,20 @@ tus.txt
 # Cog MCP state (per-agent state, not a shared artifact)
 .cog/
 
-# Experimental test cpp files at repo root
+# Experimental test/scratch files at repo root
 /test_*.cpp
 /test_*.s
+/test_*.o
+/test.o
+/test.s
 /dummy_match.cpp
 /tmp_*.bin
+/tmp_*.elf
+/tmp_*.o
 /test_subprocess.py
+/*_raw.bin
+/output.txt
+/matched_stats_pre_s0.json
 
 # Generated target lists / scan results
 tools/all_*_targets.json
