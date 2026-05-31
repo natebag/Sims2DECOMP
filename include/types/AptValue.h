@@ -115,20 +115,56 @@ enum AptValueObjType {
 };
 
 /* ============================================================================
- * The 348-byte by-value AptValue (signature form) — NOT fully spec'd.
+ * AptValue — the 348-byte value (signature form). NOW PINNED (S19, evidence
+ * from _FunctionAptActionStringDictByteGetVar 0x80280014, via Matcher-SN-1).
  *
- * Known offsets only (do not lay out the union from these):
- *   +0x00  word read as a type tag (valueToObject masks low 7 bits; observed
- *          type values 1, 12..19, 42, 43..45) AND dereferenced as a pointer
- *          in getObject — overloaded, so its meaning is context-dependent.
- *   +0x08  vtable pointer (polymorphic; valueToObject vcalls slot at +0x28/0x2C).
- *   +0x24  pointer field used when the type == 1.
- * Refcount idiom seen throughout (++/-- a u16 at +0x00 of a *backing* object,
- * size at +0x04, freed at zero) operates on the backing string/heap object the
- * AptValue references — not on the AptValue's own +0x00.
+ * KEY INSIGHT: AptValueObj (16B) and AptValue (348B) are the SAME conceptual
+ * value type with a SHARED HEAD { type/flags @0x00, _ @0x04, vtable @0x08 } and
+ * a VARIANT-SIZED payload starting at +0x0C:
+ *   - immediate values (int/bool/float): 16-byte box, payload @0x0C is the
+ *     scalar (this is AptValueObj above).
+ *   - string values: 348-byte form, payload @0x0C is an INLINE char buffer
+ *     holding the string text (which is why the struct is so large).
+ * Both share vtable@0x08, so vtable-only operations (Push*DictByte/Word, stack
+ * pushes, method dispatch) byte-match against EITHER form — confirmed: SN-1's
+ * box-only matches still pass even though the dictionary actually stores 348B
+ * AptValue*.
  *
- * If you need this struct, file typereq:AptValue_byval with the asm of the
- * specific function so the union can be pinned from real evidence.
+ * Type discrimination (0x80280014):
+ *   u32 t = obj->m_typeFlags & 0x7F;          // low 7 bits = type tag
+ *   const char* name = (t == 1)               // type 1 == inline string
+ *        ? (const char*)obj + 0x0C            //   text inline at +0x0C
+ *        : (const char*)obj->m_ref + 0x0C;    //   else +0x24 -> backing, its +0x0C
+ * i.e. +0x0C is the string text for inline values; for non-inline values, +0x24
+ * holds a pointer to a backing AptValue whose +0x0C holds the text.
  * ========================================================================== */
+struct AptValue {
+    /* 0x00 */ u32             m_typeFlags; /* low 7 bits = type tag (1 = inline
+                                              string; 12..19, 42..45 = other
+                                              types per valueToObject). Shares
+                                              meaning with AptValueObj::m_flags. */
+    /* 0x04 */ u32             m_field04;   /* unknown (mirrors box +0x04).        */
+    /* 0x08 */ AptValueVtable* m_vtable;    /* per-type dispatch (shared w/ box).  */
+    /* 0x0C */ char            m_inlineStr[0x18]; /* type==1: inline C-string text
+                                              begins here. For non-string types
+                                              the same bytes carry a scalar/other
+                                              payload (variant — do not assume). */
+    /* 0x24 */ AptValue*       m_ref;       /* type!=1: pointer to a backing
+                                              AptValue whose +0x0C holds the text.
+                                              Overlaps the inline-string region as
+                                              a type-discriminated variant.        */
+    /* 0x28 */ u8              _body[0x134]; /* remainder of the inline-string
+                                              capacity / variant body, opaque.
+                                              Brings total size to 0x15C = 348.    */
+};
+/* sizeof(AptValue) == 348 (0x15C), matching the by-value signature size. */
+
+/* NOTE on the overlap: m_inlineStr (from 0x0C) and m_ref (at 0x24) describe the
+ * SAME storage interpreted by type — they are NOT simultaneously live. They are
+ * declared as adjacent fields (not a C union) only so both offsets are
+ * documented; a matcher should read whichever the type tag selects, exactly as
+ * 0x80280014 does. Refcount idiom elsewhere (++/-- u16 @+0x00 of a *backing*
+ * object, size @+0x04, free at zero) acts on referenced heap strings, not on an
+ * AptValue's own header. */
 
 #endif /* SIMS2_TYPES_APTVALUE_H */
