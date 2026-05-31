@@ -1,18 +1,18 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 15.761975,
+    "fuzzy_match_percent": 15.765352,
     "total_code": "4145724",
-    "matched_code": "653448",
-    "matched_code_percent": 15.761975,
+    "matched_code": "653588",
+    "matched_code_percent": 15.765352,
     "total_data": "681400",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9427,
-    "matched_functions_percent": 51.072706,
-    "complete_code": "653448",
-    "complete_code_percent": 15.761975,
+    "matched_functions": 9437,
+    "matched_functions_percent": 51.126883,
+    "complete_code": "653588",
+    "complete_code_percent": 15.765352,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 691,
@@ -148879,18 +148879,18 @@
     {
       "name": "engine_ngc_release_dvd.lib(e_window.obj)",
       "measures": {
-        "fuzzy_match_percent": 26.9,
+        "fuzzy_match_percent": 27.3,
         "total_code": "4000",
-        "matched_code": "1076",
-        "matched_code_percent": 26.9,
+        "matched_code": "1092",
+        "matched_code_percent": 27.3,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 35,
-        "matched_functions": 22,
-        "matched_functions_percent": 62.857143,
-        "complete_code": "1076",
-        "complete_code_percent": 26.9,
+        "matched_functions": 24,
+        "matched_functions_percent": 68.571429,
+        "complete_code": "1092",
+        "complete_code_percent": 27.3,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -148900,7 +148900,7 @@
         {
           "name": ".text",
           "size": "4000",
-          "fuzzy_match_percent": 26.9,
+          "fuzzy_match_percent": 27.3,
           "metadata": {
             "virtual_address": "2150628248"
           }
@@ -149166,7 +149166,7 @@
             "virtual_address": "2150632168"
           },
           "address": "3920",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EWindow::GetCurrent3DWindow(void)",
@@ -149175,7 +149175,7 @@
             "virtual_address": "2150632176"
           },
           "address": "3928",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EWindow::WindowMatrixChanged(void)",
@@ -154795,18 +154795,18 @@
     {
       "name": "engine_ngc_release_dvd.lib(e_rmodel.obj)",
       "measures": {
-        "fuzzy_match_percent": 21.442926,
+        "fuzzy_match_percent": 21.684084,
         "total_code": "19904",
-        "matched_code": "4268",
-        "matched_code_percent": 21.442926,
+        "matched_code": "4316",
+        "matched_code_percent": 21.684084,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 147,
-        "matched_functions": 89,
-        "matched_functions_percent": 60.544218,
-        "complete_code": "4268",
-        "complete_code_percent": 21.442926,
+        "matched_functions": 92,
+        "matched_functions_percent": 62.585034,
+        "complete_code": "4316",
+        "complete_code_percent": 21.684084,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -154816,7 +154816,7 @@
         {
           "name": ".text",
           "size": "711380",
-          "fuzzy_match_percent": 21.442926,
+          "fuzzy_match_percent": 21.684084,
           "metadata": {
             "virtual_address": "2150726408"
           }
@@ -155523,7 +155523,7 @@
             "virtual_address": "2150740984"
           },
           "address": "14576",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ERModel::GetDummy(int)",
@@ -155532,7 +155532,7 @@
             "virtual_address": "2150741000"
           },
           "address": "14592",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ERModel::GetCamera(int)",
@@ -155541,7 +155541,7 @@
             "virtual_address": "2150741016"
           },
           "address": "14608",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ERModel::IsHierarchical(void)",
@@ -158863,18 +158863,18 @@
     {
       "name": "engine_ngc_release_dvd.lib(e_ctrlmanager.obj)",
       "measures": {
-        "fuzzy_match_percent": 70.721112,
+        "fuzzy_match_percent": 71.329279,
         "total_code": "4604",
-        "matched_code": "3256",
-        "matched_code_percent": 70.721112,
+        "matched_code": "3284",
+        "matched_code_percent": 71.329279,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 53,
-        "matched_functions": 45,
-        "matched_functions_percent": 84.90566,
-        "complete_code": "3256",
-        "complete_code_percent": 70.721112,
+        "matched_functions": 47,
+        "matched_functions_percent": 88.679245,
+        "complete_code": "3284",
+        "complete_code_percent": 71.329279,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -158884,7 +158884,7 @@
         {
           "name": ".text",
           "size": "4604",
-          "fuzzy_match_percent": 70.721112,
+          "fuzzy_match_percent": 71.329279,
           "metadata": {
             "virtual_address": "2150773660"
           }
@@ -158961,7 +158961,7 @@
             "virtual_address": "2150774240"
           },
           "address": "580",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EControllerManager::GetController(unsigned int)",
@@ -159348,7 +159348,7 @@
             "virtual_address": "2150778164"
           },
           "address": "4504",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "global constructors keyed to _lastCtrlUpdate",
@@ -159379,18 +159379,18 @@
     {
       "name": "engine_ngc_release_dvd.lib(e_datasetman.obj)",
       "measures": {
-        "fuzzy_match_percent": 34.304207,
+        "fuzzy_match_percent": 34.951456,
         "total_code": "1236",
-        "matched_code": "424",
-        "matched_code_percent": 34.304207,
+        "matched_code": "432",
+        "matched_code_percent": 34.951456,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 26,
-        "matched_functions": 15,
-        "matched_functions_percent": 57.692308,
-        "complete_code": "424",
-        "complete_code_percent": 34.304207,
+        "matched_functions": 16,
+        "matched_functions_percent": 61.538462,
+        "complete_code": "432",
+        "complete_code_percent": 34.951456,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -159400,7 +159400,7 @@
         {
           "name": ".text",
           "size": "663064",
-          "fuzzy_match_percent": 34.304207,
+          "fuzzy_match_percent": 34.951456,
           "metadata": {
             "virtual_address": "2150778264"
           }
@@ -159531,7 +159531,7 @@
             "virtual_address": "2150778960"
           },
           "address": "696",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EDatasetManager::OutputDatasets(bool)",
@@ -164632,18 +164632,18 @@
     {
       "name": "engine_ngc_release_dvd.lib(e_ngcmemorycard.obj)",
       "measures": {
-        "fuzzy_match_percent": 2.238946,
+        "fuzzy_match_percent": 2.351834,
         "total_code": "21260",
-        "matched_code": "476",
-        "matched_code_percent": 2.238946,
+        "matched_code": "500",
+        "matched_code_percent": 2.351834,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 58,
-        "matched_functions": 33,
-        "matched_functions_percent": 56.896552,
-        "complete_code": "476",
-        "complete_code_percent": 2.238946,
+        "matched_functions": 34,
+        "matched_functions_percent": 58.62069,
+        "complete_code": "500",
+        "complete_code_percent": 2.351834,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -164653,7 +164653,7 @@
         {
           "name": ".text",
           "size": "620652",
-          "fuzzy_match_percent": 2.238946,
+          "fuzzy_match_percent": 2.351834,
           "metadata": {
             "virtual_address": "2150825596"
           }
@@ -164685,7 +164685,7 @@
             "virtual_address": "2150825680"
           },
           "address": "84",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ENgcMemoryCard::BeginCardOperation(void)",
@@ -166756,18 +166756,18 @@
     {
       "name": "engine_ngc_release_dvd.lib(e_ngcrenderer.obj)",
       "measures": {
-        "fuzzy_match_percent": 4.297606,
+        "fuzzy_match_percent": 4.323417,
         "total_code": "61988",
-        "matched_code": "2664",
-        "matched_code_percent": 4.297606,
+        "matched_code": "2680",
+        "matched_code_percent": 4.323417,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 136,
-        "matched_functions": 62,
-        "matched_functions_percent": 45.588235,
-        "complete_code": "2664",
-        "complete_code_percent": 4.297606,
+        "matched_functions": 63,
+        "matched_functions_percent": 46.323529,
+        "complete_code": "2680",
+        "complete_code_percent": 4.323417,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -166777,7 +166777,7 @@
         {
           "name": ".text",
           "size": "61988",
-          "fuzzy_match_percent": 4.297606,
+          "fuzzy_match_percent": 4.323417,
           "metadata": {
             "virtual_address": "2150872068"
           }
@@ -166863,7 +166863,7 @@
             "virtual_address": "2150872868"
           },
           "address": "800",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ENgcRenderer::Init(int &, int &)",
@@ -193096,18 +193096,18 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 12.598586,
+        "fuzzy_match_percent": 12.602418,
         "total_code": "3653648",
-        "matched_code": "460308",
-        "matched_code_percent": 12.598586,
+        "matched_code": "460448",
+        "matched_code_percent": 12.602418,
         "total_data": "681400",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 9293,
-        "matched_functions_percent": 55.020722,
-        "complete_code": "460308",
-        "complete_code_percent": 12.598586,
+        "matched_functions": 9303,
+        "matched_functions_percent": 55.079929,
+        "complete_code": "460448",
+        "complete_code_percent": 12.602418,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 593,
