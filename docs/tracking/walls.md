@@ -431,3 +431,25 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Address-rebase scheduling wall — DOL emitted an `addi` base-adjust to shrink displacements; GCC keeps the wide displacements. Not forceable from honest C++ (a `float* base = m_color;` local rebases ALL four stores, not three-after-one).
 
 **Logged by:** Matcher-SN-5, 2026-05-31.
+
+## 0x8036049C ERTQuantize4D::IndexToNode (32B) + 0x803604BC ERTQuantize4D::NodeToIndex (44B)
+
+**Tried:** Full logic matched for both. `IndexToNode`: `idx ? (char*)m_nodes + idx*72 : 0`. `NodeToIndex`: `node ? node - m_nodes : 0`. All operand-reorder, uint-cast base, product-into-local, `register` temp variants. Full flag matrix.
+
+**Asm shape that didn't reduce:** Pure r3-reuse register-coloring wall (same class as cXObjectImpl::GetFrontFaceDirection 0x800E1540). `IndexToNode`: DOL `mulli r9,r4,72; lwz r0,4104(r3); add r3,r0,r9` (product→r9, base→r0); GCC 2.95 `mulli r0; lwz r3,4104(r3); add r3,r3,r0` (greedily reuses r3=this/return for base). `NodeToIndex`: DOL works entirely in r9 (`lwz r9; subf r9; mullw r9,magic; rlwinm r3,r9`); GCC works entirely in r3. Old forced stubs used `ASMPROC_replace_insn` for r3→r9/r0 relabels (banned).
+
+**Notes / hypotheses:** No natural C++ shape reliably forces GCC 2.95 to start the volatile-register chain at r9 instead of r3. Wall-Analyst concurs. Do NOT force with ASMPROC.
+
+**Logged by:** Matcher-SN-6, 2026-05-31.
+
+## 0x80320A00 ERShader::GetModifiableColor(unsigned) (48B) — and palette-fallback-redundant-li family
+
+**Tried:** Full logic matched: `p = this->m_14(palette); if(!p){ obj=this->m_18(base); p=0; if(obj) p=obj->m_14; } return p->colors[0x40+idx*4]`. 11 of 12 instructions match. `if`/`else` explicit `p=0` and ternary `m_base?m_base->m_14:0` — GCC drops the `li` both ways.
+
+**Asm shape that didn't reduce:** DOL emits a redundant `li r9,0` at offset 0x10 (the fallback-zero assignment) even though r9 is provably already 0 from the entry `cmpwi r9,0` check. GCC 2.95 value-tracks r9==0 and eliminates the dead store → 44B vs 48B SIZE_MISMATCH. No natural C++ reproduces a provably-dead store. Old forced stub injected the whole body via `ASMPROC_inject_before` (banned).
+
+**Family:** SN ProDG is less aggressive than devkitPPC GCC 2.95 at dead-`li` elimination. Predicted same-idiom walls (analyzed, not attempt-burned): `0x8032086C IsMultiTextureShader` (72B), `0x80320708 GetSupportDecal` (72B) — identical `m_14`/`m_18` fallback chain + redundant `li`. Sibling of the r3-reuse coloring family — both are GCC-more-aggressive-than-SN-ProDG compiler-difference walls.
+
+**Notes / hypotheses:** Recognize-and-skip the whole palette-fallback family; only a whole-body ASMPROC inject can force the dead `li`, which is banned. Do NOT force.
+
+**Logged by:** Matcher-SN-6, 2026-05-31.
