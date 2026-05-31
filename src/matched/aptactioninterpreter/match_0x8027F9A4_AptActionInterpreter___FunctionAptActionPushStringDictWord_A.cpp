@@ -1,10 +1,71 @@
-// 0x8027F9A4 AptActionInterpreter::_FunctionAptActionPushStringDictWord(AptActionInterpreter (140 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); mr 10,4; lis 5,-32704; lwz 9,0x0(10); lis 4,-32704; addi 4,4,5760; addi 5,5,5812; lbz 0,0x0(9); li 6,138; lbzu 11,0x1(9); rlwinm 0,0,8,0,23; addi 9,9,1; or 11,11,0; stw 9,0x0(10); rlwinm 11,11,2,0,29; lwz 10,0x38(3); lwz 9,0x0(3); lwzx 8,11,10; lwz 7,0x8(3); rlwinm 11,9,2,0,29; addi 9,9,1; stwx 8,11,7; stw 9,0x0(3); lwz 11,0x8(8); lha 3,0x8(11); lwz 0,0xc(11); add 3,8,3; mtspr 8,0; blrl; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
+// 0x8027F9A4 AptActionInterpreter::_FunctionAptActionPushStringDictWord(
+//                 AptActionInterpreter*, AptActionInterpreter::LocalContextT*) (140 B)
+//
+// ActionScript opcode handler (static). Reads a 16-bit big-endian dictionary id
+// from the action stream, looks the boxed value up in the interpreter's string
+// dictionary, pushes it onto working stack A0, and dispatches a per-type method
+// on the boxed value.
+//
+// Types (see include/types/AptActionInterpreter.h and include/types/AptValue.h):
+//   interp->m_stackA0  {top@0x00, cap@0x04, data@0x08}   working operand stack
+//   interp->m_stringDict @0x38                            AptValueObj*[] by id
+//   ctx->cursor @0x00                                     action-stream byte ptr
+//   AptValueObj: 16-byte box; m_vtable @0x08, so it is modeled here as a
+//     polymorphic class with two non-virtual head words (m_flags, m_field04)
+//     preceding the vptr. The dispatched method is the first virtual (slot 1,
+//     vtable+0x08), which SN ProDG calls through its 8-byte vtable entries
+//     {s16 adjustor @+0x08, fnptr @+0x0C} — the lha/lwz/add/blrl sequence.
+//
+// Matching notes (no post-compile surgery; this replaces a forced inject_before):
+//   - *cur++ twice gives the DOL's lbz + lbzu pointer-walk read.
+//   - idx = lo | (hi<<8) reuses the low byte's register for the `or`, matching
+//     the DOL's register flow (vs (hi<<8)|lo which swaps it).
+//   - reading top into a local once (not interp->...top++) avoids a reload and
+//     keeps top live for both the index and the increment, as in the DOL.
+struct AptGlobal { char _r[16]; };
 
-struct AptActionInterpreter {
-    void _FunctionAptActionPushStringDictWord_A();
+struct AptValueObjHead {
+    unsigned int m_flags;    // 0x00
+    unsigned int m_field04;  // 0x04
 };
 
-void AptActionInterpreter::_FunctionAptActionPushStringDictWord_A() {
+struct AptValueObj : public AptValueObjHead {
+    virtual void Dispatch(AptGlobal*, AptGlobal*, int) = 0;  // vtable+0x08
+};
+
+struct AptInterpStack {
+    int           top;   // 0x00
+    int           cap;   // 0x04
+    AptValueObj** data;  // 0x08
+};
+
+struct LocalContextT {
+    unsigned char* cursor;  // 0x00
+};
+
+extern AptGlobal gAptPushGlobalA;
+extern AptGlobal gAptPushGlobalB;
+
+struct AptActionInterpreter {
+    AptInterpStack m_stackA0;          // 0x00
+    char           _pad[0x38 - 0x0C];  // 0x0C .. 0x38
+    AptValueObj**  m_stringDict;       // 0x38
+    static void _FunctionAptActionPushStringDictWord(AptActionInterpreter* interp,
+                                                      LocalContextT* ctx);
+};
+
+void AptActionInterpreter::_FunctionAptActionPushStringDictWord(AptActionInterpreter* interp,
+                                                                LocalContextT* ctx) {
+    unsigned char* cur = ctx->cursor;
+    unsigned int hi = *cur++;
+    unsigned int lo = *cur++;
+    ctx->cursor = cur;
+    unsigned int idx = lo | (hi << 8);
+
+    int top = interp->m_stackA0.top;
+    AptValueObj* obj = interp->m_stringDict[idx];
+    interp->m_stackA0.data[top] = obj;
+    interp->m_stackA0.top = top + 1;
+
+    obj->Dispatch(&gAptPushGlobalA, &gAptPushGlobalB, 138);
 }
