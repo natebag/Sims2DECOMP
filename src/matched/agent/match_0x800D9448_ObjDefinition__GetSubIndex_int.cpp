@@ -1,4 +1,11 @@
-// 0x800D9448 ObjDefinition::GetSubIndex(int, (20 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="rlwinm 3,3,8,0,23; rlwinm 4,4,0,24,31; or 3,3,4; extsh 3,3"
-extern "C" int f_800D9448() {}
+// 0x800D9448 ObjDefinition::GetSubIndex(int, int) (20B)
+// slwi r3,r3,8; clrlwi r4,r4,24; or r3,r3,r4; extsh r3,r3; blr
+// (high << 8) | (low & 0xFF), truncated to short
+struct ObjDefinition {
+    static short GetSubIndex(int high, int low);
+};
+
+short ObjDefinition::GetSubIndex(int high, int low) {
+    return (short)((high << 8) | (low & 0xFF));
+}
