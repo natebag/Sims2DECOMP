@@ -1,14 +1,75 @@
-// 0x80280440 AptActionInterpreter::_FunctionAptActionDictCallMethodSetVar(AptActionInterpreter (196 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 30,4; mr 31,3; lwz 9,0x0(30); lis 4,-32704; lis 5,-32704; li 6,138; lbz 11,0x0(9); addi 5,5,5812; addi 9,9,1; addi 4,4,5760; stw 9,0x0(30); rlwinm 11,11,2,0,29; lwz 10,0x38(31); lwz 9,0x0(31); lwzx 8,11,10; lwz 7,0x8(31); rlwinm 11,9,2,0,29; addi 9,9,1; stwx 8,11,7; stw 9,0x0(31); lwz 11,0x8(8); lwz 0,0xc(11); lha 3,0x8(11); mtspr 8,0; add 3,8,3; blrl; mr 3,31; mr 4,30; bl _s80280440_0; mr 3,31; mr 4,30; bl _s80280440_1; lwz 3,-27600(13); lwz 0,0x4(3); cmpwi 0,0; beq 0f; lwz 0,0x0(31); cmpwi 0,0; bne 0f; bl _s80280440_2; 0:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+// 0x80280440 AptActionInterpreter::_FunctionAptActionDictCallMethodSetVar(
+//                 AptActionInterpreter*, AptActionInterpreter::LocalContextT*) (196 B)
+//
+// Composite opcode, sibling of DictCallFuncSetVar (0x80280274): reads a single-byte
+// dictionary id, pushes that string box onto working stack A0 and dispatches its
+// per-type method (vtable+0x08, slot 1), then chains the CallMethod and SetVariable
+// opcode handlers, and finally releases the GC value vector if it holds values and
+// the operand stack has drained. Differs from DictCallFuncSetVar only in calling
+// CallMethod (0x8027B7F0) instead of CallFunction.
+//
+// AptValueObj box (vptr @ 0x08, two non-virtual head words), m_stringDict @ 0x38,
+// m_stackA0 @ 0x00: see include/types/AptValue.h + AptActionInterpreter.h. apt-opcode-
+// handler recipe: default scheduling, single-read stack top, byte cursor walk.
+struct AptGlobal { char _r[16]; };
 
-extern "C" void _s80280440_0();
-extern "C" void _s80280440_1();
-extern "C" void _s80280440_2();
-
-struct AptActionInterpreter {
-    void _FunctionAptActionDictCallMethodSetVar();
+struct AptValueObjHead {
+    unsigned int m_flags;    // 0x00
+    unsigned int m_field04;  // 0x04
 };
 
-void AptActionInterpreter::_FunctionAptActionDictCallMethodSetVar() {
+struct AptValueObj : public AptValueObjHead {
+    virtual void Dispatch(AptGlobal*, AptGlobal*, int) = 0;  // vtable+0x08
+};
+
+struct AptInterpStack {
+    int           top;   // 0x00
+    int           cap;   // 0x04
+    AptValueObj** data;  // 0x08
+};
+
+struct LocalContextT {
+    unsigned char* cursor;     // 0x00
+    void*          m_field04;  // 0x04
+    void*          m_field08;  // 0x08
+};
+
+struct AptValueVector {
+    int  m_field00;  // 0x00
+    int  m_count;    // 0x04
+    void ReleaseValues();
+};
+
+extern AptGlobal gAptDCMGlobalA;
+extern AptGlobal gAptDCMGlobalB;
+extern AptValueVector* gAptGCVector;
+
+struct AptActionInterpreter {
+    AptInterpStack m_stackA0;          // 0x00
+    char           _pad[0x38 - 0x0C];  // 0x0C .. 0x38
+    AptValueObj**  m_stringDict;       // 0x38
+    static void _FunctionAptActionDictCallMethodSetVar(AptActionInterpreter* interp,
+                                                       LocalContextT* ctx);
+    static void _FunctionAptActionCallMethod(AptActionInterpreter*, LocalContextT*);
+    static void _FunctionAptActionSetVariable(AptActionInterpreter*, LocalContextT*);
+};
+
+void AptActionInterpreter::_FunctionAptActionDictCallMethodSetVar(AptActionInterpreter* interp,
+                                                                  LocalContextT* ctx) {
+    unsigned char* cur = ctx->cursor;
+    unsigned int idx = *cur++;
+    ctx->cursor = cur;
+
+    AptValueObj* box = interp->m_stringDict[idx];
+    int top = interp->m_stackA0.top;
+    interp->m_stackA0.data[top] = box;
+    interp->m_stackA0.top = top + 1;
+    box->Dispatch(&gAptDCMGlobalA, &gAptDCMGlobalB, 138);
+
+    _FunctionAptActionCallMethod(interp, ctx);
+    _FunctionAptActionSetVariable(interp, ctx);
+
+    AptValueVector* vec = gAptGCVector;
+    if (vec->m_count != 0 && interp->m_stackA0.top == 0)
+        vec->ReleaseValues();
 }
