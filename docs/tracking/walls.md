@@ -505,3 +505,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Compiler-version peephole difference — the DOL's MWCC point-release did NOT fold branch-to-return; ours does. Not controllable from honest C++ at fixed flags (the function is frameless/void, so there's no multi-instruction epilogue to block the peephole). **FAMILY WALL** — same shape predicted (not attempt-burned) for the other switch-on-axis rotation builders: C_MTXRotAxisRad's trig-dispatch tail, C_MTX44RotTrig 0x803752EC, C_MTX44RotAxisRad 0x803754DC. Do NOT force.
 
 **Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
+
+## 0x8025AE60 C_VECReflect (212B) — MWCC addi-vs-mr param-save (FRAME) wall
+
+**Tried:** Full logic matched (212B, NO size diff in the natural form). Canonical: build `uVec = -src`, `C_VECNormalize(&uVec,&uVec)`, `C_VECNormalize(normal,&nVec)`, `dot=C_VECDotProduct(&uVec,&nVec)`, `dst[i]=2*nVec[i]*dot-uVec[i]`, `C_VECNormalize(dst,dst)`. All 3 masked bl calls, the float math, the local-vector stack offsets (uVec@32, nVec@20) and the 2.0f const all correct.
+
+**Asm shape that didn't reduce:** exactly 5 register-copy encodings. Our verify_mwcc.py GC-1.2.5n emits `addi rD,rS,0` where the DOL emits `mr rD,rS` (`or rD,rS,rS`) for the param→callee-saved saves (`r30=normal`, `r31=dst`) and the call-arg setups (`r4=r3`, `r3=r30`), plus the resulting prologue `stw r30` shifts one slot. Same addi-vs-mr class parked for C_MTXConcat 0x8037203C and C_MTX44RotRad 0x8037520C. Tried explicit pointer-local form (`Vec* u=&uVec`) to coax mr → MWCC spilled the pointers to stack instead (236B, worse).
+
+**Notes / hypotheses:** MWCC's register-copy emission (`addi rD,rS,0` vs `or rD,rS,rS`) is compiler-internal and context-dependent — C_MTXPerspective's single `mr r31,r3` param-save DID match, but multi-copy FRAME prologues consistently fall to addi here. Not controllable from honest C++. **CLASS WALL** for the remaining FRAME C_VEC*/C_MTX* funcs with several param-saves (the sqrt cluster, MultVecArray, Concat/Inverse). Do NOT force.
+
+**Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
