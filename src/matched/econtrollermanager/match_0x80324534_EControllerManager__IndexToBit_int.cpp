@@ -1,10 +1,10 @@
-// 0x80324534 EControllerManager::IndexToBit(int) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="li 0,1; slw 3,0,3"
-
+// 0x80324534 EControllerManager::IndexToBit(int) (12B)
+// li r0,1; slw r3,r0,r3; blr  -- static: 1 << index
 struct EControllerManager {
-    void IndexToBit();
+    static int IndexToBit(int index);
 };
 
-void EControllerManager::IndexToBit() {
+int EControllerManager::IndexToBit(int index) {
+    return 1 << index;
 }
