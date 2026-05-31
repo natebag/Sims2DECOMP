@@ -1,10 +1,19 @@
 // 0x80111148 ObjSelector::GetIsMultiTileSubObject(void) (40 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,0x38(3); li 3,0; lha 0,0x14(9); cmplwi 0,0; beqlr; lha 0,0x16(9); cmplwi 0,65535; beqlr; li 3,1"
 
-struct ObjSelector {
-    void GetIsMultiTileSubObject();
+struct MultiTileInfo {
+    char pad_0000[0x14];
+    short m_field14;
+    short m_field16;
 };
 
-void ObjSelector::GetIsMultiTileSubObject() {
+struct ObjSelector {
+    char pad_0000[0x38];
+    MultiTileInfo* m_info;
+
+    int GetIsMultiTileSubObject();
+};
+
+int ObjSelector::GetIsMultiTileSubObject() {
+    MultiTileInfo* info = m_info;
+    return info->m_field14 != 0 && info->m_field16 != -1;
 }
