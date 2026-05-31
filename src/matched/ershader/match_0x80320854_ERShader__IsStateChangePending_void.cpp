@@ -1,10 +1,12 @@
-// 0x80320854 ERShader::IsStateChangePending(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x58(3); rlwinm 3,3,30,31,31"
-
+// 0x80320854 ERShader::IsStateChangePending(void) (12B)
+// lwz r3,0x58(3); rlwinm r3,r3,30,31,31; blr  -- (m_flags >> 2) & 1
 struct ERShader {
-    void IsStateChangePending();
+    char pad[0x58];
+    unsigned m_flags;       // 0x58
+    int IsStateChangePending();
 };
 
-void ERShader::IsStateChangePending() {
+int ERShader::IsStateChangePending() {
+    return (m_flags >> 2) & 1;
 }
