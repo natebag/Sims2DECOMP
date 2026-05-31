@@ -92,12 +92,14 @@ mkdir -p src/wip/version_diff
 #   // 0x8003FB0C ... 112 bytes
 #   // Address: 0x80159D88 | Size: 12 bytes
 #   /* Func at 0x... (12B) */
-# Sets globals ADDR and SIZE; empty if not found.
+#   // VERIFY-SYMBOL: MainHeap
+# Sets globals ADDR, SIZE, and VERIFY_SYMBOL; empty if not found.
 # ---------------------------------------------------------------------------
 parse_header() {
     local file="$1"
     ADDR=""
     SIZE=""
+    VERIFY_SYMBOL=""
     local head_text
     head_text=$(head -5 "$file")
 
@@ -119,6 +121,8 @@ parse_header() {
         # "(12 bytes)" or "(12 B)" -- size+space+B
         SIZE=$(echo "$head_text" | grep -oE '\(([0-9]+)[[:space:]]*[Bb]' | head -1 | grep -oE '[0-9]+')
     fi
+
+    VERIFY_SYMBOL=$(echo "$head_text" | grep -m1 -E '^[[:space:]]*//[[:space:]]*VERIFY-SYMBOL:[[:space:]]*[^[:space:]]+' | sed -E 's|^[[:space:]]*//[[:space:]]*VERIFY-SYMBOL:[[:space:]]*([^[:space:]]+).*|\1|')
 }
 
 for f in $FILES; do
@@ -207,7 +211,11 @@ for f in $FILES; do
         continue
     fi
 
-    VERIFY_OUT=$(bash tools/verify_match.sh --strict "$f" "$ADDR" "$SIZE" 2>&1)
+    VERIFY_ARGS=(--strict)
+    if [ -n "$VERIFY_SYMBOL" ]; then
+        VERIFY_ARGS+=(--symbol "$VERIFY_SYMBOL")
+    fi
+    VERIFY_OUT=$(bash tools/verify_match.sh "${VERIFY_ARGS[@]}" "$f" "$ADDR" "$SIZE" 2>&1)
     VERIFY_RC=$?
 
     # Success
