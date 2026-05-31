@@ -1,10 +1,12 @@
-// 0x8031229C EResource::GetResSize(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x10(3); rlwinm 3,3,24,8,31"
-
+// 0x8031229C EResource::GetResSize(void) (12B)
+// lwz r3,0x10(3); srwi r3,r3,8; blr  -- m_sizeField >> 8
 struct EResource {
-    void GetResSize();
+    char pad[0x10];
+    unsigned m_sizeField;   // 0x10
+    unsigned GetResSize();
 };
 
-void EResource::GetResSize() {
+unsigned EResource::GetResSize() {
+    return m_sizeField >> 8;
 }
