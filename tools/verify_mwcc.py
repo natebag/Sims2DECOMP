@@ -31,6 +31,7 @@ MWCC_FLAGS = [
     "-Cpp_exceptions", "off", "-RTTI", "off", "-inline", "auto", "-nodefaults",
 ]
 INCLUDE_DIRS = ("include", "src", "libs/dolphinsdk", "libs/sn_runtime")
+LANG_PATTERN = re.compile(r"^//\s*LANG:\s*(\S+)\s*$", re.MULTILINE)
 
 # Bits set to 1 must still compare. Bits set to 0 are resolved by the linker.
 RELOC_KEEP_MASKS = {
@@ -89,11 +90,28 @@ def get_dol_bytes(addr: int, size: int) -> bytes:
     fail(f"DOL bytes not found for {addr:#x} ({size} bytes)")
 
 
+def language_flags(src: Path) -> list[str]:
+    try:
+        head = src.read_text(encoding="utf-8", errors="replace")[:2048]
+    except OSError as exc:
+        fail(f"could not read {src}: {exc}")
+    match = LANG_PATTERN.search(head)
+    if not match:
+        return []
+    lang = match.group(1).strip().lower()
+    if lang == "c":
+        return ["-lang", "c"]
+    fail(f"unsupported MWCC language marker // LANG: {lang}")
+
+
 def compile_obj(src: Path, out: Path) -> None:
     if not MWCC.is_file():
         fail("MWCC GC-1.2.5n not found; run: python tools/download_tool.py compilers")
     include_flags = [f"-I{host_path(REPO / include_dir)}" for include_dir in INCLUDE_DIRS]
-    cmd = [str(MWCC), *MWCC_FLAGS, *include_flags, "-o", host_path(out), host_path(src)]
+    cmd = [
+        str(MWCC), *MWCC_FLAGS, *language_flags(src), *include_flags,
+        "-o", host_path(out), host_path(src),
+    ]
     result = subprocess.run(cmd, cwd=MWCC.parent, capture_output=True, text=True)
     if result.returncode != 0:
         print(result.stdout + result.stderr, end="", file=sys.stderr)
