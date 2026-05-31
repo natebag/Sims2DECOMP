@@ -1,10 +1,12 @@
-// 0x802E0818 EBitArray::IsEmpty(void) (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x4(3); subfic 0,3,0; adde 3,0,3"
-
+// 0x802E0818 EBitArray::IsEmpty(void) (16B)
+// lwz r3,4(r3); subfic r0,r3,0; adde r3,r0,r3; blr  -- (m_numBits == 0)
 struct EBitArray {
-    void IsEmpty();
+    void* m_data;           // 0x0
+    unsigned m_numBits;     // 0x4
+    int IsEmpty();
 };
 
-void EBitArray::IsEmpty() {
+int EBitArray::IsEmpty() {
+    return m_numBits == 0;
 }
