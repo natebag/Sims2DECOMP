@@ -1,4 +1,13 @@
-// 0x80336388 ENgcMovie::PlayerGetState(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lis 9,-32691; lbz 3,0x39e4(9)"
-extern "C" int f_80336388() {}
+// 0x80336388 ENgcMovie::PlayerGetState(void) (12B)
+// lis r9,gState@ha; lbz r3,gState@l(r9); blr  -- absolute (non-SDA) byte global
+// large array forces non-SDA absolute lis/lbz addressing
+extern unsigned char gMoviePlayerState[16];
+
+struct ENgcMovie {
+    int PlayerGetState();
+};
+
+int ENgcMovie::PlayerGetState() {
+    return gMoviePlayerState[0];
+}
