@@ -1,5 +1,17 @@
 // 0x80195C1C CASTarget::CFCShouldGotoBodyScreenNext(void) (36 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x104(3); cmpwi 0,0; bne 0f; lwz 0,0xa4(3); li 3,1; cmpwi 0,19; beqlr; 0:; li 3,0"
-// NOTE: GCC uses branchless xori/subfic/adde for equality-int; DOL uses li+cmpwi+beqlr; unmatchable
-extern "C" int f_80195C1C() {}
+
+struct CASTarget {
+    char pad_0000[0xa4];
+    int m_fieldA4;
+    char pad_00a8[0x104 - 0xa8];
+    int m_field104;
+
+    int CFCShouldGotoBodyScreenNext();
+};
+
+int CASTarget::CFCShouldGotoBodyScreenNext() {
+    if (m_field104 != 0) goto ret0;
+    if (m_fieldA4 == 19) return 1;
+ret0:
+    return 0;
+}
