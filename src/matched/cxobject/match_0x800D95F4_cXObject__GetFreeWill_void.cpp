@@ -1,10 +1,10 @@
-// 0x800D95F4 cXObject::GetFreeWill(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-31912(13)"
+// 0x800D95F4 cXObject::GetFreeWill(void) (8B)
+// lwz r3,gFreeWill(r13); blr  -- ignores this, returns SDA global
+extern int gFreeWill;
 
 struct cXObject {
-    void GetFreeWill();
+    int GetFreeWill();
 };
 
-void cXObject::GetFreeWill() {
-}
+int cXObject::GetFreeWill() { return gFreeWill; }
