@@ -1,4 +1,13 @@
-// 0x802FAB50 EShader::IsFacer(void) (24 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x4(3); li 3,1; andi. 9,0,12; bnelr; li 3,0"
-extern "C" int f_802FAB50() {}
+// 0x802FAB50 EShader::IsFacer(void) (24B)
+// lwz r0,4(r3); li r3,1; andi. r9,r0,12; bnelr; li r3,0  -- (m_flags & 0xC) != 0
+struct EShader {
+    char pad[4];
+    unsigned m_flags;       // 0x4
+    int IsFacer();
+};
+
+int EShader::IsFacer() {
+    if (m_flags & 0xC) return 1;
+    return 0;
+}
