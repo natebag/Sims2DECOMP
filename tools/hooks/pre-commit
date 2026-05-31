@@ -54,7 +54,8 @@ echo -e "${YELLOW}[pre-commit] Checking match files...${NC}"
 # ---------------------------------------------------------------------------
 # QA-RULE #3: Address collision gate
 # Block commits that would create a second match_*.cpp at an address already
-# matched elsewhere in src/matched/** or src/wip/**. Catches the failure mode
+# committed or staged elsewhere in src/matched/** or src/wip/**. Ignore other
+# workers' untracked WIP: it is not part of this commit. Catches the failure mode
 # from the Session 11 clone_stubs.py incident where a tool scoped its own
 # glob too narrowly and re-created 64 dupes.
 # Only checks NEW files (--diff-filter=A); rename/rewrite existing OK.
