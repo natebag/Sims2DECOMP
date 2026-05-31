@@ -1,10 +1,21 @@
 // 0x802D785C ESemaphore::IsCreated(void) (24 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x4(3); li 3,1; cmplwi 0,0; bnelr; li 3,0"
+//
+// Returns whether the semaphore has been created: the OS handle/id at +0x04 is
+// non-zero once Create() succeeds. Written in if-true form so the "return 1"
+// value is latched before the signed test (matches DOL's li r3,1 / cmpwi /
+// bnelr).
 
 struct ESemaphore {
-    void IsCreated();
+    void*    m_vt;        // 0x00
+    int      m_handle;    // 0x04  OS sync handle/id (set by Create)
+    unsigned m_maxCount;  // 0x08
+    unsigned m_curCount;  // 0x0C
+    int IsCreated() const;
 };
 
-void ESemaphore::IsCreated() {
+int ESemaphore::IsCreated() const
+{
+    if (m_handle != 0)
+        return 1;
+    return 0;
 }
