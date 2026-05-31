@@ -1,10 +1,10 @@
-// 0x80324850 EDatasetManager::GetLoadingEnabled(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-26632(13)"
+// 0x80324850 EDatasetManager::GetLoadingEnabled(void) (8B)
+// lwz r3,gLoadingEnabled(r13); blr  -- returns SDA global
+extern int gLoadingEnabled;
 
 struct EDatasetManager {
-    void GetLoadingEnabled();
+    int GetLoadingEnabled();
 };
 
-void EDatasetManager::GetLoadingEnabled() {
-}
+int EDatasetManager::GetLoadingEnabled() { return gLoadingEnabled; }
