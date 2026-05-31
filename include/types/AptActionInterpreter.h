@@ -102,12 +102,19 @@ struct AptActionInterpreter {
                                              +0x2C, +0x30, +0x48 (vcall thunk).
                                              NULL until a SetTarget opcode runs.  */
 
-    /* 0x34 */ u8             _gap34[0x20]; /* OPAQUE — not touched by the four
-                                              structural methods sampled. Other
-                                              opcode handlers likely store here
-                                              (dictionary ptr, flags, frame ctx).
-                                              File typereq for a specific offset
-                                              and it will be evidenced + named.   */
+    /* 0x34 */ s32            m_field34;   /* read in callFunction (0x80270070)
+                                              alongside m_stringDict; likely the
+                                              dictionary count/size. Paired with
+                                              0x38. (purpose not fully pinned)     */
+    /* 0x38 */ void**         m_stringDict; /* base of the string dictionary: an
+                                              array of AptValueObj* indexed by a
+                                              dictionary id. PushStringDictWord
+                                              (0x8027F9A4): lwz r10,0x38(this);
+                                              lwzx <obj>,(id<<2),r10 — then pushes
+                                              obj onto m_stackA0. See AptValue.h.  */
+    /* 0x3C */ u8             _gap3C[0x18]; /* OPAQUE — 0x3C..0x53 not yet
+                                              evidenced. File typereq for a
+                                              specific offset to get it named.     */
 
     /* 0x54 */ s32            m_continue;  /* execution continue flag. runStream
                                               loop: lwz r0,0x54(this); if r0!=0
