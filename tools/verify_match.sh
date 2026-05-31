@@ -4,7 +4,7 @@
 # Uses the ORIGINAL SN Systems ProDG compiler (cc1plus.exe + NgcAs.exe)
 # that built The Sims 2 GameCube. Falls back to devkitPPC GCC if SN not found.
 #
-# Usage: ./tools/verify_match.sh [--outdir DIR] [--strict] <source.cpp> <address_hex> <size_decimal>
+# Usage: ./tools/verify_match.sh [--outdir DIR] [--strict] [--symbol NAME] <source.cpp> <address_hex> <size_decimal>
 # Example: ./tools/verify_match.sh src/matched/test.cpp 0x800044C0 8
 #          ./tools/verify_match.sh --outdir build/verify/run_42 src/matched/test.cpp 0x800044C0 8
 #          ./tools/verify_match.sh --strict src/matched/test.cpp 0x800044C0 8
@@ -20,6 +20,10 @@
 #               asm_processor.py. In strict mode they are treated as
 #               MISMATCH — the file is not real hand-written C++ decomp.
 #
+# --symbol NAME Extract compiled-object bytes starting at the named .text
+#               symbol instead of section offset 0. DOL extraction remains
+#               address+size based.
+#
 # Returns exit code 0 if function bytes match, 1 if mismatch.
 
 set -e
@@ -27,6 +31,7 @@ set -e
 # --- arg parsing ---------------------------------------------------------
 OUTDIR="build/verify"
 STRICT=0
+SYMBOL=""
 POSITIONAL=()
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -46,6 +51,18 @@ while [ $# -gt 0 ]; do
             OUTDIR="${1#--outdir=}"
             shift
             ;;
+        --symbol)
+            if [ -z "${2:-}" ]; then
+                echo "ERROR: --symbol requires a symbol name argument" >&2
+                exit 1
+            fi
+            SYMBOL="$2"
+            shift 2
+            ;;
+        --symbol=*)
+            SYMBOL="${1#--symbol=}"
+            shift
+            ;;
         --)
             shift
             while [ $# -gt 0 ]; do POSITIONAL+=("$1"); shift; done
@@ -61,8 +78,8 @@ ADDR="${POSITIONAL[1]:-}"
 SIZE="${POSITIONAL[2]:-}"
 
 if [ -z "$SRC" ] || [ -z "$ADDR" ] || [ -z "$SIZE" ]; then
-    echo "Usage: $0 [--outdir DIR] <source.cpp> <hex_address> <size>"
-    echo "Example: $0 src/matched/test.cpp 0x800044C0 8"
+    echo "Usage: $0 [--outdir DIR] [--strict] [--symbol NAME] <source.cpp> <hex_address> <size>"
+    echo "Example: $0 --symbol MainHeap src/matched/test.cpp 0x800044C0 8"
     exit 1
 fi
 
@@ -176,8 +193,12 @@ fi
 # single sanctioned entry point for both compilers.
 if grep -qE '^[[:space:]]*//[[:space:]]*COMPILER:[[:space:]]*mwcc[[:space:]]*$' "$SRC" 2>/dev/null; then
     echo "Detected // COMPILER: mwcc — routing through tools/verify_mwcc.py"
+    MWCC_ARGS=()
+    if [ -n "$SYMBOL" ]; then
+        MWCC_ARGS+=(--symbol "$SYMBOL")
+    fi
     "$PYTHON" tools/verify_mwcc.py "$SRC" "$ADDR" "$SIZE" \
-        --outdir "$OUTDIR/mwcc_${BASENAME}"
+        --outdir "$OUTDIR/mwcc_${BASENAME}" "${MWCC_ARGS[@]}"
     exit $?
 fi
 
@@ -231,6 +252,30 @@ fi
 
 # Step 2: Extract compiled bytes from .text section
 echo "Extracting compiled bytes..."
+COMPILED_OFFSET=0
+if [ -n "$SYMBOL" ]; then
+    COMPILED_OFFSET=$($OBJDUMP -t -C "$OBJ" 2>/dev/null | "$PYTHON" -c "
+import re, sys
+want = sys.argv[1]
+for line in sys.stdin:
+    parts = line.split()
+    if len(parts) < 5 or parts[3] != '.text':
+        continue
+    try:
+        offset = int(parts[0], 16)
+    except ValueError:
+        continue
+    names = [parts[-1]]
+    tail = ' '.join(parts[5:]) if len(parts) > 5 else parts[-1]
+    names.append(tail)
+    if any(name == want or name.startswith(want + '(') or name.startswith(want + '__') for name in names):
+        print(offset)
+        raise SystemExit(0)
+print(f'ERROR: symbol {want!r} not found in compiled .text object', file=sys.stderr)
+raise SystemExit(1)
+" "$SYMBOL")
+    echo "Using compiled symbol $SYMBOL at .text offset 0x$(printf '%x' "$COMPILED_OFFSET")"
+fi
 COMPILED_BYTES=$($OBJDUMP -s -j .text "$OBJ" 2>/dev/null | "$PYTHON" -c "
 import sys, re
 for line in sys.stdin:
@@ -270,10 +315,36 @@ for i in range(7):
 # linkonce vtable/dtor sections — those can have offsets beyond the function
 # size and cause the Python mask array to IndexError. (Previously caused
 # spurious failures on virtual classes, e.g. QuickResFile ctor 60B.)
-RELOC_DATA=$($OBJDUMP -r -j .text "$OBJ" 2>/dev/null | awk '/^[0-9a-f]+ /{print $1"|"$2"|"$3}')
+RELOC_DATA=$($OBJDUMP -r -j .text "$OBJ" 2>/dev/null | "$PYTHON" -c "
+import re, sys
+base = int(sys.argv[1])
+size = int(sys.argv[2])
+end = base + size
+for line in sys.stdin:
+    m = re.match(r'^\s*([0-9a-fA-F]+)\s+(\S+)\s+(\S+)', line)
+    if not m:
+        continue
+    off = int(m.group(1), 16)
+    rtype = m.group(2)
+    target = m.group(3)
+    if off < base or off >= end:
+        continue
+    rel_off = off - base
+    target_match = re.match(r'\.text(?:\+0x([0-9a-fA-F]+))?$', target)
+    if target_match:
+        target_off = int(target_match.group(1) or '0', 16) - base
+        if target_off == 0:
+            target = '.text'
+        elif target_off > 0:
+            target = f'.text+0x{target_off:x}'
+        else:
+            target = f'.text-0x{-target_off:x}'
+    print(f'{rel_off:x}|{rtype}|{target}')
+" "$COMPILED_OFFSET" "$SIZE")
 
 # Step 4b: Compare with relocation-aware logic
-COMPILED_TRIMMED="${COMPILED_BYTES:0:$(($SIZE * 2))}"
+COMPILED_START=$(($COMPILED_OFFSET * 2))
+COMPILED_TRIMMED="${COMPILED_BYTES:$COMPILED_START:$(($SIZE * 2))}"
 
 RESULT=$($PYTHON -c "
 import sys, re
@@ -329,8 +400,11 @@ for off, rtype, target in relocs:
     if is_local and rtype in ('R_PPC_REL14', 'R_PPC_REL24'):
         # LOCAL branch: substitute the expected displacement and compare normally
         m = re.match(r'\.text\+0x([0-9a-fA-F]+)', target)
+        m_neg = re.match(r'\.text-0x([0-9a-fA-F]+)', target)
         if m:
             tgt_off = int(m.group(1), 16)
+        elif m_neg:
+            tgt_off = -int(m_neg.group(1), 16)
         elif target == '.text':
             # bare ".text" = offset 0 (branch to start of section)
             tgt_off = 0
