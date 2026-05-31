@@ -88,3 +88,49 @@ family (find_char 0x8009F090, find_first_of(char) etc.) will hit the identical
 wall — cracking the spill here unlocks the whole sub-family.
 
 **Logged by:** Matcher-SN-2, 2026-05-30.
+
+## 0x80241378 fabsf (36B) — and the whole libm float-return family
+
+**Compiler:** MWCC GC-1.2.5n (`// COMPILER: mwcc`). This IS the right compiler
+family for the math lib — see below — but it cannot reproduce one return idiom.
+
+**Tried:** ~20 source shapes × full flag sweep. Bit-twiddle fabsf via:
+single-union (`u.f=x; u.u&=0x7fffffff; return u.f`), pointer pun
+(`*(unsigned long*)&x &= 0x7fffffff; return x`), union-pointer alias on `&x`,
+union-reference alias, store-other-then-reload, fdlibm two-union
+GET_FLOAT_WORD/SET_FLOAT_WORD, return-through-separate-float, reassign-param.
+Flags swept: -O0..-O4, with/without `,p` peephole, `-opt noschedule`,
+`-sym on`, `-g`, `-inline off`, no-opt. Also tried `mwcceppc_old.exe`
+(same v2.3.3 build 163, adds a profiling `bl`/`nop` stub — worse).
+
+**Asm shape that didn't reduce:** the function tail. DOL loads the result into
+scratch `f0` then moves it to the return reg `f1`:
+```
+DOL:   c0010008  lfs  f0,8(r1)
+       fc200090  fmr  f1,f0
+       38210010  addi r1,r1,16
+MINE:  c0210008  lfs  f1,8(r1)      ; MWCC always loads straight to f1
+       38210010  addi r1,r1,16      ; (no fmr — register-coalesced away)
+```
+The pointer-pun form `*(unsigned long*)&x &= 0x7fffffff; return x;` matches
+**7 of 9 instructions exactly** including the hard part: x spilled to `8(r1)`
+(MWCC otherwise picks `12(r1)`; aliasing the param's own slot via `&x` is what
+pins offset 8). The ONLY residual is the gratuitous `lfs f0; fmr f1,f0` return
+move. No C++ source or flag I tried makes mwcc 1.2.5n emit it — its allocator
+always coalesces the load into f1 directly.
+
+**Family-wide:** `copysignf` (0x8024265C, 52B) ends with the identical
+`...; stw r9,8(r1); lfs f0,8(r1); fmr f1,f0; addi; blr` tail. The float-return
+idiom is shared across the libm family (fabsf, copysignf, almost certainly
+sinf/cosf/sqrtf/fmodf wrappers). Cracking it once unlocks the family.
+
+**Notes / hypotheses:** The un-coalesced `lfs f0; fmr f1,f0` is the signature of
+a *different/older Metrowerks codegen* than mwcc 1.2.5n (build 163). The
+DolphinSDK libm almost certainly ships precompiled by an earlier MWCC (e.g.
+1.1 / 1.2.5 non-`n`, or a pre-build-163 1.2.x) whose register allocator did not
+fold the return move. **TOOLING LEAD:** obtain additional MWCC versions from
+decomp.dev compilers.zip and re-probe fabsf — if one emits the f0+fmr tail at
+offset 8, the whole libm float family becomes matchable. Not a C-source problem;
+a compiler-version problem. Do NOT force with ASMPROC.
+
+**Logged by:** Matcher-MWCC-SDK, 2026-05-30.
