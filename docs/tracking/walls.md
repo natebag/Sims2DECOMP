@@ -453,3 +453,15 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Recognize-and-skip the whole palette-fallback family; only a whole-body ASMPROC inject can force the dead `li`, which is banned. Do NOT force.
 
 **Logged by:** Matcher-SN-6, 2026-05-31.
+
+## 0x8037520C C_MTX44RotRad (112B) + 0x80372CE4 C_MTXRotRad (112B) — MWCC addi-vs-mr + redundant-fmr round-trip
+
+**Tried:** Full logic matched. Natural SDK source: `sinA = sinf(rad); cosA = cosf(rad); C_MTX(44)RotTrig(m, axis, sinA, cosA);` with `sinf/cosf/RotTrig` declared extern. All 3 bl relocations resolve correctly; matrix-builder delegate is correct.
+
+**Asm shape that didn't reduce (108B obj vs 112B DOL, off by one instr):** Two coupled codegen-form diffs at our fixed MWCC config:
+1. **addi-vs-mr**: our MWCC emits `addi r30,r3,0` / `addi r31,r4,0` to stash the `m`/`axis` args in callee-saved regs; the DOL emits `mr r30,r3` / `mr r31,r4` (`or rD,rS,rS`). Same diff parked for C_MTXConcat 0x8037203C.
+2. **redundant-fmr round-trip**: the DOL spills `rad` to f31 then RELOADS it with a redundant `fmr f1,f31` immediately before `bl sinf` (f1 already held rad). Our MWCC value-tracks f1==rad and elides the reload → one fewer instruction → the 4B size shortfall.
+
+**Notes / hypotheses:** Both are compiler-internal choices (register-copy form + redundant-spill-reload), not source-controllable — the DOL was built with a slightly less-aggressive MWCC point release than verify_mwcc.py's GC-1.2.5n. Same root cause as the parked FRAME C_MTXConcat near-miss. The two RotRad funcs are structurally identical, so both wall together; do NOT chase (only post-compile asm surgery could force the mr/redundant-fmr, which is banned).
+
+**Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
