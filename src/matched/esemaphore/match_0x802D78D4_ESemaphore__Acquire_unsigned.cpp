@@ -1,13 +1,32 @@
-// 0x802D78D4 ESemaphore::Acquire(unsigned (88 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stw 31,0xc(1); stw 0,0x14(1); mr 31,3; cmpwi 4,-1; beq 0f; addi 3,31,12; bl _s802D78D4_0; lwz 0,0xc(31); cmpw 3,0; li 3,0; beq 2f; b 1f; 0:; addi 3,31,12; bl _s802D78D4_1; 1:; li 3,1; 2:; lwz 0,0x14(1); mtspr 8,0; lwz 31,0xc(1); addi 1,1,16"
+// 0x802D78D4 ESemaphore::Acquire(unsigned int) (88 B)
+// FLAGS:
+//
+// Acquire (P operation). A timeout of -1 means block indefinitely
+// (OSWaitSemaphore) and always reports success. Otherwise try without blocking
+// (OSTryWaitSemaphore): the try returns the pre-decrement count, so if it still
+// equals the live count nothing was taken (fail -> 0); a changed count means we
+// acquired (success -> 1). The OSSemaphore lives at +0x0C (count is its first word).
 
-extern "C" void _s802D78D4_0();
-extern "C" void _s802D78D4_1();
+struct OSThreadQueue { void* head; void* tail; };
+struct OSSemaphore  { int count; OSThreadQueue queue; };
+extern "C" int OSWaitSemaphore(OSSemaphore* sem);
+extern "C" int OSTryWaitSemaphore(OSSemaphore* sem);
 
 struct ESemaphore {
-    void Acquire();
+    void*       m_vt;        // 0x00
+    void*       m_handle;    // 0x04
+    int         m_maxCount;  // 0x08
+    OSSemaphore m_sem;       // 0x0C  (count @ 0x0C)
+    int Acquire(unsigned int timeout);
 };
 
-void ESemaphore::Acquire() {
+int ESemaphore::Acquire(unsigned int timeout)
+{
+    if (timeout == (unsigned int)-1) {
+        OSWaitSemaphore(&m_sem);
+        return 1;
+    }
+    if (OSTryWaitSemaphore(&m_sem) == m_sem.count)
+        return 0;
+    return 1;
 }
