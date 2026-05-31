@@ -1,5 +1,0 @@
-// 0x803741D0 C_MTXPerspective (208 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="mfspr 0,8; stw 0,0x4(1); stwu 1,-64(1); stfd f31,0x38(1); fmr f31,f4; stfd f30,0x30(1); fmr f30,f3; stfd f29,0x28(1); fmr f29,f2; stw 31,0x24(1); mr 31,3; lfs f5,-17856(13); lfs f0,-17852(13); fmuls f1,f5,f1; fmuls f1,f0,f1; bl _s803741D0_0; lfs f3,-17872(13); fsubs f2,f31,f30; fmuls f0,f31,f30; fdivs f4,f3,f1; fdivs f1,f4,f29; stfs f1,0x0(31); fdivs f3,f3,f2; lfs f2,-17864(13); stfs f2,0x4(31); stfs f2,0x8(31); stfs f2,0xc(31); stfs f2,0x10(31); fneg f1,f30; fneg f0,f0; stfs f4,0x14(31); fmuls f1,f1,f3; stfs f2,0x18(31); fmuls f0,f3,f0; stfs f2,0x1c(31); stfs f2,0x20(31); stfs f2,0x24(31); stfs f1,0x28(31); stfs f0,0x2c(31); stfs f2,0x30(31); stfs f2,0x34(31); lfs f0,-17860(13); stfs f0,0x38(31); stfs f2,0x3c(31); lwz 0,0x44(1); lfd f31,0x38(1); lfd f30,0x30(1); lfd f29,0x28(1); lwz 31,0x24(1); addi 1,1,64; mtspr 8,0"
-extern "C" void _s803741D0_0();
-extern "C" void f_803741D0() {}
