@@ -1,13 +1,82 @@
-// 0x80280338 AptActionInterpreter::_FunctionAptActionDictCallMethodPop(AptActionInterpreter (264 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 30,4; mr 31,3; lwz 9,0x0(30); lis 4,-32704; lis 29,-32704; addi 4,4,5760; lbz 11,0x0(9); addi 5,29,5812; addi 9,9,1; li 6,138; stw 9,0x0(30); rlwinm 11,11,2,0,29; lwz 10,0x38(31); lwz 9,0x0(31); lwzx 8,11,10; lwz 7,0x8(31); rlwinm 11,9,2,0,29; addi 9,9,1; stwx 8,11,7; stw 9,0x0(31); lwz 11,0x8(8); lha 3,0x8(11); lwz 0,0xc(11); add 3,8,3; mtspr 8,0; blrl; mr 4,30; mr 3,31; bl _s80280338_0; lwz 9,0x0(31); cmpwi 9,0; ble 0f; lwz 0,0x8(31); rlwinm 9,9,2,0,29; lis 4,-32704; addi 5,29,5812; add 9,9,0; addi 4,4,5964; lwz 11,-4(9); li 6,160; lwz 9,0x8(11); lha 3,0x10(9); lwz 0,0x14(9); add 3,11,3; mtspr 8,0; blrl; lwz 9,0x0(31); addi 9,9,-1; stw 9,0x0(31); 0:; lwz 3,-27600(13); lwz 0,0x4(3); cmpwi 0,0; beq 1f; lwz 0,0x0(31); cmpwi 0,0; bne 1f; bl _s80280338_1; 1:; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+// 0x80280338 AptActionInterpreter::_FunctionAptActionDictCallMethodPop(
+//                 AptActionInterpreter*, AptActionInterpreter::LocalContextT*) (264 B)
+//
+// Composite opcode, sibling of DictCallFuncPop (0x8028016C): reads a single-byte
+// dictionary id, pushes that string box onto working stack A0 and dispatches its
+// per-type method (vtable+0x08, slot 1, arg 138), chains the CallMethod opcode
+// handler, then — if the operand stack is non-empty — dispatches the top-of-stack
+// box's second per-type method (vtable+0x10, slot 2, arg 160) and pops it. Finally
+// releases the GC value vector if it holds values and the stack has drained. Differs
+// from DictCallFuncPop only in calling CallMethod (0x8027B7F0) instead of CallFunction.
+//
+// AptValueObj box (vptr @ 0x08): see include/types/AptValue.h. apt-opcode-handler
+// recipe: default scheduling, single-read stack top, byte cursor walk.
+struct AptGlobal { char _r[16]; };
 
-extern "C" void _s80280338_0();
-extern "C" void _s80280338_1();
-
-struct AptActionInterpreter {
-    void _FunctionAptActionDictCallMethodPop_Ap();
+struct AptValueObjHead {
+    unsigned int m_flags;    // 0x00
+    unsigned int m_field04;  // 0x04
 };
 
-void AptActionInterpreter::_FunctionAptActionDictCallMethodPop_Ap() {
+struct AptValueObj : public AptValueObjHead {
+    virtual void Dispatch (AptGlobal*, AptGlobal*, int) = 0;  // vtable+0x08 (slot 1)
+    virtual void Dispatch2(AptGlobal*, AptGlobal*, int) = 0;  // vtable+0x10 (slot 2)
+};
+
+struct AptInterpStack {
+    int           top;   // 0x00
+    int           cap;   // 0x04
+    AptValueObj** data;  // 0x08
+};
+
+struct LocalContextT {
+    unsigned char* cursor;     // 0x00
+    void*          m_field04;  // 0x04
+    void*          m_field08;  // 0x08
+};
+
+struct AptValueVector {
+    int  m_field00;  // 0x00
+    int  m_count;    // 0x04
+    void ReleaseValues();
+};
+
+extern AptGlobal gAptDCMPGlobalA;
+extern AptGlobal gAptDCMPGlobalB;
+extern AptGlobal gAptDCMPGlobalA2;
+extern AptValueVector* gAptGCVector;
+
+struct AptActionInterpreter {
+    AptInterpStack m_stackA0;          // 0x00
+    char           _pad[0x38 - 0x0C];  // 0x0C .. 0x38
+    AptValueObj**  m_stringDict;       // 0x38
+    static void _FunctionAptActionDictCallMethodPop(AptActionInterpreter* interp,
+                                                    LocalContextT* ctx);
+    static void _FunctionAptActionCallMethod(AptActionInterpreter*, LocalContextT*);
+};
+
+void AptActionInterpreter::_FunctionAptActionDictCallMethodPop(AptActionInterpreter* interp,
+                                                               LocalContextT* ctx) {
+    unsigned char* cur = ctx->cursor;
+    unsigned int idx = *cur++;
+    ctx->cursor = cur;
+
+    AptValueObj* box = interp->m_stringDict[idx];
+    int top = interp->m_stackA0.top;
+    interp->m_stackA0.data[top] = box;
+    interp->m_stackA0.top = top + 1;
+    box->Dispatch(&gAptDCMPGlobalA, &gAptDCMPGlobalB, 138);
+
+    _FunctionAptActionCallMethod(interp, ctx);
+
+    int n = interp->m_stackA0.top;
+    if (n > 0) {
+        AptValueObj* tos = interp->m_stackA0.data[n - 1];
+        tos->Dispatch2(&gAptDCMPGlobalA2, &gAptDCMPGlobalB, 160);
+        interp->m_stackA0.top = interp->m_stackA0.top - 1;
+    }
+
+    AptValueVector* vec = gAptGCVector;
+    if (vec->m_count != 0 && interp->m_stackA0.top == 0)
+        vec->ReleaseValues();
 }
