@@ -252,3 +252,32 @@ leverage (76B niche ctor). Forced stub left untouched as scaffold. Do NOT force 
 swap_adj/ASMPROC.
 
 **Logged by:** Matcher-SN-1, 2026-05-30.
+
+## 0x802D0E28 EAHeap::Compact(void) (96B)
+
+**Tried:** Natural lock-guard —
+`void* lock = m_field4fc; if(lock) LockEnter(lock); if(m_field4 & 1) DoCompact();
+if(lock) LockLeave(lock);` with the struct field at 0x4FC and the `& 1` flag at 0x04.
+Logic and call sequence are correct.
+
+**Asm shape that didn't reduce:** the DOL spills the `lock` local to its stack
+home and reloads+re-tests it after the call, using only r31 as callee-saved:
+```
+DOL:   stw  r31,20(r1)       ; only r31 saved
+       lwz  r3,0x4fc(r31)    ; lock
+       stw  r3,8(r1)         ; spill lock to stack home
+       ...DoCompact...
+       lwz  r3,8(r1)         ; reload lock, re-test
+       cmpwi r3,0 ; beq ...
+MINE:  mfcr r12 ; stmw r30,16(r1)   ; saves r30,r31 AND CR
+       ...keeps lock in r30, caches (lock!=0) in a callee-saved CR bit...
+```
+SN ProDG at -O2 keeps `lock` in callee-saved r30 and caches the `lock != 0`
+condition in CR across the `DoCompact()` call (hence the extra `mfcr`/CR save);
+the DOL instead spilled `lock` to its stack home and re-tested. Re-reading the
+field (`if (m_field4fc != 0) LockLeave(m_field4fc)`) is worse (SIZE_MISMATCH).
+Same register-allocator class as the 0x8009F570 char-param spill wall — the
+"keep-in-reg + cache-CR" vs "spill-to-stack-home + re-test" choice is not
+reachable from natural C++ source at -O2.
+
+**Logged by:** Matcher-SN-2, 2026-05-30.
