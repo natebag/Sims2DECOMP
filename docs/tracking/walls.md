@@ -495,3 +495,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Too many independent ops with equal scheduler priority → the tie is not resolvable from honest C++ at fixed flags. Same dense-leaf class as the big matrix ops. Do NOT force. (The smaller projection-matrix builders match because they have a forced dependency chain per row; Quat's products are mutually independent, so the scheduler has freedom the DOL's compiler resolved differently.)
 
 **Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
+
+## 0x80372DC4 C_MTXRotTrig (260B) — MWCC branch-to-return peephole (shared-epilogue) + switch rotation family
+
+**Tried:** Full logic matched. Canonical `switch(axis){ case 'x': case 'X': <X-rot stores>; break; case 'y': case 'Y': ...; case 'z': case 'Z': ...; }` with the standard X/Y/Z 3x4 rotation matrices (consts 1.0f/0.0f, `-sinA` via fneg). ALL three case bodies + the binary-search dispatch tree (cmpwi 120/89/88/91/122…) byte-match exactly. Tried both C++ and `// LANG: c` — identical result. Size matches (260B, no count diff).
+
+**Asm shape that didn't reduce:** 5 branch encodings only. The DOL routes every `break` and every dispatch-default to a SHARED epilogue `blr` at 0x80372ec4 (`b 0x80372ec4` / `bge 0x80372ec4`); our verify_mwcc.py GC-1.2.5n applies a branch-to-return peephole and emits the return in place (`blr` / `bgelr`) at each site instead of branching to the shared blr. Same size, same opcodes elsewhere — only `b end→blr` and `bge end→bgelr` differ.
+
+**Notes / hypotheses:** Compiler-version peephole difference — the DOL's MWCC point-release did NOT fold branch-to-return; ours does. Not controllable from honest C++ at fixed flags (the function is frameless/void, so there's no multi-instruction epilogue to block the peephole). **FAMILY WALL** — same shape predicted (not attempt-burned) for the other switch-on-axis rotation builders: C_MTXRotAxisRad's trig-dispatch tail, C_MTX44RotTrig 0x803752EC, C_MTX44RotAxisRad 0x803754DC. Do NOT force.
+
+**Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
