@@ -1,10 +1,10 @@
-// 0x800D95FC cXObject::GetAutoCenter(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-31904(13)"
+// 0x800D95FC cXObject::GetAutoCenter(void) (8B)
+// lwz r3,gAutoCenter(r13); blr  -- ignores this, returns SDA global
+extern int gAutoCenter;
 
 struct cXObject {
-    void GetAutoCenter();
+    int GetAutoCenter();
 };
 
-void cXObject::GetAutoCenter() {
-}
+int cXObject::GetAutoCenter() { return gAutoCenter; }
