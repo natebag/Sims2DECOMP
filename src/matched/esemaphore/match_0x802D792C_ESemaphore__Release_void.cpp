@@ -1,14 +1,30 @@
 // 0x802D792C ESemaphore::Release(void) (96 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; li 30,1; bl _s802D792C_0; cmpwi 3,0; bne 0f; li 30,0; 0:; lwz 9,0xc(31); lwz 0,0x8(31); cmpw 9,0; bge 1f; addi 3,31,12; bl _s802D792C_1; 1:; mr 3,30; bl _s802D792C_2; li 3,1; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+// FLAGS:
+//
+// Release (V operation), interrupt-safe. Disables interrupts (saving the prior
+// enable state, normalized to bool), signals the OS semaphore if its count is
+// still below the max, then restores the interrupt state. Always returns 1.
+// The OSSemaphore is at +0x0C (count its first word); the max is cached at +0x08.
 
-extern "C" void _s802D792C_0();
-extern "C" void _s802D792C_1();
-extern "C" void _s802D792C_2();
+struct OSThreadQueue { void* head; void* tail; };
+struct OSSemaphore  { int count; OSThreadQueue queue; };
+extern "C" int  OSDisableInterrupts();
+extern "C" void OSRestoreInterrupts(int level);
+extern "C" int  OSSignalSemaphore(OSSemaphore* sem);
 
 struct ESemaphore {
-    void Release();
+    void*       m_vt;        // 0x00
+    void*       m_handle;    // 0x04
+    int         m_maxCount;  // 0x08
+    OSSemaphore m_sem;       // 0x0C  (count @ 0x0C)
+    int Release();
 };
 
-void ESemaphore::Release() {
+int ESemaphore::Release()
+{
+    bool enabled = OSDisableInterrupts();
+    if (m_sem.count < m_maxCount)
+        OSSignalSemaphore(&m_sem);
+    OSRestoreInterrupts(enabled);
+    return 1;
 }
