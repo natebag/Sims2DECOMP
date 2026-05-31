@@ -1,20 +1,20 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 15.631624,
+    "fuzzy_match_percent": 15.709005,
     "total_code": "4145724",
-    "matched_code": "648044",
-    "matched_code_percent": 15.631624,
+    "matched_code": "651252",
+    "matched_code_percent": 15.709005,
     "total_data": "681400",
-    "matched_data": "62778",
-    "matched_data_percent": 9.213091,
+    "matched_data": "0",
+    "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9364,
-    "matched_functions_percent": 50.73139,
-    "complete_code": "648044",
-    "complete_code_percent": 15.631624,
-    "complete_data": "62778",
-    "complete_data_percent": 9.213091,
+    "matched_functions": 9388,
+    "matched_functions_percent": 50.861415,
+    "complete_code": "651252",
+    "complete_code_percent": 15.709005,
+    "complete_data": "0",
+    "complete_data_percent": 0.0,
     "total_units": 691,
     "complete_units": 67
   },
@@ -31492,18 +31492,18 @@
     {
       "name": "bstring",
       "measures": {
-        "fuzzy_match_percent": 31.883365,
+        "fuzzy_match_percent": 36.281071,
         "total_code": "16736",
-        "matched_code": "5336",
-        "matched_code_percent": 31.883365,
+        "matched_code": "6072",
+        "matched_code_percent": 36.281071,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 139,
-        "matched_functions": 90,
-        "matched_functions_percent": 64.748201,
-        "complete_code": "5336",
-        "complete_code_percent": 31.883365,
+        "matched_functions": 95,
+        "matched_functions_percent": 68.345324,
+        "complete_code": "6072",
+        "complete_code_percent": 36.281071,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -31513,7 +31513,7 @@
         {
           "name": ".text",
           "size": "16736",
-          "fuzzy_match_percent": 31.883365,
+          "fuzzy_match_percent": 36.281071,
           "metadata": {
             "virtual_address": "2148122412"
           }
@@ -31563,7 +31563,7 @@
             "virtual_address": "2148122548"
           },
           "address": "136",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString::ref_count(void) const",
@@ -32121,7 +32121,7 @@
             "virtual_address": "2148129236"
           },
           "address": "6824",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString::operator=(char *)",
@@ -32211,7 +32211,7 @@
             "virtual_address": "2148130696"
           },
           "address": "8284",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString::assign(char *, unsigned int)",
@@ -32247,7 +32247,7 @@
             "virtual_address": "2148131252"
           },
           "address": "8840",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString::insert(unsigned int, char *, unsigned int)",
@@ -32373,7 +32373,7 @@
             "virtual_address": "2148134552"
           },
           "address": "12140",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString::copy(char *, unsigned int, unsigned int) const",
@@ -32782,18 +32782,18 @@
     {
       "name": "bstring2",
       "measures": {
-        "fuzzy_match_percent": 30.301089,
+        "fuzzy_match_percent": 33.739056,
         "total_code": "18732",
-        "matched_code": "5676",
-        "matched_code_percent": 30.301089,
+        "matched_code": "6320",
+        "matched_code_percent": 33.739056,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 138,
-        "matched_functions": 90,
-        "matched_functions_percent": 65.217391,
-        "complete_code": "5676",
-        "complete_code_percent": 30.301089,
+        "matched_functions": 94,
+        "matched_functions_percent": 68.115942,
+        "complete_code": "6320",
+        "complete_code_percent": 33.739056,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -32803,7 +32803,7 @@
         {
           "name": ".text",
           "size": "18732",
-          "fuzzy_match_percent": 30.301089,
+          "fuzzy_match_percent": 33.739056,
           "metadata": {
             "virtual_address": "2148139148"
           }
@@ -32853,7 +32853,7 @@
             "virtual_address": "2148139280"
           },
           "address": "132",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString2::ref_count(void) const",
@@ -33402,7 +33402,7 @@
             "virtual_address": "2148146632"
           },
           "address": "7484",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString2::operator=(unsigned wchar_t *)",
@@ -33492,7 +33492,7 @@
             "virtual_address": "2148148200"
           },
           "address": "9052",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString2::assign(unsigned wchar_t *, unsigned int)",
@@ -33654,7 +33654,7 @@
             "virtual_address": "2148152660"
           },
           "address": "13512",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString2::copy(unsigned wchar_t *, unsigned int, unsigned int) const",
@@ -111688,18 +111688,18 @@
     {
       "name": "os.a(OSAlarm.o)",
       "measures": {
-        "fuzzy_match_percent": 0.864553,
+        "fuzzy_match_percent": 4.034582,
         "total_code": "2776",
-        "matched_code": "24",
-        "matched_code_percent": 0.864553,
+        "matched_code": "112",
+        "matched_code_percent": 4.034582,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 14,
-        "matched_functions": 2,
-        "matched_functions_percent": 14.285714,
-        "complete_code": "24",
-        "complete_code_percent": 0.864553,
+        "matched_functions": 3,
+        "matched_functions_percent": 21.428571,
+        "complete_code": "112",
+        "complete_code_percent": 4.034582,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -111709,7 +111709,7 @@
         {
           "name": ".text",
           "size": "2776",
-          "fuzzy_match_percent": 0.864553,
+          "fuzzy_match_percent": 4.034582,
           "metadata": {
             "virtual_address": "2149891208"
           }
@@ -111741,7 +111741,7 @@
             "virtual_address": "2149891680"
           },
           "address": "472",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "OSCreateAlarm",
@@ -113431,18 +113431,18 @@
     {
       "name": "os.a(OSReset.o)",
       "measures": {
-        "fuzzy_match_percent": 0.963855,
+        "fuzzy_match_percent": 4.337349,
         "total_code": "1660",
-        "matched_code": "16",
-        "matched_code_percent": 0.963855,
+        "matched_code": "72",
+        "matched_code_percent": 4.337349,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 10,
-        "matched_functions": 1,
-        "matched_functions_percent": 10.0,
-        "complete_code": "16",
-        "complete_code_percent": 0.963855,
+        "matched_functions": 2,
+        "matched_functions_percent": 20.0,
+        "complete_code": "72",
+        "complete_code_percent": 4.337349,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -113452,7 +113452,7 @@
         {
           "name": ".text",
           "size": "1660",
-          "fuzzy_match_percent": 0.963855,
+          "fuzzy_match_percent": 4.337349,
           "metadata": {
             "virtual_address": "2149911948"
           }
@@ -113475,7 +113475,7 @@
             "virtual_address": "2149912080"
           },
           "address": "132",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "__OSCallResetFunctions",
@@ -114046,18 +114046,18 @@
     {
       "name": "os.a(OSThread.o)",
       "measures": {
-        "fuzzy_match_percent": 1.876805,
+        "fuzzy_match_percent": 3.849856,
         "total_code": "8312",
-        "matched_code": "156",
-        "matched_code_percent": 1.876805,
+        "matched_code": "320",
+        "matched_code_percent": 3.849856,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 39,
-        "matched_functions": 5,
-        "matched_functions_percent": 12.820513,
-        "complete_code": "156",
-        "complete_code_percent": 1.876805,
+        "matched_functions": 8,
+        "matched_functions_percent": 20.512821,
+        "complete_code": "320",
+        "complete_code_percent": 3.849856,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -114067,7 +114067,7 @@
         {
           "name": ".text",
           "size": "8312",
-          "fuzzy_match_percent": 1.876805,
+          "fuzzy_match_percent": 3.849856,
           "metadata": {
             "virtual_address": "2149921368"
           }
@@ -114252,7 +114252,7 @@
             "virtual_address": "2149923748"
           },
           "address": "2380",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "OSCreateThread",
@@ -114414,7 +114414,7 @@
             "virtual_address": "2149929576"
           },
           "address": "8208",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "OSGetThreadSpecific",
@@ -114423,7 +114423,7 @@
             "virtual_address": "2149929624"
           },
           "address": "8256",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         }
       ],
       "metadata": {
@@ -114685,18 +114685,18 @@
     {
       "name": "os.a(OSMutex.o)",
       "measures": {
-        "fuzzy_match_percent": 0.0,
+        "fuzzy_match_percent": 3.674541,
         "total_code": "1524",
-        "matched_code": "0",
-        "matched_code_percent": 0.0,
+        "matched_code": "56",
+        "matched_code_percent": 3.674541,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 12,
-        "matched_functions": 0,
-        "matched_functions_percent": 0.0,
-        "complete_code": "0",
-        "complete_code_percent": 0.0,
+        "matched_functions": 1,
+        "matched_functions_percent": 8.333333,
+        "complete_code": "56",
+        "complete_code_percent": 3.674541,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -114706,7 +114706,7 @@
         {
           "name": ".text",
           "size": "1524",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 3.674541,
           "metadata": {
             "virtual_address": "2149932456"
           }
@@ -114720,7 +114720,7 @@
             "virtual_address": "2149932456"
           },
           "address": "0",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "OSLockMutex",
@@ -120085,18 +120085,18 @@
     {
       "name": "libaptz.a(AptActionInterpreter.cpp.obj)",
       "measures": {
-        "fuzzy_match_percent": 3.81427,
+        "fuzzy_match_percent": 5.073613,
         "total_code": "88300",
-        "matched_code": "3368",
-        "matched_code_percent": 3.81427,
+        "matched_code": "4480",
+        "matched_code_percent": 5.073613,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 191,
-        "matched_functions": 55,
-        "matched_functions_percent": 28.795812,
-        "complete_code": "3368",
-        "complete_code_percent": 3.81427,
+        "matched_functions": 60,
+        "matched_functions_percent": 31.413613,
+        "complete_code": "4480",
+        "complete_code_percent": 5.073613,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -120106,7 +120106,7 @@
         {
           "name": ".text",
           "size": "88300",
-          "fuzzy_match_percent": 3.81427,
+          "fuzzy_match_percent": 5.073613,
           "metadata": {
             "virtual_address": "2150025404"
           }
@@ -121497,7 +121497,7 @@
             "virtual_address": "2150105108"
           },
           "address": "79704",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "AptActionInterpreter::_FunctionAptActionStringDictByteGetMember(AptActionInterpreter *, AptActionInterpreter::LocalContextT *)",
@@ -121515,7 +121515,7 @@
             "virtual_address": "2150105452"
           },
           "address": "80048",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "AptActionInterpreter::_FunctionAptActionDictCallFuncSetVar(AptActionInterpreter *, AptActionInterpreter::LocalContextT *)",
@@ -121524,7 +121524,7 @@
             "virtual_address": "2150105716"
           },
           "address": "80312",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "AptActionInterpreter::_FunctionAptActionDictCallMethodPop(AptActionInterpreter *, AptActionInterpreter::LocalContextT *)",
@@ -121533,7 +121533,7 @@
             "virtual_address": "2150105912"
           },
           "address": "80508",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "AptActionInterpreter::_FunctionAptActionDictCallMethodSetVar(AptActionInterpreter *, AptActionInterpreter::LocalContextT *)",
@@ -121542,7 +121542,7 @@
             "virtual_address": "2150106176"
           },
           "address": "80772",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "AptActionInterpreter::_FunctionAptActionPushFloat(AptActionInterpreter *, AptActionInterpreter::LocalContextT *)",
@@ -136393,18 +136393,18 @@
     {
       "name": "base_ngc_release_dvd.lib(e_standard_heap.obj)",
       "measures": {
-        "fuzzy_match_percent": 19.829545,
+        "fuzzy_match_percent": 24.829545,
         "total_code": "7040",
-        "matched_code": "1396",
-        "matched_code_percent": 19.829545,
+        "matched_code": "1748",
+        "matched_code_percent": 24.829545,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 68,
-        "matched_functions": 29,
-        "matched_functions_percent": 42.647059,
-        "complete_code": "1396",
-        "complete_code_percent": 19.829545,
+        "matched_functions": 33,
+        "matched_functions_percent": 48.529412,
+        "complete_code": "1748",
+        "complete_code_percent": 24.829545,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -136414,7 +136414,7 @@
         {
           "name": ".text",
           "size": "992784",
-          "fuzzy_match_percent": 19.829545,
+          "fuzzy_match_percent": 24.829545,
           "metadata": {
             "virtual_address": "2150432312"
           }
@@ -136725,7 +136725,7 @@
             "virtual_address": "2150435420"
           },
           "address": "3108",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EAHeap::Malloc(unsigned int, int)",
@@ -136779,7 +136779,7 @@
             "virtual_address": "2150436488"
           },
           "address": "4176",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EAHeap::ValidateHeap(EA::Allocator::GeneralAllocator::HeapValidationLevel)",
@@ -136788,7 +136788,7 @@
             "virtual_address": "2150436564"
           },
           "address": "4252",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EAHeap::FindHeapForAddress(void *) const",
@@ -136797,7 +136797,7 @@
             "virtual_address": "2150436644"
           },
           "address": "4332",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EAHeap::ValidatePools(void)",
@@ -193096,20 +193096,20 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 12.460642,
+        "fuzzy_match_percent": 12.538482,
         "total_code": "3653648",
-        "matched_code": "455268",
-        "matched_code_percent": 12.460642,
+        "matched_code": "458112",
+        "matched_code_percent": 12.538482,
         "total_data": "681400",
-        "matched_data": "62778",
-        "matched_data_percent": 9.213091,
+        "matched_data": "0",
+        "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 9236,
-        "matched_functions_percent": 54.683245,
-        "complete_code": "455268",
-        "complete_code_percent": 12.460642,
-        "complete_data": "62778",
-        "complete_data_percent": 9.213091,
+        "matched_functions": 9254,
+        "matched_functions_percent": 54.789816,
+        "complete_code": "458112",
+        "complete_code_percent": 12.538482,
+        "complete_data": "0",
+        "complete_data_percent": 0.0,
         "total_units": 593,
         "complete_units": 66
       }
@@ -193118,18 +193118,18 @@
       "id": "sdk",
       "name": "DolphinSDK (Metrowerks, unmatchable)",
       "measures": {
-        "fuzzy_match_percent": 39.176062,
+        "fuzzy_match_percent": 39.250035,
         "total_code": "492076",
-        "matched_code": "192776",
-        "matched_code_percent": 39.176062,
+        "matched_code": "193140",
+        "matched_code_percent": 39.250035,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 1568,
-        "matched_functions": 128,
-        "matched_functions_percent": 8.163265,
-        "complete_code": "192776",
-        "complete_code_percent": 39.176062,
+        "matched_functions": 134,
+        "matched_functions_percent": 8.545918,
+        "complete_code": "193140",
+        "complete_code_percent": 39.250035,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 98,
