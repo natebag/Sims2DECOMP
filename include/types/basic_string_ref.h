@@ -58,16 +58,24 @@ struct basic_string_ref {
     /* 0x08 */ s32   m_capacity;  /* allocated capacity; delete_ptr frees iff !=0 */
     /* 0x0C */ s32   m_ref_count; /* shared-rep refcount; ctor(void) increments   */
 
-    /* Allocation interface (external — the 16B rep stores NO allocator; it is
-     * obtained per-call):
-     *   void* GetAllocator();                  // returns the static char allocator
-     *   static char* allocate(unsigned n);     // n bytes (char_traits)
-     *   static void  Free(void* alloc, char*); // free via allocator
+    /* Allocation interface (external — the 16B rep stores NO allocator; the
+     * global heap is fetched per-call). Tool-resolved call targets
+     * (tools/disasm_digest.sh on 0x8009C624 / 0x8009BF5C / 0x8009C71C):
+     *   allocate : MainHeap()             [0x802CFF00, returns EAHeap*]
+     *              -> EAHeap::Malloc(n,0) [0x802D0AA4]   (n bytes; see EAHeap.h)
+     *   free     : MainHeap() -> EAHeap::Free(ptr) [0x802D0D78]
+     *   copy     : memmove                [0x802434F8]
+     *   data     : BString::data() const  [0x8009C020]
+     *   eos      : basic_string_ref::eos()[0x8009C608] -> 0
+     *   overflow : throwlength()          [0x8009BFAC]
      * Copy-helper (0x8009C71C) builds from a source string:
      *   basic_string_ref(BString& src, unsigned offset, unsigned count):
      *     m_length=count; m_capacity=(count? count+1 : count);
-     *     if(count){ m_data=alloc(count+1); memcpy(m_data, src.data()+offset,
-     *                count); m_data[count]=eos(); } m_ref_count=1;
+     *     if(count){ m_data = EAHeap::Malloc(MainHeap(), count+1);
+     *                memmove(m_data, src.data()+offset, count);
+     *                m_data[count]=eos(); } m_ref_count=1;
+     * delete_ptr(): if(m_capacity){ EAHeap::Free(MainHeap(), m_data);
+     *               m_capacity=0; m_data=0; }
      */
 };
 /* sizeof(basic_string_ref) == 16. */
