@@ -1,10 +1,15 @@
-// 0x80095E28 StateMachine::GetCurStateStage(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,0x3c(3); lwz 3,0xc(9)"
-
-struct StateMachine {
-    void GetCurStateStage();
+// 0x80095E28 StateMachine::GetCurStateStage(void) (12B)
+// lwz r9,0x3c(3); lwz r3,0xc(9); blr  -- this->m_curState->m_stage
+struct SMState {
+    char pad[0xC];
+    int m_stage;        // 0xC
 };
 
-void StateMachine::GetCurStateStage() {
-}
+struct StateMachine {
+    char pad[0x3C];
+    SMState* m_curState;    // 0x3C
+    int GetCurStateStage();
+};
+
+int StateMachine::GetCurStateStage() { return m_curState->m_stage; }
