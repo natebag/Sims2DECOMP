@@ -1,10 +1,14 @@
 // 0x800073B8 (40 bytes) AptAuxPCEorGL_VertexMatrixId(void)
-// ASMPROC_replace_insn: match="ori 3,3,59312" replacement="addi 3,3,59312"
+// Loads the address of a static EMat4 and resets it to identity.
+// Referencing the global by symbol (not an integer-literal cast) makes the
+// compiler emit the lis@ha / addi@l relocation pair instead of lis / ori.
 struct EMat4 {
+    float m[4][4];
     void Id();
 };
 
+extern EMat4 s_vertexMatrix;
+
 void AptAuxPCEorGL_VertexMatrixId() {
-    EMat4* m = (EMat4*)0x8047E7B0;
-    m->Id();
+    s_vertexMatrix.Id();
 }
