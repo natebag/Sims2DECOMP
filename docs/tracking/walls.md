@@ -485,3 +485,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Pure prologue instruction-grouping + register-allocation difference under 5-callee-saved-FPR pressure — not controllable from honest C++. Same root class as C_MTX44RotRad 0x8037520C (callee-saved frame scheduling). The lower-pressure sibling C_MTXPerspective (3 saved FPRs) matched first-try; this one just crosses the pressure threshold where our MWCC's prologue scheduler diverges from the DOL's. Do NOT force.
 
 **Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
+
+## 0x80373430 C_MTXQuat (240B) — dense-leaf scheduler tie
+
+**Tried:** Full logic matched. Canonical quaternion→3x4: `s = 2.0f/(x²+y²+z²+w²)` (no s!=0 guard — DOL has no branch), then xs/ys/zs, the 12 products (wx,wy,wz,xx,xy,xz,yy,yz,zz), then the 9 rotation entries `m[0][0]=1-(yy+zz)`, `m[0][1]=xy-wz`, etc. The sum/division/xs/ys/zs prefix (first ~22 instrs) matches byte-perfect; all operand orders correct.
+
+**Asm shape that didn't reduce:** the dense tail (12 independent fmuls + 9 fadds/fsubs + 12 stfs) is a list-scheduler tie. The DOL interleaves the diagonal-square products (computed z,y,x order), the cross products, and the stores in one specific order; our verify_mwcc.py GC-1.2.5n picks a different valid interleaving (~24 same-opcode reordered offsets, no instruction-count diff). Tried two product-grouping source orders (w-first, diagonal-first) — neither reproduces the DOL interleave; the diagonal-first reorder also broke the previously-matching prefix.
+
+**Notes / hypotheses:** Too many independent ops with equal scheduler priority → the tie is not resolvable from honest C++ at fixed flags. Same dense-leaf class as the big matrix ops. Do NOT force. (The smaller projection-matrix builders match because they have a forced dependency chain per row; Quat's products are mutually independent, so the scheduler has freedom the DOL's compiler resolved differently.)
+
+**Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
