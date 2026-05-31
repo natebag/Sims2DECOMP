@@ -265,3 +265,29 @@ temp consuming r10 first), a future GCC reg-hint, or accept as a coloring wall. 
 force with force_reg/gpr_relabel/ASMPROC.
 
 **Logged by:** Matcher-SN-1, 2026-05-30.
+
+## 0x802B4358 AptValueWithHash::AptValueWithHash(int, int) (76B)
+
+**Tried:** Natural ctor delegation — `AptValue_ctor(this,type); *(char**)(this+8)=vtable;
+AptNativeHash_ctor((char*)this+12, hashSize);` with `extern char vtable[]` + extern
+sub-ctors. With `-fno-schedule-insns`, 74 of 76 bytes match (prologue, both bl calls,
+the saved-reg dance, vtable store, epilogue all byte-exact).
+
+**Asm shape that didn't reduce:** the 2nd ctor's argument-setup ORDER (one adjacent
+swap):
+```
+DOL:   lis r9 ; mr r4,r29 (arg2=hashSize) ; addi r9,lo ; addi r3,r30,12 (arg1=this+12) ; stw vtable
+MINE:  lis r9 ; addi r3,r30,12 (arg1) ; addi r9,lo ; mr r4,r29 (arg2) ; stw vtable
+```
+DOL sets arg2 (r4) before arg1 (r3); GCC 2.95 sets arg1 before arg2 regardless of
+source. Exactly the transform the now-banned `swap_adj` mutator performed (the forced
+stub used 3 of them: la/mr, addi/mr, addi/la). Tried: default vs -fno-schedule-insns
+vs both -fno-schedule-insns/insns2; vtable store before/after the call; this+12 into a
+local; hashSize cast. All keep arg1-before-arg2.
+
+**Notes:** Adjacent arg-setup-order scheduling wall, same class as the BString2::copy
+`add`-canonicalization and StringDictByteGetVar register-coloring walls above. Low
+leverage (76B niche ctor). Forced stub left untouched as scaffold. Do NOT force with
+swap_adj/ASMPROC.
+
+**Logged by:** Matcher-SN-1, 2026-05-30.
