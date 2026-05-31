@@ -411,3 +411,23 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Copy-propagation wall — the original 2005 SN ProDG build missed propagating `result`→`r3` (a known GCC-2.x quirk with early-return/merge control flow); our verify SN ProDG performs the propagation. NOT reachable by blocking copy-prop from honest C++ (`goto` / `register` both fail). Calloc + MallocAligned are exact byte-siblings (same `r0`-threading) — one fix unlocks all 3. Logic fully solved. Future pass: try a different SN ProDG point-version, or revisit if the verify compiler changes. WIPs in `src/wip/eaheap_near/`.
 
 **Logged by:** Matcher-SN-4, 2026-05-31.
+
+## 0x80364ED0 ERenderSurface::SetSize(int,int,int) (24B)
+
+**Tried:** Full semantics matched: `m_p(0x18)=p; m_w(0x0)=w; m_h(0x4)=h; return 1`. Plain member stores and `volatile int*` stores (volatile to pin store order), flag matrix default / -fno-schedule-insns / insns2.
+
+**Asm shape that didn't reduce:** DOL aliases `this` to r9 and materializes the return value mid-body: `mr r9,r3; stw r6,24(r9); li r3,1; stw r4,0(r9); stw r5,4(r9); blr` (24B). The `li r3,1` lands BETWEEN the first and second store, which forces `this` out of r3 into r9. GCC 2.95/SN either (a) keeps `this` in r3 and emits `li r3,1` LAST (no mr, 20B) under volatile/-fno-schedule-insns, or (b) reorders the stores (h before p) under default scheduling. No flag/source combo yields the mr + source store-order + mid-body li together. Forced stub used this_alias_rN + swap_adj.
+
+**Notes / hypotheses:** Return-value-scheduling + this-alias wall. The DOL build scheduled the return-constant load early; GCC won't without the banned this_alias/swap_adj. Same family as the op_index sret-mr case but there default scheduling produced the mr naturally; here it costs the store order.
+
+**Logged by:** Matcher-SN-5, 2026-05-31.
+
+## 0x80317A28 ERFont::SetColor(float) (24B)
+
+**Tried:** Full semantics matched: `m_color[0..3] = c` stored in DOL order [0],[3],[1],[2]. Direct array stores and `float* base = m_color;` rebase-pointer form, flag matrix.
+
+**Asm shape that didn't reduce:** DOL stores color[0] via the full this+88 displacement, THEN rebases `addi r3,r3,88` and stores the other three at small displacements: `stfs f1,88(3); addi r3,r3,88; stfs f1,12(3); stfs f1,4(3); stfs f1,8(3)` (24B). GCC 2.95/SN stores all four via full displacements off r3 (`stfs 88,100,92,96`) with no rebase → 20B, SIZE_MISMATCH. Forced stub injected the addi-rebase via swap_adj + force_reg.
+
+**Notes / hypotheses:** Address-rebase scheduling wall — DOL emitted an `addi` base-adjust to shrink displacements; GCC keeps the wide displacements. Not forceable from honest C++ (a `float* base = m_color;` local rebases ALL four stores, not three-after-one).
+
+**Logged by:** Matcher-SN-5, 2026-05-31.
