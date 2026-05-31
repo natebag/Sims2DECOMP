@@ -1,5 +1,5 @@
-// 0x801F65A4 INVTarget::GetOnMsgInvExists(char *) (36B)
-// ASMPROC_swap_adj: a=sth b=stw which=first
+// 0x801F65A4 INVTarget::GetOnMsgInvExists(char *) (36 B)
+// FLAGS: -fno-schedule-insns
 
 extern char invEYEexistsEventData[];
 
@@ -11,8 +11,8 @@ public:
 void INVTarget::GetOnMsgInvExists(char* out) {
     int* base = (int*)invEYEexistsEventData;
     int field0 = base[0];
+    char field6 = *((char*)base + 6);
     unsigned short field4 = *(unsigned short*)((char*)base + 4);
-    char field6 = *(char*)((char*)base + 6);
     *(char*)(out + 6) = field6;
     *(int*)(out + 0) = field0;
     *(short*)(out + 4) = (short)field4;
