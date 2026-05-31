@@ -1,10 +1,12 @@
-// 0x80320860 ERShader::IsMultiShader(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x58(3); rlwinm 3,3,31,31,31"
-
+// 0x80320860 ERShader::IsMultiShader(void) (12B)
+// lwz r3,0x58(3); rlwinm r3,r3,31,31,31; blr  -- (m_flags >> 1) & 1
 struct ERShader {
-    void IsMultiShader();
+    char pad[0x58];
+    unsigned m_flags;       // 0x58
+    int IsMultiShader();
 };
 
-void ERShader::IsMultiShader() {
+int ERShader::IsMultiShader() {
+    return (m_flags >> 1) & 1;
 }
