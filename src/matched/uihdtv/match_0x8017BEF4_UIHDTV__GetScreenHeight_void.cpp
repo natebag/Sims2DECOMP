@@ -1,10 +1,15 @@
 // 0x8017BEF4 UIHDTV::GetScreenHeight(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,-26392(13); lwz 3,0x1c(9)"
 
 struct UIHDTV {
-    void GetScreenHeight();
+    char pad_0000[0x18];
+    int m_screenWidth;
+    int m_screenHeight;
+
+    static int GetScreenHeight();
 };
 
-void UIHDTV::GetScreenHeight() {
+extern UIHDTV* g_pUIHDTV;
+
+int UIHDTV::GetScreenHeight() {
+    return g_pUIHDTV->m_screenHeight;
 }

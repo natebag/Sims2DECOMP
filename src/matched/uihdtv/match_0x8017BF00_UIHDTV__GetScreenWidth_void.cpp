@@ -1,10 +1,15 @@
 // 0x8017BF00 UIHDTV::GetScreenWidth(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,-26392(13); lwz 3,0x18(9)"
 
 struct UIHDTV {
-    void GetScreenWidth();
+    char pad_0000[0x18];
+    int m_screenWidth;
+    int m_screenHeight;
+
+    static int GetScreenWidth();
 };
 
-void UIHDTV::GetScreenWidth() {
+extern UIHDTV* g_pUIHDTV;
+
+int UIHDTV::GetScreenWidth() {
+    return g_pUIHDTV->m_screenWidth;
 }
