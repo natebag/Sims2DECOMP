@@ -1,10 +1,10 @@
-// 0x800D960C cXObject::GetAutoReset(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-31900(13)"
+// 0x800D960C cXObject::GetAutoReset(void) (8B)
+// lwz r3,gAutoReset(r13); blr  -- ignores this, returns SDA global
+extern int gAutoReset;
 
 struct cXObject {
-    void GetAutoReset();
+    int GetAutoReset();
 };
 
-void cXObject::GetAutoReset() {
-}
+int cXObject::GetAutoReset() { return gAutoReset; }
