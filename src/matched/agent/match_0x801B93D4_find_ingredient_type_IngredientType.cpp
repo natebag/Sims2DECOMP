@@ -1,4 +1,27 @@
-// 0x801B93D4 find_ingredient_type(IngredientType (72 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="li 9,0; mr 11,3; cmplw 9,4; bge 1f; lwz 3,0x0(11); cmpwi 3,0; beq 1f; 0:; lha 0,0x0(3); cmpw 0,5; beqlr; addi 9,9,1; cmplw 9,4; bge 1f; lwzu 3,0x4(11); cmpwi 3,0; bne 0b; 1:; li 3,0"
-extern "C" int f_801B93D4() {}
+// 0x801B93D4 find_ingredient_type(IngredientType**, unsigned, int) (72 B)
+
+struct IngredientType {
+    short m_id;
+};
+
+IngredientType* find_ingredient_type(IngredientType** list, unsigned count, int id) {
+    unsigned i = 0;
+    IngredientType** p = list;
+    IngredientType* item;
+    if (i >= count) {
+        goto ret0;
+    }
+    item = *p;
+    while (item != 0) {
+        if (item->m_id == id) {
+            return item;
+        }
+        i++;
+        if (i >= count) {
+            goto ret0;
+        }
+        item = *++p;
+    }
+ret0:
+    return 0;
+}
