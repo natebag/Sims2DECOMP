@@ -23,7 +23,7 @@
  *
  * Alloc/Free wrap the real work in a lock:
  *   void* ProtectedAllocPool::Alloc() {
- *       m_mutex.Lock();                  // vcall, ESyncObject vtable slot 2
+ *       m_mutex.Lock(-1);                // vcall, ESyncObject slot 2 (timeout -1)
  *       void* p = FastAllocPool::Alloc();// direct bl 0x802D7374
  *       m_mutex.Unlock();                // vcall, ESyncObject vtable slot 3
  *       return p;
@@ -70,8 +70,11 @@ struct ESemaphore {
  * ========================================================================== */
 struct ESyncObject {
     /* 0x00 */ void* m_vtable;           /* SN-style vtable at +0x00 here       */
-    virtual ~ESyncObject();             /* slots 0,1 (GCC2 dtor pair) — inferred */
-    virtual void Lock();                /* slot 2  (vtable+0x10) — EVIDENCED    */
+    virtual ~ESyncObject();             /* slots 0,1 (GCC2 dtor pair) — CONFIRMED
+                                           correct by SN-4 on EAHeap::Free        */
+    virtual void Lock(int timeout);     /* slot 2 (vtable+0x10) — EVIDENCED.
+                                           Called with timeout = -1 (li r4,-1
+                                           before the slot-2 vcall in Alloc/Free).*/
     virtual void Unlock();              /* slot 3  (vtable+0x18) — EVIDENCED    */
 };
 
