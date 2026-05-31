@@ -1,10 +1,32 @@
 // 0x80039200 EyeToyClient::GetRepTexture(int) (32 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="mulli 3,3,12; lis 9,-32702; addi 9,9,15808; lwzx 11,3,9; lwz 10,0x4(11); lwz 9,0x20(10); lwz 3,0x14(9)"
 
-struct EyeToyClient {
-    void GetRepTexture();
+struct RepShader {
+    char pad_0000[0x14];
+    int m_textureId;
 };
 
-void EyeToyClient::GetRepTexture() {
+struct RepNode2 {
+    char pad_0000[0x20];
+    RepShader* m_shader;
+};
+
+struct RepNode1 {
+    char pad_0000[0x4];
+    RepNode2* m_node2;
+};
+
+struct RepEntry {
+    RepNode1* m_node1;
+    char pad_0004[0x8];
+};
+
+extern RepEntry g_eyeToyReps[];
+
+struct EyeToyClient {
+    static int GetRepTexture(int index);
+};
+
+int EyeToyClient::GetRepTexture(int index) {
+    RepNode1* n1 = *(RepNode1**)(index * 12 + (char*)g_eyeToyReps);
+    return n1->m_node2->m_shader->m_textureId;
 }
