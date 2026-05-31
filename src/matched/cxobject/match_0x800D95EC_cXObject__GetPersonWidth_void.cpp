@@ -1,10 +1,10 @@
-// 0x800D95EC cXObject::GetPersonWidth(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-31916(13)"
+// 0x800D95EC cXObject::GetPersonWidth(void) (8B)
+// lwz r3,gPersonWidth(r13); blr  -- ignores this, returns SDA global
+extern int gPersonWidth;
 
 struct cXObject {
-    void GetPersonWidth();
+    int GetPersonWidth();
 };
 
-void cXObject::GetPersonWidth() {
-}
+int cXObject::GetPersonWidth() { return gPersonWidth; }
