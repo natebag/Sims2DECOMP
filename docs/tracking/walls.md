@@ -475,3 +475,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Pure list-scheduler tie on incoming-stack-FP-argument placement — not controllable from honest C++ at our fixed flags. The leaf siblings with ≤8 float args (Ortho/Frustum/Perspective/LightOrtho) all matched first-try; only the >8-arg Light variants spill to the stack and hit this. Predicted same-class wall (not attempt-burned): C_MTXLightPerspective 0x80373954 (204B, also takes scaleS/scaleT/transS/transT → stack spill). Do NOT force (only post-compile reorder could fix the schedule, which is banned).
 
 **Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
+
+## 0x80373954 C_MTXLightPerspective (204B) — MWCC prologue save/move grouping under high FPR pressure
+
+**Tried:** Full logic matched. Texture-projection perspective: `angle=fovY*0.5; angle*=PI/180; cot=1/tanf(angle); m[0][0]=scaleS*(cot/aspect); m[0][2]=-transS; m[1][1]=cot*scaleT; m[1][2]=-transT; m[2][2]=-1`. All operand orders + the tanf bl + `mr r31,r3` correct (same recipe landed C_MTXPerspective 0x803741D0 clean). 6 float args (no stack spill).
+
+**Asm shape that didn't reduce:** five values (aspect/scaleS/scaleT/transS/transT) must survive the `bl tanf`, so MWCC saves f27–f31. The DOL groups the prologue as *all 5 stfd saves + stw r31, then all 6 fmr/mr param-moves*; our verify_mwcc.py GC-1.2.5n interleaves stfd with fmr, which cascades the deg-to-rad constant into a different FPR (DOL `fmuls f1,f2,f1` vs ours `fmuls f1,f7,f1`) and shifts ~10 prologue offsets.
+
+**Notes / hypotheses:** Pure prologue instruction-grouping + register-allocation difference under 5-callee-saved-FPR pressure — not controllable from honest C++. Same root class as C_MTX44RotRad 0x8037520C (callee-saved frame scheduling). The lower-pressure sibling C_MTXPerspective (3 saved FPRs) matched first-try; this one just crosses the pressure threshold where our MWCC's prologue scheduler diverges from the DOL's. Do NOT force.
+
+**Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
