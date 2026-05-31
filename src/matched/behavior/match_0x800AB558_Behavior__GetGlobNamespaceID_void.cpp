@@ -1,10 +1,10 @@
-// 0x800AB558 Behavior::GetGlobNamespaceID(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-31848(13)"
+// 0x800AB558 Behavior::GetGlobNamespaceID(void) (8B)
+// lwz r3,gGlobNamespaceID(r13); blr  -- ignores this, returns SDA global
+extern int gGlobNamespaceID;
 
 struct Behavior {
-    void GetGlobNamespaceID();
+    int GetGlobNamespaceID();
 };
 
-void Behavior::GetGlobNamespaceID() {
-}
+int Behavior::GetGlobNamespaceID() { return gGlobNamespaceID; }
