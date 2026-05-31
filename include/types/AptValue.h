@@ -52,6 +52,16 @@
  * the matched method; offsets here are for documentation. */
 struct AptValueVtable; /* per-type dispatch table (Integer/Boolean/String/...) */
 
+/* MODELING NOTE (validated — Matcher-SN-1, PushStringDictWord clean --strict
+ * match @ commit 121f8f210): to reproduce SN's vtable+0x08 adjustor dispatch in
+ * clean C++, declare AptValueObj as a polymorphic class with exactly TWO
+ * non-virtual head words (m_flags, m_field04) BEFORE the first virtual method.
+ * SN then places the vptr at +0x08 and makes the first virtual = slot 1, so a
+ * call through it emits the native lha(adjustor s16 @vt+0x08)/lwz(fnptr @vt+0x0C)
+ * /add/blrl sequence with no ASMPROC. Generalizes to any boxed/MI value type:
+ * pad the head with N non-virtual words so the vptr lands at its observed
+ * offset, and the desired virtual lands on the observed slot. */
+
 /* ============================================================================
  * AptValueObj — the 16-byte runtime value-box (APT's "boxed value").
  *
