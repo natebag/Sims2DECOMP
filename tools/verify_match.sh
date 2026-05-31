@@ -171,6 +171,16 @@ if grep -qE '^[[:space:]]*//[[:space:]]*ASMPROC_[A-Za-z][A-Za-z0-9_]*' "$SRC" 2>
     exit $?
 fi
 
+# Step 0.7: DolphinSDK files use their original Metrowerks compiler.
+# Keep this behind the source-level cheat gates above so --strict remains the
+# single sanctioned entry point for both compilers.
+if grep -qE '^[[:space:]]*//[[:space:]]*COMPILER:[[:space:]]*mwcc[[:space:]]*$' "$SRC" 2>/dev/null; then
+    echo "Detected // COMPILER: mwcc — routing through tools/verify_mwcc.py"
+    "$PYTHON" tools/verify_mwcc.py "$SRC" "$ADDR" "$SIZE" \
+        --outdir "$OUTDIR/mwcc_${BASENAME}"
+    exit $?
+fi
+
 # Step 1: Compile
 if [ -f "$SN_CC1PLUS" ]; then
     # Use SN Systems compiler (the real one)
