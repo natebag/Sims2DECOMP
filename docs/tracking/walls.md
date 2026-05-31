@@ -465,3 +465,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Both are compiler-internal choices (register-copy form + redundant-spill-reload), not source-controllable — the DOL was built with a slightly less-aggressive MWCC point release than verify_mwcc.py's GC-1.2.5n. Same root cause as the parked FRAME C_MTXConcat near-miss. The two RotRad funcs are structurally identical, so both wall together; do NOT chase (only post-compile asm surgery could force the mr/redundant-fmr, which is banned).
 
 **Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
+
+## 0x803738C0 C_MTXLightFrustum (148B) — MWCC stack-param-load scheduler tie
+
+**Tried:** Full logic matched (all 19 fp ops + 16 stores byte-correct in isolation). Texture-projection frustum: `m[0][0]=scaleS*(2*n*tmp); m[0][2]=scaleS*((r+l)*tmp)-transS; m[1][1]=scaleT*(2*n*tmp); m[1][2]=scaleT*((t+b)*tmp)-transT; m[2][2]=-1` with `tmp=1/(r-l)` then `1/(t-b)`. Operand orders all derived from the DOL and confirmed correct (the same recipe landed C_MTXLightOrtho 0x80373A20 clean).
+
+**Asm shape that didn't reduce:** transT is the 9th float arg → passed on the stack (`lfs f12,56(r1)`). The DOL hoists that stack-param load to slot 2 (immediately after `stwu`); our verify_mwcc.py GC-1.2.5n schedules it ~6 instructions later, which cascades a global ~1-slot shift across the whole body (20 mismatched offsets, all same-opcode reorderings — no instruction-count diff). Tried forcing the early load via a `float tt = transT;` local at function top → MWCC elided the copy, no change.
+
+**Notes / hypotheses:** Pure list-scheduler tie on incoming-stack-FP-argument placement — not controllable from honest C++ at our fixed flags. The leaf siblings with ≤8 float args (Ortho/Frustum/Perspective/LightOrtho) all matched first-try; only the >8-arg Light variants spill to the stack and hit this. Predicted same-class wall (not attempt-burned): C_MTXLightPerspective 0x80373954 (204B, also takes scaleS/scaleT/transS/transT → stack spill). Do NOT force (only post-compile reorder could fix the schedule, which is banned).
+
+**Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
