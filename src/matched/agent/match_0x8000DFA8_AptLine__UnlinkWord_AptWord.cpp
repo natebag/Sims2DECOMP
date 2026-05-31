@@ -1,4 +1,36 @@
-// 0x8000DFA8 AptLine::UnlinkWord(AptWord (80 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="mr 11,3; li 9,0; lwz 3,0x4(11); 0:; cmpwi 3,0; beqlr; cmpw 3,4; beq 1f; mr 9,3; lwz 3,0x0(3); b 0b; 1:; cmpwi 3,0; beqlr; cmpwi 9,0; beq 2f; lwz 0,0x0(3); stw 0,0x0(9); blr; 2:; lwz 0,0x0(3); stw 0,0x4(11)"
-extern "C" void f_8000DFA8() {}
+// 0x8000DFA8 AptLine::UnlinkWord(AptWord*) (80 B)
+// Removes `word` from the line's singly-linked word list and returns it.
+//   AptLine::m_head  @ 0x04   (list head)
+//   AptWord::m_next  @ 0x00   (next link)
+// Walk the list tracking prev; if `word` is not present return 0, otherwise
+// splice it out (through prev->m_next, or through m_head when it is the head)
+// and return it. The function returns the unlinked word (cur), which is why
+// the compiler keeps cur in r3 and parks `this` in r11 (mr r11,r3).
+struct AptWord {
+    AptWord* m_next;  // 0x00
+};
+
+struct AptLine {
+    void* _vtable;    // 0x00
+    AptWord* m_head;  // 0x04
+    AptWord* UnlinkWord(AptWord* word);
+};
+
+AptWord* AptLine::UnlinkWord(AptWord* word) {
+    AptWord* prev = 0;
+    AptWord* cur = m_head;
+    while (cur != 0) {
+        if (cur == word)
+            break;
+        prev = cur;
+        cur = cur->m_next;
+    }
+    if (cur == 0)
+        return cur;
+    if (prev != 0)
+        prev->m_next = cur->m_next;
+    else
+        m_head = cur->m_next;
+    return cur;
+}
