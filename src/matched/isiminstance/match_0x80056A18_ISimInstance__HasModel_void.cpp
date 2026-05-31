@@ -1,10 +1,12 @@
 // 0x80056A18 ISimInstance::HasModel(void) (24 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x120(3); li 3,1; cmplwi 0,0; bnelr; li 3,0"
 
 struct ISimInstance {
-    void HasModel();
+    char pad_0000[0x120];
+    void* m_model;
+
+    bool HasModel();
 };
 
-void ISimInstance::HasModel() {
+bool ISimInstance::HasModel() {
+    return m_model != 0;
 }
