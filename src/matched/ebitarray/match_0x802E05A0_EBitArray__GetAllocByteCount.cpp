@@ -1,11 +1,12 @@
 // FLAGS: -fno-schedule-insns
-// ASMPROC_force_reg_at_pos: match="lwz 3,4(3)" pos=0 from_reg=3 to_reg=9
-// ASMPROC_force_reg: match="addi 3,3,31" from_reg=3 to_reg=9
-// ASMPROC_force_reg_at_pos: match="rlwinm 3,3,29,3,29" pos=1 from_reg=3 to_reg=9
-
+// 0x802E05A0 EBitArray::GetAllocByteCount (36B)
+// if m_data==0 return 0; else ((m_numBits+31)>>5)<<2  (word count * 4 bytes)
 struct EBitArray {
-    void GetAllocByteCount();
+    void* m_data;           // 0x0
+    unsigned m_numBits;     // 0x4
+    unsigned GetAllocByteCount();
 };
 
-void EBitArray::GetAllocByteCount() {
+unsigned EBitArray::GetAllocByteCount() {
+    return m_data ? (((m_numBits + 31) >> 5) << 2) : 0;
 }
