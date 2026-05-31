@@ -371,3 +371,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Register-coloring wall. The ternary-intermediate anticoloring technique ([[feedback_ternary_intermediate_anticoloring]]) does not structurally apply — there is no conditional intermediate to leverage, and adding a live value to perturb the allocator would add instructions (breaking the byte size). No natural C++ shape reliably forces GCC 2.95's starting volatile register. Second-opinioned with Wall-Analyst (concurred: legitimate volatile-register-choice wall). Likely representative of the broader cXObjectImpl/ObjectModuleImpl MI-vcall coloring-wall class.
 
 **Logged by:** Matcher-SN-5, 2026-05-31.
+
+## 0x80095E0C StateMachine::GetCurStateId (28B)
+
+**Tried:** Natural getter — `if (m_curState) return m_curState->GetId(); return -1;` and equivalents. Logic is correct.
+
+**Asm shape that didn't reduce:** GCC static-branch-prediction layout mismatch. DOL emits a `bne`-skip form (falls through to the non-null path, branches over the `li -1` return); SN ProDG emits `beq`-to-end (falls through to the `li -1` null path, branches to the non-null body). Tried `if(!m_curState) return -1; return m_curState->GetId();` and `goto` forms — GCC 2.95 consistently picks the `beq`-to-end layout regardless of source polarity.
+
+**Notes / hypotheses:** Static branch-prediction layout wall — GCC 2.95 prefers the null/false branch as fall-through for pointer-null guards. Not reachable from honest C++ without ASMPROC. Left as inject-forced stub (minor, 28B). If a future technique for controlling fall-through layout emerges (beyond `goto`), retry here.
+
+**Logged by:** Matcher-SN-5, 2026-05-31.
