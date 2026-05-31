@@ -1,10 +1,11 @@
-// 0x800B4CB4 CTilePt::GetY(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lbz 3,0x1(3); extsb 3,3"
-
+// 0x800B4CB4 CTilePt::GetY(void) (12B)
+// lbz r3,1(r3); extsb r3,r3; blr  -- return signed char m_y
 struct CTilePt {
-    void GetY();
+    signed char m_x;        // 0x0
+    signed char m_y;        // 0x1
+    signed char m_level;    // 0x2
+    int GetY();
 };
 
-void CTilePt::GetY() {
-}
+int CTilePt::GetY() { return m_y; }
