@@ -1,10 +1,14 @@
-// 0x8031B408 ERModel::GetDummy(int) (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="mulli 4,4,88; lwz 3,0x11c(3); add 3,3,4"
+// 0x8031B408 ERModel::GetDummy(int) (16B)
+// mulli r4,r4,88; lwz r3,0x11c(3); add r3,r3,r4; blr  -- &m_dummies[i], stride 88
+struct ERDummy { char data[88]; };
 
 struct ERModel {
-    void GetDummy();
+    char pad[0x11C];
+    ERDummy* m_dummies;     // 0x11C
+    ERDummy* GetDummy(int i);
 };
 
-void ERModel::GetDummy() {
+ERDummy* ERModel::GetDummy(int i) {
+    return &m_dummies[i];
 }
