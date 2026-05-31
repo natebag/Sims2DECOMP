@@ -1,10 +1,10 @@
-// 0x80300AF0 EWindow::GetCurrent3DWindow(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-26704(13)"
+// 0x80300AF0 EWindow::GetCurrent3DWindow(void) (8B)
+// lwz r3,gCurrent3DWindow(r13); blr  -- returns SDA global
+extern int gCurrent3DWindow;
 
 struct EWindow {
-    void GetCurrent3DWindow();
+    int GetCurrent3DWindow();
 };
 
-void EWindow::GetCurrent3DWindow() {
-}
+int EWindow::GetCurrent3DWindow() { return gCurrent3DWindow; }
