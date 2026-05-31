@@ -206,7 +206,7 @@ for f in $FILES; do
         continue
     fi
 
-    VERIFY_OUT=$(bash tools/verify_match.sh "$f" "$ADDR" "$SIZE" 2>&1)
+    VERIFY_OUT=$(bash tools/verify_match.sh --strict "$f" "$ADDR" "$SIZE" 2>&1)
     VERIFY_RC=$?
 
     # Success
@@ -269,32 +269,7 @@ if [ $BLOCKED -gt 0 ]; then
     exit 1
 fi
 
-# ---------------------------------------------------------------------------
-# Regenerate build/G4ZE69/report.json so decomp.dev sees fresh progress
-# whenever src/matched/ files change. Skips silently if generate_report.py
-# isn't available, the map file is missing (e.g. CI without /orig), or no
-# python is on PATH.
-# ---------------------------------------------------------------------------
-if [ $CHECKED -gt 0 ] && [ -f "tools/generate_report.py" ]; then
-    REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo .)"
-    MAP_PATH="$REPO_ROOT/orig/G4ZE69/files/u2_ngc_release_dvd.map"
-    if [ ! -f "$MAP_PATH" ]; then
-        MAP_PATH="$REPO_ROOT/extracted/files/u2_ngc_release_dvd.map"
-    fi
-    if [ -f "$MAP_PATH" ]; then
-        PY=""
-        if command -v python >/dev/null 2>&1; then PY="python"
-        elif command -v python3 >/dev/null 2>&1; then PY="python3"
-        fi
-        if [ -n "$PY" ]; then
-            if $PY "$REPO_ROOT/tools/generate_report.py" >/dev/null 2>&1; then
-                git add "$REPO_ROOT/build/G4ZE69/report.json" >/dev/null 2>&1 || true
-                echo -e "${GREEN}[pre-commit] Regenerated build/G4ZE69/report.json (decomp.dev)${NC}"
-            else
-                echo -e "${YELLOW}[pre-commit] generate_report.py failed — report.json may be stale${NC}"
-            fi
-        fi
-    fi
-fi
+# report.json regeneration intentionally runs after a matcher batch, outside
+# this index-locked critical path. Auditor-Coord commits that report separately.
 
 exit 0
