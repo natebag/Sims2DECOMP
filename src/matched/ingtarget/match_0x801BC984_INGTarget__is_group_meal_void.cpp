@@ -1,10 +1,12 @@
 // 0x801BC984 INGTarget::is_group_meal(void) (20 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x8c(3); xoris 3,3,2; subfic 0,3,0; adde 3,0,3"
 
 struct INGTarget {
-    void is_group_meal();
+    char pad_0000[0x8c];
+    int m_mealType;
+
+    bool is_group_meal();
 };
 
-void INGTarget::is_group_meal() {
+bool INGTarget::is_group_meal() {
+    return m_mealType == 2;
 }
