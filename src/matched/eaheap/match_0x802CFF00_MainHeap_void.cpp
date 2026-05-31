@@ -1,4 +1,5 @@
 // 0x802CFF00 MainHeap(void) (116 B)
+// VERIFY-SYMBOL: MainHeap
 // FLAGS:
 //
 // Lazily-constructed singleton accessor for the main game heap. A function-local
