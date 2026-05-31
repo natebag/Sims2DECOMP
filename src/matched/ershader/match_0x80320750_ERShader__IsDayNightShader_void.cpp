@@ -1,10 +1,12 @@
-// 0x80320750 ERShader::IsDayNightShader(void) (12 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x58(3); rlwinm 3,3,27,31,31"
-
+// 0x80320750 ERShader::IsDayNightShader(void) (12B)
+// lwz r3,0x58(3); rlwinm r3,r3,27,31,31; blr  -- (m_flags >> 5) & 1
 struct ERShader {
-    void IsDayNightShader();
+    char pad[0x58];
+    unsigned m_flags;       // 0x58
+    int IsDayNightShader();
 };
 
-void ERShader::IsDayNightShader() {
+int ERShader::IsDayNightShader() {
+    return (m_flags >> 5) & 1;
 }
