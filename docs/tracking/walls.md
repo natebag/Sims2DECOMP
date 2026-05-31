@@ -321,3 +321,23 @@ source preserved out-of-tree (F:/tmp/vto_nearmatch_SN3.cpp) in case a future
 allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 
 **Logged by:** Matcher-SN-3, 2026-05-31.
+
+## 0x8009C71C basic_string_ref::basic_string_ref(BString&, unsigned int, unsigned int) (168B)
+
+**Tried:** Full semantics matched (`m_length/m_capacity=count`; if `count!=0`: `capacity=count+1`, `m_data = (count+1!=0) ? MainHeap()->Malloc(count+1,0) : 0`, `memmove(m_data,src.data()+offset,m_length)`, `m_data[m_length]=eos()`; else `m_data=0`; `ref_count=1`). Reshapes: pure ternary, explicit `char*` temp, `char* p=0` init, named local `n=count+1`, two-store branches, ctor init-list, flag matrix (default / `-fno-schedule-insns` / insns2 / both), `-fno-elide-constructors`.
+
+**Asm shape that didn't reduce:** DOL register map: `this=r30, src=r29, offset=r28, count+1=r31` (4 callee-saved, single merged `m_data` store). Pure-ternary clean shape but SN ProDG colors `this=r31 / count+1=r30` (swapped). A pointer temp flips the coloring correct but materializes a 5th callee-saved reg + an `mr` the DOL lacks. ~19 diffs, all the `this/count+1` cascade. Greedy-allocator priority order differs: DOL prioritizes short-live-range `count+1` into r31; my build prioritizes `this` into r31.
+
+**Notes / hypotheses:** Not reachable from honest C++ without a temp the DOL doesn't pay for. Allocator-aware wall — same class as 0x8009F570 (char-param spill-vs-promote). Near-match WIP preserved in `src/wip/allocator_wall/`. Future pass: source shape that makes `count+1` the shorter-lived value so the allocator promotes it over `this`.
+
+**Logged by:** Matcher-SN-4, 2026-05-30.
+
+## 0x8009C9D0 basic_string_ref::basic_string_ref(char, unsigned int) (200B)
+
+**Tried:** Full semantics matched (`throwlength` on `n==-1`; `m_length/m_capacity=n`; if `n!=0`: `capacity=n+1`, alloc, fill-loop `m_data[i]=c` for `i<m_length`, `m_data[m_length]=eos()`; else `m_data=0`; `ref_count=1`). Full flag matrix.
+
+**Asm shape that didn't reduce:** DOL spills `char` param `c` to its stack home (`stb r4,8(r1)` prologue + `lbz` reload in loop) using only 2 callee-saved (`this=r30`, `n→n+1` reuses `r31`). SN ProDG promotes `c` to callee-saved `r29` (3 regs), making the body 1 instruction shorter (196 vs 200B) — SIZE_MISMATCH. Cannot force the param stack-spill from honest C++.
+
+**Notes / hypotheses:** Same allocator-wall class as 0x8009C71C and 0x8009F570 — spill-vs-promote heuristic for short-lived params. Near-match WIP in `src/wip/allocator_wall/`. Future pass: a source shape that convinces the allocator not to callee-save `c`.
+
+**Logged by:** Matcher-SN-4, 2026-05-30.
