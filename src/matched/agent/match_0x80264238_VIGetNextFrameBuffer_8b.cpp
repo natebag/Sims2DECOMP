@@ -1,2 +1,0 @@
-extern int gv_VIGetNextFrameBuff_VIGetNextFrameBufferer;
-int gf_VIGetNextFrameBuff_VIGetNextFrameBufferer() { return gv_VIGetNextFrameBuff_VIGetNextFrameBufferer; }
