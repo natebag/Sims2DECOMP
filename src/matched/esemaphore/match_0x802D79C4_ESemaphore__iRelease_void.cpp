@@ -1,12 +1,24 @@
 // 0x802D79C4 ESemaphore::iRelease(void) (52 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); lwz 9,0xc(3); lwz 0,0x8(3); cmpw 9,0; bge 0f; addi 3,3,12; bl _s802D79C4_0; 0:; lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
+//
+// Inner release: if the backing OS semaphore's count is still below the max,
+// signal it (V operation). The OSSemaphore lives at +0x0C (its first word is
+// the live count); the max count is cached at +0x08.
 
-extern "C" void _s802D79C4_0();
+struct OSThreadQueue { void* head; void* tail; };
+struct OSSemaphore  { int count; OSThreadQueue queue; };
+extern "C" int OSSignalSemaphore(OSSemaphore* sem);
 
 struct ESemaphore {
+    void*       m_vt;        // 0x00
+    int         m_handle;    // 0x04
+    int         m_maxCount;  // 0x08
+    OSSemaphore m_sem;       // 0x0C  (count @ 0x0C)
     void iRelease();
 };
 
-void ESemaphore::iRelease() {
+void ESemaphore::iRelease()
+{
+    if (m_sem.count < m_maxCount)
+        OSSignalSemaphore(&m_sem);
 }
