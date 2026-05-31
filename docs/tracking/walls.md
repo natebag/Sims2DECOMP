@@ -226,3 +226,42 @@ accept as a commutative-`add` canonicalization wall. Do NOT force with
 swap_operands/ASMPROC.
 
 **Logged by:** Matcher-SN-2, 2026-05-30.
+
+## 0x80280014 AptActionInterpreter::_FunctionAptActionStringDictByteGetVar(AptActionInterpreter*, LocalContextT*) (192B / 384B... size 192 in audit)
+
+**Tried:** Full clean C++ via the apt-opcode-handler recipe + AptValue_byval
+layout (TypeArchaeologist's 348B pin). Reads a byte dict id, looks up the 348B
+AptValue in m_stringDict, selects the name pointer
+(`name = ((obj->m_typeFlags & 0x7F)==1 ? (char*)obj : (char*)obj->m_ref) + 0x0C`),
+calls `GetVariable(interp, ctx->f04, ctx->f08, name, 1,1,0)`, pushes the returned
+box onto m_stackA0, and vtable@0x8-dispatches it. **All instructions correct,
+SIZE matches (384/384), full schedule matches** including the hoisted ctx-field
+loads (needed `void* f08=ctx->f08; ...; void* f04=ctx->f04;` read early so the
+scheduler hoists them, which produces the DOL's `mr r4,r8`).
+
+**Asm shape that didn't reduce:** THREE register-name assignments (6 diff lines),
+all downstream of one allocator choice — the transient `field04` scratch:
+```
+DOL:   lwz r8,4(r4)   field04 -> r8   ; then obj=lwzx -> r10 ; name=addi r6,r10,12
+MINE:  lwz r10,4(r4)  field04 -> r10  ; then obj=lwzx -> r6  ; name=addi r6,r6,12
+```
+Because mine parks field04 in r10, the dict entry (obj) is pushed to r6 (an arg
+reg) and `name` reuses it in place; DOL parks field04 in r8, leaving r10 for obj
+and a fresh r6 for name. Pure GPR coloring — the exact transform the now-banned
+`force_reg`/`gpr_relabel` mutators performed.
+
+**Tried to flip from source (8 variants):** f04/f08 declared early vs inline-at-call;
+f04 before vs after the byte read; f04 before vs after f08; `base` alias vs reused
+`obj` var vs explicit two-branch `name`; default scheduling (correct — `-fno-schedule-insns`
+mismatches harder). All keep field04 in r10. GCC 2.95 colors the transient ctx-field
+temp to r10 here regardless of source spelling; DOL got r8.
+
+**Notes / hypotheses:** ~95% solved — this is a clean register-allocation wall, the
+same class as the BString2::copy `add`-canonicalization wall above. The forced stub
+(ASMPROC inject_before) is left UNTOUCHED as scaffold; not claiming matched. The whole
+StringDictByte*GetVar/GetMember-with-GetVariable-tail subfamily likely shares this
+coloring. Next pass: a source shape that forces field04 onto r8 (e.g. an extra live
+temp consuming r10 first), a future GCC reg-hint, or accept as a coloring wall. Do NOT
+force with force_reg/gpr_relabel/ASMPROC.
+
+**Logged by:** Matcher-SN-1, 2026-05-30.
