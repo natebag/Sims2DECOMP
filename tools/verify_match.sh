@@ -67,9 +67,16 @@ if [ -z "$SRC" ] || [ -z "$ADDR" ] || [ -z "$SIZE" ]; then
 fi
 
 # Setup toolchain
-export PATH="/f/coding/Decompiles/Tools/devkitPro/msys2/usr/bin:$PATH"
-DEVKITPPC="/f/coding/Decompiles/Tools/devkitPro/devkitPPC"
+DEVKITPRO="/f/coding/Decompiles/Tools/devkitPro"
+if [ ! -d "$DEVKITPRO" ] && [ -d "/mnt/f/coding/Decompiles/Tools/devkitPro" ]; then
+    DEVKITPRO="/mnt/f/coding/Decompiles/Tools/devkitPro"
+fi
+export PATH="$DEVKITPRO/msys2/usr/bin:$PATH"
+DEVKITPPC="$DEVKITPRO/devkitPPC"
 OBJDUMP="$DEVKITPPC/bin/powerpc-eabi-objdump"
+if [ ! -x "$OBJDUMP" ] && [ -x "$OBJDUMP.exe" ]; then
+    OBJDUMP="$OBJDUMP.exe"
+fi
 DOL="extracted/sys/main.dol"
 
 # SN Systems ProDG compiler (the ORIGINAL compiler — v3.9.3).
@@ -88,6 +95,14 @@ else
 fi
 SN_CC1PLUS="$SN_BIN/cc1plus.exe"
 SN_AS="$SN_BIN/NgcAs.exe"
+PYTHON="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
+if [ ! -x "$PYTHON" ]; then
+    PYTHON="$(command -v python3 || command -v python)"
+fi
+if [ -z "$PYTHON" ]; then
+    echo "ERROR: Python interpreter not found."
+    exit 1
+fi
 
 # Output paths
 mkdir -p "$OUTDIR"
@@ -150,12 +165,8 @@ fi
 # In strict mode this block is unreachable (rejected above).
 if grep -qE '^[[:space:]]*//[[:space:]]*ASMPROC_[A-Za-z][A-Za-z0-9_]*' "$SRC" 2>/dev/null; then
     echo "Detected // ASMPROC_* directive(s) — routing through tools/asm_processor/asm_processor.py"
-    PYTHON_EXE="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
-    if [ ! -x "$PYTHON_EXE" ]; then
-        PYTHON_EXE="python"
-    fi
     ASMPROC_OUTDIR="$OUTDIR/asmproc_${BASENAME}"
-    "$PYTHON_EXE" tools/asm_processor/asm_processor.py \
+    "$PYTHON" tools/asm_processor/asm_processor.py \
         --src "$SRC" --addr "$ADDR" --size "$SIZE" --outdir "$ASMPROC_OUTDIR"
     exit $?
 fi
@@ -165,9 +176,9 @@ if [ -f "$SN_CC1PLUS" ]; then
     # Use SN Systems compiler (the real one)
     # GCC 2.95 can be picky — strip // comments starting with 0x (confuses old preprocessor)
     CLEAN_SRC="$OUTDIR/${BASENAME}_clean.cpp"
-    sed 's|//.*||; s|/\*.*\*/||' "$SRC" > "$CLEAN_SRC"
+    sed 's/\r$//; s|//.*||; s|/\*.*\*/||' "$SRC" > "$CLEAN_SRC"
     # Check for per-file flag overrides via // FLAGS: comment
-    EXTRA_FLAGS=$(grep '// FLAGS:' "$SRC" 2>/dev/null | head -1 | sed 's|.*// FLAGS: *||')
+    EXTRA_FLAGS=$(grep '// FLAGS:' "$SRC" 2>/dev/null | head -1 | sed 's|.*// FLAGS: *||; s/\r$//')
     if [ -n "$EXTRA_FLAGS" ]; then
         SN_FLAGS="-quiet -O2 $EXTRA_FLAGS -msdata=eabi -G 8"
     else
@@ -183,7 +194,11 @@ if [ -f "$SN_CC1PLUS" ]; then
     "$SN_AS" "$ASM" -o "$OBJ" 2>&1
     if [ $? -ne 0 ]; then
         # Fall back to devkitPPC assembler
-        "$DEVKITPPC/bin/powerpc-eabi-as" -mgekko -mregnames "$ASM" -o "$OBJ" 2>&1
+        DEVKIT_AS="$DEVKITPPC/bin/powerpc-eabi-as"
+        if [ ! -x "$DEVKIT_AS" ] && [ -x "$DEVKIT_AS.exe" ]; then
+            DEVKIT_AS="$DEVKIT_AS.exe"
+        fi
+        "$DEVKIT_AS" -mgekko -mregnames "$ASM" -o "$OBJ" 2>&1
         if [ $? -ne 0 ]; then
             echo "ASSEMBLE FAILED"
             exit 1
@@ -193,6 +208,9 @@ else
     # Fallback: devkitPPC GCC
     echo "Compiling $SRC with devkitPPC GCC (SN compiler not found)..."
     CXX="$DEVKITPPC/bin/powerpc-eabi-g++"
+    if [ ! -x "$CXX" ] && [ -x "$CXX.exe" ]; then
+        CXX="$CXX.exe"
+    fi
     CXXFLAGS="-mcpu=750 -meabi -mhard-float -O2 -fno-schedule-insns -fno-inline -fno-inline-small-functions -fno-exceptions -fno-rtti -fno-builtin -fshort-wchar -fpermissive -Wno-unused -Wno-return-type"
     $CXX $CXXFLAGS -c "$SRC" -o "$OBJ" 2>&1
     if [ $? -ne 0 ]; then
@@ -200,9 +218,6 @@ else
         exit 1
     fi
 fi
-
-PYTHON="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
-PYTHON="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
 
 # Step 2: Extract compiled bytes from .text section
 echo "Extracting compiled bytes..."
@@ -250,8 +265,7 @@ RELOC_DATA=$($OBJDUMP -r -j .text "$OBJ" 2>/dev/null | awk '/^[0-9a-f]+ /{print 
 # Step 4b: Compare with relocation-aware logic
 COMPILED_TRIMMED="${COMPILED_BYTES:0:$(($SIZE * 2))}"
 
-PYTHON2="/c/Users/SCICO/AppData/Local/Programs/Python/Python313/python.exe"
-RESULT=$($PYTHON2 -c "
+RESULT=$($PYTHON -c "
 import sys, re
 dol = '$DOL_BYTES'
 comp = '$COMPILED_TRIMMED'
