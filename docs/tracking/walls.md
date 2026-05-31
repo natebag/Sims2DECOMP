@@ -281,3 +281,43 @@ Same register-allocator class as the 0x8009F570 char-param spill wall — the
 reachable from natural C++ source at -O2.
 
 **Logged by:** Matcher-SN-2, 2026-05-30.
+
+## 0x8026FF94 AptActionInterpreter::valueToObject(AptValue*, AptValueObj*, AptValueObj**) (220B)
+
+**Status:** NEAR-MATCH — 99% (432B/440B), exactly ONE instruction off. The entire
+function byte-matches (prologue, the in-range/bit gate, the vtable+0x28 MI-adjustor
+Convert() vcall, the shared store block, the tag==1/42 + 0x08000000 decision, the
+m_ref/+0x0C name resolution, the getObject call, epilogue) EXCEPT one spot in the
+tag-decision tail.
+
+**Asm shape that didn't reduce:** scalar register-coloring. The DOL keeps the
+reloaded `flags2` LONG-LIVED in r9 (paying an extra `mr r9,r0`) and burns r0 as the
+transient tag scratch; SN ProDG colors the identical C++ the cheaper way (tag in r9,
+`flags2` stays in r0, no `mr`):
+```
+DOL:   lwz r0,0(r31) ; mr r9,r0 ; clrlwi r0,r0,25 ; cmpwi r0,1 ... andis. r0,r9,2048 ... clrlwi r0,r9,25
+MINE:  lwz r0,0(r31) ;          ; clrlwi r9,r0,25 ; cmpwi r9,1 ... andis. r9,r0,2048 ... clrlwi r0,r0,25
+```
+Both are valid; the DOL's choice costs one extra instruction (the `mr`). GCC 2.95's
+greedy allocator deterministically parks `flags2` in r0 and refuses to emit the spill-
+copy from natural source.
+
+**Tried (11 honest reshapes, no surgery):** control-flow as `||`, `goto`-shared-label,
+and explicit double-return (all give the same coloring); inline `(flags2&0x7F)` vs
+cached `int tag` (caching drops the DOL's tag recompute → 4 instr short); ternary on
+the src selection (×2, no change); reuse the head `flags` across the Convert() call
+(GCC drops the reload → 6 instr short); `-fno-thread-jumps` FLAGS (no effect). Plus
+Wall-Analyst's three shapes: redundant scalar copy `flags2_copy` (copy-propagated away
+→ 432), late reload inside the doConvert block (coaxes flags2 INTO r9 but emits a fresh
+`lwz` reload + drops the `mr` → 220B but 2 position diffs), and `register unsigned`
+(ignored → 432). The r9-residency and the in-nested-block recompute cannot both be
+satisfied: when `flags2` is live into the nested block GCC picks r0; when it is confined
+to the outer block GCC will use r9 but then the nested tag needs its own load.
+
+**Notes:** Same scalar-coloring class as 0x802D0E28 (EAHeap::Compact spill-vs-cache)
+and 0x8009F570 (char-param spill). Confirmed a legitimate wall by Wall-Analyst after
+the 3-shape pass. Forced ASMPROC stub left untouched as scaffold. Clean near-match
+source preserved out-of-tree (F:/tmp/vto_nearmatch_SN3.cpp) in case a future
+allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
+
+**Logged by:** Matcher-SN-3, 2026-05-31.
