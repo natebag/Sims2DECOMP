@@ -1,4 +1,12 @@
-// 0x802FABD4 EShader::IsValid(void) (28 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0xe4(3); lis 0,-28659; ori 0,0,48879; xor 3,3,0; subfic 0,3,0; adde 3,0,3"
-extern "C" int f_802FABD4() {}
+// 0x802FABD4 EShader::IsValid(void) (28B)
+// lwz r3,0xe4(3); xor with 0x900DBEEF; (== 0) idiom subfic/adde  -- m_magic == 0x900DBEEF
+struct EShader {
+    char pad[0xE4];
+    unsigned m_magic;       // 0xE4
+    int IsValid();
+};
+
+int EShader::IsValid() {
+    return m_magic == 0x900DBEEF;
+}
