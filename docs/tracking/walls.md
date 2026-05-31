@@ -341,3 +341,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Same allocator-wall class as 0x8009C71C and 0x8009F570 — spill-vs-promote heuristic for short-lived params. Near-match WIP in `src/wip/allocator_wall/`. Future pass: a source shape that convinces the allocator not to callee-save `c`.
 
 **Logged by:** Matcher-SN-4, 2026-05-30.
+
+## 0x8009DAC0 BString::operator=(char) (172B)
+
+**Tried:** Full COW semantics matched (`if ref_count()==1 && reserve()>1: *point()=c; point()[1]=eos(); m_rep->m_length=1; else delete_ref(); m_rep=new basic_string_ref(c,1)`). Flag matrix default / `-fno-schedule-insns` / insns2. `m_length=1` store correctly reuses the `ref_count` register (GCC knows `==1` in-branch). All logic byte-exact.
+
+**Asm shape that didn't reduce:** DOL spills the `char` param to its stack home (`stb r4,8(r1)` prologue) and reloads it (`lbz` + `extsb`) for the rep ctor arg — uses NO callee-saved reg for `c`. SN ProDG promotes `c` to callee-saved `r30`, eliminating the spill store + the `extsb`, making the body 2 instructions shorter (336 vs 344B) — SIZE_MISMATCH. Cannot force the param stack-spill from honest C++.
+
+**Notes / hypotheses:** Identical char-param spill-vs-promote heuristic divergence as `0x8009C9D0`. Any `char`/`wchar` param function with the param live across calls hits this wall class. Near-match WIP in `src/wip/allocator_wall/`.
+
+**Logged by:** Matcher-SN-4, 2026-05-30.
