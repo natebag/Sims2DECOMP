@@ -1,10 +1,12 @@
-// 0x8032075C ERShader::GetRTextureForRenderPass(int) (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="rlwinm 4,4,2,0,29; addi 3,3,32; lwzx 3,3,4"
-
+// 0x8032075C ERShader::GetRTextureForRenderPass(int) (16B)
+// slwi r4,r4,2; addi r3,r3,32; lwzx r3,r3,r4; blr  -- m_textures[pass] (inline array @0x20)
 struct ERShader {
-    void GetRTextureForRenderPass();
+    char pad[0x20];
+    void* m_textures[8];    // 0x20
+    void* GetRTextureForRenderPass(int pass);
 };
 
-void ERShader::GetRTextureForRenderPass() {
+void* ERShader::GetRTextureForRenderPass(int pass) {
+    return m_textures[pass];
 }
