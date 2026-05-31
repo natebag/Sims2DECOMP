@@ -1,10 +1,12 @@
 // 0x801A08E8 CASGeneticsTarget::GetWarnOnGenerate(void) (12 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x300(3); rlwinm 3,3,27,31,31"
 
 struct CASGeneticsTarget {
-    void GetWarnOnGenerate();
+    char pad_0000[0x300];
+    unsigned int m_flags;
+
+    int GetWarnOnGenerate();
 };
 
-void CASGeneticsTarget::GetWarnOnGenerate() {
+int CASGeneticsTarget::GetWarnOnGenerate() {
+    return (m_flags >> 5) & 1;
 }
