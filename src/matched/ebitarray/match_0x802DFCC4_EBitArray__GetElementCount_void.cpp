@@ -1,10 +1,12 @@
-// 0x802DFCC4 EBitArray::GetElementCount(void) (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,0x4(3); addi 3,3,31; rlwinm 3,3,27,5,31"
-
+// 0x802DFCC4 EBitArray::GetElementCount(void) (16B)
+// lwz r3,4(r3); addi r3,r3,31; srwi r3,r3,5; blr  -- words = (bits+31)/32
 struct EBitArray {
-    void GetElementCount();
+    void* m_data;           // 0x0
+    unsigned m_numBits;     // 0x4
+    unsigned GetElementCount();
 };
 
-void EBitArray::GetElementCount() {
+unsigned EBitArray::GetElementCount() {
+    return (m_numBits + 31) >> 5;
 }
