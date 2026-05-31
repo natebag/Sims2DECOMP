@@ -361,3 +361,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Exact `wchar` analogue of `0x8009DAC0` char-param spill wall. Confirms the rule: any `char`/`wchar` value-param live across calls hits spill-vs-promote. 4th entry in this allocator-wall family. Near-match WIP in `src/wip/allocator_wall/`.
 
 **Logged by:** Matcher-SN-4, 2026-05-30.
+
+## 0x800E1540 cXObjectImpl::GetFrontFaceDirection (84B)
+
+**Tried:** Full semantics + shape matched. Single-blrl vcall getter: `z = m_x(0x8C)->m_y(0x50)->VcallAt20()` (FaceY vtable@0, slot20/offset160, MS-ABI 8-byte entries via 19 filler pure-virtuals); `if(!z) return 0; return z->m_w(0x38)->m_dir(short@0x7A)`. Branch layout, tail, vtable-slot recipe, lha/add this-adjust all byte-exact. Reshapes: `if(z)`/`if(!z)` polarity, 1 & 2 intermediate locals, inline helper `GetY(m_x)`, `register` qualifiers, deref-syntax swap `(*(*m_x).m_y)`, with/without `-fno-schedule-insns`.
+
+**Asm shape that didn't reduce:** Only the 3-deep ptr-chain prologue register coloring differs. DOL: `lwz r4,140(r3)[m_x]; lwz r11,80(r4)[m_y]; lwz r9,0(r11)[vt]; ... add r3,r11,r3`. SN ProDG: `lwz r9,140(r3); lwz r10,80(r9); lwz r11,0(r10); ... add r3,r10,r3`. DOL starts the temp chain at the low volatile r4; GCC 2.95/SN greedily starts at r9 (→r9/r10/r11). All three are volatile regs — pure allocation-order divergence. Forced stub used the banned `ASMPROC_region_gpr_relabel rename="9:4,10:11,11:9"` for exactly this.
+
+**Notes / hypotheses:** Register-coloring wall. The ternary-intermediate anticoloring technique ([[feedback_ternary_intermediate_anticoloring]]) does not structurally apply — there is no conditional intermediate to leverage, and adding a live value to perturb the allocator would add instructions (breaking the byte size). No natural C++ shape reliably forces GCC 2.95's starting volatile register. Second-opinioned with Wall-Analyst (concurred: legitimate volatile-register-choice wall). Likely representative of the broader cXObjectImpl/ObjectModuleImpl MI-vcall coloring-wall class.
+
+**Logged by:** Matcher-SN-5, 2026-05-31.
