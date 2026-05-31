@@ -351,3 +351,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Identical char-param spill-vs-promote heuristic divergence as `0x8009C9D0`. Any `char`/`wchar` param function with the param live across calls hits this wall class. Near-match WIP in `src/wip/allocator_wall/`.
 
 **Logged by:** Matcher-SN-4, 2026-05-30.
+
+## 0x800A1EB4 BString2::operator=(unsigned short) (168B)
+
+**Tried:** Full COW semantics matched (wchar sibling of `0x8009DAC0`: `if ref_count()==1 && reserve()>1: *point()=c; point()[1]=eos(); m_rep->m_length=1; else delete_ref(); m_rep=new basic_string_ref2(c,1)`). `m_length=1` reuses `ref_count` reg. Full flag matrix.
+
+**Asm shape that didn't reduce:** DOL spills the `wchar` param to its stack home (`sth r4,8(r1)`, 32-byte frame) and reloads it (`lhz`) at each use. SN ProDG promotes it to callee-saved `r30` (24-byte frame, no spill). Same byte size but the spill-vs-promote register/frame divergence makes every `c`-access + frame setup differ — MISMATCH throughout. Cannot force the stack-spill from honest C++.
+
+**Notes / hypotheses:** Exact `wchar` analogue of `0x8009DAC0` char-param spill wall. Confirms the rule: any `char`/`wchar` value-param live across calls hits spill-vs-promote. 4th entry in this allocator-wall family. Near-match WIP in `src/wip/allocator_wall/`.
+
+**Logged by:** Matcher-SN-4, 2026-05-30.
