@@ -1,18 +1,18 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 15.724636,
+    "fuzzy_match_percent": 15.735442,
     "total_code": "4145724",
-    "matched_code": "651900",
-    "matched_code_percent": 15.724636,
+    "matched_code": "652348",
+    "matched_code_percent": 15.735442,
     "total_data": "681400",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9396,
-    "matched_functions_percent": 50.904757,
-    "complete_code": "651900",
-    "complete_code_percent": 15.724636,
+    "matched_functions": 9403,
+    "matched_functions_percent": 50.942681,
+    "complete_code": "652348",
+    "complete_code_percent": 15.735442,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 691,
@@ -31492,18 +31492,18 @@
     {
       "name": "bstring",
       "measures": {
-        "fuzzy_match_percent": 38.121415,
+        "fuzzy_match_percent": 39.17304,
         "total_code": "16736",
-        "matched_code": "6380",
-        "matched_code_percent": 38.121415,
+        "matched_code": "6556",
+        "matched_code_percent": 39.17304,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 139,
-        "matched_functions": 97,
-        "matched_functions_percent": 69.784173,
-        "complete_code": "6380",
-        "complete_code_percent": 38.121415,
+        "matched_functions": 98,
+        "matched_functions_percent": 70.503597,
+        "complete_code": "6556",
+        "complete_code_percent": 39.17304,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -31513,7 +31513,7 @@
         {
           "name": ".text",
           "size": "16736",
-          "fuzzy_match_percent": 38.121415,
+          "fuzzy_match_percent": 39.17304,
           "metadata": {
             "virtual_address": "2148122412"
           }
@@ -32337,7 +32337,7 @@
             "virtual_address": "2148133960"
           },
           "address": "11548",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString::c_str(void) const",
@@ -32782,18 +32782,18 @@
     {
       "name": "bstring2",
       "measures": {
-        "fuzzy_match_percent": 35.383301,
+        "fuzzy_match_percent": 36.450993,
         "total_code": "18732",
-        "matched_code": "6628",
-        "matched_code_percent": 35.383301,
+        "matched_code": "6828",
+        "matched_code_percent": 36.450993,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 138,
-        "matched_functions": 96,
-        "matched_functions_percent": 69.565217,
-        "complete_code": "6628",
-        "complete_code_percent": 35.383301,
+        "matched_functions": 97,
+        "matched_functions_percent": 70.289855,
+        "complete_code": "6828",
+        "complete_code_percent": 36.450993,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -32803,7 +32803,7 @@
         {
           "name": ".text",
           "size": "18732",
-          "fuzzy_match_percent": 35.383301,
+          "fuzzy_match_percent": 36.450993,
           "metadata": {
             "virtual_address": "2148139148"
           }
@@ -33618,7 +33618,7 @@
             "virtual_address": "2148151980"
           },
           "address": "12832",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "BString2::c_str(void) const",
@@ -51340,18 +51340,18 @@
     {
       "name": "objectmodule",
       "measures": {
-        "fuzzy_match_percent": 5.242321,
+        "fuzzy_match_percent": 5.488055,
         "total_code": "29300",
-        "matched_code": "1536",
-        "matched_code_percent": 5.242321,
+        "matched_code": "1608",
+        "matched_code_percent": 5.488055,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 99,
-        "matched_functions": 36,
-        "matched_functions_percent": 36.363636,
-        "complete_code": "1536",
-        "complete_code_percent": 5.242321,
+        "matched_functions": 41,
+        "matched_functions_percent": 41.414141,
+        "complete_code": "1608",
+        "complete_code_percent": 5.488055,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -51361,7 +51361,7 @@
         {
           "name": ".text",
           "size": "2841336",
-          "fuzzy_match_percent": 5.242321,
+          "fuzzy_match_percent": 5.488055,
           "metadata": {
             "virtual_address": "2148477860"
           }
@@ -52104,7 +52104,7 @@
             "virtual_address": "2148505896"
           },
           "address": "28036",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ObjectModuleImpl::AddObject(cXObject *, short)",
@@ -52131,7 +52131,7 @@
             "virtual_address": "2148505984"
           },
           "address": "28124",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ObjectModuleImpl::GetPeople(int)",
@@ -52149,7 +52149,7 @@
             "virtual_address": "2148506024"
           },
           "address": "28164",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ObjectModuleImpl::GetPortal(int)",
@@ -52167,7 +52167,7 @@
             "virtual_address": "2148506060"
           },
           "address": "28200",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ObjectModuleImpl::GetGlobalRoutingSlot(int)",
@@ -52176,7 +52176,7 @@
             "virtual_address": "2148506080"
           },
           "address": "28220",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ObjectModuleImpl::GetNumGlobalRoutingSlots(void)",
@@ -193096,18 +193096,18 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 12.556218,
+        "fuzzy_match_percent": 12.56848,
         "total_code": "3653648",
-        "matched_code": "458760",
-        "matched_code_percent": 12.556218,
+        "matched_code": "459208",
+        "matched_code_percent": 12.56848,
         "total_data": "681400",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 9262,
-        "matched_functions_percent": 54.837182,
-        "complete_code": "458760",
-        "complete_code_percent": 12.556218,
+        "matched_functions": 9269,
+        "matched_functions_percent": 54.878626,
+        "complete_code": "459208",
+        "complete_code_percent": 12.56848,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 593,
