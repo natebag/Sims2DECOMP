@@ -1,10 +1,10 @@
-// 0x800F9928 ObjectModuleImpl::GetFolder(void) (8 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-21508(13)"
+// 0x800F9928 ObjectModuleImpl::GetFolder(void) (8B)
+// lwz r3,gObjectFolder(r13); blr  -- ignores this, returns SDA global
+extern int gObjectFolder;
 
 struct ObjectModuleImpl {
-    void GetFolder();
+    int GetFolder();
 };
 
-void ObjectModuleImpl::GetFolder() {
-}
+int ObjectModuleImpl::GetFolder() { return gObjectFolder; }
