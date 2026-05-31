@@ -124,13 +124,105 @@ always coalesces the load into f1 directly.
 idiom is shared across the libm family (fabsf, copysignf, almost certainly
 sinf/cosf/sqrtf/fmodf wrappers). Cracking it once unlocks the family.
 
-**Notes / hypotheses:** The un-coalesced `lfs f0; fmr f1,f0` is the signature of
-a *different/older Metrowerks codegen* than mwcc 1.2.5n (build 163). The
-DolphinSDK libm almost certainly ships precompiled by an earlier MWCC (e.g.
-1.1 / 1.2.5 non-`n`, or a pre-build-163 1.2.x) whose register allocator did not
-fold the return move. **TOOLING LEAD:** obtain additional MWCC versions from
-decomp.dev compilers.zip and re-probe fabsf — if one emits the f0+fmr tail at
-offset 8, the whole libm float family becomes matchable. Not a C-source problem;
-a compiler-version problem. Do NOT force with ASMPROC.
+**Notes / hypotheses:** Initial hypothesis was an older/less-aggressive
+Metrowerks codegen. **DISPROVEN 2026-05-30:** Tooling-Engineer extracted MWCC
+1.0, 1.1, 1.1p1, 1.2.5 alongside 1.2.5n; all FIVE versions produce byte-identical
+output for fabsf (`lfs f1,8(r1)` direct, no fmr) at -O1/-O2/-O4,p. Even MWCC 1.0
+coalesces the return load into f1. So this is NOT a compiler-version wall.
+
+**DUAL-COMPILER DISPROOF (final diagnosis, 2026-05-30):** Tested BOTH routes:
+- MWCC 1.0/1.1/1.1p1/1.2.5/1.2.5n: all byte-identical, `lfs f1` direct, no fmr.
+- SN ProDG 3.9.3 (cc1plus, fdlibm sf_fabs.c source) at -O0/-O1/-O2 ±schedule:
+  gets offset 8 naturally BUT uses `r9` for the clrlwi/stw temp and loads direct
+  to `f1`.
+
+The DOL uses `r0` for the temp (`clrlwi r0,r0,1; stw r0,8(r1)`) AND `lfs f0;
+fmr f1,f0`. **Neither compiler in the repo reproduces the r0+f0+fmr signature.**
+
+Per the release map (`u2_ngc_release.map`), `fabsf` is linked from
+`SN Systems\ngc\lib\libm.a(sf_fabs.o)` — a **precompiled static lib**. So the
+DOL's fabsf was built once, into libm.a, with an **older SN/GCC toolchain not
+present in this repo** (our cc1plus is the 3.9.3 release; the shipped libm.a
+predates it). This is a **compiler-PROVENANCE wall**, common to precompiled
+runtime libs: the math family (fabsf, copysignf, sinf, cosf, sqrtf, fmodf, ...)
+will all share it. NOT MWCC territory, NOT forceable, NOT crackable with current
+tools. Future pass: obtain the matching vintage SN libm build, or accept these
+as a documented precompiled-lib ceiling.
+
+Map note: symbols.txt's 0x80241378 is CORRECT for the DOL — the **DVD map**
+(`u2_ngc_release_dvd.map`, the build that matches the DOL) lists fabsf there. The
+release map's 0x803BFD98 is a *different build* (cm3-build25 ≠ DOL). No
+symbols.txt error.
+
+**Logged by:** Matcher-MWCC-SDK, 2026-05-30 (dual-compiler disproof, final).
+
+## 0x8024D880 OSLoadContext (216B) — hand-written supervisor asm (PERMANENT wall class)
+
+**Compiler:** N/A. This is not a compiler-codegen problem — the function is
+hand-written PowerPC assembly that has NO C-language expression at all.
+
+**Tried:** Read-only crackability assessment (per MainGuy: assess one hard
+hand-asm SDK stub). Did not attempt a C source — the disassembly makes clear no
+C compiler (MWCC or SN) can emit these instructions.
+
+**Asm shape that no C can emit:** OSLoadContext restores a full OSContext thread
+state and resumes via return-from-interrupt. The body uses privileged /
+whole-register-file instructions with no C primitive:
+```
+lmw   r5,20(r3)      ; load-multiple: restore r5..r31 directly into the live GPR file
+lmw   r13,52(r3)     ; (alt path) restore r13..r31
+mtspr 913..919,r4    ; restore GQR0..GQR6 (paired-single graphics quantization regs)
+mtcr  / mtlr / mtctr / mtxer        ; restore CR, LR, CTR, XER
+mfmsr ; rlwinm (clear RI/EE) ; mtmsr ; restore MSR
+mtsrr0 r4 ; mtsrr1 r4 ; rfi          ; load SRR0/SRR1 and return-from-interrupt
+```
+A C compiler cannot: write arbitrary GPRs/SPRs by number, `lmw` into the live
+register file, manipulate MSR, or issue `rfi`. The function's entire purpose is
+to overwrite the register state the C ABI assumes it owns, then atomically jump.
+
+**Notes / hypotheses:** PERMANENT wall under the honesty rules — the only ways to
+reproduce it (`__asm__`, `.byte`, ASMPROC injection, naked) are all banned. This
+is the correct classification, not a temporary block. The sibling boot/kernel
+asm stubs share this class and should NOT be attempted as clean C:
+- 0x8024BB00 OSExceptionVector (156B) — exception entry, mtsprg/mfsrr/rfi
+- 0x8024D800 OSSaveContext (128B) — stmw / mfspr GQRs / mfmsr
+- 0x8024D53C __OSLoadFPUContext (292B) — lfd/psq_l FPR+paired-single restore
+- SystemCallVector, RealMode, Config24MB/Config48MB, __VMBASE*ExceptionHandler
+These are a documented hand-asm ceiling for the SDK kernel/boot layer. The
+honest path for them is to leave the original bytes as a forced/injected stub
+(scaffold), never claiming "matched." MWCC value lies elsewhere (small SDA /
+struct-accessor SDK functions, and any pure-C SDK code like DVD/format logic).
 
 **Logged by:** Matcher-MWCC-SDK, 2026-05-30.
+
+## 0x800A3600 BString2::copy(unsigned short*, unsigned int, unsigned int) const (172B)
+
+**Tried:** Natural clamp+copy delegation —
+`if (pos > length()) throwrange(); if (count > length()-pos) count = length()-pos;
+if (length() != 0) EAmemcpy(dest, data()+pos, count*2); return count;`
+with in-class inline `data()` (same wide-char rep pattern as the landed BString2
+accessors). **171 of 172 bytes match.** Verified the whole clamp, the double
+length() calls, the inline data() guard, the `count*2` byte size (`rlwinm
+rD,rS,1,0,30`), and the return all byte-exact.
+
+**Asm shape that didn't reduce:** ONE instruction — the source-pointer add:
+```
+DOL:   add r4,r4,r9     ; r4=pos*2 (accumulator), r9=data → offset-first
+MINE:  add r4,r9,r4     ; base-first (GCC commutative canonicalization)
+```
+Pure operand-order swap (the exact transform the now-banned `swap_operands`
+mutator performed). Tried to flip it from source: `pos + data()`, `&data()[pos]`,
+`(unsigned short*)((unsigned int)data() + pos*2)`, `(int)pos` signed index,
+`const unsigned short* src = data()+pos;` temp, block-scoped. All emit base-first
+`add r4,r9,r4`. GCC normalizes `ptr + int` to ptr-as-op0 regardless of source
+spelling; the DOL's offset-first form comes from the original having `pos*2`
+pre-computed in the memcpy src arg register (r4) and accumulating data into it.
+
+**Notes / hypotheses:** Generalizes to the whole copy/substr-into-buffer family
+in both BString and BString2 (any `memcpy(dest, data()+pos, ...)` where the src
+lands directly in the arg register). Next pass: a source shape that forces the
+offset to be the live accumulator in the arg reg before the base is added — or
+accept as a commutative-`add` canonicalization wall. Do NOT force with
+swap_operands/ASMPROC.
+
+**Logged by:** Matcher-SN-2, 2026-05-30.
