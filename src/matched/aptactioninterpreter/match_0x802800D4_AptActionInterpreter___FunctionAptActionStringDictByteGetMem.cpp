@@ -1,12 +1,62 @@
-// 0x802800D4 AptActionInterpreter::_FunctionAptActionStringDictByteGetMember(AptActionInterpreter (152 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 29,4; mr 30,3; lwz 9,0x0(29); lis 4,-32704; lis 5,-32704; addi 4,4,5760; lbz 11,0x0(9); addi 5,5,5812; addi 9,9,1; li 6,138; stw 9,0x0(29); rlwinm 11,11,2,0,29; lwz 10,0x38(30); lwz 9,0x0(30); lwzx 8,11,10; lwz 7,0x8(30); rlwinm 11,9,2,0,29; addi 9,9,1; stwx 8,11,7; stw 9,0x0(30); lwz 11,0x8(8); lha 3,0x8(11); lwz 0,0xc(11); add 3,8,3; mtspr 8,0; blrl; mr 3,30; mr 4,29; bl _s802800D4_0; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+// 0x802800D4 AptActionInterpreter::_FunctionAptActionStringDictByteGetMember(
+//                 AptActionInterpreter*, AptActionInterpreter::LocalContextT*) (152 B)
+//
+// Composite opcode: push the byte-indexed dictionary string (identical body to
+// _FunctionAptActionPushStringDictByte 0x8027F924), then tail into the GetMember
+// opcode handler with the same (interp, ctx). The trailing call is what forces
+// interp/ctx into callee-saved r30/r29 (the stmw 29 prologue) — it falls out
+// naturally from referencing both after the dispatch.
+//
+// Redone clean from a forced inject_before via the apt-opcode-handler recipe:
+// static method, AptValueObj polymorphic (vptr@0x8 -> first virtual = slot 1,
+// SN lha/lwz/add/blrl adjustor call), single-read stack top, inline data store,
+// DEFAULT scheduling (the forced stub's -fno-schedule-insns flag is wrong here
+// and mismatches). No post-compile surgery.
+struct AptGlobal { char _r[16]; };
 
-extern "C" void _s802800D4_0();
-
-struct AptActionInterpreter {
-    void _FunctionAptActionStringDictByteGetMem();
+struct AptValueObjHead {
+    unsigned int m_flags;    // 0x00
+    unsigned int m_field04;  // 0x04
 };
 
-void AptActionInterpreter::_FunctionAptActionStringDictByteGetMem() {
+struct AptValueObj : public AptValueObjHead {
+    virtual void Dispatch(AptGlobal*, AptGlobal*, int) = 0;  // vtable+0x08
+};
+
+struct AptInterpStack {
+    int           top;   // 0x00
+    int           cap;   // 0x04
+    AptValueObj** data;  // 0x08
+};
+
+struct LocalContextT {
+    unsigned char* cursor;  // 0x00
+};
+
+extern AptGlobal gAptGMByteGlobalA;
+extern AptGlobal gAptGMByteGlobalB;
+
+struct AptActionInterpreter {
+    AptInterpStack m_stackA0;          // 0x00
+    char           _pad[0x38 - 0x0C];  // 0x0C .. 0x38
+    AptValueObj**  m_stringDict;       // 0x38
+    static void _FunctionAptActionStringDictByteGetMember(AptActionInterpreter* interp,
+                                                          LocalContextT* ctx);
+    static void _FunctionAptActionGetMember(AptActionInterpreter* interp,
+                                            LocalContextT* ctx);
+};
+
+void AptActionInterpreter::_FunctionAptActionStringDictByteGetMember(AptActionInterpreter* interp,
+                                                                     LocalContextT* ctx) {
+    unsigned char* cur = ctx->cursor;
+    unsigned int idx = *cur++;
+    ctx->cursor = cur;
+
+    int top = interp->m_stackA0.top;
+    AptValueObj* obj = interp->m_stringDict[idx];
+    interp->m_stackA0.data[top] = obj;
+    interp->m_stackA0.top = top + 1;
+
+    obj->Dispatch(&gAptGMByteGlobalA, &gAptGMByteGlobalB, 138);
+    _FunctionAptActionGetMember(interp, ctx);
 }
