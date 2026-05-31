@@ -1,10 +1,13 @@
-// 0x8032FED0 ENgcMemoryCard::IsCardOperationInProgress(void) (24 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x4(3); li 3,1; cmplwi 0,0; bnelr; li 3,0"
-
+// 0x8032FED0 ENgcMemoryCard::IsCardOperationInProgress(void) (24B)
+// lwz r0,4(3); li r3,1; cmplwi r0,0; bnelr; li r3,0  -- m_operation != 0
 struct ENgcMemoryCard {
-    void IsCardOperationInProgress();
+    char pad[4];
+    void* m_operation;      // 0x4
+    int IsCardOperationInProgress();
 };
 
-void ENgcMemoryCard::IsCardOperationInProgress() {
+int ENgcMemoryCard::IsCardOperationInProgress() {
+    if (m_operation) return 1;
+    return 0;
 }
