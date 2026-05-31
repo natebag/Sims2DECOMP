@@ -381,3 +381,23 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Static branch-prediction layout wall — GCC 2.95 prefers the null/false branch as fall-through for pointer-null guards. Not reachable from honest C++ without ASMPROC. Left as inject-forced stub (minor, 28B). If a future technique for controlling fall-through layout emerges (beyond `goto`), retry here.
 
 **Logged by:** Matcher-SN-5, 2026-05-31.
+
+## 0x80190DF4 InteractionHelper::GetNext(IHRecord*) (24B)
+
+**Tried:** Full semantics matched: `n = rec->m_next(0x4); return n ? n : rec->m_alt(0xC)`. if-form and ternary, flag matrix default / -fno-schedule-insns / insns2.
+
+**Asm shape that didn't reduce:** DOL holds m_next in scratch r0 and copies it to r3 before the test: `lwz r0,4(r4); mr r3,r0; cmpwi r0,0; bnelr; lwz r3,12(r4); blr` (24B). GCC 2.95/SN loads directly into the return reg r3 and tests r3 (`lwz r3,4(r4); cmpwi r3,0; bne...`), eliminating the `mr r3,r0` → 20B, SIZE_MISMATCH. No natural C++ produces the load-to-scratch-then-mr form; forced stub injected it via nop_before + replace_insn.
+
+**Notes / hypotheses:** Scratch-register coloring wall (value evicted to r0 then mr'd to r3). Same class as the GetAllocByteCount r9-scratch case but there a `this`-live ternary forced it; here there is no second live value to leverage. Log + move on.
+
+**Logged by:** Matcher-SN-5, 2026-05-31.
+
+## 0x80224048 InteractorModule::WallManipulator::GetAffectedWallHeight (24B)
+
+**Tried:** Full semantics matched: `return (m_flags(0xC4) & 0x100) ? gHi : gLo` (two SDA float consts). Ternary, if-early-return, pre-load-local-then-if, flag matrix.
+
+**Asm shape that didn't reduce:** DOL speculatively loads gHi, then returns early on the flag: `lwz r0,0xC4(3); andi. r9,r0,256; lfs f1,gHi(13); bnelr; lfs f1,gLo(13); blr`. GCC 2.95/SN predicts the bit-test-true as unlikely and branches over it instead (`andi.; bne L; lfs gLo; blr; L: lfs gHi; blr`) — gLo as fall-through, no speculative gHi load, no bnelr. Forced stub injected the DOL form via inject_before.
+
+**Notes / hypotheses:** Branch-prediction/speculative-load layout wall (same class as GetCurStateId 0x80095E0C). GCC's static predictor lays out the unlikely branch as the taken path; DOL's build speculatively loaded the "true" const and used bnelr. Not forceable from honest C++.
+
+**Logged by:** Matcher-SN-5, 2026-05-31.
