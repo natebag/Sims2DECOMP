@@ -1,13 +1,29 @@
-// 0x802D77A0 ESemaphore::ESemaphore(int, (96 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 30,3; mr 29,4; mr 28,5; bl _s802D77A0_0; lis 9,-32697; li 0,0; addi 9,9,-23736; stw 0,0x8(30); stw 9,0x0(30); mr 4,29; mr 5,28; stw 0,0x4(30); mr 3,30; bl _s802D77A0_1; mr 3,30; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
+// 0x802D77A0 ESemaphore::ESemaphore(int, int) (96 B)
+// FLAGS:
+//
+// Two-arg ESemaphore ctor: chains the ESyncObject base ctor, zero-inits the
+// max-count and handle fields, installs the ESemaphore vtable, then delegates
+// to Create(maxCount, initialCount) to bring up the OS semaphore. The base ctor
+// + vtable are modeled the same way as the sibling default ctor (0x802D7758).
 
-extern "C" void _s802D77A0_0();
-extern "C" void _s802D77A0_1();
+extern void EObj_ctor(void* self);   // ESyncObject::ESyncObject
+extern char vt_ESemaphore[];
 
-struct ESemaphore {
-    void ESemaphore();
+class ESemaphore {
+public:
+    void* m_vt;          // 0x00
+    void* m_handle;      // 0x04
+    int   m_maxCount;    // 0x08
+    int   m_field_C;     // 0x0C  (OS semaphore object follows)
+    ESemaphore(int maxCount, int initialCount);
+    int Create(int maxCount, int initialCount);
 };
 
-void ESemaphore::ESemaphore() {
+ESemaphore::ESemaphore(int maxCount, int initialCount)
+{
+    EObj_ctor(this);
+    m_handle = 0;
+    m_vt = vt_ESemaphore;
+    m_maxCount = 0;
+    Create(maxCount, initialCount);
 }
