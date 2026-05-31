@@ -401,3 +401,13 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Branch-prediction/speculative-load layout wall (same class as GetCurStateId 0x80095E0C). GCC's static predictor lays out the unlikely branch as the taken path; DOL's build speculatively loaded the "true" const and used bnelr. Not forceable from honest C++.
 
 **Logged by:** Matcher-SN-5, 2026-05-31.
+
+## 0x802D0AA4 EAHeap::Malloc(unsigned int, int) (204B) — and siblings Calloc 0x802D0C84, MallocAligned 0x802D0B70
+
+**Tried:** Full recursive heap-walk logic matched (size-guard; `if(this!=DebugHeap()) AttemptPoolAlloc(size,8)`; `MallocFromHeap`; then 2-level sub-heap recursion `m_subHeapA@0x52c` / `m_subHeapB@0x530`). Reshapes: separate locals, single result var, `goto`-single-return, `register void* result`, full flag matrix. Wall-Analyst consulted (3 shapes).
+
+**Asm shape that didn't reduce:** DOL threads the single result var through `r0` with a redundant copy at each exit (`mr. r0,r3; mr r3,r0; bne`) — result's home reg = `r0`, copied to `r3` for return. SN ProDG copy-propagates result directly into `r3` (`mr. r3,r3; bne`), eliminating 3 `mr` instructions → 192B vs 204B — SIZE_MISMATCH (12B / 3 instructions short).
+
+**Notes / hypotheses:** Copy-propagation wall — the original 2005 SN ProDG build missed propagating `result`→`r3` (a known GCC-2.x quirk with early-return/merge control flow); our verify SN ProDG performs the propagation. NOT reachable by blocking copy-prop from honest C++ (`goto` / `register` both fail). Calloc + MallocAligned are exact byte-siblings (same `r0`-threading) — one fix unlocks all 3. Logic fully solved. Future pass: try a different SN ProDG point-version, or revisit if the verify compiler changes. WIPs in `src/wip/eaheap_near/`.
+
+**Logged by:** Matcher-SN-4, 2026-05-31.
