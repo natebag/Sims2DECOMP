@@ -1,18 +1,18 @@
 {
   "version": 2,
   "measures": {
-    "fuzzy_match_percent": 15.765835,
+    "fuzzy_match_percent": 15.781948,
     "total_code": "4145724",
-    "matched_code": "653608",
-    "matched_code_percent": 15.765835,
+    "matched_code": "654276",
+    "matched_code_percent": 15.781948,
     "total_data": "681400",
     "matched_data": "0",
     "matched_data_percent": 0.0,
     "total_functions": 18458,
-    "matched_functions": 9438,
-    "matched_functions_percent": 51.1323,
-    "complete_code": "653608",
-    "complete_code_percent": 15.765835,
+    "matched_functions": 9450,
+    "matched_functions_percent": 51.197313,
+    "complete_code": "654276",
+    "complete_code_percent": 15.781948,
     "complete_data": "0",
     "complete_data_percent": 0.0,
     "total_units": 691,
@@ -114046,18 +114046,18 @@
     {
       "name": "os.a(OSThread.o)",
       "measures": {
-        "fuzzy_match_percent": 3.849856,
+        "fuzzy_match_percent": 4.908566,
         "total_code": "8312",
-        "matched_code": "320",
-        "matched_code_percent": 3.849856,
+        "matched_code": "408",
+        "matched_code_percent": 4.908566,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 39,
-        "matched_functions": 8,
-        "matched_functions_percent": 20.512821,
-        "complete_code": "320",
-        "complete_code_percent": 3.849856,
+        "matched_functions": 11,
+        "matched_functions_percent": 28.205128,
+        "complete_code": "408",
+        "complete_code_percent": 4.908566,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -114067,7 +114067,7 @@
         {
           "name": ".text",
           "size": "8312",
-          "fuzzy_match_percent": 3.849856,
+          "fuzzy_match_percent": 4.908566,
           "metadata": {
             "virtual_address": "2149921368"
           }
@@ -114117,7 +114117,7 @@
             "virtual_address": "2149921848"
           },
           "address": "480",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "__OSSwitchThread",
@@ -114135,7 +114135,7 @@
             "virtual_address": "2149921952"
           },
           "address": "584",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "OSIsThreadTerminated",
@@ -114243,7 +114243,7 @@
             "virtual_address": "2149923700"
           },
           "address": "2332",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "OSYieldThread",
@@ -135079,18 +135079,18 @@
     {
       "name": "base_ngc_release_dvd.lib(e_mutex.obj)",
       "measures": {
-        "fuzzy_match_percent": 41.197183,
+        "fuzzy_match_percent": 68.661972,
         "total_code": "1136",
-        "matched_code": "468",
-        "matched_code_percent": 41.197183,
+        "matched_code": "780",
+        "matched_code_percent": 68.661972,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16,
-        "matched_functions": 9,
-        "matched_functions_percent": 56.25,
-        "complete_code": "468",
-        "complete_code_percent": 41.197183,
+        "matched_functions": 13,
+        "matched_functions_percent": 81.25,
+        "complete_code": "780",
+        "complete_code_percent": 68.661972,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -135100,7 +135100,7 @@
         {
           "name": ".text",
           "size": "1136",
-          "fuzzy_match_percent": 41.197183,
+          "fuzzy_match_percent": 68.661972,
           "metadata": {
             "virtual_address": "2150414612"
           }
@@ -135114,7 +135114,7 @@
             "virtual_address": "2150414612"
           },
           "address": "0",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EMutex::~EMutex(void)",
@@ -135123,7 +135123,7 @@
             "virtual_address": "2150414700"
           },
           "address": "88",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EMutex::Acquire(char *, int, unsigned int)",
@@ -135213,7 +135213,7 @@
             "virtual_address": "2150415388"
           },
           "address": "776",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EMutex::operator++(int)",
@@ -135222,7 +135222,7 @@
             "virtual_address": "2150415460"
           },
           "address": "848",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "EMutex::operator--(int)",
@@ -139291,18 +139291,18 @@
     {
       "name": "base_ngc_release_dvd.lib(fastallocpool.obj)",
       "measures": {
-        "fuzzy_match_percent": 50.18315,
+        "fuzzy_match_percent": 56.410256,
         "total_code": "1092",
-        "matched_code": "548",
-        "matched_code_percent": 50.18315,
+        "matched_code": "616",
+        "matched_code_percent": 56.410256,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16,
-        "matched_functions": 12,
-        "matched_functions_percent": 75.0,
-        "complete_code": "548",
-        "complete_code_percent": 50.18315,
+        "matched_functions": 13,
+        "matched_functions_percent": 81.25,
+        "complete_code": "616",
+        "complete_code_percent": 56.410256,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -139312,7 +139312,7 @@
         {
           "name": ".text",
           "size": "1092",
-          "fuzzy_match_percent": 50.18315,
+          "fuzzy_match_percent": 56.410256,
           "metadata": {
             "virtual_address": "2150461308"
           }
@@ -139362,7 +139362,7 @@
             "virtual_address": "2150461836"
           },
           "address": "528",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ProtectedAllocPool::~ProtectedAllocPool(void)",
@@ -139612,18 +139612,18 @@
     {
       "name": "base_ngc_release_dvd.lib(e_ngcsemaphore.obj)",
       "measures": {
-        "fuzzy_match_percent": 54.545455,
+        "fuzzy_match_percent": 71.07438,
         "total_code": "968",
-        "matched_code": "528",
-        "matched_code_percent": 54.545455,
+        "matched_code": "688",
+        "matched_code_percent": 71.07438,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 17,
-        "matched_functions": 11,
-        "matched_functions_percent": 64.705882,
-        "complete_code": "528",
-        "complete_code_percent": 54.545455,
+        "matched_functions": 14,
+        "matched_functions_percent": 82.352941,
+        "complete_code": "688",
+        "complete_code_percent": 71.07438,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -139633,7 +139633,7 @@
         {
           "name": ".text",
           "size": "968",
-          "fuzzy_match_percent": 54.545455,
+          "fuzzy_match_percent": 71.07438,
           "metadata": {
             "virtual_address": "2150463320"
           }
@@ -139683,7 +139683,7 @@
             "virtual_address": "2150463580"
           },
           "address": "260",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ESemaphore::Create(int, int)",
@@ -139692,7 +139692,7 @@
             "virtual_address": "2150463604"
           },
           "address": "284",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ESemaphore::Destroy(void)",
@@ -139737,7 +139737,7 @@
             "virtual_address": "2150463940"
           },
           "address": "620",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ESemaphore::GetCurrentCount(void)",
@@ -156532,18 +156532,18 @@
     {
       "name": "engine_ngc_release_dvd.lib(e_rshader.obj)",
       "measures": {
-        "fuzzy_match_percent": 7.130085,
+        "fuzzy_match_percent": 7.353599,
         "total_code": "17896",
-        "matched_code": "1276",
-        "matched_code_percent": 7.130085,
+        "matched_code": "1316",
+        "matched_code_percent": 7.353599,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 77,
-        "matched_functions": 35,
-        "matched_functions_percent": 45.454545,
-        "complete_code": "1276",
-        "complete_code_percent": 7.130085,
+        "matched_functions": 36,
+        "matched_functions_percent": 46.753247,
+        "complete_code": "1316",
+        "complete_code_percent": 7.353599,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 1,
@@ -156553,7 +156553,7 @@
         {
           "name": ".text",
           "size": "692540",
-          "fuzzy_match_percent": 7.130085,
+          "fuzzy_match_percent": 7.353599,
           "metadata": {
             "virtual_address": "2150745660"
           }
@@ -157179,7 +157179,7 @@
             "virtual_address": "2150762716"
           },
           "address": "17056",
-          "fuzzy_match_percent": 0.0
+          "fuzzy_match_percent": 100.0
         },
         {
           "name": "ERShader::Select(ERC *, unsigned int)",
@@ -193096,18 +193096,18 @@
       "id": "game",
       "name": "Game code (SN Systems ProDG)",
       "measures": {
-        "fuzzy_match_percent": 12.602966,
+        "fuzzy_match_percent": 12.61884,
         "total_code": "3653648",
-        "matched_code": "460468",
-        "matched_code_percent": 12.602966,
+        "matched_code": "461048",
+        "matched_code_percent": 12.61884,
         "total_data": "681400",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 16890,
-        "matched_functions": 9304,
-        "matched_functions_percent": 55.08585,
-        "complete_code": "460468",
-        "complete_code_percent": 12.602966,
+        "matched_functions": 9313,
+        "matched_functions_percent": 55.139136,
+        "complete_code": "461048",
+        "complete_code_percent": 12.61884,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 593,
@@ -193118,18 +193118,18 @@
       "id": "sdk",
       "name": "DolphinSDK (Metrowerks, unmatchable)",
       "measures": {
-        "fuzzy_match_percent": 39.250035,
+        "fuzzy_match_percent": 39.267918,
         "total_code": "492076",
-        "matched_code": "193140",
-        "matched_code_percent": 39.250035,
+        "matched_code": "193228",
+        "matched_code_percent": 39.267918,
         "total_data": "0",
         "matched_data": "0",
         "matched_data_percent": 0.0,
         "total_functions": 1568,
-        "matched_functions": 134,
-        "matched_functions_percent": 8.545918,
-        "complete_code": "193140",
-        "complete_code_percent": 39.250035,
+        "matched_functions": 137,
+        "matched_functions_percent": 8.737245,
+        "complete_code": "193228",
+        "complete_code_percent": 39.267918,
         "complete_data": "0",
         "complete_data_percent": 0.0,
         "total_units": 98,
