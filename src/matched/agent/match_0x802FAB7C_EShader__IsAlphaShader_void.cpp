@@ -1,4 +1,29 @@
 // 0x802FAB7C EShader::IsAlphaShader(void) (68 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="addi 3,3,100; li 9,0; lwz 0,0xc(3); andi. 11,0,64; beq 1f; lbz 0,0x1c(3); cmpwi 0,1; beq 0f; lbz 0,0x1d(3); cmpwi 0,1; beq 0f; lbz 0,0x1f(3); cmpwi 0,1; bne 1f; 0:; li 9,1; 1:; mr 3,9"
-extern "C" int f_802FAB7C() {}
+
+struct EShaderState {
+    char pad_0000[0xc];
+    unsigned int m_flags;
+    char pad_0010[0x1c - 0x10];
+    unsigned char m_mode1c;
+    unsigned char m_mode1d;
+    unsigned char pad_001e;
+    unsigned char m_mode1f;
+};
+
+struct EShader {
+    char pad_0000[0x64];
+    EShaderState m_state;
+
+    int IsAlphaShader();
+};
+
+int EShader::IsAlphaShader() {
+    EShaderState* s = &m_state;
+    int result = 0;
+    if (s->m_flags & 0x40) {
+        if (s->m_mode1c == 1 || s->m_mode1d == 1 || s->m_mode1f == 1) {
+            result = 1;
+        }
+    }
+    return result;
+}
