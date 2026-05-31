@@ -1,10 +1,12 @@
-// 0x8033B724 ENgcRenderer::GetCurrentTexture(int) (16 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="rlwinm 4,4,2,0,29; addi 3,3,17976; lwzx 3,3,4"
-
+// 0x8033B724 ENgcRenderer::GetCurrentTexture(int) (16B)
+// slwi r4,r4,2; addi r3,r3,17976; lwzx r3,r3,r4; blr  -- m_textures[i] (inline array @0x4638)
 struct ENgcRenderer {
-    void GetCurrentTexture();
+    char pad[0x4638];
+    void* m_textures[8];    // 0x4638
+    void* GetCurrentTexture(int i);
 };
 
-void ENgcRenderer::GetCurrentTexture() {
+void* ENgcRenderer::GetCurrentTexture(int i) {
+    return m_textures[i];
 }
