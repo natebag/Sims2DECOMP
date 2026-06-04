@@ -342,6 +342,8 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 
 **Logged by:** Matcher-SN-4, 2026-05-30.
 
+**Retried (Pi/GPT-5.5 + SN-VERSION 3.8.1/3.7/3.5, 2026-06-04):** Re-ran the preserved near-match WIP under default and all three older SN point-versions. All emitted the same 196B promoted-char shape (`c` in r29, 24B frame) and did not reproduce the DOL's stack-home `stb`/`lbz` char spill. Wall remains.
+
 ## 0x8009DAC0 BString::operator=(char) (172B)
 
 **Tried:** Full COW semantics matched (`if ref_count()==1 && reserve()>1: *point()=c; point()[1]=eos(); m_rep->m_length=1; else delete_ref(); m_rep=new basic_string_ref(c,1)`). Flag matrix default / `-fno-schedule-insns` / insns2. `m_length=1` store correctly reuses the `ref_count` register (GCC knows `==1` in-branch). All logic byte-exact.
