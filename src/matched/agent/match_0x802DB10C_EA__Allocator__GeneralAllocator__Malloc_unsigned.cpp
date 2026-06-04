@@ -1,7 +1,29 @@
-// 0x802DB10C EA::Allocator::GeneralAllocator::Malloc(unsigned (108 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 29,0x14(1); stw 0,0x24(1); mr 31,3; mr 29,4; lwz 3,0x4fc(31); mr 30,5; stw 3,0x8(1); cmpwi 3,0; beq 0f; bl _s802DB10C_0; 0:; mr 3,31; mr 4,29; mr 5,30; bl _s802DB10C_1; mr 31,3; lwz 3,0x8(1); cmpwi 3,0; beq 1f; bl _s802DB10C_2; 1:; mr 3,31; lwz 0,0x24(1); mtspr 8,0; lmw 29,0x14(1); addi 1,1,32"
-extern "C" void _s802DB10C_0();
-extern "C" void _s802DB10C_1();
-extern "C" void _s802DB10C_2();
-extern "C" void f_802DB10C() {}
+// 0x802DB10C EA::Allocator::GeneralAllocator::Malloc(unsigned int, int) (108 B)
+// Public Malloc: hold the heap's mutex (if configured) across MallocInternal and
+// return its result. Same conditional scoped-lock guard as Free; the allocation
+// result is carried in a callee-saved register past the dtor's unlock call.
+namespace EA { namespace Allocator {
+
+extern "C" void PPMMutexLock(void* mutex);
+extern "C" void PPMMutexUnlock(void* mutex);
+
+struct PPMutexAutoLock {
+    void* m_mutex;
+    PPMutexAutoLock(void* mutex) : m_mutex(mutex) { if (m_mutex) PPMMutexLock(m_mutex); }
+    ~PPMutexAutoLock() { if (m_mutex) PPMMutexUnlock(m_mutex); }
+};
+
+struct GeneralAllocator {
+    char  pad[0x4FC];
+    void* m_mutex;        // 0x4FC = 1276
+    void* Malloc(unsigned int size, int flags);
+    void* MallocInternal(unsigned int size, int flags);
+};
+
+void* GeneralAllocator::Malloc(unsigned int size, int flags)
+{
+    PPMutexAutoLock lock(m_mutex);
+    return MallocInternal(size, flags);
+}
+
+}}
