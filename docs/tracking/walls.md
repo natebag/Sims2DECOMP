@@ -632,3 +632,36 @@ SN point-version. Full decode + best attempt: memory project_s20_opus1_isobjecto
 F:\tmp\opus1_280fbc.cpp.
 
 **Logged by:** Matcher-Opus-1, 2026-06-04.
+
+## MWCC lhzu/lwzu RMW peephole class — 4 functions
+
+The MWCC GC-1.2.5n `-O4,p` peephole optimizer converts a read-modify-write pattern
+`lhz/lwz r0, N(rB); ...; sth/stw r0, N(rB)` into `lhzu/lwzu r0, N(rB); ...; sth/stw r0, 0(rB)`.
+The DOL was compiled without this peephole (uses plain `lhz/lwz` with offset N for both).
+No source-level change prevents it; the `volatile` qualifier and separate named variables
+both fail. The only fix would be a MWCC flag to disable the peephole (`-O4` without `p`).
+
+### 0x8026732C AISetStreamVolLeft (28B)
+
+**Tried:** `extern volatile unsigned int __AIStreamRegs[]; reg = __AIStreamRegs[1]; ...; __AIStreamRegs[1] = new_reg;`
+(separate named variables). MWCC: `lwzu r0, 4(r4); ...; stw r0, 0(r4)`. DOL: `lwz r0, 4(r4); ...; stw r0, 4(r4)`.
+
+### 0x80267358 AISetStreamVolRight (28B)
+
+**Tried:** symmetric to AISetStreamVolLeft. Same wall.
+
+### 0x80266F28 AIStartDMA (24B)
+
+**Tried:** `extern volatile unsigned short __AIDMARegs[]; __AIDMARegs[27] | 0x8000 → __AIDMARegs[27] = ...`
+MWCC: `lhzu r0, 54(r3); ...; sth r0, 0(r3)`. DOL: `lhz r0, 54(r3); ...; sth r0, 54(r3)`.
+
+### 0x80266F40 AIStopDMA (24B)
+
+**Tried:** symmetric to AIStartDMA. Same wall.
+
+**Notes / hypotheses:** The `-O4,p` peephole `p` flag is the culprit. A per-file flag
+override stripping `,p` from the MWCC flags would need verify_mwcc.py support (a new
+`// MWCC-FLAGS:` marker). **CLASS WALL** for all MWCC RMW setters using extern-array at
+base+nonzero_offset. Tooling fix: add per-file `-O4` (no `,p`) override to verify_mwcc.py.
+
+**Logged by:** Matcher-MWCC-SDK, 2026-06-04.
