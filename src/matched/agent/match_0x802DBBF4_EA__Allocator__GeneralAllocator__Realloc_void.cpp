@@ -1,7 +1,28 @@
-// 0x802DBBF4 EA::Allocator::GeneralAllocator::Realloc(void (116 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 28,0x10(1); stw 0,0x24(1); mr 31,3; mr 28,4; lwz 3,0x4fc(31); mr 30,5; mr 29,6; stw 3,0x8(1); cmpwi 3,0; beq 0f; bl _s802DBBF4_0; 0:; mr 3,31; mr 4,28; mr 5,30; mr 6,29; bl _s802DBBF4_1; mr 31,3; lwz 3,0x8(1); cmpwi 3,0; beq 1f; bl _s802DBBF4_2; 1:; mr 3,31; lwz 0,0x24(1); mtspr 8,0; lmw 28,0x10(1); addi 1,1,32"
-extern "C" void _s802DBBF4_0();
-extern "C" void _s802DBBF4_1();
-extern "C" void _s802DBBF4_2();
-extern "C" void f_802DBBF4() {}
+// 0x802DBBF4 EA::Allocator::GeneralAllocator::Realloc(void*, unsigned int, int) (116 B)
+// Public Realloc: same conditional scoped-lock guard as Malloc, delegating
+// (p, size, flags) to ReallocInternal and carrying the result past the unlock.
+namespace EA { namespace Allocator {
+
+extern "C" void PPMMutexLock(void* mutex);
+extern "C" void PPMMutexUnlock(void* mutex);
+
+struct PPMutexAutoLock {
+    void* m_mutex;
+    PPMutexAutoLock(void* mutex) : m_mutex(mutex) { if (m_mutex) PPMMutexLock(m_mutex); }
+    ~PPMutexAutoLock() { if (m_mutex) PPMMutexUnlock(m_mutex); }
+};
+
+struct GeneralAllocator {
+    char  pad[0x4FC];
+    void* m_mutex;        // 0x4FC = 1276
+    void* Realloc(void* p, unsigned int size, int flags);
+    void* ReallocInternal(void* p, unsigned int size, int flags);
+};
+
+void* GeneralAllocator::Realloc(void* p, unsigned int size, int flags)
+{
+    PPMutexAutoLock lock(m_mutex);
+    return ReallocInternal(p, size, flags);
+}
+
+}}
