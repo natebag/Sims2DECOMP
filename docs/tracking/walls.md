@@ -412,6 +412,8 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 
 **Logged by:** Matcher-SN-4, 2026-05-31.
 
+**Retried (Pi/GPT-5.5 + SN-VERSION 3.8.1/3.7/3.5, 2026-06-04):** Took solved WIP `src/wip/eaheap_near/match_0x802D0AA4_EAHeap__Malloc_unsigned.cpp`, prepended each SN-VERSION marker, and ran `verify_match.sh --strict` at 0x802D0AA4/204. All three older point-versions produced the same 192B object shape as default for this body (still 12B short; same copy-prop/branch-tail layout), so the EAHeap copy-prop family remains walled.
+
 ## 0x80364ED0 ERenderSurface::SetSize(int,int,int) (24B)
 
 **Tried:** Full semantics matched: `m_p(0x18)=p; m_w(0x0)=w; m_h(0x4)=h; return 1`. Plain member stores and `volatile int*` stores (volatile to pin store order), flag matrix default / -fno-schedule-insns / insns2.
@@ -453,6 +455,8 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Recognize-and-skip the whole palette-fallback family; only a whole-body ASMPROC inject can force the dead `li`, which is banned. Do NOT force.
 
 **Logged by:** Matcher-SN-6, 2026-05-31.
+
+**Retried (Pi/GPT-5.5 + SN-VERSION 3.8.1/3.7/3.5, 2026-06-04):** Rebuilt the natural palette-fallback body under default and SN-VERSION 3.8.1/3.7/3.5. All emitted the same 44B object and continued to eliminate the redundant `li r9,0` after loading `m_base`; no point-version tested reproduces the DOL's 48B dead-li shape. Wall remains.
 
 ## 0x8037520C C_MTX44RotRad (112B) + 0x80372CE4 C_MTXRotRad (112B) — MWCC addi-vs-mr + redundant-fmr round-trip
 
