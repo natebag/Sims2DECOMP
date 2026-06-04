@@ -1,7 +1,30 @@
-// 0x802DC138 EA::Allocator::GeneralAllocator::MallocMultiple(unsigned (128 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 27,0x14(1); stw 0,0x2c(1); mr 31,3; mr 30,4; lwz 3,0x4fc(31); mr 29,5; mr 28,6; mr 27,7; stw 3,0x8(1); cmpwi 3,0; beq 0f; bl _s802DC138_0; 0:; mr 4,30; mr 3,31; mr 6,29; mr 7,28; mr 8,27; mr 5,4; bl _s802DC138_1; mr 31,3; lwz 3,0x8(1); cmpwi 3,0; beq 1f; bl _s802DC138_2; 1:; mr 3,31; lwz 0,0x2c(1); mtspr 8,0; lmw 27,0x14(1); addi 1,1,40"
-extern "C" void _s802DC138_0();
-extern "C" void _s802DC138_1();
-extern "C" void _s802DC138_2();
-extern "C" void f_802DC138() {}
+// 0x802DC138 EA::Allocator::GeneralAllocator::MallocMultiple(unsigned int, const unsigned int*, void**, int) (128 B)
+// Per-element-size overload: allocate `count` blocks whose sizes come from
+// pSizeArray. Under the heap mutex, delegate to MallocMultipleInternal passing
+// `count` as both the block count and the size-element count (so r5 = r4).
+namespace EA { namespace Allocator {
+
+extern "C" void PPMMutexLock(void* mutex);
+extern "C" void PPMMutexUnlock(void* mutex);
+
+struct PPMutexAutoLock {
+    void* m_mutex;
+    PPMutexAutoLock(void* mutex) : m_mutex(mutex) { if (m_mutex) PPMMutexLock(m_mutex); }
+    ~PPMutexAutoLock() { if (m_mutex) PPMMutexUnlock(m_mutex); }
+};
+
+struct GeneralAllocator {
+    char  pad[0x4FC];
+    void* m_mutex;        // 0x4FC = 1276
+    unsigned int MallocMultiple(unsigned int count, const unsigned int* pSizeArray, void** pResultArray, int flags);
+    unsigned int MallocMultipleInternal(unsigned int count, unsigned int sizeCount,
+                                        const unsigned int* pSizeArray, void** pResultArray, int flags);
+};
+
+unsigned int GeneralAllocator::MallocMultiple(unsigned int count, const unsigned int* pSizeArray, void** pResultArray, int flags)
+{
+    PPMutexAutoLock lock(m_mutex);
+    return MallocMultipleInternal(count, count, pSizeArray, pResultArray, flags);
+}
+
+}}
