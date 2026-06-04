@@ -1,9 +1,59 @@
+// VERIFY-SYMBOL: f_802D08F8
 // 0x802D08F8 FPHeap::InitializeHeapStatics(void) (180 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); lwz 0,-22836(13); lis 11,-32694; cmpwi 0,0; bne 1f; addi 9,11,7208; stw 0,0x1c28(11); stw 0,0x4(9); addi 30,9,8; li 31,7; 0:; mr 3,30; li 4,0; li 5,0; li 6,0; li 7,0; addi 30,30,24; bl _s802D08F8_0; cmpwi 31,0; addi 31,31,-1; bne 0b; li 0,1; lis 3,-32723; stw 0,-22836(13); addi 3,3,2188; bl _s802D08F8_1; 1:; lis 9,-32694; lis 4,-32702; addi 9,9,7208; addi 4,4,-6984; mr 3,9; stw 9,-21320(13); bl _s802D08F8_2; bl _s802D08F8_3; lis 4,-32718; li 5,0; addi 4,4,31252; bl _s802D08F8_4; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
-extern "C" void _s802D08F8_0();
-extern "C" void _s802D08F8_1();
-extern "C" void _s802D08F8_2();
-extern "C" void _s802D08F8_3();
-extern "C" void _s802D08F8_4();
-extern "C" void f_802D08F8() {}
+//
+// Sibling of EAHeap::InitializeHeapStatics (0x802D070C) — same GCC2.95
+// function-local-static recipe, smaller: the pooled type is FastAllocPool
+// (24-byte element, 8 of them) and the tail is a single
+// AptHeap()->SetMallocFailureFunction(&cb, 0). `static AllocPoolManager s_mgr;`
+// emits the SDA guard + inlined ctor (zero 2 header words + a
+// `n=7; do{...}while(n--!=0)` placement-new pointer-walk @ stride 24) + guard=1
+// + atexit(__tcf). Relocations are masked, so simplified extern callees suffice.
+// The __tcf cleanup thunk precedes the fn in .text -> verified by symbol.
+
+inline void* operator new(unsigned int, void* p) { return p; }
+
+struct GeneralAllocator {
+    void SetMallocFailureFunction(void* fn, void* ctx);
+};
+
+extern GeneralAllocator* AptHeap();
+extern "C" int AptHeapFreeMemory(GeneralAllocator*, unsigned, unsigned, void*);
+
+struct FastAllocPool {
+    char m_data[24];
+    FastAllocPool(char* a, void* b, int c, int d);
+    ~FastAllocPool();
+};
+
+struct AllocPoolManager {
+    int  m_field0;
+    int  m_field4;
+    char m_poolBuf[8 * 24];   // raw storage for 8 FastAllocPool
+    AllocPoolManager();
+    ~AllocPoolManager();
+    void InitAllocPools(unsigned int* table);
+};
+
+inline AllocPoolManager::AllocPoolManager()
+{
+    m_field0 = 0;
+    m_field4 = 0;
+    FastAllocPool* p = (FastAllocPool*)m_poolBuf;
+    int n = 7;
+    do {
+        new (p) FastAllocPool(0, 0, 0, 0);
+        p++;
+    } while (n-- != 0);
+}
+
+extern unsigned int g_fpInitTable[];
+extern AllocPoolManager* g_pFPPoolManager;
+
+extern "C" void f_802D08F8()
+{
+    static AllocPoolManager s_mgr;
+    g_pFPPoolManager = &s_mgr;
+    s_mgr.InitAllocPools(g_fpInitTable);
+
+    AptHeap()->SetMallocFailureFunction((void*)&AptHeapFreeMemory, 0);
+}
