@@ -692,3 +692,34 @@ EAStringC refcount-inline + >8B-rep-forces-absolute-addr decode is reusable for 
 AptValue toString/getVariable string-returning family.
 
 **Logged by:** Matcher-Opus-1, 2026-06-04.
+
+## 0x802D945C EA::Allocator::GeneralAllocator::MakeChunkFromCore(unsigned int, unsigned int) (68B)
+
+**Tried:** natural body `mnSize = a|b; mnPriorSize = 0; AddDoubleFencepost(0, a|b); return this;`
+with three operand/temp variations: `a|b`, `b|a`, and an explicit `unsigned int packed = b|a`
+local. Default scheduling. Prologue (`stmw r30` saving the unused r31), the two header
+stores, the AddDoubleFencepost delegate call, and the `mr r3,r30` return all match.
+
+**Asm shape that didn't reduce:** the packed value `(a|b)` register home.
+```
+DOL:       or  r5,r4,r5      ; a|b computed directly INTO r5 (the 3rd-arg reg)
+           stw r5,4(r30)     ; this->mnSize = a|b
+           li  r4,0
+           stw r0,0(r30)
+           bl  AddDoubleFencepost   ; r5 already holds a|b -> no extra move
+COMPILED:  or  r4,r4,r5      ; a|b computed into r4
+           mr  r5,r4         ; <-- extra move to put it in the 3rd-arg reg r5
+           stw r4,4(r30)
+           li  r4,0
+           ...
+```
+SN ProDG 3.9.3 colors `a|b` into r4 and inserts `mr r5,r4`; the 2005 build colored it
+straight into r5. One extra instruction, cascades the tail.
+
+**Notes / hypotheses:** register-allocation/coloring version diff (same class as the
+this-alias-mr / CSE-coloring walls). Not source-coaxable from the 3 reshapes tried.
+Candidate for Lane D re-validation with a different model family (GPT-5.5/Pi) or a
+period-correct SN-ProDG point-version. The sibling AddDoubleFencepost (0x802D9418) it
+delegates to is itself a separate version wall (base-sharing).
+
+**Logged by:** Matcher-Opus-2b, 2026-06-04.
