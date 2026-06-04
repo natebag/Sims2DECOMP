@@ -552,3 +552,80 @@ Byte-identical except first two instructions swapped. All stores and result corr
 **Notes / hypotheses:** MWCC 1.2.5n scheduler computes dependent values (srwi) before address materializations (lis) for HW-register setters. The DOL's lis-first ordering suggests either a different 1.2.5n build or a source form that forced the address into a register before the computation. The extern-array form fixes the ordering for reads (DSPReadCPUToDSPMbox matched) but produces 24B for writes, so can't be used for the 20B store form. **CLASS WALL** for constant-address HW-register setters with a leading srwi/rlwinm computation.
 
 **Logged by:** Matcher-MWCC-SDK, 2026-06-04.
+
+## 0x802DC4E0 EA::Allocator::GeneralAllocator::GetUsableSize(void*) const (64B)
+
+**Tried:** Logic fully solved (chunk = p-8; size = mnSize & ~7; if (mnSize&2) return
+size-8; next = chunk+size; if (next->mnSize&1) return size-4; return 0; with the
+p==0 and bit0-clear paths sharing one `li r3,0`). 7 source forms x flag sweep:
+`return size-4` form, `size-=4; return size` form, explicit-bool form, fallthrough
+`else` block (Wall-Analyst Reshape 1), `else if` chain. Flags: default,
+-fno-schedule-insns, -fno-schedule-insns2, -fno-peephole, -fno-delayed-branch (all
+accepted, none reduced). -fno-reorder-blocks REJECTED by SN ProDG 3.9.3.
+
+**Asm shape that didn't reduce:** TWO coupled GCC2.95 divergences.
+(1) **Jump layout:** DOL keeps BOTH early-returns inline —
+`andi. 2; beq L1; addi -8; blr; L1: ...`. GCC2.95 consistently out-of-lines
+whichever early-return is the `if`-THEN block (here `return size-8`), emitting
+`bne <out-of-line>`; only the `else`/fallthrough stays inline. The two source forms
+trade off WHICH block is out-of-lined; never both inline.
+(2) **Load-delay fill:** in L1 the DOL emits `lwz; andi. 1; addi -4; bnelr`; GCC2.95
+emits `lwz; addi -4; andi. 1; bnelr` (sinks the independent `addi` into the load-use
+slot) even with -fno-schedule-insns/insns2/-fno-delayed-branch/-fno-peephole — so it
+is a combine/RTL-emission choice, not a controllable pass.
+
+**Notes / hypotheses:** GCC2.95 jump-layout + load-delay scheduling wall. Both are
+compiler-point-version behaviors → **Lane B (SN-ProDG version-override) candidate**.
+Logic is 100% solved; revisit when the version-override (3.8.1/3.7/3.5) lands.
+Second-opinioned by Wall-Analyst (3 reshapes, concurred legitimate).
+
+**Logged by:** Matcher-Opus-2, 2026-06-04.
+
+## 0x802D9030 EA::Allocator::GeneralAllocator::GetLargeBinIndexFromChunkSize(unsigned int) (104B)
+
+**Tried:** Logic fully solved — 5-tier descending shift/threshold cascade
+(`t = size>>6; if (t<=32) return t+56;` ... final tier preloads 126 default + returns
+t+124 if t<=2). Natural cascade source, with default and -fno-schedule-insns.
+
+**Asm shape that didn't reduce:** GCC2.95 3.9.3 optimizes the cascade TIGHTER than the
+DOL. DOL per tier: `srwi r9,r3,N; cmplwi r9,T; bgt Lnext; addi r3,r9,K; blr` (size stays
+in r3, shift in r9, 3 insns, branch over an inline return). Our SN ProDG precomputes the
+result and uses a conditional-return-via-lr: `mr r0,r3` (save size) then per tier
+`srwi r3,r0,N; cmplwi r3,T; addi r3,r3,K; blelr` (2 insns/tier, size spilled to r0).
+The `blelr` form is shorter -> SIZE_MISMATCH (and different coloring: r0 vs r9 for size).
+
+**Notes / hypotheses:** Compiler-point-version peephole/cost-model difference — 3.9.3
+emits the `addi;blelr` fused form; the 2005 build emitted the looser `bgt;addi;blr`.
+Not source-controllable on 3.9.3. **Lane B (SN-ProDG version-override) candidate** — a
+less-aggressive point-version may emit the looser form. Logic 100% solved.
+
+**Logged by:** Matcher-Opus-2, 2026-06-04.
+
+## 0x80280FBC AptActionInterpreter::_FunctionAptActionInstanceOf (560B)
+
+**Tried:** Full clean structural C++ decode (the InstanceOf opcode: pop 2 operands,
+call isObjectOfType, alloc/reuse a boolean GC-box, GC-bookkeep, cleanup-dispatch
+slot1/slot2 with method-ids 211/220, push result; plus a degenerate top<=1 path).
+Decode is **100% correct** — compiles to a ~96% byte match (only ~5 instr / 20B off
+on 560B). Reshapes applied: Wall-Analyst B1 (split `newtop=top+1; newtop-=top;`) —
+**worked**, fixed the callee-saved-hoist so prologue matches (stmw r26 / frame 32).
+vptr-offset bug fixed (declare 2 head words + virtuals only, access m_payload@0xC
+manually so SN keeps vptr@0x08). SN-VERSION 3.8.1 / 3.7 / 3.5 all byte-identical to
+3.9.3 (no-op). Operand-read reshapes A1 (char*+byte offset) and A3 (&base[idx]
+intermediates) did not force the DOL's two-base form.
+
+**Asm shape that didn't reduce:**
+- (A) operand read — DOL materializes TWO independent scaled bases:
+  `addi r9,r29,-1; slwi r9,r9,2; slwi r11,r29,2; add r9,r9,data; add r11,r11,data; lwz r3,-4(r11); lwz r4,-4(r9)`
+  GCC-3.9.3 CSEs ONE base: `slwi 9,top,2; add 9,9,data; lwz 3,-4(9); lwz 4,-8(9)` (3 instr shorter).
+- (B/coloring) DOL `this`→r31, origtop→r29; GCC `this`→r29 (pervasive reg renumber, likely downstream of A).
+
+**Notes / hypotheses:** objdiff / Lane-B class — strength-reduction/addressing-mode
+CSE difference between the 2005 SN ProDG point-version and the installed 3.5/3.7/3.8.1/3.9.3.
+No installed SN version differs, and GCC source shapes don't override the array-base CSE
+at -O2. **CastOp 0x802811EC (568B) is the SAME wall** (near-identical opcode handler) —
+do NOT solo-grind; both await a real instruction-level objdiff pass or a not-installed
+SN point-version. Full decode + best attempt: memory project_s20_opus1_isobjectoftype +
+F:\tmp\opus1_280fbc.cpp.
+
+**Logged by:** Matcher-Opus-1, 2026-06-04.
