@@ -1,4 +1,28 @@
-// 0x802DC598 EA::Allocator::GeneralAllocator::FindCoreBlockForAddress(void (64 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="addi 0,3,1100; lwz 3,0x46c(3); cmpw 3,0; beq 2f; mr 9,0; 0:; cmplw 4,3; blt 1f; lwz 0,0x4(3); add 0,3,0; cmplw 4,0; bltlr; 1:; lwz 3,0x20(3); cmpw 3,9; bne 0b; 2:; li 3,0"
-extern "C" int f_802DC598() {}
+// 0x802DC598 EA::Allocator::GeneralAllocator::FindCoreBlockForAddress(void*) const (64 B)
+// Walk the circular CoreBlock list (sentinel head embedded at +0x44C) and return
+// the block whose [block, block+mnSize) span contains addr, else 0.
+// mnSize @ +0x04, mpNext @ +0x20.
+struct CoreBlock {
+    char         pad0[4];
+    unsigned int mnSize;     // 0x04
+    char         pad8[0x18];
+    CoreBlock*   mpNext;      // 0x20
+};
+
+struct GeneralAllocator {
+    char      pad[1100];
+    CoreBlock mHeadCoreBlock;   // 0x44C
+    CoreBlock* FindCoreBlockForAddress(const void* addr) const;
+};
+
+CoreBlock* GeneralAllocator::FindCoreBlockForAddress(const void* addr) const
+{
+    CoreBlock* block = mHeadCoreBlock.mpNext;
+    while (block != &mHeadCoreBlock) {
+        if ((const char*)addr >= (const char*)block &&
+            (const char*)addr < (const char*)block + block->mnSize)
+            return block;
+        block = block->mpNext;
+    }
+    return 0;
+}
