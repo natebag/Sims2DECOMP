@@ -332,6 +332,8 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 
 **Logged by:** Matcher-SN-4, 2026-05-30.
 
+**Retried (Pi/GPT-5.5 + SN-VERSION 3.8.1/3.7/3.5, 2026-06-04):** Re-ran the preserved near-match WIP under default and all three older SN point-versions. All emitted the same coloring as default (`this` in r31, `count+1` in r30) rather than the DOL's `this` r30 / `count+1` r31 allocation. Wall remains.
+
 ## 0x8009C9D0 basic_string_ref::basic_string_ref(char, unsigned int) (200B)
 
 **Tried:** Full semantics matched (`throwlength` on `n==-1`; `m_length/m_capacity=n`; if `n!=0`: `capacity=n+1`, alloc, fill-loop `m_data[i]=c` for `i<m_length`, `m_data[m_length]=eos()`; else `m_data=0`; `ref_count=1`). Full flag matrix.
