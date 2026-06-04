@@ -1,4 +1,29 @@
-// 0x802A9888 AptNativeHash::AptNativeHash(int) (68 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="li 0,0; addi 9,4,-1; stw 0,0x10(3); and. 11,4,9; stw 4,0x0(3); stw 0,0x4(3); stw 0,0x8(3); stw 0,0xc(3); beqlr; li 0,1; cmpw 0,4; bge 1f; 0:; rlwinm 0,0,1,0,30; cmpw 0,4; blt 0b; 1:; stw 0,0x0(3)"
-extern "C" void f_802A9888() {}
+// 0x802A9888 (68B) AptNativeHash::AptNativeHash(int)
+//
+// Hash-table ctor: zero-inits the table fields, sets the bucket count to n, and
+// if n is not a power of two, rounds it up to the next power of two. Clean
+// structural C++, leaf. Field-init source order is chosen so default scheduling
+// hoists the last (m_16) store to the front, matching the DOL store order.
+
+struct AptNativeHash {
+    unsigned int m_capacity;  // 0x00
+    unsigned int m_4;         // 0x04
+    unsigned int m_8;         // 0x08
+    unsigned int m_12;        // 0x0C
+    unsigned int m_16;        // 0x10
+    AptNativeHash(int n);
+};
+
+AptNativeHash::AptNativeHash(int n) {
+    m_capacity = n;
+    m_4 = 0;
+    m_8 = 0;
+    m_12 = 0;
+    m_16 = 0;
+    if ((n & (n - 1)) == 0)
+        return;
+    int p = 1;
+    while (p < n)
+        p <<= 1;
+    m_capacity = p;
+}
