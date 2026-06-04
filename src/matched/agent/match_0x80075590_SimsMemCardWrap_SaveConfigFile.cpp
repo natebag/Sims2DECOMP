@@ -1,5 +1,5 @@
+// FLAGS: -fno-schedule-insns2
 // 0x80075590 SimsMemCardWrap::SaveConfigFile (76b)
-// ASMPROC_swap_adj: a=lis, b=mr, which=first
 
 struct OptionsReconGlobal {
     int* ptr;
