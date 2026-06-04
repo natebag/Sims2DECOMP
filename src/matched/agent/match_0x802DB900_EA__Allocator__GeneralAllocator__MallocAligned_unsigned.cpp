@@ -1,7 +1,29 @@
-// 0x802DB900 EA::Allocator::GeneralAllocator::MallocAligned(unsigned (124 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 27,0x14(1); stw 0,0x2c(1); mr 31,3; mr 27,4; lwz 3,0x4fc(31); mr 30,5; mr 29,6; mr 28,7; stw 3,0x8(1); cmpwi 3,0; beq 0f; bl _s802DB900_0; 0:; mr 3,31; mr 4,27; mr 5,30; mr 6,29; mr 7,28; bl _s802DB900_1; mr 31,3; lwz 3,0x8(1); cmpwi 3,0; beq 1f; bl _s802DB900_2; 1:; mr 3,31; lwz 0,0x2c(1); mtspr 8,0; lmw 27,0x14(1); addi 1,1,40"
-extern "C" void _s802DB900_0();
-extern "C" void _s802DB900_1();
-extern "C" void _s802DB900_2();
-extern "C" void f_802DB900() {}
+// 0x802DB900 EA::Allocator::GeneralAllocator::MallocAligned(unsigned int, unsigned int, unsigned int, int) (124 B)
+// Public MallocAligned: same conditional scoped-lock guard as Malloc, delegating
+// the four arguments (size, alignment, offset, flags) to MallocAlignedInternal and
+// carrying the result past the dtor's unlock.
+namespace EA { namespace Allocator {
+
+extern "C" void PPMMutexLock(void* mutex);
+extern "C" void PPMMutexUnlock(void* mutex);
+
+struct PPMutexAutoLock {
+    void* m_mutex;
+    PPMutexAutoLock(void* mutex) : m_mutex(mutex) { if (m_mutex) PPMMutexLock(m_mutex); }
+    ~PPMutexAutoLock() { if (m_mutex) PPMMutexUnlock(m_mutex); }
+};
+
+struct GeneralAllocator {
+    char  pad[0x4FC];
+    void* m_mutex;        // 0x4FC = 1276
+    void* MallocAligned(unsigned int size, unsigned int alignment, unsigned int offset, int flags);
+    void* MallocAlignedInternal(unsigned int size, unsigned int alignment, unsigned int offset, int flags);
+};
+
+void* GeneralAllocator::MallocAligned(unsigned int size, unsigned int alignment, unsigned int offset, int flags)
+{
+    PPMutexAutoLock lock(m_mutex);
+    return MallocAlignedInternal(size, alignment, offset, flags);
+}
+
+}}
