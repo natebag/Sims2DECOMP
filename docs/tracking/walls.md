@@ -282,6 +282,8 @@ reachable from natural C++ source at -O2.
 
 **Logged by:** Matcher-SN-2, 2026-05-30.
 
+**Retried (Pi/GPT-5.5 + SN-VERSION 3.8.1/3.7/3.5, 2026-06-04):** Reconstructed the natural lock-guard body and tested default plus all three older SN point-versions. All emitted the same keep-lock-in-r30 + cached-CR shape (`mfcr`, r30/r31 save, `beq cr4`) rather than the DOL's stack-home spill/reload with only r31 saved. Wall remains.
+
 ## 0x8026FF94 AptActionInterpreter::valueToObject(AptValue*, AptValueObj*, AptValueObj**) (220B)
 
 **Status:** NEAR-MATCH — 99% (432B/440B), exactly ONE instruction off. The entire
@@ -527,3 +529,24 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** MWCC's register-copy emission (`addi rD,rS,0` vs `or rD,rS,rS`) is compiler-internal and context-dependent — C_MTXPerspective's single `mr r31,r3` param-save DID match, but multi-copy FRAME prologues consistently fall to addi here. Not controllable from honest C++. **CLASS WALL** for the remaining FRAME C_VEC*/C_MTX* funcs with several param-saves (the sqrt cluster, MultVecArray, Concat/Inverse). Do NOT force.
 
 **Logged by:** Matcher-MWCC-SDK-3, 2026-05-31.
+
+## 0x8037E270 DSPSendMailToDSP (20B) — MWCC lis-r4/srwi instruction order
+
+**Tried:** Constant-address (`*(volatile u16*)0xCC005000 = mail >> 16; *(volatile u16*)0xCC005002 = mail;`), pointer-to-0xCC005000 form, local base variable (`unsigned int base = 0xCC000000; base[0x2800]=...`), extern-array form (produces 24B, wrong size). All source shapes produce srwi before lis r4 in MWCC output. Note: FLAGS are silently ignored for MWCC files (verify_mwcc.py has no FLAGS support); -fno-schedule-insns/-fno-schedule-insns2 were tried but have no effect.
+
+**Asm shape that didn't reduce:**
+```
+DOL:   lis r4,-13312    ← address first
+       srwi r0,r3,16   ← then shift
+       sth r0,0x5000(r4)
+       sth r3,0x5002(r4)
+MWCC:  srwi r0,r3,16   ← shift first
+       lis r4,-13312    ← then address
+       sth r0,0x5000(r4)
+       sth r3,0x5002(r4)
+```
+Byte-identical except first two instructions swapped. All stores and result correct.
+
+**Notes / hypotheses:** MWCC 1.2.5n scheduler computes dependent values (srwi) before address materializations (lis) for HW-register setters. The DOL's lis-first ordering suggests either a different 1.2.5n build or a source form that forced the address into a register before the computation. The extern-array form fixes the ordering for reads (DSPReadCPUToDSPMbox matched) but produces 24B for writes, so can't be used for the 20B store form. **CLASS WALL** for constant-address HW-register setters with a leading srwi/rlwinm computation.
+
+**Logged by:** Matcher-MWCC-SDK, 2026-06-04.
