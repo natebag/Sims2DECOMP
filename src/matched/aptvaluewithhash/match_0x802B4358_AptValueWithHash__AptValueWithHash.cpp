@@ -1,18 +1,27 @@
-// ASMPROC_swap_adj: a=la b=mr
-// ASMPROC_swap_adj: a=addi b=mr
-// ASMPROC_swap_adj: a=addi b=la
+// 0x802B4358 (76B) AptValueWithHash::AptValueWithHash(AptVirtualFunctionTable_Indices, int)
+//
+// Derived ctor: runs the AptValue base ctor (vft index), installs the
+// AptValueWithHash vtable @0x08, and constructs the embedded AptNativeHash
+// member @0x0C from the int arg. Clean init-list ctor (the compiler emits the
+// base-ctor / vptr-set / member-ctor sequence natively) -- no ASMPROC surgery.
 
-extern char AptValueWithHash_vtable[];
-extern void AptValue_ctor(void *, int);
-extern void AptNativeHash_ctor(void *, int);
-
-struct AptValueWithHash {
-    char pad[32];
-    AptValueWithHash(int, int);
+struct AptValue {
+    unsigned int m_flags;    // 0x00
+    unsigned int m_field04;  // 0x04
+    virtual void dummy();    // vptr @ 0x08 (SN: after the 2 head data words)
+    AptValue(int vftIdx);
 };
 
-AptValueWithHash::AptValueWithHash(int type, int hashSize) {
-    AptValue_ctor(this, type);
-    *(char **)((char *)this + 8) = AptValueWithHash_vtable;
-    AptNativeHash_ctor((char *)this + 12, hashSize);
+struct AptNativeHash {
+    AptNativeHash(int n);
+};
+
+struct AptValueWithHash : public AptValue {
+    AptNativeHash m_hash;    // 0x0C
+    AptValueWithHash(int vftIdx, int arg);
+};
+
+AptValueWithHash::AptValueWithHash(int vftIdx, int arg)
+    : AptValue(vftIdx), m_hash(arg)
+{
 }
