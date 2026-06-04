@@ -89,6 +89,8 @@ wall — cracking the spill here unlocks the whole sub-family.
 
 **Logged by:** Matcher-SN-2, 2026-05-30.
 
+**Retried (Pi/GPT-5.5 + SN-VERSION 3.8.1/3.7/3.5, 2026-06-04):** Reconstructed the natural loop and tested default plus all three older SN point-versions. All emitted the same promoted-char shape (`c` in r29, save r29/r30/r31) rather than the DOL stack-home `stb r4,8(r1)` / `lbz` reload with only r30/r31 saved. Wall remains.
+
 ## 0x80241378 fabsf (36B) — and the whole libm float-return family
 
 **Compiler:** MWCC GC-1.2.5n (`// COMPILER: mwcc`). This IS the right compiler
