@@ -1,4 +1,23 @@
-// 0x802D93B0 EA::Allocator::GeneralAllocator::ChunkMatchesBlockType(EA::Allocator::GeneralAllocator::Chunk (72 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="rlwinm 0,4,0,29,30; cmpwi 0,6; bne 0f; li 3,1; blr; 0:; lwz 9,0x4(3); andi. 0,4,2; rlwinm 9,9,0,0,28; add 9,3,9; lwz 0,0x4(9); rlwinm 3,0,0,31,31; bnelr; andi. 0,4,4; bne 1f; li 3,0; blr; 1:; xori 3,3,1"
-extern "C" int f_802D93B0() {}
+// 0x802D93B0 EA::Allocator::GeneralAllocator::ChunkMatchesBlockType(Chunk*, int) const (72 B)
+// Predicate: does this chunk's allocation state match the requested blockType
+// mask? blockType bits 0x2/0x4 select "in-use" / "free"; (mask & 6) == 6 means
+// "either", so always matches. Otherwise consult the NEXT chunk's in-use bit
+// (mnSize & 1). mnSize @ +0x04 (flags in low 3 bits, size = mnSize & ~7).
+struct Chunk {
+    unsigned int mnPriorSize;  // 0x00
+    unsigned int mnSize;       // 0x04
+};
+
+// r3 = chunk, r4 = blockType
+extern "C" int f_802D93B0(Chunk* chunk, int blockType)
+{
+    if ((blockType & 6) == 6)
+        return 1;
+    Chunk* next = (Chunk*)((char*)chunk + (chunk->mnSize & ~7u));
+    unsigned int nextInUse = next->mnSize & 1;
+    if (blockType & 2)
+        return nextInUse;
+    if (blockType & 4)
+        return nextInUse ^ 1;
+    return 0;
+}
