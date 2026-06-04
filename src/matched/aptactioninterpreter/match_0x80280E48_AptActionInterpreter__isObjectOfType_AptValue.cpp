@@ -1,12 +1,90 @@
-// 0x80280E48 AptActionInterpreter::isObjectOfType(AptValue (372 B)
+// 0x80280E48 (372B) AptActionInterpreter::isObjectOfType(AptValue*, AptValue*)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 31,3; mr 30,4; lwz 9,0x8(31); li 29,0; lha 3,0x28(9); lwz 0,0x2c(9); add 3,31,3; mtspr 8,0; blrl; cmpwi 3,0; beq 4f; lwz 9,0x8(30); lha 3,0x28(9); lwz 0,0x2c(9); add 3,30,3; mtspr 8,0; blrl; cmpwi 3,0; beq 4f; lwz 9,0x8(30); lwz 0,0x24(9); lha 3,0x20(9); mtspr 8,0; add 3,30,3; blrl; lwz 0,0x0(31); li 11,0; lwz 30,0xc(3); rlwinm 9,0,0,25,31; addi 9,9,-12; cmplwi 9,7; bgt 0f; rlwinm 11,0,5,31,31; 0:; cmpwi 11,0; beq 3f; lwz 9,0x8(31); lha 3,0x20(9); lwz 0,0x24(9); add 3,31,3; mtspr 8,0; blrl; lwz 11,0x8(3); cmpwi 11,0; beq 8f; 1:; cmpw 11,30; bne 2f; li 29,1; 2:; lwz 9,0x8(11); lha 3,0x20(9); lwz 0,0x24(9); add 3,11,3; mtspr 8,0; blrl; lwz 11,0x8(3); cmpwi 11,0; bne 1b; b 8f; 3:; mr 3,31; mr 4,30; bl _s80280E48_0; cmpwi 3,0; beq 8f; b 7f; 4:; lwz 3,0x0(31); li 11,0; rlwinm 9,3,0,25,31; addi 0,9,-43; cmplwi 0,2; bgt 5f; rlwinm 11,3,5,31,31; 5:; cmpwi 11,0; bne 8f; li 0,0; cmpwi 9,27; bne 6f; rlwinm 0,3,5,31,31; 6:; cmpwi 0,0; bne 8f; lwz 0,0x0(30); rlwinm 0,0,0,25,31; cmpw 9,0; bne 8f; 7:; li 29,1; 8:; mr 3,29; lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+//
+// ActionScript `o instanceof T`-style runtime type test over two APT values.
+//
+//   - If BOTH values are objects (the v5 / vt+0x28 "IsObject" virtual returns
+//     nonzero on each): take `target = b->GetTypeChain()->m_0C` (b's type
+//     identity). If `a` is itself a class/function-typed value (low-7 type tag
+//     in [12,19] with the 0x08000000 flag bit set), walk a's superclass chain
+//     (the v4 / vt+0x20 "GetTypeChain" virtual, following ->m_08) and report a
+//     match if any link equals `target`. Otherwise delegate to
+//     AptObject::DoesImplementObject(a, target).
+//   - If either value is NOT an object: fall back to primitive type-tag
+//     equality — equal low-7 tags match, except the special tags [43,45] (when
+//     flagged) and 27 (when flagged) never match.
+//
+// AptValueObj is the polymorphic value-box (head { u32 m_flags@0; u32 @4 },
+// vptr@0x08). GCC 2.95 8-byte vtable entries place virtual N at table+0x08*N:
+// the 4th virtual = GetTypeChain (vt+0x20), the 5th = IsObject (vt+0x28).
+// See include/types/AptValue.h. The 0x08000000 "is class type" flag bit is read
+// as (m_flags >> 27) & 1. No ASMPROC, no inline asm — clean structural C++.
 
-extern "C" void _s80280E48_0();
-
-struct AptActionInterpreter {
-    void isObjectOfType();
+struct AptValueObjHead {
+    unsigned int m_flags;    // 0x00  low 7 bits = type tag; bit 0x08000000 = class-type
+    unsigned int m_field04;  // 0x04
 };
 
-void AptActionInterpreter::isObjectOfType() {
+struct AptValueObj;
+
+struct AptObjThing {         // result of GetTypeChain (vt+0x20)
+    char         _pad[8];    // 0x00..0x07
+    AptValueObj* m_08;       // 0x08  next link in the superclass chain
+    AptValueObj* m_0C;       // 0x0C  type identity
+};
+
+struct AptValueObj : public AptValueObjHead {
+    virtual void         slot1();        // vt+0x08
+    virtual void         slot2();        // vt+0x10
+    virtual void         slot3();        // vt+0x18
+    virtual AptObjThing* GetTypeChain(); // vt+0x20
+    virtual int          IsObject();     // vt+0x28
+};
+
+struct AptValue;
+
+struct AptObject {
+    int DoesImplementObject(AptValue*);
+};
+
+struct AptActionInterpreter {
+    static int isObjectOfType(AptValueObj* a, AptValueObj* b);
+};
+
+int AptActionInterpreter::isObjectOfType(AptValueObj* a, AptValueObj* b) {
+    int result = 0;
+    if (a->IsObject() && b->IsObject()) {
+        AptObjThing* pb = b->GetTypeChain();
+        unsigned int af = a->m_flags;
+        int aIsClass = 0;
+        AptValueObj* target = pb->m_0C;
+        unsigned int t = af & 0x7F;
+        if (t - 12 <= 7)
+            aIsClass = (af >> 27) & 1;
+        if (aIsClass != 0) {
+            AptValueObj* node = a->GetTypeChain()->m_08;
+            while (node != 0) {
+                if (node == target)
+                    result = 1;
+                node = node->GetTypeChain()->m_08;
+            }
+        } else {
+            if (((AptObject*)a)->DoesImplementObject((AptValue*)target))
+                result = 1;
+        }
+    } else {
+        unsigned int af = a->m_flags;
+        unsigned int low7 = af & 0x7F;
+        int e = 0;
+        if (low7 - 43 <= 2)
+            e = (af >> 27) & 1;
+        if (e == 0) {
+            int f = 0;
+            if (low7 == 27)
+                f = (af >> 27) & 1;
+            if (f == 0 && low7 == (b->m_flags & 0x7F))
+                result = 1;
+        }
+    }
+    return result;
 }
