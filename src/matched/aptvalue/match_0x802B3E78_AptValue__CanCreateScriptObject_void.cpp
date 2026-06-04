@@ -1,10 +1,26 @@
-// 0x802B3E78 AptValue::CanCreateScriptObject(void) (136 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x0(3); rlwinm 0,0,0,25,31; cmpwi 0,30; bgt 1f; cmpwi 0,29; bge 4f; cmpwi 0,22; bgt 0f; cmpwi 0,21; bge 4f; cmpwi 0,1; beq 4f; cmpwi 0,9; beq 4f; b 5f; 0:; cmpwi 0,27; bgt 5f; cmpwi 0,26; b 3f; 1:; cmpwi 0,36; bgt 2f; cmpwi 0,35; bge 4f; cmpwi 0,33; beq 4f; b 5f; 2:; cmpwi 0,44; bgt 5f; cmpwi 0,41; 3:; blt 5f; 4:; li 3,1; blr; 5:; li 3,0"
+// 0x802B3E78 (136B) AptValue::CanCreateScriptObject(void) const
+//
+// Returns 1 if the value's type tag (m_flags low 7 bits) is one of the
+// script-object-capable types, else 0. A switch on a SIGNED tag (so the
+// compiler lowers it into a signed cmpwi binary tree). Clean structural C++.
 
 struct AptValue {
-    void CanCreateScriptObject();
+    unsigned int m_flags;   // 0x00
+    int CanCreateScriptObject() const;
 };
 
-void AptValue::CanCreateScriptObject() {
+int AptValue::CanCreateScriptObject() const {
+    int tag = m_flags & 0x7F;
+    switch (tag) {
+        case 1:  case 9:
+        case 21: case 22:
+        case 26: case 27:
+        case 29: case 30:
+        case 33:
+        case 35: case 36:
+        case 41: case 42: case 43: case 44:
+            return 1;
+        default:
+            return 0;
+    }
 }
