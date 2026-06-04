@@ -665,3 +665,30 @@ override stripping `,p` from the MWCC flags would need verify_mwcc.py support (a
 base+nonzero_offset. Tooling fix: add per-file `-O4` (no `,p`) override to verify_mwcc.py.
 
 **Logged by:** Matcher-MWCC-SDK, 2026-06-04.
+
+## 0x802B0838 AptValue::toString(char*) const (132B)
+
+**Tried:** Full clean decode (EAStringC refcount-inlining tier): default-construct a
+temp EAStringC sharing the static empty rep g_emptyStringRep@0x8043E6B4 (refcount++ @
+rep+0, u16), delegate to the EAStringC& overload (0x802B08BC), strcpy(out, tmp.data()
+= rep+8), then inlined dtor `if(--rep->refcount==0) Deallocate(heap, rep, rep->size+9)`.
+Decode is CORRECT — compiles ~90% byte-match. Needed `EAStringCRep` >8B (added inline
+`char data[8]`) to force absolute lis@ha/@l addressing instead of @sda21 (the
+<=8B-struct SDA-placement trap) — that fixed the head. Both implicit-dtor and
+explicit-release source forms tested.
+
+**Asm shape that didn't reduce:** the dtor tail. DOL keeps the free block INLINE
+(refcount!=0 -> `bne` to epilogue at +0x14, free falls through) and uses r4 for the
+reloaded rep:
+  `lwz r4,8(r1); lhz r9,0(r4); ...; bne +0x14; lhz r5,4(r4); lwz r3,heap; addi r5,9; bl Deallocate`
+GCC-3.9.3 REORDERS the cold Deallocate block OUT-OF-LINE past the epilogue (`bne +0x74`)
+and colors the rep into r11 instead of r4. `-fno-reorder-blocks` is NOT a valid cc1plus
+3.9.3 option, so the inline placement can't be forced.
+
+**Notes / hypotheses:** objdiff / SN-point-version class (cold-block reorder + coloring),
+same family as InstanceOf 0x80280FBC. The 2005 SN build did not out-of-line the cold
+free; installed 3.9.3 does. Awaits a real not-installed SN point-version / objdiff. The
+EAStringC refcount-inline + >8B-rep-forces-absolute-addr decode is reusable for the
+AptValue toString/getVariable string-returning family.
+
+**Logged by:** Matcher-Opus-1, 2026-06-04.
