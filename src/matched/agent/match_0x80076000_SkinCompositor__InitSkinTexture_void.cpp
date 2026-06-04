@@ -1,4 +1,29 @@
-// 0x80076000 SkinCompositor::InitSkinTexture(void) (76 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 0,0x10(3); lhz 9,-21264(13); cmpwi 0,0; beq 0f; lhz 0,-32202(13); b 1f; 0:; lhz 0,-32204(13); 1:; mullw 0,9,0; sth 0,0x0(3); li 10,0; lwz 9,0x18(3); lwz 11,0x14(9); stw 10,0x4(3); lbz 0,0x19(11); cmpwi 0,0; beqlr; li 0,1; stw 0,0x4(3)"
-extern "C" void f_80076000() {}
+// 0x80076000 SkinCompositor::InitSkinTexture(void) (76 B)
+
+extern unsigned short lbl_8046ACF0;
+extern unsigned short lbl_80468236;
+extern unsigned short lbl_80468234;
+
+struct SkinTextureLayerInner { char pad[0x19]; unsigned char flag; };
+struct SkinTextureLayerMid { char pad[0x14]; SkinTextureLayerInner* inner; };
+struct SkinCompositor {
+    unsigned short m_size;
+    int m_hasFlag;
+    char pad08[8];
+    int m_hiRes;
+    char pad14[4];
+    SkinTextureLayerMid* m_layer;
+    void InitSkinTexture();
+};
+
+void SkinCompositor::InitSkinTexture() {
+    m_size = lbl_8046ACF0 * (m_hiRes ? lbl_80468236 : lbl_80468234);
+    int zero = 0;
+    SkinTextureLayerMid* layer = m_layer;
+    SkinTextureLayerInner* inner = layer->inner;
+    m_hasFlag = zero;
+    if (inner->flag != 0) {
+        m_hasFlag = 1;
+    }
+}
