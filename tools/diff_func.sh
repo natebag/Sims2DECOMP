@@ -66,6 +66,11 @@ VERIFY_OUT=$(bash tools/verify_match.sh "${VERIFY_ARGS[@]}" "$FILE" "$ADDR" "$SI
 # Pull hex blobs from verify_match output (one-line hex strings)
 DOL_HEX=$(echo "$VERIFY_OUT" | grep '^DOL bytes:' | awk '{print $3}')
 COMPILED_HEX=$(echo "$VERIFY_OUT" | grep '^Compiled bytes:' | awk '{print $3}')
+RELOC_OFFSETS=$(echo "$VERIFY_OUT" | awk '
+    /^Relocations:/ {in_reloc=1; next}
+    in_reloc && NF == 0 {exit}
+    in_reloc && /^[[:space:]]*[0-9a-fA-F]+\|/ {print $1}
+' | cut -d'|' -f1 | tr '\n' ',')
 
 if [ -z "$DOL_HEX" ] || [ -z "$COMPILED_HEX" ]; then
     echo "ERROR: verify_match.sh did not produce DOL+Compiled hex output." >&2
@@ -126,8 +131,21 @@ disasm() {
         2>/dev/null | awk '/^\t/ {sub(/^\t/, "", $0); sub(/\r$/, "", $0); print}' > "$out"
 }
 
+words() {
+    local hex="$1"
+    local out="$2"
+    "$PYTHON" -c "
+import sys
+h = sys.argv[1]
+for i in range(0, len(h), 8):
+    print(h[i:i+8].upper())
+" "$hex" > "$out"
+}
+
 disasm "$DOL_HEX" "$TMPDIR/dol.s"
 disasm "$COMPILED_HEX" "$TMPDIR/compiled.s"
+words "$DOL_HEX" "$TMPDIR/dol.words"
+words "$COMPILED_HEX" "$TMPDIR/compiled.words"
 
 # Side-by-side with mismatch highlighting
 RED=$'\033[0;31m'
@@ -150,20 +168,64 @@ if [ ${#VERIFY_ARGS[@]} -gt 0 ]; then
     printf "  Verify:    %s\n" "${VERIFY_ARGS[*]}"
 fi
 echo
-printf "  %-8s  %-50s  | %s\n" "Offset" "DOL (original)" "Compiled (your C++)"
-printf "  %-8s--%-50s--+--%s\n" "$(printf '%.0s-' {1..8})" "$(printf '%.0s-' {1..50})" "$(printf '%.0s-' {1..50})"
+"$PYTHON" - "$TMPDIR/dol.words" "$TMPDIR/dol.s" "$TMPDIR/compiled.words" "$TMPDIR/compiled.s" "$RELOC_OFFSETS" <<'PY'
+import sys
+from pathlib import Path
 
-idx=0
-paste -d'|' "$TMPDIR/dol.s" "$TMPDIR/compiled.s" | while IFS='|' read -r left right; do
-    left=$(echo "$left" | sed 's/^\s\+//')
-    right=$(echo "$right" | sed 's/^\s\+//')
-    off=$(printf "0x%04X" $((idx * 4)))
-    if [ "$left" = "$right" ]; then
-        printf "  %-8s  %-50s  | %s\n" "$off" "$left" "$right"
-    else
-        printf "  %-8s  ${RED}%-50s${NC}  | ${RED}%s${NC}\n" "$off" "$left" "$right"
-    fi
-    idx=$((idx + 1))
-done
+red = "\033[0;31m"
+green = "\033[0;32m"
+nc = "\033[0m"
 
-echo
+def read_lines(path):
+    return Path(path).read_text(encoding="utf-8", errors="replace").splitlines()
+
+dol_words = read_lines(sys.argv[1])
+dol_asm = read_lines(sys.argv[2])
+compiled_words = read_lines(sys.argv[3])
+compiled_asm = read_lines(sys.argv[4])
+reloc_offsets = {
+    int(part, 16)
+    for part in sys.argv[5].split(",")
+    if part
+}
+
+count = max(len(dol_words), len(dol_asm), len(compiled_words), len(compiled_asm))
+mismatch_offsets = []
+rows = []
+for idx in range(count):
+    off = idx * 4
+    left_word = dol_words[idx] if idx < len(dol_words) else ""
+    left_asm = dol_asm[idx].strip() if idx < len(dol_asm) else ""
+    right_word = compiled_words[idx] if idx < len(compiled_words) else ""
+    right_asm = compiled_asm[idx].strip() if idx < len(compiled_asm) else ""
+    reloc = off in reloc_offsets
+    word_same = left_word == right_word
+    asm_same = left_asm == right_asm
+    same = asm_same and (word_same or reloc)
+    if not same:
+        mismatch_offsets.append(off)
+    rows.append((off, left_word, left_asm, right_word, right_asm, same, reloc))
+
+print(f"  Instructions: {count}   Mismatches: {len(mismatch_offsets)}")
+if mismatch_offsets:
+    offsets = ", ".join(f"0x{o:04X}" for o in mismatch_offsets[:12])
+    if len(mismatch_offsets) > 12:
+        offsets += ", ..."
+    print(f"  First mismatch: 0x{mismatch_offsets[0]:04X}   All: {offsets}")
+else:
+    print(f"  First mismatch: none")
+print()
+print(f"  {'Offset':<8}  {'DOL word':<8}  {'DOL (original)':<48}  | {'C++ word':<8}  Compiled (your C++)")
+print(f"  {'-' * 8}--{'-' * 8}--{'-' * 48}--+--{'-' * 8}--{'-' * 48}")
+for off, left_word, left_asm, right_word, right_asm, same, reloc in rows:
+    mark = "*" if reloc else " "
+    line = f" {mark}0x{off:04X}    {left_word:<8}  {left_asm:<48}  | {right_word:<8}  {right_asm}"
+    if same:
+        print(line)
+    else:
+        print(f"{red}{line}{nc}")
+print()
+if reloc_offsets:
+    print("  * relocation placeholder in compiled object; verify_match resolves or masks it before verdict.")
+    print()
+PY
