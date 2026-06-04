@@ -354,6 +354,8 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 
 **Logged by:** Matcher-SN-4, 2026-05-30.
 
+**Retried (Pi/GPT-5.5 + SN-VERSION 3.8.1/3.7/3.5, 2026-06-04):** Re-ran the preserved near-match WIP under default and all three older SN point-versions. All emitted the same 336B promoted-char shape (`c` in r30, 24B frame), still missing the DOL stack-home `stb`/reload/extsb and 32B frame. Wall remains.
+
 ## 0x800A1EB4 BString2::operator=(unsigned short) (168B)
 
 **Tried:** Full COW semantics matched (wchar sibling of `0x8009DAC0`: `if ref_count()==1 && reserve()>1: *point()=c; point()[1]=eos(); m_rep->m_length=1; else delete_ref(); m_rep=new basic_string_ref2(c,1)`). `m_length=1` reuses `ref_count` reg. Full flag matrix.
@@ -363,6 +365,8 @@ allocator-steering technique lands. Do NOT force with ASMPROC/register-pin.
 **Notes / hypotheses:** Exact `wchar` analogue of `0x8009DAC0` char-param spill wall. Confirms the rule: any `char`/`wchar` value-param live across calls hits spill-vs-promote. 4th entry in this allocator-wall family. Near-match WIP in `src/wip/allocator_wall/`.
 
 **Logged by:** Matcher-SN-4, 2026-05-30.
+
+**Retried (Pi/GPT-5.5 + SN-VERSION 3.8.1/3.7/3.5, 2026-06-04):** Re-ran the preserved near-match WIP under default and all three older SN point-versions. All emitted the same promoted-wchar 24B-frame shape; none reproduced the DOL 32B frame with `sth r4,8(r1)` / stack reload. Wall remains.
 
 ## 0x800E1540 cXObjectImpl::GetFrontFaceDirection (84B)
 
