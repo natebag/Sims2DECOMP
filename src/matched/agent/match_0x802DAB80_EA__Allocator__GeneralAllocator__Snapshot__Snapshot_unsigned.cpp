@@ -1,5 +1,41 @@
-// 0x802DAB80 EA::Allocator::GeneralAllocator::Snapshot::Snapshot(unsigned (120 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 30,3; mr 29,4; mr 28,5; li 4,0; mr 5,29; bl _s802DAB80_0; lis 9,21326; li 0,0; ori 9,9,16720; stw 29,0x4(30); stw 9,0x0(30); mr 3,30; stw 28,0x8(30); stw 0,0x28(30); stw 0,0xc(30); stw 0,0x10(30); stw 0,0x14(30); stw 0,0x18(30); stw 0,0x1c(30); stw 0,0x20(30); stw 0,0x24(30); lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
-extern "C" void _s802DAB80_0();
-extern "C" void f_802DAB80() {}
+// 0x802DAB80 EA::Allocator::GeneralAllocator::Snapshot::Snapshot(unsigned int, unsigned int) (120 B)
+// Zero `size` bytes of the snapshot, then stamp the 'SNAP' magic, record the
+// size and the second argument, and clear the remaining header words.
+extern "C" void* memset(void* dst, int val, unsigned int n);
+
+namespace EA { namespace Allocator {
+
+struct GeneralAllocator {
+    struct Snapshot {
+        unsigned int magic;       // 0x00
+        unsigned int m_size;      // 0x04
+        unsigned int m_arg2;      // 0x08
+        unsigned int field_0C;    // 0x0C
+        unsigned int field_10;    // 0x10
+        unsigned int field_14;    // 0x14
+        unsigned int field_18;    // 0x18
+        unsigned int field_1C;    // 0x1C
+        unsigned int field_20;    // 0x20
+        unsigned int field_24;    // 0x24
+        unsigned int field_28;    // 0x28
+        Snapshot(unsigned int size, unsigned int arg2);
+    };
+};
+
+GeneralAllocator::Snapshot::Snapshot(unsigned int size, unsigned int arg2)
+{
+    memset(this, 0, size);
+    magic = 0x534E4150;
+    m_size = size;
+    m_arg2 = arg2;
+    field_0C = 0;
+    field_10 = 0;
+    field_14 = 0;
+    field_18 = 0;
+    field_1C = 0;
+    field_20 = 0;
+    field_24 = 0;
+    field_28 = 0;
+}
+
+}}
