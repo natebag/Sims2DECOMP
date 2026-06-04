@@ -1,7 +1,30 @@
-// 0x802DB704 EA::Allocator::GeneralAllocator::Free(void (92 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 30,0x10(1); stw 0,0x1c(1); mr 31,3; mr 30,4; lwz 3,0x4fc(31); stw 3,0x8(1); cmpwi 3,0; beq 0f; bl _s802DB704_0; 0:; mr 3,31; mr 4,30; bl _s802DB704_1; lwz 3,0x8(1); cmpwi 3,0; beq 1f; bl _s802DB704_2; 1:; lwz 0,0x1c(1); mtspr 8,0; lmw 30,0x10(1); addi 1,1,24"
-extern "C" void _s802DB704_0();
-extern "C" void _s802DB704_1();
-extern "C" void _s802DB704_2();
-extern "C" void f_802DB704() {}
+// 0x802DB704 EA::Allocator::GeneralAllocator::Free(void*) (92 B)
+// Public Free: take the heap's mutex (if one is configured), delegate to
+// FreeInternal, then release the mutex. The lock is held by a scoped guard whose
+// member (the spilled mutex pointer @ stack+8) is re-read in the dtor to decide
+// whether to unlock. PPMMutexLock/Unlock are plain (non-virtual) calls.
+namespace EA { namespace Allocator {
+
+extern "C" void PPMMutexLock(void* mutex);
+extern "C" void PPMMutexUnlock(void* mutex);
+
+struct PPMutexAutoLock {
+    void* m_mutex;
+    PPMutexAutoLock(void* mutex) : m_mutex(mutex) { if (m_mutex) PPMMutexLock(m_mutex); }
+    ~PPMutexAutoLock() { if (m_mutex) PPMMutexUnlock(m_mutex); }
+};
+
+struct GeneralAllocator {
+    char  pad[0x4FC];
+    void* m_mutex;        // 0x4FC = 1276
+    void Free(void* p);
+    void FreeInternal(void* p);
+};
+
+void GeneralAllocator::Free(void* p)
+{
+    PPMutexAutoLock lock(m_mutex);
+    FreeInternal(p);
+}
+
+}}
