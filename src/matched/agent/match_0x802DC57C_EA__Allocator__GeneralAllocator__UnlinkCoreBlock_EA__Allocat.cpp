@@ -1,4 +1,17 @@
-// 0x802DC57C EA::Allocator::GeneralAllocator::UnlinkCoreBlock(EA::Allocator::GeneralAllocator::CoreBlock (28 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 9,0x20(4); lwz 0,0x24(4); stw 0,0x24(9); lwz 11,0x20(4); lwz 9,0x24(4); stw 11,0x20(9)"
-extern "C" void f_802DC57C() {}
+// 0x802DC57C EA::Allocator::GeneralAllocator::UnlinkCoreBlock(EA::Allocator::GeneralAllocator::CoreBlock*) (28 B)
+// Doubly-linked CoreBlock list removal. mpPrev @ +0x20, mpNext @ +0x24.
+// Each statement re-reads block->mpPrev / block->mpNext: GCC can't CSE the
+// loads across the intervening store (the store may alias the pointer fields),
+// so the second statement reloads both pointers.
+struct CoreBlock {
+    char pad[0x20];
+    CoreBlock* mpPrev;   // 0x20
+    CoreBlock* mpNext;   // 0x24
+};
+
+// r3 = this (GeneralAllocator*, unused), r4 = pCoreBlock
+extern "C" void f_802DC57C(void* /*self*/, CoreBlock* pCoreBlock)
+{
+    pCoreBlock->mpPrev->mpNext = pCoreBlock->mpNext;
+    pCoreBlock->mpNext->mpPrev = pCoreBlock->mpPrev;
+}
