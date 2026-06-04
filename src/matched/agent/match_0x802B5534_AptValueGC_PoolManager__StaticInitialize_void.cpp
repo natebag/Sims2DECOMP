@@ -1,4 +1,36 @@
-// 0x802B5534 AptValueGC_PoolManager::StaticInitialize(void) (120 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="li 0,4; li 9,0; stb 0,-21328(13); li 11,8; li 0,46; stb 9,-21327(13); mtspr 9,0; lis 10,15; stb 11,-21336(13); lis 9,-32704; addi 9,9,3732; li 8,0; ori 10,10,16960; li 11,1; 0:; lbzx 0,9,11; cmplw 0,8; ble 1f; mr 8,0; 1:; cmplw 0,10; bge 2f; mr 10,0; 2:; addi 11,11,1; bdnz 0b; li 0,0; cmplwi 10,11; stw 0,-21332(13); bgt 3f; li 10,12; 3:; stb 10,-21335(13)"
-extern "C" void f_802B5534() {}
+// 0x802B5534 (120B) AptValueGC_PoolManager::StaticInitialize(void)
+//
+// One-time GC value-pool init: seeds three config bytes, scans a 46-entry size
+// table for its min (and max — tracked but only the min is consumed), zeroes a
+// word counter, clamps the min to at least 12, and stores it as the pool's
+// minimum block size. Leaf, default scheduling (the scheduler interleaves the
+// three head stores with the loop-constant setup, matching the DOL). Clean C++.
+
+extern unsigned char g_aptGCByte0;   // -21328
+extern unsigned char g_aptGCPhase;   // -21327
+extern unsigned char g_aptGCByte8;   // -21336
+extern unsigned int  g_aptGCWord4;   // -21332
+extern unsigned char g_aptGCMinByte; // -21335
+extern unsigned char g_aptGCTable[]; // size table @ 0x80400E94
+
+struct AptValueGC_PoolManager {
+    static void StaticInitialize();
+};
+
+void AptValueGC_PoolManager::StaticInitialize() {
+    g_aptGCByte0 = 4;
+    g_aptGCPhase = 0;
+    g_aptGCByte8 = 8;
+
+    unsigned int hi = 0;
+    unsigned int lo = 1000000;
+    for (int i = 1; i <= 46; i++) {
+        unsigned int v = g_aptGCTable[i];
+        if (v > hi) hi = v;
+        if (v < lo) lo = v;
+    }
+
+    g_aptGCWord4 = 0;
+    if (lo <= 11) lo = 12;
+    g_aptGCMinByte = (unsigned char)lo;
+}
