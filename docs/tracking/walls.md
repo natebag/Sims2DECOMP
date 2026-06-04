@@ -574,9 +574,11 @@ emits `lwz; addi -4; andi. 1; bnelr` (sinks the independent `addi` into the load
 slot) even with -fno-schedule-insns/insns2/-fno-delayed-branch/-fno-peephole — so it
 is a combine/RTL-emission choice, not a controllable pass.
 
-**Notes / hypotheses:** GCC2.95 jump-layout + load-delay scheduling wall. Both are
-compiler-point-version behaviors → **Lane B (SN-ProDG version-override) candidate**.
-Logic is 100% solved; revisit when the version-override (3.8.1/3.7/3.5) lands.
+**Notes / hypotheses:** GCC2.95 jump-layout + load-delay scheduling wall — a genuine
+compiler-point-version difference. NOTE: installed SN ProDG 3.8.1/3.7/3.5 are BYTE-IDENTICAL
+to the 3.9.3 default (confirmed Pi + Opus-1, sn-version-calibration), so `// SN-VERSION`
+CANNOT resolve this — do NOT burn a SN-VERSION attempt. Awaits a real period-correct SN
+compiler (the 2005 build's exact point release) or objdiff-tier diffing. Logic 100% solved.
 Second-opinioned by Wall-Analyst (3 reshapes, concurred legitimate).
 
 **Logged by:** Matcher-Opus-2, 2026-06-04.
@@ -596,8 +598,9 @@ The `blelr` form is shorter -> SIZE_MISMATCH (and different coloring: r0 vs r9 f
 
 **Notes / hypotheses:** Compiler-point-version peephole/cost-model difference — 3.9.3
 emits the `addi;blelr` fused form; the 2005 build emitted the looser `bgt;addi;blr`.
-Not source-controllable on 3.9.3. **Lane B (SN-ProDG version-override) candidate** — a
-less-aggressive point-version may emit the looser form. Logic 100% solved.
+Not source-controllable on 3.9.3. NOTE: installed SN ProDG 3.8.1/3.7/3.5 are BYTE-IDENTICAL
+to 3.9.3 (sn-version-calibration), so `// SN-VERSION` will NOT help — awaits a real
+period-correct SN compiler or objdiff. Logic 100% solved.
 
 **Logged by:** Matcher-Opus-2, 2026-06-04.
 
