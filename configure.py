@@ -124,6 +124,8 @@ FLAGS_PATTERN = re.compile(r"^//\s*FLAGS:\s*(.+?)\s*$", re.MULTILINE)
 # MWCC must be installed first via `python tools/download_tool.py mwcc`.
 # See docs/specs/toolchain-bootstrap.md.
 COMPILER_PATTERN = re.compile(r"^//\s*COMPILER:\s*(\S+)\s*$", re.MULTILINE)
+SN_VERSION_PATTERN = re.compile(r"^//\s*SN-VERSION:\s*(\S+)\s*$", re.MULTILINE)
+SUPPORTED_SN_VERSIONS = {"3.9.3", "3.8.1", "3.7", "3.5"}
 
 
 def parse_per_file_flags(src_path: Path) -> str | None:
@@ -148,6 +150,30 @@ def parse_per_file_compiler(src_path: Path) -> str | None:
         return None
     m = COMPILER_PATTERN.search(head)
     return m.group(1).strip().lower() if m else None
+
+
+def parse_per_file_sn_version(src_path: Path) -> str | None:
+    """Read and validate the first `// SN-VERSION: ...` line, if any.
+
+    The ninja build still compiles matched files with devkitPPC for the
+    inject-based scaffold. This marker is consumed by tools/verify_match.sh,
+    but configure validates it so typoed version tags fail early.
+    """
+    try:
+        with open(src_path, encoding="utf-8", errors="replace") as f:
+            head = f.read(2048)
+    except OSError:
+        return None
+    m = SN_VERSION_PATTERN.search(head)
+    if not m:
+        return None
+    version = m.group(1).strip()
+    if version not in SUPPORTED_SN_VERSIONS:
+        raise ValueError(
+            f"{src_path}: unsupported SN-VERSION {version!r}; "
+            f"supported: {', '.join(sorted(SUPPORTED_SN_VERSIONS, reverse=True))}"
+        )
+    return version
 
 
 def enumerate_cxx_sources(full: bool) -> list[Path]:
@@ -449,6 +475,7 @@ def write_build_ninja(version: str, args: argparse.Namespace) -> Path:
     # Files with `// COMPILER: mwcc` route to the MWCC rule (DolphinSDK matching).
     all_objs: list[str] = []
     mwcc_count = 0
+    sn_version_count = 0
     src_dir_rel = "src"
     for src in cxx_sources:
         rel = src.relative_to(REPO_ROOT / src_dir_rel)
@@ -457,6 +484,9 @@ def write_build_ninja(version: str, args: argparse.Namespace) -> Path:
         src_str = str(src.relative_to(REPO_ROOT)).replace("\\", "/")
         extra = parse_per_file_flags(src)
         compiler = parse_per_file_compiler(src)
+        sn_version = parse_per_file_sn_version(src)
+        if sn_version:
+            sn_version_count += 1
         variables = {"extra_flags": extra} if extra else None
         if compiler == "mwcc":
             n.build(outputs=obj_str, rule="cxx_mwcc", inputs=src_str, variables=variables)
@@ -467,6 +497,9 @@ def write_build_ninja(version: str, args: argparse.Namespace) -> Path:
     if mwcc_count > 0:
         print(f"[configure.py] {mwcc_count} source(s) routed to MWCC "
               f"(install via `python tools/download_tool.py mwcc`)")
+    if sn_version_count > 0:
+        print(f"[configure.py] {sn_version_count} source(s) declare SN-VERSION "
+              "(used by tools/verify_match.sh strict verification)")
     for src in c_sources:
         rel = src.relative_to(REPO_ROOT / src_dir_rel)
         obj_rel = (obj_dir / rel).with_suffix(".o").relative_to(REPO_ROOT)

@@ -96,17 +96,56 @@ if [ ! -x "$OBJDUMP" ] && [ -x "$OBJDUMP.exe" ]; then
 fi
 DOL="extracted/sys/main.dol"
 
-# SN Systems ProDG compiler (the ORIGINAL compiler — v3.9.3).
-# Canonical location is compiler/prodg/3.9.3/ as installed by
-# `python tools/download_tool.py compilers`. The legacy
-# compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin/ path is honored
-# as a fallback for existing checkouts that haven't migrated.
-if [ -x "compiler/prodg/3.9.3/cc1plus.exe" ]; then
-    SN_BIN="compiler/prodg/3.9.3"
-elif [ -x "compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin/cc1plus.exe" ]; then
-    SN_BIN="compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin"
-else
-    echo "ERROR: SN ProDG 3.9.3 not found. Run:"
+# SN Systems ProDG compiler. The default verifier stays on v3.9.3; source
+# files may opt into a real historical compiler with `// SN-VERSION: 3.8.1`
+# (or 3.7 / 3.5) when diagnosing point-version bytegen walls. This only
+# selects cc1plus.exe + NgcAs.exe. It never rewrites compiler output.
+SN_VERSION=$(grep -E '^[[:space:]]*//[[:space:]]*SN-VERSION:[[:space:]]*[^[:space:]]+' "$SRC" 2>/dev/null | head -1 | sed -E 's|^[[:space:]]*//[[:space:]]*SN-VERSION:[[:space:]]*||; s/[[:space:]].*$//; s/\r$//')
+if [ -z "$SN_VERSION" ]; then
+    SN_VERSION="3.9.3"
+fi
+
+case "$SN_VERSION" in
+    3.9.3)
+        SN_BIN_CANDIDATES=(
+            "compiler/prodg/3.9.3"
+            "compiler/ProDGforNGCv393/Disk1/data1/Build_Tools_Bin"
+        )
+        ;;
+    3.8.1)
+        SN_BIN_CANDIDATES=(
+            "compiler/prodg/3.8.1"
+            "compiler/alt_versions/v381"
+        )
+        ;;
+    3.7)
+        SN_BIN_CANDIDATES=(
+            "compiler/prodg/3.7"
+            "compiler/alt_versions/v37"
+        )
+        ;;
+    3.5)
+        SN_BIN_CANDIDATES=(
+            "compiler/prodg/3.5"
+            "compiler/alt_versions/v35"
+        )
+        ;;
+    *)
+        echo "ERROR: unsupported // SN-VERSION: $SN_VERSION"
+        echo "Supported SN ProDG versions: 3.9.3, 3.8.1, 3.7, 3.5"
+        exit 1
+        ;;
+esac
+
+SN_BIN=""
+for cand in "${SN_BIN_CANDIDATES[@]}"; do
+    if [ -x "$cand/cc1plus.exe" ] && [ -x "$cand/NgcAs.exe" ]; then
+        SN_BIN="$cand"
+        break
+    fi
+done
+if [ -z "$SN_BIN" ]; then
+    echo "ERROR: SN ProDG $SN_VERSION not found. Run:"
     echo "  python tools/download_tool.py compilers"
     exit 1
 fi
@@ -215,7 +254,7 @@ if [ -f "$SN_CC1PLUS" ]; then
     else
         SN_FLAGS="-quiet -O2 -fno-elide-constructors -msdata=eabi -G 8"
     fi
-    echo "Compiling $SRC with SN Systems ProDG..."
+    echo "Compiling $SRC with SN Systems ProDG $SN_VERSION..."
     "$SN_CC1PLUS" "$CLEAN_SRC" -o "$ASM" $SN_FLAGS 2>&1
     if [ $? -ne 0 ]; then
         echo "COMPILE FAILED"

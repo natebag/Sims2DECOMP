@@ -7,21 +7,52 @@
 # full ninja target/base build pipeline.
 #
 # Usage:
-#   bash tools/diff_func.sh <match_file.cpp> <addr> <size>
+#   bash tools/diff_func.sh [--strict] [--symbol NAME] <match_file.cpp> <addr> <size>
 #
 # Example:
 #   bash tools/diff_func.sh src/wip/match_0x801056EC_cXObjectImpl__KillSelf.cpp 0x801056EC 148
 
 set -e
 
-if [ $# -lt 3 ]; then
-    echo "Usage: $0 <match_file.cpp> <addr> <size>" >&2
+VERIFY_ARGS=()
+POSITIONAL=()
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --strict)
+            VERIFY_ARGS+=(--strict)
+            shift
+            ;;
+        --symbol)
+            if [ -z "${2:-}" ]; then
+                echo "ERROR: --symbol requires a symbol name argument" >&2
+                exit 1
+            fi
+            VERIFY_ARGS+=(--symbol "$2")
+            shift 2
+            ;;
+        --symbol=*)
+            VERIFY_ARGS+=(--symbol "${1#--symbol=}")
+            shift
+            ;;
+        --)
+            shift
+            while [ $# -gt 0 ]; do POSITIONAL+=("$1"); shift; done
+            ;;
+        *)
+            POSITIONAL+=("$1")
+            shift
+            ;;
+    esac
+done
+
+if [ ${#POSITIONAL[@]} -lt 3 ]; then
+    echo "Usage: $0 [--strict] [--symbol NAME] <match_file.cpp> <addr> <size>" >&2
     exit 1
 fi
 
-FILE="$1"
-ADDR="$2"
-SIZE="$3"
+FILE="${POSITIONAL[0]}"
+ADDR="${POSITIONAL[1]}"
+SIZE="${POSITIONAL[2]}"
 
 if [ ! -f "$FILE" ]; then
     echo "ERROR: $FILE not found" >&2
@@ -30,7 +61,7 @@ fi
 
 # Run verify_match.sh to compile + extract DOL bytes. Don't propagate its
 # non-zero exit on MISMATCH — that's the whole reason we're being run.
-VERIFY_OUT=$(bash tools/verify_match.sh "$FILE" "$ADDR" "$SIZE" 2>&1 || true)
+VERIFY_OUT=$(bash tools/verify_match.sh "${VERIFY_ARGS[@]}" "$FILE" "$ADDR" "$SIZE" 2>&1 || true)
 
 # Pull hex blobs from verify_match output (one-line hex strings)
 DOL_HEX=$(echo "$VERIFY_OUT" | grep '^DOL bytes:' | awk '{print $3}')
@@ -50,6 +81,7 @@ for cand in \
     "${DEVKITPPC:-}/bin/powerpc-eabi-objdump" \
     "${DEVKITPPC:-}/bin/powerpc-eabi-objdump.exe" \
     "/f/coding/Decompiles/Tools/devkitPro/devkitPPC/bin/powerpc-eabi-objdump.exe" \
+    "/mnt/f/coding/Decompiles/Tools/devkitPro/devkitPPC/bin/powerpc-eabi-objdump.exe" \
     "/opt/devkitpro/devkitPPC/bin/powerpc-eabi-objdump" \
     "/c/devkitPro/devkitPPC/bin/powerpc-eabi-objdump.exe" \
     "/d/devkitPro/devkitPPC/bin/powerpc-eabi-objdump.exe"; do
@@ -65,20 +97,33 @@ if [ -z "$OBJDUMP" ]; then
     echo "Set DEVKITPPC env var or install devkitPPC." >&2
     exit 1
 fi
+PYTHON="$(command -v python3 || command -v python)"
+if [ -z "$PYTHON" ]; then
+    echo "ERROR: Python interpreter not found." >&2
+    exit 1
+fi
 
-TMPDIR=$(mktemp -d -t diff_func.XXXXXX)
+TMP_ROOT="build/tmp"
+mkdir -p "$TMP_ROOT"
+TMPDIR=$(mktemp -d "$TMP_ROOT/diff_func.XXXXXX")
 trap "rm -rf $TMPDIR" EXIT
 
-# Helper: hex string → raw binary → objdump disasm (one instruction per line)
+# Helper: hex string -> raw binary -> objdump disasm (one instruction per line)
 disasm() {
     local hex="$1"
     local out="$2"
+    local raw="$TMPDIR/raw.bin"
+    local objdump_input
     # Convert hex string to raw bytes
-    python -c "import sys; sys.stdout.buffer.write(bytes.fromhex('$hex'))" > "$TMPDIR/raw.bin"
+    "$PYTHON" -c "import sys; sys.stdout.buffer.write(bytes.fromhex('$hex'))" > "$raw"
+    objdump_input="$raw"
+    if [[ "$OBJDUMP" == *.exe ]] && command -v wslpath >/dev/null 2>&1; then
+        objdump_input=$(wslpath -w "$raw")
+    fi
     # Disasm; with --no-addresses each instruction line starts with a TAB
     # followed by the mnemonic. Section/header chatter has no leading tab.
-    "$OBJDUMP" -D -b binary -m powerpc -EB --no-show-raw-insn --no-addresses "$TMPDIR/raw.bin" \
-        2>/dev/null | awk '/^\t/ {sub(/^\t/, "", $0); print}' > "$out"
+    "$OBJDUMP" -D -b binary -m powerpc -EB --no-show-raw-insn --no-addresses "$objdump_input" \
+        2>/dev/null | awk '/^\t/ {sub(/^\t/, "", $0); sub(/\r$/, "", $0); print}' > "$out"
 }
 
 disasm "$DOL_HEX" "$TMPDIR/dol.s"
@@ -101,18 +146,24 @@ printf "  Function:  %s\n" "$FILE"
 printf "  Address:   %s   Size: %sB\n" "$ADDR" "$SIZE"
 printf "  Verdict:   %b\n" "$VERDICT"
 printf "  Objdump:   %s\n" "$OBJDUMP"
+if [ ${#VERIFY_ARGS[@]} -gt 0 ]; then
+    printf "  Verify:    %s\n" "${VERIFY_ARGS[*]}"
+fi
 echo
-printf "  %-50s  | %s\n" "DOL (original)" "Compiled (your C++)"
-printf "  %-50s--+--%s\n" "$(printf '%.0s-' {1..50})" "$(printf '%.0s-' {1..50})"
+printf "  %-8s  %-50s  | %s\n" "Offset" "DOL (original)" "Compiled (your C++)"
+printf "  %-8s--%-50s--+--%s\n" "$(printf '%.0s-' {1..8})" "$(printf '%.0s-' {1..50})" "$(printf '%.0s-' {1..50})"
 
+idx=0
 paste -d'|' "$TMPDIR/dol.s" "$TMPDIR/compiled.s" | while IFS='|' read -r left right; do
     left=$(echo "$left" | sed 's/^\s\+//')
     right=$(echo "$right" | sed 's/^\s\+//')
+    off=$(printf "0x%04X" $((idx * 4)))
     if [ "$left" = "$right" ]; then
-        printf "  %-50s  | %s\n" "$left" "$right"
+        printf "  %-8s  %-50s  | %s\n" "$off" "$left" "$right"
     else
-        printf "  ${RED}%-50s${NC}  | ${RED}%s${NC}\n" "$left" "$right"
+        printf "  %-8s  ${RED}%-50s${NC}  | ${RED}%s${NC}\n" "$off" "$left" "$right"
     fi
+    idx=$((idx + 1))
 done
 
 echo
