@@ -1,6 +1,32 @@
-// 0x802AAF0C AptNativeHash::FirstAllocation(void) (80 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 30,3; lwz 4,0x0(30); lwz 3,-23020(13); rlwinm 4,4,3,0,28; bl _s802AAF0C_0; lwz 5,0x0(30); mr 0,3; stw 0,0x4(30); rlwinm 5,5,3,0,28; li 4,0; bl _s802AAF0C_1; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
-extern "C" void _s802AAF0C_0();
-extern "C" void _s802AAF0C_1();
-extern "C" void f_802AAF0C() {}
+// 0x802AAF0C (80B) AptNativeHash::FirstAllocation(void)
+//
+// Allocates the hash table's entry array from the DOGMA pool and zero-fills it.
+// Each entry is 8 bytes, so the byte size is m_capacity * 8 (slwi by 3). The
+// capacity is read a second time for the memset size because the intervening
+// Allocate call is a memory clobber from the compiler's point of view, so the
+// value cannot be reused. Clean structural C++; default scheduling fills the
+// post-capacity-load gap with the pool-pointer load.
+
+struct AptNativeHashEntry {
+    void* m_key;     // 0x00
+    void* m_value;   // 0x04
+};
+
+struct DOGMA_PoolManager {
+    void* Allocate(unsigned int size);
+};
+
+struct AptNativeHash {
+    int                 m_capacity;  // 0x00 (slot count)
+    AptNativeHashEntry* m_entries;   // 0x04
+    void FirstAllocation();
+};
+
+extern DOGMA_PoolManager* g_dogmaPool;          // SDA pool pointer
+extern "C" void* memset(void* dst, int c, unsigned int n);
+
+void AptNativeHash::FirstAllocation() {
+    void* p = g_dogmaPool->Allocate(m_capacity * sizeof(AptNativeHashEntry));
+    m_entries = (AptNativeHashEntry*)p;
+    memset(p, 0, m_capacity * sizeof(AptNativeHashEntry));
+}
