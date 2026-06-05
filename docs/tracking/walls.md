@@ -723,3 +723,49 @@ period-correct SN-ProDG point-version. The sibling AddDoubleFencepost (0x802D941
 delegates to is itself a separate version wall (base-sharing).
 
 **Logged by:** Matcher-Opus-2b, 2026-06-04.
+
+## 0x802860AC AptArray::get(int) const (56B) — cross-jump / block-order wall (CONFIRMED clean-attempt)
+
+**Status:** forced ASMPROC stub (`anti_tail_merge`) remains; clean conversion confirmed
+not achievable under SN ProDG 3.9.3 -O2.
+
+**What the function does (fully decoded):**
+```c
+AptValue* AptArray::get(int idx) const {        // m_data@0x24, m_count@0x2C
+    if (idx >= 0 && idx < m_count) {            // signed: mr. (sign) + cmpw (count)
+        AptValue* v = m_data[idx];              // lwzx via slwi idx*4
+        if (v) return v;                        // bnelr
+        return gpAptUndefined;                  // D2 (SDA -22936(r13))
+    }
+    return gpAptUndefined;                       // D1 (SDA -22936(r13))
+}
+```
+DOL layout: `[tests] [D1=lwz default;blr] [valid block] [D2=lwz default;blr]` — the
+bounds-default block D1 sits BETWEEN the tests and the valid block; the count test
+is `blt VALID` (forward, jumping over D1). D1 and D2 are byte-identical but kept as
+two separate blocks.
+
+**Clean attempts (all under real SN ProDG 3.9.3):**
+- Shape A (`if (idx>=0 && idx<count){v=..; if(v)ret; return D2;} return D1;`):
+  keeps D1 and D2 as TWO separate tails (no merge!) but emits order
+  `[tests][valid][D2][D1]` — GCC defers the cold bounds-default `.L3` to function
+  end. Correct block count, wrong order.
+- Shape E / H (guard clause `if(idx<0||idx>=count) return D1; ... return D2;`, and
+  the if/else form): emit the exact DOL block ORDER `[tests][D1][valid][D2]` but
+  GCC cross-jumps/tail-merges the two identical `lwz gpAptUndefined@sda21; blr`
+  blocks into ONE (96B vs DOL 112B-hex / 56B).
+- Shape D (`goto valid` with D1 between): jump-threaded away → merged.
+- Flags tested (no effect on the merge): `-fno-thread-jumps`, `-fno-cse-follow-jumps`,
+  `-fno-rerun-cse-after-loop`, `-fno-gcse`. `-fno-crossjumping` does not exist in
+  the 2.95-based SN cc1plus. `-O1` = same as `-O2` for shape A (wrong order); `-O0`
+  generates a stack frame and is structurally unrelated.
+
+**Conclusion:** GCC 2.95/SN-3.9.3 at -O2 either (a) keeps two tails but places the
+cold block at function end (shape A), or (b) places blocks in DOL order but merges
+the two identical tails (shape E). The DOL needs BOTH two-tails AND DOL order, which
+no clean source shape produces — the block-order vs tail-merge behaviors are coupled
+and not source- or flag-controllable here. Genuine cross-jump/block-layout wall;
+the `anti_tail_merge` post-cc1plus mutator remains the only route. Re-test only with
+a different SN-ProDG point-version if one is ever installed.
+
+**Logged by:** Matcher-Opus-1b, 2026-06-05.

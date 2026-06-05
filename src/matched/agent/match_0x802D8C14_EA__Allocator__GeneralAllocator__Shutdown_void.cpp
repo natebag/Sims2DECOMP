@@ -1,10 +1,83 @@
 // 0x802D8C14 EA::Allocator::GeneralAllocator::Shutdown(void) (216 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 31,3; lwz 3,0x4fc(31); cmpwi 3,0; beq 0f; bl _s802D8C14_0; 0:; lwz 0,0x0(31); cmpwi 0,0; beq 4f; li 0,0; lwz 9,0x4(31); stw 0,0x0(31); andi. 0,9,1; beq 1f; mr 3,31; bl _s802D8C14_1; 1:; lwz 9,0x470(31); addi 0,31,1100; mr 29,0; addi 28,31,52; cmpw 9,0; beq 3f; 2:; lwz 30,0x470(31); mr 3,31; mr 4,30; bl _s802D8C14_2; mr 4,30; mr 3,31; bl _s802D8C14_3; lwz 0,0x470(31); cmpw 0,29; bne 2b; 3:; li 0,0; stw 28,0x444(31); stw 0,0x478(31); stw 0,0x474(31); 4:; lwz 30,0x4fc(31); cmpwi 30,0; beq 5f; li 0,0; mr 3,30; stw 0,0x4fc(31); bl _s802D8C14_4; mr 3,30; bl _s802D8C14_5; 5:; li 3,1; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
-extern "C" void _s802D8C14_0();
-extern "C" void _s802D8C14_1();
-extern "C" void _s802D8C14_2();
-extern "C" void _s802D8C14_3();
-extern "C" void _s802D8C14_4();
-extern "C" void _s802D8C14_5();
-extern "C" void f_802D8C14() {}
+// Tear the allocator down under its mutex: clear fast bins (if enabled), free
+// every remaining core block (unlink + return to the OS), reset the top chunk
+// to the head sentinel and zero the running counters, then destroy the mutex.
+// Returns true.
+namespace EA { namespace Allocator {
+
+struct Chunk {
+    unsigned int mPrevSize;   // 0x00
+    unsigned int mnSize;      // 0x04
+    Chunk*       mpNext;      // 0x08
+    Chunk*       mpPrev;      // 0x0C
+};
+
+struct CoreBlock {
+    Chunk*       mpFirstChunk; // 0x00
+    unsigned int mnSize;       // 0x04
+    char         mPad[0x18];   // 0x08
+    CoreBlock*   mpNext;       // 0x20
+    CoreBlock*   mpPrev;       // 0x24
+};
+
+struct GeneralAllocator {
+    int          mField0;                 // 0x00  teardown gate
+    unsigned int mFlags;                  // 0x04  option flags (bit0 -> fast bins)
+    char         mPad08[0x34 - 0x08];     // 0x08
+    Chunk        mHeadChunk;              // 0x34
+    char         mPad44[0x444 - 0x44];    // 0x44
+    Chunk*       mpTopChunk;              // 0x444
+    char         mPad448[0x44C - 0x448];  // 0x448
+    CoreBlock    mHeadCoreBlock;          // 0x44C  (mpNext 0x46C, mpPrev 0x470)
+    unsigned int mField474;               // 0x474
+    unsigned int mField478;               // 0x478
+    char         mPad47C[0x4FC - 0x47C];  // 0x47C
+    void*        mpMutex;                 // 0x4FC
+
+    bool Shutdown();
+    void ClearFastBins();
+    void UnlinkCoreBlock(CoreBlock* pCoreBlock);
+    void FreeCore(CoreBlock* pCoreBlock);
+};
+
+extern "C" void PPMMutexLock(void* pMutex);
+extern "C" void PPMMutexUnlock(void* pMutex);
+extern "C" void PPMMutexDestroy(void* pMutex);
+
+bool GeneralAllocator::Shutdown()
+{
+    if (mpMutex)
+        PPMMutexLock(mpMutex);
+
+    if (mField0)
+    {
+        mField0 = 0;
+        if (mFlags & 1)
+            ClearFastBins();
+
+        if (mHeadCoreBlock.mpPrev != &mHeadCoreBlock)
+        {
+            do {
+                CoreBlock* pCoreBlock = mHeadCoreBlock.mpPrev;
+                UnlinkCoreBlock(pCoreBlock);
+                FreeCore(pCoreBlock);
+            } while (mHeadCoreBlock.mpPrev != &mHeadCoreBlock);
+        }
+
+        mpTopChunk = &mHeadChunk;
+        *(volatile unsigned int*)&mField478 = 0;
+        *(volatile unsigned int*)&mField474 = 0;
+    }
+
+    if (mpMutex)
+    {
+        void* pMutex = mpMutex;
+        mpMutex = 0;
+        PPMMutexUnlock(pMutex);
+        PPMMutexDestroy(pMutex);
+    }
+
+    return true;
+}
+
+}}
