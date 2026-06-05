@@ -1,15 +1,18 @@
 // 0x8007578C SimsMemCardWrap::PreloadGame(int) (144 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); lis 29,-32697; mr 28,3; addi 29,29,24012; lwz 3,0x148(29); addi 3,3,160; bl _s8007578C_0; lis 30,-32696; lwz 11,0x148(29); addi 30,30,22744; lwz 0,0x4(30); addi 9,30,16; rlwinm 0,0,2,0,29; stwx 3,9,0; addi 3,11,88; bl _s8007578C_1; lwz 0,0x4(30); mr 4,28; addi 30,30,24; rlwinm 0,0,2,0,29; stwx 3,30,0; lwz 3,-31932(13); bl _s8007578C_2; mr 30,3; mr 4,28; lwz 3,-31932(13); bl _s8007578C_3; mr 3,30; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
 
-extern "C" void _s8007578C_0();
-extern "C" void _s8007578C_1();
-extern "C" void _s8007578C_2();
-extern "C" void _s8007578C_3();
+struct StringBuffer2 { char* c_str() const; };
+struct Globals { char pad[0x148]; char* ptr; };
+struct MUSlotStatus_t { int pad0; int index; int pad8; int padC; char* a[2]; char* b[2]; };
+extern Globals _globals;
+extern MUSlotStatus_t MUSlotStatus;
+extern void* g_nghFileDesc;
+extern int NghResFile__ReadChecksumFromCard_char_ptr__int(void*, int);
+extern void CheckForFileDescriptorLeaks_char_ptr__int(void*, int);
 
-struct SimsMemCardWrap {
-    void PreloadGame();
-};
-
-void SimsMemCardWrap::PreloadGame() {
+int SimsMemCardWrap_PreloadGame(int slot) {
+    MUSlotStatus.a[MUSlotStatus.index] = ((StringBuffer2*)(_globals.ptr + 0xA0))->c_str();
+    MUSlotStatus.b[MUSlotStatus.index] = ((StringBuffer2*)(_globals.ptr + 0x58))->c_str();
+    int ret = NghResFile__ReadChecksumFromCard_char_ptr__int(g_nghFileDesc, slot);
+    CheckForFileDescriptorLeaks_char_ptr__int(g_nghFileDesc, slot);
+    return ret;
 }
