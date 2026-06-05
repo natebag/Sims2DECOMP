@@ -1,13 +1,40 @@
-// 0x80233824 ERLevel::AddInstanceToRoom(EInstance (164 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,4; mr 30,3; bl _s80233824_0; lwz 0,0x5c(31); stw 3,0x54(31); andis. 9,0,1; beq 0f; addis 9,30,3; rlwinm 10,3,2,0,29; lwz 11,-23932(9); li 0,0; stwx 31,10,11; stw 0,0x78(31); b 2f; 0:; andis. 9,0,2; beq 1f; mulli 3,3,12; addis 9,30,3; lwz 0,-23936(9); mr 4,31; add 3,3,0; bl _s80233824_1; stw 3,0x78(31); 1:; lwz 0,0x5c(31); andi. 9,0,32768; beq 2f; lwz 9,0x0(31); lha 3,0xb8(9); lwz 0,0xbc(9); add 3,31,3; mtspr 8,0; blrl; 2:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+// 0x80233824 ERLevel::AddInstanceToRoom(EInstance *) (164 B)
 
-extern "C" void _s80233824_0();
-extern "C" void _s80233824_1();
-
+struct ENodeList { unsigned AddTail(unsigned item); };
+struct EInstanceVtable { char pad[0xb8]; short off; void (*fn)(void*); };
+struct EInstance {
+    EInstanceVtable* vtable;
+    char pad0[0x50];
+    int roomIndex;
+    char pad1[4];
+    unsigned flags;
+    char pad2[0x18];
+    unsigned listNode;
+};
 struct ERLevel {
-    void AddInstanceToRoom_EInstance();
+    int GetRoomIndex(EInstance* inst) const;
+    void AddInstanceToRoom(EInstance* inst);
 };
 
-void ERLevel::AddInstanceToRoom_EInstance() {
+void ERLevel::AddInstanceToRoom(EInstance* inst) {
+    int room = GetRoomIndex(inst);
+    unsigned flags = inst->flags;
+    inst->roomIndex = room;
+    if (flags & 0x10000) {
+        EInstance*** specialRoomsPtr = (EInstance***)((char*)this + 0x2A284);
+        (*specialRoomsPtr)[room] = inst;
+        inst->listNode = 0;
+    } else {
+        if (flags & 0x20000) {
+            int base = *(int*)((char*)this + 0x2A280);
+            ENodeList* list = (ENodeList*)(room * 12 + base);
+            inst->listNode = list->AddTail((unsigned)inst);
+        }
+        flags = inst->flags;
+        if (flags & 0x8000) {
+            EInstanceVtable* vt = inst->vtable;
+            void* self = (char*)inst + vt->off;
+            vt->fn(self);
+        }
+    }
 }
