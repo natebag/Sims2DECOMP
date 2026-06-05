@@ -1,13 +1,52 @@
-// 0x802B6320 AptObject::AptObject(AptVirtualFunctionTable_Indices, (108 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 29,0xc(1); stw 0,0x1c(1); mr 30,3; mr 29,5; bl _s802B6320_0; lis 9,-32703; mr 4,29; addi 9,9,8984; addi 3,30,12; stw 9,0x8(30); bl _s802B6320_1; li 0,0; lis 9,-32703; stb 0,0x20(30); addi 9,9,21120; stw 9,0x8(30); mr 3,30; lwz 0,0x20(30); rlwinm 0,0,0,10,7; stw 0,0x20(30); lwz 0,0x1c(1); mtspr 8,0; lmw 29,0xc(1); addi 1,1,24"
+// 0x802B6320 (108B) AptObject::AptObject(AptVirtualFunctionTable_Indices, int)
+//
+// Most-derived ctor for the APT object value type. The hierarchy is
+// AptObject : AptValueWithHash : AptValue. The AptValueWithHash base ctor is
+// inlined here: it runs AptValue's ctor (vft index, external bl), installs the
+// AptValueWithHash vtable @0x08, and constructs the embedded AptNativeHash
+// @0x0C from the int arg (external bl). AptObject then installs its own final
+// vtable @0x08 and initialises its state word @0x20 -- zero the top byte and
+// clear the two state bits 8,9 (& ~0x00C00000, i.e. rlwinm 0,10,7).
+//
+// Clean structural C++. Default scheduling reproduces the DOL's stb-before-vptr
+// ordering: the byte store (r0=0, ready after one li) fills the slot while the
+// vtable address is still being materialised (lis+addi).
 
-extern "C" void _s802B6320_0();
-extern "C" void _s802B6320_1();
-
-struct AptObject {
-    void AptObject_AptVirtualFunctionTable_Indices();
+struct AptValue {
+    unsigned int m_flags;    // 0x00
+    unsigned int m_field04;  // 0x04
+    virtual void dummy();    // vptr @ 0x08 (SN: after the 2 head data words)
+    AptValue(int vftIdx);    // external -> bl
 };
 
-void AptObject::AptObject_AptVirtualFunctionTable_Indices() {
+struct AptNativeHash {
+    unsigned int m_capacity; // 0x00
+    unsigned int m_4;        // 0x04
+    unsigned int m_8;        // 0x08
+    unsigned int m_12;       // 0x0C
+    unsigned int m_16;       // 0x10
+    AptNativeHash(int n);    // external -> bl
+};
+
+struct AptValueWithHash : public AptValue {
+    AptNativeHash m_hash;    // 0x0C .. 0x20
+    AptValueWithHash(int vftIdx, int arg)
+        : AptValue(vftIdx), m_hash(arg) {}   // inlined base ctor
+    virtual void dummy();    // override -> distinct vtable @0x80412318
+};
+
+struct AptObject : public AptValueWithHash {
+    union {
+        unsigned char m_state_byte;  // 0x20 (big-endian top byte)
+        unsigned int  m_state_word;  // 0x20 full state word
+    };
+    AptObject(int vftIdx, int arg);
+    virtual void dummy();    // override -> distinct vtable @0x80415280
+};
+
+AptObject::AptObject(int vftIdx, int arg)
+    : AptValueWithHash(vftIdx, arg)
+{
+    m_state_byte = 0;
+    m_state_word &= ~0x00C00000u;
 }
