@@ -804,3 +804,36 @@ of store order). Genuine pre-RA scheduler-tie. Re-test only with a different SN
 ProDG point-version, or if a future technique can bias slot-fill order.
 
 **Logged by:** Matcher-Opus-2c, 2026-06-05.
+
+## 0x802AA400 AptNativeHash::GetFirstItem(void) (112B) — 1-instr count-coloring near-match
+
+**Status:** forced ASMPROC stub remains; clean attempt reaches 27/28 instructions
+(entire loop body + materialized-bool + sentinel + entries->r0/`mr r3,r0` prologue
+all byte-match); off by ONE instruction in the loop-bound register.
+
+**Decoded (clean source verified to 1-instr):**
+```c
+AptNativeHashEntry* AptNativeHash::GetFirstItem() {        // m_capacity@0, m_entries@4
+    if (m_entries == 0) return 0;                          // lwz r0,4(r3); cmpwi; bne
+    int count = m_capacity;
+    AptNativeHashEntry* e = m_entries;
+    for (int i = 0; i < count; ++i, ++e) {
+        void* key = e->m_key;
+        int occupied = (key != 0);                         // li 1; cmpwi; bne; li 0
+        if (occupied) { if (key != SENTINEL_0x8043E6B4) return e; }
+    }
+    return 0;
+}
+```
+**The 1-instr diff:** DOL loads count into r3 (greedy reuse of the dead `this`
+register), runs the loop-entry guard `cmpw r10,r3`, then `mr r8,r3` to the persistent
+loop register (r3 reclaimed for `e`). My SN-3.9.3 invocation allocates count directly
+into r8 (one fewer instruction — no `mr r8,r3`). Tested 5 source shapes (for / while /
+do-while / inline-m_capacity / count-var) x 4 scheduling-flag combos: count never
+lands in r3 first. Unlike the sibling GetNextItem (0x802AA470, LANDED clean) whose
+coloring was fixable by splitting the pointer compute (`e=current; e=e+1` forces the
+early `mr r3,r4` + `this->r9`), GetFirstItem's diff is a loop-*bound* register choice
+in the header, not a value move — not source- or flag-inducible here. "this-alias /
+count-coloring" wall class. Re-test only with a different SN point-version.
+
+**Logged by:** Matcher-Opus-1b, 2026-06-05.
