@@ -1,4 +1,43 @@
-// 0x802AA470 AptNativeHash::GetNextItem(AptHashItem (116 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="mr 9,3; lwz 11,0x4(9); mr 3,4; cmpwi 11,0; bne 0f; li 3,0; blr; 0:; lwz 0,0x0(9); addi 3,3,8; rlwinm 0,0,3,0,28; add 0,11,0; cmplw 3,0; bge 4f; lis 9,-32700; addi 9,9,-6476; 1:; lwz 11,0x0(3); li 10,1; cmpwi 11,0; bne 2f; li 10,0; 2:; cmpwi 10,0; beq 3f; cmpw 11,9; bnelr; 3:; addi 3,3,8; cmplw 3,0; blt 1b; 4:; li 3,0"
-extern "C" int f_802AA470() {}
+// 0x802AA470 (116B) AptNativeHash::GetNextItem(AptHashItem*)
+//
+// Given the current entry, returns the next "live" entry, or null. The table is
+// a flat array of 8-byte {key, value} entries at m_entries (0x04) with
+// m_capacity (0x00) slots; the end is computed as a pointer (base + capacity).
+// Scanning starts at current + 1 and the bound test is an unsigned pointer
+// compare (cmplw). An entry is live when its key is non-null AND not the
+// tombstone sentinel (0x8043E6B4); the non-null test is materialised into a 0/1
+// boolean before being branched on (li/cmpwi/bne/li). Clean structural C++;
+// default scheduling fills the post-load gap with the current+1 computation.
+
+struct AptNativeHashEntry {
+    void* m_key;     // 0x00
+    void* m_value;   // 0x04
+};
+
+struct AptNativeHash {
+    int                 m_capacity;  // 0x00 (slot count)
+    AptNativeHashEntry* m_entries;   // 0x04
+    AptNativeHashEntry* GetNextItem(AptNativeHashEntry* current);
+};
+
+// 0x8043E6B4 tombstone/empty-rep sentinel (absolute reloc; name cosmetic).
+extern char gAptNativeHashTombstone[];
+
+AptNativeHashEntry* AptNativeHash::GetNextItem(AptNativeHashEntry* current) {
+    AptNativeHashEntry* base = m_entries;
+    AptNativeHashEntry* e = current;
+    if (base == 0)
+        return 0;
+    AptNativeHashEntry* end = base + m_capacity;
+    e = e + 1;
+    while (e < end) {
+        void* key = e->m_key;
+        int occupied = (key != 0);
+        if (occupied) {
+            if (key != (void*)gAptNativeHashTombstone)
+                return e;
+        }
+        ++e;
+    }
+    return 0;
+}
