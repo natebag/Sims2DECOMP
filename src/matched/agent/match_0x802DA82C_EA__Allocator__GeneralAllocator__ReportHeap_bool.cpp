@@ -1,8 +1,45 @@
-// 0x802DA82C EA::Allocator::GeneralAllocator::ReportHeap(bool (184 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 26,0x8(1); stw 0,0x24(1); mr 29,6; mr 30,3; mr 6,7; mr 26,5; mr 7,8; li 28,0; mr 8,9; mr. 27,4; beq 2f; li 4,0; mr 5,29; bl _s802DA82C_0; mr. 31,3; beq 1f; mr 3,30; mr 4,31; mr 5,29; li 28,1; bl _s802DA82C_1; mr. 3,3; beq 1f; 0:; mr 4,26; mtspr 8,27; blrl; mr 28,3; mr 4,31; mr 3,30; mr 5,29; bl _s802DA82C_2; cmpwi 28,0; beq 1f; cmpwi 3,0; bne 0b; 1:; mr 3,30; mr 4,31; bl _s802DA82C_3; 2:; mr 3,28; lwz 0,0x24(1); mtspr 8,0; lmw 26,0x8(1); addi 1,1,32"
-extern "C" void _s802DA82C_0();
-extern "C" void _s802DA82C_1();
-extern "C" void _s802DA82C_2();
-extern "C" void _s802DA82C_3();
-extern "C" void f_802DA82C() {}
+// 0x802DA82C EA::Allocator::GeneralAllocator::ReportHeap(bool (*)(BlockInfo*, void*), void*, int, bool, void*, unsigned int) (184 B)
+// Walk every block of a heap report, invoking a user callback per block.
+// ReportBegin opens the report (returns a context); ReportNext yields each
+// BlockInfo* in turn; the callback decides whether to keep going; ReportEnd
+// closes the report. Returns false if no callback was supplied or the report
+// could not be opened, otherwise the last callback verdict (true if the heap
+// was empty but successfully reported).
+namespace EA { namespace Allocator {
+
+struct GeneralAllocator {
+    struct BlockInfo;
+    typedef bool (*ReportCallback)(BlockInfo*, void*);
+
+    bool       ReportHeap(ReportCallback pCallback, void* pContext, int a3, bool a4, void* a5, unsigned int a6);
+    void*      ReportBegin(void* pSnapshot, int a2, bool a3, void* a4, unsigned int a5);
+    BlockInfo* ReportNext(void* pReport, int a2);
+    void       ReportEnd(void* pReport);
+};
+
+bool GeneralAllocator::ReportHeap(ReportCallback pCallback, void* pContext, int a3, bool a4, void* a5, unsigned int a6)
+{
+    bool result = false;
+
+    if (pCallback != 0) {
+        void* pReport = ReportBegin(0, a3, a4, a5, a6);
+
+        if (pReport != 0) {
+            result = true;
+            BlockInfo* pInfo = ReportNext(pReport, a3);
+
+            if (pInfo != 0) {
+                do {
+                    result = pCallback(pInfo, pContext);
+                    pInfo = ReportNext(pReport, a3);
+                } while (result && pInfo != 0);
+            }
+        }
+
+        ReportEnd(pReport);
+    }
+
+    return result;
+}
+
+}}
