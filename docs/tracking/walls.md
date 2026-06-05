@@ -837,3 +837,35 @@ in the header, not a value move — not source- or flag-inducible here. "this-al
 count-coloring" wall class. Re-test only with a different SN point-version.
 
 **Logged by:** Matcher-Opus-1b, 2026-06-05.
+
+## 0x802AAE30 AptNativeHash::RegisterReferences(AptValue*) const (220B) — 3-instr register-base lwzx-swap near-match
+
+**Status:** forced ASMPROC stub remains; clean attempt matches 217/220 bytes
+(everything EXCEPT 3 instructions in the entry-scan loop).
+
+**Decoded (clean source verified to 3-instr):** GC reference registration in 3 sections,
+each calling `gcFn(owner, ref, desc)` through a global fn-ptr via mtlr;blrl:
+1. `if (m_8@0x08)  gcFn(owner, m_8,  *gAptHashDesc1 + 8)`  -- gAptHashDesc1 = ptr @0x8049D3BC
+2. `if (m_12@0x0C) gcFn(owner, m_12, *gAptHashDesc2 + 8)`  -- gAptHashDesc2 = ptr @0x8049D59C
+3. `if (m_entries@0x04) for(i=0;i<m_capacity@0x00;i++){ e=&entries[i]; if(e->value@+4) gcFn(owner, e->value, e->key@+0 + 8); }`
+Entry stride 8 {key@0,value@4}; m_entries/m_capacity re-read each iter (callback clobber).
+Descriptor globals declared `extern void* g[]` to force absolute lis/lwz (relocs masked) -
+THESE MATCHED. The mtlr;blrl fn-ptr recipe, both fixed-field blocks, the loop structure,
+guard, and the value (add+lwz4) all byte-match.
+
+**The 3-instr diff (entry loop only):**
+- 0x8C: DOL `add r9,r31,r11` (offset-IV first) vs mine `add r9,r11,r31` (base first)
+- 0x9C: DOL `lwzx r5,r31,r11` (offset-IV first) vs mine `lwzx r5,r11,r31` (base first)
+- 0xAC: DOL `mtlr r9` vs mine `mtlr r11` (fn-ptr reg, follows from the above)
+
+**Why unfixable cleanly:** the base operand (m_entries, r11) is RE-READ inside the loop
+(call clobber) -> a *register* base, not a symbol base. GCC canonicalizes the indexed
+`add`/`lwzx` with the re-read register base as rA; the DOL puts the offset induction var
+(r31) as rA. The honest index-first source fix ([[feedback_lwzx_source_canonicalization]])
+only flips operand order for SYMBOL bases, not register bases (confirmed: tried `i*8 +
+(char*)m_entries` and an explicit `off` byte-offset IV - neither flipped it; the explicit
+IV also reordered the loop guard, making it worse). This is the documented "register-base
+lwzx swap_operands" wall class; the banned swap_operands mutator is the only route. Re-test
+with a different SN point-version.
+
+**Logged by:** Matcher-Opus-1b, 2026-06-05.
