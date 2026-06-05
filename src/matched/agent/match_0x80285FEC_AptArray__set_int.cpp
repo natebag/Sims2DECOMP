@@ -1,5 +1,44 @@
-// 0x80285FEC AptArray::set(int, (192 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-40(1); mfspr 0,8; stmw 25,0xc(1); stw 0,0x2c(1); mr 30,3; mr 29,5; mr. 31,4; blt 2f; addi 28,31,1; mr 4,28; lis 25,-32704; bl _s80285FEC_0; lis 26,-32704; lwz 9,0x8(29); addi 4,25,14924; addi 5,26,14964; li 6,284; lha 3,0x8(9); rlwinm 27,31,2,0,29; lwz 0,0xc(9); add 3,29,3; lwz 9,0x24(30); mtspr 8,0; lwzx 31,27,9; blrl; cmpwi 31,0; beq 0f; lwz 9,0x8(31); addi 4,25,14924; addi 5,26,14964; li 6,285; lha 3,0x10(9); lwz 0,0x14(9); add 3,31,3; mtspr 8,0; blrl; 0:; lwz 9,0x24(30); stwx 29,27,9; lwz 0,0x2c(30); cmpw 0,28; bge 1f; mr 0,28; 1:; stw 0,0x2c(30); 2:; lwz 0,0x2c(1); mtspr 8,0; lmw 25,0xc(1); addi 1,1,40"
-extern "C" void _s80285FEC_0();
-extern "C" void f_80285FEC() {}
+// 0x80285FEC AptArray::set(int, AptValue*) (192B) — clean
+//
+// Stores a value at an array index (no-op for negative indices). Grows the store,
+// GC-registers the incoming value, GC-releases whatever previously occupied the
+// slot, writes the slot, and bumps the element count to cover the index. The
+// register/release are tracked through the value's vtable (8-byte SN ABI entries,
+// this-adjusting) with the call-site file/line descriptor globals.
+
+struct AptValueData { unsigned int w0; unsigned int w4; };   // 8B before the vptr
+struct AptValue : AptValueData {
+    virtual void GCRegister(char* file, char* func, int line);   // vtable slot 1 (@8/@12)
+    virtual void GCRelease(char* file, char* func, int line);    // vtable slot 2 (@16/@20)
+};
+
+extern char gGCDesc1[];   // absolute @0x80403A4C
+extern char gGCDesc2[];   // absolute @0x80403A74
+
+struct AptArray {
+    char       pad[0x24];   // 0x00 .. 0x23
+    AptValue** m_data;      // 0x24
+    int        m_capacity;  // 0x28
+    int        m_count;     // 0x2C
+    void _reserve(int n);                        // @0x80285F30
+    void set(int index, AptValue* value);
+};
+
+void AptArray::set(int index, AptValue* value) {
+    if (index < 0) {
+        return;
+    }
+    int newcount = index + 1;
+    _reserve(newcount);
+    AptValue* old = m_data[index];
+    value->GCRegister(gGCDesc1, gGCDesc2, 284);
+    if (old != 0) {
+        old->GCRelease(gGCDesc1, gGCDesc2, 285);
+    }
+    m_data[index] = value;
+    int c = m_count;
+    if (c < newcount) {
+        c = newcount;
+    }
+    m_count = c;
+}
