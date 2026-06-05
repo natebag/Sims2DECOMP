@@ -1,4 +1,83 @@
 // 0x802D9098 EA::Allocator::GeneralAllocator::FindAndSetNewTopChunk(void) (212 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); stw 31,0xc(1); mr 6,3; li 5,0; lwz 7,0x46c(6); addi 0,6,1100; addi 3,6,52; cmpw 7,0; beq 6f; mr 4,0; 0:; lwz 9,0x4(7); lwz 11,0x0(7); add 9,7,9; addi 9,9,-16; cmplw 11,9; bge 5f; 1:; lwz 0,0x4(11); rlwinm 10,0,0,0,28; add 8,11,10; lwz 0,0x4(8); andi. 31,0,1; bne 4f; cmplwi 10,8192; bgt 2f; cmpw 8,9; bne 3f; 2:; mr 3,11; b 6f; 3:; cmplw 10,5; ble 4f; mr 3,11; mr 5,10; 4:; mr 11,8; cmplw 11,9; blt 1b; 5:; lwz 7,0x20(7); cmpw 7,4; bne 0b; 6:; addi 0,6,52; cmpw 3,0; beq 7f; lwz 0,0xc(3); lwz 9,0x8(3); stw 0,0xc(9); lwz 11,0xc(3); lwz 0,0x8(3); stw 0,0x8(11); stw 3,0xc(3); stw 3,0x8(3); 7:; stw 3,0x444(6); lwz 31,0xc(1); addi 1,1,16"
-extern "C" void f_802D9098() {}
+// Scan every core block's chunk list for the best free chunk to promote to the
+// new top chunk: a free chunk larger than 8192 bytes, or one whose tail sits on
+// a core block's top fencepost, is taken immediately; otherwise the largest free
+// chunk seen wins. The chosen chunk is unlinked from its free bin and recorded
+// as mpTopChunk; the chosen chunk is also returned. If nothing qualifies, the
+// head-chunk sentinel is used.
+namespace EA { namespace Allocator {
+
+struct Chunk {
+    unsigned int mPrevSize;   // 0x00
+    unsigned int mnSize;      // 0x04  size | flag bits (bit0 = prev-in-use)
+    Chunk*       mpNext;      // 0x08  free-list forward
+    Chunk*       mpPrev;      // 0x0C  free-list back
+};
+
+struct CoreBlock {
+    Chunk*       mpFirstChunk; // 0x00
+    unsigned int mnSize;       // 0x04
+    char         mPad[0x18];   // 0x08
+    CoreBlock*   mpNext;       // 0x20
+};
+
+struct GeneralAllocator {
+    char       mPad0[0x34];
+    Chunk      mHeadChunk;       // 0x34
+    char       mPad1[0x400];     // 0x44
+    Chunk*     mpTopChunk;       // 0x444
+    char       mPad2[0x04];      // 0x448
+    CoreBlock  mHeadCoreBlock;   // 0x44C (mpNext at 0x46C)
+
+    Chunk* FindAndSetNewTopChunk();
+};
+
+Chunk* GeneralAllocator::FindAndSetNewTopChunk()
+{
+    Chunk*       pHighestChunk = &mHeadChunk;
+    unsigned int nHighestSize  = 0;
+
+    for (CoreBlock* pCoreBlock = mHeadCoreBlock.mpNext;
+         pCoreBlock != &mHeadCoreBlock;
+         pCoreBlock = pCoreBlock->mpNext)
+    {
+        Chunk* pChunk = pCoreBlock->mpFirstChunk;
+        Chunk* pLimit = (Chunk*)((char*)pCoreBlock + pCoreBlock->mnSize - 16);
+
+        while (pChunk < pLimit)
+        {
+            unsigned int sz = pChunk->mnSize & ~7u;
+            Chunk* pNext = (Chunk*)((char*)pChunk + sz);
+
+            if ((pNext->mnSize & 1) == 0)
+            {
+                if (sz > 8192 || pNext == pLimit)
+                {
+                    pHighestChunk = pChunk;
+                    goto done;
+                }
+                if (sz > nHighestSize)
+                {
+                    pHighestChunk = pChunk;
+                    nHighestSize  = sz;
+                }
+            }
+
+            pChunk = pNext;
+        }
+    }
+
+done:
+    if (pHighestChunk != &mHeadChunk)
+    {
+        pHighestChunk->mpNext->mpPrev = pHighestChunk->mpPrev;
+        pHighestChunk->mpPrev->mpNext = pHighestChunk->mpNext;
+        pHighestChunk->mpPrev = pHighestChunk;
+        pHighestChunk->mpNext = pHighestChunk;
+    }
+
+    mpTopChunk = pHighestChunk;
+    return pHighestChunk;
+}
+
+}}
