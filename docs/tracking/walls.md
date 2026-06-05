@@ -964,3 +964,26 @@ extra (byte-changing) instruction. This is the "register-numbering coloring" wal
 Re-test under a different SN point-version, or if a value->r31 priority lever is later found.
 
 **Logged by:** Matcher-Opus-1c, 2026-06-05.
+
+## 0x802341B0 ERLevel::AddBounds(EBound3 &, EBound3 &, bool &) (176B)
+
+**Tried:** Natural clean C++ for first-bound copy and component-wise min/max merge, plus manual integer-copy variants to reproduce the DOL's six-word copy order and `-fno-schedule-insns`.
+
+**Asm shape that didn't reduce:** Semantics are decoded, but generated code keeps choosing a shorter/reshuffled float min/max loop and different copy/load scheduling. DOL uses explicit fmr temporaries before each compare/store:
+
+```
+DOL:   lfsx  f0,r9,r5
+       lfsx  f13,r9,r4
+       fmr   f12,f0
+       fcmpu cr0,f13,f0
+       bge   keep_src
+       fmr   f12,f13
+       stfsx f12,r9,r4
+MINE:  lfsx/fcmpu pair without the distinct f12 output temp, then stores f0/f13 variant
+```
+
+Manual first-copy forms can reproduce the pointer setup (`addi r10,src+12`, `addi r8,dst+12`) but drift on word load/store ordering or loop layout.
+
+**Notes / hypotheses:** Likely a small expression-selection/scheduler wall, not a semantic unknown. Next pass should try alternate float helper shapes that force a distinct output temp register without adding instructions, or TU context if alias/inlining context affects the copy loop.
+
+**Logged by:** Matcher-Pi, 2026-06-05.
