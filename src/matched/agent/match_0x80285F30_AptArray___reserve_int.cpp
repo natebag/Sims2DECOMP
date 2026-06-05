@@ -1,8 +1,46 @@
-// 0x80285F30 AptArray::_reserve(int) (188 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 28,0x8(1); stw 0,0x1c(1); mr 31,3; li 29,0; lwz 0,0x28(31); cmpw 0,4; bge 4f; lwz 3,-23020(13); addic. 4,4,-1; beq 1f; 0:; addi 29,29,1; srawi. 4,4,1; bne 0b; 1:; li 0,1; slw 29,0,29; cmpwi 29,8; bge 2f; li 29,8; 2:; rlwinm 30,29,2,0,29; mr 4,30; bl _s80285F30_0; mr 28,3; li 4,0; mr 5,30; bl _s80285F30_1; lwz 4,0x24(31); cmpwi 4,0; beq 3f; lwz 5,0x28(31); mr 3,28; rlwinm 5,5,2,0,29; crxor 6,6,6; bl _s80285F30_2; lwz 5,0x28(31); lwz 3,-23020(13); lwz 4,0x24(31); rlwinm 5,5,2,0,29; bl _s80285F30_3; 3:; stw 29,0x28(31); stw 28,0x24(31); 4:; lwz 0,0x1c(1); mtspr 8,0; lmw 28,0x8(1); addi 1,1,24"
-extern "C" void _s80285F30_0();
-extern "C" void _s80285F30_1();
-extern "C" void _s80285F30_2();
-extern "C" void _s80285F30_3();
-extern "C" void f_80285F30() {}
+// 0x80285F30 AptArray::_reserve(int) (188B) — clean
+//
+// Grows the backing store to hold at least n elements. Rounds n up to the next
+// power of two (min 8), allocates+zeroes a new slot array from the value pool,
+// copies the old contents over, frees the old array, and stores the new pointer
+// and capacity. No-op when the current capacity already suffices.
+
+struct AptValuePool {
+    void* Allocate(unsigned int size);             // @0x802B5848
+    void  Deallocate(void* p, unsigned int size);  // @0x802B598C
+};
+extern AptValuePool* g_aptValuePool;   // SDA -0x59ec
+
+extern "C" void* memset(void* p, int c, unsigned int n);          // @0x802435E4
+extern "C" void* memcpy(void* d, const void* s, unsigned int n, ...);  // @0x80243454
+
+struct AptArray {
+    char  pad[0x24];   // 0x00 .. 0x23
+    void** m_data;     // 0x24
+    int   m_capacity;  // 0x28
+    void  _reserve(int n);
+};
+
+void AptArray::_reserve(int n) {
+    int cap = 0;
+    if (m_capacity < n) {
+        n = n - 1;
+        if (n != 0) {
+            do {
+                cap++;
+                n = n >> 1;
+            } while (n != 0);
+        }
+        cap = 1 << cap;
+        cap = cap < 8 ? 8 : cap;
+        int bytes = cap * 4;
+        void* newdata = g_aptValuePool->Allocate(bytes);
+        memset(newdata, 0, bytes);
+        if (m_data != 0) {
+            memcpy(newdata, m_data, m_capacity * 4);
+            g_aptValuePool->Deallocate(m_data, m_capacity * 4);
+        }
+        m_data = (void**)newdata;
+        m_capacity = cap;
+    }
+}
