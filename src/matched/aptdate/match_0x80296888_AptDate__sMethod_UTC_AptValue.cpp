@@ -1,10 +1,17 @@
-// 0x80296888 AptDate::sMethod_UTC(AptValue (8 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="lwz 3,-22936(13)"
+// 0x80296888 AptDate::sMethod_UTC(AptValue*, int) (8B) — clean
+//
+// Native-method handler stub: AptDate.UTC is unimplemented and simply returns
+// a cached global AptValue* held in small-data. Compiles to a single
+// `lwz r3,g@sda21(r13); blr`.
+
+struct AptValue;
 
 struct AptDate {
-    void sMethod_UTC();
+    static AptValue* sMethod_UTC(AptValue* args, int argc);
 };
 
-void AptDate::sMethod_UTC() {
+extern AptValue* g_aptDateUTCResult;   // SDA: -0x5998(r13)
+
+AptValue* AptDate::sMethod_UTC(AptValue* args, int argc) {
+    return g_aptDateUTCResult;
 }
