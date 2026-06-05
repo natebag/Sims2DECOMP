@@ -869,3 +869,46 @@ lwzx swap_operands" wall class; the banned swap_operands mutator is the only rou
 with a different SN point-version.
 
 **Logged by:** Matcher-Opus-1b, 2026-06-05.
+
+---
+
+## 0x802DA588 GeneralAllocator::DescribeChunk(Chunk*, char*, unsigned int) — 352B
+
+**Status:** forced ASMPROC stub remains; clean C++ matches 87/88 instructions
+(everything EXCEPT one redundant register-preservation copy).
+
+**Fully decoded & clean-verified to 1 instruction.** Formats one heap chunk into a
+debug string: memset two scratch buffers, hex-dump the chunk body via GetDataPreview
+(0x802DA3EC, landed clean 42b983611), then two variadic SnprintfLocal (0x802D86B0) calls
+(`"addr: 0x%08x%csize: %10u (%8x)%cdata: %s%c"` + flag line `"attr: %s %s%c"`). Returns
+clamped char count. Confirmed recipes that DID match (all banked):
+- **memset emits `crxor 6,6,6` (varargs marker)** in this TU -> declare memset VARIADIC
+  `extern "C" void* memset(void*, int, ...);` (original called it through an implicit/
+  unprototyped decl -> varargs convention). GetDataPreview's TU used a real prototype (no
+  crxor) -> the two functions are in different TUs; set memset's decl PER FILE.
+- **buffers held in callee-saved regs:** `char* pBufA = bufferA;` (else GCC recomputes
+  `addi r1,16` 3x instead of keeping it in r28). bufferA[257]@16(1), bufferB[514]@280(1).
+- **flag separation:** `unsigned isInternal = flags & 4; if (isInternal || (flags & 2))`
+  with isInternal reused for s1 — prevents GCC folding `(f&4)||(f&2)` into a single
+  `andi. r0,r0,6`. &2 is intentionally re-tested (DOL re-ANDs it for the s2 select).
+- **return clamp:** write `if (n > 0) return (unsigned)n; return 0;` NOT
+  `return n>0?n:0;` — the if/return form makes the n<=0 / no-flag / n2<=0 early exits
+  CONVERGE on one shared `mr r3,r30; cmpwi r30,0; bgt; li r3,0` block (the ternary lets
+  GCC fuse `mr. r3,r30` and split the n<=0 path, going 1 short).
+- shared "mapped" literal used for both s1-false and s2-false (DOL shares 0x8041E658);
+  reloc masked so literal content is cosmetic.
+
+**The 1-instruction diff:** DOL loads the flag word into **r0** then `mr r11,r0` to preserve
+it (because the subsequent `andi. r0,r11,2` would clobber r0); the SAME compiler from clean
+source loads flags into **r4** and reuses r4 for every `andi. r0,r4,N`, so no copy is needed.
+
+**Why unfixable cleanly:** pure register-allocation. GCC (SN ProDG 3.9.3) produces the
+*more efficient* allocation (flags in a non-arg-conflicting reg, no redundant `mr`); the
+original picked r0 (an arg/scratch reg) and paid a preservation copy. No source lever found
+to force flags into r0: tried default / -fno-schedule-insns / -fno-schedule-insns2 / both
+(default & sched2-off both give the 87-insn near-match; sched-off is worse at 86), int-vs-
+unsigned flags, if/return vs ternary, separate accumulator. This is the "register-allocation
+coloring" wall class (compiler emits better code than the original). Re-test under a different
+SN point-version. Working clean source parked at build/verify/dc3.cpp.
+
+**Logged by:** Matcher-Opus-2d, 2026-06-05.
