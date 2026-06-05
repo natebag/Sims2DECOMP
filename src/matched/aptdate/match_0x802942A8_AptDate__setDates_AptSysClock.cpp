@@ -1,13 +1,69 @@
-// 0x802942A8 AptDate::setDates(AptSysClock (312 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 30,4; mr 31,5; lwz 5,0x18(30); stw 5,0x18(31); lwz 4,0x14(30); stw 4,0x14(31); lwz 9,0x10(30); stw 9,0x10(31); lwz 0,0x8(30); subf 11,6,0; stw 11,0x8(31); lwz 0,0x8(30); subf 0,6,0; cmpwi 0,23; ble 0f; lis 0,10922; srawi 9,11,31; ori 0,0,43691; mulhw 0,11,0; srawi 0,0,2; subf 0,9,0; mulli 0,0,24; subf 0,0,11; stw 0,0x8(31); bl _s802942A8_0; lwz 9,0x10(31); addi 9,9,1; cmpw 9,3; stw 9,0x10(31); ble 2f; lwz 9,0x14(31); li 0,1; stw 0,0x10(31); addi 9,9,1; cmpwi 9,11; stw 9,0x14(31); ble 2f; lwz 9,0x18(31); li 0,0; stw 0,0x14(31); addi 9,9,1; stw 9,0x18(31); b 2f; 0:; cmpwi 0,0; bge 2f; addi 9,9,-1; subfic 0,6,24; stw 0,0x8(31); cmpwi 9,0; stw 9,0x10(31); bgt 2f; addi 0,4,-1; cmpwi 0,0; stw 0,0x14(31); bge 1f; addi 9,5,-1; li 0,11; stw 0,0x14(31); stw 9,0x18(31); 1:; lwz 4,0x14(31); lwz 5,0x18(31); bl _s802942A8_1; stw 3,0x10(31); 2:; lwz 0,0x4(30); stw 0,0x4(31); lwz 9,0x0(30); stw 9,0x0(31); lwz 0,0x1c(30); stw 0,0x1c(31); lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+// 0x802942A8 AptDate::setDates(AptSysClock* src, AptSysClock* dst, int offset) (312B) — clean
+//
+// Copies a clock from src to dst applying an hour offset, then normalizes the
+// resulting day/month/year if the offset pushed the hour out of [0,23]:
+//  - hour > 23: hour %= 24, advance the day (rolling month/year forward).
+//  - hour <  0: hour = 24 - offset, retreat the day (rolling month/year back,
+//               resetting the day to that month's length).
+// h1 (stored hour, reused for the %24) and h2 (the comparison value) are read
+// separately: the store to dst->hours may alias src->hours, so the compiler
+// reloads src->hours for the second read rather than reusing h1.
 
-extern "C" void _s802942A8_0();
-extern "C" void _s802942A8_1();
-
-struct AptDate {
-    void setDates_AptSysClock();
+struct AptSysClock {
+    int sec;     // 0x00
+    int min;     // 0x04
+    int hours;   // 0x08
+    int pad0C;   // 0x0C
+    int day;     // 0x10  (1-based)
+    int month;   // 0x14  (0-based, 0..11)
+    int year;    // 0x18
+    int ms;      // 0x1C
 };
 
-void AptDate::setDates_AptSysClock() {
+struct AptDate {
+    int dateGetNumDaysInMonth(int month, int year);              // @0x802941FC
+    void setDates(AptSysClock* src, AptSysClock* dst, int offset); // @0x802942A8
+};
+
+void AptDate::setDates(AptSysClock* src, AptSysClock* dst, int offset) {
+    int year = src->year;
+    dst->year = year;
+    int month = src->month;
+    dst->month = month;
+    int day = src->day;
+    dst->day = day;
+    int h1 = src->hours - offset;
+    dst->hours = h1;
+    int h2 = src->hours - offset;
+    if (h2 > 23) {
+        dst->hours = h1 % 24;
+        int dim = dateGetNumDaysInMonth(month, year);
+        int nd = dst->day + 1;
+        dst->day = nd;
+        if (nd > dim) {
+            dst->day = 1;
+            int nm = dst->month + 1;
+            dst->month = nm;
+            if (nm > 11) {
+                dst->month = 0;
+                dst->year = dst->year + 1;
+            }
+        }
+    } else if (h2 < 0) {
+        int pd = day - 1;
+        dst->hours = 24 - offset;
+        dst->day = pd;
+        if (pd <= 0) {
+            int pm = month - 1;
+            dst->month = pm;
+            if (pm < 0) {
+                dst->month = 11;
+                dst->year = year - 1;
+            }
+            dst->day = dateGetNumDaysInMonth(dst->month, dst->year);
+        }
+    }
+    dst->min = src->min;
+    dst->sec = src->sec;
+    dst->ms = src->ms;
 }
