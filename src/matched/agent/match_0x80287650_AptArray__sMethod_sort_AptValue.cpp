@@ -1,6 +1,49 @@
-// 0x80287650 AptArray::sMethod_sort(AptValue (164 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-8(1); mfspr 0,8; stw 0,0xc(1); lwz 9,0x0(3); li 11,0; rlwinm 0,9,0,25,31; cmpwi 0,22; bne 0f; rlwinm 11,9,5,31,31; 0:; cmpwi 11,0; beq 2f; cmpwi 4,0; bne 1f; lwz 4,0x2c(3); lis 6,-32728; lwz 3,0x24(3); addi 6,6,29712; li 5,4; bl _s80287650_0; b 2f; 1:; lis 9,-32694; lwz 4,0x2c(3); lwz 11,-16032(9); lis 6,-32728; addi 9,9,-16032; lwz 3,0x24(3); lwz 0,0x8(9); rlwinm 11,11,2,0,29; addi 6,6,29920; li 5,4; add 11,11,0; lwz 9,-4(11); lwz 0,0x24(9); stw 9,-27540(13); stw 0,-27536(13); bl _s80287650_1; 2:; lwz 3,-22936(13); lwz 0,0xc(1); mtspr 8,0; addi 1,1,8"
-extern "C" void _s80287650_0();
-extern "C" void _s80287650_1();
-extern "C" void f_80287650() {}
+// 0x80287650 AptArray::sMethod_sort(AptValue*, int) (164B) — clean
+//
+// AptScript array sort handler. Same typed-array guard as the rest of the family.
+// With no argument, qsorts the slots with the default comparator. With an argument
+// it pulls the script comparator value off the top of the arg stack, stashes it
+// (and one of its fields) in the sort-context globals, and qsorts with the script
+// comparator trampoline. Always returns the undefined sentinel.
+
+struct AptValue;
+extern AptValue* gpAptUndefined;   // SDA -0x5998
+
+struct AptArgStack { int count; int pad4; AptValue** data; };
+extern AptArgStack g_aptArgStack;  // absolute @0x8049C160
+
+extern AptValue* g_sortCmpValue;   // SDA -0x6b94
+extern void*     g_sortCmpField;   // SDA -0x6b90
+
+extern "C" void qsort(void* base, int nmemb, int size, void* compar);  // @0x80242918
+extern "C" int  defaultSortCompareFunc();                              // @0x80287410
+extern "C" int  scriptFunctionSortFunc();                              // @0x802874E0
+
+struct AptArray {
+    unsigned int m_flags;   // 0x00
+    char         pad[0x20]; // 0x04 .. 0x23
+    AptValue**   m_data;    // 0x24
+    int          m_capacity;// 0x28
+    int          m_count;   // 0x2C
+    static AptValue* sMethod_sort(AptArray* self, int argc);
+};
+
+AptValue* AptArray::sMethod_sort(AptArray* self, int argc) {
+    unsigned int flags = self->m_flags;
+    int valid = 0;
+    if ((flags & 0x7Fu) == 22) {
+        valid = (flags >> 27) & 1;
+    }
+    if (valid) {
+        if (argc == 0) {
+            qsort(self->m_data, self->m_count, 4, (void*)defaultSortCompareFunc);
+        } else {
+            AptValue* cmp = g_aptArgStack.data[g_aptArgStack.count - 1];
+            void* field = *(void**)((char*)cmp + 36);
+            g_sortCmpValue = cmp;
+            g_sortCmpField = field;
+            qsort(self->m_data, self->m_count, 4, (void*)scriptFunctionSortFunc);
+        }
+    }
+    return gpAptUndefined;
+}
