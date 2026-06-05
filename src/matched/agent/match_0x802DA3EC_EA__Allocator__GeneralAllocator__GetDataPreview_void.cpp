@@ -1,5 +1,59 @@
-// 0x802DA3EC EA::Allocator::GeneralAllocator::GetDataPreview(void (304 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 27,0x1c(1); stw 0,0x34(1); lis 9,-32702; mr 29,8; lwz 11,-6656(9); addi 0,29,-2; addi 9,9,-6656; addi 28,1,8; lwz 7,0xc(9); rlwinm 30,0,30,2,31; lwz 10,0x4(9); mr 27,4; lwz 8,0x8(9); mr 31,6; stw 11,0x8(1); cmplw 5,30; stw 10,0x4(28); stw 8,0x8(28); stw 7,0xc(28); bge 0f; mr 30,5; 0:; mr 3,31; li 4,32; mr 5,29; bl _s802DA3EC_0; li 0,0; add 9,29,31; stb 0,-1(9); cmplwi 29,4; bgt 1f; stb 0,0x0(31); b 6f; 1:; rlwinm 0,30,1,0,30; li 9,9; add 0,0,30; li 10,0; add 11,0,31; cmplw 10,30; stb 9,-1(11); bge 6f; mr 8,28; mr 3,31; li 7,46; 2:; lbzx 0,27,10; rlwinm 0,0,28,4,31; lbzx 9,8,0; stb 9,0x0(3); lbzx 0,27,10; rlwinm 0,0,0,28,31; lbzx 9,8,0; stb 9,0x1(3); lbzx 9,27,10; addi 0,9,-32; cmplwi 0,94; bgt 3f; extsb 0,9; cmpwi 0,34; beq 3f; cmpwi 0,39; bne 4f; 3:; stb 7,0x0(11); b 5f; 4:; stb 9,0x0(11); 5:; addi 10,10,1; addi 11,11,1; addi 3,3,3; cmplw 10,30; blt 2b; 6:; li 3,0; lwz 0,0x34(1); mtspr 8,0; lmw 27,0x1c(1); addi 1,1,48"
-extern "C" void _s802DA3EC_0();
-extern "C" void f_802DA3EC() {}
+// 0x802DA3EC EA::Allocator::GeneralAllocator::GetDataPreview(const void*, unsigned int, char*, wchar_t*, unsigned int) const (304 B)
+// Format a memory block as a hex + ASCII preview string. Builds a local
+// hex-digit table, space-fills the caller's buffer and NUL-terminates it, then
+// writes "XX " hex pairs followed by a tab-separated ASCII column in which
+// non-printable characters and quote marks are rendered as '.'. The number of
+// bytes shown is min(nDataSize, (nBufferLength-2)/4). The fourth parameter is
+// unused. Always returns 0.
+namespace EA { namespace Allocator {
+
+extern "C" void* memset(void* pDest, int c, unsigned int n);
+
+struct GeneralAllocator {
+    unsigned int GetDataPreview(const void* pData, unsigned int nDataSize,
+                                char* pBuffer, wchar_t* pUnused,
+                                unsigned int nBufferLength) const;
+};
+
+unsigned int GeneralAllocator::GetDataPreview(const void* pData, unsigned int nDataSize,
+                                              char* pBuffer, wchar_t* /*pUnused*/,
+                                              unsigned int nBufferLength) const
+{
+    char hexChars[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
+
+    unsigned int nWritable = (nBufferLength - 2) >> 2;
+    if (nDataSize < nWritable)
+        nWritable = nDataSize;
+
+    memset(pBuffer, ' ', nBufferLength);
+    pBuffer[nBufferLength - 1] = 0;
+
+    if (nBufferLength <= 4) {
+        pBuffer[0] = 0;
+        return 0;
+    }
+
+    char* pAscii = (char*)(nWritable * 3 + (unsigned int)pBuffer);
+    pAscii[-1] = '\t';
+
+    unsigned int i = 0;
+    if (i < nWritable) {
+        do {
+            pBuffer[i * 3]     = hexChars[((const unsigned char*)pData)[i] >> 4];
+            pBuffer[i * 3 + 1] = hexChars[((const unsigned char*)pData)[i] & 0x0f];
+
+            unsigned char c = ((const unsigned char*)pData)[i];
+            if ((unsigned int)(c - 0x20) > 0x5e || (signed char)c == '"' || (signed char)c == '\'')
+                *pAscii = '.';
+            else
+                *pAscii = c;
+
+            pAscii++;
+            i++;
+        } while (i < nWritable);
+    }
+
+    return 0;
+}
+
+}}
