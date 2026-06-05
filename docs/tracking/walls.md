@@ -912,3 +912,55 @@ coloring" wall class (compiler emits better code than the original). Re-test und
 SN point-version. Working clean source parked at build/verify/dc3.cpp.
 
 **Logged by:** Matcher-Opus-2d, 2026-06-05.
+
+## AptDate::sMethod_get* raw-field getter sub-family (14 functions, ~180B each) — register-numbering coloring wall
+
+**Addresses (all forced ASMPROC stubs remain):**
+- 0x80294960 getDate (field 0x34)        - 0x80295080 getUTCDate (0x54)
+- 0x80294AD4 getFullYear (0x3C)          - 0x802951F4 getUTCFullYear (0x5C)
+- 0x80294B88 getHours (0x2C)             - 0x802952A8 getUTCHours (0x4C)
+- 0x80294C3C getMilliseconds (0x40)      - 0x8029535C getUTCMilliseconds (0x60)
+- 0x80294CF0 getMinutes (0x28)           - 0x80295410 getUTCMinutes (0x48)
+- 0x80294DA4 getMonth (0x38)             - 0x802954C4 getUTCMonth (0x58)
+- 0x80294E58 getSeconds (0x24)           - 0x80295578 getUTCSeconds (0x44)
+
+**Status:** boxing body fully decoded & clean-verified EXCEPT a 2-register swap
+(value<->head get r31<->r30 the wrong way round). The rest of the AptDate getter
+family LANDED CLEAN this session using the same boxing recipe:
+- 0x80296888 sMethod_UTC (SDA getter, 48cfe42f0)
+- 0x80294A14 getDay + 0x80295134 getUTCDay (call-based, value=getDayOfWeek result)
+- 0x80294F0C getTime (boxes constant 0)
+- 0x8029562C getYear (boxes year-1900) + 0x80294FC0 getTimezoneOffset (abs(off)*60)
+
+**The boxing recipe (CONFIRMED, reusable):** each getter returns a number AptValue made
+by the inlined AptValueGC allocator. Two-variable form (separate `head` for the free-list
+fast path and `obj` for the alloc path):
+```
+AptNum* head = g_aptGCFreeList;            // SDA -0x691c
+if (head) { w0|=0x20000000; pop next@0xC; if(size>=cap) clear bit else gcVec[size++]=head;
+            head->w12 = value; return head; }
+obj = g_aptValuePool->Allocate(16);        // pool SDA -0x59ec, 2-arg (this,16)
+obj->initType(7); obj->w12 = value; obj->w8 = (void*)g_aptNumberVTable; return obj;
+```
+Globals: AptNum{w0,w4,w8=vtable,w12=value/next}; AptGCVector* g_aptGCVector (SDA -0x6bd0,
+{cap@0,size@4,data@8}); g_aptNumberVTable[] absolute (lis/addi); ctor `initType`=AptValue::
+AptValue(7) @0x802B45FC; Allocate @0x802B5848. Inner test MUST be `if (size >= cap)` (DOL
+emits `blt append; clear; b`). The static helper does NOT inline (too big) — write the box
+in each getter body.
+
+**Why these 14 wall:** their boxed value is a RAW field load (`lwz r31, off(r3)`) with NO
+computation. DOL then UNIFIES the result pointer into r30 (callee-saved, used in both fast
+& alloc paths) and puts the field value in r31. The SAME compiler (SN ProDG 3.9.3) from
+natural C++ instead gives result(head)=r31 / value=r30 — the head pointer has ~11 refs vs
+the value's 3, so by GCC-2.95 global-alloc priority (floor_log2(n_refs)*freq/live_length)
+head always outranks value and grabs r31 first (reg_alloc_order tries r31 before r30). No
+source lever flips it: tried value-first vs head-first decl, single-var vs two-var (two-var
+pushes head to a *volatile* r8, not DOL's r30), `inline` helper (inlines but optimizes the
+return + same swap), result-intermediate/common-tail (size mismatch), all 4 schedule-flag
+combos. The COMPUTED-value siblings (getYear/getTimezoneOffset/getDay) win precisely because
+the value computation lands in r31 via an arithmetic op + a volatile temp, freeing head to a
+volatile reg + the two-var split — a structure the raw-field load can't reproduce without an
+extra (byte-changing) instruction. This is the "register-numbering coloring" wall class.
+Re-test under a different SN point-version, or if a value->r31 priority lever is later found.
+
+**Logged by:** Matcher-Opus-1c, 2026-06-05.
