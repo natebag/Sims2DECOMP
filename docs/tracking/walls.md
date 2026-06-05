@@ -1031,3 +1031,70 @@ over bins 1..127; range end &mBins[256]=this+1076), mpTopChunk@0x444. Helper
 GetLargeBinIndexFromChunkSize 0x802D9030 is effectively static (1 arg: size in r3).
 
 **Logged by:** Matcher-Opus-2e, 2026-06-05.
+
+---
+
+## 0x80296750 AptDate::sMethod_toString(AptValue*, int) (312 B)
+
+**Status:** NEAR-MATCH, structurally complete. Register allocation, instruction
+selection, and block layout ALL match DOL. The only residual is GCC's stack-slot
+*region* assignment (21-24 byte-immediate diffs in `addi rN,r1,K` displacements +
+frame size). Forced ASMPROC_inject_before fake-wrapper left UNCHANGED in
+src/matched/aptdate/. Best clean candidates parked in F:\tmp\ (v4=24 off, v6=21 off).
+
+**What it does:** AptScript native handler. Boxes a formatted date string into a
+20-byte string AptValue (AptString). Inlined AptValueGC *string* allocator (distinct
+from the number box): free-list at SDA -0x690c, next-link at obj+16 (NOT +12), object
+size 20, EAStringC member at +12. Free path recycles + clears recycled string via
+IsEmpty/ReserveSize(0); alloc path = pool->Allocate(20) + AptString::AptString ctor.
+Then: default-construct a scratch EAStringC `s` (inlined: m_ptr=EAStringC_sEmptyString,
+bump u16 refcount@[0]); `self->toString(s)` (@0x80294688) fills it; copy into the box
+via `box->m_str = EAStringC(s.c_str())` (char-ctor temp @0x8026C6DC -> operator=
+@0x8026C790 -> ~EAStringC @0x8026C728); then inline-release `s` (refcount-- + pool
+Deallocate(buf,cap+9) if 0). Returns the box.
+
+**TWO sub-walls CRACKED (banked recipes, reusable for sibling toString 0x80294688):**
+
+1. **Destructor asymmetry** (s dtor INLINED, temp2 dtor CALLED, same EAStringC type):
+   With one EAStringC type, an `inline` dtor inlines BOTH; an `extern` dtor calls
+   BOTH. SN ProDG applies dtor-inlineness uniformly. FIX: model the scratch `s` as a
+   **raw `char*`** (hand-inline its default-ctor refcount-bump and its release;
+   NO auto-destructor), and the copy as a real **EAStringC** temp whose **extern**
+   `~EAStringC` emits the `bl`. This yields s=inline-release, temp2=bl-dtor.
+
+2. **Address rematerialization** (temp2's frame address): an ANONYMOUS EAStringC temp
+   gets its stack address CACHED in a callee-saved reg (4 saved regs); a NAMED local
+   gets the address REMATERIALIZED (`addi r1,K` re-emitted at each of char-ctor/op=/
+   dtor, 3 saved regs — matches DOL). DOL rematerializes -> needs a NAMED local.
+   Also: hoist `&box->m_str` into a callee-saved reg before toString by computing
+   `EAStringC* dst = &box->m_str;` BEFORE the toString call (matches DOL's
+   `addi r30,r31,12` pre-call hoist + later `mr`).
+
+**The IRRECONCILABLE residual (the wall):** DOL places the copy temp in the
+8-aligned **compiler-temporary slot region** (offset 16, with a 4-byte gap at 12,
+frame 40) while ALSO rematerializing its address. But: a NAMED local (needed for
+rematerialization, sub-wall #2) is placed in the **named-local region** = the LOW
+slot (8), giving frame 32 and swapping s/temp2 offsets. An ANONYMOUS temp lands in
+the high region (correct slot 16) but CACHES its address (4 regs, sub-wall #2 fails).
+The two required behaviors — high/compiler-temp slot AND rematerialized address — are
+coupled to mutually-exclusive source constructs (anonymous vs named). ~12 variants
+tried (named/anon, dst hoist, -fno-schedule-insns/insns2, 8-byte `s` struct to force
+frame 40, 8-byte copy wrapper, aligned(8), implicit conversion, pointer-assign). Best
+= 21 byte-diffs (v6: 8-byte `s` gives correct frame 40 + 3 regs but s@16/temp2@8
+swapped vs DOL s@8/temp2@16). Cost model: caching temp2 in r28 is "free" (extends the
+stmw range) vs +2 addi to rematerialize, so SN prefers caching from clean source;
+DOL's compiler chose remat. Same-function/same-compiler => an unfound IR/source
+difference. Frame-layout + register-coloring class; re-test on a different SN
+point-version.
+
+**Struct facts confirmed:** AptString {w0 flags(bit 0x20000000=GC-registered)@0,
+w4@4, vtable@8, EAStringC m_str@12, free-list-next@16} = 20B. EAStringC {char* m_ptr}
+= 4B; buffer header [u16 ref@0, u16 cap@4, chars@8]; dtor = refcount-- + (if 0)
+pool->Deallocate(buf, cap+9). String GC globals: free-list SDA -0x690c, gcvector
+SDA -0x6bd0 {cap@0,size@4,data@8}, pool SDA -0x59ec. Default-ctor inlined everywhere
+(EAStringC_sEmptyString abs addr, bump u16 refcount). Helpers all external bl:
+toString 0x80294688, char-ctor 0x8026C6DC, operator= 0x8026C790, ~EAStringC
+0x8026C728, IsEmpty 0x8026C6A0, ReserveSize 0x802BC858, AptString ctor 0x802AC2E4,
+pool Allocate 0x802B5848 / Deallocate 0x802B598C.
+
+**Logged by:** Matcher-Opus-1d, 2026-06-05.
