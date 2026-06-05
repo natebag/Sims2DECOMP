@@ -987,3 +987,47 @@ Manual first-copy forms can reproduce the pointer setup (`addi r10,src+12`, `add
 **Notes / hypotheses:** Likely a small expression-selection/scheduler wall, not a semantic unknown. Next pass should try alternate float helper shapes that force a distinct output temp register without adding instructions, or TU context if alias/inlining context affects the copy loop.
 
 **Logged by:** Matcher-Pi, 2026-06-05.
+
+---
+
+## 0x802D91C8 EA::Allocator::GeneralAllocator::FindChunkBin(Chunk*) const (392 B)
+
+**Status:** NEAR-MATCH (97/98 insns, **block order matches DOL exactly**). Genuine
+register-coloring wall — the "redundant-mr quirk." Parked clean source:
+`src/wip/near_match/FindChunkBin_0x802D91C8_regalloc_redundant_mr.cpp`. Forced
+ASMPROC stub left UNCHANGED.
+
+**What it does:** Given a chunk, classify which bin it currently sits in. Returns
+3 if it's the top chunk; walks the size-specific fast bin (-> 1 if found); computes
+a bin index (sentinel-self addr calc if pChunk points into the bins array, else
+`size>>3` for size<=511 or `GetLargeBinIndexFromChunkSize(size)`); searches that bin
+(-> 2); then exhaustively scans all 10 fast bins (-> 1) and all 127 regular bins
+(-> 2); else 0.
+
+**The single gap:** DOL holds `size` in r11 and emits a redundant `mr r3,r11` before
+`bl 0x802D9030`; the SAME SN ProDG 3.9.3 from clean source coalesces `size` straight
+into r3 (the call-arg reg), eliding the `mr` and renaming every size-touching insn
+(r11->r3). This is strictly BETTER codegen.
+
+**Root cause (not source-fixable):** `size`'s live range (top -> GetLargeBin call)
+strictly contains the size-specific fastbin head's live range (the do-while walk).
+Both prefer r3 and CONFLICT (size live across the head walk). DOL picked head->r3
+(size->r11 + redundant mr); clean source picks size->r3 (head->r9, no mr). The
+algorithm forces the overlap (fastbin walk must precede the bin-index calc; size
+feeds both), so no clean C++ lever flips the tiebreak. Unaffected by
+-fno-schedule-insns (coloring, not scheduling). Re-test on a different SN point-ver.
+
+**Recipes that DID land their pieces (banked):** (1) inverted range conditional
+`if(in_range){sentinel}else{size_based}` reproduces DOL block layout
+`blt size_based; bge size_based; sentinel fall-through; b search`; (2) explicit
+`int adj=(int)pChunk-52;` temp stops `pChunk-52-this` folding into `pChunk-(this+52)`
+(reuse of cached &mBins[0]) -> DOL's `addi r9,r31,-52; subf r9,r30,r9`; (3) add-canon
+`(size>>1)+(unsigned)this+4` puts half as rA matching `add rD,half,this`.
+
+**Struct facts confirmed:** GeneralAllocator mField4@0x04 (max-fast threshold),
+mFastBins[10]@0x0C (stride 4; size-specific slot = *(this+(size>>1)+4)), mBins[256]@0x34
+(flat Chunk* array; bin k fd=mBins[2k] bk=mBins[2k+1]; regular-bin scan strides 8
+over bins 1..127; range end &mBins[256]=this+1076), mpTopChunk@0x444. Helper
+GetLargeBinIndexFromChunkSize 0x802D9030 is effectively static (1 arg: size in r3).
+
+**Logged by:** Matcher-Opus-2e, 2026-06-05.
