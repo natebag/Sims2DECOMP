@@ -769,3 +769,38 @@ the `anti_tail_merge` post-cc1plus mutator remains the only route. Re-test only 
 a different SN-ProDG point-version if one is ever installed.
 
 **Logged by:** Matcher-Opus-1b, 2026-06-05.
+
+---
+
+## 0x802D94C4 EA::Allocator::GeneralAllocator::GetBlockInfoForChunk(Chunk*, BlockInfo*) const (224B)
+
+Scheduler-tie wall (store-vs-computation interleave). The function is fully
+understood: a 3-case BlockInfo filler — `chunkSize=mnSize&~7`, `flag2=mnSize&2`,
+`next=chunk+chunkSize`; if `next->mnSize&1` (in use) it calls `GetUsableSize` and
+writes type-2 info (prev-fenced sub-case walking back over `mPrevSize`, or the
+ordinary sub-case), else writes type-4 free info. Semantics and field offsets all
+confirmed against the forced stub.
+
+**Attempts (all real SN ProDG 3.9.3, verified in isolated outdir):**
+- Default scheduling, natural source: CORRECT register allocation (inUse in r11,
+  field14 zero-reuse via r27/r11 all match) but the scheduler reorders the
+  independent BlockInfo stores within each branch — ~12 store-order offsets differ.
+- `-fno-schedule-insns`: fixes some store order but BREAKS allocation — inUse moves
+  to r9 (`andi. r9` vs DOL `andi. r11`), cascading the field14 zero-reuse bytes.
+- `-fno-schedule-insns2` alone: worse — prologue `mr` order and the `li` constant
+  registers diverge too (pre-RA scheduling is needed for the prologue).
+- `volatile BlockInfo*` stores + default scheduling: BEST — restores the correct
+  allocation AND pins store order; only the field4 value computation
+  (`mPrevSize + chunkSize + 16`, two reloads) interleaves differently: the DOL
+  spreads its `lwz/add/addi` between the field14/mpData/fieldC stores (slot-filling),
+  while the verify compiler batches them after the volatile stores. ~12 offsets, all
+  the same instructions in a different interleave.
+
+**Conclusion:** the DOL needs default-scheduling allocation, DOL store order, AND
+the field4 sub-computation interleaved between the stores — three constraints that
+no clean source shape / flag combination satisfies simultaneously (volatile pins
+stores at the cost of the interleave; non-volatile gets the interleave at the cost
+of store order). Genuine pre-RA scheduler-tie. Re-test only with a different SN
+ProDG point-version, or if a future technique can bias slot-fill order.
+
+**Logged by:** Matcher-Opus-2c, 2026-06-05.
