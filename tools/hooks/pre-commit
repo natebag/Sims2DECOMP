@@ -215,8 +215,15 @@ for f in $FILES; do
     if [ -n "$VERIFY_SYMBOL" ]; then
         VERIFY_ARGS+=(--symbol "$VERIFY_SYMBOL")
     fi
+    # Per-invocation isolated outdir: concurrent fleet commits sharing the
+    # default build/verify clobbered each other's .o/.s/_clean.cpp, producing
+    # FALSE 'MISMATCH on tracked file' blocks. Unique dir per (pid,file) fixes it.
+    VERIFY_OUTDIR="build/verify/precommit_$$_$(basename "$f" .cpp)"
+    mkdir -p "$VERIFY_OUTDIR" 2>/dev/null
+    VERIFY_ARGS+=(--outdir "$VERIFY_OUTDIR")
     VERIFY_OUT=$(bash tools/verify_match.sh "${VERIFY_ARGS[@]}" "$f" "$ADDR" "$SIZE" 2>&1)
     VERIFY_RC=$?
+    rm -rf "$VERIFY_OUTDIR" 2>/dev/null
 
     # Success
     if [ $VERIFY_RC -eq 0 ] && echo "$VERIFY_OUT" | grep -q "^MATCH! Function"; then
