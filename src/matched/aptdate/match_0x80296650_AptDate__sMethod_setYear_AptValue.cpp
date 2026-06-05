@@ -1,15 +1,77 @@
-// 0x80296650 AptDate::sMethod_setYear(AptValue (256 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-16(1); mfspr 0,8; stmw 30,0x8(1); stw 0,0x14(1); mr 31,3; cmpwi 4,0; bgt 0f; lwz 3,-22936(13); b 4f; 0:; lis 9,-32694; lwz 11,-16032(9); addi 9,9,-16032; lwz 0,0x8(9); rlwinm 11,11,2,0,29; add 11,11,0; lwz 3,-4(11); bl _s80296650_0; stw 3,0x3c(31); mr 3,31; lwz 6,0x64(3); addi 4,3,36; addi 5,3,68; bl _s80296650_1; lwz 31,-26908(13); cmpwi 31,0; beq 3f; lwz 0,0x0(31); lwz 9,0xc(31); lwz 8,-27600(13); oris 11,0,8192; stw 9,-26908(13); stw 11,0x0(31); lwz 10,0x4(8); lwz 0,0x0(8); cmpw 10,0; blt 1f; rlwinm 0,11,0,3,1; stw 0,0x0(31); b 2f; 1:; lwz 9,0x8(8); rlwinm 11,10,2,0,29; addi 0,10,1; stwx 31,11,9; stw 0,0x4(8); 2:; li 0,0; mr 3,31; stw 0,0xc(31); b 4f; 3:; lwz 3,-23020(13); li 4,16; bl _s80296650_2; mr 30,3; li 4,7; bl _s80296650_3; lis 9,-32702; stw 31,0xc(30); addi 9,9,-24344; mr 3,30; stw 9,0x8(30); 4:; lwz 0,0x14(1); mtspr 8,0; lmw 30,0x8(1); addi 1,1,16"
+// 0x80296650 AptDate::sMethod_setYear(AptValue*, int) (256B) — clean
+//
+// AptScript native handler: AptDate.setYear(v). With no argument, returns the
+// cached "undefined" value. Otherwise pops the top argument off the AptScript
+// argument stack, coerces it to an integer, stores it as field 0x3C, recomputes
+// the cached timestamps via setDates (local: clockA=self+0x24, clockB=self+0x44,
+// offset=field 0x64), then boxes 0 into a number AptValue via the inlined
+// AptValueGC allocator (recycle off the GC free-list, else allocate fresh).
 
-extern "C" void _s80296650_0();
-extern "C" void _s80296650_1();
-extern "C" void _s80296650_2();
-extern "C" void _s80296650_3();
-
-struct AptDate {
-    void sMethod_setYear();
+struct AptValue {
+    int toInteger() const;   // @0x802B04B8
 };
 
-void AptDate::sMethod_setYear() {
+struct AptSysClock;
+
+struct AptArgStack {
+    int        count;        // 0x00
+    int        field4;       // 0x04
+    AptValue** data;         // 0x08
+};
+
+struct AptNum {
+    unsigned w0; unsigned w4; void* w8; int w12;
+    void initType(int vftIdx);   // AptValue::AptValue(VFT_Indices) @0x802B45FC
+};
+
+struct AptGCVector { int cap; int size; void** data; };
+struct AptValuePool { void* Allocate(unsigned int size); };   // @0x802B5848
+
+extern AptArgStack   g_aptArgStack;        // absolute
+extern AptValue*     g_aptDateUTCResult;   // SDA -0x5998
+extern AptNum*       g_aptGCFreeList;       // SDA -0x691c
+extern AptGCVector*  g_aptGCVector;         // SDA -0x6bd0
+extern AptValuePool* g_aptValuePool;        // SDA -0x59ec
+extern void*         g_aptNumberVTable[];   // absolute number-value vtable
+
+struct AptDate {
+    void setDates(AptSysClock* a, AptSysClock* b, int n);   // @0x802942A8
+    static AptValue* sMethod_setYear(AptDate* self, int argc);
+};
+
+AptValue* AptDate::sMethod_setYear(AptDate* self, int argc) {
+    if (argc <= 0) {
+        return g_aptDateUTCResult;
+    }
+    int count = g_aptArgStack.count;
+    AptValue* arg = g_aptArgStack.data[count - 1];
+    *(int*)((char*)self + 0x3C) = arg->toInteger();
+    self->setDates((AptSysClock*)((char*)self + 36),
+                   (AptSysClock*)((char*)self + 68),
+                   *(int*)((char*)self + 0x64));
+    int value = 0;
+    AptNum* head = g_aptGCFreeList;
+    if (head != 0) {
+        unsigned w0 = head->w0;
+        AptNum* next = (AptNum*)head->w12;
+        AptGCVector* vec = g_aptGCVector;
+        unsigned marked = w0 | 0x20000000u;
+        g_aptGCFreeList = next;
+        head->w0 = marked;
+        int size = vec->size;
+        int cap = vec->cap;
+        if (size >= cap) {
+            head->w0 = marked & ~0x20000000u;
+        } else {
+            vec->data[size] = head;
+            vec->size = size + 1;
+        }
+        head->w12 = value;
+        return (AptValue*)head;
+    }
+    AptNum* obj = (AptNum*)g_aptValuePool->Allocate(16);
+    obj->initType(7);
+    obj->w12 = value;
+    obj->w8 = (void*)g_aptNumberVTable;
+    return (AptValue*)obj;
 }
