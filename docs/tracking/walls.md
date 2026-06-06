@@ -1146,6 +1146,31 @@ pool Allocate 0x802B5848 / Deallocate 0x802B598C.
 
 **Logged by:** Matcher-Opus-1d, 2026-06-05.
 
+**REVISIT — Matcher-Opus-1e, 2026-06-06 (improved to 7/312, coupling proven exact):**
+The RECIPE-STR sibling wall (defaultSortCompareFunc 0x80287410, toString_char
+0x802860E4, toString_EAStringC 0x80286168) was CRACKED this session via the 8-byte
+EAStringC handle (`{char* m_ptr; int m_pad;}`) → forces 8-aligned temp slots. Applying
+that here drops this fn from 21 → **7 residual bytes — ALL pure s@8 ⇄ temp2@16 slot
+swap; frame 40, 3 saved regs (r29/r30/r31), and rematerialized temp addresses ALL match
+DOL.** Parked: `F:\tmp\m96750_best.cpp` (nested temp2 + placement-new alloc path; the
+`mr r31,r3`-vs-`bl ctor` alloc-order diff is fixed by `result = new(pool->Allocate(20))
+AptStrNode();` with placement `operator new`). The slot swap is the ONLY thing left and
+it is genuinely irreducible in SN 3.9.3 — the remat/slot behaviors are COUPLED:
+  • **nested** named temp2  → rematerialized address (3 regs ✓) BUT named-local LOW slot 8 (✗)
+  • **function-scope / anonymous** temp2 (const-ref operator= lets the rvalue bind) →
+    compiler-temp HIGH slot 16 (✓) BUT caches its address in r28 (4 regs ✗)
+DOL = remat **and** slot 16. No SN 3.9.3 source construct yields that pair (verified:
+nested/funcscope/anonymous × default/-fno-schedule-insns/insns2 × two-type
+inline-vs-extern-dtor split). The dtor inline/call split itself is fully solved (s =
+inline-dtor type, temp2 = extern-dtor type, reverse-construction order → bl then inline).
+Confirmed compiler-version coloring/cost-model wall; the original 2005 SN build
+rematerialized function-scope temp addresses, SN 3.9.3 caches them. Re-test on an older
+SN point-version. **Struct correction:** EAStringC is **8B** (`char* m_ptr; int pad`),
+not 4B — the AptString m_str@12 2nd word (@16) IS the free-list next (union overlap),
+so AptString stays 20B.
+
+**Logged by:** Matcher-Opus-1e, 2026-06-06.
+
 ## 0x802DA950 EA::Allocator::GeneralAllocator::ReportNext(void*, int) (480 B)
 
 **Tried:** Full decode + clean goto-based control-flow reconstruction that mirrors
