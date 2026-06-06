@@ -1183,3 +1183,30 @@ source for a future objdiff / genuinely-older-point-version retry. SN-VERSION fo
 in this lane (3.9.3 IS the original); calibration shows 3.8.1/3.7/3.5 identical on this class.
 
 **Logged by:** Matcher-Opus-2f, 2026-06-06.
+
+## 0x802D8A6C EA::Allocator::GeneralAllocator::Init(...) (424 B)
+
+**Tried:** Full decode + faithful clean C++ (named struct members, DOL store-order).
+One-time allocator init: mField0 guard → SetOption(0,1) → RAII mutex guard (m_mutex@0x4FC,
+spilled to 8(1)) wrapping 5 memsets + a 127-iter circular bin-sentinel loop (fd@+8/bk@+12,
+stride 8) + ~25 field stores → unlock → conditional AddCore(a,b,c,d,e,f) → return true.
+DEFAULT scheduling reaches 105/106 (matches DOL's 12-callee-saved-reg allocation + param
+numbering r20-r25); the forced stub's `-fno-schedule-insns` is over-applied (104/106, loses
+the param alloc). Tried shared `char* base`, typed walker — no change. Parked clean source:
+`src/wip/near_match/Init_0x802D8A6C_regalloc_loopwalker_storesort.cpp`. Forced stub unchanged.
+
+**Asm shape that didn't reduce:** the 1-insn count gap is the bin-loop walker copy —
+```
+; DOL: mr r29,r30 (capture this+52 before bins memset); ... mr r9,r29 ; walk r9 (fresh temp)
+; 3.9.3: coalesces the destructive walker into the dead memset pointer r30 -> no mr (1 shorter)
+```
+Plus a store-sort: the 0x46C..0x4A4 field-store block schedules in a different (legal) order
+than the DOL under default scheduling (moot while the walker walls the instruction count).
+
+**Notes / hypotheses:** Same redundant-mr / register-coalescing-tiebreak class as ReportNext
+0x802DA950 and FindChunkBin 0x802D91C8 — the 2005 SN ProDG allocator inserts a copy that the
+verify 3.9.3 allocator coalesces away (strictly better codegen, no source lever). Second
+confirmation this 392B+ allocator tier is "mostly walls" of this class. Retry via objdiff or a
+genuinely-different-allocator point-version only. SN-VERSION forbidden in this lane.
+
+**Logged by:** Matcher-Opus-2f, 2026-06-06.
