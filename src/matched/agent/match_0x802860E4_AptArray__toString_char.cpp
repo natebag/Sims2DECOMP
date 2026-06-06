@@ -1,7 +1,42 @@
-// 0x802860E4 AptArray::toString(char (132 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-24(1); mfspr 0,8; stmw 30,0x10(1); stw 0,0x1c(1); lis 11,-32700; mr 30,4; lhz 9,-6476(11); addi 0,11,-6476; addi 4,1,8; stw 0,0x8(1); addi 9,9,1; sth 9,-6476(11); bl _s802860E4_0; lwz 4,0x8(1); mr 3,30; addi 4,4,8; bl _s802860E4_1; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 0f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s802860E4_2; 0:; lwz 0,0x1c(1); mtspr 8,0; lmw 30,0x10(1); addi 1,1,24"
-extern "C" void _s802860E4_0();
-extern "C" void _s802860E4_1();
-extern "C" void _s802860E4_2();
-extern "C" void f_802860E4() {}
+// 0x802860E4 AptArray::toString(char*, char*) (132B) — clean
+//
+// char-buffer convenience overload of AptArray::toString: builds a temp EAStringC,
+// delegates to the EAStringC worker overload (@0x80286168), copies the resulting
+// characters into the caller's buffer, then releases the temp (inline refcount
+// drop + pool free). Returns void; the format arg passes straight through to the
+// worker. The 8-byte string handle lands in the 8-aligned compiler-temp slot
+// (str @ sp+8). Default instruction scheduling reproduces the worker-arg /
+// ctor-store ordering.
+
+struct EAStringC { char* m_ptr; int m_pad; };   // 8-byte string-COW handle
+extern char EAStringC_sEmptyString[];            // shared empty-string buffer [u16 ref, u16 cap, chars...]
+
+struct AptValuePool { void Deallocate(void* p, unsigned int size); };  // @0x802B598C
+extern AptValuePool* g_aptValuePool;             // SDA -0x59ec
+
+extern "C" char* strcpy(char* dst, const char* src);                   // @0x802438E0
+
+struct AptArray {
+    void toString(EAStringC& out, char* fmt);    // worker @0x80286168
+    void toString(char* dest, char* fmt);
+};
+
+void AptArray::toString(char* dest, char* fmt) {
+    EAStringC str;
+    unsigned short rc = *(unsigned short*)EAStringC_sEmptyString;
+    str.m_ptr = EAStringC_sEmptyString;
+    *(unsigned short*)EAStringC_sEmptyString = (unsigned short)(rc + 1);
+
+    toString(str, fmt);
+    strcpy(dest, str.m_ptr + 8);
+
+    {   // ~EAStringC str
+        char* p = str.m_ptr;
+        unsigned short* h = (unsigned short*)p;
+        unsigned int dec = (unsigned int)h[0] - 1;
+        unsigned short masked = (unsigned short)dec;
+        h[0] = (unsigned short)dec;
+        if (masked == 0)
+            g_aptValuePool->Deallocate(p, *(unsigned short*)(p + 4) + 9);
+    }
+}
