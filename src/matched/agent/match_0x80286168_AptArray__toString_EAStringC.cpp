@@ -1,11 +1,84 @@
-// 0x80286168 AptArray::toString(EAStringC (352 B)
-// FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-48(1); mfspr 0,8; stmw 24,0x10(1); stw 0,0x34(1); mr 28,4; addi 29,1,8; mr 30,3; lis 4,-32704; addi 4,4,15160; mr 25,5; mr 3,29; bl _s80286168_0; lwz 11,0x8(1); lhz 9,0x0(11); addi 9,9,1; sth 9,0x0(11); lwz 4,0x0(28); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 0f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80286168_1; 0:; lwz 4,0x8(1); stw 4,0x0(28); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 1f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80286168_2; 1:; lwz 0,0x2c(30); li 31,0; cmpw 31,0; bge 5f; lis 27,-32700; mr 26,29; addi 24,27,-6476; li 29,0; 2:; lwz 9,0x24(30); lwzx 3,29,9; cmpwi 3,0; beq 3f; lhz 9,-6476(27); mr 4,26; stw 24,0x8(1); addi 9,9,1; sth 9,-6476(27); bl _s80286168_3; mr 4,26; mr 3,28; bl _s80286168_4; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 3f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80286168_5; 3:; lwz 9,0x2c(30); addi 9,9,-1; cmpw 31,9; bge 4f; mr 3,28; mr 4,25; bl _s80286168_6; 4:; lwz 0,0x2c(30); addi 31,31,1; addi 29,29,4; cmpw 31,0; blt 2b; 5:; lwz 0,0x34(1); mtspr 8,0; lmw 24,0x10(1); addi 1,1,48"
-extern "C" void _s80286168_0();
-extern "C" void _s80286168_1();
-extern "C" void _s80286168_2();
-extern "C" void _s80286168_3();
-extern "C" void _s80286168_4();
-extern "C" void _s80286168_5();
-extern "C" void _s80286168_6();
-extern "C" void f_80286168() {}
+// 0x80286168 AptArray::toString(EAStringC&, char*) (352B) — clean
+//
+// Array stringify worker: out = <initial literal>; then for each element, append
+// its toString() and a separator between elements:
+//   out = EAStringC(kInit);
+//   for (i = 0; i < m_count; i++) {
+//       if (m_data[i]) { EAStringC t; m_data[i]->toString(t); out += t; }
+//       if (i < m_count - 1) out += sep;
+//   }
+// The COW copy-assign and all temp destructors are inlined (refcount drop +
+// conditional pool free); operator+= / toString / InitFromBuffer are real calls.
+// A single 8-byte temp string handle is reused (slot sp+8).
+
+struct EAStringC {
+    char* m_ptr;
+    int   m_pad;
+    void       InitFromBuffer(char* buf);     // @0x802BE7B0
+    EAStringC& operator+=(EAStringC& s);       // @0x802BC3D4
+    EAStringC& operator+=(char* s);            // @0x802BC5C4
+};
+extern char EAStringC_sEmptyString[];          // shared empty-string buffer
+extern char kAptArrayToStringInit[];           // initial literal @0x80403B38
+
+struct AptValuePool { void Deallocate(void* p, unsigned int size); };  // @0x802B598C
+extern AptValuePool* g_aptValuePool;           // SDA -0x59ec
+
+struct AptValueT { void toString(EAStringC& out) const; };             // AptValue::toString @0x802B08BC
+
+struct AptArray {
+    unsigned int m_flags;   // 0x00
+    char         pad[0x20]; // 0x04..0x23
+    AptValueT**  m_data;    // 0x24
+    int          m_capacity;// 0x28
+    int          m_count;   // 0x2C
+    void toString(EAStringC& out, char* sep);
+};
+
+void AptArray::toString(EAStringC& out, char* sep) {
+    EAStringC tmp;
+    tmp.InitFromBuffer(kAptArrayToStringInit);
+
+    // out = tmp   (inlined COW copy-assign)
+    ++*(unsigned short*)tmp.m_ptr;
+    {   // out.release()
+        char* p = out.m_ptr;
+        unsigned short* h = (unsigned short*)p;
+        unsigned int dec = (unsigned int)h[0] - 1;
+        unsigned short masked = (unsigned short)dec;
+        h[0] = (unsigned short)dec;
+        if (masked == 0)
+            g_aptValuePool->Deallocate(p, *(unsigned short*)(p + 4) + 9);
+    }
+    out.m_ptr = tmp.m_ptr;
+    {   // ~tmp
+        char* p = tmp.m_ptr;
+        unsigned short* h = (unsigned short*)p;
+        unsigned int dec = (unsigned int)h[0] - 1;
+        unsigned short masked = (unsigned short)dec;
+        h[0] = (unsigned short)dec;
+        if (masked == 0)
+            g_aptValuePool->Deallocate(p, *(unsigned short*)(p + 4) + 9);
+    }
+
+    for (int i = 0; i < m_count; i++) {
+        AptValueT* e = m_data[i];
+        if (e) {
+            tmp.m_ptr = EAStringC_sEmptyString;
+            ++*(unsigned short*)EAStringC_sEmptyString;
+            e->toString(tmp);
+            out += tmp;
+            {   // ~tmp
+                char* p = tmp.m_ptr;
+                unsigned short* h = (unsigned short*)p;
+                unsigned int dec = (unsigned int)h[0] - 1;
+                unsigned short masked = (unsigned short)dec;
+                h[0] = (unsigned short)dec;
+                if (masked == 0)
+                    g_aptValuePool->Deallocate(p, *(unsigned short*)(p + 4) + 9);
+            }
+        }
+        if (i < m_count - 1)
+            out += sep;
+    }
+}
