@@ -1145,3 +1145,41 @@ toString 0x80294688, char-ctor 0x8026C6DC, operator= 0x8026C790, ~EAStringC
 pool Allocate 0x802B5848 / Deallocate 0x802B598C.
 
 **Logged by:** Matcher-Opus-1d, 2026-06-05.
+
+## 0x802DA950 EA::Allocator::GeneralAllocator::ReportNext(void*, int) (480 B)
+
+**Tried:** Full decode + clean goto-based control-flow reconstruction that mirrors
+the DOL's basic-block layout exactly (per Opus-2e's head-start: gotos force the
+f18/f1c memory reloads that a clean `for/break` form CSE's away). Dual-mode iterator:
+guard (`pContext && magic=='SNAP'`) → snapshot-array path (mMode@0x14==0, walk
+`info[]` stride 24, signed `m_type`@+0x10 & flags) vs live-heap path (mMode!=0, walk
+core blocks from mpCurrentCore@0x18 to `&mHeadCoreBlock` sentinel @this+1100, scan
+chunks to `pLimit=core+coreSize-16`, `ChunkMatchesBlockType` 0x802D93B0 +
+`GetBlockInfoForChunk` 0x802D94C4). Snapshot tried both `for(;;)` (strength-reduces
+to an `lbzu` walk) and goto skip-in do/while (rotates to one bound check). Default
+scheduling. Parked clean source:
+`src/wip/near_match/ReportNext_0x802DA950_regalloc_redundant_mr.cpp` (112/120 insns,
+block order matches DOL). Forced ASMPROC stub left unchanged.
+
+**Asm shape that didn't reduce:** every count gap is the redundant-mr / const-hoist
+class — DOL inserts a temp+copy or hoists a constant that SN ProDG 3.9.3 coalesces:
+```
+; sentinel:  DOL  addi r9,r27,1100 ; mr r28,r9     clean: addi r28,r27,1100 (no mr)
+; pCore:     DOL  lwz r0,24(r30)   ; mr r10,r0     clean: lwz r10,24(r30)   (no mr)
+; cur:       DOL  lwz r0,28(r30)   ; mr r3,r0      clean: lwz r3,28(r30)    (no mr)
+; const 0:   DOL  li r26,0 (preheader, stmw r26)   clean: li r0,0 at store (stmw r27)
+```
+The const-0 hoist changes the callee-saved count (6 vs 5) which swaps the whole
+coloring (flags r29<->r28, sentinel r28<->r29). Plus a snapshot loop-rotation
+(DOL keeps a redundant entry bound check + `mr r11,r9`; 3.9.3 uses one shared check).
+
+**Notes / hypotheses:** Not source-fixable — this is the CEO-noted "our correct 3.9.3
+beats the 2005 build's codegen" register-coloring class (same family as FindChunkBin
+0x802D91C8, GetBlockInfoForChunk 0x802D94C4, DescribeChunk 0x802DA588). A more-optimal
+compiler can't be coaxed into emitting the extra `mr` copies / const hoist. The full
+algorithm + Snapshot struct map (magic@0, mBlockTypeFlags@8, mMode@0x14, mpCurrentCore@0x18,
+mpCurrentChunk@0x1c, mCount@0x24, mIndex@0x28, info[]@0x2c) is captured in the parked
+source for a future objdiff / genuinely-older-point-version retry. SN-VERSION forbidden
+in this lane (3.9.3 IS the original); calibration shows 3.8.1/3.7/3.5 identical on this class.
+
+**Logged by:** Matcher-Opus-2f, 2026-06-06.
