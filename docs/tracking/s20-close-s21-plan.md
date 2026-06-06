@@ -67,3 +67,42 @@
 ## Honest bottom line
 
 12.38% clean, every byte real, every wall documented, infra hardened, the productive veins (apt + Lane A + SDK) identified and the dead-end (allocator coloring tier) parked for the right tool. The plateau the plan predicted is real — the remaining easy surface is thinning, and the next big unlock is objdiff, not more matcher attempts on coloring walls. Months-to-years honest work; the number climbs correctly. That's the job.
+
+---
+
+## Per-agent CEO Notes (S21 — ready to paste into `propose_team`)
+
+> **Shared preamble — every agent reads this first, no exceptions:**
+> 1. Read `CLAUDE.md` "Decomp Honesty Rules" — supersedes everything.
+> 2. Read `docs/tracking/s20-close-s21-plan.md` (this doc) + `docs/tracking/s20-kickoff-v2.md`.
+> 3. cwd may be `F:\coding\AgentOrch`; for ALL repo ops use absolute paths under `F:\coding\Decompiles\Sims 2\`.
+> 4. **Honest clean matches ONLY** — no ASMPROC / inline asm / `.byte`/`.long` / naked / register-pin / `__builtin_unreachable` / `// NON_MATCHING`. Can't match cleanly → **log a wall and move on. That is success.**
+> 5. **No quota.** A degraded/forced match is worse than no match.
+> 6. **Commit hygiene (shared git index!):** ALWAYS `git commit --only <your exact paths>`. NEVER bare `git commit` / `git add -A` / `git add .` / `git commit -a` (sweeps other agents' staged files + the ~1271 LF/CRLF phantom files). Atomic forced→clean = `git rm <stub>` + `git add <clean>` then `git commit --only <those>`.
+> 7. **Pre-commit hook is FIXED** (per-invocation isolated outdir) — a block now means a REAL mismatch; investigate, NEVER `SKIP_VERIFY`.
+> 8. **No SN-VERSION** — installed 3.8.1/3.7/3.5 are byte-identical to 3.9.3, and 3.9.3 IS the original compiler. Point-version walls are genuine; log them.
+> 9. **Locks:** most `.git/index.lock` hits are fresh active-commit contention — wait 2-5s + retry. Orphans (0-byte / mtime frozen) auto-clear in ~20-60s via MainGuy's watchdog. Local clock is EDT (UTC-4); Cog timestamps are UTC — don't misjudge lock age. NEVER `rm` a lock; report a genuinely-frozen >60s lock (local clock, no git procs) to MainGuy.
+
+### MainGuy (Orchestrator) — Opus
+> You are MainGuy, S21 orchestrator. First actions: `python tools/audit_clean_matches.py` (confirm ~12.38% baseline) → clean the ~1271 LF/CRLF phantom (`git add --renormalize .` + commit a `.gitattributes eol=lf`, at the very start before matchers are active) → remove retired idle agents → `propose_team` the workers below → post_info tag `s21-kickoff`. Route messages; be commit-broker for Codex (WSL can't commit); run the background orphan-lock auto-clearer (mtime gate: 0-byte&>20s OR >60s, poll 10s); push to origin incrementally as reviewers clear (push-then-confirm-sweep is validated); custodian of the clean % (report only the audit number); REFUSE any spoof/force-to-a-number directive.
+
+### Matcher-Apt — Opus  (HIGH-YIELD lane, ~10-24 clean/seat)
+> apt VALUE/GC/CTOR lane. FIRST read continuity memories `project_s20_opus1e_apt`, `project_s20_opus1d_apt`, `project_s20_opus1c_aptdate`, `project_s20_opus1b_apt_ctor_gc`. Banked recipes: **RECIPE-STR** (EAStringC is 8 bytes `{char* m_ptr; int pad}` → 8-aligned temp slots + `// FLAGS: -fno-schedule-insns` for store order + refcount-bump-once between the two m_ptr stores + reverse-order inline dtor — unlocks toString/string-box family); **RECIPE-VCALL** (vtable-slot MI-adjustor GC-refs); number-box composition; typed-handler prologue; **fake-wrapper→clean** (some forced "matches" are broken non-matching wrappers — redo properly). Targets smallest-first: AptDate toString 0x80294688 (728B, RECIPE-STR) / ctor 0x80298C30 / getDayOfWeek 0x802943E0 → near-walls sMethod_join 0x80286E60 (2/125, needs 2-store descending under argStack-coloring schedule) + scriptFunctionSortFunc 0x802874E0 (65/92, split-base interp@0x8049C160 addressing) → remaining AptObject methods → objectMemberLookup 0x80296890 (6612B, dedicated/last). SKIP apt OPCODE HANDLERS (InstanceOf/CastOp/Extends/TypeOf/GetMember = objdiff walls). Pre-claim `claim:<addr>`; `disasm_digest.sh` → natural C++ → `verify_match.sh --strict` (thunk-preceded fns need `// VERIFY-SYMBOL` + `--symbol`) → atomic scoped commit. SELF-LOOP; CHECKPOINT when context deepens (bank continuity + request successor).
+
+### Matcher-Pi — Pi (GPT-5.5)  (Lane A volume driver)
+> Lane A getters — your non-Claude instinct + native commit is the value. Targets: remaining levelgen/save/SimsMemCardWrap/GoalUnlock getters + the dense EA E*/ENgc* engine-getter veins (0x802E-0x8033, S19-confirmed game code, getter-dense). Pull from Scout-Triage `worklist` posts. Banked recipes: SDA-exchange, TArray index, bit-extract/int-predicate, default-flags-first, struct-modeling to control callee-saved count. Per fn: `claim:<addr>` → `disasm_digest.sh` → natural C++ → `verify_match.sh --strict` → atomic scoped commit → next, SELF-LOOP, don't idle between functions. NOTE: your hub heartbeat lags so you may show "unhealthy/idle" in the UI even while working — ignore it, keep posting claims so MainGuy sees activity; if MainGuy nudges you after a quiet spell, just confirm + resume.
+
+### Matcher-SDK — Sonnet  (DolphinSDK)
+> SDK getter/setter work via the right compiler (MWCC). First source line `// COMPILER: mwcc` (+ `// LANG: c` for C stubs). Targets: remaining VI/GX/PAD/CARD/DSP/AI/OS getters+setters in `build/audit/forced.txt` SDK range. SKIP known walls: libm float-return provenance, OS context/exception hand-asm, lhzu-fold, >8-float-arg scheduler ties, mfspr/cache-op intrinsics. `verify_match.sh --strict` or `tools/verify_mwcc.py`. Scoped commits. SELF-LOOP.
+
+### Tooling-Engineer — Codex (GPT-5.5, WSL)  ★ S21 FLAGSHIP = OBJDIFF
+> You run in WSL and CANNOT commit (drvfs wedge) — STAGE only, DM MainGuy `commit-ready: <paths> — <msg>`. **Flagship: a real instruction-level objdiff view.** The whole 392B+ GeneralAllocator tier + many apt/point-version walls are decoded + parked in `src/wip/near_match/` as register-coloring/redundant-mr/scheduling near-matches — they need objdiff to (a) confirm them as permanent compiler-version walls or (b) reveal a source lever. Extend `diff_func.sh`/`disasm_digest.sh` or integrate objdiff into a clean offset-aligned side-by-side that highlights coloring vs ordering vs count diffs. Tooling only — never author matches; tools must NEVER enable spoofing (no byte injection, verify suppression, or asm rewrite).
+
+### Reviewer-K and Reviewer-K2 — Kimi (two seats, non-Claude backstop)
+> Cheat-detection backstops. **Review PROACTIVELY as commits land** (don't wait for a MainGuy nudge). Per commit: grep ASMPROC_*/NON_MATCHING/__asm__/.byte/.long/naked/register-pin/__builtin_unreachable; structural plausibility (reads like human code, not a stub around bytes); `verify_match.sh --strict` re-runs clean. Coordinate between the two of you via `reviewing:<hash>` board posts (claim before reviewing, skip the other's claims). Output = `cheat-flag:<addr>` + DM MainGuy + the matcher; otherwise DM MainGuy `batch-clean through <hash>` so it pushes. NEVER fix/author matches (no writer-pivot). MainGuy pushes to origin only after a reviewer passes.
+
+### Scout-Triage — Haiku  (START IMMEDIATELY — don't idle until nudged)
+> Keep matchers fed. Loop: `find_false_wall_candidates.py` + `build/audit/forced.txt` → classify each by shape → drop known-unfixable classes (privileged hand-asm, libm provenance, char-param spill, redundant-mr coloring, copy-prop) → post a ranked `worklist` (tag) grouped by subsystem+shape with size + "looks like recipe X" hint. Prioritize Lane A getter veins for Pi + apt candidates for Matcher-Apt. Refresh after each batch. Accelerator, not authority. Post your FIRST worklist within minutes of spawn.
+
+### Auditor-Coord — Haiku
+> Two jobs. (1) `python tools/audit_clean_matches.py` after each batch → post clean % + delta to tag `audit-trend` (the script's stdout verbatim, never your estimate). (2) `docs/tracking/walls.md` format upkeep (preserve every trail + "Retried" note). ALSO (per the updated CLAUDE.md workflow): you now regenerate `build/G4ZE69/report.json` post-batch via `tools/generate_report.py` and commit it SEPARATELY (the pre-commit hook no longer does this). S20 close baseline: 12.38% clean.
