@@ -1009,6 +1009,32 @@ Natural C++ variants either compare using r31/r11, alter branch spans, or shrink
 
 **Logged by:** Matcher-Pi, 2026-06-06.
 
+## 0x8023353C ERLevel::AddInstanceToLevelHead(EInstance *) (240B)
+
+**Tried:** Natural variant of the already-landed `AddInstanceToLevel` recipe, using `ValidateInstanceInLevel`, `AddInstanceToRoom`, `ENodeList::AddHead` for 0x40000-flagged instances, array head insertion by shifting the `this+0x2A2B8` instance list up one slot, and optional red-black-tree insertion for flag 0x100. Tried pointer-arithmetic forms for the `this+0x30000` addis base and explicit goto/label for the shift loop.
+
+**Asm shape that didn't reduce:** DOL's head-insert block keeps the addis base in r9, copies it to r10, branches over only the shift loop on `count <= 0`, then always performs insertion/count increment:
+
+```
+DOL: addis r9,r30,3
+     lwz   r11,-15688(r9)
+     mr    r10,r9
+     cmpwi r11,0
+     ble   insert
+     ... shift loop ...
+insert:
+     lwz r9,-15688(r10)
+     stw r31,-23880(r10)
+     addi r9,r9,1
+     stw r9,-15688(r10)
+```
+
+Clean C++ variants either place the insertion/count update behind the wrong long branch target, allocate an extra count pointer register, or alter the addis base register (`r10` vs DOL's r9→r10 copy), giving a 472B compiled listing vs the DOL's 480B masked listing.
+
+**Notes / hypotheses:** Semantic twin of the landed `0x80233454 AddInstanceToLevel`, but the front-insert shift loop is a control-flow/layout wall. A later pass should try source factoring of just the shift+insert helper or TU context; no banned asm/ASMPROC path used.
+
+**Logged by:** Matcher-Pi, 2026-06-06.
+
 ---
 
 ## 0x802D91C8 EA::Allocator::GeneralAllocator::FindChunkBin(Chunk*) const (392 B)
