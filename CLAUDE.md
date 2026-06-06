@@ -344,14 +344,13 @@ Sims 2/
 
 ## Progress Tracking Workflow
 
-**Automatic (the normal case):** The pre-commit hook regenerates
-`build/G4ZE69/report.json` automatically whenever a commit touches files in
-`src/matched/`. The fresh report.json is added to the same commit. Workers do
-nothing extra — the report just stays in sync.
+**Post-batch (the normal case):** Auditor-Coord regenerates
+`build/G4ZE69/report.json` after a batch of clean match commits lands, then
+commits the refreshed report separately. The pre-commit hook intentionally
+does not regenerate the report: it stays on the fast verification path and
+does not hold the shared Git index lock while enumerating `src/matched/`.
 
-**Manual (if needed):** If the hook is bypassed (`SKIP_VERIFY=1`), missing
-(`bash tools/install-hooks.sh` after fresh clone), or the report drifted some
-other way, regenerate manually:
+**Manual:** Regenerate and commit the report with:
 
 ```bash
 python tools/generate_report.py
@@ -429,10 +428,11 @@ progress numbers come from the JSON above (industry-standard byte-matched metric
 not file-count).
 
 How the integration works:
-1. Worker commits matched code → pre-commit hook regenerates report.json → commit lands with fresh report.
-2. Push to main → GitHub Actions `Build` workflow runs → uploads `G4ZE69_report` artifact.
-3. The decomp.dev GitHub App (installed on the repo) receives a `workflow_run` webhook → pulls the artifact → updates the dashboard within seconds.
-4. PRs get an automatic comment showing the byte-progress delta vs main.
+1. Worker commits matched code → the pre-commit hook runs fast strict verification only.
+2. Auditor-Coord refreshes report.json after the batch → a separate report commit lands.
+3. Push to main → GitHub Actions `Build` workflow runs → uploads `G4ZE69_report` artifact.
+4. The decomp.dev GitHub App (installed on the repo) receives a `workflow_run` webhook → pulls the artifact → updates the dashboard within seconds.
+5. PRs get an automatic comment showing the byte-progress delta vs main.
 
 If you change the report schema, validate against an active decomp.dev project
 (e.g. `zcanann/SFA-Decomp`) by downloading their latest artifact and diffing
