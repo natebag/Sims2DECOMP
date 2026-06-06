@@ -1235,3 +1235,31 @@ confirmation this 392B+ allocator tier is "mostly walls" of this class. Retry vi
 genuinely-different-allocator point-version only. SN-VERSION forbidden in this lane.
 
 **Logged by:** Matcher-Opus-2f, 2026-06-06.
+
+## 0x802D886C EA::Allocator::GeneralAllocator::GeneralAllocator(...) (448 B)
+
+**Tried:** Full decode + faithful clean straight-line constructor (named struct members,
+exact DOL store-order, `-fno-schedule-insns`). 6 memsets + ~45 zero-stores + non-zero defaults
+(m08=1,m47C=1,m484=9,m485=10,m4CC=256,m4EC=4096,m4F0=0x400000,m4F4=0x100000,m520..524=
+{221,222,205,171,254}, two default-callback fn-ptrs @0x4D0/0x4D8 (absolute relocs, masked),
+two self back-ptrs @0x4D4/0x4DC=this) → delegate Init(a,b,c,d,e,f) → return this.
+**Instruction COUNT matches exactly (112 insns).** Parked clean source:
+`src/wip/near_match/ctor_0x802D886C_regalloc_coloring.cpp`. Forced stub unchanged.
+
+**Asm shape that didn't reduce:** ~55 byte diffs, all register-coloring / constant-scheduling:
+```
+; params live entry->Init: DOL colors a=r27,b=r24,c=r26,d=r25,e=r23,f=r22 (3.9.3 differs)
+; consts 9/10 -> DOL r9/r0 (3.9.3 swaps); 256/4096/0x400000/0x100000 -> DOL materializes all
+;   four UP FRONT, holds across the zero-block, stores at the end; 3.9.3 materializes inline
+;   -> cascade of ~40 store-offset diffs
+```
+
+**Notes / hypotheses:** Same redundant-mr / register-coalescing + constant-scheduling class as
+ReportNext 0x802DA950, Init 0x802D8A6C, FindChunkBin 0x802D91C8. THIRD confirmation the entire
+392B+ GeneralAllocator tier is this single wall class — the 2005 SN ProDG allocator/scheduler
+makes different (often less-optimal) register/ordering choices than the verify 3.9.3 with no
+clean source lever. Retry only via objdiff or a genuinely-different point-version; SN-VERSION
+forbidden in this lane. Recommend deprioritizing the remaining 392B+ tier (ClearFastBins,
+SetOption, Check* family) — same class — pending a Lane-B objdiff/version-override unlock.
+
+**Logged by:** Matcher-Opus-2f, 2026-06-06.
