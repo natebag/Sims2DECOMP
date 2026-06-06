@@ -1263,3 +1263,53 @@ forbidden in this lane. Recommend deprioritizing the remaining 392B+ tier (Clear
 SetOption, Check* family) — same class — pending a Lane-B objdiff/version-override unlock.
 
 **Logged by:** Matcher-Opus-2f, 2026-06-06.
+
+## 0x802874E0 AptArray::scriptFunctionSortFunc(void*, void*) (368B)
+
+**Status:** NEAR-MATCH (65/92 insns), full decode. Custom AScript-comparator qsort
+callback. Calls the action interpreter to run the user comparator: PrepareForExecution
+→ push both values onto the interp arg-stack (each GC-registered via RECIPE-VCALL
+GCRegister, vtable slot 1) → callFunction(g_sortCmpField, g_sortCmpValue, 2) →
+top->toInteger() → if(count>0){ top->GCRelease (slot 2); count-- } → CleanupAfterExecution
+→ return the int. Parked: `F:\tmp\m874E0_scriptFunctionSortFunc_WALL_65of92.cpp`.
+
+**Wall:** the interpreter/arg-stack singleton (@0x8049C160) is addressed by the DOL with a
+SPLIT base — count via `-16032(r31)` where r31=HA(0x804A0000), data/this via `8(r27)` where
+r27=object — and SN 3.9.3 from clean `g_aptInterp.count/.data/.Method()` source picks a
+single object base + different r9/r10/r11 numbering in the two arg-stack pushes, which
+cascades coloring through the whole body. Same split-base/coloring class as the GeneralAllocator
+392B tier and scriptFunctionSortFunc's sibling. Instruction SELECTION + the 3 MI-vcalls +
+descriptor globals + g_sortCmp* SDA all correct. Compiler-version coloring; retry via objdiff
+or older SN point-version.
+
+**Struct facts:** AptActionInterpreter @0x8049C160 {count@0, data@8} doubles as g_aptArgStack;
+PrepareForExecution 0x80270768 (→token), callFunction 0x80270070, CleanupAfterExecution
+0x8027085C; toInteger 0x802B04B8; g_sortCmpValue SDA -0x6b94, g_sortCmpField SDA -0x6b90;
+GCRegister descriptors gDescA@0x80403D38 / gDescB@0x80403D6C (line 138), GCRelease gDescC@0x80403E04
+/ gDescB (line 160). RECIPE-VCALL class (AptValue vptr@+8, register slot1 @8/@12, release slot2 @16/@20).
+
+**Logged by:** Matcher-Opus-1e, 2026-06-06.
+
+## 0x80286E60 AptArray::sMethod_join(AptValue*, int) (500B)
+
+**Status:** NEAR-MATCH (2/125 insns), full decode — essentially solved. AScript Array.join:
+two 8-byte EAStringC scratch (s1=result @sp+8, s2=separator @sp+0x10, merged default-ctor +2);
+sep = argc>0 ? arg->toString(s2) : default-literal; self->toString(s1, sep) via the array
+stringify worker (0x80286168); box s1 into a recycled/allocated AptString via FULLY-INLINE COW
+copy-assign (s1.refcount++ / release box old / box->m_str.m_ptr=s1.m_ptr) + inline ~s2,~s1.
+Avoids the sMethod_toString slot wall (no char-ctor temp). Parked:
+`F:\tmp\m86E60_sMethod_join_NEARMATCH_2byte.cpp`.
+
+**Wall (2 bytes):** the merged-ctor's two m_ptr stores — DOL writes s2(+0x10) then s1(+8)
+(descending). Under DEFAULT scheduling SN 3.9.3 canonicalizes to ascending (s1 then s2) =
+2-byte swap @0x44/0x50; everything else (incl. the split-base g_aptArgStack access + argc
+cmpwi hoist) matches. `-fno-schedule-insns` preserves the s2-first store order (as it did for the
+clean sibling defaultSortCompareFunc 0x80287410) BUT here it un-hoists the early `cmpwi argc,0`
+and reshuffles the g_aptArgStack base register (r9↔r11), giving 9 offsets instead. So the two
+required behaviors (descending store order ⟺ -fno-schedule) and (argc-hoist + argStack coloring
+⟺ default schedule) are mutually exclusive — same store-canonicalization-vs-schedule tension,
+compiler-version class. `&s1` MUST be hoisted into a callee-saved reg (used in both toString
+branches) or the fn is 1 insn short — done via `EAStringC* ps1=&s1; ...toString(*ps1,...)`.
+Retry via objdiff or a point-version whose first sched pass keeps descending stores.
+
+**Logged by:** Matcher-Opus-1e, 2026-06-06.
