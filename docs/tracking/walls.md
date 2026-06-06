@@ -988,6 +988,27 @@ Manual first-copy forms can reproduce the pointer setup (`addi r10,src+12`, `add
 
 **Logged by:** Matcher-Pi, 2026-06-05.
 
+## 0x800B859C GoalUnlock::SetupObjectUnlockInfo(void) (316B)
+
+**Tried:** Natural C++ around `EResourceManager::AddRef(0x0c33db41)`, `EResource::getTable(lbl_803E9C08)`, walking table rows (72-byte row stride), extracting first object entry with positive unlock id into `s_objectUnlocks`, then zero-filling remaining 8-byte entries through index 127. Tried method declarations vs absolute `_quickdataman` pointer, structured loops, goto-shaped inner loop, manual offset/index forms, and `-fno-schedule-insns`.
+
+**Asm shape that didn't reduce:** Semantics are decoded, but clean C++ does not reproduce the DOL's tight register/loop coloring. DOL keeps the table pointer in r3, mirrors it into r11 for count reloads, uses r10 as the outer index and r11 as the inner index, while keeping the output count in r31:
+
+```
+DOL:   li r31,0; mr r30,r3; ... getTable
+       mr r11,r3
+       li r10,0
+       lwz r0,0xc(r11)
+       cmplw r10,r0
+       ... mulli r9,r10,72 ... li r11,0 ...
+```
+
+Natural C++ variants either compare using r31/r11, alter branch spans, or shrink/reorder the clear loop. Absolute `_quickdataman` recovers the lis/addi call setup, but the nested loop still size-mismatches (compiled ~304B vs DOL 316B) with register/layout drift.
+
+**Notes / hypotheses:** Likely a register-coloring/control-flow-shape wall in a nested table scan rather than unknown behavior. Next pass should try a TU/context version or build a small helper for the inner row scan if that matches original source factoring. The global is `s_objectUnlocks` at 0x80485E7C; table name label is `lbl_803E9C08`; resource manager object is `_quickdataman` at 0x804BAEA0.
+
+**Logged by:** Matcher-Pi, 2026-06-06.
+
 ---
 
 ## 0x802D91C8 EA::Allocator::GeneralAllocator::FindChunkBin(Chunk*) const (392 B)
