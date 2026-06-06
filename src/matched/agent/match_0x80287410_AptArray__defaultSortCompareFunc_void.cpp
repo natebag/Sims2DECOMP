@@ -1,9 +1,59 @@
-// 0x80287410 AptArray::defaultSortCompareFunc(void (208 B)
 // FLAGS: -fno-schedule-insns
-// ASMPROC_inject_before: before="blr" lines="stwu 1,-32(1); mfspr 0,8; stmw 30,0x18(1); stw 0,0x24(1); lis 11,-32700; lwz 30,0x0(4); lhz 9,-6476(11); addi 0,11,-6476; lwz 3,0x0(3); addi 4,1,8; addi 9,9,2; stw 0,0x10(1); sth 9,-6476(11); stw 0,0x8(1); bl _s80287410_0; mr 3,30; addi 4,1,16; bl _s80287410_1; lwz 3,0x8(1); lwz 4,0x10(1); addi 3,3,8; addi 4,4,8; bl _s80287410_2; lwz 4,0x10(1); mr 30,3; lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 0f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80287410_3; 0:; lwz 4,0x8(1); lhz 9,0x0(4); addi 9,9,-1; rlwinm 0,9,0,16,31; sth 9,0x0(4); cmpwi 0,0; bne 1f; lhz 5,0x4(4); lwz 3,-23020(13); addi 5,5,9; bl _s80287410_4; 1:; mr 3,30; lwz 0,0x24(1); mtspr 8,0; lmw 30,0x18(1); addi 1,1,32"
-extern "C" void _s80287410_0();
-extern "C" void _s80287410_1();
-extern "C" void _s80287410_2();
-extern "C" void _s80287410_3();
-extern "C" void _s80287410_4();
-extern "C" void f_80287410() {}
+// 0x80287410 AptArray::defaultSortCompareFunc(void*, void*) (208B) — clean
+//
+// Default (lexical) qsort comparator for an AptScript array sort. Stringifies the
+// two AptValues *a / *b into temp EAStringC buffers, strcmp's their characters,
+// then releases both temp strings (inline refcount drop + pool free, in reverse
+// construction order). Both temps default-construct to the shared empty buffer,
+// so their two refcount bumps merge into a single +2. The two 8-byte string
+// handles occupy the 8-aligned compiler-temp slots (s1 @ sp+8, s2 @ sp+0x10).
+
+struct EAStringC { char* m_ptr; int m_pad; };  // 8-byte string-COW handle (only m_ptr used here)
+extern char EAStringC_sEmptyString[];   // shared empty-string buffer [u16 ref, u16 cap, chars...]
+
+struct AptValuePool { void Deallocate(void* p, unsigned int size); };  // @0x802B598C
+extern AptValuePool* g_aptValuePool;    // SDA -0x59ec
+
+struct AptValueT { void toString(EAStringC& out) const; };             // AptValue::toString @0x802B08BC
+
+extern "C" int strcmp(const char* a, const char* b);                   // @0x80243838
+
+struct AptArray {
+    static int defaultSortCompareFunc(void* pa, void* pb);
+};
+
+int AptArray::defaultSortCompareFunc(void* pa, void* pb) {
+    AptValueT* a = *(AptValueT**)pa;
+    AptValueT* b = *(AptValueT**)pb;
+
+    EAStringC s1, s2;
+    unsigned short rc = *(unsigned short*)EAStringC_sEmptyString;
+    s2.m_ptr = EAStringC_sEmptyString;
+    *(unsigned short*)EAStringC_sEmptyString = (unsigned short)(rc + 2);
+    s1.m_ptr = EAStringC_sEmptyString;
+
+    a->toString(s1);
+    b->toString(s2);
+
+    int r = strcmp(s1.m_ptr + 8, s2.m_ptr + 8);
+
+    {   // ~EAStringC s2
+        char* p = s2.m_ptr;
+        unsigned short* h = (unsigned short*)p;
+        unsigned int dec = (unsigned int)h[0] - 1;
+        unsigned short masked = (unsigned short)dec;
+        h[0] = (unsigned short)dec;
+        if (masked == 0)
+            g_aptValuePool->Deallocate(p, *(unsigned short*)(p + 4) + 9);
+    }
+    {   // ~EAStringC s1
+        char* p = s1.m_ptr;
+        unsigned short* h = (unsigned short*)p;
+        unsigned int dec = (unsigned int)h[0] - 1;
+        unsigned short masked = (unsigned short)dec;
+        h[0] = (unsigned short)dec;
+        if (masked == 0)
+            g_aptValuePool->Deallocate(p, *(unsigned short*)(p + 4) + 9);
+    }
+    return r;
+}
