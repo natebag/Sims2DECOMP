@@ -25,10 +25,8 @@ int SocialModeInteractor_SIM2::SetupInteractionMenu(void *xobj, void *interactio
     char *gd = (char *)&_gd;
 
     void *hud = *(void **)(gd + 0x44);
-    if (hud != 0) {
-        if (HUDTarget_IsMenuAvailable2(hud, m_personID) == 0) {
-            return 0;
-        }
+    if (hud == 0 || HUDTarget_IsMenuAvailable2(hud, m_personID) == 0) {
+        return 0;
     }
 
     int pid = m_personID;
