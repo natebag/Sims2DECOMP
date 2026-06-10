@@ -10,6 +10,16 @@ walls either get cracked by a smarter pass / a different compiler flag baseline 
 a new contributor — or they stay as honest documentation of the project's
 current ceiling.
 
+> **ADVISORY (2026-06-09, Day-0 compiler A/B):** Any entry below that blames a
+> "point-version difference", "compiler-version diff", "older SN", or suggests
+> "try 3.8.1/3.7/3.5" is now known to be **version-invariant**: all four
+> installed ProDG versions are codegen-identical (609 functions × 4 versions,
+> zero flips — see `docs/tracking/day0-compiler-version-ab.md`). Read those
+> hypotheses as "cause unknown, shape-level"; the remaining levers are source
+> shape (see `tools/permute_match.py` — it sweeps the flag matrix and statement
+> orders automatically and cracks ≤5-word diffs) or genuine RE insight. Do not
+> spend attempts swapping compiler binaries.
+
 ## How to log
 
 Add a new section at the bottom of this file with this shape:
