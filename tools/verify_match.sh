@@ -464,24 +464,34 @@ for off, rtype, target in relocs:
         _mask(off)
         _mask(off+1)
     elif rtype == 'R_PPC_EMB_SDA21':
-        # 21-bit SDA load/store: mask the entire 4-byte instruction
-        # (lower 21 bits hold the rA/D field which the linker patches)
-        # The opcode (top 6 bits) stays the same, but to keep things simple,
-        # mask all 4 bytes — false positives on opcode are unlikely.
-        _mask(off)
-        _mask(off+1)
-        _mask(off+2)
-        _mask(off+3)
+        # 21-bit SDA load/store: linker patches rA (bits 11-15) + 16-bit
+        # displacement (bits 16-31). Opcode (bits 0-5) and RT/RS (bits 6-10)
+        # are compiler output — KEEP comparing them. Bit-precise zeroing of
+        # only the patched fields in BOTH buffers (previously masked all 4
+        # bytes, which hid wrong-opcode/wrong-register fakes at SDA sites).
+        if off + 3 < len(dol_b):
+            for buf in (dol_b, comp_b):
+                buf[off+1] &= 0xE0   # keep RT[2:4] (bits 8-10), zero rA
+                buf[off+2] = 0
+                buf[off+3] = 0
     elif rtype == 'R_PPC_REL24':
-        # External 24-bit branch (bl <extern>): mask all 4 bytes
-        _mask(off)
-        _mask(off+1)
-        _mask(off+2)
-        _mask(off+3)
+        # External 24-bit branch: linker patches LI (bits 6-29) only.
+        # Opcode (bits 0-5) and AA/LK (bits 30-31) are compiler output —
+        # KEEP comparing them. This distinguishes bl (call) from b (tail
+        # jump) at external sites; the old whole-word mask could not.
+        if off + 3 < len(dol_b):
+            for buf in (dol_b, comp_b):
+                buf[off]   &= 0xFC   # keep opcode top 6 bits
+                buf[off+1] = 0
+                buf[off+2] = 0
+                buf[off+3] &= 0x03   # keep AA|LK
     elif rtype == 'R_PPC_REL14':
-        # External 14-bit branch (rare): mask 16-bit displacement field at instr+2
-        _mask(off+2)
-        _mask(off+3)
+        # External 14-bit branch: linker patches BD (bits 16-29). Keep
+        # BO/BI (bytes 0-1) and AA/LK (bits 30-31).
+        if off + 3 < len(dol_b):
+            for buf in (dol_b, comp_b):
+                buf[off+2] = 0
+                buf[off+3] &= 0x03
     else:
         # Unknown relocation type — be safe and mask 4 bytes
         _mask(off)

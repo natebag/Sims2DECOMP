@@ -36,6 +36,20 @@ SYMBOL_LINE_RE = re.compile(
 )
 ASMPROC_RE = re.compile(r"^\s*//\s*ASMPROC_[A-Za-z][A-Za-z0-9_]*", re.MULTILINE)
 NON_MATCHING_RE = re.compile(r"\bNON_MATCHING\b")
+# Banned-construct gates — keep in sync with tools/verify_match.sh step 0.
+# A file using any of these is post-compile/codegen cheating regardless of
+# whether its bytes match; it goes to the forced bucket, never clean.
+# (2026-06-09: 52 register-asm files were found sitting in the clean bucket
+# because the audit only gated on ASMPROC/NON_MATCHING.)
+BANNED_RES = [
+    re.compile(r"register[ \t]+[a-zA-Z_*&][a-zA-Z_0-9*&\t ]*[ \t]asm[ \t]*\("),
+    re.compile(r"__asm__"),
+    re.compile(r"__attribute__\s*\(\(\s*naked\s*\)\)"),
+    re.compile(r"__builtin_unreachable"),
+    re.compile(r"__attribute__\s*\(\(\s*noreturn\s*\)\)"),
+    re.compile(r"\.long 0x"),
+    re.compile(r"\.byte 0x"),
+]
 
 
 def load_symbol_sizes():
@@ -57,6 +71,9 @@ def classify(source_text):
         return "forced"
     if NON_MATCHING_RE.search(source_text):
         return "non_matching"
+    for banned in BANNED_RES:
+        if banned.search(source_text):
+            return "forced"
     return "clean"
 
 
