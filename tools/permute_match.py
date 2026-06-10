@@ -153,12 +153,15 @@ def swap_candidates(text):
             yield (tag, idxs[0], out)
 
     for run in _permutable_runs(text):
-        # adjacent swaps
+        # adjacent swaps — decl<->stmt mixing allowed (v3): moving a decl past
+        # a use is a compile error the scorer rejects, but moving a decl/load
+        # across an unrelated store is exactly the scheduling lever that
+        # cracked SimsMemCardWrap::ReloadHouseAndGlobals by hand.
         for i, j in zip(run, run[1:]):
             if lines[i].strip() == lines[j].strip():
                 continue
             a_decl, b_decl = bool(_DECL.match(lines[i])), bool(_DECL.match(lines[j]))
-            tag = "D-swap" if (a_decl and b_decl) else "S-swap"
+            tag = "D-swap" if (a_decl and b_decl) else ("X-swap" if (a_decl or b_decl) else "S-swap")
             yield from emit(tag, [i, j], [j, i])
         # 3-line rotations
         for a, b, c in zip(run, run[1:], run[2:]):
